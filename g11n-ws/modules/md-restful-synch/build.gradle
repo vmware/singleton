@@ -1,0 +1,63 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'   
+apply plugin: "org.sonarqube"
+apply plugin: "jacoco"
+
+archivesBaseName = 'md-restful-synch'
+sourceCompatibility = 1.8
+
+
+buildscript {
+	repositories {
+	  maven {
+		url "https://plugins.gradle.org/m2/"
+	  }
+	}
+	dependencies {
+	  classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
+	}
+  }
+configurations {
+	bootJar
+    war
+    providedRuntime
+   // remove default logger
+   all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+}
+
+
+
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+
+configurations {
+    providedRuntime
+   // remove default logger
+   all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+}
+
+dependencies {
+    compile project(":vip-common")
+    compile project(":md-restful-api")
+    compile project(":md-service-i18n-l3")
+    compile("org.apache.httpcomponents:httpclient:4.5.6")
+    compile("com.alibaba:fastjson:1.2.51")
+    compile("io.springfox:springfox-swagger-ui:2.5.0")
+    compile("io.springfox:springfox-swagger2:2.5.0")
+    compile("org.springframework:spring-webmvc:$springWebVersion")
+    compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.20')
+    compile ("org.springframework.boot:spring-boot-starter-log4j2")
+}
+
+jar {
+    enabled = true
+}
+
+bootJar {
+  enabled = false
+}

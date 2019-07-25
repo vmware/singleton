@@ -1,0 +1,53 @@
+/*
+ * Copyright 2019 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
+package com.vmware.vip.messages.data.bundle;
+
+import java.io.File;
+import java.io.IOException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.ApplicationListener;
+import org.springframework.stereotype.Component;
+
+import com.vmware.vip.common.utils.UnzipTranslationUtils;
+
+@Component
+public class InitBundleListener implements ApplicationListener<ApplicationReadyEvent> {
+	private static Logger logger = LoggerFactory.getLogger(InitBundleListener.class);
+	private final static String clearStr="translation.bundle.file.clean";
+
+	@Autowired
+	private BundleConfig bundleConfig;
+	
+	
+	@Override
+	public void onApplicationEvent(ApplicationReadyEvent arg0) {
+		// TODO Auto-generated method stub
+		boolean cleanflag = Boolean.parseBoolean(System.getProperty(clearStr));
+		if(cleanflag) {
+			logger.info("start clean and unzip translation to local");
+		}else {
+			logger.info("start unzip translation to local");
+		}
+		try {
+			String bundleAbsPath = new File(bundleConfig.getBasePathWithSeparator()).getAbsolutePath();
+		    logger.info("the bundle's base path: {}", bundleAbsPath);
+			UnzipTranslationUtils.unzipTranslationToLocal(bundleConfig.getBasePathWithSeparator(),cleanflag, InitBundleListener.class);	
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			logger.warn("init bundle exception or no bundle file need to unzip", e);
+
+		}
+		
+		System.clearProperty(clearStr);
+		logger.info("init the bundles end");
+		
+		
+	}
+
+}

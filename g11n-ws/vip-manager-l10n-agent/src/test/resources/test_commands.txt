@@ -1,0 +1,6 @@
+C:\Users\linr\Desktop\web-service\curl-7.49.1-win64-mingw\curl-7.49.1-win64-mingw\bin>
+curl --data "source=Home&locale=zh_CN&productName=devCenter&version=1.0.0" "https://localhost:8090/translation/api/string" -k
+
+
+curl --data "source=aaa" "https://localhost:8088/cache/devCenter/1.0.0/source/add" -k
+curl --data "source=aaa" "https://localhost:8088/cache/devCenter/1.0.0/source/commit" -k

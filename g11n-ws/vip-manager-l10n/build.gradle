@@ -1,0 +1,67 @@
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+description = 'l10n manager'
+
+buildscript {
+	repositories {
+	  maven {
+		url "https://plugins.gradle.org/m2/"
+	  }
+	}
+	dependencies {
+	  classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
+	}
+  }
+  
+apply plugin: "org.sonarqube"
+apply plugin: "jacoco"
+
+configurations {
+    bootJar
+    providedRuntime
+   // remove default logger
+   all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+}
+
+dependencies {
+    compile project(":vip-common")
+    compile project(":md-restful-api")
+    if (project.hasProperty('datatype') && project.getProperty('datatype') == 'bundle' && project.getProperty('syncdata') == 'true') {
+      compile project(":md-restful-l10n-synch")
+    }
+    compile("org.apache.commons:commons-lang3:$commonsLangVersion")
+    compile("commons-io:commons-io:$commonsIoVersion")
+    compile ('org.springframework.boot:spring-boot-starter-log4j2')
+    compile("org.springframework.boot:spring-boot-starter-web"){
+    exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+    compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.20')
+    compile ('org.apache.tomcat:tomcat-annotations-api:9.0.20')
+    compile ('org.xerial:sqlite-jdbc:3.28.0')
+    compile ('com.fasterxml.jackson.core:jackson-databind:2.9.9')
+    compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+bootJar {
+    baseName = 'vip-manager-l10n'
+    version =  "$branchName"
+    classifier = "$buildNumber"
+}
+
+task copyCommonJars(type :Copy, dependsOn: bootJar) {
+    from "$buildDir/libs"
+    into "$rootDir/../publish/"
+    println "The build was output to -> $rootDir/../publish/"
+    include "**/*.jar","**/*.war"    
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+assemble.dependsOn.add copyCommonJars
+
+

@@ -1,0 +1,54 @@
+apply plugin: 'java'
+
+description = 'translation fetcher module'
+
+configurations {
+    jar
+}
+
+dependencies {
+	compile("org.quartz-scheduler:quartz:2.2.2")
+	compile("org.quartz-scheduler:quartz-jobs:2.2.2")
+    compile("commons-io:commons-io:$commonsIoVersion")
+    compile("org.apache.commons:commons-lang3:$commonsLangVersion")
+    compile project(":vip-common")
+	testCompile("junit:junit:4.12")
+}
+
+jar {
+    baseName = 'translation-fetcher'
+    version = "$branchName"
+    classifier = "$buildNumber"
+    from {
+         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    manifest {
+        attributes 'Main-Class': 'com.vmware.vip.fetcher.translation.TranslationConverterMain'
+    }
+}
+
+task fetchTranslation(type: JavaExec, dependsOn: classes) {
+    if (project.hasProperty('jenkinsJobName')) {
+        args(project.getProperty('jenkinsJobName'))
+    }
+    if (project.hasProperty('productName')) {
+        args(project.getProperty('productName'))
+    }
+    if (project.hasProperty('productVersion')) {
+        args(project.getProperty('productVersion'))
+    }
+    main = 'com.vmware.vip.fetcher.translation.GitTranslationFetcherMain'
+    classpath sourceSets.main.runtimeClasspath
+}
+
+task copyTFJars(type :Copy, dependsOn: jar) {
+    from "$buildDir/libs"
+    into "$rootDir/../publish/"
+    include "**/*.jar"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+assemble.dependsOn.add copyTFJars

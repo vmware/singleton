@@ -1,0 +1,59 @@
+apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.springframework.boot'
+
+description = 'locale-libs'
+sourceCompatibility = 1.8
+
+configurations {
+    jar
+}
+
+dependencies {
+    compile group: 'com.ibm.icu', name: 'icu4j', version: '57.1'
+    compile group: 'org.webjars.bower', name: 'cldr-data', version: '28.0.1'
+    compile project(":vip-common")
+    compile project(":md-service-i18n-l3")
+    compile group: 'org.springframework', name: 'spring-context'
+    compile fileTree(dir: 'lib', include: [ '*.jar'])
+
+}
+
+bootJar {
+  enabled = false
+}
+jar {
+	enabled = true
+}
+
+buildscript {
+	repositories {
+	  maven {
+		url "https://plugins.gradle.org/m2/"
+	  }
+	}
+	dependencies {
+	  classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
+	}
+  }
+   
+apply plugin: "org.sonarqube"
+apply plugin: "jacoco"
+
+jar {
+    baseName = 'locale-libs'
+    version = "$branchName"
+    classifier = "$buildNumber"
+}
+
+task copyCommonJars(type :Copy, dependsOn: jar) {
+    from "$buildDir/libs"
+    into "$rootDir/../publish/"
+    include "**/*.jar"
+}
+ 
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+assemble.dependsOn.add copyCommonJars

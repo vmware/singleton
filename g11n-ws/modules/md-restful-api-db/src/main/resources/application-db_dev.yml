@@ -1,0 +1,91 @@
+spring:
+  datasource: 
+    name: config
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: org.postgresql.Driver
+    url: ###########################
+    username: #########################
+    password: ############################
+ #Initialize the connection pool parameters.
+    initialSize: 5
+    minIdle: 5
+    maxActive: 30
+#max wait time ms when get a db connection
+    maxWait: 60000
+# the interval time of check the idle db connection  
+    timeBetweenEvictionRunsMillis: 60000
+# the min life time of a connection    
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+# open the PSCache and configurate the capacity of every connection 
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    postgres:
+      datasoures: 
+# the vip datanodes' data source
+        - name: vipdata1
+          type: com.alibaba.druid.pool.DruidDataSource
+          driverClassName: org.postgresql.Driver
+          url: ###########################################
+          username: #######################################
+          password: #########################################
+#Initialize the connection pool parameters.
+          initialSize: 5
+          minIdle: 5
+          maxActive: 30
+
+          maxWait: 60000
+ 
+          timeBetweenEvictionRunsMillis: 60000
+ 
+          minEvictableIdleTimeMillis: 300000
+
+          validationQuery: SELECT 'x'
+          testWhileIdle: true
+          testOnBorrow: false
+          testOnReturn: false
+ 
+          poolPreparedStatements: true
+          maxPoolPreparedStatementPerConnectionSize: 20
+#configurate  Monitoring & Statistics filters  
+        # filters: stat,wall,slf4j
+# open merge sql and statistic slow SQL function
+         #connectionProperties:druid.stat.mergeSql:true;druid.stat.slowSqlMillis:5000
+#combine  DruidDataSources monitor data
+         #useGlobalDataSourceStat:true 
+     
+     
+    
+        - name: vipdata0
+          type: com.alibaba.druid.pool.DruidDataSource
+          driverClassName: org.postgresql.Driver
+          url: ####################################
+          username: #############
+          password: ###################
+#Initialize the connection pool parameters.
+          initialSize: 5
+          minIdle: 5
+          maxActive: 30
+
+          maxWait: 60000
+ 
+          timeBetweenEvictionRunsMillis: 60000
+ 
+          minEvictableIdleTimeMillis: 300000
+
+          validationQuery: SELECT 'x'
+          testWhileIdle: true
+          testOnBorrow: false
+          testOnReturn: false
+ 
+          poolPreparedStatements: true
+          maxPoolPreparedStatementPerConnectionSize: 20
+
+        # filters: stat,wall,slf4j
+
+         #connectionProperties:druid.stat.mergeSql:true;druid.stat.slowSqlMillis:5000
+
+         #useGlobalDataSourceStat:true 

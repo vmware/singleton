@@ -1,0 +1,66 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.2.RELEASE")
+        classpath("org.asciidoctor:asciidoctor-gradle-plugin:1.5.7")
+        classpath("io.github.swagger2markup:swagger2markup-gradle-plugin:1.3.3")
+    }
+}
+
+ext {
+    javaLevel = 1.8
+    projectVersion = '0.0.1-SNAPSHOT'
+    springBootVersion = '2.1.2.RELEASE'
+    springWebVersion='5.1.4.RELEASE'
+    jacksonVersion = '2.9.9'
+    commonsCollectionsVersion = '3.2.2'
+    ehCacheVersion = '3.6.3'
+    cacheApiVersion='1.1.0'
+    hsqlVersion = '2.3.3'
+    junitVersion = '3.8.1'
+    jsonSimpleVersion = '1.1.1'
+    commonsLangVersion = '3.4'
+    commonsIoVersion = '2.4'
+    antVersion = '1.9.14'
+    buildRelease = 'beta'
+    remoteServer = ""
+    deployPath="$rootDir/../publish/"
+    sourceCompatibility = javaLevel
+}
+
+allprojects  {
+    version= project.getProperty('buildNumber')
+    apply plugin: 'idea'
+    group = 'com.vmware'
+
+    buildscript {
+        repositories {
+            mavenLocal()
+            jcenter()
+            mavenCentral()
+        }
+    }
+
+    repositories {
+        mavenLocal()
+        maven { url "http://repository.jboss.org/nexus/content/groups/public-jboss/" }
+        jcenter()
+        mavenCentral()
+     
+    }
+}
+
+
+idea {
+    project {
+        languageLevel = javaLevel
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

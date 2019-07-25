@@ -1,0 +1,231 @@
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
+apply plugin: "jacoco"
+apply plugin: "org.sonarqube"
+
+sourceCompatibility = 1.8
+description = 'vip i18n manager'
+
+configurations {
+	bootJar
+    war
+    providedRuntime
+   // remove default logger
+   all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+}
+
+
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
+  }
+}
+ 
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+  test {
+    java {
+      srcDir 'src/test/java'
+      output.classesDir   = 'build/classes/test'
+    }
+    resources {
+      srcDir 'src/test/resources'
+      output.resourcesDir = 'build/classes/test'
+    }
+  }
+}
+
+ext {
+	baseOutputDir = file("src/docs/asciidoc")
+}
+
+
+dependencies {
+    compile project(":vip-common")
+    compile project(":md-restful-api-i18n")
+    compile project(":md-service-authen")
+    if (project.hasProperty('datatype') && project.getProperty('datatype') == 'bundle' && project.getProperty('syncdata') == 'true') {
+       compile project(":md-restful-synch")
+    }
+    compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.20')
+    compile ('org.apache.tomcat:tomcat-annotations-api:9.0.20')
+    compile("org.springframework:spring-webmvc:$springWebVersion")
+    compile ('org.springframework.boot:spring-boot-starter-log4j2')
+    compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final")
+    compile("org.apache.commons:commons-lang3:$commonsLangVersion")
+    compile("commons-io:commons-io:$commonsIoVersion")
+    compile("io.springfox:springfox-core:2.5.0")
+    compile("io.springfox:springfox-schema:2.5.0")
+    compile("io.springfox:springfox-spi:2.5.0")
+    compile("io.springfox:springfox-spring-web:2.5.0")
+    compile('com.google.guava:guava:28.0-jre')
+    compile("commons-codec:commons-codec:1.10")
+    compile("io.jsonwebtoken:jjwt:0.9.0")
+    compile ('org.xerial:sqlite-jdbc:3.28.0')
+    compile ('com.fasterxml.jackson.core:jackson-databind:2.9.9')
+    // Actuator - START
+    compile group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.1.0'
+	compile group: 'io.micrometer', name: 'micrometer-core', version: '1.1.0'
+	compile ('org.springframework.boot:spring-boot-starter-actuator')
+    // Actuator - END
+    compile fileTree(dir: 'lib', include: [ '*.jar'])
+    
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("org.asciidoctor:asciidoctorj:1.5.6")
+    testCompile("io.swagger:swagger-annotations:1.5.6")
+    testCompile("io.github.swagger2markup:swagger2markup:1.3.3")
+    testCompile("org.springframework.restdocs:spring-restdocs-mockmvc")
+}
+
+task copyTranslation(type: Copy) {
+    dependsOn project(":tool-trans-fetcher").fetchTranslation
+}
+
+task zipTranslation(type: Zip,dependsOn: copyTranslation) {
+	archiveName='resources.zip'
+    from "$buildDir/resources/main/l10n"
+	into "l10n"
+}
+
+task fetchTranslationForTest(type: JavaExec, dependsOn: classes) {
+    println "running fetchTranslationForTest"
+    if (project.hasProperty('jenkinsJobName')) {
+        args(project.getProperty('jenkinsJobName'))
+    }
+    if (project.hasProperty('productName')) {
+        args(project.getProperty('productName'))
+    }
+    if (project.hasProperty('productVersion')) {
+        args(project.getProperty('productVersion'))
+    }
+    main = 'com.vmware.vip.i18n.api.v1.common.GitTranslationFetcherMainForTest'
+    classpath = sourceSets.test.runtimeClasspath
+}
+
+task copyLibs(type :Copy, dependsOn: bootJar) {
+    from "$buildDir/libs"
+    into "$rootDir/../publish/"
+    println "The build was output to -> $rootDir/../publish/"
+    include "**/*.jar","**/*.war"
+}
+
+processResources {
+    excludes =[]
+     if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
+        println "begin to exclude pgdb builder configuration file"
+        excludes=['**/application-testing.properties', '**/application-staging.properties', '**/application-bundle.properties', '**/application-prod.properties']
+        
+        
+    }else if(project.hasProperty('datatype') && project.getProperty('datatype') == 'bundle'){
+       println "begin to exclude bundle builder configuration file"
+        excludes=['**/application-pgdb_staging.yml', '**/application-pgdb.yml']
+    }
+}
+
+
+
+bootJar.doFirst {
+     if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
+       def propPath = "${buildDir}/resources/main/application.properties"
+      println propPath
+      def updatedContent = new File(propPath).getText('UTF-8').replaceFirst("spring.profiles.active=bundle", "spring.profiles.active=pgdb")
+      new File(propPath).write(updatedContent, 'UTF-8')
+	  }
+	
+}
+
+
+bootJar {
+   
+   
+    baseName = "vip-manager-i18n"
+    if(project.hasProperty('productName')){
+      def productName = project.getProperty('productName')
+      if(productName == ''){
+        productName = 'all'
+      }
+      baseName = "vip-manager-i18n-$productName"
+    }else{
+      baseName = "vip-manager-i18n"
+    }
+    version = "$branchName"
+    classifier = "$buildNumber"
+    dependsOn zipTranslation
+    from "$buildDir/distributions"
+
+    dependsOn test
+    from ("${baseOutputDir}/html5") {
+        into 'static/i18n/docs'
+    }
+  
+}
+
+bootJar.doLast {
+	delete "${baseOutputDir}/generated","${baseOutputDir}/html5"
+}
+
+war {
+    baseName = "vip-manager-i18n"
+    if(project.hasProperty('productName')){
+      def productName = project.getProperty('productName')
+      if(productName == ''){
+        productName = 'all'
+      }
+      baseName = "vip-manager-i18n-$productName"
+    }else{
+      baseName = "vip-manager-i18n"
+    }
+    version = "$branchName"
+    classifier = "$buildNumber"
+}
+
+assemble.dependsOn.add copyLibs
+
+task testFetchedTranslation(type: JavaExec, dependsOn: classes) {
+    def jarPath = "${project(":vip-manager-i18n").buildDir}/libs/"
+    args(jarPath)
+    args("${project(":vip-manager-i18n").jar.archiveName}")
+    if (project.hasProperty('productName')) {
+        args(project.getProperty('productName'))
+    }
+    if (project.hasProperty('productVersion')) {
+        args(project.getProperty('productVersion'))
+    }
+    main = 'com.vmware.vip.i18n.api.v1.common.TranslationFetcherTest'
+    classpath = sourceSets.test.runtimeClasspath
+}
+
+task profile {
+	if(project.hasProperty('profileType')){
+		def profileType = project.getProperty('profileType')
+		ant.propertyfile(file: file("$rootDir/vip-manager-i18n/src/main/resources/application.properties")){
+			entry(key:"spring.profiles.active",value:profileType)
+		}
+	}
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+//test.dependsOn.add fetchTranslationForTest
+test.dependsOn.add testFetchedTranslation
+
+if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
+	check.dependsOn.remove(test)
+}
+
+springBoot {
+	mainClassName = "com.vmware.vip.BootApplication"
+}
