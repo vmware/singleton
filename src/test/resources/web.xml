@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4"
+         xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/
+                             j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+  <!-- vIP's Filter -->
+  <filter>
+    <filter-name>VIPComponentFilter</filter-name>
+    <filter-class>com.vmware.vipclient.i18n.filters.VIPComponentFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>VIPComponentFilter</filter-name>
+    <url-pattern>/i18n/*</url-pattern>
+  </filter-mapping>
+
+</web-app>
