@@ -1,0 +1,77 @@
+<h3>
+    L10n Pipe
+</h3>
+
+<h5>
+    vtranslate
+</h5>
+
+<clr-datagrid>
+    <clr-dg-column>Key</clr-dg-column>
+    <clr-dg-column>Paramaters</clr-dg-column>
+    <clr-dg-column>Variables</clr-dg-column>
+    <clr-dg-column>Comment</clr-dg-column>
+    <clr-dg-column>Output</clr-dg-column>
+
+    <clr-dg-row *ngFor="let item of datas">
+            <clr-dg-cell>{{item.key}}</clr-dg-cell>
+            <clr-dg-cell> 
+                <span *ngFor="let p of item.params, index as i;">
+                    Param{{i}}: {{p}} <br>
+                </span>
+                <span *ngIf="!item.params || item.params.length<1">-</span>
+            </clr-dg-cell>
+            <clr-dg-cell>
+                    <span *ngFor="let v of item.variables, index as i;">
+                        Variable{{i}}: {{v}} <br>
+                    </span>
+                    <span *ngIf="!item.variables || item.variables.length<1">-</span>
+            </clr-dg-cell>
+            <clr-dg-cell> {{item.comment  || '-'}} </clr-dg-cell>
+            <clr-dg-cell [ngSwitch]="item.params.length"> 
+                <span *ngSwitchCase="0">{{ item.key| vtranslate}}</span>
+                <span *ngSwitchCase="1">{{ item.key| vtranslate: item.params[0] }}</span>
+                <span *ngSwitchCase="2">{{ item.key| vtranslate: item.params[0]: item.params[1]}}</span>
+                <span *ngSwitchCase="3">{{ item.key| vtranslate: item.params[0]: item.params[1]: item.params[2]}}</span>
+            </clr-dg-cell>
+    </clr-dg-row>
+</clr-datagrid>
+
+
+<h5>
+    translate
+</h5>
+
+<clr-datagrid>
+    <clr-dg-column>Key</clr-dg-column>
+    <clr-dg-column>Source</clr-dg-column>
+    <clr-dg-column>Paramaters</clr-dg-column>
+    <clr-dg-column>Variables</clr-dg-column>
+    <clr-dg-column>Comment</clr-dg-column>
+    <clr-dg-column>Output</clr-dg-column>
+
+    <clr-dg-row *ngFor="let item of datas">
+            <clr-dg-cell>{{item.key}}</clr-dg-cell>
+            <clr-dg-cell>{{item.source}}</clr-dg-cell>
+            <clr-dg-cell> 
+                <span *ngFor="let p of item.params, index as i;">
+                    Param{{i}}: {{p}} <br>
+                </span>
+                <span *ngIf="!item.params || item.params.length<1">-</span>
+            </clr-dg-cell>
+            <clr-dg-cell>
+                    <span *ngFor="let v of item.variables, index as i;">
+                        Variable{{i}}: {{v}} <br>
+                    </span>
+                    <span *ngIf="!item.variables || item.variables.length<1">-</span>
+            </clr-dg-cell>
+            <clr-dg-cell> {{item.comment || '-'}} </clr-dg-cell>
+            <clr-dg-cell [ngSwitch]="item.params.length">
+                <span *ngSwitchCase="0">{{ item.key| translate: item.source}}</span>
+                <span *ngSwitchCase="1">{{ item.key| translate: item.source: item.params[0] }}</span>
+                <span *ngSwitchCase="2">{{ item.key| translate: item.source: item.params[0]: item.params[1]}}</span>
+                <span *ngSwitchCase="3">{{ item.key| translate: item.source: item.params[0]: item.params[1]: item.params[2]}}</span>
+            </clr-dg-cell>
+    </clr-dg-row>
+
+</clr-datagrid>

@@ -1,0 +1,64 @@
+<h3>Date Format</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Pattern</th>
+            <th>Time - {{time}}</th>
+        </tr>
+    </thead>
+    <tr>
+        <td rowspan="4">time</td>
+        <td>shortTime</td>
+        <td>{{ time | dateFormat: 'shortTime'}}</td>
+    </tr>
+    <tr>
+        <td>longTime</td>
+        <td>{{ time | dateFormat: 'longTime'}}</td>
+    </tr>
+    <tr>
+        <td>mediumTime</td>
+        <td>{{ time | dateFormat: 'mediumTime'}}</td>
+    </tr>
+    <tr>
+        <td>fullTime</td>
+        <td>{{ time | dateFormat: 'fullTime'}}</td>
+    </tr>
+
+    <tr>
+            <td rowspan="4">date</td>
+            <td>shortDate</td>
+            <td>{{ time | dateFormat: 'shortDate'}}</td>
+        </tr>
+        <tr>
+            <td>longDate</td>
+            <td>{{ time | dateFormat: 'longDate'}}</td>
+        </tr>
+        <tr>
+            <td>mediumDate</td>
+            <td>{{ time | dateFormat: 'mediumDate'}}</td>
+        </tr>
+        <tr>
+            <td>fullDate</td>
+            <td>{{ time | dateFormat: 'fullDate'}}</td>
+        </tr>
+
+        <tr>
+                <td rowspan="4">date+time</td>
+                <td>short</td>
+                <td>{{ time | dateFormat: 'short'}}</td>
+            </tr>
+            <tr>
+                <td>long</td>
+                <td>{{ time | dateFormat: 'long'}}</td>
+            </tr>
+            <tr>
+                <td>medium</td>
+                <td>{{ time | dateFormat: 'medium'}}</td>
+            </tr>
+            <tr>
+                <td>full</td>
+                <td>{{ time | dateFormat: 'full'}}</td>
+            </tr>
+</table>

@@ -1,0 +1,40 @@
+<header class="header header-6">
+    <div class="branding">
+        <a [routerLink]="options.baseRoute" class="nav-link">
+            <clr-icon shape="vm-bug"></clr-icon>
+            <span class="title">{{options.title}}</span>
+        </a>
+    </div>
+    <div class="header-nav" *ngIf="options.navs.length>0">
+        <a class="nav-link" *ngFor="let link of options.navs" [routerLink]="link.route" routerLinkActive="active">
+            <span class="nav-text">{{link.key | vtranslate}}</span>
+        </a>
+    </div>
+    <div class="header-actions">
+        <a href="javascript://" (click)="switchDrawer()" class="nav-link nav-icon">
+            <clr-icon shape="cog"></clr-icon>
+        </a>
+    </div>
+</header>
+<div class="drawer-container" *ngIf="showDrawer">
+    <div class="drawer" (click)="hideDrawer()"></div>
+    <div class="drawer-content">
+        <p> {{'language'|vtranslate}}: </p>
+        
+        <div class="clr-select-wrapper">
+            <select id="select-basic" class="clr-select" (change)="setLanguage($event.target.value)">
+                <option *ngFor="let language of languages" value="{{language.languageTag}}"
+                    selected="{{language.languageTag == selectedLanguage ? 'selected':''}}">{{language.displayName}}
+                </option>
+            </select>
+        </div>
+        <p> {{'region'|vtranslate}}: </p>
+        <div class="clr-select-wrapper">
+            <select id="select-basic" class="clr-select" (change)="setRegion($event.target.value)">
+                <option *ngFor="let region of regions" [value]="region[0]"
+                    selected="{{region[0] == selectedRegion ? 'selected':''}}">{{region[1]}} ({{region[0]}})</option>
+            </select>
+        </div>
+    </div>
+
+</div>

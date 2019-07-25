@@ -1,0 +1,20 @@
+<h3>
+    I18N Service APIS
+</h3>
+
+<h5> getSupportedLanguages: </h5>
+<div class="clr-select-wrapper">
+    <select id="select-basic" class="clr-select" (change)="setLanguage($event.target.value)">
+        <option *ngFor="let language of languages" value="{{language.languageTag}}"
+            selected="{{language.languageTag == selectedLanguage ? 'selected':''}}">{{language.displayName}}
+        </option>
+    </select>
+</div>
+
+<h5> getSupportedRegions: </h5>
+<div class="clr-select-wrapper">
+    <select id="select-basic" class="clr-select">
+        <option *ngFor="let region of regions" [value]="region[0]"
+            selected="{{region[0] == selectedRegion ? 'selected':''}}">{{region[1]}} ({{region[0]}})</option>
+    </select>
+</div>

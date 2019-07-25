@@ -1,0 +1,66 @@
+:host{
+    display: flex;
+    flex: 1;
+}
+.communicate {
+    width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+    max-width: 1056px;
+    margin: 0 auto;
+    padding-top: 24px;
+}
+.img {
+    width: 66px;
+    overflow: hidden;
+    margin: 0 auto;
+    padding-top: .5rem;
+}
+.img img {
+    width: auto;
+    height: 66px;
+}
+.card-text{
+    text-align: center;
+}
+
+.contributors_container>div{
+    padding: 10px 10px 10px 0;
+    display: flex;
+}
+.contributors_container .item-abbreviations{
+    display: inline-block;
+    flex: 0 0 auto;
+    height:1.6rem;
+    width:1.6rem;
+    max-height:1.6rem;
+    max-width:1.6rem;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: 400;
+    line-height:1.6rem;
+    color: #ffffff;
+    margin-top: 5px;
+    background-color:rgb(43, 87, 151);
+    text-align: center;
+    /* background-color:rgb(129, 81, 253);
+    background-color: rgb(107, 165, 231);
+    background-color:rgb(45, 137, 239);
+    background-color:rgb(43, 87, 151);;
+    background-color: rgb(0, 171, 169);
+    background-color:rgb(30, 113, 69); */
+}
+.contributors_container>div:nth-child(2) .item-abbreviations {
+    background-color:rgb(107, 165, 231);
+}
+.contributors_container>div:nth-child(3) .item-abbreviations {
+    background-color:rgb(45, 137, 239);
+}
+.contributors_container>div:nth-child(4) .item-abbreviations {
+    background-color:rgb(0, 171, 169);
+}
+.contributors_container .item-description{
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 .5rem;
+}

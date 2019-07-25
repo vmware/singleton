@@ -1,0 +1,14 @@
+<h3>Currency Format</h3>
+
+<clr-datagrid>
+    <clr-dg-column>Input</clr-dg-column>
+    <clr-dg-column>Currency Code</clr-dg-column>
+    <clr-dg-column>Output</clr-dg-column>
+
+    <clr-dg-row *ngFor="let item of datas">
+        <clr-dg-cell>{{item.number}}</clr-dg-cell>
+        <clr-dg-cell>{{item.code}}</clr-dg-cell>
+        <clr-dg-cell>{{item.number | currencyFormat: item.code}}</clr-dg-cell>
+    </clr-dg-row>
+
+</clr-datagrid>

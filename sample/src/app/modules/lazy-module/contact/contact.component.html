@@ -1,0 +1,54 @@
+<div class="communicate">
+    <h3>
+        {{ 'contactus' | vtranslate }}
+    </h3>
+
+    <h5>
+        {{ 'communicate' | vtranslate }}
+    </h5>
+    <div class="clr-row hidden-xs-down">
+        <div class="clr-col-lg-3 clr-col-md-6 clr-col-6">
+            <a  class="card clickable" href="https://github.com/vmware/singleton" target="_blank">
+                <div class="card-img">
+                    <div class="img">
+                        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png">
+                    </div>
+                </div>
+                <div class="card-block">
+                    <p class="card-text">
+                        {{ 'request' | vtranslate }}
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="clr-col-lg-3 clr-col-md-6 clr-col-6">
+            <a href="https://www.slack.com" target=”_blank” class="card clickable">
+                <div class="card-img">
+                    <div class="img">
+                        <img src="https://slackhq.com/wp-content/themes/babka/img/icons/icon_slack.svg?v=1549578723">
+                    </div>
+                </div>
+                <div class="card-block">
+                    <p class="card-text">
+                        {{ 'slack' | vtranslate }}
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <h5> {{'contributors' | vtranslate}}</h5>
+    <div class="contributors_container">
+        <div  *ngFor="let contributor of contributors">
+                <span class="item-abbreviations">{{contributor.abbreviations}} </span>
+                <div class="item-description">
+                    <span class="item-title">
+                            {{contributor.name}}
+                    </span>
+                    <span class="item-text">
+                            {{contributor.email}}
+                    </span>
+                </div>
+        </div>
+    </div>
+</div>

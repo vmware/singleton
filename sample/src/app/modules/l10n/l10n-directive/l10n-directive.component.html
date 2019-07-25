@@ -1,0 +1,21 @@
+<h3>
+    L10n Directive
+</h3>
+
+<clr-datagrid>
+    <clr-dg-column>Key</clr-dg-column>
+    <clr-dg-column>Variable</clr-dg-column>
+    <clr-dg-column>Comment</clr-dg-column>
+    <clr-dg-column>Output</clr-dg-column>
+
+
+    <clr-dg-row *ngFor="let item of datas">
+        <clr-dg-cell>{{item.key}}</clr-dg-cell>
+        <clr-dg-cell>
+            <span *ngFor="let vari of item.variables; index as index">Variable{{index}}: {{vari}} <br></span>
+            <span *ngIf="!item.variables || item.variables.length<1">-</span>
+        </clr-dg-cell>
+        <clr-dg-cell>{{item.comment || '-'}}</clr-dg-cell>
+        <clr-dg-cell [l10n]="item.key" [comment]="item.comment" [params]="item.variables"></clr-dg-cell>
+    </clr-dg-row>
+</clr-datagrid>

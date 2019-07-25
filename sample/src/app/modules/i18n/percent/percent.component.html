@@ -1,0 +1,12 @@
+<h3>Percent Format</h3>
+
+<clr-datagrid>
+    <clr-dg-column>Input</clr-dg-column>
+    <clr-dg-column>Output</clr-dg-column>
+
+    <clr-dg-row *ngFor="let number of numbers">
+        <clr-dg-cell>{{number}}</clr-dg-cell>
+        <clr-dg-cell>{{number | percentFormat}}</clr-dg-cell>
+    </clr-dg-row>
+
+</clr-datagrid>
