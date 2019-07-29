@@ -1,0 +1,43 @@
+dist: trusty
+language: java
+python:
+  - "3.4"
+addons:
+  sonarcloud:
+    organization: $SONAR_ORG
+    token:
+      secure: $SONAR_TOKEN
+jdk:
+  - openjdk8
+service:
+  - docker
+before_install:
+  - sudo apt-get -y install python3-pip python-dev
+  - python3 -V
+  - pip3 -V
+install:
+  - sudo pip3 install requests
+jobs:
+  include:
+    - stage: unit test
+      script:
+        - cd $TRAVIS_BUILD_DIR/g11n-ws && ./gradlew build
+    - stage: code scan
+      script:
+        - git clone --branch=devops https://github.com/vmware/singleton.git devops
+        - python $TRAVIS_BUILD_DIR/devops/sonar/config_sonar_project.py com.vmware:$SONAR_ORG:singleton-service:$TRAVIS_BRANCH com.vmware:$SONAR_ORG:singleton-service:$TRAVIS_BRANCH $SONAR_ORG service-gate $SONAR_TOKEN
+        - cd $TRAVIS_BUILD_DIR/g11n-ws && sed -i "s/rootProject.name = 'vip'/rootProject.name = '$SONAR_ORG:singleton-service:$TRAVIS_BRANCH'/" settings.gradle && cat settings.gradle
+        - cd $TRAVIS_BUILD_DIR/g11n-ws && ./gradlew sonarqube --stacktrace -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.branch.name=master --info
+        - cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=com.vmware:$SONAR_ORG:singleton-service:$TRAVIS_BRANCH -HostName=https://sonarcloud.io
+    - stage: auto test
+      script:
+        - git clone --branch=devops https://github.com/vmware/singleton.git devops
+        - cd $TRAVIS_BUILD_DIR/g11n-ws && ./gradlew build
+        - cp $TRAVIS_BUILD_DIR/devops/deploy/i18n-service/Dockerfile $TRAVIS_BUILD_DIR/publish/
+        - cd $TRAVIS_BUILD_DIR/publish && mv vip-manager-i18n-*.jar i18n-service.jar
+        - docker build -t singleton .
+        - docker run -d -p 8090:8090 --name singleton singleton
+        - docker ps
+        - cd $TRAVIS_BUILD_DIR/devops/autotest/service/i18n-service/APITest && gradle build
+        - docker cp l10n singleton:/
+        - java -cp "target/*:resource/*" org.testng.TestNG testng.xml
