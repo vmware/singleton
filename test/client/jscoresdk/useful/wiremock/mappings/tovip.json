@@ -1,0 +1,38 @@
+{
+  "mappings": [
+		{
+			"priority":1,
+			"request": {
+				
+				"method": "ANY",
+				"urlPattern": "/i18n/api/v2/.*",
+				
+				"bodyPatterns" : [
+					{
+						 "matchesJsonPath" : "$.[?(@.language == 'zh-Hant')]"
+					}
+				]
+				
+				
+			},
+			"response": {
+				"status": 200,
+				"fixedDelayMilliseconds": 20000
+			}
+		},
+		
+		
+		
+		{
+			"priority":10,
+			"request": {
+				
+				"method": "ANY",
+				"urlPattern": "/i18n/api/v2/.*"
+			},
+			"response": {
+				"proxyBaseUrl" : "https://dev-1:8090"
+			}
+		}
+	]
+}
