@@ -1,0 +1,50 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Jest All",
+            "program": "${workspaceFolder}/node_modules/.bin/jest",
+            "args": [
+                "--runInBand"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "disableOptimisticBPs": true,
+            "windows": {
+                "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+            }
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Jest Current File",
+            "program": "${workspaceFolder}/node_modules/.bin/jest",
+            "args": [
+                "${relativeFile}",
+                // "test/percent.spec.ts",
+                "--config",
+                "jest.config.js",
+                // "--detectOpenHandles"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "disableOptimisticBPs": true,
+            "windows": {
+                "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+            }
+        },
+        {
+            "type": "chrome",
+            "request": "attach",
+            "name": "Attach Karma Chrome",
+            "address": "localhost",
+            "port": 9333,
+            "pathMapping": {
+                "/": "${workspaceRoot}",
+                "/base/": "${workspaceRoot}/"
+            }
+        }
+    ]
+}

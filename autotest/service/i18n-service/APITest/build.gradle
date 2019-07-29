@@ -1,0 +1,41 @@
+apply plugin: 'java'
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+    }
+}
+
+jar {
+    baseName = 'apitest'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.testng', name: 'testng', version:'6.14.3'
+    compile group: 'com.jayway.jsonpath', name: 'json-path', version:'2.4.0'
+    compile group: 'org.json', name: 'json', version:'20171018'
+    compile group: 'org.apache.poi', name: 'poi', version:'3.17'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version:'3.17'
+    compile group: 'org.apache.xmlbeans', name: 'xmlbeans', version:'2.6.0'
+    compile group: 'com.github.virtuald', name: 'curvesapi', version:'1.04'
+}
+
+task copy(type: Copy) {
+    from('build/libs') {
+	    include '*.jar'
+	}
+	into ('target')
+}
+
+task copyDependencies(type: Copy, dependsOn: [copy]) {
+    from configurations.compile
+    into 'target'
+}
+
+build.dependsOn.add copyDependencies

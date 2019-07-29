@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="java client">
+    <listeners>
+        <listener class-name="com.vmware.g11n.log.ExceptionListener" />
+        <listener class-name="com.vmware.vip.test.common.listener.CustomAnnotationListener" />
+    </listeners>
+	<test name="java client test" preserve-order="true">
+	    <groups>
+	        <run>
+                <exclude name="isolate"/>
+		    </run>
+	    </groups>
+		<classes>
+				<!-- <class name="com.vmware.vip.test.javaclient.init.InitTest" /> -->
+				<class name="com.vmware.vip.test.javaclient.level2.DateFormatTest" />
+				<class name="com.vmware.vip.test.javaclient.level2.CurrencyTest" />
+				<class name="com.vmware.vip.test.javaclient.level2.NumberFormatTest" />
+				<class name="com.vmware.vip.test.javaclient.level2.PluralTest" />
+				<class name="com.vmware.vip.test.javaclient.level2.SetLocaleTest" />
+				<class name="com.vmware.vip.test.javaclient.level2.SetLocaleTestMultiThread" />
+        </classes>	   
+	</test>
+</suite>
