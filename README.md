@@ -78,8 +78,8 @@ Online Resources
  We welcome discussions about and contributions to the project!
  
  * Feel free to start a conversation with us at [Stackoverflow](https://stackoverflow.com/). Tag your question with "vmware-singleton" and we will get back to you.
- * User Guide: (To Do: add link to User Guide from Dell)
- * Website: (To Do)
+ * User Guide:
+ * Website: 
 
 
 License
