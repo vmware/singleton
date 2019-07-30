@@ -83,5 +83,7 @@ We use Dependabot Preview(A Github APP owned by Github which provide dependencie
 
 You can open a PR after you get pass result of CI pipeline. CI pipeline will run again for this PR, then you can wait for review and merge.
 
+#### Syncing a fork
 
+Please sync your fork repo with upstream repo before you create PR, refer to https://help.github.com/en/articles/syncing-a-fork
 
