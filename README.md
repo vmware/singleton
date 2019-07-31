@@ -20,11 +20,15 @@ Features
  * Singleton Core API - RESTful web services for delivering localized resources.
  * Source Collection - RESTful web service to collect source text that are to be translated. To use this feature, the Localization Manager has to be installed in addition to the service installation described in the succeeding section. See User Guide for details.
  * Pseudo-translation - a way to test product compatibility with locale when translated resources are not yet available. It uses auto-generated text for testing various aspects of localization readiness, including character set support, UI design, and hard coding. See User Guide for details.
+ * Singleton JDKs - Singleton provides some kinds of JDKs to talk with Singleton service:
+	* JAVA JDK - it's based on Java. Please refer to https://github.com/vmware/singleton/tree/g11n-java-client
+	* Angular JDK - it's based on Angular 7. Please refer to https://github.com/vmware/singleton/tree/g11n-angular-client
+	* JS JDK - it's written by raw js code. Please refer to https://github.com/vmware/singleton/tree/g11n-js-client
  
  
 Upcoming features
 ---------
- * (To Do)
+ * Singleton will provide more and more JDKs, such as C# JDK, python JDK etc.
  *
 
 Prerequisites
@@ -78,8 +82,8 @@ Online Resources
  We welcome discussions about and contributions to the project!
  
  * Feel free to start a conversation with us at [Stackoverflow](https://stackoverflow.com/). Tag your question with "vmware-singleton" and we will get back to you.
- * User Guide: (To Do: add link to User Guide from Dell)
- * Website: (To Do)
+ * User Guide:
+ * Website: 
 
 
 License
