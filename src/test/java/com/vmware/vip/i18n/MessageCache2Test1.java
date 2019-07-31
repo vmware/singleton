@@ -99,7 +99,7 @@ public class MessageCache2Test1 {
 		data.put(k, v);
 		String cachedKey = "key";
 		c.put(cachedKey, data);
-		long expired = 6000;
+		long expired = 2000;
 		c.setExpiredTime(expired);
 		Map cachedData = (Map)gc.getCacheManager().getCache(VIPCfg.CACHE_L3).get(cachedKey);
 		System.out.println("cachedData: "+cachedData);

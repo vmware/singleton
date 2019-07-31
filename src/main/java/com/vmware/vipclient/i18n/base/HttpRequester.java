@@ -121,6 +121,7 @@ public class HttpRequester {
 				}
 				if (HttpURLConnection.HTTP_OK == conn.getResponseCode()) {
 					r = this.handleResult(conn);
+					//logger.debug("The response from server is:\n"+r);
 				}
 			}
 		} catch (IOException e) {
