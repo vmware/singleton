@@ -47,13 +47,15 @@ Singleton use Travis-ci as CI framework and help contributor to test their code 
 
 ##### Travis CI Configuration
 
-1. After you configured SonarCloud, login to Travis-ci 'https://travis-ci.org' with your github account
+1. After you configured SonarCloud, login to Travis-ci 'https://travis-ci.com' with your github account. If this is your first time to integrate travis to Github, you need to click 'Active' to apply the Github apps integration. (If you fork singleton to some organization, please select the organization first then click 'Active'). After all done, you could see singleton is list in repositories tab. 
 
-2. Find your fork repository in your account settings, enabled it then click 'settings', add following environment variables
+2. Find your fork repository in your account settings, click 'settings', add following environment variables
     
     SONAR_ORG=\<Organization key in SonarCloud configuration step2\>
     
     SONAR_TOKEN=\<token generated in SonarCloud\>
+    
+    (Note: if you disable 'DISPLAY VALUE IN BUILD LOG', the CI will be failed for PR from another forked repo to your repo. But it will not impact your PR from your forked repo to vmware/singleton repo.)
     
 ##### CI Pipeline Result
 
