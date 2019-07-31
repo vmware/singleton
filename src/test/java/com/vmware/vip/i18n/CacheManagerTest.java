@@ -6,6 +6,7 @@ package com.vmware.vip.i18n;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -17,7 +18,7 @@ import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.CacheService;
 
-public class CacheManagerTest {
+public class CacheManagerTest extends BaseTestClass {
 
 	private CacheService cacheService;
 
@@ -44,8 +45,14 @@ public class CacheManagerTest {
 		Map<String, String> msgObj = new HashMap<String, String>();
 		msgObj.put("book", "@zh_CN@book");
 		cacheService.addCacheOfComponent(msgObj);
+		Assert.assertNotNull("L3 Cache is null!", VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3));
 		Map<String, String> messageMap = cacheService
 				.getCacheOfComponent();
+		StringBuilder sb = new StringBuilder("The contents in cache is:\n");
+		for ( Entry<String, String> entry:messageMap.entrySet()) {
+			sb.append(entry.toString()).append(", ");
+		}
+		logger.debug(sb.toString());
 		Assert.assertTrue(messageMap.size() == 1);
 		VIPCfg.getInstance().getCacheManager().clearCache();
 	}
@@ -55,10 +62,22 @@ public class CacheManagerTest {
 		Map<String, String> msgObj = new HashMap<String, String>();
 		msgObj.put("book", "@zh_CN@book");
 		cacheService.addCacheOfComponent(msgObj);
+		Assert.assertNotNull("L3 Cache is null!", VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3));
 		Map<String, String> result = cacheService
 				.getCacheOfComponent();
+		printCache(result);
 		Assert.assertTrue(result.size() > 0);
 		VIPCfg.getInstance().getCacheManager().clearCache();
 	}
 
+	void printCache(Map<String, String> messageMap) {
+		if(messageMap == null) {
+			return;
+		}
+		StringBuilder sb = new StringBuilder(String.format("The size of cache is %d \nThe contents in cache is:\n", messageMap.size()));
+		for ( Entry<String, String> entry:messageMap.entrySet()) {
+			sb.append(entry.toString()).append(", ");
+		}
+		logger.debug(sb.toString());
+	}
 }
