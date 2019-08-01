@@ -61,8 +61,7 @@ public class ProductService implements IProductService {
 				supportedLocaleList.remove(ConstantsKeys.LATEST);
 			}
 		} catch (DataException e) {
-			throw new L3APIException(ConstantsKeys.FATA_ERROR
-					+ "Failed to get locale list for " + productName
+			throw new L3APIException("Failed to get locale list for " + productName
 					+ ConstantsChar.BACKSLASH + version, e);
 		}
 		return supportedLocaleList;
@@ -75,8 +74,7 @@ public class ProductService implements IProductService {
 		try {
 			componentList = productdao.getComponentList(productName, version);
 		} catch (DataException e) {
-			throw new L3APIException(ConstantsKeys.FATA_ERROR
-					+ "Failed to get component list for " + productName
+			throw new L3APIException("Failed to get component list for " + productName
 					+ ConstantsChar.BACKSLASH + version, e);
 		}
 		return componentList;
@@ -90,8 +88,7 @@ public class ProductService implements IProductService {
 		try {
 			jsonStr = productdao.getVersionInfo(productName, version);
 		} catch (DataException e) {
-			throw new L3APIException(ConstantsKeys.FATA_ERROR
-					+ "Failed to drop version info for " + productName
+			throw new L3APIException("Failed to drop version info for " + productName
 					+ ConstantsChar.BACKSLASH + version, e);
 		}
 		JSONObject jo = JSONUtils.string2JSON(jsonStr);
