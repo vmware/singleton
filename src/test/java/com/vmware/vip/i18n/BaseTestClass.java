@@ -35,7 +35,7 @@ public class BaseTestClass {
 
 		@Override
 		protected void starting(Description description) {
-			logger.info("Statring test: " + description.getMethodName());
+			logger.info("Starting test: " + description.getMethodName());
 		}
 	};
 	
