@@ -1,0 +1,40 @@
+dist: trusty
+
+language: node_js
+
+addons:
+  sonarcloud:
+    organization: $SONAR_ORG
+    token:
+      secure: $SONAR_TOKEN
+
+node_js:
+  - "10"
+  
+before_install:  
+  - export CHROME_BIN=chromium-browser
+  - sudo apt-get -y install python3-pip python-dev
+  - python3 -V
+  - pip3 -V
+install:
+  - sudo pip3 install requests
+
+jobs:
+  include:
+    - stage: unit test
+      script:
+        - sed -i "s/'Chrome'/'ChromeHeadless'/g" config/karma.conf.js && cat config/karma.conf.js
+        - npm install --registry https://registry.npmjs.org
+        - npm run test
+#    - stage: code scan
+#      script:
+#        - npm install npm
+#        - npm install tslint
+#        - npm install typescript
+#        - tsc -v
+#        - git clone --branch=devops https://github.com/vmware/singleton.git devops
+#        - cp -a devops/sonar/* .
+#        - rm -rf devops
+#        - python ./config_sonar_project.py -ProjectName $SONAR_ORG:singleton-angular-client:$TRAVIS_BRANCH -ProjectKey $SONAR_ORG:singleton-angular-client:$TRAVIS_BRANCH -OrgKey $SONAR_ORG -QualityGateName angular-client-gate -QualityGateConditions ./quality_gates/angular-client.json -SonarToken $SONAR_TOKEN
+#        - sonar-scanner -Dsonar.sources=. -Dsonar.projectName=$SONAR_ORG:singleton-angular-client:$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.projectKey=$SONAR_ORG:singleton-angular-client:$TRAVIS_BRANCH -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN
+#        - sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG:singleton-angular-client:$TRAVIS_BRANCH -HostName=https://sonarcloud.io
