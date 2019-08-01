@@ -154,7 +154,6 @@ public class TranslationMessageTest extends BaseTestClass {
         Map<String, String> retMap3 = translation.getStrings(Locale.forLanguageTag("zh-Hans"), component);
         logger.debug(retMap3.get(key));
         logger.debug(message_zh_CN);
-        logger.debug(retMap3.get(key).equals(message_zh_CN));
         Assert.assertEquals(message_zh_CN, retMap3.get(key));
 
         Map<String, String> retMap4 = translation.getStrings(Locale.forLanguageTag("zh-Hant"), component);

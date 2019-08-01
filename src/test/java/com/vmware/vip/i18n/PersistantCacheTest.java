@@ -57,7 +57,7 @@ public class PersistantCacheTest extends BaseTestClass {
 			}
 			cacheService.addCacheOfComponent(map2);
 			Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
-			logger.debug(c.size());
+			logger.debug(String.valueOf(c.size()));
 		}
 		CacheSyncThreadPool t =new CacheSyncThreadPool();
 		t.run();
