@@ -47,7 +47,7 @@ export const config = {
     productID: 'JSCoreSDKTest',
     version: '1.0.0',
     component: 'sunglow',
-    host: 'https://localhost:8090/',
+    host: 'http://localhost:8091/',
     language: 'en-US',
     i18nScope: [CoreSDK.PatternCategories.DATE, CoreSDK.PatternCategories.CURRENCIES, CoreSDK.PatternCategories.NUMBER, CoreSDK.PatternCategories.PLURAL]
     // isPseudo?: boolean;
