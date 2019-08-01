@@ -17,7 +17,7 @@ import com.vmware.vipclient.i18n.base.cache.MessageCache2;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.CacheService;
 
-public class MessageCache2Test2 {
+public class MessageCache2Test2 extends BaseTestClass {
 
 	private CacheService cacheService;
 

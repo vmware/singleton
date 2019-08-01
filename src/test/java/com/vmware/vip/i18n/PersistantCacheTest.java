@@ -17,7 +17,7 @@ import com.vmware.vipclient.i18n.base.cache.persist.CacheSyncThreadPool;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.CacheService;
 
-public class PersistantCacheTest {
+public class PersistantCacheTest extends BaseTestClass {
 
 	private CacheService cacheService;
 
@@ -57,7 +57,7 @@ public class PersistantCacheTest {
 			}
 			cacheService.addCacheOfComponent(map2);
 			Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
-			System.out.println(c.size());
+			logger.debug(c.size());
 		}
 		CacheSyncThreadPool t =new CacheSyncThreadPool();
 		t.run();
