@@ -27,6 +27,8 @@ We have sub projects in each branch:
 
 ### Fork Repository
 
+Go to https://github.com/vmware/singleton and click 'Fork' on top of page.
+
 ### Set Signature
 
 Set Signature in Github, refer https://help.github.com/en/articles/about-commit-signature-verification#gpg-commit-signature-verification
@@ -35,6 +37,7 @@ Set Signature in Github, refer https://help.github.com/en/articles/about-commit-
 Singleton use Travis-ci as CI framework and help contributor to test their code change as early as possible. Some configuration need to be done to setup CI pipeline in your fork repository.
 
 ##### SonarCloud Configuration
+
 1. Generate Sonar Token
 
     a. After you fork the repositpry, login to 'sonarcloud.io' with your github account;
@@ -43,7 +46,9 @@ Singleton use Travis-ci as CI framework and help contributor to test their code 
     
 2. Get Organization Key
 
-    Go to 'My Organizations', mark down the key of your personal organization in right-up corner(not Organization name), it will be used in Travis CI configuration later.
+    a. Click your icon and go to 'My Organizations', click Create -> Import from GitHub -> Choose an organization on Github -> select your personal account -> click 'install', now you will have your personal organization on SonarCloud.
+
+    b. Click your icon again and select your personal organization, mark down the key of your personal organization in right-up corner(not Organization name), it will be used in Travis CI configuration later.
 
 ##### Travis CI Configuration
 
