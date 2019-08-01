@@ -38,6 +38,7 @@ jobs:
 #        - sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG:singleton-js-core-sdk:$TRAVIS_BRANCH -HostName=https://sonarcloud.io
     - stage: auto test
       script:
+        - TZ='Asia/Shanghai'; export TZ 
         - mkdir -p g11n-js-client
         - shopt -s extglob
         - mv !(g11n-js-client) g11n-js-client/
