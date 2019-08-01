@@ -90,7 +90,7 @@ public class MessageCache2Test1 extends BaseTestClass {
 	
 	@SuppressWarnings({ "static-access", "rawtypes", "unchecked"})
 	@Test
-	public void testExpired() {
+	public void testExpired() throws InterruptedException {
 		VIPCfg gc = VIPCfg.getInstance();
 		Cache c = gc.getCacheManager().getCache(VIPCfg.CACHE_L3);
 		Map data = new HashMap();
@@ -105,13 +105,10 @@ public class MessageCache2Test1 extends BaseTestClass {
 		logger.debug("cachedData: "+cachedData);
 		Assert.assertNotNull(cachedData);
 		Assert.assertEquals(v, (String)cachedData.get(k));
-		try {
-			Thread.sleep(expired);
-			Map cachedData2 = (Map)gc.getCacheManager().getCache(VIPCfg.CACHE_L3).get(cachedKey);
-			logger.debug("cachedData2: "+cachedData2);
-			Assert.assertTrue(cachedData2 == null);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+
+		Thread.sleep(expired+500);
+		Map cachedData2 = (Map)gc.getCacheManager().getCache(VIPCfg.CACHE_L3).get(cachedKey);
+		logger.debug("cachedData2: "+cachedData2);
+		Assert.assertTrue(cachedData2 == null);
 	}
 }
