@@ -1,4 +1,4 @@
-Singleton
+﻿Singleton
 ============
 
 A service that provides support for Software Internationalization and Localization
@@ -47,7 +47,7 @@ Building from source code
  singleton/publish (Eg. singleton/publish/vip-manager-i18n-0.1.0.jar)
  ```
  
-To start using Singleton
+To start using Singleton Service
 ---------
  Run the Spring Boot main application. Inside the singleton folder:
  ```
@@ -72,7 +72,15 @@ To start using Singleton
  component: "component1" or "component2"
  locale: "en", "ja" or "es"
  ```
- 
+
+Singleton Clients
+----------------
+ Singleton also provides client bindings to talk with Singleton Service.
+
+ * [JAVA Client](https://github.com/vmware/singleton/tree/g11n-java-client)
+ * [Angular Client](https://github.com/vmware/singleton/tree/g11n-angular-client)
+ * [JS Client](https://github.com/vmware/singleton/tree/g11n-js-client)
+
 Online Resources
 ----------------
  We welcome discussions about and contributions to the project!
