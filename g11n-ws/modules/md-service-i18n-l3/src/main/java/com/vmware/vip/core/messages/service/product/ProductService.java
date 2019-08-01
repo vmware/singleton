@@ -61,8 +61,7 @@ public class ProductService implements IProductService {
 				supportedLocaleList.remove(ConstantsKeys.LATEST);
 			}
 		} catch (DataException e) {
-			throw new L3APIException(ConstantsKeys.FATA_ERROR
-					+ "Failed to get locale list for " + productName
+			throw new L3APIException("Failed to get locale list for " + productName
 					+ ConstantsChar.BACKSLASH + version, e);
 		}
 		return supportedLocaleList;
@@ -75,8 +74,7 @@ public class ProductService implements IProductService {
 		try {
 			componentList = productdao.getComponentList(productName, version);
 		} catch (DataException e) {
-			throw new L3APIException(ConstantsKeys.FATA_ERROR
-					+ "Failed to get component list for " + productName
+			throw new L3APIException("Failed to get component list for " + productName
 					+ ConstantsChar.BACKSLASH + version, e);
 		}
 		return componentList;
