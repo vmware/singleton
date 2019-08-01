@@ -69,7 +69,7 @@ public class MessageCacheTest1 extends BaseTestClass {
 		VIPCfg.getInstance().getCacheManager().clearCache();
 		Map<String, String> messageMap3 = cacheService
 				.getCacheOfComponent();
-		Assert.assertTrue(messageMap3==null);
+		Assert.assertNull(messageMap3);
 	}
 	
 	@Test
@@ -81,7 +81,7 @@ public class MessageCacheTest1 extends BaseTestClass {
 		Map<String, String> mp = cacheService.getCacheOfComponent();
 		Assert.assertEquals("@zh_CN@book", mp.get("book"));
 		VIPCfg.getInstance().getCacheManager().clearCache();
-		Assert.assertTrue(cacheService.getCacheOfComponent() == null);
+		Assert.assertNull(cacheService.getCacheOfComponent());
 	}
 	
 	@SuppressWarnings({ "static-access", "rawtypes", "unchecked"})
@@ -103,7 +103,7 @@ public class MessageCacheTest1 extends BaseTestClass {
 		try {
 			Thread.sleep(expired + 10000);
 			Map cachedData2 = (Map)gc.getCacheManager().getCache(VIPCfg.CACHE_L3).get(cachedKey);
-			Assert.assertTrue(cachedData2 == null);			
+			Assert.assertNull(cachedData2);			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

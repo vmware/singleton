@@ -53,6 +53,6 @@ public class MessageCacheTest2 extends BaseTestClass {
 		long expired = 30000;
 		c.setExpiredTime(expired);
 		Map cachedData = (Map)gc.getCacheManager().getCache(VIPCfg.CACHE_L3).get(cachedKey);
-		Assert.assertTrue(cachedData == null);
+		Assert.assertNull(cachedData);
 	}
 }

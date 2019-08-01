@@ -85,7 +85,7 @@ public class MessageCache2Test1 extends BaseTestClass {
 		cacheService.addCacheOfComponent(msgObj4);	
 		Assert.assertEquals("@zh_CN@book", cacheService.getCacheOfComponent().get("book"));
 		VIPCfg.getInstance().getCacheManager().clearCache();
-		Assert.assertTrue(cacheService.getCacheOfComponent() == null);
+		Assert.assertNull(cacheService.getCacheOfComponent());
 	}
 	
 	@SuppressWarnings({ "static-access", "rawtypes", "unchecked"})
@@ -109,6 +109,6 @@ public class MessageCache2Test1 extends BaseTestClass {
 		Thread.sleep(expired+500);
 		Map cachedData2 = (Map)gc.getCacheManager().getCache(VIPCfg.CACHE_L3).get(cachedKey);
 		logger.debug("cachedData2: "+cachedData2);
-		Assert.assertTrue(cachedData2 == null);
+		Assert.assertNull(cachedData2);
 	}
 }
