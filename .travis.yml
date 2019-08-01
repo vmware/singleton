@@ -29,7 +29,7 @@ jobs:
     - stage: code scan
       script:
         - cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG:java-client:$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG:java-client:$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=java-client-gate -QualityGateConditions="./quality_gates/service_quality_gate.json" -SonarToken=$SONAR_TOKEN
-        - cd $TRAVIS_BUILD_DIR && gradle sonarqube --stacktrace -PsonarProjectKey=$SONAR_ORG:java-client:$TRAVIS_BRANCH -PsonarProjectName=$SONAR_ORG:java-client:$TRAVIS_BRANCH -Dsonar.branch.name=master
+        - cd $TRAVIS_BUILD_DIR && gradle sonarqube --stacktrace -PsonarProjectKey=$SONAR_ORG:java-client:$TRAVIS_BRANCH -PsonarProjectName=$SONAR_ORG:java-client:$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.host.url=https://sonarcloud.io --info
         - cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG:java-client:$TRAVIS_BRANCH -HostName=https://sonarcloud.io
     - stage: smoke test
       script:
