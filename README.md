@@ -1,4 +1,4 @@
-﻿Singleton
+﻿Singleton 
 ============
 
 A service that provides support for Software Internationalization and Localization
