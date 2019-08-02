@@ -12,7 +12,7 @@ before_script:
   - mkdir -p ./l10n/bundles
   - git clone --branch=master https://github.com/vmware/singleton.git server
   - git clone --branch=devops https://github.com/vmware/singleton.git devops
-  - cd $TRAVIS_BUILD_DIR/server/g11n-ws && ./gradlew build
+  - cd $TRAVIS_BUILD_DIR/server/g11n-ws && ./gradlew build -x test
   - cp $TRAVIS_BUILD_DIR/devops/deploy/i18n-service/Dockerfile $TRAVIS_BUILD_DIR/server/publish/
   - cd $TRAVIS_BUILD_DIR/server/publish && mv vip-manager-i18n-*.jar i18n-service.jar
   - docker build -t singleton .
