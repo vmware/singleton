@@ -88,30 +88,30 @@ public class MessageCache2Test1 {
 		Assert.assertTrue(cacheService.getCacheOfComponent() == null);
 	}
 	
-	@SuppressWarnings({ "static-access", "rawtypes", "unchecked"})
-	@Test
-	public void testExpired() {
-		VIPCfg gc = VIPCfg.getInstance();
-		Cache c = gc.getCacheManager().getCache(VIPCfg.CACHE_L3);
-		Map data = new HashMap();
-		String k = "com.vmware.test";
-		String v = "It's a test";
-		data.put(k, v);
-		String cachedKey = "key";
-		c.put(cachedKey, data);
-		long expired = 2000;
-		c.setExpiredTime(expired);
-		Map cachedData = (Map)gc.getCacheManager().getCache(VIPCfg.CACHE_L3).get(cachedKey);
-		System.out.println("cachedData: "+cachedData);
-		Assert.assertNotNull(cachedData);
-		Assert.assertEquals(v, (String)cachedData.get(k));
-		try {
-			Thread.sleep(expired);
-			Map cachedData2 = (Map)gc.getCacheManager().getCache(VIPCfg.CACHE_L3).get(cachedKey);
-			System.out.println("cachedData2: "+cachedData2);
-			Assert.assertTrue(cachedData2 == null);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
+// 	@SuppressWarnings({ "static-access", "rawtypes", "unchecked"})
+// 	@Test
+// 	public void testExpired() {
+// 		VIPCfg gc = VIPCfg.getInstance();
+// 		Cache c = gc.getCacheManager().getCache(VIPCfg.CACHE_L3);
+// 		Map data = new HashMap();
+// 		String k = "com.vmware.test";
+// 		String v = "It's a test";
+// 		data.put(k, v);
+// 		String cachedKey = "key";
+// 		c.put(cachedKey, data);
+// 		long expired = 2000;
+// 		c.setExpiredTime(expired);
+// 		Map cachedData = (Map)gc.getCacheManager().getCache(VIPCfg.CACHE_L3).get(cachedKey);
+// 		System.out.println("cachedData: "+cachedData);
+// 		Assert.assertNotNull(cachedData);
+// 		Assert.assertEquals(v, (String)cachedData.get(k));
+// 		try {
+// 			Thread.sleep(expired);
+// 			Map cachedData2 = (Map)gc.getCacheManager().getCache(VIPCfg.CACHE_L3).get(cachedKey);
+// 			System.out.println("cachedData2: "+cachedData2);
+// 			Assert.assertTrue(cachedData2 == null);
+// 		} catch (InterruptedException e) {
+// 			e.printStackTrace();
+// 		}
+// 	}
 }
