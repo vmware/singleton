@@ -48,7 +48,7 @@ export const config = {
     version: '1.0.0',
     component: 'sunglow',
     host: 'http://localhost:8091/',
-    language: 'en-US',
+    language: 'en',
     i18nScope: [CoreSDK.PatternCategories.DATE, CoreSDK.PatternCategories.CURRENCIES, CoreSDK.PatternCategories.NUMBER, CoreSDK.PatternCategories.PLURAL]
     // isPseudo?: boolean;
     // language?: string;
