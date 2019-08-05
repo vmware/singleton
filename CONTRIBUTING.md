@@ -20,7 +20,7 @@ We have sub projects in each branch:
 |   master                | Singleton service code                                                                                          |
 |   g11n-java-client      | Singleton Java client code                                                                                      |
 |   g11n-js-client        | Singleton JavaScript client code                                                                                |
-|   g11n-angular-client   | Singleton JavaScript client code                                                                                |
+|   g11n-angular-client   | Singleton Angular 7 client code                                                                                 |
 |   devops                | CI and automation testing code, it is not a place to contribute code unless you want to add CI or test scripts. |
 
 
