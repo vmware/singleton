@@ -15,13 +15,13 @@ Contributors can only commit changes on fork repository, then open a pull reques
 
 We have sub projects in each branch:
 
-|      branch    | purpose |
-|----------------|---------|
-|   master       | Singleton service code  |
-| g11n-java-client  | Singleton Java client code |
-| g11n-js-client | Singleton JavaScript client code |
-| g11n-angular-client | Singleton Angular client code |
-|   devops       | CI and automation testing code, it is not a place to contribute code unless you want to add CI or test scripts. |
+|   branch                | purpose                                                                                                         |
+|-------------------------|-----------------------------------------------------------------------------------------------------------------|
+|   master                | Singleton service code                                                                                          |
+|   g11n-java-client      | Singleton Java client code                                                                                      |
+|   g11n-js-client        | Singleton JavaScript client code                                                                                |
+|   g11n-angular-client   | Singleton JavaScript client code                                                                                |
+|   devops                | CI and automation testing code, it is not a place to contribute code unless you want to add CI or test scripts. |
 
 
 ## Contribute flow
@@ -56,7 +56,7 @@ Singleton uses Travis-ci as CI framework to help contributors to test their code
 1. After you have configured SonarCloud, login to Travis-ci 'https://travis-ci.com' with your GitHub account. If this is your first time to integrate Travis to GitHub , you need to click 'Active' to apply the GitHub apps integration. (If you fork singleton to some organization, please select the organization first then click 'Active'). After all these are done, you could see singleton is listed in repositories tab. 
 
 2. Find your forked repository in your account settings, click 'settings', add following environment variables
-   
+    
     SONAR_ORG=\<Organization key in SonarCloud configuration step2\>
     
     SONAR_TOKEN=\<token generated in SonarCloud\>
