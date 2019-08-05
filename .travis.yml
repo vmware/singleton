@@ -39,7 +39,7 @@ jobs:
         - rm -f $SONARSCANNER.zip
         - mkdir -p g11n-js-client
         - shopt -s extglob
-        - mv !($SONARSCANNERINNER|g11n-angular-client) g11n-js-client/
+        - mv !($SONARSCANNERINNER|g11n-js-client) g11n-js-client/
         - git clone --branch=devops https://github.com/vmware/singleton.git devops
         - cp -a devops/sonar/* .
         - rm -rf devops
