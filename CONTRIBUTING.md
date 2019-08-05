@@ -89,3 +89,7 @@ You can open a PR after you get pass result of CI pipeline. CI pipeline will run
 
 Please sync your fork repo with upstream repo before you create PR, refer to https://help.github.com/en/articles/syncing-a-fork
 
+#### Only document changing
+
+If you only have document changing in your PR, please add [skip CI] in commit comment. So CI will be skipped.
+
