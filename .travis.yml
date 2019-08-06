@@ -1,0 +1,39 @@
+language: java
+addons:
+  sonarcloud:
+    organization: $SONAR_ORG
+    token:
+      secure: $SONAR_TOKEN
+jdk:
+  - openjdk8
+service:
+  - docker
+before_script:
+  - mkdir -p ./l10n/bundles
+  - git clone --branch=master https://github.com/vmware/singleton.git server
+  - git clone --branch=devops https://github.com/vmware/singleton.git devops
+  - cd $TRAVIS_BUILD_DIR/server/g11n-ws && ./gradlew build -x test
+  - cp $TRAVIS_BUILD_DIR/devops/deploy/i18n-service/Dockerfile $TRAVIS_BUILD_DIR/server/publish/
+  - cd $TRAVIS_BUILD_DIR/server/publish && mv vip-manager-i18n-*.jar i18n-service.jar
+  - docker build -t singleton .
+  - docker run -d -p 8090:8090 --name singleton singleton
+  - docker ps
+  - cp -r $TRAVIS_BUILD_DIR/src/test/resources/JavaclientTest $TRAVIS_BUILD_DIR/l10n/bundles/
+  - docker cp $TRAVIS_BUILD_DIR/l10n singleton:/
+jobs:
+  include:
+    - stage: unit test
+      script:
+        - cd $TRAVIS_BUILD_DIR && gradle build
+        - cat $TRAVIS_BUILD_DIR/build/reports/tests/test/index.html
+    - stage: code scan
+      script:
+        - cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG:java-client:$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG:java-client:$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=java-client-gate -QualityGateConditions="./quality_gates/service_quality_gate.json" -SonarToken=$SONAR_TOKEN
+        - cd $TRAVIS_BUILD_DIR && gradle sonarqube --stacktrace -Dsonar.projectKey=$SONAR_ORG:java-client:$TRAVIS_BRANCH -Dsonar.projectName=$SONAR_ORG:java-client:$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.host.url=https://sonarcloud.io --info
+        - cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG:java-client:$TRAVIS_BRANCH -HostName=https://sonarcloud.io
+    - stage: smoke test
+      script:
+        - cd $TRAVIS_BUILD_DIR && gradle clean build -x test && cp ./build/libs/*.jar $TRAVIS_BUILD_DIR/devops/autotest/client/java/lib/
+        - cd $TRAVIS_BUILD_DIR/devops/autotest/client/java && gradle build
+        - docker cp l10n singleton:/
+        - java -cp './target/*' org.testng.TestNG -d test-output ./target/testng.xml
