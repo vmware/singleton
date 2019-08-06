@@ -29,21 +29,17 @@ We have sub projects in each branch:
 Changes should be made on your own forked branch. PR should be rebased on top of one of above branches without multiple branches mixed into the PR. If your PR do not merge cleanly, use commands listed below to get it up to date.
 
 ```
-#upstream is the origin upstream(refer to https://help.github.com/en/articles/configuring-a-remote-for-a-fork for how to configure upstrea
+# origin is the origin Singleton repository
+# upstream is your forked repository under your github account
 
 cd $working_dir/singleton
-git fetch upstream
 git checkout master
-git rebase upstream/master
+git fetch origin
+git merge origin/master
+git push upstream master
 ```
 
-Branch from the updated `master` branch:
-
-```
-git checkout -b my_feature master
-```
-
-Accordingly, for each client please checkout to its branch.
+Accordingly, for each client please check out to the sub branch and push to remote sub branch.
 
 
 ## Contribute flow
@@ -123,10 +119,16 @@ Please sync your fork repo with upstream repo before you create a PR, refer to h
 
 For Singleton service feature development, you can use IntelliJ IDEA or Eclipse to do development work and import the codes as gradle project. The coding style follow [JAVA style](https://petroware.no/javastyle.html).
 
-To build the code, you can use gradle's build task. After the build task is finished, you can find the build under the project '/build/libs/' path.
+To build the code, you can use gradle's build task. After the build task is finished, you can find the build under the project '/build/libs/' path. Please refer the [singleton service guideline](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/developer_guide_service.md)
 
 Unit test cases should be added to cover the new code.
 
 #### Singleton Client
 
 For each specific client, it depends on the programing lanunages to use the according development tool, please follow the individual guidline.
+
+[Java client guideline](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/developer_guide_javaclient.md)
+
+[AngularJS  guideline](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/developer_guide_angularjs.md)
+
+[JS guideline](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/developer_guide_js.md)
