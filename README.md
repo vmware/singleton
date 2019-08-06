@@ -20,7 +20,7 @@ How to build and use the client library
     git clone git@github.com:vmware/singleton.git g11n-java-client
     ```
  * Go to the project's root directory.
-    ```fd
+    ```
     cd g11n-java-client
     ```
  * Checkout the client library branch
@@ -67,12 +67,12 @@ I18nFactory i18n = I18nFactory.getInstance(cfg);
 // Create TranslationMessage Instance
 cfg.createTranslationCache(MessageCache.class);
 TranslationMessage tm = (TranslationMessage)i18n.getMessageInstance(TranslationMessage.class);
-String translation = tm.getString(鈥�);
+String translation = tm.getString(…);
 
 // Create Formatting instance
 cfg.createFormattingCache(FormattingCache.class);
 DateFormatting dateformatting = (DateFormatting)i18n.getFormattingInstance(DateFormatting.class);
-dateformatting.formatDate(鈥�);
+dateformatting.formatDate(…);
 ```
 
 Existing features
@@ -84,7 +84,7 @@ Existing features
  * Supports the switch between local bundle and data from Singleton server.
  * Supports getting pseudo translations on development stage.
  * Supports getting machine translations on development stage.
- * Supports checking translation鈥檚 available status.
+ * Supports checking translation’s available status.
  * Provides configured filters extended from javax.servlet.Filter as a proxy for client(browser) to communicate with Singleton server.
  * Provides fmt tag to support JSP localization.
 

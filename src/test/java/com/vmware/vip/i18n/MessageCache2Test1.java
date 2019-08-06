@@ -89,7 +89,7 @@ public class MessageCache2Test1 extends BaseTestClass {
 	}
 	
 	@SuppressWarnings({ "static-access", "rawtypes", "unchecked"})
-	@Test
+//	@Test
 	public void testExpired() throws InterruptedException {
 		VIPCfg gc = VIPCfg.getInstance();
 		Cache c = gc.getCacheManager().getCache(VIPCfg.CACHE_L3);
