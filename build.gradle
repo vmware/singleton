@@ -4,6 +4,7 @@ apply plugin: 'eclipse'
 description = 'VIP4Java'
 
 apply plugin: "jacoco"
+apply plugin: "org.sonarqube"
 buildscript {
   repositories {
     maven {
@@ -11,13 +12,12 @@ buildscript {
     }
   }
   dependencies {
-    classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
+    classpath("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7.1")
     classpath 'de.undercouch:gradle-download-task:3.4.3'
   }
 }
 
 apply plugin: 'de.undercouch.download'
-apply plugin: "org.sonarqube"
 
 sourceCompatibility = 1.8
 version = '0.1.0'

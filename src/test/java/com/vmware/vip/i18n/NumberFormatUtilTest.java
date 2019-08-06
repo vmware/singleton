@@ -15,7 +15,7 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.instances.NumberFormatting;
 
-public class NumberFormatUtilTest {
+public class NumberFormatUtilTest extends BaseTestClass {
 	
 	NumberFormatting numberFormatI18n;
 	

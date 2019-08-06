@@ -139,7 +139,7 @@ public class TranslationMessageTest extends BaseTestClass {
     public void testGetComponentMessages() {
     	vipCfg.setPseudo(false);
     	
-        String component = "JS";
+        String component = "JAVA";
         String key="global_text_username";
         String message_en_US="User name";
         String message_de="Benutzername";
@@ -152,9 +152,8 @@ public class TranslationMessageTest extends BaseTestClass {
         Assert.assertEquals(message_de, retMap2.get(key));
 
         Map<String, String> retMap3 = translation.getStrings(Locale.forLanguageTag("zh-Hans"), component);
-        System.out.println(retMap3.get(key));
-        System.out.println(message_zh_CN);
-        System.out.println(retMap3.get(key).equals(message_zh_CN));
+        logger.debug(retMap3.get(key));
+        logger.debug(message_zh_CN);
         Assert.assertEquals(message_zh_CN, retMap3.get(key));
 
         Map<String, String> retMap4 = translation.getStrings(Locale.forLanguageTag("zh-Hant"), component);
@@ -200,7 +199,7 @@ public class TranslationMessageTest extends BaseTestClass {
     	sources.add(jo3);
     	Assert.assertTrue(translation.postStrings(locale, component1, sources));
     	List<JSONObject > sources2 = new ArrayList<JSONObject>();
-    	System.out.println(sources2.toString());
+    	logger.debug(sources2.toString());
     	Assert.assertFalse(translation.postStrings(locale, component1, sources2));
     }
 
@@ -233,7 +232,7 @@ public class TranslationMessageTest extends BaseTestClass {
 		vc.setCollectSource(existing_collect);
 
 		String expected = "@@Operator 'aaa' 不支持 for property ' bbb '@@";
-		System.out.println("enTrans1: "+enTrans1);
+		logger.debug("enTrans1: "+enTrans1);
 		Assert.assertArrayEquals(new Object[]{expected}, new Object[]{enTrans1});
 	}
 
@@ -256,7 +255,7 @@ public class TranslationMessageTest extends BaseTestClass {
 		vc.setPseudo(existing_pseudo);
 		vc.setCollectSource(existing_collect);
 		
-		System.out.println("pseudoTrans1: "+pseudoTrans1);
+		logger.debug("pseudoTrans1: "+pseudoTrans1);
 		Assert.assertArrayEquals(new Object[]{expected}, new Object[]{pseudoTrans1});
 	}
 
@@ -309,13 +308,11 @@ public class TranslationMessageTest extends BaseTestClass {
 	@Test
 	public void testGetMessage__NotCollected_3() throws InterruptedException {
 		VIPCfg gc = VIPCfg.getInstance();
-		gc.setProductName("Sample");
-		gc.setVersion("1.0.0");
 		gc.setPseudo(true);
 		gc.setCollectSource(true);
 		gc.initializeVIPService();
 
-		String component = "default";
+		String component = component1;
 
 		//new key and source
 		String randomStr = getSaltString();
@@ -328,8 +325,8 @@ public class TranslationMessageTest extends BaseTestClass {
 
 		//server already collected
 		String key2= "LeadTest";
-		String source2 = "It's a testing source";
-		String message2 = translation.getString(locale1, component, key2, source2, "");
+		String source2 = "[{0}] Test alert";
+		String message2 = translation.getString(locale1, "JAVA", key2, "", "");
 		String expected2 = "#@"+source2+"#@";
 		Assert.assertEquals(expected2, message2);
 
@@ -359,7 +356,7 @@ public class TranslationMessageTest extends BaseTestClass {
 		
 		vc.setPseudo(existing_pseudo);
 		
-		System.out.println("pseudoTrans1: "+pseudoTrans1);
-		Assert.assertArrayEquals(new Object[]{expected}, new Object[]{pseudoTrans1});
+		logger.debug("pseudoTrans1: "+pseudoTrans1);
+		Assert.assertEquals(expected, pseudoTrans1);
 	}
 }
