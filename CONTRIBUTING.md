@@ -7,9 +7,12 @@ Welcome ......
 
 ## Getting Started
 
-### Fork Repository
+### Fork Repository and clone
 
 Contributors can only commit changes on fork repository, then open a pull request to Singleton repository, so please fork this repository first.
+
+Now, you can clone your forked repository to local with this command:
+git clone git@github.com:<git_account>/singleton.git
 
 ### Branch
 
@@ -22,6 +25,25 @@ We have sub projects in each branch:
 |   g11n-js-client        | Singleton JavaScript client code                                                                                |
 |   g11n-angular-client   | Singleton Angular 7 client code                                                                                 |
 |   devops                | CI and automation testing code, it is not a place to contribute code unless you want to add CI or test scripts. |
+
+Changes should be made on your own forked branch. PR should be rebased on top of one of above branches without multiple branches mixed into the PR. If your PR do not merge cleanly, use commands listed below to get it up to date.
+
+```
+#upstream is the origin upstream(refer to https://help.github.com/en/articles/configuring-a-remote-for-a-fork for how to configure upstrea
+
+cd $working_dir/singleton
+git fetch upstream
+git checkout master
+git rebase upstream/master
+```
+
+Branch from the updated `master` branch:
+
+```
+git checkout -b my_feature master
+```
+
+Accordingly, for each client please checkout to its branch.
 
 
 ## Contribute flow
@@ -95,3 +117,16 @@ You can open a PR after you get pass result of CI pipeline. CI pipeline will run
 
 Please sync your fork repo with upstream repo before you create a PR, refer to https://help.github.com/en/articles/syncing-a-fork
 
+### Develop, Build and Test
+
+#### Singleton Service
+
+For Singleton service feature development, you can use IntelliJ IDEA or Eclipse to do development work and import the codes as gradle project. The coding style follow [JAVA style](https://petroware.no/javastyle.html).
+
+To build the code, you can use gradle's build task. After the build task is finished, you can find the build under the project '/build/libs/' path.
+
+Unit test cases should be added to cover the new code.
+
+#### Singleton Client
+
+For each specific client, it depends on the programing lanunages to use the according development tool, please follow the individual guidline.
