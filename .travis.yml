@@ -23,12 +23,7 @@ install:
 
 jobs:
   include:
-    - stage: unit test
-      script:
-        - sed -i "s/'Chrome'/'ChromeHeadless'/g" config/karma.conf.js && cat config/karma.conf.js
-        - npm install --registry https://registry.npmjs.org
-        - npm run test
-    - stage: code scan
+    - stage: unit test and code scan
       script:
         - SONARSCANNER='sonar-scanner-cli-4.0.0.1744-linux'
         - SONARSCANNERINNER='sonar-scanner-4.0.0.1744-linux'
@@ -45,6 +40,11 @@ jobs:
         - git clone --branch=devops https://github.com/vmware/singleton.git devops
         - cp -a devops/sonar/* .
         - rm -rf devops
+        - cd g11n-angular-client
+        - sed -i "s/'Chrome'/'ChromeHeadless'/g" config/karma.conf.js && cat config/karma.conf.js
+        - npm install --registry https://registry.npmjs.org
+        - npm run test
+        - cd ..
         - python ./config_sonar_project.py -ProjectName $SONAR_ORG:singleton-angular-client:$TRAVIS_BRANCH -ProjectKey $SONAR_ORG:singleton-angular-client:$TRAVIS_BRANCH -OrgKey $SONAR_ORG -QualityGateName angular-client-gate -QualityGateConditions ./quality_gates/angular-client.json -SonarToken $SONAR_TOKEN
-        - ./$SONARSCANNERINNER/bin/sonar-scanner -Dsonar.sources=./g11n-angular-client -Dsonar.projectName=$SONAR_ORG:singleton-angular-client:$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.projectKey=$SONAR_ORG:singleton-angular-client:$TRAVIS_BRANCH -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info  -Dsonar.typescript.lcov.reportPaths=./coverage/lcov.info
+        - ./$SONARSCANNERINNER/bin/sonar-scanner -Dsonar.sources=./g11n-angular-client -Dsonar.projectName=$SONAR_ORG:singleton-angular-client:$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.projectKey=$SONAR_ORG:singleton-angular-client:$TRAVIS_BRANCH -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info  -Dsonar.typescript.lcov.reportPaths=./coverage/lcov.info -Dsonar.c.file.suffixes=- -Dsonar.cpp.file.suffixes=- -Dsonar.objc.file.suffixes=-
         - sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG:singleton-angular-client:$TRAVIS_BRANCH -HostName=https://sonarcloud.io
