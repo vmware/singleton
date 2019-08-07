@@ -4,7 +4,7 @@
 
 You can follow below steps to setup your development environment:
 
-1. Install JDK 1.8(or later version) and Gradle 4.10.3(or later version)
+1. Install JDK 1.8(or later version prior to JDK 10) and Gradle 4.10.3(or later version prior to Gradle 5)
 
 2. Install Intellij IDEA community version and configure Gradle home
 
