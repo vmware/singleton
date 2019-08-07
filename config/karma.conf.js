@@ -25,7 +25,8 @@ module.exports = function (config) {
         webpack: testWebpackConfig,
 
         coverageReporter: {
-            type: 'in-memory'
+            type: 'lcovonly',
+            dir: '../coverage/'
         },
 
         remapCoverageReporter: {
