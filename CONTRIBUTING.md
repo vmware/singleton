@@ -111,7 +111,7 @@ You can open a PR after you get pass result of CI pipeline. CI pipeline will run
 
 #### Syncing a fork
 
-Please sync your fork repo with upstream repo before you create a PR, refer to https://help.github.com/en/articles/syncing-a-fork
+Please sync your fork repo with origin repo before you create a PR, refer to https://help.github.com/en/articles/syncing-a-fork
 
 ### Develop, Build and Test
 
@@ -119,7 +119,7 @@ Please sync your fork repo with upstream repo before you create a PR, refer to h
 
 For Singleton service feature development, you can use IntelliJ IDEA or Eclipse to do development work and import the codes as gradle project. The coding style follow [JAVA style](https://petroware.no/javastyle.html).
 
-To build the code, you can use gradle's build task. After the build task is finished, you can find the build under the project '/build/libs/' path. Please refer the [singleton service guideline](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/developer_guide_service.md)
+To build the code, you can use gradle's build task. After the build task is finished, you can find the build under the project '/build/libs/' path. Please refer to [singleton service guideline](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/developer_guide_service.md) for details.
 
 Unit test cases should be added to cover the new code.
 

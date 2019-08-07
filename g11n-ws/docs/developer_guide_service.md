@@ -2,20 +2,25 @@
 
 ### How to setup Intellij IDEA for development
 
-Step 1. Install JDK 1.8 or later version.
+You can flow below steps to quickly setup your Dev environment:
 
-Step 2. Install Intellij IDEA community version and configure Gradle home(Gradle version: 4.10.3)
+1. Install JDK 1.8(or later version) and Gradle 4.10.3(or later version)
 
-Step 3. Imports Singleton codes as Gradle project
-[Import Singleton ](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/img/intellij_import.png)
+2. Install Intellij IDEA community version and configure Gradle home
 
-Step 4. Run build.gradle with 'clean build' to generate the build
+3. Import Singleton service codes as Gradle project on IntelliJ
+[Import Singleton project ](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/img/intellij_import.png)
+
+4. Run build.gradle with 'clean build' to generate the build on IntelliJ
 [Create 'build' Task ](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/img/intellij_build.png)
 
-or configure and run the BootApplication to start Singleton service.
-[Run Application](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/img/intellij_build.png)
+5. Configure and run com.vmware.vip.BootApplication to start Singleton i18n service on IntelliJ
+[Run i18n Application](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/img/intellij_run.png)
 
-After Singleton service is startup, you could open swagger-ui to try the API: https://localhost:8090/swagger-ui.html#
+After Singleton i18n service is startup, you could open swagger-ui to try the API: https://localhost:8090/swagger-ui.html#
+
+6. Configure and run com.vmware.l10n.BootApplication to start Singeton l10n service for source collection
+[Run l10n Application](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/img/intellij_runl10n.png)
 
 
 
