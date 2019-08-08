@@ -4,7 +4,7 @@
 
 You can follow below steps to setup your development environment:
 
-1. Install JDK 1.8(or later version prior to JDK 10) and Gradle 4.10.3(or later version prior to Gradle 5)
+1. Install JDK 1.8 and Gradle 4.10.3
 
 2. Install Intellij IDEA community version and configure Gradle home
 
@@ -12,7 +12,7 @@ You can follow below steps to setup your development environment:
 
 4. Run build.gradle with 'clean build' to generate the build
 
-After building, you can find the build of Singleton's Java client from the building output folder. 
+After building, you can find the build of Singleton's Java client from the building output folder '/build/libs/'. 
 
 ### Integrate Singleton Java client with your product
 
