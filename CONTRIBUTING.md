@@ -42,7 +42,7 @@ git push origin master
 Accordingly, for each client please check out to the sub branch and push to remote sub branch.
 
 
-## Contribute flow
+## Contribution flow
 
 ### Fork Repository
 
@@ -125,10 +125,10 @@ Unit test cases should be added to cover the new code.
 
 #### Singleton Client
 
-For each specific client, it depends on the programing lanunages to use the according development tool, please follow the according guidline.
+For each specific client, it depends on the programing lanunages to use the corresponding development tools, please follow the corresponding guidline.
 
 [Java client guideline](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/developer_guide_javaclient.md)
 
-[AngularJS  guideline](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/developer_guide_angularjs.md)
+[Angular  guideline](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/developer_guide_angular.md)
 
 [JS guideline](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/developer_guide_js.md)
