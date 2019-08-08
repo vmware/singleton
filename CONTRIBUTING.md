@@ -29,14 +29,14 @@ We have sub projects in each branch:
 Changes should be made on your own forked branch. PR should be rebased on top of one of above branches without multiple branches mixed into the PR. If your PR do not merge cleanly, use commands listed below to get it up to date.
 
 ```
-# origin is the origin Singleton repository
-# upstream is your forked repository under your github account
+# upstream is the origin Singleton repository
+# origin is your forked repository under your github account
 
 cd $working_dir/singleton
 git checkout master
-git fetch origin
-git merge origin/master
-git push upstream master
+git fetch upstream
+git merge upstream/master
+git push origin master
 ```
 
 Accordingly, for each client please check out to the sub branch and push to remote sub branch.
@@ -111,7 +111,7 @@ You can open a PR after you get pass result of CI pipeline. CI pipeline will run
 
 #### Syncing a fork
 
-Please sync your fork repo with origin repo before you create a PR, refer to https://help.github.com/en/articles/syncing-a-fork
+Please sync your fork repo with upstream repo before you create a PR, refer to https://help.github.com/en/articles/syncing-a-fork
 
 ### Develop, Build and Test
 
@@ -125,7 +125,7 @@ Unit test cases should be added to cover the new code.
 
 #### Singleton Client
 
-For each specific client, it depends on the programing lanunages to use the according development tool, please follow the individual guidline.
+For each specific client, it depends on the programing lanunages to use the according development tool, please follow the according guidline.
 
 [Java client guideline](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/developer_guide_javaclient.md)
 
