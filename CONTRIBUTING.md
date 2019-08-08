@@ -32,7 +32,7 @@ Go to https://github.com/vmware/singleton and click 'Fork' on top of page.
 
 ### Set Signature
 
-Set Signature in Github, refer https://help.github.com/en/articles/about-commit-signature-verification#gpg-commit-signature-verification
+Set Signature in Github, refer https://help.github.com/en/articles/about-commit-signature-verification#gpg-commit-signature-verification, after done, please use command 'git commit -S' to add signature to your commit.
 
 ### Setup CI Pipeline
 Singleton uses Travis-ci as CI framework to help contributors to test their code change as early as possible. Some configurations need to be done to setup CI pipeline in your forked repository.
@@ -94,4 +94,8 @@ You can open a PR after you get pass result of CI pipeline. CI pipeline will run
 #### Syncing a fork
 
 Please sync your fork repo with upstream repo before you create a PR, refer to https://help.github.com/en/articles/syncing-a-fork
+
+#### Only document changing
+
+If you only have document changing in your PR, please add '[skip ci]' in commit title. So CI will be skipped. And if your PR has multiple commits, please make sure each commit title including '[skip ci]'.
 
