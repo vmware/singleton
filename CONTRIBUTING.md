@@ -7,9 +7,12 @@ Welcome ......
 
 ## Getting Started
 
-### Fork Repository
+### Fork Repository and clone
 
 Contributors can only commit changes on fork repository, then open a pull request to Singleton repository, so please fork this repository first.
+
+Now, you can clone your forked repository to local with this command:
+git clone git@github.com:<git_account>/singleton.git
 
 ### Branch
 
@@ -23,8 +26,23 @@ We have sub projects in each branch:
 |   g11n-angular-client   | Singleton Angular 7 client code                                                                                 |
 |   devops                | CI and automation testing code, it is not a place to contribute code unless you want to add CI or test scripts. |
 
+Changes should be made on your own forked branch. PR should be rebased on top of one of above branches without multiple branches mixed into the PR. If your PR do not merge cleanly, use commands listed below to get it up to date.
 
-## Contribute flow
+```
+# upstream is the origin Singleton repository
+# origin is your forked repository under your github account
+
+cd $working_dir/singleton
+git checkout master
+git fetch upstream
+git merge upstream/master
+git push origin master
+```
+
+Accordingly, for each client please check out to the sub branch and push to remote sub branch.
+
+
+## Contribution flow
 
 ### Fork Repository
 
@@ -99,3 +117,22 @@ Please sync your fork repo with upstream repo before you create a PR, refer to h
 
 If you only have document changing in your PR, please add '[skip ci]' in commit title. So CI will be skipped. And if your PR includes multiple commits, please make sure each commit title including '[skip ci]'.
 
+### Develop, Build and Test
+
+#### Singleton Service
+
+For Singleton service feature development, you can use IntelliJ IDEA or Eclipse to do development work and import the codes as gradle project. The coding style follow [JAVA style](https://petroware.no/javastyle.html).
+
+To build the code, you can use gradle's build task. After the build task is finished, you can find the build under the project '/build/libs/' path. Please refer to [singleton service guideline](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/developer_guide_service.md) for details.
+
+Unit test cases should be added to cover the new code.
+
+#### Singleton Client
+
+For each specific client, it depends on the programing lanunages to use the corresponding development tools, please follow the corresponding guidline.
+
+[Java client guideline](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/developer_guide_javaclient.md)
+
+[Angular  guideline](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/developer_guide_angular.md)
+
+[JS guideline](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/developer_guide_js.md)
