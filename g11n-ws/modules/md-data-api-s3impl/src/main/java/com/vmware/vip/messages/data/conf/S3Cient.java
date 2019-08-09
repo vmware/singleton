@@ -1,0 +1,55 @@
+/**
+ * 
+ *
+ * Copyright 2019 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * @author shihu
+ *
+ */
+package com.vmware.vip.messages.data.conf;
+
+import javax.annotation.PostConstruct;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.GetBucketLocationRequest;
+
+@Configuration
+public class S3Cient {
+   private static Logger logger = LoggerFactory.getLogger(S3Cient.class);
+   @Autowired
+   private S3Config config;
+
+   private AmazonS3 s3Client;
+
+   @PostConstruct
+   private void init() {
+      this.s3Client = AmazonS3ClientBuilder.standard()
+            .withCredentials(new AWSStaticCredentialsProvider(
+                  new BasicAWSCredentials(config.getAccessKey(), config.getSecretkey())))
+            .withRegion(config.getS3Region()).enablePathStyleAccess().build();
+
+
+      if (!this.s3Client.doesBucketExistV2(config.getBucketName())) {
+         this.s3Client.createBucket(config.getBucketName());
+         // Verify that the bucket was created by retrieving it and checking its location.
+         String bucketLocation =
+               s3Client.getBucketLocation(new GetBucketLocationRequest(config.getBucketName()));
+         logger.info("Bucket location: {}", bucketLocation);
+      }
+   }
+
+   public AmazonS3 getS3Client() {
+      return s3Client;
+   }
+
+
+}

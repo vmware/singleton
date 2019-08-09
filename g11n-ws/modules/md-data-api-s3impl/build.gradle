@@ -1,0 +1,63 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+archivesBaseName = 'md-data-api-s3impl'
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+buildscript {
+	repositories {
+	  maven {
+		url "https://plugins.gradle.org/m2/"
+	  }
+	}
+	dependencies {
+	  classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
+	}
+  }
+   
+apply plugin: "org.sonarqube"
+apply plugin: "jacoco"
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart',
+                   'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(":md-data-api")
+	compile project(":vip-common")
+    compile group: 'org.springframework.boot', name: 'spring-boot'
+    compile group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.11.550'
+}
+bootJar {
+  enabled = false
+}
+jar {
+	enabled = true
+}
+
+
+test {
+    systemProperties 'property': 'value'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
