@@ -1,1 +1,1 @@
-This is pages.
+This is pages readme.
