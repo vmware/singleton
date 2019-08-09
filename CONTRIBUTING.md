@@ -97,5 +97,5 @@ Please sync your fork repo with upstream repo before you create a PR, refer to h
 
 #### Only document changing
 
-If you only have document changing in your PR, please add '[skip ci]' in commit title. So CI will be skipped. And if your PR has multiple commits, please make sure each commit title including '[skip ci]'.
+If you only have document changing in your PR, please add '[skip ci]' in commit title. So CI will be skipped. And if your PR includes multiple commits, please make sure each commit title including '[skip ci]'.
 
