@@ -24,7 +24,7 @@ jobs:
   include:
     - stage: unit test
       script:
-        - cd $TRAVIS_BUILD_DIR && gradle wrapper && gradlew build
+        - cd $TRAVIS_BUILD_DIR && gradle createWrapper && gradlew build
         - cat $TRAVIS_BUILD_DIR/build/reports/tests/test/index.html
     - stage: code scan
       script:
