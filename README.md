@@ -29,7 +29,7 @@ How to build and use the client library
     ```
  * Build the client library.
     ```
-    gradle wrapper
+    gradle createWrapper
     gradlew clean build -x test
 ```
     Note: The library jar will be created under "build/libs" directory.
