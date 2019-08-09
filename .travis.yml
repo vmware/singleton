@@ -12,7 +12,7 @@ before_script:
   - mkdir -p ./l10n/bundles
   - git clone --branch=master https://github.com/vmware/singleton.git server
   - git clone --branch=devops https://github.com/vmware/singleton.git devops
-  - cd $TRAVIS_BUILD_DIR/server/g11n-ws && ./gradlew build
+  - cd $TRAVIS_BUILD_DIR/server/g11n-ws && ./gradlew build -x test
   - cp $TRAVIS_BUILD_DIR/devops/deploy/i18n-service/Dockerfile $TRAVIS_BUILD_DIR/server/publish/
   - cd $TRAVIS_BUILD_DIR/server/publish && mv vip-manager-i18n-*.jar i18n-service.jar
   - docker build -t singleton .
@@ -29,7 +29,7 @@ jobs:
     - stage: code scan
       script:
         - cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG:java-client:$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG:java-client:$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=java-client-gate -QualityGateConditions="./quality_gates/service_quality_gate.json" -SonarToken=$SONAR_TOKEN
-        - cd $TRAVIS_BUILD_DIR && gradle sonarqube --stacktrace -PsonarProjectKey=$SONAR_ORG:java-client:$TRAVIS_BRANCH -PsonarProjectName=$SONAR_ORG:java-client:$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.host.url=https://sonarcloud.io --info
+        - cd $TRAVIS_BUILD_DIR && gradle sonarqube --stacktrace -Dsonar.projectKey=$SONAR_ORG:java-client:$TRAVIS_BRANCH -Dsonar.projectName=$SONAR_ORG:java-client:$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.host.url=https://sonarcloud.io --info
         - cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG:java-client:$TRAVIS_BRANCH -HostName=https://sonarcloud.io
     - stage: smoke test
       script:
