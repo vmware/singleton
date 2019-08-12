@@ -25,7 +25,9 @@ public class S3Utils {
    public static final String S3FILE_SEPARATOR = "/";
    public static final String S3_L10N_BUNDLES_PATH =
          "l10n" + S3FILE_SEPARATOR + "bundles" + S3FILE_SEPARATOR;
-
+  /**
+   * generate the product version path
+   */
    public static String genProductVersionS3Path(String productName, String version) {
       StringBuilder path = new StringBuilder();
       path.append(S3_L10N_BUNDLES_PATH);
@@ -37,7 +39,9 @@ public class S3Utils {
 
    }
 
-
+   /**
+    *get the locale by message file name
+    */
    public static String getLocaleByFileName(String fileName) {
       String locale = null;
       if (fileName.endsWith(ConstantsFile.FILE_TPYE_JSON)) {
@@ -52,7 +56,9 @@ public class S3Utils {
       return locale;
    }
 
-
+   /**
+    * convert the S3 Object to String
+    */
    public static String S3Obj2Str(S3Object s3Obj) throws IOException {
       S3ObjectInputStream s3is = s3Obj.getObjectContent();
       ByteArrayOutputStream fos = new ByteArrayOutputStream();

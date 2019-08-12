@@ -38,7 +38,9 @@ public class S3ProductDaoImpl implements IProductDao {
 
    @Autowired
    private S3Config config;
-
+   /**
+    * get the compose list from S3 server
+    */
    @Override
    public List<String> getComponentList(String productName, String version) throws DataException {
       // TODO Auto-generated method stub
@@ -62,7 +64,10 @@ public class S3ProductDaoImpl implements IProductDao {
       }
       return componentList;
    }
-
+   
+  /**
+   * get locale list from S3 server
+   */
    @Override
    public List<String> getLocaleList(String productName, String version) throws DataException {
       // TODO Auto-generated method stub
@@ -89,6 +94,9 @@ public class S3ProductDaoImpl implements IProductDao {
       return localeList;
    }
 
+   /**
+    * get bundle version from s3 server
+    */
    @Override
    public String getVersionInfo(String productName, String version) throws DataException {
       // TODO Auto-generated method stub

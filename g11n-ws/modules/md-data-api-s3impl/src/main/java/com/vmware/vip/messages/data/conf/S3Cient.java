@@ -21,7 +21,9 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.GetBucketLocationRequest;
-
+/**
+ * * the class use to init the 
+ */
 @Configuration
 public class S3Cient {
    private static Logger logger = LoggerFactory.getLogger(S3Cient.class);
@@ -29,7 +31,9 @@ public class S3Cient {
    private S3Config config;
 
    private AmazonS3 s3Client;
-
+/**
+ * initial the the S3 client environment
+ */
    @PostConstruct
    private void init() {
       this.s3Client = AmazonS3ClientBuilder.standard()

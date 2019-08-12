@@ -11,7 +11,9 @@ package com.vmware.vip.messages.data.conf;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-
+/**
+ * the configuration of the S3 client
+ */
 @Configuration
 public class S3Config {
 
@@ -47,13 +49,24 @@ public class S3Config {
       this.s3Region = s3Region;
    }
 
-
+   /**
+    * the s3 access Key
+    */
    @Value("${s3.accessKey}")
    private String accessKey;
-   @Value("${s3.secretkey}")
+   /**
+    * the s3 secret key
+    */
+   @Value("${s3.secretkey}") 
    private String secretkey;
+   /**
+    * the s3 region name
+    */
    @Value("${s3.region}")
    private String s3Region;
+   /**
+    * the s3 buncket Name
+    */
    @Value("${s3.bucketName}")
    private String bucketName;
 

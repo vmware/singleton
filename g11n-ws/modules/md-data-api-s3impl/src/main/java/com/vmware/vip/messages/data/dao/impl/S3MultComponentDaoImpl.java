@@ -22,7 +22,9 @@ import com.vmware.vip.messages.data.dao.api.IMultComponentDao;
 import com.vmware.vip.messages.data.dao.api.IOneComponentDao;
 import com.vmware.vip.messages.data.dao.exception.DataException;
 import com.vmware.vip.messages.data.dao.model.ResultI18Message;
-
+/**
+ * * this class get the bundle file from 
+ */
 @Repository
 public class S3MultComponentDaoImpl implements IMultComponentDao {
    private static Logger logger = LoggerFactory.getLogger(S3MultComponentDaoImpl.class);
@@ -31,7 +33,9 @@ public class S3MultComponentDaoImpl implements IMultComponentDao {
    @Autowired
    private IOneComponentDao oneComponentDao;
 
-
+   /**
+    * get the bundle files from s3 server
+    */
    @Override
    public List<String> get2JsonStrs(String productName, String version, List<String> components,
          List<String> locales) throws DataException {
@@ -50,6 +54,9 @@ public class S3MultComponentDaoImpl implements IMultComponentDao {
       return bundles;
    }
 
+   /**
+    * get the bundle files convert to ResultI18Message
+    */
    @Override
    public List<ResultI18Message> get(String productName, String version, List<String> components,
          List<String> locales) throws DataException {

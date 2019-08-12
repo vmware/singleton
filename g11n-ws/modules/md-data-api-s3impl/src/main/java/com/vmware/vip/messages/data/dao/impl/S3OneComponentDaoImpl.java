@@ -34,7 +34,9 @@ import com.vmware.vip.messages.data.dao.api.IOneComponentDao;
 import com.vmware.vip.messages.data.dao.exception.DataException;
 import com.vmware.vip.messages.data.dao.model.ResultI18Message;
 import com.vmware.vip.messages.data.util.S3Utils;
-
+/**
+ * This java class is used to handle translation bundle file or translation
+ */
 @Repository
 public class S3OneComponentDaoImpl implements IOneComponentDao {
 
@@ -45,7 +47,9 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
    private S3Config config;
 
    private static Logger logger = LoggerFactory.getLogger(S3OneComponentDaoImpl.class);
-
+   /**
+    * get one compose bundle files from s3 server and convert to ResultI18Message Object
+    */
    @Override
    public ResultI18Message get(String productName, String version, String component, String locale)
          throws DataException {
@@ -82,6 +86,9 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
 
    }
 
+   /**
+    * get one compose bundle files from s3 server as json String
+    */
    @Override
    public String get2JsonStr(String productName, String version, String component, String locale)
          throws DataException {
@@ -122,6 +129,9 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
       return false;
    }
 
+   /**
+    * update the compose bundle file to remote S3 server
+    */
    @Override
    public boolean update(String productName, String version, String component, String locale,
          Map<String, String> messages) throws DataException {
