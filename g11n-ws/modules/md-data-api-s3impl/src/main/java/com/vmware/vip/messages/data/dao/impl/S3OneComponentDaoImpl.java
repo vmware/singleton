@@ -53,7 +53,6 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
    @Override
    public ResultI18Message get(String productName, String version, String component, String locale)
          throws DataException {
-      // TODO Auto-generated method stub
       String jsonStr = get2JsonStr(productName, version, component, locale);
       ObjectMapper mapper = new ObjectMapper();
       ResultI18Message result = null;
@@ -92,7 +91,6 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
    @Override
    public String get2JsonStr(String productName, String version, String component, String locale)
          throws DataException {
-      // TODO Auto-generated method stub
 
       String filePath = S3Utils.genProductVersionS3Path(productName, version) + component
             + S3Utils.S3FILE_SEPARATOR + ResourceFilePathGetter.getLocalizedJSONFileName(locale);
@@ -104,7 +102,7 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
             try {
                result = S3Utils.S3Obj2Str(o);
             } catch (IOException e) {
-               // TODO Auto-generated catch block
+            
                logger.warn(e.getMessage(), e);
                throw new DataException("S3File is not existing: " + filePath);
             }
@@ -125,7 +123,7 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
    @Override
    public boolean add(String productName, String version, String component, String locale,
          Map<String, String> messages) throws DataException {
-      // TODO Auto-generated method stub
+    
       return false;
    }
 
@@ -135,7 +133,7 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
    @Override
    public boolean update(String productName, String version, String component, String locale,
          Map<String, String> messages) throws DataException {
-      // TODO Auto-generated method stub
+     
       if (StringUtils.isEmpty(component)) {
          component = ConstantsFile.DEFAULT_COMPONENT;
       }
@@ -152,7 +150,7 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
       try {
          content = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(json);
       } catch (JsonProcessingException e) {
-         // TODO Auto-generated catch block
+        
          throw new DataException(
                ConstantsKeys.FATA_ERROR + "Failed to write content to file: " + filePath + ".", e);
       }
@@ -169,7 +167,7 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
    @Override
    public boolean delete(String productName, String version, String component, String locale)
          throws DataException {
-      // TODO Auto-generated method stub
+    
       return false;
    }
 
