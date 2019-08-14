@@ -1,23 +1,16 @@
 /**
- * 
- *
  * Copyright 2019 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
- *
- * 
- *
  */
 package com.vmware.vip.messages.data.dao.impl;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.amazonaws.services.s3.model.ListObjectsV2Result;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
@@ -38,12 +31,12 @@ public class S3ProductDaoImpl implements IProductDao {
 
    @Autowired
    private S3Config config;
+
    /**
     * get the compose list from S3 server
     */
    @Override
    public List<String> getComponentList(String productName, String version) throws DataException {
-  
       List<String> componentList = new ArrayList<String>();
       String filePathPrefix = S3Utils.genProductVersionS3Path(productName, version);
       ListObjectsV2Result result =
@@ -64,13 +57,12 @@ public class S3ProductDaoImpl implements IProductDao {
       }
       return componentList;
    }
-   
-  /**
-   * get locale list from S3 server
-   */
+
+   /**
+    * get locale list from S3 server
+    */
    @Override
    public List<String> getLocaleList(String productName, String version) throws DataException {
-      
       List<String> localeList = new ArrayList<String>();
       String filePathPrefix = S3Utils.genProductVersionS3Path(productName, version);
       ListObjectsV2Result result =
@@ -98,7 +90,6 @@ public class S3ProductDaoImpl implements IProductDao {
     */
    @Override
    public String getVersionInfo(String productName, String version) throws DataException {
-     
       String filePath =
             S3Utils.genProductVersionS3Path(productName, version) + ConstantsFile.VERSION_FILE;
       S3Object o = s3Client.getS3Client().getObject(config.getBucketName(), filePath);

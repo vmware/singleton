@@ -1,16 +1,12 @@
 /**
- * 
- *
  * Copyright 2019 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
- *
- * 
- *
  */
 package com.vmware.vip.messages.data.conf;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+
 /**
  * the configuration of the S3 client
  */
@@ -54,16 +50,19 @@ public class S3Config {
     */
    @Value("${s3.accessKey}")
    private String accessKey;
+
    /**
     * the s3 secret key
     */
-   @Value("${s3.secretkey}") 
+   @Value("${s3.secretkey}")
    private String secretkey;
+
    /**
     * the s3 region name
     */
    @Value("${s3.region}")
    private String s3Region;
+
    /**
     * the s3 buncket Name
     */
