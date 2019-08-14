@@ -43,7 +43,7 @@ public class S3ProductDaoImpl implements IProductDao {
     */
    @Override
    public List<String> getComponentList(String productName, String version) throws DataException {
-      // TODO Auto-generated method stub
+  
       List<String> componentList = new ArrayList<String>();
       String filePathPrefix = S3Utils.genProductVersionS3Path(productName, version);
       ListObjectsV2Result result =
@@ -70,8 +70,7 @@ public class S3ProductDaoImpl implements IProductDao {
    */
    @Override
    public List<String> getLocaleList(String productName, String version) throws DataException {
-      // TODO Auto-generated method stub
-
+      
       List<String> localeList = new ArrayList<String>();
       String filePathPrefix = S3Utils.genProductVersionS3Path(productName, version);
       ListObjectsV2Result result =
@@ -99,7 +98,7 @@ public class S3ProductDaoImpl implements IProductDao {
     */
    @Override
    public String getVersionInfo(String productName, String version) throws DataException {
-      // TODO Auto-generated method stub
+     
       String filePath =
             S3Utils.genProductVersionS3Path(productName, version) + ConstantsFile.VERSION_FILE;
       S3Object o = s3Client.getS3Client().getObject(config.getBucketName(), filePath);
