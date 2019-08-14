@@ -1,17 +1,11 @@
 /**
- * 
- *
  * Copyright 2019 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
- *
- * 
- *
  */
 package com.vmware.vip.messages.data.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.vmware.vip.common.constants.ConstantsChar;
@@ -25,9 +19,10 @@ public class S3Utils {
    public static final String S3FILE_SEPARATOR = "/";
    public static final String S3_L10N_BUNDLES_PATH =
          "l10n" + S3FILE_SEPARATOR + "bundles" + S3FILE_SEPARATOR;
-  /**
-   * generate the product version path
-   */
+
+   /**
+    * generate the product version path
+    */
    public static String genProductVersionS3Path(String productName, String version) {
       StringBuilder path = new StringBuilder();
       path.append(S3_L10N_BUNDLES_PATH);
@@ -40,7 +35,7 @@ public class S3Utils {
    }
 
    /**
-    *get the locale by message file name
+    * get the locale by message file name
     */
    public static String getLocaleByFileName(String fileName) {
       String locale = null;
@@ -75,6 +70,5 @@ public class S3Utils {
 
       }
    }
-
 
 }
