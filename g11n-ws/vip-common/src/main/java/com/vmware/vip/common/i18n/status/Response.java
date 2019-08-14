@@ -32,7 +32,9 @@ public class Response implements Serializable {
 	}
 
 	public void setServerTime(String serverTime) {
-		this.serverTime = serverTime;
+		this.serverTime = ""; 
+		// Removing timestamp so that response is consistent for the same request 
+		// and hash (etag) of the response does not change.
 	}
 
 	public Response() {
