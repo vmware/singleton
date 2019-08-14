@@ -4,7 +4,7 @@
  * Copyright 2019 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  *
- * @author shihu
+ *
  *
  */
 package com.vmware.vip.messages.data.dao.impl;
