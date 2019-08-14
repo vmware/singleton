@@ -39,6 +39,7 @@ public class S3MultComponentDaoImpl implements IMultComponentDao {
    @Override
    public List<String> get2JsonStrs(String productName, String version, List<String> components,
          List<String> locales) throws DataException {
+      
       logger.debug("begin get2JsonStrs");
       List<String> bundles = new ArrayList<>();
       if (components == null || locales == null) {

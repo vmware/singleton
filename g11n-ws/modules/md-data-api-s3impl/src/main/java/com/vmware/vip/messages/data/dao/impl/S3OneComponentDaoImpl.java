@@ -53,6 +53,7 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
    @Override
    public ResultI18Message get(String productName, String version, String component, String locale)
          throws DataException {
+      
       String jsonStr = get2JsonStr(productName, version, component, locale);
       ObjectMapper mapper = new ObjectMapper();
       ResultI18Message result = null;
@@ -91,7 +92,7 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
    @Override
    public String get2JsonStr(String productName, String version, String component, String locale)
          throws DataException {
-
+      
       String filePath = S3Utils.genProductVersionS3Path(productName, version) + component
             + S3Utils.S3FILE_SEPARATOR + ResourceFilePathGetter.getLocalizedJSONFileName(locale);
 
