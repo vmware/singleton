@@ -2,14 +2,19 @@
 
 ## Welcome
 
-Welcome ......
+Welcom to Singleton! Contributors are encouraged anytime and this guide helps contributors on environment setup and push changes to Singleton.
+
+Please contract us on email: singleton.io@outlook.com
 
 
 ## Getting Started
 
-### Fork Repository
+### Fork Repository and clone
 
 Contributors can only commit changes on fork repository, then open a pull request to Singleton repository, so please fork this repository first.
+
+Now, you can clone your forked repository to local with this command:
+git clone git@github.com:<git_account>/singleton.git
 
 ### Branch
 
@@ -23,8 +28,23 @@ We have sub projects in each branch:
 |   g11n-angular-client   | Singleton Angular 7 client code                                                                                 |
 |   devops                | CI and automation testing code, it is not a place to contribute code unless you want to add CI or test scripts. |
 
+Changes should be made on your own forked branch. PR should be rebased on top of one of above branches without multiple branches mixed into the PR. If your PR do not merge cleanly, use commands listed below to get it up to date.
 
-## Contribute flow
+```
+# upstream is the origin Singleton repository
+# origin is your forked repository under your github account
+
+cd $working_dir/singleton
+git checkout master
+git fetch upstream
+git merge upstream/master
+git push origin master
+```
+
+Accordingly, for each client please check out to the sub branch and push to remote sub branch.
+
+
+## Contribution flow
 
 ### Fork Repository
 
@@ -32,7 +52,7 @@ Go to https://github.com/vmware/singleton and click 'Fork' on top of page.
 
 ### Set Signature
 
-Set Signature in Github, refer https://help.github.com/en/articles/about-commit-signature-verification#gpg-commit-signature-verification
+Set Signature in Github, refer to https://help.github.com/en/articles/about-commit-signature-verification#gpg-commit-signature-verification, after done, please use command 'git commit -S' to add signature to your commit.
 
 ### Setup CI Pipeline
 Singleton uses Travis-ci as CI framework to help contributors to test their code change as early as possible. Some configurations need to be done to setup CI pipeline in your forked repository.
@@ -95,3 +115,22 @@ You can open a PR after you get pass result of CI pipeline. CI pipeline will run
 
 Please sync your fork repo with upstream repo before you create a PR, refer to https://help.github.com/en/articles/syncing-a-fork
 
+### Develop, Build and Test
+
+#### Singleton Service
+
+For Singleton service feature development, you can use IntelliJ IDEA or Eclipse to do development work and import the codes as gradle project. The coding style follow [JAVA style](https://petroware.no/javastyle.html).
+
+To build the code, you can use gradle's build task. After the build task is finished, you can find the build under the project '/build/libs/' path. Please refer to [singleton service guideline](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/developer_guide_service.md) for details.
+
+Unit test cases should be added to cover the new code.
+
+#### Singleton Client
+
+For each specific client, it depends on the programing lanunages to use the corresponding development tools, please follow the corresponding guidline.
+
+[Java client guideline](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/developer_guide_javaclient.md)
+
+[Angular  guideline](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/developer_guide_angular.md)
+
+[JS guideline](https://github.com/vmware/singleton/tree/master/g11n-ws/docs/developer_guide_js.md)
