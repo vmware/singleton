@@ -2,7 +2,9 @@
 
 ## Welcome
 
-Welcome ......
+Welcom to Singleton! Contributors are encouraged anytime and this guide helps contributors on environment setup and push changes to Singleton.
+
+Please contract us on email: singleton.io@outlook.com
 
 
 ## Getting Started
