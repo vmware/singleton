@@ -6,7 +6,6 @@ package com.vmware.vip.messages.data.conf;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-
 /**
  * the configuration of the S3 client
  */
