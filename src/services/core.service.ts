@@ -165,7 +165,7 @@ export class CoreService {
      * @param language
      */
     public loadTranslations(language: string): Promise<any> {
-        const cache = this.cacheManager.lookforTranslationByComponent(this.getComponent(), this.currentLanguage);
+        const cache = this.cacheManager.lookforTranslationByComponent(this.getComponent(), language);
         if (typeof cache !== 'undefined') {
             return Promise.resolve(cache);
         }
@@ -202,7 +202,7 @@ export class CoreService {
     }
 
     public loadPatterns(region: string, language: string) {
-        const cache = this.cacheManager.lookforPattern(this.currentLanguage, this.currentRegion);
+        const cache = this.cacheManager.lookforPattern(language, region);
         if (typeof cache !== 'undefined') {
             return Promise.resolve(cache);
         }
