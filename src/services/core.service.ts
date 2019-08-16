@@ -2,7 +2,7 @@
  * Copyright 2019 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
-import { Loader } from '../loader';
+import { Loader, HttpRequestOptions } from '../loader';
 import { Constants } from '../constants';
 import { CacheManager } from '../cache';
 import { isDefined, resolveLanguageTag, assign } from '../utils';
@@ -15,6 +15,7 @@ import { Configuration, getDefaultConfig } from '../configuration';
 export class CoreService {
 
     private config: Configuration;
+    private httpOptions: HttpRequestOptions;
     private currentRegion: string;
     private currentLanguage: string;
     private cacheManager: CacheManager;
@@ -32,6 +33,7 @@ export class CoreService {
         this.config.sourceBundle = this.resetSourceBundle();
         this.currentLanguage = vipConfig.language;
         this.currentRegion = vipConfig.region;
+        this.httpOptions = vipConfig.httpOptions;
     }
 
     /**
@@ -170,7 +172,7 @@ export class CoreService {
             return Promise.resolve(cache);
         }
         const componentTransUrl = this.getComponentTransUrl(language);
-        const promise = this.coreLoader.getI18nResource(componentTransUrl, this.config.timeout);
+        const promise = this.coreLoader.getI18nResource(componentTransUrl, this.httpOptions);
         return promise.then(
             (result: any) => {
                 const translations = this.resParser.getTranslations(result);
@@ -208,7 +210,7 @@ export class CoreService {
         }
         if (!this.config.i18nScope || this.config.i18nScope.length < 1) { return; }
         const url = this.getPatternUrl(region, language);
-        const getPatternPromise = this.coreLoader.getI18nResource(url, this.config.timeout);
+        const getPatternPromise = this.coreLoader.getI18nResource(url, this.httpOptions);
         return getPatternPromise.then(
             (result: any) => {
                 const patterns = this.resParser.getPatterns(result);
@@ -231,7 +233,7 @@ export class CoreService {
 
     public getSupportedLanguages(displayLang?: string): Promise<any> {
         const requestUrl = this.getSupportedLanguagesUrl(displayLang);
-        const promise = this.coreLoader.getI18nResource(requestUrl, this.config.timeout).then((result: any) => {
+        const promise = this.coreLoader.getI18nResource(requestUrl, this.httpOptions).then((result: any) => {
             const languages = this.resParser.getSupportedLanguages(result);
             return languages;
         }).catch((err: any) => {
@@ -253,7 +255,7 @@ export class CoreService {
             throw ParamaterError('CoreService', 'language');
         }
         const supportedRegionsUrl = this.getSupportedRegionsUrl(language);
-        const promise = this.coreLoader.getI18nResource(supportedRegionsUrl, this.config.timeout).then((result: any) => {
+        const promise = this.coreLoader.getI18nResource(supportedRegionsUrl, this.httpOptions).then((result: any) => {
             const regions = this.resParser.getSupportedRegions(result);
             return regions;
         }).catch((err: any) => {
