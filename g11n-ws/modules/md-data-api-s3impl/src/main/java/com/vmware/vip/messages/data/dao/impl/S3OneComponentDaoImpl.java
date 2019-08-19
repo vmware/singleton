@@ -132,14 +132,11 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
          content = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(json);
       } catch (JsonProcessingException e) {
          throw new DataException(
-               ConstantsKeys.FATA_ERROR + "Failed to write content to file: " + filePath + ".", e);
+               ConstantsKeys.FATA_ERROR + "Failed to convert content to file: " + filePath + ".", e);
       }
       PutObjectResult putResult =
             s3Client.getS3Client().putObject(config.getBucketName(), filePath, content);
-      if (putResult != null) {
-         return true;
-      }
-      return false;
+      return (putResult != null);
    }
 
    @Override
