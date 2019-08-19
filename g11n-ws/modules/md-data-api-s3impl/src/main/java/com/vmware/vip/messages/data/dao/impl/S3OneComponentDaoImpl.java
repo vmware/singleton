@@ -92,7 +92,6 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
             try {
                result = S3Utils.S3Obj2Str(o);
             } catch (IOException e) {
-
                logger.warn(e.getMessage(), e);
                throw new DataException("S3File is not existing: " + filePath);
             }

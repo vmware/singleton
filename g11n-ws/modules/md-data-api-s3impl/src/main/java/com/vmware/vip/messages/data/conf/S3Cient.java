@@ -15,7 +15,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.GetBucketLocationRequest;
 /**
- * the class use to init the
+ * the class use S3 configurations to initialize S3 client environment
  */
 @Configuration
 public class S3Cient {
@@ -26,7 +26,7 @@ public class S3Cient {
    private AmazonS3 s3Client;
 
    /**
-    * initial the the S3 client environment
+    * initialize the the S3 client environment
     */
    @PostConstruct
    private void init() {

@@ -46,7 +46,7 @@ public class S3MultComponentDaoImpl implements IMultComponentDao {
    }
 
    /**
-    * get the bundle files convert to ResultI18Message
+    * get the bundle files and convert to ResultI18Message
     */
    @Override
    public List<ResultI18Message> get(String productName, String version, List<String> components,
