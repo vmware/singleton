@@ -65,7 +65,7 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
       } catch (IOException e) {
          String errorLog = ConstantsKeys.FATA_ERROR + e.getMessage();
          logger.error(errorLog, e);
-         throw new DataException(S3_NOT_EXIST_STR);
+         throw new DataException("File's name doesn't exist!");
       }
       if (result != null) {
          result.setProduct(productName);
