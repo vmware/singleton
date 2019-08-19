@@ -64,12 +64,13 @@ sourceSets {
   test {
     java {
       srcDir 'src/test/java'
-      output.classesDir   = 'build/classes/test'
     }
+    java.outputDir   = file('build/classes/test')
     resources {
       srcDir 'src/test/resources'
-      output.resourcesDir = 'build/classes/test'
+      srcDir 'src/main/resources'
     }
+    output.resourcesDir = file('build/classes/test')  
   }
 }
 
