@@ -1,8 +1,10 @@
-# Contributring to Singleton
+# Contributing to Singleton
 
 ## Welcome
 
-Welcome ......
+Welcome to Singleton! Contributors are encouraged anytime and this guide helps contributors on environment setup and push changes to Singleton.
+
+Please contact us on email: singleton.io@outlook.com
 
 
 ## Getting Started
@@ -50,7 +52,7 @@ Go to https://github.com/vmware/singleton and click 'Fork' on top of page.
 
 ### Set Signature
 
-Set Signature in Github, refer https://help.github.com/en/articles/about-commit-signature-verification#gpg-commit-signature-verification
+Set Signature in Github, refer to https://help.github.com/en/articles/about-commit-signature-verification#gpg-commit-signature-verification, after done, please use command 'git commit -S' to add signature to your commit.
 
 ### Setup CI Pipeline
 Singleton uses Travis-ci as CI framework to help contributors to test their code change as early as possible. Some configurations need to be done to setup CI pipeline in your forked repository.
