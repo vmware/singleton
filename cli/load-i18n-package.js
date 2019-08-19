@@ -5,13 +5,11 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
-const superagent = require('superagent');
 const ArgumentParser = require('argparse').ArgumentParser;
 const path = require('path');
 const fs = require('fs');
 const { LogService } = require('./utils');
 const { VIPConfig, VIPService } = require("./vip");
-
 
 class LoadI18nPackage {
     constructor(vipConfig, vipService, logger, languages, directory) {
@@ -23,26 +21,24 @@ class LoadI18nPackage {
         this.logger.debug('Current languages are ', this.languages);
     };
     generatePackage(packagePath, data) {
-        let that = this;
         this.mkDirByPath(path.dirname(packagePath), this.logger);
-        fs.writeFile(packagePath, JSON.stringify(data, null, 2), 'utf-8', function (error) {
+        fs.writeFile(packagePath, JSON.stringify(data, null, 2), 'utf-8', (error) => {
             if (error) {
-                that.logger.error(`got an error when write file to ${packagePath}`, error);
+                this.logger.error(`got an error when write file to ${packagePath}`, error);
                 return;
             }
-            that.logger.info(`Succeed write data to ${packagePath}`);
+            this.logger.info(`Succeed write data to ${packagePath}`);
         });
     }
     mkDirByPath(absolutePath) {
         const sep = path.sep;
-        let that = this;
-        return absolutePath.split(sep).reduce(function (parentDir, childDir) {
+        return absolutePath.split(sep).reduce( (parentDir, childDir) => {
             const currentDir = path.resolve(parentDir, childDir);
             try {
                 fs.mkdirSync(currentDir);
             } catch (error) {
                 if (error.code === 'EEXIST') {
-                    that.logger.debug('directory is exist, skip', currentDir);
+                    this.logger.debug('directory is exist, skip', currentDir);
                     return currentDir;
                 }
                 if (error.code === 'ENOENT') { // Throw the original parentDir error on currentDir `ENOENT` failure.
@@ -66,30 +62,28 @@ class LoadI18nPackage {
         return languages.split(',');
     }
     generateTranslationBundles() {
-        var that = this;
-        var promise = new Promise(function (resolve, reject) {
+        var promise = new Promise((resolve, reject) => {
             try {
-                let languages = that.languages;
+                let languages = this.languages;
                 for (let lang of languages) {
                     // load translations
-                    let translationPromise = that.vipService.loadTranslation(lang);
-                    translationPromise.then(function ({ body }) {
-                        let { response } = body;
-                        if (response.code === 200) {
-                            let translationPath = path.resolve(that.directory, `${that.vipConfig.TRANSLATION_PREFIX + lang}.json`);
-                            that.generatePackage(translationPath, body);
+                    let translationPromise = this.vipService.loadTranslation(lang);
+                    translationPromise.then((response) => {
+                        if (response.status === 200) {
+                            let translationPath = path.resolve(this.directory, `${this.vipConfig.TRANSLATION_PREFIX + lang}.json`);
+                            this.generatePackage(translationPath, response.data);
                         } else {
-                            that.logger.error('cannot got translation due to ', response.message);
+                            this.logger.error('cannot got translation due to ', response.message);
                         }
-                    }).catch(function (e) {
-                        that.logger.debug('loadTranslation got an error with lang %s', lang);
-                        that.logger.error('loadTranslation got an error ', e);
+                    }).catch((e) => {
+                        this.logger.debug('loadTranslation got an error with lang %s', lang);
+                        this.logger.error('loadTranslation got an error ', e);
                     });
                     resolve(languages);
                 }
             } catch (error) {
                 reject(error);
-                that.logger.error('generateTranslationBundles got an error ', e);
+                this.logger.error('generateTranslationBundles got an error ', e);
             }
         });
         return promise;
