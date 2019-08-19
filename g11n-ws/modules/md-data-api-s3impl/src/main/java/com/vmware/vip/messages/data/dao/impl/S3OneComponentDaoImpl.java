@@ -27,7 +27,6 @@ import com.vmware.vip.messages.data.dao.api.IOneComponentDao;
 import com.vmware.vip.messages.data.dao.exception.DataException;
 import com.vmware.vip.messages.data.dao.model.ResultI18Message;
 import com.vmware.vip.messages.data.util.S3Utils;
-
 /**
  * This java class is used to handle translation bundle file or translation
  */
@@ -40,10 +39,12 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
    @Autowired
    private S3Config config;
 
+   private static final String S3_NOT_EXIST_STR="S3 File is not existing: ";
+   
    private static Logger logger = LoggerFactory.getLogger(S3OneComponentDaoImpl.class);
 
    /**
-    * get one compose bundle files from s3 server and convert to ResultI18Message Object
+    * get one component bundle files from s3 server and convert to ResultI18Message Object
     */
    @Override
    public ResultI18Message get(String productName, String version, String component, String locale)
@@ -60,11 +61,11 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
       } catch (JsonMappingException e) {
          String errorLog = ConstantsKeys.FATA_ERROR + e.getMessage();
          logger.error(errorLog, e);
-         throw new DataException("File is not existing: ");
+         throw new DataException(S3_NOT_EXIST_STR);
       } catch (IOException e) {
          String errorLog = ConstantsKeys.FATA_ERROR + e.getMessage();
          logger.error(errorLog, e);
-         throw new DataException("File is not existing: ");
+         throw new DataException(S3_NOT_EXIST_STR);
       }
       if (result != null) {
          result.setProduct(productName);
@@ -72,13 +73,13 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
          result.setComponent(component);
          result.setLocale(locale);
       } else {
-         throw new DataException("File is not existing: ");
+         throw new DataException(S3_NOT_EXIST_STR);
       }
       return result;
    }
 
    /**
-    * get one compose bundle files from s3 server as json String
+    * get one component bundle files from s3 server as json String
     */
    @Override
    public String get2JsonStr(String productName, String version, String component, String locale)
@@ -93,14 +94,14 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
                result = S3Utils.S3Obj2Str(o);
             } catch (IOException e) {
                logger.warn(e.getMessage(), e);
-               throw new DataException("S3File is not existing: " + filePath);
+               throw new DataException(S3_NOT_EXIST_STR+ filePath);
             }
          } else {
-            throw new DataException("S3 File is not existing: " + filePath);
+            throw new DataException(S3_NOT_EXIST_STR + filePath);
          }
       }
       if (result == null) {
-         throw new DataException("S3 File is not existing: " + filePath);
+         throw new DataException(S3_NOT_EXIST_STR + filePath);
       }
       return result;
    }
@@ -112,7 +113,7 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
    }
 
    /**
-    * update the compose bundle file to remote S3 server
+    * update the component bundle file to remote S3 server
     */
    @Override
    public boolean update(String productName, String version, String component, String locale,

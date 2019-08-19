@@ -21,6 +21,9 @@ import com.vmware.vip.messages.data.dao.api.IProductDao;
 import com.vmware.vip.messages.data.dao.exception.DataException;
 import com.vmware.vip.messages.data.util.S3Utils;
 
+/**
+ * this class use to get the properties of a version bundle files
+ */
 @Repository
 public class S3ProductDaoImpl implements IProductDao {
 
