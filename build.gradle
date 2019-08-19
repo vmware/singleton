@@ -64,7 +64,6 @@ sourceSets {
   test {
     java {
       srcDir 'src/test/java'
-      output.classesDir   = 'build/classes/test'
     }
     java.outputDir   = file('build/classes/test')
     resources {
