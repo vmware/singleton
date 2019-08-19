@@ -6,6 +6,7 @@ package com.vmware.vip.messages.data.dao.pgimpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -83,4 +84,9 @@ public class PgProductApiImpl implements IProductDao {
 		return "";
 	}
 
+	@Override
+	public Map<String, String[]> getProductsAndVersions() throws DataException {
+		// TODO implement it for DB build
+		return null;
+	}
 }

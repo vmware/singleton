@@ -5,6 +5,7 @@
 package com.vmware.vip.core.messages.service.product;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import com.vmware.vip.messages.data.exception.BundleException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
@@ -298,4 +300,33 @@ public class ProductService implements IProductService {
 		return getSupportedLocaleList(productName, version);
 	}
 
+	/**
+	 * cached map with product list and version list
+	 */
+	private  static final Map<String, String[]> MAP_PRODUCTS_VERSIONS = new HashMap<>();
+
+	/**
+	 * a flag to remember the cache MAP_PRODUCTS_VERSIONS initialized status
+	 */
+	private  static int INIT_PRODUCTS_VERSIONS = -1;
+
+	/**
+	 * get product list and version list from cache, if not existing then look from bundle or db
+	 * @return
+	 * @throws L3APIException
+	 */
+	public synchronized Map<String, String[]> getProductsAndVersions() throws L3APIException {
+		if (INIT_PRODUCTS_VERSIONS == 1) {
+			return MAP_PRODUCTS_VERSIONS;
+		} else {
+			try {
+				Map<String, String[]> m = productdao.getProductsAndVersions();
+				MAP_PRODUCTS_VERSIONS.putAll(m);
+				INIT_PRODUCTS_VERSIONS = 1;
+				return MAP_PRODUCTS_VERSIONS;
+			} catch (DataException e) {
+				throw new L3APIException("Failed to product list and version list.", e);
+			}
+		}
+	}
 }

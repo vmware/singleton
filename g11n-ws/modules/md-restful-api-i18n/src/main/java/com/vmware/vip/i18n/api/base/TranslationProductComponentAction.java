@@ -11,6 +11,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.vmware.vip.core.messages.exception.L3APIException;
+import com.vmware.vip.core.messages.service.product.ProductService;
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +51,7 @@ public class TranslationProductComponentAction extends BaseAction {
 		ComponentMessagesDTO c = new ComponentMessagesDTO();
 		c.setProductName(productName);
 		c.setComponent(component == null ? ConstantsKeys.DEFAULT : component);
-		c.setVersion(version);
+		c.setVersion(this.getClosestVersion(productName, version));
 		if (new Boolean(pseudo)) {
 			c.setLocale(ConstantsKeys.LATEST);
 		} else {
@@ -180,5 +182,41 @@ public class TranslationProductComponentAction extends BaseAction {
 						en);
 		}
 		return m;
-	}	
+	}
+
+	/**
+	 * get the closet version from the version list, if no matched version then return input version.
+	 *
+	 * @param productName
+	 * @param version
+	 * @return
+	 */
+	private String getClosestVersion(String productName, String version) {
+		int targetVersion = new Integer(version.replace(".", "")).intValue();;
+		Map<String, String[]> productsAndVersions = null;
+		try {
+			productsAndVersions = productService.getProductsAndVersions();
+		} catch (L3APIException e) {
+			e.printStackTrace();
+		}
+		int closeVersion = 0;
+		String closeVersionStr = "";
+		if(productsAndVersions != null && !productsAndVersions.isEmpty()) {
+			String[] versionList = productsAndVersions.get(productName);
+			if(versionList != null && versionList.length > 0) {
+				for(String s : versionList) {
+					int sourceVersion = new Integer(s.replace(".", "")).intValue();
+					if(sourceVersion <= targetVersion && sourceVersion > closeVersion) {
+						closeVersion =sourceVersion;
+						closeVersionStr = s;
+					}
+				}
+			}
+		}
+		if(!StringUtils.isEmpty(closeVersionStr)) {
+			return closeVersionStr;
+		} else {
+			return Integer.toString(closeVersion);
+		}
+	}
 }

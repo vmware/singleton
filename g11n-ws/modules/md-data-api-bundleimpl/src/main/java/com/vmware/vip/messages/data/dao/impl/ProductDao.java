@@ -6,7 +6,9 @@ package com.vmware.vip.messages.data.dao.impl;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -123,5 +125,32 @@ public class ProductDao implements IProductDao {
 
 		return result;
 
+	}
+
+	/**
+	 * get all products and versions as map with the product as key and with its versions as value
+	 *
+	 * @return
+	 * @throws BundleException
+	 */
+	public Map<String, String[]> getProductsAndVersions() throws BundleException {
+		Map<String, String[]> productsAndVersions = new HashMap<>();
+		String basePath = bundleConfig.getBasePathWithSeparator() + ConstantsFile.L10N_BUNDLES_PATH;
+		File ff = new File("");
+		String aa = ff.getAbsolutePath();
+		File file = new File(basePath);
+		if (file.exists() && file.isDirectory()) {
+			File[] productFolders = file.listFiles();
+			for (File folder : productFolders) {
+				if (folder.isDirectory()) {
+					String productName = folder.getName();
+					String[] versions = folder.list();
+					productsAndVersions.put(productName, versions);
+				}
+			}
+		} else {
+			throw new BundleException("The file is not existing: " + basePath);
+		}
+		return productsAndVersions;
 	}
 }
