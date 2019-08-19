@@ -152,8 +152,9 @@ public class TranslationMessageTest extends BaseTestClass {
         Assert.assertEquals(message_de, retMap2.get(key));
 
         Map<String, String> retMap3 = translation.getStrings(Locale.forLanguageTag("zh-Hans"), component);
-        logger.debug(retMap3.get(key));
-        logger.debug(message_zh_CN);
+        System.out.println(retMap3.get(key));
+        System.out.println(message_zh_CN);
+        System.out.println(retMap3.get(key).equals(message_zh_CN));
         Assert.assertEquals(message_zh_CN, retMap3.get(key));
 
         Map<String, String> retMap4 = translation.getStrings(Locale.forLanguageTag("zh-Hant"), component);
@@ -199,7 +200,7 @@ public class TranslationMessageTest extends BaseTestClass {
     	sources.add(jo3);
     	Assert.assertTrue(translation.postStrings(locale, component1, sources));
     	List<JSONObject > sources2 = new ArrayList<JSONObject>();
-    	logger.debug(sources2.toString());
+    	System.out.println(sources2.toString());
     	Assert.assertFalse(translation.postStrings(locale, component1, sources2));
     }
 
@@ -232,7 +233,7 @@ public class TranslationMessageTest extends BaseTestClass {
 		vc.setCollectSource(existing_collect);
 
 		String expected = "@@Operator 'aaa' 不支持 for property ' bbb '@@";
-		logger.debug("enTrans1: "+enTrans1);
+		System.out.println("enTrans1: "+enTrans1);
 		Assert.assertArrayEquals(new Object[]{expected}, new Object[]{enTrans1});
 	}
 
@@ -255,7 +256,7 @@ public class TranslationMessageTest extends BaseTestClass {
 		vc.setPseudo(existing_pseudo);
 		vc.setCollectSource(existing_collect);
 		
-		logger.debug("pseudoTrans1: "+pseudoTrans1);
+		System.out.println("pseudoTrans1: "+pseudoTrans1);
 		Assert.assertArrayEquals(new Object[]{expected}, new Object[]{pseudoTrans1});
 	}
 
@@ -356,7 +357,7 @@ public class TranslationMessageTest extends BaseTestClass {
 		
 		vc.setPseudo(existing_pseudo);
 		
-		logger.debug("pseudoTrans1: "+pseudoTrans1);
+		System.out.println("pseudoTrans1: "+pseudoTrans1);
 		Assert.assertEquals(expected, pseudoTrans1);
 	}
 }

@@ -16,7 +16,7 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.l2.text.PluralFormat;
 
-public class PluralFormatTest extends BaseTestClass {
+public class PluralFormatTest {
 
 	public PluralFormatTest() {
 		// TODO Auto-generated constructor stub

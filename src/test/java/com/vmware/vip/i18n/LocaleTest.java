@@ -21,7 +21,7 @@ import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.instances.LocaleMessage;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 
-public class LocaleTest extends BaseTestClass {
+public class LocaleTest {
 	LocaleMessage localeI18n;
 
 	@Before
@@ -63,7 +63,7 @@ public class LocaleTest extends BaseTestClass {
 					Arrays.asList(supportedLocales), testLocales[i])
 					.toLanguageTag();
 			
-			logger.debug(matchedLanguageTag + "-----" + expectedLocales[i]);
+			System.out.println(matchedLanguageTag + "-----" + expectedLocales[i]);
 			Assert.assertEquals(expectedLocales[i], matchedLanguageTag);
 		}
 	}

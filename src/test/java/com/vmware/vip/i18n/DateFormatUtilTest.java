@@ -16,7 +16,7 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.instances.DateFormatting;
 
-public class DateFormatUtilTest extends BaseTestClass {
+public class DateFormatUtilTest {
 	DateFormatting dateFormatI18n;
 
 	@Before

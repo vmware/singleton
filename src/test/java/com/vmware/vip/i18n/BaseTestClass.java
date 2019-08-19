@@ -30,12 +30,12 @@ public class BaseTestClass {
 
 		@Override
 		protected void failed(Throwable e, Description description) {
-			logger.error(description.getMethodName()+" Failed.", e);
+			logger.error(description.getDisplayName() + " " + e.getClass().getSimpleName());
 		}
 
 		@Override
 		protected void starting(Description description) {
-			logger.info("Starting test: " + description.getMethodName());
+			logger.info("Strating test: " + description.getMethodName());
 		}
 	};
 	

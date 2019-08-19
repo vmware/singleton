@@ -17,7 +17,7 @@ import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.CacheService;
 
-public class MessageCacheTest1 extends BaseTestClass {
+public class MessageCacheTest1 {
 
 	private CacheService cacheService;
 
@@ -69,7 +69,7 @@ public class MessageCacheTest1 extends BaseTestClass {
 		VIPCfg.getInstance().getCacheManager().clearCache();
 		Map<String, String> messageMap3 = cacheService
 				.getCacheOfComponent();
-		Assert.assertNull(messageMap3);
+		Assert.assertTrue(messageMap3==null);
 	}
 	
 	@Test
@@ -81,7 +81,7 @@ public class MessageCacheTest1 extends BaseTestClass {
 		Map<String, String> mp = cacheService.getCacheOfComponent();
 		Assert.assertEquals("@zh_CN@book", mp.get("book"));
 		VIPCfg.getInstance().getCacheManager().clearCache();
-		Assert.assertNull(cacheService.getCacheOfComponent());
+		Assert.assertTrue(cacheService.getCacheOfComponent() == null);
 	}
 	
 	@SuppressWarnings({ "static-access", "rawtypes", "unchecked"})
@@ -103,7 +103,7 @@ public class MessageCacheTest1 extends BaseTestClass {
 		try {
 			Thread.sleep(expired + 10000);
 			Map cachedData2 = (Map)gc.getCacheManager().getCache(VIPCfg.CACHE_L3).get(cachedKey);
-			Assert.assertNull(cachedData2);			
+			Assert.assertTrue(cachedData2 == null);			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

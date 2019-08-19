@@ -12,7 +12,7 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.formats.DateFormat;
 import com.vmware.vipclient.i18n.formats.NumberFormat;
 
-public class FormatTest extends BaseTestClass {
+public class FormatTest {
 	final String locale = "zh_CN";
 	
 	@Before
