@@ -67,8 +67,8 @@ sourceSets {
     }
     java.outputDir   = file('build/classes/test')
     resources {
-      srcDir 'src/test/resources'
       srcDir 'src/main/resources'
+      srcDir 'src/test/resources'
     }
     output.resourcesDir = file('build/classes/test')  
   }
