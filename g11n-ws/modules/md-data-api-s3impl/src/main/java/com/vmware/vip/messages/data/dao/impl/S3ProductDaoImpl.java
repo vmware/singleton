@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.amazonaws.services.s3.model.ListObjectsV2Result;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
+import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.messages.data.conf.S3Cient;
 import com.vmware.vip.messages.data.conf.S3Config;
@@ -53,7 +54,7 @@ public class S3ProductDaoImpl implements IProductDao {
       }
       for (S3ObjectSummary s3os : objects) {
          String resultKey =
-               (s3os.getKey().replace(filePathPrefix, "")).split(S3Utils.S3FILE_SEPARATOR)[0];
+               (s3os.getKey().replace(filePathPrefix, "")).split(ConstantsChar.BACKSLASH)[0];
          if (!componentList.contains(resultKey)) {
             componentList.add(resultKey);
          }
@@ -79,7 +80,7 @@ public class S3ProductDaoImpl implements IProductDao {
       }
       for (S3ObjectSummary s3os : objects) {
          String resultKey =
-               (s3os.getKey().replace(filePathPrefix, "")).split(S3Utils.S3FILE_SEPARATOR)[1];
+               (s3os.getKey().replace(filePathPrefix, "")).split(ConstantsChar.BACKSLASH)[1];
          String localeKey = S3Utils.getLocaleByFileName(resultKey);
          if (!localeList.contains(localeKey)) {
             localeList.add(localeKey);

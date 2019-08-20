@@ -16,9 +16,8 @@ public class S3Utils {
    private S3Utils() {
    }
 
-   public static final String S3FILE_SEPARATOR = "/";
    public static final String S3_L10N_BUNDLES_PATH =
-         "l10n" + S3FILE_SEPARATOR + "bundles" + S3FILE_SEPARATOR;
+         "l10n" + ConstantsChar.BACKSLASH + "bundles" + ConstantsChar.BACKSLASH;
 
    /**
     * generate the product version path
@@ -27,9 +26,9 @@ public class S3Utils {
       StringBuilder path = new StringBuilder();
       path.append(S3_L10N_BUNDLES_PATH);
       path.append(productName);
-      path.append(S3FILE_SEPARATOR);
+      path.append(ConstantsChar.BACKSLASH);
       path.append(version);
-      path.append(S3FILE_SEPARATOR);
+      path.append(ConstantsChar.BACKSLASH);
       return path.toString();
 
    }

@@ -16,6 +16,7 @@ import com.amazonaws.services.s3.model.PutObjectResult;
 import com.amazonaws.services.s3.model.S3Object;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.i18n.resourcefile.ResourceFilePathGetter;
@@ -76,7 +77,7 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
    public String get2JsonStr(String productName, String version, String component, String locale)
          throws DataException {
       String filePath = S3Utils.genProductVersionS3Path(productName, version) + component
-            + S3Utils.S3FILE_SEPARATOR + ResourceFilePathGetter.getLocalizedJSONFileName(locale);
+            + ConstantsChar.BACKSLASH + ResourceFilePathGetter.getLocalizedJSONFileName(locale);
       String result = null;
       if (s3Client.getS3Client().doesObjectExist(config.getBucketName(), filePath)) {
          S3Object o = s3Client.getS3Client().getObject(config.getBucketName(), filePath);
@@ -113,7 +114,7 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
          component = ConstantsFile.DEFAULT_COMPONENT;
       }
       String filePath = S3Utils.genProductVersionS3Path(productName, version) + component
-            + S3Utils.S3FILE_SEPARATOR + ResourceFilePathGetter.getLocalizedJSONFileName(locale);
+            + ConstantsChar.BACKSLASH + ResourceFilePathGetter.getLocalizedJSONFileName(locale);
       Map<String, Object> json = new HashMap<String, Object>();
       json.put(ConstantsKeys.COMPONENT, component);
       json.put(ConstantsKeys.lOCALE, locale);
