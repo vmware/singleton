@@ -14,9 +14,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 import com.amazonaws.services.s3.model.PutObjectResult;
 import com.amazonaws.services.s3.model.S3Object;
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.constants.ConstantsKeys;
@@ -55,14 +53,6 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
       ResultI18Message result = null;
       try {
          result = mapper.readValue(jsonStr, ResultI18Message.class);
-      } catch (JsonParseException e) {
-         String errorLog = ConstantsKeys.FATA_ERROR + e.getMessage();
-         logger.error(errorLog, e);
-         throw new DataException(e.getMessage());
-      } catch (JsonMappingException e) {
-         String errorLog = ConstantsKeys.FATA_ERROR + e.getMessage();
-         logger.error(errorLog, e);
-         throw new DataException(S3_NOT_EXIST_ERR);
       } catch (IOException e) {
          String errorLog = ConstantsKeys.FATA_ERROR + e.getMessage();
          logger.error(errorLog, e);
@@ -92,7 +82,7 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
          S3Object o = s3Client.getS3Client().getObject(config.getBucketName(), filePath);
          if (o != null) {
             try {
-               result = S3Utils.S3Obj2Str(o);
+               result = S3Utils.convertS3Obj2Str(o);
             } catch (IOException e) {
                logger.warn(e.getMessage(), e);
                throw new DataException(S3_NOT_EXIST_STR+ filePath);

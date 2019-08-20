@@ -23,19 +23,19 @@ public class S3Cient {
    @Autowired
    private S3Config config;
 
-   private AmazonS3 s3Client;
+   private static AmazonS3 s3Client;
 
    /**
     * initialize the the S3 client environment
     */
    @PostConstruct
    private void init() {
-      this.s3Client = AmazonS3ClientBuilder.standard()
+      s3Client = AmazonS3ClientBuilder.standard()
             .withCredentials(new AWSStaticCredentialsProvider(
                   new BasicAWSCredentials(config.getAccessKey(), config.getSecretkey())))
             .withRegion(config.getS3Region()).enablePathStyleAccess().build();
-      if (!this.s3Client.doesBucketExistV2(config.getBucketName())) {
-         this.s3Client.createBucket(config.getBucketName());
+      if (!s3Client.doesBucketExistV2(config.getBucketName())) {
+         s3Client.createBucket(config.getBucketName());
          // Verify that the bucket was created by retrieving it and checking its location.
          String bucketLocation =
                s3Client.getBucketLocation(new GetBucketLocationRequest(config.getBucketName()));

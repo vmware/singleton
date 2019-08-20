@@ -99,7 +99,7 @@ public class S3ProductDaoImpl implements IProductDao {
       String result = null;
       if (o != null) {
          try {
-            result = S3Utils.S3Obj2Str(o);
+            result = S3Utils.convertS3Obj2Str(o);
          } catch (IOException e) {
             logger.warn(e.getMessage(), e);
             throw new DataException("File is not existing: " + filePath);

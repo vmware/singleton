@@ -54,7 +54,7 @@ public class S3Utils {
    /**
     * convert the S3 Object to String
     */
-   public static String S3Obj2Str(S3Object s3Obj) throws IOException {
+   public static String convertS3Obj2Str(S3Object s3Obj) throws IOException {
       S3ObjectInputStream s3is = s3Obj.getObjectContent();
       ByteArrayOutputStream fos = new ByteArrayOutputStream();
       byte[] read_buf = new byte[1024];
@@ -63,7 +63,7 @@ public class S3Utils {
          while ((read_len = s3is.read(read_buf)) > 0) {
             fos.write(read_buf, 0, read_len);
          }
-         return fos.toString("UTF-8");
+         return fos.toString(ConstantsUnicode.UTF8);
       } finally {
          s3is.close();
          fos.close();
