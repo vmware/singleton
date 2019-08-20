@@ -23,7 +23,7 @@ public class S3Cient {
    @Autowired
    private S3Config config;
 
-   private static AmazonS3 s3Client;
+   private AmazonS3 s3Client;
 
    /**
     * initialize the the S3 client environment
