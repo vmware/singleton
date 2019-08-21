@@ -2,9 +2,9 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+archivesBaseName = 'md-data-api-s3impl'
 
 sourceCompatibility = 1.8
-
 
 buildscript {
 	repositories {
@@ -22,12 +22,9 @@ apply plugin: "jacoco"
 
 jar {
     manifest {
-        attributes 'Implementation-Title': 'Gradle Quickstart',
+        attributes 'Implementation-Title': 'md-data-api-s3impl',
                    'Implementation-Version': version
     }
-   from('src/main/java') {
-      include '**/*.properties'
-   }
 }
 
 repositories {
@@ -35,33 +32,22 @@ repositories {
 }
 
 dependencies {
-
-    if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
-        compile project(":md-data-api-pgimpl")
-    }else if (project.hasProperty('datatype') && project.getProperty('datatype') == 's3') {
-        compile project(":md-data-api-s3impl")
-    }else {
-        compile project(":md-data-api-bundleimpl")
-    }
-    compile project(":md-data-api-mt")
     compile project(":md-data-api")
-    compile project(":vip-common")
-    compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final")
-    compile "org.springframework.boot:spring-boot"
-    compile('org.springframework.boot:spring-boot-autoconfigure')
+	compile project(":vip-common")
+    compile group: 'org.springframework.boot', name: 'spring-boot'
+    compile group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.11.550'
 }
-
 bootJar {
   enabled = false
 }
 jar {
-  enabled = true
+	enabled = true
 }
+
 
 test {
     systemProperties 'property': 'value'
 }
-
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
