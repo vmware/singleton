@@ -101,8 +101,9 @@ export class VIPLoader implements I18nLoader {
         const url = this.getSupportedRegionsUrl(language, conf.host);
         return this.getRequest(url, conf.timeout, (res: Object) => this.responseParser.ParseSupportedRegionsData(res));
     }
+
     /**
-     * Get request.
+     * Fetch I18N resource from backend service through get request.
      * @param url request url.
      * @param timeout default value is 3000ms, timeoutWith default value is 0ms.
      * @param fn a callback function that is executed after the request is completed.
@@ -121,7 +122,7 @@ export class VIPLoader implements I18nLoader {
     }
 
     /**
-     * Post request.
+     * Fetch I18N resource from backend service through post request.
      * @param url request url.
      * @param vipRequestBody parameters
      * @param timeout default value is 3000ms, timeoutWith default value is 0ms.
