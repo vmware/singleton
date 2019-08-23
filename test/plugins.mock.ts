@@ -2,7 +2,7 @@
  * Copyright 2019 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
-import { Loader, ResponseParser } from '../index';
+import { Loader, ResponseParser, HttpRequestOptions } from '../index';
 export const mockResponse = {
     trans: {
         test: 'testing string'
@@ -28,7 +28,7 @@ export const mockResponse = {
     }
 };
 export class CustomLoader extends Loader {
-    getI18nResource(url: string, timeout: number): Promise<any> {
+    getI18nResource(url: string, options: HttpRequestOptions): Promise<any> {
         if ( url.indexOf( '/components/' ) !== -1 ) {
             return new Promise((resolve ) => {
                 resolve( mockResponse.trans);
