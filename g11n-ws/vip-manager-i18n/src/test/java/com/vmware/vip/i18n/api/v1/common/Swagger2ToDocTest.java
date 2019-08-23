@@ -48,7 +48,7 @@ public class Swagger2ToDocTest {
 	private String baseOutputDir = "src/docs/asciidoc";
 	private String outputDirV1 = "src/docs/asciidoc/generated/v1";
 	private String outputDirV2 = "src/docs/asciidoc/generated/v2";
-	private String groupPath = "/i18n/api/v2/api-docs?group=";
+	private String groupPath = "/i18n/api/doc/v2/api-docs?group=";
 
 	@Autowired
 	private MockMvc mockMvc;
