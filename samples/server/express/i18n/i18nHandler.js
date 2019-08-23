@@ -22,6 +22,10 @@ module.exports.handle = (req, res, next) => {
                 vipCore.PatternCategories.CURRENCIES,
             ],
             isPseudo: false,
+            httpOptions: {
+                timeout: 3000,
+                withCredentials: true
+            }
         }
     );
     // The method will attempt to fetch the data from a cache.
@@ -41,7 +45,7 @@ module.exports.handle = (req, res, next) => {
                 return i18nClient.i18nService.formatNumber(value);
             };
             req.formatCurrency = (value, currencyCode) => {
-                return i18nClient.i18nService.formatCurrency(value,currencyCode);
+                return i18nClient.i18nService.formatCurrency(value, currencyCode);
             };
             next();
         }
