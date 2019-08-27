@@ -103,7 +103,6 @@ How to build and use the client library
    > Note: The settings above have been preconfigured to work with default Singleton service settings (See Prerequisites). Change the properties inside service.initData as needed.
    Locale has been preconfigured to 'es' to demonstrate Spanish translation. Change it to get the browser's locale by replacing 'es' with getBrowserCultureLang().
  
- * You may now use the Singleton client library in your Angular application.
    
 Sample code
 ------------
