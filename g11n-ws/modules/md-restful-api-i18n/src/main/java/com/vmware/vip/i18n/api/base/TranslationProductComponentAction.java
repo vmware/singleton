@@ -51,7 +51,7 @@ public class TranslationProductComponentAction extends BaseAction {
 		ComponentMessagesDTO c = new ComponentMessagesDTO();
 		c.setProductName(productName);
 		c.setComponent(component == null ? ConstantsKeys.DEFAULT : component);
-		c.setVersion(this.getClosestVersion(productName, version));
+		c.setVersion(this.getMatchedVersion(productName, version));
 		if (new Boolean(pseudo)) {
 			c.setLocale(ConstantsKeys.LATEST);
 		} else {
@@ -185,13 +185,13 @@ public class TranslationProductComponentAction extends BaseAction {
 	}
 
 	/**
-	 * get the closet version from the version list, if no matched version then return input version.
+	 * Get the the matched version from the version list by comparing to the input version
 	 *
 	 * @param productName
 	 * @param version
-	 * @return
+	 * @return a matched version, if there's no matched version then return input version
 	 */
-	private String getClosestVersion(String productName, String version) {
+	private String getMatchedVersion(String productName, String version) {
 		int targetVersion = new Integer(version.replace(".", "")).intValue();;
 		Map<String, String[]> productsAndVersions = null;
 		try {
@@ -199,24 +199,24 @@ public class TranslationProductComponentAction extends BaseAction {
 		} catch (L3APIException e) {
 			e.printStackTrace();
 		}
-		int closeVersion = 0;
-		String closeVersionStr = "";
+		int matchedVersion_i = 0;
+		String matchedVersion = "";
 		if(productsAndVersions != null && !productsAndVersions.isEmpty()) {
 			String[] versionList = productsAndVersions.get(productName);
 			if(versionList != null && versionList.length > 0) {
 				for(String s : versionList) {
 					int sourceVersion = new Integer(s.replace(".", "")).intValue();
-					if(sourceVersion <= targetVersion && sourceVersion > closeVersion) {
-						closeVersion =sourceVersion;
-						closeVersionStr = s;
+					if(sourceVersion <= targetVersion && sourceVersion > matchedVersion_i) {
+                        matchedVersion_i =sourceVersion;
+                        matchedVersion = s;
 					}
 				}
 			}
 		}
-		if(!StringUtils.isEmpty(closeVersionStr)) {
-			return closeVersionStr;
+		if(!StringUtils.isEmpty(matchedVersion)) {
+			return matchedVersion;
 		} else {
-			return Integer.toString(closeVersion);
+			return version; //no matched version
 		}
 	}
 }

@@ -301,17 +301,19 @@ public class ProductService implements IProductService {
 	}
 
 	/**
-	 * cached map with product list and version list
+	 * A cached map with product list as key and version list as value
 	 */
 	private  static final Map<String, String[]> MAP_PRODUCTS_VERSIONS = new HashMap<>();
 
 	/**
-	 * a flag to remember the cache MAP_PRODUCTS_VERSIONS initialized status
+	 * A flag to mark the cache MAP_PRODUCTS_VERSIONS initialized status
 	 */
 	private  static int INIT_PRODUCTS_VERSIONS = -1;
 
 	/**
-	 * get product list and version list from cache, if not existing then look from bundle or db
+	 * Get product name list and version list;
+	 * firstly look for the lists from cache, if not existing then look from bundle files or DB.
+	 *
 	 * @return
 	 * @throws L3APIException
 	 */
