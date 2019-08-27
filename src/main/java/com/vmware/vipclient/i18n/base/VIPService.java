@@ -79,7 +79,7 @@ public class VIPService {
 		return version;
 	}
 	
-	public void setHeaderParams(Map<String, String> headers) {
-		httpRequester.setCustomizedHeaderParams(headers);
+	public void setHeaderParams(Map<String, String> params) {
+		httpRequester.setCustomizedHeaderParams(params);
 	}
 }

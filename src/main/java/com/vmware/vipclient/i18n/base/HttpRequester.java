@@ -54,6 +54,15 @@ public class HttpRequester {
 	}
 
 	/**
+	 * The extra parameters to add to http header
+	 */
+	private Map<String, String> customizedHeaderParams = null;
+
+	public void setCustomizedHeaderParams(Map<String, String> params) {
+		customizedHeaderParams = params;
+	}
+
+	/**
 	 * get the baseURL
 	 *
 	 * @param vIPServer
@@ -271,12 +280,6 @@ public class HttpRequester {
 	public boolean isConnected() {
 		String ipAddress = (vipHostName.contains(":")) ? vipHostName.split(":")[0] : vipHostName;
 		return HttpRequester.ping(ipAddress);
-	}
-
-	private Map<String, String> customizedHeaderParams = null;
-
-	public void setCustomizedHeaderParams(Map<String, String> headers) {
-		customizedHeaderParams = headers;
 	}
 
 	private void addHeaderParams(HttpURLConnection connection) {
