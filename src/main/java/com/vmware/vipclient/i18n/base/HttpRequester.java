@@ -280,11 +280,6 @@ public class HttpRequester {
 	}
 
 	private void addHeaderParams(HttpURLConnection connection) {
-		Map<String, String> pairList = new java.util.HashMap<>();
-		pairList.put("header key1", "value1-1");
-		pairList.put("header key2", "value2");
-		customizedHeaderParams = pairList;
-
 		if (null == customizedHeaderParams) {
 			return;
 		}
