@@ -190,17 +190,17 @@ public class TranslationProductComponentAction extends BaseAction {
 	 * @return a matched version, if there's no matched version then return input version
 	 */
 	private String getMatchedVersion(String productName, String version) throws L3APIException{
-		int targetVersion = new Integer(version.replace(".", "")).intValue();;
-		Map<String, String[]> productsAndVersions = productsAndVersions = productService.getProductsAndVersions();
-		int matchedVersion_i = 0;
+		int targetVersion = Integer.parseInt(version.replace(".", ""));
+		Map<String, String[]> productsAndVersions = productService.getProductsAndVersions();
+		int matchedIntVersion = 0;
 		String matchedVersion = "";
 		if(productsAndVersions != null && !productsAndVersions.isEmpty()) {
 			String[] versionList = productsAndVersions.get(productName);
 			if(versionList != null && versionList.length > 0) {
 				for(String s : versionList) {
-					int sourceVersion = new Integer(s.replace(".", "")).intValue();
-					if(sourceVersion <= targetVersion && sourceVersion > matchedVersion_i) {
-                        matchedVersion_i =sourceVersion;
+					int sourceVersion = Integer.parseInt(s.replace(".", ""));
+					if(sourceVersion <= targetVersion && sourceVersion > matchedIntVersion) {
+                        matchedIntVersion =sourceVersion;
                         matchedVersion = s;
 					}
 				}

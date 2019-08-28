@@ -86,7 +86,6 @@ public class PgProductApiImpl implements IProductDao {
 
 	@Override
 	public Map<String, String[]> getProductsAndVersions() throws DataException {
-		// TODO implement it for DB build
 		return null;
 	}
 }

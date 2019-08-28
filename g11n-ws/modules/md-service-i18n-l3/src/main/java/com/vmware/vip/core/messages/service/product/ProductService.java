@@ -13,7 +13,6 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
-import com.vmware.vip.messages.data.exception.BundleException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
@@ -308,7 +307,7 @@ public class ProductService implements IProductService {
 	/**
 	 * A flag to mark the cache MAP_PRODUCTS_VERSIONS initialized status
 	 */
-	private  static int INIT_PRODUCTS_VERSIONS = -1;
+	private  static int initProductsVersions = -1;
 
 	/**
 	 * Get product name list and version list;
@@ -318,13 +317,13 @@ public class ProductService implements IProductService {
 	 * @throws L3APIException
 	 */
 	public synchronized Map<String, String[]> getProductsAndVersions() throws L3APIException {
-		if (INIT_PRODUCTS_VERSIONS == 1) {
+		if (initProductsVersions == 1) {
 			return MAP_PRODUCTS_VERSIONS;
 		} else {
 			try {
 				Map<String, String[]> m = productdao.getProductsAndVersions();
 				MAP_PRODUCTS_VERSIONS.putAll(m);
-				INIT_PRODUCTS_VERSIONS = 1;
+                initProductsVersions = 1;
 				return MAP_PRODUCTS_VERSIONS;
 			} catch (DataException e) {
 				throw new L3APIException("Failed to product list and version list.", e);
