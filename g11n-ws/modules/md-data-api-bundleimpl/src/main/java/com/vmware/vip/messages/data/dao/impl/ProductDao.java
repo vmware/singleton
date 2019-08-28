@@ -6,7 +6,6 @@ package com.vmware.vip.messages.data.dao.impl;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -137,9 +136,9 @@ public class ProductDao implements IProductDao {
 	public Map<String, String[]> getProductsAndVersions() throws BundleException {
 		Map<String, String[]> productsAndVersions = new HashMap<>();
 		String basePath = bundleConfig.getBasePathWithSeparator() + ConstantsFile.L10N_BUNDLES_PATH;
-		File file_l10n = new File(basePath);
-		if (file_l10n.exists() && file_l10n.isDirectory()) {
-			File[] productFolders = file_l10n.listFiles();
+		File file_base = new File(basePath);
+		if (file_base.exists() && file_base.isDirectory()) {
+			File[] productFolders = file_base.listFiles();
 			for (File file_product : productFolders) {
 				if (file_product.isDirectory() && !file_product.isHidden()) {
 					String productName = file_product.getName();
