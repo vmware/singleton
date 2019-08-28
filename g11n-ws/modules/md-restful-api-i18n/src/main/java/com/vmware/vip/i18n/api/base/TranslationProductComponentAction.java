@@ -12,7 +12,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import com.vmware.vip.core.messages.exception.L3APIException;
-import com.vmware.vip.core.messages.service.product.ProductService;
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,6 @@ import com.vmware.vip.core.messages.service.multcomponent.TranslationDTO;
 import com.vmware.vip.core.messages.service.product.IProductService;
 import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO;
 import com.vmware.vip.core.messages.service.singlecomponent.IOneComponentService;
-import com.vmware.vip.i18n.api.base.BaseAction;
 
 public class TranslationProductComponentAction extends BaseAction {
 	@Autowired
@@ -191,14 +189,9 @@ public class TranslationProductComponentAction extends BaseAction {
 	 * @param version
 	 * @return a matched version, if there's no matched version then return input version
 	 */
-	private String getMatchedVersion(String productName, String version) {
+	private String getMatchedVersion(String productName, String version) throws L3APIException{
 		int targetVersion = new Integer(version.replace(".", "")).intValue();;
-		Map<String, String[]> productsAndVersions = null;
-		try {
-			productsAndVersions = productService.getProductsAndVersions();
-		} catch (L3APIException e) {
-			e.printStackTrace();
-		}
+		Map<String, String[]> productsAndVersions = productsAndVersions = productService.getProductsAndVersions();
 		int matchedVersion_i = 0;
 		String matchedVersion = "";
 		if(productsAndVersions != null && !productsAndVersions.isEmpty()) {

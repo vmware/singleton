@@ -136,13 +136,13 @@ public class ProductDao implements IProductDao {
 	public Map<String, String[]> getProductsAndVersions() throws BundleException {
 		Map<String, String[]> productsAndVersions = new HashMap<>();
 		String basePath = bundleConfig.getBasePathWithSeparator() + ConstantsFile.L10N_BUNDLES_PATH;
-		File file_base = new File(basePath);
-		if (file_base.exists() && file_base.isDirectory()) {
-			File[] productFolders = file_base.listFiles();
-			for (File file_product : productFolders) {
-				if (file_product.isDirectory() && !file_product.isHidden()) {
-					String productName = file_product.getName();
-					String[] versions = file_product.list();
+		File fileBase = new File(basePath);
+		if (fileBase.exists() && fileBase.isDirectory()) {
+			File[] productFolders = fileBase.listFiles();
+			for (File fileProduct : productFolders) {
+				if (fileProduct.isDirectory() && !fileProduct.isHidden()) {
+					String productName = fileProduct.getName();
+					String[] versions = fileProduct.list();
 					productsAndVersions.put(productName, versions);
 				}
 			}
