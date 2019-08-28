@@ -141,13 +141,9 @@ public class ProductDao implements IProductDao {
 		if (file_l10n.exists() && file_l10n.isDirectory()) {
 			File[] productFolders = file_l10n.listFiles();
 			for (File file_product : productFolders) {
-			    System.out.println(file_product.isHidden());
 				if (file_product.isDirectory() && !file_product.isHidden()) {
 					String productName = file_product.getName();
 					String[] versions = file_product.list();
-                    String[] v = Arrays.stream(versions).filter(s -> {
-                        return Integer.getInteger(s) >=0;
-                    }).toArray(String[]::new);
 					productsAndVersions.put(productName, versions);
 				}
 			}
