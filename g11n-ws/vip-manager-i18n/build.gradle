@@ -141,16 +141,14 @@ processResources {
 
 
 bootJar.doFirst {
+      def propPath = "${buildDir}/resources/main/application.properties"
+       println propPath
      if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
-       def propPath = "${buildDir}/resources/main/application.properties"
-       println propPath
-       def updatedContent = new File(propPath).getText('UTF-8').replaceFirst("spring.profiles.active=bundle", "spring.profiles.active=pgdb")
-       new File(propPath).write(updatedContent, 'UTF-8')
+       def updatedPgdbContent = new File(propPath).getText('UTF-8').replaceFirst("spring.profiles.active=bundle", "spring.profiles.active=pgdb")
+       new File(propPath).write(updatedPgdbContent, 'UTF-8')
 	  }else if (project.hasProperty('datatype') && project.getProperty('datatype') == 's3') {
-       def propPath = "${buildDir}/resources/main/application.properties"
-       println propPath
-       def updatedContent = new File(propPath).getText('UTF-8').replaceFirst("spring.profiles.active=bundle", "spring.profiles.active=s3")
-       new File(propPath).write(updatedContent, 'UTF-8')
+       def updatedS3Content = new File(propPath).getText('UTF-8').replaceFirst("spring.profiles.active=bundle", "spring.profiles.active=s3")
+       new File(propPath).write(updatedS3Content, 'UTF-8')
 	  }
 	
 }
