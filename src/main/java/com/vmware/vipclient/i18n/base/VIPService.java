@@ -80,6 +80,10 @@ public class VIPService {
 	}
 	
 	public void setHeaderParams(Map<String, String> params) {
+		if (httpRequester == null) {
+			throw new VIPJavaClientException(
+					"Please create HttpRequester, call createHttpRequest API first! ");
+		}
 		httpRequester.setCustomizedHeaderParams(params);
 	}
 }

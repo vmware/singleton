@@ -33,6 +33,7 @@ import javax.net.ssl.X509TrustManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 /**
@@ -283,7 +284,7 @@ public class HttpRequester {
 	}
 
 	private void addHeaderParams(HttpURLConnection connection) {
-		if (null == customizedHeaderParams) {
+		if (null == customizedHeaderParams || null == connection) {
 			return;
 		}
 
