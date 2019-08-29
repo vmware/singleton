@@ -25,23 +25,27 @@ public class HttpRequesterTest extends BaseTestClass {
 	@Rule
 	public WireMockRule wireMockRule = new WireMockRule(8089);
 
+	private static String mockServer = "http://localhost:8089";
+	
+	private String realServer = null;
+	
 	@Before
 	public void init() {
 		VIPCfg cfg = VIPCfg.getInstance();
 		cfg.initialize("vipconfig");
-		cfg.setVipServer("http://localhost:8089");
+		cfg.setVipServer(mockServer);
 		cfg.setInitializeCache(false);
 		cfg.initializeVIPService();
 		cfg.createTranslationCache(MessageCache.class);
 		cfg.createFormattingCache(FormattingCache.class);
 		I18nFactory.getInstance(cfg);
-
+		realServer = VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL();
+		VIPCfg.getInstance().getVipService().getHttpRequester().setBaseURL(mockServer);
 	}
 
 	@Test
 	public void addHeaderParamsTest() {
-		String url = "/i18n/api/v2/.*";
-
+		String url = "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0/locales/[^/]*?/components/default\\?pseudo=false";
 
 		HashMap<String, String> params = new HashMap<>();
 		String key1 = "key-1";
@@ -59,5 +63,11 @@ public class HttpRequesterTest extends BaseTestClass {
 		tm.getString2("default", "JAVA", new Locale("zh", "Hans"), "table.host");
 
 		WireMock.verify(WireMock.getRequestedFor(WireMock.urlMatching(url)).withHeader(key1, WireMock.equalTo(value1)).withHeader(key2, WireMock.equalTo(value2)));
+	}
+	
+	@After
+	public void teardown() {
+		VIPCfg.getInstance().getVipService().getHttpRequester().setBaseURL(realServer);
+		
 	}
 }
