@@ -7,6 +7,8 @@ package com.vmware.vip.messages.data.dao.impl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,4 +116,7 @@ public class S3ProductDaoImpl implements IProductDao {
       return result;
    }
 
+   public Map<String, String[]> getProductsAndVersions() {
+      return null;
+   }
 }
