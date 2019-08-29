@@ -26,6 +26,7 @@ jobs:
       script:
         - cd $TRAVIS_BUILD_DIR && ./gradlew build
         - cat $TRAVIS_BUILD_DIR/build/reports/tests/test/index.html
+        - cat $TRAVIS_BUILD_DIR/logs/unittest.log
     - stage: code scan
       script:
         - cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG:java-client:$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG:java-client:$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=java-client-gate -QualityGateConditions="./quality_gates/service_quality_gate.json" -SonarToken=$SONAR_TOKEN
