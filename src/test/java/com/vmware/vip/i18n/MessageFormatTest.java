@@ -18,7 +18,7 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.l2.text.MessageFormat;
 
-public class MessageFormatTest {
+public class MessageFormatTest extends BaseTestClass {
 	
 	@Before
 	public void init() {
