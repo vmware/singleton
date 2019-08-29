@@ -18,6 +18,8 @@ include ':md-restful-synch'
 include ':md-restful-l10n-synch'
 include ':tool-trans-fetcher'
 include ':vip-resources'
+include ':md-data-api-s3impl'
+project(':md-data-api-s3impl').projectDir     = "$rootDir/modules/md-data-api-s3impl" as File
 project(':vip-common').projectDir             = "$rootDir/vip-common" as File
 project(':vip-manager-i18n').projectDir       = "$rootDir/vip-manager-i18n" as File
 project(':vip-manager-l10n').projectDir       = "$rootDir/vip-manager-l10n" as File
