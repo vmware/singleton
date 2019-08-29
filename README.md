@@ -9,7 +9,7 @@ Prerequisites
 ------------
  * Run the Singleton service by following the instructions in [here](https://github.com/vmware/singleton/blob/master/README.md).
  * Ensure the following are installed:     
-    - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) or later
+    - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
     - [Git](https://git-scm.com/downloads)
     - [Gradle](https://gradle.org/install/)
 
