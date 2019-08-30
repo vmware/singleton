@@ -5,6 +5,7 @@
 package com.vmware.vipclient.i18n.base;
 
 import java.net.MalformedURLException;
+import java.util.Map;
 
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 
@@ -76,5 +77,13 @@ public class VIPService {
 
 	public String getVersion() {
 		return version;
+	}
+	
+	public void setHeaderParams(Map<String, String> params) {
+		if (httpRequester == null) {
+			throw new VIPJavaClientException(
+					"Please create HttpRequester, call createHttpRequest API first! ");
+		}
+		httpRequester.setCustomizedHeaderParams(params);
 	}
 }
