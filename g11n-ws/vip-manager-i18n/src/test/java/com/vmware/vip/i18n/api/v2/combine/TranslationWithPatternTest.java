@@ -1,7 +1,6 @@
 package com.vmware.vip.i18n.api.v2.combine;
 
 import java.io.File;
-
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,14 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
-
 import com.vmware.vip.BootApplication;
-import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.i18n.api.v1.common.CacheUtil;
 import com.vmware.vip.i18n.api.v1.common.ConstantsForTest;
 import com.vmware.vip.i18n.api.v1.common.RequestUtil;
-import com.vmware.vip.messages.data.bundle.BundleConfig;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
@@ -56,9 +53,9 @@ public class TranslationWithPatternTest {
       String authenticationResult = RequestUtil.sendRequest(webApplicationContext,
             ConstantsForTest.POST, ConstantsForTest.AuthenticationAPIURI);
       CacheUtil.cacheSessionAndToken(webApplicationContext, authenticationResult);
-      BundleConfig bundleConf = webApplicationContext.getBean(BundleConfig.class);
-      String filepath = bundleConf.getBasePathWithSeparator() + ConstantsFile.L10N_BUNDLES_PATH
-            + "1.5.0" + ConstantsChar.BACKSLASH + "default" + ConstantsChar.BACKSLASH
+   
+      String filepath = "."+File.separator + ConstantsFile.L10N_BUNDLES_PATH
+            + "1.5.0" + File.separator + "default" +File.separator
             + "messages_en.json";
 
       FileUtils.write(new File(filepath), msg, "UTF-8", false);
