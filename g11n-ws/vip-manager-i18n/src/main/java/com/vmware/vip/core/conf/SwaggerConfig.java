@@ -153,6 +153,7 @@ public class SwaggerConfig {
 	 * add the swaggerUI static mapping configuration
 	 */
 	@Bean
+	@ConditionalOnProperty(value = "swagger-ui.enable")
 	public SimpleUrlHandlerMapping swaggerUrlHandlerMapping(ServletContext servletContext,
 			@Value("${swagger.mapping.order:10}") int order) throws Exception {
 		SimpleUrlHandlerMapping urlHandlerMapping = new SimpleUrlHandlerMapping();
@@ -193,21 +194,22 @@ public class SwaggerConfig {
 	@Controller
 	@ApiIgnore
 	@RequestMapping(DEFAULT_PATH)
+	@ConditionalOnProperty(value = "swagger-ui.enable")
 	public static class SwaggerResourceController implements InitializingBean {
 
-		@Autowired
+		@Autowired(required=false)
 		private ApiResourceController apiResourceController;
 
-		@Autowired
+		@Autowired(required=false)
 		private Environment environment;
 
-		@Autowired
+		@Autowired(required=false)
 		private DocumentationCache documentationCache;
 
-		@Autowired
+		@Autowired(required=false)
 		private ServiceModelToSwagger2Mapper mapper;
 
-		@Autowired
+		@Autowired(required=false)
 		private JsonSerializer jsonSerializer;
 
 		private Swagger2Controller swagger2Controller;
