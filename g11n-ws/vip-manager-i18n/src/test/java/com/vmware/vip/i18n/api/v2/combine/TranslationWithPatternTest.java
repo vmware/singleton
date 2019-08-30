@@ -1,7 +1,6 @@
 package com.vmware.vip.i18n.api.v2.combine;
 
 import java.io.File;
-
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,13 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
-
 import com.vmware.vip.BootApplication;
 import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.i18n.api.v1.common.CacheUtil;
 import com.vmware.vip.i18n.api.v1.common.ConstantsForTest;
 import com.vmware.vip.i18n.api.v1.common.RequestUtil;
-//import com.vmware.vip.messages.data.bundle.BundleConfig;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
