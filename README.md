@@ -9,9 +9,9 @@ Prerequisites
 ------------
  * Run the Singleton service by following the instructions in [here](https://github.com/vmware/singleton/blob/master/README.md).
  * Ensure the following are installed:     
-    - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) or later
+    - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
     - [Git](https://git-scm.com/downloads)
-    - [Gradle 4.10.2](https://gradle.org/install/)
+    - [Gradle](https://gradle.org/install/)
 
 How to build and use the client library
 ------------
@@ -29,9 +29,10 @@ How to build and use the client library
     ```
  * Build the client library.
     ```
-    gradle clean build -x test
-    ```
-Note: The library jar will be created under "build/libs" directory.
+    gradle createWrapper
+    gradlew clean build -x test
+```
+    Note: The library jar will be created under "build/libs" directory.
  * Import the library jar into your Java application and use its available APIs.
 
 Note: The file src/main/resources/vipconfig.properties is a template configuration file that contains properties that can be configured as needed. It is preconfigured to work with default Singleton service settings (See Prerequisites). Use this as the Singleton configuration file, or use it as a template to create your own. 
@@ -46,7 +47,7 @@ To load Singleton configurations in your application:
 		I18nFactory.getInstance(cfg);
 
    ```
-   
+
 Sample code
 ------------
 ```Java

@@ -18,6 +18,7 @@ import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.net.ssl.HostnameVerifier;
@@ -32,6 +33,7 @@ import javax.net.ssl.X509TrustManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 /**
@@ -50,6 +52,15 @@ public class HttpRequester {
 
 	public void setBaseURL(String baseURL) {
 		this.baseURL = baseURL;
+	}
+
+	/**
+	 * The extra parameters to add to http header
+	 */
+	private Map<String, String> customizedHeaderParams = null;
+
+	public void setCustomizedHeaderParams(Map<String, String> params) {
+		customizedHeaderParams = params;
 	}
 
 	/**
@@ -82,8 +93,7 @@ public class HttpRequester {
 	protected static boolean ping(String ipAddress) {
 		boolean status = false;
 		try {
-			status = InetAddress.getByName(ipAddress).isReachable(
-					ConstantsKeys.HTTP_CONNECT_TIMEOUT);
+			status = InetAddress.getByName(ipAddress).isReachable(ConstantsKeys.HTTP_CONNECT_TIMEOUT);
 		} catch (IOException e) {
 			return false;
 		}
@@ -102,32 +112,31 @@ public class HttpRequester {
 		HttpURLConnection conn = null;
 		try {
 			StringBuilder urlStr = new StringBuilder();
-			if(ConstantsKeys.GET.equalsIgnoreCase(method) && requestData!=null) {
-				if(requestData instanceof Map) {
-					urlStr.append(URLUtils.appendParamToURL(new StringBuilder(url), "", this.getFormStr((Map)requestData)));
+			if (ConstantsKeys.GET.equalsIgnoreCase(method) && requestData != null) {
+				if (requestData instanceof Map) {
+					urlStr.append(URLUtils.appendParamToURL(new StringBuilder(url), "", this.getFormStr((Map) requestData)));
 				}
 			} else {
 				urlStr.append(url);
 			}
 			logger.info("[" + method + "]" + urlStr.toString());
-			conn = HttpRequester.createConnection(urlStr
-					.toString());
+			conn = createConnection(urlStr.toString());
 			if (conn != null) {
 				conn.setRequestMethod(method);
-				if(ConstantsKeys.POST.equalsIgnoreCase(method)) {
+				if (ConstantsKeys.POST.equalsIgnoreCase(method)) {
 					this.writeData(requestData, conn);
 				} else {
 					conn.connect();
 				}
 				if (HttpURLConnection.HTTP_OK == conn.getResponseCode()) {
 					r = this.handleResult(conn);
-					//logger.debug("The response from server is:\n"+r);
+					// logger.debug("The response from server is:\n"+r);
 				}
 			}
 		} catch (IOException e) {
 			logger.info(e.getMessage());
 		} finally {
-			if(conn!=null) {
+			if (conn != null) {
 				conn.disconnect();
 				conn = null;
 			}
@@ -136,7 +145,7 @@ public class HttpRequester {
 	}
 
 	public String getBaseURL() {
-			return this.baseURL;
+		return this.baseURL;
 	}
 
 	private String handleResult(HttpURLConnection conn) throws IOException {
@@ -154,17 +163,16 @@ public class HttpRequester {
 
 	}
 
-	private void writeData(Object requestData, HttpURLConnection conn)
-			throws IOException {
+	private void writeData(Object requestData, HttpURLConnection conn) throws IOException {
 		if (requestData != null) {
 			String outStr = "";
 			if (requestData instanceof Map) {
-				conn.setRequestProperty("Content-Type",	"application/x-www-form-urlencoded;charset=utf-8");
+				conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
 				outStr = getFormStr((Map) requestData);
 				logger.info("[Content-Type][form]" + outStr + "");
 			} else if (requestData instanceof String) {
 				outStr = requestData.toString();
-				conn.setRequestProperty("Content-Type",	"application/json;charset=utf-8");
+				conn.setRequestProperty("Content-Type", "application/json;charset=utf-8");
 				logger.info("[Content-Type[json]" + outStr + "");
 			}
 			conn.connect();
@@ -187,7 +195,7 @@ public class HttpRequester {
 				p.append("&").append(key).append("=").append(value);
 			}
 		}
-		if(p.length() > 0) {
+		if (p.length() > 0) {
 			return p.substring(1, p.length());
 		} else {
 			return p.toString();
@@ -201,13 +209,13 @@ public class HttpRequester {
 	 *            The remote server url.
 	 * @return
 	 */
-	private static HttpURLConnection createConnection(String path) {
+	private HttpURLConnection createConnection(String path) {
 		HttpURLConnection connection = null;
 		try {
 			URL url = new URL(path.trim());
 			assert (null != url);
-			assert (ConstantsKeys.HTTP_PROTOCOL.equals(url.getProtocol()) || ConstantsKeys.HTTPS_PROTOCOL
-					.equals(url.getProtocol()));
+			assert (ConstantsKeys.HTTP_PROTOCOL.equals(url.getProtocol())
+					|| ConstantsKeys.HTTPS_PROTOCOL.equals(url.getProtocol()));
 			connection = (HttpURLConnection) url.openConnection();
 			if (connection instanceof HttpsURLConnection) {
 				HttpsURLConnection httpsConn = (HttpsURLConnection) connection;
@@ -229,6 +237,8 @@ public class HttpRequester {
 			connection.setDoOutput(true);
 			connection.setDoInput(true);
 			connection.setRequestProperty("accept", "*/*");
+
+			addHeaderParams(connection);
 		}
 		return connection;
 	}
@@ -242,14 +252,14 @@ public class HttpRequester {
 		if (sslSocketFactory == null) {
 			try {
 				TrustManager[] tm = new TrustManager[] { new X509TrustManager() {
-					public void checkClientTrusted(X509Certificate[] cert,
-							String authType)  throws java.security.cert.CertificateException{
-						//throw new CertificateException("no client check");
+					public void checkClientTrusted(X509Certificate[] cert, String authType)
+							throws java.security.cert.CertificateException {
+						// throw new CertificateException("no client check");
 					}
 
-					public void checkServerTrusted(X509Certificate[] cert,
-							String authType)  throws java.security.cert.CertificateException{
-						//throw new CertificateException("no client trust check");
+					public void checkServerTrusted(X509Certificate[] cert, String authType)
+							throws java.security.cert.CertificateException {
+						// throw new CertificateException("no client trust check");
 					}
 
 					public X509Certificate[] getAcceptedIssuers() {
@@ -269,8 +279,17 @@ public class HttpRequester {
 	}
 
 	public boolean isConnected() {
-		String ipAddress = (vipHostName.contains(":")) ? vipHostName.split(":")[0]
-				: vipHostName;
+		String ipAddress = (vipHostName.contains(":")) ? vipHostName.split(":")[0] : vipHostName;
 		return HttpRequester.ping(ipAddress);
+	}
+
+	private void addHeaderParams(HttpURLConnection connection) {
+		if (null == customizedHeaderParams || null == connection) {
+			return;
+		}
+
+		for (final Entry<String, String> entry : customizedHeaderParams.entrySet()) {
+			connection.setRequestProperty(entry.getKey(), entry.getValue());
+		}
 	}
 }

@@ -19,7 +19,7 @@ import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 
-public class TranslationMessage2Test {
+public class TranslationMessage2Test extends BaseTestClass {
 	Logger logger = LoggerFactory.getLogger(TranslationMessage2Test.class);
 
 	TranslationMessage translation;

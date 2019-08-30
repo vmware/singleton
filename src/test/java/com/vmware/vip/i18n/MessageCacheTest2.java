@@ -17,7 +17,7 @@ import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.CacheService;
 
-public class MessageCacheTest2 {
+public class MessageCacheTest2 extends BaseTestClass {
 
 	private CacheService cacheService;
 
@@ -53,6 +53,6 @@ public class MessageCacheTest2 {
 		long expired = 30000;
 		c.setExpiredTime(expired);
 		Map cachedData = (Map)gc.getCacheManager().getCache(VIPCfg.CACHE_L3).get(cachedKey);
-		Assert.assertTrue(cachedData == null);
+		Assert.assertNull(cachedData);
 	}
 }
