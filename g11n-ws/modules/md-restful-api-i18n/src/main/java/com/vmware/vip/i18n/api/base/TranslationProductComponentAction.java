@@ -189,18 +189,15 @@ public class TranslationProductComponentAction extends BaseAction {
 	 * @param version
 	 * @return a matched version, if there's no matched version then return input version
 	 */
-	private String getMatchedVersion(String productName, String version) throws L3APIException{
-		int targetVersion = Integer.parseInt(version.replace(".", ""));
+	private String getMatchedVersion(final String productName, final String version) throws L3APIException{
 		Map<String, String[]> productsAndVersions = productService.getProductsAndVersions();
-		int matchedIntVersion = 0;
 		String matchedVersion = "";
 		if(productsAndVersions != null && !productsAndVersions.isEmpty()) {
 			String[] versionList = productsAndVersions.get(productName);
 			if(versionList != null && versionList.length > 0) {
 				for(String s : versionList) {
-					int sourceVersion = Integer.parseInt(s.replace(".", ""));
-					if(sourceVersion <= targetVersion && sourceVersion > matchedIntVersion) {
-                        matchedIntVersion =sourceVersion;
+					String ss = filterVersion(s, version);
+					if(!compare(ss, version) && compare(s, matchedVersion)) {
                         matchedVersion = s;
 					}
 				}
@@ -209,7 +206,55 @@ public class TranslationProductComponentAction extends BaseAction {
 		if(!StringUtils.isEmpty(matchedVersion)) {
 			return matchedVersion;
 		} else {
-			return version; //no matched version
+			return version;
 		}
+	}
+
+	/**
+	 * Compare source version and target version
+	 *
+	 * @param source
+	 * @param target
+	 * @return true means source > target
+	 */
+	private boolean compare(final String source, final String target) {
+		boolean b = false;
+		String[] ss = source.split("\\.");
+		String[] tt = target.split("\\.");
+		if(ss.length == tt.length) {
+			for(int i = 0; i < ss.length; i++) {
+				if(Integer.parseInt(ss[i]) > Integer.parseInt(tt[i])) {
+					b = true;
+				}
+			}
+		}
+		if(!StringUtils.isEmpty(source) && StringUtils.isEmpty(target)) {
+			b = true;
+		}
+		return b;
+	}
+
+	/**
+	 * Filter the version number, and append insufficient subversion or remove extra subversion
+	 *
+	 * @param originVersion
+	 * @param requestVersion
+	 * @return e.g  originVersion = 2.0, requestVersion = 1.0.0, will return 2.0.0;
+	 *         e.g  originVersion = 2.0.0, requestVersion = 1.0, will return 2.0
+	 */
+	private String filterVersion(final String originVersion, final String requestVersion) {
+		String filteredVersion = originVersion;
+		int intF = originVersion.split("\\.").length;
+		int intR = requestVersion.split("\\.").length;
+		if(intF < intR) {
+			for(int i=0; i < (intR - intF); i++) {
+				filteredVersion = filteredVersion + ".0";
+			}
+		} else if (intF > intR) {
+			for(int i=0; i < (intF - intR); i++) {
+				filteredVersion = filteredVersion.substring(0, filteredVersion.lastIndexOf("."));
+			}
+		}
+		return filteredVersion;
 	}
 }
