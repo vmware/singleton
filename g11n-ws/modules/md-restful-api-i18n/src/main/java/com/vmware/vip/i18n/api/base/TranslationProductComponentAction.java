@@ -196,8 +196,8 @@ public class TranslationProductComponentAction extends BaseAction {
 			String[] versionList = productsAndVersions.get(productName);
 			if(versionList != null && versionList.length > 0) {
 				for(String s : versionList) {
-					String ss = filterVersion(s, version);
-					if(!compare(ss, version) && compare(s, matchedVersion)) {
+					String f = filterVersion(s, version);
+					if(!compare(f, version) && compare(s, matchedVersion)) {
                         matchedVersion = s;
 					}
 				}
@@ -219,13 +219,16 @@ public class TranslationProductComponentAction extends BaseAction {
 	 */
 	private boolean compare(final String source, final String target) {
 		boolean b = false;
-		String[] ss = source.split("\\.");
-		String[] tt = target.split("\\.");
-		if(ss.length == tt.length) {
-			for(int i = 0; i < ss.length; i++) {
-				if(Integer.parseInt(ss[i]) > Integer.parseInt(tt[i])) {
+		String[] s = source.split("\\.");
+		String[] t = target.split("\\.");
+		if(s.length == t.length) {
+			for(int i = 0; i < s.length; i++) {
+				if(Integer.parseInt(s[i]) == Integer.parseInt(t[i])) {
+					continue;
+				} else if(Integer.parseInt(s[i]) > Integer.parseInt(t[i])) {
 					b = true;
 				}
+				break;
 			}
 		}
 		if(!StringUtils.isEmpty(source) && StringUtils.isEmpty(target)) {
@@ -244,14 +247,14 @@ public class TranslationProductComponentAction extends BaseAction {
 	 */
 	private String filterVersion(final String originVersion, final String requestVersion) {
 		String filteredVersion = originVersion;
-		int intF = originVersion.split("\\.").length;
-		int intR = requestVersion.split("\\.").length;
-		if(intF < intR) {
-			for(int i=0; i < (intR - intF); i++) {
+		int o = originVersion.split("\\.").length;
+		int r = requestVersion.split("\\.").length;
+		if(o < r) {
+			for(int i=0; i < (r - o); i++) {
 				filteredVersion = filteredVersion + ".0";
 			}
-		} else if (intF > intR) {
-			for(int i=0; i < (intF - intR); i++) {
+		} else if (o > r) {
+			for(int i=0; i < (o - r); i++) {
 				filteredVersion = filteredVersion.substring(0, filteredVersion.lastIndexOf("."));
 			}
 		}
