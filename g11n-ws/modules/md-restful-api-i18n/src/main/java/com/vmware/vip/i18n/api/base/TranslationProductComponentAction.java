@@ -197,7 +197,7 @@ public class TranslationProductComponentAction extends BaseAction {
 			if(versionList != null && versionList.length > 0) {
 				for(String s : versionList) {
 					String f = filterVersion(s, version);
-					if(!compare(f, version) && compare(s, matchedVersion)) {
+					if(compare(f, version) == -1 && compare(s, matchedVersion) == 1) {
                         matchedVersion = s;
 					}
 				}
@@ -215,10 +215,16 @@ public class TranslationProductComponentAction extends BaseAction {
 	 *
 	 * @param source
 	 * @param target
-	 * @return true means source > target
+	 * @return 0, equal; -1 less than; 1 bigger than
 	 */
-	private boolean compare(final String source, final String target) {
-		boolean b = false;
+	private int compare(final String source, final String target) {
+		int b = -1;
+		if (StringUtils.equals(source, target)) {
+			b = 0;
+		}
+		if(!StringUtils.isEmpty(source) && StringUtils.isEmpty(target)) {
+			b = 1;
+		}
 		String[] s = source.split("\\.");
 		String[] t = target.split("\\.");
 		if(s.length == t.length) {
@@ -226,13 +232,10 @@ public class TranslationProductComponentAction extends BaseAction {
 				if(Integer.parseInt(s[i]) == Integer.parseInt(t[i])) {
 					continue;
 				} else if(Integer.parseInt(s[i]) > Integer.parseInt(t[i])) {
-					b = true;
+					b = 1;
 				}
 				break;
 			}
-		}
-		if(!StringUtils.isEmpty(source) && StringUtils.isEmpty(target)) {
-			b = true;
 		}
 		return b;
 	}
