@@ -5,6 +5,7 @@
 package com.vmware.vip.i18n.api.base;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -195,9 +196,13 @@ public class TranslationProductComponentAction extends BaseAction {
 		if(productsAndVersions != null && !productsAndVersions.isEmpty()) {
 			String[] versionList = productsAndVersions.get(productName);
 			if(versionList != null && versionList.length > 0) {
+				if(Arrays.asList(versionList).contains(version)) {
+					return version;
+				}
 				for(String s : versionList) {
 					String f = filterVersion(s, version);
-					if(compare(f, version) == -1 && compare(s, matchedVersion) == 1) {
+					String ss = StringUtils.isEmpty(matchedVersion) ? s : filterVersion(s, matchedVersion);
+					if(compare(f, version) == -1 && compare(ss, matchedVersion) == 1) {
                         matchedVersion = s;
 					}
 				}
