@@ -52,7 +52,7 @@ public class OneComponentDao implements IOneComponentDao {
 		} catch (Exception e) {
 			String errorLog = ConstantsKeys.FATA_ERROR + e.getMessage();
 			logger.error(errorLog, e);
-			throw new BundleException("File is not existing: ");
+			throw new BundleException("File is not existing.");
 
 		}
 		
@@ -62,7 +62,7 @@ public class OneComponentDao implements IOneComponentDao {
 			result.setComponent(component);
 			result.setLocale(locale);
 		}else {
-			throw new BundleException("File is not existing: ");
+			throw new BundleException("File is not existing.");
 		}
 
 
