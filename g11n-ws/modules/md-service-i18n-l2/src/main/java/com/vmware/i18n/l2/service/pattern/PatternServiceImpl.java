@@ -14,6 +14,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.vmware.i18n.PatternUtil;
 import com.vmware.i18n.dto.LocaleDataDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -74,6 +75,13 @@ public class PatternServiceImpl implements IPatternService {
 		}
 		logger.info("get pattern data from cache");
 		patternMap = JSONUtils.getMapFromJson(patternJson);
+		if (StringUtils.isEmpty(patternMap.get(ConstantsKeys.REGION))) {
+			String regionJson = PatternUtil.getRegionFromLib(locale.replace("_", "-"));
+			if (!StringUtils.isEmpty(regionJson)) {
+				Object region = JSONUtils.getMapFromJson(regionJson).get(ConstantsKeys.DEFAULT_REGION_CODE);
+				patternMap.put(ConstantsKeys.REGION, region.toString());
+			}
+		}
 		patternMap.put(ConstantsKeys.CATEGORIES, getCategories(categoryList, patternMap));
 		return patternMap;
 	}
