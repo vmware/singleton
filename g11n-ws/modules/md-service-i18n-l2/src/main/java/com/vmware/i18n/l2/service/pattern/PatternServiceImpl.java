@@ -110,12 +110,12 @@ public class PatternServiceImpl implements IPatternService {
 			if (StringUtils.isEmpty(patternJson)) {
 				logger.info("file data don't exist");
 				resultData.setInvalid(true);
-				return buildPatternMap(language, region, patternJson, categoryList, resultData.isInvalid());
+				return buildPatternMap(language, region, patternJson, categoryList, resultData);
 			}
 			TranslationCache3.addCachedObject(CacheName.PATTERN, locale, String.class, patternJson);
 		}
 		logger.info("get pattern data from cache");
-		patternMap = buildPatternMap(language, region, patternJson, categoryList, resultData.isInvalid());
+		patternMap = buildPatternMap(language, region, patternJson, categoryList, resultData);
 		logger.info("The result pattern: {}", patternMap);
 		logger.info("Get i18n pattern successful");
 		return patternMap;
@@ -128,7 +128,7 @@ public class PatternServiceImpl implements IPatternService {
 	 * @param categoryList
 	 * @return
 	 */
-	private Map<String, Object> buildPatternMap(String language, String region, String patternJson, List<String> categoryList, boolean isInvalid) {
+	private Map<String, Object> buildPatternMap(String language, String region, String patternJson, List<String> categoryList, LocaleDataDTO localeDataDTO) {
 		Map<String, Object> patternMap = new LinkedHashMap<>();
 		Map<String, Object> categoriesMap = new LinkedHashMap<>();
 		if (StringUtils.isEmpty(patternJson)) {
@@ -143,8 +143,7 @@ public class PatternServiceImpl implements IPatternService {
 			patternMap.put(ConstantsKeys.IS_EXIST_PATTERN, true);
 		}
 
-		if (categoryList.contains(ConstantsKeys.PLURALS) && isInvalid) {
-			patternMap.put(ConstantsKeys.LOCALEID, "");
+		if (categoryList.contains(ConstantsKeys.PLURALS) && localeDataDTO.isInvalid()) {
 			String tempLanguage = language.split("-")[0];
 			Map<String, Object> plurals = CommonUtil.getMatchingPluralByLanguage(tempLanguage);
 			Map<String, Object> pluralRulesMap = new LinkedHashMap<>();
@@ -152,6 +151,11 @@ public class PatternServiceImpl implements IPatternService {
 			categoriesMap.put(ConstantsKeys.PLURALS, pluralRulesMap);
 			patternMap.put(ConstantsKeys.IS_EXIST_PATTERN, true);
 		}
+
+		if (!localeDataDTO.isDisplay()) {
+			patternMap.put(ConstantsKeys.LOCALEID, "");
+		}
+
 		patternMap.put(ConstantsKeys.LANGUAGE, language);
 		patternMap.put(ConstantsKeys.REGION, region);
 		patternMap.put(ConstantsKeys.CATEGORIES, categoriesMap);

@@ -10,6 +10,9 @@ public class LocaleDataDTO {
     // Whether the locale obtained by language+region is valid
     private boolean isInvalid = false;
 
+    // Whether the LocaleID needs to be displayed
+    private boolean isDisplay = true;
+
     public String getLocale() {
         return locale;
     }
@@ -24,5 +27,13 @@ public class LocaleDataDTO {
 
     public void setInvalid(boolean invalid) {
         isInvalid = invalid;
+    }
+
+    public boolean isDisplay() {
+        return isDisplay;
+    }
+
+    public void setDisplay(boolean display) {
+        isDisplay = display;
     }
 }
