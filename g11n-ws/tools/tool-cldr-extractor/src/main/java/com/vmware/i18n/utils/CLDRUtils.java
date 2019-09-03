@@ -25,12 +25,12 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 import com.vmware.i18n.common.OfficialStatusEnum;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.vmware.i18n.common.CLDRConstants;
 import com.vmware.i18n.common.Constants;
 
@@ -802,7 +802,7 @@ public class CLDRUtils {
             outputStream = new FileOutputStream(f);
             write = new OutputStreamWriter(outputStream, Constants.UTF8);
             writer = new BufferedWriter(write);
-            writer.write(new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(patternMap));
+            writer.write(JSON.toJSONString(patternMap, true));
             writer.flush();
 
             logger.info("Write pattern data complete! The file path is: " + filePath);

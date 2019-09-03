@@ -7,10 +7,7 @@ package com.vmware.vip.i18n.api.v1.common;
 import java.io.IOException;
 import java.util.Map;
 
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
-
+import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,8 +21,7 @@ public class ResponseUtil {
         if (responseStr == null || responseStr.equalsIgnoreCase(""))
             return msgObject;
         try {
-            JSONObject responseObj = (JSONObject) JSONValue
-                    .parseWithException(responseStr);
+            JSONObject responseObj = JSONObject.parseObject(responseStr);
             if (responseObj != null) {
                 JSONObject dataObj = (JSONObject) responseObj
                         .get(ConstantsForTest.DATA);
@@ -33,7 +29,7 @@ public class ResponseUtil {
                     msgObject = dataObj.get(node);
                 }
             }
-        } catch (ParseException e) {
+        } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }

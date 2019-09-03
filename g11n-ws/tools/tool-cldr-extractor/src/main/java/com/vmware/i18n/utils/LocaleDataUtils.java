@@ -11,11 +11,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.vmware.i18n.cldr.CLDR;
 import com.vmware.i18n.common.CLDRConstants;
 import com.vmware.i18n.common.Constants;

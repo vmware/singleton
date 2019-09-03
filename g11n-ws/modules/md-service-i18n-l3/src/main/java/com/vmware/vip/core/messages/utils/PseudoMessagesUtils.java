@@ -6,11 +6,13 @@ package com.vmware.vip.core.messages.utils;
 
 import java.util.Map;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+/*import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;*/
 import org.springframework.beans.BeanUtils;
 import org.springframework.util.StringUtils;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.utils.JSONUtils;
@@ -46,21 +48,21 @@ public class PseudoMessagesUtils {
 		return pseudoSingleComponentDTO;
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({ "rawtypes" })
 	public static TranslationDTO getPseudoMessages2(
 			TranslationDTO translationDTO, PseudoConfig pseudoConfig) {
 		TranslationDTO t = new TranslationDTO();
 		BeanUtils.copyProperties(translationDTO, t);
 		JSONArray pseudoList = new JSONArray();
 		JSONArray ja = translationDTO.getBundles();
-		for (Object ob : ja) {
+		for(int i=0; i<ja.size(); i++) {
 			if (pseudoConfig.isEnabled()) {
-				JSONObject jo = (JSONObject) ob;
-				Map messages = (Map) jo.get(ConstantsKeys.MESSAGES);
-				jo.put(ConstantsKeys.MESSAGES,
-						JSONUtils.getOrderedMapForPseudo(messages,
-								pseudoConfig.getExistSourceTag()));
-				pseudoList.add(jo);
+			JSONObject jo = ja.getJSONObject(i);
+			Map messages = (Map) jo.get(ConstantsKeys.MESSAGES);
+			jo.put(ConstantsKeys.MESSAGES,
+					JSONUtils.getOrderedMapForPseudo(messages,
+							pseudoConfig.getExistSourceTag()));
+			pseudoList.add(jo);
 			}
 		}
 		t.setBundles(pseudoList);

@@ -15,8 +15,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.alibaba.fastjson.JSON;
 import com.vmware.i18n.common.CLDRConstants;
 import com.vmware.i18n.common.Constants;
 import com.vmware.i18n.pattern.dao.IPatternDao;
@@ -58,6 +57,7 @@ public class PatternServiceImpl implements IPatternService {
 		}
 		likelySubtagMap = (Map<String, Object>) JSONUtil.getMapFromJson(result).get(Constants.LIKELY_SUBTAG);
 		localePathMap = (Map<String, String>) JSONUtil.getMapFromJson(result).get(Constants.LOCALE_PATH);
+		System.out.println("---------------"+regionResult);
 		regionMap = (Map<String, String>) JSONUtil.getMapFromJson(regionResult).get(Constants.REGION_INFO);
 		localeAliasesMap = (Map<String, Object>) JSONUtil.getMapFromJson(localeAliases).get(Constants.LANGUAGE_ALIASES);
 		pluralsMap = (Map<String, Object>) JSONUtil.getMapFromJson(plurals).get(Constants.PLURAL_INFO);
@@ -97,8 +97,8 @@ public class PatternServiceImpl implements IPatternService {
 		resultMap.put("region", parseRegion(arr));
 		resultMap.put("categories", tmpMap);
 		try {
-			return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(resultMap);
-		} catch (JsonProcessingException e) {
+			return JSON.toJSONString(resultMap, true);
+		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return "";
 		}

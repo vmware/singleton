@@ -6,8 +6,7 @@ package com.vmware.vip.common.l10n.source.dto;
 
 import java.io.Serializable;
 
-import org.json.simple.JSONObject;
-
+import com.alibaba.fastjson.JSONObject;
 import com.vmware.vip.common.constants.ConstantsKeys;
 
 /**
@@ -60,9 +59,8 @@ public class StringSourceDTO extends ComponentBaseDTO implements Serializable {
         this.comment = comment;
     }
 
-    @SuppressWarnings("unchecked")
     public String toJSONString() {
-        JSONObject jo = new JSONObject();
+        JSONObject jo = new JSONObject(true);
         jo.put(ConstantsKeys.PRODUCTNAME, this.getProductName());
         jo.put(ConstantsKeys.COMPONENT, this.getComponent());
         jo.put(ConstantsKeys.VERSION, this.getVersion());

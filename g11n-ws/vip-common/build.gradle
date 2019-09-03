@@ -24,13 +24,11 @@ apply plugin: "jacoco"
 dependencies {
     compile("org.apache.commons:commons-lang3:$commonsLangVersion")
     compile("commons-io:commons-io:$commonsIoVersion")
-    compile("com.googlecode.json-simple:json-simple:$jsonSimpleVersion"){
-          exclude group: 'junit'
-    }
+    compile("com.alibaba:fastjson:1.2.58")
     compile("org.ehcache:ehcache:$ehCacheVersion")
     compile("javax.cache:cache-api:$cacheApiVersion")
     compile("org.apache.ant:ant:$antVersion")
-    compile("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+  //  compile("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
 }
 
 jar {

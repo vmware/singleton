@@ -7,22 +7,18 @@ package com.vmware.vip.core.messages.service.multcomponent;
 import java.util.List;
 
 import javax.annotation.Resource;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.vmware.vip.common.cache.CacheName;
 import com.vmware.vip.common.cache.CachedKeyGetter;
 import com.vmware.vip.common.cache.TranslationCache3;
 import com.vmware.vip.common.constants.ConstantsChar;
-import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.core.messages.exception.L3APIException;
 import com.vmware.vip.core.messages.service.product.IProductService;
@@ -72,10 +68,7 @@ public class MultComponentService implements IMultComponentService {
 					"Faild to get translation from data for  "
 							+ translationDTO.getProductName() + ConstantsChar.BACKSLASH
 							+ translationDTO.getVersion(), e);
-		} catch (ParseException e) {
-			throw new L3APIException(ConstantsKeys.FATA_ERROR + "Parse error when get translation for "
-					+ translationDTO.getProductName() + ConstantsChar.BACKSLASH
-					+ translationDTO.getVersion(), e);
+		
 		} catch (DataException e) {
 			throw new L3APIException(
 					"Faild to get translation from data for "
@@ -90,9 +83,9 @@ public class MultComponentService implements IMultComponentService {
 		return result;
 	}
 
-	@SuppressWarnings({"unchecked" })
+
 	private TranslationDTO getTranslation(TranslationDTO translationDTO)
-			throws ParseException, DataException {
+			throws  DataException {
 		List<String> locales = translationDTO.getLocales();
 		List<String> components = translationDTO.getComponents();
 		List<String> bundles = multipleComponentsDao.get2JsonStrs(
@@ -104,7 +97,7 @@ public class MultComponentService implements IMultComponentService {
 			if (s.equalsIgnoreCase("")) {
 				continue;
 			}
-			JSONObject jo = (JSONObject) new JSONParser().parse(s);
+			JSONObject jo = JSONObject.parseObject(s);
 			ja.add(jo);
 		}
 		translationDTO.setBundles(ja);

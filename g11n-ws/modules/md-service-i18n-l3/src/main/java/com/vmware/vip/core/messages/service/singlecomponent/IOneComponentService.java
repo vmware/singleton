@@ -4,8 +4,6 @@
  */
 package com.vmware.vip.core.messages.service.singlecomponent;
 
-import org.json.simple.parser.ParseException;
-
 import com.vmware.vip.core.messages.exception.L3APIException;
 import com.vmware.vip.messages.data.dao.exception.DataException;
 
@@ -38,6 +36,5 @@ public interface IOneComponentService {
 	 * @throws DataException
 	 */
 	public ComponentMessagesDTO getTranslationFromDisk(
-			ComponentMessagesDTO componentMessagesDTO) throws ParseException,
-			DataException;
+			ComponentMessagesDTO componentMessagesDTO) throws DataException;
 }

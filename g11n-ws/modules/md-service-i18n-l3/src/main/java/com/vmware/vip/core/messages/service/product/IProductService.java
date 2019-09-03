@@ -5,9 +5,6 @@
 package com.vmware.vip.core.messages.service.product;
 
 import java.util.List;
-
-import org.json.simple.parser.ParseException;
-
 import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.common.i18n.dto.DropVersionDTO;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO.TranslationDTO;
@@ -40,7 +37,7 @@ public interface IProductService {
     public List<TranslationDTO> updateBatchTranslation(List<ComponentMessagesDTO> componentMessagesDTOList) throws L3APIException;
     
     public boolean updateTranslation(ComponentMessagesDTO componentMessagesDTO)
-			throws DataException, ParseException, VIPCacheException;
+			throws DataException, VIPCacheException;
 
     /**
      * Get supported language list

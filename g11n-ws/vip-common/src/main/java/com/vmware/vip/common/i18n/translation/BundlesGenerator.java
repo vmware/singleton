@@ -14,10 +14,9 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.constants.ConstantsKeys;
@@ -36,7 +35,7 @@ public class BundlesGenerator {
      * {"locales":"en, ja, zh_CN","components":"default","bundles":"[{ \"en\":
      * {\"cancel\":\"Abbrechen\"}, \"ja\": {\"cancel\":\"Abbrechen\"}, \"zh_CN\":
      * {\"cancel\":\"Abbrechen\"}, \"component\":\"default\"
-     * }]","version":"1.0.0","productName":"devCenter"} 2. Convert the packaged JSON content with
+     * }]","version":"1.0.0","productName":"Testing"} 2. Convert the packaged JSON content with
      * multiple component messages to multiple JSO resource files 3. Write the translation to path
      * src-generated/main/resources/l10n/bundles/";
      * 
@@ -44,12 +43,12 @@ public class BundlesGenerator {
      */
     public void handleRemoteRusult(String remoteRusult) {
         MultiComponentsDTO baseTranslationDTO = TranslationUtil.getBaseTranslationDTO(remoteRusult);
-        List bundles = baseTranslationDTO.getBundles();
+        JSONArray bundles = baseTranslationDTO.getBundles();
         Iterator<?> it = bundles.iterator();
         String jsonFilePathDir = this.getJsonPath(baseTranslationDTO);
         while (it.hasNext()) {
             try {
-                JSONObject bundleObj = (JSONObject) JSONValue.parseWithException(it.next()
+                JSONObject bundleObj = JSONObject.parseObject(it.next()
                         .toString());
                 String component = (String) bundleObj.get(ConstantsKeys.COMPONENT);
                 List<String> locales = baseTranslationDTO.getLocales();
@@ -62,7 +61,7 @@ public class BundlesGenerator {
                                     + TranslationUtil.genernateJsonLocalizedFileName(tLocale),
                             component, tLocale, (JSONObject) bundleObj.get(tLocale));
                 }
-            } catch (ParseException e) {
+            } catch (RuntimeException e) {
                 e.printStackTrace();
             }
         }
@@ -91,7 +90,6 @@ public class BundlesGenerator {
      * @param locale The locale string
      * @param pairs The JSON pairs
      */
-    @SuppressWarnings("unchecked")
     public void writeToBundle(String jsonFileName, String component, String locale, JSONObject pairs) {
         JSONObject json = new JSONObject();
         json.put(ConstantsKeys.COMPONENT, component);

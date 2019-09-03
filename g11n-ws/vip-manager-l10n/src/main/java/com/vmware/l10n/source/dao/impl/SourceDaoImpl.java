@@ -5,15 +5,12 @@
 package com.vmware.l10n.source.dao.impl;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.ContainerFactory;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -26,6 +23,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.vmware.l10n.record.dao.SqlLiteDao;
 import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.l10n.source.dto.GRMAPIResponseStatus;
@@ -169,14 +168,12 @@ public class SourceDaoImpl implements SourceDao {
 		ComponentMessagesDTO componentMessagesDTO = new ComponentMessagesDTO();
 		BeanUtils.copyProperties(cachedComponentSourceDTO, componentMessagesDTO);
 		if (!StringUtils.isEmpty(componentJSON)) {
-			JSONParser parser = new JSONParser();
-			ContainerFactory containerFactory = MapUtil.getContainerFactory();
+
 			Map<String, Object> messages = new LinkedHashMap<String, Object>();
 			Map<String, Object> bundle = null;
 			try {
-				bundle = (Map<String, Object>) parser.parse(componentJSON,
-						containerFactory);
-			} catch (ParseException e) {
+				bundle = (Map<String, Object>) JSON.parseObject(componentJSON,HashMap.class);
+			} catch (Exception e) {
 				LOGGER.error(e.getMessage(), e);
 				
 			}

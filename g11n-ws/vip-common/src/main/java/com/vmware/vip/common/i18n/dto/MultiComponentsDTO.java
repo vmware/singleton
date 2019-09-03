@@ -5,12 +5,8 @@
 package com.vmware.vip.common.i18n.dto;
 
 import java.util.List;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
-
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.exceptions.VIPAPIException;
 
@@ -20,7 +16,10 @@ import com.vmware.vip.common.exceptions.VIPAPIException;
  * 
  */
 public class MultiComponentsDTO extends BaseDTO {
-    // The string contains multiple locale, e.g. "zh_CN, ja_JP"
+
+	private static final long serialVersionUID = 3539562707849849284L;
+
+	// The string contains multiple locale, e.g. "zh_CN, ja_JP"
     private List<String> locales;
 
     // The string contains multiple components, e.g. "aim, home,"
@@ -66,9 +65,8 @@ public class MultiComponentsDTO extends BaseDTO {
         this.bundles = bundles;
     }
 
-    @SuppressWarnings({ "unchecked" })
     public String toJSONString() {
-        JSONObject jo = new JSONObject();
+        JSONObject jo = new JSONObject(true);
         jo.put(ConstantsKeys.PRODUCTNAME, this.getProductName());
         jo.put(ConstantsKeys.VERSION, this.getVersion());
         jo.put(ConstantsKeys.lOCALES, this.getLocales());
@@ -91,8 +89,8 @@ public class MultiComponentsDTO extends BaseDTO {
 	public static MultiComponentsDTO getMultiComponentsDTO(String jsonStr) throws VIPAPIException {
         JSONObject genreJsonObject = null;
         try {
-            genreJsonObject = (JSONObject) JSONValue.parseWithException(jsonStr);
-        } catch (ParseException e) {
+            genreJsonObject = JSONObject.parseObject(jsonStr);
+        } catch (Exception e) {
             throw new VIPAPIException("Parse string '" + jsonStr + "' failed.");
         }
         if (genreJsonObject == null) {
@@ -104,7 +102,7 @@ public class MultiComponentsDTO extends BaseDTO {
         baseTranslationDTO.setVersion((String) genreJsonObject.get(ConstantsKeys.VERSION));
         baseTranslationDTO.setLocales((List) genreJsonObject.get(ConstantsKeys.lOCALES));
         baseTranslationDTO.setComponents((List) genreJsonObject.get(ConstantsKeys.COMPONENTS));
-        baseTranslationDTO.setBundles((JSONArray) JSONValue.parse(bundleStr));
+        baseTranslationDTO.setBundles(JSONArray.parseArray(bundleStr));
         return baseTranslationDTO;
     }
 }

@@ -10,9 +10,9 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.lang3.StringUtils;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.exceptions.VIPResourceOperationException;
 import com.vmware.vip.common.i18n.dto.MultiComponentsDTO;

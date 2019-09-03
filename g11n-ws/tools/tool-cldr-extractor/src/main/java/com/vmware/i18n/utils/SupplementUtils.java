@@ -6,15 +6,16 @@ package com.vmware.i18n.utils;
 
 import java.io.File;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
-import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+/*import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;*/
 import com.vmware.i18n.common.CLDRConstants;
 
 public class SupplementUtils {
@@ -44,7 +45,7 @@ public class SupplementUtils {
 		Map<String, Object> regionMap = (Map<String, Object>) supplementalMap.get("region");
 		Map<String, String> resMap = new LinkedHashMap<String, String>();
 		for (Map.Entry<String, Object> entry : regionMap.entrySet()) {
-			LinkedList<Object> list = (LinkedList<Object>) entry.getValue();
+			List<Object> list = (List<Object>) entry.getValue();
 			for (int i = 0; i < list.size(); i++) {
 				Map<String, Object> itemMap = (Map<String, Object>) list.get(i);
 				for (Map.Entry<String, Object> item : itemMap.entrySet()) {
@@ -57,13 +58,13 @@ public class SupplementUtils {
 			}
 		}
 		try {
-			String result = new ObjectMapper().writeValueAsString(resMap);
+			String result = JSON.toJSONString(resMap);
 			Map<String, Object> tmpMap = new LinkedHashMap<String, Object>();
 			tmpMap.put("fractions", fractionsMap);
 			tmpMap.put("regions", JSONUtil.string2SortMap(result));
 			CLDRUtils.writePatternDataIntoFile(
 					CLDRConstants.GEN_CLDR_SUPPLEMENT_DIR + File.separator + "currencies.json", tmpMap);
-		} catch (JsonProcessingException e) {
+		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
 		logger.info("Extract cldr supplemental currency data complete!");

@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +22,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.vmware.l10n.source.dto.SourceAPIResponseDTO;
 import com.vmware.l10n.source.service.SourceService;
 import com.vmware.vip.api.rest.API;
@@ -118,10 +117,10 @@ public class SourceController {
 		JSONArray listKSC = null;
 		if (ConstantsKeys.JSON_KEYSET.equalsIgnoreCase(key)
 				&& sourceStr.startsWith("[") && sourceStr.endsWith("]")) {
-			listKSC = (JSONArray) JSONValue.parseWithException(sourceStr);
-			ObjectMapper objectMapper = new ObjectMapper();
+			listKSC = JSONArray.parseArray(sourceStr);
+		
 			for (Object kscObj : listKSC) {
-				final KeySourceCommentDTO kscDTO = objectMapper.readValue(
+				final KeySourceCommentDTO kscDTO = JSONObject.parseObject(
 						kscObj.toString(), KeySourceCommentDTO.class);
 				String k = kscDTO.getKey();
 				String s = kscDTO.getSource();

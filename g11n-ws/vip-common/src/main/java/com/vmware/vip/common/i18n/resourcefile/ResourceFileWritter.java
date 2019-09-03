@@ -16,13 +16,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsUnicode;
@@ -47,7 +47,7 @@ public class ResourceFileWritter {
 	 * {"locales":"en, ja, zh_CN","components":"default","bundles":"[{ \"en\":
 	 * {\"cancel\":\"Abbrechen\"}, \"ja\": {\"cancel\":\"Abbrechen\"},
 	 * \"zh_CN\": {\"cancel\":\"Abbrechen\"}, \"component\":\"default\"
-	 * }]","version":"1.0.0","productName":"devCenter"} 2. Convert the packaged
+	 * }]","version":"1.0.0","productName":"Testing"} 2. Convert the packaged
 	 * JSON content with multiple component messages to multiple JSO resource
 	 * files 3. Write the translation to path
 	 * src-generated/main/resources/l10n/bundles/";
@@ -66,17 +66,15 @@ public class ResourceFileWritter {
 		} catch (VIPAPIException e1) {
 			e1.printStackTrace();
 		}
-		List bundles = baseTranslationDTO.getBundles();
+		JSONArray bundles = baseTranslationDTO.getBundles();
 		Iterator<?> it = bundles.iterator();
 		SingleComponentDTO singleComponentDTO = new SingleComponentDTO();
 		singleComponentDTO.setProductName(baseTranslationDTO.getProductName());
 		singleComponentDTO.setVersion(baseTranslationDTO.getVersion());
 		while (it.hasNext()) {
 			try {
-				JSONObject bundleObj = (JSONObject) JSONValue
-						.parseWithException(it.next().toString());
-				String component = (String) bundleObj
-						.get(ConstantsKeys.COMPONENT);
+				JSONObject bundleObj = JSONObject.parseObject(it.next().toString());
+				String component = (String) bundleObj.get(ConstantsKeys.COMPONENT);
 				singleComponentDTO.setComponent(component);
 				List<String> locales = baseTranslationDTO.getLocales();
 				for (String locale : locales) {
@@ -93,7 +91,7 @@ public class ResourceFileWritter {
 											.getLocalizedJSONFileName(tLocale),
 							singleComponentDTO);
 				}
-			} catch (ParseException e) {
+			} catch (Exception e) {
 				throw new VIPResourceOperationException("Parse '"
 						+ it.next().toString() + "' failed.");
 			}
@@ -113,12 +111,11 @@ public class ResourceFileWritter {
 	 *            the JSON object contains keys and values
 	 * @return VIPResourceOperationException
 	 */
-	@SuppressWarnings("unchecked")
 	public static void writeJSONObjectToJSONFile(String jsonFileName,
 			String component, String locale, JSONObject pairs)
 			throws VIPResourceOperationException {
 		logger.info("Write JSON content to file: " + jsonFileName);
-		JSONObject json = new JSONObject();
+		JSONObject json = new JSONObject(true);
 		json.put(ConstantsKeys.COMPONENT, component);
 		json.put(ConstantsKeys.lOCALE, locale);
 		json.put(ConstantsKeys.MESSAGES, pairs);
@@ -190,8 +187,7 @@ public class ResourceFileWritter {
 			writer = new BufferedWriter(write);
 			// [bug 1827676] replace("\\u", "\\\\u")) happens on
 			// SourceServiceImpl.synchronizeSourceToBundle
-			writer.write(new ObjectMapper().writerWithDefaultPrettyPrinter()
-					.writeValueAsString(json));
+			writer.write(JSON.toJSONString(json, SerializerFeature.PrettyFormat, SerializerFeature.MapSortField));
 		} catch (IOException e) {
 			throw new VIPResourceOperationException("Write file '"
 					+ jsonFileName + "' failed.");

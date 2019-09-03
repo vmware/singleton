@@ -5,7 +5,6 @@
 package com.vmware.vip.messages.data.dao.impl;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
@@ -15,9 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.alibaba.fastjson.JSON;
 import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsUnicode;
@@ -42,29 +39,17 @@ public class OneComponentDao implements IOneComponentDao {
 	@Autowired
 	private BundleConfig bundleConfig;
 	
-	
-	
 	@Override
 	public ResultI18Message get(String productName, String version, String component, String locale) throws DataException{
 		// TODO Auto-generated method stub
 		
 		String jsonStr = get2JsonStr(productName, version, component, locale);
 		
-		 ObjectMapper mapper = new ObjectMapper(); 
 		 
 		 ResultI18Message result = null;
 		try {
-			result = mapper.readValue(jsonStr, ResultI18Message.class);
-		} catch (JsonParseException e) {
-			String errorLog = ConstantsKeys.FATA_ERROR + e.getMessage();
-			logger.error(errorLog, e);
-			throw new BundleException(e.getMessage());
-
-		} catch (JsonMappingException e) {
-			String errorLog = ConstantsKeys.FATA_ERROR + e.getMessage();
-			logger.error(errorLog, e);
-			throw new BundleException("File is not existing: ");
-		} catch (IOException e) {
+			result = JSON.parseObject(jsonStr, ResultI18Message.class);
+		} catch (Exception e) {
 			String errorLog = ConstantsKeys.FATA_ERROR + e.getMessage();
 			logger.error(errorLog, e);
 			throw new BundleException("File is not existing: ");

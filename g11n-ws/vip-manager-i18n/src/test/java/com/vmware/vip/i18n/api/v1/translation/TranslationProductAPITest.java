@@ -6,8 +6,6 @@ package com.vmware.vip.i18n.api.v1.translation;
 
 import java.util.List;
 
-import org.json.simple.JSONArray;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

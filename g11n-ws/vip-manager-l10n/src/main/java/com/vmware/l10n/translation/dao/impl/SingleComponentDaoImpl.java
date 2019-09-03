@@ -9,7 +9,6 @@ import java.io.File;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.json.simple.parser.ParseException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
@@ -57,8 +56,8 @@ public class SingleComponentDaoImpl implements SingleComponentDao {
             component = ConstantsFile.DEFAULT_COMPONENT;
         }
         String filepath = ConstantsFile.L10N_BUNDLES_PATH
-                + ResourceFilePathGetter.getProductVersionConcatName(componentMessagesDTO) + ConstantsChar.BACKSLASH
-                + component + ConstantsChar.BACKSLASH
+                + ResourceFilePathGetter.getProductVersionConcatName(componentMessagesDTO) + File.separator
+                + component + File.separator
                 + ResourceFilePathGetter.getLocalizedJSONFileName(componentMessagesDTO.getLocale());
         String defaultFilePath = filepath.substring(0,
                 filepath.lastIndexOf(ConstantsFile.LOCAL_FILE_SUFFIX)+8)+ConstantsChar.UNDERLINE+ ConstantsUnicode.EN
@@ -86,7 +85,7 @@ public class SingleComponentDaoImpl implements SingleComponentDao {
             caseComponentMessagesDTO.setVersion(componentMessagesDTO.getVersion());
 
             caseComponentMessagesDTO.setStatus(componentMessagesDTO.getStatus());
-        } catch (ParseException e){
+        } catch (Exception e){
         	throw new L10nAPIException("Parse json failed.", e);
         }
         ComponentMessagesDTO msgDTO = new ComponentMessagesDTO();
@@ -108,7 +107,7 @@ public class SingleComponentDaoImpl implements SingleComponentDao {
 			component = ConstantsFile.DEFAULT_COMPONENT;
 		}
 		String filepath = ConstantsFile.L10N_BUNDLES_PATH
-				+ ResourceFilePathGetter.getProductVersionConcatName(componentMessagesDTO) + ConstantsChar.BACKSLASH + component + ConstantsChar.BACKSLASH
+				+ ResourceFilePathGetter.getProductVersionConcatName(componentMessagesDTO) + File.separator + component + File.separator
 				+ ResourceFilePathGetter.getLocalizedJSONFileName(componentMessagesDTO.getLocale());
 		File targetFile = new File(basePath + filepath);
 		if (targetFile.exists()) {

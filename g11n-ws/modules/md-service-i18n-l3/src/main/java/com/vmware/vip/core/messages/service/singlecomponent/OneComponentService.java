@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.annotation.Resource;
-
-import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -103,9 +101,6 @@ public class OneComponentService implements IOneComponentService {
 					LOGGER.debug(msg);
 				}
 			}
-		} catch (ParseException e) {
-			LOGGER.error(e.getMessage(), e);
-			throw new L3APIException(ConstantsKeys.FATA_ERROR + "Parse json failed.");
 		} catch (DataException e) {
 			LOGGER.error(e.getMessage(), e);
 			throw new L3APIException("Failed to get translation from data for "
@@ -157,7 +152,7 @@ public class OneComponentService implements IOneComponentService {
 	 * @see com.vmware.vip.core.translation.dao.BaseComponentDao#getTranslation(java.lang.Object)
 	 */
 	public ComponentMessagesDTO getTranslationFromDisk(
-			ComponentMessagesDTO componentMessagesDTO) throws ParseException,
+			ComponentMessagesDTO componentMessagesDTO) throws
 			DataException {
 		String result = oneComponentDao.get2JsonStr(
 				componentMessagesDTO.getProductName(),

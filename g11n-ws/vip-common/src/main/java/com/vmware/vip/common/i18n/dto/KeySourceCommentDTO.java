@@ -4,8 +4,8 @@
  */
 package com.vmware.vip.common.i18n.dto;
 
-import org.json.simple.JSONObject;
 
+import com.alibaba.fastjson.JSONObject;
 import com.vmware.vip.common.constants.ConstantsKeys;
 
 /**
@@ -41,9 +41,9 @@ public class KeySourceCommentDTO {
 		this.commentForSource = commentForSource;
 	}
 
-	@SuppressWarnings("unchecked")
+
 	public String toJSONString() {
-		JSONObject jo = new JSONObject();
+		JSONObject jo = new JSONObject(true);
 		jo.put(ConstantsKeys.SOURCE, this.getSource());
 		jo.put(ConstantsKeys.KEY, this.getKey());
 		jo.put(ConstantsKeys.COMMENT_FOR_SOURCE, this.getCommentForSource());

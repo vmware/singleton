@@ -4,7 +4,6 @@
  */
 package com.vmware.vip.i18n.api.v1.translation;
 
-import org.json.simple.JSONObject;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.alibaba.fastjson.JSONObject;
 import com.vmware.vip.BootApplication;
 import com.vmware.vip.i18n.api.v1.common.CacheUtil;
 import com.vmware.vip.i18n.api.v1.common.ConstantsForTest;

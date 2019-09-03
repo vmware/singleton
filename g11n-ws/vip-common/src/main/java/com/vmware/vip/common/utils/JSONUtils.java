@@ -5,6 +5,7 @@
 package com.vmware.vip.common.utils;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,24 +13,17 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ContainerFactory;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.vmware.vip.common.constants.ConstantsUnicode;
 import com.vmware.vip.common.l10n.source.util.IOUtil;
 
@@ -50,8 +44,8 @@ public class JSONUtils {
 	public static JSONObject string2JSON(String jsonStr) {
 		JSONObject genreJsonObject = null;
 		try {
-			genreJsonObject = (JSONObject) JSONValue.parseWithException(jsonStr);
-		} catch (ParseException e) {
+			genreJsonObject = JSONObject.parseObject(jsonStr);
+		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
 		return genreJsonObject;
@@ -68,8 +62,8 @@ public class JSONUtils {
 	public static Map string2Map(String jsonStr) {
 		Map genreJsonObject = null;
 		try {
-			genreJsonObject = (Map) JSONValue.parseWithException(jsonStr);
-		} catch (ParseException e) {
+			genreJsonObject = JSON.parseObject(jsonStr, HashMap.class);
+		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
 		return genreJsonObject;
@@ -112,15 +106,14 @@ public class JSONUtils {
 	 *            a tag string, e.g @@
 	 * @return JSON object
 	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static JSONObject getJSONObjectForPseudo(Map map, String pseudoTag) {
+	public static JSONObject getJSONObjectForPseudo(Map<String, Object> map, String pseudoTag) {
 		JSONObject jsonObj = null;
 		if (map != null && map.size() > 0) {
 			jsonObj = new JSONObject();
-			Set set = map.keySet();
-			Iterator it = set.iterator();
+			Set<String> set = map.keySet();
+			Iterator<String> it = set.iterator();
 			while (it.hasNext()) {
-				Object key = it.next();
+				String key = it.next();
 				jsonObj.put(key, pseudoTag + map.get(key) + pseudoTag);
 			}
 		}
@@ -135,13 +128,12 @@ public class JSONUtils {
 	 */
 	@SuppressWarnings("unchecked")
 	public static Map<String, Object> getMapFromJson(String json) {
-		JSONParser parser = new JSONParser();
-		ContainerFactory containerFactory = getContainerFactory();
+
 		Map<String, Object> result = null;
 		if (!StringUtils.isEmpty(json)) {
 			try {
-				result = (Map<String, Object>) parser.parse(json, containerFactory);
-			} catch (ParseException e) {
+				result  = JSON.parseObject(json, HashMap.class);;
+			} catch (Exception e) {
 				logger.error(e.getMessage(), e);
 			}
 		}
@@ -155,15 +147,11 @@ public class JSONUtils {
 	 * @return Map<String, Object> obj
 	 */
 	public static Map<String, Object> getMapFromJsonFile(String filePath) {
-		Map<String, Object> json = new HashMap<String, Object>();
+		Map<String, Object> json=null;
 		try {
 			File file = new File(filePath);
-			JsonNode node = new ObjectMapper().readTree(file);
-			Iterator<String> names = node.fieldNames();
-			for (Iterator<String> iter = names; iter.hasNext();) {
-				String locale = (String) iter.next();
-				json.put(locale, node.get(locale).asText());
-			}
+			
+			JSON.parseObject(new FileInputStream(file), HashMap.class);
 		} catch (IOException e) {
 			logger.error(e.getMessage(), e);
 		}
@@ -180,27 +168,13 @@ public class JSONUtils {
 	public static void writeMapToJsonFile(String filePath, Map<String, Object> map) {
 		
 		try (FileWriter writer = new FileWriter(filePath)){
-			
-			ObjectWriter bw = new ObjectMapper().writerWithDefaultPrettyPrinter();
-			writer.write(bw.writeValueAsString(map));
+			writer.write(JSON.toJSONString(map, SerializerFeature.PrettyFormat, SerializerFeature.MapSortField));
 		} catch (IOException e) {
 			logger.error(e.getMessage(), e);
 		} 
 	}
 
-	private static ContainerFactory getContainerFactory() {
-		ContainerFactory containerFactory = new ContainerFactory() {
-			public List<Object> creatArrayContainer() {
-				return new LinkedList<Object>();
-			}
-
-			public Map<String, Object> createObjectContainer() {
-				return new LinkedHashMap<String, Object>();
-			}
-		};
-		return containerFactory;
-	}
-
+	
 	/**
 	 * Read a JSON file in a jar
 	 * 

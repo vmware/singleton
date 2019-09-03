@@ -4,8 +4,8 @@
  */
 package com.vmware.vip.common.i18n.dto;
 
-import org.json.simple.JSONObject;
 
+import com.alibaba.fastjson.JSONObject;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.utils.LocaleUtils;
 
@@ -80,9 +80,8 @@ public class StringBasedDTO extends BaseDTO {
         this.component = component;
     }
 
-    @SuppressWarnings("unchecked")
     public String toJSONString() {
-        JSONObject jo = new JSONObject();
+        JSONObject jo = new JSONObject(true);
         jo.put(ConstantsKeys.PRODUCTNAME, this.getProductName());
         jo.put(ConstantsKeys.VERSION, this.getVersion());
         jo.put(ConstantsKeys.lOCALE, this.getLocale());

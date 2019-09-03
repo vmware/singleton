@@ -9,7 +9,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
-import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -57,7 +56,7 @@ public class SourceToLatestCron {
 		    				TranslationCache3.deleteCachedObject(CacheName.MTSOURCE, key, ComponentMessagesDTO.class);
 		    			}
 		    		}
-		    	} catch (VIPCacheException | DataException | ParseException e1) {
+		    	} catch (VIPCacheException | DataException e1) {
 		    		// TODO Auto-generated catch block
 		    		LOGGER.error(e1.getMessage(), e1);
 		    		

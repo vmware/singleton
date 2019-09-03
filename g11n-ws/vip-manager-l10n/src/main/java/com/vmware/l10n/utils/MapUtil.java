@@ -5,12 +5,7 @@
 package com.vmware.l10n.utils;
 
 import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-
-import org.json.simple.parser.ContainerFactory;
 import org.springframework.util.StringUtils;
 
 public class MapUtil {
@@ -66,22 +61,4 @@ public class MapUtil {
 		return updatedTrimKey;
 	}
 	
-
-	/**
-	 * Get the factory which is used to create own object.
-	 * 
-	 * @return
-	 */
-	public static ContainerFactory getContainerFactory() {
-		ContainerFactory containerFactory = new ContainerFactory() {
-			public List<Object> creatArrayContainer() {
-				return new LinkedList<Object>();
-			}
-
-			public Map<String, Object> createObjectContainer() {
-				return new LinkedHashMap<String, Object>();
-			}
-		};
-		return containerFactory;
-	}
 }

@@ -10,12 +10,11 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSONObject;
 import com.vmware.i18n.PatternUtil;
 import com.vmware.i18n.pattern.action.PatternAction;
 import com.vmware.i18n.utils.CLDRUtils;
@@ -57,6 +56,7 @@ public class I18nUtilTest {
 		String cateStr= "dates,numbers,plurals";
 		PatternAction pa = PatternAction.getInstance();
 		String json = pa.getPattern(LOCALE, cateStr);
+		System.out.println("--------getPatternAPI-------"+json);
 		Map<String, Object> patternMap = (Map<String, Object>) JSONUtil.getMapFromJson(json);
 		Map<String, Object> catesMap = (Map<String, Object>) patternMap.get("categories");
 		String[] catesArr = cateStr.split(",");
@@ -78,8 +78,8 @@ public class I18nUtilTest {
 			for(int i=0;i<languageArray.length;i++) {
 				String regions = PatternUtil.getRegionFromLib(languageArray[i]);
 				Map<String, Object> genreJsonObject = null;
-				genreJsonObject = (Map<String, Object>) JSONValue.parseWithException(regions);
-				Map<String, Object> territoriesObject = (Map<String, Object>) JSONValue.parseWithException(genreJsonObject.get("territories").toString());
+				genreJsonObject = (Map<String, Object>) JSONObject.parseObject(regions,HashMap.class);
+				Map<String, Object> territoriesObject = (Map<String, Object>) JSONObject.parseObject(genreJsonObject.get("territories").toString(), HashMap.class);
 				if (languageArray[i].equals("zh")) {
 					Assert.assertEquals("zh", genreJsonObject.get("language"));
 					Assert.assertNotNull(territoriesObject.get("TW"));
@@ -119,7 +119,7 @@ public class I18nUtilTest {
 				}
 
 			}	
-		} catch (ParseException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

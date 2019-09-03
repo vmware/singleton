@@ -6,16 +6,10 @@ package com.vmware.vip.common.i18n.dto;
 
 import java.io.Serializable;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ContainerFactory;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.utils.LocaleUtils;
 
@@ -88,9 +82,8 @@ public class SingleComponentDTO extends BaseDTO  implements Serializable{
    	}
    }
 
-   @SuppressWarnings("unchecked")
    public String toJSONString() {
-       JSONObject jo = new JSONObject();
+       JSONObject jo = new JSONObject(true);
        jo.put(ConstantsKeys.COMPONENT, this.getComponent());
        jo.put(ConstantsKeys.lOCALE, this.getLocale());
        jo.put(ConstantsKeys.BUNDLES, this.getMessages());
@@ -107,9 +100,9 @@ public class SingleComponentDTO extends BaseDTO  implements Serializable{
     * @param jsonStr One JSON string can convert to a SingleComponentDTO object
     * @return SingleComponentDTO
     */
-   public static SingleComponentDTO getSingleComponentDTO(String jsonStr) throws ParseException {
+   public static SingleComponentDTO getSingleComponentDTO(String jsonStr) throws RuntimeException {
        JSONObject genreJsonObject = null;
-       genreJsonObject = (JSONObject) JSONValue.parseWithException(jsonStr);
+       genreJsonObject = JSONObject.parseObject(jsonStr);
        if (genreJsonObject == null) {
            return null;
        }
@@ -128,14 +121,14 @@ public class SingleComponentDTO extends BaseDTO  implements Serializable{
     * @param jsonStr One JSON string can convert to a SingleComponentDTO object
     * @return SingleComponentDTO
     */
+
    @SuppressWarnings("unchecked")
-   public static SingleComponentDTO getSingleComponentDTOWithLinkedMessages(String jsonStr)
-           throws ParseException {
-       JSONParser parser = new JSONParser();
-       ContainerFactory containerFactory = getContainerFactory();
+public static SingleComponentDTO getSingleComponentDTOWithLinkedMessages(String jsonStr)
+           throws RuntimeException {
+
        Map<String, Object> messages = new LinkedHashMap<String, Object>();
        Map<String, Object> bundle = null;
-       bundle = (Map<String, Object>) parser.parse(jsonStr, containerFactory);
+       bundle = JSON.parseObject(jsonStr, LinkedHashMap.class);
        if (bundle == null) {
            return null;
        }
@@ -148,16 +141,4 @@ public class SingleComponentDTO extends BaseDTO  implements Serializable{
        return baseComponentMessagesDTO;
    }
 
-   private static ContainerFactory getContainerFactory() {
-       ContainerFactory containerFactory = new ContainerFactory() {
-           public List<Object> creatArrayContainer() {
-               return new LinkedList<Object>();
-           }
-
-           public Map<String, Object> createObjectContainer() {
-               return new LinkedHashMap<String, Object>();
-           }
-       };
-       return containerFactory;
-   }
 }

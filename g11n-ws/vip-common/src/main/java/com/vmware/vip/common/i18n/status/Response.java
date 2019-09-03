@@ -6,8 +6,7 @@ package com.vmware.vip.common.i18n.status;
 
 import java.io.Serializable;
 
-import org.json.simple.JSONObject;
-
+import com.alibaba.fastjson.JSONObject;
 import com.vmware.vip.common.constants.ConstantsKeys;
 
 /**
@@ -63,9 +62,8 @@ public class Response implements Serializable {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	public String toJSONString() {
-		JSONObject jo = new JSONObject();
+		JSONObject jo = new JSONObject(true);
 		jo.put(ConstantsKeys.CODE, this.getCode());
 		jo.put(ConstantsKeys.MESSAGE, this.getMessage());
 		return jo.toJSONString();

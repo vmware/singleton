@@ -7,7 +7,8 @@ package com.vmware.vip.fetcher.translation;
 import java.util.Enumeration;
 import java.util.Properties;
 
-import org.json.simple.JSONObject;
+import com.alibaba.fastjson.JSONObject;
+
 
 /**
  * Convert key/value pairs in properties file to JSON format
@@ -20,13 +21,13 @@ public class ProToJSONConverter {
 	 * @param pro The properties object which you want to convert to JSON format
 	 * @return JSONObject
 	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({ "rawtypes" })
     public JSONObject getJSONFromProp(Properties pro){
 		JSONObject pairs = new JSONObject();
 		Enumeration en = pro.keys();
 		while(en.hasMoreElements()) {
 			Object key = en.nextElement();
-			pairs.put(key, pro.get(key));
+			pairs.put((String) key, pro.get(key));
 		}
 		return pairs;
 	}

@@ -4,10 +4,10 @@
  */
 package com.vmware.vip.i18n.api.v1.common;
 
-import org.json.simple.JSONObject;
 import org.springframework.mock.web.MockServletContext;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.alibaba.fastjson.JSONObject;
 import com.vmware.vip.common.utils.JSONUtils;
 
 public class CacheUtil {

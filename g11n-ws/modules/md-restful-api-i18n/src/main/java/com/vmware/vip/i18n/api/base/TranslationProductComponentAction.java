@@ -8,13 +8,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.apache.commons.lang3.StringUtils;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import com.alibaba.fastjson.JSONObject;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsUnicode;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO;
@@ -43,7 +40,8 @@ public class TranslationProductComponentAction extends BaseAction {
 	@Autowired
 	IMTService mtService;
 
-	public APIResponseDTO getSingleComponentTrans(String productName,
+	@SuppressWarnings("unchecked")
+   public APIResponseDTO getSingleComponentTrans(String productName,
 			String component, String version, String locale, String pseudo,
 			String mt, HttpServletRequest request) throws Exception {
 		ComponentMessagesDTO c = new ComponentMessagesDTO();
@@ -72,8 +70,7 @@ public class TranslationProductComponentAction extends BaseAction {
 				UpdateTranslationDataDTO.TranslationDTO translationDTO = new UpdateTranslationDataDTO.TranslationDTO();
 				translationDTO.setComponent(c.getComponent());
 				translationDTO.setLocale(c.getLocale());
-				translationDTO.setMessages((Map<String, String>) c
-						.getMessages());
+				translationDTO.setMessages((Map<String, String>) c.getMessages());
 				list.add(translationDTO);
 				data.setTranslation(list);
 				data.setMachineTranslation(true);

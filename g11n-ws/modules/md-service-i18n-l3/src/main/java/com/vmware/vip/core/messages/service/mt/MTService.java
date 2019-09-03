@@ -33,7 +33,6 @@ import com.vmware.vip.messages.data.dao.exception.MTException;
 import com.vmware.vip.messages.mt.MTConfig;
 import com.vmware.vip.messages.mt.azure.AzureTranslatingProcessor;
 
-import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -126,7 +125,7 @@ public class MTService implements IMTService {
 					e.printStackTrace();
 				}
 			}
-		} catch (ParseException | DataException | MTException
+		} catch ( DataException | MTException
 				| VIPCacheException e) {
 			
 			LOGGER.error(e.getMessage(), e);

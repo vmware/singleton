@@ -40,6 +40,7 @@ dependencies {
 	compile project(":vip-common")
     compile group: 'org.springframework', name: 'spring-context'
     compile "commons-collections:commons-collections:$commonsCollectionsVersion"
+    compile("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
 }
 bootJar {
   enabled = false

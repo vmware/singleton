@@ -10,7 +10,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,10 +45,6 @@ public class SynchServiceImpl implements SynchService{
 				// TODO Auto-generated catch block
 				logger.error(e.getMessage(), e);
 				fileResult = null;
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				logger.error(e.getMessage(), e);
-				fileResult = null;
 			} catch (VIPCacheException e) {
 				// TODO Auto-generated catch block
 				logger.error(e.getMessage(), e);
@@ -74,7 +69,7 @@ public class SynchServiceImpl implements SynchService{
 
 	
 		public File updateTranslation(ComponentMessagesDTO componentMessagesDTO)
-				throws DataException, ParseException, VIPCacheException {
+				throws DataException, VIPCacheException {
 			String key = CachedKeyGetter.getOneCompnentCachedKey(componentMessagesDTO);
 			File updateFile;
 			ComponentMessagesDTO result =  TranslationCache3.getCachedObject(CacheName.ONECOMPONENT, key, ComponentMessagesDTO.class);

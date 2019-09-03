@@ -11,15 +11,13 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
-
-import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.alibaba.fastjson.JSONObject;
 import com.vmware.vip.common.cache.CacheName;
 import com.vmware.vip.common.cache.CachedKeyGetter;
 import com.vmware.vip.common.cache.TranslationCache3;
@@ -61,7 +59,8 @@ public class ProductService implements IProductService {
 				supportedLocaleList.remove(ConstantsKeys.LATEST);
 			}
 		} catch (DataException e) {
-			throw new L3APIException("Failed to get locale list for " + productName
+			throw new L3APIException(ConstantsKeys.FATA_ERROR
+					+ "Failed to get locale list for " + productName
 					+ ConstantsChar.BACKSLASH + version, e);
 		}
 		return supportedLocaleList;
@@ -74,7 +73,8 @@ public class ProductService implements IProductService {
 		try {
 			componentList = productdao.getComponentList(productName, version);
 		} catch (DataException e) {
-			throw new L3APIException("Failed to get component list for " + productName
+			throw new L3APIException(ConstantsKeys.FATA_ERROR
+					+ "Failed to get component list for " + productName
 					+ ConstantsChar.BACKSLASH + version, e);
 		}
 		return componentList;
@@ -88,7 +88,8 @@ public class ProductService implements IProductService {
 		try {
 			jsonStr = productdao.getVersionInfo(productName, version);
 		} catch (DataException e) {
-			throw new L3APIException("Failed to get drop version info for " + productName
+			throw new L3APIException(ConstantsKeys.FATA_ERROR
+					+ "Failed to drop version info for " + productName
 					+ ConstantsChar.BACKSLASH + version, e);
 		}
 		JSONObject jo = JSONUtils.string2JSON(jsonStr);
@@ -153,14 +154,7 @@ public class ProductService implements IProductService {
 						+ componentMessagesDTO.getProductName()
 						+ ConstantsChar.BACKSLASH
 						+ componentMessagesDTO.getVersion(), e);
-			} catch (ParseException e) {
-				logger.error(e.getMessage(), e);
-				throw new L3APIException(ConstantsKeys.FATA_ERROR
-						+ "Failed to parse content for "
-						+ componentMessagesDTO.getProductName()
-						+ ConstantsChar.BACKSLASH
-						+ componentMessagesDTO.getVersion(), e);
-			}
+			} 
 		}
 		return translationDTOList;
 	}
@@ -180,7 +174,7 @@ public class ProductService implements IProductService {
 	 */
 	@SuppressWarnings("unchecked")
 	public boolean updateTranslation(ComponentMessagesDTO componentMessagesDTO)
-			throws DataException, ParseException, VIPCacheException {
+			throws DataException, VIPCacheException {
 		String key = CachedKeyGetter
 				.getOneCompnentCachedKey(componentMessagesDTO);
 		boolean updateFlag = false;
@@ -222,8 +216,7 @@ public class ProductService implements IProductService {
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private ComponentMessagesDTO mergeComponentMessagesDTOWithFile(
-			ComponentMessagesDTO componentMessagesDTO) throws DataException,
-			ParseException {
+			ComponentMessagesDTO componentMessagesDTO) throws DataException {
 		ComponentMessagesDTO paramComponentMessagesDTO = new ComponentMessagesDTO();
 		BeanUtils.copyProperties(componentMessagesDTO,
 				paramComponentMessagesDTO);
@@ -232,8 +225,6 @@ public class ProductService implements IProductService {
 			result = this.getLinkedTranslation(paramComponentMessagesDTO);
 		} catch (DataException e1) {
 			logger.error(e1.getMessage(), e1);
-		} catch (ParseException e2) {
-			logger.error(e2.getMessage(), e2);
 		}
 
 		if (result != null) {
@@ -267,8 +258,7 @@ public class ProductService implements IProductService {
 	 * @see com.vmware.vip.core.translation.dao.BaseComponentDao#getTranslation(java.lang.Object)
 	 */
 	private ComponentMessagesDTO getLinkedTranslation(
-			ComponentMessagesDTO componentMessagesDTO) throws DataException,
-			ParseException {
+			ComponentMessagesDTO componentMessagesDTO) throws DataException {
 		SingleComponentDTO caseComponentMessagesDTO = new SingleComponentDTO();
 		String result = oneComponentDao.get2JsonStr(
 				componentMessagesDTO.getProductName(),

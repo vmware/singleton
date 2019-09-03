@@ -5,17 +5,11 @@
 package com.vmware.i18n.utils;
 
 import java.util.Comparator;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ContainerFactory;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import com.alibaba.fastjson.JSONObject;
+
 
 public class JSONUtil {
 
@@ -26,29 +20,18 @@ public class JSONUtil {
      */
     @SuppressWarnings("unchecked")
     public static Map<String, Object> getMapFromJson(String json) {
-        JSONParser parser = new JSONParser();
-        ContainerFactory containerFactory = getContainerFactory();
+
         Map<String, Object> result = null;
         try {
-            result = (Map<String, Object>) parser.parse(json, containerFactory);
-        } catch (ParseException e) {
+            result =  JSONObject.parseObject(json, Map.class);
+        } catch (Exception e) {
+        	System.out.println(json);
             e.printStackTrace();
         }
         return result;
     }
 
-    private static ContainerFactory getContainerFactory() {
-        ContainerFactory containerFactory = new ContainerFactory() {
-            public List<Object> creatArrayContainer() {
-                return new LinkedList<Object>();
-            }
-
-            public Map<String, Object> createObjectContainer() {
-                return new LinkedHashMap<String, Object>();
-            }
-        };
-        return containerFactory;
-    }
+  
 
     /**
      * Get the node value of JSON string. e.g. main.locale.day
@@ -81,8 +64,8 @@ public class JSONUtil {
     public static JSONObject string2JSON(String jsonStr) {
         JSONObject genreJsonObject = null;
         try {
-            genreJsonObject = (JSONObject) JSONValue.parseWithException(jsonStr);
-        } catch (ParseException e) {
+            genreJsonObject =  JSONObject.parseObject(jsonStr);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return genreJsonObject;
@@ -100,9 +83,9 @@ public class JSONUtil {
 			}
 		});
 		try {
-			Map<String, Object> genreJsonObject = (Map<String, Object>) JSONValue.parseWithException(jsonStr);
+			Map<String, Object> genreJsonObject = (Map<String, Object>) JSONObject.parseObject(jsonStr, TreeMap.class);
 			sortMap.putAll(genreJsonObject);
-		} catch (ParseException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return sortMap;

@@ -7,11 +7,11 @@ package com.vmware.vip.common.i18n.translation;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.constants.ConstantsKeys;
@@ -124,11 +124,12 @@ public class TranslationUtil {
      * @param jsonStr The well-define JSON string
      * @return MultiComponentsDTO instance
      */
-    public static MultiComponentsDTO getBaseTranslationDTO(String jsonStr) {
+    @SuppressWarnings("unchecked")
+	public static MultiComponentsDTO getBaseTranslationDTO(String jsonStr) {
         JSONObject genreJsonObject = null;
         try {
-            genreJsonObject = (JSONObject) JSONValue.parseWithException(jsonStr);
-        } catch (ParseException e) {
+            genreJsonObject = JSONObject.parseObject(jsonStr);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         if (genreJsonObject == null) {
@@ -138,9 +139,9 @@ public class TranslationUtil {
         String bundleStr = (String)genreJsonObject.get(ConstantsKeys.BUNDLES);
         baseTranslationDTO.setProductName((String) genreJsonObject.get(ConstantsKeys.PRODUCTNAME));
         baseTranslationDTO.setVersion((String) genreJsonObject.get(ConstantsKeys.VERSION));
-        baseTranslationDTO.setLocales((List) genreJsonObject.get(ConstantsKeys.lOCALES));
-        baseTranslationDTO.setComponents((List) genreJsonObject.get(ConstantsKeys.COMPONENTS));
-        baseTranslationDTO.setBundles((JSONArray)JSONValue.parse(bundleStr));
+        baseTranslationDTO.setLocales((List<String>) genreJsonObject.get(ConstantsKeys.lOCALES));
+        baseTranslationDTO.setComponents((List<String>) genreJsonObject.get(ConstantsKeys.COMPONENTS));
+        baseTranslationDTO.setBundles(JSONArray.parseArray(bundleStr));
         return baseTranslationDTO;
     }
 
@@ -153,8 +154,8 @@ public class TranslationUtil {
     public static SingleComponentDTO getBaseComponentMessagesDTO(String jsonStr) {
         JSONObject genreJsonObject = null;
         try {
-            genreJsonObject = (JSONObject) JSONValue.parseWithException(jsonStr);
-        } catch (ParseException e) {
+            genreJsonObject = JSONObject.parseObject(jsonStr);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         if (genreJsonObject == null) {
@@ -166,8 +167,7 @@ public class TranslationUtil {
         baseComponentMessagesDTO
                 .setComponent((String) genreJsonObject.get(ConstantsKeys.COMPONENT));
         baseComponentMessagesDTO.setLocale((String) genreJsonObject.get(ConstantsKeys.lOCALE));
-        baseComponentMessagesDTO.setMessages(JSONValue.toJSONString(genreJsonObject
-                .get(ConstantsKeys.MESSAGES)));
+        baseComponentMessagesDTO.setMessages(JSON.toJSONString(genreJsonObject.get(ConstantsKeys.MESSAGES), SerializerFeature.MapSortField));
         return baseComponentMessagesDTO;
     }
 }
