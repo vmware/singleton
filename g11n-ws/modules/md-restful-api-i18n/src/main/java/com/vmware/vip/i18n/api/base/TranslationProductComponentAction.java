@@ -193,9 +193,9 @@ public class TranslationProductComponentAction extends BaseAction {
 	private String getMatchedVersion(final String productName, final String version) throws L3APIException{
 		Map<String, String[]> productsAndVersions = productService.getProductsAndVersions();
 		String matchedVersion = "";
-		if(productsAndVersions != null && !productsAndVersions.isEmpty()) {
+		if(productsAndVersions != null) {
 			String[] versionList = productsAndVersions.get(productName);
-			if(versionList != null && versionList.length > 0) {
+			if(versionList != null) {
 				if(Arrays.asList(versionList).contains(version)) {
 					return version;
 				}
@@ -208,11 +208,7 @@ public class TranslationProductComponentAction extends BaseAction {
 				}
 			}
 		}
-		if(!StringUtils.isEmpty(matchedVersion)) {
-			return matchedVersion;
-		} else {
-			return version;
-		}
+		return StringUtils.isEmpty(matchedVersion)? version : matchedVersion;
 	}
 
 	/**
@@ -223,23 +219,23 @@ public class TranslationProductComponentAction extends BaseAction {
 	 * @return 0, equal; -1 less than; 1 bigger than
 	 */
 	private int compare(final String source, final String target) {
-		int b = -1;
 		if (StringUtils.equals(source, target)) {
-			b = 0;
+			return 0;
 		}
 		if(!StringUtils.isEmpty(source) && StringUtils.isEmpty(target)) {
-			b = 1;
+			return 1;
 		}
 		String[] s = source.split("\\.");
 		String[] t = target.split("\\.");
+		int b = -1;
 		if(s.length == t.length) {
 			for(int i = 0; i < s.length; i++) {
-				if(Integer.parseInt(s[i]) == Integer.parseInt(t[i])) {
-					continue;
-				} else if(Integer.parseInt(s[i]) > Integer.parseInt(t[i])) {
+				if(Integer.parseInt(s[i]) > Integer.parseInt(t[i])) {
 					b = 1;
+					break;
+				} else if(Integer.parseInt(s[i]) < Integer.parseInt(t[i])) {
+					break;
 				}
-				break;
 			}
 		}
 		return b;
@@ -259,11 +255,11 @@ public class TranslationProductComponentAction extends BaseAction {
 		int r = requestVersion.split("\\.").length;
 		if(o < r) {
 			for(int i=0; i < (r - o); i++) {
-				filteredVersion = filteredVersion + ".0";
+				filteredVersion = new StringBuilder(filteredVersion).append(".0").toString();
 			}
 		} else if (o > r) {
 			for(int i=0; i < (o - r); i++) {
-				filteredVersion = filteredVersion.substring(0, filteredVersion.lastIndexOf("."));
+				filteredVersion = filteredVersion.substring(0, filteredVersion.lastIndexOf('.'));
 			}
 		}
 		return filteredVersion;
