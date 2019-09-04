@@ -6,7 +6,7 @@ import { I18nComponent } from './i18n/i18n.component';
 import { ROUTING } from './i18n.rounting';
 
 import { NumberComponent } from './number/number.component';
-import { VIPModule } from '@vip/ngx-vip';
+import { VIPModule } from '@singleton-i18n/angular-client';
 import { ClarityModule } from '@clr/angular';
 import { CurrencyComponent } from './currency/currency.component';
 import { DateComponent } from './date/date.component';

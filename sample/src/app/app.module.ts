@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClarityModule } from '@clr/angular';
-import { VIPModule, VIPService, PatternCategories, LocaleService, VIPLoader, I18nLoader } from '@vip/ngx-vip';
+import { VIPModule, VIPService, PatternCategories, LocaleService, VIPLoader, I18nLoader } from '@singleton-i18n/angular-client';
 import { ENGLISH } from './source/app.l10n';
 import { L10nModule } from './modules/l10n/l10n.module';
 import { I18nModule } from './modules/i18n/i18n.module';

@@ -8,7 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
  - Build the Singleton [Angular 7 client library](https://github.com/vmware/singleton/tree/g11n-angular-client). The Angular 7 client library's location is preconfigured in this sample app's package.json. Change as needed.
 ```
-"@vip/ngx-vip": "file:../vip-ngx-vip-0.1.0.tgz"
+"@singleton-i18n/angular-client": "file:../singleton-i18n-angular-client-0.1.0.tgz"
 ```
 
 ## Install 

@@ -34,11 +34,11 @@ How to build and use the client library
     ```
     npm pack
     ```
-    The library will be packaged in the same directory (eg. vip-ngx-vip-0.1.0.tgz)
+    The library will be packaged in the same directory (eg. singleton-i18n-angular-client-0.1.0.tgz)
  * Import the library in your Angular 7 application
    ```
    cd <root-of-your-app>
-   npm install <path-to-location-of-library-in-previous-step/vip-ngx-vip-0.1.0.tgz>
+   npm install <path-to-location-of-library-in-previous-step/singleton-i18n-angular-client-0.1.0.tgz>
    ```
  * Configure your source bundle :
    ```ts
@@ -53,7 +53,7 @@ How to build and use the client library
    ...
    import { NgModule, APP_INITIALIZER } from '@angular/core';
    import { HttpClientModule } from '@angular/common/http';
-   import { VIPModule, VIPService, LocaleService, PatternCategories, getBrowserCultureLang } from '@vip/ngx-vip';
+   import { VIPModule, VIPService, LocaleService, PatternCategories, getBrowserCultureLang } from '@singleton-i18n/angular-client';
    import { ENGLISH } from './app.l10n';
 
    export function initVIPConfig(service: VIPService, localeService: LocaleService) {
