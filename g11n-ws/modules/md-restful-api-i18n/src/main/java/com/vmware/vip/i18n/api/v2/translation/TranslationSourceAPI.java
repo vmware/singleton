@@ -37,77 +37,74 @@ import springfox.documentation.annotations.ApiIgnore;
 @RestController("v2-TranslationSourceAPI")
 public class TranslationSourceAPI extends TranslationSourceAction {
 
-	/**
-	 * Provide translation based on String
-	 *
-	 * @param productName
-	 *        The name of product.
-	 * @param component
-	 *        The name of component. 
-	 * @param version
-	 *        The release version of product.
-	 * @param source
-	 *        The English string that you want to translate.
-	 * @param locale
-	 *        The name of locale. e.g: ja_JP, zh_CN.
-	 * @param request
-	 *        Extends the ServletRequest interface to provide request information for HTTP servlets.
-     * @return APIResponseDTO
-     *         The object which represents response status.
-	 */
-	@ApiIgnore
-    @ApiOperation(value = APIOperation.SOURCE_TRANSLATION_GET_VALUE, notes = APIOperation.KEY_TRANSLATION_GET_NOTES)
-	@RequestMapping(value = APIV2.SOURCE_TRANSLATION_GET, method = RequestMethod.GET, produces = { API.API_CHARSET })
-    public String getTranslationBySource(
-            @PathVariable(APIParamName.PRODUCT_NAME) String productName,
-            @PathVariable(APIParamName.COMPONENT) String component,
-            @RequestParam(value = APIParamName.VERSION) String version,
-            @RequestParam(value = APIParamName.LOCALE, required = false) String locale,
-            @RequestParam(value = APIParamName.SOURCE, required = true) String source,
-            @RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
-            @ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE)
-            @RequestParam(value = APIParamName.COLLECT_SOURCE, required=false, defaultValue="false") String collectSource,
-            @ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO)
-            @RequestParam(value = APIParamName.PSEUDO, required=false, defaultValue="false") String pseudo,
-            HttpServletRequest request,
-            HttpServletResponse response) {
-        return super.getTranslationBySource(productName, component, version, locale, source, sourceFormat, collectSource, pseudo, request, response);
-	}
+   /**
+    * Provide translation based on String
+    *
+    * @param productName
+    *           The name of product.
+    * @param component
+    *           The name of component.
+    * @param version
+    *           The release version of product.
+    * @param source
+    *           The English string that you want to translate.
+    * @param locale
+    *           The name of locale. e.g: ja_JP, zh_CN.
+    * @param request
+    *           Extends the ServletRequest interface to provide request information for HTTP
+    *           servlets.
+    * @return APIResponseDTO The object which represents response status.
+    */
+   @ApiIgnore
+   @ApiOperation(value = APIOperation.SOURCE_TRANSLATION_GET_VALUE, notes = APIOperation.KEY_TRANSLATION_GET_NOTES)
+   @RequestMapping(value = APIV2.SOURCE_TRANSLATION_GET, method = RequestMethod.GET, produces = {
+         API.API_CHARSET })
+   public String getTranslationBySource(@PathVariable(APIParamName.PRODUCT_NAME) String productName,
+         @PathVariable(APIParamName.COMPONENT) String component,
+         @RequestParam(value = APIParamName.VERSION) String version,
+         @RequestParam(value = APIParamName.LOCALE, required = false) String locale,
+         @RequestParam(value = APIParamName.SOURCE, required = true) String source,
+         @RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
+         @ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = false, defaultValue = "false") String collectSource,
+         @ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
+         HttpServletRequest request, HttpServletResponse response) {
+      return super.getTranslationBySource(productName, component, version, locale, source,
+            sourceFormat, collectSource, pseudo, request, response);
+   }
 
-	/**
-	 * Create source with post data, especially it's used for creating long
-	 * source
-	 * 
-	 * @param productName
-	 *        The name of product.
-	 * @param component
-	 *        The name of component.
-	 * @param version
-	 *        The release version of product.
-	 * @param source
-	 *        The English string that you want to translate.
-	 * @param locale
-	 *        The name of locale. e.g: ja_JP, zh_CN.
-	 * @param request
-	 *        Extends the ServletRequest interface to provide request information for HTTP servlets.
-	 * @return APIResponseDTO The object which represents response status.
-	 */
-    @ApiOperation(value = APIOperation.SOURCE_TRANSLATION_POST_VALUE, notes = APIOperation.SOURCE_TRANSLATION_POST_NOTES)
-    @RequestMapping(value = APIV2.SOURCE_TRANSLATION_POST, method = RequestMethod.POST, produces = { API.API_CHARSET })
-    @ResponseBody
-    @ResponseStatus(HttpStatus.OK)
-	public APIResponseDTO createSource (
-			@PathVariable(APIParamName.PRODUCT_NAME) String productName,
-			@PathVariable(APIParamName.COMPONENT) String component,
-			@PathVariable(value = APIParamName.VERSION) String version,
-			@PathVariable(value = APIParamName.LOCALE) String locale,
-            @RequestBody String source,
-            @RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
-            @ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE)
-            @RequestParam(value = APIParamName.COLLECT_SOURCE, required=false, defaultValue="false") String collectSource,
-            @ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO)
-            @RequestParam(value = APIParamName.PSEUDO, required=false, defaultValue="false") String pseudo,
-            HttpServletRequest request)  throws L3APIException {
-		return super.createSource(productName, component, version, locale, source, sourceFormat, collectSource, pseudo, request);
-	}
+   /**
+    * Create source with post data, especially it's used for creating long source
+    * 
+    * @param productName
+    *           The name of product.
+    * @param component
+    *           The name of component.
+    * @param version
+    *           The release version of product.
+    * @param source
+    *           The English string that you want to translate.
+    * @param locale
+    *           The name of locale. e.g: ja_JP, zh_CN.
+    * @param request
+    *           Extends the ServletRequest interface to provide request information for HTTP
+    *           servlets.
+    * @return APIResponseDTO The object which represents response status.
+    */
+   @ApiOperation(value = APIOperation.SOURCE_TRANSLATION_POST_VALUE, notes = APIOperation.SOURCE_TRANSLATION_POST_NOTES)
+   @RequestMapping(value = APIV2.SOURCE_TRANSLATION_POST, method = RequestMethod.POST, produces = {
+         API.API_CHARSET })
+   @ResponseBody
+   @ResponseStatus(HttpStatus.OK)
+   public APIResponseDTO createSource(@PathVariable(APIParamName.PRODUCT_NAME) String productName,
+         @PathVariable(APIParamName.COMPONENT) String component,
+         @PathVariable(value = APIParamName.VERSION) String version,
+         @PathVariable(value = APIParamName.LOCALE) String locale,
+         @RequestParam(value = APIParamName.SOURCE) String source,
+         @RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
+         @ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = false, defaultValue = "false") String collectSource,
+         @ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
+         HttpServletRequest request) throws L3APIException {
+      return super.createSource(productName, component, version, locale, source, sourceFormat,
+            collectSource, pseudo, request);
+   }
 }
