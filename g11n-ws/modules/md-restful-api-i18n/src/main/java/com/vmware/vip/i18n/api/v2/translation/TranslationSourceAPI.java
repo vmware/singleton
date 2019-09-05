@@ -99,7 +99,7 @@ public class TranslationSourceAPI extends TranslationSourceAction {
          @PathVariable(APIParamName.COMPONENT) String component,
          @PathVariable(value = APIParamName.VERSION) String version,
          @PathVariable(value = APIParamName.LOCALE) String locale,
-         @RequestParam(value = APIParamName.SOURCE) String source,
+         @RequestBody String source,
          @RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
          @ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = false, defaultValue = "false") String collectSource,
          @ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
