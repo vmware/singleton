@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.alibaba.fastjson.JSON;
 import com.vmware.vip.common.cache.CacheName;
 import com.vmware.vip.common.cache.CachedKeyGetter;
 import com.vmware.vip.common.cache.TranslationCache3;
@@ -77,7 +78,7 @@ public class MTService implements IMTService {
 			enComponentMessagesDTO.setLocale(ConstantsKeys.LATEST);
 			latestDTO = oneComponentService
 					.getTranslationFromDisk(enComponentMessagesDTO);
-			ComponentMessagesDTO cachedDTO =  TranslationCache3.getCachedObject(CacheName.MT, key, ComponentMessagesDTO.class);
+			ComponentMessagesDTO cachedDTO =  JSON.parseObject(TranslationCache3.getCachedObject(CacheName.MT, key,String.class), ComponentMessagesDTO.class);
 			if (cachedDTO != null
 					&& !StringUtils.isEmpty(cachedDTO.getMessages())) {
 				if (latestDTO != null
@@ -120,7 +121,7 @@ public class MTService implements IMTService {
 				// add MT to cache
 				try {
 					TranslationCache3.addCachedObject(CacheName.MT, key,
-							ComponentMessagesDTO.class, resultComponentMessagesDTO);
+							String.class, JSON.toJSONString(resultComponentMessagesDTO));
 				} catch (VIPCacheException e) {
 					e.printStackTrace();
 				}
@@ -161,22 +162,22 @@ public class MTService implements IMTService {
 	private void storeKeySource2Cache(String key, String source, String en_key, ComponentMessagesDTO enDTO) throws VIPCacheException{
 		
 		Map<String, String> p = null;
-		if (TranslationCache3.getCachedObject(CacheName.MTSOURCE, en_key, ComponentMessagesDTO.class) != null) {
-			ComponentMessagesDTO cacheENDTO =  TranslationCache3
-					.getCachedObject(CacheName.MTSOURCE, en_key, ComponentMessagesDTO.class);
+		if (TranslationCache3.getCachedObject(CacheName.MTSOURCE, en_key, String.class) != null) {
+			ComponentMessagesDTO cacheENDTO =  JSON.parseObject(TranslationCache3
+					.getCachedObject(CacheName.MTSOURCE, en_key, String.class),ComponentMessagesDTO.class);
 			if (!StringUtils.isEmpty(cacheENDTO.getMessages())) {
 				p = (Map<String, String>) cacheENDTO.getMessages();
 				p.put(key, source);
 				cacheENDTO.setMessages(p);
 				TranslationCache3.addCachedObject(CacheName.MTSOURCE,
-						en_key, ComponentMessagesDTO.class, cacheENDTO);
+						en_key, String.class, JSON.toJSONString(cacheENDTO));
 			}
 		} else {
 			Map<String, String> m = new HashMap<String, String>();
 			m.put(key, source);
 			enDTO.setMessages(m);
-			TranslationCache3.addCachedObject(CacheName.MTSOURCE, en_key,
-					ComponentMessagesDTO.class, enDTO);
+			TranslationCache3.addCachedObject(CacheName.MTSOURCE,
+               en_key, String.class, JSON.toJSONString(enDTO));
 		}
 
 	} 
@@ -195,9 +196,9 @@ public class MTService implements IMTService {
 					// 3. update component object to cache
 		         String mtTranslation = mtTranslationPara;
 		           Map<String, String> cachedMTMap = null;
-					if (TranslationCache3.getCachedObject(CacheName.MTSOURCE, com_key,ComponentMessagesDTO.class) != null) {
-						ComponentMessagesDTO cacheComDTO =  TranslationCache3
-								.getCachedObject(CacheName.MTSOURCE, com_key, ComponentMessagesDTO.class);
+					if (TranslationCache3.getCachedObject(CacheName.MTSOURCE, com_key,String.class) != null) {
+						ComponentMessagesDTO cacheComDTO =  JSON.parseObject(TranslationCache3
+			               .getCachedObject(CacheName.MTSOURCE, com_key, String.class),ComponentMessagesDTO.class);
 						cachedMTMap = (Map<String, String>) cacheComDTO.getMessages();
 						
 						
@@ -212,7 +213,7 @@ public class MTService implements IMTService {
 							cachedMTMap.put(key, mtTranslation);
 							cacheComDTO.setMessages(cachedMTMap);
 							TranslationCache3.addCachedObject(CacheName.MTSOURCE,
-									com_key, ComponentMessagesDTO.class, cacheComDTO);
+			                  com_key, String.class, JSON.toJSONString(cacheComDTO));
 						}
 					}
 					// Component object doesn't exist in cache:
@@ -225,8 +226,8 @@ public class MTService implements IMTService {
 						Map<String, String> newMap = new HashMap<String, String>();
 						newMap.put(key, mtTranslation);
 						comDTO.setMessages(newMap);
-						TranslationCache3.addCachedObject(CacheName.MTSOURCE, com_key,ComponentMessagesDTO.class,
-								comDTO);
+						TranslationCache3.addCachedObject(CacheName.MTSOURCE, com_key,String.class,
+								JSON.toJSONString(comDTO));
 					}
 					
 					

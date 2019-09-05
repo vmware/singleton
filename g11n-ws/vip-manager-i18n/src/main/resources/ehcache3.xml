@@ -41,8 +41,7 @@
 
 	<cache alias="MT" uses-template="default">
 		<key-type>java.lang.String</key-type>
-		<value-type>com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO
-		</value-type>
+		<value-type>java.lang.String</value-type>
 		<expiry>
 			<tti unit="hours">24</tti>
 			<!--<ttl unit="hours">24</ttl> -->
@@ -51,8 +50,7 @@
 
 	<cache alias="MTSOURCE" uses-template="default">
 		<key-type>java.lang.String</key-type>
-		<value-type>com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO
-		</value-type>
+		<value-type>java.lang.String</value-type>
 		<expiry>
 			<none />
 		</expiry>
@@ -65,7 +63,7 @@
 
 	<cache alias="REGION" uses-template="default">
 	<key-type>java.lang.String</key-type>
-	<value-type>com.vmware.i18n.l2.service.locale.TerritoryDTO</value-type>
+	<value-type>java.lang.String</value-type>
 		<expiry>
 			<tti unit="hours">24</tti>
 			<!--<ttl unit="hours">24</ttl> -->

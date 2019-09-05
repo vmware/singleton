@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.alibaba.fastjson.JSON;
 import com.ibm.icu.impl.LocaleUtility;
 import com.vmware.vip.common.cache.CacheName;
 import com.vmware.vip.common.cache.TranslationCache3;
@@ -125,12 +126,12 @@ public class LocaleService implements ILocaleService {
 			String locale = lang.replace("_", "-");
 			lang = CommonUtil.getCLDRLocale(locale, localePathMap, localeAliasesMap).toLowerCase();
 			logger.info("get data from cache");
-			territory = TranslationCache3.getCachedObject(CacheName.REGION, lang, TerritoryDTO.class);
+			territory = JSON.parseObject(TranslationCache3.getCachedObject(CacheName.REGION, lang, String.class),TerritoryDTO.class);
 			if (territory == null) {
 				logger.info("cache is null, get data from file");
 				territory = territoriesParser.getTerritoriesByLanguage(lang);
 				if (territory.getTerritories() != null) {
-					TranslationCache3.addCachedObject(CacheName.REGION, lang, TerritoryDTO.class, territory);
+					TranslationCache3.addCachedObject(CacheName.REGION, lang, String.class, JSON.toJSONString(territory));
 				}
 			}
 			territoryList.add(territory);
