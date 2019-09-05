@@ -6,17 +6,16 @@ package com.vmware.vip.core.messages.service.mt;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.alibaba.fastjson.JSON;
 import com.vmware.vip.common.cache.CacheName;
 import com.vmware.vip.common.cache.TranslationCache3;
 import com.vmware.vip.common.constants.ConstantsChar;
@@ -31,41 +30,42 @@ import com.vmware.vip.messages.data.dao.exception.DataException;
  * This implementation of interface SourceService.
  */
 @Service
-@ConditionalOnProperty(value ="translation.mt.sourcecache.enable", havingValue="true", matchIfMissing = true)
+@ConditionalOnProperty(value = "translation.mt.sourcecache.enable", havingValue = "true", matchIfMissing = true)
 public class SourceToLatestCron {
-	private static Logger LOGGER = LoggerFactory.getLogger(SourceToLatestCron.class);
+   private static Logger LOGGER = LoggerFactory.getLogger(SourceToLatestCron.class);
 
-	@Resource
-	private IProductService productService;
+   @Resource
+   private IProductService productService;
 
-	@Resource
-	private IOneComponentService oneComponentService;
-	
-	
-	@Scheduled(cron = "0 0/1 * * * ?")
-	public void syncBkSourceToRemote() {
-	
-		    	List<String> keys;
-		    	try {
-		    		keys = TranslationCache3.getKeys(CacheName.MTSOURCE, ComponentMessagesDTO.class);
-		    		for(String key: keys) {
-		    			ComponentMessagesDTO d = TranslationCache3.getCachedObject(CacheName.MTSOURCE, key, ComponentMessagesDTO.class);
-		    			if(d != null && !StringUtils.isEmpty(d.getMessages()) && key.contains(ConstantsKeys.LATEST + ConstantsChar.UNDERLINE + ConstantsKeys.MT)) {
-		    				LOGGER.info("Sync data to latest.json for " + key);
-		    				productService.updateTranslation(d);
-		    				TranslationCache3.deleteCachedObject(CacheName.MTSOURCE, key, ComponentMessagesDTO.class);
-		    			}
-		    		}
-		    	} catch (VIPCacheException | DataException e1) {
-		    		// TODO Auto-generated catch block
-		    		LOGGER.error(e1.getMessage(), e1);
-		    		
-		    	}
-		    	
-		    	
-		    }
-		
-		
-	
+   @Resource
+   private IOneComponentService oneComponentService;
+
+
+   @Scheduled(cron = "0 0/1 * * * ?")
+   public void syncBkSourceToRemote() {
+
+      List<String> keys;
+      try {
+         keys = TranslationCache3.getKeys(CacheName.MTSOURCE, String.class);
+         for (String key : keys) {
+            ComponentMessagesDTO d = JSON.parseObject(
+                  TranslationCache3.getCachedObject(CacheName.MTSOURCE, key, String.class),
+                  ComponentMessagesDTO.class);
+            if (d != null && !StringUtils.isEmpty(d.getMessages()) && key
+                  .contains(ConstantsKeys.LATEST + ConstantsChar.UNDERLINE + ConstantsKeys.MT)) {
+               LOGGER.info("Sync data to latest.json for " + key);
+               productService.updateTranslation(d);
+               TranslationCache3.deleteCachedObject(CacheName.MTSOURCE, key, String.class);
+            }
+         }
+      } catch (VIPCacheException | DataException e1) {
+         // TODO Auto-generated catch block
+         LOGGER.error(e1.getMessage(), e1);
+
+      }
+
+
+   }
+
 
 }
