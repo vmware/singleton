@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.alibaba.fastjson.JSON;
 import com.vmware.vip.common.cache.CacheName;
 import com.vmware.vip.common.cache.CachedKeyGetter;
 import com.vmware.vip.common.cache.TranslationCache3;
@@ -79,8 +80,12 @@ public class OneComponentService implements IOneComponentService {
 		String key = CachedKeyGetter
 				.getOneCompnentCachedKey(componentMessagesDTO);
 		try {
-			result =  TranslationCache3.getCachedObject(
-					CacheName.ONECOMPONENT, key, ComponentMessagesDTO.class);
+			result =  JSON.parseObject(TranslationCache3.getCachedObject(
+					CacheName.ONECOMPONENT, key,String.class), ComponentMessagesDTO.class);
+			
+			
+			
+			
 			if (StringUtils.isEmpty(result) || StringUtils.isEmpty(result.getMessages()) || StringUtils.isEmpty(result.getComponent())) {
 				LOGGER.info("Get data from local, since it's not found in the cache.");
 				result = this.getTranslationFromDisk(componentMessagesDTO);
@@ -91,7 +96,11 @@ public class OneComponentService implements IOneComponentService {
 						LOGGER.debug(msg);
 					}
 					TranslationCache3.addCachedObject(CacheName.ONECOMPONENT,
-							key, ComponentMessagesDTO.class, result);
+							key, String.class, JSON.toJSONString(result));
+					
+					
+					
+					
 				}
 			} else {
 				result.setDataOrigin(ConstantsKeys.CACHE);
