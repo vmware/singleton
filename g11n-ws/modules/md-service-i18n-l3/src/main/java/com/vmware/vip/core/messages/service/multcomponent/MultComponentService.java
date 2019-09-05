@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.vmware.vip.common.cache.CacheName;
@@ -52,14 +53,14 @@ public class MultComponentService implements IMultComponentService {
 		String key = CachedKeyGetter
 				.getMultiComponentsCachedKey(translationDTO);
 		try {
-			result =  TranslationCache3.getCachedObject(CacheName.MULTCOMPONENT, key, TranslationDTO.class);
+			result =  JSON.parseObject(TranslationCache3.getCachedObject(CacheName.MULTCOMPONENT, key, String.class), TranslationDTO.class);
 			
 			
 			if (StringUtils.isEmpty(result)) {
 				LOGGER.info("Not found in cache, try to get data from local");
 				result = this.getTranslation(translationDTO);
-				TranslationCache3.addCachedObject(CacheName.MULTCOMPONENT, key,TranslationDTO.class,
-						result);
+				TranslationCache3.addCachedObject(CacheName.MULTCOMPONENT, key,String.class,
+						JSONArray.toJSONString(result));
 			} else {
 				LOGGER.info("Found data from cache["+ key + "]");
 			}
@@ -91,7 +92,7 @@ public class MultComponentService implements IMultComponentService {
 		List<String> bundles = multipleComponentsDao.get2JsonStrs(
 				translationDTO.getProductName(), translationDTO.getVersion(),
 				components, locales);
-		JSONArray ja = new JSONArray();
+      JSONArray ja = new JSONArray();
 		for (int i = 0; i < bundles.size(); i++) {
 			String s = (String) bundles.get(i);
 			if (s.equalsIgnoreCase("")) {
