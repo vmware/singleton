@@ -20,6 +20,7 @@ import com.vmware.vip.test.common.Config;
 //import com.vmware.vip.test.javaclient.mock.MockAgent;
 //import com.vmware.vipclient.i18n.base.PatternCacheManager;
 //import com.vmware.vipclient.i18n.base.TranslationCacheManager;
+import com.vmware.vipclient.i18n.VIPCfg;
 
 public class TestBase {
 	public final static ResourceBundle prop = ResourceBundle.getBundle("vipconfig");
@@ -126,4 +127,12 @@ public class TestBase {
 //		mockAgent.addExpectation(RequestType.GET, request, null, null, APIResponseStatus.OK.getCode(),
 //				defaultResponseHeaders, response);
 //	}
+	public int getVIPServerPort() {
+		String[] list = VIPCfg.getInstance().getVipServer().split(":");
+		if (list.length <= 1) {
+			log.warn("cannot find port from vipconfig properties, use 8090 by default.");
+			return 8090;
+		}
+		return Integer.parseInt(list[1].trim());
+	}
 }
