@@ -19,7 +19,6 @@ import com.vmware.i18n.dto.LocaleDataDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import com.vmware.i18n.l2.dao.pattern.IPatternDao;
 import com.vmware.i18n.utils.CommonUtil;
@@ -28,6 +27,7 @@ import com.vmware.vip.common.cache.TranslationCache3;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.common.utils.JSONUtils;
+import org.springframework.util.StringUtils;
 
 @Service
 public class PatternServiceImpl implements IPatternService {
@@ -77,7 +77,7 @@ public class PatternServiceImpl implements IPatternService {
 		patternMap = JSONUtils.getMapFromJson(patternJson);
 		if (StringUtils.isEmpty(patternMap.get(ConstantsKeys.REGION))) {
 			String regionJson = PatternUtil.getRegionFromLib(locale.replace("_", "-"));
-			if (!StringUtils.isEmpty(regionJson)) {
+			if (StringUtils.hasLength(regionJson)) {
 				Object region = JSONUtils.getMapFromJson(regionJson).get(ConstantsKeys.DEFAULT_REGION_CODE);
 				patternMap.put(ConstantsKeys.REGION, region.toString());
 			}
