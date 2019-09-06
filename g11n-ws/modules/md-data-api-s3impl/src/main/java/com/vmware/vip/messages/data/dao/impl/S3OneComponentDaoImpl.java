@@ -26,6 +26,7 @@ import com.vmware.vip.messages.data.dao.api.IOneComponentDao;
 import com.vmware.vip.messages.data.dao.exception.DataException;
 import com.vmware.vip.messages.data.dao.model.ResultI18Message;
 import com.vmware.vip.messages.data.util.S3Utils;
+
 /**
  * This java class is used to handle translation bundle file or translation
  */
@@ -38,9 +39,9 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
    @Autowired
    private S3Config config;
 
-   private static final String S3_NOT_EXIST_STR="S3 File is not existing: ";
-   private static final String S3_NOT_EXIST_ERR="File's name doesn't exist!";
-   
+   private static final String S3_NOT_EXIST_STR = "S3 File doesn't exist: ";
+   private static final String S3_NOT_EXIST_ERR = "File's name doesn't exist!";
+
    private static Logger logger = LoggerFactory.getLogger(S3OneComponentDaoImpl.class);
 
    /**
@@ -86,7 +87,7 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
                result = S3Utils.convertS3Obj2Str(o);
             } catch (IOException e) {
                logger.warn(e.getMessage(), e);
-               throw new DataException(S3_NOT_EXIST_STR+ filePath);
+               throw new DataException(S3_NOT_EXIST_STR + filePath);
             }
          } else {
             throw new DataException(S3_NOT_EXIST_STR + filePath);
@@ -124,7 +125,8 @@ public class S3OneComponentDaoImpl implements IOneComponentDao {
          content = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(json);
       } catch (JsonProcessingException e) {
          throw new DataException(
-               ConstantsKeys.FATA_ERROR + "Failed to convert content to file: " + filePath + ".", e);
+               ConstantsKeys.FATA_ERROR + "Failed to convert content to file: " + filePath + ".",
+               e);
       }
       PutObjectResult putResult =
             s3Client.getS3Client().putObject(config.getBucketName(), filePath, content);

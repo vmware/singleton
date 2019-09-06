@@ -32,7 +32,7 @@ public class Response implements Serializable {
 	}
 
 	public void setServerTime(String serverTime) {
-		this.serverTime = serverTime;
+		this.serverTime = "";
 	}
 
 	public Response() {

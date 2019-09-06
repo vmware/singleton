@@ -38,7 +38,9 @@ public class S3Utils {
     */
    public static String getLocaleByFileName(String fileName) {
       String locale = null;
-      if (fileName.endsWith(ConstantsFile.FILE_TPYE_JSON)) {
+      if (fileName.endsWith(ConstantsFile.FILE_TPYE_JSON)
+            && (!fileName.endsWith(ConstantsFile.CREATION_INFO))
+            && (!fileName.endsWith(ConstantsFile.VERSION_FILE))) {
          locale = fileName.substring(fileName.indexOf(ConstantsFile.LOCAL_FILE_SUFFIX) + 8,
                fileName.lastIndexOf(ConstantsChar.DOT));
          if (!locale.equals(ConstantsChar.EMPTY)) {

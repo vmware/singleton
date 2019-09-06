@@ -128,23 +128,27 @@ processResources {
     excludes =[]
      if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
         println "begin to exclude pgdb builder configuration file"
-        excludes=['**/application-testing.properties', '**/application-staging.properties', '**/application-bundle.properties', '**/application-prod.properties']
-        
-        
+        excludes=['**/application-s3.properties', '**/application-bundle.properties']
     }else if(project.hasProperty('datatype') && project.getProperty('datatype') == 'bundle'){
-       println "begin to exclude bundle builder configuration file"
-        excludes=['**/application-pgdb_staging.yml', '**/application-pgdb.yml']
+        println "begin to exclude bundle builder configuration file"
+        excludes=['**/application-s3.properties', '**/application-pgdb.properties']
+    }else if(project.hasProperty('datatype') && project.getProperty('datatype') == 's3'){
+       println "begin to exclude S3 builder configuration file"
+       excludes=['**/application-bundle.properties', '**/application-pgdb.properties']
     }
 }
 
 
 
 bootJar.doFirst {
+      def propPath = "${buildDir}/resources/main/application.properties"
+       println propPath
      if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
-       def propPath = "${buildDir}/resources/main/application.properties"
-      println propPath
-      def updatedContent = new File(propPath).getText('UTF-8').replaceFirst("spring.profiles.active=bundle", "spring.profiles.active=pgdb")
-      new File(propPath).write(updatedContent, 'UTF-8')
+       def updatedPgdbContent = new File(propPath).getText('UTF-8').replaceFirst("spring.profiles.active=bundle", "spring.profiles.active=pgdb")
+       new File(propPath).write(updatedPgdbContent, 'UTF-8')
+	  }else if (project.hasProperty('datatype') && project.getProperty('datatype') == 's3') {
+       def updatedS3Content = new File(propPath).getText('UTF-8').replaceFirst("spring.profiles.active=bundle", "spring.profiles.active=s3")
+       new File(propPath).write(updatedS3Content, 'UTF-8')
 	  }
 	
 }
@@ -226,7 +230,7 @@ tasks.withType(JavaCompile) {
 //test.dependsOn.add fetchTranslationForTest
 test.dependsOn.add testFetchedTranslation
 
-if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
+if (project.hasProperty('datatype') && (project.getProperty('datatype') == 'pgdb') || (project.getProperty('datatype') == 's3') ) {
 	check.dependsOn.remove(test)
 }
 
