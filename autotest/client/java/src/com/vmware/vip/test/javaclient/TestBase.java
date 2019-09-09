@@ -133,6 +133,6 @@ public class TestBase {
 			log.warn("cannot find port from vipconfig properties, use 8090 by default.");
 			return 8090;
 		}
-		return Integer.parseInt(list[1].trim());
+		return Integer.parseInt(list[list.length-1].trim());
 	}
 }

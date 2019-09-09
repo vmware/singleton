@@ -4,10 +4,10 @@ import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.Locale;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.vmware.vip.test.common.Config;
 import com.vmware.vip.test.common.Utils;
 import com.vmware.vip.test.common.annotation.TestCase;
 import com.vmware.vip.test.javaclient.Constants;
@@ -25,6 +25,10 @@ import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMoc
 
 public class CustomizeHeader extends TestBase{
 	private TranslationMessage tm = null;
+	private static String mockHost = "localhost";
+	private static int mockPort = 8089;
+	private static String mockServer = String.format("http://%s:%s", mockHost, mockPort);
+	private String originalURL = null;
 
 	@BeforeClass
 	public void preparing() throws MalformedURLException {
@@ -39,12 +43,14 @@ public class CustomizeHeader extends TestBase{
 		vipCfg.createFormattingCache(FormattingCache.class);
 		tm = (TranslationMessage) I18nFactory.getInstance(vipCfg)
 				.getMessageInstance(TranslationMessage.class);
+		originalURL = VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL();
+		VIPCfg.getInstance().getVipService().getHttpRequester().setBaseURL(mockServer);
 	}
 
 	@Test(enabled=true, priority=0)
 	@TestCase(id = "001", name = "Add HeaderParams", description = "test desc")
 	public void addHeaderParameters() {
-		WireMockServer wireMockServer = new WireMockServer(wireMockConfig().port(getVIPServerPort()));
+		WireMockServer wireMockServer = new WireMockServer(wireMockConfig().port(mockPort));
 	    wireMockServer.start();
 	    String url = "/i18n/api/v2/translation/products/JavaClient/versions/1.0.0/locales/zh-CN/components/default?pseudo=false";
 
@@ -57,7 +63,7 @@ public class CustomizeHeader extends TestBase{
 		params.put(key2, value2);
 		VIPCfg.getInstance().getVipService().setHeaderParams(params);
 
-		WireMock.configureFor("localhost", getVIPServerPort());
+		WireMock.configureFor(mockHost, mockPort);
 		WireMock.stubFor(WireMock.get(WireMock.urlMatching(url)).willReturn(
 				WireMock.aResponse().withStatus(200)));
 
@@ -71,5 +77,10 @@ public class CustomizeHeader extends TestBase{
 		} finally {
 			wireMockServer.stop();
 		}
+	}
+
+	@AfterClass
+	public void releaseMock() {
+		VIPCfg.getInstance().getVipService().getHttpRequester().setBaseURL(originalURL);
 	}
 }
