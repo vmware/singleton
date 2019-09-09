@@ -5,6 +5,7 @@
 package com.vmware.vip.core.messages.service.product;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -298,4 +299,35 @@ public class ProductService implements IProductService {
 		return getSupportedLocaleList(productName, version);
 	}
 
+	/**
+	 * A cached map with product list as key and version list as value
+	 */
+	private  static final Map<String, String[]> MAP_PRODUCTS_VERSIONS = new HashMap<>();
+
+	/**
+	 * A flag to mark the cache MAP_PRODUCTS_VERSIONS initialized status
+	 */
+	private  static int initProductsVersions = -1;
+
+	/**
+	 * Get product name list and version list;
+	 * firstly look for the lists from cache, if not existing then look from bundle files or DB.
+	 *
+	 * @return
+	 * @throws L3APIException
+	 */
+	public synchronized Map<String, String[]> getProductsAndVersions() throws L3APIException {
+		if (initProductsVersions == 1) {
+			return MAP_PRODUCTS_VERSIONS;
+		} else {
+			try {
+				Map<String, String[]> m = productdao.getProductsAndVersions();
+				MAP_PRODUCTS_VERSIONS.putAll(m);
+                initProductsVersions = 1;
+				return MAP_PRODUCTS_VERSIONS;
+			} catch (DataException e) {
+				throw new L3APIException("Failed to product list and version list.", e);
+			}
+		}
+	}
 }
