@@ -5,6 +5,7 @@
 package com.vmware.vip.messages.data.dao.api;
 
 import java.util.List;
+import java.util.Map;
 
 import com.vmware.vip.messages.data.dao.exception.DataException;
 
@@ -22,4 +23,5 @@ public interface IProductDao {
 	
 	public String getVersionInfo(String productName, String version) throws DataException;
 
+	public Map<String, String[]> getProductsAndVersions() throws DataException;
 }
