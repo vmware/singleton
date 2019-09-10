@@ -117,7 +117,6 @@ public class PatternServiceImpl implements IPatternService {
 			patternJson = patternDao.getPattern(locale, null);
 			if (StringUtils.isEmpty(patternJson)) {
 				logger.info("file data don't exist");
-				resultData.setPluralSearch(true);
 				return buildPatternMap(language, region, patternJson, categoryList, resultData);
 			}
 			TranslationCache3.addCachedObject(CacheName.PATTERN, locale, String.class, patternJson);
@@ -151,7 +150,7 @@ public class PatternServiceImpl implements IPatternService {
 			patternMap.put(ConstantsKeys.IS_EXIST_PATTERN, true);
 		}
 
-		if (categoryList.contains(ConstantsKeys.PLURALS) && localeDataDTO.isPluralSearch()) {
+		if (categoryList.contains(ConstantsKeys.PLURALS)) {
 			String tempLanguage = language.split("-")[0];
 			Map<String, Object> plurals = CommonUtil.getMatchingPluralByLanguage(tempLanguage);
 			Map<String, Object> pluralRulesMap = new LinkedHashMap<>();

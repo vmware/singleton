@@ -130,7 +130,6 @@ public class CommonUtil {
         String locale = language + "-" + region;
         String cldrLocale = getCLDRLocale(locale, localePathMap, localeAliasesMap);
         if (!isEmpty(cldrLocale)) {
-            resultData.setPluralSearch(true);
             resultData.setLocale(cldrLocale);
             return resultData;
         }
@@ -183,7 +182,6 @@ public class CommonUtil {
             if (!CommonUtil.isEmpty(language)) {
                 locale = language + "-" + region;
                 resultData.setDisplayLocaleID(false);
-                resultData.setPluralSearch(true);
             }
         }
 
