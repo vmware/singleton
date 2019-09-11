@@ -14,11 +14,11 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.vmware.i18n.PatternUtil;
 import com.vmware.i18n.dto.LocaleDataDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import com.vmware.i18n.l2.dao.pattern.IPatternDao;
 import com.vmware.i18n.utils.CommonUtil;
@@ -27,6 +27,7 @@ import com.vmware.vip.common.cache.TranslationCache3;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.common.utils.JSONUtils;
+import org.springframework.util.StringUtils;
 
 @Service
 public class PatternServiceImpl implements IPatternService {
@@ -74,6 +75,13 @@ public class PatternServiceImpl implements IPatternService {
 		}
 		logger.info("get pattern data from cache");
 		patternMap = JSONUtils.getMapFromJson(patternJson);
+		if (StringUtils.isEmpty(patternMap.get(ConstantsKeys.REGION))) {
+			String regionJson = PatternUtil.getRegionFromLib(locale.replace("_", "-"));
+			if (StringUtils.hasLength(regionJson)) {
+				Object region = JSONUtils.getMapFromJson(regionJson).get(ConstantsKeys.DEFAULT_REGION_CODE);
+				patternMap.put(ConstantsKeys.REGION, region.toString());
+			}
+		}
 		patternMap.put(ConstantsKeys.CATEGORIES, getCategories(categoryList, patternMap));
 		return patternMap;
 	}
@@ -109,13 +117,12 @@ public class PatternServiceImpl implements IPatternService {
 			patternJson = patternDao.getPattern(locale, null);
 			if (StringUtils.isEmpty(patternJson)) {
 				logger.info("file data don't exist");
-				resultData.setInvalid(true);
-				return buildPatternMap(language, region, patternJson, categoryList, resultData.isInvalid());
+				return buildPatternMap(language, region, patternJson, categoryList, resultData);
 			}
 			TranslationCache3.addCachedObject(CacheName.PATTERN, locale, String.class, patternJson);
 		}
 		logger.info("get pattern data from cache");
-		patternMap = buildPatternMap(language, region, patternJson, categoryList, resultData.isInvalid());
+		patternMap = buildPatternMap(language, region, patternJson, categoryList, resultData);
 		logger.info("The result pattern: {}", patternMap);
 		logger.info("Get i18n pattern successful");
 		return patternMap;
@@ -128,7 +135,7 @@ public class PatternServiceImpl implements IPatternService {
 	 * @param categoryList
 	 * @return
 	 */
-	private Map<String, Object> buildPatternMap(String language, String region, String patternJson, List<String> categoryList, boolean isInvalid) {
+	private Map<String, Object> buildPatternMap(String language, String region, String patternJson, List<String> categoryList, LocaleDataDTO localeDataDTO) {
 		Map<String, Object> patternMap = new LinkedHashMap<>();
 		Map<String, Object> categoriesMap = new LinkedHashMap<>();
 		if (StringUtils.isEmpty(patternJson)) {
@@ -143,8 +150,7 @@ public class PatternServiceImpl implements IPatternService {
 			patternMap.put(ConstantsKeys.IS_EXIST_PATTERN, true);
 		}
 
-		if (categoryList.contains(ConstantsKeys.PLURALS) && isInvalid) {
-			patternMap.put(ConstantsKeys.LOCALEID, "");
+		if (categoryList.contains(ConstantsKeys.PLURALS)) {
 			String tempLanguage = language.split("-")[0];
 			Map<String, Object> plurals = CommonUtil.getMatchingPluralByLanguage(tempLanguage);
 			Map<String, Object> pluralRulesMap = new LinkedHashMap<>();
@@ -152,6 +158,11 @@ public class PatternServiceImpl implements IPatternService {
 			categoriesMap.put(ConstantsKeys.PLURALS, pluralRulesMap);
 			patternMap.put(ConstantsKeys.IS_EXIST_PATTERN, true);
 		}
+
+		if (!localeDataDTO.isDisplayLocaleID()) {
+			patternMap.put(ConstantsKeys.LOCALEID, "");
+		}
+
 		patternMap.put(ConstantsKeys.LANGUAGE, language);
 		patternMap.put(ConstantsKeys.REGION, region);
 		patternMap.put(ConstantsKeys.CATEGORIES, categoriesMap);
