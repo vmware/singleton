@@ -125,6 +125,7 @@ public class CurrencyTest extends TestBase {
 	public void testInvalidPatternScope() throws MalformedURLException {
 		formatCache.clear();
 		VIPCfg vipCfg = VIPCfg.getInstance();
+		String originalI18nScope = vipCfg.getI18nScope();
 		vipCfg.setI18nScope("noscope");
 		try {
 			numberFormatting.formatCurrency(123, "CNY", new Locale("zh", "CN"));
@@ -132,6 +133,7 @@ public class CurrencyTest extends TestBase {
 		} catch (IllegalArgumentException e) {
 			log.verifyTrue("invalid pattern scope argument will raise 'IllegalArgumentException'", true);
 		} finally{
+			vipCfg.setI18nScope(originalI18nScope);
 			initVIPServer();//set vip configuration back
 		}
 	}
@@ -151,9 +153,13 @@ public class CurrencyTest extends TestBase {
 	@TestCase(id = "010", name = "Currency_GetFormatPatternByLanguageAndRegion", priority = Priority.P1,
 	description = "get format pattern by language and region")
 	public void testLanguageRegion(Object amount, String language, String region, String expected, String desc) {
+		try {
 		String actual = numberFormatting.formatCurrency(amount, language, region);
 		log.verifyEqual(String.format("%s, amount=%s, language=%s, region=%s",
 				desc, amount, language, region), actual, expected);
+		} catch(Exception e) {
+			System.out.println(e.toString());
+		}
 	}
 
 	@Test(enabled=true, priority=1, dataProvider="LanguageRegionWithCurrencyCode")
