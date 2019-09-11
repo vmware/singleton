@@ -2,7 +2,7 @@
  * Copyright 2019 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
-const superagent = require('superagent');
+const axios = require('axios');
 const debug = require('debug')('translate-service');
 
 class TranslationService {
@@ -22,7 +22,7 @@ class TranslationService {
         return this.send(this.token, key, locale, source)
             .then((res) => {
                 debug(`[pid: ${pid} locale: ${locale}, key: ${key}] Translate API successfully returned a translation.`);
-                return res.body.data;
+                return res.data;
             }).catch((e) => {
                 console.error('Got an error when send with token: ', e && e.message || e);
                 return Promise.reject(e && e.message || e);
@@ -30,20 +30,24 @@ class TranslationService {
     }
 
     send(token, key, locale, source) {
-        var sendPromise = superagent
-            .post(`${this.host}/i18n/api/v2/translation/products/${this.product}/versions/${this.version}/locales/${locale}/components/${this.component}/keys/${key}`)
-            .query({
-                collectSource: true,
-                pseudo: false,
-            })
-            .send(source)
-            .set('Content-Type', 'application/json');
-
-        if (token) {
-            sendPromise.set('csp-auth-token', token)
+        let headers = {
+            'Content-Type': 'application/json',
         }
 
-        return sendPromise;
+        if (token) {
+            headers['csp-auth-token'] = token;
+        }
+
+        return axios.post(`${this.host}/i18n/api/v2/translation/products/${this.product}/versions/${this.version}/locales/${locale}/components/${this.component}/keys/${key}`,
+            source,
+            {
+                headers,
+                params: {
+                    collectSource: true,
+                    pseudo: false,
+                }
+            }
+        );
     }
 }
 

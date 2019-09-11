@@ -50,8 +50,8 @@ class CollectSourceBundle {
         for (let i = 1; i < data.length; i++) {
             if (i % stepSize === 0) {
                 (function (lastIndex, i, that) {
-                    that.collectSources(data.slice(lastIndex, i)).then(function ({ body }) {
-                        if (body && body.response && body.response.code === 200) {
+                    that.collectSources(data.slice(lastIndex, i)).then(function (response) {
+                        if (response && response.status === 200) {
                             Array.prototype.push.apply(that.progress.current, data.slice(lastIndex, i));
                             that.logger.info(`Successfully collect strings for file `, file);
                             that.logger.info(`Successfully collect strings, index from ${lastIndex} to ${i - 1}`);
@@ -70,8 +70,8 @@ class CollectSourceBundle {
         }
         if (lastIndex < data.length) {
             (function (lastIndex, that) {
-                that.collectSources(data.slice(lastIndex)).then(function ({ body }) {
-                    if (body && body.response && body.response.code === 200) {
+                that.collectSources(data.slice(lastIndex)).then(function (response) {
+                    if (response && response.status === 200) {
                         Array.prototype.push.apply(that.progress.current, data.slice(lastIndex));
                         that.logger.info(`Successfully collect strings for file `, file);
                         that.logger.info(`Successfully collect strings, index from ${lastIndex} to the end`);
