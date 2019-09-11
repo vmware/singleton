@@ -29,7 +29,7 @@ jobs:
         - cd $TRAVIS_BUILD_DIR/g11n-ws && sed -i "s/rootProject.name = 'vip'/rootProject.name = '$SONAR_ORG:singleton-service:$TRAVIS_BRANCH'/" settings.gradle && cat settings.gradle
         - cd $TRAVIS_BUILD_DIR/g11n-ws && ./gradlew sonarqube --stacktrace -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.branch.name=master -Dsonar.coverage.exclusions=modules/**,tools/tool-trans-fetcher/src/**,vip-common/src/main/java/com/vmware/vip/common/**,vip-manager-l10n-agent/src/** --info
         - cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=com.vmware:$SONAR_ORG:singleton-service:$TRAVIS_BRANCH -HostName=https://sonarcloud.io
-    - stage: auto test
+    - stage: smoke test
       script:
         - git clone --branch=devops https://github.com/vmware/singleton.git devops
         - cd $TRAVIS_BUILD_DIR/g11n-ws && ./gradlew build
