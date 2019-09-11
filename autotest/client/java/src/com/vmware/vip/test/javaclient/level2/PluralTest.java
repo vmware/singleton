@@ -126,10 +126,10 @@ public class PluralTest extends TestBase {
 		String pluralKey = "plural.reserved.character";
 		Object[] testArg1 = {1};
 		String pluralMessage1 = translation.getString2(component, bundle, myLocale, pluralKey, testArg1);
-		log.verifyEqual("", pluralMessage1, "有 1 个井号#");
+		log.verifyEqual("", pluralMessage1, "有 1 个#");
 
 		Object[] testArg2 = {2};
 		String pluralMessage2 = translation.getString2(component, bundle, myLocale, pluralKey, testArg2);
-		log.verifyEqual("", pluralMessage2, "有 2 个井号#");
+		log.verifyEqual("", pluralMessage2, "有 2 个#");
 	}
 }

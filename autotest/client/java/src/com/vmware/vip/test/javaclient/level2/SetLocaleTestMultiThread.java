@@ -52,7 +52,7 @@ public class SetLocaleTestMultiThread extends TestBase {
     public final String testDatePattern = "fullDate";
 
 	@Test(threadPoolSize = 3, invocationCount = 10,  timeOut = 10000, enabled=true, priority=1)
-	@TestCase(id = "001", name = "PluralTest", description = "test desc")
+//	@TestCase(id = "001", name = "PluralTest", description = "test desc")
 	public void setL2LocaleGlobal() throws IOException {
 		Object[] testData  = getRandomLocaleTestData();
 		Locale l2Locale = (Locale)testData[0];
