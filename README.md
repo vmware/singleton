@@ -106,7 +106,3 @@ Request for contributions from the community
 Sample application
 ------------
  A sample application is provided [here](https://github.com/vmware/singleton/tree/g11n-java-client/sample-client-app).
-
-   ```
-
-   ```
