@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title l10n="page.title"></title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:400,700"
+      rel="stylesheet"
+    />
+    <style>
+      header{
+        text-align: center;
+        margin-bottom: 40px;
+        border-bottom: 2px solid grey;
+      }
+
+      section{
+        text-align: center;
+      }
+
+      section > .main-info{
+        font-style: italic;
+      }
+
+      section > .main-label {
+        display: inline-block;
+      }
+
+      section > img {
+        margin-bottom: 25px;
+      }
+      
+      footer {
+        position: absolute;
+        width: 100%;
+        bottom: 100px;
+        text-align: right;
+        border-top: 2px solid grey;
+      }
+
+      footer > div {
+        margin-right: 50px;
+      }
+
+    </style>
+
+    <script src="../dist/bundle.js"></script>
+    <script src="../dist/config.js" type="module"></script>
+    <script type="module">
+      import { config } from "../dist/config.js";
+
+      window.onload = I18nUtils.localize(config);
+    </script>
+  </head>
+  <body>
+    <div id="root">
+      <header>
+        <h2 l10n="page.header"></h2>
+      </header>
+
+      <section>
+        <img class="main-image" alt="VMware logo" src="/assets/vmware.png" height="350px" width="500px"/>
+
+        <div class="main-info"><h3 class="main-label" l10n="page.main"></h3> <a href="https://github.com/vmware/singleton" l10n="page.link"></a></div>
+      </section>
+
+      <footer>
+        <div>
+        <h6 l10n="page.footer"></h6>
+        <div class="addition-info">
+          <span l10n="page.additional"></span>
+        </footer>
+      </div>
+      </footer>
+    </div>
+  </body>
+</html>
