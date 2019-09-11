@@ -181,7 +181,7 @@ public class CommonUtil {
             language = regionMap.get(region.toUpperCase());
             if (!CommonUtil.isEmpty(language)) {
                 locale = language + "-" + region;
-                resultData.setInvalid(true);
+                resultData.setDisplayLocaleID(false);
             }
         }
 
