@@ -25,7 +25,7 @@ How to build and use the client library
     cd g11n-java-client
     ```
     
- * Checkout the client library branch
+ * Checkout the client library branch.
     ```
     git checkout g11n-java-client
     ```
