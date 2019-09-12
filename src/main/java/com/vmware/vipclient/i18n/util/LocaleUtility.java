@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class LocaleUtility {
 	public static final String[] defaultLocales = { "en", "en-US", "en_US" };
@@ -15,11 +16,17 @@ public class LocaleUtility {
 
 	// Use ThreadLocal to combine the locale with local thread so that the
 	// locale can be used by any code places.
-	private static InheritableThreadLocal<Map<String,Locale>> threadLocal = new InheritableThreadLocal<Map<String, Locale>>() {
+	private static InheritableThreadLocal<Map<String, Locale>> threadLocal = new InheritableThreadLocal<Map<String, Locale>>() {
 		@Override
-		protected Map<String,Locale> initialValue() {
+		protected Map<String, Locale> initialValue() {
 			Map<String, Locale> localeMap = new HashMap<String, Locale>();
 			return localeMap;
+		}
+
+		@Override
+		protected Map<String, Locale> childValue(Map<String, Locale> parentValue) {
+			return parentValue.entrySet().stream().collect(
+					Collectors.toMap(Map.Entry::getKey, e -> (new Locale.Builder()).setLocale(e.getValue()).build()));
 		}
 	};
 
@@ -29,7 +36,7 @@ public class LocaleUtility {
 	 * @param locale
 	 */
 	public static void setLocale(Locale locale) {
-		Map<String, Locale> localeMap = (Map<String, Locale>) threadLocal.get();
+		Map<String, Locale> localeMap = threadLocal.get();
 		localeMap.put(ConstantsKeys.LOCALE_L3, locale);
 		threadLocal.set(localeMap);
 	}
@@ -40,7 +47,7 @@ public class LocaleUtility {
 	 * @param locale
 	 */
 	public static Locale getLocale() {
-		Map<String, Locale> localeMap = (Map<String, Locale>) threadLocal.get();
+		Map<String, Locale> localeMap = threadLocal.get();
 		Locale locale = localeMap.get(ConstantsKeys.LOCALE_L3);
 		if (locale == null) {
 			return defaultLocale;
@@ -48,14 +55,14 @@ public class LocaleUtility {
 			return locale;
 		}
 	}
-	
+
 	/**
 	 * Set the locale to ThreadLocal
 	 *
 	 * @param locale
 	 */
 	public static void setL2Locale(Locale locale) {
-		Map<String, Locale> localeMap = (Map<String, Locale>) threadLocal.get();
+		Map<String, Locale> localeMap = threadLocal.get();
 		localeMap.put(ConstantsKeys.LOCALE_L2, locale);
 		threadLocal.set(localeMap);
 	}
@@ -66,7 +73,7 @@ public class LocaleUtility {
 	 * @param locale
 	 */
 	public static Locale getL2Locale() {
-		Map<String, Locale> localeMap = (Map<String, Locale>) threadLocal.get();
+		Map<String, Locale> localeMap = threadLocal.get();
 		Locale locale = localeMap.get(ConstantsKeys.LOCALE_L2);
 		if (locale == null) {
 			return defaultLocale;
@@ -91,7 +98,7 @@ public class LocaleUtility {
 	 */
 	public static boolean isDefaultLocale(String locale) {
 		boolean isDefault = false;
-		if (locale != null && locale != "") {
+		if (locale != null && !locale.trim().equals("")) {
 			for (String ls : LocaleUtility.defaultLocales) {
 				if (locale.equals(ls)) {
 					isDefault = true;
