@@ -10,7 +10,6 @@ import { mergeObject } from '../util';
 import { concat, Observable, forkJoin, Observer, of, Subscription } from 'rxjs';
 import { share, switchMap, take, catchError } from 'rxjs/operators';
 import { VIPConfig, getNameSpace, VIPConfigFactory } from '../config';
-import { VIPServiceConstants } from '../constants';
 
 
 export interface LocaleData {
@@ -68,7 +67,7 @@ export class VIPService {
      */
     public subscribeLocaleSubject() {
         if (!this.localeSubscription) {
-            this.localeSubscription = this.localeService.UserLocaleChanged
+            this.localeSubscription = this.localeService.userLocaleChanged
                 .subscribe(() => { this.loadLocaleData(); });
         }
     }
@@ -88,7 +87,7 @@ export class VIPService {
         this.updateI18nScope(config);
         if (config.sourceBundle) {
             this.processBundle(config.sourceBundle,
-                VIPServiceConstants.SOURCE_LANGUAGE, config);
+                this.localeService.defaultLocale.languageCode, config);
         }
     }
 
@@ -131,7 +130,7 @@ export class VIPService {
             // Using language to map local bundle.
             // Using locale to store the translation.
             if (config.translationBundles) {
-                const standardLanguageTag = this.localeService.normalizeLanguageTag(language);
+                const standardLanguageTag = this.localeService.normalizeLanguageCode(language);
                 const bundle = config.translationBundles[standardLanguageTag];
                 if (bundle) {
                     this.processBundle(bundle, locale, config);

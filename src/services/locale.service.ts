@@ -5,6 +5,15 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { isDefined } from '../util';
+import { VIPServiceConstants } from '../constants';
+
+export interface VLocale {
+    readonly languageCode: string;
+    readonly languageName: string;
+    readonly regionCode: string;
+    readonly regionName: string;
+    readonly localeCode: string;
+}
 
 @Injectable({
     providedIn: 'root',
@@ -15,113 +24,132 @@ export class LocaleService {
      * Fired when user changed current locale.
      * Return the combination of language and region.
      */
-    public UserLocaleChanged: Subject<string> = new Subject<string>();
-    public defaultLanguage = { languageTag: 'en', displayName: 'English' };
-    public defaultRegion = { regionCode: 'US', regionName: 'United States' };
-    public defaultLocale = 'en-US';
-    private _currentLanguage: string;
-    private _currentRegion: string;
-    private _currentLocale: string;
-
-    constructor() {
-        this._currentLanguage = this.defaultLanguage.languageTag;
-        this._currentRegion = this.defaultRegion.regionCode;
-        this._currentLocale = this.defaultLocale;
-    }
-
-    getCurrentLanguage(): string {
-        return this._currentLanguage;
-    }
-
-    setCurrentLanguage(currentLang: string) {
-        if (currentLang !== this._currentLanguage) {
-            this._currentLanguage = currentLang;
-            this.sendUserLocaleEvent();
-        }
-    }
-
-    getCurrentRegion(): string {
-        return this._currentRegion;
-    }
-
-    setCurrentRegion(currentRegion: string) {
-        if (currentRegion !== this._currentRegion) {
-            this._currentRegion = currentRegion;
-            this.sendUserLocaleEvent();
-        }
-    }
-
-    getCurrentLocale(): string {
-        this._currentLocale = this._currentRegion ?
-            this.composeLocale(this._currentLanguage, this._currentRegion)
-            : this._currentLanguage;
-        return this._currentLocale;
-    }
-
+    public userLocaleChanged: Subject<string> = new Subject<string>();
+    public defaultLocale: VLocale = VIPServiceConstants.ENGLISH;
+    private currentLanguage: string;
+    private currentRegion: string;
 
     /**
-     * set current language and region combination at application bootstrap time
-     * or at runtime trigger by user selection.
-     * @param languageTag for transaltion and plural rule
-     * @param regionCode for the l2 formatting purpose
-     * @param silentMode if only need to change the value without notification
+     * by default, the initial locale is en-US.
      */
-    setCurrentLocale(languageTag: string, regionCode?: string, silentMode = false): string {
-        if (languageTag !== this._currentLanguage || regionCode !== this._currentRegion) {
-            this._currentLanguage = languageTag;
-            this._currentRegion = regionCode;
-            this._currentLocale = this._currentRegion ?
-                this.composeLocale(this._currentLanguage, this._currentRegion)
-                : this._currentLanguage;
-            if (!silentMode) { this.sendUserLocaleEvent(); }
-        }
-        return this._currentLocale;
+    constructor() {
+        this.setLocale(this.defaultLocale.languageCode,
+            this.defaultLocale.regionCode);
     }
 
+    /**
+     * initialize language and region combination at app bootstrap.
+     * @param language language code for transaltion and plural rule.
+     * @param region region code for the l2 formatting patterns.
+     */
+    public init(language: string, region?: string) {
+        this.setLocale(language, region);
+    }
+
+    /**
+     * set default locale and initialize current language and current region.
+     * this should be executed when the application start.
+     * @param defaultLocale will be used as fallback locale.
+     */
+    public setDefaultLocale(defaultLocale: VLocale) {
+        this.defaultLocale = defaultLocale || this.defaultLocale;
+        this.setLocale(this.defaultLocale.languageCode,
+            this.defaultLocale.regionCode);
+    }
+
+    private setLocale(language: string, region?: string) {
+        if (language !== this.currentLanguage ||
+            region !== this.currentRegion) {
+            this.currentLanguage = language;
+            this.currentRegion = region;
+        }
+    }
+
+    public getCurrentLanguage(): string {
+        return this.currentLanguage;
+    }
+
+    public setCurrentLanguage(currentLang: string) {
+        if (currentLang !== this.currentLanguage) {
+            this.currentLanguage = currentLang;
+            this.sendUserLocaleEvent();
+        }
+    }
+
+    public getCurrentRegion(): string {
+        return this.currentRegion;
+    }
+
+    public setCurrentRegion(currentRegion: string) {
+        if (currentRegion !== this.currentRegion) {
+            this.currentRegion = currentRegion;
+            this.sendUserLocaleEvent();
+        }
+    }
+
+    public getCurrentLocale(): string {
+        return this.composeLocale(this.currentLanguage, this.currentRegion);
+    }
+
+    /**
+     * set current language and region combination at runtime.
+     * and notify VIP service to load corresponding i18n resource.
+     * @param language language code for transaltion and plural rule.
+     * @param region region code for the l2 formatting patterns.
+     */
+    public setCurrentLocale(language: string, region?: string) {
+        this.setLocale(language, region);
+        this.sendUserLocaleEvent();
+    }
+
+    /**
+     * compose the sample locale structure based on the current usage scenarios.
+     * @param language language code for transaltion and plural rule.
+     * @param region region code for the l2 formatting patterns.
+     */
     public composeLocale(language: string, region: string) {
         return language && region ?
             `${language}-${region}` : language;
     }
 
     private sendUserLocaleEvent(): void {
-        this.UserLocaleChanged.next(this.getCurrentLocale());
+        this.userLocaleChanged.next(this.getCurrentLocale());
     }
 
-
-    get isSourceLocale(): boolean {
-        return this.shouldSourceLocale(this._currentLanguage, this._currentRegion);
+    public get isSourceLocale(): boolean {
+        return this.shouldSourceLocale(this.currentLanguage, this.currentRegion);
     }
 
     public shouldSourceLocale(language: string, region?: string): boolean {
         return this.shouldSourceLanguage(language)
             && isDefined(region)
-            && region.toUpperCase() === this.defaultRegion.regionCode ? true
+            && region.toUpperCase() === this.defaultLocale.regionCode ? true
             : this.shouldSourceLanguage(language) && !isDefined(region) ? true
                 : false;
     }
 
-    private resolveLanguageTag(languageTag: string) {
-        if (!isDefined(languageTag)) {
-            return languageTag;
+    private resolveLanguageTag(language: string) {
+        if (!isDefined(language)) {
+            return language;
         }
-        return languageTag.split('_').join('-').toLocaleLowerCase();
+        return language.split('_').join('-').toLocaleLowerCase();
     }
 
-    get isSourceLanguage(): boolean {
-        return this.shouldSourceLanguage(this._currentLanguage);
+    public get isSourceLanguage(): boolean {
+        return this.shouldSourceLanguage(this.currentLanguage);
     }
 
     public shouldSourceLanguage(language: string): boolean {
-        return language.toLowerCase() === this.defaultLanguage.languageTag ? true
-            : this.defaultLocale.toLowerCase() === this.resolveLanguageTag(language) ? true
+        return language.toLowerCase() === this.defaultLocale.languageName ? true
+            : this.defaultLocale.languageCode.toLowerCase() === this.resolveLanguageTag(language) ? true
                 : false;
     }
 
     /**
      * Reserve interface for language tag normalization in bundle mode.
-     * @param languageTag
+     * @param language language code for transaltion and plural rule.
      */
-    public normalizeLanguageTag(languageTag: string): string {
-        return languageTag;
+    public normalizeLanguageCode(language: string): string {
+        return language;
     }
 }

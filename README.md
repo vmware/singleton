@@ -57,8 +57,8 @@ How to build and use the client library
    import { ENGLISH } from './app.l10n';
 
    export function initVIPConfig(service: VIPService, localeService: LocaleService) {
-      // Get the browser's locale by replacing 'es' with getBrowserCultureLang()
-      localeService.setCurrentLocale('es', null, true);
+      // Get the browser's language by replacing 'es' with getBrowserCultureLang()
+      localeService.init('es');
       return () => service.initData({
          productID: 'SingletonSample',
          component: 'default',

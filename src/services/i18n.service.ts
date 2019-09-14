@@ -174,7 +174,10 @@ export class I18nService extends BaseService {
                     }
                 ).catch((error: any) => { console.error('Failed to get supported languages from VIP service.', error); });
         supportedLanguages = supportedLanguages ? supportedLanguages :
-            [this.localeService.defaultLanguage];
+            [{
+                languageTag: this.localeService.defaultLocale.languageCode,
+                displayName: this.localeService.defaultLocale.languageName
+            }];
         return supportedLanguages;
     }
 
@@ -187,8 +190,8 @@ export class I18nService extends BaseService {
             .getSupportedRegions(language || this.localeService.getCurrentLanguage(), this.vipService.mainConfig)
             .toPromise()
             .catch((error: any) => { console.error('Failed to get supported regions from VIP service.', error); });
-        const regionObject = this.localeService.defaultRegion;
-        const defaultRegion = [[regionObject.regionCode, regionObject.regionName]];
+        const defaultRegion = [[this.localeService.defaultLocale.regionCode,
+        this.localeService.defaultLocale.regionName]];
         if (supportedRegions) {
             supportedRegions = this.convertObjectToArray(supportedRegions);
         }
