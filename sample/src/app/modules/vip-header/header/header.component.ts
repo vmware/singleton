@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { I18nService, VIPService, LocaleService } from '@vip/ngx-vip';
+import { I18nService, VIPService, LocaleService } from '@singleton-i18n/angular-client';
 
 
 @Component({

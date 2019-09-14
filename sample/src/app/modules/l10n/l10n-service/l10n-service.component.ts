@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { L10nService } from '@vip/ngx-vip';
+import { L10nService } from '@singleton-i18n/angular-client';
 
 import { DATA } from '../l10n.data';
 

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { VIPService } from '@vip/ngx-vip';
+import { VIPService } from '@singleton-i18n/angular-client';
 import { L10nPipe, libConfig } from './i18n.util';
 import { ClarityModule } from '@clr/angular';
 import '@clr/icons';
