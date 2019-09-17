@@ -19,7 +19,6 @@ export class VIPServiceConstants {
         languageCode: 'en',
         languageName: 'English',
         regionCode: 'US',
-        regionName: 'United States',
-        localeCode: 'en-US',
+        regionName: 'United States'
     };
 }

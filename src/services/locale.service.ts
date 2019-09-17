@@ -12,7 +12,6 @@ export interface VLocale {
     readonly languageName: string;
     readonly regionCode: string;
     readonly regionName: string;
-    readonly localeCode: string;
 }
 
 @Injectable({
@@ -39,7 +38,7 @@ export class LocaleService {
 
     /**
      * initialize language and region combination at app bootstrap.
-     * @param language language code for transaltion and plural rule.
+     * @param language language code for translation and plural rule.
      * @param region region code for the l2 formatting patterns.
      */
     public init(language: string, region?: string) {
@@ -94,7 +93,7 @@ export class LocaleService {
     /**
      * set current language and region combination at runtime.
      * and notify VIP service to load corresponding i18n resource.
-     * @param language language code for transaltion and plural rule.
+     * @param language language code for translation and plural rule.
      * @param region region code for the l2 formatting patterns.
      */
     public setCurrentLocale(language: string, region?: string) {
@@ -104,7 +103,7 @@ export class LocaleService {
 
     /**
      * compose the sample locale structure based on the current usage scenarios.
-     * @param language language code for transaltion and plural rule.
+     * @param language language code for translation and plural rule.
      * @param region region code for the l2 formatting patterns.
      */
     public composeLocale(language: string, region: string) {
@@ -147,7 +146,7 @@ export class LocaleService {
 
     /**
      * Reserve interface for language tag normalization in bundle mode.
-     * @param language language code for transaltion and plural rule.
+     * @param language language code for translation and plural rule.
      */
     public normalizeLanguageCode(language: string): string {
         return language;

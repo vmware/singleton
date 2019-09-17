@@ -1,4 +1,4 @@
-export const HEADERSOURCE = {
+export const ENGLISH = {
     'l10n': 'Localization',
     'i18n': 'Internationalization',
     'contact': 'Contact',

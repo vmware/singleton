@@ -21,8 +21,8 @@ module.exports = {
     output: {
         path: helpers.root('bundles'),
         publicPath: '/',
-        filename: 'vip4angular.umd.js',
-        library: 'vip4angular',
+        filename: 'singleton4angular.umd.js',
+        library: 'singleton4angular',
         libraryTarget: 'umd'
     },
 
