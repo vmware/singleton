@@ -81,8 +81,8 @@ export class VIPService {
      */
     public registerComponent(config: VIPConfig, isMain: boolean = false) {
         this.subscribeLocaleSubject();
-        this.mainConfig = isMain ? config : this.mainConfig;
         config = VIPConfigFactory(config);
+        this.mainConfig = isMain ? config : this.mainConfig;
         this.configs.push(config);
         this.updateI18nScope(config);
         if (config.sourceBundle) {

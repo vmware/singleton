@@ -1,4 +1,4 @@
-import { L10nPipePlus } from '@vip/ngx-vip';
+import { L10nPipePlus } from '@singleton-i18n/angular-client';
 import { HEADERSOURCE } from './header.l10n';
 
 export const libConfig = {
