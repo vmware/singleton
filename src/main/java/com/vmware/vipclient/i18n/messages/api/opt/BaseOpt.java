@@ -14,24 +14,18 @@ public class BaseOpt {
 	 * get messages from response string with JSON format
 	 */
 	public Object getMessagesFromResponse(String responseStr, String node) {
-		Object msgObject = null;
-		if (responseStr == null || responseStr.equalsIgnoreCase(""))
-			return msgObject;
+		JSONObject msgsObj = null;
 		try {
 			JSONObject responseObj = (JSONObject) JSONValue
 					.parseWithException(responseStr);
 			if (responseObj != null) {
-				Object obj = responseObj.get(ConstantsKeys.DATA);
-				if (obj != null && !obj.toString().equalsIgnoreCase("")) {
-					JSONObject dataObj = (JSONObject) obj;
-					if (dataObj != null) {
-						msgObject = dataObj.get(node);
-					}
-				}
+				JSONObject dataObj = (JSONObject) responseObj.get(ConstantsKeys.DATA);
+				msgsObj = (JSONObject) dataObj.get(node);
+				return msgsObj;
 			}
 		} catch (Exception e) {
 		}
-		return msgObject;
+		return msgsObj;
 	}
 	
 	/**
