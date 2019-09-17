@@ -11,7 +11,11 @@ import {
     LocaleService,
     VIPLoader,
     I18nLoader
+<<<<<<< HEAD
 } from '@singleton-i18n/angular-client';
+=======
+} from '@vip/ngx-vip';
+>>>>>>> 9d551102b5d84ab57e533efa49f79424be724f85
 import { ENGLISH } from './source/app.l10n';
 import { L10nModule } from './modules/l10n/l10n.module';
 import { I18nModule } from './modules/i18n/i18n.module';
