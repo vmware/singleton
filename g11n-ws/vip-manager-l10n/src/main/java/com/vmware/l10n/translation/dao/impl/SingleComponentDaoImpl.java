@@ -26,7 +26,7 @@ import com.vmware.vip.common.constants.TranslationQueryStatusType;
 import com.vmware.vip.common.exceptions.VIPResourceOperationException;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.i18n.resourcefile.ResourceFilePathGetter;
-import com.vmware.vip.common.i18n.resourcefile.ResourceFileWritter;
+import com.vmware.l10n.utils.JSONUtils;
 
 /**
  * This java class is used to handle translation bundle file or translation cache for single component
@@ -114,7 +114,7 @@ public class SingleComponentDaoImpl implements SingleComponentDao {
 		if (targetFile.exists()) {
 			LOGGER.info("The bunlde file path {}{} is found, update the bundle file.", basePath, filepath );
 			try {
-				new ResourceFileWritter().writeJSONObjectToJSONFile(basePath + filepath, componentMessagesDTO);
+			   JSONUtils.writeJSONObjectToJSONFile(basePath + filepath, componentMessagesDTO);
 				return true;
 			} catch (VIPResourceOperationException e) {
 				
@@ -125,7 +125,7 @@ public class SingleComponentDaoImpl implements SingleComponentDao {
 			LOGGER.info("The bunlde file path {}{} is not found, cascade create the dir,add new bundle file ", basePath, filepath);
 			try {
 				FileUtils.write(targetFile, "","UTF-8",true);
-				new ResourceFileWritter().writeJSONObjectToJSONFile(basePath + filepath, componentMessagesDTO);
+				JSONUtils.writeJSONObjectToJSONFile(basePath + filepath, componentMessagesDTO);
 			} catch (Exception e) {
 				LOGGER.error(e.getMessage(), e);
 				return false;

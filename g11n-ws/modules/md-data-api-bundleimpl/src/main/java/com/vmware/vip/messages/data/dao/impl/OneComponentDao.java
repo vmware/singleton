@@ -23,7 +23,7 @@ import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsUnicode;
 import com.vmware.vip.common.i18n.resourcefile.LocalJSONReader;
 import com.vmware.vip.common.i18n.resourcefile.ResourceFilePathGetter;
-import com.vmware.vip.common.i18n.resourcefile.ResourceFileWritter;
+import com.vmware.vip.messages.data.bundle.JSONUtil;
 import com.vmware.vip.messages.data.bundle.BundleConfig;
 import com.vmware.vip.messages.data.dao.api.IOneComponentDao;
 import com.vmware.vip.messages.data.dao.exception.DataException;
@@ -116,7 +116,7 @@ public class OneComponentDao implements IOneComponentDao {
 		return false;
 	}
 
-	@SuppressWarnings("static-access")
+	
 	public boolean update(String productName, String version, String component,
 			String locale, Map<String, String> map) throws DataException {
 		if (StringUtils.isEmpty(component)) {
@@ -135,7 +135,7 @@ public class OneComponentDao implements IOneComponentDao {
 			if (!targetFile.exists()) {
 				FileUtils.write(targetFile, "", ConstantsUnicode.UTF8, true);
 			}
-			new ResourceFileWritter().writeJSONObjectToJSONFile(jsonfile,
+			JSONUtil.writeJSONObjectToJSONFile(jsonfile,
 					component, locale, map);
 		} catch (Exception e) {
 			throw new BundleException(ConstantsKeys.FATA_ERROR + "Failed to write content to file: " + jsonfile + ".", e);
