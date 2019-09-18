@@ -100,7 +100,7 @@ public class SingleComponentDaoImpl implements SingleComponentDao {
      * @param componentMessagesDTO Translation object,this object contents will be written into bundle file
      * @return if success return true, otherwise false
      */
-    
+	@SuppressWarnings("static-access")
 	@Override
 	public boolean writeLocalTranslationToFile(ComponentMessagesDTO componentMessagesDTO) {
 		String component = componentMessagesDTO.getComponent();
@@ -113,9 +113,9 @@ public class SingleComponentDaoImpl implements SingleComponentDao {
 		File targetFile = new File(basePath + filepath);
 		if (targetFile.exists()) {
 			LOGGER.info("The bunlde file path {}{} is found, update the bundle file.", basePath, filepath );
-			try { 
-                SortJSONUtils.writeJSONObjectToJSONFile(basePath + filepath, componentMessagesDTO);
-			    return true;
+			try {
+				SortJSONUtils.writeJSONObjectToJSONFile(basePath + filepath, componentMessagesDTO);
+				return true;
 			} catch (VIPResourceOperationException e) {
 				
 				LOGGER.error(e.getMessage(), e);
