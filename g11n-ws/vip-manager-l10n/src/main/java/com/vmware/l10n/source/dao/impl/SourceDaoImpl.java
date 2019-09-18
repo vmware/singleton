@@ -99,7 +99,7 @@ public class SourceDaoImpl implements SourceDao {
 		if (targetFile.exists()) {
 			LOGGER.info("The bunlde file path {}{} is found, update the bundle file.", basepath, filepath);
 			try {
-			    SortJSONUtils.writeJSONObjectToJSONFile(basepath
+				SortJSONUtils.writeJSONObjectToJSONFile(basepath
 						+ filepath, componentMessagesDTO);
 				sqlLite.updateModifySourceRecord(componentMessagesDTO);
 				return true;
