@@ -7,7 +7,7 @@ export const config = {
     // The language cookie name 
     langCookieName: 'vcs_locale',
     // The attribute in the DOM elements that holds the key for the translation.
-    localizeAttribute: 'l10n',
+    localizeAttribute: 'data-l10n-key',
     // The pseudo key for the localstorage 
     localStoragePseudoKey: 'enable_localization_pseudo'
 };
