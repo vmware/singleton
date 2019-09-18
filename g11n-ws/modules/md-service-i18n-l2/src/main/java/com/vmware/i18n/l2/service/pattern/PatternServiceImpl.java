@@ -7,6 +7,7 @@ package com.vmware.i18n.l2.service.pattern;
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localeAliasesMap;
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePathMap;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -45,7 +46,7 @@ public class PatternServiceImpl implements IPatternService {
 	 * @throws Exception
 	 */
 	@SuppressWarnings({ "unchecked" })
-	public Map<String, Object> getPattern(String locale, List<String> categoryList) throws Exception {
+	public Map<String, Object> getPattern(String locale, List<String> categoryList) throws VIPCacheException {
 		/**
 		 * VIP-1665:[i18n pattern API] it always return CN/TW patten
 		 * as long as language starts with zh-Hans/zh-Hant.
@@ -135,7 +136,7 @@ public class PatternServiceImpl implements IPatternService {
 	 * @param categoryList
 	 * @return
 	 */
-	private Map<String, Object> buildPatternMap(String language, String region, String patternJson, List<String> categoryList, LocaleDataDTO localeDataDTO) {
+	private Map<String, Object> buildPatternMap(String language, String region, String patternJson, List<String> categoryList, LocaleDataDTO localeDataDTO) throws VIPCacheException {
 		Map<String, Object> patternMap = new LinkedHashMap<>();
 		Map<String, Object> categoriesMap = new LinkedHashMap<>();
 		if (StringUtils.isEmpty(patternJson)) {
@@ -151,12 +152,15 @@ public class PatternServiceImpl implements IPatternService {
 		}
 
 		if (categoryList.contains(ConstantsKeys.PLURALS)) {
-			String tempLanguage = language.split("-")[0];
-			Map<String, Object> plurals = CommonUtil.getMatchingPluralByLanguage(tempLanguage);
+			Map<String, Object> pluralPatternMap = getPattern(language, Arrays.asList(ConstantsKeys.PLURALS));
 			Map<String, Object> pluralRulesMap = new LinkedHashMap<>();
-			pluralRulesMap.put(ConstantsKeys.PLURAL_RULES, plurals);
+			pluralRulesMap.put(ConstantsKeys.PLURAL_RULES, null);
 			categoriesMap.put(ConstantsKeys.PLURALS, pluralRulesMap);
 			patternMap.put(ConstantsKeys.IS_EXIST_PATTERN, true);
+			if (null != pluralPatternMap.get(ConstantsKeys.CATEGORIES)) {
+				Map<String, Object> pluralMap = (Map<String, Object>) pluralPatternMap.get(ConstantsKeys.CATEGORIES);
+				categoriesMap.put(ConstantsKeys.PLURALS, pluralMap.get(ConstantsKeys.PLURALS));
+			}
 		}
 
 		if (!localeDataDTO.isDisplayLocaleID()) {
