@@ -39,8 +39,9 @@ import com.vmware.vip.common.exceptions.VIPResourceOperationException;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.i18n.resourcefile.LocalJSONReader;
 import com.vmware.vip.common.i18n.resourcefile.ResourceFilePathGetter;
-import com.vmware.l10n.utils.JSONUtils;
+import com.vmware.vip.common.utils.SortJSONUtils;
 import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
+
 
 @Repository
 public class SourceDaoImpl implements SourceDao {
@@ -99,10 +100,9 @@ public class SourceDaoImpl implements SourceDao {
 		if (targetFile.exists()) {
 			LOGGER.info("The bunlde file path {}{} is found, update the bundle file.", basepath, filepath);
 			try {
-			   JSONUtils.writeJSONObjectToJSONFile(basepath
-						+ filepath, componentMessagesDTO);
-				sqlLite.updateModifySourceRecord(componentMessagesDTO);
-				return true;
+			    SortJSONUtils.writeJSONObjectToJSONFile(basepath + filepath, componentMessagesDTO);
+			    sqlLite.updateModifySourceRecord(componentMessagesDTO);
+			    return true;
 			} catch (VIPResourceOperationException e) {
 				LOGGER.error(e.getMessage(), e);
 				return false;
@@ -111,7 +111,7 @@ public class SourceDaoImpl implements SourceDao {
 			LOGGER.info("The bunlde file path {}{} is not found, cascade create the dir,add new bundle file ",  basepath, filepath);
 			try {
 				FileUtils.write(targetFile, "", "UTF-8", true);
-				JSONUtils.writeJSONObjectToJSONFile(basepath
+				SortJSONUtils.writeJSONObjectToJSONFile(basepath
 						+ filepath, componentMessagesDTO);
 			} catch (Exception e) {
 				LOGGER.error(e.getMessage(), e);

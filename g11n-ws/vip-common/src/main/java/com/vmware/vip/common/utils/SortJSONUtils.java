@@ -2,7 +2,8 @@
  * Copyright 2019 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
-package com.vmware.l10n.utils;
+package com.vmware.vip.common.utils;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -22,8 +23,9 @@ import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.l10n.source.util.IOUtil;
 import com.vmware.vip.common.l10n.source.util.PathUtil;
 
-public class JSONUtils {
-   private JSONUtils() {
+public class SortJSONUtils {
+
+   private SortJSONUtils() {
    }
 
    private static Logger logger = LoggerFactory.getLogger(JSONUtils.class);
@@ -40,7 +42,7 @@ public class JSONUtils {
 
 
    /**
-    * write the json String with key in alphabet order to local file 
+    * write the json String with key in alphabet order to local file
     */
    public static void writeJSONObjectToJSONFile(String jsonFileName,
          SingleComponentDTO singleComponentDTO) throws VIPResourceOperationException {
@@ -68,5 +70,18 @@ public class JSONUtils {
          IOUtil.closeWriter(write);
          IOUtil.closeOutputStream(outputStream);
       }
+   }
+
+   /**
+    * write the json String with key in alphabet order to local file
+    */
+   public static void writeJSONObjectToJSONFile(String jsonFileName, String component,
+         String locale, Map<String, String> messages) throws VIPResourceOperationException {
+      logger.info("Write JSON content to file: " + jsonFileName);
+      SingleComponentDTO dto = new SingleComponentDTO();
+      dto.setComponent(component);
+      dto.setLocale(locale);
+      dto.setMessages(messages);
+      writeJSONObjectToJSONFile(jsonFileName, dto);
    }
 }

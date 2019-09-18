@@ -26,7 +26,7 @@ import com.vmware.vip.common.constants.TranslationQueryStatusType;
 import com.vmware.vip.common.exceptions.VIPResourceOperationException;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.i18n.resourcefile.ResourceFilePathGetter;
-import com.vmware.l10n.utils.JSONUtils;
+import com.vmware.vip.common.utils.SortJSONUtils;
 
 /**
  * This java class is used to handle translation bundle file or translation cache for single component
@@ -100,7 +100,7 @@ public class SingleComponentDaoImpl implements SingleComponentDao {
      * @param componentMessagesDTO Translation object,this object contents will be written into bundle file
      * @return if success return true, otherwise false
      */
-	@SuppressWarnings("static-access")
+    
 	@Override
 	public boolean writeLocalTranslationToFile(ComponentMessagesDTO componentMessagesDTO) {
 		String component = componentMessagesDTO.getComponent();
@@ -113,9 +113,9 @@ public class SingleComponentDaoImpl implements SingleComponentDao {
 		File targetFile = new File(basePath + filepath);
 		if (targetFile.exists()) {
 			LOGGER.info("The bunlde file path {}{} is found, update the bundle file.", basePath, filepath );
-			try {
-			   JSONUtils.writeJSONObjectToJSONFile(basePath + filepath, componentMessagesDTO);
-				return true;
+			try { 
+			    SortJSONUtils.writeJSONObjectToJSONFile(basePath + filepath, componentMessagesDTO);
+			    return true;
 			} catch (VIPResourceOperationException e) {
 				
 				LOGGER.error(e.getMessage(), e);
@@ -125,7 +125,7 @@ public class SingleComponentDaoImpl implements SingleComponentDao {
 			LOGGER.info("The bunlde file path {}{} is not found, cascade create the dir,add new bundle file ", basePath, filepath);
 			try {
 				FileUtils.write(targetFile, "","UTF-8",true);
-				JSONUtils.writeJSONObjectToJSONFile(basePath + filepath, componentMessagesDTO);
+				SortJSONUtils.writeJSONObjectToJSONFile(basePath + filepath, componentMessagesDTO);
 			} catch (Exception e) {
 				LOGGER.error(e.getMessage(), e);
 				return false;

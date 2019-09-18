@@ -23,7 +23,7 @@ import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsUnicode;
 import com.vmware.vip.common.i18n.resourcefile.LocalJSONReader;
 import com.vmware.vip.common.i18n.resourcefile.ResourceFilePathGetter;
-import com.vmware.vip.messages.data.bundle.JSONUtil;
+import com.vmware.vip.common.utils.SortJSONUtils;
 import com.vmware.vip.messages.data.bundle.BundleConfig;
 import com.vmware.vip.messages.data.dao.api.IOneComponentDao;
 import com.vmware.vip.messages.data.dao.exception.DataException;
@@ -135,7 +135,7 @@ public class OneComponentDao implements IOneComponentDao {
 			if (!targetFile.exists()) {
 				FileUtils.write(targetFile, "", ConstantsUnicode.UTF8, true);
 			}
-			JSONUtil.writeJSONObjectToJSONFile(jsonfile,
+			SortJSONUtils.writeJSONObjectToJSONFile(jsonfile,
 					component, locale, map);
 		} catch (Exception e) {
 			throw new BundleException(ConstantsKeys.FATA_ERROR + "Failed to write content to file: " + jsonfile + ".", e);
