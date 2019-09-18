@@ -114,7 +114,7 @@ public class SingleComponentDaoImpl implements SingleComponentDao {
 		if (targetFile.exists()) {
 			LOGGER.info("The bunlde file path {}{} is found, update the bundle file.", basePath, filepath );
 			try { 
-			    SortJSONUtils.writeJSONObjectToJSONFile(basePath + filepath, componentMessagesDTO);
+                SortJSONUtils.writeJSONObjectToJSONFile(basePath + filepath, componentMessagesDTO);
 			    return true;
 			} catch (VIPResourceOperationException e) {
 				
