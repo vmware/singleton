@@ -100,7 +100,7 @@ public class SingleComponentDaoImpl implements SingleComponentDao {
      * @param componentMessagesDTO Translation object,this object contents will be written into bundle file
      * @return if success return true, otherwise false
      */
-	@SuppressWarnings("static-access")
+	
 	@Override
 	public boolean writeLocalTranslationToFile(ComponentMessagesDTO componentMessagesDTO) {
 		String component = componentMessagesDTO.getComponent();

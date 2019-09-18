@@ -74,7 +74,7 @@ public class SourceDaoImpl implements SourceDao {
 		return result;
 	}
 
-	@SuppressWarnings("static-access")
+	
 	@Override
 	public boolean updateToBundle(ComponentMessagesDTO componentMessagesDTO,
 			String basepath) {
