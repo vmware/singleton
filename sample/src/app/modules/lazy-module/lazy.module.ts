@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VIPModule, VIPService, PatternCategories } from '@singleton-i18n/angular-client';
+import { VIPModule, VIPService } from '@singleton-i18n/angular-client';
 
 import { LazyModuleRoutingModule } from './lazy-module-routing.module';
 import { CotactComponent } from './contact/contact.component';
-import { SOURCE } from './contact.l10n';
+import { ENGLISH } from './contact.l10n';
 
 @NgModule({
     declarations: [CotactComponent],
@@ -23,7 +23,7 @@ export class LazyModule {
             host: 'http://localhost:8091/',
             isPseudo: false,
             collectSource: false,
-            sourceBundle: SOURCE
+            sourceBundle: ENGLISH
         });
     }
 }
