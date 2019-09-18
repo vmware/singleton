@@ -42,7 +42,6 @@ import com.vmware.vip.common.i18n.resourcefile.ResourceFilePathGetter;
 import com.vmware.vip.common.utils.SortJSONUtils;
 import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
 
-
 @Repository
 public class SourceDaoImpl implements SourceDao {
 	private static Logger LOGGER = LoggerFactory.getLogger(SourceDaoImpl.class);
@@ -75,7 +74,7 @@ public class SourceDaoImpl implements SourceDao {
 		return result;
 	}
 
-
+	@SuppressWarnings("static-access")
 	@Override
 	public boolean updateToBundle(ComponentMessagesDTO componentMessagesDTO,
 			String basepath) {
@@ -100,9 +99,10 @@ public class SourceDaoImpl implements SourceDao {
 		if (targetFile.exists()) {
 			LOGGER.info("The bunlde file path {}{} is found, update the bundle file.", basepath, filepath);
 			try {
-                SortJSONUtils.writeJSONObjectToJSONFile(basepath + filepath, componentMessagesDTO);
-                sqlLite.updateModifySourceRecord(componentMessagesDTO);
-			    return true;
+			    SortJSONUtils.writeJSONObjectToJSONFile(basepath
+						+ filepath, componentMessagesDTO);
+				sqlLite.updateModifySourceRecord(componentMessagesDTO);
+				return true;
 			} catch (VIPResourceOperationException e) {
 				LOGGER.error(e.getMessage(), e);
 				return false;
