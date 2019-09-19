@@ -175,46 +175,46 @@ public class LocaleUtility {
 	}
 
 
-	/**
-	 * normalize a locale string(e.g. 'zh__#Hans', 'zh_CN_#Hans') to language tag(e.g. 'zh-Hans', 'zh-Hans-CN').
-	 */
-	public static String normalizeToLanguageTag(String localeStr) {
-		if(null ==localeStr || "".equalsIgnoreCase(localeStr)){
-			return localeStr;
-		}
-		if (isLanguageTag(localeStr)) {
-			return localeStr;
-		} else {
-			String language = "", country = "", script = "";
-			String[] os = localeStr.split("_");
-			for (int i = 0; i < os.length; i++) {
-				switch (i) {
-				case 0:
-					language = os[0];
-					continue;
-				case 1:
-					country = "".equalsIgnoreCase(os[1]) ? "" : "-" + os[1];
-					continue;
-				case 2:
-					script = "".equalsIgnoreCase(os[2]) ? "" : "-" + os[2].replace("#", "");
-					continue;
-				}
+    /**
+     * normalize a locale string(e.g. 'zh__#Hans', 'zh_CN_#Hans') to language tag(e.g. 'zh-Hans', 'zh-Hans-CN').
+     */
+    public static String normalizeToLanguageTag(String localeStr) {
+        if(null ==localeStr || "".equalsIgnoreCase(localeStr)){
+            return localeStr;
+        }
+        if (isLanguageTag(localeStr)) {
+            return localeStr;
+        } else {
+            String language = "", country = "", script = "";
+            String[] os = localeStr.split("_");
+            for (int i = 0; i < os.length; i++) {
+                switch (i) {
+                case 0:
+                    language = os[0];
+                    continue;
+                case 1:
+                    country = "".equalsIgnoreCase(os[1]) ? "" : "-" + os[1];
+                    continue;
+                case 2:
+                    script = "".equalsIgnoreCase(os[2]) ? "" : "-" + os[2].replace("#", "");
+                    continue;
+                }
 
-			}
-			return language + script + country;
-		}
-	}
+            }
+            return language + script + country;
+        }
+    }
 
-	/**
-	 * validate that an argument is a well-formed BCP 47 tag
-	 *
-	 * @param languageTag
-	 * @return true if the format is fine
-	 */
-	public static boolean isLanguageTag(String languageTag) {
-		if(null ==languageTag || "".equalsIgnoreCase(languageTag)){
-			return false;
-		}
-		return languageTag.contains("-");
-	}
+    /**
+     * validate that an argument is a well-formed BCP 47 tag
+     * 
+     * @param languageTag
+     * @return true if the format is fine
+     */
+    public static boolean isLanguageTag(String languageTag) {
+        if(null ==languageTag || "".equalsIgnoreCase(languageTag)){
+            return false;
+        }
+        return languageTag.contains("-");
+    }
 }

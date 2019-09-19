@@ -29,12 +29,12 @@ public class LocaleTest extends BaseTestClass {
 
 	@Before
 	public void init() {
-		VIPCfg gc = VIPCfg.getInstance();
-		gc.initialize("vipconfig");
-		gc.initializeVIPService();
-		gc.createFormattingCache(MessageCache.class);
-		I18nFactory i18n = I18nFactory.getInstance(gc);
-		localeI18n = (LocaleMessage)i18n.getMessageInstance(LocaleMessage.class);
+        VIPCfg gc = VIPCfg.getInstance();
+        gc.initialize("vipconfig");
+        gc.initializeVIPService();
+        gc.createFormattingCache(MessageCache.class);
+        I18nFactory i18n = I18nFactory.getInstance(gc);
+        localeI18n = (LocaleMessage)i18n.getMessageInstance(LocaleMessage.class);
 	}
 
 	@Test
@@ -44,7 +44,6 @@ public class LocaleTest extends BaseTestClass {
 				Locale.forLanguageTag("ja"), Locale.forLanguageTag("ko"),
 				Locale.forLanguageTag("zh-Hans"),
 				Locale.forLanguageTag("zh-Hant")
-
 
 		};
 		Locale[] testLocales = { Locale.forLanguageTag("de"),
@@ -58,8 +57,7 @@ public class LocaleTest extends BaseTestClass {
 				Locale.forLanguageTag("zh-HANT") };
 
 		String[] expectedLocales = { "de", "es", "fr", "ja", "ko", "zh",
-				"zh-Hans", "zh-Hant","zh-Hans", "zh-Hant", "zh-Hans", "zh-Hant"};
-
+				"zh-Hans", "zh-Hant", "zh-Hans", "zh-Hant", "zh-Hans", "zh-Hant" };
 
 		for (int i = 0; i < testLocales.length; i++) {
 			String matchedLanguageTag = LocaleUtility.pickupLocaleFromList(
@@ -71,36 +69,36 @@ public class LocaleTest extends BaseTestClass {
 		}
 	}
 
-	@Test
-	public void normalizeToLanguageTag() {
-		String[] testLocaleStrs = { "de", "es", "fr", "ja", "ko", "en-US", "zh-CN", "zh-TW",
-				"zh-Hans", "zh-Hant", "zh__#Hans", "zh__#Hant",
-				"zh-Hans-CN", "zh-Hant-TW","zh_CN_#Hans", "zh_TW_#Hant" };
-		String[] expectedLocales = { "de", "es", "fr", "ja", "ko", "en-US", "zh-CN", "zh-TW",
-				"zh-Hans", "zh-Hant", "zh-Hans", "zh-Hant",
-				"zh-Hans-CN", "zh-Hant-TW","zh-Hans-CN", "zh-Hant-TW" };
-		for (int i = 0; i < testLocaleStrs.length; i++) {
-			String normalizedLanguageTag = LocaleUtility.normalizeToLanguageTag(testLocaleStrs[i]);
-			Assert.assertEquals(expectedLocales[i], normalizedLanguageTag);
-		}
-	}
+    @Test
+    public void normalizeToLanguageTag() {
+        String[] testLocaleStrs = { "de", "es", "fr", "ja", "ko", "en-US", "zh-CN", "zh-TW",
+                "zh-Hans", "zh-Hant", "zh__#Hans", "zh__#Hant",
+                "zh-Hans-CN", "zh-Hant-TW","zh_CN_#Hans", "zh_TW_#Hant" };
+        String[] expectedLocales = { "de", "es", "fr", "ja", "ko", "en-US", "zh-CN", "zh-TW",
+                "zh-Hans", "zh-Hant", "zh-Hans", "zh-Hant",
+                "zh-Hans-CN", "zh-Hant-TW","zh-Hans-CN", "zh-Hant-TW" };
+        for (int i = 0; i < testLocaleStrs.length; i++) {
+            String normalizedLanguageTag = LocaleUtility.normalizeToLanguageTag(testLocaleStrs[i]);
+            Assert.assertEquals(expectedLocales[i], normalizedLanguageTag);
+        }
+    }
 
 	@Test
-	public void testGetRegionList() throws ParseException{
+	public void testGetRegionList() throws ParseException {
 		List<String> list = new ArrayList<String>();
 		list.add("zh_Hant");
 		list.add("ja");
 		list.add("de");
 		Map<String, Map<String, String>> result = localeI18n.getRegionList(list);
 		Assert.assertNotNull(result);
-		localeI18n.getRegionList(list);//get data from cache
+		localeI18n.getRegionList(list);// get data from cache
 	}
 
 	@Test
 	public void testGetDisplayNamesByLanguage() throws ParseException {
 		Map<String, String> resp = localeI18n.getDisplayLanguagesList("zh_Hans");
 		Assert.assertNotNull(resp);
-		localeI18n.getDisplayLanguagesList("zh_Hans");//get data from cache
+		localeI18n.getDisplayLanguagesList("zh_Hans");// get data from cache
 	}
 
 	@Test
@@ -131,7 +129,7 @@ public class LocaleTest extends BaseTestClass {
 				con.await();
 			Assert.assertEquals("Didn't inherit successfully", LocaleUtility.getLocale(), locale);
 
-			//  Change locale in sub-thread,
+			// Change locale in sub-thread,
 			locale = localeZhTW;
 			t = 12;
 			con.signal();
@@ -139,7 +137,7 @@ public class LocaleTest extends BaseTestClass {
 			lock.unlock();
 		}
 
-		//cp3. check parent locale doesn't change
+		// cp3. check parent locale doesn't change
 		lock.lock();
 		try {
 			while (t != 0)
@@ -154,7 +152,7 @@ public class LocaleTest extends BaseTestClass {
 			lock.unlock();
 		}
 
-		//cp4.  check sub-thread locale doesn't change
+		// cp4. check sub-thread locale doesn't change
 		lock.lock();
 		try {
 			while (t != 0)
@@ -206,7 +204,6 @@ public class LocaleTest extends BaseTestClass {
 		}
 
 	};
-
 
 	private Runnable subThreadTwo = () -> {
 		lock.lock();
