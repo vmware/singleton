@@ -159,7 +159,9 @@ public class PatternServiceImpl implements IPatternService {
 			patternMap.put(ConstantsKeys.IS_EXIST_PATTERN, true);
 			if (null != pluralPatternMap.get(ConstantsKeys.CATEGORIES)) {
 				Map<String, Object> pluralMap = (Map<String, Object>) pluralPatternMap.get(ConstantsKeys.CATEGORIES);
-				categoriesMap.put(ConstantsKeys.PLURALS, pluralMap.get(ConstantsKeys.PLURALS));
+				if (null != pluralMap.get(ConstantsKeys.PLURALS)) {
+					categoriesMap.put(ConstantsKeys.PLURALS, pluralMap.get(ConstantsKeys.PLURALS));
+				}
 			}
 		}
 
