@@ -19,7 +19,7 @@ public class LocaleUtility {
     private static InheritableThreadLocal<Map<String, Locale>> threadLocal = new InheritableThreadLocal<Map<String, Locale>>() {
         @Override
         protected Map<String, Locale> initialValue() {
-            return new HashMap<String, Locale>();
+            return new HashMap<>();
         }
 
         @Override
