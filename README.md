@@ -55,11 +55,11 @@ To start using Singleton Service
  ```
  A user interface for testing all available API endpoints will be available in the following URL:
  ```
- https://localhost:8090/i18n/api/doc/swagger-ui
+ https://localhost:8090/i18n/api/doc/swagger-ui.html
  ```
  or
   ```
- http://localhost:8091/i18n/api/doc/swagger-ui
+ http://localhost:8091/i18n/api/doc/swagger-ui.html
  ```
  Sample translation resources will be in the following location:
  ```
