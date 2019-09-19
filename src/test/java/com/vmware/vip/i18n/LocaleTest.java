@@ -9,8 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -107,35 +105,35 @@ public class LocaleTest extends BaseTestClass {
 
     @Test
     public void testThreadLocale() throws InterruptedException {
-        Locale locale_zhCN = new Locale("zh", "CN");
-        Locale locale_zhTW = new Locale("zh", "TW");
-        Locale locale_koKR = new Locale("ko", "KR");
-        Locale locale_deDE = new Locale("de", "DE");
+        Locale localeZhCN = new Locale("zh", "CN");
+        Locale localeZhTW = new Locale("zh", "TW");
+        Locale localeKoKR = new Locale("ko", "KR");
+        Locale localeDeDE = new Locale("de", "DE");
 
         LocaleUtility.setLocale(LocaleUtility.defaultLocale);
         // cp. check the default locale isn't zh-Hans.
-        Assert.assertNotEquals("Error! Default locale is: " + locale, locale_zhCN, LocaleUtility.getLocale());
+        Assert.assertNotEquals("Error! Default locale is: " + locale, localeZhCN, LocaleUtility.getLocale());
 
         // Set locale in current thread
-        LocaleUtility.setLocale(locale_zhCN);
+        LocaleUtility.setLocale(localeZhCN);
 
         // cp1. check the locale is saved successfully.
-        Assert.assertEquals("Error! Locale isn't set successfully.", locale_zhCN, LocaleUtility.getLocale());
+        Assert.assertEquals("Error! Locale isn't set successfully.", localeZhCN, LocaleUtility.getLocale());
 
         // Create a new sub-thread, and read its initial locale
-        sobj.v = 11;
-        tPool.submit(subThreadOne());
+        t = 11;
+        new Thread(subThreadOne).start();
 
         // cp2. check the locale of sub-thread is same as parent thread
         lock.lock();
         try {
-            while (sobj.v != 0)
+            while (t != 0)
                 con.await();
             Assert.assertEquals("Didn't inherit successfully", LocaleUtility.getLocale(), locale);
 
             //  Change locale in sub-thread,
-            locale = locale_zhTW;
-            sobj.v = 12;
+            locale = localeZhTW;
+            t = 12;
             con.signal();
         } finally {
             lock.unlock();
@@ -144,13 +142,13 @@ public class LocaleTest extends BaseTestClass {
         //cp3. check parent locale doesn't change
         lock.lock();
         try {
-            while (sobj.v != 0)
+            while (t != 0)
                 con.await();
-            Assert.assertEquals("Child interfere parent!", locale_zhCN, LocaleUtility.getLocale());
+            Assert.assertEquals("Child interfere parent!", localeZhCN, LocaleUtility.getLocale());
 
             // Change locale in parent thread,
-            LocaleUtility.setLocale(locale_koKR);
-            sobj.v = 11;
+            LocaleUtility.setLocale(localeKoKR);
+            t = 11;
             con.signal();
         } finally {
             lock.unlock();
@@ -159,88 +157,73 @@ public class LocaleTest extends BaseTestClass {
         //cp4.  check sub-thread locale doesn't change
         lock.lock();
         try {
-            while (sobj.v != 0)
+            while (t != 0)
                 con.await();
-            Assert.assertEquals("Parent interfere child!", locale_zhTW, locale);
+            Assert.assertEquals("Parent interfere child!", localeZhTW, locale);
         } finally {
             lock.unlock();
         }
 
         // Launch another sub-thread, change locale in this sub-thread
-        sobj.v = 22;
-        locale = locale_deDE;
-        tPool.submit(subThreadTwo());
+        t = 22;
+        locale = localeDeDE;
+        new Thread(subThreadTwo).start();
 
         // cp5. Check first sub-thread locale doesn't change
         lock.lock();
         try {
-            while (sobj.v != 0)
+            while (t != 0)
                 con.await();
-            Assert.assertEquals("Child interfere child!", locale_zhTW, locale);
+            Assert.assertEquals("Child interfere child!", localeZhTW, locale);
         } finally {
             lock.unlock();
         }
-        tPool.shutdown();
     }
 
-    private static final ExecutorService tPool = Executors.newFixedThreadPool(2);
     private Locale locale = null;
     private Lock lock = new ReentrantLock(true);
     private Condition con = lock.newCondition();
-    private final SyncObj sobj = new SyncObj();
+    private int t = 1;
 
-    private Runnable subThreadOne() {
-        return new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    lock.lock();
-                    try {
-                        while (!(sobj.v >= 10 && sobj.v < 20))
-                            con.await();
-                        if (sobj.v == 11) {
-                            locale = LocaleUtility.getLocale();
-                        } else if (sobj.v == 12) {
-                            LocaleUtility.setLocale(locale);
-                        }
-                        sobj.v = 0;
-                        con.signal();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } finally {
-                        lock.unlock();
-                    }
+    private Runnable subThreadOne = () -> {
+        while (true) {
+            lock.lock();
+            try {
+                while (!(t >= 10 && t < 20))
+                    con.await();
+                if (t == 11) {
+                    locale = LocaleUtility.getLocale();
+                } else if (t == 12) {
+                    LocaleUtility.setLocale(locale);
                 }
+                t = 0;
+                con.signal();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                lock.unlock();
             }
-        };
-    }
+        }
 
-    private Runnable subThreadTwo() {
-        return new Runnable() {
-            @Override
-            public void run() {
-                lock.lock();
-                try {
-                    while (!(sobj.v >= 20 && sobj.v < 30))
-                        con.await();
-                    if (sobj.v == 21) {
-                        locale = LocaleUtility.getLocale();
-                    } else if (sobj.v == 22) {
-                        LocaleUtility.setLocale(locale);
-                    }
-                    sobj.v = 11;
-                    con.signalAll();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    lock.unlock();
-                }
+    };
+
+
+    private Runnable subThreadTwo = () -> {
+        lock.lock();
+        try {
+            while (!(t >= 20 && t < 30))
+                con.await();
+            if (t == 21) {
+                locale = LocaleUtility.getLocale();
+            } else if (t == 22) {
+                LocaleUtility.setLocale(locale);
             }
-        };
-    }
-
-    class SyncObj {
-        int v = 1;
-    }
-
+            t = 11;
+            con.signalAll();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }
+    };
 }
