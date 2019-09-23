@@ -80,7 +80,8 @@ export class L10nService extends BaseService {
     public getSourceString(key: string): string {
         if (typeof key !== 'string') { return undefined; }
         const l10nKey = this.parseKey(key);
-        const sourceBundle = this.resolveLocaleData(l10nKey.nameSpace, VIPServiceConstants.SOURCE_LANGUAGE);
+        const sourceBundle = this.resolveLocaleData(l10nKey.nameSpace,
+            this.localeService.defaultLocale.languageCode);
         if (sourceBundle && sourceBundle[l10nKey.rawKey]) {
             return sourceBundle && sourceBundle[l10nKey.rawKey];
         }
@@ -88,8 +89,8 @@ export class L10nService extends BaseService {
         return key;
     }
 
-    private formatMessage(isFallback: boolean, locale: string,  message: string, args?: string[] | {}) {
-        if ( isFallback ) { locale = this.localeService.defaultLanguage.languageTag; }
+    private formatMessage(isFallback: boolean, locale: string, message: string, args?: string[] | {}) {
+        if (isFallback) { locale = this.localeService.defaultLocale.languageCode; }
         return this.messageFormat.format(locale, message, args);
     }
 

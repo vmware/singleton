@@ -47,7 +47,7 @@ export class VIPLoader implements I18nLoader {
      * @returns Promise<any>
      * @memberof VIPRestLoader
      */
-    getLocaleData(config: VIPConfig, language: string, region?: string): Observable<LocaleData> {
+    public getLocaleData(config: VIPConfig, language: string, region?: string): Observable<LocaleData> {
         this.validateConfig(config);
         const scope = config.i18nScope ? config.i18nScope.join(',') : '';
         return scope === ''
@@ -92,12 +92,12 @@ export class VIPLoader implements I18nLoader {
         });
     }
 
-    getSupportedLanguages(conf: VIPConfig): Observable<Object> {
+    public getSupportedLanguages(conf: VIPConfig): Observable<Object> {
         const url = this.getSupportedLanguagesUrl(conf);
         return this.getRequest(url, conf.timeout, (res: Object) => this.responseParser.ParseSupportedLanguagesData(res));
     }
 
-    getSupportedRegions(language: string, conf: VIPConfig): Observable<Object> {
+    public getSupportedRegions(language: string, conf: VIPConfig): Observable<Object> {
         const url = this.getSupportedRegionsUrl(language, conf.host);
         return this.getRequest(url, conf.timeout, (res: Object) => this.responseParser.ParseSupportedRegionsData(res));
     }
