@@ -14,6 +14,7 @@ public class BaseOpt {
 	 * get messages from response string with JSON format
 	 */
 	public Object getMessagesFromResponse(String responseStr, String node) {
+		/*
 		Object msgObject = null;
 		if (responseStr == null || responseStr.equalsIgnoreCase(""))
 			return msgObject;
@@ -32,7 +33,8 @@ public class BaseOpt {
 		} catch (Exception e) {
 		}
 		return msgObject;
-		/*
+		*/
+
 		JSONObject msgsObj = null;
 		try {
 			JSONObject responseObj = (JSONObject) JSONValue
@@ -45,7 +47,6 @@ public class BaseOpt {
 		} catch (Exception e) {
 		}
 		return msgsObj;
-		*/
 	}
 	
 	/**
