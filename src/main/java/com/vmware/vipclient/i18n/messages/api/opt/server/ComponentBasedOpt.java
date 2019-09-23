@@ -39,16 +39,16 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
 				responseStr = responseStr.replace(ConstantsKeys.PSEUDOCHAR, "");
 			}
 
-			/*JSONObject msgObject = (JSONObject) this.getMessagesFromResponse(responseStr,
+			JSONObject msgObject = (JSONObject) this.getMessagesFromResponse(responseStr,
 					ConstantsKeys.MESSAGES);
-			*/
+			/*
 			Object dataObj = this.getMessagesFromResponse(responseStr,
 					ConstantsKeys.MESSAGES);
 			JSONObject msgObject = null;
 			if (dataObj != null && !("").equalsIgnoreCase(dataObj.toString())) {
 				msgObject = (JSONObject) dataObj;
 			}
-			
+			*/
 
 			return msgObject;
 		}
