@@ -57,7 +57,7 @@ public class S3ProductDaoImpl implements IProductDao {
       for (S3ObjectSummary s3os : objects) {
          String resultKey =
                (s3os.getKey().replace(filePathPrefix, "")).split(ConstantsChar.BACKSLASH)[0];
-         if (!componentList.contains(resultKey)) {
+         if (!componentList.contains(resultKey) && (!resultKey.endsWith(ConstantsFile.FILE_TPYE_JSON))) {
             componentList.add(resultKey);
          }
       }
@@ -81,12 +81,17 @@ public class S3ProductDaoImpl implements IProductDao {
          throw new DataException("S3 Component list is empty.");
       }
       for (S3ObjectSummary s3os : objects) {
-         String resultKey =
-               (s3os.getKey().replace(filePathPrefix, "")).split(ConstantsChar.BACKSLASH)[1];
-         String localeKey = S3Utils.getLocaleByFileName(resultKey);
-         if (!localeList.contains(localeKey)) {
-            localeList.add(localeKey);
+         String s3obKey = s3os.getKey().replace(filePathPrefix, "");
+         if((!s3obKey.startsWith(ConstantsFile.CREATION_INFO)) && (!s3obKey.startsWith(ConstantsFile.VERSION_FILE))) {
+            String resultKey =s3obKey.split(ConstantsChar.BACKSLASH)[1];
+            String localeKey = S3Utils.getLocaleByFileName(resultKey);
+            if (localeKey != null && !localeList.contains(localeKey)) {
+               localeList.add(localeKey);
+            }
+            
          }
+         
+         
       }
       return localeList;
    }
