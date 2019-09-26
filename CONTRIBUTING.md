@@ -78,8 +78,8 @@ After it is approved, please choose "Squash and merge" to avoid too many commit 
 
 ## Reporting issues
 
-It is a great way to contribute by reporting an issue. Well-written and complete bug reports are always welcome!
+It is a great way to contribute by reporting an issue. Well-written and complete bug reports are always welcome! We suggest reporting issues with our template for high quality.
 
 ## Design new features
 
-You can propose new designs for existing features. You can also design entirely new features, please submit a proposal in GitHub.
+You can propose new designs for existing features. You can also design entirely new features, please submit a proposal in GitHub. We suggest to submit with our template.
