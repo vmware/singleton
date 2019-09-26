@@ -4,6 +4,7 @@
  */
 package com.vmware.vip.i18n;
 
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,9 +25,9 @@ public class MessageCacheTest1 extends BaseTestClass {
 	private MessagesDTO cacheDTO;
 
 	@Before
-	public void init() {
+	public void init() throws FileNotFoundException {
 		VIPCfg gc = VIPCfg.getInstance();
-		gc.initialize("vipconfig");
+		gc.initialize("src/test/resources/vipconfig.yaml");
 		gc.initializeVIPService();
 		if(gc.getCacheManager() != null) gc.getCacheManager().clearCache();
 		Cache c = gc.createTranslationCache(MessageCache.class);
@@ -71,9 +72,9 @@ public class MessageCacheTest1 extends BaseTestClass {
 				.getCacheOfComponent();
 		Assert.assertNull(messageMap3);
 	}
-	
+
 	@Test
-	public void testAddCacheByComponent() {
+	public void testAddCacheByComponent() throws FileNotFoundException {
 		this.init();
 		Map<String, String> msgObj = new HashMap<String, String>();
 		msgObj.put("book", "@zh_CN@book");
@@ -83,7 +84,7 @@ public class MessageCacheTest1 extends BaseTestClass {
 		VIPCfg.getInstance().getCacheManager().clearCache();
 		Assert.assertNull(cacheService.getCacheOfComponent());
 	}
-	
+
 	@SuppressWarnings({ "static-access", "rawtypes", "unchecked"})
 	@Test
 	public void testExpired() {

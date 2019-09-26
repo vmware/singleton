@@ -4,6 +4,7 @@
  */
 package com.vmware.vip.i18n;
 
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -26,13 +27,13 @@ public class HttpRequesterTest extends BaseTestClass {
 	public WireMockRule wireMockRule = new WireMockRule(8089);
 
 	private static String mockServer = "http://localhost:8089";
-	
+
 	private String realServer = null;
-	
+
 	@Before
-	public void init() {
+	public void init() throws FileNotFoundException {
 		VIPCfg cfg = VIPCfg.getInstance();
-		cfg.initialize("vipconfig");
+		cfg.initialize("src/test/resources/vipconfig.yaml");
 		cfg.setVipServer(mockServer);
 		cfg.setInitializeCache(false);
 		cfg.initializeVIPService();
@@ -64,10 +65,10 @@ public class HttpRequesterTest extends BaseTestClass {
 
 		WireMock.verify(WireMock.getRequestedFor(WireMock.urlMatching(url)).withHeader(key1, WireMock.equalTo(value1)).withHeader(key2, WireMock.equalTo(value2)));
 	}
-	
+
 	@After
 	public void teardown() {
 		VIPCfg.getInstance().getVipService().getHttpRequester().setBaseURL(realServer);
-		
+
 	}
 }

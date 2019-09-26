@@ -1,0 +1,31 @@
+# It's used for categorizing translation by product on Singleton side to maintain translation.
+productName : JavaclientTest
+
+# Define the translation's version used by Singleton service.
+version : 1.0.0
+
+# Singleton server's location. It could point to local Singleton server, or remote Singleton server.
+vipServer : https://localhost:8090
+
+# If initializeCache is true, the translation will be loaded to cache from Singleton service when application starts up. Otherwise the translation will be fetched to cache when API call happens.
+initializeCache : false
+
+# If pseudo is true, client will return pseudo translation whether translation is ready or not.
+pseudo : false
+
+# If collectSource is true, source collection functionality will be enabled which means client will send the received sources to Singleton server for translation. otherwise there's no source collection.
+collectSource : false
+
+# If cleanCache is true, cache will be cleaned periodically.
+cleanCache : false
+
+# Cache expiration time. unit: milisecond.
+cacheExpiredTime : 8600000
+
+# If machineTranslation is true, translation is from machine translation.
+machineTranslation : false
+
+
+resources :
+  component1 : ['bundles/messages.json']
+  component2 : [bundles/messages2.json]

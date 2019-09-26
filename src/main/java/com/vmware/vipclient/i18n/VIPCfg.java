@@ -4,11 +4,19 @@
  */
 package com.vmware.vipclient.i18n;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
-import java.util.ResourceBundle;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.yaml.snakeyaml.Yaml;
 
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.Task;
@@ -16,6 +24,7 @@ import com.vmware.vipclient.i18n.base.VIPService;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.CacheMode;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
+import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ProductService;
 
@@ -50,6 +59,8 @@ public class VIPCfg {
 	private String productName;
 	private String version;
 	private String vipServer;
+
+	private Map<String, ArrayList<String>> resources;
 	private String i18nScope = "numbers,dates,currencies,plurals,measurements";
 
 	// define key for cache management
@@ -71,7 +82,7 @@ public class VIPCfg {
 		}
 		return gcInstance;
 	}
-	
+
 	/**
 	 * initialize the instance by parameter
 	 * 
@@ -87,40 +98,29 @@ public class VIPCfg {
 
 	/**
 	 * initialize the instance by a properties file
-	 * 
+	 *
 	 * @param cfg
+	 * @throws FileNotFoundException
 	 */
-	public void initialize(String cfg) {
-		ResourceBundle prop = ResourceBundle.getBundle(cfg);
-		if (prop == null) {
-			return; 
+	@SuppressWarnings("serial")
+	public void initialize(String cfg) throws FileNotFoundException {
+		InputStream input = new FileInputStream(cfg);
+		Yaml yaml = new Yaml();
+		LinkedHashMap<String, Object> data = yaml.loadAs(input, (new LinkedHashMap<String, Object>() {
+		}).getClass());
+
+		for (Entry<String, Object> entry : data.entrySet()) {
+			try {
+				this.getClass().getDeclaredField(entry.getKey()).set(this, entry.getValue());
+			} catch (IllegalArgumentException e) {
+				throw new VIPJavaClientException(
+						String.format("Invalid value '%s' for setting '%s'!", entry.getValue(), entry.getKey()), e);
+			} catch (NoSuchFieldException e) {
+				throw new VIPJavaClientException("Invalid setting item: " + entry.getKey());
+			} catch (SecurityException | IllegalAccessException e) {
+				throw new VIPJavaClientException("Unknow errorr");
+			}
 		}
-		
-		if (prop.containsKey("productName"))
-			this.productName = prop.getString("productName");
-		if (prop.containsKey("version"))
-			this.version = prop.getString("version");
-		if (prop.containsKey("vipServer"))
-			this.vipServer = prop.getString("vipServer");
-		if (prop.containsKey("pseudo"))
-			this.pseudo = Boolean.parseBoolean(prop.getString("pseudo"));
-		if (prop.containsKey("collectSource"))
-			this.collectSource = Boolean.parseBoolean(prop
-					.getString("collectSource"));
-		if (prop.containsKey("initializeCache"))
-			this.initializeCache = Boolean.parseBoolean(prop
-					.getString("initializeCache"));
-		if (prop.containsKey("cleanCache"))
-			this.cleanCache = Boolean.parseBoolean(prop
-					.getString("cleanCache"));
-		if (prop.containsKey("machineTranslation"))
-			this.machineTranslation = Boolean.parseBoolean(prop
-					.getString("machineTranslation"));
-		if (prop.containsKey("i18nScope"))
-			this.i18nScope = prop.getString("i18nScope");
-		if (prop.containsKey("cacheExpiredTime"))
-			this.cacheExpiredTime = Long.parseLong(prop
-					.getString("cacheExpiredTime"));
 	}
 
 	/**

@@ -4,6 +4,7 @@
  */
 package com.vmware.vip.i18n;
 
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -24,9 +25,9 @@ public class PersistantCacheTest extends BaseTestClass {
 	private MessagesDTO cacheDTO;
 
 	@Before
-	public void init() {
+	public void init() throws FileNotFoundException {
 		VIPCfg gc = VIPCfg.getInstance();
-		gc.initialize("vipconfig");
+		gc.initialize("src/test/resources/vipconfig.yaml");
 		gc.initializeVIPService();
 		Cache c = gc.createTranslationCache(MessageCache2.class);
 		c.setExpiredTime(3600000);

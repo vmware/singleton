@@ -4,6 +4,7 @@
  */
 package com.vmware.vip.i18n;
 
+import java.io.FileNotFoundException;
 import java.text.FieldPosition;
 import java.util.HashMap;
 import java.util.Locale;
@@ -19,11 +20,11 @@ import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.l2.text.MessageFormat;
 
 public class MessageFormatTest extends BaseTestClass {
-	
+
 	@Before
-	public void init() {
+	public void init() throws FileNotFoundException {
         VIPCfg gc = VIPCfg.getInstance();
-        gc.initialize("vipconfig");
+        gc.initialize("src/test/resources/vipconfig.yaml");
         gc.initializeVIPService();
         gc.createFormattingCache(FormattingCache.class);
         I18nFactory i18n = I18nFactory.getInstance(gc);

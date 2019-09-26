@@ -4,6 +4,7 @@
  */
 package com.vmware.vip.i18n;
 
+import java.io.FileNotFoundException;
 import java.util.Locale;
 
 import org.junit.Assert;
@@ -20,9 +21,9 @@ public class NumberFormatUtilTest extends BaseTestClass {
 	NumberFormatting numberFormatI18n;
 	
 	@Before
-	public void init() {
+	public void init() throws FileNotFoundException {
         VIPCfg gc = VIPCfg.getInstance();
-        gc.initialize("vipconfig");
+        gc.initialize("src/test/resources/vipconfig.yaml");
         gc.initializeVIPService();
         gc.createFormattingCache(FormattingCache.class);
         I18nFactory i18n = I18nFactory.getInstance(gc);

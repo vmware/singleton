@@ -4,6 +4,7 @@
  */
 package com.vmware.vip.i18n;
 
+import java.io.FileNotFoundException;
 import java.util.Date;
 import java.util.Locale;
 
@@ -20,15 +21,15 @@ public class DateFormatUtilTest extends BaseTestClass {
 	DateFormatting dateFormatI18n;
 
 	@Before
-	public void init() {
+	public void init() throws FileNotFoundException {
         VIPCfg gc = VIPCfg.getInstance();
-        gc.initialize("vipconfig");
+        gc.initialize("src/test/resources/vipconfig.yaml");
         gc.initializeVIPService();
         gc.createFormattingCache(FormattingCache.class);
         I18nFactory i18n = I18nFactory.getInstance(gc);
         dateFormatI18n = (DateFormatting)i18n.getFormattingInstance(DateFormatting.class);
 	}
-	
+
 	@Test
 	public void testFormatDate() {
 		final long timestamp = 1511156364801l;
@@ -114,7 +115,7 @@ public class DateFormatUtilTest extends BaseTestClass {
 		Assert.assertEquals(shortForFr, dateFormatI18n.formatDate(date,
 				"short", timeZone, frLocale));
 	}
-	
+
 	@Test
 	public void testRegionFormatDate() {
 		final long timestamp = 1511156364801l;
@@ -204,5 +205,5 @@ public class DateFormatUtilTest extends BaseTestClass {
 				"short", timeZone, frlanguage, frregion));
 	}
 
-	
+
 }

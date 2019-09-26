@@ -4,6 +4,7 @@
  */
 package com.vmware.vipclient.i18n.fmt.common;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,18 +36,18 @@ public class MessageSupport extends BodyTagSupport {
 	private String component = "JSP", bundle = "webui";
 	private TranslationMessage translation;
 
-	public MessageSupport() {
+	public MessageSupport() throws FileNotFoundException {
 		this.params = new ArrayList();
 		init();
 	}
 
-	private void init() {
+	private void init() throws FileNotFoundException {
 		this.var = null;
 		this.scope = 1;
 		this.keyAttrValue = null;
 		this.keySpecified = false;
 		VIPCfg gc = VIPCfg.getInstance();
-		gc.initialize("vipconfig");
+		gc.initialize("vipconfig.yaml");
 		gc.initializeVIPService();
 		gc.createTranslationCache(MessageCache.class);
 		I18nFactory i18n = I18nFactory.getInstance(gc);
@@ -94,7 +95,12 @@ public class MessageSupport extends BodyTagSupport {
 	}
 
 	public void release() {
-		init();
+		try {
+			init();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void setPageContext(PageContext arg0) {

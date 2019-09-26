@@ -4,6 +4,8 @@
  */
 package com.vmware.vip.i18n;
 
+import java.io.FileNotFoundException;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,11 +16,11 @@ import com.vmware.vipclient.i18n.formats.NumberFormat;
 
 public class FormatTest extends BaseTestClass {
 	final String locale = "zh_CN";
-	
+
 	@Before
-	public void init() {
+	public void init() throws FileNotFoundException {
         VIPCfg gc = VIPCfg.getInstance();
-        gc.initialize("vipconfig");
+        gc.initialize("src/test/resources/vipconfig.yaml");
         gc.initializeVIPService();
 	}
 

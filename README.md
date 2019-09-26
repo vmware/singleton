@@ -1,4 +1,4 @@
-Singleton Library for Java Clients
+﻿Singleton Library for Java Clients
 ============
 
 Several client libraries are provided to support sending API requests to Singleton service. Each library, when integrated on the client side, also provides additional features such as post-processing of localized resources and caching.
@@ -67,7 +67,7 @@ import com.vmware.vipclient.i18n.base.instances.DateFormatting;
 
 // Initialize global setting
 VIPCfg cfg = VIPCfg.getInstance();
-cfg.initialize("vipconfig");
+cfg.initialize("vipconfig.yaml");
 cfg.initializeVIPService();
 I18nFactory i18n = I18nFactory.getInstance(cfg);
 

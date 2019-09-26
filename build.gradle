@@ -45,6 +45,7 @@ dependencies {
 	compile("com.googlecode.json-simple:json-simple:1.1.1") {
 	   exclude group: 'junit'
 	}
+    compile group: 'org.yaml', name: 'snakeyaml', version: '1.25'
 	
 	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
 	testCompile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.26'
