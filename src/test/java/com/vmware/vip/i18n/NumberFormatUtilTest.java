@@ -4,7 +4,7 @@
  */
 package com.vmware.vip.i18n;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Locale;
 
 import org.junit.Assert;
@@ -21,9 +21,9 @@ public class NumberFormatUtilTest extends BaseTestClass {
 	NumberFormatting numberFormatI18n;
 	
 	@Before
-	public void init() throws FileNotFoundException {
+	public void init() throws IOException {
         VIPCfg gc = VIPCfg.getInstance();
-        gc.initialize("src/test/resources/vipconfig.yaml");
+        gc.initialize("vipconfig.yaml");
         gc.initializeVIPService();
         gc.createFormattingCache(FormattingCache.class);
         I18nFactory i18n = I18nFactory.getInstance(gc);
@@ -159,7 +159,7 @@ public class NumberFormatUtilTest extends BaseTestClass {
 		double num1 = 0.354;
 
 		 String language = "zh-Hans";
-	      String region = "CN";;
+	      String region = "CN";
 		Assert.assertEquals("35%", numberFormatI18n.formatPercent(num1,
 				language, region));
 		Assert.assertEquals("35%", numberFormatI18n.formatPercent(num1,

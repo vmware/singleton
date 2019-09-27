@@ -4,7 +4,7 @@
  */
 package com.vmware.vip.i18n;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -14,6 +14,7 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.CacheMode;
 import com.vmware.vipclient.i18n.base.cache.MessageCache2;
+import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.base.cache.persist.CacheSyncThreadPool;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.CacheService;
@@ -25,9 +26,9 @@ public class PersistantCacheTest extends BaseTestClass {
 	private MessagesDTO cacheDTO;
 
 	@Before
-	public void init() throws FileNotFoundException {
+	public void init() throws IOException {
 		VIPCfg gc = VIPCfg.getInstance();
-		gc.initialize("src/test/resources/vipconfig.yaml");
+		gc.initialize("vipconfig.yaml");
 		gc.initializeVIPService();
 		Cache c = gc.createTranslationCache(MessageCache2.class);
 		c.setExpiredTime(3600000);
@@ -46,7 +47,7 @@ public class PersistantCacheTest extends BaseTestClass {
 	//@Test
 	public void testLookForComponentTranslationInCache() {
 		for(int i=0;i<10;i++) {
-			HashMap<String, String> map2 = new HashMap<String, String>();
+			HashMap<String, String> map2 = new HashMap<>();
 			String component = UUID.randomUUID().toString();
 			cacheDTO.setComponent(component);
 			for(int j=0;j<2;j++){
@@ -57,7 +58,7 @@ public class PersistantCacheTest extends BaseTestClass {
 				map2.put(key, source);
 			}
 			cacheService.addCacheOfComponent(map2);
-			Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
+			Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
 			logger.debug(String.valueOf(c.size()));
 		}
 		CacheSyncThreadPool t =new CacheSyncThreadPool();

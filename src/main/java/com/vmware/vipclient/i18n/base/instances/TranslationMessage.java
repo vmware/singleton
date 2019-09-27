@@ -8,11 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.ResourceBundle;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.json.simple.JSONObject;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
@@ -140,9 +139,9 @@ public class TranslationMessage implements Message {
 		MessagesDTO dto = new MessagesDTO();
 		dto.setLocale(locale.toLanguageTag());
 		dto.setComponent(component);
-		List<JSONObject> sourcesList = new ArrayList<JSONObject>();
+		List<JSONObject> sourcesList = new ArrayList<>();
 		sourcesList.addAll(sources);
-		List<JSONObject> removedList = new ArrayList<JSONObject>();
+		List<JSONObject> removedList = new ArrayList<>();
 		for(JSONObject jo : sourcesList) {
 			String key = (String)jo.get(ConstantsKeys.KEY);
 			String source = (String)jo.get(ConstantsKeys.SOURCE);
@@ -253,9 +252,14 @@ public class TranslationMessage implements Message {
 		String message = "";
 		String source;
 		try {
-			ResourceBundle rb = ResourceBundle.getBundle(bundle,
-					LocaleUtility.defaultLocale);
-			source = rb.getString(key);
+			MessagesDTO dto = new MessagesDTO();
+			dto.setLocale(locale.toLanguageTag());
+			dto.setComponent(component);
+			dto.setKey(key);
+			dto.setLocale(LocaleUtility.defaultLocale.toLanguageTag());
+
+			StringService ss = new StringService(dto);
+			source = ss.getSource();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			source = key;

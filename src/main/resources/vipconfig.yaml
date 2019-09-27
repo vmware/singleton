@@ -27,5 +27,7 @@ machineTranslation : false
 
 
 resources :
-  component1 : ['bundles/messages.json']
-  component2 : [bundles/messages2.json]
+  - component : component1
+    resource: 'bundles/messages.json'
+  - component : component2
+    resource: bundles/messages2.json

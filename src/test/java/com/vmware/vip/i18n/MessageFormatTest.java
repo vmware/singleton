@@ -4,7 +4,7 @@
  */
 package com.vmware.vip.i18n;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.FieldPosition;
 import java.util.HashMap;
 import java.util.Locale;
@@ -22,9 +22,9 @@ import com.vmware.vipclient.i18n.l2.text.MessageFormat;
 public class MessageFormatTest extends BaseTestClass {
 
 	@Before
-	public void init() throws FileNotFoundException {
+	public void init() throws IOException {
         VIPCfg gc = VIPCfg.getInstance();
-        gc.initialize("src/test/resources/vipconfig.yaml");
+        gc.initialize("vipconfig.yaml");
         gc.initializeVIPService();
         gc.createFormattingCache(FormattingCache.class);
         I18nFactory i18n = I18nFactory.getInstance(gc);
@@ -37,7 +37,7 @@ public class MessageFormatTest extends BaseTestClass {
                 +"=1{There is one file on disk \"{disk_name}\".}" 
                 +"other{There are # files on disk \"{disk_name}\".}}";
 		MessageFormat msgFmt1 = new MessageFormat(message1,Locale.ENGLISH);
-        Map<String, Object> args = new HashMap<String, Object>();
+        Map<String, Object> args = new HashMap<>();
         args.put("num_files", 0);//
         args.put("disk_name", "MyDisk");
         Assert.assertEquals("There are no files on disk \"MyDisk\".", msgFmt1.format(args, new StringBuilder(), new FieldPosition(0)).toString());

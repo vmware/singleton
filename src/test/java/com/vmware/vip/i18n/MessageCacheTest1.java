@@ -4,7 +4,7 @@
  */
 package com.vmware.vip.i18n;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +15,7 @@ import org.junit.Test;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
+import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.CacheService;
 
@@ -25,9 +26,9 @@ public class MessageCacheTest1 extends BaseTestClass {
 	private MessagesDTO cacheDTO;
 
 	@Before
-	public void init() throws FileNotFoundException {
+	public void init() throws IOException {
 		VIPCfg gc = VIPCfg.getInstance();
-		gc.initialize("src/test/resources/vipconfig.yaml");
+		gc.initialize("vipconfig.yaml");
 		gc.initializeVIPService();
 		if(gc.getCacheManager() != null) gc.getCacheManager().clearCache();
 		Cache c = gc.createTranslationCache(MessageCache.class);
@@ -45,18 +46,18 @@ public class MessageCacheTest1 extends BaseTestClass {
 		VIPCfg gc = VIPCfg.getInstance();
 		MessageCache c = (MessageCache)gc.createTranslationCache(MessageCache.class);
 		c.setCapacityByKey(5);
-		Map<String, String> msgObj = new HashMap<String, String>();
+		Map<String, String> msgObj = new HashMap<>();
 		msgObj.put("book", "@zh_CN@book");
 		cacheService.addCacheOfComponent(msgObj);
-		Map<String, String> msgObj2 = new HashMap<String, String>();
+		Map<String, String> msgObj2 = new HashMap<>();
 		msgObj2.put("book2", "@zh_CN@book2");
 		cacheService.addCacheOfComponent(msgObj2);
-		Map<String, String> msgObj3 = new HashMap<String, String>();
+		Map<String, String> msgObj3 = new HashMap<>();
 		msgObj3.put("book3", "@zh_CN@book3");
 		msgObj3.put("book4", "@zh_CN@book4");
 		msgObj3.put("book5", "@zh_CN@book5");
 		cacheService.addCacheOfComponent(msgObj3);
-		Map<String, String> msgObj4 = new HashMap<String, String>();
+		Map<String, String> msgObj4 = new HashMap<>();
 		msgObj4.put("book6", "@zh_CN@book6");
 		msgObj4.put("book7", "@zh_CN@book7");
 		msgObj4.put("book8", "@zh_CN@book8");
@@ -74,9 +75,9 @@ public class MessageCacheTest1 extends BaseTestClass {
 	}
 
 	@Test
-	public void testAddCacheByComponent() throws FileNotFoundException {
+	public void testAddCacheByComponent() throws IOException {
 		this.init();
-		Map<String, String> msgObj = new HashMap<String, String>();
+		Map<String, String> msgObj = new HashMap<>();
 		msgObj.put("book", "@zh_CN@book");
 		cacheService.addCacheOfComponent(msgObj);
 		Map<String, String> mp = cacheService.getCacheOfComponent();
@@ -88,8 +89,7 @@ public class MessageCacheTest1 extends BaseTestClass {
 	@SuppressWarnings({ "static-access", "rawtypes", "unchecked"})
 	@Test
 	public void testExpired() {
-		VIPCfg gc = VIPCfg.getInstance();
-		Cache c = gc.getCacheManager().getCache(VIPCfg.CACHE_L3);
+		Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
 		Map data = new HashMap();
 		String k = "com.vmware.test";
 		String v = "It's a test";
@@ -98,12 +98,12 @@ public class MessageCacheTest1 extends BaseTestClass {
 		c.put(cachedKey, data);
 		long expired = 20000;
 		c.setExpiredTime(expired);
-		Map cachedData = (Map)gc.getCacheManager().getCache(VIPCfg.CACHE_L3).get(cachedKey);
+		Map cachedData = TranslationCacheManager.getCache(VIPCfg.CACHE_L3).get(cachedKey);
 		Assert.assertNotNull(cachedData);
-		Assert.assertEquals(v, (String)cachedData.get(k));
+		Assert.assertEquals(v, cachedData.get(k));
 		try {
 			Thread.sleep(expired + 10000);
-			Map cachedData2 = (Map)gc.getCacheManager().getCache(VIPCfg.CACHE_L3).get(cachedKey);
+			Map cachedData2 = TranslationCacheManager.getCache(VIPCfg.CACHE_L3).get(cachedKey);
 			Assert.assertNull(cachedData2);			
 		} catch (InterruptedException e) {
 			e.printStackTrace();

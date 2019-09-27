@@ -5,7 +5,7 @@
 
 package com.vmware.vipclient.sample;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Date;
 import java.util.Locale;
 
@@ -17,7 +17,7 @@ import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 public class Main {
 	
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws IOException {
 		Locale thislocale = Locale.ENGLISH;
 		if (args.length > 0) {
 			// set locale
@@ -28,7 +28,7 @@ public class Main {
 
 		// Initialize
 		VIPCfg cfg = VIPCfg.getInstance();
-		cfg.initialize("src/main/resources/sampleconfig.yaml");
+		cfg.initialize("sampleconfig.yaml");
 		cfg.initializeVIPService();
 		cfg.createTranslationCache(MessageCache.class);
 		cfg.createFormattingCache(FormattingCache.class);

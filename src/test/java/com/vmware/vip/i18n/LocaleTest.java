@@ -4,7 +4,7 @@
  */
 package com.vmware.vip.i18n;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,9 +29,9 @@ public class LocaleTest extends BaseTestClass {
 	LocaleMessage localeI18n;
 
 	@Before
-	public void init() throws FileNotFoundException {
+	public void init() throws IOException {
         VIPCfg gc = VIPCfg.getInstance();
-        gc.initialize("src/test/resources/vipconfig.yaml");
+        gc.initialize("vipconfig.yaml");
         gc.initializeVIPService();
         gc.createFormattingCache(MessageCache.class);
         I18nFactory i18n = I18nFactory.getInstance(gc);
@@ -86,7 +86,7 @@ public class LocaleTest extends BaseTestClass {
 
 	@Test
 	public void testGetRegionList() throws ParseException {
-		List<String> list = new ArrayList<String>();
+		List<String> list = new ArrayList<>();
 		list.add("zh_Hant");
 		list.add("ja");
 		list.add("de");

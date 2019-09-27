@@ -4,7 +4,7 @@
  */
 package com.vmware.vip.i18n;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Date;
 import java.util.Locale;
 
@@ -21,9 +21,9 @@ public class DateFormatUtilTest extends BaseTestClass {
 	DateFormatting dateFormatI18n;
 
 	@Before
-	public void init() throws FileNotFoundException {
+	public void init() throws IOException {
         VIPCfg gc = VIPCfg.getInstance();
-        gc.initialize("src/test/resources/vipconfig.yaml");
+        gc.initialize("vipconfig.yaml");
         gc.initializeVIPService();
         gc.createFormattingCache(FormattingCache.class);
         I18nFactory i18n = I18nFactory.getInstance(gc);

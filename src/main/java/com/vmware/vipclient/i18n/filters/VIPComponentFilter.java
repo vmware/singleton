@@ -35,6 +35,7 @@ import com.vmware.vipclient.i18n.util.LocaleUtility;
 public class VIPComponentFilter implements Filter {
 	private Logger logger = LoggerFactory.getLogger(VIPComponentFilter.class);
 	
+	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		String locale = this.getParamFromQuery(request, "locale");
@@ -51,12 +52,12 @@ public class VIPComponentFilter implements Filter {
 		OutputStream os = response.getOutputStream();
 		response.setContentType("text/javascript;charset=UTF-8");
 		os.write(("var translation = {" + "\"messages\" : " + messages + ", "
-				+ "\"productName\" : \"" + gc.getInstance().getProductName()
-				+ "\", " + "\"version\" : \"" + gc.getInstance().getVersion()
+				+ "\"productName\" : \"" + VIPCfg.getInstance().getProductName()
+				+ "\", " + "\"version\" : \"" + VIPCfg.getInstance().getVersion()
 				+ "\", " + "\"vipServer\" : \""
-				+ gc.getInstance().getVipServer() + "\", " + "\"pseudo\" : \""
-				+ gc.getInstance().isPseudo() + "\", "
-				+ "\"collectSource\" : \"" + gc.getInstance().isCollectSource() + "\"};")
+				+ VIPCfg.getInstance().getVipServer() + "\", " + "\"pseudo\" : \""
+				+ VIPCfg.getInstance().isPseudo() + "\", "
+				+ "\"collectSource\" : \"" + VIPCfg.getInstance().isCollectSource() + "\"};")
 				.getBytes("UTF-8"));
 	}
 
@@ -96,18 +97,23 @@ public class VIPComponentFilter implements Filter {
 		return source.toString();
 	}
 
+	@Override
 	public void destroy() {
 		// Do Nothing
 	}
 
 	private TranslationMessage translation;
 	private VIPCfg gc = VIPCfg.getInstance();
+	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		if(gc.getVipService() == null) {
 			try {
 				gc.initialize("vipconfig.yaml");
 			} catch (FileNotFoundException e) {
 				logger.error(e.toString());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			gc.initializeVIPService();
 		}

@@ -4,9 +4,8 @@
  */
 package com.vmware.vipclient.i18n;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
@@ -27,6 +26,7 @@ import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ProductService;
+import com.vmware.vipclient.i18n.messages.service.StringService;
 
 /**
  * a class uses to define the global environment setting for I18nFactory
@@ -46,6 +46,10 @@ public class VIPCfg {
 	// cache mode
 	private CacheMode cacheMode = CacheMode.MEMORY;
 
+	public final static String COMPONENT = "component";
+	public final static String RESOURCE = "resource";
+	
+	
 	private String cachePath;
 
 	// define the global parameters
@@ -60,7 +64,7 @@ public class VIPCfg {
 	private String version;
 	private String vipServer;
 
-	private Map<String, ArrayList<String>> resources;
+	private ArrayList<Map<String, Object>> resources;
 	private String i18nScope = "numbers,dates,currencies,plurals,measurements";
 
 	// define key for cache management
@@ -84,31 +88,17 @@ public class VIPCfg {
 	}
 
 	/**
-	 * initialize the instance by parameter
-	 * 
-	 * @param vipServer
-	 * @param productName
-	 * @param version
-	 */
-	public void initialize(String vipServer, String productName, String version) {
-		this.productName = productName;
-		this.version = version;
-		this.vipServer = vipServer;
-	}
-
-	/**
 	 * initialize the instance by a properties file
 	 *
-	 * @param cfg
+	 * @param cfgPath
+	 * @throws IOException
 	 * @throws FileNotFoundException
 	 */
 	@SuppressWarnings("serial")
-	public void initialize(String cfg) throws FileNotFoundException {
-		InputStream input = new FileInputStream(cfg);
-		Yaml yaml = new Yaml();
-		LinkedHashMap<String, Object> data = yaml.loadAs(input, (new LinkedHashMap<String, Object>() {
-		}).getClass());
-
+	public void initialize(String cfgPath) throws IOException {
+		InputStream stream = ClassLoader.getSystemResourceAsStream(cfgPath);
+		LinkedHashMap<String, Object> data = new Yaml().loadAs(stream, (new LinkedHashMap<String, Object>() {}).getClass());
+    	
 		for (Entry<String, Object> entry : data.entrySet()) {
 			try {
 				this.getClass().getDeclaredField(entry.getKey()).set(this, entry.getValue());
@@ -121,6 +111,8 @@ public class VIPCfg {
 				throw new VIPJavaClientException("Unknow errorr");
 			}
 		}
+		
+		StringService.loadResources(this.resources);
 	}
 
 	/**
@@ -170,7 +162,7 @@ public class VIPCfg {
 	 * @param cacheClass
 	 * @return
 	 */
-	public synchronized Cache createTranslationCache(Class cacheClass) {
+	public synchronized Cache createTranslationCache(Class<?> cacheClass) {
 		this.translationCacheManager = TranslationCacheManager
 				.createTranslationCacheManager();
 		if (this.translationCacheManager != null) { 
@@ -205,7 +197,7 @@ public class VIPCfg {
 	 * 
 	 * @param cacheClass
 	 */
-	public Cache createFormattingCache(Class cacheClass) {
+	public Cache createFormattingCache(Class<?> cacheClass) {
 		this.translationCacheManager = TranslationCacheManager
 				.createTranslationCacheManager();
 		if (this.translationCacheManager != null) {

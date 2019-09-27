@@ -4,7 +4,7 @@
  */
 package com.vmware.vip.i18n;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Locale;
 import java.util.Map;
 
@@ -24,9 +24,9 @@ public class VIPCfgTest extends BaseTestClass {
 	MessagesDTO dto;
 	
 	@Before
-	public void init() throws FileNotFoundException {
+	public void init() throws IOException {
         VIPCfg gc = VIPCfg.getInstance();
-        gc.initialize("src/test/resources/vipconfig.yaml");
+        gc.initialize("vipconfig.yaml");
         gc.initializeVIPService();
         if(gc.getCacheManager() != null) gc.getCacheManager().clearCache();
         gc.createTranslationCache(MessageCache.class);

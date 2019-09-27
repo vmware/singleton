@@ -4,7 +4,7 @@
  */
 package com.vmware.vip.i18n;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -33,9 +33,9 @@ public class TranslationMessageTest extends BaseTestClass {
 
 
 	@Before
-	public void init() throws FileNotFoundException {
+	public void init() throws IOException {
 		VIPCfg gc = VIPCfg.getInstance();
-		gc.initialize("src/test/resources/vipconfig.yaml");
+		gc.initialize("vipconfig.yaml");
 		gc.initializeVIPService();
 		if(gc.getCacheManager() != null) gc.getCacheManager().clearCache();
 		gc.createTranslationCache(MessageCache.class);
@@ -46,7 +46,7 @@ public class TranslationMessageTest extends BaseTestClass {
 	}
 
 	@Test
-	public void testGetMessageWithBundle() throws FileNotFoundException {
+	public void testGetMessageWithBundle() throws IOException {
 		//	    this.init(); //don't need to call again, this has been called in Before.
 
 		vipCfg.setPseudo(false);
@@ -96,7 +96,7 @@ public class TranslationMessageTest extends BaseTestClass {
 	}
 
 	//@Test
-	public void testGetPatternMessageWithBundle() throws FileNotFoundException {
+	public void testGetPatternMessageWithBundle() throws IOException {
 		this.init();
 		String component = "JAVA", bundle = "messages";
 		Locale locale1 = new Locale("en", "US");
@@ -182,7 +182,7 @@ public class TranslationMessageTest extends BaseTestClass {
 	@Test
 	public void testPostSourceSet() {
 		Locale locale = new Locale("zh", "CN");
-		List<JSONObject > sources = new ArrayList<JSONObject>();
+		List<JSONObject > sources = new ArrayList<>();
 		JSONObject jo1 = new JSONObject();
 		jo1.put("key", "key1");
 		jo1.put("source", "source1");
@@ -199,7 +199,7 @@ public class TranslationMessageTest extends BaseTestClass {
 		jo3.put("commentForSource", "It's a comment3");
 		sources.add(jo3);
 		Assert.assertTrue(translation.postStrings(locale, component1, sources));
-		List<JSONObject > sources2 = new ArrayList<JSONObject>();
+		List<JSONObject > sources2 = new ArrayList<>();
 		logger.debug(sources2.toString());
 		Assert.assertFalse(translation.postStrings(locale, component1, sources2));
 	}

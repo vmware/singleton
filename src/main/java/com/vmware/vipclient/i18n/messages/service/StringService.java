@@ -4,27 +4,32 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
+import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
+import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.StringBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+import com.vmware.vipclient.i18n.util.FileUtil;
 import com.vmware.vipclient.i18n.util.JSONUtils;
+import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 public class StringService {
 	private MessagesDTO dto = null;
 
+	private static Map<String, Map<?, ?>> defaultResources = new HashMap<>();
 	Logger logger = LoggerFactory.getLogger(StringService.class);
 
 	public StringService(MessagesDTO dto) {
@@ -55,7 +60,7 @@ public class StringService {
 		if(r != "") {
 			dto.setLocale(ConstantsKeys.LATEST);
 			CacheService c = new CacheService(dto);
-			Map<String, String> dataMap = new HashMap<String, String>();
+			Map<String, String> dataMap = new HashMap<>();
 			dataMap.put(dto.getKey(), dto.getSource());
 			c.updateCacheOfComponent(dataMap);
 		}
@@ -71,7 +76,7 @@ public class StringService {
 		if(r) {
 			dto.setLocale(ConstantsKeys.LATEST);
 			CacheService c = new CacheService(dto);
-			Map<String, String> dataMap = new HashMap<String, String>();
+			Map<String, String> dataMap = new HashMap<>();
 			for(JSONObject jo: sources) {
 				dataMap.put((String)jo.get(ConstantsKeys.KEY), jo.get(ConstantsKeys.SOURCE) == null ? "" : (String)jo.get(ConstantsKeys.SOURCE));
 			}
@@ -110,4 +115,37 @@ public class StringService {
 		}
 		return r;
 	}
+
+	// Get source
+	public String getSource() {
+		Map<?, ?> messages = StringService.defaultResources.get(dto.getCompositStrAsCacheKey());
+		String result = (null == messages ? "" : (String) messages.get(this.dto.getKey()));
+		return null == result ? "" : result; 
+	}
+	
+	// load sources from local files.
+	@SuppressWarnings("unchecked")
+	public static void loadResources(List<Map<String, Object>> resources) throws IOException {
+		if (null == resources || resources.isEmpty()) {
+			throw new VIPJavaClientException("No resources are provided in config file!");
+		}
+		
+		for( Map<String, Object> e : resources) {
+			String comp = (String) e.get(VIPCfg.COMPONENT);
+			String res = (String) e.get(VIPCfg.RESOURCE);
+			
+			Map<Object, Object> messages;
+			try {
+				messages = res.endsWith(".json") ? FileUtil.readJSONFile(res) : FileUtil.readPropertiesFile(res);
+			} catch (ParseException e1) {
+				throw new VIPJavaClientException("Failed to parse JSON file.", e1);
+			}
+			
+			MessagesDTO dto = new MessagesDTO();
+			dto.setComponent(comp);
+			dto.setLocale(LocaleUtility.defaultLocale.toLanguageTag());
+			StringService.defaultResources.put(dto.getCompositStrAsCacheKey(), messages);
+		}
+	}
+	
 }

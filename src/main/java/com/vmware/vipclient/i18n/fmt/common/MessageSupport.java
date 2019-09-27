@@ -4,7 +4,6 @@
  */
 package com.vmware.vipclient.i18n.fmt.common;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,12 +35,12 @@ public class MessageSupport extends BodyTagSupport {
 	private String component = "JSP", bundle = "webui";
 	private TranslationMessage translation;
 
-	public MessageSupport() throws FileNotFoundException {
+	public MessageSupport() throws IOException {
 		this.params = new ArrayList();
 		init();
 	}
 
-	private void init() throws FileNotFoundException {
+	private void init() throws IOException {
 		this.var = null;
 		this.scope = 1;
 		this.keyAttrValue = null;
@@ -54,11 +53,13 @@ public class MessageSupport extends BodyTagSupport {
 		translation = (TranslationMessage)i18n.getMessageInstance(TranslationMessage.class);
 	}
 
+	@Override
 	public int doStartTag() throws JspException {
 		this.params.clear();
 		return 2;
 	}
 
+	@Override
 	public int doEndTag() throws JspException {
 		String key = null;
 		if (this.keySpecified)
@@ -90,23 +91,26 @@ public class MessageSupport extends BodyTagSupport {
 		return 0;
 	}
 
+	@Override
 	public Tag getParent() {
 		return null;
 	}
 
+	@Override
 	public void release() {
 		try {
 			init();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (IOException e) {
+
 		}
 	}
 
+	@Override
 	public void setPageContext(PageContext arg0) {
 		this.pageContext = arg0;
 	}
 
+	@Override
 	public void setParent(Tag arg0) {
 	}
 

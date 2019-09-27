@@ -4,7 +4,7 @@
  */
 package com.vmware.vip.i18n;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -31,9 +31,9 @@ public class HttpRequesterTest extends BaseTestClass {
 	private String realServer = null;
 
 	@Before
-	public void init() throws FileNotFoundException {
+	public void init() throws IOException {
 		VIPCfg cfg = VIPCfg.getInstance();
-		cfg.initialize("src/test/resources/vipconfig.yaml");
+		cfg.initialize("vipconfig.yaml");
 		cfg.setVipServer(mockServer);
 		cfg.setInitializeCache(false);
 		cfg.initializeVIPService();

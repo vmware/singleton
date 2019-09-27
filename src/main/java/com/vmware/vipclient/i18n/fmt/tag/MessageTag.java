@@ -4,7 +4,7 @@
  */
 package com.vmware.vipclient.i18n.fmt.tag;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import javax.servlet.jsp.JspTagException;
 
@@ -13,9 +13,9 @@ import com.vmware.vipclient.i18n.fmt.common.MessageSupport;
 public class MessageTag extends MessageSupport {
 
 	/**
-	 * @throws FileNotFoundException
+	 * @throws IOException 
 	 */
-	public MessageTag() throws FileNotFoundException {
+	public MessageTag() throws IOException {
 		super();
 	}
 
