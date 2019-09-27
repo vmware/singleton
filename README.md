@@ -1,9 +1,10 @@
-Singleton Website
+# Singleton Website
 
 We use Hugo to maintain Singleton documentation and publish them to Singleton website. Please download and install Hugo following the instructions on https://gohugo.io/getting-started/quick-start/.
 
 The contents in the documentation are stored under /content and organized as below:
 
+```bash
 .
 └── en
     ├── _footer.md
@@ -38,6 +39,7 @@ The contents in the documentation are stored under /content and organized as bel
             ├── integrate-singleton-in-java-app.md
             ├── integrate-singleton-in-javascript-app.md
             └── integrate-singleton-in-python-app.md
+```
 
 Please modify the contents in .md files under /content if needed.
 
