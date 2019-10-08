@@ -202,7 +202,7 @@ public class TranslationProductComponentAction extends BaseAction {
 				for(String s : versionList) {
 					String f = filterVersion(s, version);
 					String ss = StringUtils.isEmpty(matchedVersion) ? s : filterVersion(s, matchedVersion);
-					if(compare(f, version) == -1 && compare(ss, matchedVersion) == 1) {
+					if((compare(f, version) == -1 || (compare(f, version) == 0 && s.length() < version.length())) && compare(ss, matchedVersion) == 1) {
                         matchedVersion = s;
 					}
 				}
