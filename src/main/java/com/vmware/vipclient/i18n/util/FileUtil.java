@@ -32,7 +32,7 @@ public class FileUtil {
 	static Logger logger = LoggerFactory.getLogger(FileUtil.class);
 
 	public static Properties readPropertiesFile(String filePath) throws IOException {
-		URI uri = findFile(filePath);
+		URI uri = getFileURI(filePath);
 		if(null == uri) {
 			throw new FileNotFoundException("Can't find file: "+filePath);
 		}
@@ -45,7 +45,7 @@ public class FileUtil {
 	}
 
 	public static JSONObject readJSONFile(String filePath) throws ParseException, IOException {
-		URI uri = findFile(filePath);
+		URI uri = getFileURI(filePath);
 		if(null == uri) {
 			throw new FileNotFoundException("Can't find file: "+filePath);
 		}
@@ -54,30 +54,22 @@ public class FileUtil {
 		} 
 	}
 	
-	public static URI findFile(String filePath) {
+	public static URI getFileURI(String filePath) {
 		// File exists, return directly.
 		File fileObj = new File(filePath);
 		if (fileObj.exists()) {
 			return fileObj.toPath().toUri();
 		}
 		
-		// a path of file in jar
-		if (filePath.contains("jar:") && filePath.contains(".jar!")) {
-			try {
-				return new URI(filePath);
-			} catch (URISyntaxException e) {
-				throw new VIPJavaClientException("Invalid path: "+ filePath, e);
-			}
-		}
-
-		// File doesn't exist. Let java to find it
-		URL url = ClassLoader.getSystemResource(filePath);
-		try {
+		try {    
+    		// File doesn't exist. Find corresponding resource.
+    		URL url = ClassLoader.getSystemResource(filePath);
 			return url != null ? url.toURI() : null;
-		} catch (URISyntaxException e) {}
-		
-		return null;
+		} catch (URISyntaxException e) {
+			throw new VIPJavaClientException("Invalid path: "+ filePath, e);			
+		}
 	}
+	
 
 	public static JSONObject readJarJsonFile(String jarPath, String filePath){
 		JSONObject jsonObj = null;
