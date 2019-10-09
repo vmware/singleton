@@ -22,10 +22,10 @@ Signature is mandatory for the commits, please make sure to get it worked. If no
 
 ## Develop, Build and Test
 ### Create your branch
-Changes should be made on your own fork in a new branch. The branch should be named g11n-java-client-XXX-description where XXX is the number of the issue. Run this command to create a new branch.
+Change should be made on your own fork in a new branch. The branch should be named g11n-java-client-XXX-description where XXX is the number of the issue. Run this command to create a new branch.
 
 ```
-git checkout -b g11n-java-client-XXX-description g1n-java-client
+git checkout -b g11n-java-client-XXX-description g11n-java-client
 ```
 
 ### Setup development environment
@@ -36,10 +36,14 @@ Please refer to [developer guide](https://github.com/vmware/singleton/blob/maste
 The coding style follows [JAVA style](https://petroware.no/javastyle.html).
 
 ### Build and Test
-Unit test cases should be added to cover the new code.
-Run build.gradle with 'clean build' to generate the build and run unit tests.
-Note: For now, a Singleton server is needed to run unit tests locally. Refer to [this](https://github.com/vmware/singleton/blob/master/README.md) to setup a service. Then copy src/test/resources/JavaclientTest {service folder}/l10n/bundles/
-You can defer to run this through CI pipeline after pushing your change.
+Unit test cases should be added to cover new code.
+Run command `gradle clean build` to generate build and run unit tests.
+
+You can defer to run unit tests through CI pipeline after pushing your change.
+
+**Note:** 
+
+For now, it needs a Singleton server to run unit tests. Refer to [this](https://github.com/vmware/singleton/blob/master/README.md) to setup a Singleton server. Then copy src/test/resources/JavaclientTest to {Singleton server folder}/l10n/bundles. Start Singleton server.
 
 ## Keep sync with upstream
 
@@ -57,7 +61,7 @@ git fetch upstream
 ```
 git checkout g11n-java-client-XXX-description
 git fetch -a
-git rebase upstream/g1n-java-client
+git rebase upstream/g11n-java-client
 ```
 Please use fetch / rebase (as shown above) instead of git pull. git pull does a merge, which leaves merge commits. These make the commit history messy and violate the principle that commits ought to be individually understandable and useful. You can also consider changing your .git/config file via `git config branch.autoSetupRebase always` to change the behavior of git pull.
 
@@ -74,8 +78,8 @@ After it is approved, please choose "Squash and merge" to avoid too many commit 
 
 ## Reporting issues
 
-It is a great way to contribute by reporting an issue. Well-written and complete bug reports are always welcome!
+It is a great way to contribute by reporting an issue. Well-written and complete bug reports are always welcome! We suggest reporting issues with our template for high quality.
 
 ## Design new features
 
-You can propose new designs for existing features. You can also design entirely new features, please submit a proposal in GitHub.
+You can propose new designs for existing features. You can also design entirely new features, please submit a proposal in GitHub. We suggest to submit with our template.
