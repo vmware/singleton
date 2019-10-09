@@ -77,8 +77,10 @@ public class WebConfiguration implements WebMvcConfigurer {
 
 	@Value("${vipservice.cross.domain.maxage}")
 	private String maxAge;
-	
-	
+
+	@Value("${translation.bundle.file.basepath}")
+	private String bundleFileBasePath;
+
 	@Value("${swagger-ui.enable}")
 	private boolean swagger2enable;
 
@@ -91,7 +93,6 @@ public class WebConfiguration implements WebMvcConfigurer {
 	@Autowired
 	private VipAuthConfig authConfig;
 
-	
 	/**
 	 * Add ETag into response header for data cache
 	 */
@@ -116,7 +117,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 		 */
 
 		// Request Validation
-		InterceptorRegistration apival = registry.addInterceptor(new APIValidationInterceptor()).addPathPatterns("/**").excludePathPatterns(API.I18N_API_ROOT+"doc/**");
+		InterceptorRegistration apival = registry.addInterceptor(new APIValidationInterceptor(bundleFileBasePath)).addPathPatterns("/**").excludePathPatterns(API.I18N_API_ROOT+"doc/**");
 
 		// authentication
 

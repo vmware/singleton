@@ -33,6 +33,11 @@ import com.vmware.vip.core.validation.ValidationException;
 public class APIValidationInterceptor extends HandlerInterceptorAdapter {
 	private static Logger LOGGER = LoggerFactory.getLogger(APIValidationInterceptor.class);
 
+	private String bundleBasedPath;
+	public APIValidationInterceptor(String bundleBasedPath) {
+		super();
+		this.bundleBasedPath = bundleBasedPath;
+	}
 	/**
 	 * Collect new source and send to l10n server
 	 *
@@ -58,6 +63,7 @@ public class APIValidationInterceptor extends HandlerInterceptorAdapter {
 				request);
 		try {
 			u.validate();
+			request.setAttribute(ParameterValidation.BUNDLE_BASE_PATH, this.bundleBasedPath);
 			p.validate();
 		} catch (ValidationException e) {
 			LOGGER.warn(e.getMessage());

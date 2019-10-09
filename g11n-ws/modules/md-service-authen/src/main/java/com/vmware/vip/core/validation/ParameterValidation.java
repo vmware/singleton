@@ -4,10 +4,14 @@
  */
 package com.vmware.vip.core.validation;
 
+import java.io.File;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.vmware.vip.common.constants.ConstantsFile;
+import com.vmware.vip.common.utils.JSONUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.servlet.HandlerMapping;
 
@@ -17,6 +21,13 @@ import com.vmware.vip.common.utils.RegExpValidatorUtils;
 
 public class ParameterValidation implements IVlidation {
 	HttpServletRequest request = null;
+	public final static String BUNDLE_BASE_PATH = "bundleBasedPath";
+	public final static String BUNDLE_FILE = "bundle.json";
+
+	/**
+	 * A cached map with product list as key and version list as value
+	 */
+	private  static final Map<String, Object> MAP_PRODUCTS_VERSIONS = new HashMap<>();
 
 	public ParameterValidation(HttpServletRequest request) {
 		this.request = request;
@@ -52,6 +63,9 @@ public class ParameterValidation implements IVlidation {
 		}
 		if (!RegExpValidatorUtils.IsLetterOrNumber(productName)) {
 			throw new ValidationException(ValidationMsg.PRODUCTNAME_NOT_VALIDE);
+		}
+		if ("get".equalsIgnoreCase(request.getMethod())) {
+			this.isInWhiteList(productName, request.getAttribute(ParameterValidation.BUNDLE_BASE_PATH) + ConstantsFile.L10N_BUNDLES_PATH + File.separator + ParameterValidation.BUNDLE_FILE);
 		}
 	}
 
@@ -202,4 +216,23 @@ public class ParameterValidation implements IVlidation {
 			//throw new ValidationException(ValidationMsg.PATTERN_NOT_VALIDE);
 		}
 	}
+
+    /**
+     * check if a product in the white list
+     *
+     * @param productName
+     * @param whiteListFilePath
+     * @throws ValidationException
+     */
+    private void isInWhiteList(String productName, String whiteListFilePath) throws ValidationException {
+        if (ParameterValidation.MAP_PRODUCTS_VERSIONS.isEmpty()) {
+            Map<String, Object> m = JSONUtils.getMapFromJsonFile(whiteListFilePath);
+            ParameterValidation.MAP_PRODUCTS_VERSIONS.putAll(m);
+        }
+        if (!ParameterValidation.MAP_PRODUCTS_VERSIONS.isEmpty()) {
+            if (!ParameterValidation.MAP_PRODUCTS_VERSIONS.containsKey(productName)) {
+                throw new ValidationException(String.format(ValidationMsg.PRODUCTNAME_NOT_SUPPORTED, productName));
+            }
+        }
+    }
 }
