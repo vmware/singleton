@@ -90,13 +90,13 @@ public class VIPCfg {
 	/**
 	 * initialize the instance by a properties file
 	 *
-	 * @param cfgPath
+	 * @param cfg
 	 * @throws IOException
 	 * @throws FileNotFoundException
 	 */
 	@SuppressWarnings("serial")
-	public void initialize(String cfgPath) throws IOException {
-		InputStream stream = ClassLoader.getSystemResourceAsStream(cfgPath);
+	public void initialize(String cfg) throws IOException {
+		InputStream stream = ClassLoader.getSystemResourceAsStream(cfg);
 		LinkedHashMap<String, Object> data = new Yaml().loadAs(stream, (new LinkedHashMap<String, Object>() {}).getClass());
     	
 		for (Entry<String, Object> entry : data.entrySet()) {

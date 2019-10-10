@@ -5,7 +5,6 @@
 package com.vmware.vipclient.i18n.filters;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Map;
@@ -109,11 +108,8 @@ public class VIPComponentFilter implements Filter {
 		if(gc.getVipService() == null) {
 			try {
 				gc.initialize("vipconfig.yaml");
-			} catch (FileNotFoundException e) {
-				logger.error(e.toString());
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error(e.toString());
 			}
 			gc.initializeVIPService();
 		}
