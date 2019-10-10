@@ -25,8 +25,6 @@ import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
-
 
 public class FileUtil {
 	static Logger logger = LoggerFactory.getLogger(FileUtil.class);
@@ -61,12 +59,12 @@ public class FileUtil {
 			return fileObj.toPath().toUri();
 		}
 		
-		try {    
+		try {
     		// File doesn't exist. Find corresponding resource.
     		URL url = ClassLoader.getSystemResource(filePath);
 			return url != null ? url.toURI() : null;
 		} catch (URISyntaxException e) {
-			throw new VIPJavaClientException("Invalid path: "+ filePath, e);			
+			return null;
 		}
 	}
 	

@@ -135,10 +135,17 @@ public class StringService {
 			String res = (String) e.get(VIPCfg.RESOURCE);
 			
 			Map<Object, Object> messages;
-			try {
-				messages = res.endsWith(".json") ? FileUtil.readJSONFile(res) : FileUtil.readPropertiesFile(res);
-			} catch (ParseException e1) {
-				throw new VIPJavaClientException("Failed to parse JSON file.", e1);
+			if (res.endsWith(".json")) {
+				try {
+					messages = FileUtil.readJSONFile(res);
+				} catch (ParseException e1) {
+					throw new VIPJavaClientException("Failed to parse JSON file: "+res, e1);
+				}
+			}
+			else if (res.endsWith(".properties")) {
+				messages = FileUtil.readPropertiesFile(res);
+			} else {
+				throw new VIPJavaClientException("Unsupported resource format: "+res);
 			}
 			
 			MessagesDTO dto = new MessagesDTO();
