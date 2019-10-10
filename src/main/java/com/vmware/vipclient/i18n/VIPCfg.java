@@ -4,7 +4,6 @@
  */
 package com.vmware.vipclient.i18n;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -104,7 +103,6 @@ public class VIPCfg {
 	 *
 	 * @param cfg
 	 * @throws IOException
-	 * @throws FileNotFoundException
 	 */
 	@SuppressWarnings("serial")
 	public void initialize(String cfg) throws IOException {
