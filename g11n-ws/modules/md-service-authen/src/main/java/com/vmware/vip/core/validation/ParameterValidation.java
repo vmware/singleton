@@ -21,11 +21,11 @@ import com.vmware.vip.common.utils.RegExpValidatorUtils;
 
 public class ParameterValidation implements IVlidation {
 	HttpServletRequest request = null;
-	public final static String BUNDLE_BASE_PATH = "bundleBasedPath";
+	public final static String TAG_BUNDLE_BASE_PATH = "bundleBasedPath";
 	public final static String BUNDLE_FILE = "bundle.json";
 
 	/**
-	 * A cached map with product list as key and version list as value
+	 * A cached map to store the data of product white list
 	 */
 	private  static final Map<String, Object> MAP_PRODUCTS_VERSIONS = new HashMap<>();
 
@@ -65,7 +65,7 @@ public class ParameterValidation implements IVlidation {
 			throw new ValidationException(ValidationMsg.PRODUCTNAME_NOT_VALIDE);
 		}
 		if ("get".equalsIgnoreCase(request.getMethod())) {
-			this.isInWhiteList(productName, request.getAttribute(ParameterValidation.BUNDLE_BASE_PATH) + ConstantsFile.L10N_BUNDLES_PATH + File.separator + ParameterValidation.BUNDLE_FILE);
+            validateProductByWhiteList(productName, request.getAttribute(ParameterValidation.TAG_BUNDLE_BASE_PATH) + ConstantsFile.L10N_BUNDLES_PATH + File.separator + ParameterValidation.BUNDLE_FILE);
 		}
 	}
 
@@ -218,13 +218,13 @@ public class ParameterValidation implements IVlidation {
 	}
 
     /**
-     * check if a product in the white list
+     * validate the product name by the white list
      *
      * @param productName
      * @param whiteListFilePath
      * @throws ValidationException
      */
-    private void isInWhiteList(String productName, String whiteListFilePath) throws ValidationException {
+    private void validateProductByWhiteList(String productName, String whiteListFilePath) throws ValidationException {
         if (ParameterValidation.MAP_PRODUCTS_VERSIONS.isEmpty()) {
             Map<String, Object> m = JSONUtils.getMapFromJsonFile(whiteListFilePath);
             ParameterValidation.MAP_PRODUCTS_VERSIONS.putAll(m);

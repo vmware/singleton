@@ -63,7 +63,7 @@ public class APIValidationInterceptor extends HandlerInterceptorAdapter {
 				request);
 		try {
 			u.validate();
-			request.setAttribute(ParameterValidation.BUNDLE_BASE_PATH, this.bundleBasedPath);
+			request.setAttribute(ParameterValidation.TAG_BUNDLE_BASE_PATH, this.bundleBasedPath);
 			p.validate();
 		} catch (ValidationException e) {
 			LOGGER.warn(e.getMessage());
