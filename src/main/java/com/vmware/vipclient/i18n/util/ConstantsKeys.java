@@ -68,4 +68,6 @@ public class ConstantsKeys {
 	public static final String JSON_KEYSET = "jsonkeyset";
 	public static final String TRANSLATION_STATUS = "translationStatus";
 
+	public static final String COMPONENT_CONFIG = "component";
+	public static final String RESOURCE_CONFIG = "resource";	
 }

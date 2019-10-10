@@ -24,9 +24,9 @@ import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.CacheMode;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
+import com.vmware.vipclient.i18n.messages.api.opt.local.LocalSourceOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ProductService;
-import com.vmware.vipclient.i18n.messages.service.StringService;
 
 /**
  * a class uses to define the global environment setting for I18nFactory
@@ -46,9 +46,7 @@ public class VIPCfg {
 	// cache mode
 	private CacheMode cacheMode = CacheMode.MEMORY;
 
-	public final static String COMPONENT = "component";
-	public final static String RESOURCE = "resource";
-	
+
 	
 	private String cachePath;
 
@@ -88,6 +86,20 @@ public class VIPCfg {
 	}
 
 	/**
+	 * initialize the instance by parameter
+	 * 
+	 * @param vipServer
+	 * @param productName
+	 * @param version
+	 */
+	public void initialize(String vipServer, String productName, String version) {
+		this.productName = productName;
+		this.version = version;
+		this.vipServer = vipServer;
+	}
+	
+	
+	/**
 	 * initialize the instance by a properties file
 	 *
 	 * @param cfg
@@ -112,7 +124,7 @@ public class VIPCfg {
 			}
 		}
 		
-		StringService.loadResources(this.resources);
+		LocalSourceOpt.loadResources(this.resources);
 	}
 
 	/**
