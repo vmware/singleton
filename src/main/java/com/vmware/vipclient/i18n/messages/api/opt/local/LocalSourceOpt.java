@@ -18,7 +18,7 @@ import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 public class LocalSourceOpt {
 
-	private static Map<String, Map<?, ?>> defaultResources = new HashMap<>();
+	private static Map<String, Map<Object, Object>> defaultResources = new HashMap<>();
 
 	// load sources from local files.
 	@SuppressWarnings("unchecked")
@@ -29,27 +29,40 @@ public class LocalSourceOpt {
 		
 		for( Map<String, Object> e : resources) {
 			String comp = (String) e.get(ConstantsKeys.COMPONENT_CONFIG);
-			String res = (String) e.get(ConstantsKeys.RESOURCE_CONFIG);
+			List<String> files = (List<String>) e.get(ConstantsKeys.RESOURCE_CONFIG);
 			
-			Map<Object, Object> messages;
-//			if (res.endsWith(".json")) {
-//				try {
-//					messages = FileUtil.readJSONFile(res);
-//				} catch (ParseException e1) {
-//					throw new VIPJavaClientException("Failed to parse JSON file: "+res, e1);
-//				}
-//			}
-//			else 
-				if (res.endsWith(".properties")) {
-				messages = FileUtil.readPropertiesFile(res);
-			} else {
-				throw new VIPJavaClientException("Unsupported resource format: "+res);
+			for (String f : files) {
+    			Map<Object, Object> messages;
+    //			if (f.endsWith(".json")) {
+    //				try {
+    //					messages = FileUtil.readJSONFile(f);
+    //				} catch (ParseException e1) {
+    //					throw new VIPJavaClientException("Failed to parse JSON file: "+f, e1);
+    //				}
+    //			}
+    //			else 
+    				if (f.endsWith(".properties")) {
+    				messages = FileUtil.readPropertiesFile(f);
+    			} else {
+    				throw new VIPJavaClientException("Unsupported resource format: "+f);
+    			}
+    			
+    			if(null == messages || messages.size() == 0) {
+    				continue;
+    			}
+
+    			MessagesDTO dto = new MessagesDTO();
+    			dto.setComponent(comp);
+    			dto.setLocale(LocaleUtility.defaultLocale.toLanguageTag());
+    			Map<Object, Object> existingMessages = defaultResources.get(dto.getCompositStrAsCacheKey());
+    			if(null == existingMessages) {
+    				defaultResources.put(comp, messages); 
+    			}
+    			else {
+    				existingMessages.putAll(messages);
+    				defaultResources.put(comp, existingMessages);
+    			}
 			}
-			
-			MessagesDTO dto = new MessagesDTO();
-			dto.setComponent(comp);
-			dto.setLocale(LocaleUtility.defaultLocale.toLanguageTag());
-			defaultResources.put(dto.getCompositStrAsCacheKey(), messages);
 		}
 	}
 
