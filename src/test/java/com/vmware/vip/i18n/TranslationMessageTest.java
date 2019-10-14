@@ -22,6 +22,7 @@ import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ProductService;
+import com.vmware.vipclient.i18n.messages.service.StringService;
 
 public class TranslationMessageTest extends BaseTestClass {
 	TranslationMessage translation;
@@ -359,5 +360,35 @@ public class TranslationMessageTest extends BaseTestClass {
 
 		logger.debug("pseudoTrans1: "+pseudoTrans1);
 		Assert.assertEquals(expected, pseudoTrans1);
+	}
+	
+	@Test
+	public void testGetSource() {
+		MessagesDTO dto = new MessagesDTO();
+		dto.setComponent("JAVA");
+		dto.setKey("table.host");
+
+		//Component 'JAVA'
+		StringService ss = new StringService(dto);
+		Assert.assertEquals("Host", ss.getSource());
+
+		//Component 'USER'
+		dto.setComponent("USER");
+		dto.setKey("user-1");
+		Assert.assertEquals("value-1", ss.getSource());	
+
+		//nonexistent component
+		dto.setComponent("nonexistent");
+		Assert.assertEquals("", ss.getSource());
+		dto.setComponent("USER");
+
+		//nonexistent key
+		dto.setKey("nonexistent");
+		Assert.assertEquals("", ss.getSource());
+		
+		//Component 'JAVA', key 'user-1' in component 'USER'
+		dto.setComponent("JAVA");
+		dto.setKey("user-1");
+		Assert.assertEquals("", ss.getSource());		
 	}
 }

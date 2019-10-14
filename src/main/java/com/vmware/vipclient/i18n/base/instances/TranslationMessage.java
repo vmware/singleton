@@ -253,10 +253,9 @@ public class TranslationMessage implements Message {
 		String source;
 		try {
 			MessagesDTO dto = new MessagesDTO();
-			dto.setLocale(locale.toLanguageTag());
 			dto.setComponent(component);
-			dto.setKey(key);
 			dto.setLocale(LocaleUtility.defaultLocale.toLanguageTag());
+			dto.setKey(key);
 
 			StringService ss = new StringService(dto);
 			source = ss.getSource();

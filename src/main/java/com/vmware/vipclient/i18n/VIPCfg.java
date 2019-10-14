@@ -45,8 +45,6 @@ public class VIPCfg {
 	// cache mode
 	private CacheMode cacheMode = CacheMode.MEMORY;
 
-
-	
 	private String cachePath;
 
 	// define the global parameters
@@ -84,7 +82,6 @@ public class VIPCfg {
 		return gcInstance;
 	}
 
-	
 	/**
 	 * initialize the instance by a properties file
 	 *

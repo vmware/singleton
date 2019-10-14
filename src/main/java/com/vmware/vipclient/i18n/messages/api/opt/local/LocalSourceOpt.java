@@ -21,13 +21,13 @@ public class LocalSourceOpt {
 
 	// load sources from local files.
 	@SuppressWarnings("unchecked")
-	public static void loadSources(List<Map<String, Object>> sources) throws IOException {
-		if (null == sources || sources.isEmpty()) {
+	public static void loadSources(List<Map<String, Object>> sourcebundles) throws IOException {
+		if(!LocalSourceOpt.sources.isEmpty()) {return;}
+		if (null == sourcebundles || sourcebundles.isEmpty()) {
 			throw new VIPJavaClientException("No sources are provided in config file!");
 		}
 		
-		
-		for( Map<String, Object> e : sources) {
+		for( Map<String, Object> e : sourcebundles) {
 			String comp = (String) e.get(ConstantsKeys.CONFIG_COMPONENT);
 			List<String> files = (List<String>) e.get(ConstantsKeys.CONFIG_COMPONENT_FILE);
 			
