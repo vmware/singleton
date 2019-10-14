@@ -6,6 +6,7 @@ package com.vmware.vipclient.i18n.messages.api.url;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +26,7 @@ import com.vmware.vipclient.i18n.util.ConstantsKeys;
  */
 public class V2URL {
 	private static Logger logger = LoggerFactory.getLogger(V2URL.class);
-	
+
 	private V2URL() {
 
 	}
@@ -68,6 +69,38 @@ public class V2URL {
 				.replace("{" + APIParamName.VERSION2 + "}", dto.getVersion())
 				.replace("{" + APIParamName.COMPONENT + "}", dto.getComponent())
 				.replace("{" + APIParamName.LOCALE + "}", dto.getLocale());
+		url.append(gurl);
+
+		if (VIPCfg.getInstance().isPseudo()) {
+			URLUtils.appendParamToURL(url, ConstantsKeys.PSEUDO, Boolean.toString(VIPCfg.getInstance().isPseudo()));
+		} else {
+			URLUtils.appendParamToURL(url, ConstantsKeys.PSEUDO, Boolean.FALSE.toString());
+		}
+
+		if (VIPCfg.getInstance().isMachineTranslation()) {
+			URLUtils.appendParamToURL(url, ConstantsKeys.MACHINE_TRANSLATION,
+					Boolean.toString(VIPCfg.getInstance().isMachineTranslation()));
+		}
+		return url.toString();
+	}
+
+	/**
+	 * assembly the request URL for multiple components Translation.
+	 * 
+	 * @param components
+	 * 
+	 * @param locale
+	 *
+	 * @param baseURL
+	 *            The root path of the URL.
+	 * @return
+	 */
+	public static String getComponentsTranslationURL(List<String> components, String locale, String baseURL) {
+		final StringBuilder url = new StringBuilder(baseURL);
+		final String gurl = APIV2.COMPONENT_TRANSLATION_GET.replace("{" + APIParamName.PRODUCT_NAME + "}", VIPCfg.getInstance().getProductName())
+				.replace("{" + APIParamName.VERSION2 + "}", VIPCfg.getInstance().getVersion())
+				.replace("{" + APIParamName.COMPONENT + "}", components.toString())
+				.replace("{" + APIParamName.LOCALE + "}", locale);
 		url.append(gurl);
 
 		if (VIPCfg.getInstance().isPseudo()) {

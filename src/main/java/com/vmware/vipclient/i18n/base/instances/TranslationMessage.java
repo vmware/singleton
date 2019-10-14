@@ -10,13 +10,14 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.json.simple.JSONObject;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ComponentService;
+import com.vmware.vipclient.i18n.messages.service.ComponentsService;
 import com.vmware.vipclient.i18n.messages.service.StringService;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.FormatUtils;
@@ -80,7 +81,7 @@ public class TranslationMessage implements Message {
 					translation = source;
 				}
 			}
-		
+
 			if("".equals(translation)) {
 				translation = source;
 			}
@@ -99,13 +100,13 @@ public class TranslationMessage implements Message {
 				}
 			}
 		}
-		
+
 		if(!VIPCfg.getInstance().isMachineTranslation() && VIPCfg.getInstance().isPseudo() &&
 				null!=translation && translation.equals(source) ) {
 			//if source isn't collected by server, add PSEUDOCHAR2
 			translation = ConstantsKeys.PSEUDOCHAR2 + translation + ConstantsKeys.PSEUDOCHAR2;
 		}
-		
+
 		if (args != null && args.length > 0) {
 			if ( (null != translation && translation.equals(source)) || VIPCfg.getInstance().isPseudo()) {
 				translation = FormatUtils.format(translation,
@@ -140,9 +141,9 @@ public class TranslationMessage implements Message {
 		MessagesDTO dto = new MessagesDTO();
 		dto.setLocale(locale.toLanguageTag());
 		dto.setComponent(component);
-		List<JSONObject> sourcesList = new ArrayList<JSONObject>();
+		List<JSONObject> sourcesList = new ArrayList<>();
 		sourcesList.addAll(sources);
-		List<JSONObject> removedList = new ArrayList<JSONObject>();
+		List<JSONObject> removedList = new ArrayList<>();
 		for(JSONObject jo : sourcesList) {
 			String key = (String)jo.get(ConstantsKeys.KEY);
 			String source = (String)jo.get(ConstantsKeys.SOURCE);
@@ -201,7 +202,7 @@ public class TranslationMessage implements Message {
 		}
 		else return true;
 	}
-	
+
 	/**
 	 * get one component's translations from VIP of the configured product
 	 *
@@ -221,6 +222,22 @@ public class TranslationMessage implements Message {
 		dto.setComponent(component);
 		ComponentService cs = new ComponentService(dto);
 		return cs.getComponentTranslation();
+	}
+
+	/**
+	 * get multiple component's translations from VIP server
+	 *
+	 * @param locale
+	 *            a language tag to get the translations of it
+	 * @param components
+	 *            names of the components
+	 * @return a map contains all translations of the components
+	 */
+	public Map<String, Map<String, String>> getStrings(final Locale locale,
+			final List<String> components) {
+		logger.info("Start to execute TranslationMessage.getStrings of multiple components");
+		ComponentsService cs = new ComponentsService(components, locale.toLanguageTag());
+		return cs.getTranslation();
 	}
 
 	/**
