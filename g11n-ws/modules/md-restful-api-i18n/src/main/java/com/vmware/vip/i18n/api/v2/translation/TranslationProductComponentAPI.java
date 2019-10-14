@@ -19,6 +19,7 @@ import com.vmware.vip.api.rest.API;
 import com.vmware.vip.api.rest.APIOperation;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.APIParamValue;
+import com.vmware.vip.api.rest.APIV1;
 import com.vmware.vip.api.rest.APIV2;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.i18n.api.base.TranslationProductComponentAction;
@@ -81,6 +82,24 @@ public class TranslationProductComponentAPI extends TranslationProductComponentA
     	
     }
     
+    /**
+     * Get translation based on multiple component.
+     *
+     */
+    @ApiOperation(value = APIOperation.MULT_COMPONENT_TRANSLATION_NOTES, notes = APIOperation.MULT_COMPONENT_TRANSLATION_NOTES)
+    @RequestMapping(value = APIV2.COMPONENT_TRANSLATIONS_GET, method = RequestMethod.GET, produces = { API.API_CHARSET })
+    @ResponseStatus(HttpStatus.OK)
+    public APIResponseDTO getMultipleComponentsTrans(
+            
+            @ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
+            @ApiParam(name = APIParamName.COMPONENTS, required = true, value = APIParamValue.COMPONENTS) @PathVariable(APIParamName.COMPONENTS) String components,
+            @ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @PathVariable(value = APIParamName.VERSION) String version,
+            @ApiParam(name = APIParamName.LOCALES, required = true, value = APIParamValue.LOCALES) @PathVariable(value = APIParamName.LOCALES) String locales,
+            @ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO)
+            @RequestParam(value = APIParamName.PSEUDO, required=false, defaultValue="false") String pseudo,
+            HttpServletRequest req)  throws Exception {
+            return super.getMultipleComponentsTrans(productName, components, version, locales, pseudo, req);
+    }
     
     
     
