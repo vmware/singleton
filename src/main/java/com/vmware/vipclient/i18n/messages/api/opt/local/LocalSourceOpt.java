@@ -14,22 +14,22 @@ import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.FileUtil;
-import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 public class LocalSourceOpt {
 
-	private static Map<String, Map<Object, Object>> defaultResources = new HashMap<>();
+	private static Map<String, Map<Object, Object>> sources = new HashMap<>();
 
 	// load sources from local files.
 	@SuppressWarnings("unchecked")
-	public static void loadResources(List<Map<String, Object>> resources) throws IOException {
-		if (null == resources || resources.isEmpty()) {
-			throw new VIPJavaClientException("No resources are provided in config file!");
+	public static void loadSources(List<Map<String, Object>> sources) throws IOException {
+		if (null == sources || sources.isEmpty()) {
+			throw new VIPJavaClientException("No sources are provided in config file!");
 		}
 		
-		for( Map<String, Object> e : resources) {
-			String comp = (String) e.get(ConstantsKeys.COMPONENT_CONFIG);
-			List<String> files = (List<String>) e.get(ConstantsKeys.RESOURCE_CONFIG);
+		
+		for( Map<String, Object> e : sources) {
+			String comp = (String) e.get(ConstantsKeys.CONFIG_COMPONENT);
+			List<String> files = (List<String>) e.get(ConstantsKeys.CONFIG_COMPONENT_FILE);
 			
 			for (String f : files) {
     			Map<Object, Object> messages;
@@ -41,26 +41,23 @@ public class LocalSourceOpt {
     //				}
     //			}
     //			else 
-    				if (f.endsWith(".properties")) {
+//    				if (f.endsWith(".properties")) {
     				messages = FileUtil.readPropertiesFile(f);
-    			} else {
-    				throw new VIPJavaClientException("Unsupported resource format: "+f);
-    			}
+//    			} else {
+//    				throw new VIPJavaClientException("Unsupported file format: "+f);
+//    			}
     			
     			if(null == messages || messages.size() == 0) {
     				continue;
     			}
 
-    			MessagesDTO dto = new MessagesDTO();
-    			dto.setComponent(comp);
-    			dto.setLocale(LocaleUtility.defaultLocale.toLanguageTag());
-    			Map<Object, Object> existingMessages = defaultResources.get(dto.getCompositStrAsCacheKey());
+    			Map<Object, Object> existingMessages = LocalSourceOpt.sources.get(comp);
     			if(null == existingMessages) {
-    				defaultResources.put(comp, messages); 
+    				LocalSourceOpt.sources.put(comp, messages); 
     			}
     			else {
     				existingMessages.putAll(messages);
-    				defaultResources.put(comp, existingMessages);
+    				LocalSourceOpt.sources.put(comp, existingMessages);
     			}
 			}
 		}
@@ -71,7 +68,7 @@ public class LocalSourceOpt {
 	 * @return
 	 */
 	public static String get(MessagesDTO dto) {
-		Map<?, ?> messages = defaultResources.get(dto.getCompositStrAsCacheKey());
+		Map<?, ?> messages = sources.get(dto.getComponent());
 		String result = (null == messages ? "" : (String) messages.get(dto.getKey()));
 		return null == result ? "" : result;
 	}

@@ -7,14 +7,11 @@ package com.vmware.vipclient.i18n.util;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
@@ -29,45 +26,21 @@ import org.slf4j.LoggerFactory;
 public class FileUtil {
 	static Logger logger = LoggerFactory.getLogger(FileUtil.class);
 
-	public static Properties readPropertiesFile(String filePath) throws IOException {
-		URI uri = getFileURI(filePath);
-		if(null == uri) {
-			throw new FileNotFoundException("Can't find file: "+filePath);
-		}
-		
-		final Properties props = new Properties();		
-		try (BufferedReader reader = new BufferedReader(new InputStreamReader(uri.toURL().openStream(), StandardCharsets.UTF_8));) {
+	public static Properties readPropertiesFile(String file) throws IOException {
+		final Properties props = new Properties();
+		try (InputStream is = ClassLoader.getSystemResourceAsStream(file);
+				BufferedReader reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));) {
 			props.load(reader);
 		}
 		return props;
 	}
 
-	public static JSONObject readJSONFile(String filePath) throws ParseException, IOException {
-		URI uri = getFileURI(filePath);
-		if(null == uri) {
-			throw new FileNotFoundException("Can't find file: "+filePath);
-		}
-		try (BufferedReader reader = new BufferedReader(new InputStreamReader(uri.toURL().openStream(), StandardCharsets.UTF_8));) {
+	public static JSONObject readJSONFile(String file) throws ParseException, IOException {
+		try ( InputStream is = ClassLoader.getSystemResourceAsStream(file);
+				BufferedReader reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));) {
 			return (JSONObject) new JSONParser().parse(reader);
 		} 
-	}
-	
-	public static URI getFileURI(String filePath) {
-		// File exists, return directly.
-		File fileObj = new File(filePath);
-		if (fileObj.exists()) {
-			return fileObj.toPath().toUri();
-		}
-		
-		try {
-    		// File doesn't exist. Find corresponding resource.
-    		URL url = ClassLoader.getSystemResource(filePath);
-			return url != null ? url.toURI() : null;
-		} catch (URISyntaxException e) {
-			return null;
-		}
-	}
-	
+	}	
 
 	public static JSONObject readJarJsonFile(String jarPath, String filePath){
 		JSONObject jsonObj = null;

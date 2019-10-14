@@ -53,5 +53,13 @@ public class BaseTestClass {
 		return saltStr;
 
 	}
+	
+	protected void setConfig(VIPCfg inst, String key, Object v) {
+		try {
+			inst.getClass().getDeclaredField(key).set(inst, v);
+		} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
+			logger.error(e.toString());
+		}
+	}
 
 }

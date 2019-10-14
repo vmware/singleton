@@ -34,7 +34,7 @@ public class HttpRequesterTest extends BaseTestClass {
 	public void init() throws IOException {
 		VIPCfg cfg = VIPCfg.getInstance();
 		cfg.initialize("vipconfig.yaml");
-		cfg.setVipServer(mockServer);
+		setConfig(cfg, "vipServer", mockServer);
 		cfg.setInitializeCache(false);
 		cfg.initializeVIPService();
 		cfg.createTranslationCache(MessageCache.class);
@@ -69,6 +69,5 @@ public class HttpRequesterTest extends BaseTestClass {
 	@After
 	public void teardown() {
 		VIPCfg.getInstance().getVipService().getHttpRequester().setBaseURL(realServer);
-
 	}
 }

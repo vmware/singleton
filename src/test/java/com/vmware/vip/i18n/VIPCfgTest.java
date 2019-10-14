@@ -98,8 +98,8 @@ public class VIPCfgTest extends BaseTestClass {
     @Test
     public void testMT3() {
         VIPCfg gc = VIPCfg.getInstance();
-        gc.setProductName("Sample");
-        gc.setVersion("1.0.0");
+        setConfig(gc, "productName", "Sample");
+        setConfig(gc, "version", "1.0.0");
         String component = "default";
         Locale locale1 = new Locale("ru");
         VIPCfg.getInstance().setMachineTranslation(true);

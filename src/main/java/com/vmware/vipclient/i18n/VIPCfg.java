@@ -61,7 +61,7 @@ public class VIPCfg {
 	private String version;
 	private String vipServer;
 
-	private ArrayList<Map<String, Object>> resources;
+	private ArrayList<Map<String, Object>> bundles;
 	private String i18nScope = "numbers,dates,currencies,plurals,measurements";
 
 	// define key for cache management
@@ -84,19 +84,6 @@ public class VIPCfg {
 		return gcInstance;
 	}
 
-	/**
-	 * initialize the instance by parameter
-	 * 
-	 * @param vipServer
-	 * @param productName
-	 * @param version
-	 */
-	public void initialize(String vipServer, String productName, String version) {
-		this.productName = productName;
-		this.version = version;
-		this.vipServer = vipServer;
-	}
-	
 	
 	/**
 	 * initialize the instance by a properties file
@@ -122,7 +109,7 @@ public class VIPCfg {
 			}
 		}
 		
-		LocalSourceOpt.loadResources(this.resources);
+		LocalSourceOpt.loadSources(this.bundles);
 	}
 
 	/**
@@ -240,24 +227,12 @@ public class VIPCfg {
 		return productName;
 	}
 
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-
 	public String getVersion() {
 		return version;
 	}
 
-	public void setVersion(String version) {
-		this.version = version;
-	}
-
 	public String getVipServer() {
 		return vipServer;
-	}
-
-	public void setVipServer(String vipServer) {
-		this.vipServer = vipServer;
 	}
 
 	public boolean isPseudo() {
@@ -355,5 +330,4 @@ public class VIPCfg {
 	public void setCachePath(String cachePath) {
 		this.cachePath = cachePath;
 	}
-
 }
