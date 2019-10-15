@@ -59,7 +59,7 @@ public class VIPCfg {
 	private String version;
 	private String vipServer;
 
-	private ArrayList<Map<String, Object>> bundles;
+	private ArrayList<Map<String, Object>> resources;
 	private String i18nScope = "numbers,dates,currencies,plurals,measurements";
 
 	// define key for cache management
@@ -92,7 +92,7 @@ public class VIPCfg {
 	public void initialize(String cfg) throws IOException {
 		InputStream stream = ClassLoader.getSystemResourceAsStream(cfg);
 		LinkedHashMap<String, Object> data = new Yaml().loadAs(stream, (new LinkedHashMap<String, Object>() {}).getClass());
-    	
+
 		for (Entry<String, Object> entry : data.entrySet()) {
 			try {
 				this.getClass().getDeclaredField(entry.getKey()).set(this, entry.getValue());
@@ -105,8 +105,8 @@ public class VIPCfg {
 				throw new VIPJavaClientException("Unknow errorr");
 			}
 		}
-		
-		LocalSourceOpt.loadSources(this.bundles);
+
+		LocalSourceOpt.loadSources(this.resources);
 	}
 
 	/**
@@ -116,13 +116,13 @@ public class VIPCfg {
 		this.vipService = VIPService.getVIPServiceInstance();
 		try {
 			this.vipService.initializeVIPService(this.productName, this.version,
-				this.vipServer);
+					this.vipServer);
 		}
 		catch (MalformedURLException e) {
 			logger.error("'vipServer' in configuration isn't a valid URL!");
 		}
 	}
-	
+
 	/**
 	 * set cache from out-process
 	 * 
@@ -183,7 +183,7 @@ public class VIPCfg {
 		else {
 			return null;
 		}
-		
+
 	}
 
 	/**
@@ -216,7 +216,7 @@ public class VIPCfg {
 		new ProductService(dto).getAllComponentTranslation();
 		if (this.translationCacheManager != null) {
 			logger.info("Translation data is loaded to cache, size is "
-							+ this.translationCacheManager.size() + ".");
+					+ this.translationCacheManager.size() + ".");
 		}
 	}
 
