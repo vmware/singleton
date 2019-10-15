@@ -7,8 +7,8 @@ package com.vmware.i18n.dto;
 public class LocaleDataDTO {
     private String locale;
 
-    // Whether the locale obtained by language+region is valid
-    private boolean isInvalid = false;
+    // Whether the LocaleID needs to be displayed
+    private boolean displayLocaleID = true;
 
     public String getLocale() {
         return locale;
@@ -18,11 +18,11 @@ public class LocaleDataDTO {
         this.locale = locale;
     }
 
-    public boolean isInvalid() {
-        return isInvalid;
+    public boolean isDisplayLocaleID() {
+        return displayLocaleID;
     }
 
-    public void setInvalid(boolean invalid) {
-        isInvalid = invalid;
+    public void setDisplayLocaleID(boolean displayLocaleID) {
+        this.displayLocaleID = displayLocaleID;
     }
 }
