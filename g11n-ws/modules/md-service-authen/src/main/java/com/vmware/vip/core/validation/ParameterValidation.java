@@ -27,7 +27,7 @@ public class ParameterValidation implements IVlidation {
 	/**
 	 * A cached map to store the data of product white list
 	 */
-	private  static final Map<String, Object> MAP_PRODUCTS_VERSIONS = new HashMap<>();
+	private  static Map<String, Object> MAP_PRODUCTS_VERSIONS = new HashMap<>();
 
 	public ParameterValidation(HttpServletRequest request) {
 		this.request = request;
@@ -226,13 +226,10 @@ public class ParameterValidation implements IVlidation {
      */
     private void validateProductByWhiteList(String productName, String whiteListFilePath) throws ValidationException {
         if (ParameterValidation.MAP_PRODUCTS_VERSIONS.isEmpty()) {
-            Map<String, Object> m = JSONUtils.getMapFromJsonFile(whiteListFilePath);
-            ParameterValidation.MAP_PRODUCTS_VERSIONS.putAll(m);
+			ParameterValidation.MAP_PRODUCTS_VERSIONS = JSONUtils.getMapFromJsonFile(whiteListFilePath);
         }
-        if (!ParameterValidation.MAP_PRODUCTS_VERSIONS.isEmpty()) {
-            if (!ParameterValidation.MAP_PRODUCTS_VERSIONS.containsKey(productName)) {
-                throw new ValidationException(String.format(ValidationMsg.PRODUCTNAME_NOT_SUPPORTED, productName));
-            }
+        if (!ParameterValidation.MAP_PRODUCTS_VERSIONS.isEmpty() && !ParameterValidation.MAP_PRODUCTS_VERSIONS.containsKey(productName)) {
+        	throw new ValidationException(String.format(ValidationMsg.PRODUCTNAME_NOT_SUPPORTED, productName));
         }
     }
 }
