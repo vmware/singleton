@@ -240,7 +240,7 @@ public class TranslationMessage implements Message {
 		ArrayList<Locale> locales = new ArrayList<Locale>() {};
 		locales.add(locale);
 		ComponentsService cs = new ComponentsService(components, locales);
-		return cs.getTranslation().get(locale);
+		return cs.getTranslation().values().iterator().next();
 	}
 
 	/**
