@@ -58,7 +58,7 @@ public class FileUtil {
 
 			try (InputStream fis = url.openStream();
 					Reader reader = new InputStreamReader(fis, "UTF-8");){
-	
+
 				Object o = new JSONParser().parse(reader);
 				if (o != null) {
 					jsonObj = (JSONObject) o;
@@ -69,10 +69,10 @@ public class FileUtil {
 		} catch (MalformedURLException e1) {
 			logger.error(e1.getMessage());
 		}
-		
+
 		return jsonObj;
 	}
-	
+
 	public static JSONObject readLocalJsonFile(String filePath){
 		String basePath = FileUtil.class.getClassLoader()
 				.getResource("").getFile();

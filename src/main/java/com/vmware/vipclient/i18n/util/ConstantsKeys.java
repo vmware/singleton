@@ -69,5 +69,6 @@ public class ConstantsKeys {
 	public static final String TRANSLATION_STATUS = "translationStatus";
 
 	public static final String CONFIG_COMPONENT = "component";
-	public static final String CONFIG_COMPONENT_FILE = "file";	
+	public static final String CONFIG_RESOURCE = "resource";
+	public static final String CONFIG_RESOURCE_FILE = "file";
 }

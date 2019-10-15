@@ -26,11 +26,12 @@ cacheExpiredTime : 8600000
 machineTranslation : false
 
 
-resources :
+components :
   - component : JAVA
     resource: 
       - file : 'sources/java.properties'
   - component : USER
     resource:
       - file : 'sources/user.properties'    
+      - file : 'sources/user2.properties'    
  

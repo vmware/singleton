@@ -361,7 +361,7 @@ public class TranslationMessageTest extends BaseTestClass {
 		logger.debug("pseudoTrans1: "+pseudoTrans1);
 		Assert.assertEquals(expected, pseudoTrans1);
 	}
-	
+
 	@Test
 	public void testGetSource() {
 		MessagesDTO dto = new MessagesDTO();
@@ -377,6 +377,11 @@ public class TranslationMessageTest extends BaseTestClass {
 		dto.setKey("user-1");
 		Assert.assertEquals("value-1", ss.getSource());	
 
+		// Component 'USER' - second file
+		dto.setComponent("USER");
+		dto.setKey("user-2");
+		Assert.assertEquals("value-2", ss.getSource());
+
 		//nonexistent component
 		dto.setComponent("nonexistent");
 		Assert.assertEquals("", ss.getSource());
@@ -385,7 +390,7 @@ public class TranslationMessageTest extends BaseTestClass {
 		//nonexistent key
 		dto.setKey("nonexistent");
 		Assert.assertEquals("", ss.getSource());
-		
+
 		//Component 'JAVA', key 'user-1' in component 'USER'
 		dto.setComponent("JAVA");
 		dto.setKey("user-1");

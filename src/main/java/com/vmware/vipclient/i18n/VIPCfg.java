@@ -59,7 +59,7 @@ public class VIPCfg {
 	private String version;
 	private String vipServer;
 
-	private ArrayList<Map<String, Object>> resources;
+	private ArrayList<Map<String, Object>> components;
 	private String i18nScope = "numbers,dates,currencies,plurals,measurements";
 
 	// define key for cache management
@@ -106,7 +106,7 @@ public class VIPCfg {
 			}
 		}
 
-		LocalSourceOpt.loadSources(this.resources);
+		LocalSourceOpt.loadResources(this.components);
 	}
 
 	/**
