@@ -26,8 +26,12 @@ cacheExpiredTime : 8600000
 machineTranslation : false
 
 
-bundles:
+resources:
   - component : component1
-    file: ['bundles/messages.json']
+    resource:
+      - file : 'bundles/messages.json'
   - component : component2
-    file: ['bundles/messages2.json']
+    resource: 
+      - file : 'bundles/messages2.json'
+
+    

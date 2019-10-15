@@ -28,7 +28,9 @@ machineTranslation : false
 
 resources :
   - component : JAVA
-    file: ['sources/java.properties']
+    resource: 
+      - file : 'sources/java.properties'
   - component : USER
-    file: ['sources/user.properties']    
+    resource:
+      - file : 'sources/user.properties'    
  
