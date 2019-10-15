@@ -97,22 +97,16 @@ public class V2URL {
 	 */
 	public static String getComponentsTranslationURL(List<String> components, String locale, String baseURL) {
 		final StringBuilder url = new StringBuilder(baseURL);
-		final String gurl = APIV2.COMPONENT_TRANSLATION_GET.replace("{" + APIParamName.PRODUCT_NAME + "}", VIPCfg.getInstance().getProductName())
+		final String gurl = APIV2.COMPONENTS_TRANSLATION_GET
+				.replace("{" + APIParamName.PRODUCT_NAME + "}", VIPCfg.getInstance().getProductName())
 				.replace("{" + APIParamName.VERSION2 + "}", VIPCfg.getInstance().getVersion())
-				.replace("{" + APIParamName.COMPONENT + "}", components.toString())
-				.replace("{" + APIParamName.LOCALE + "}", locale);
+				.replace("{" + APIParamName.LOCALE + "}", locale)
+				.replace("{" + APIParamName.COMPONENT + "}", components.toString());
 		url.append(gurl);
 
-		if (VIPCfg.getInstance().isPseudo()) {
-			URLUtils.appendParamToURL(url, ConstantsKeys.PSEUDO, Boolean.toString(VIPCfg.getInstance().isPseudo()));
-		} else {
-			URLUtils.appendParamToURL(url, ConstantsKeys.PSEUDO, Boolean.FALSE.toString());
-		}
+		URLUtils.appendParamToURL(url, ConstantsKeys.PSEUDO, Boolean.toString(VIPCfg.getInstance().isPseudo()));
+		URLUtils.appendParamToURL(url, ConstantsKeys.MACHINE_TRANSLATION, Boolean.toString(VIPCfg.getInstance().isMachineTranslation()));
 
-		if (VIPCfg.getInstance().isMachineTranslation()) {
-			URLUtils.appendParamToURL(url, ConstantsKeys.MACHINE_TRANSLATION,
-					Boolean.toString(VIPCfg.getInstance().isMachineTranslation()));
-		}
 		return url.toString();
 	}
 
