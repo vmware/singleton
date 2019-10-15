@@ -236,9 +236,28 @@ public class TranslationMessage implements Message {
 	public Map<String, Map<String, String>> getStrings(final Locale locale,
 			final List<String> components) {
 		logger.info("Start to execute TranslationMessage.getStrings of multiple components");
-		ComponentsService cs = new ComponentsService(components, locale.toLanguageTag());
-		return cs.getTranslation();
+
+		ArrayList<Locale> locales = new ArrayList<Locale>() {};
+		locales.add(locale);
+		ComponentsService cs = new ComponentsService(components, locales);
+		return cs.getTranslation().get(locale);
 	}
+
+	/**
+	 * get multiple component's translations from VIP server
+	 *
+	 * @param locales
+	 *            language tags to get the translations of them
+	 * @param components
+	 *            names of the components
+	 * @return a map contains all translations of the components of specified locales
+	 */
+	public Map<Locale, Map<String, Map<String, String>>> getStrings(final List<Locale> locales,
+			final List<String> components) {
+		logger.info("Start to execute TranslationMessage.getStrings of multiple components");
+		ComponentsService cs = new ComponentsService(components, locales);
+		return cs.getTranslation();
+	}	
 
 	/**
 	 * get one translation of the configured product from VIP, if message not

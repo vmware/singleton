@@ -89,19 +89,19 @@ public class V2URL {
 	 * 
 	 * @param components
 	 * 
-	 * @param locale
+	 * @param locales
 	 *
 	 * @param baseURL
 	 *            The root path of the URL.
 	 * @return
 	 */
-	public static String getComponentsTranslationURL(List<String> components, String locale, String baseURL) {
+	public static String getComponentsTranslationURL(List<String> components, List<String> locales, String baseURL) {
 		final StringBuilder url = new StringBuilder(baseURL);
 		final String gurl = APIV2.COMPONENTS_TRANSLATION_GET
 				.replace("{" + APIParamName.PRODUCT_NAME + "}", VIPCfg.getInstance().getProductName())
 				.replace("{" + APIParamName.VERSION2 + "}", VIPCfg.getInstance().getVersion())
-				.replace("{" + APIParamName.LOCALE + "}", locale)
-				.replace("{" + APIParamName.COMPONENT + "}", components.toString());
+				.replace("{" + APIParamName.LOCALES + "}", String.join(",", locales))
+				.replace("{" + APIParamName.COMPONENTS + "}", String.join(",", components));
 		url.append(gurl);
 
 		URLUtils.appendParamToURL(url, ConstantsKeys.PSEUDO, Boolean.toString(VIPCfg.getInstance().isPseudo()));
@@ -179,8 +179,8 @@ public class V2URL {
 	}
 
 	public static String getPatternURL(String locale, String baseURL) {// PatternsDTO
-																		// //
-																		// dto,
+		// //
+		// dto,
 		StringBuilder url = new StringBuilder(baseURL);
 		String subUrl = APIV2.FORMAT_PATTERN_GET.replace("{" + APIParamName.LOCALE + "}", locale);
 		url.append(subUrl);
@@ -207,7 +207,7 @@ public class V2URL {
 		return url.toString();
 	}
 
-	
+
 	//add by shihu 
 	/**
 	 * 
@@ -220,7 +220,7 @@ public class V2URL {
 		// //
 		// dto,
 		StringBuilder url = new StringBuilder(baseURL);
-		
+
 		String subUrl = APIV2.FORMAT_PATTERN_WITH_LANGUAGE;
 		url.append(subUrl);
 		String i18nScope = VIPCfg.getInstance().getI18nScope();
@@ -241,17 +241,12 @@ public class V2URL {
 							"The value of initialize parameter 'i18nScope' defined in 'vipconfig.properties' contains wrong value!");
 				}
 			}
-			
+
 			URLUtils.appendParamToURL(url, "language", language);
 			URLUtils.appendParamToURL(url, "region", region);
 			URLUtils.appendParamToURL(url, "scope", i18nScope);
 		}
-		
-		
-		
-		
-		
-		
+
 		return url.toString();
 	}
 

@@ -5,6 +5,8 @@
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
@@ -15,38 +17,40 @@ import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+import com.vmware.vipclient.i18n.util.StringUtil;
 
 public class ComponentsBasedOpt extends BaseOpt implements Opt {
 	private final Logger logger = LoggerFactory.getLogger(ComponentsBasedOpt.class.getName());
 	private final List<String> components;
-	private final String locale;
+	private final List<Locale> locales;
 
 	/**
 	 * @param components
-	 * @param locale
+	 * @param locales
 	 */
-	public ComponentsBasedOpt(List<String> components, String locale) {
+	public ComponentsBasedOpt(List<String> components, List<Locale> locales) {
 		this.components = components;
-		this.locale = locale;
+		this.locales = locales;
 	}
 
 	public JSONObject getComponentsMessages() {
-		String url = V2URL.getComponentsTranslationURL(components, locale, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
-		if(ConstantsKeys.LATEST.equals(locale)) {
-			url =  url.replace("pseudo=false", "pseudo=true");
-		}
+		List<String> localestrList = locales.stream().map(Locale::toLanguageTag)
+				.collect(Collectors.toList());
+
+		String url = V2URL.getComponentsTranslationURL(components, localestrList,
+				VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
+		//		if(ConstantsKeys.LATEST.equals(locales)) {
+		//			url =  url.replace("pseudo=false", "pseudo=true");
+		//		}
 		String responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(url, ConstantsKeys.GET, null);
-		if (null == responseStr || responseStr.equals("")) {
+		if (StringUtil.isEmpty(responseStr)) {
 			return null;
 		} else {
-			if(ConstantsKeys.LATEST.equals(locale)) {
-				responseStr = responseStr.replace(ConstantsKeys.PSEUDOCHAR, "");
-			}
+			//			if(ConstantsKeys.LATEST.equals(locales)) {
+			//				responseStr = responseStr.replace(ConstantsKeys.PSEUDOCHAR, "");
+			//			}
 
-			final JSONObject msgObject = (JSONObject) this.getMessagesFromResponse(responseStr,
-					ConstantsKeys.MESSAGES);
-
-			return msgObject;
+			return (JSONObject) this.getMessagesFromResponse(responseStr, ConstantsKeys.MESSAGES);
 		}
 	}
 }
