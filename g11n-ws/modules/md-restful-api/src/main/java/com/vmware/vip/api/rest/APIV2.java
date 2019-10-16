@@ -24,7 +24,7 @@ public class APIV2 {
 	public static final String SOURCE_TRANSLATION_POST    = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/locales/{"+APIParamName.LOCALE+"}/components/{"+APIParamName.COMPONENT+"}";
 	// component-based	
 	public static final String COMPONENT_TRANSLATION_GET  = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/locales/{"+APIParamName.LOCALE+"}/components/{"+APIParamName.COMPONENT+"}";
-	public static final String COMPONENT_TRANSLATIONS_GET = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/locales/{"+APIParamName.LOCALES+"}/components/{" + APIParamName.COMPONENTS + "}";
+	public static final String COMPONENT_TRANSLATIONS_GET = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/multlocales/{"+APIParamName.LOCALES+"}/multcomponents/{" + APIParamName.COMPONENTS + "}";
 	// L2
 	public static final String LOCALIZED_DATE             = API_FORMATTING  + "/date/localizedDate";
 	public static final String LOCALIZED_NUMBER           = API_FORMATTING  + "/number/localizedNumber";

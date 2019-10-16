@@ -90,13 +90,11 @@ public class TranslationProductComponentAPI extends TranslationProductComponentA
     @RequestMapping(value = APIV2.COMPONENT_TRANSLATIONS_GET, method = RequestMethod.GET, produces = { API.API_CHARSET })
     @ResponseStatus(HttpStatus.OK)
     public APIResponseDTO getMultipleComponentsTrans(
-            
             @ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
             @ApiParam(name = APIParamName.COMPONENTS, required = true, value = APIParamValue.COMPONENTS) @PathVariable(APIParamName.COMPONENTS) String components,
             @ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @PathVariable(value = APIParamName.VERSION) String version,
             @ApiParam(name = APIParamName.LOCALES, required = true, value = APIParamValue.LOCALES) @PathVariable(value = APIParamName.LOCALES) String locales,
-            @ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO)
-            @RequestParam(value = APIParamName.PSEUDO, required=false, defaultValue="false") String pseudo,
+            @ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required=false, defaultValue="false") String pseudo,
             HttpServletRequest req)  throws Exception {
             return super.getMultipleComponentsTrans(productName, components, version, locales, pseudo, req);
     }
