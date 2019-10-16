@@ -35,14 +35,10 @@ repositories {
 
 sourceSets {
   test {
-    java {
-      srcDir 'src/test/java'
-      output.classesDir   = 'build/classes/test'
-    }
-    resources {
-      srcDir 'src/test/resources'
-      output.resourcesDir = 'build/classes/test'
-    }
+    java.srcDirs = ['src/test/java']
+    java.outputDir = file('build/classes/test')
+    output.resourcesDir = file('build/classes/test')
+    resources.srcDirs = ['src/test/resources']
   }
 }
 
