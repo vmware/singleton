@@ -48,4 +48,25 @@ public class Constants {
 	public static final String DEFAULT_CONTENT_JSON = "defaultContent.json";
 	public static final String REGION_LANGUAGE_MAPPING_JSON = "regionLanguageMapping.json";
 	public static final String PATTERN_JSON = "pattern.json";
+
+	// key name
+	public static final String YEAR = "year";
+	public static final String MONTH = "month";
+	public static final String DAY = "day";
+	public static final String HOUR = "hour";
+	public static final String MINUTE = "minute";
+	public static final String SECOND = "second";
+	public static final String DAY_PERIODS_FORMAT = "dayPeriodsFormat";
+	public static final String DAY_PERIODS_STANDALONE = "dayPeriodsStandalone";
+	public static final String DAYS_FORMAT = "daysFormat";
+	public static final String DAYS_STANDALONE = "daysStandalone";
+	public static final String MONTH_FORMAT = "monthsFormat";
+	public static final String MONTHS_STANDALONE = "monthsStandalone";
+	public static final String ERAS = "eras";
+	public static final String FIRST_DAY_OF_WEEK = "firstDayOfWeek";
+	public static final String WEEKEND_RANGE = "weekendRange";
+	public static final String DATE_FORMATS = "dateFormats";
+	public static final String TIME_FORMATS = "timeFormats";
+	public static final String DATE_TIME_FORMATS = "dateTimeFormats";
+	public static final String DATE_FIELDS = "dateFields";
 }
