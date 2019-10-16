@@ -9,6 +9,7 @@ import java.io.File;
 public class CLDRConstants {
 
 	public static final String CLDR_CORE = "cldr-core-";
+	public static final String CLDR_DATES_FULL =  "cldr-dates-full-";
 	public static final String CLDR_VERSION = "32.0.0";
 	public static final String FILE_NAME = CLDR_VERSION + ".zip";
 	public static final String CLDR_DOWNLOAD_DIR = "src" + File.separator + "main" + File.separator + "resources"
@@ -55,8 +56,12 @@ public class CLDRConstants {
 	public static final String CLDR_CORE_LANGUAGE_DATA = CLDRConstants.CLDR_CORE + CLDR_VERSION + "/supplemental/languageData.json";
 	public static final String CLDR_CORE_PLURALS = CLDRConstants.CLDR_CORE + CLDR_VERSION + "/supplemental/plurals.json";
 	public static final String CLDR_CORE_ALIASES = CLDRConstants.CLDR_CORE + CLDR_VERSION + "/supplemental/aliases.json";
+	public static final String CLDR_DATES_FULL_DATE_FIELDS = CLDR_DATES_FULL + "{0}/main/{1}/dateFields.json";
+	public static final String CLDR_DATES_FULL_CA_GREGORIAN = CLDR_DATES_FULL + "{0}/main/{1}/ca-gregorian.json";
 
 	public static final String LANGUAGE_DATA_KEY_PATH = "supplemental.languageData";
 	public static final String PLURALS_KEY_PATH = "supplemental.plurals-type-cardinal";
 	public static final String ALIAS_KEY_PATH = "supplemental.metadata.alias.languageAlias";
+
+	public static final String DATE_FIELDS_KEY_PATH = "main.{0}.dates.fields";
 }
