@@ -53,7 +53,8 @@ public class TranslationProductComponentAPITest {
     }
 
     /**
-     * * @throws Exception
+     * * @throws Exception 
+     * get the mult-local and mult-component case
      */
     @Test
     public void testMultiComponents1() throws Exception {
@@ -63,7 +64,10 @@ public class TranslationProductComponentAPITest {
         long code = (long) dataMap.get("code");
         Assert.assertTrue(code==200L);
     }
-
+    /**
+     * * @throws Exception
+     *  get result when translation only can't include component5
+     */
     @Test
     public void testMultiComponents2() throws Exception {
         String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, MultComponentTranslationAPIURI2);
@@ -73,6 +77,10 @@ public class TranslationProductComponentAPITest {
         Assert.assertTrue(code==404L);
     }
     
+    /**
+     * * @throws Exception
+     *  get result when translation only don't have zh-Hants language 
+     */
     @Test
     public void testMultiComponents3() throws Exception {
         String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, MultComponentTranslationAPIURI3);
@@ -81,6 +89,11 @@ public class TranslationProductComponentAPITest {
         long code = (long) dataMap.get("code");
         Assert.assertTrue(code==404L);
     }
+    
+    /**
+     * * @throws Exception
+     *  get result when translation component1 and component2 don't have zh-Hants language 
+     */
     @Test
     public void testMultiComponents4() throws Exception {
         String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, MultComponentTranslationAPIURI4);
