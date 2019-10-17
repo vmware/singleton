@@ -365,6 +365,8 @@ public class TranslationMessageTest extends BaseTestClass {
 
 	@Test
 	public void testGetSourcesOfMCompAndOneLoc() {
+		clearTranslationCache();
+
 		String component1 = "JAVA";
 		String component2 = "USER";
 
@@ -395,6 +397,8 @@ public class TranslationMessageTest extends BaseTestClass {
 
 	@Test
 	public void testGetSourcesOfMCompAndMLoc() {
+		clearTranslationCache();
+
 		String component1 = "JAVA";
 		String component2 = "USER";
 
@@ -416,6 +420,7 @@ public class TranslationMessageTest extends BaseTestClass {
 		Assert.assertEquals(2, result.get(locale2).get(component2).size()); // 2 messages
 		Assert.assertEquals("valeur-1", result.get(locale2).get(component2).get("user-1"));
 
+		clearTranslationCache();
 		// Get 2 components and 2 locales
 		Map<Locale, Map<String, Map<String, String>>> result2 = translation.getStrings(
 				Stream.of(locale2, locale3).collect(Collectors.toList()), Arrays.asList(component1, component2));

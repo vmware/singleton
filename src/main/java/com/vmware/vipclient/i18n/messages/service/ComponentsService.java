@@ -4,11 +4,13 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,8 +37,8 @@ public class ComponentsService {
 	public Map<String, Map<String, Map<String, String>>> getTranslation() {
 		final Map<String, Map<String, Map<String, String>>> retMap = new HashMap<>();
 
-		final ArrayList<String> componentsToQuery = new ArrayList<>();
-		final ArrayList<String> localesToQuery = new ArrayList<>();
+		final Set<String> componentsToQuery = new HashSet<>();
+		final Set<String> localesToQuery = new HashSet<>();
 
 		for (String locale : locales) {
 			final MessagesDTO dto = new MessagesDTO();
@@ -58,14 +60,13 @@ public class ComponentsService {
 			retMap.put(locale, localeMap);
 		}
 
-		final JSONObject bundles = new ComponentsBasedOpt(componentsToQuery, localesToQuery)
+		final JSONArray bundles = new ComponentsBasedOpt(componentsToQuery, localesToQuery)
 				.getComponentsMessages();
-		for (final Object entry : bundles.entrySet()) {
+		for (final Object entry : bundles) {
 			JSONObject obj = (JSONObject)entry;
 			String locale = (String) obj.get(ConstantsKeys.LOCALE);
 			String comp = (String) obj.get(ConstantsKeys.COMPONENT);
-			@SuppressWarnings("unchecked")
-			Map<String, String> messages = (Map<String, String>) obj.get(ConstantsKeys.MESSAGES);
+			JSONObject messages = (JSONObject) obj.get(ConstantsKeys.MESSAGES);
 
 			// update cache
 			final MessagesDTO dto = new MessagesDTO();

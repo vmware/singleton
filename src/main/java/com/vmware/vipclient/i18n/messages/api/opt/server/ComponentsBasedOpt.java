@@ -4,13 +4,14 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
-import java.util.List;
+import java.util.Set;
 
-import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
@@ -19,33 +20,39 @@ import com.vmware.vipclient.i18n.util.StringUtil;
 
 public class ComponentsBasedOpt extends BaseOpt implements Opt {
 	private final Logger logger = LoggerFactory.getLogger(ComponentsBasedOpt.class.getName());
-	private final List<String> components;
-	private final List<String> locales;
+	private final Set<String> components;
+	private final Set<String> locales;
 
 	/**
 	 * @param components
 	 * @param locales
 	 */
-	public ComponentsBasedOpt(List<String> components, List<String> locales) {
+	public ComponentsBasedOpt(Set<String> components, Set<String> locales) {
 		this.components = components;
 		this.locales = locales;
 	}
 
-	public JSONObject getComponentsMessages() {
+	public JSONArray getComponentsMessages() {
 		String url = V2URL.getComponentsTranslationURL(components, locales,
 				VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
-		//		if(ConstantsKeys.LATEST.equals(locales)) {
-		//			url =  url.replace("pseudo=false", "pseudo=true");
-		//		}
-		String responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(url, ConstantsKeys.GET, null);
-		if (StringUtil.isEmpty(responseStr)) {
-			return null;
-		} else {
-			//			if(ConstantsKeys.LATEST.equals(locales)) {
-			//				responseStr = responseStr.replace(ConstantsKeys.PSEUDOCHAR, "");
-			//			}
 
-			return (JSONObject) this.getMessagesFromResponse(responseStr, ConstantsKeys.BUNDLES);
+		String responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(url, ConstantsKeys.GET, null);
+
+		if (StringUtil.isEmpty(responseStr)) {
+			throw new VIPJavaClientException("Server returns empty.");
 		}
+
+		int statusCode = Integer.parseInt(getStatusFromResponse(responseStr, ConstantsKeys.CODE).toString());
+		if (statusCode < 200 || statusCode > 299) {
+			throw new VIPJavaClientException(
+					String.format("Server returns error! Status: %d. Message: %s", statusCode,
+							getStatusFromResponse(responseStr, ConstantsKeys.MESSAGE)));
+		}
+
+		JSONArray bundles = (JSONArray) getMessagesFromResponse(responseStr, ConstantsKeys.BUNDLES);
+		if (null == bundles) {
+			throw new VIPJavaClientException("Unknow server error");
+		}
+		return bundles;
 	}
 }

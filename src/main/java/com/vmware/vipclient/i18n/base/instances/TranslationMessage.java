@@ -17,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ComponentService;
 import com.vmware.vipclient.i18n.messages.service.ComponentsService;
@@ -239,9 +240,13 @@ public class TranslationMessage implements Message {
 			final List<String> components) {
 		logger.info("Start to execute TranslationMessage.getStrings of multiple components");
 
-		ComponentsService cs = new ComponentsService(components, Arrays.asList(locale.toLanguageTag()));
-
-		return cs.getTranslation().values().iterator().next();
+		try {
+			ComponentsService cs = new ComponentsService(components, Arrays.asList(locale.toLanguageTag()));
+			return cs.getTranslation().values().iterator().next();
+		} catch (VIPJavaClientException e) {
+			logger.error("An exception occured!", e);
+			return new HashMap();
+		}
 	}
 
 	/**
@@ -262,14 +267,19 @@ public class TranslationMessage implements Message {
 			convertedLocales.add(locale.toLanguageTag());
 		}
 
-		ComponentsService cs = new ComponentsService(components, convertedLocales);
-		Map<String, Map<String, Map<String, String>>> result = cs.getTranslation();
+		try {
+			ComponentsService cs = new ComponentsService(components, convertedLocales);
+			Map<String, Map<String, Map<String, String>>> result = cs.getTranslation();
 
-		Map<Locale, Map<String, Map<String, String>>> retMap = new HashMap<>();
-		for (Locale locale : locales) {
-			retMap.put(locale, result.get(locale.toLanguageTag()));
+			Map<Locale, Map<String, Map<String, String>>> retMap = new HashMap<>();
+			for (Locale locale : locales) {
+				retMap.put(locale, result.get(locale.toLanguageTag()));
+			}
+			return retMap;
+		} catch (VIPJavaClientException e) {
+			logger.error("An exception occured!", e);
+			return new HashMap();
 		}
-		return retMap;
 	}
 
 	/**

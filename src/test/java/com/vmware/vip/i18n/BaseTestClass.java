@@ -19,6 +19,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.base.cache.Cache;
+import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 
 public class BaseTestClass {
 	protected Logger logger;
@@ -88,6 +90,17 @@ public class BaseTestClass {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	protected void clearCache(String cacheName) {
+		Cache cache = TranslationCacheManager.getCache(cacheName);
+		if (null != cache) {
+			cache.clear();
+		}
+	}
+
+	protected void clearTranslationCache() {
+		clearCache(VIPCfg.CACHE_L3);
 	}
 
 }
