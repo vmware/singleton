@@ -5,6 +5,8 @@
 package com.vmware.vipclient.i18n;
 
 import java.net.MalformedURLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import org.slf4j.Logger;
@@ -28,6 +30,7 @@ public class VIPCfg {
 
 	// define global instance
 	private static VIPCfg gcInstance;
+	private static Map<String, VIPCfg> moduleCfgs = new HashMap<String, VIPCfg>();
 	private VIPService vipService;
 	private TranslationCacheManager translationCacheManager;
 
@@ -71,7 +74,21 @@ public class VIPCfg {
 		}
 		return gcInstance;
 	}
-	
+	/**
+	 * create a default instance of VIPCfg
+	 *
+	 * @return
+	 */
+	public static synchronized VIPCfg getSubInstance(String productName) {
+		if(!VIPCfg.moduleCfgs.containsKey(productName)) {
+			VIPCfg.moduleCfgs.put(productName, new VIPCfg());
+		}
+		if(VIPCfg.moduleCfgs.containsKey(productName)) {
+			return VIPCfg.moduleCfgs.get(productName);
+		} else {
+			return gcInstance;
+		}
+	}
 	/**
 	 * initialize the instance by parameter
 	 * 

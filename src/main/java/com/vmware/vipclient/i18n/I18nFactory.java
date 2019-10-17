@@ -32,6 +32,8 @@ public class I18nFactory {
 	// store Formatting instance
 	private Map<String, Formatting> formattings = new HashMap<String, Formatting>();
 
+	public static  Map<String, VIPCfg> mapCfg = new HashMap<String, VIPCfg>();
+
 	/**
 	 * create I18nFactory
 	 * 
@@ -71,7 +73,7 @@ public class I18nFactory {
 	 * @return
 	 */
 	@SuppressWarnings("rawtypes")
-	public Message getMessageInstance(Class c) {
+	public Message getMessageInstance(Class c, VIPCfg cfg) {
 		Message i = null;
 		if (c == null) {
 			return i;
@@ -81,7 +83,12 @@ public class I18nFactory {
 			logger.error("VipServer|ProductName|Version is null!");
 			return i;
 		}
-		String key = c.getCanonicalName();
+		String key;
+		if(null == cfg) {
+			key = c.getCanonicalName();
+		} else {
+			key = cfg.getProductName();
+		}
 		if (messages.containsKey(key)) {
 			return messages.get(key);
 		} else {
@@ -98,6 +105,9 @@ public class I18nFactory {
 		return i;
 	}
 
+	public Message getMessageInstance(Class c) {
+		return this.getMessageInstance(c, null);
+	}
 	/**
 	 * get a instance of com.vmware.vipclient.i18n.base.instances.Formatting
 	 * 
@@ -156,4 +166,7 @@ public class I18nFactory {
 		this.cfg = cfg;
 	}
 
+	public void registerVIPCfg(VIPCfg cfg) {
+		mapCfg.put(cfg.getProductName(), cfg);
+	}
 }

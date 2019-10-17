@@ -30,6 +30,16 @@ import com.vmware.vipclient.i18n.util.LocaleUtility;
 public class TranslationMessage implements Message {
 	Logger logger = LoggerFactory.getLogger(TranslationMessage.class);
 
+	public VIPCfg getCfg() {
+		return cfg;
+	}
+
+	public void setCfg(VIPCfg cfg) {
+		this.cfg = cfg;
+	}
+
+	private VIPCfg cfg;
+
 	public TranslationMessage() {
 		super();
 	}
@@ -67,6 +77,10 @@ public class TranslationMessage implements Message {
 		dto.setKey(key);
 		dto.setSource(source);
 		dto.setLocale(locale.toLanguageTag());
+		if(cfg!=null) {
+			dto.setProductID(cfg.getProductName());
+			dto.setVersion(cfg.getVersion());
+		}
 		StringService s = new StringService(dto);
 		String translation = "";
 		if (!LocaleUtility.isDefaultLocale(locale)) {
@@ -140,6 +154,10 @@ public class TranslationMessage implements Message {
 		MessagesDTO dto = new MessagesDTO();
 		dto.setLocale(locale.toLanguageTag());
 		dto.setComponent(component);
+		if(cfg!=null) {
+			dto.setProductID(cfg.getProductName());
+			dto.setVersion(cfg.getVersion());
+		}
 		List<JSONObject> sourcesList = new ArrayList<JSONObject>();
 		sourcesList.addAll(sources);
 		List<JSONObject> removedList = new ArrayList<JSONObject>();
@@ -193,6 +211,10 @@ public class TranslationMessage implements Message {
 		dto.setSource(source);
 		StringService s = new StringService(dto);
 		dto.setLocale(ConstantsKeys.LATEST);
+		if(cfg!=null) {
+			dto.setProductID(cfg.getProductName());
+			dto.setVersion(cfg.getVersion());
+		}
 		String enStr = s.getString();
 		if(source != null && !"".equalsIgnoreCase(source) && !source.equals(enStr)) {
 			dto.setLocale(locale.toLanguageTag());
@@ -219,6 +241,10 @@ public class TranslationMessage implements Message {
 		MessagesDTO dto = new MessagesDTO();
 		dto.setLocale(locale.toLanguageTag());
 		dto.setComponent(component);
+		if(cfg!=null) {
+			dto.setProductID(cfg.getProductName());
+			dto.setVersion(cfg.getVersion());
+		}
 		ComponentService cs = new ComponentService(dto);
 		return cs.getComponentTranslation();
 	}
@@ -279,6 +305,10 @@ public class TranslationMessage implements Message {
 			MessagesDTO dto = new MessagesDTO();
 			dto.setComponent(component);
 			dto.setLocale(locale.toLanguageTag());
+			if(cfg!=null) {
+				dto.setProductID(cfg.getProductName());
+				dto.setVersion(cfg.getVersion());
+			}
 			ComponentService cs = new ComponentService(dto);
 			available = cs.isComponentAvailable();
 		}
@@ -300,6 +330,10 @@ public class TranslationMessage implements Message {
 			dto.setComponent(component);
 			dto.setKey(key);
 			dto.setLocale(locale.toLanguageTag());
+			if(cfg!=null) {
+				dto.setProductID(cfg.getProductName());
+				dto.setVersion(cfg.getVersion());
+			}
 			StringService s = new StringService(dto);
 			available = s.isStringAvailable();
 		}
