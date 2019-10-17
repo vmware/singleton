@@ -5,8 +5,6 @@
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
 import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
 
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
@@ -22,22 +20,19 @@ import com.vmware.vipclient.i18n.util.StringUtil;
 public class ComponentsBasedOpt extends BaseOpt implements Opt {
 	private final Logger logger = LoggerFactory.getLogger(ComponentsBasedOpt.class.getName());
 	private final List<String> components;
-	private final List<Locale> locales;
+	private final List<String> locales;
 
 	/**
 	 * @param components
 	 * @param locales
 	 */
-	public ComponentsBasedOpt(List<String> components, List<Locale> locales) {
+	public ComponentsBasedOpt(List<String> components, List<String> locales) {
 		this.components = components;
 		this.locales = locales;
 	}
 
 	public JSONObject getComponentsMessages() {
-		List<String> localestrList = locales.stream().map(Locale::toLanguageTag)
-				.collect(Collectors.toList());
-
-		String url = V2URL.getComponentsTranslationURL(components, localestrList,
+		String url = V2URL.getComponentsTranslationURL(components, locales,
 				VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
 		//		if(ConstantsKeys.LATEST.equals(locales)) {
 		//			url =  url.replace("pseudo=false", "pseudo=true");
@@ -50,7 +45,7 @@ public class ComponentsBasedOpt extends BaseOpt implements Opt {
 			//				responseStr = responseStr.replace(ConstantsKeys.PSEUDOCHAR, "");
 			//			}
 
-			return (JSONObject) this.getMessagesFromResponse(responseStr, ConstantsKeys.MESSAGES);
+			return (JSONObject) this.getMessagesFromResponse(responseStr, ConstantsKeys.BUNDLES);
 		}
 	}
 }

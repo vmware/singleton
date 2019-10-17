@@ -5,6 +5,8 @@
 package com.vmware.vipclient.i18n.base.instances;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -237,9 +239,8 @@ public class TranslationMessage implements Message {
 			final List<String> components) {
 		logger.info("Start to execute TranslationMessage.getStrings of multiple components");
 
-		ArrayList<Locale> locales = new ArrayList<Locale>() {};
-		locales.add(locale);
-		ComponentsService cs = new ComponentsService(components, locales);
+		ComponentsService cs = new ComponentsService(components, Arrays.asList(locale.toLanguageTag()));
+
 		return cs.getTranslation().values().iterator().next();
 	}
 
@@ -254,10 +255,22 @@ public class TranslationMessage implements Message {
 	 */
 	public Map<Locale, Map<String, Map<String, String>>> getStrings(final List<Locale> locales,
 			final List<String> components) {
-		logger.info("Start to execute TranslationMessage.getStrings of multiple components");
-		ComponentsService cs = new ComponentsService(components, locales);
-		return cs.getTranslation();
-	}	
+		logger.info("Start to execute TranslationMessage.getStrings of multiple components of multiple locales");
+
+		List<String> convertedLocales = new ArrayList<>();
+		for (Locale locale : locales) {
+			convertedLocales.add(locale.toLanguageTag());
+		}
+
+		ComponentsService cs = new ComponentsService(components, convertedLocales);
+		Map<String, Map<String, Map<String, String>>> result = cs.getTranslation();
+
+		Map<Locale, Map<String, Map<String, String>>> retMap = new HashMap<>();
+		for (Locale locale : locales) {
+			retMap.put(locale, result.get(locale.toLanguageTag()));
+		}
+		return retMap;
+	}
 
 	/**
 	 * get one translation of the configured product from VIP, if message not

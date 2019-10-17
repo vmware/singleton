@@ -7,7 +7,6 @@ package com.vmware.vipclient.i18n.messages.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
@@ -16,34 +15,33 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentsBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
+import com.vmware.vipclient.i18n.util.ConstantsKeys;
 
 public class ComponentsService {
 
 	Logger logger = LoggerFactory.getLogger(ComponentsService.class);
 	private final List<String> components;
-	private final List<Locale> locales;
+	private final List<String> locales;
 
 	/**
 	 * @param components
 	 * @param locales
 	 */
-	public ComponentsService(List<String> components, List<Locale> locales) {
+	public ComponentsService(List<String> components, List<String> locales) {
 		this.components = components;
 		this.locales = locales;
 	}
 
-	public Map<Locale, Map<String, Map<String, String>>> getTranslation() {
-		final Map<Locale, Map<String, Map<String, String>>> retMap = new HashMap<>();
+	public Map<String, Map<String, Map<String, String>>> getTranslation() {
+		final Map<String, Map<String, Map<String, String>>> retMap = new HashMap<>();
 
-		final ArrayList<String> componentsToQuery = new ArrayList<String>() {};
-		final ArrayList<Locale> localesToQuery = new ArrayList<Locale>() {
-		};
+		final ArrayList<String> componentsToQuery = new ArrayList<>();
+		final ArrayList<String> localesToQuery = new ArrayList<>();
 
-		for (Locale locale : locales) {
+		for (String locale : locales) {
 			final MessagesDTO dto = new MessagesDTO();
-			dto.setLocale(locale.toLanguageTag());
-			Map<String, Map<String, String>> localeMap = new HashMap<String, Map<String, String>>() {
-			};
+			dto.setLocale(locale);
+			Map<String, Map<String, String>> localeMap = new HashMap<>();
 			for (final String component : components) {
 				dto.setComponent(component);
 
@@ -60,27 +58,24 @@ public class ComponentsService {
 			retMap.put(locale, localeMap);
 		}
 
-		final JSONObject transMap = new ComponentsBasedOpt(componentsToQuery, localesToQuery)
+		final JSONObject bundles = new ComponentsBasedOpt(componentsToQuery, localesToQuery)
 				.getComponentsMessages();
-		for (final Object entry : transMap.entrySet()) {
+		for (final Object entry : bundles.entrySet()) {
 			JSONObject obj = (JSONObject)entry;
-			String localestr = (String) obj.get("locale");
-			Locale locale = Locale.forLanguageTag(localestr);
-			String comp = (String) obj.get("component");
-			Map<String, String> messages = (Map<String, String>) obj.get("messages");
+			String locale = (String) obj.get(ConstantsKeys.LOCALE);
+			String comp = (String) obj.get(ConstantsKeys.COMPONENT);
+			@SuppressWarnings("unchecked")
+			Map<String, String> messages = (Map<String, String>) obj.get(ConstantsKeys.MESSAGES);
 
 			// update cache
 			final MessagesDTO dto = new MessagesDTO();
 			dto.setComponent(comp);
-			dto.setLocale(localestr);
+			dto.setLocale(locale);
 			final CacheService cs = new CacheService(dto);
 			cs.addCacheOfComponent(messages);
 
 			// construct return data
 			Map<String, Map<String, String>> localeMap = retMap.get(locale);
-			if(null == localeMap) {
-				localeMap = new HashMap<String, Map<String, String>>() {};
-			}
 			localeMap.put(comp, messages);
 			retMap.put(locale, localeMap);
 		}

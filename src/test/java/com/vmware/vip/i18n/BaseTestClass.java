@@ -4,6 +4,10 @@
  */
 package com.vmware.vip.i18n;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.Random;
 
 import org.junit.Rule;
@@ -38,9 +42,7 @@ public class BaseTestClass {
 			logger.info("Starting test: " + description.getMethodName());
 		}
 	};
-	
-	
-	
+
 	protected String getSaltString() {
 		String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 		StringBuilder salt = new StringBuilder();
@@ -52,6 +54,40 @@ public class BaseTestClass {
 		String saltStr = salt.toString();
 		return saltStr;
 
+	}
+
+	static void printObject(Object obj) {
+		System.out.println("-----------------------------------Start Printing Object");
+
+		for (Field field : obj.getClass().getDeclaredFields()) {
+			try {
+				if (Modifier.isStatic(field.getModifiers())
+						|| Modifier.isPrivate(field.getModifiers())
+						|| Modifier.isTransient(field.getModifiers())) {
+					continue;
+				}
+				System.out.println("Field '" + field.getName() + "': ");
+				System.out.println("\t" + field.get(obj));
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				e.printStackTrace();
+			}
+		}
+
+		for (Method method : obj.getClass().getDeclaredMethods()) {
+			try {
+				if (Modifier.isStatic(method.getModifiers())
+						|| Modifier.isTransient(method.getModifiers())
+						|| Modifier.isPrivate(method.getModifiers())
+						|| method.getModifiers() == 0
+						|| method.getParameterCount() > 0) {
+					continue;
+				}
+				System.out.print("method '" + method.getName() + "': ");
+				System.out.println(method.invoke(obj));
+			} catch (InvocationTargetException | IllegalAccessException | IllegalArgumentException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }
