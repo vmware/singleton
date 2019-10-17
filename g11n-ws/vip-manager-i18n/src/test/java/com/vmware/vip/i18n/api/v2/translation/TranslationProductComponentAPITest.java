@@ -42,28 +42,6 @@ public class TranslationProductComponentAPITest {
         CacheUtil.cacheSessionAndToken(webApplicationContext, authenticationResult);
     }
 
-    @Test
-    public void testSingleComponent() throws Exception {
-      String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, SingleComponentTranslationAPIURI);
-        @SuppressWarnings("unchecked")
-        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-        long code = (long) dataMap.get("code");
-        Assert.assertTrue(code==200L);
-       
-    }
-
-    /**
-     * * @throws Exception 
-     * get the mult-local and mult-component case
-     */
-    @Test
-    public void testMultiComponents1() throws Exception {
-        String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, MultComponentTranslationAPIURI1);
-        @SuppressWarnings("unchecked")
-        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-        long code = (long) dataMap.get("code");
-        Assert.assertTrue(code==200L);
-    }
     /**
      * * @throws Exception
      *  get result when translation only can't include component5
@@ -101,5 +79,29 @@ public class TranslationProductComponentAPITest {
         Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
         long code = (long) dataMap.get("code");
         Assert.assertTrue(code==404L);
+    }
+    
+
+    @Test
+    public void testSingleComponent() throws Exception {
+      String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, SingleComponentTranslationAPIURI);
+        @SuppressWarnings("unchecked")
+        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        long code = (long) dataMap.get("code");
+        Assert.assertTrue(code==200L);
+       
+    }
+
+    /**
+     * * @throws Exception 
+     * get the mult-local and mult-component case
+     */
+    @Test
+    public void testMultiComponents1() throws Exception {
+        String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, MultComponentTranslationAPIURI1);
+        @SuppressWarnings("unchecked")
+        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        long code = (long) dataMap.get("code");
+        Assert.assertTrue(code==200L);
     }
 }
