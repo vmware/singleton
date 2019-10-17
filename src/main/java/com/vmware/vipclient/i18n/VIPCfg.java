@@ -83,7 +83,7 @@ public class VIPCfg {
 	}
 
 	/**
-	 * initialize the instance by a properties file
+	 * initialize the instance by a configuration file
 	 *
 	 * @param cfg
 	 * @throws IOException
