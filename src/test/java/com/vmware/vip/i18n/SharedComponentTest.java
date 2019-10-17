@@ -35,7 +35,7 @@ public class SharedComponentTest extends BaseTestClass {
         dto = new MessagesDTO();
 
         VIPCfg subCfg = VIPCfg.getSubInstance("sub-key");
-        subCfg.initialize("vipconfig1");
+        subCfg.initialize("vipconfig4sharedcomponent");
         subCfg.initializeVIPService();
         subCfg.createTranslationCache(MessageCache.class);
         subCfg.createFormattingCache(FormattingCache.class);
