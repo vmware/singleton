@@ -369,6 +369,7 @@ public class TranslationMessageTest extends BaseTestClass {
 
 		String component1 = "JAVA";
 		String component2 = "USER";
+		String componentNonexistent = "Nonexistent";
 
 		Locale locale1 = Locale.forLanguageTag("en");
 		Locale locale2 = Locale.forLanguageTag("fr");
@@ -385,8 +386,12 @@ public class TranslationMessageTest extends BaseTestClass {
 		Assert.assertEquals(2, result.get(component2).size()); // 2 messages
 		Assert.assertEquals("valeur-1", result.get(component2).get("user-1"));
 
-		// Get a nonexistent component
+		// Get a nonexistent locale
 		result = translation.getStrings(Locale.ITALY, Arrays.asList(component1));
+		Assert.assertEquals(0, result.size());
+
+		// Get a nonexistent component
+		result = translation.getStrings(locale3, Arrays.asList(componentNonexistent));
 		Assert.assertEquals(0, result.size());
 
 		// Get English
