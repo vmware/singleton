@@ -192,29 +192,21 @@ public class TranslationProductComponentAction extends BaseAction {
 	 */
 	private String getMatchedVersion(final String productName, final String version) throws L3APIException{
 		Map<String, String[]> productsAndVersions = productService.getProductsAndVersions();
-		String matchedVersion = "";
+		String mv = "";
 		if(productsAndVersions != null) {
-			String[] versionList = productsAndVersions.get(productName);
-			if(versionList != null) {
-				if(Arrays.asList(versionList).contains(version)) {
+			String[] vList = productsAndVersions.get(productName);
+			if(vList != null) {
+				if(Arrays.asList(vList).contains(version)) {
 					return version;
 				}
-				for(String s : versionList) {
-					String f = filterVersion(s, version);
-					String ss = s;
-					String m = matchedVersion;
-					if(!StringUtils.isEmpty(matchedVersion)) {
-						if(ss.split("\\.").length > matchedVersion.split("\\.").length) {
-							m = filterVersion(matchedVersion, ss);
-						}
-					}
-					if((compare(f, version) == -1 || (compare(f, version) == 0 && s.length() < version.length())) && compare(ss, m) == 1) {
-                        matchedVersion = s;
+				for(String v : vList) {
+					if(compare(v, version) == -1 && compare(v, mv) == 1) {
+                        mv = v;
 					}
 				}
 			}
 		}
-		return StringUtils.isEmpty(matchedVersion)? version : matchedVersion;
+		return StringUtils.isEmpty(mv)? version : mv;
 	}
 
 	/**
@@ -231,17 +223,29 @@ public class TranslationProductComponentAction extends BaseAction {
 		if(!StringUtils.isEmpty(source) && StringUtils.isEmpty(target)) {
 			return 1;
 		}
-		String[] s = source.split("\\.");
+
+		String f = filterVersion(source, target);
+
+		String[] s = f.split("\\.");
 		String[] t = target.split("\\.");
-		int b = -1;
+		int b = 0;
 		if(s.length == t.length) {
 			for(int i = 0; i < s.length; i++) {
 				if(Integer.parseInt(s[i]) > Integer.parseInt(t[i])) {
 					b = 1;
 					break;
 				} else if(Integer.parseInt(s[i]) < Integer.parseInt(t[i])) {
+					b = -1;
 					break;
 				}
+			}
+		}
+
+		if(b == 0) {
+			if(source.length() < target.length()) {
+				b = -1;
+			} else if(source.length() > target.length()){
+				b = 1;
 			}
 		}
 		return b;
