@@ -1,0 +1,60 @@
+/*
+ * Copyright 2019 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
+package com.vmware.vip.i18n.api.v2.translation;
+
+import java.util.Map;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.context.WebApplicationContext;
+
+import com.vmware.vip.BootApplication;
+import com.vmware.vip.common.utils.JSONUtils;
+import com.vmware.vip.i18n.api.v1.common.CacheUtil;
+import com.vmware.vip.i18n.api.v1.common.ConstantsForTest;
+import com.vmware.vip.i18n.api.v1.common.RequestUtil;
+
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = BootApplication.class)
+public class TranslationProductComponentAPITest {
+
+    @Autowired
+    private WebApplicationContext webApplicationContext;
+
+    
+    private static String SingleComponentTranslationAPIURI="/i18n/api/v2/translation/products/SampleProject/versions/1.0.0/locales/es/components/component1?checkTranslationStatus=false&machineTranslation=false&pseudo=false";
+    private static String MultComponentTranslationAPIURI="/i18n/api/v2/translation/products/SampleProject/versions/1.0.0/multlocales/en,es/multcomponents/component1,component2?pseudo=false";
+    
+    @Before
+    public void setup() throws Exception {
+        String authenticationResult=RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.POST, ConstantsForTest.AuthenticationAPIURI);
+        CacheUtil.cacheSessionAndToken(webApplicationContext, authenticationResult);
+    }
+
+    @Test
+    public void testSingleComponent() throws Exception {
+      String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, SingleComponentTranslationAPIURI);
+        @SuppressWarnings("unchecked")
+        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        long code = (long) dataMap.get("code");
+        Assert.assertTrue(code==200L);
+       
+    }
+
+    @Test
+    public void testMultiComponents() throws Exception {
+        String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, MultComponentTranslationAPIURI);
+        @SuppressWarnings("unchecked")
+        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        long code = (long) dataMap.get("code");
+        Assert.assertTrue(code==200L);
+    }
+
+}
