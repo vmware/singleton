@@ -17,4 +17,5 @@ public final class ValidationMsg {
 	public final static String SOURCEFORMAT_NOT_VALIDE = "Incorrect sourceformat(only allows letter and number)";
 	public final static String INVALID_URL = "Invalid URL or no mapping resources";
 	public final static String PATTERN_NOT_VALIDE = "Incorrect pattern(only allows letter)";
+	public final static String PRODUCTNAME_NOT_SUPPORTED = "The product '%s' is NOT supported yet!";
 }
