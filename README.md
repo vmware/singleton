@@ -19,37 +19,43 @@ How to build and use the client library
     ```
     git clone git@github.com:vmware/singleton.git g11n-java-client
     ```
+    
  * Go to the project's root directory.
     ```
     cd g11n-java-client
     ```
- * Checkout the client library branch
+    
+ * Checkout the client library branch.
     ```
     git checkout g11n-java-client
     ```
+    
  * Build the client library.
     ```
     gradle createWrapper
     gradlew clean build -x test
-```
+    ```
+
     Note: The library jar will be created under "build/libs" directory.
+    
  * Import the library jar into your Java application and use its available APIs.
 
 Note: The file src/main/resources/vipconfig.properties is a template configuration file that contains properties that can be configured as needed. It is preconfigured to work with default Singleton service settings (See Prerequisites). Use this as the Singleton configuration file, or use it as a template to create your own. 
 To load Singleton configurations in your application:
-   ```
-   // Initialize
-		VIPCfg cfg = VIPCfg.getInstance();
-		cfg.initialize("sampleconfig");
-		cfg.initializeVIPService();
-		cfg.createTranslationCache(MessageCache.class);
-		cfg.createFormattingCache(FormattingCache.class);
-		I18nFactory.getInstance(cfg);
 
-   ```
+```Java
+// Initialize
+VIPCfg cfg = VIPCfg.getInstance();
+cfg.initialize("sampleconfig");
+cfg.initializeVIPService();
+cfg.createTranslationCache(MessageCache.class);
+cfg.createFormattingCache(FormattingCache.class);
+I18nFactory.getInstance(cfg);
+```
 
 Sample code
 ------------
+
 ```Java
 // Import classes
 import com.vmware.vipclient.i18n.I18nFactory;
