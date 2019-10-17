@@ -67,8 +67,6 @@ public class TranslationProductComponentAPITest {
     @Test
     public void testMultiComponents2() throws Exception {
         String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, MultComponentTranslationAPIURI2);
-        System.out.println("-------------------------------------------------");
-        System.out.println(json);
         @SuppressWarnings("unchecked")
         Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
         long code = (long) dataMap.get("code");
