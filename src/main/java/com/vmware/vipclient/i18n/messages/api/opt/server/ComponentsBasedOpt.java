@@ -51,7 +51,7 @@ public class ComponentsBasedOpt extends BaseOpt implements Opt {
 
 		JSONArray bundles = (JSONArray) getMessagesFromResponse(responseStr, ConstantsKeys.BUNDLES);
 		if (null == bundles) {
-			throw new VIPJavaClientException("Unknow error");
+			throw new VIPJavaClientException("Unknown server error.");
 		}
 		return bundles;
 	}
