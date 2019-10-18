@@ -96,13 +96,12 @@ public class V2URL {
 	 * @return
 	 */
 	public static String getComponentsTranslationURL(Set<String> components, Set<String> locales, String baseURL) {
-		final StringBuilder url = new StringBuilder(baseURL);
 		final String gurl = APIV2.COMPONENTS_TRANSLATION_GET
 				.replace("{" + APIParamName.PRODUCT_NAME + "}", VIPCfg.getInstance().getProductName())
 				.replace("{" + APIParamName.VERSION2 + "}", VIPCfg.getInstance().getVersion())
 				.replace("{" + APIParamName.LOCALES + "}", String.join(",", locales))
 				.replace("{" + APIParamName.COMPONENTS + "}", String.join(",", components));
-		return url.append(gurl).toString();
+		return baseURL+gurl;
 	}
 
 	/**
