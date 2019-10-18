@@ -47,8 +47,11 @@ public class ComponentsService {
 			for (final String component : components) {
 				dto.setComponent(component);
 
+				// Get existing data from cache.
 				final CacheService cs = new CacheService(dto);
 				final Map<String, String> translations = cs.getCacheOfComponent();
+
+				// If cache doesn't have data, query from server.
 				if (translations == null && !cs.isContainComponent()) {
 					componentsToQuery.add(component);
 					localesToQuery.add(locale);
@@ -60,22 +63,30 @@ public class ComponentsService {
 			retMap.put(locale, localeMap);
 		}
 
+		// Nothing to query, return.
+		if (componentsToQuery.isEmpty() || localesToQuery.isEmpty()) {
+			return retMap;
+		}
+
+		// Query from server.
 		final JSONArray bundles = new ComponentsBasedOpt(componentsToQuery, localesToQuery)
 				.getComponentsMessages();
+
+		// combine returned data into the map to return.
 		for (final Object entry : bundles) {
 			JSONObject obj = (JSONObject)entry;
 			String locale = (String) obj.get(ConstantsKeys.LOCALE);
 			String comp = (String) obj.get(ConstantsKeys.COMPONENT);
 			JSONObject messages = (JSONObject) obj.get(ConstantsKeys.MESSAGES);
 
-			// update cache
+			// update cache.
 			final MessagesDTO dto = new MessagesDTO();
 			dto.setComponent(comp);
 			dto.setLocale(locale);
 			final CacheService cs = new CacheService(dto);
 			cs.addCacheOfComponent(messages);
 
-			// construct return data
+			// update map to return.
 			Map<String, Map<String, String>> localeMap = retMap.get(locale);
 			localeMap.put(comp, messages);
 			retMap.put(locale, localeMap);

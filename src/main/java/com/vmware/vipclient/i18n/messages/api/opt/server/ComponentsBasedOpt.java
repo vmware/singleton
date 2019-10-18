@@ -53,6 +53,7 @@ public class ComponentsBasedOpt extends BaseOpt implements Opt {
 		if (null == bundles) {
 			throw new VIPJavaClientException("Unknown server error.");
 		}
+
 		return bundles;
 	}
 }
