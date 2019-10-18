@@ -179,8 +179,6 @@ public class V2URL {
 	}
 
 	public static String getPatternURL(String locale, String baseURL) {// PatternsDTO
-		// //
-		// dto,
 		StringBuilder url = new StringBuilder(baseURL);
 		String subUrl = APIV2.FORMAT_PATTERN_GET.replace("{" + APIParamName.LOCALE + "}", locale);
 		url.append(subUrl);
