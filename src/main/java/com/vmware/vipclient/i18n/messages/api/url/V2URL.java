@@ -102,12 +102,7 @@ public class V2URL {
 				.replace("{" + APIParamName.VERSION2 + "}", VIPCfg.getInstance().getVersion())
 				.replace("{" + APIParamName.LOCALES + "}", String.join(",", locales))
 				.replace("{" + APIParamName.COMPONENTS + "}", String.join(",", components));
-		url.append(gurl);
-
-		URLUtils.appendParamToURL(url, ConstantsKeys.PSEUDO, Boolean.toString(VIPCfg.getInstance().isPseudo()));
-		URLUtils.appendParamToURL(url, ConstantsKeys.MACHINE_TRANSLATION, Boolean.toString(VIPCfg.getInstance().isMachineTranslation()));
-
-		return url.toString();
+		return url.append(gurl).toString();
 	}
 
 	/**
