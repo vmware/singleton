@@ -393,6 +393,18 @@ public class TranslationMessageTest extends BaseTestClass {
 		result = translation.getStrings(locale3, Arrays.asList(componentNonexistent));
 		Assert.assertEquals(0, result.size());
 
+		// Get with a null locale
+		result = translation.getStrings((Locale) null, Arrays.asList(component1));
+		Assert.assertEquals(0, result.size());
+
+		// Get with a null component
+		result = translation.getStrings(locale2, (List<String>) null);
+		Assert.assertEquals(0, result.size());
+
+		// Get with an empty component list
+		result = translation.getStrings(locale2, new ArrayList<String>());
+		Assert.assertEquals(0, result.size());
+
 		// Get English
 		result = translation.getStrings(locale1, Arrays.asList(component1));
 		Assert.assertEquals(1, result.size());
@@ -424,6 +436,18 @@ public class TranslationMessageTest extends BaseTestClass {
 		Assert.assertEquals(2, result.get(locale2).get(component2).size()); // 2 messages
 		Assert.assertEquals("valeur-1", result.get(locale2).get(component2).get("user-1"));
 
+		// Get with a null locale
+		result = translation.getStrings((List<Locale>) null, Arrays.asList(component1));
+		Assert.assertEquals(0, result.size());
+
+		// Get with a null component
+		result = translation.getStrings(Arrays.asList(locale2), (List<String>) null);
+		Assert.assertEquals(0, result.size());
+
+		// Get with an empty component list
+		result = translation.getStrings(Arrays.asList(locale2), new ArrayList<String>());
+		Assert.assertEquals(0, result.size());
+
 		clearTranslationCache();
 		// Get 2 components and 2 locales
 		Map<Locale, Map<String, Map<String, String>>> result2 = translation.getStrings(
@@ -432,5 +456,8 @@ public class TranslationMessageTest extends BaseTestClass {
 		Assert.assertEquals(2, result2.get(locale3).size()); // 2 components
 		Assert.assertEquals(2, result2.get(locale3).get(component2).size()); // 2 messages
 		Assert.assertEquals("valeur-1", result2.get(locale2).get(component2).get("user-1"));
+
+		// more cases to test cache
+		// more cases to test the message sending to server
 	}
 }

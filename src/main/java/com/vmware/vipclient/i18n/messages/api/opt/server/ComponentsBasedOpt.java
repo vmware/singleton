@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
@@ -39,19 +40,18 @@ public class ComponentsBasedOpt extends BaseOpt implements Opt {
 		String responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(url, ConstantsKeys.GET, null);
 
 		if (StringUtil.isEmpty(responseStr)) {
-			throw new VIPJavaClientException("Server returns empty.");
+			throw new VIPJavaClientException(ConstantsMsg.SERVER_RETURN_EMPTY);
 		}
-
 		int statusCode = Integer.parseInt(getStatusFromResponse(responseStr, ConstantsKeys.CODE).toString());
 		if (statusCode < 200 || statusCode > 299) {
 			throw new VIPJavaClientException(
-					String.format("Server returns error! Status: %d. Message: %s", statusCode,
+					String.format(ConstantsMsg.SERVER_RETURN_ERROR, statusCode,
 							getStatusFromResponse(responseStr, ConstantsKeys.MESSAGE)));
 		}
 
 		JSONArray bundles = (JSONArray) getMessagesFromResponse(responseStr, ConstantsKeys.BUNDLES);
 		if (null == bundles) {
-			throw new VIPJavaClientException("Unknown server error.");
+			throw new VIPJavaClientException(ConstantsMsg.UNKNOWN_ERROR);
 		}
 
 		return bundles;
