@@ -65,7 +65,7 @@ public class ParameterValidation implements IVlidation {
 			throw new ValidationException(ValidationMsg.PRODUCTNAME_NOT_VALIDE);
 		}
 		if ("get".equalsIgnoreCase(request.getMethod())) {
-            validateProductByWhiteList(productName, request.getAttribute(ParameterValidation.TAG_BUNDLE_BASE_PATH) + ConstantsFile.L10N_BUNDLES_PATH + File.separator + ParameterValidation.BUNDLE_FILE);
+            validateProductByWhiteList(productName, request.getAttribute(ParameterValidation.TAG_BUNDLE_BASE_PATH) + File.separator + ConstantsFile.L10N_BUNDLES_PATH + File.separator + ParameterValidation.BUNDLE_FILE);
 		}
 	}
 
