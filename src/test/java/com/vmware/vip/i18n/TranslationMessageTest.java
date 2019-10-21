@@ -168,12 +168,6 @@ public class TranslationMessageTest extends BaseTestClass {
         Assert.assertEquals(message_zh_TW, retMap6.get(key));
     }
 
-    //@Test
-    //public void testGetComponentMessages_fr() {
-    //    String component = "sunglow";
-    //    Map<String, String> retMap2 = translation.getStrings(new Locale("fr", "CA"), component);
-    //}
-
     @Test
     public void testGetAllComponentTranslation() {
         List<Map> list = new ProductService(dto).getAllComponentTranslation();
@@ -418,7 +412,6 @@ public class TranslationMessageTest extends BaseTestClass {
 		String component1 = "JAVA";
 		String component2 = "USER";
 
-		Locale locale1 = Locale.forLanguageTag("en");
 		Locale locale2 = Locale.forLanguageTag("fr");
 		Locale locale3 = Locale.forLanguageTag("zh-Hans");
 

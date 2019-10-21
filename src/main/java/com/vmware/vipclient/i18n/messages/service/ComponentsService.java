@@ -77,7 +77,7 @@ public class ComponentsService {
 		.getComponentsMessages();
 
 		// combine data from server into the map to return.
-		bundles.forEach(bundle -> {
+		for (final JSONObject bundle : bundles) {
 			String locale = (String) bundle.get(ConstantsKeys.LOCALE);
 			String comp = (String) bundle.get(ConstantsKeys.COMPONENT);
 			JSONObject messages = (JSONObject) bundle.get(ConstantsKeys.MESSAGES);
@@ -88,9 +88,8 @@ public class ComponentsService {
 			new CacheService(dto).addCacheOfComponent(messages);
 
 			// update map to return.
-			Map<String, Map<String, String>> localeMap = retMap.get(locale);
-			localeMap.put(comp, messages);
-		});
+			retMap.get(locale).put(comp, messages);
+		}
 
 		return retMap;
 	}
