@@ -41,6 +41,8 @@ public class ComponentsService {
 		final Set<String> localesToQuery = new HashSet<>();
 
 		final MessagesDTO dto = new MessagesDTO();
+
+		// Get data from cache first. If cache doens't have, query from server.
 		for (String locale : locales) {
 			dto.setLocale(locale);
 			Map<String, Map<String, String>> localeMap = new HashMap<>();
@@ -74,7 +76,7 @@ public class ComponentsService {
 		final ArrayList<JSONObject> bundles = new ComponentsBasedOpt(componentsToQuery, localesToQuery)
 		.getComponentsMessages();
 
-		// combine returned data into the map to return.
+		// combine data from server into the map to return.
 		bundles.forEach(bundle -> {
 			String locale = (String) bundle.get(ConstantsKeys.LOCALE);
 			String comp = (String) bundle.get(ConstantsKeys.COMPONENT);
@@ -88,7 +90,6 @@ public class ComponentsService {
 			// update map to return.
 			Map<String, Map<String, String>> localeMap = retMap.get(locale);
 			localeMap.put(comp, messages);
-			//			retMap.put(locale, localeMap);
 		});
 
 		return retMap;
