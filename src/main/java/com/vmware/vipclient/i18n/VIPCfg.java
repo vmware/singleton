@@ -106,6 +106,7 @@ public class VIPCfg {
 			}
 		}
 
+		// Load source bundles
 		LocalSourceOpt.loadResources(this.components);
 	}
 
