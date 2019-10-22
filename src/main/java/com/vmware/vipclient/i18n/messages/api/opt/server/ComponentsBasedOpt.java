@@ -38,10 +38,10 @@ public class ComponentsBasedOpt extends BaseOpt implements Opt {
 				VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
 
 		String responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(url, ConstantsKeys.GET, null);
-
 		if (StringUtil.isEmpty(responseStr)) {
 			throw new VIPJavaClientException(ConstantsMsg.SERVER_RETURN_EMPTY);
 		}
+
 		int statusCode = Integer.parseInt(getStatusFromResponse(responseStr, ConstantsKeys.CODE).toString());
 		if (statusCode < 200 || statusCode > 299) {
 			throw new VIPJavaClientException(
@@ -49,11 +49,6 @@ public class ComponentsBasedOpt extends BaseOpt implements Opt {
 							getStatusFromResponse(responseStr, ConstantsKeys.MESSAGE)));
 		}
 
-		JSONArray bundles = (JSONArray) getMessagesFromResponse(responseStr, ConstantsKeys.BUNDLES);
-		if (null == bundles) {
-			throw new VIPJavaClientException(ConstantsMsg.UNKNOWN_ERROR);
-		}
-
-		return bundles;
+		return (JSONArray) getMessagesFromResponse(responseStr, ConstantsKeys.BUNDLES);
 	}
 }

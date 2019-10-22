@@ -271,12 +271,12 @@ public class TranslationMessage implements Message {
 			return new HashMap();
 		}
 
-		List<String> convertedLocales = new ArrayList<>();
-		for (Locale locale : locales) {
-			convertedLocales.add(locale.toLanguageTag());
-		}
-
 		try {
+			List<String> convertedLocales = new ArrayList<>();
+			for (Locale locale : locales) {
+				convertedLocales.add(locale.toLanguageTag());
+			}
+
 			ComponentsService cs = new ComponentsService(components, convertedLocales);
 			Map<String, Map<String, Map<String, String>>> result = cs.getTranslation();
 
@@ -284,6 +284,7 @@ public class TranslationMessage implements Message {
 			for (Locale locale : locales) {
 				retMap.put(locale, result.get(locale.toLanguageTag()));
 			}
+
 			return retMap;
 		} catch (Exception e) {
 			logger.error(ConstantsMsg.EXCEPTION_OCCUR, e);
