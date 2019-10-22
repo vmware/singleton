@@ -106,7 +106,7 @@ public class I18nFactory {
 	}
 
 	public Message getMessageInstance(Class c) {
-		return this.getMessageInstance(c, VIPCfg.getInstance());
+		return this.getMessageInstance(c, null);
 	}
 	/**
 	 * get a instance of com.vmware.vipclient.i18n.base.instances.Formatting
