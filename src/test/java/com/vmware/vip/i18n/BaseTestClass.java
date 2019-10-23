@@ -4,8 +4,12 @@
  */
 package com.vmware.vip.i18n;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.proxyAllTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
+
 import java.util.Random;
 
+import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.rules.TestRule;
 import org.junit.rules.TestWatcher;
@@ -14,6 +18,8 @@ import org.junit.runners.model.Statement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
+import com.github.tomakehurst.wiremock.junit.WireMockClassRule;
 import com.vmware.vipclient.i18n.VIPCfg;
 
 public class BaseTestClass {
@@ -38,9 +44,20 @@ public class BaseTestClass {
 			logger.info("Starting test: " + description.getMethodName());
 		}
 	};
-	
-	
-	
+
+	@ClassRule
+	public static WireMockClassRule wireMockRule = new WireMockClassRule(
+			WireMockConfiguration.options().port(8099).usingFilesUnderClasspath("mockserver"));
+
+	@Rule
+	public WireMockClassRule instanceRule = wireMockRule;
+
+	//	@BeforeClass
+	public void ProxyToRealServer() {
+		stubFor(proxyAllTo("https://").atPriority(1));
+		instanceRule.snapshotRecord();
+	}
+
 	protected String getSaltString() {
 		String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 		StringBuilder salt = new StringBuilder();

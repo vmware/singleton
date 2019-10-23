@@ -1,0 +1,27 @@
+{
+  "id" : "4132ca2e-80fd-3140-ad51-00e30358e317",
+  "request" : {
+    "url" : "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0/locales/zh-CN/components/sourcecollection1/keys",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "equalToJson" : "[{\"source\":\"source1\",\"key\":\"key1\",\"commentForSource\":\"It's a comment1\"}, {\"source\":\"source2\",\"key\":\"key2\",\"commentForSource\":\"It's a comment2\"}, {\"source\":\"Description1\",\"key\":\"global_text_description1\",\"commentForSource\":\"It's a comment3\"}]",
+      "ignoreArrayOrder" : true,
+      "ignoreExtraElements" : true
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-i18n-api-v2-translation-products-JavaclientTest-versions-1.0.0-locales-zh-CN-components-sourcecollection1-keys-G3689.json",
+    "headers" : {
+      "Set-Cookie" : "JSESSIONID=95A752FD061F17CD4958D06B0CD1D219; Path=/; Secure; HttpOnly",
+      "Access-Control-Allow-Origin" : "",
+      "Access-Control-Allow-Methods" : "GET, POST, PUT, DELETE, OPTIONS",
+      "Access-Control-Allow-Headers" : "csp-auth-token, Content-Type, x-xmp-ui",
+      "Access-Control-Allow-Credentials" : "${vipservice.cross.domain.allowCredentials}",
+      "Access-Control-Max-Age" : "3600",
+      "Content-Type" : "application/json;charset=UTF-8",
+      "Date" : "Wed, 23 Oct 2019 08:06:33 GMT"
+    }
+  },
+  "uuid" : "4132ca2e-80fd-3140-ad51-00e30358e317"
+}
