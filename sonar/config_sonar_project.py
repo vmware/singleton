@@ -10,16 +10,36 @@ def createProject(project_name, project_key, org_key, auth):
     print('Create project on SonarCloud ......')
     data = {'name':project_name, 'project':project_key, 'organization':org_key, 'visibility':'public'}
     res = requests.post('https://sonarcloud.io/api/projects/create', data=data, auth=auth)
-    print(res)
     print(res.json())
+
+def getAllQualityGates(org_key, auth):
+    print('Get quality gate id by project on SonarCloud ......')
+    params={'organization':org_key}
+    response = requests.get('https://sonarcloud.io/api/qualitygates/list', params=params, auth=auth)
+    res_in_json = response.json()
+    print(res_in_json)
+    return res_in_json
+
+def getQualityGateByProject(project_key, org_key, auth):
+    print('Get quality gate id by project on SonarCloud ......')
+    data={'project':project_key, 'organization':org_key}
+    response = requests.post('https://sonarcloud.io/api/qualitygates/get_by_project', data=data, auth=auth)
+    res_in_json = response.json()
+    print(res_in_json)
+    return res_in_json
 
 def createQualityGate(gate_name, org_key, auth):
     print('Create quality gate on SonarCloud ......')
     data={'name':gate_name, 'organization':org_key}
     response = requests.post('https://sonarcloud.io/api/qualitygates/create', data=data, auth=auth)
-    gate_create_res = response.json()
-    print(gate_create_res)
-    return gate_create_res
+    res_in_json = response.json()
+    print(res_in_json)
+    return res_in_json
+
+def destroyQualityGate(gate_id, org_key, auth):
+    print('Destroy quality gate on SonarCloud ......')
+    data={'id':gate_id, 'organization':org_key}
+    requests.post('https://sonarcloud.io/api/qualitygates/destroy', data=data, auth=auth)
 
 def createQualityGateConditions(id, conditions_file, org_key, auth):
     print('Create conditions for quality gate')
@@ -47,13 +67,14 @@ if __name__ == "__main__":
     args = parser.parse_args()
     auth = HTTPBasicAuth(args.SonarToken, '')
 
+    all_quality_gates = getAllQualityGates(args.OrgKey, auth)
+    for gate in all_quality_gates['qualitygates']:
+        if gate['name'] == args.QualityGateName:
+            destroyQualityGate(gate['id'], args.OrgKey, auth)
+            break
     createProject(args.ProjectName, args.ProjectKey, args.OrgKey, auth)
-    quality_gate_json = createQualityGate(args.QualityGateName, args.OrgKey, auth)
-    try:
-        quality_gate_id = quality_gate_json['id']
-    except KeyError:
-        print('Quality gate exists')
-    else:
-        print('Quality gate id="%s"' % quality_gate_id)
-        createQualityGateConditions(quality_gate_id, args.QualityGateConditions, args.OrgKey, auth)
-        associateQualityGate(quality_gate_id, args.ProjectKey, args.OrgKey, auth)
+    quality_gate = createQualityGate(args.QualityGateName, args.OrgKey, auth)
+    quality_gate_id = quality_gate['id']
+    print('Quality gate id="%s"' % quality_gate_id)
+    createQualityGateConditions(quality_gate_id, args.QualityGateConditions, args.OrgKey, auth)
+    associateQualityGate(quality_gate_id, args.ProjectKey, args.OrgKey, auth)
