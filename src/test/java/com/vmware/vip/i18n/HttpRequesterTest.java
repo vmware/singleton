@@ -23,7 +23,7 @@ import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 public class HttpRequesterTest extends BaseTestClass {
 
 	@Rule
-	public WireMockRule httpRequesterRule = new WireMockRule(8089);
+	public WireMockRule wireMockRule = new WireMockRule(8089);
 
 	private static String mockServer = "http://localhost:8089";
 	

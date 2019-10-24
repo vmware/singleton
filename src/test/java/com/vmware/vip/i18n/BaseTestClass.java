@@ -46,11 +46,11 @@ public class BaseTestClass {
 	};
 
 	@ClassRule
-	public static WireMockClassRule wireMockRule = new WireMockClassRule(
+	public static WireMockClassRule wireMockClassRule = new WireMockClassRule(
 			WireMockConfiguration.options().port(8099).usingFilesUnderClasspath("mockserver"));
 
 	@Rule
-	public WireMockClassRule instanceRule = wireMockRule;
+	public WireMockClassRule instanceRule = wireMockClassRule;
 
 	//	@BeforeClass
 	public void ProxyToRealServer() {
