@@ -16,9 +16,9 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.json.simple.JSONObject;
 
 import com.vmware.vipclient.i18n.messages.service.PatternService;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
@@ -29,7 +29,8 @@ import com.vmware.vipclient.i18n.util.LocaleUtility;
  */
 public class VIPPatternFilter implements Filter {
 	Logger logger = LoggerFactory.getLogger(VIPPatternFilter.class);
-	public void doFilter(ServletRequest request, ServletResponse response,
+	@Override
+	public void doFilter(final ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		String locale = this.getParamFromQuery(request, "locale");
 		Map<String, String> ctmap = null;
@@ -47,7 +48,7 @@ public class VIPPatternFilter implements Filter {
 
 	private String getParamFromQuery(ServletRequest request, String paramName) {
 		HttpServletRequest res = (HttpServletRequest) request;
-		String queryStr = res.getQueryString();
+		final String queryStr = res.getQueryString();
 		String localepath = queryStr.substring(queryStr.indexOf(paramName)
 				+ paramName.length() + 1, queryStr.length());
 		return localepath.substring(0,
@@ -55,10 +56,12 @@ public class VIPPatternFilter implements Filter {
 						: localepath.length());
 	}
 
+	@Override
 	public void destroy() {
 		// Do Nothing
 	}
 
+	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		// Do Nothing
 	}

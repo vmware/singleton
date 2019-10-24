@@ -4,9 +4,9 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.json.simple.JSONObject;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
@@ -36,8 +36,7 @@ public class PatternService {
 				patterns = getPatternsFromBundle(ConstantsKeys.EN);
 			}
 			if (null != patterns) {
-				logger.info("Got the pattern  with   locale [" + locale
-						+ "].\n");// [datetime] and
+				logger.info("Got the pattern  with   locale [{}].\n", locale);// [datetime] and
 				logger.info("Cache pattern!\n\n");
 				new PatternCacheService().addPatterns(locale, patterns);
 			}
@@ -79,10 +78,8 @@ public class PatternService {
 		}
 		return patterns;
 	}
-	
-	
-	
-	
+
+
 	private JSONObject getPatternsFromBundle(String language, String region) {
 		JSONObject patterns = null;
 		if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
@@ -90,7 +87,7 @@ public class PatternService {
 		} else {
 			patterns = new LocalPatternOpt().getPatternsByLocale(ConstantsKeys.EN);
 		}
-		
+
 		return patterns;
 	}
 }

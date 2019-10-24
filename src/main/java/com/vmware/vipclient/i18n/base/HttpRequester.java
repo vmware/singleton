@@ -33,7 +33,6 @@ import javax.net.ssl.X509TrustManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 /**
@@ -252,19 +251,18 @@ public class HttpRequester {
 		if (sslSocketFactory == null) {
 			try {
 				TrustManager[] tm = new TrustManager[] { new X509TrustManager() {
-					public void checkClientTrusted(X509Certificate[] cert, String authType)
-							throws java.security.cert.CertificateException {
-						// throw new CertificateException("no client check");
+					@Override
+					public void checkClientTrusted(X509Certificate[] cert, String authType) {
 					}
 
-					public void checkServerTrusted(X509Certificate[] cert, String authType)
-							throws java.security.cert.CertificateException {
-						// throw new CertificateException("no client trust check");
+					@Override
+					public void checkServerTrusted(X509Certificate[] cert, String authType) {
 					}
 
+					@Override
 					public X509Certificate[] getAcceptedIssuers() {
 						logger.info("no client accept check");
-						return null;
+						return new X509Certificate[] {};
 					}
 				} };
 				String ssl = "SSL";
