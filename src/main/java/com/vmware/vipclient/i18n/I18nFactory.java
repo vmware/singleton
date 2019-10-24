@@ -7,6 +7,7 @@ package com.vmware.vipclient.i18n;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -102,6 +103,10 @@ public class I18nFactory {
 				logger.error(e.getMessage());
 			}
 		}
+
+		if(i instanceof TranslationMessage) {
+			((TranslationMessage) i).setCfg(cfg);
+		}
 		return i;
 	}
 
@@ -164,9 +169,5 @@ public class I18nFactory {
 
 	public void setCfg(VIPCfg cfg) {
 		this.cfg = cfg;
-	}
-
-	public void registerVIPCfg(VIPCfg cfg) {
-		mapCfg.put(cfg.getProductName(), cfg);
 	}
 }
