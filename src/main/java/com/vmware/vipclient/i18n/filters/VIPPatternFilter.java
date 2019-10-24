@@ -48,7 +48,7 @@ public class VIPPatternFilter implements Filter {
 
 	private String getParamFromQuery(ServletRequest request, String paramName) {
 		HttpServletRequest res = (HttpServletRequest) request;
-		final String queryStr = res.getQueryString();
+		String queryStr = res.getQueryString();
 		String localepath = queryStr.substring(queryStr.indexOf(paramName)
 				+ paramName.length() + 1, queryStr.length());
 		return localepath.substring(0,

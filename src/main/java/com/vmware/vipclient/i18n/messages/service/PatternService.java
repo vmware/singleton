@@ -44,25 +44,25 @@ public class PatternService {
 		return patterns;
 	}
 
-	
-	 public JSONObject getPatterns(String language, String region) {
-			JSONObject patterns = null;
-			logger.debug("Look for pattern from cache!");
-			String key = language+"_"+region;
-			patterns = new PatternCacheService().lookForPatternsFromCache(key);// key
-			if (patterns == null) {
-				patterns = getPatternsFromBundle(language, region);
-				if (null != patterns) {
-					logger.info("Got the pattern  with   language [" + language
-							+ "] region{"+region+"].\n");// [datetime] and
-					logger.info("Cache pattern!\n\n");
-					new PatternCacheService().addPatterns(key, patterns);
-				}
+
+	public JSONObject getPatterns(String language, String region) {
+		JSONObject patterns = null;
+		logger.debug("Look for pattern from cache!");
+		String key = language+"_"+region;
+		patterns = new PatternCacheService().lookForPatternsFromCache(key);// key
+		if (patterns == null) {
+			patterns = getPatternsFromBundle(language, region);
+			if (null != patterns) {
+				logger.info("Got the pattern  with   language [{}] region [{}].\n", language, region);// [datetime]
+				// and
+				logger.info("Cache pattern!\n\n");
+				new PatternCacheService().addPatterns(key, patterns);
 			}
-			return patterns;
+		}
+		return patterns;
 	}
-	
-	
+
+
 	private JSONObject getPatternsFromBundle(String locale) {
 		JSONObject patterns = null;
 		if (LocaleUtility.isDefaultLocale(locale)) {
