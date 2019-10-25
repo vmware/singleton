@@ -28,9 +28,9 @@ jobs:
         - cat $TRAVIS_BUILD_DIR/build/reports/tests/test/index.html
     - stage: code scan
       script:
-        - cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG:java-client:$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG:java-client:$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=java-client-gate -QualityGateConditions="./quality_gates/service_quality_gate.json" -SonarToken=$SONAR_TOKEN
-        - cd $TRAVIS_BUILD_DIR && ./gradlew sonarqube --stacktrace -Dsonar.organization=$SONAR_ORG -Dsonar.projectKey=$SONAR_ORG:java-client:$TRAVIS_BRANCH -Dsonar.projectName=$SONAR_ORG:java-client:$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.host.url=https://sonarcloud.io --info
-        - cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG:java-client:$TRAVIS_BRANCH -HostName=https://sonarcloud.io
+        - cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG-java-client-$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG-java-client-$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=java-client-gate -QualityGateConditions="./quality_gates/java-client.json" -SonarToken=$SONAR_TOKEN
+        - cd $TRAVIS_BUILD_DIR && ./gradlew sonarqube --stacktrace -Dsonar.organization=$SONAR_ORG -Dsonar.projectKey=$SONAR_ORG-java-client-$TRAVIS_BRANCH -Dsonar.projectName=$SONAR_ORG-java-client-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.host.url=https://sonarcloud.io --info
+        - cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-java-client-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
     - stage: smoke test
       script:
         - cd $TRAVIS_BUILD_DIR && ./gradlew clean build -x test && cp ./build/libs/*.jar $TRAVIS_BUILD_DIR/devops/autotest/client/java/lib/
