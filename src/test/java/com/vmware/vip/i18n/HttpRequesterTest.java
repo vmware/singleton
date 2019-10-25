@@ -7,6 +7,7 @@ package com.vmware.vip.i18n;
 import java.util.HashMap;
 import java.util.Locale;
 
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -32,7 +33,11 @@ public class HttpRequesterTest extends BaseTestClass {
 	@Before
 	public void init() {
 		VIPCfg cfg = VIPCfg.getInstance();
-		cfg.initialize("vipconfig");
+		try {
+			cfg.initialize("vipconfig");
+		} catch (VIPClientInitException e) {
+			e.printStackTrace();
+		}
 		cfg.setVipServer(mockServer);
 		cfg.setInitializeCache(false);
 		cfg.initializeVIPService();

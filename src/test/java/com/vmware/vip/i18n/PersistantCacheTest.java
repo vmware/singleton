@@ -7,6 +7,7 @@ package com.vmware.vip.i18n;
 import java.util.HashMap;
 import java.util.UUID;
 
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.junit.Before;
 
 import com.vmware.vipclient.i18n.VIPCfg;
@@ -26,7 +27,11 @@ public class PersistantCacheTest extends BaseTestClass {
 	@Before
 	public void init() {
 		VIPCfg gc = VIPCfg.getInstance();
-		gc.initialize("vipconfig");
+		try {
+			gc.initialize("vipconfig");
+		} catch (VIPClientInitException e) {
+			e.printStackTrace();
+		}
 		gc.initializeVIPService();
 		Cache c = gc.createTranslationCache(MessageCache2.class);
 		c.setExpiredTime(3600000);

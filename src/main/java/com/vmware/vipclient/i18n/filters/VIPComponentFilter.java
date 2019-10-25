@@ -17,6 +17,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -103,7 +104,11 @@ public class VIPComponentFilter implements Filter {
 	private VIPCfg gc = VIPCfg.getInstance();
 	public void init(FilterConfig filterConfig) throws ServletException {
 		if(gc.getVipService() == null) {
-			gc.initialize("vipconfig");
+			try {
+				gc.initialize("vipconfig");
+			} catch (VIPClientInitException e) {
+				e.printStackTrace();
+			}
 			gc.initializeVIPService();
 		}
 		gc.createTranslationCache(MessageCache.class);

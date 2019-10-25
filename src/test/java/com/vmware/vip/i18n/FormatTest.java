@@ -4,6 +4,7 @@
  */
 package com.vmware.vip.i18n;
 
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,8 +19,12 @@ public class FormatTest extends BaseTestClass {
 	@Before
 	public void init() {
         VIPCfg gc = VIPCfg.getInstance();
-        gc.initialize("vipconfig");
-        gc.initializeVIPService();
+		try {
+			gc.initialize("vipconfig");
+		} catch (VIPClientInitException e) {
+			e.printStackTrace();
+		}
+		gc.initializeVIPService();
 	}
 
 	@Test

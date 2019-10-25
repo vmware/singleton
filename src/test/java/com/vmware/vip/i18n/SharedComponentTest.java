@@ -9,6 +9,7 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,12 +19,17 @@ import java.util.Locale;
 public class SharedComponentTest extends BaseTestClass {
     TranslationMessage mainTranslation;
     TranslationMessage subTranslation;
-
+    String mainProductName = "JavaclientTest";
+    String subProductName = "JavaclientTest1";
 
     @Before
     public void init() {
         VIPCfg mainCfg = VIPCfg.getInstance();
-        mainCfg.initialize("vipconfig");
+        try {
+            mainCfg.initialize("vipconfig");
+        } catch (VIPClientInitException e) {
+            e.printStackTrace();
+        }
         mainCfg.initializeVIPService();
         if (mainCfg.getCacheManager() != null) mainCfg.getCacheManager().clearCache();
         mainCfg.createTranslationCache(MessageCache.class);
@@ -31,9 +37,12 @@ public class SharedComponentTest extends BaseTestClass {
         I18nFactory i18n = I18nFactory.getInstance(mainCfg);
         mainTranslation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
 
-        VIPCfg subCfg = VIPCfg.getSubInstance("sub-key");
-        subCfg.initialize("vipconfig4sharedcomponent");
-        subCfg.initializeVIPService();
+        VIPCfg subCfg = VIPCfg.getSubInstance(subProductName);
+        try {
+            subCfg.initialize("vipconfig-child");
+        } catch (VIPClientInitException e) {
+            e.printStackTrace();
+        }
         subTranslation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class, subCfg);
     }
 
@@ -52,8 +61,8 @@ public class SharedComponentTest extends BaseTestClass {
         String source2 = "VM";
         String trans2 = subTranslation.getString(zhLocale2, comp2, key2, source2, "");
         logger.debug("pseudoTrans1: " + trans2);
-        Assert.assertTrue(VIPCfg.getInstance().getProductName().equals("JavaclientTest"));
-        Assert.assertTrue(subTranslation.getCfg().getProductName().equals("JavaclientTest1"));
+        Assert.assertTrue(VIPCfg.getInstance().getProductName().equals(mainProductName));
+        Assert.assertTrue(subTranslation.getCfg().getProductName().equals(subProductName));
 
     }
 }

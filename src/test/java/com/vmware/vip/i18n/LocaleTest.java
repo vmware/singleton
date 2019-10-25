@@ -13,6 +13,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.json.simple.parser.ParseException;
 import org.junit.Assert;
 import org.junit.Before;
@@ -30,8 +31,12 @@ public class LocaleTest extends BaseTestClass {
 	@Before
 	public void init() {
         VIPCfg gc = VIPCfg.getInstance();
-        gc.initialize("vipconfig");
-        gc.initializeVIPService();
+		try {
+			gc.initialize("vipconfig");
+		} catch (VIPClientInitException e) {
+			e.printStackTrace();
+		}
+		gc.initializeVIPService();
         gc.createFormattingCache(MessageCache.class);
         I18nFactory i18n = I18nFactory.getInstance(gc);
         localeI18n = (LocaleMessage)i18n.getMessageInstance(LocaleMessage.class);
