@@ -21,11 +21,11 @@ public class NumberFormatTest extends TestBase {
 	public NumberFormatting numberFormatting = null;
 	public Cache formatCache = null;
 	@BeforeClass
-	public void preparing() throws MalformedURLException {
+	public void preparing() throws Exception {
 		initVIPServer();
 	}
 
-	public void initVIPServer() throws MalformedURLException {
+	public void initVIPServer() throws Exception {
 		VIPCfg vipCfg = VIPCfg.getInstance();
 		vipCfg.initialize(Utils.removeFileExtension(Constants.VIP_CONFIG_FILE_NAME));
 		vipCfg.initializeVIPService();

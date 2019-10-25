@@ -27,7 +27,7 @@ public class InitTest extends TestBase{
 		testConfig(oppositeConfig);
 	}
 
-	private void testConfig(String vipConfigPath) throws MalformedURLException {
+	private void testConfig(String vipConfigPath) throws Exception {
 		VIPCfg vipCfg = VIPCfg.getInstance();
 		vipCfg.initialize(Utils.removeFileExtension(Utils.getFileName(vipConfigPath)));
         vipCfg.initializeVIPService();
@@ -159,7 +159,7 @@ public class InitTest extends TestBase{
 	@Test(enabled=true, priority=0)
 	@TestCase(id = "002", name = "Init_Property_From_Parameter", priority=Priority.P0,
 	description = "Initialize VIP property from parameteres, test both true and false value for boolean type items.")
-	public void initParameteres() throws IOException {
+	public void initParameteres() throws Exception {
 		//initialize parameters
 		String testServer = "localhost:8090";
 		String testProduct = "Testing";
@@ -236,7 +236,7 @@ public class InitTest extends TestBase{
 	@Test(enabled=false)
 	@TestCase(id = "003", name = "Override_External_Property",
 	description = "Override VIP property through external file.")
-	public void onverrideExternalProperty() throws IOException {
+	public void onverrideExternalProperty() throws Exception {
 		String overrideFilePath = String.format("%s/vipconfigoverride.properties", Constants.TEST_DATA_FOLDER);
 		VIPCfg vipCfg = VIPCfg.getInstance();
 		vipCfg.initialize(Utils.removeFileExtension(Constants.VIP_CONFIG_FILE_NAME));
