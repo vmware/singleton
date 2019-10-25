@@ -122,7 +122,7 @@ public class CurrencyTest extends TestBase {
 	@Test(enabled=true, priority=1, groups= {TestGroups.NEGATIVE, TestGroups.DYNAMIC_PROPERTY})
 	@TestCase(id = "008", name = "CurrencyTest_InvalidPatternScope", priority = Priority.P1,
 	description = "If there is no 'currencies' scope in VIP configuration properties file, exception will be thrown.")
-	public void testInvalidPatternScope() throws MalformedURLException {
+	public void testInvalidPatternScope() throws Exception {
 		formatCache.clear();
 		VIPCfg vipCfg = VIPCfg.getInstance();
 		String originalI18nScope = vipCfg.getI18nScope();
