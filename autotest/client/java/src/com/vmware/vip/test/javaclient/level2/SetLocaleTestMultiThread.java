@@ -40,7 +40,7 @@ public class SetLocaleTestMultiThread extends TestBase {
 		log.testCaseEnd();
 	}
 
-	public void initVIPServer() throws MalformedURLException {
+	public void initVIPServer() throws Exception {
 		VIPCfg vipCfg = VIPCfg.getInstance();
 		vipCfg.initialize(Utils.removeFileExtension(Constants.VIP_CONFIG_FILE_NAME));
 		vipCfg.initializeVIPService();
