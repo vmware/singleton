@@ -4,17 +4,20 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.vmware.vipclient.i18n.common.ConstantsMsg;
+import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentsBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
@@ -72,13 +75,17 @@ public class ComponentsService {
 		}
 
 		// Query from server.
-		@SuppressWarnings("unchecked")
-		final ArrayList<JSONObject> bundles = new ComponentsBasedOpt(componentsToQuery, localesToQuery)
-		.getComponentsMessages();
+		ComponentsBasedOpt opt = new ComponentsBasedOpt(componentsToQuery, localesToQuery);
+		final JSONObject response = opt.queryFromServer();
+		JSONArray bundles = (JSONArray) opt.getDataPart(response).get(ConstantsKeys.BUNDLES);
+		JSONArray localesFromServer = (JSONArray) opt.getDataPart(response).get(ConstantsKeys.LOCALES);
+		Map<String, String> localeMap = makeLocaleMap(locales, localesFromServer);
 
 		// combine data from server into the map to return.
-		for (final JSONObject bundle : bundles) {
-			String locale = (String) bundle.get(ConstantsKeys.LOCALE);
+		Iterator iter = bundles.iterator();
+		while (iter.hasNext()) {
+			final JSONObject bundle = (JSONObject) iter.next();
+			String locale = localeMap.get(bundle.get(ConstantsKeys.LOCALE));
 			String comp = (String) bundle.get(ConstantsKeys.COMPONENT);
 			JSONObject messages = (JSONObject) bundle.get(ConstantsKeys.MESSAGES);
 
@@ -92,5 +99,20 @@ public class ComponentsService {
 		}
 
 		return retMap;
+	}
+
+	private Map<String, String> makeLocaleMap(List<String> originalLocales, List<String> localesFromServer) {
+		if(originalLocales.size() != localesFromServer.size()) {
+			throw new VIPJavaClientException(ConstantsMsg.SERVER_CONTENT_ERROR);
+		}
+
+		HashMap<String, String> map = new HashMap<>();
+		Iterator<String> iterOriginal = originalLocales.iterator();
+		Iterator<String> iterServer = localesFromServer.iterator();
+		while (iterOriginal.hasNext()) {
+			map.put(iterServer.next(), iterOriginal.next());
+		}
+
+		return map;
 	}
 }

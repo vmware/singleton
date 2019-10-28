@@ -4,9 +4,11 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
+import java.util.HashMap;
 import java.util.Set;
 
-import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,22 +35,30 @@ public class ComponentsBasedOpt extends BaseOpt implements Opt {
 		this.locales = locales;
 	}
 
-	public JSONArray getComponentsMessages() {
-		String url = V2URL.getComponentsTranslationURL(components, locales,
-				VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
+	public JSONObject queryFromServer() {
+		String url = V2URL.getComponentsTranslationURL(VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
 
-		String responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(url, ConstantsKeys.GET, null);
+		HashMap<String, String> requestData = new HashMap<>();
+		requestData.put(ConstantsKeys.LOCALES, String.join(",", locales));
+		requestData.put(ConstantsKeys.COMPONENTS, String.join(",", components));
+		responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(url, ConstantsKeys.GET,
+				requestData);
 		if (StringUtil.isEmpty(responseStr)) {
 			throw new VIPJavaClientException(ConstantsMsg.SERVER_RETURN_EMPTY);
 		}
 
-		int statusCode = Integer.parseInt(getStatusFromResponse(responseStr, ConstantsKeys.CODE).toString());
-		if (statusCode < 200 || statusCode > 299) {
-			throw new VIPJavaClientException(
-					String.format(ConstantsMsg.SERVER_RETURN_ERROR, statusCode,
-							getStatusFromResponse(responseStr, ConstantsKeys.MESSAGE)));
+		try {
+			parseServerResponse();
+		} catch (ParseException e) {
+			throw new VIPJavaClientException(ConstantsMsg.SERVER_CONTENT_ERROR, e);
 		}
 
-		return (JSONArray) getMessagesFromResponse(responseStr, ConstantsKeys.BUNDLES);
+		int statusCode = getResponseCode(responseJsonObj);
+		if (!isSuccess(statusCode)) {
+			throw new VIPJavaClientException(
+					String.format(ConstantsMsg.SERVER_RETURN_ERROR, statusCode, getResponseMessage(responseJsonObj)));
+		}
+
+		return responseJsonObj;
 	}
 }

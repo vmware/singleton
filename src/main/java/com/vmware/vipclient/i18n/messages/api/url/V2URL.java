@@ -6,7 +6,6 @@ package com.vmware.vipclient.i18n.messages.api.url;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -95,12 +94,10 @@ public class V2URL {
 	 *            The root path of the URL.
 	 * @return
 	 */
-	public static String getComponentsTranslationURL(Set<String> components, Set<String> locales, String baseURL) {
-		final String gurl = APIV2.COMPONENTS_TRANSLATION_GET
+	public static String getComponentsTranslationURL(String baseURL) {
+		final String gurl = APIV2.PRODUCT_TRANSLATION_GET
 				.replace("{" + APIParamName.PRODUCT_NAME + "}", VIPCfg.getInstance().getProductName())
-				.replace("{" + APIParamName.VERSION2 + "}", VIPCfg.getInstance().getVersion())
-				.replace("{" + APIParamName.LOCALES + "}", String.join(",", locales))
-				.replace("{" + APIParamName.COMPONENTS + "}", String.join(",", components));
+				.replace("{" + APIParamName.VERSION2 + "}", VIPCfg.getInstance().getVersion());
 		return baseURL+gurl;
 	}
 
