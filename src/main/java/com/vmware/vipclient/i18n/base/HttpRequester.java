@@ -262,7 +262,7 @@ public class HttpRequester {
 					@Override
 					public X509Certificate[] getAcceptedIssuers() {
 						logger.info("no client accept check");
-						return new X509Certificate[] {};
+						return null;
 					}
 				} };
 				String ssl = "SSL";
