@@ -50,7 +50,7 @@ public class MessageSupport extends BodyTagSupport {
 		try {
 			gc.initialize("vipconfig");
 		} catch (VIPClientInitException e) {
-			e.printStackTrace();
+			
 		}
 		gc.initializeVIPService();
 		gc.createTranslationCache(MessageCache.class);

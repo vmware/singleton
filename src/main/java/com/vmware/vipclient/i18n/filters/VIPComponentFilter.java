@@ -107,7 +107,7 @@ public class VIPComponentFilter implements Filter {
 			try {
 				gc.initialize("vipconfig");
 			} catch (VIPClientInitException e) {
-				e.printStackTrace();
+				logger.error(e.getMessage());
 			}
 			gc.initializeVIPService();
 		}
