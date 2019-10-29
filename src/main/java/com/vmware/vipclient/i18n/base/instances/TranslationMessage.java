@@ -238,10 +238,10 @@ public class TranslationMessage implements Message {
 	 */
 	public Map<String, Map<String, String>> getStrings(final Locale locale,
 			final List<String> components) {
-		logger.info("Start to execute TranslationMessage.getStrings of multiple components");
+		logger.info("Start to execute TranslationMessage.getStrings of multiple components of single locale.");
 
 		if (null == locale || null == components || components.isEmpty()) {
-			logger.error(ConstantsMsg.WRONG_PARAMETER + "locales: {0}, components: {1}.", locale, components);
+			logger.error(ConstantsMsg.WRONG_PARAMETER + "locales: {}, components: {}.", locale, components);
 			return new HashMap();
 		}
 
@@ -265,9 +265,9 @@ public class TranslationMessage implements Message {
 	 */
 	public Map<Locale, Map<String, Map<String, String>>> getStrings(final List<Locale> locales,
 			final List<String> components) {
-		logger.info("Start to execute TranslationMessage.getStrings of multiple components of multiple locales");
+		logger.info("Start to execute TranslationMessage.getStrings of multiple components of multiple locales.");
 		if (null == locales || locales.isEmpty() || null == components || components.isEmpty()) {
-			logger.error(ConstantsMsg.WRONG_PARAMETER + "locales: {0}, components: {1}.", locales, components);
+			logger.error(ConstantsMsg.WRONG_PARAMETER + "locales: {}, components: {}.", locales, components);
 			return new HashMap();
 		}
 

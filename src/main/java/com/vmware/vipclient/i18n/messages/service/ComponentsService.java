@@ -82,7 +82,7 @@ public class ComponentsService {
 		Map<String, String> localeMap = makeLocaleMap(locales, localesFromServer);
 
 		// combine data from server into the map to return.
-		Iterator iter = bundles.iterator();
+		Iterator<?> iter = bundles.iterator();
 		while (iter.hasNext()) {
 			final JSONObject bundle = (JSONObject) iter.next();
 			String locale = localeMap.get(bundle.get(ConstantsKeys.LOCALE));
