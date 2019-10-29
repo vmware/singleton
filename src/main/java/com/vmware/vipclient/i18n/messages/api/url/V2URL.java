@@ -95,10 +95,11 @@ public class V2URL {
 	 * @return
 	 */
 	public static String getComponentsTranslationURL(String baseURL) {
-		final String gurl = APIV2.PRODUCT_TRANSLATION_GET
+		final String url_path = APIV2.PRODUCT_TRANSLATION_GET
 				.replace("{" + APIParamName.PRODUCT_NAME + "}", VIPCfg.getInstance().getProductName())
 				.replace("{" + APIParamName.VERSION2 + "}", VIPCfg.getInstance().getVersion());
-		return baseURL+gurl;
+		StringBuilder url = new StringBuilder(baseURL).append(url_path);
+		return URLUtils.appendParamToURL(url, ConstantsKeys.PSEUDO, Boolean.toString(VIPCfg.getInstance().isPseudo()));
 	}
 
 	/**
