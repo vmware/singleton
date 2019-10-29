@@ -31,7 +31,7 @@ public class CacheManagerTest extends BaseTestClass {
 		try {
 			gc.initialize("vipconfig");
 		} catch (VIPClientInitException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 		gc.initializeVIPService();
 		Cache c = gc.createTranslationCache(MessageCache.class);

@@ -30,7 +30,7 @@ public class MessageCache2Test1 extends BaseTestClass {
 		try {
 			gc.initialize("vipconfig");
 		} catch (VIPClientInitException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 		gc.initializeVIPService();
 		if(gc.getCacheManager() != null) gc.getCacheManager().clearCache();

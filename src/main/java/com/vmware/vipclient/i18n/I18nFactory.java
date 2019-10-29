@@ -33,8 +33,6 @@ public class I18nFactory {
 	// store Formatting instance
 	private Map<String, Formatting> formattings = new HashMap<String, Formatting>();
 
-	public static  Map<String, VIPCfg> mapCfg = new HashMap<String, VIPCfg>();
-
 	/**
 	 * create I18nFactory
 	 * 

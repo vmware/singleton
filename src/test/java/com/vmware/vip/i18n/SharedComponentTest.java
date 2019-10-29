@@ -6,6 +6,7 @@ package com.vmware.vip.i18n;
 
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
@@ -15,6 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Locale;
+import java.util.Map;
 
 public class SharedComponentTest extends BaseTestClass {
     TranslationMessage mainTranslation;
@@ -28,7 +30,7 @@ public class SharedComponentTest extends BaseTestClass {
         try {
             mainCfg.initialize("vipconfig");
         } catch (VIPClientInitException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         mainCfg.initializeVIPService();
         if (mainCfg.getCacheManager() != null) mainCfg.getCacheManager().clearCache();
@@ -41,7 +43,7 @@ public class SharedComponentTest extends BaseTestClass {
         try {
             subCfg.initialize("vipconfig-child");
         } catch (VIPClientInitException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         subTranslation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class, subCfg);
     }
@@ -64,5 +66,11 @@ public class SharedComponentTest extends BaseTestClass {
         Assert.assertTrue(VIPCfg.getInstance().getProductName().equals(mainProductName));
         Assert.assertTrue(subTranslation.getCfg().getProductName().equals(subProductName));
 
+        VIPCfg gc = VIPCfg.getInstance();
+        Cache c = gc.getCacheManager().getCache(VIPCfg.CACHE_L3);
+        Map<String, Map<String, String>> m =  ((MessageCache)c).getCachedTranslationMap();
+        Assert.assertTrue(m.size()==4);
+        Assert.assertTrue(m.containsKey("JavaclientTest_1.0.0_JAVA_false_#zh"));
+        Assert.assertTrue(m.containsKey("JavaclientTest1_2.0.0_JSP_false_#de"));
     }
 }

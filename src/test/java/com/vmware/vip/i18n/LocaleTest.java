@@ -34,7 +34,7 @@ public class LocaleTest extends BaseTestClass {
 		try {
 			gc.initialize("vipconfig");
 		} catch (VIPClientInitException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 		gc.initializeVIPService();
         gc.createFormattingCache(MessageCache.class);
