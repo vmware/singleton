@@ -5,11 +5,10 @@
 package com.vmware.vipclient.i18n.messages.service;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -40,8 +39,8 @@ public class ComponentsService {
 	public Map<String, Map<String, Map<String, String>>> getTranslation() {
 		final Map<String, Map<String, Map<String, String>>> retMap = new HashMap<>();
 
-		final Set<String> componentsToQuery = new HashSet<>();
-		final Set<String> localesToQuery = new HashSet<>();
+		final LinkedHashSet<String> componentsToQuery = new LinkedHashSet<>();
+		final LinkedHashSet<String> localesToQuery = new LinkedHashSet<>();
 
 		final MessagesDTO dto = new MessagesDTO();
 
