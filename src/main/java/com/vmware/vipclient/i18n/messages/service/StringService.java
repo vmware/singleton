@@ -5,14 +5,14 @@
 package com.vmware.vipclient.i18n.messages.service;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
@@ -52,10 +52,10 @@ public class StringService {
 			ComponentBasedOpt dao = new ComponentBasedOpt(dto);
 			r = dao.postString();
 		}
-		if(r != "") {
+		if (null != r && !r.equals("")) {
 			dto.setLocale(ConstantsKeys.LATEST);
 			CacheService c = new CacheService(dto);
-			Map<String, String> dataMap = new HashMap<String, String>();
+			Map<String, String> dataMap = new HashMap<>();
 			dataMap.put(dto.getKey(), dto.getSource());
 			c.updateCacheOfComponent(dataMap);
 		}
@@ -71,7 +71,7 @@ public class StringService {
 		if(r) {
 			dto.setLocale(ConstantsKeys.LATEST);
 			CacheService c = new CacheService(dto);
-			Map<String, String> dataMap = new HashMap<String, String>();
+			Map<String, String> dataMap = new HashMap<>();
 			for(JSONObject jo: sources) {
 				dataMap.put((String)jo.get(ConstantsKeys.KEY), jo.get(ConstantsKeys.SOURCE) == null ? "" : (String)jo.get(ConstantsKeys.SOURCE));
 			}
@@ -79,7 +79,7 @@ public class StringService {
 		}
 		return r;
 	}
-	
+
 	public boolean isStringAvailable() {
 		boolean r = false;
 		String status = "";
