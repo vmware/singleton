@@ -25,4 +25,17 @@ public interface IMultComponentService {
      *         The object of TranslationDTO, containing translation.
      */
     public TranslationDTO getMultiComponentsTranslation(TranslationDTO translationDTO)  throws L3APIException;
+    
+    /**
+     * Get translation of multiple components for api v2 version.
+     * <p>
+     * If the translation is cached, get it directly;
+     * otherwise will get it from local bundle.
+     * 
+     * @param translationDTO
+     *         The object of TranslationDTO, containing the information of multiple components for translate.
+     * @return TranslationDTO
+     *         The object of TranslationDTO, containing translation.
+     */
+    public TranslationDTO getV2MultiComponentsTranslation(TranslationDTO translationDTO)  throws L3APIException;
 }
