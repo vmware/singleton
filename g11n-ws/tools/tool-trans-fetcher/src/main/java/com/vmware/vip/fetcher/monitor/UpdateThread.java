@@ -12,17 +12,17 @@ import com.vmware.vip.common.i18n.dto.MultiComponentsDTO;
  * At present, this code is not used
  */
 public class UpdateThread extends Thread {
-
-    @SuppressWarnings("static-access")
+    private static boolean flag = true;
     synchronized public void run() {
         MultiComponentsDTO syncObject = new MultiComponentsDTO();
         synchronized (syncObject) {
-            boolean flag = true;
+           
             while (flag) {
                 try {
-                    this.sleep(ConstantsJob.CHECK_TRANSLATION_TIME_HOUR);
+                    syncObject.wait(ConstantsJob.CHECK_TRANSLATION_TIME_HOUR);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                    Thread.currentThread().interrupt();
                 }
             }
         }

@@ -170,10 +170,10 @@ public class HttpRequester {
 	 * @return
 	 */
 	public static String post(String url, Map<String, String> params,Map<String, String> headers) {
-		HttpURLConnection conn = HttpRequester.createConnection(url);
 		BufferedInputStream bis = null;
 		ByteArrayOutputStream bos = null;
 		try {
+		    HttpURLConnection conn = HttpRequester.createConnection(url);
 			conn.setRequestMethod(PropertyContantKeys.HTTP_MOTHED_POST);
 			conn.setDoOutput(true);
 			conn.setDoInput(true);
@@ -230,11 +230,11 @@ public class HttpRequester {
 	public static String sendPostJson(String url, Map<String, String> params,Map<String, String> headers) {
 		
 		
-		HttpURLConnection conn = HttpRequester.createConnection(url);;
       
 		BufferedInputStream bis = null;
 		ByteArrayOutputStream bos = null;
 		try {
+		HttpURLConnection conn = HttpRequester.createConnection(url);;
 		conn.setDoInput(true);
         conn.setDoOutput(true);
         conn.setRequestMethod(PropertyContantKeys.HTTP_MOTHED_POST);
@@ -292,11 +292,11 @@ public class HttpRequester {
 public static String sendJsonWithToken(String url, String method, String jsonStr,String tokenStr) {
 		
 		
-		HttpURLConnection conn = HttpRequester.createConnection(url);;
       
 		BufferedInputStream bis = null;
 		ByteArrayOutputStream bos = null;
 		try {
+		HttpURLConnection conn = HttpRequester.createConnection(url);
 		conn.setDoInput(true);
         conn.setDoOutput(true);
         conn.setRequestMethod(method);
@@ -362,8 +362,9 @@ public static String sendJsonWithToken(String url, String method, String jsonStr
 	 * @param path
 	 *            The remote server url.
 	 * @return
+	 * @throws IOException 
 	 */
-	private static HttpURLConnection createConnection(String path) {
+	private static HttpURLConnection createConnection(String path) throws IOException {
 		HttpURLConnection result = null;
 		try {
 			URL url = new URL(path.trim());
@@ -385,6 +386,7 @@ public static String sendJsonWithToken(String url, String method, String jsonStr
 				httpsConn.setSSLSocketFactory(getSocketFactory());
 			}
 		} catch (IOException e) {
+		   throw e;
 		}
 		return result;
 	}

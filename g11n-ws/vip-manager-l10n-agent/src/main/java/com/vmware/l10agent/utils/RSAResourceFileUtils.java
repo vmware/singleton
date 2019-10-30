@@ -54,40 +54,35 @@ public class RSAResourceFileUtils {
 	
 	
 	 public static void writerFile(File path, String keyStr) throws IOException {
-		 BufferedWriter br = new BufferedWriter(new FileWriter(path));
-		 br.write(keyStr);
-		 br.flush();
-		 br.close();
+		try(BufferedWriter br = new BufferedWriter(new FileWriter(path))){
+		    br.write(keyStr);
+	        br.flush();
+		}
 		 
 	 }
 	 
 	 public static String readerFile2String(File file) throws IOException {
-		 BufferedReader br = Files.newBufferedReader(file.toPath());
-			String line=null;
-			StringBuilder sb = new StringBuilder();
-			
-			while((line = br.readLine())!= null) {
-				sb.append(line);
-			}
-			
-			br.close();
-			
+	     StringBuilder sb = new StringBuilder();
+		  try(BufferedReader br = Files.newBufferedReader(file.toPath())){
+		      String line=null;
+		      while((line = br.readLine())!= null) {
+		          sb.append(line);
+		      }
+		      
+		  }
+
 			return sb.toString();
 	 }
 	 
 	 public static Map<String,String> readerFile2Map(File file) throws IOException {
-		 BufferedReader br = Files.newBufferedReader(file.toPath());
-			String line=null;
-			Map<String, String> map = new HashMap<String, String>();
-			
-			while((line = br.readLine())!= null) {
-				String[] lines = line.split("=");
-				
-				
-				map.put(lines[0], lines[1]);
-			}
-			
-			br.close();
+	     Map<String, String> map = new HashMap<String, String>();
+		 try(BufferedReader br = Files.newBufferedReader(file.toPath())){
+		     String line=null;
+	            while((line = br.readLine())!= null) {
+	                String[] lines = line.split("=");
+	                map.put(lines[0], lines[1]);
+	            }
+		 }
 			
 			if(map.size()>0) {
 				return map;
