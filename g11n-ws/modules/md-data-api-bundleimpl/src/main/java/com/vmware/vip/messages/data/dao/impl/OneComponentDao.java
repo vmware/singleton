@@ -63,11 +63,11 @@ public class OneComponentDao implements IOneComponentDao {
 		} catch (JsonMappingException e) {
 			String errorLog = ConstantsKeys.FATA_ERROR + e.getMessage();
 			logger.error(errorLog, e);
-			throw new BundleException(ConstantsMsg.FIFE_NOT_FOUND);
+			throw new BundleException(ConstantsMsg.FIFE_NOT_FOUND, e);
 		} catch (IOException e) {
 			String errorLog = ConstantsKeys.FATA_ERROR + e.getMessage();
 			logger.error(errorLog, e);
-			throw new BundleException(ConstantsMsg.FIFE_NOT_FOUND);
+			throw new BundleException(ConstantsMsg.FIFE_NOT_FOUND, e);
 
 		}
 		
@@ -99,7 +99,7 @@ public class OneComponentDao implements IOneComponentDao {
 			}
 
 			if(result ==null) {
-				throw new BundleException(ConstantsMsg.FIFE_NOT_FOUND + jsonfile);
+				throw new BundleException(ConstantsMsg.FIFE_NOT_FOUND+": " + jsonfile);
 			}
 
 			
