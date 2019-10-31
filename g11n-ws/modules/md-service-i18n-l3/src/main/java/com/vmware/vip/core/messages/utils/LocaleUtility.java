@@ -66,7 +66,7 @@ public class LocaleUtility {
 	 */
 	public static boolean isDefaultLocale(String locale) {
 		boolean isDefault = false;
-		if (locale != null && locale != "") {
+		if (locale != null && !locale.equals("")) {
 			for (String ls : LocaleUtility.DEFAULT_LOCALES) {
 				if (locale.equals(ls)) {
 					isDefault = true;
