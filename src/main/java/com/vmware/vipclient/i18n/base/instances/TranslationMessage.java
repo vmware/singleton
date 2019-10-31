@@ -5,12 +5,12 @@
 package com.vmware.vipclient.i18n.base.instances;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
@@ -227,32 +227,30 @@ public class TranslationMessage implements Message {
 		return cs.getComponentTranslation();
 	}
 
-	/**
-	 * get multiple component's translations from VIP server
-	 *
-	 * @param locale
-	 *            a language tag to get the translations of it
-	 * @param components
-	 *            names of the components
-	 * @return a map contains all translations of the components
-	 */
-	public Map<String, Map<String, String>> getStrings(final Locale locale,
-			final List<String> components) {
-		logger.info("Start to execute TranslationMessage.getStrings of multiple components of single locale.");
-
-		if (null == locale || null == components || components.isEmpty()) {
-			logger.error(ConstantsMsg.WRONG_PARAMETER + "locales: {}, components: {}.", locale, components);
-			return new HashMap();
-		}
-
-		try {
-			ComponentsService cs = new ComponentsService(components, Arrays.asList(locale.toLanguageTag()));
-			return cs.getTranslation().values().iterator().next();
-		} catch (Exception e) {
-			logger.error(ConstantsMsg.EXCEPTION_OCCUR, e);
-			return new HashMap();
-		}
-	}
+	//	/**
+	//	 * get multiple component's translations from VIP server
+	//	 *
+	//	 * @param locale     a language tag to get the translations of it
+	//	 * @param components names of the components
+	//	 * @return a map contains all translations of the components
+	//	 */
+	//	public Map<String, Map<String, String>> getStrings(final Locale locale,
+	//			final List<String> components) {
+	//		logger.info("Start to execute TranslationMessage.getStrings of multiple components of single locale.");
+	//
+	//		if (null == locale || null == components || components.isEmpty()) {
+	//			logger.error(ConstantsMsg.WRONG_PARAMETER + "locales: {}, components: {}.", locale, components);
+	//			return new HashMap<>();
+	//		}
+	//
+	//		try {
+	//			ComponentsService cs = new ComponentsService(components, Arrays.asList(locale.toLanguageTag()));
+	//			return cs.getTranslation().values().iterator().next();
+	//		} catch (Exception e) {
+	//			logger.error(ConstantsMsg.EXCEPTION_OCCUR, e);
+	//			return new HashMap<>();
+	//		}
+	//	}
 
 	/**
 	 * get multiple component's translations from VIP server
@@ -263,8 +261,8 @@ public class TranslationMessage implements Message {
 	 *            names of the components
 	 * @return a map contains all translations of the components of specified locales
 	 */
-	public Map<Locale, Map<String, Map<String, String>>> getStrings(final List<Locale> locales,
-			final List<String> components) {
+	public Map<String, Map<String, Map<String, String>>> getStrings(final Set<String> locales,
+			final Set<String> components) {
 		logger.info("Start to execute TranslationMessage.getStrings of multiple components of multiple locales.");
 		if (null == locales || locales.isEmpty() || null == components || components.isEmpty()) {
 			logger.error(ConstantsMsg.WRONG_PARAMETER + "locales: {}, components: {}.", locales, components);
@@ -272,23 +270,11 @@ public class TranslationMessage implements Message {
 		}
 
 		try {
-			List<String> convertedLocales = new ArrayList<>();
-			for (Locale locale : locales) {
-				convertedLocales.add(locale.toLanguageTag());
-			}
-
-			ComponentsService cs = new ComponentsService(components, convertedLocales);
-			Map<String, Map<String, Map<String, String>>> result = cs.getTranslation();
-
-			Map<Locale, Map<String, Map<String, String>>> retMap = new HashMap<>();
-			for (Locale locale : locales) {
-				retMap.put(locale, result.get(locale.toLanguageTag()));
-			}
-
-			return retMap;
+			ComponentsService cs = new ComponentsService(components, locales);
+			return cs.getTranslation();
 		} catch (Exception e) {
 			logger.error(ConstantsMsg.EXCEPTION_OCCUR, e);
-			return new HashMap();
+			return new HashMap<>();
 		}
 	}
 

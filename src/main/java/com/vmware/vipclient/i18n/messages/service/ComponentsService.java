@@ -6,9 +6,11 @@ package com.vmware.vipclient.i18n.messages.service;
 
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -24,23 +26,23 @@ import com.vmware.vipclient.i18n.util.ConstantsKeys;
 public class ComponentsService {
 
 	Logger logger = LoggerFactory.getLogger(ComponentsService.class);
-	private final List<String> components;
-	private final List<String> locales;
+	private final SortedSet<String> components;
+	private final SortedSet<String> locales;
 
 	/**
-	 * @param components
-	 * @param locales
+	 * @param components2
+	 * @param locales2
 	 */
-	public ComponentsService(List<String> components, List<String> locales) {
-		this.components = components;
-		this.locales = locales;
+	public ComponentsService(Set<String> components2, Set<String> locales2) {
+		this.components = new TreeSet<>(components2);
+		this.locales = new TreeSet<>(locales2);
 	}
 
 	public Map<String, Map<String, Map<String, String>>> getTranslation() {
 		final Map<String, Map<String, Map<String, String>>> retMap = new HashMap<>();
 
-		final LinkedHashSet<String> componentsToQuery = new LinkedHashSet<>();
-		final LinkedHashSet<String> localesToQuery = new LinkedHashSet<>();
+		final SortedSet<String> componentsToQuery = new TreeSet<>();
+		final SortedSet<String> localesToQuery = new TreeSet<>();
 
 		final MessagesDTO dto = new MessagesDTO();
 
@@ -78,7 +80,7 @@ public class ComponentsService {
 		final JSONObject response = opt.queryFromServer();
 		JSONArray bundles = (JSONArray) opt.getDataPart(response).get(ConstantsKeys.BUNDLES);
 		JSONArray localesFromServer = (JSONArray) opt.getDataPart(response).get(ConstantsKeys.LOCALES);
-		Map<String, String> localeMap = makeLocaleMap(locales, localesFromServer);
+		Map<String, String> localeMap = makeLocaleMap(localesToQuery, localesFromServer);
 
 		// combine data from server into the map to return.
 		Iterator<?> iter = bundles.iterator();
@@ -100,13 +102,13 @@ public class ComponentsService {
 		return retMap;
 	}
 
-	private Map<String, String> makeLocaleMap(List<String> originalLocales, List<String> localesFromServer) {
-		if(originalLocales.size() != localesFromServer.size()) {
+	private Map<String, String> makeLocaleMap(SortedSet<String> localesToQuery, List<String> localesFromServer) {
+		if (localesToQuery.size() != localesFromServer.size()) {
 			throw new VIPJavaClientException(ConstantsMsg.SERVER_CONTENT_ERROR);
 		}
 
 		HashMap<String, String> map = new HashMap<>();
-		Iterator<String> iterOriginal = originalLocales.iterator();
+		Iterator<String> iterOriginal = localesToQuery.iterator();
 		Iterator<String> iterServer = localesFromServer.iterator();
 		while (iterOriginal.hasNext()) {
 			map.put(iterServer.next(), iterOriginal.next());
