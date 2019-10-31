@@ -44,13 +44,13 @@ public class ComponentsService {
 		final SortedSet<String> componentsToQuery = new TreeSet<>();
 		final SortedSet<String> localesToQuery = new TreeSet<>();
 
-		final MessagesDTO dto = new MessagesDTO();
 
 		// Get data from cache first. If cache doens't have, query from server.
 		for (String locale : locales) {
-			dto.setLocale(locale);
 			Map<String, Map<String, String>> localeMap = new HashMap<>();
 			for (final String component : components) {
+				final MessagesDTO dto = new MessagesDTO();
+				dto.setLocale(locale);
 				dto.setComponent(component);
 
 				// Get existing data from cache.
@@ -91,6 +91,7 @@ public class ComponentsService {
 			JSONObject messages = (JSONObject) bundle.get(ConstantsKeys.MESSAGES);
 
 			// update cache.
+			final MessagesDTO dto = new MessagesDTO();
 			dto.setComponent(comp);
 			dto.setLocale(locale);
 			new CacheService(dto).addCacheOfComponent(messages);
@@ -102,7 +103,8 @@ public class ComponentsService {
 		return retMap;
 	}
 
-	private Map<String, String> makeLocaleMap(SortedSet<String> localesToQuery, List<String> localesFromServer) {
+	private Map<String, String> makeLocaleMap(final SortedSet<String> localesToQuery,
+			final List<String> localesFromServer) {
 		if (localesToQuery.size() != localesFromServer.size()) {
 			throw new VIPJavaClientException(ConstantsMsg.SERVER_CONTENT_ERROR);
 		}
