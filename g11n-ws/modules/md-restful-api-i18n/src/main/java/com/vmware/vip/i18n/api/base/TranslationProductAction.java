@@ -109,37 +109,54 @@ public class TranslationProductAction  extends BaseAction {
         
     }
    
+    
+     private TranslationDTO getPartTranslationReqParams(String productName,
+             String components, String version, String locales, String pseudo,
+             HttpServletRequest req) throws Exception {
+         TranslationDTO translationDTO = new TranslationDTO();
+         translationDTO.setProductName(productName);
+         translationDTO.setVersion(version);
+         List<String> componentList = null;
+         if (StringUtils.isEmpty(components)) {
+             componentList = productService.getComponentNameList(productName, version);
+         }else {
+             componentList = new ArrayList<String>();
+             for (String component : components.split(",")) {
+                 componentList.add(component.trim());
+             }
+         }
+         translationDTO.setComponents(componentList);
+         List<String> localeList = new ArrayList<String>();
+         if (new Boolean(pseudo)) {
+             localeList.add(ConstantsKeys.LATEST);
+         } else if (!StringUtils.isEmpty(locales)) {
+             for (String locale : locales.split(",")) {
+                 localeList.add(getMapingLocale(productName, version, locale.trim()));
+             }      
+         } else {
+             localeList = productService.getSupportedLocaleList(productName,version);
+         }
+         translationDTO.setLocales(localeList);
+         translationDTO.setPseudo(new Boolean(pseudo));
+         return translationDTO;
+         
+     }
+    
     /**
      *  get the API v2 mult-component translation
      */
       public APIResponseDTO getV2MultipleComponentsTrans(String productName,
                String components, String version, String locales, String pseudo,
                HttpServletRequest req) throws Exception {
-           TranslationDTO translationDTO = new TranslationDTO();
-           translationDTO.setProductName(productName);
-           translationDTO.setVersion(version);
-           List<String> componentList = null;
-           if (StringUtils.isEmpty(components)) {
-               componentList = productService.getComponentNameList(productName, version);
-           }else {
-               componentList = new ArrayList<String>();
-               for (String component : components.split(",")) {
-                   componentList.add(component.trim());
-               }
-           }
-           translationDTO.setComponents(componentList);
-           List<String> localeList = new ArrayList<String>();
-           if (new Boolean(pseudo)) {
-               localeList.add(ConstantsKeys.LATEST);
-           } else if (!StringUtils.isEmpty(locales)) {
-               for (String locale : locales.split(",")) {
-                   localeList.add(getMapingLocale(productName, version, locale.trim()));
-               }      
-           } else {
-               localeList = productService.getSupportedLocaleList(productName,version);
-           }
-           translationDTO.setLocales(localeList);
-           translationDTO.setPseudo(new Boolean(pseudo));
+          
+           
+          TranslationDTO translationDTO = getPartTranslationReqParams( productName,
+                   components,  version,  locales,  pseudo, req);
+           
+           
+           
+           
+           
            try {
                translationDTO = multipleComponentsService
                        .getMultiComponentsTranslation(translationDTO);
