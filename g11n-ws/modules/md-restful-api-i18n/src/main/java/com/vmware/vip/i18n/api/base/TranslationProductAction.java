@@ -7,6 +7,7 @@ package com.vmware.vip.i18n.api.base;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -16,12 +17,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
+import com.vmware.vip.common.constants.ConstantsMsg;
 import com.vmware.vip.common.constants.ConstantsUnicode;
 import com.vmware.vip.common.i18n.dto.DropVersionDTO;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
@@ -31,7 +35,6 @@ import com.vmware.vip.core.messages.service.multcomponent.IMultComponentService;
 import com.vmware.vip.core.messages.service.multcomponent.TranslationDTO;
 import com.vmware.vip.core.messages.service.product.IProductService;
 import com.vmware.vip.core.messages.utils.LocaleUtility;
-import com.vmware.vip.i18n.api.base.BaseAction;
 
 
 public class TranslationProductAction  extends BaseAction {
@@ -75,7 +78,7 @@ public class TranslationProductAction  extends BaseAction {
 		return null;
 	}	
 
-    private APIResponseDTO getAllCompTrans(String productName, String version,String pseudo,
+    private TranslationDTO getAllCompTrans(String productName, String version,String pseudo,
             HttpServletRequest req)  throws Exception {
         TranslationDTO translationDTO = new TranslationDTO();
         translationDTO.setProductName(productName);
@@ -94,14 +97,14 @@ public class TranslationProductAction  extends BaseAction {
             translationDTO.setPseudo(new Boolean(pseudo));
         }
         translationDTO = multipleComponentsService.getMultiComponentsTranslation(translationDTO);
-        return super.handleResponse(APIResponseStatus.OK, translationDTO);
+        return translationDTO;
     }
     
     
     public APIResponseDTO getMultTrans(String productName, String version, String componentsStr, String localesStr, String pseudo,
             HttpServletRequest req)  throws Exception {
         if(StringUtils.isEmpty(componentsStr) && StringUtils.isEmpty(localesStr)) {
-            return  getAllCompTrans( productName,  version, pseudo, req) ;
+            return  super.handleResponse(APIResponseStatus.OK, getAllCompTrans( productName,  version, pseudo, req)) ;
         }else {
             return getV2MultipleComponentsTrans(productName, componentsStr,  version,  localesStr,  pseudo, req);
         }
@@ -142,30 +145,89 @@ public class TranslationProductAction  extends BaseAction {
          
      }
     
+     
+     
+     
+    
+     
+    
+     @SuppressWarnings("unchecked")
+    private JSONObject getNUllBundle(String component, String locale) {
+         JSONObject object = new JSONObject();
+         object.put("locale", locale);
+         object.put("component", component);
+         object.put("messages", null);
+         return object;
+         
+     }
+     
+     
+     private JSONObject getBundle(String component, String locale, TranslationDTO allTranslationDTO) {
+         
+         JSONArray array = allTranslationDTO.getBundles();
+         @SuppressWarnings("unchecked")
+        Iterator<JSONObject> objectIterator =  array.iterator();
+         
+         while(objectIterator.hasNext()) {
+             JSONObject object = objectIterator.next();
+             String fileLocale = (String) object.get(ConstantsKeys.lOCALE);
+             String fileComponent = (String) object.get(ConstantsKeys.COMPONENT);
+             if(locale.equals(fileLocale)&& component.equals(fileComponent)) {    
+                 return object;
+             }
+         }
+         
+        return null; 
+     }
+
+     
     /**
      *  get the API v2 mult-component translation
      */
-      public APIResponseDTO getV2MultipleComponentsTrans(String productName,
+      @SuppressWarnings("unchecked")
+    public APIResponseDTO getV2MultipleComponentsTrans(String productName,
                String components, String version, String locales, String pseudo,
                HttpServletRequest req) throws Exception {
           
+          TranslationDTO resulttranslationDTO = getPartTranslationReqParams( productName, components,  version,  locales,  pseudo, req);
+          TranslationDTO allTranslationDTO  =  getAllCompTrans( productName,  version, pseudo, req);
+        
+          List<String> reqLocales = resulttranslationDTO.getLocales();
+          List<String> reqComponents = resulttranslationDTO.getComponents();
+          
+          List<JSONObject> jsonNullList = new ArrayList<JSONObject>();
+          JSONArray ja = new JSONArray(); 
+          
+          for (String component : reqComponents) {
+              for (String locale : reqLocales) {
+                  JSONObject jsonObj = getBundle( component,  locale,  allTranslationDTO);
+                  if(jsonObj != null) {
+                      ja.add(jsonObj);
+                  }else {
+                      jsonNullList.add(getNUllBundle(component, locale));
+                  }
+                  
+                 }
+              }
+          
+          
+           int reqLocaleSize = reqLocales.size();
+           int reqComponentSite = reqComponents.size();
            
-          TranslationDTO translationDTO = getPartTranslationReqParams( productName,
-                   components,  version,  locales,  pseudo, req);
-           
-           
-           
-           
-           
-           try {
-               translationDTO = multipleComponentsService
-                       .getMultiComponentsTranslation(translationDTO);
-               return  super.handleResponse(APIResponseStatus.OK, translationDTO);
-           }catch(Exception e) {
-               logger.info("do part of translation is available business");
-               translationDTO = multipleComponentsService.getV2MultiComponentsTranslation(translationDTO);
-           }
-           return super.handleResponse(APIResponseStatus.MULTTRANSLATION_PART_CONTENT, translationDTO);
+          if(ja.isEmpty()) {
+              throw new L3APIException(ConstantsMsg.TRANS_IS_NOT_FOUND);
+          }else if(ja.size() == (reqLocaleSize*reqComponentSite)) {
+              resulttranslationDTO.setBundles(ja);
+              return  super.handleResponse(APIResponseStatus.OK, resulttranslationDTO);
+          }else {
+              for(JSONObject jsonNullObj:jsonNullList) {
+                  ja.add(jsonNullObj);
+              }
+               resulttranslationDTO.setBundles(ja);
+              return  super.handleResponse(APIResponseStatus.MULTTRANSLATION_PART_CONTENT, resulttranslationDTO);
+              
+          }
+  
        }
        
       /**
