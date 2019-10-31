@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import org.springframework.util.StringUtils;
+
 public class LocaleUtility {
 	private static final String[] DEFAULT_LOCALES = { "en", "en-US", "en_US" };
 	private static final Locale DEFAULT_LOCALE = new Locale("en", "");
@@ -66,7 +68,7 @@ public class LocaleUtility {
 	 */
 	public static boolean isDefaultLocale(String locale) {
 		boolean isDefault = false;
-		if (locale != null && !locale.equals("")) {
+		if (!StringUtils.isEmpty(locale)) {
 			for (String ls : LocaleUtility.DEFAULT_LOCALES) {
 				if (locale.equals(ls)) {
 					isDefault = true;

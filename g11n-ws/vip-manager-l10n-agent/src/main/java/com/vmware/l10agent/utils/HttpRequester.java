@@ -230,11 +230,11 @@ public class HttpRequester {
 	public static String sendPostJson(String url, Map<String, String> params,Map<String, String> headers) {
 		
 		
-      
+	    HttpURLConnection conn =null;
 		BufferedInputStream bis = null;
 		ByteArrayOutputStream bos = null;
-		try {
-		HttpURLConnection conn = HttpRequester.createConnection(url);;
+		try{
+		conn= HttpRequester.createConnection(url);
 		conn.setDoInput(true);
         conn.setDoOutput(true);
         conn.setRequestMethod(PropertyContantKeys.HTTP_MOTHED_POST);
