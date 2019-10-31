@@ -6,7 +6,6 @@ package com.vmware.vipclient.i18n.base.instances;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -33,33 +32,33 @@ import com.vmware.vipclient.i18n.util.LocaleUtility;
  * string-based, component-based level.
  */
 public class TranslationMessage implements Message {
-	Logger logger = LoggerFactory.getLogger(TranslationMessage.class);
+    Logger logger = LoggerFactory.getLogger(TranslationMessage.class);
 
-	public TranslationMessage() {
-		super();
-	}
+    public TranslationMessage() {
+        super();
+    }
 
-	/**
-	 * get a translation under the component of the configured product
-	 *
-	 * @param locale
-	 *            an object used to get the source's translation
-	 * @param component
-	 *            defined on VIP service, it will be created automatically if
-	 *            not exist
-	 * @param key
-	 *            identify the source
-	 * @param source
-	 *            it's English source which will be return if no translation
-	 *            available
-	 * @param comment
-	 *            used to describe the source to help understand the source for
-	 *            the translators.
-	 * @param args
-	 *            used to format the message with placeholder, it's not required
-	 *            if the message doesn't contain any placeholder
-	 * @return string
-	 */
+    /**
+     * get a translation under the component of the configured product
+     *
+     * @param locale
+     *            an object used to get the source's translation
+     * @param component
+     *            defined on VIP service, it will be created automatically if
+     *            not exist
+     * @param key
+     *            identify the source
+     * @param source
+     *            it's English source which will be return if no translation
+     *            available
+     * @param comment
+     *            used to describe the source to help understand the source for
+     *            the translators.
+     * @param args
+     *            used to format the message with placeholder, it's not required
+     *            if the message doesn't contain any placeholder
+     * @return string
+     */
 	public String getString(final Locale locale, final String component,
 			final String key, final String source, final String comment, final Object... args) {
 		logger.debug("Start to execute TranslationMessage.getString");
@@ -229,45 +228,35 @@ public class TranslationMessage implements Message {
 	}
 
 
-	/**
-	 * get multiple component's translations from VIP server
-	 *
-	 * @param locales
-	 *            language tags to get the translations of them
-	 * @param components
-	 *            names of the components
-	 * @return a map contains all translations of the components of specified locales
-	 */
-	public Map<Locale, Map<String, Map<String, String>>> getStrings(final Set<Locale> locales,
-			final Set<String> components) {
-		logger.info("Start to execute TranslationMessage.getStrings of multiple components of multiple locales.");
+    /**
+     * get multiple component's translations from VIP server
+     *
+     * @param locales
+     *            language tags to get the translations of them
+     * @param components
+     *            names of the components
+     * @return a map contains all translations of the components of specified locales
+     */
+    public Map<Locale, Map<String, Map<String, String>>> getStrings(final Set<Locale> locales,
+            final Set<String> components) {
+        logger.info("Start to execute TranslationMessage.getStrings of multiple components of multiple locales.");
 
-		Map<Locale, Map<String, Map<String, String>>> retMap = new HashMap<>();
-		if (null == locales || locales.isEmpty() || null == components || components.isEmpty()) {
-			logger.error(ConstantsMsg.WRONG_PARAMETER + "locales: {}, components: {}.", locales, components);
-			return retMap;
-		}
+        Map<Locale, Map<String, Map<String, String>>> retMap = new HashMap<>();
+        if (null == locales || locales.isEmpty() || null == components || components.isEmpty()) {
+            logger.error(ConstantsMsg.WRONG_PARAMETER + "locales: {}, components: {}.", locales, components);
+            return retMap;
+        }
 
 
-		try {
-			Set<String> convertedLocales = new HashSet<>();
-			for (Locale locale : locales) {
-				convertedLocales.add(locale.toLanguageTag());
-			}
+        try {
+            final ComponentsService cs = new ComponentsService(components, locales);
+            retMap = cs.getTranslation();
+        } catch (final Exception e) {
+            logger.error(ConstantsMsg.EXCEPTION_OCCUR, e);
+        }
 
-			ComponentsService cs = new ComponentsService(components, convertedLocales);
-			Map<String, Map<String, Map<String, String>>> result = cs.getTranslation();
-
-			for (Locale locale : locales) {
-				retMap.put(locale, result.get(locale.toLanguageTag()));
-			}
-		} catch (Exception e) {
-			logger.error(ConstantsMsg.EXCEPTION_OCCUR, e);
-			retMap = new HashMap<>();
-		}
-
-		return retMap;
-	}
+        return retMap;
+    }
 
 	/**
 	 * get one translation of the configured product from VIP, if message not
