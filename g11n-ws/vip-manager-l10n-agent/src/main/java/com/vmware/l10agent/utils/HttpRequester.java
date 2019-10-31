@@ -366,7 +366,7 @@ public static String sendJsonWithToken(String url, String method, String jsonStr
 	 */
 	private static HttpURLConnection createConnection(String path) throws IOException {
 		HttpURLConnection result = null;
-		try {
+
 			URL url = new URL(path.trim());
 			
 			 /* assert (null != url); assert
@@ -385,9 +385,7 @@ public static String sendJsonWithToken(String url, String method, String jsonStr
 				});
 				httpsConn.setSSLSocketFactory(getSocketFactory());
 			}
-		} catch (IOException e) {
-		   throw e;
-		}
+	
 		return result;
 	}
 
