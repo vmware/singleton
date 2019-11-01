@@ -229,13 +229,15 @@ public class TranslationMessage implements Message {
 
 
     /**
-     * get multiple component's translations from VIP server
+     * get multiple components' translations from VIP server
      *
      * @param locales
-     *            language tags to get the translations of them
+     *            locales to get the translations of them
      * @param components
-     *            names of the components
-     * @return a map contains all translations of the components of specified locales
+     *            names of the components to get translation
+     * @return 
+                  a map contains all translations of the components of specified locales.
+		  Key is loale; value is also a map whose key is component and value is the messages belong to this component.
      */
     public Map<Locale, Map<String, Map<String, String>>> getStrings(final Set<Locale> locales,
             final Set<String> components) {
