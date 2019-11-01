@@ -5,8 +5,11 @@
 package com.vmware.vipclient.i18n;
 
 import java.net.MalformedURLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +31,7 @@ public class VIPCfg {
 
 	// define global instance
 	private static VIPCfg gcInstance;
+	private static Map<String, VIPCfg> moduleCfgs = new HashMap<String, VIPCfg>();
 	private VIPService vipService;
 	private TranslationCacheManager translationCacheManager;
 
@@ -56,6 +60,16 @@ public class VIPCfg {
 	public static final String CACHE_L3 = "CACHE_L3";
 	public static final String CACHE_L2 = "CACHE_L2";
 
+	public boolean isSubInstance() {
+		return isSubInstance;
+	}
+
+	public void setSubInstance(boolean subInstance) {
+		isSubInstance = subInstance;
+	}
+
+	private boolean isSubInstance = false;
+
 	private VIPCfg() {
 
 	}
@@ -71,7 +85,25 @@ public class VIPCfg {
 		}
 		return gcInstance;
 	}
-	
+
+	/**
+	 * create a default instance of VIPCfg
+	 *
+	 * @return
+	 */
+	public static synchronized VIPCfg getSubInstance(String productName) {
+		if(!VIPCfg.moduleCfgs.containsKey(productName)) {
+			VIPCfg cfg = new VIPCfg();
+			cfg.isSubInstance = true;
+			VIPCfg.moduleCfgs.put(productName, cfg);
+		}
+
+		if(VIPCfg.moduleCfgs.containsKey(productName) && VIPCfg.moduleCfgs.get(productName) != null) {
+			return VIPCfg.moduleCfgs.get(productName);
+		} else {
+			return gcInstance;
+		}
+	}
 	/**
 	 * initialize the instance by parameter
 	 * 
@@ -90,14 +122,17 @@ public class VIPCfg {
 	 * 
 	 * @param cfg
 	 */
-	public void initialize(String cfg) {
+	public void initialize(String cfg) throws VIPClientInitException {
 		ResourceBundle prop = ResourceBundle.getBundle(cfg);
 		if (prop == null) {
-			return; 
+			throw new VIPClientInitException("Can't not initialize VIPCfg, resource bundle is null.");
 		}
 		
 		if (prop.containsKey("productName"))
 			this.productName = prop.getString("productName");
+		if(this.isSubInstance() && !VIPCfg.moduleCfgs.containsKey(this.productName)) {
+			throw new VIPClientInitException("Can't not initialize sub VIPCfg instance, the product name is not defined in config file.");
+		}
 		if (prop.containsKey("version"))
 			this.version = prop.getString("version");
 		if (prop.containsKey("vipServer"))

@@ -15,6 +15,7 @@ import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.BodyTagSupport;
 import javax.servlet.jsp.tagext.Tag;
 
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.apache.taglibs.standard.tag.common.core.Util;
 
 import com.vmware.vipclient.i18n.I18nFactory;
@@ -46,7 +47,11 @@ public class MessageSupport extends BodyTagSupport {
 		this.keyAttrValue = null;
 		this.keySpecified = false;
 		VIPCfg gc = VIPCfg.getInstance();
-		gc.initialize("vipconfig");
+		try {
+			gc.initialize("vipconfig");
+		} catch (VIPClientInitException e) {
+			
+		}
 		gc.initializeVIPService();
 		gc.createTranslationCache(MessageCache.class);
 		I18nFactory i18n = I18nFactory.getInstance(gc);

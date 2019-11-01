@@ -7,6 +7,7 @@ package com.vmware.vipclient.i18n;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -71,7 +72,7 @@ public class I18nFactory {
 	 * @return
 	 */
 	@SuppressWarnings("rawtypes")
-	public Message getMessageInstance(Class c) {
+	public Message getMessageInstance(Class c, VIPCfg cfg) {
 		Message i = null;
 		if (c == null) {
 			return i;
@@ -81,7 +82,12 @@ public class I18nFactory {
 			logger.error("VipServer|ProductName|Version is null!");
 			return i;
 		}
-		String key = c.getCanonicalName();
+		String key;
+		if(null == cfg) {
+			key = c.getCanonicalName();
+		} else {
+			key = cfg.getProductName();
+		}
 		if (messages.containsKey(key)) {
 			return messages.get(key);
 		} else {
@@ -95,9 +101,16 @@ public class I18nFactory {
 				logger.error(e.getMessage());
 			}
 		}
+
+		if(i instanceof TranslationMessage) {
+			((TranslationMessage) i).setCfg(cfg);
+		}
 		return i;
 	}
 
+	public Message getMessageInstance(Class c) {
+		return this.getMessageInstance(c, null);
+	}
 	/**
 	 * get a instance of com.vmware.vipclient.i18n.base.instances.Formatting
 	 * 
@@ -155,5 +168,4 @@ public class I18nFactory {
 	public void setCfg(VIPCfg cfg) {
 		this.cfg = cfg;
 	}
-
 }

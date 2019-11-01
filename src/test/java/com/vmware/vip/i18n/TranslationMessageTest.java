@@ -13,6 +13,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.json.simple.JSONObject;
 import org.junit.Assert;
 import org.junit.Before;
@@ -37,15 +38,19 @@ public class TranslationMessageTest extends BaseTestClass {
 
 	@Before
 	public void init() {
-		VIPCfg gc = VIPCfg.getInstance();
-		gc.initialize("vipconfig");
-		gc.initializeVIPService();
-		if(gc.getCacheManager() != null) gc.getCacheManager().clearCache();
-		gc.createTranslationCache(MessageCache.class);
-		gc.createFormattingCache(FormattingCache.class);
-		I18nFactory i18n = I18nFactory.getInstance(gc);
-		translation = (TranslationMessage)i18n.getMessageInstance(TranslationMessage.class);
-		dto = new MessagesDTO();
+        VIPCfg gc = VIPCfg.getInstance();
+        try {
+            gc.initialize("vipconfig");
+        } catch (VIPClientInitException e) {
+            logger.error(e.getMessage());
+        }
+        gc.initializeVIPService();
+        if(gc.getCacheManager() != null) gc.getCacheManager().clearCache();
+        gc.createTranslationCache(MessageCache.class);
+        gc.createFormattingCache(FormattingCache.class);
+        I18nFactory i18n = I18nFactory.getInstance(gc);
+        translation = (TranslationMessage)i18n.getMessageInstance(TranslationMessage.class);
+        dto = new MessagesDTO();
 	}
 
 	@Test
