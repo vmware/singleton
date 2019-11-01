@@ -11,8 +11,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class LocaleUtility {
-	public static final String[] defaultLocales = { "en", "en-US", "en_US" };
-	public static final Locale defaultLocale = new Locale("en", "US");
+	protected static final String[] defaultLocales = { "en", "en-US", "en_US" };
+
+	public static final Locale defaultLocale = Locale.US;
 
 	// Use ThreadLocal to combine the locale with local thread so that the
 	// locale can be used by any code places.

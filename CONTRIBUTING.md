@@ -39,12 +39,6 @@ The coding style follows [JAVA style](https://petroware.no/javastyle.html).
 Unit test cases should be added to cover new code.
 Run command `gradle clean build` to generate build and run unit tests.
 
-You can defer to run unit tests through CI pipeline after pushing your change.
-
-**Note:** 
-
-For now, it needs a Singleton server to run unit tests. Refer to [this](https://github.com/vmware/singleton/blob/master/README.md) to setup a Singleton server. Then copy src/test/resources/JavaclientTest to {Singleton server folder}/l10n/bundles. Start Singleton server.
-
 ## Keep sync with upstream
 
 Once your branch gets out of sync with the singleton branch, use the following commands to update.
