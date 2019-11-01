@@ -16,7 +16,7 @@ import com.vmware.l10n.synch.model.UpdateSyncInfoResp;
  */
 public class SynchInfoService {
 	private static Logger logger = LoggerFactory.getLogger(UpdateSyncInfoResp.class);
-	private static volatile UpdateSyncInfoResp cacheToken= new UpdateSyncInfoResp();
+	private static UpdateSyncInfoResp cacheToken= new UpdateSyncInfoResp();
 	
 	private SynchInfoService() {}
 
@@ -24,7 +24,7 @@ public class SynchInfoService {
 		return cacheToken;
 	}
 
-	public static void updateCacheToken(String productName, String version) {
+	public synchronized static void updateCacheToken(String productName, String version) {
 		cacheToken.updateCacheToken(productName, version);
 		logger.info("the l10n's catche token is: {}", cacheToken.getUpdateCacheToken());
 	}

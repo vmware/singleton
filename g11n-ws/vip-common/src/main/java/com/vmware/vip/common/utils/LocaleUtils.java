@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import org.apache.commons.lang3.StringUtils;
+
 import sun.util.locale.LanguageTag;
 import sun.util.locale.ParseStatus;
 
@@ -85,7 +87,7 @@ public class LocaleUtils {
 	 */
 	public static boolean isDefaultLocale(String locale) {
 		boolean isDefault = false;
-		if (locale != null && locale != "") {
+		if (!StringUtils.isEmpty(locale)) {
 			for (String ls : LocaleUtils.defaultLocales) {
 				if (locale.equals(ls)) {
 					isDefault = true;

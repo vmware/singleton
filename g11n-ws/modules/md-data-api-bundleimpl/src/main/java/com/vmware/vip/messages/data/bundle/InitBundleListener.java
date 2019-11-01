@@ -19,7 +19,7 @@ import com.vmware.vip.common.utils.UnzipTranslationUtils;
 @Component
 public class InitBundleListener implements ApplicationListener<ApplicationReadyEvent> {
 	private static Logger logger = LoggerFactory.getLogger(InitBundleListener.class);
-	private final static String clearStr="translation.bundle.file.clean";
+	private final String clearStr="translation.bundle.file.clean";
 
 	@Autowired
 	private BundleConfig bundleConfig;
@@ -27,7 +27,7 @@ public class InitBundleListener implements ApplicationListener<ApplicationReadyE
 	
 	@Override
 	public void onApplicationEvent(ApplicationReadyEvent arg0) {
-		// TODO Auto-generated method stub
+
 		boolean cleanflag = Boolean.parseBoolean(System.getProperty(clearStr));
 		if(cleanflag) {
 			logger.info("start clean and unzip translation to local");
@@ -39,7 +39,7 @@ public class InitBundleListener implements ApplicationListener<ApplicationReadyE
 		    logger.info("the bundle's base path: {}", bundleAbsPath);
 			UnzipTranslationUtils.unzipTranslationToLocal(bundleConfig.getBasePathWithSeparator(),cleanflag, InitBundleListener.class);	
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			logger.warn("init bundle exception or no bundle file need to unzip", e);
 
 		}
