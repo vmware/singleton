@@ -34,7 +34,7 @@ public class ProductDao implements IProductDao {
 
 	public List<String> getComponentList(String productName, String version)
 			throws BundleException {
-		List<String> componentList = new ArrayList<String>();
+		List<String> componentList = new ArrayList<>();
 
 		String basePath = bundleConfig.getBasePathWithSeparator();
 
@@ -51,7 +51,7 @@ public class ProductDao implements IProductDao {
 				}
 			}
 
-			if (componentList.size() == 0) {
+			if (componentList.isEmpty()) {
 				throw new BundleException("Component list is empty.");
 			}
 		} else {
@@ -61,7 +61,7 @@ public class ProductDao implements IProductDao {
 	}
 
 	public List<String> getLocaleList(String productName, String version) throws BundleException {
-		List<String> supportedLocaleList = new ArrayList<String>();
+		List<String> supportedLocaleList = new ArrayList<>();
 
 		String basePath = bundleConfig.getBasePathWithSeparator();
 
@@ -83,7 +83,7 @@ public class ProductDao implements IProductDao {
 		} else {
 			throw new BundleException("The file is not existing: " + bundlePath);
 		}
-		if (supportedLocaleList.size() == 0) {
+		if (supportedLocaleList.isEmpty()) {
 			throw new BundleException("The locae list is empty.");
 		}
 		return supportedLocaleList;

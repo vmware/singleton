@@ -127,7 +127,7 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 	public boolean delSourceComponentFile(RecordModel record) {
 		// TODO Auto-generated method stub
 		File file =  getTargetFile(record);
-		if(file.exists()) {
+		if(file != null && file.exists()) {
 			logger.info("delete file:"+file.getAbsolutePath());
 			file.delete();
 		}
@@ -149,7 +149,8 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 						TaskSysnQueues.SendComponentTasks.put(record);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
-					
+					    Thread.currentThread().interrupt();
+		
 						logger.info(e.getMessage(), e);
 					}
 			    	return result;

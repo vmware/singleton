@@ -82,11 +82,15 @@ public class VipRSAUtils {
 		}
 		X509EncodedKeySpec keySpec = new X509EncodedKeySpec(pubbytes);
 		PublicKey publicKey = null;
-		try {
-			publicKey = (RSAPublicKey) keyFactory.generatePublic(keySpec);
-		} catch (InvalidKeySpecException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(keyFactory != null) {
+		    try {
+		        publicKey = (RSAPublicKey) keyFactory.generatePublic(keySpec);
+		    } catch (InvalidKeySpecException e) {
+		        // TODO Auto-generated catch block
+		        e.printStackTrace();
+		    }   
+		}else {
+		    return null;
 		}
 		if (publicKey != null) {
 			
@@ -100,13 +104,17 @@ public class VipRSAUtils {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			try {
-				cipher.init(Cipher.ENCRYPT_MODE, publicKey);
-			} catch (InvalidKeyException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			if(cipher != null) {
+			    try {
+	                cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+	            } catch (InvalidKeyException e1) {
+	                // TODO Auto-generated catch block
+	                e1.printStackTrace();
+	            }
+			}else {
+			    return null;
 			}
+			
 			byte[] resultBytes = null;
 			try {
 				resultBytes = cipher.doFinal(encryptStr.getBytes(Charset.forName("UTF-8")));
