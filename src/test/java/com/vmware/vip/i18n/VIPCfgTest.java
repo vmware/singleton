@@ -7,6 +7,7 @@ package com.vmware.vip.i18n;
 import java.util.Locale;
 import java.util.Map;
 
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +26,11 @@ public class VIPCfgTest extends BaseTestClass {
 	@Before
 	public void init() {
         VIPCfg gc = VIPCfg.getInstance();
-        gc.initialize("vipconfig");
+        try {
+            gc.initialize("vipconfig");
+        } catch (VIPClientInitException e) {
+            logger.error(e.getMessage());
+        }
         gc.initializeVIPService();
         if(gc.getCacheManager() != null) gc.getCacheManager().clearCache();
         gc.createTranslationCache(MessageCache.class);

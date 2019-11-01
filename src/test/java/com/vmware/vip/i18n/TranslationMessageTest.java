@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.json.simple.JSONObject;
 import org.junit.Assert;
 import org.junit.Before;
@@ -34,7 +35,11 @@ public class TranslationMessageTest extends BaseTestClass {
     @Before
 	public void init() {
         VIPCfg gc = VIPCfg.getInstance();
-        gc.initialize("vipconfig");
+        try {
+            gc.initialize("vipconfig");
+        } catch (VIPClientInitException e) {
+            logger.error(e.getMessage());
+        }
         gc.initializeVIPService();
         if(gc.getCacheManager() != null) gc.getCacheManager().clearCache();
         gc.createTranslationCache(MessageCache.class);
