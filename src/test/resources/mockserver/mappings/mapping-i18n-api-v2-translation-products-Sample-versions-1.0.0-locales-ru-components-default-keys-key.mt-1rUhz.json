@@ -1,0 +1,26 @@
+{
+  "id" : "5a6b2e78-3e2b-32d1-9dea-0121c94fa450",
+  "request" : {
+    "url" : "/i18n/api/v2/translation/products/Sample/versions/1.0.0/locales/ru/components/default/keys/key.mt?machineTranslation=true&commentForSource=It%27s+a+comment",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "equalTo" : "source=It's a testing source"
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-i18n-api-v2-translation-products-Sample-versions-1.0.0-locales-ru-components-default-keys-key.mt-1rUhz.json",
+    "headers" : {
+      "Set-Cookie" : "JSESSIONID=EDD382EA75A12E713F37B8BB12D97A9B; Path=/; Secure; HttpOnly",
+      "Access-Control-Allow-Origin" : "",
+      "Access-Control-Allow-Methods" : "GET, POST, PUT, DELETE, OPTIONS",
+      "Access-Control-Allow-Headers" : "csp-auth-token, Content-Type, x-xmp-ui",
+      "Access-Control-Allow-Credentials" : "${vipservice.cross.domain.allowCredentials}",
+      "Access-Control-Max-Age" : "3600",
+      "Content-Disposition" : "inline;filename=f.txt",
+      "Content-Type" : "application/json;charset=UTF-8",
+      "Date" : "Wed, 23 Oct 2019 08:07:12 GMT"
+    }
+  },
+  "uuid" : "5a6b2e78-3e2b-32d1-9dea-0121c94fa450"
+}
