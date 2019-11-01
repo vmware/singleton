@@ -5,8 +5,8 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-11-01T18:45:43 CST">
-<title> :: Singleton</title>
+<meta name="revised" content="2019-11-01T18:57:38 CST">
+<title>Enable S3 Storage :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://vmware.github.io/singleton/css/nucleus.css" rel="stylesheet">
@@ -131,7 +131,7 @@
       <li data-nav-id="/docs/overview/singleton-service/configurations/enable-s3-storage/" class="dd-item active">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/">
-            
+            Enable S3 Storage
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -273,7 +273,7 @@
    Configurations</option> 
       <option value="/docs/overview/singleton-service/configurations/enable-source-collection/" >---- Enable Source Collection</option>
       <option value="/docs/overview/singleton-service/configurations/enable-pseudo-translation/" >---- Enable Pseudo Translation</option>
-      <option value="/docs/overview/singleton-service/configurations/enable-s3-storage/"  selected>---- </option>
+      <option value="/docs/overview/singleton-service/configurations/enable-s3-storage/"  selected>---- Enable S3 Storage</option>
   
       <option value="/docs/overview/singleton-service/singleton-service-apis/" >--- Singleton Service APIs</option>
   
@@ -307,7 +307,7 @@
       </div>
     
 
-    <h1></h1>
+    <h1>Enable S3 Storage</h1>
     
     
     
@@ -319,13 +319,14 @@
 
 <h2 id="how-to-generate-singleton-service-s3-build">How to generate Singleton Service S3 build?</h2>
 
-<p>The steps to generate S3 build:
-1. Clone Singleton Service code using Git.</p>
-
-<pre><code>git clone git@github.com:vmware/singleton.git
-</code></pre>
+<p>The steps to generate S3 build:</p>
 
 <ol>
+<li><p>Clone Singleton Service code using Git.</p>
+
+<pre><code>git clone git@github.com:vmware/singleton.git
+</code></pre></li>
+
 <li><p>Update the complie configuration file in <code>singleton/g11n-ws/gradle.properties</code></p>
 
 <pre><code class="language-datatype=bundle```">to 
@@ -374,6 +375,10 @@ Jar files will be generated to</p>
 
     
 
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 01/11/2019
+    </div>
     
 
     

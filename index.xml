@@ -153,6 +153,21 @@ Providing support for the l10n of individual components.</description>
     </item>
     
     <item>
+      <title>Enable S3 Storage</title>
+      <link>https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/</link>
+      <pubDate>Fri, 01 Nov 2019 18:53:33 +0800</pubDate>
+      
+      <guid>https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/</guid>
+      <description>Singleton Service now supports to store the translation bundle files on AWS S3.
+This page will introduce the details about Singleton Service S3 build.
+How to generate Singleton Service S3 build? The steps to generate S3 build:
+ Clone Singleton Service code using Git.
+git clone git@github.com:vmware/singleton.git  Update the complie configuration file in singleton/g11n-ws/gradle.properties
+to  datatype=s3```
+ Update the below s3 config items according to your requirements in singleton/g11n-ws/vip-manager-i18n/src/main/resources/application-s3.</description>
+    </item>
+    
+    <item>
       <title>_Footer</title>
       <link>https://vmware.github.io/singleton/_footer/</link>
       <pubDate>Thu, 26 Sep 2019 13:43:07 +0800</pubDate>
@@ -169,20 +184,6 @@ Providing support for the l10n of individual components.</description>
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/</guid>
       <description>Singleton Service has two API versions available at present: v1 and v2. API v1 was created in the early times of Singleton, while API v2 has been validated with many VMware products over years, which includes the largest number of APIs, and is closer to the Restful style. It is recommended to use API v2 in practice. This version provides two types of APIs:
  Formatting API, which is used to format the data like the date time/number/currency/unit of measure/singular and plural variations, just to name a few.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/</guid>
-      <description>Singleton Service now supports to store the translation bundle files on AWS S3.
-This page will introduce the details about Singleton Service S3 build.
-How to generate Singleton Service S3 build? The steps to generate S3 build: 1. Clone Singleton Service code using Git.
-git clone git@github.com:vmware/singleton.git   Update the complie configuration file in singleton/g11n-ws/gradle.properties
-to  datatype=s3```
- Update the below s3 config items according to your requirements in singleton/g11n-ws/vip-manager-i18n/src/main/resources/application-s3.</description>
     </item>
     
   </channel>
