@@ -1,0 +1,47 @@
+baseURL = "https://vmware.github.io/singleton/"
+
+languageCode = "en-us"
+DefaultContentLanguage = "en"
+title = "Singleton"
+theme = "hugo-theme-docdock"
+canonifyurls = true
+
+[languages]
+[languages.en]
+contentDir = "content/en"
+languageName = "English"
+
+[Params]
+description = "One-fits-all Internationalization Solution"
+version = "0.1.0"
+showVisitedLinks = true # default is false
+themeStyle = "flex" # "original" or "flex" # default "flex"
+themeVariant = "blue" # choose theme variant "green", "gold" , "gray", "blue" (default)
+ordersectionsby = "weight" # ordersectionsby = "title"
+disableHomeIcon = true # default is false
+disableSearch = false # default is false
+disableNavChevron = false # set true to hide next/prev chevron, default is false
+highlightClientSide = false # set true to use highlight.pack.js instead of the default hugo chroma highlighter
+menushortcutsnewtab = false # set true to open shortcuts links to a new tab/window
+enableGitInfo = true
+
+# Global menu section
+[[menu.shortcuts]]
+name = "<i class='fa fa-home'></i> <label>Home</label>"
+url = "/"
+weight = 10
+
+[[menu.shortcuts]]
+name = "<i class='fa fa-download'></i> <label>Download</label>"
+url = "/docs/get-started/download-and-installation"
+weight = 20
+
+[[menu.shortcuts]]
+name = "<i class='fa fa-book'></i> <label>Documentation</label>"
+url = "/docs"
+weight = 30
+
+[[menu.shortcuts]]
+name = "<i class='fa fa-github'></i> <label>Github Repo</label>"
+url = "https://github.com/vmware/singleton"
+weight = 40
