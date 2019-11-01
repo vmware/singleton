@@ -247,7 +247,6 @@ public class TranslationMessage implements Message {
             return retMap;
         }
 
-
         try {
             final ComponentsService cs = new ComponentsService(components, locales);
             retMap = cs.getTranslation();
