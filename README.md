@@ -1,6 +1,6 @@
 # Singleton Website
 
-We use Hugo to maintain Singleton documentation and publish them to Singleton website. Please download and install Hugo following the instructions on https://gohugo.io/getting-started/quick-start/.
+We use Hugo to maintain Singleton documentation and publish them to [Singleton website](https://vmware.github.io/singleton/). 
 
 The contents in the documentation are stored under /content and organized as below:
 
@@ -41,11 +41,4 @@ The contents in the documentation are stored under /content and organized as bel
             └── integrate-singleton-in-python-app.md
 ```
 
-Please modify the contents in .md files under /content if needed.
-
-After the modification is done, please run the following command to publish the update to Singleton website.
-
-```bash
-./publish_to_ghpages.sh
-```
-
+If you want to contribute to Singleton documentation, please refer to [Contributing Guideline](https://github.com/vmware/singleton/blob/website/CONTRIBUTING.md).
