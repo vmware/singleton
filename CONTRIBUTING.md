@@ -1,4 +1,4 @@
-# How contribute to Singleton documentation?
+# How to contribute to Singleton documentation?
 
 Please download and install Hugo following the instructions on https://gohugo.io/getting-started/quick-start/.
 
