@@ -106,15 +106,15 @@ public class TranslationProductAction  extends BaseAction {
         if(StringUtils.isEmpty(componentsStr) && StringUtils.isEmpty(localesStr)) {
             return  super.handleResponse(APIResponseStatus.OK, getAllCompTrans( productName,  version, pseudo, req)) ;
         }else {
-            return getV2MultipleComponentsTrans(productName, componentsStr,  version,  localesStr,  pseudo, req);
+            return getPartialComTrans(productName, componentsStr,  version,  localesStr,  pseudo, req);
         }
         
         
     }
    
     
-     private TranslationDTO getPartTranslationReqParams(String productName,
-             String components, String version, String locales, String pseudo,
+     private TranslationDTO getResultTranslationDTO(String productName,
+             String version,String components,String locales, String pseudo,
              HttpServletRequest req) throws Exception {
          TranslationDTO translationDTO = new TranslationDTO();
          translationDTO.setProductName(productName);
@@ -185,11 +185,11 @@ public class TranslationProductAction  extends BaseAction {
      *  get the API v2 mult-component translation
      */
       @SuppressWarnings("unchecked")
-    public APIResponseDTO getV2MultipleComponentsTrans(String productName,
+    public APIResponseDTO getPartialComTrans(String productName,
                String components, String version, String locales, String pseudo,
                HttpServletRequest req) throws Exception {
           
-          TranslationDTO resulttranslationDTO = getPartTranslationReqParams( productName, components,  version,  locales,  pseudo, req);
+          TranslationDTO resulttranslationDTO = getResultTranslationDTO( productName, components,  version,  locales,  pseudo, req);
           TranslationDTO allTranslationDTO  =  getAllCompTrans( productName,  version, pseudo, req);
         
           List<String> reqLocales = resulttranslationDTO.getLocales();
