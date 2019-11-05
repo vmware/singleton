@@ -134,7 +134,7 @@ public class TranslationProductAction  extends BaseAction {
              localeList.add(ConstantsKeys.LATEST);
          } else if (!StringUtils.isEmpty(locales)) {
              for (String locale : locales.split(",")) {
-                 localeList.add(getMapingLocale(productName, version, locale.trim()));
+                 localeList.add(getMappingLocale(productName, version, locale.trim()));
              }      
          } else {
              localeList = productService.getSupportedLocaleList(productName,version);
@@ -234,7 +234,7 @@ public class TranslationProductAction  extends BaseAction {
        *this function use to locale fallback 
        *
        */
-      private String getMapingLocale(String productName, String version,
+      private String getMappingLocale(String productName, String version,
               String inputLocale) throws L3APIException {
           List<String> supportedLocaleList = productService
                   .getSupportedLocaleList(productName, version);
