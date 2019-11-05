@@ -189,7 +189,7 @@ public class TranslationProductAction  extends BaseAction {
                String components, String version, String locales, String pseudo,
                HttpServletRequest req) throws Exception {
           
-          TranslationDTO resulttranslationDTO = getResultTranslationDTO( productName, components,  version,  locales,  pseudo, req);
+          TranslationDTO resulttranslationDTO = getResultTranslationDTO( productName, version,components, locales,  pseudo, req);
           TranslationDTO allTranslationDTO  =  getAllCompTrans( productName,  version, pseudo, req);
         
           List<String> reqLocales = resulttranslationDTO.getLocales();
