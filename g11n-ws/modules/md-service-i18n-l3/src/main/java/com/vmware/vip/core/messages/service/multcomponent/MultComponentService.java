@@ -4,6 +4,7 @@
  */
 package com.vmware.vip.core.messages.service.multcomponent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -29,6 +30,7 @@ import com.vmware.vip.core.messages.service.product.IProductService;
 import com.vmware.vip.core.messages.utils.PseudoConfig;
 import com.vmware.vip.core.messages.utils.PseudoMessagesUtils;
 import com.vmware.vip.messages.data.dao.api.IMultComponentDao;
+import com.vmware.vip.messages.data.dao.api.IOneComponentDao;
 import com.vmware.vip.messages.data.dao.exception.DataException;
 
 /**
@@ -45,6 +47,9 @@ public class MultComponentService implements IMultComponentService {
 
 	@Resource
 	private IMultComponentDao multipleComponentsDao;
+	
+    @Autowired
+    private IOneComponentDao oneComponentDao;
 
 	@Autowired
 	private PseudoConfig pseudoConfig;
@@ -110,5 +115,5 @@ public class MultComponentService implements IMultComponentService {
 		translationDTO.setBundles(ja);
 		return translationDTO;
 	}
-
+	
 }

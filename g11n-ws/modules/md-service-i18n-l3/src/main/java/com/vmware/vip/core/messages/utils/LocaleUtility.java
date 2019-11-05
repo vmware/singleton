@@ -7,6 +7,9 @@ package com.vmware.vip.core.messages.utils;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import org.springframework.util.StringUtils;
+
+
 
 import org.springframework.util.StringUtils;
 
@@ -79,8 +82,50 @@ public class LocaleUtility {
 		return isDefault;
 	}
 
+	
+	private static Locale pickupLocale(List<Locale> locales,
+            Locale preferredLocale) {
+	    Locale pLocale = null;
+        Locale sLocale = preferredLocale;
+        String key = preferredLocale.toLanguageTag();
+        if (LocaleUtility.LOCALE_MAP.containsKey(key)) {
+            String value = LocaleUtility.LOCALE_MAP.getString(key);
+            sLocale = Locale.forLanguageTag(value);
+        }
+        for (Locale locale : locales) {
+            String localeTag = locale.toLanguageTag();
+            if (sLocale.toLanguageTag().equalsIgnoreCase(localeTag)) {
+                pLocale = locale;
+                break;
+            } else if (locale.getLanguage().equalsIgnoreCase(
+                    sLocale.getLanguage())) {
+                pLocale = new Locale(locale.getLanguage());
+                String script = locale.getScript();
+                if (!"".equals(script)
+                        && script.equalsIgnoreCase(sLocale.getScript())) {
+                    pLocale = Locale.forLanguageTag(locale.getLanguage() + "-"
+                            + script);
+                }
+                String country = locale.getCountry();
+                if (!"".equals(country)
+                        && country.equalsIgnoreCase(sLocale.getCountry())) {
+                    pLocale = Locale.forLanguageTag(pLocale.toLanguageTag()
+                            + "-" + country);
+                    String variant = locale.getVariant();
+                    if (!"".equals(variant)
+                            && variant.equalsIgnoreCase(sLocale.getVariant())) {
+                        pLocale = Locale.forLanguageTag(pLocale.toLanguageTag()
+                                + "-" + variant);
+                    }
+                }
+            }
+        }
+        return pLocale;
+	}
+	
+	
 	/**
-	 * pickup the matched locale with a map in properties file
+	 * pickup the matched locale with a map in properties file, if no locale return default locale
 	 * 
 	 * @param locales
 	 * @param preferredLocale
@@ -88,41 +133,20 @@ public class LocaleUtility {
 	 */
 	public static Locale pickupLocaleFromList(List<Locale> locales,
 			Locale preferredLocale) {
-		Locale pLocale = null;
-		Locale sLocale = preferredLocale;
-		String key = preferredLocale.toLanguageTag();
-		if (LocaleUtility.LOCALE_MAP.containsKey(key)) {
-			String value = LocaleUtility.LOCALE_MAP.getString(key);
-			sLocale = Locale.forLanguageTag(value);
-		}
-		for (Locale locale : locales) {
-			String localeTag = locale.toLanguageTag();
-			if (sLocale.toLanguageTag().equalsIgnoreCase(localeTag)) {
-				pLocale = locale;
-				break;
-			} else if (locale.getLanguage().equalsIgnoreCase(
-					sLocale.getLanguage())) {
-				pLocale = new Locale(locale.getLanguage());
-				String script = locale.getScript();
-				if (!"".equals(script)
-						&& script.equalsIgnoreCase(sLocale.getScript())) {
-					pLocale = Locale.forLanguageTag(locale.getLanguage() + "-"
-							+ script);
-				}
-				String country = locale.getCountry();
-				if (!"".equals(country)
-						&& country.equalsIgnoreCase(sLocale.getCountry())) {
-					pLocale = Locale.forLanguageTag(pLocale.toLanguageTag()
-							+ "-" + country);
-					String variant = locale.getVariant();
-					if (!"".equals(variant)
-							&& variant.equalsIgnoreCase(sLocale.getVariant())) {
-						pLocale = Locale.forLanguageTag(pLocale.toLanguageTag()
-								+ "-" + variant);
-					}
-				}
-			}
-		}
+	    Locale pLocale = pickupLocale(locales,preferredLocale);
 		return pLocale == null ? DEFAULT_LOCALE : pLocale;
 	}
+	
+	/**
+     * pickup the matched locale with a map in properties file, if no locale return input locale
+     * 
+     * @param locales
+     * @param preferredLocale
+     * @return
+     */
+    public static Locale pickupLocaleFromListNoDefault(List<Locale> locales,
+            Locale preferredLocale) {
+        Locale pLocale = pickupLocale(locales,preferredLocale);
+        return pLocale == null ? preferredLocale : pLocale;
+    }
 }

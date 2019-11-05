@@ -40,9 +40,11 @@ public class TranslationProductAPI  extends TranslationProductAction {
     public APIResponseDTO getMultipleComponentsTranslation(
 			@ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
 			@ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @PathVariable(value = APIParamName.VERSION) String version,
+	    	@ApiParam(name = APIParamName.COMPONENTS, required = false, value = APIParamValue.COMPONENTS) @RequestParam(value = APIParamName.COMPONENTS, required = false, defaultValue = "") String components,
+			@ApiParam(name = APIParamName.LOCALES, required = false, value = APIParamValue.LOCALES) @RequestParam(value = APIParamName.LOCALES, required = false, defaultValue = "") String locales,
 			@ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
             HttpServletRequest req)  throws Exception {
-        return super.getMultTrans(productName, version, pseudo, req);
+        return super.getMultTrans(productName, version, components, locales, pseudo, req);
     }
 
 	/**
