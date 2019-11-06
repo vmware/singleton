@@ -21,8 +21,8 @@ import java.util.Map;
 public class SharedComponentTest extends BaseTestClass {
     TranslationMessage mainTranslation;
     TranslationMessage subTranslation;
-    String mainProductName = "JavaclientTest";
-    String subProductName = "JavaclientTest1";
+    String             mainProductName = "JavaclientTest";
+    String             subProductName  = "JavaclientTest1";
 
     @Before
     public void init() {
@@ -33,7 +33,8 @@ public class SharedComponentTest extends BaseTestClass {
             logger.error(e.getMessage());
         }
         mainCfg.initializeVIPService();
-        if (mainCfg.getCacheManager() != null) mainCfg.getCacheManager().clearCache();
+        if (mainCfg.getCacheManager() != null)
+            mainCfg.getCacheManager().clearCache();
         mainCfg.createTranslationCache(MessageCache.class);
         mainCfg.createFormattingCache(FormattingCache.class);
         I18nFactory i18n = I18nFactory.getInstance(mainCfg);
@@ -68,8 +69,8 @@ public class SharedComponentTest extends BaseTestClass {
 
         VIPCfg gc = VIPCfg.getInstance();
         Cache c = gc.getCacheManager().getCache(VIPCfg.CACHE_L3);
-        Map<String, Map<String, String>> m =  ((MessageCache)c).getCachedTranslationMap();
-        Assert.assertTrue(m.size()==4);
+        Map<String, Map<String, String>> m = ((MessageCache) c).getCachedTranslationMap();
+        Assert.assertTrue(m.size() == 4);
         Assert.assertTrue(m.containsKey("JavaclientTest_1.0.0_JAVA_false_#zh"));
         Assert.assertTrue(m.containsKey("JavaclientTest1_2.0.0_JSP_false_#de"));
     }

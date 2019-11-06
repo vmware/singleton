@@ -27,7 +27,7 @@ import com.vmware.vipclient.i18n.util.ConstantsKeys;
 
 public class ComponentsService {
 
-    Logger logger = LoggerFactory.getLogger(ComponentsService.class);
+    Logger                          logger = LoggerFactory.getLogger(ComponentsService.class);
     private final SortedSet<String> components;
     private final Set<Locale>       locales;
 
@@ -44,7 +44,6 @@ public class ComponentsService {
         final Map<String, Map<String, Map<String, String>>> dataMap = new HashMap<>();
         final TreeSet<String> localesSet = new TreeSet<>(
                 locales.stream().map(Locale::toLanguageTag).collect(Collectors.toSet()));
-
 
         // Get data from cache first. If cache doens't have, query from server.
         final SortedSet<String> componentsToQuery = new TreeSet<>();
@@ -64,8 +63,7 @@ public class ComponentsService {
                 if (translations == null && !cs.isContainComponent()) {
                     componentsToQuery.add(component);
                     localesToQuery.add(locale);
-                }
-                else {
+                } else {
                     localeMap.put(component, translations);
                 }
             }
@@ -114,7 +112,6 @@ public class ComponentsService {
 
         return retMap;
     }
-
 
     private Map<String, String> makeLocaleMap(final SortedSet<String> localesToQuery,
             final List<String> localesFromServer) {

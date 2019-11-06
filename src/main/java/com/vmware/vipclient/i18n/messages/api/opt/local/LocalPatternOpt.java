@@ -14,11 +14,11 @@ import com.vmware.vipclient.i18n.util.PatternBundleUtil;
 public class LocalPatternOpt {
 
     public JSONObject getPatternsByLocale(String locale) {
-    	Map<String, Object> patterns = PatternBundleUtil.readJSONFile(locale);
-		if (patterns == null) {
-			return null;
-		} else {
-			return (JSONObject) patterns.get(PatternKeys.CATEGORIES);
-		}
+        Map<String, Object> patterns = PatternBundleUtil.readJSONFile(locale);
+        if (patterns == null) {
+            return null;
+        } else {
+            return (JSONObject) patterns.get(PatternKeys.CATEGORIES);
+        }
     }
 }

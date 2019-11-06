@@ -6,7 +6,7 @@ package com.vmware.vipclient.i18n.util;
 
 public class StringUtil {
 
-	public static boolean isEmpty(String str) {
-		return null == str || str.isEmpty();
-	}
+    public static boolean isEmpty(String str) {
+        return null == str || str.isEmpty();
+    }
 }

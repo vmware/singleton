@@ -10,25 +10,26 @@ package com.vmware.vipclient.i18n.exceptions;
  */
 public class VIPJavaClientTimeoutException extends RuntimeException {
 
-	private static final long serialVersionUID = 2715207175926260523L;
+    private static final long serialVersionUID = 2715207175926260523L;
 
-	public VIPJavaClientTimeoutException() {
-		super();
-	}
+    public VIPJavaClientTimeoutException() {
+        super();
+    }
 
-	public VIPJavaClientTimeoutException(String message) {
-		super(message);
-	}
+    public VIPJavaClientTimeoutException(String message) {
+        super(message);
+    }
 
-	public VIPJavaClientTimeoutException(Throwable cause) {
-		super(cause);
-	}
+    public VIPJavaClientTimeoutException(Throwable cause) {
+        super(cause);
+    }
 
-	public VIPJavaClientTimeoutException(String message, Throwable cause) {
-		super(message, cause);
-	}
+    public VIPJavaClientTimeoutException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-	public VIPJavaClientTimeoutException(String message, Throwable cause,boolean enableSuppression, boolean writableStackTrace) {
-		super(message, cause, enableSuppression, writableStackTrace);
-	}
+    public VIPJavaClientTimeoutException(String message, Throwable cause, boolean enableSuppression,
+            boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
 }

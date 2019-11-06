@@ -4,7 +4,6 @@
  */
 package com.vmware.vipclient.i18n.exceptions;
 
-
 public class JsonParsingRuntimeException extends RuntimeException {
     // the JSON that we attempted to parse
     private final String json;

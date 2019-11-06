@@ -33,86 +33,87 @@ import com.vmware.vipclient.i18n.util.LocaleUtility;
  *
  */
 public class VIPComponentFilter implements Filter {
-	private Logger logger = LoggerFactory.getLogger(VIPComponentFilter.class);
-	
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
-		String locale = this.getParamFromQuery(request, "locale");
-		String component = this.getParamFromURI(request, "component");
-		Map<String, String> ctmap;
-		String messages = "{}";
-		if(!LocaleUtility.isDefaultLocale(locale) && translation != null){
-			ctmap = translation.getStrings(LocaleUtility.fmtToMappedLocale(locale),
-					component);
-			if (ctmap != null) {
-				messages = JSONObject.toJSONString(ctmap);
-			}
-		}
-		OutputStream os = response.getOutputStream();
-		response.setContentType("text/javascript;charset=UTF-8");
-		os.write(("var translation = {" + "\"messages\" : " + messages + ", "
-				+ "\"productName\" : \"" + gc.getInstance().getProductName()
-				+ "\", " + "\"version\" : \"" + gc.getInstance().getVersion()
-				+ "\", " + "\"vipServer\" : \""
-				+ gc.getInstance().getVipServer() + "\", " + "\"pseudo\" : \""
-				+ gc.getInstance().isPseudo() + "\", "
-				+ "\"collectSource\" : \"" + gc.getInstance().isCollectSource() + "\"};")
-				.getBytes("UTF-8"));
-	}
+    private Logger logger = LoggerFactory.getLogger(VIPComponentFilter.class);
 
-	private String getParamFromURI(ServletRequest request, String paramName) {
-		HttpServletRequest res = (HttpServletRequest) request;
-		String path = res.getRequestURI();
-		String localepath = path
-				.substring(path.indexOf(paramName) + paramName.length() + 1,
-						path.length());
-		return localepath.substring(0,
-				localepath.indexOf('/') >= 0 ? localepath.indexOf('/')
-						: localepath.length());
-	}
+    public void doFilter(ServletRequest request, ServletResponse response,
+            FilterChain chain) throws IOException, ServletException {
+        String locale = this.getParamFromQuery(request, "locale");
+        String component = this.getParamFromURI(request, "component");
+        Map<String, String> ctmap;
+        String messages = "{}";
+        if (!LocaleUtility.isDefaultLocale(locale) && translation != null) {
+            ctmap = translation.getStrings(LocaleUtility.fmtToMappedLocale(locale),
+                    component);
+            if (ctmap != null) {
+                messages = JSONObject.toJSONString(ctmap);
+            }
+        }
+        OutputStream os = response.getOutputStream();
+        response.setContentType("text/javascript;charset=UTF-8");
+        os.write(("var translation = {" + "\"messages\" : " + messages + ", "
+                + "\"productName\" : \"" + gc.getInstance().getProductName()
+                + "\", " + "\"version\" : \"" + gc.getInstance().getVersion()
+                + "\", " + "\"vipServer\" : \""
+                + gc.getInstance().getVipServer() + "\", " + "\"pseudo\" : \""
+                + gc.getInstance().isPseudo() + "\", "
+                + "\"collectSource\" : \"" + gc.getInstance().isCollectSource() + "\"};")
+                        .getBytes("UTF-8"));
+    }
 
-	private String getParamFromQuery(ServletRequest request, String paramName) {
-		HttpServletRequest res = (HttpServletRequest) request;
-		String queryStr = res.getQueryString();
-		String localepath = queryStr.substring(queryStr.indexOf(paramName)
-				+ paramName.length() + 1, queryStr.length());
-		return localepath.substring(0,
-				localepath.indexOf('/') >= 0 ? localepath.indexOf('/')
-						: localepath.length());
-	}
+    private String getParamFromURI(ServletRequest request, String paramName) {
+        HttpServletRequest res = (HttpServletRequest) request;
+        String path = res.getRequestURI();
+        String localepath = path
+                .substring(path.indexOf(paramName) + paramName.length() + 1,
+                        path.length());
+        return localepath.substring(0,
+                localepath.indexOf('/') >= 0 ? localepath.indexOf('/')
+                        : localepath.length());
+    }
 
-	private String getSourceFromBody(ServletRequest request) {
-		BufferedReader br;
-		String line;
-		StringBuilder source = new StringBuilder("");
-		try {
-			br = request.getReader();
-			while ((line = br.readLine()) != null) {
-				source.append(line);
-			}
-		} catch (IOException e) {
-			logger.error(e.getMessage());
-		}
-		return source.toString();
-	}
+    private String getParamFromQuery(ServletRequest request, String paramName) {
+        HttpServletRequest res = (HttpServletRequest) request;
+        String queryStr = res.getQueryString();
+        String localepath = queryStr.substring(queryStr.indexOf(paramName)
+                + paramName.length() + 1, queryStr.length());
+        return localepath.substring(0,
+                localepath.indexOf('/') >= 0 ? localepath.indexOf('/')
+                        : localepath.length());
+    }
 
-	public void destroy() {
-		// Do Nothing
-	}
+    private String getSourceFromBody(ServletRequest request) {
+        BufferedReader br;
+        String line;
+        StringBuilder source = new StringBuilder("");
+        try {
+            br = request.getReader();
+            while ((line = br.readLine()) != null) {
+                source.append(line);
+            }
+        } catch (IOException e) {
+            logger.error(e.getMessage());
+        }
+        return source.toString();
+    }
 
-	private TranslationMessage translation;
-	private VIPCfg gc = VIPCfg.getInstance();
-	public void init(FilterConfig filterConfig) throws ServletException {
-		if(gc.getVipService() == null) {
-			try {
-				gc.initialize("vipconfig");
-			} catch (VIPClientInitException e) {
-				logger.error(e.getMessage());
-			}
-			gc.initializeVIPService();
-		}
-		gc.createTranslationCache(MessageCache.class);
-		I18nFactory i18n = I18nFactory.getInstance(gc);
-		translation = (TranslationMessage)i18n.getMessageInstance(TranslationMessage.class);
-	}
+    public void destroy() {
+        // Do Nothing
+    }
+
+    private TranslationMessage translation;
+    private VIPCfg             gc = VIPCfg.getInstance();
+
+    public void init(FilterConfig filterConfig) throws ServletException {
+        if (gc.getVipService() == null) {
+            try {
+                gc.initialize("vipconfig");
+            } catch (VIPClientInitException e) {
+                logger.error(e.getMessage());
+            }
+            gc.initializeVIPService();
+        }
+        gc.createTranslationCache(MessageCache.class);
+        I18nFactory i18n = I18nFactory.getInstance(gc);
+        translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
+    }
 }

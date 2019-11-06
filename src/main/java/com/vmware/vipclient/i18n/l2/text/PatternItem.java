@@ -18,7 +18,7 @@ import com.vmware.vipclient.i18n.l2.text.parser.TimeZonePatternParser;
 
 public class PatternItem {
     private char type;
-    private int length;
+    private int  length;
 
     public PatternItem(char type, int length) {
         this.type = type;
@@ -34,7 +34,7 @@ public class PatternItem {
     }
 
     // Map pattern character to index
-    private static final int[] PATTERN_CHAR_TO_INDEX = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+    private static final int[] PATTERN_CHAR_TO_INDEX           = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
             -1, -1, -1, -1, -1, -1,
             //
             -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -53,11 +53,11 @@ public class PatternItem {
 
     // Map pattern character index to Calendar field number
     private static final int[] PATTERN_INDEX_TO_CALENDAR_FIELD = {
-    /* yML */Calendar.YEAR, Calendar.MONTH, Calendar.MONTH,
-    /* dHh */Calendar.DAY_OF_MONTH, Calendar.HOUR_OF_DAY, Calendar.HOUR,
-    /* msE */Calendar.MINUTE, Calendar.SECOND, Calendar.DAY_OF_WEEK,
-    /* S */Calendar.MILLISECOND, Calendar.AM_PM, Calendar.ERA,
-    /* z */Calendar.ZONE_OFFSET };
+            /* yML */Calendar.YEAR, Calendar.MONTH, Calendar.MONTH,
+            /* dHh */Calendar.DAY_OF_MONTH, Calendar.HOUR_OF_DAY, Calendar.HOUR,
+            /* msE */Calendar.MINUTE, Calendar.SECOND, Calendar.DAY_OF_WEEK,
+            /* S */Calendar.MILLISECOND, Calendar.AM_PM, Calendar.ERA,
+            /* z */Calendar.ZONE_OFFSET };
 
     private int getIndexFromChar() {
         return type < PATTERN_CHAR_TO_INDEX.length ? PATTERN_CHAR_TO_INDEX[type & 0xff] : -1;

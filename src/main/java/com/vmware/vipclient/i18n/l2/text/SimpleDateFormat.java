@@ -15,9 +15,9 @@ import org.json.simple.JSONObject;
 
 public class SimpleDateFormat extends DateFormat {
 
-    private String pattern;
+    private String     pattern;
     private JSONObject formatData;
-    private String locale;
+    private String     locale;
 
     public SimpleDateFormat(String pattern, JSONObject formatData, String locale) {
         // TODO Auto-generated constructor stub
