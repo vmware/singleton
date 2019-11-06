@@ -14,6 +14,7 @@ import org.junit.Test;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
+import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.CacheService;
@@ -94,7 +95,7 @@ public class MessageCacheTest1 extends BaseTestClass {
     @Test
     public void testExpired() {
         VIPCfg gc = VIPCfg.getInstance();
-        Cache c = gc.getCacheManager().getCache(VIPCfg.CACHE_L3);
+        Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
         Map data = new HashMap();
         String k = "com.vmware.test";
         String v = "It's a test";
@@ -103,12 +104,12 @@ public class MessageCacheTest1 extends BaseTestClass {
         c.put(cachedKey, data);
         long expired = 20000;
         c.setExpiredTime(expired);
-        Map cachedData = (Map) gc.getCacheManager().getCache(VIPCfg.CACHE_L3).get(cachedKey);
+        Map cachedData = TranslationCacheManager.getCache(VIPCfg.CACHE_L3).get(cachedKey);
         Assert.assertNotNull(cachedData);
-        Assert.assertEquals(v, (String) cachedData.get(k));
+        Assert.assertEquals(v, cachedData.get(k));
         try {
             Thread.sleep(expired + 10000);
-            Map cachedData2 = (Map) gc.getCacheManager().getCache(VIPCfg.CACHE_L3).get(cachedKey);
+            Map cachedData2 = TranslationCacheManager.getCache(VIPCfg.CACHE_L3).get(cachedKey);
             Assert.assertNull(cachedData2);
         } catch (InterruptedException e) {
             e.printStackTrace();

@@ -14,6 +14,7 @@ import org.junit.Test;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
+import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.CacheService;
@@ -48,7 +49,7 @@ public class MessageCacheTest2 extends BaseTestClass {
     @Test
     public void testDisableCache() {
         VIPCfg gc = VIPCfg.getInstance();
-        Cache c = gc.getCacheManager().getCache(VIPCfg.CACHE_L3);
+        Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
         c.setXCapacity(0);
         Map data = new HashMap();
         String k = "com.vmware.test";
@@ -58,7 +59,7 @@ public class MessageCacheTest2 extends BaseTestClass {
         c.put(cachedKey, data);
         long expired = 30000;
         c.setExpiredTime(expired);
-        Map cachedData = (Map) gc.getCacheManager().getCache(VIPCfg.CACHE_L3).get(cachedKey);
+        Map cachedData = TranslationCacheManager.getCache(VIPCfg.CACHE_L3).get(cachedKey);
         Assert.assertNull(cachedData);
     }
 }

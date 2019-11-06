@@ -16,6 +16,7 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
+import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 
@@ -69,7 +70,7 @@ public class SharedComponentTest extends BaseTestClass {
         Assert.assertTrue(subTranslation.getCfg().getProductName().equals(subProductName));
 
         VIPCfg gc = VIPCfg.getInstance();
-        Cache c = gc.getCacheManager().getCache(VIPCfg.CACHE_L3);
+        Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
         Map<String, Map<String, String>> m = ((MessageCache) c).getCachedTranslationMap();
         Assert.assertTrue(m.size() == 4);
         Assert.assertTrue(m.containsKey("JavaclientTest_1.0.0_JAVA_false_#zh"));
