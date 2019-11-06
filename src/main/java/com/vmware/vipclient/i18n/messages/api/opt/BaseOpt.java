@@ -6,9 +6,13 @@ package com.vmware.vipclient.i18n.messages.api.opt;
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+import org.json.simple.parser.ParseException;
+
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 
 public class BaseOpt {
+	protected String responseStr;
+	protected JSONObject responseJsonObj = null;
 
 	/*
 	 * get messages from response string with JSON format
@@ -28,7 +32,7 @@ public class BaseOpt {
 		}
 		return msgsObj;
 	}
-	
+
 	/**
 	 * get the status from response body
 	 * @param responseStr
@@ -54,5 +58,31 @@ public class BaseOpt {
 		} catch (Exception e) {
 		}
 		return msgObject;
+	}
+
+	protected void parseServerResponse() throws ParseException {
+		if (null == responseJsonObj) {
+			responseJsonObj = (JSONObject) JSONValue.parseWithException(responseStr);
+		}
+	}
+
+	public JSONObject getDataPart(JSONObject obj) {
+		return (JSONObject) obj.get(ConstantsKeys.DATA);
+	}
+
+	public JSONObject getResponsePart(JSONObject obj) {
+		return ((JSONObject) obj.get(ConstantsKeys.RESPONSE));
+	}
+
+	public int getResponseCode(JSONObject obj) {
+		return Integer.parseInt(getResponsePart(obj).get(ConstantsKeys.CODE).toString());
+	}
+
+	public String getResponseMessage(JSONObject obj) {
+		return (String) getResponsePart(obj).get(ConstantsKeys.MESSAGE);
+	}
+
+	public boolean isSuccess(int statusCode) {
+		return statusCode >= 200 && statusCode <= 299;
 	}
 }

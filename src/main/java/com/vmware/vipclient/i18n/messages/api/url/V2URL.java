@@ -25,7 +25,7 @@ import com.vmware.vipclient.i18n.util.ConstantsKeys;
  */
 public class V2URL {
 	private static Logger logger = LoggerFactory.getLogger(V2URL.class);
-	
+
 	private V2URL() {
 
 	}
@@ -80,6 +80,25 @@ public class V2URL {
 			URLUtils.appendParamToURL(url, ConstantsKeys.MACHINE_TRANSLATION,
 					Boolean.toString(VIPCfg.getInstance().isMachineTranslation()));
 		}
+		return url.toString();
+	}
+
+	/**
+	 * assembly the request URL for multiple components Translation.
+	 * 
+	 * @param components
+	 * 
+	 * @param locales
+	 *
+	 * @param baseURL
+	 *            The root path of the URL.
+	 * @return
+	 */
+	public static String getComponentsTranslationURL(String baseURL) {
+		final String url_path = APIV2.PRODUCT_TRANSLATION_GET
+				.replace("{" + APIParamName.PRODUCT_NAME + "}", VIPCfg.getInstance().getProductName())
+				.replace("{" + APIParamName.VERSION2 + "}", VIPCfg.getInstance().getVersion());
+		StringBuilder url = new StringBuilder(baseURL).append(url_path);
 		return url.toString();
 	}
 
@@ -152,8 +171,6 @@ public class V2URL {
 	}
 
 	public static String getPatternURL(String locale, String baseURL) {// PatternsDTO
-																		// //
-																		// dto,
 		StringBuilder url = new StringBuilder(baseURL);
 		String subUrl = APIV2.FORMAT_PATTERN_GET.replace("{" + APIParamName.LOCALE + "}", locale);
 		url.append(subUrl);
@@ -180,7 +197,7 @@ public class V2URL {
 		return url.toString();
 	}
 
-	
+
 	//add by shihu 
 	/**
 	 * 
@@ -193,7 +210,7 @@ public class V2URL {
 		// //
 		// dto,
 		StringBuilder url = new StringBuilder(baseURL);
-		
+
 		String subUrl = APIV2.FORMAT_PATTERN_WITH_LANGUAGE;
 		url.append(subUrl);
 		String i18nScope = VIPCfg.getInstance().getI18nScope();
@@ -214,17 +231,12 @@ public class V2URL {
 							"The value of initialize parameter 'i18nScope' defined in 'vipconfig.properties' contains wrong value!");
 				}
 			}
-			
+
 			URLUtils.appendParamToURL(url, "language", language);
 			URLUtils.appendParamToURL(url, "region", region);
 			URLUtils.appendParamToURL(url, "scope", i18nScope);
 		}
-		
-		
-		
-		
-		
-		
+
 		return url.toString();
 	}
 
