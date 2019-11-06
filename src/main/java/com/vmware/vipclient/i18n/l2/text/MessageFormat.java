@@ -19,7 +19,6 @@ import java.util.Map;
 
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.base.instances.NumberFormatting;
-import com.vmware.vipclient.i18n.base.instances.PatternMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPUncheckedIOException;
 import com.vmware.vipclient.i18n.l2.plural.parser.PluralRules;
 import com.vmware.vipclient.i18n.l2.plural.parser.PluralRules.PluralType;

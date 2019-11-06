@@ -7,9 +7,9 @@ package com.vmware.vipclient.i18n.l2.service;
 import java.util.HashMap;
 import java.util.Locale;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.json.simple.JSONObject;
 
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.base.instances.PatternMessage;

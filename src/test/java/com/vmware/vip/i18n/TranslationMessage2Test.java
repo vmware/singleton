@@ -6,7 +6,6 @@ package com.vmware.vip.i18n;
 
 import java.util.Locale;
 
-import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,6 +18,7 @@ import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 
 public class TranslationMessage2Test extends BaseTestClass {
     Logger             logger = LoggerFactory.getLogger(TranslationMessage2Test.class);

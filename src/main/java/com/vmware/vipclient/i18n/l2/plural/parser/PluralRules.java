@@ -21,9 +21,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.json.simple.JSONObject;
 
 import com.vmware.vipclient.i18n.l2.common.PatternCategory;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;

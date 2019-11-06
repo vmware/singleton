@@ -7,7 +7,6 @@ package com.vmware.vip.i18n;
 import java.util.HashMap;
 import java.util.UUID;
 
-import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.junit.Before;
 
 import com.vmware.vipclient.i18n.VIPCfg;
@@ -15,6 +14,7 @@ import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.CacheMode;
 import com.vmware.vipclient.i18n.base.cache.MessageCache2;
 import com.vmware.vipclient.i18n.base.cache.persist.CacheSyncThreadPool;
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.CacheService;
 

@@ -4,11 +4,11 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.HttpRequester;

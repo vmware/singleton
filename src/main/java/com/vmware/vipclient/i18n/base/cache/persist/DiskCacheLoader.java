@@ -14,9 +14,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Map;
 
+import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.json.simple.parser.JSONParser;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 

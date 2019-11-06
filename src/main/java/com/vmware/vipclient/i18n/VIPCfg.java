@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,6 +18,7 @@ import com.vmware.vipclient.i18n.base.VIPService;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.CacheMode;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ProductService;
 

@@ -6,7 +6,6 @@ package com.vmware.vip.i18n;
 
 import java.util.Locale;
 
-import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,6 +14,7 @@ import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.instances.NumberFormatting;
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 
 public class NumberFormatUtilTest extends BaseTestClass {
 

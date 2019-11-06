@@ -7,7 +7,6 @@ package com.vmware.vip.i18n;
 import java.util.HashMap;
 import java.util.Locale;
 
-import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -20,6 +19,7 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 
 public class HttpRequesterTest extends BaseTestClass {
 

@@ -13,7 +13,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.json.simple.JSONObject;
 import org.junit.Assert;
 import org.junit.Before;
@@ -25,6 +24,7 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ProductService;
 

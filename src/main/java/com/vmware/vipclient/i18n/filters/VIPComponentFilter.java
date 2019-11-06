@@ -17,7 +17,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
-import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +25,7 @@ import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 /**

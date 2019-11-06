@@ -4,16 +4,15 @@
  */
 package com.vmware.vipclient.i18n.formats;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.BaseFormat;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
-import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 
 public class NumberFormat extends BaseFormat {

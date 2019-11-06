@@ -7,9 +7,9 @@ package com.vmware.vipclient.i18n.messages.api.opt.server;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.json.simple.JSONObject;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;

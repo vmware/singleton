@@ -8,9 +8,9 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.HashMap;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.json.simple.JSONObject;
 
 import com.vmware.vipclient.i18n.l2.common.ConstantChars;
 import com.vmware.vipclient.i18n.l2.common.PatternCategory;

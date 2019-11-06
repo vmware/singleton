@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,6 +16,7 @@ import org.junit.Test;
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.l2.text.MessageFormat;
 
 public class MessageFormatTest extends BaseTestClass {

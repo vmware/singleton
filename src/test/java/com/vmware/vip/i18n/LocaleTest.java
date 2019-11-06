@@ -13,7 +13,6 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.json.simple.parser.ParseException;
 import org.junit.Assert;
 import org.junit.Before;
@@ -23,6 +22,7 @@ import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.instances.LocaleMessage;
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 public class LocaleTest extends BaseTestClass {

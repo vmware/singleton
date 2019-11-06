@@ -4,6 +4,13 @@
  */
 package com.vmware.vip.i18n;
 
+import java.util.Locale;
+import java.util.Map;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
@@ -11,12 +18,6 @@ import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
-import java.util.Locale;
-import java.util.Map;
 
 public class SharedComponentTest extends BaseTestClass {
     TranslationMessage mainTranslation;

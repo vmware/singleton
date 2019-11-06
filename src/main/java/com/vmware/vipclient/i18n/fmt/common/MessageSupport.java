@@ -15,13 +15,13 @@ import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.BodyTagSupport;
 import javax.servlet.jsp.tagext.Tag;
 
-import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.apache.taglibs.standard.tag.common.core.Util;
 
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 public class MessageSupport extends BodyTagSupport {

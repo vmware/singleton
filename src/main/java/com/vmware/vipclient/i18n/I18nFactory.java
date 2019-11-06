@@ -7,12 +7,12 @@ package com.vmware.vipclient.i18n;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.base.instances.Formatting;
 import com.vmware.vipclient.i18n.base.instances.Message;
+import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 
 /**
  * provide a factory to create all kind of I18n instances
