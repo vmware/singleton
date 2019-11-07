@@ -1,6 +1,6 @@
 package com.vmware.vip.i18n.api.v2.formatting.pattern;
 
-import com.vmware.vip.BootApplication;
+import com.vmware.vip.LiteBootApplication;
 import com.vmware.vip.common.utils.JSONUtils;
 import com.vmware.vip.i18n.api.v1.common.CacheUtil;
 import com.vmware.vip.i18n.api.v1.common.ConstantsForTest;
@@ -17,7 +17,7 @@ import org.springframework.web.context.WebApplicationContext;
 import java.util.Map;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = BootApplication.class)
+@SpringBootTest(classes = LiteBootApplication.class)
 public class FormattingPatternAPITest {
     public static final String PatternAPIURI = "/i18n/api/v2/formatting/patterns/locales/en-US?scope=dates,numbers";
     public static final String PatternAPIURL = "/i18n/api/v2/formatting/patterns?language=fr&region=FR&scope=dates,numbers";

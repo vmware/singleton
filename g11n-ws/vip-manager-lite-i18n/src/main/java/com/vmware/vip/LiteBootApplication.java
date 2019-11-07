@@ -17,11 +17,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableScheduling
 @ComponentScan(basePackages = { "com.vmware" })
-public class BootApplication extends SpringBootServletInitializer {
+public class LiteBootApplication extends SpringBootServletInitializer {
 	@Override
 	protected SpringApplicationBuilder configure(
 			SpringApplicationBuilder application) {
-		return application.sources(BootApplication.class);
+		return application.sources(LiteBootApplication.class);
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -40,7 +40,7 @@ public class BootApplication extends SpringBootServletInitializer {
 		} else {
 			System.setProperty("translation.bundle.file.clean", "false");
 		}
-		SpringApplication.run(BootApplication.class, args);
+		SpringApplication.run(LiteBootApplication.class, args);
 	}
 	
 	

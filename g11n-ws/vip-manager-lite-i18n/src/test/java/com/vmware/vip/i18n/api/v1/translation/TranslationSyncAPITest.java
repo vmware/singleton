@@ -1,7 +1,5 @@
 package com.vmware.vip.i18n.api.v1.translation;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vmware.vip.BootApplication;
+import com.vmware.vip.LiteBootApplication;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO.TranslationDTO;
@@ -26,7 +24,7 @@ import com.vmware.vip.i18n.api.v1.common.ConstantsForTest;
 import com.vmware.vip.i18n.api.v1.common.RequestUtil;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = BootApplication.class)
+@SpringBootTest(classes = LiteBootApplication.class)
 public class TranslationSyncAPITest {
     @Autowired
     private WebApplicationContext webApplicationContext;

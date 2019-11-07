@@ -11,14 +11,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.vmware.vip.BootApplication;
+import com.vmware.vip.LiteBootApplication;
 import com.vmware.vip.common.utils.JSONUtils;
 import com.vmware.vip.i18n.api.v1.common.CacheUtil;
 import com.vmware.vip.i18n.api.v1.common.ConstantsForTest;
 import com.vmware.vip.i18n.api.v1.common.RequestUtil;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = BootApplication.class)
+@SpringBootTest(classes = LiteBootApplication.class)
 public class PatternAPITest {
 
     public static final String[] PatternAPIURI = {"/i18n/api/v1/i18nPattern?locale=fr&scope=dates,numbers",
