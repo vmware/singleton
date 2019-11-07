@@ -21,13 +21,6 @@ public class ConfigurationTest {
 	@Autowired
 	private WebApplicationContext webApplicationContext;
 
-	@Before
-	public void authentication() throws Exception {
-		String authenticationResult = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.POST,
-				ConstantsForTest.AuthenticationAPIURI);
-		CacheUtil.cacheSessionAndToken(webApplicationContext, authenticationResult);
-	}
-
 	
 	@Test
 	public void testServerProperites() {
@@ -40,6 +33,19 @@ public class ConfigurationTest {
 	    sp.getHttpsKeyAlias();
 	    sp.isAllowTrace();
 	}
+	
+	   
+    @Test
+    public void testServerProperites1() {
+        ServerProperties sp = new ServerProperties();
+        sp.getServerPort();
+        sp.getServerScheme();
+        sp.getHttpPort();
+        sp.getHttpsKeyStore();
+        sp.getHttpsKeyStorePassword();
+        sp.getHttpsKeyAlias();
+        sp.isAllowTrace();
+    }
 
 
 }
