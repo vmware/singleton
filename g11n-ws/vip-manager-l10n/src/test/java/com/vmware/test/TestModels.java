@@ -1,12 +1,14 @@
 
 package com.vmware.test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.junit.Test;
 
 import com.vmware.l10n.record.model.ComponentSourceModel;
 import com.vmware.l10n.source.dto.SourceDTO;
+import com.vmware.l10n.translation.dto.UpdateListDTO;
 import  com.vmware.l10n.source.dto.GRMResponseDTO;
 
 public class TestModels {
@@ -46,5 +48,16 @@ public class TestModels {
         source.setSource("test");
         source.setVersion("1.0.0");
         source.setComments("keytest", "key test comment");
+    }
+    
+    
+    @Test
+    public void TestUpdateListDTO() {
+        UpdateListDTO dto = new UpdateListDTO();
+        dto.setName("test");
+        dto.setSubList(new ArrayList<Object>());
+        dto.getName();
+        dto.getSubList();
+        
     }
 }

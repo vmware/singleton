@@ -38,5 +38,9 @@ public class TranslationSyncServerControllerTest {
 	                        .accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk())
 	                .andExpect(MockMvcResultMatchers.content().string(Constants.UPDATETRANSLATIONEXPECTRESULT));
 	}
+	
+	
+	
+
 
 }

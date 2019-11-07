@@ -87,4 +87,39 @@ public class ServerProperties implements Serializable {
       return allowTrace;
    }
 
+   public void setHttpPort(Integer httpPort) {
+       this.httpPort = httpPort;
+   }
+
+   public void setServerPort(Integer serverPort) {
+       this.serverPort = serverPort;
+   }
+
+   public void setServerScheme(String serverScheme) {
+       this.serverScheme = serverScheme;
+   }
+
+   public void setHttpsKeyStore(String httpsKeyStore) {
+       this.httpsKeyStore = httpsKeyStore;
+   }
+
+   public void setHttpsKeyStorePassword(String httpsKeyStorePassword) {
+       this.httpsKeyStorePassword = httpsKeyStorePassword;
+   }
+
+   public void setHttpsKeyStoreType(String httpsKeyStoreType) {
+       this.httpsKeyStoreType = httpsKeyStoreType;
+   }
+
+   public void setHttpsKeyPassword(String httpsKeyPassword) {
+       this.httpsKeyPassword = httpsKeyPassword;
+   }
+
+   public void setHttpsKeyAlias(String httpsKeyAlias) {
+       this.httpsKeyAlias = httpsKeyAlias;
+   }
+
+   public void setAllowTrace(Boolean allowTrace) {
+       this.allowTrace = allowTrace;
+   }
 }

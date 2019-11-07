@@ -34,16 +34,23 @@ public class ConfigurationTest {
 	    sp.isAllowTrace();
 	}
 	
-	   
-    @Test
+	
+	@Test
     public void testServerProperites1() {
         ServerProperties sp = new ServerProperties();
+        sp.setServerPort(300);
+        sp.setServerScheme("testScheme");
+        sp.setHttpPort(123);
         sp.getServerPort();
         sp.getServerScheme();
         sp.getHttpPort();
+        sp.setHttpsKeyStore("testkeyStore");
         sp.getHttpsKeyStore();
+        sp.setHttpsKeyStorePassword("testpassword");
         sp.getHttpsKeyStorePassword();
+        sp.setHttpsKeyAlias("testAlias");
         sp.getHttpsKeyAlias();
+        sp.setAllowTrace(true);
         sp.isAllowTrace();
     }
 
