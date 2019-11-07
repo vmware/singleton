@@ -1,6 +1,6 @@
 package com.vmware.vip.i18n.api.v2;
 
-/*import java.util.List;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
-
 import com.vmware.i18n.l2.service.locale.TerritoryDTO;
 import com.vmware.vip.BootApplication;
 import com.vmware.vip.common.utils.JSONUtils;
@@ -47,14 +46,4 @@ public class LocaleAPITest {
 		}
 	}
 
-	@Test
-	public void testDisplayLanguagesListAPI() throws Exception {
-//		String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET,
-//				SUPPORTED_LANGUAGE_LIST_API_URI);
-//		Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("data");
-//		Assert.assertNotNull(dataMap);
-//		List<DisplayLanguageDTO> list = (List<DisplayLanguageDTO>) dataMap.get("languages");
-//		Assert.assertNotNull(list);
-	}
 }
-*/
