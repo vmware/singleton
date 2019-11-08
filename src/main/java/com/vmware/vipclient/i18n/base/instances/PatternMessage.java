@@ -15,27 +15,27 @@ import com.vmware.vipclient.i18n.messages.service.PatternService;
  */
 public class PatternMessage implements Message {
 
-	public PatternMessage() {
-		super();
-	}
+    public PatternMessage() {
+        super();
+    }
 
-	/**
-	 * get whole pattern data for formatting
-	 * 
-	 * @param locale
-	 * @return
-	 */
-	public JSONObject getPatternMessage(Locale locale) {
-		return new PatternService().getPatterns(locale.toLanguageTag());
-	}
-	
-	
-   /**
-    * get whole pattern data for formatting
-    * @param locale
-    * @return
-    */
-	public JSONObject getPatternMessage(String language, String region) {
-		return new PatternService().getPatterns(language, region);
-	}
+    /**
+     * get whole pattern data for formatting
+     * 
+     * @param locale
+     * @return
+     */
+    public JSONObject getPatternMessage(Locale locale) {
+        return new PatternService().getPatterns(locale.toLanguageTag());
+    }
+
+    /**
+     * get whole pattern data for formatting
+     * 
+     * @param locale
+     * @return
+     */
+    public JSONObject getPatternMessage(String language, String region) {
+        return new PatternService().getPatterns(language, region);
+    }
 }

@@ -40,8 +40,8 @@ public class AMPMPatternParser implements PatternParser {
         } else {// dayPeriodsStandalone
 
         }
-        if(null == dayPeriodsData) {
-        	return "";
+        if (null == dayPeriodsData) {
+            return "";
         }
         return dayPeriodsData.get(AM_PM).toString();
     }

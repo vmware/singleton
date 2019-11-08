@@ -10,8 +10,8 @@ import com.vmware.vipclient.i18n.l2.text.PatternItem;
 
 public class DatePatternParser implements PatternParser {
 
-    private int offset;
-    private boolean trim = false;
+    private int     offset;
+    private boolean trim    = false;
     private boolean negWrap = false;
 
     public DatePatternParser(int offset, boolean trim, boolean negWrap) {

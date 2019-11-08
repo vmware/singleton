@@ -12,36 +12,36 @@ import com.vmware.vipclient.i18n.util.ConstantsKeys;
 
 public class PatternsDTO implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
-	private PatternTypeEnum patternType;
-	private String locale;
+    private PatternTypeEnum   patternType;
+    private String            locale;
 
-	public PatternsDTO(PatternTypeEnum patternType, String locale) {
-		super();
-		this.patternType = patternType;
-		this.locale = locale;
-	}
+    public PatternsDTO(PatternTypeEnum patternType, String locale) {
+        super();
+        this.patternType = patternType;
+        this.locale = locale;
+    }
 
-	/**
-	 * get the key for cache.
-	 * 
-	 * @return
-	 */
-	public String getCacheKey() {
-		if (patternType == null) {
-			throw new VIPJavaClientException(
-					"patternType has not been initialized");
-		}
-		if (locale == null) {
-			throw new VIPJavaClientException("locale has not been initialized");
-		}
-		StringBuffer key = new StringBuffer(patternType.name());
-		key.append(ConstantsKeys.UNDERLINE);
-		key.append(locale);
-		return key.toString();
-	}
+    /**
+     * get the key for cache.
+     * 
+     * @return
+     */
+    public String getCacheKey() {
+        if (patternType == null) {
+            throw new VIPJavaClientException(
+                    "patternType has not been initialized");
+        }
+        if (locale == null) {
+            throw new VIPJavaClientException("locale has not been initialized");
+        }
+        StringBuffer key = new StringBuffer(patternType.name());
+        key.append(ConstantsKeys.UNDERLINE);
+        key.append(locale);
+        return key.toString();
+    }
 }

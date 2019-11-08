@@ -15,9 +15,9 @@ import com.vmware.vipclient.i18n.l2.text.PatternItem;
  */
 public class DefaultPatternParser implements PatternParser {
 
-	public String parse(PatternItem item, Date date) {
-		return String.valueOf(item.getType());
-	}
+    public String parse(PatternItem item, Date date) {
+        return String.valueOf(item.getType());
+    }
 
     public String parse(PatternItem item, Calendar cal) {
         // TODO Auto-generated method stub

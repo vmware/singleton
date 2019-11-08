@@ -9,23 +9,23 @@ package com.vmware.vipclient.i18n.messages.dto;
  *
  */
 public class BaseDTO {
-	public String getProductID() {
-		return productID;
-	}
+    public String getProductID() {
+        return productID;
+    }
 
-	public void setProductID(String productID) {
-		this.productID = productID;
-	}
+    public void setProductID(String productID) {
+        this.productID = productID;
+    }
 
-	public String getVersion() {
-		return version;
-	}
+    public String getVersion() {
+        return version;
+    }
 
-	public void setVersion(String version) {
-		this.version = version;
-	}
+    public void setVersion(String version) {
+        this.version = version;
+    }
 
-	private String productID;
-	private String version;
+    private String productID;
+    private String version;
 
 }

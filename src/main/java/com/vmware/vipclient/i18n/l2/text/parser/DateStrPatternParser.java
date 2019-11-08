@@ -58,9 +58,9 @@ public class DateStrPatternParser implements PatternParser {
             value = value - 1 + firstDay.intValue();// Integer.parseInt(firstDay);
             value = value == 7 ? 0 : value;
         }
-        
-        if(null == formatData) {
-        	return "";
+
+        if (null == formatData) {
+            return "";
         }
 
         return formatData.get(value) == null ? "" : formatData.get(value).toString();

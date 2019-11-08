@@ -7,36 +7,36 @@ package com.vmware.vipclient.i18n.l2.text;
 import java.math.BigDecimal;
 
 public class NumberPatternInfo {
-	private int round = BigDecimal.ROUND_HALF_EVEN;
-    private int maximumIntegerDigits = 40;
-    private int minimumIntegerDigits = 1;
-    private int maximumFractionDigits = 3;
-    private int minimumFractionDigits = 0;
-    private String positivePrefix = "";
-    private String positiveSuffix = "";
-    private String negativePrefix = "-";
-    private String negativeSuffix = "";
+    private int    round                 = BigDecimal.ROUND_HALF_EVEN;
+    private int    maximumIntegerDigits  = 40;
+    private int    minimumIntegerDigits  = 1;
+    private int    maximumFractionDigits = 3;
+    private int    minimumFractionDigits = 0;
+    private String positivePrefix        = "";
+    private String positiveSuffix        = "";
+    private String negativePrefix        = "-";
+    private String negativeSuffix        = "";
     /**
      * If a pattern contains multiple grouping separators, the interval between
      * the last one and the end of the integer defines the primary grouping size,
-     * and the interval between the last two defines the secondary grouping size. 
+     * and the interval between the last two defines the secondary grouping size.
      * All others are ignored,
      */
-    //primary grouping size, used for the least significant integer group.
-    private byte groupingSize = 3;
-    //secondary grouping size,  used for more significant groups.
-    private byte groupingSize2 = 0;
-    private byte minExponentDigits;
+    // primary grouping size, used for the least significant integer group.
+    private byte   groupingSize          = 3;
+    // secondary grouping size, used for more significant groups.
+    private byte   groupingSize2         = 0;
+    private byte   minExponentDigits;
 
     public int getRound() {
-		return round;
-	}
+        return round;
+    }
 
-	public void setRound(int round) {
-		this.round = round;
-	}
+    public void setRound(int round) {
+        this.round = round;
+    }
 
-	public int getMaximumIntegerDigits() {
+    public int getMaximumIntegerDigits() {
         return this.maximumIntegerDigits;
     }
 

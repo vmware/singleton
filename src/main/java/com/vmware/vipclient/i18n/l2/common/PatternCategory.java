@@ -5,20 +5,20 @@
 package com.vmware.vipclient.i18n.l2.common;
 
 public enum PatternCategory {
-	NUMBERS("numbers"),
-	CURRENCIES("currencies"),
-	DATES("dates"),
-	PLURALS("plurals"),
-	MEASUREMENTS("measurements"),
-	SUPPLEMENTAL("supplemental");
-	
-	private final String value;
+    NUMBERS("numbers"),
+    CURRENCIES("currencies"),
+    DATES("dates"),
+    PLURALS("plurals"),
+    MEASUREMENTS("measurements"),
+    SUPPLEMENTAL("supplemental");
 
-	private PatternCategory(String value) {
-		this.value = value;
-	}
+    private final String value;
 
-	public String toString() {
-		return value;
-	}
+    private PatternCategory(String value) {
+        this.value = value;
+    }
+
+    public String toString() {
+        return value;
+    }
 }

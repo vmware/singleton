@@ -22,43 +22,44 @@ import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.StringUtil;
 
 public class ComponentsBasedOpt extends BaseOpt implements Opt {
-	private final Logger logger = LoggerFactory.getLogger(ComponentsBasedOpt.class.getName());
-	private final Set<String> components;
-	private final Set<String> locales;
+    private final Logger      logger = LoggerFactory.getLogger(ComponentsBasedOpt.class.getName());
+    private final Set<String> components;
+    private final Set<String> locales;
 
-	/**
-	 * @param components
-	 * @param locales
-	 */
-	public ComponentsBasedOpt(Set<String> components, Set<String> locales) {
-		this.components = components;
-		this.locales = locales;
-	}
+    /**
+     * @param components
+     * @param locales
+     */
+    public ComponentsBasedOpt(Set<String> components, Set<String> locales) {
+        this.components = components;
+        this.locales = locales;
+    }
 
-	public JSONObject queryFromServer() {
-		String url = V2URL.getComponentsTranslationURL(VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
+    public JSONObject queryFromServer() {
+        String url = V2URL
+                .getComponentsTranslationURL(VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
 
-		HashMap<String, String> requestData = new HashMap<>();
-		requestData.put(ConstantsKeys.LOCALES, String.join(",", locales));
-		requestData.put(ConstantsKeys.COMPONENTS, String.join(",", components));
-		responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(url, ConstantsKeys.GET,
-				requestData);
-		if (StringUtil.isEmpty(responseStr)) {
-			throw new VIPJavaClientException(ConstantsMsg.SERVER_RETURN_EMPTY);
-		}
+        HashMap<String, String> requestData = new HashMap<>();
+        requestData.put(ConstantsKeys.LOCALES, String.join(",", locales));
+        requestData.put(ConstantsKeys.COMPONENTS, String.join(",", components));
+        responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(url, ConstantsKeys.GET,
+                requestData);
+        if (StringUtil.isEmpty(responseStr)) {
+            throw new VIPJavaClientException(ConstantsMsg.SERVER_RETURN_EMPTY);
+        }
 
-		try {
-			parseServerResponse();
-		} catch (ParseException e) {
-			throw new VIPJavaClientException(ConstantsMsg.SERVER_CONTENT_ERROR, e);
-		}
+        try {
+            parseServerResponse();
+        } catch (ParseException e) {
+            throw new VIPJavaClientException(ConstantsMsg.SERVER_CONTENT_ERROR, e);
+        }
 
-		int statusCode = getResponseCode(responseJsonObj);
-		if (!isSuccess(statusCode)) {
-			throw new VIPJavaClientException(
-					String.format(ConstantsMsg.SERVER_RETURN_ERROR, statusCode, getResponseMessage(responseJsonObj)));
-		}
+        int statusCode = getResponseCode(responseJsonObj);
+        if (!isSuccess(statusCode)) {
+            throw new VIPJavaClientException(
+                    String.format(ConstantsMsg.SERVER_RETURN_ERROR, statusCode, getResponseMessage(responseJsonObj)));
+        }
 
-		return responseJsonObj;
-	}
+        return responseJsonObj;
+    }
 }

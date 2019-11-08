@@ -14,36 +14,27 @@ import org.json.simple.JSONObject;
 
 public class RegionDateFormat extends DateFormat {
 
-    private String pattern;
+    private String     pattern;
     private JSONObject formatData;
-  
 
-	private String language;
-    private String region;
-    
+    private String     language;
+    private String     region;
+
     public String getLanguage() {
-  		return language;
-  	}
+        return language;
+    }
 
+    public void setLanguage(String language) {
+        this.language = language;
+    }
 
+    public String getRegion() {
+        return region;
+    }
 
-  	public void setLanguage(String language) {
-  		this.language = language;
-  	}
-
-
-
-  	public String getRegion() {
-  		return region;
-  	}
-
-
-
-  	public void setRegion(String region) {
-  		this.region = region;
-  	}
-  	
-  	
+    public void setRegion(String region) {
+        this.region = region;
+    }
 
     public RegionDateFormat(String pattern, JSONObject formatData, String language, String region) {
         // TODO Auto-generated constructor stub
@@ -53,22 +44,19 @@ public class RegionDateFormat extends DateFormat {
         this.region = region;
     }
 
- 
-    
     public String format(Date date, String timeZoneStr) {
         StringBuffer text = new StringBuffer();
         // recalculate date using timeZone
         Calendar cal;
- 
 
         if (null != timeZoneStr && !"".equalsIgnoreCase(timeZoneStr)) {
             TimeZone timeZone = TimeZone.getTimeZone(timeZoneStr);
             cal = Calendar.getInstance(timeZone);
         } else {
-        	  TimeZone timeZone = TimeZone.getDefault();
-              cal = Calendar.getInstance(timeZone);
+            TimeZone timeZone = TimeZone.getDefault();
+            cal = Calendar.getInstance(timeZone);
         }
-         cal.setTime(date);
+        cal.setTime(date);
         // validate if pattern is syntax
         List<Object> items = getPatternItems(pattern);
         for (Object item : items) {
@@ -81,7 +69,6 @@ public class RegionDateFormat extends DateFormat {
         }
         return text.toString();
     }
-    
 
     public List<Object> getPatternItems(String pattern) {
         boolean isPrevQuote = false;

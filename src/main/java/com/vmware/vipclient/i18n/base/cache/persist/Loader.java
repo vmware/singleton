@@ -8,15 +8,15 @@ import java.util.Map;
 
 public interface Loader {
 
-	public Map<String, String> load(String key);
+    public Map<String, String> load(String key);
 
-	public boolean updateOrInsert(String key, String content);
+    public boolean updateOrInsert(String key, String content);
 
-	public boolean delete(String key);
+    public boolean delete(String key);
 
-	public boolean isExisting(String key);
+    public boolean isExisting(String key);
 
-	public boolean clear();
+    public boolean clear();
 
-	public boolean refreshCacheSnapshot(CacheSnapshot cacheSnapshot);
+    public boolean refreshCacheSnapshot(CacheSnapshot cacheSnapshot);
 }

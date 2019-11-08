@@ -13,39 +13,39 @@ import org.apache.taglibs.standard.resources.Resources;
 
 public class ParamSupport extends BodyTagSupport {
 
-	protected Object value;
-	protected boolean valueSpecified;
+    protected Object  value;
+    protected boolean valueSpecified;
 
-	public ParamSupport() {
-		init();
-	}
+    public ParamSupport() {
+        init();
+    }
 
-	private void init() {
-		this.value = null;
-		this.valueSpecified = false;
-	}
+    private void init() {
+        this.value = null;
+        this.valueSpecified = false;
+    }
 
-	public int doEndTag() throws JspException {
-		Tag t = findAncestorWithClass(this, MessageSupport.class);
-		if (t == null) {
-			throw new JspTagException(
-					Resources.getMessage("PARAM_OUTSIDE_MESSAGE"));
-		}
-		MessageSupport parent = (MessageSupport) t;
+    public int doEndTag() throws JspException {
+        Tag t = findAncestorWithClass(this, MessageSupport.class);
+        if (t == null) {
+            throw new JspTagException(
+                    Resources.getMessage("PARAM_OUTSIDE_MESSAGE"));
+        }
+        MessageSupport parent = (MessageSupport) t;
 
-		Object input = null;
+        Object input = null;
 
-		if (this.valueSpecified) {
-			input = this.value;
-		} else {
-			input = this.bodyContent.getString().trim();
-		}
-		parent.addParam(input);
+        if (this.valueSpecified) {
+            input = this.value;
+        } else {
+            input = this.bodyContent.getString().trim();
+        }
+        parent.addParam(input);
 
-		return 6;
-	}
+        return 6;
+    }
 
-	public void release() {
-		init();
-	}
+    public void release() {
+        init();
+    }
 }

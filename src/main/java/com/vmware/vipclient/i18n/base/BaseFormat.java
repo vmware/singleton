@@ -9,13 +9,13 @@ package com.vmware.vipclient.i18n.base;
  *
  */
 public class BaseFormat {
-	protected String locale;
+    protected String locale;
 
-	public void setLocale(String locale) {
-		this.locale = locale;
-	}
+    public void setLocale(String locale) {
+        this.locale = locale;
+    }
 
-	public String getLocale() {
-		return locale;
-	}
+    public String getLocale() {
+        return locale;
+    }
 }

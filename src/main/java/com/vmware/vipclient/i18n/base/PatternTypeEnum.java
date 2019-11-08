@@ -5,5 +5,5 @@
 package com.vmware.vipclient.i18n.base;
 
 public enum PatternTypeEnum {
-	datetime, number, currency
+    datetime, number, currency
 }

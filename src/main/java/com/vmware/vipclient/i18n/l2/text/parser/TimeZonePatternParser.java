@@ -20,15 +20,15 @@ public class TimeZonePatternParser implements PatternParser {
                    // timeZoneStr= cal.getTimeZone().getDisplayName(new Locale("fr"));//new
                    // Locale("zh","CN") new Locale("en")
                 if (offset >= 0) {
-                    if(offset<10){
+                    if (offset < 10) {
                         timeZoneStr = "GMT+0" + String.valueOf(offset) + ":00";
-                    }else{
+                    } else {
                         timeZoneStr = "GMT+" + String.valueOf(offset) + ":00";
                     }
                 } else {
-                    if(offset>-10){
+                    if (offset > -10) {
                         timeZoneStr = "GMT-0" + String.valueOf(Math.abs(offset)) + ":00";
-                    }else{
+                    } else {
                         timeZoneStr = "GMT" + String.valueOf(offset) + ":00";
                     }
                 }

@@ -1,6 +1,5 @@
 package com.vmware.vipclient.i18n.exceptions;
 
-
 public class VIPClientInitException extends Exception {
 
     private static final long serialVersionUID = 6254417482349002417L;

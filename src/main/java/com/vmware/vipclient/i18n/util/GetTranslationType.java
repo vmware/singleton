@@ -5,5 +5,5 @@
 package com.vmware.vipclient.i18n.util;
 
 public enum GetTranslationType {
-  SOURCE,KEY,COMPONENT,PRODUCT
+    SOURCE, KEY, COMPONENT, PRODUCT
 }

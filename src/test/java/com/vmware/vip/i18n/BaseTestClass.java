@@ -29,97 +29,100 @@ import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 
 public class BaseTestClass {
-	protected Logger logger;
-	VIPCfg vipCfg = VIPCfg.getInstance();
+    protected Logger                logger;
+    VIPCfg                          vipCfg            = VIPCfg.getInstance();
 
-	@Rule
-	public final TestRule watchman = new TestWatcher() {
-		@Override
-		public Statement apply(Statement base, Description description) {
-			logger = LoggerFactory.getLogger(description.getTestClass().getSimpleName());
-			return super.apply(base, description);
-		}
+    @Rule
+    public final TestRule           watchman          = new TestWatcher() {
+                                                          @Override
+                                                          public Statement apply(Statement base,
+                                                                  Description description) {
+                                                              logger = LoggerFactory.getLogger(
+                                                                      description.getTestClass().getSimpleName());
+                                                              return super.apply(base, description);
+                                                          }
 
-		@Override
-		protected void failed(Throwable e, Description description) {
-			logger.error(description.getMethodName()+" Failed.", e);
-		}
+                                                          @Override
+                                                          protected void failed(Throwable e, Description description) {
+                                                              logger.error(description.getMethodName() + " Failed.", e);
+                                                          }
 
-		@Override
-		protected void starting(Description description) {
-			logger.info("Starting test: " + description.getMethodName());
-		}
-	};
+                                                          @Override
+                                                          protected void starting(Description description) {
+                                                              logger.info(
+                                                                      "Starting test: " + description.getMethodName());
+                                                          }
+                                                      };
 
-	@ClassRule
-	public static WireMockClassRule wireMockClassRule = new WireMockClassRule(
-			WireMockConfiguration.options().port(8099).usingFilesUnderClasspath("mockserver"));
+    @ClassRule
+    public static WireMockClassRule wireMockClassRule = new WireMockClassRule(
+            WireMockConfiguration.options().port(8099).usingFilesUnderClasspath("mockserver"));
 
-	@Rule
-	public WireMockClassRule instanceRule = wireMockClassRule;
+    @Rule
+    public WireMockClassRule        instanceRule      = wireMockClassRule;
 
-	//	@BeforeClass
-	public void ProxyToRealServer() {
-		stubFor(proxyAllTo("https://").atPriority(1));
-		instanceRule.snapshotRecord();
-	}
+    // @BeforeClass
+    public void ProxyToRealServer() {
+        stubFor(proxyAllTo("https://").atPriority(1));
+        instanceRule.snapshotRecord();
+    }
 
-	protected String getSaltString() {
-		String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-		StringBuilder salt = new StringBuilder();
-		Random rnd = new Random();
-		while (salt.length() < 10) { // length of the random string.
-			int index = (int) (rnd.nextFloat() * SALTCHARS.length());
-			salt.append(SALTCHARS.charAt(index));
-		}
-		String saltStr = salt.toString();
-		return saltStr;
+    protected String getSaltString() {
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 10) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr;
 
-	}
+    }
 
-	static void printObject(Object obj) {
-		System.out.println("-----------------------------------Start Printing Object");
+    static void printObject(Object obj) {
+        System.out.println("-----------------------------------Start Printing Object");
 
-		for (Field field : obj.getClass().getDeclaredFields()) {
-			try {
-				if (Modifier.isStatic(field.getModifiers())
-						|| Modifier.isPrivate(field.getModifiers())
-						|| Modifier.isTransient(field.getModifiers())) {
-					continue;
-				}
-				System.out.println("Field '" + field.getName() + "': ");
-				System.out.println("\t" + field.get(obj));
-			} catch (IllegalArgumentException | IllegalAccessException e) {
-				e.printStackTrace();
-			}
-		}
+        for (Field field : obj.getClass().getDeclaredFields()) {
+            try {
+                if (Modifier.isStatic(field.getModifiers())
+                        || Modifier.isPrivate(field.getModifiers())
+                        || Modifier.isTransient(field.getModifiers())) {
+                    continue;
+                }
+                System.out.println("Field '" + field.getName() + "': ");
+                System.out.println("\t" + field.get(obj));
+            } catch (IllegalArgumentException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
 
-		for (Method method : obj.getClass().getDeclaredMethods()) {
-			try {
-				if (Modifier.isStatic(method.getModifiers())
-						|| Modifier.isTransient(method.getModifiers())
-						|| Modifier.isPrivate(method.getModifiers())
-						|| method.getModifiers() == 0
-						|| method.getParameterCount() > 0) {
-					continue;
-				}
-				System.out.print("method '" + method.getName() + "': ");
-				System.out.println(method.invoke(obj));
-			} catch (InvocationTargetException | IllegalAccessException | IllegalArgumentException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+        for (Method method : obj.getClass().getDeclaredMethods()) {
+            try {
+                if (Modifier.isStatic(method.getModifiers())
+                        || Modifier.isTransient(method.getModifiers())
+                        || Modifier.isPrivate(method.getModifiers())
+                        || method.getModifiers() == 0
+                        || method.getParameterCount() > 0) {
+                    continue;
+                }
+                System.out.print("method '" + method.getName() + "': ");
+                System.out.println(method.invoke(obj));
+            } catch (InvocationTargetException | IllegalAccessException | IllegalArgumentException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
-	protected void clearCache(String cacheName) {
-		Cache cache = TranslationCacheManager.getCache(cacheName);
-		if (null != cache) {
-			cache.clear();
-		}
-	}
+    protected void clearCache(String cacheName) {
+        Cache cache = TranslationCacheManager.getCache(cacheName);
+        if (null != cache) {
+            cache.clear();
+        }
+    }
 
-	protected void clearTranslationCache() {
-		clearCache(VIPCfg.CACHE_L3);
-	}
+    protected void clearTranslationCache() {
+        clearCache(VIPCfg.CACHE_L3);
+    }
 
 }

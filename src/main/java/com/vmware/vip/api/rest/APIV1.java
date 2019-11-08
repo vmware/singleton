@@ -6,8 +6,8 @@ package com.vmware.vip.api.rest;
 
 public class APIV1 {
     public static final String V = "v1";
-    public static final String API_TRANSLATOIN = API.I18N_API_ROOT + V + "/" + API.TYPE_TRANSLATION;
-    public static final String API_FORMATTING = API.I18N_API_ROOT + V + "/" + API.TYPE_FORMATTING;
+    public static final String API_TRANSLATOIN         = API.I18N_API_ROOT + V + "/" + API.TYPE_TRANSLATION;
+    public static final String API_FORMATTING          = API.I18N_API_ROOT + V + "/" + API.TYPE_FORMATTING;
     
     public static final String AUTHENTICATION          = API.I18N_API_ROOT + V + "/security/authentication";
     public static final String AUTHENTICATION_KEY      = API.I18N_API_ROOT + V + "/security/authentication/key";

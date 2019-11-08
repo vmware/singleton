@@ -11,24 +11,24 @@ import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.JSONBundleUtil;
 
 public class LocalMessagesOpt implements Opt {
-	private MessagesDTO dto;
+    private MessagesDTO dto;
 
-	public LocalMessagesOpt(MessagesDTO dto) {
-		this.dto = dto;
-	}
+    public LocalMessagesOpt(MessagesDTO dto) {
+        this.dto = dto;
+    }
 
-	public JSONObject getComponentMessages() {
-		return JSONBundleUtil.getMessages(dto.getLocale(), dto.getProductID(),
-				dto.getVersion(), dto.getComponent());
-	}
+    public JSONObject getComponentMessages() {
+        return JSONBundleUtil.getMessages(dto.getLocale(), dto.getProductID(),
+                dto.getVersion(), dto.getComponent());
+    }
 
-	public String getString() {
-		JSONObject jo = this.getComponentMessages();
-		String k = dto.getKey();
-		String v = "";
-		if (jo != null) {
-			v = jo.get(k) == null ? "" : v;
-		}
-		return v;
-	}
+    public String getString() {
+        JSONObject jo = this.getComponentMessages();
+        String k = dto.getKey();
+        String v = "";
+        if (jo != null) {
+            v = jo.get(k) == null ? "" : v;
+        }
+        return v;
+    }
 }

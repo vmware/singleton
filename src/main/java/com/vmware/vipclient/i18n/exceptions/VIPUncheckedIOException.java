@@ -4,21 +4,22 @@
  */
 package com.vmware.vipclient.i18n.exceptions;
 
-public class VIPUncheckedIOException extends RuntimeException{
-	private static final long serialVersionUID = 1210263498513384449L;
-	
-	public VIPUncheckedIOException() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	public VIPUncheckedIOException(String message) {
+public class VIPUncheckedIOException extends RuntimeException {
+    private static final long serialVersionUID = 1210263498513384449L;
+
+    public VIPUncheckedIOException() {
+        // TODO Auto-generated constructor stub
+    }
+
+    public VIPUncheckedIOException(String message) {
         super(message);
     }
 
     /**
      * Constructor.
      *
-     * @param cause original exception (normally a {@link java.io.IOException})
+     * @param cause
+     *            original exception (normally a {@link java.io.IOException})
      * @stable ICU 53
      */
     public VIPUncheckedIOException(Throwable cause) {
@@ -28,8 +29,10 @@ public class VIPUncheckedIOException extends RuntimeException{
     /**
      * Constructor.
      *
-     * @param message exception message string
-     * @param cause original exception (normally a {@link java.io.IOException})
+     * @param message
+     *            exception message string
+     * @param cause
+     *            original exception (normally a {@link java.io.IOException})
      * @stable ICU 53
      */
     public VIPUncheckedIOException(String message, Throwable cause) {
