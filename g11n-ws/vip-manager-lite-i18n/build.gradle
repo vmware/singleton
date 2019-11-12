@@ -83,15 +83,21 @@ dependencies {
     testCompile("org.springframework.restdocs:spring-restdocs-mockmvc")
 }
 
-
+task copyLibs(type :Copy, dependsOn: bootJar) {
+    from "$buildDir/libs"
+    into "$rootDir/../publish/"
+    println "The build was output to -> $rootDir/../publish/"
+    include "**/*.jar"
+}
 
 bootJar{
   classifier = 'boot'
   enabled = true
 }
 
+assemble.dependsOn.add copyLibs
 
 springBoot {
-	mainClassName = "com.vmware.vip.BootApplication"
+	mainClassName = "com.vmware.vip.LiteBootApplication"
 }
 
