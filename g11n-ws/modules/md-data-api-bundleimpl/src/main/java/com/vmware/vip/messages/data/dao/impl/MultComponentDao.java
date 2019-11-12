@@ -42,10 +42,18 @@ public class MultComponentDao implements IMultComponentDao {
 		}
 		for (String component : components) {
 			for (String locale : locales) {
+			    try {
 				bundles.add(oneComponentDao.get2JsonStr(productName, version,
 						component, locale));
+			} catch (DataException e) {
+               logger.error(e.getMessage(), e);
+            }
 			}
 		}
+		  if (bundles.isEmpty()) {
+	            throw new BundleException("Failed to get for "
+                        + productName + ConstantsChar.BACKSLASH + version);
+	        }
 		logger.debug("end get2JsonStrs");
 		return bundles;
 	}
@@ -65,9 +73,7 @@ public class MultComponentDao implements IMultComponentDao {
 					bundles.add(oneComponentDao.get(productName, version,
 							component, locale));
 				} catch (DataException e) {
-					throw new BundleException("Failed to get for "
-							+ productName + ConstantsChar.BACKSLASH + version + ConstantsChar.BACKSLASH + component
-							+ ConstantsChar.BACKSLASH + locale + ".", e);
+				    logger.error(e.getMessage(), e);
 				}
 			}
 		}
@@ -75,7 +81,7 @@ public class MultComponentDao implements IMultComponentDao {
 		logger.debug("end get");
 
 		if (bundles.isEmpty()) {
-			throw new BundleException("No bundle is found.");
+		    throw new BundleException("Failed to get for " + productName + ConstantsChar.BACKSLASH + version);
 		}
 		return bundles;
 	}
