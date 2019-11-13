@@ -34,13 +34,15 @@ No Update.
 #### Service
 - the Etag in the response header keeps on changing for the same GET request ([#102](https://github.com/vmware/singleton/issues/102))
 - Singleton Service s3 build start failed based on https protocol ([#145](https://github.com/vmware/singleton/issues/145))
-- [Singleton Service][Get pattern by language&region] plurals rule should always follow with language ([#148](https://github.com/vmware/singleton/issues/148))
-- [Singleton Service build] The build failed to start when disable swagger-ui ([#151](https://github.com/vmware/singleton/issues/151))
-- [Singleton Service s3 build] please filter out the file from component list ([#159](https://github.com/vmware/singleton/issues/159))
-- plurals rule should always follow with language ([#169](https://github.com/vmware/singleton/pull/169))
-- [Singleton Service s3 build] Remove extra l10n folder in Singleton Service s3 build ([#194](https://github.com/vmware/singleton/issues/194))
-- [BUG] [Singleton Service] Singleton Service build start failed based on http protocal ([#206](https://github.com/vmware/singleton/issues/206))
+- Plurals rule doesn't follow with language ([#148](https://github.com/vmware/singleton/issues/148))
+- The build failed to start when disable swagger-ui ([#151](https://github.com/vmware/singleton/issues/151))
+- Failed to get translation when file(s) existing same location with component in Service S3 build ([#159](https://github.com/vmware/singleton/issues/159))
 
+
+### Improvement
+#### Service
+- Return default region when input is a language ([#149](https://github.com/vmware/singleton/issues/149))
+- Remove extra l10n folder in Singleton Service s3 build ([#194](https://github.com/vmware/singleton/issues/194))
 
 ### Action Required
 N/A
