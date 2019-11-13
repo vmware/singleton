@@ -79,7 +79,7 @@ public class TranslationProductAction  extends BaseAction {
 		return null;
 	}	
 
-    private TranslationDTO getAllCompTrans(String productName, String version,String pseudo,
+    private TranslationDTO getAllCompTrans(String productName, String version,boolean pseudo,
             HttpServletRequest req)  throws Exception {
         TranslationDTO translationDTO = new TranslationDTO();
         translationDTO.setProductName(productName);
@@ -88,14 +88,14 @@ public class TranslationProductAction  extends BaseAction {
 		List<String> localeList = productService.getSupportedLocaleList(productName, version);
         translationDTO.setComponents(components);
         translationDTO.setVersion(version);
-        if(new Boolean(pseudo)) {
+        if(pseudo) {
         	localeList = new ArrayList<String>();
         	localeList.add(ConstantsKeys.LATEST);
             translationDTO.setLocales(localeList);
-            translationDTO.setPseudo(new Boolean(pseudo));
+            translationDTO.setPseudo(pseudo);
         } else {
             translationDTO.setLocales(localeList);
-            translationDTO.setPseudo(new Boolean(pseudo));
+            translationDTO.setPseudo(pseudo);
         }
         translationDTO = multipleComponentsService.getMultiComponentsTranslation(translationDTO);
         return translationDTO;
@@ -186,7 +186,7 @@ public class TranslationProductAction  extends BaseAction {
                HttpServletRequest req) throws Exception {
           
           TranslationDTO resulttranslationDTO = getResultTranslationDTO( productName, version,components, locales,  pseudo, req);
-          TranslationDTO allTranslationDTO  =  getAllCompTrans( resulttranslationDTO.getProductName(),  resulttranslationDTO.getVersion(), pseudo, req);
+          TranslationDTO allTranslationDTO  =  getAllCompTrans( resulttranslationDTO.getProductName(),  resulttranslationDTO.getVersion(), resulttranslationDTO.getPseudo(), req);
           List<String> reqLocales = resulttranslationDTO.getLocales();
           List<String> reqComponents = resulttranslationDTO.getComponents();
           
