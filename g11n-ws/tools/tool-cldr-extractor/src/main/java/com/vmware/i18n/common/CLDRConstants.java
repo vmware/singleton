@@ -44,7 +44,7 @@ public class CLDRConstants {
 	public static final String PARSE_DATA = "cldr/pattern/common/parse.json";
 	public static final String PATTERN_JSON_PATH = "cldr/pattern/common/{0}/pattern.json";
 	public static final String SUPPLEMENTAL_PATH = "cldr/supplement/{0}.json";
-	public static final String ALL_CATEGORIES = "dates,numbers,plurals,measurements,currencies";
+	public static final String ALL_CATEGORIES = "dates,numbers,plurals,measurements,currencies,dateFields";
 	public static final String LOCALE_TERRITORIES_PATH = "cldr/localedata/{0}/territories.json";
 	public static final String LOCALE_LANGUAGES_PATH = "cldr/localedata/{0}/languages.json";
 	public static final String DEFAULT_CONTENT_PATH = "cldr/defaultContent/defaultContent.json";
@@ -52,6 +52,7 @@ public class CLDRConstants {
 	public static final String LOCALE_ALIASES_PATH = "cldr/aliases/aliases.json";
 	public static final String PLURALS_PATH = "cldr/plurals/plurals.json";
 	public static final String LANGUAGE_DATA_PATH = "cldr/supplement/languageData.json";
+	public static final String DATE_FIELDS_JSON_PATH = "cldr/pattern/common/{0}/dateFields.json";
 
 	public static final String CLDR_CORE_LANGUAGE_DATA = CLDRConstants.CLDR_CORE + CLDR_VERSION + "/supplemental/languageData.json";
 	public static final String CLDR_CORE_PLURALS = CLDRConstants.CLDR_CORE + CLDR_VERSION + "/supplemental/plurals.json";

@@ -141,10 +141,16 @@ public class PatternServiceImpl implements IPatternService {
 
 		//get pattern data
 		String patternJson = dao.getPattern(CLDRConstants.JSON_PATH, MessageFormat.format(CLDRConstants.PATTERN_JSON_PATH, locale));
-		Map<String, Object> categMap = (Map<String, Object>) JSONUtil.getMapFromJson(patternJson).get("categories");
+		Map<String, Object> categMap = (Map<String, Object>) JSONUtil.getMapFromJson(patternJson).get(Constants.CATEGORIES);
 		List<String> cates = new ArrayList(Arrays.asList(cateList));
-		if (cates.contains("currencies") && !cates.contains("numbers")) {
-			cates.add("numbers");
+		if (cates.contains(Constants.CURRENCIES) && !cates.contains(Constants.NUMBERS)) {
+			cates.add(Constants.NUMBERS);
+		}
+
+		if (cates.contains(Constants.DATE_FIELDS)) {
+			//get pattern data
+			String dateFieldsJson = dao.getPattern(CLDRConstants.JSON_PATH, MessageFormat.format(CLDRConstants.DATE_FIELDS_JSON_PATH, locale));
+			categMap.put(Constants.DATE_FIELDS, JSONUtil.getMapFromJson(dateFieldsJson).get(Constants.DATE_FIELDS));
 		}
 		Map<String, Object> tmpMap = new LinkedHashMap<>();
 		for (String cat : cates) {
@@ -152,7 +158,7 @@ public class PatternServiceImpl implements IPatternService {
 				tmpMap.put(cat, categMap.get(cat));
 			}
 		}
-		tmpMap.put("supplemental", suppleMap);
+		tmpMap.put(Constants.SUPPLEMENTAL, suppleMap);
 		return tmpMap;
 	}
 }

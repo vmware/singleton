@@ -46,12 +46,12 @@ public class FormattingPatternAPI extends BaseAction {
             @ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @PathVariable(value = APIParamName.LOCALE) String locale,
             @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope
     ) throws Exception {
-        String[] categories = scope.toLowerCase().split(",");
+        List<String> categories = new ArrayList<>(Arrays.asList(scope.split(",")));
         if (!CommonUtility.checkParams(categories, locale)) {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST, "Parameter error");
         }
 
-        Map<String, Object> patternMap = patternService.getPattern(locale, new ArrayList(Arrays.asList(categories)));
+        Map<String, Object> patternMap = patternService.getPattern(locale, categories);
         if (CommonUtil.isEmpty(patternMap.get(ConstantsKeys.CATEGORIES))) {
             return super.handleResponse(APIResponseStatus.INTERNAL_NO_RESOURCE_ERROR, "Pattern file not found or parse failed.");
         }
@@ -70,13 +70,12 @@ public class FormattingPatternAPI extends BaseAction {
             @ApiParam(name = APIParamName.REGION, required = true, value = APIParamValue.REGION) @RequestParam(value = APIParamName.REGION, required = true) String region,
             @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope
     ) throws VIPCacheException {
-        String[] categories = scope.toLowerCase().split(",");
+        List<String> categories = new ArrayList<>(Arrays.asList(scope.split(",")));
         if (!CommonUtility.checkParams(categories, language, region)) {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST, "Parameter error");
         }
 
-        Map<String, Object> patternMap = patternService.getPatternWithLanguageAndRegion(language, region,
-                new ArrayList(Arrays.asList(categories)));
+        Map<String, Object> patternMap = patternService.getPatternWithLanguageAndRegion(language, region, categories);
         if (!(boolean)patternMap.get("isExistPattern")) {
             return super.handleResponse(APIResponseStatus.INTERNAL_NO_RESOURCE_ERROR, "'No mapping language found for region!");
         }

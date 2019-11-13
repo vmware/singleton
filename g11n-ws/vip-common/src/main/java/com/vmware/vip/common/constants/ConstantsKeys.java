@@ -79,6 +79,7 @@ public class ConstantsKeys {
    public static final String MEASUREMENTS = "measurements";
    public static final String CURRENCIES = "currencies";
    public static final String SUPPLEMENT = "supplemental";
+   public static final String DATE_FIELDS = "dateFields";
    public static final String[] ALL_CATEGORY =
          { DATES, NUMBERS, PLURALS, MEASUREMENTS, CURRENCIES };
    // fatal error message id
