@@ -12,9 +12,13 @@ import com.vmware.l10n.expt.L10nAPIException;
 public class TestExceptions {
 
     @Test
-    public void TestComponentSource() {
+    public void TestExceptionHandle() {
         ExceptionHandle eh = new ExceptionHandle();
         eh.handler(new RuntimeException("this is a unit test"));
         eh.handler(new L10nAPIException("test L10nAPIException"));
+    }
+    public void TestException1() {
+        new L10nAPIException();
+        new L10nAPIException("test L10nAPIException",new RuntimeException("this is a unit test"));
     }
 }
