@@ -1,0 +1,103 @@
+apply plugin: 'java'
+apply plugin: "eclipse"
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: "org.sonarqube"
+
+sourceCompatibility = 1.8
+description = 'vip i18n lite manager'
+
+archivesBaseName = 'vip-manager-lite-i18n'
+
+configurations {
+	bootJar
+    war
+    providedRuntime
+   // remove default logger
+   all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+}
+ // default encoding is utf-8
+[compileJava,compileTestJava,javadoc]*.options*.encoding = 'UTF-8'
+
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
+  }
+}
+ 
+repositories {
+    mavenCentral()
+}
+sourceSets {
+test {
+    java.srcDirs = ['src/test/java']
+    java.outputDir = file('build/classes/test')
+    output.resourcesDir = file('build/classes/test')
+    resources.srcDirs = ['src/test/resources']
+  }
+}
+
+
+
+
+dependencies {
+    compile project(":vip-common")
+    compile project(":md-restful-api-i18n")
+    compile("org.apache.commons:commons-lang3:$commonsLangVersion")
+    compile("commons-io:commons-io:$commonsIoVersion")
+    compile("com.googlecode.json-simple:json-simple:$jsonSimpleVersion"){
+          exclude group: 'junit'
+    }
+    compile("org.ehcache:ehcache:$ehCacheVersion")
+    compile("javax.cache:cache-api:$cacheApiVersion")
+    compile("org.apache.ant:ant:$antVersion")
+    compile("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+    compile ("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
+    compile ("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
+    compile('io.springfox:springfox-swagger2:2.9.2'){
+       exclude group: 'io.swagger', module:'swagger-annotations'
+       exclude group: 'io.swagger', module:'swagger-models'
+       exclude group: 'io.springfox'
+    }
+    compile('com.google.guava:guava:28.0-jre')
+	compile("commons-codec:commons-codec:1.10")
+
+    compile group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.1.0'
+    compile group: 'com.ibm.icu', name: 'icu4j', version: '57.1'
+    compile group: 'org.webjars.bower', name: 'cldr-data', version: '28.0.1'
+    compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final")
+    compile("org.springframework:spring-webmvc:$springWebVersion")
+    compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.20')
+    compile ('org.apache.tomcat:tomcat-annotations-api:9.0.20')
+    compile('org.springframework.boot:spring-boot-autoconfigure')
+    compile('org.springframework.boot:spring-boot-starter-log4j2')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+        
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("org.asciidoctor:asciidoctorj:1.5.6")
+    testCompile("org.springframework.restdocs:spring-restdocs-mockmvc")
+}
+
+task copyLibs(type :Copy, dependsOn: bootJar) {
+    from "$buildDir/libs"
+    into "$rootDir/../publish/"
+    println "The build was output to -> $rootDir/../publish/"
+    include "**/*.jar"
+}
+
+bootJar{
+  classifier = 'boot'
+  enabled = true
+}
+
+assemble.dependsOn.add copyLibs
+
+springBoot {
+	mainClassName = "com.vmware.vip.LiteBootApplication"
+}
+

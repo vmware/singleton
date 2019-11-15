@@ -15,6 +15,7 @@ public class APIResponseStatus {
     public static final Response NO_CONTENT = new Response(204, "No Content");
     public static final Response TRANSLATION_NOT_READY = new Response(205, "Collected resource's translations is not ready");
     public static final Response TRANSLATION_READY = new Response(206, "Collected resource's translations have been ready");
+    public static final Response MULTTRANSLATION_PART_CONTENT = new Response(207, "Part of the translation is available");
     
     public static final Response BAD_REQUEST = new Response(400, "Bad Request");
     public static final Response UNAUTHORIZED = new Response(401, "Unauthorized");
