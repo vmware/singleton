@@ -5,14 +5,13 @@
 package com.vmware.vip.i18n.api.base;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.vmware.vip.core.messages.exception.L3APIException;
+
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,7 @@ import com.vmware.vip.core.messages.service.multcomponent.TranslationDTO;
 import com.vmware.vip.core.messages.service.product.IProductService;
 import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO;
 import com.vmware.vip.core.messages.service.singlecomponent.IOneComponentService;
-import com.vmware.vip.i18n.api.base.utils.CommonUtility;
+import com.vmware.vip.i18n.api.base.utils.VersionMatcher;
 
 public class TranslationProductComponentAction extends BaseAction {
 	@Autowired
@@ -51,7 +50,7 @@ public class TranslationProductComponentAction extends BaseAction {
 		ComponentMessagesDTO c = new ComponentMessagesDTO();
 		c.setProductName(productName);
 		c.setComponent(component == null ? ConstantsKeys.DEFAULT : component);
-		c.setVersion(CommonUtility.getMatchedVersion(productName, version,productService.getProductsAndVersions() ));
+		c.setVersion(VersionMatcher.getMatchedVersion(productName, version,productService.getProductsAndVersions() ));
 		if (new Boolean(pseudo)) {
 			c.setLocale(ConstantsKeys.LATEST);
 		} else {

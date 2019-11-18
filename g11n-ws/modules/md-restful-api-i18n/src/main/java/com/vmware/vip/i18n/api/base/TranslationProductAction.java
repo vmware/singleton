@@ -35,7 +35,7 @@ import com.vmware.vip.core.messages.service.multcomponent.IMultComponentService;
 import com.vmware.vip.core.messages.service.multcomponent.TranslationDTO;
 import com.vmware.vip.core.messages.service.product.IProductService;
 import com.vmware.vip.core.messages.utils.LocaleUtility;
-import com.vmware.vip.i18n.api.base.utils.CommonUtility;
+import com.vmware.vip.i18n.api.base.utils.VersionMatcher;
 
 
 public class TranslationProductAction  extends BaseAction {
@@ -113,7 +113,7 @@ public class TranslationProductAction  extends BaseAction {
              HttpServletRequest req) throws Exception {
          TranslationDTO translationDTO = new TranslationDTO();
          translationDTO.setProductName(productName);
-         version = CommonUtility.getMatchedVersion(productName, version,  productService.getProductsAndVersions());
+         version = VersionMatcher.getMatchedVersion(productName, version,  productService.getProductsAndVersions());
          translationDTO.setVersion(version);
          List<String> componentList = null;
          if (StringUtils.isEmpty(components)) {
