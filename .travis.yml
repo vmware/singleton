@@ -37,3 +37,4 @@ jobs:
         - cd $TRAVIS_BUILD_DIR/devops/autotest/client/java && ./gradlew build
         - docker cp l10n singleton:/
         - java -cp './target/*' org.testng.TestNG -d test-output ./target/testng.xml
+        - cd $TRAVIS_BUILD_DIR/devops/autotest/client/java_client_sample_app && ./test_sample_app.sh $TRAVIS_BUILD_DIR
