@@ -5,5 +5,5 @@
 package com.vmware.vipclient.i18n.base;
 
 public enum DataSourceEnum {
-	Bundle, VIP
+    Bundle, VIP
 }

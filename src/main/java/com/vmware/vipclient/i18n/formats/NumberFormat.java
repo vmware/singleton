@@ -4,64 +4,64 @@
  */
 package com.vmware.vipclient.i18n.formats;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.BaseFormat;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
-import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 
 public class NumberFormat extends BaseFormat {
-	Logger logger = LoggerFactory.getLogger(NumberFormat.class);
+    Logger logger = LoggerFactory.getLogger(NumberFormat.class);
 
-	public String getLocalizedNumber(String number, String scale) {
-		if (null == number || number.length() == 0) {
-			throw new VIPJavaClientException("number can't be empty");
-		}
-		if (null == scale || scale.length() == 0) {
-			throw new VIPJavaClientException("scale can't be empty");
-		}
-		if (VIPCfg.getInstance().getVipService().getHttpRequester().isConnected()) {
-			return this.getFormatFromRemote(number, scale);
-		} else {
-			return "";
-		}
-	}
+    public String getLocalizedNumber(String number, String scale) {
+        if (null == number || number.length() == 0) {
+            throw new VIPJavaClientException("number can't be empty");
+        }
+        if (null == scale || scale.length() == 0) {
+            throw new VIPJavaClientException("scale can't be empty");
+        }
+        if (VIPCfg.getInstance().getVipService().getHttpRequester().isConnected()) {
+            return this.getFormatFromRemote(number, scale);
+        } else {
+            return "";
+        }
+    }
 
-	private String getFormatFromRemote(String number, String scale) {
-		String format = "";
-		StringBuffer numberAPIUrl = new StringBuffer(VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
-		numberAPIUrl.append("/i18n/api/v1/number/localizedNumber?locale=");
-		numberAPIUrl.append(this.locale);
-		numberAPIUrl.append("&number=");
-		numberAPIUrl.append(number);
-		numberAPIUrl.append("&scale=");
-		numberAPIUrl.append(scale);
-		String retJsonStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(
-				numberAPIUrl.toString(), ConstantsKeys.GET, null);
-		if (null == retJsonStr || retJsonStr.length() == 0) {
-			return format;
-		}
-		JSONObject retJson;
-		try {
-			retJson = (JSONObject) JSONValue.parseWithException(retJsonStr);
-			if (retJson != null) {
-				JSONObject dataJson = (JSONObject) retJson
-						.get(ConstantsKeys.DATA);
-				if (dataJson != null) {
-					format = dataJson.get(ConstantsKeys.FORMATTED_NUMBER) == null ? ""
-							: dataJson.get(ConstantsKeys.FORMATTED_NUMBER)
-									.toString();
-				}
-			}
-		} catch (ParseException e) {
-			logger.error(e.getMessage());
-		}
-		return format;
-	}
+    private String getFormatFromRemote(String number, String scale) {
+        String format = "";
+        StringBuffer numberAPIUrl = new StringBuffer(
+                VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
+        numberAPIUrl.append("/i18n/api/v1/number/localizedNumber?locale=");
+        numberAPIUrl.append(this.locale);
+        numberAPIUrl.append("&number=");
+        numberAPIUrl.append(number);
+        numberAPIUrl.append("&scale=");
+        numberAPIUrl.append(scale);
+        String retJsonStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(
+                numberAPIUrl.toString(), ConstantsKeys.GET, null);
+        if (null == retJsonStr || retJsonStr.length() == 0) {
+            return format;
+        }
+        JSONObject retJson;
+        try {
+            retJson = (JSONObject) JSONValue.parseWithException(retJsonStr);
+            if (retJson != null) {
+                JSONObject dataJson = (JSONObject) retJson
+                        .get(ConstantsKeys.DATA);
+                if (dataJson != null) {
+                    format = dataJson.get(ConstantsKeys.FORMATTED_NUMBER) == null ? ""
+                            : dataJson.get(ConstantsKeys.FORMATTED_NUMBER)
+                                    .toString();
+                }
+            }
+        } catch (ParseException e) {
+            logger.error(e.getMessage());
+        }
+        return format;
+    }
 }

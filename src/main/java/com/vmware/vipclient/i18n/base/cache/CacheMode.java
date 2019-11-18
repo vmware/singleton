@@ -5,5 +5,5 @@
 package com.vmware.vipclient.i18n.base.cache;
 
 public enum CacheMode {
-	MEMORY, DISK
+    MEMORY, DISK
 }

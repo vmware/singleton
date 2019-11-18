@@ -18,49 +18,49 @@ import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 public class ProductService {
-	private MessagesDTO dto = null;
+    private MessagesDTO dto = null;
 
-	public ProductService(MessagesDTO dto) {
-		this.dto = dto;
-	}
+    public ProductService(MessagesDTO dto) {
+        this.dto = dto;
+    }
 
-	// get supported components defined in vip service
-	public JSONArray getComponentsFromRemoteVIP() {
-		BaseDTO baseDTO = new BaseDTO();
-		baseDTO.setProductID(dto.getProductID());
-		baseDTO.setVersion(dto.getVersion());
-		ProductBasedOpt dao = new ProductBasedOpt(baseDTO);
-		return dao.getComponentsFromRemoteVIP();
-	}
+    // get supported components defined in vip service
+    public JSONArray getComponentsFromRemoteVIP() {
+        BaseDTO baseDTO = new BaseDTO();
+        baseDTO.setProductID(dto.getProductID());
+        baseDTO.setVersion(dto.getVersion());
+        ProductBasedOpt dao = new ProductBasedOpt(baseDTO);
+        return dao.getComponentsFromRemoteVIP();
+    }
 
-	// get supported locales defined in vip service
-	public JSONArray getSupportedLocalesFromRemoteVIP() {
-		BaseDTO baseDTO = new BaseDTO();
-		baseDTO.setProductID(dto.getProductID());
-		baseDTO.setVersion(dto.getVersion());
-		ProductBasedOpt dao = new ProductBasedOpt(baseDTO);
-		return dao.getSupportedLocalesFromRemoteVIP();
-	}
+    // get supported locales defined in vip service
+    public JSONArray getSupportedLocalesFromRemoteVIP() {
+        BaseDTO baseDTO = new BaseDTO();
+        baseDTO.setProductID(dto.getProductID());
+        baseDTO.setVersion(dto.getVersion());
+        ProductBasedOpt dao = new ProductBasedOpt(baseDTO);
+        return dao.getSupportedLocalesFromRemoteVIP();
+    }
 
-	public List<Map> getAllComponentTranslation() {
-		List<Map> list = new ArrayList<Map>();
-		Object[] locales = {};
-		Object[] components = {};
-		if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
-			locales = this.getSupportedLocalesFromRemoteVIP().toArray();
-			components = this.getComponentsFromRemoteVIP()
-					.toArray();
-		}
-		for (Object locale : locales) {
-			for (Object component : components) {
-				dto.setComponent(((String) component).trim());
-				dto.setLocale(LocaleUtility.fmtToMappedLocale((String)locale).toString().trim());
-				Map<String, String> retMap = new ComponentService(dto).getComponentTranslation();
-				if (retMap != null) {
-					list.add(retMap);
-				}
-			}
-		}
-		return list;
-	}
+    public List<Map> getAllComponentTranslation() {
+        List<Map> list = new ArrayList<Map>();
+        Object[] locales = {};
+        Object[] components = {};
+        if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
+            locales = this.getSupportedLocalesFromRemoteVIP().toArray();
+            components = this.getComponentsFromRemoteVIP()
+                    .toArray();
+        }
+        for (Object locale : locales) {
+            for (Object component : components) {
+                dto.setComponent(((String) component).trim());
+                dto.setLocale(LocaleUtility.fmtToMappedLocale((String) locale).toString().trim());
+                Map<String, String> retMap = new ComponentService(dto).getComponentTranslation();
+                if (retMap != null) {
+                    list.add(retMap);
+                }
+            }
+        }
+        return list;
+    }
 }

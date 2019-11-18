@@ -8,9 +8,9 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.HashMap;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.json.simple.JSONObject;
 
 import com.vmware.vipclient.i18n.l2.common.ConstantChars;
 import com.vmware.vipclient.i18n.l2.common.PatternCategory;
@@ -18,47 +18,53 @@ import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.l2.number.parser.IntegerDigitsParser;
 
 public class DecimalFormat extends NumberFormat {
-	Logger logger = LoggerFactory.getLogger(DecimalFormat.class);
+    Logger             logger = LoggerFactory.getLogger(DecimalFormat.class);
 
     private JSONObject numberSymbols;
-    private String pattern;
-    private int style;
+    private String     pattern;
+    private int        style;
     private JSONObject fractionData;
 
-   /* public DecimalFormat(String pattern, JSONObject numberSymbols, int style) {
-        this.pattern = pattern;
-        this.numberSymbols = numberSymbols;
-        this.style = style;
-    }
+    /*
+     * public DecimalFormat(String pattern, JSONObject numberSymbols, int style) {
+     * this.pattern = pattern;
+     * this.numberSymbols = numberSymbols;
+     * this.style = style;
+     * }
+     * 
+     * public DecimalFormat(String pattern, JSONObject numberSymbols, JSONObject fractionData, int style) {
+     * this.pattern = pattern;
+     * this.numberSymbols = numberSymbols;
+     * this.style = style;
+     * this.fractionData = fractionData;
+     * }
+     */
 
-    public DecimalFormat(String pattern, JSONObject numberSymbols, JSONObject fractionData, int style) {
-        this.pattern = pattern;
-        this.numberSymbols = numberSymbols;
-        this.style = style;
-        this.fractionData = fractionData;
-    }*/
-    
     public DecimalFormat(JSONObject formatData, int style) {
-    	JSONObject numberFormats;
-    	if(style == NumberFormat.CURRENCYSTYLE){
-    		this.numberSymbols =  (JSONObject) ((HashMap) formatData.get(PatternCategory.NUMBERS.toString())).get(PatternKeys.NUMBERSYMBOLS);
-        	numberFormats = (JSONObject) ((HashMap) formatData.get(PatternCategory.NUMBERS.toString())).get(PatternKeys.NUMBERFORMATS);
-        	this.fractionData = (JSONObject) formatData.get(PatternKeys.FRACTION);
-    	}else{
-    		this.numberSymbols = (JSONObject) formatData.get(PatternKeys.NUMBERSYMBOLS);
-    		numberFormats = (JSONObject) formatData.get(PatternKeys.NUMBERFORMATS);
-    	}
+        JSONObject numberFormats;
+        if (style == NumberFormat.CURRENCYSTYLE) {
+            this.numberSymbols = (JSONObject) ((HashMap) formatData.get(PatternCategory.NUMBERS.toString()))
+                    .get(PatternKeys.NUMBERSYMBOLS);
+            numberFormats = (JSONObject) ((HashMap) formatData.get(PatternCategory.NUMBERS.toString()))
+                    .get(PatternKeys.NUMBERFORMATS);
+            this.fractionData = (JSONObject) formatData.get(PatternKeys.FRACTION);
+        } else {
+            this.numberSymbols = (JSONObject) formatData.get(PatternKeys.NUMBERSYMBOLS);
+            numberFormats = (JSONObject) formatData.get(PatternKeys.NUMBERFORMATS);
+        }
         this.pattern = getPattern(numberFormats, style);
         this.style = style;
     }
 
-   /* public DecimalFormat(String pattern, JSONObject numberSymbols, JSONObject fractionData, int style) {
-        this.pattern = pattern;
-        this.numberSymbols = numberSymbols;
-        this.style = style;
-        this.fractionData = fractionData;
-    }*/
-    
+    /*
+     * public DecimalFormat(String pattern, JSONObject numberSymbols, JSONObject fractionData, int style) {
+     * this.pattern = pattern;
+     * this.numberSymbols = numberSymbols;
+     * this.style = style;
+     * this.fractionData = fractionData;
+     * }
+     */
+
     @Override
     public String format(long value, Integer fractionSize) {
         return parseNumber(String.valueOf(value), fractionSize);
@@ -94,23 +100,24 @@ public class DecimalFormat extends NumberFormat {
             positivePattern = patternParts[0];
             negativePattern = patternParts[1];
         } else {
-        	positivePattern = pattern;
+            positivePattern = pattern;
         }
-        /* handle positive pattern*/
+        /* handle positive pattern */
         String[] positiveParts = new String[2];
         if (positivePattern.indexOf(ConstantChars.DECIMAL_SEP) >= 0) {
             positiveParts = positivePattern.split("\\" + ConstantChars.DECIMAL_SEP);
-        }else if(positivePattern.indexOf(ConstantChars.PATTERN_EXPONENT)>=0){
-        	positiveParts[0] = positivePattern.substring(0, positivePattern.indexOf(ConstantChars.PATTERN_EXPONENT));
-        	positiveParts[1] = positivePattern.substring(positivePattern.indexOf(ConstantChars.PATTERN_EXPONENT));
-        }else{//There may be symbol after number pattern, e.g. percent format '#,##0%' and currency format'¤#,##0.00'.
+        } else if (positivePattern.indexOf(ConstantChars.PATTERN_EXPONENT) >= 0) {
+            positiveParts[0] = positivePattern.substring(0, positivePattern.indexOf(ConstantChars.PATTERN_EXPONENT));
+            positiveParts[1] = positivePattern.substring(positivePattern.indexOf(ConstantChars.PATTERN_EXPONENT));
+        } else {// There may be symbol after number pattern, e.g. percent format '#,##0%' and currency
+                // format'¤#,##0.00'.
             positiveParts[0] = positivePattern.substring(0,
-            		positivePattern.lastIndexOf(ConstantChars.ZEROCHAR) + 1);
+                    positivePattern.lastIndexOf(ConstantChars.ZEROCHAR) + 1);
             positiveParts[1] = positivePattern.substring(positivePattern.lastIndexOf(ConstantChars.ZEROCHAR) + 1);
         }
         String integerPattern = positiveParts[0];
         String fractionPattern = positiveParts[1];
-        /* handle integer pattern*/
+        /* handle integer pattern */
         String posPrefix = "";
         for (int i = 0; i < integerPattern.length(); i++) {
             char ch = integerPattern.charAt(i);
@@ -121,7 +128,7 @@ public class DecimalFormat extends NumberFormat {
             }
         }
         integerPattern = !"".equals(posPrefix) ? integerPattern.substring(posPrefix.length()) : integerPattern;
-        
+
         int groupSize = 0;
         int groupSize2 = 0;
         if (integerPattern.indexOf(ConstantChars.GROUP_SEP) >= 0) {
@@ -132,13 +139,13 @@ public class DecimalFormat extends NumberFormat {
         }
         int maxIntegerDigit = 0;
         int minIntegerDigit = 0;
-        if(integerPattern.indexOf(ConstantChars.ZEROCHAR) >= 0){
-        	minIntegerDigit = integerPattern.length() - integerPattern.indexOf(ConstantChars.ZEROCHAR);
-        	 if (ConstantChars.ZEROCHAR == integerPattern.charAt(0)) {
-        		 maxIntegerDigit = minIntegerDigit;
-        	 }
+        if (integerPattern.indexOf(ConstantChars.ZEROCHAR) >= 0) {
+            minIntegerDigit = integerPattern.length() - integerPattern.indexOf(ConstantChars.ZEROCHAR);
+            if (ConstantChars.ZEROCHAR == integerPattern.charAt(0)) {
+                maxIntegerDigit = minIntegerDigit;
+            }
         }
-        /* handle fraction pattern*/
+        /* handle fraction pattern */
         String posSuffix = "";// =
         int minFractionDigits = 0;
         int maxFractionDigits = 0;
@@ -149,15 +156,15 @@ public class DecimalFormat extends NumberFormat {
                     minFractionDigits = i + 1;
                 } else if (ch == ConstantChars.DIGIT_CHAR) {
                     maxFractionDigits = i + 1;
-                } else if(ch == ConstantChars.PATTERN_EXPONENT){
-                	posSuffix = fractionPattern.substring(i);
-                	break;
-                }else{
+                } else if (ch == ConstantChars.PATTERN_EXPONENT) {
+                    posSuffix = fractionPattern.substring(i);
+                    break;
+                } else {
                     posSuffix += ch;
                 }
             }
-            if(maxFractionDigits < minFractionDigits){
-            	maxFractionDigits = minFractionDigits;
+            if (maxFractionDigits < minFractionDigits) {
+                maxFractionDigits = minFractionDigits;
             }
         }
         patternInfo.setPositivePrefix(posPrefix);
@@ -169,7 +176,7 @@ public class DecimalFormat extends NumberFormat {
         patternInfo.setGroupingSize(groupSize);
         patternInfo.setSecondaryGroupingSize(groupSize2);
         // patternInfo.setMinimumExponentDigits(minExpDig);
-        /* handle negative pattern*/
+        /* handle negative pattern */
         String negPrefix = "";
         String negSuffix = "";
         if (negativePattern != null && !"".equals(negativePattern)) {
@@ -178,7 +185,7 @@ public class DecimalFormat extends NumberFormat {
                 negativeParts = negativePattern.split("\\" + ConstantChars.DECIMAL_SEP);
             } else {
                 negativeParts[0] = negativePattern.substring(0,
-                		positivePattern.lastIndexOf(ConstantChars.ZEROCHAR) + 1);
+                        positivePattern.lastIndexOf(ConstantChars.ZEROCHAR) + 1);
                 negativeParts[1] = negativePattern
                         .substring(positivePattern.lastIndexOf(ConstantChars.ZEROCHAR) + 1);
             }
@@ -207,89 +214,92 @@ public class DecimalFormat extends NumberFormat {
         return patternInfo;
     }
 
-	public String parseNumber(String numStr, Integer customizedFractionSize) {
-		StringBuilder localizedNumStr = new StringBuilder();
-		NumberPatternInfo patternInfo = null;
-		try {
-			patternInfo = parsePattern(pattern);
-			if(this.style == CURRENCYSTYLE){
-				adjustFraction4Currency(patternInfo);
-			}
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			return "";
-		}
-		int fractionLength = 0;
-		if(numStr.indexOf(".") >0){
-			fractionLength = numStr.length() -1 - numStr.indexOf(".");
-		}
-		//use default
-		if(customizedFractionSize == null){
-			if (fractionLength < patternInfo.getMinimumFractionDigits()) {
-				fractionLength = patternInfo.getMinimumFractionDigits();
-			}else if (fractionLength > patternInfo.getMaximumFractionDigits()) {
-				fractionLength = patternInfo.getMaximumFractionDigits();
-			}
-		}else{//use customized fraction size
-			fractionLength = customizedFractionSize;
-		}
-		// Decimal
-		BigDecimal b = new BigDecimal(numStr);
-		/*
-		 * if(BigDecimal.b.){
-		 * 
-		 * }
-		 */
-		boolean isNegative = isNegative(b.doubleValue());
-		if (!isNegative) {
-			localizedNumStr.append(patternInfo.getPositivePrefix());
-		} else {
-			localizedNumStr.append(patternInfo.getNegativePrefix());
-		}
-		b = b.abs();
-		numStr = b.toString();
-		if (this.style == PERCENTSTYLE) {
-			numStr = b.multiply(new BigDecimal(100)).setScale(fractionLength, BigDecimal.ROUND_HALF_UP)//
-					.toString();
-		} else {
-			// numStr=MessageFormat.format(pattern, arguments);
-			numStr = b.setScale(fractionLength, BigDecimal.ROUND_HALF_EVEN)//BigDecimal.ROUND_HALF_UP patternInfo.getRound()
-					.toString();
-		}
-		String[] numArray = numStr.toString().split("\\" + ConstantChars.DECIMAL_SEP);
-		IntegerDigitsParser parser = new IntegerDigitsParser(numberSymbols);
-		String groupedIntegerDigits = parser.groupIntegerDigits(numArray[0],patternInfo.getGroupingSize());
-		localizedNumStr.append(groupedIntegerDigits);
-		String localizedDecimalSep = (String) numberSymbols.get(PatternKeys.DECIMAL);
-		if (numArray.length > 1) {
-			localizedNumStr.append(localizedDecimalSep).append(numArray[1]);
-		}
-		if (!isNegative) {
-			localizedNumStr.append(patternInfo.getPositiveSuffix());
-		} else {
-			localizedNumStr.append(patternInfo.getNegativeSuffix());
-		}
-		return localizedNumStr.toString();
-	}
-    
-	private void adjustFraction4Currency(NumberPatternInfo patternInfo){
-		if(fractionData != null){
-			int round = Integer.parseInt((String) this.fractionData.get(PatternKeys._ROUNDING));
-			/*if(round != 0){
-				patternInfo.setRound();
-			}*/
-			int digits = Integer.parseInt((String)this.fractionData.get(PatternKeys._DIGITS));
-			int oldMinDigits = patternInfo.getMinimumFractionDigits();
-			if(oldMinDigits == patternInfo.getMaximumFractionDigits()){
-				patternInfo.setMinimumFractionDigits(digits);
-				patternInfo.setMaximumFractionDigits(digits);
-			}else{
-				patternInfo.setMinimumFractionDigits(Math.min(digits, oldMinDigits));
-				patternInfo.setMaximumFractionDigits(digits);
-			}
-		}
-	}
-	
+    public String parseNumber(String numStr, Integer customizedFractionSize) {
+        StringBuilder localizedNumStr = new StringBuilder();
+        NumberPatternInfo patternInfo = null;
+        try {
+            patternInfo = parsePattern(pattern);
+            if (this.style == CURRENCYSTYLE) {
+                adjustFraction4Currency(patternInfo);
+            }
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return "";
+        }
+        int fractionLength = 0;
+        if (numStr.indexOf(".") > 0) {
+            fractionLength = numStr.length() - 1 - numStr.indexOf(".");
+        }
+        // use default
+        if (customizedFractionSize == null) {
+            if (fractionLength < patternInfo.getMinimumFractionDigits()) {
+                fractionLength = patternInfo.getMinimumFractionDigits();
+            } else if (fractionLength > patternInfo.getMaximumFractionDigits()) {
+                fractionLength = patternInfo.getMaximumFractionDigits();
+            }
+        } else {// use customized fraction size
+            fractionLength = customizedFractionSize;
+        }
+        // Decimal
+        BigDecimal b = new BigDecimal(numStr);
+        /*
+         * if(BigDecimal.b.){
+         * 
+         * }
+         */
+        boolean isNegative = isNegative(b.doubleValue());
+        if (!isNegative) {
+            localizedNumStr.append(patternInfo.getPositivePrefix());
+        } else {
+            localizedNumStr.append(patternInfo.getNegativePrefix());
+        }
+        b = b.abs();
+        numStr = b.toString();
+        if (this.style == PERCENTSTYLE) {
+            numStr = b.multiply(new BigDecimal(100)).setScale(fractionLength, BigDecimal.ROUND_HALF_UP)//
+                    .toString();
+        } else {
+            // numStr=MessageFormat.format(pattern, arguments);
+            numStr = b.setScale(fractionLength, BigDecimal.ROUND_HALF_EVEN)// BigDecimal.ROUND_HALF_UP
+                                                                           // patternInfo.getRound()
+                    .toString();
+        }
+        String[] numArray = numStr.toString().split("\\" + ConstantChars.DECIMAL_SEP);
+        IntegerDigitsParser parser = new IntegerDigitsParser(numberSymbols);
+        String groupedIntegerDigits = parser.groupIntegerDigits(numArray[0], patternInfo.getGroupingSize());
+        localizedNumStr.append(groupedIntegerDigits);
+        String localizedDecimalSep = (String) numberSymbols.get(PatternKeys.DECIMAL);
+        if (numArray.length > 1) {
+            localizedNumStr.append(localizedDecimalSep).append(numArray[1]);
+        }
+        if (!isNegative) {
+            localizedNumStr.append(patternInfo.getPositiveSuffix());
+        } else {
+            localizedNumStr.append(patternInfo.getNegativeSuffix());
+        }
+        return localizedNumStr.toString();
+    }
+
+    private void adjustFraction4Currency(NumberPatternInfo patternInfo) {
+        if (fractionData != null) {
+            int round = Integer.parseInt((String) this.fractionData.get(PatternKeys._ROUNDING));
+            /*
+             * if(round != 0){
+             * patternInfo.setRound();
+             * }
+             */
+            int digits = Integer.parseInt((String) this.fractionData.get(PatternKeys._DIGITS));
+            int oldMinDigits = patternInfo.getMinimumFractionDigits();
+            if (oldMinDigits == patternInfo.getMaximumFractionDigits()) {
+                patternInfo.setMinimumFractionDigits(digits);
+                patternInfo.setMaximumFractionDigits(digits);
+            } else {
+                patternInfo.setMinimumFractionDigits(Math.min(digits, oldMinDigits));
+                patternInfo.setMaximumFractionDigits(digits);
+            }
+        }
+    }
+
     private boolean isNegative(double number) {
         // Detecting whether a double is negative is easy with the exception of the value
         // -0.0. This is a double which has a zero mantissa (and exponent), but a negative

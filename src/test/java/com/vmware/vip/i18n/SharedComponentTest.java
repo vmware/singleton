@@ -4,25 +4,27 @@
  */
 package com.vmware.vip.i18n;
 
+import java.util.Locale;
+import java.util.Map;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
+import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
-import java.util.Locale;
-import java.util.Map;
 
 public class SharedComponentTest extends BaseTestClass {
     TranslationMessage mainTranslation;
     TranslationMessage subTranslation;
-    String mainProductName = "JavaclientTest";
-    String subProductName = "JavaclientTest1";
+    String             mainProductName = "JavaclientTest";
+    String             subProductName  = "JavaclientTest1";
 
     @Before
     public void init() {
@@ -33,7 +35,8 @@ public class SharedComponentTest extends BaseTestClass {
             logger.error(e.getMessage());
         }
         mainCfg.initializeVIPService();
-        if (mainCfg.getCacheManager() != null) mainCfg.getCacheManager().clearCache();
+        if (mainCfg.getCacheManager() != null)
+            mainCfg.getCacheManager().clearCache();
         mainCfg.createTranslationCache(MessageCache.class);
         mainCfg.createFormattingCache(FormattingCache.class);
         I18nFactory i18n = I18nFactory.getInstance(mainCfg);
@@ -67,9 +70,9 @@ public class SharedComponentTest extends BaseTestClass {
         Assert.assertTrue(subTranslation.getCfg().getProductName().equals(subProductName));
 
         VIPCfg gc = VIPCfg.getInstance();
-        Cache c = gc.getCacheManager().getCache(VIPCfg.CACHE_L3);
-        Map<String, Map<String, String>> m =  ((MessageCache)c).getCachedTranslationMap();
-        Assert.assertTrue(m.size()==4);
+        Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
+        Map<String, Map<String, String>> m = ((MessageCache) c).getCachedTranslationMap();
+        Assert.assertTrue(m.size() == 4);
         Assert.assertTrue(m.containsKey("JavaclientTest_1.0.0_JAVA_false_#zh"));
         Assert.assertTrue(m.containsKey("JavaclientTest1_2.0.0_JSP_false_#de"));
     }

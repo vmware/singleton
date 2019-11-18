@@ -10,8 +10,8 @@ import com.vmware.vipclient.i18n.fmt.common.MessageSupport;
 
 public class MessageTag extends MessageSupport {
 
-	public void setKey(String key) throws JspTagException {
-		this.keyAttrValue = key;
-		this.keySpecified = true;
-	}
+    public void setKey(String key) throws JspTagException {
+        this.keyAttrValue = key;
+        this.keySpecified = true;
+    }
 }

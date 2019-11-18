@@ -1,0 +1,343 @@
+{
+  "mappings": [
+		{
+		  "request" : {
+			"url" : "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0?locales=fr&components=JAVA",
+			"method" : "GET"
+		  },
+		  "response" : {
+			"status" : 200,
+			"bodyFileName" : "body-i18n-api-v2-translation-products-JavaclientTest-versions-1.0.0.json"
+		  }
+		},
+		{
+		  "request" : {
+			"url" : "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0?locales=fr&components=USER",
+			"method" : "GET"
+		  },
+		  "response" : {
+			"status" : 200,
+			"jsonBody" : 
+				{
+					"response": {
+						"code": 200,
+						"message": "OK",
+						"serverTime": ""
+					},
+					"signature": "",
+					"data": {
+						"productName": "JavaclientTest",
+						"version": "1.0.0",
+						"dataOrigin": "",
+						"pseudo": false,
+						"machineTranslation": false,
+						"locales": [
+							"fr"
+						],
+						"components": [
+							"USER"
+						],
+						"bundles": [
+							{
+								"component": "USER",
+								"messages": {
+									"user-1": "valeur-1",
+									"user-2": "valeur-2"
+								},
+								"locale": "fr"
+							}
+						],
+						"url": "",
+						"id": 0
+					}
+				}
+		  }
+		},
+		{
+		  "request" : {
+			"url" : "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0?locales=fr&components=JAVA,USER",
+			"method" : "GET"
+		  },
+		  "response" : {
+			"status" : 200,
+			"jsonBody" :{
+					"response": {
+						"code": 200,
+						"message": "OK",
+						"serverTime": ""
+					},
+					"signature": "",
+					"data": {
+						"productName": "JavaclientTest",
+						"version": "1.0.0",
+						"dataOrigin": "",
+						"pseudo": false,
+						"machineTranslation": false,
+						"locales": [
+							"fr"
+						],
+						"components": [
+							"JAVA",
+							"USER"
+						],
+						"bundles": [
+							{
+								"component": "JAVA",
+								"messages": {
+									"LeadTest": "[{0}] Alerte de test",
+									"table.host": "Hôte",
+									"global_text_username": "Nom d'utilisateur"
+								},
+								"locale": "fr"
+							},
+							{
+								"component": "USER",
+								"messages": {
+									"user-1": "valeur-1",
+									"user-2": "valeur-2"
+								},
+								"locale": "fr"
+							}
+						],
+						"url": "",
+						"id": 0
+					}
+				}
+		  }
+		},
+
+		{
+		  "request" : {
+			"url" : "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0?locales=it-IT&components=JAVA",
+			"method" : "GET"
+		  },
+		  "response" : {
+			"status" : 200,
+			"jsonBody" : 
+				{
+					"response": {
+						"code": 404,
+						"message": "Faild to get translation from data for SampleProject/1.0.0",
+						"serverTime": ""
+					},
+					"signature": "",
+					"data": ""
+				}
+		  }
+		},
+
+		{
+		  "request" : {
+			"url" : "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0?locales=zh-Hans&components=Nonexistent",
+			"method" : "GET"
+		  },
+		  "response" : {
+			"status" : 200,
+			"jsonBody" : 
+				{
+					"response": {
+						"code": 404,
+						"message": "Faild to get translation from data for SampleProject/1.0.0",
+						"serverTime": ""
+					},
+					"signature": "",
+					"data": ""
+				}
+		  }
+		},
+
+		{
+		  "request" : {
+			"url" : "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0?locales=en&components=JAVA",
+			"method" : "GET"
+		  },
+		  "response" : {
+			"status" : 200,
+			"jsonBody" : 
+					{
+					"response": {
+						"code": 200,
+						"message": "OK",
+						"serverTime": ""
+					},
+					"signature": "",
+					"data": {
+						"productName": "JavaclientTest",
+						"version": "1.0.0",
+						"dataOrigin": "",
+						"pseudo": false,
+						"machineTranslation": false,
+						"locales": [
+							"en"
+						],
+						"components": [
+							"JAVA"
+						],
+						"bundles": [
+							{
+								"component": "JAVA",
+								"messages": {
+									"LeadTest": "[{0}] Test alert",
+									"table.host": "Host",
+									"global_text_username": "User name",
+									"sample.plural.key1": "{0, plural, one{There is one file on disk \"{1}\".} other{There are # files on disk \"{1}\".}}"
+								},
+								"locale": "en"
+							}
+						],
+						"url": "",
+						"id": 0
+					}
+				}
+		  }
+		},
+
+
+
+
+		{
+		  "request" : {
+			"url" : "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0?locales=fr,zh-Hans&components=JAVA,USER",
+			"method" : "GET"
+		  },
+		  "response" : {
+			"status" : 200,
+			"jsonBody" : 
+				{
+					"response": {
+						"code": 200,
+						"message": "OK",
+						"serverTime": ""
+					},
+					"signature": "",
+					"data": {
+						"productName": "JavaclientTest",
+						"version": "1.0.0",
+						"dataOrigin": "",
+						"pseudo": false,
+						"machineTranslation": false,
+						"locales": [
+							"fr",
+							"zh-Hans"
+						],
+						"components": [
+							"JAVA",
+							"USER"
+						],
+						"bundles": [
+							{
+								"component": "JAVA",
+								"messages": {
+									"LeadTest": "[{0}] Alerte de test",
+									"table.host": "Hôte",
+									"global_text_username": "Nom d'utilisateur"
+								},
+								"locale": "fr"
+							},
+							{
+								"component": "JAVA",
+								"messages": {
+									"LeadTest": "[{0}] 测试警示",
+									"table.host": "主机",
+									"global_text_username": "用户名"
+								},
+								"locale": "zh-Hans"
+							},
+							{
+								"component": "USER",
+								"messages": {
+									"user-1": "valeur-1",
+									"user-2": "valeur-2"
+								},
+								"locale": "fr"
+							},
+							{
+								"component": "USER",
+								"messages": {
+									"user-1": "值-1",
+									"user-2": "值-2"
+								},
+								"locale": "zh-Hans"
+							}
+						],
+						"url": "",
+						"id": 0
+					}
+				}
+		  }
+		},
+		
+		{
+		  "request" : {
+			"url" : "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0?locales=fr,zh-CN&components=JAVA,USER",
+			"method" : "GET"
+		  },
+		  "response" : {
+			"status" : 200,
+			"jsonBody" : 
+				{
+					"response": {
+						"code": 200,
+						"message": "OK",
+						"serverTime": ""
+					},
+					"signature": "",
+					"data": {
+						"productName": "JavaclientTest",
+						"version": "1.0.0",
+						"dataOrigin": "",
+						"pseudo": false,
+						"machineTranslation": false,
+						"locales": [
+							"fr",
+							"zh-Hans"
+						],
+						"components": [
+							"JAVA",
+							"USER"
+						],
+						"bundles": [
+							{
+								"component": "JAVA",
+								"messages": {
+									"LeadTest": "[{0}] Alerte de test",
+									"table.host": "Hôte",
+									"global_text_username": "Nom d'utilisateur"
+								},
+								"locale": "fr"
+							},
+							{
+								"component": "JAVA",
+								"messages": {
+									"LeadTest": "[{0}] 测试警示",
+									"table.host": "主机",
+									"global_text_username": "用户名"
+								},
+								"locale": "zh-Hans"
+							},
+							{
+								"component": "USER",
+								"messages": {
+									"user-1": "valeur-1",
+									"user-2": "valeur-2"
+								},
+								"locale": "fr"
+							},
+							{
+								"component": "USER",
+								"messages": {
+									"user-1": "值-1",
+									"user-2": "值-2"
+								},
+								"locale": "zh-Hans"
+							}
+						],
+						"url": "",
+						"id": 0
+					}
+				}
+		  }
+		}
+		
+  ]
+}
