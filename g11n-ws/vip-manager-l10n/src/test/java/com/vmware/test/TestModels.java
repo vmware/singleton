@@ -3,22 +3,21 @@ package com.vmware.test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import org.junit.Test;
 import org.springframework.beans.BeanUtils;
 
 import com.vmware.l10n.record.model.ComponentSourceModel;
+import  com.vmware.l10n.source.dto.GRMResponseDTO;
 import com.vmware.l10n.source.dto.SourceDTO;
-import com.vmware.l10n.translation.dto.ComponentMessagesDTO;
 import com.vmware.l10n.translation.dto.UpdateListDTO;
+import com.vmware.l10n.translation.readers.LocalJSONReader;
 import com.vmware.l10n.utils.SourceCacheUtils;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
 import com.vmware.vip.common.l10n.source.util.PathUtil;
-import  com.vmware.l10n.source.dto.GRMResponseDTO;
 
 public class TestModels {
     @Test
@@ -94,6 +93,16 @@ public class TestModels {
             
         } catch (VIPCacheException e) {
             // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+    
+    @Test 
+    public void testLocalJSONReader() {
+        try {
+            LocalJSONReader jsonRd =  new LocalJSONReader(); 
+            jsonRd.getTranslationOutJar(".json");
+        }catch(Exception e){
             e.printStackTrace();
         }
     }
