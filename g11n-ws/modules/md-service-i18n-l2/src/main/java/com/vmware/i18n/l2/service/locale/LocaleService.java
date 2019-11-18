@@ -4,10 +4,7 @@
  */
 package com.vmware.i18n.l2.service.locale;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.vmware.i18n.utils.CommonUtil;
 import org.slf4j.Logger;
@@ -112,6 +109,16 @@ public class LocaleService implements ILocaleService {
 			dto.setLanguageTag(language);
 			dtoList.add(dto);
 		}
+
+		if (!dtoList.isEmpty()){
+			Collections.sort(dtoList, new Comparator<DisplayLanguageDTO>() {
+				@Override
+				public int compare(DisplayLanguageDTO o1, DisplayLanguageDTO o2) {
+					return o1.getLanguageTag().compareTo(o2.getLanguageTag());
+				}
+			});
+		}
+
 		return dtoList;
 	}
 
