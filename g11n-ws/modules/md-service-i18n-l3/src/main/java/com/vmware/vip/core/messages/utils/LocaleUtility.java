@@ -7,11 +7,6 @@ package com.vmware.vip.core.messages.utils;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import org.springframework.util.StringUtils;
-
-
-
-import org.springframework.util.StringUtils;
 
 import org.springframework.util.StringUtils;
 
