@@ -35,6 +35,7 @@ import com.vmware.vip.core.messages.service.multcomponent.IMultComponentService;
 import com.vmware.vip.core.messages.service.multcomponent.TranslationDTO;
 import com.vmware.vip.core.messages.service.product.IProductService;
 import com.vmware.vip.core.messages.utils.LocaleUtility;
+import com.vmware.vip.i18n.api.base.utils.VersionMatcher;
 
 
 public class TranslationProductAction  extends BaseAction {
@@ -78,7 +79,7 @@ public class TranslationProductAction  extends BaseAction {
 		return null;
 	}	
 
-    private TranslationDTO getAllCompTrans(String productName, String version,String pseudo,
+    private TranslationDTO getAllCompTrans(String productName, String version,boolean pseudo,
             HttpServletRequest req)  throws Exception {
         TranslationDTO translationDTO = new TranslationDTO();
         translationDTO.setProductName(productName);
@@ -87,14 +88,14 @@ public class TranslationProductAction  extends BaseAction {
 		List<String> localeList = productService.getSupportedLocaleList(productName, version);
         translationDTO.setComponents(components);
         translationDTO.setVersion(version);
-        if(new Boolean(pseudo)) {
+        if(pseudo) {
         	localeList = new ArrayList<String>();
         	localeList.add(ConstantsKeys.LATEST);
             translationDTO.setLocales(localeList);
-            translationDTO.setPseudo(new Boolean(pseudo));
+            translationDTO.setPseudo(pseudo);
         } else {
             translationDTO.setLocales(localeList);
-            translationDTO.setPseudo(new Boolean(pseudo));
+            translationDTO.setPseudo(pseudo);
         }
         translationDTO = multipleComponentsService.getMultiComponentsTranslation(translationDTO);
         return translationDTO;
@@ -103,13 +104,7 @@ public class TranslationProductAction  extends BaseAction {
     
     public APIResponseDTO getMultTrans(String productName, String version, String componentsStr, String localesStr, String pseudo,
             HttpServletRequest req)  throws Exception {
-        if(StringUtils.isEmpty(componentsStr) && StringUtils.isEmpty(localesStr)) {
-            return  super.handleResponse(APIResponseStatus.OK, getAllCompTrans( productName,  version, pseudo, req)) ;
-        }else {
             return getPartialComTrans(productName, componentsStr,  version,  localesStr,  pseudo, req);
-        }
-        
-        
     }
    
     
@@ -118,6 +113,7 @@ public class TranslationProductAction  extends BaseAction {
              HttpServletRequest req) throws Exception {
          TranslationDTO translationDTO = new TranslationDTO();
          translationDTO.setProductName(productName);
+         version = VersionMatcher.getMatchedVersion(productName, version,  productService.getProductsAndVersions());
          translationDTO.setVersion(version);
          List<String> componentList = null;
          if (StringUtils.isEmpty(components)) {
@@ -190,8 +186,7 @@ public class TranslationProductAction  extends BaseAction {
                HttpServletRequest req) throws Exception {
           
           TranslationDTO resulttranslationDTO = getResultTranslationDTO( productName, version,components, locales,  pseudo, req);
-          TranslationDTO allTranslationDTO  =  getAllCompTrans( productName,  version, pseudo, req);
-        
+          TranslationDTO allTranslationDTO  =  getAllCompTrans( resulttranslationDTO.getProductName(),  resulttranslationDTO.getVersion(), resulttranslationDTO.getPseudo(), req);
           List<String> reqLocales = resulttranslationDTO.getLocales();
           List<String> reqComponents = resulttranslationDTO.getComponents();
           
@@ -209,8 +204,6 @@ public class TranslationProductAction  extends BaseAction {
                   
                  }
               }
-          
-          
            int reqLocaleSize = reqLocales.size();
            int reqComponentSite = reqComponents.size();
            
