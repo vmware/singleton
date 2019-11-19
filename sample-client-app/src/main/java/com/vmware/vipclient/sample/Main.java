@@ -13,6 +13,7 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 
 public class Main {
 	
@@ -27,7 +28,11 @@ public class Main {
 
 		// Initialize
 		VIPCfg cfg = VIPCfg.getInstance();
-		cfg.initialize("sampleconfig");
+		try {
+			cfg.initialize("sampleconfig");
+		} catch (VIPClientInitException e) {
+			System.out.println(e.getMessage());
+		}
 		cfg.initializeVIPService();
 		cfg.createTranslationCache(MessageCache.class);
 		cfg.createFormattingCache(FormattingCache.class);
