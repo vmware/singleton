@@ -20,9 +20,17 @@ git clone git@github.com:vmware/singleton.git
 ```
 
 2. Update the complie configuration file in `singleton/g11n-ws/gradle.properties`
-   ```datatype=bundle``` 
-   to 
-   ```datatype=s3```
+
+```
+datatype=bundle
+```
+
+to
+
+```
+datatype=s3
+```
+
 3. Update the below s3 config items according to your requirements in `singleton/g11n-ws/vip-manager-i18n/src/main/resources/application-s3.properties`
 
 ```

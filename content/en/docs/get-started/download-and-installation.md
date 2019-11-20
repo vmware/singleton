@@ -5,7 +5,7 @@ draft: false
 Weight: 10
 ---
 
-Singleton official 0.1.0 Release is abailable now! Choose the download that's right for you and click one of the links below.
+Singleton official 0.1.0 Release is available now! Choose the download that's right for you and click one of the links below.
 
 Singleton Service 0.1.0 Binaries
 ================================
@@ -21,7 +21,7 @@ filename | sha1 hash | branch/tag
 Installation
 ------------
 
-Singleton Service include 2 types of builds, one is i18n manager, one is l10n manager:
+Singleton Service include 2 types of builds, one is i18n manager, the other is l10n manager:
 
 * I18n manager is the main build, it provides the [restful APIs](https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/) to talk with Singleton SDK.
 * L10n manager will work together with I18n manager to achieve the feature [Source Collection](https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-source-collection/).
@@ -49,5 +49,5 @@ Downloading
 filename | sha1 hash | branch/tag
 -------- | --- | ------
 [singleton-client-java-0.1.0.jar ](http://repo1.maven.org/maven2/com/vmware/singleton/singleton-client-java/0.1.0/singleton-client-java-0.1.0.jar) | `d27afa9e1659759805e320daab7d8d0e5f7b8da2` | g11n-java-client/[v0.1.0-Singleton-Java-Client](https://github.com/vmware/singleton/releases/tag/v0.1.0-Singleton-Java-Client)
-[@singleton-i18n/js-core-sdk@0.1.0](https://www.npmjs.com/package/@singleton-i18n/js-core-sdk/v/0.1.0) | - | g11n-js-client/[v0.1.0-Singleton-JS-Client](https://github.com/vmware/singleton/releases/tag/v0.1.0-Singleton-JS-Client)
-[@singleton-i18n/angular-client@0.1.0](https://www.npmjs.com/package/@singleton-i18n/angular-client/v/0.1.0) | - | g11n-angular-client/[v0.1.0-Singleton-Angular-Client](https://github.com/vmware/singleton/releases/tag/v0.1.0-Singleton-Angular-Client)
+[@singleton-i18n/js-core-sdk@0.1.0](https://www.npmjs.com/package/@singleton-i18n/js-core-sdk/v/0.1.0) | `1e776e866ded0751d39ea391cae29b412089fcc1` | g11n-js-client/[v0.1.0-Singleton-JS-Client](https://github.com/vmware/singleton/releases/tag/v0.1.0-Singleton-JS-Client)
+[@singleton-i18n/angular-client@0.1.0](https://www.npmjs.com/package/@singleton-i18n/angular-client/v/0.1.0) | `8f8ae3ca2ef6e1bfccd828fc1b9e4c6e74f6be20` | g11n-angular-client/[v0.1.0-Singleton-Angular-Client](https://github.com/vmware/singleton/releases/tag/v0.1.0-Singleton-Angular-Client)
