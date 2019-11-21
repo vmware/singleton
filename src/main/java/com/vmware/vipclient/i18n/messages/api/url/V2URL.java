@@ -19,7 +19,7 @@ import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 
 /**
- * 
+ *
  * Encapsulates some methods related to vIP Server.
  *
  */
@@ -33,7 +33,7 @@ public class V2URL {
     /*
      * get component list URL
      */
-    public static String getComponentListURL(BaseDTO dto, String baseURL) {
+    public static String getComponentListURL(final BaseDTO dto, final String baseURL) {
         StringBuilder url = new StringBuilder(baseURL);
         String gurl = APIV2.PRODUCT_COMPONENT_LIST_GET
                 .replace("{" + APIParamName.PRODUCT_NAME + "}", dto.getProductID())
@@ -45,7 +45,7 @@ public class V2URL {
     /*
      * get locale list URL
      */
-    public static String getSupportedLocaleListURL(BaseDTO dto, String baseURL) {
+    public static String getSupportedLocaleListURL(final BaseDTO dto, final String baseURL) {
         StringBuilder url = new StringBuilder(baseURL);
         String gurl = APIV2.PRODUCT_LOCALE_LIST_GET.replace("{" + APIParamName.PRODUCT_NAME + "}", dto.getProductID())
                 .replace("{" + APIParamName.VERSION2 + "}", dto.getVersion());
@@ -55,14 +55,14 @@ public class V2URL {
 
     /**
      * assembly the request URL for component Translation.
-     * 
+     *
      * @param params
      *            The parameter of the request.
      * @param baseURL
      *            The root path of the URL.
      * @return
      */
-    public static String getComponentTranslationURL(MessagesDTO dto, String baseURL) {
+    public static String getComponentTranslationURL(final MessagesDTO dto, final String baseURL) {
         StringBuilder url = new StringBuilder(baseURL);
         String gurl = APIV2.COMPONENT_TRANSLATION_GET.replace("{" + APIParamName.PRODUCT_NAME + "}", dto.getProductID())
                 .replace("{" + APIParamName.VERSION2 + "}", dto.getVersion())
@@ -85,33 +85,33 @@ public class V2URL {
 
     /**
      * assembly the request URL for multiple components Translation.
-     * 
+     *
      * @param components
-     * 
+     *
      * @param locales
      *
      * @param baseURL
      *            The root path of the URL.
      * @return
      */
-    public static String getComponentsTranslationURL(String baseURL) {
+    public static String getComponentsTranslationURL(final String baseURL, final VIPCfg cfg) {
         final String url_path = APIV2.PRODUCT_TRANSLATION_GET
-                .replace("{" + APIParamName.PRODUCT_NAME + "}", VIPCfg.getInstance().getProductName())
-                .replace("{" + APIParamName.VERSION2 + "}", VIPCfg.getInstance().getVersion());
+                .replace("{" + APIParamName.PRODUCT_NAME + "}", cfg.getProductName())
+                .replace("{" + APIParamName.VERSION2 + "}", cfg.getVersion());
         StringBuilder url = new StringBuilder(baseURL).append(url_path);
         return url.toString();
     }
 
     /**
      * assembly the request URL for key Translation.
-     * 
+     *
      * @param params
      *            The parameter of the request.
      * @param baseURL
      *            The root path of the URL.
      * @return
      */
-    public static String getKeyTranslationURL(MessagesDTO dto, String baseURL) {
+    public static String getKeyTranslationURL(final MessagesDTO dto, final String baseURL) {
         StringBuilder url = new StringBuilder(baseURL);
         String url2 = "";
         try {
@@ -151,12 +151,12 @@ public class V2URL {
 
     /**
      * get the url of key-set-post API
-     * 
+     *
      * @param dto
      * @param baseURL
      * @return
      */
-    public static String getPostKeys(MessagesDTO dto, String baseURL) {
+    public static String getPostKeys(final MessagesDTO dto, final String baseURL) {
         StringBuilder url = new StringBuilder(baseURL);
         String url2 = APIV2.KEY_SET_POST.replace("{" + APIParamName.PRODUCT_NAME + "}", dto.getProductID())
                 .replace("{" + APIParamName.VERSION2 + "}", dto.getVersion())
@@ -170,7 +170,7 @@ public class V2URL {
         return url.toString();
     }
 
-    public static String getPatternURL(String locale, String baseURL) {// PatternsDTO
+    public static String getPatternURL(final String locale, final String baseURL) {// PatternsDTO
         StringBuilder url = new StringBuilder(baseURL);
         String subUrl = APIV2.FORMAT_PATTERN_GET.replace("{" + APIParamName.LOCALE + "}", locale);
         url.append(subUrl);
@@ -187,10 +187,9 @@ public class V2URL {
                         break;
                     }
                 }
-                if (!flag) {
+                if (!flag)
                     throw new IllegalArgumentException(
                             "The value of initialize parameter 'i18nScope' defined in 'vipconfig.properties' contains wrong value!");
-                }
             }
             URLUtils.appendParamToURL(url, "scope", i18nScope);
         }
@@ -199,13 +198,13 @@ public class V2URL {
 
     // add by shihu
     /**
-     * 
+     *
      * @param language
      * @param region
      * @param baseURL
      * @return
      */
-    public static String getPatternURL(String language, String region, String baseURL) {// PatternsDTO
+    public static String getPatternURL(final String language, final String region, final String baseURL) {// PatternsDTO
         // //
         // dto,
         StringBuilder url = new StringBuilder(baseURL);
@@ -225,10 +224,9 @@ public class V2URL {
                         break;
                     }
                 }
-                if (!flag) {
+                if (!flag)
                     throw new IllegalArgumentException(
                             "The value of initialize parameter 'i18nScope' defined in 'vipconfig.properties' contains wrong value!");
-                }
             }
 
             URLUtils.appendParamToURL(url, "language", language);
@@ -245,7 +243,7 @@ public class V2URL {
      * @param baseUrl
      * @return
      */
-    public static String getRegionListURL(String supportedLanguages, String baseUrl) {
+    public static String getRegionListURL(final String supportedLanguages, final String baseUrl) {
         StringBuilder url = new StringBuilder(baseUrl);
         url.append(APIV2.REGION_LIST);
         return URLUtils.appendParamToURL(url, ConstantsKeys.SUPPORTED_LANGUAGE_LIST, supportedLanguages);
@@ -257,7 +255,7 @@ public class V2URL {
      * @param baseUrl
      * @return
      */
-    public static String getSupportedLanguageListURL(String displayLanguage, String baseUrl) {
+    public static String getSupportedLanguageListURL(final String displayLanguage, final String baseUrl) {
         StringBuilder url = new StringBuilder(baseUrl);
         url.append(APIV2.SUPPORTED_LANGUAGE_LIST);
         URLUtils.appendParamToURL(url, ConstantsKeys.PRODUCT_NAME, VIPCfg.getInstance().getProductName());

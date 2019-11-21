@@ -23,43 +23,40 @@ import com.vmware.vipclient.i18n.util.StringUtil;
 
 public class ComponentsBasedOpt extends BaseOpt implements Opt {
     private final Logger      logger = LoggerFactory.getLogger(ComponentsBasedOpt.class.getName());
-    private final Set<String> components;
-    private final Set<String> locales;
+
+    private final VIPCfg cfg;
 
     /**
-     * @param components
-     * @param locales
+     * @param cfg
      */
-    public ComponentsBasedOpt(Set<String> components, Set<String> locales) {
-        this.components = components;
-        this.locales = locales;
+    public ComponentsBasedOpt(final VIPCfg cfg) {
+        this.cfg = cfg;
     }
 
-    public JSONObject queryFromServer() {
+    public JSONObject queryFromServer(final Set<String> components, final Set<String> locales) {
         String url = V2URL
-                .getComponentsTranslationURL(VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
+                .getComponentsTranslationURL(VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL(),
+                        this.cfg);
 
         HashMap<String, String> requestData = new HashMap<>();
         requestData.put(ConstantsKeys.LOCALES, String.join(",", locales));
         requestData.put(ConstantsKeys.COMPONENTS, String.join(",", components));
-        responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(url, ConstantsKeys.GET,
+        this.responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(url, ConstantsKeys.GET,
                 requestData);
-        if (StringUtil.isEmpty(responseStr)) {
+        if (StringUtil.isEmpty(this.responseStr))
             throw new VIPJavaClientException(ConstantsMsg.SERVER_RETURN_EMPTY);
-        }
 
         try {
-            parseServerResponse();
+            this.parseServerResponse();
         } catch (ParseException e) {
             throw new VIPJavaClientException(ConstantsMsg.SERVER_CONTENT_ERROR, e);
         }
 
-        int statusCode = getResponseCode(responseJsonObj);
-        if (!isSuccess(statusCode)) {
+        int statusCode = this.getResponseCode(this.responseJsonObj);
+        if (!this.isSuccess(statusCode))
             throw new VIPJavaClientException(
-                    String.format(ConstantsMsg.SERVER_RETURN_ERROR, statusCode, getResponseMessage(responseJsonObj)));
-        }
+                    String.format(ConstantsMsg.SERVER_RETURN_ERROR, statusCode, this.getResponseMessage(this.responseJsonObj)));
 
-        return responseJsonObj;
+        return this.responseJsonObj;
     }
 }

@@ -35,10 +35,10 @@ public class TranslationMessage implements Message {
     Logger logger = LoggerFactory.getLogger(TranslationMessage.class);
 
     public VIPCfg getCfg() {
-        return cfg;
+        return this.cfg;
     }
 
-    public void setCfg(VIPCfg cfg) {
+    public void setCfg(final VIPCfg cfg) {
         this.cfg = cfg;
     }
 
@@ -71,19 +71,18 @@ public class TranslationMessage implements Message {
      */
     public String getString(final Locale locale, final String component,
             final String key, final String source, final String comment, final Object... args) {
-        logger.debug("Start to execute TranslationMessage.getString");
-        if (key == null || key.equalsIgnoreCase("")) {
+        this.logger.debug("Start to execute TranslationMessage.getString");
+        if (key == null || key.equalsIgnoreCase(""))
             return "";
-        }
         MessagesDTO dto = new MessagesDTO();
         dto.setComponent(component);
         dto.setComment(comment);
         dto.setKey(key);
         dto.setSource(source);
         dto.setLocale(locale.toLanguageTag());
-        if (cfg != null) {
-            dto.setProductID(cfg.getProductName());
-            dto.setVersion(cfg.getVersion());
+        if (this.cfg != null) {
+            dto.setProductID(this.cfg.getProductName());
+            dto.setVersion(this.cfg.getVersion());
         }
         StringService s = new StringService(dto);
         String translation = "";
@@ -137,7 +136,7 @@ public class TranslationMessage implements Message {
 
     /**
      * post a set of sources to remote VIP server which is configured
-     * 
+     *
      * @param locale
      *            currently no matter which locale it is, all sources will be
      *            considered as English
@@ -151,18 +150,17 @@ public class TranslationMessage implements Message {
      */
     public boolean postStrings(final Locale locale, final String component,
             final List<JSONObject> sources) {
-        logger.info("Start to execute TranslationMessage.postStrings");
-        if (sources == null || sources.isEmpty()) {
+        this.logger.info("Start to execute TranslationMessage.postStrings");
+        if (sources == null || sources.isEmpty())
             return false;
-        }
         MessagesDTO dto = new MessagesDTO();
         dto.setLocale(locale.toLanguageTag());
         dto.setComponent(component);
-        if (cfg != null) {
-            dto.setProductID(cfg.getProductName());
-            dto.setVersion(cfg.getVersion());
+        if (this.cfg != null) {
+            dto.setProductID(this.cfg.getProductName());
+            dto.setVersion(this.cfg.getVersion());
         }
-        List<JSONObject> sourcesList = new ArrayList<JSONObject>();
+        List<JSONObject> sourcesList = new ArrayList<>();
         sourcesList.addAll(sources);
         List<JSONObject> removedList = new ArrayList<>();
         for (JSONObject jo : sourcesList) {
@@ -177,9 +175,9 @@ public class TranslationMessage implements Message {
             }
         }
         sourcesList.removeAll(removedList);
-        if (sourcesList.isEmpty()) {
+        if (sourcesList.isEmpty())
             return true;
-        } else {
+        else {
             dto.setLocale(locale.toLanguageTag());
             StringService s = new StringService(dto);
             return s.postStrings(sourcesList);
@@ -188,7 +186,7 @@ public class TranslationMessage implements Message {
 
     /**
      * post a source to remote VIP server
-     * 
+     *
      * @param locale
      *            an object used to get the source's translation
      * @param component
@@ -206,7 +204,7 @@ public class TranslationMessage implements Message {
      */
     public boolean postString(final Locale locale, final String component,
             final String key, final String source, final String comment) {
-        logger.info("Start to execute TranslationMessage.postString");
+        this.logger.info("Start to execute TranslationMessage.postString");
         MessagesDTO dto = new MessagesDTO();
         dto.setComponent(component);
         dto.setComment(comment);
@@ -214,9 +212,9 @@ public class TranslationMessage implements Message {
         dto.setSource(source);
         StringService s = new StringService(dto);
         dto.setLocale(ConstantsKeys.LATEST);
-        if (cfg != null) {
-            dto.setProductID(cfg.getProductName());
-            dto.setVersion(cfg.getVersion());
+        if (this.cfg != null) {
+            dto.setProductID(this.cfg.getProductName());
+            dto.setVersion(this.cfg.getVersion());
         }
         String enStr = s.getString();
         if (source != null && !"".equalsIgnoreCase(source) && !source.equals(enStr)) {
@@ -240,13 +238,13 @@ public class TranslationMessage implements Message {
      */
     public Map<String, String> getStrings(final Locale locale,
             final String component) {
-        logger.info("Start to execute TranslationMessage.getStrings");
+        this.logger.info("Start to execute TranslationMessage.getStrings");
         MessagesDTO dto = new MessagesDTO();
         dto.setLocale(locale.toLanguageTag());
         dto.setComponent(component);
-        if (cfg != null) {
-            dto.setProductID(cfg.getProductName());
-            dto.setVersion(cfg.getVersion());
+        if (this.cfg != null) {
+            dto.setProductID(this.cfg.getProductName());
+            dto.setVersion(this.cfg.getVersion());
         }
         ComponentService cs = new ComponentService(dto);
         return cs.getComponentTranslation();
@@ -266,19 +264,23 @@ public class TranslationMessage implements Message {
      */
     public Map<Locale, Map<String, Map<String, String>>> getStrings(final Set<Locale> locales,
             final Set<String> components) {
-        logger.info("Start to execute TranslationMessage.getStrings of multiple components of multiple locales.");
+        this.logger.info("Start to execute TranslationMessage.getStrings of multiple components of multiple locales.");
 
         Map<Locale, Map<String, Map<String, String>>> retMap = new HashMap<>();
         if (null == locales || locales.isEmpty() || null == components || components.isEmpty()) {
-            logger.error(ConstantsMsg.WRONG_PARAMETER + "locales: {}, components: {}.", locales, components);
+            this.logger.error(ConstantsMsg.WRONG_PARAMETER + "locales: {}, components: {}.", locales, components);
             return retMap;
         }
 
         try {
-            final ComponentsService cs = new ComponentsService(components, locales);
-            retMap = cs.getTranslation();
+            VIPCfg config = this.cfg;
+            if (null != config) {
+                config = VIPCfg.getInstance();
+            }
+            final ComponentsService cs = new ComponentsService(config);
+            retMap = cs.getTranslation(components, locales);
         } catch (final Exception e) {
-            logger.error(ConstantsMsg.EXCEPTION_OCCUR, e);
+            this.logger.error(ConstantsMsg.EXCEPTION_OCCUR, e);
         }
 
         return retMap;
@@ -307,10 +309,9 @@ public class TranslationMessage implements Message {
      */
     public String getString2(final String component,
             final String bundle, final Locale locale, final String key, final Object... args) {
-        logger.debug("Start to execute TranslationMessage.getString2");
-        if (key == null || key.equalsIgnoreCase("")) {
+        this.logger.debug("Start to execute TranslationMessage.getString2");
+        if (key == null || key.equalsIgnoreCase(""))
             return "";
-        }
         String message = "";
         String source;
         try {
@@ -318,31 +319,31 @@ public class TranslationMessage implements Message {
                     LocaleUtility.defaultLocale);
             source = rb.getString(key);
         } catch (Exception e) {
-            logger.error(e.getMessage());
+            this.logger.error(e.getMessage());
             source = key;
         }
         // get translation from VIP service
-        message = getString(locale, component, key, source, "", args);
+        message = this.getString(locale, component, key, source, "", args);
         return message;
     }
 
     /**
      * check if the translations of specified component is available
-     * 
+     *
      * @param component
      * @param locale
      * @return
      */
     public boolean isAvailable(final String component, final Locale locale) {
-        logger.info("Start to execute component-based TranslationMessage.isAvailable");
+        this.logger.info("Start to execute component-based TranslationMessage.isAvailable");
         boolean available = false;
         if (!LocaleUtility.isDefaultLocale(locale)) {
             MessagesDTO dto = new MessagesDTO();
             dto.setComponent(component);
             dto.setLocale(locale.toLanguageTag());
-            if (cfg != null) {
-                dto.setProductID(cfg.getProductName());
-                dto.setVersion(cfg.getVersion());
+            if (this.cfg != null) {
+                dto.setProductID(this.cfg.getProductName());
+                dto.setVersion(this.cfg.getVersion());
             }
             ComponentService cs = new ComponentService(dto);
             available = cs.isComponentAvailable();
@@ -352,22 +353,22 @@ public class TranslationMessage implements Message {
 
     /**
      * check if one translation of specified key is available
-     * 
+     *
      * @param component
      * @param locale
      * @return
      */
     public boolean isAvailable(final String component, final String key, final Locale locale) {
-        logger.info("Start to execute string-based TranslationMessage.isAvailable");
+        this.logger.info("Start to execute string-based TranslationMessage.isAvailable");
         boolean available = false;
         if (!LocaleUtility.isDefaultLocale(locale)) {
             MessagesDTO dto = new MessagesDTO();
             dto.setComponent(component);
             dto.setKey(key);
             dto.setLocale(locale.toLanguageTag());
-            if (cfg != null) {
-                dto.setProductID(cfg.getProductName());
-                dto.setVersion(cfg.getVersion());
+            if (this.cfg != null) {
+                dto.setProductID(this.cfg.getProductName());
+                dto.setVersion(this.cfg.getVersion());
             }
             StringService s = new StringService(dto);
             available = s.isStringAvailable();
