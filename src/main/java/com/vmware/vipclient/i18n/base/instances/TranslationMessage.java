@@ -274,7 +274,7 @@ public class TranslationMessage implements Message {
 
         try {
             VIPCfg config = this.cfg;
-            if (null != config) {
+            if (null == config) {
                 config = VIPCfg.getInstance();
             }
             final ComponentsService cs = new ComponentsService(config);
