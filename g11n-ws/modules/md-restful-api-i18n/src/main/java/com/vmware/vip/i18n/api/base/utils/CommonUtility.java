@@ -18,19 +18,19 @@ public class CommonUtility {
     /**
      * Get categories by CategoriesEnum
      * @param scope
-     * @param perfectMatchFlag
+     * @param perfectMatch
      * If perfectMatchFlag = true and not found from the CategoriesEnum, return null
      * If perfectMatchFlag = false and not found from the CategoriesEnum，return the original value
      *
      * @return
      */
-    public static List<String> getCategoriesByEnum(String scope, boolean perfectMatchFlag){
+    public static List<String> getCategoriesByEnum(String scope, boolean perfectMatch){
         String[] categories = scope.split(ConstantsChar.COMMA);
         List<String> categoryList = new ArrayList<>();
         for (String cat : categories) {
             CategoriesEnum categoriesEnum = CategoriesEnum.getCategoriesEnumByText(cat);
             if (categoriesEnum == null) {
-                if (perfectMatchFlag) {
+                if (perfectMatch) {
                     return null;
                 }
                 categoryList.add(cat);
