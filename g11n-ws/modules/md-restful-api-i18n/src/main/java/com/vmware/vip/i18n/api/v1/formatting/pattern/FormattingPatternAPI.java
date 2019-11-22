@@ -53,8 +53,8 @@ public class FormattingPatternAPI extends BaseAction {
             @ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @RequestParam(value = APIParamName.LOCALE, required = true) String locale,
             @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope
     ) throws Exception {
-        List<String> categories = new ArrayList<>(Arrays.asList(scope.split(",")));
-        if (!CommonUtility.checkParams(categories, locale)) {
+        List<String> categories = CommonUtility.getCategoriesByEnum(scope, true);
+        if (CommonUtil.isEmpty(categories)) {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST, "Parameter error");
         }
 
