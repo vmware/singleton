@@ -11,13 +11,21 @@ addons:
 node_js:
   - "10"
   
-before_install:  
-  - export CHROME_BIN=chromium-browser
-  - sudo apt-get -y install unzip
-  - sudo apt-get -y install wget
-  - sudo apt-get -y install python3-pip python-dev
-  - python3 -V
-  - pip3 -V
+before_install:
+- |
+    if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+      TRAVIS_COMMIT_RANGE="FETCH_HEAD...$TRAVIS_BRANCH"
+    fi
+    git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.md$' || {
+      echo "Only docs were updated, stopping build process."
+      exit
+    }
+    export CHROME_BIN=chromium-browser
+    sudo apt-get -y install unzip
+    sudo apt-get -y install wget
+    sudo apt-get -y install python3-pip python-dev
+    python3 -V
+    pip3 -V
 install:
   - sudo pip3 install requests
 
