@@ -46,8 +46,8 @@ public class FormattingPatternAPI extends BaseAction {
             @ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @PathVariable(value = APIParamName.LOCALE) String locale,
             @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope
     ) throws Exception {
-        List<String> categories = new ArrayList<>(Arrays.asList(scope.split(",")));
-        if (!CommonUtility.checkParams(categories, locale)) {
+        List<String> categories = CommonUtility.getCategoriesByEnum(scope, true);
+        if (CommonUtil.isEmpty(categories)) {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST, "Parameter error");
         }
 
@@ -70,8 +70,8 @@ public class FormattingPatternAPI extends BaseAction {
             @ApiParam(name = APIParamName.REGION, required = true, value = APIParamValue.REGION) @RequestParam(value = APIParamName.REGION, required = true) String region,
             @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope
     ) throws VIPCacheException {
-        List<String> categories = new ArrayList<>(Arrays.asList(scope.split(",")));
-        if (!CommonUtility.checkParams(categories, language, region)) {
+        List<String> categories = CommonUtility.getCategoriesByEnum(scope, true);
+        if (CommonUtil.isEmpty(categories)) {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST, "Parameter error");
         }
 

@@ -5,35 +5,39 @@
 package com.vmware.vip.i18n.api.base.utils;
 
 import com.vmware.i18n.utils.CommonUtil;
+import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.utils.CategoriesEnum;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CommonUtility {
   private CommonUtility() {}
+
     /**
-     * Check param
-     * @param categories
+     * Get categories by CategoriesEnum
+     * @param scope
+     * @param perfectMatch
+     * If perfectMatchFlag = true and not found from the CategoriesEnum, return null
+     * If perfectMatchFlag = false and not found from the CategoriesEnum，return the original value
+     *
      * @return
      */
-    public static boolean checkParams(List<String> categories, String... args){
-        List<String> newCategories = new ArrayList<>();
+    public static List<String> getCategoriesByEnum(String scope, boolean perfectMatch){
+        String[] categories = scope.split(ConstantsChar.COMMA);
+        List<String> categoryList = new ArrayList<>();
         for (String cat : categories) {
             CategoriesEnum categoriesEnum = CategoriesEnum.getCategoriesEnumByText(cat);
             if (categoriesEnum == null) {
-                return false;
-            }
-            newCategories.add(categoriesEnum.getText());
-        }
-        categories.clear();
-        categories.addAll(newCategories);
-        for (String param : args){
-            if (CommonUtil.isEmpty(param)){
-                return false;
+                if (perfectMatch) {
+                    return null;
+                }
+                categoryList.add(cat);
+            } else {
+                categoryList.add(categoriesEnum.getText());
             }
         }
-
-        return true;
+        return categoryList;
     }
 }
