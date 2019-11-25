@@ -55,7 +55,7 @@ jobs:
               echo "No need to check sonar quality gate for only travis configuration updates"
               exit
             }
-          sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-singleton-js-core-sdk-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
+            sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-singleton-js-core-sdk-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
     - stage: smoke test
       script:
         - TZ='Asia/Shanghai'; export TZ 
