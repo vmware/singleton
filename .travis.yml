@@ -8,6 +8,12 @@ jdk:
   - openjdk8
 service:
   - docker
+before_install:
+- |
+    git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.md$' || {
+      echo "Only docs were updated, stopping build process."
+      exit
+    }
 jobs:
   include:
     - stage: unit test
@@ -19,7 +25,12 @@ jobs:
         - git clone --branch=devops https://github.com/vmware/singleton.git devops
         - cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG-java-client-$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG-java-client-$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=java-client-gate -QualityGateConditions="./quality_gates/java-client.json" -SonarToken=$SONAR_TOKEN
         - cd $TRAVIS_BUILD_DIR && ./gradlew sonarqube --stacktrace -Dsonar.organization=$SONAR_ORG -Dsonar.projectKey=$SONAR_ORG-java-client-$TRAVIS_BRANCH -Dsonar.projectName=$SONAR_ORG-java-client-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.host.url=https://sonarcloud.io --info
-        - cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-java-client-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
+        - |
+            git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.travis\.yml$' || {
+              echo "No need to check sonar quality gate for only travis configuration updates"
+              exit
+            }
+            cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-java-client-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
     - stage: smoke test
       script:
         - mkdir -p ./l10n/bundles
