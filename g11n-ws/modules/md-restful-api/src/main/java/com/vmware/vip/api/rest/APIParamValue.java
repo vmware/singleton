@@ -18,7 +18,7 @@ public class APIParamValue {
 	public final static String COMMENT_SOURCE = "detailed comment to the source for better transaltion";
 	public final static String SOURCE_FORMAT  = "the format of source(used to identify the source's secial chars like html tags)";
 	public final static String COLLECT_SOURCE = "a flag to require backend collect the source for translation";
-	public final static String SCOPE          = "pattern category string, separated by commas. e.g. 'dates, numbers, currencies, plurals, measurements'";
+	public final static String SCOPE          = "pattern category string, separated by commas. e.g. 'dates, numbers, currencies, plurals, measurements, dateFields'";
 	public final static String USERID         = "user id";
 	public final static String NUMBER         = "number";
 	public final static String SCALE          = "decimal digits";
