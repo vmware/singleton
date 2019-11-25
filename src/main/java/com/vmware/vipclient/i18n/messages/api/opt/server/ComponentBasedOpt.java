@@ -19,25 +19,25 @@ import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 
 public class ComponentBasedOpt extends BaseOpt implements Opt {
-    private Logger      logger = LoggerFactory.getLogger(ComponentBasedOpt.class.getName());
+    private final Logger      logger = LoggerFactory.getLogger(ComponentBasedOpt.class.getName());
     private MessagesDTO dto    = null;
 
-    public ComponentBasedOpt(MessagesDTO dto) {
+    public ComponentBasedOpt(final MessagesDTO dto) {
         this.dto = dto;
     }
 
     public JSONObject getComponentMessages() {
-        String url = V2URL.getComponentTranslationURL(dto,
+        String url = V2URL.getComponentTranslationURL(this.dto,
                 VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
-        if (ConstantsKeys.LATEST.equals(dto.getLocale())) {
+        if (ConstantsKeys.LATEST.equals(this.dto.getLocale())) {
             url = url.replace("pseudo=false", "pseudo=true");
         }
         String responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(url, ConstantsKeys.GET,
                 null);
-        if (null == responseStr || responseStr.equals("")) {
+        if (null == responseStr || responseStr.equals(""))
             return null;
-        } else {
-            if (ConstantsKeys.LATEST.equals(dto.getLocale())) {
+        else {
+            if (ConstantsKeys.LATEST.equals(this.dto.getLocale())) {
                 responseStr = responseStr.replace(ConstantsKeys.PSEUDOCHAR, "");
             }
 
@@ -50,17 +50,17 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
 
     public String getString() {
         JSONObject jo = this.getComponentMessages();
-        String k = dto.getKey();
+        String k = this.dto.getKey();
         Object v = jo.get(k);
         return (v == null ? "" : (String) v);
     }
 
     public String postString() {
-        Map<String, String> params = new HashMap<String, String>();
+        Map<String, String> params = new HashMap<>();
         params.put("source", this.dto.getSource());
         String responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL
-                .getKeyTranslationURL(dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
-                ConstantsKeys.POST, params);
+                .getKeyTranslationURL(this.dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
+                ConstantsKeys.POST, params.toString());
         Object o = this.getMessagesFromResponse(responseStr,
                 ConstantsKeys.TRANSLATION);
         if (o != null)
@@ -68,7 +68,7 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
         else {
             Object m = this.getStatusFromResponse(responseStr, ConstantsKeys.MESSAGE);
             if (m != null) {
-                logger.warn((String) m);
+                this.logger.warn((String) m);
             }
             return "";
         }
@@ -76,37 +76,38 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
 
     /**
      * post a set of sources to remote
-     * 
+     *
      * @param sourceSet
      * @return
      */
-    public String postSourceSet(String sourceSet) {
+    public String postSourceSet(final String sourceSet) {
         String status = "";
-        if (sourceSet == null || "".equalsIgnoreCase(sourceSet)) {
+        if (sourceSet == null || "".equalsIgnoreCase(sourceSet))
             return status;
-        }
         String responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(
-                V2URL.getPostKeys(dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
+                V2URL.getPostKeys(this.dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.POST, sourceSet);
         Object o = this.getStatusFromResponse(responseStr, ConstantsKeys.CODE);
-        if (o != null)
+        if (o != null) {
             status = o.toString();
+        }
         return status;
     }
 
     public String getTranslationStatus() {
         String status = "";
-        Map<String, String> params = new HashMap<String, String>();
+        Map<String, String> params = new HashMap<>();
         params.put("checkTranslationStatus", "true");
         String responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL
-                .getComponentTranslationURL(dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
+                .getComponentTranslationURL(this.dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.GET, params);
-        if (null == responseStr || responseStr.equals("")) {
+        if (null == responseStr || responseStr.equals(""))
             return status;
-        } else {
+        else {
             Object o = this.getStatusFromResponse(responseStr, ConstantsKeys.CODE);
-            if (o != null)
+            if (o != null) {
                 status = o.toString();
+            }
         }
         return status;
     }
