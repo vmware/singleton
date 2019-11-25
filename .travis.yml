@@ -13,9 +13,6 @@ node_js:
   
 before_install:
 - |
-    if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-      TRAVIS_COMMIT_RANGE="FETCH_HEAD...$TRAVIS_BRANCH"
-    fi
     git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.md$' || {
       echo "Only docs were updated, stopping build process."
       exit
@@ -54,9 +51,6 @@ jobs:
         - python ./config_sonar_project.py -ProjectName $SONAR_ORG-singleton-js-core-sdk-$TRAVIS_BRANCH -ProjectKey $SONAR_ORG-singleton-js-core-sdk-$TRAVIS_BRANCH -OrgKey $SONAR_ORG -QualityGateName js-core-sdk-gate -QualityGateConditions ./quality_gates/js-core-sdk.json -SonarToken $SONAR_TOKEN
         - ./$SONARSCANNERINNER/bin/sonar-scanner -Dsonar.sources=./g11n-js-client -Dsonar.exclusions=**/node_modules/**/* -Dsonar.coverage.exclusions=**/samples/**/* -Dsonar.projectName=$SONAR_ORG-singleton-js-core-sdk-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.projectKey=$SONAR_ORG-singleton-js-core-sdk-$TRAVIS_BRANCH -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN -Dsonar.javascript.lcov.reportPaths=./g11n-js-client/coverage/lcov.info  -Dsonar.typescript.lcov.reportPaths=./g11n-js-client/coverage/lcov.info
         - |
-            if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-              TRAVIS_COMMIT_RANGE="FETCH_HEAD...$TRAVIS_BRANCH"
-            fi
             git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.travis\.yml$' || {
               echo "No need to check sonar quality gate for only travis configuration updates"
               exit
