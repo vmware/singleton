@@ -56,11 +56,9 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
     }
 
     public String postString() {
-        Map<String, String> params = new HashMap<>();
-        params.put("source", this.dto.getSource());
         String responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL
                 .getKeyTranslationURL(this.dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
-                ConstantsKeys.POST, params.toString());
+                ConstantsKeys.POST, this.dto.getSource());
         Object o = this.getMessagesFromResponse(responseStr,
                 ConstantsKeys.TRANSLATION);
         if (o != null)
