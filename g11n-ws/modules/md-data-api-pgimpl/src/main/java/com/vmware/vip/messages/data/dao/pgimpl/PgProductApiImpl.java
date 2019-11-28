@@ -84,8 +84,12 @@ public class PgProductApiImpl implements IProductDao {
 		return "";
 	}
 
-	@Override
-	public Map<String, String[]> getProductsAndVersions() throws DataException {
-		return null;
-	}
+  
+    @Override
+    public List<String> getVersionList(String productName) throws DataException {
+        // TODO Auto-generated method stub
+        return docOperate.getVersionList(productName, datanodes.getDataNodeByProduct(productName));
+    }
+
+
 }

@@ -4,10 +4,10 @@
  */
 package com.vmware.vip.i18n.api.base.utils;
 
-import java.util.Arrays;
-import java.util.Map;
+import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+
 import com.vmware.vip.core.messages.exception.L3APIException;
 
 public class VersionMatcher {
@@ -23,13 +23,13 @@ public class VersionMatcher {
      * @param productsAndVersions
      * @return a matched version, if there's no matched version then return input version
      */
-    public static String getMatchedVersion(final String productName, final String version,
-            final Map<String, String[]> productsAndVersions) throws L3APIException {
+    public static String getMatchedVersion(final String version,
+            final List<String> vList) throws L3APIException {
         String mv = "";
-        if (productsAndVersions != null) {
-            String[] vList = productsAndVersions.get(productName);
+       
+        
             if (vList != null) {
-                if (Arrays.asList(vList).contains(version)) {
+                if (vList.contains(version)) {
                     return version;
                 }
                 for (String v : vList) {
@@ -38,7 +38,7 @@ public class VersionMatcher {
                     }
                 }
             }
-        }
+        
         return StringUtils.isEmpty(mv) ? version : mv;
     }
 

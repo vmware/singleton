@@ -7,12 +7,12 @@ package com.vmware.vip.messages.data.dao.impl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import com.amazonaws.services.s3.model.ListObjectsV2Result;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
@@ -72,7 +72,7 @@ public class S3ProductDaoImpl implements IProductDao {
       List<String> localeList = new ArrayList<String>();
       String filePathPrefix = S3Utils.genProductVersionS3Path(productName, version);
       ListObjectsV2Result result =
-            s3Client.getS3Client().listObjectsV2(config.getBucketName(), filePathPrefix);
+            s3Client.getS3Client().listObjectsV2(config.getBucketName(), S3Utils.S3_L10N_BUNDLES_PATH);
       if (result == null) {
          throw new DataException("Can't find S3 resource from " + productName + "\\" + version);
       }
@@ -121,7 +121,38 @@ public class S3ProductDaoImpl implements IProductDao {
       return result;
    }
 
-   public Map<String, String[]> getProductsAndVersions() {
-      return null;
-   }
+/* (non-Javadoc) * @see com.vmware.vip.messages.data.dao.api.IProductDao#getVersionList(java.lang.String) */
+@Override
+public List<String> getVersionList(String productName) throws DataException {
+    // TODO Auto-generated method stub
+    String basePath = S3Utils.S3_L10N_BUNDLES_PATH+productName +  ConstantsChar.BACKSLASH;
+    ListObjectsV2Result versionListResult = s3Client.getS3Client().listObjectsV2(config.getBucketName(),basePath);
+    if(versionListResult != null) {
+        List<S3ObjectSummary> versionListSummary = versionListResult.getObjectSummaries();
+        for (S3ObjectSummary s3productName : versionListSummary) {
+            logger.warn(s3productName.getKey().replace(basePath, "").split(ConstantsChar.BACKSLASH)[0]);
+            }
+    }else {
+        
+    }
+    return null;
+}
+
+  /* public Map<String, String[]> getProductsAndVersions() {
+       ListObjectsV2Result productsResult = s3Client.getS3Client().listObjectsV2(config.getBucketName(),S3Utils.S3_L10N_BUNDLES_PATH);
+       if (productsResult == null) {
+          logger.error("Can't find any productName in S3");
+          return null;
+        }else {
+            List<S3ObjectSummary> Productlist = productsResult.getObjectSummaries();
+            Map<String, String[]> resultMap = new HashMap<>();
+            for (S3ObjectSummary s3productName : Productlist) {
+            logger.warn(s3productName.getKey());
+            }
+            
+            return resultMap;
+        }
+       
+       
+   }*/
 }

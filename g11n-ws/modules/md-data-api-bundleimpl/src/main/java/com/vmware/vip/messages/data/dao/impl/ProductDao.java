@@ -5,10 +5,10 @@
 package com.vmware.vip.messages.data.dao.impl;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -126,29 +126,35 @@ public class ProductDao implements IProductDao {
 		return result;
 
 	}
-
 	/**
-	 * Get all product names and corresponding versions
-	 *
-	 * @return a map with the product names as key and with version list as value
-	 * @throws BundleException
-	 */
-	public Map<String, String[]> getProductsAndVersions() throws BundleException {
-		Map<String, String[]> productsAndVersions = new HashMap<>();
-		String basePath = bundleConfig.getBasePathWithSeparator() + ConstantsFile.L10N_BUNDLES_PATH;
-		File fileBase = new File(basePath);
-		if (fileBase.exists() && fileBase.isDirectory()) {
-			File[] productFolders = fileBase.listFiles();
-			for (File fileProduct : productFolders) {
-				if (fileProduct.isDirectory() && !fileProduct.isHidden()) {
-					String productName = fileProduct.getName();
-					String[] versions = fileProduct.list();
-					productsAndVersions.put(productName, versions);
-				}
-			}
-		} else {
-			throw new BundleException("The base l10n dir is not existing, the missed dir is: " + basePath);
-		}
-		return productsAndVersions;
-	}
+     * Get one product corresponding versions
+     *
+     * @return a map with the product names as key and with version list as value
+     * @throws BundleException
+     */
+    @Override
+    public List<String> getVersionList(String productName) throws DataException {
+        // TODO Auto-generated method stub
+        String basePath = bundleConfig.getBasePathWithSeparator() + ConstantsFile.L10N_BUNDLES_PATH + productName
+                + File.separator;
+        File fileBase = new File(basePath);
+        if (fileBase.exists() && fileBase.isDirectory()) {
+            String[] versionFoldernames = fileBase.list(new FilenameFilter() {
+                @Override
+                public boolean accept(File dir, String name) {
+                    // TODO Auto-generated method stub
+                    if(dir.isDirectory()) {
+                        return true;
+                    }else {
+                        return false;
+                    }
+                   
+                }
+                
+            });
+           return Arrays.asList(versionFoldernames);
+        }else {
+            throw new BundleException("The base l10n dir is not existing, the missed dir is: " + basePath);
+        }
+    }
 }
