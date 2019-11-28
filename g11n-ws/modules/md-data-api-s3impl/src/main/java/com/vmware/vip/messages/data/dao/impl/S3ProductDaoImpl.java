@@ -6,7 +6,10 @@ package com.vmware.vip.messages.data.dao.impl;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -127,15 +130,22 @@ public List<String> getVersionList(String productName) throws DataException {
     // TODO Auto-generated method stub
     String basePath = S3Utils.S3_L10N_BUNDLES_PATH+productName +  ConstantsChar.BACKSLASH;
     ListObjectsV2Result versionListResult = s3Client.getS3Client().listObjectsV2(config.getBucketName(),basePath);
+    
     if(versionListResult != null) {
         List<S3ObjectSummary> versionListSummary = versionListResult.getObjectSummaries();
+        Set<String> versionset = new HashSet<>();
         for (S3ObjectSummary s3productName : versionListSummary) {
-            logger.warn(s3productName.getKey().replace(basePath, "").split(ConstantsChar.BACKSLASH)[0]);
-            }
+            versionset.add(s3productName.getKey().replace(basePath, "").split(ConstantsChar.BACKSLASH)[0]);
+          }
+        List<String> result = new ArrayList<>();
+        for(String version: versionset) {
+            result.add(version);
+        }
+      return result;
+      
     }else {
-        
+     throw new DataException(productName + " no available version in s3");
     }
-    return null;
 }
 
   /* public Map<String, String[]> getProductsAndVersions() {
