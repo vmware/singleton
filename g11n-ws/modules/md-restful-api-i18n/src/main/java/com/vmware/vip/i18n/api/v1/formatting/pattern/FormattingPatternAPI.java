@@ -53,12 +53,12 @@ public class FormattingPatternAPI extends BaseAction {
             @ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @RequestParam(value = APIParamName.LOCALE, required = true) String locale,
             @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope
     ) throws Exception {
-        String[] categories = scope.toLowerCase().split(",");
-        if (!CommonUtility.checkParams(categories, locale)) {
+        List<String> categories = CommonUtility.getCategoriesByEnum(scope, true);
+        if (CommonUtil.isEmpty(categories)) {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST, "Parameter error");
         }
 
-        Map<String, Object> patternMap = patternService.getPattern(locale, new ArrayList(Arrays.asList(categories)));
+        Map<String, Object> patternMap = patternService.getPattern(locale, categories);
         if (CommonUtil.isEmpty(patternMap.get(ConstantsKeys.CATEGORIES))) {
             return super.handleResponse(APIResponseStatus.INTERNAL_NO_RESOURCE_ERROR, "Pattern file not found or parse failed.");
         }

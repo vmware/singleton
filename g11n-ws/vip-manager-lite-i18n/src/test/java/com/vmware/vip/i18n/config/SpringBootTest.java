@@ -1,5 +1,6 @@
 package com.vmware.vip.i18n.config;
 
+import com.vmware.vip.common.constants.ConstantsTomcat;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,7 @@ public class SpringBootTest {
 	public void test001serviceswich() {
 		String[] args = { "-c" };
 		try {
+			System.setProperty("server.scheme", ConstantsTomcat.HTTP_HTTPS);
 		    LiteBootApplication.main(args);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

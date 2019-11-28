@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.vmware.vip.i18n.api.base.utils.CommonUtility;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -131,16 +132,15 @@ public class TranslationWithPatternAction extends BaseAction {
 	   @SuppressWarnings("unchecked")
 	   public Map<String, Object> getPattern(TranslationWithPatternDTO data) throws Exception {
 	      Map<String, Object> pattern = null;
+		   List<String> categories = CommonUtility.getCategoriesByEnum(data.getScope(), false);
 	      if (data.getCombine() == TransWithPatternDataScope.TRANSLATION_PATTERN_WITH_REGION.getValue()
 	            || data.getCombine() == TransWithPatternDataScope.ONLY_PATTERN_WITH_REGION.getValue()) {
 	         pattern = patternService.getPatternWithLanguageAndRegion(data.getLanguage(),
-	               data.getRegion(), new ArrayList<String>(
-	                     Arrays.asList(data.getScope().toLowerCase().split(ConstantsChar.COMMA))));
+	               data.getRegion(), categories);
 	      } else if (data.getCombine() == TransWithPatternDataScope.TRANSLATION_PATTERN_NO_REGION
 	            .getValue()
 	            || data.getCombine() == TransWithPatternDataScope.ONLY_PATTERN_NO_REGION.getValue()) {
-	         pattern = patternService.getPattern(data.getLanguage(), new ArrayList<String>(
-	               Arrays.asList(data.getScope().toLowerCase().split(ConstantsChar.COMMA))));
+	         pattern = patternService.getPattern(data.getLanguage(), categories);
 	      }
 	      if (pattern == null) {
 	         pattern = new HashMap<String, Object>();
