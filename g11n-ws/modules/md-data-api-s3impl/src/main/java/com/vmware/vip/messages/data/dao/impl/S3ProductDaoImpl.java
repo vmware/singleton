@@ -123,11 +123,12 @@ public class S3ProductDaoImpl implements IProductDao {
       }
       return result;
    }
-
-/* (non-Javadoc) * @see com.vmware.vip.messages.data.dao.api.IProductDao#getVersionList(java.lang.String) */
+   
+ /**
+  * get one product's all available versions
+  */
 @Override
 public List<String> getVersionList(String productName) throws DataException {
-    // TODO Auto-generated method stub
     String basePath = S3Utils.S3_L10N_BUNDLES_PATH+productName +  ConstantsChar.BACKSLASH;
     ListObjectsV2Result versionListResult = s3Client.getS3Client().listObjectsV2(config.getBucketName(),basePath);
     
@@ -148,21 +149,4 @@ public List<String> getVersionList(String productName) throws DataException {
     }
 }
 
-  /* public Map<String, String[]> getProductsAndVersions() {
-       ListObjectsV2Result productsResult = s3Client.getS3Client().listObjectsV2(config.getBucketName(),S3Utils.S3_L10N_BUNDLES_PATH);
-       if (productsResult == null) {
-          logger.error("Can't find any productName in S3");
-          return null;
-        }else {
-            List<S3ObjectSummary> Productlist = productsResult.getObjectSummaries();
-            Map<String, String[]> resultMap = new HashMap<>();
-            for (S3ObjectSummary s3productName : Productlist) {
-            logger.warn(s3productName.getKey());
-            }
-            
-            return resultMap;
-        }
-       
-       
-   }*/
 }
