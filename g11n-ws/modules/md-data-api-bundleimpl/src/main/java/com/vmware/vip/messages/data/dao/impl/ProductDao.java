@@ -139,7 +139,7 @@ public class ProductDao implements IProductDao {
                 + File.separator;
         File fileBase = new File(basePath);
         if (fileBase.exists() && fileBase.isDirectory()) {
-            String[] versionFoldernames = fileBase.list(new FilenameFilter() {
+            String[] versionFolderNames = fileBase.list(new FilenameFilter() {
                 @Override
                 public boolean accept(File dir, String name) {
                     // TODO Auto-generated method stub
