@@ -139,7 +139,7 @@ public class ProductDao implements IProductDao {
                 + File.separator;
         File fileBase = new File(basePath);
         if (fileBase.exists() && fileBase.isDirectory()) {
-            String[] versionFolderNames = fileBase.list(new FilenameFilter() {
+            String[] versionNames = fileBase.list(new FilenameFilter() {
                 @Override
                 public boolean accept(File dir, String name) {
                     // TODO Auto-generated method stub
@@ -152,7 +152,7 @@ public class ProductDao implements IProductDao {
                 }
                 
             });
-           return Arrays.asList(versionFoldernames);
+           return Arrays.asList(versionNames);
         }else {
             throw new BundleException("The base l10n dir is not existing, the missed dir is: " + basePath);
         }
