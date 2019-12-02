@@ -84,17 +84,18 @@ public class PgProductApiImpl implements IProductDao {
 		return "";
 	}
 
-  
-    @Override
-    public List<String> getVersionList(String productName) throws DataException {
-        // TODO Auto-generated method stub
-        List<String> result = docOperate.getVersionList(productName, datanodes.getDataNodeByProduct(productName));
-        if(result != null && result.size()>0) {
-            return result;
-        }else {
+       /**
+        * get one product's all available versions
+        */
+       @Override
+        public List<String> getVersionList(String productName) throws DataException {
+             List<String> result = docOperate.getVersionList(productName, datanodes.getDataNodeByProduct(productName));
+             if(result != null && result.size()>0) {
+                return result;
+             }else {
             throw new DataException(productName + " no available version in pgDB");   
+             }
         }
-    }
 
 
 }
