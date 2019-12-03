@@ -62,9 +62,9 @@ public interface IProductService {
 	public DropVersionDTO getVersionInfo(String productName, String version) throws L3APIException;
 
     /**
-     * get products and versions
+     * get a products support versions
      * @return
      * @throws L3APIException
      */
-    public Map<String, String[]> getProductsAndVersions() throws L3APIException;
+    public List<String> getSupportVersionList(String productName) throws L3APIException;
 }
