@@ -7,11 +7,7 @@ package com.vmware.i18n.l2.service.pattern;
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localeAliasesMap;
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePathMap;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.annotation.Resource;
 
@@ -34,6 +30,9 @@ import org.springframework.util.StringUtils;
 public class PatternServiceImpl implements IPatternService {
 
 	private static final Logger logger = LoggerFactory.getLogger(PatternServiceImpl.class.getName());
+
+	private static List<String> specialCategories = Arrays.asList(ConstantsKeys.PLURALS, ConstantsKeys.DATE_FIELDS);
+	private static List<String> otherCategories = Arrays.asList(ConstantsKeys.DATES, ConstantsKeys.NUMBERS, ConstantsKeys.MEASUREMENTS, ConstantsKeys.CURRENCIES);
 
 	@Resource
 	private IPatternDao patternDao;
@@ -165,6 +164,15 @@ public class PatternServiceImpl implements IPatternService {
 
 		if (!localeDataDTO.isDisplayLocaleID()) {
 			patternMap.put(ConstantsKeys.LOCALEID, "");
+		}
+
+		// fix issue: https://github.com/vmware/singleton/issues/311
+		if (!Collections.disjoint(categoryList, specialCategories)) {
+			if (Collections.disjoint(categoryList, otherCategories)) {
+				patternMap.put(ConstantsKeys.LOCALEID, language);
+			} else if (!language.equals(localeDataDTO.getLocale())) {
+				patternMap.put(ConstantsKeys.LOCALEID, "");
+			}
 		}
 
 		patternMap.put(ConstantsKeys.LANGUAGE, language);

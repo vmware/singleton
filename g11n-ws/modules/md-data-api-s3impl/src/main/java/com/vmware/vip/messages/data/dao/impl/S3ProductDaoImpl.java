@@ -6,13 +6,16 @@ package com.vmware.vip.messages.data.dao.impl;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import com.amazonaws.services.s3.model.ListObjectsV2Result;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
@@ -72,7 +75,7 @@ public class S3ProductDaoImpl implements IProductDao {
       List<String> localeList = new ArrayList<String>();
       String filePathPrefix = S3Utils.genProductVersionS3Path(productName, version);
       ListObjectsV2Result result =
-            s3Client.getS3Client().listObjectsV2(config.getBucketName(), filePathPrefix);
+            s3Client.getS3Client().listObjectsV2(config.getBucketName(), S3Utils.S3_L10N_BUNDLES_PATH);
       if (result == null) {
          throw new DataException("Can't find S3 resource from " + productName + "\\" + version);
       }
@@ -120,8 +123,30 @@ public class S3ProductDaoImpl implements IProductDao {
       }
       return result;
    }
+   
+ /**
+  * get one product's all available versions
+  */
+@Override
+public List<String> getVersionList(String productName) throws DataException {
+    String basePath = S3Utils.S3_L10N_BUNDLES_PATH+productName +  ConstantsChar.BACKSLASH;
+    ListObjectsV2Result versionListResult = s3Client.getS3Client().listObjectsV2(config.getBucketName(),basePath);
+    
+    if(versionListResult != null) {
+        List<S3ObjectSummary> versionListSummary = versionListResult.getObjectSummaries();
+        Set<String> versionset = new HashSet<>();
+        for (S3ObjectSummary s3productName : versionListSummary) {
+            versionset.add(s3productName.getKey().replace(basePath, "").split(ConstantsChar.BACKSLASH)[0]);
+          }
+        List<String> result = new ArrayList<>();
+        for(String version: versionset) {
+            result.add(version);
+        }
+      return result;
+      
+    }else {
+     throw new DataException(productName + " no available version in s3");
+    }
+}
 
-   public Map<String, String[]> getProductsAndVersions() {
-      return null;
-   }
 }

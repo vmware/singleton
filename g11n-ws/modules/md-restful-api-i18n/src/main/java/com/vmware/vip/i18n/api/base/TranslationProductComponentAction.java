@@ -50,7 +50,7 @@ public class TranslationProductComponentAction extends BaseAction {
 		ComponentMessagesDTO c = new ComponentMessagesDTO();
 		c.setProductName(productName);
 		c.setComponent(component == null ? ConstantsKeys.DEFAULT : component);
-		c.setVersion(VersionMatcher.getMatchedVersion(productName, version,productService.getProductsAndVersions() ));
+		c.setVersion(VersionMatcher.getMatchedVersion(version,productService.getSupportVersionList(productName)));
 		if (new Boolean(pseudo)) {
 			c.setLocale(ConstantsKeys.LATEST);
 		} else {

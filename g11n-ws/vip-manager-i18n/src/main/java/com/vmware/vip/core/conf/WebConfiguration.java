@@ -78,7 +78,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 	@Value("${vipservice.cross.domain.maxage}")
 	private String maxAge;
 
-	@Value("${translation.bundle.file.basepath}")
+	@Value("${translation.bundle.file.basepath:.}")
 	private String bundleFileBasePath;
 
 	@Value("${swagger-ui.enable}")

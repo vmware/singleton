@@ -5,14 +5,12 @@
 package com.vmware.vip.core.messages.service.product;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
-
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
@@ -29,9 +27,9 @@ import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.TranslationQueryStatusType;
 import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.common.i18n.dto.DropVersionDTO;
+import com.vmware.vip.common.i18n.dto.DropVersionDTO.ComponentVersionDTO;
 import com.vmware.vip.common.i18n.dto.DropVersionDTO.ComponentVersionDTO.VersionDTO;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
-import com.vmware.vip.common.i18n.dto.DropVersionDTO.ComponentVersionDTO;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO.TranslationDTO;
 import com.vmware.vip.common.utils.JSONUtils;
 import com.vmware.vip.core.messages.exception.L3APIException;
@@ -299,35 +297,17 @@ public class ProductService implements IProductService {
 		return getSupportedLocaleList(productName, version);
 	}
 
-	/**
-	 * A cached map with product list as key and version list as value
-	 */
-	private  static final Map<String, String[]> MAP_PRODUCTS_VERSIONS = new HashMap<>();
-
-	/**
-	 * A flag to mark the cache MAP_PRODUCTS_VERSIONS initialized status
-	 */
-	private  static int initProductsVersions = -1;
-
-	/**
-	 * Get product name list and version list;
-	 * firstly look for the lists from cache, if not existing then look from bundle files or DB.
-	 *
-	 * @return
-	 * @throws L3APIException
-	 */
-	public synchronized Map<String, String[]> getProductsAndVersions() throws L3APIException {
-		if (initProductsVersions == 1) {
-			return MAP_PRODUCTS_VERSIONS;
-		} else {
-			try {
-				Map<String, String[]> m = productdao.getProductsAndVersions();
-				MAP_PRODUCTS_VERSIONS.putAll(m);
-                initProductsVersions = 1;
-				return MAP_PRODUCTS_VERSIONS;
-			} catch (DataException e) {
-				throw new L3APIException("Failed to product list and version list.", e);
-			}
-		}
-	}
+    /**
+     * get a products support versions
+     * @return
+     * @throws L3APIException
+     */
+    @Override
+    public List<String> getSupportVersionList(String productName) throws L3APIException {
+        try {
+            return productdao.getVersionList(productName);
+        } catch (DataException e) {
+           throw new L3APIException(e.getMessage());
+        }
+    }
 }
