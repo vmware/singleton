@@ -113,7 +113,7 @@ public class TranslationProductAction  extends BaseAction {
              HttpServletRequest req) throws Exception {
          TranslationDTO translationDTO = new TranslationDTO();
          translationDTO.setProductName(productName);
-         version = VersionMatcher.getMatchedVersion(productName, version,  productService.getProductsAndVersions());
+         version = VersionMatcher.getMatchedVersion(version,  productService.getSupportVersionList(productName));
          translationDTO.setVersion(version);
          List<String> componentList = null;
          if (StringUtils.isEmpty(components)) {
