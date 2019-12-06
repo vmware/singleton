@@ -1,0 +1,159 @@
+---
+title: "Integrate Singleton in Python App111111"
+date: 2019-09-24T20:10:17+08:00
+draft: false
+weight: 50
+---
+<div class = "translationDiv">
+    <h3>Locale Management</h3>
+    <div class="grop_block">
+        <label class="clr-control-label">Languages</label>
+        <div class="clr-select-wrapper">
+            <select id="clr-select-language" name="clr-select-language" onchange="setVar(this);">
+                <option value="en">English</option>
+                <option value="zh-Hans">简体中文</option>
+                <option value="fr">français</option>
+                <option value="es">español</option>
+                <option value="ja">日本語</option>
+                <option value="de">Deutsch</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="grop_block">
+        <label class="clr-control-label">Regions</label>
+        <div class="clr-select-wrapper">
+            <select class="clr-select" onchange="setRegion(this);">
+                <option value="AC" class= "ng-star-inserted">Ascension Island (AC)</option>
+                <option value="KR" class= "ng-star-inserted">South Korea (KR)</option>
+                <option value="PA" class= "ng-star-inserted">Panama (PA)</option>
+                
+            </select>
+        </div>
+    </div>
+    <table class="table">
+        <tbody>
+            <tr class="languageTr">
+                <td>translate pipe</td>
+                <td>VIP for Angular client is common lib developed by VMware G11n team.</td>
+            </tr>
+            <tr>
+                <td>data & time</td>
+                <td class="regionVal datetime">Monday, December 2, 2019 at 6:27:29 PM GMT+08:00</td>
+            </tr>
+            <tr>
+            <td>number - 123.4567</td>
+            <td class="regionVal number">123.457</td>
+        </tr>
+        <tr>
+            <td>currency - 123.4567</td>
+            <td class="regionVal currency">123,46 $US</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<h3 class = "translationDiv">Translate Pipe</h3>
+<div class = "codeShow">
+        {{'VIP.description' | translate:'{0} is common lib developed by VMware G11n team.': 'VIP for Angular client'}}
+</div>
+
+<form class = "formGrop">
+    <clr-input-container class = "inputContainer">
+        <label>Key</label>
+        <input clrInput type="text" name="key" required class = "inputClr" autocomplete="off" value="VIP.description"/>
+    </clr-input-container>
+    <clr-input-container class = "inputContainer">
+        <label>English source</label>
+        <input clrInput type="text" name="english" class = "inputClr" autocomplete="off" value="{0} is common lib developed by VMware G11n team."/>
+    </clr-input-container>
+    <clr-input-container class = "inputContainer">
+        <label>Argument 0</label>
+        <input clrInput type="text" name="arg0" required class = "inputClr" autocomplete="off" value="VIP for Angular client" oninput="valueChange(this);"/> 
+    </clr-input-container>
+    <div class="clr-form-control">
+        <label for="example" class="clr-control-label">Result</label>
+        <div class="clr-control-container" >
+            VIP for Angular client is common lib developed by VMware G11n team.
+        </div>
+    </div>
+</form>
+<style>
+    .grop_block , .table {
+        margin-left: 30px;
+    }
+    .codeShow {
+        padding:2rem;
+        margin-top:1rem;
+        margin-left: 2rem;
+        border:1px solid #ccc;
+        background-color: #fdf6e3;
+        color: #657b83;
+        font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+        width: 90%;
+    }
+    .formGrop {
+        margin-top: 30px;
+        margin-left: 30px;
+    }
+    .formGrop .inputClr , .clr-control-container {
+        display: inline-block;
+        width:550px;
+    }
+    .formGrop .inputClr {
+        border:none;
+        border-bottom: 1px solid #999;
+    }
+    .clr-control-container {
+        font-family: "Avenir Next";
+    }
+    .formGrop label {
+        width: 300px;
+        display: inline-block;
+    }
+    .formGrop .inputContainer {
+        display: block;
+    }
+</style>
+<script type="text/javascript">
+    var langList = [
+        [{"lang":"en","langValue":"VIP for Angular client is common lib developed by VMware G11n team."},{"key":"AC","value":"Ascension Island (AC)"},{"key":"KR","value":"South Korea (KR)"},{"key":"PA","value":"Panama (PA)"}],
+        [{"lang":"zh-Hans","langValue":"VIP for Angular client 是 VMware G11n 团队开发的通用 lib。"},{"key":"AC","value":"阿森松岛 (AC)"},{"key":"KR","value":"韩国 (KR)"},{"key":"PA","value":"巴拿马 (PA)"}],
+        [{"lang":"fr","langValue":"VIP for Angular client est une bibliothèque commune développée par VMware G11n Team."},{"key":"AC","value":"Île de l’Ascension (AC)"},{"key":"KR","value":"Corée du Sud (KR)"},{"key":"PA","value":"Panama (PA)"}],
+        [{"lang":"es","langValue":"VIP for Angular client es un lib común desarrollado por el equipo VMware G11n."},{"key":"AC","value":"Isla de la Ascensión (AC)"},{"key":"KR","value":"Corea del Sur (KR)"},{"key":"PA","value":"Panamá (PA)"}],
+        [{"lang":"ja","langValue":"VIP for Angular client は、VMware G11n チームによって開発された一般的な lib です。"},{"key":"AC","value":"アセンション島 (AC)"},{"key":"KR","value":"韓国 (KR)"},{"key":"PA","value":"パナマ (PA)"}],
+        [{"lang":"de","langValue":"VIP for Angular client ist Common lib, entwickelt von VMware G11n Team."},{"key":"AC","value":"Ascension (AC)"},{"key":"KR","value":"Südkorea (KR)"},{"key":"PA","value":"Panama (PA)"}]
+    ];  
+    var regionList = [
+        {"region":"AC","datetime":"Monday, December 2, 2019 at 6:27:29 PM GMT+08:00","number":"123.457","currency":"123,46 $US"},
+        {"region":"KR","datetime":"2019년 12월 2일 월요일 PM 6시 27분 29초 GMT+08:00","number":"123.457","currency":"123,46 $US"},
+        {"region":"PA","datetime":"lunes, 2 de diciembre de 2019, 6:27:29 p. m. GMT+08:00","number":"123.457","currency":"123,46 $US"},
+    ];
+    function setVar(v_sel){
+        $('.clr-select option').remove();
+        $('.languageTr').find('td:eq(1)').text('');
+        var sel = $('.clr-select');
+        for(var i=0;i<langList.length;i++){
+            if(v_sel.value === langList[i][0].lang){
+                $('.languageTr').find('td:eq(1)').text(langList[i][0].langValue);
+                for(j=1;j<langList[i].length;j++){
+                    sel.append('<option value='+langList[i][j].key+'>'+langList[i][j].value+'</option>');
+                }
+            }
+        }
+    }
+    function setRegion(v_region) {
+        $('.regionVal').text(' ');
+        for(var i=0;i<regionList.length;i++){
+            if(v_region.value === regionList[i].region) {
+                console.log(regionList[i]);
+                $('.datetime').text(regionList[i].datetime);
+                $('.number').text(regionList[i].number);
+                $('.currency').text(regionList[i].currency);
+            }
+        }
+    }   
+    function valueChange(v_val) {
+        $('.clr-control-container').text(' ');
+        $('.clr-control-container').text(v_val.value + ' is common lib developed by VMware G11n team.');
+    }
+</script>
