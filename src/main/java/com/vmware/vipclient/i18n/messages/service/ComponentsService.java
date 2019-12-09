@@ -19,6 +19,7 @@ import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentsBasedOpt;
@@ -28,19 +29,19 @@ import com.vmware.vipclient.i18n.util.ConstantsKeys;
 public class ComponentsService {
 
     Logger                          logger = LoggerFactory.getLogger(ComponentsService.class);
-    private final SortedSet<String> components;
-    private final Set<Locale>       locales;
+
+    private final VIPCfg cfg;
+
 
     /**
-     * @param components2
-     * @param locales2
+     * @param config
      */
-    public ComponentsService(final Set<String> components2, final Set<Locale> locales2) {
-        components = new TreeSet<>(components2);
-        locales = locales2;
+    public ComponentsService(final VIPCfg config) {
+        this.cfg = config;
     }
 
-    public Map<Locale, Map<String, Map<String, String>>> getTranslation() {
+    public Map<Locale, Map<String, Map<String, String>>> getTranslation(final Set<String> components,
+            final Set<Locale> locales) {
         final Map<String, Map<String, Map<String, String>>> dataMap = new HashMap<>();
         final TreeSet<String> localesSet = new TreeSet<>(
                 locales.stream().map(Locale::toLanguageTag).collect(Collectors.toSet()));
@@ -52,6 +53,8 @@ public class ComponentsService {
             final Map<String, Map<String, String>> localeMap = new HashMap<>();
             for (final String component : components) {
                 final MessagesDTO dto = new MessagesDTO();
+                dto.setProductID(this.cfg.getProductName());
+                dto.setVersion(this.cfg.getVersion());
                 dto.setLocale(locale);
                 dto.setComponent(component);
 
@@ -73,14 +76,14 @@ public class ComponentsService {
 
         // Nothing to query, return.
         if (componentsToQuery.isEmpty() || localesToQuery.isEmpty())
-            return convertDataMap(dataMap);
+            return this.convertDataMap(dataMap, locales);
 
         // Query from server.
-        final ComponentsBasedOpt opt = new ComponentsBasedOpt(componentsToQuery, localesToQuery);
-        final JSONObject response = opt.queryFromServer();
+        final ComponentsBasedOpt opt = new ComponentsBasedOpt(this.cfg);
+        final JSONObject response = opt.queryFromServer(componentsToQuery, localesToQuery);
         final JSONArray bundles = (JSONArray) opt.getDataPart(response).get(ConstantsKeys.BUNDLES);
         final JSONArray localesFromServer = (JSONArray) opt.getDataPart(response).get(ConstantsKeys.LOCALES);
-        final Map<String, String> localeMap = makeLocaleMap(localesToQuery, localesFromServer);
+        final Map<String, String> localeMap = this.makeLocaleMap(localesToQuery, localesFromServer);
 
         // combine data from server into the map to return.
         final Iterator<?> iter = bundles.iterator();
@@ -100,11 +103,11 @@ public class ComponentsService {
             dataMap.get(locale).put(comp, messages);
         }
 
-        return convertDataMap(dataMap);
+        return this.convertDataMap(dataMap, locales);
     }
 
     private Map<Locale, Map<String, Map<String, String>>> convertDataMap(
-            final Map<String, Map<String, Map<String, String>>> dataMap) {
+            final Map<String, Map<String, Map<String, String>>> dataMap, final Set<Locale> locales) {
         final Map<Locale, Map<String, Map<String, String>>> retMap = new HashMap<>();
         for (final Locale locale : locales) {
             retMap.put(locale, dataMap.get(locale.toLanguageTag()));
