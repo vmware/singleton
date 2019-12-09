@@ -157,4 +157,18 @@ public class ProductDao implements IProductDao {
             throw new BundleException("The base l10n dir is not existing, the missed dir is: " + basePath);
         }
     }
+
+    /**
+     * Get the content of the White List by whiteList file name
+     */
+    @Override
+    public String getWhiteListContent() throws DataException {
+        String contentFilePath = bundleConfig.getBasePathWithSeparator() + ConstantsFile.L10N_BUNDLES_PATH +ConstantsFile.WHITE_LIST_FILE;
+        if (new File(contentFilePath).exists()) {
+         return new LocalJSONReader().readLocalJSONFile(contentFilePath);
+        }else {
+            return null;
+        }
+        
+    }
 }

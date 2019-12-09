@@ -4,7 +4,10 @@
  */
 package com.vmware.vip.core.messages.service.product;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +22,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.vip.common.cache.CacheName;
 import com.vmware.vip.common.cache.CachedKeyGetter;
 import com.vmware.vip.common.cache.TranslationCache3;
@@ -308,6 +313,37 @@ public class ProductService implements IProductService {
             return productdao.getVersionList(productName);
         } catch (DataException e) {
            throw new L3APIException(e.getMessage());
+        }
+    }
+
+    /**
+     * get the white list
+     */
+    @Override
+    public Map<String, Object> getWhiteList(){
+        String content;
+        try {
+            content = productdao.getWhiteListContent();
+        } catch (DataException e1) {
+            logger.warn(e1.getMessage());
+            content =null;
+        }
+        if(!StringUtils.isEmpty(content)) {
+            try {
+                Map<String, Object> json = new HashMap<String, Object>();
+                JsonNode node = new ObjectMapper().readTree(content);
+                Iterator<String> names = node.fieldNames();
+                for (Iterator<String> iter = names; iter.hasNext();) {
+                    String locale = (String) iter.next();
+                    json.put(locale, node.get(locale).asText());
+                }
+                return json;
+            } catch (IOException e) {
+                logger.error(e.getMessage(), e);
+                return null;
+            }
+        }else {
+            return null;
         }
     }
 }
