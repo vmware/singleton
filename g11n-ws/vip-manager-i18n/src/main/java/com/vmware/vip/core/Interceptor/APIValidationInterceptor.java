@@ -5,6 +5,7 @@
 package com.vmware.vip.core.Interceptor;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,10 +34,10 @@ import com.vmware.vip.core.validation.ValidationException;
 public class APIValidationInterceptor extends HandlerInterceptorAdapter {
 	private static Logger LOGGER = LoggerFactory.getLogger(APIValidationInterceptor.class);
 
-	private String bundleBasedPath;
-	public APIValidationInterceptor(String bundleBasedPath) {
+	private Map<String, Object> whiteListMap;
+	public APIValidationInterceptor(Map<String, Object> whiteListMap) {
 		super();
-		this.bundleBasedPath = bundleBasedPath;
+		this.whiteListMap = whiteListMap;
 	}
 	/**
 	 * Collect new source and send to l10n server
@@ -63,7 +64,7 @@ public class APIValidationInterceptor extends HandlerInterceptorAdapter {
 				request);
 		try {
 			u.validate();
-			request.setAttribute(ParameterValidation.TAG_BUNDLE_BASE_PATH, this.bundleBasedPath);
+			request.setAttribute(ParameterValidation.TAG_WHITE_LIST_MAP, this.whiteListMap);
 			p.validate();
 		} catch (ValidationException e) {
 			LOGGER.warn(e.getMessage());
