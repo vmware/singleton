@@ -99,6 +99,10 @@ public class V2URL {
                 .replace("{" + APIParamName.PRODUCT_NAME + "}", cfg.getProductName())
                 .replace("{" + APIParamName.VERSION2 + "}", cfg.getVersion());
         StringBuilder url = new StringBuilder(baseURL).append(url_path);
+        if (VIPCfg.getInstance().isPseudo()) {
+            URLUtils.appendParamToURL(url, ConstantsKeys.PSEUDO, Boolean.toString(true));
+        }
+
         return url.toString();
     }
 
