@@ -29,5 +29,7 @@ public class ConstantsFile {
     public static final String CREATION_INFO = "creation.json";
 
     public static final String VERSION_FILE = "version.json";
+    
+    public static final String WHITE_LIST_FILE = "bundle.json";
 
 }
