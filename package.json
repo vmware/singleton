@@ -28,7 +28,7 @@
         "build": "webpack",
         "prepublish": "rimraf dist && tsc -p ./ --outDir dist/ && npm run build",
         "jest": "NODE_ENV=test jest -c jest.config.json",
-        "test": "npm run jest "
+        "test": "npm run jest"
     },
     "dependencies": {
         "decimal.js-light": "^2.4.1"
