@@ -249,3 +249,15 @@ if (project.hasProperty('datatype') && (project.getProperty('datatype') == 'pgdb
 springBoot {
 	mainClassName = "com.vmware.vip.BootApplication"
 }
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    archiveClassifier = 'sources'
+}
+
+task javadocJar(type: Jar) {
+    from javadoc
+    archiveClassifier = 'javadoc'
+
+}
+
