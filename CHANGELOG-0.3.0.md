@@ -50,6 +50,7 @@ filename | sha1 hash | branch/tag
 - Failed to get translation for all translation related APIs in Singleton S3 build ([#317](https://github.com/vmware/singleton/issues/317))
 - Don't support version fallback in combination API ([#321](https://github.com/vmware/singleton/issues/321))
 - Don't support product-white-list in combination API ([#322](https://github.com/vmware/singleton/issues/322))
+- Don't support version fallback in getSupportedLanguageList API ([#338](https://github.com/vmware/singleton/issues/338))
 
 
 ### Improvement
