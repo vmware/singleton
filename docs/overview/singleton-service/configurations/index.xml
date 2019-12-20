@@ -30,6 +30,18 @@
     </item>
     
     <item>
+      <title>Enable Product White List</title>
+      <link>https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-product-white-list/</link>
+      <pubDate>Wed, 11 Dec 2019 14:14:49 +0800</pubDate>
+      
+      <guid>https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-product-white-list/</guid>
+      <description>Singleton Service adds a new feature to support the product white list defination, that means only the product in the white list can work well to get translations and get supported language list. It is no impact for DateTimes / Numbers / Currencies / Plurals / Measurements / DateFields / RegionList .
+By default, this feature is disabled.
+This page will introduce the details about this new feature.
+How to enable product white list in Singleton Service?</description>
+    </item>
+    
+    <item>
       <title>Enable S3 Storage</title>
       <link>https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/</link>
       <pubDate>Fri, 01 Nov 2019 18:53:33 +0800</pubDate>
@@ -38,10 +50,8 @@
       <description>Singleton Service now supports to store the translation bundle files on AWS S3.
 This page will introduce the details about Singleton Service S3 build.
 How to generate Singleton Service S3 build? The steps to generate S3 build:
- Clone Singleton Service code using Git.
-git clone git@github.com:vmware/singleton.git  Update the complie configuration file in singleton/g11n-ws/gradle.properties
-datatype=bundle   to
-datatype=s3   Update the below s3 config items according to your requirements in singleton/g11n-ws/vip-manager-i18n/src/main/resources/application-s3.</description>
+ Clone Singleton Service code using Git.  git clone git@github.com:vmware/singleton.gitUpdate the complie configuration file in singleton/g11n-ws/gradle.properties  datatype=bundleto
+datatype=s3Update the below s3 config items according to your requirements in singleton/g11n-ws/vip-manager-i18n/src/main/resources/application-s3.</description>
     </item>
     
   </channel>

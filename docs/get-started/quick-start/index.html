@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-11-20T19:36:54 PST">
+<meta name="revised" content="2019-12-20T14:26:52 CST">
 <title>Quick Start :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -123,6 +123,13 @@
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-pseudo-translation/">
             Enable Pseudo Translation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-product-white-list/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-product-white-list/">
+            Enable Product White List
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -296,68 +303,46 @@
     
     
     
-    
-
-<p>The Singleton application suite includes:</p>
-
+    <p>The Singleton application suite includes:</p>
 <ul>
 <li>Singleton Service: It contains an Application Program Interface (API), which is a web service that is used for i18n features, such as providing translated text.</li>
 <li>Singleton Client: It is used to communicate with Singleton Service to get the localized resources.</li>
 </ul>
-
 <h1 id="features-and-functionality">Features and functionality</h1>
-
 <p>Singleton offers the following features and functionality:</p>
-
 <ul>
 <li>Singleton Core API - Provides RESTful web services for delivering localized resources.</li>
-<li>Source collection - Offers a source collection feature for Singleton string-based APIs. For more information about how to use the feature, see the <strong><em>Enabling source collection on Singleton service</em></strong> section of the Singleton&rsquo;s User Guide.</li>
-<li>Pseudotranslation – Helps test product compatibility with locales before beginning the localization process. It automatically generates text that is designed to test various aspects of localization readiness, including character set support, UI design, and hardcoding. For more information about how to use the feature, see the <strong><em>Enabling pseudo translation on Singleton service</em></strong> section of the Singleton&rsquo;s User Guide.</li>
+<li>Source collection - Offers a source collection feature for Singleton string-based APIs. For more information about how to use the feature, see the <strong><em>Enabling source collection on Singleton service</em></strong> section of the Singleton's User Guide.</li>
+<li>Pseudotranslation – Helps test product compatibility with locales before beginning the localization process. It automatically generates text that is designed to test various aspects of localization readiness, including character set support, UI design, and hardcoding. For more information about how to use the feature, see the <strong><em>Enabling pseudo translation on Singleton service</em></strong> section of the Singleton's User Guide.</li>
 </ul>
-
 <h1 id="using-singleton">Using Singleton</h1>
-
 <h2 id="downloading-singleton-source-code">Downloading Singleton source code</h2>
-
 <p><strong>Prerequisites</strong></p>
-
 <ul>
 <li>Ensure the following applications are installed:
-
 <ul>
 <li><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java 8</a></li>
 <li><a href="https://git-scm.com/downloads">Git</a></li>
-</ul></li>
+</ul>
+</li>
 <li>Set the environment variables:
-
 <ul>
 <li><a href="https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/">Setting JAVA_HOME</a></li>
 <li><a href="https://WWW.JAVA.COM/EN/DOWNLOAD/HELP/PATH.XML">Adding JAVA_HOME to the Path system variable</a></li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <p><strong>Step</strong></p>
-
 <p>Clone the repository to your environment using Git, by running the command <code>git clone git@github.com:vmware/singleton.git</code>.</p>
-
 <h2 id="compiling-singleton-source-code">Compiling Singleton source code</h2>
-
-<p>From the <code>singleton/g11n-ws</code> folder, generate the Singleton build file using the Gradle command <code>./gradlew build</code>.</p>
-
+<p>From the <code>singleton/g11n-ws</code> folder, generate the Singleton build file using the Gradle command <code> ./gradlew build</code>.</p>
 <p>The .jar files are generated in the <code>singleton/publish</code> location. For example:</p>
-
 <p><code>singleton/publish/vip-manager-i18n-0.1.0.jar</code></p>
-
 <h2 id="running-singleton-application">Running Singleton application</h2>
-
 <p>To run the Singleton application, from the singleton/g11n-ws folder, run the Spring Boot main application, using the command: <code>java - jar publish/vip-manager-i18n-0.1.0.jar</code>.</p>
-
-<p>NOTE: To test all available API endpoints from the user interface, see <a href="https://localhost:8090/i18n/api/doc/swagger-ui.html">https://localhost:8090/i18n/api/doc/swagger-ui.html</a> or <a href="http://localhost:8091/i18n/api/doc/swagger-ui.html">http://localhost:8091/i18n/api/doc/swagger-ui.html</a>.</p>
-
+<p>NOTE: To test all available API endpoints from the user interface, see https://localhost:8090/i18n/api/doc/swagger-ui.html or http://localhost:8091/i18n/api/doc/swagger-ui.html.</p>
 <p>NOTE: Sample translation resources are available in the following location: <code>singleton/publish/l10n/bundles</code></p>
-
 <p>You can test the API using the following URI/request parameters:</p>
-
 <pre><code>productName: &quot;SampleProject&quot;
 
 version: &quot;1.0.0&quot;
@@ -366,7 +351,6 @@ component: &quot;component1&quot; or &quot;component2&quot;
 
 locale: &quot;en&quot;, &quot;ja&quot; or &quot;es&quot;
 </code></pre>
-
 
     
     

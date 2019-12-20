@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-11-20T19:36:54 PST">
+<meta name="revised" content="2019-12-20T14:26:52 CST">
 <title>Enable S3 Storage :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -125,6 +125,13 @@
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-pseudo-translation/">
             Enable Pseudo Translation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-product-white-list/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-product-white-list/">
+            Enable Product White List
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -273,6 +280,7 @@
    Configurations</option> 
       <option value="/docs/overview/singleton-service/configurations/enable-source-collection/" >---- Enable Source Collection</option>
       <option value="/docs/overview/singleton-service/configurations/enable-pseudo-translation/" >---- Enable Pseudo Translation</option>
+      <option value="/docs/overview/singleton-service/configurations/enable-product-white-list/" >---- Enable Product White List</option>
       <option value="/docs/overview/singleton-service/configurations/enable-s3-storage/"  selected>---- Enable S3 Storage</option>
   
       <option value="/docs/overview/singleton-service/singleton-service-apis/" >--- Singleton Service APIs</option>
@@ -311,63 +319,44 @@
     
     
     
-    
-
-<p>Singleton Service now supports to store the translation bundle files on AWS S3.</p>
-
+    <p>Singleton Service now supports to store the translation bundle files on AWS S3.</p>
 <p>This page will introduce the details about Singleton Service S3 build.</p>
-
 <h2 id="how-to-generate-singleton-service-s3-build">How to generate Singleton Service S3 build?</h2>
-
 <p>The steps to generate S3 build:</p>
-
 <ol>
-<li><p>Clone Singleton Service code using Git.</p>
-
-<pre><code>git clone git@github.com:vmware/singleton.git
-</code></pre></li>
-
-<li><p>Update the complie configuration file in <code>singleton/g11n-ws/gradle.properties</code></p>
-
-<pre><code>datatype=bundle
-</code></pre></li>
+<li>Clone Singleton Service code using Git.</li>
 </ol>
-
-<p>to</p>
-
+<pre><code>git clone git@github.com:vmware/singleton.git
+</code></pre><ol start="2">
+<li>Update the complie configuration file in <code>singleton/g11n-ws/gradle.properties</code></li>
+</ol>
+<pre><code>datatype=bundle
+</code></pre><p>to</p>
 <pre><code>datatype=s3
-</code></pre>
-
-<ol>
-<li><p>Update the below s3 config items according to your requirements in <code>singleton/g11n-ws/vip-manager-i18n/src/main/resources/application-s3.properties</code></p>
-
+</code></pre><ol start="3">
+<li>Update the below s3 config items according to your requirements in <code>singleton/g11n-ws/vip-manager-i18n/src/main/resources/application-s3.properties</code></li>
+</ol>
 <pre><code>#S3 store config
 s3.accessKey=#####
 s3.secretkey=######
 s3.region=######
 s3.bucketName=######
-</code></pre></li>
-
-<li><p>Complie a build using Gradle wrapper under
+</code></pre><ol start="4">
+<li>Complie a build using Gradle wrapper under 
 <code>./gradlew build</code>
-Jar files will be generated to</p>
-
-<pre><code>singleton/publish (Eg. singleton/publish/vip-manager-i18n-0.1.0.jar)
-</code></pre></li>
+Jar files will be generated to</li>
 </ol>
-
-<p>The translation bundle structure in AWS S3:</p>
-
+<pre><code>singleton/publish (Eg. singleton/publish/vip-manager-i18n-0.1.0.jar)
+</code></pre><p>The translation bundle structure in AWS S3:</p>
 <pre><code>[bucket name]/l10n/bundles/[product name]/[version]/[component name]/messages_xx.json
 </code></pre>
-
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-pseudo-translation/" title="Enable Pseudo Translation"> <i class="fa fa-chevron-left"></i><label>Enable Pseudo Translation</label></a>
-    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/" title="Singleton SDK" style="margin-right: 0px;"><label>Singleton SDK</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-product-white-list/" title="Enable Product White List"> <i class="fa fa-chevron-left"></i><label>Enable Product White List</label></a>
+    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/" title="Singleton Service APIs" style="margin-right: 0px;"><label>Singleton Service APIs</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
