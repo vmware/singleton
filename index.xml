@@ -26,7 +26,7 @@
       <pubDate>Tue, 24 Sep 2019 20:07:51 +0800</pubDate>
       
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/</guid>
-      <description>As we know in the last article, Singleton provides plenty of APIs to support G11N. However, calling the APIs directly is time-consuming and inefficient. So, Singleton has introduced several Clients for different programming language environments, to encapsulate the API calls to the Service, which significantly improves efficiency, and reduces the cost in development work. These Clients can call the Service&amp;rsquo;s APIs to get the translation and pattern data, then parse the data to provide the translation and data formatting features.</description>
+      <description>As we know in the last article, Singleton provides plenty of APIs to support G11N. However, calling the APIs directly is time-consuming and inefficient. So, Singleton has introduced several Clients for different programming language environments, to encapsulate the API calls to the Service, which significantly improves efficiency, and reduces the cost in development work. These Clients can call the Service&#39;s APIs to get the translation and pattern data, then parse the data to provide the translation and data formatting features.</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Tue, 24 Sep 2019 20:04:26 +0800</pubDate>
       
       <guid>https://vmware.github.io/singleton/docs/get-started/download-and-installation/</guid>
-      <description>Singleton official 0.1.0 Release is available now! Choose the download that&amp;rsquo;s right for you and click one of the links below.
+      <description>Singleton official 0.1.0 Release is available now! Choose the download that&#39;s right for you and click one of the links below.
 Singleton Service 0.1.0 Binaries Downloading    filename sha1 hash branch/tag     singleton-manager-i18n-0.1.0.jar 8e7599495292ce34cdb9769ec43695999071a1fe master/v0.1.0-Singleton-Service   singleton-manager-l10n-0.1.0.jar 8d744bb83e310a1b451a68fb65999803488c8cfc master/v0.1.0-Singleton-Service    Installation Singleton Service include 2 types of builds, one is i18n manager, the other is l10n manager:
  I18n manager is the main build, it provides the restful APIs to talk with Singleton SDK.</description>
     </item>
@@ -64,7 +64,7 @@ Singleton Service 0.1.0 Binaries Downloading    filename sha1 hash branch/tag   
       <pubDate>Tue, 24 Sep 2019 20:08:23 +0800</pubDate>
       
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/javascript-client-introduction/</guid>
-      <description>The Singleton JavaScript Client is a Singleton Service-based JavaScript library used for SW i18n. It supports all JavaScript frameworks, you can run it in browsers, as well as NodeJS environments. With the Singleton JavaScript Client, it is much easier to use the Web front-end for SW i18n. Now, let&amp;rsquo;s look at what the Client does, and how it is used.
+      <description>The Singleton JavaScript Client is a Singleton Service-based JavaScript library used for SW i18n. It supports all JavaScript frameworks, you can run it in browsers, as well as NodeJS environments. With the Singleton JavaScript Client, it is much easier to use the Web front-end for SW i18n. Now, let&#39;s look at what the Client does, and how it is used.
 Features Overview  Getting and managing locales. Getting the i18n resources from Singleton Service.</description>
     </item>
     
@@ -85,7 +85,7 @@ Features Overview  Getting and managing locales. Getting the i18n resources from
       <guid>https://vmware.github.io/singleton/docs/get-started/quick-start/</guid>
       <description>The Singleton application suite includes:
  Singleton Service: It contains an Application Program Interface (API), which is a web service that is used for i18n features, such as providing translated text. Singleton Client: It is used to communicate with Singleton Service to get the localized resources.  Features and functionality Singleton offers the following features and functionality:
- Singleton Core API - Provides RESTful web services for delivering localized resources.</description>
+ Singleton Core API - Provides RESTful web services for delivering localized resources. Source collection - Offers a source collection feature for Singleton string-based APIs.</description>
     </item>
     
     <item>
@@ -106,7 +106,8 @@ Features Overview  Getting and managing locales. Getting the i18n resources from
       <description>The Singleton Angular Client is a Singleton Service-based library used for SW i18n. Unlike the Singleton JavaScript Client mentioned earlier, the Angular Client is an end-to-end solution that includes specific data loading methods and the Angular-specific template API support. The Singleton Angular Client now supports the Angular 7.x.
 Features Overview Getting and managing locales.
 Loading i18n resources, including lazy loading mode.
-Providing support for the l10n of individual components.</description>
+Providing support for the l10n of individual components.
+Loading the local translation resource files (for environments without Singleton Service).</description>
     </item>
     
     <item>
@@ -155,6 +156,18 @@ Providing support for the l10n of individual components.</description>
     </item>
     
     <item>
+      <title>Enable Product White List</title>
+      <link>https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-product-white-list/</link>
+      <pubDate>Wed, 11 Dec 2019 14:14:49 +0800</pubDate>
+      
+      <guid>https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-product-white-list/</guid>
+      <description>Singleton Service adds a new feature to support the product white list defination, that means only the product in the white list can work well to get translations and get supported language list. It is no impact for DateTimes / Numbers / Currencies / Plurals / Measurements / DateFields / RegionList .
+By default, this feature is disabled.
+This page will introduce the details about this new feature.
+How to enable product white list in Singleton Service?</description>
+    </item>
+    
+    <item>
       <title>Enable S3 Storage</title>
       <link>https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/</link>
       <pubDate>Fri, 01 Nov 2019 18:53:33 +0800</pubDate>
@@ -163,10 +176,8 @@ Providing support for the l10n of individual components.</description>
       <description>Singleton Service now supports to store the translation bundle files on AWS S3.
 This page will introduce the details about Singleton Service S3 build.
 How to generate Singleton Service S3 build? The steps to generate S3 build:
- Clone Singleton Service code using Git.
-git clone git@github.com:vmware/singleton.git  Update the complie configuration file in singleton/g11n-ws/gradle.properties
-datatype=bundle   to
-datatype=s3   Update the below s3 config items according to your requirements in singleton/g11n-ws/vip-manager-i18n/src/main/resources/application-s3.</description>
+ Clone Singleton Service code using Git.  git clone git@github.com:vmware/singleton.gitUpdate the complie configuration file in singleton/g11n-ws/gradle.properties  datatype=bundleto
+datatype=s3Update the below s3 config items according to your requirements in singleton/g11n-ws/vip-manager-i18n/src/main/resources/application-s3.</description>
     </item>
     
     <item>

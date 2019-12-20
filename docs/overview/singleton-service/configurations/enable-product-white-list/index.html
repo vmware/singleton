@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2019-12-20T14:26:52 CST">
-<title>Documentation :: Singleton</title>
+<title>Enable Product White List :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://vmware.github.io/singleton/css/nucleus.css" rel="stylesheet">
@@ -25,7 +25,7 @@
 
     
   </head>
-  <body data-url="/docs/">
+  <body data-url="/docs/overview/singleton-service/configurations/enable-product-white-list/">
     
       <header>
   <div class="logo">
@@ -64,7 +64,7 @@
 <article>
   <aside>
     <ul class="menu">
-    <li data-nav-id="/docs/" class="dd-item parent active haschildren
+    <li data-nav-id="/docs/" class="dd-item parent haschildren
         ">
       <div>
       <a href="https://vmware.github.io/singleton/docs/">Documentation</a>
@@ -93,22 +93,25 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/docs/overview/" class="dd-item haschildren
+    <li data-nav-id="/docs/overview/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://vmware.github.io/singleton/docs/overview/">Overview</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="https://vmware.github.io/singleton/docs/overview/">Overview</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/docs/overview/singleton-service/" class="dd-item haschildren
+    <li data-nav-id="/docs/overview/singleton-service/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/">Singleton Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/">Singleton Service</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/docs/overview/singleton-service/configurations/" class="dd-item haschildren
+    <li data-nav-id="/docs/overview/singleton-service/configurations/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/docs/overview/singleton-service/configurations/enable-source-collection/" class="dd-item">
@@ -125,7 +128,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-product-white-list/" class="dd-item">
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-product-white-list/" class="dd-item active">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-product-white-list/">
             Enable Product White List
@@ -261,14 +264,31 @@
       <center>Navigation : 
         <select onchange="javascript:location.href = this.value;">
           
-    <option value="/docs/"  selected>
+    <option value="/docs/" >
    Documentation</option> 
     <option value="/docs/get-started/" >
   - 
    Get Started</option>
     <option value="/docs/overview/" >
   - 
-   Overview</option>
+   Overview</option> 
+    <option value="/docs/overview/singleton-service/" >
+  -- 
+   Singleton Service</option> 
+    <option value="/docs/overview/singleton-service/configurations/" >
+  --- 
+   Configurations</option> 
+      <option value="/docs/overview/singleton-service/configurations/enable-source-collection/" >---- Enable Source Collection</option>
+      <option value="/docs/overview/singleton-service/configurations/enable-pseudo-translation/" >---- Enable Pseudo Translation</option>
+      <option value="/docs/overview/singleton-service/configurations/enable-product-white-list/"  selected>---- Enable Product White List</option>
+      <option value="/docs/overview/singleton-service/configurations/enable-s3-storage/" >---- Enable S3 Storage</option>
+  
+      <option value="/docs/overview/singleton-service/singleton-service-apis/" >--- Singleton Service APIs</option>
+  
+    <option value="/docs/overview/singleton-sdk/" >
+  -- 
+   Singleton SDK</option>
+  
     <option value="/docs/tutorials/" >
   - 
    Tutorials</option>
@@ -295,41 +315,46 @@
       </div>
     
 
-    <h1>Documentation</h1>
+    <h1>Enable Product White List</h1>
     
     
     
-
-
-
-<div class="extra-pagination inner">
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number">Page 1 of 0</span>
-	
-</nav>
-
-</div>
-
-
-
-<div style="margin-bottom:2rem"></div>
-
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number">Page 1 of 0</span>
-	
-</nav>
-
-
+    <p>Singleton Service adds a new feature to support the product white list defination, that means only the product in the white list can work well to get translations and get supported language list. It is no impact for <em>DateTimes / Numbers / Currencies / Plurals / Measurements / DateFields / RegionList</em> .</p>
+<p>By default, this feature is disabled.</p>
+<p>This page will introduce the details about this new feature.</p>
+<h2 id="how-to-enable-product-white-list-in-singleton-service">How to enable product white list in Singleton Service?</h2>
+<p>The steps:</p>
+<ol>
+<li>
+<p>Generate a Singleton Service build or get a Singleton service build based on v0.3.0;</p>
+</li>
+<li>
+<p>Create a JSON file named <code>bundle.json</code>, and put it into the folder <code>.\l10n\bundles\</code>.
+The content is like:</p>
+</li>
+</ol>
+<pre><code>{
+    &quot;Testing&quot;: [&quot;1.0.0&quot;, &quot;1.0.5&quot;],
+    &quot;SampleAPP&quot;: [&quot;1.0.0&quot;]
+}
+</code></pre><p>The products in this file will be supported by Singleton Service, it's not related to <em>version</em>, only <strong>productName</strong>.</p>
+<p><strong>Notes</strong>:</p>
+<ol>
+<li>
+<p>This configuration file will be loaded into cache when Singleton Service starts. Please restart Singleton Service if any change for this configuration file.</p>
+</li>
+<li>
+<p>If you use Singleton Service S3 build, please also put this configuration file into local folder <code>.\l10n\bundles\</code> with Singleton Service S3 build together. Don't move it to AWS storage.</p>
+</li>
+</ol>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://vmware.github.io/singleton/" title="About Singleton"> <i class="fa fa-chevron-left"></i><label>About Singleton</label></a>
-    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/get-started/" title="Get Started" style="margin-right: 0px;"><label>Get Started</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-pseudo-translation/" title="Enable Pseudo Translation"> <i class="fa fa-chevron-left"></i><label>Enable Pseudo Translation</label></a>
+    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/" title="Enable S3 Storage" style="margin-right: 0px;"><label>Enable S3 Storage</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -344,7 +369,7 @@
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 24/09/2019
+        <i class='fa fa-calendar'></i> Last update on 11/12/2019
     </div>
     
 

@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-11-20T19:36:54 PST">
+<meta name="revised" content="2019-12-20T14:26:52 CST">
 <title>Download and Installation :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -123,6 +123,13 @@
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-pseudo-translation/">
             Enable Pseudo Translation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-product-white-list/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-product-white-list/">
+            Enable Product White List
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -296,14 +303,9 @@
     
     
     
-    
-
-<p>Singleton official 0.1.0 Release is available now! Choose the download that&rsquo;s right for you and click one of the links below.</p>
-
-<h1 id="singleton-service-0-1-0-binaries">Singleton Service 0.1.0 Binaries</h1>
-
+    <p>Singleton official 0.1.0 Release is available now! Choose the download that's right for you and click one of the links below.</p>
+<h1 id="singleton-service-010-binaries">Singleton Service 0.1.0 Binaries</h1>
 <h2 id="downloading">Downloading</h2>
-
 <table>
 <thead>
 <tr>
@@ -312,14 +314,12 @@
 <th>branch/tag</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><a href="http://repo1.maven.org/maven2/com/vmware/singleton/singleton-manager-i18n/0.1.0/singleton-manager-i18n-0.1.0.jar">singleton-manager-i18n-0.1.0.jar</a></td>
 <td><code>8e7599495292ce34cdb9769ec43695999071a1fe</code></td>
 <td>master/<a href="https://github.com/vmware/singleton/releases/tag/v0.1.0-Singleton-Service">v0.1.0-Singleton-Service</a></td>
 </tr>
-
 <tr>
 <td><a href="http://repo1.maven.org/maven2/com/vmware/singleton/singleton-manager-l10n/0.1.0/singleton-manager-l10n-0.1.0.jar">singleton-manager-l10n-0.1.0.jar</a></td>
 <td><code>8d744bb83e310a1b451a68fb65999803488c8cfc</code></td>
@@ -327,37 +327,23 @@
 </tr>
 </tbody>
 </table>
-
 <h2 id="installation">Installation</h2>
-
 <p>Singleton Service include 2 types of builds, one is i18n manager, the other is l10n manager:</p>
-
 <ul>
 <li>I18n manager is the main build, it provides the <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/">restful APIs</a> to talk with Singleton SDK.</li>
 <li>L10n manager will work together with I18n manager to achieve the feature <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-source-collection/">Source Collection</a>.</li>
 </ul>
-
 <p><strong>Prerequisites</strong></p>
-
 <ul>
 <li><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">JDK8</a> is installed and works well on your environment, as Singleton Service is based on JAVA language development.</li>
 <li>The ports (8088, 8090, 8091) are allowed to access and not in use, as Singleton service run based on these ports.</li>
 </ul>
-
 <p><strong>To start Singleton Service I18n manager</strong></p>
-
 <pre><code>java -jar singleton-manager-i18n-0.1.0.jar
-</code></pre>
-
-<p><strong>To Start Singleton Service L10n manager</strong></p>
-
+</code></pre><p><strong>To Start Singleton Service L10n manager</strong></p>
 <pre><code>java -jar singleton-manager-l10n-0.1.0.jar
-</code></pre>
-
-<h1 id="singleton-sdk-0-1-0-binaries">Singleton SDK 0.1.0 Binaries</h1>
-
-<h2 id="downloading-1">Downloading</h2>
-
+</code></pre><h1 id="singleton-sdk-010-binaries">Singleton SDK 0.1.0 Binaries</h1>
+<h2 id="downloading1">Downloading</h2>
 <table>
 <thead>
 <tr>
@@ -366,20 +352,17 @@
 <th>branch/tag</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><a href="http://repo1.maven.org/maven2/com/vmware/singleton/singleton-client-java/0.1.0/singleton-client-java-0.1.0.jar">singleton-client-java-0.1.0.jar </a></td>
 <td><code>d27afa9e1659759805e320daab7d8d0e5f7b8da2</code></td>
 <td>g11n-java-client/<a href="https://github.com/vmware/singleton/releases/tag/v0.1.0-Singleton-Java-Client">v0.1.0-Singleton-Java-Client</a></td>
 </tr>
-
 <tr>
 <td><a href="https://www.npmjs.com/package/@singleton-i18n/js-core-sdk/v/0.1.0">@singleton-i18n/js-core-sdk@0.1.0</a></td>
 <td><code>1e776e866ded0751d39ea391cae29b412089fcc1</code></td>
 <td>g11n-js-client/<a href="https://github.com/vmware/singleton/releases/tag/v0.1.0-Singleton-JS-Client">v0.1.0-Singleton-JS-Client</a></td>
 </tr>
-
 <tr>
 <td><a href="https://www.npmjs.com/package/@singleton-i18n/angular-client/v/0.1.0">@singleton-i18n/angular-client@0.1.0</a></td>
 <td><code>8f8ae3ca2ef6e1bfccd828fc1b9e4c6e74f6be20</code></td>
