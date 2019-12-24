@@ -49,7 +49,7 @@ describe( 'i18nClient coreService', () => {
             ...{ language: 'de', i18nScope: [ PatternCategories.DATE ]}
         });
         it('should return correct translation', () => {
-            client2.coreService.setTranslations('de', {
+            client2.coreService.setTranslations('de', 'demo', {
                 demo: 'demo-string',
                 hello: 'Hallo {0}'
             });

@@ -13,56 +13,66 @@ import { ResponseParser, defaultResponseParser } from './parser';
 import { Configuration } from './configuration';
 
 class I18nClient {
-  private loader: Loader;
-  private resParser: ResponseParser;
-  private cacheManager: Store;
-  private dateFormatter: DateFormatter;
-  public coreService: CoreService;
-  public i18nService: I18nService;
-  public l10nService: L10nService;
+    private loader: Loader;
+    private resParser: ResponseParser;
+    private cacheManager: Store;
+    private dateFormatter: DateFormatter;
+    public coreService: CoreService;
+    public i18nService: I18nService;
+    public l10nService: L10nService;
 
-  constructor() {
-    this.loader = defaultLoader;
-    this.resParser = defaultResponseParser;
-    this.cacheManager = CacheManager.createTranslationCacheManager();
-    this.dateFormatter = defaultDateFormatter;
-  }
-
-  /**
-   * initialize services and load ENGLISH source data.
-   * @param Config
-   */
-  init(Config: Configuration) {
-    this.coreService = new CoreService(this.loader, this.resParser);
-    this.coreService.init(Config);
-    this.i18nService = new I18nService(this.coreService, this.dateFormatter, this.cacheManager);
-    const messageFormatter = new MessageFormat(this.i18nService);
-    this.l10nService = new L10nService(this.coreService, this.cacheManager, messageFormatter);
-    return this;
-  }
-
-  plug(module: any) {
-    if (module instanceof Loader) {
-      this.loader = module;
+    constructor() {
+        this.loader = defaultLoader;
+        this.resParser = defaultResponseParser;
+        this.cacheManager = CacheManager.createTranslationCacheManager();
+        this.dateFormatter = defaultDateFormatter;
     }
 
-    if (module instanceof ResponseParser) {
-      this.resParser = module;
+    /**
+     * initialize services and load ENGLISH source data.
+     * @param Config
+     */
+    init(Config: Configuration) {
+        this.coreService = new CoreService(this.loader, this.resParser);
+        this.coreService.init(Config);
+        this.i18nService = new I18nService(this.coreService, this.dateFormatter, this.cacheManager);
+        const messageFormatter = new MessageFormat(this.i18nService);
+        this.l10nService = new L10nService(this.coreService, this.cacheManager, messageFormatter);
+        return this;
     }
 
-    if (module instanceof Store) {
-      this.cacheManager = module;
-    }
-    return this;
-  }
+    plug(module: any) {
+        if (module instanceof Loader) {
+            this.loader = module;
+        }
 
-  /**
-   * For the project which needs mutiple instances.
-   * @param Config
-   */
-  createInstance(Config: Configuration) {
-    return new I18nClient().init(Config);
-  }
+        if (module instanceof ResponseParser) {
+            this.resParser = module;
+        }
+
+        if (module instanceof Store) {
+            this.cacheManager = module;
+        }
+        return this;
+    }
+
+    /**
+     * For the project which needs mutiple instances.
+     * @param Config
+     */
+    createInstance(Config: Configuration) {
+        return new I18nClient().init(Config);
+    }
+
+    /**
+     * In multiple components support scenario, generate the corresponding l10nService based on the component
+     * @param component 
+     */
+    getL10nService(component: string) {
+        const messageFormatter = new MessageFormat(this.i18nService);
+        return new L10nService(this.coreService, this.cacheManager, messageFormatter, component);
+    }
+
 }
 
 export const i18nClient = new I18nClient();

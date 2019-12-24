@@ -14,13 +14,15 @@ export interface Configuration {
     productID: string;
     version: string;
     component?: string;
+    components?: string[];
+    combineRequest?: boolean;
     host: string;
     isPseudo?: boolean;
     language?: string;
     region?: string;
     i18nScope?: PatternCategories[];
     sourceBundle?: { [key: string]: any };
-    sourceBundles?: Array<{ [key: string]: any }>;
+    sourceBundles?: { [key: string]: any };
     i18nAssets?: string;
     httpOptions?: HttpRequestOptions;
 }
