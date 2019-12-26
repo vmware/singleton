@@ -6,8 +6,8 @@ apply plugin: "jacoco"
 apply plugin: "org.sonarqube"
 
 sourceCompatibility = 1.8
-description = 'vip i18n manager'
-
+description = 'singleton server'
+archivesBaseName = 'singleton'
 configurations {
 	bootJar
     war
@@ -120,17 +120,9 @@ task copyLibs(type :Copy, dependsOn: bootJar) {
     include "**/*.jar","**/*.war"
 }
 
-task copyZipLibs(type :Copy, dependsOn: bootJar){
-     from "$buildDir/libs"
-     from "$rootDir/vip-manager-i18n/singleton.sh"
-     into "$buildDir/zips/"
-     include "**/*.jar"
-     include "**/singleton.sh"
-}
 
-
-task zipSingleton(type: Zip,dependsOn:copyZipLibs) {
-	from "$buildDir/zips/"
+task zipSingletonScripts(type: Zip,dependsOn: bootJar) {
+	from "$rootDir/scripts/"
 	destinationDir file("$rootDir/../publish/")
 }
 
@@ -168,15 +160,15 @@ bootJar.doFirst {
 bootJar {
    
    
-    baseName = "vip-manager-i18n"
+    baseName = "singleton"
     if(project.hasProperty('productName')){
       def productName = project.getProperty('productName')
       if(productName == ''){
         productName = 'all'
       }
-      baseName = "vip-manager-i18n-$productName"
+      baseName = "singleton-$productName"
     }else{
-      baseName = "vip-manager-i18n"
+      baseName = "singleton"
     }
     version = "$branchName"
     classifier = "$buildNumber"
@@ -195,22 +187,22 @@ bootJar.doLast {
 }
 
 war {
-    baseName = "vip-manager-i18n"
+    baseName = "singleton"
     if(project.hasProperty('productName')){
       def productName = project.getProperty('productName')
       if(productName == ''){
         productName = 'all'
       }
-      baseName = "vip-manager-i18n-$productName"
+      baseName = "singleton-$productName"
     }else{
-      baseName = "vip-manager-i18n"
+      baseName = "singleton"
     }
     version = "$branchName"
     classifier = "$buildNumber"
 }
 
 assemble.dependsOn.add copyLibs
-assemble.dependsOn.add zipSingleton
+assemble.dependsOn.add zipSingletonScripts
 
 task testFetchedTranslation(type: JavaExec, dependsOn: classes) {
     def jarPath = "${project(":vip-manager-i18n").buildDir}/libs/"

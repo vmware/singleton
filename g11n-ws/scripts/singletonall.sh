@@ -1,19 +1,19 @@
 #!/bin/bash
 basepath=$(cd `dirname $0`; pwd)
 echo "the singleton shell path: $basepath"
-
-APP_NAME=vip-manager-i18n-0.1.0.jar
+APP_NAME=`ls | grep "^singleton" | grep "\.jar$"`
 
 #Introduce usage
 function usage(){
-        echo "Usage:sh singleton.sh [start|stop|status]"
+        echo "Usage:sh singletonall.sh [start|stop|check|status]"
 }
 
 #check the process is running
 function is_exist(){
-        local pid=`ps -ef|grep $APP_NAME|grep -v grep|awk '{print $2}'`
+       local pcmd="ps -ef | grep \"java -jar $APP_NAME\" | grep -v grep | awk '{print \$2}'"
+       local pid=$(eval $pcmd)
         #not existed return ,existed return 0
-        if [ -z $pid ]; then
+        if [ -z "$pid" ]; then
                 echo 0
         else
                 echo $pid
@@ -25,8 +25,9 @@ function startapp(){
         local startedpid=$(is_exist)
         if [ $startedpid -eq 0 ]; then
                 echo "begin to start $APP_NAME"
-                nohup java -jar $APP_NAME  >/dev/null 2>&1 &
-                keepappalive
+                nohup java -jar $APP_NAME >/dev/null 2>&1 &
+				startedpid=$(is_exist)
+                echo "$APP_NAME start successfully. pid = $startedpid"
         else
                 echo "$APP_NAME is already running. pid = $startedpid"
         fi
@@ -41,17 +42,17 @@ function keepappalive(){
                 alivePid=$(is_exist)
                 if [ $alivePid -eq 0 ]; then
                         echo "$APP_NAME is stop running. and begin to start"
-                        nohup java -jar $APP_NAME  >/dev/null 2>&1 &
+                        nohup java -jar $APP_NAME >/dev/null 2>&1 &
                         alivePid=$(is_exist)
                         echo "$APP_NAME on running status. pid = $alivePid"
                 else
-                        sleep 5
                         echo "$APP_NAME on running status. pid = $alivePid"
+						sleep 5
                 fi
 
         done
 else
-        echo "$APP_NAME start failure"
+        echo "$APP_NAME is not started !"
 fi
 }
 
@@ -61,14 +62,14 @@ local stopPid=$(is_exist)
 if [ $stopPid -eq 0 ]; then
         echo "$APP_NAME is not running"
 else
-        echo "$APP_NAME begin to stopping and Pid = $stopPid"
-        local shellPid=`ps -ef|grep 'singleton.sh start'|grep -v grep|awk '{print $2}'`
+        local shellPid=`ps -ef|grep singletonall.sh |grep "check$"|grep -v grep|awk '{print $2}'`
         if [ ! -n "$shellPid" ]; then
                 echo "check $APP_NAME PID script has stopped!"    
         else
                 kill -9 $shellPid
+				echo "check $APP_NAME PID script stop successfully! Shell PID=$shellPid"
         fi
-        sleep 5
+        sleep 2
         stopPid=$(is_exist)
         kill -9 $stopPid
         echo "$APP_NAME stop successfully. Pid is $stopPid"
@@ -92,6 +93,9 @@ startapp
 ;;
 "stop")
 stopapp
+;;
+"check")
+keepappalive
 ;;
 "status")
 status
