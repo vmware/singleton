@@ -6,6 +6,7 @@ package com.vmware.vip.core.messages.utils;
 
 import java.util.Map;
 
+import org.apache.commons.lang3.SerializationUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.BeanUtils;
@@ -47,23 +48,22 @@ public class PseudoMessagesUtils {
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static TranslationDTO getPseudoMessages2(
-			TranslationDTO translationDTO, PseudoConfig pseudoConfig) {
-		TranslationDTO t = new TranslationDTO();
-		BeanUtils.copyProperties(translationDTO, t);
-		JSONArray pseudoList = new JSONArray();
-		JSONArray ja = translationDTO.getBundles();
-		for (Object ob : ja) {
-			if (pseudoConfig.isEnabled()) {
-				JSONObject jo = (JSONObject) ob;
-				Map messages = (Map) jo.get(ConstantsKeys.MESSAGES);
-				jo.put(ConstantsKeys.MESSAGES,
-						JSONUtils.getOrderedMapForPseudo(messages,
-								pseudoConfig.getExistSourceTag()));
-				pseudoList.add(jo);
-			}
-		}
-		t.setBundles(pseudoList);
-		return t;
-	}
+    public static TranslationDTO getPseudoMessages2(
+            TranslationDTO translationDTO, PseudoConfig pseudoConfig) {
+        TranslationDTO t = SerializationUtils.clone(translationDTO);
+        JSONArray pseudoList = new JSONArray();
+        JSONArray ja = t.getBundles();
+        for (Object ob : ja) {
+            if (pseudoConfig.isEnabled()) {
+                JSONObject jo = (JSONObject) ob;
+                Map messages = (Map) jo.get(ConstantsKeys.MESSAGES);
+                jo.put(ConstantsKeys.MESSAGES,
+                        JSONUtils.getOrderedMapForPseudo(messages,
+                                pseudoConfig.getExistSourceTag()));
+                pseudoList.add(jo);
+            }
+        }
+        t.setBundles(pseudoList);
+        return t;
+    }
 }
