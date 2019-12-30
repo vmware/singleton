@@ -124,6 +124,7 @@ task copyLibs(type :Copy, dependsOn: bootJar) {
 task zipSingletonScripts(type: Zip,dependsOn: bootJar) {
 	from "$rootDir/scripts/"
 	destinationDir file("$rootDir/../publish/")
+	baseName 'singletonScripts'
 }
 
 processResources {
