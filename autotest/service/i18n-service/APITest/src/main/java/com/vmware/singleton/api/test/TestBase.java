@@ -454,6 +454,9 @@ public class TestBase extends RestRequester {
 				testMatrix.add(data);
 			}
 		}
+		if (testMatrix.isEmpty()) {
+			throw new Exception("Test data is empty, please check.");
+		}
 		return testMatrix.toArray(new Object[0][]);
 	}
 
