@@ -6,8 +6,8 @@ apply plugin: "jacoco"
 apply plugin: "org.sonarqube"
 
 sourceCompatibility = 1.8
-description = 'vip i18n manager'
-
+description = 'singleton server'
+archivesBaseName = 'singleton'
 configurations {
 	bootJar
     war
@@ -121,6 +121,13 @@ task copyLibs(type :Copy, dependsOn: bootJar) {
     include "**/*.jar","**/*.war"
 }
 
+
+task zipSingletonScripts(type: Zip,dependsOn: bootJar) {
+	from "$rootDir/scripts/"
+	destinationDir file("$rootDir/../publish/")
+	baseName 'singletonScripts'
+}
+
 processResources {
     excludes =[]
      if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
@@ -155,15 +162,15 @@ bootJar.doFirst {
 bootJar {
    
    
-    baseName = "vip-manager-i18n"
+    baseName = "singleton"
     if(project.hasProperty('productName')){
       def productName = project.getProperty('productName')
       if(productName == ''){
         productName = 'all'
       }
-      baseName = "vip-manager-i18n-$productName"
+      baseName = "singleton-$productName"
     }else{
-      baseName = "vip-manager-i18n"
+      baseName = "singleton"
     }
     version = "$branchName"
     classifier = "$buildNumber"
@@ -182,21 +189,22 @@ bootJar.doLast {
 }
 
 war {
-    baseName = "vip-manager-i18n"
+    baseName = "singleton"
     if(project.hasProperty('productName')){
       def productName = project.getProperty('productName')
       if(productName == ''){
         productName = 'all'
       }
-      baseName = "vip-manager-i18n-$productName"
+      baseName = "singleton-$productName"
     }else{
-      baseName = "vip-manager-i18n"
+      baseName = "singleton"
     }
     version = "$branchName"
     classifier = "$buildNumber"
 }
 
 assemble.dependsOn.add copyLibs
+assemble.dependsOn.add zipSingletonScripts
 
 task testFetchedTranslation(type: JavaExec, dependsOn: classes) {
     def jarPath = "${project(":vip-manager-i18n").buildDir}/libs/"
