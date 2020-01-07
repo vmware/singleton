@@ -30,7 +30,7 @@ describe('l10nService', () => {
         it ('from translations', () => {
             const config = Object.assign({}, baseConfig, { language: 'de'});
             client = i18nClient.createInstance(config);
-            client.coreService.setTranslations('de', 'demo',  {
+            client.coreService.setTranslations('de', {
                 demo: 'demo-string',
                 hello: 'Hallo {0}'
             });

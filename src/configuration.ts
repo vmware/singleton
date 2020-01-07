@@ -36,6 +36,7 @@ export function getDefaultConfig(): {} {
         i18nScope: [],
         sourceBundle: {},
         i18nAssets: '',
+        combineRequest: true,
         httpOptions: { timeout: 3000 }
     };
 }
