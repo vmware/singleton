@@ -28,4 +28,5 @@ public class APIParamValue {
 	public final static String DISPLAY_LANGUAGE   = "the display language. e.g. 'en'";
 	public final static String LANGUAGE   = "a string which represents language, e.g. en, en-US, pt, pt-BR, zh-Hans";
 	public final static String REGION   = "a string which represents region, e.g. US, PT, CN";
+	public final static String COMBINE = "a integer which represents combine type number 1 or 2";
 }
