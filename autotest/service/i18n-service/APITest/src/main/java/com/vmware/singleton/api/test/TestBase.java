@@ -71,9 +71,8 @@ public class TestBase extends RestRequester {
 			String requestBody, HashMap<String, String> requestProperties, HashMap<String, String> checkPointMap) throws Exception {
 //		logger.testCaseBegin(testCase);
 
-		if (params.isEmpty() || checkPointMap.isEmpty()) {
-			Assert.assertNotNull(null, "parameters or checkpoint is empty,"
-					+ "please check your test data.");
+		if (checkPointMap.isEmpty()) {
+			Assert.assertNotNull(null, "checkpoint is empty, please check your test data.");
 //			logger.verifyNotNull("parameters or checkpoint is empty,"
 //					+ "please check your test data.", null);
 		} else {
@@ -329,7 +328,7 @@ public class TestBase extends RestRequester {
 						if (errorMsg.isEmpty()) {
 							result = true;
 						}
-						Assert.assertTrue(result, "verify response list no missing and no unexpected value");
+						Assert.assertTrue(result, String.format("Expected list is '%s' and actual list is '%s', item sorting not sensitive", expected, actualResponse));
 //						logger.verifyTrue("verify response list no missing and no unexpected value", result, errorMsg);
 					}
 				}
@@ -341,8 +340,10 @@ public class TestBase extends RestRequester {
 					if (jsonPath.contains("].")) {
 						//							int indexLastDot = jsonPath.lastIndexOf(".");
 						//							if (jsonPath.substring(indexLastDot-1, indexLastDot).equals("]")) {
-						System.out.println("[jsonpath spec]found array filter, need remove '[' and ']' in result");
-						queryStr = queryStr.substring(1, queryStr.length()-1);
+						if (queryStr.startsWith("[") && queryStr.endsWith("]")) {
+							System.out.println("[jsonpath spec]found array filter, need remove '[' and ']' in result");
+							queryStr = queryStr.substring(1, queryStr.length()-1);
+						}
 						if (queryStr.startsWith("\"") && queryStr.endsWith("\"")) {
 							System.out.println("[jsonpath spec]remove '\"' at the start and end");
 							queryStr = queryStr.substring(1, queryStr.length()-1);
