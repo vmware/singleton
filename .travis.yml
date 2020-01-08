@@ -69,7 +69,7 @@ jobs:
         - cp -a devops/autotest/client/jscoresdk/resources/bundles/JSCoreSDKTest service/g11n-ws/vip-manager-i18n/src/main/resources/l10n/bundles/
         - cd $TRAVIS_BUILD_DIR/service/g11n-ws && ./gradlew build -x test
         - cp $TRAVIS_BUILD_DIR/devops/deploy/i18n-service/Dockerfile $TRAVIS_BUILD_DIR/service/publish/
-        - cd $TRAVIS_BUILD_DIR/service/publish && mv vip-manager-i18n-*.jar i18n-service.jar
+        - cd $TRAVIS_BUILD_DIR/service/publish && mv singleton-[0-9\.]*.jar i18n-service.jar
         - docker build -t singleton .
         - docker run -d -p 8090:8090 -p 8091:8091 --name singleton singleton
         - docker ps
