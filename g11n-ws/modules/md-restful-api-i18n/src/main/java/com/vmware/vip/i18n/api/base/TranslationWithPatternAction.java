@@ -64,39 +64,40 @@ public class TranslationWithPatternAction extends BaseAction {
 	      }
 	   }
 
-	   /**
-        * According to  object get the pattern and translation or only get the
-        * pattern when use GET method
-        * 
-        */
-	    public APIResponseDTO getTransPattern(int combine, String productName, String version,
-	            String components, String language, String scope, String region, String pseudo,
-	            HttpServletRequest req) throws Exception{
-	        // TODO Auto-generated method stub
-	        TranslationWithPatternDTO data = new TranslationWithPatternDTO();
-	           data.setCombine(combine);
-	           data.setLanguage(language);
-	           data.setScope(scope);
-	           data.setProductName(productName);
-	           version = VersionMatcher.getMatchedVersion(version,  productService.getSupportVersionList(productName));
-	           data.setVersion(version);
-	           if(!StringUtils.isEmpty(components)) {
-	               data.setComponents(Arrays.asList(components.split(ConstantsChar.COMMA)));
-	           }
-	           data.setRegion(region);
-	           data.setPseudo(pseudo);
-	           if (validateCombineType(data)) {
-	               Map<String, Object> pattern = getPattern(data);
-	               List<ComponentMessagesDTO> compList = getTranslation(data);
-	               Map<String, Object> map = new HashMap<String, Object>();
-	               map.put(ConstantsKeys.PATTERN, pattern);
-	               map.put(ConstantsKeys.COMPONENTS, compList);
-	               return super.handleResponse(APIResponseStatus.OK, map);
-	            } else {
-	               return super.handleResponse(APIResponseStatus.INTERNAL_SERVER_ERROR,
-	                     ConstantsMsg.PARAM_NOT_VALIDATE);
-	            }
-	    }
+    /**
+     * According to object get the pattern and translation or only get the pattern when use GET
+     * method
+     * 
+     */
+    public APIResponseDTO getTransPattern(int combine, String productName, String version,
+            String components, String language, String scope, String region, String pseudo)
+            throws Exception {
+        // TODO Auto-generated method stub
+        TranslationWithPatternDTO data = new TranslationWithPatternDTO();
+        data.setCombine(combine);
+        data.setLanguage(language);
+        data.setScope(scope);
+        data.setProductName(productName);
+        version = VersionMatcher.getMatchedVersion(version,
+                productService.getSupportVersionList(productName));
+        data.setVersion(version);
+        if (!StringUtils.isEmpty(components)) {
+            data.setComponents(Arrays.asList(components.split(ConstantsChar.COMMA)));
+        }
+        data.setRegion(region);
+        data.setPseudo(pseudo);
+        if (validateCombineType(data)) {
+            Map<String, Object> pattern = getPattern(data);
+            List<ComponentMessagesDTO> compList = getTranslation(data);
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put(ConstantsKeys.PATTERN, pattern);
+            map.put(ConstantsKeys.COMPONENTS, compList);
+            return super.handleResponse(APIResponseStatus.OK, map);
+        } else {
+            return super.handleResponse(APIResponseStatus.INTERNAL_SERVER_ERROR,
+                    ConstantsMsg.PARAM_NOT_VALIDATE);
+        }
+    }
        /**
         * This is use to validate the request data of get Translation with Pattern when mehod is GET
         * 

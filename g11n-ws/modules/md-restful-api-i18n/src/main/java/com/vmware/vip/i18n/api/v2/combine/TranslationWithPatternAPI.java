@@ -57,7 +57,7 @@ public class TranslationWithPatternAPI extends TranslationWithPatternAction {
           @ApiParam(name = APIParamName.PSEUDO, required=false, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required=false, defaultValue="false") String pseudo,
           HttpServletRequest req)  throws Exception  {
       
-       return super.getTransPattern(combine, productName, version, components, language, scope, region, pseudo, req);
+       return super.getTransPattern(combine, productName, version, components, language, scope, region, pseudo);
    }
 
 }
