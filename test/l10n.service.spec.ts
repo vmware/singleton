@@ -28,7 +28,8 @@ describe('l10nService', () => {
             expect( client.l10nService.getMessage('hello', ['World']) ).toEqual('Hello World');
         });
         it ('from translations', () => {
-            client = i18nClient.createInstance( { ...baseConfig, ...{ language: 'de'} });
+            const config = Object.assign({}, baseConfig, { language: 'de'});
+            client = i18nClient.createInstance(config);
             client.coreService.setTranslations('de', {
                 demo: 'demo-string',
                 hello: 'Hallo {0}'

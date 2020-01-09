@@ -41,14 +41,19 @@ export class CoreService {
      * @param callback
      */
     async loadI18nData(callback?: () => void): Promise<any> {
-        const pendingList = [];
-        let i18nResources = [];
+        let pendingList: Promise<any>[] = [];
+        let i18nResources;
 
         // callback should be performed always
         try {
             // for translations
             if (!this.isSourceLanguage(this.currentLanguage)) {
-                pendingList.push(this.loadTranslations(this.currentLanguage));
+                const request = this.loadTranslations(this.currentLanguage);
+                if (Array.isArray(request)) {
+                    pendingList = request;
+                } else {
+                    pendingList.push(request);
+                }
             }
             // for formatting patterns
             if (!this.isSourceLocale(this.currentLanguage, this.currentRegion)) {
@@ -119,9 +124,13 @@ export class CoreService {
             return this.config.sourceBundle;
         }
         if (this.config.sourceBundles) {
-            if (Array.isArray(this.config.sourceBundles)) {
-                return assign({}, this.config.sourceBundles);
-            }
+            Object.keys(this.config.sourceBundles).forEach((key: string) => {
+                const translations = this.config.sourceBundles[key];
+                if (translations && Array.isArray(translations)) {
+                    this.config.sourceBundles[key] = assign({}, translations);
+                }
+            });
+            return this.config.sourceBundles;
         }
         return undefined;
     }
@@ -149,7 +158,12 @@ export class CoreService {
                 : false;
     }
 
-    public getComponentTransUrl(language: string): string {
+    /**
+     * Get translation request url by component
+     * @param language
+     * @param component
+     */
+    public getComponentTransUrl(language: string, component: string): string {
         if (isDefined(this.config.i18nAssets)) {
             const path = `${this.config.i18nAssets}${Constants.L10N_ASSETS_PREFIX}${language}${Constants.ASSETS_SUFFIX}`;
             return path;
@@ -159,25 +173,83 @@ export class CoreService {
             .concat('/products/' + this.config.productID)
             .concat('/versions/' + this.config.version)
             .concat('/locales/' + language)
-            .concat('/components/' + this.config.component)
+            .concat('/components/' + component)
             .concat('?pseudo=' + this.config.isPseudo);
     }
+
+    /**
+     * Get translation request url by multiple components
+     * @param component
+     * @param language
+     */
+    private getMultiComponentTransUrl(language: string, component: string) {
+        // todo: support i18nAssets
+        return this.config.host
+        .concat(Constants.L10N_COMPONENT_API_ENDPOINT)
+        .concat('/products/' + this.config.productID)
+        .concat('/versions/' + this.config.version)
+        .concat('?components=' + component)
+        .concat('&locales=' + language)
+        .concat('&pseudo=' + this.config.isPseudo);
+    }
+
     /**
      * return promise with processed result.
      * @param language
      */
-    public loadTranslations(language: string): Promise<any> {
-        const cache = this.cacheManager.lookforTranslationByComponent(this.getComponent(), language);
+    public loadTranslations(language: string): Promise<any> | Promise<any>[] {
+        const isMultipleComponents = this.config.components && this.config.components.length > 0;
+        const isCombine = isMultipleComponents && this.config.combineRequest;
+
+        // single component
+        if (!isMultipleComponents) {
+            return this.getTranslationByComponent(language, this.config.component);
+        }
+
+        // multiple components & not combine request
+        if (isMultipleComponents && !isCombine) {
+            const requestArray: Promise<any>[] = [];
+            this.config.components.forEach((component: string) => {
+                const request = this.getTranslationByComponent(language, component);
+                requestArray.push(request);
+            });
+            return requestArray;
+        }
+
+        // multiple components & combine request
+        return this.getTranslationByComponents(language);
+
+    }
+
+    private async getTranslationByComponents(language: string) {
+        const components = this.config.components.join(',');
+        const componentTransUrl = this.getMultiComponentTransUrl(language, components);
+        const promise = this.coreLoader.getI18nResource(componentTransUrl, this.httpOptions);
+        return promise.then(
+            (result: any) => {
+                // bundle is translations array
+                const bundles = this.resParser.getTranslationBundles(result);
+                bundles.forEach((item: any) => {
+                    if (item.component && item.messages) {
+                        this.setTranslations(language, item.messages, item.component);
+                    }
+                });
+                return bundles;
+            }).catch((err: any) => { this.logger.error('Load translations failed.', err.message); });
+    }
+
+    private async getTranslationByComponent(language: string, component: string) {
+        const cache = this.cacheManager.lookforTranslationByComponent(component, language);
         if (typeof cache !== 'undefined') {
             return Promise.resolve(cache);
         }
-        const componentTransUrl = this.getComponentTransUrl(language);
-        const promise = this.coreLoader.getI18nResource(componentTransUrl, this.httpOptions);
+        const url = this.getComponentTransUrl(language, component);
+        const promise = this.coreLoader.getI18nResource(url, this.httpOptions);
         return promise.then(
             (result: any) => {
                 const translations = this.resParser.getTranslations(result);
                 if (translations) {
-                    this.setTranslations(language, translations);
+                    this.setTranslations(language, translations, component);
                     return translations;
                 }
             }).catch((err: any) => { this.logger.error('Load translations failed.', err.message); });
@@ -264,14 +336,15 @@ export class CoreService {
         return promise;
     }
 
-    public setTranslations(language: string, translations: any) {
+    public setTranslations(language: string, translations: any, component?: string) {
+        if ( !isDefined(component) ) { component = this.getComponent(); }
         if (!isDefined(language)) {
             throw ParamaterError('setTranslation', 'language');
         }
         if (!isDefined(translations)) {
             return;
         }
-        this.cacheManager.addTranslationByComponent(this.getComponent(), this.currentLanguage, translations);
+        this.cacheManager.addTranslationByComponent(component, language, translations);
     }
 
     public setPatterns(patterns: any, language: string, region?: string, ) {

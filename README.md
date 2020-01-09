@@ -47,13 +47,13 @@ Package the client library
 npm pack
 ```
 
-The library will be packaged in the same directory (eg. vip-vip-core-sdk-server-0.1.0.tgz)
+The library will be packaged in the same directory (eg. vip-vip-core-sdk-server-0.4.0.tgz)
 
 Import the library in your ES2015 application
 
 ```
 cd <root path of your app>
-npm install <path-to-location-of-library-in-previous-step/vip-vip-core-sdk-server-0.1.0.tgz>
+npm install <path-to-location-of-library-in-previous-step/vip-vip-core-sdk-server-0.4.0.tgz>
 ```
 
 Configure your main module file :
