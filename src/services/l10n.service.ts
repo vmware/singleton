@@ -88,6 +88,9 @@ export class L10nService {
         if (this.sourceData && this.sourceData[key]) {
             return this.sourceData && this.sourceData[key];
         }
+        // get source string from multiple component sourceBundle
+        const sourceString = this.sourceData && this.sourceData[this.component] && this.sourceData[this.component][key];
+        if (sourceString) { return sourceString; }
         this.logger.error('No English found for key: ' + key + ' in sourceBundle');
         return key;
     }
