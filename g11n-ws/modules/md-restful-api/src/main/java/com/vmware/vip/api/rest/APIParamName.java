@@ -32,4 +32,5 @@ public class APIParamName {
 	public final static String CHECK_TRANS_STATUS= "checkTranslationStatus";
 	public final static String LANGUAGE= "language";
 	public final static String REGION= "region";
+	public final static String COMBINE = "combine";
 }

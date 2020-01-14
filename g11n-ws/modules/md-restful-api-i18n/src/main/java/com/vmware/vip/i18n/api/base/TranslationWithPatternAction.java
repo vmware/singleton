@@ -7,7 +7,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.vmware.vip.i18n.api.base.utils.CommonUtility;
+import com.vmware.vip.i18n.api.base.utils.VersionMatcher;
+
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +27,7 @@ import com.vmware.vip.common.i18n.dto.TranslationWithPatternDTO;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.core.messages.exception.L3APIException;
+import com.vmware.vip.core.messages.service.product.IProductService;
 import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO;
 import com.vmware.vip.core.messages.service.singlecomponent.IOneComponentService;
 
@@ -32,7 +37,10 @@ public class TranslationWithPatternAction extends BaseAction {
 
 	   @Autowired
 	   IOneComponentService singleComponentService;
-
+      
+	   @Autowired
+	   IProductService productService;
+	  
 	   @Autowired
 	   IPatternService patternService;
 
@@ -55,6 +63,59 @@ public class TranslationWithPatternAction extends BaseAction {
 	               ConstantsMsg.PARAM_NOT_VALIDATE);
 	      }
 	   }
+
+    /**
+     * According to object get the pattern and translation or only get the pattern when use GET
+     * method
+     * 
+     */
+    public APIResponseDTO getTransPattern(int combine, String productName, String version,
+            String components, String language, String scope, String region, String pseudo)
+            throws Exception {
+        // TODO Auto-generated method stub
+        TranslationWithPatternDTO data = new TranslationWithPatternDTO();
+        data.setCombine(combine);
+        data.setLanguage(language);
+        data.setScope(scope);
+        data.setProductName(productName);
+        version = VersionMatcher.getMatchedVersion(version,
+                productService.getSupportVersionList(productName));
+        data.setVersion(version);
+        if (!StringUtils.isEmpty(components)) {
+            data.setComponents(Arrays.asList(components.split(ConstantsChar.COMMA)));
+        }
+        data.setRegion(region);
+        data.setPseudo(pseudo);
+        if (validateCombineType(data)) {
+            Map<String, Object> pattern = getPattern(data);
+            List<ComponentMessagesDTO> compList = getTranslation(data);
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put(ConstantsKeys.PATTERN, pattern);
+            map.put(ConstantsKeys.COMPONENTS, compList);
+            return super.handleResponse(APIResponseStatus.OK, map);
+        } else {
+            return super.handleResponse(APIResponseStatus.INTERNAL_SERVER_ERROR,
+                    ConstantsMsg.PARAM_NOT_VALIDATE);
+        }
+    }
+       /**
+        * This is use to validate the request data of get Translation with Pattern when mehod is GET
+        * 
+        * 
+        */
+       private boolean validateCombineType(TranslationWithPatternDTO data) {
+           
+           if (data.getCombine() == TransWithPatternDataScope.TRANSLATION_PATTERN_WITH_REGION
+                 .getValue()) {
+              return isPatternTransaltionWithRegion(data);
+           } else if (data.getCombine() == TransWithPatternDataScope.TRANSLATION_PATTERN_NO_REGION
+                 .getValue()) {
+              return isPatternTranslationNoRegion(data);
+           }else {
+               return false;    
+           }
+       }
+       
 
 	   /**
 	    * This is use to validate the request data of get Translation with Pattern
@@ -198,7 +259,7 @@ public class TranslationWithPatternAction extends BaseAction {
 	         String version, String locale, String pseudo) throws L3APIException {
 	      ComponentMessagesDTO c = new ComponentMessagesDTO();
 	      c.setProductName(productName);
-	      c.setComponent(component == null ? ConstantsKeys.DEFAULT : component);
+	      c.setComponent(component == null ? ConstantsKeys.DEFAULT : component.trim());
 	      c.setVersion(version);
 	      if (new Boolean(pseudo)) {
 	         c.setLocale(ConstantsKeys.LATEST);
@@ -209,4 +270,6 @@ public class TranslationWithPatternAction extends BaseAction {
 	      c = singleComponentService.getComponentTranslation(c);
 	      return c;
 	   }
+
+
 	}

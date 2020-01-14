@@ -50,6 +50,8 @@ public class ConstantsKeys {
    public static final String IS_EXIST_PATTERN = "isExistPattern";
    public static final String LANGUAGE = "language";
    public static final String REGION = "region";
+   public static final String COMBINE = "combine";
+   public static final String SCOPE = "scope";
    // millisecond
    public static final Integer DELAY_TIME = 10000;
    public static final String VALIDATE_TOKEN_RESULT = "validateTokenResult";
