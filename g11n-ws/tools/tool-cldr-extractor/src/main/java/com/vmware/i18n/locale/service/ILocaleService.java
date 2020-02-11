@@ -12,4 +12,6 @@ public interface ILocaleService {
 
 	String getLocaleWithDefaultRegion(String locale);
 
+	String getContextTransforms(String locale);
+
 }

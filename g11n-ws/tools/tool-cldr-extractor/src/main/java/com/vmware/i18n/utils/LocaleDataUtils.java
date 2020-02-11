@@ -5,11 +5,8 @@
 package com.vmware.i18n.utils;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.text.MessageFormat;
+import java.util.*;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -258,6 +255,7 @@ public class LocaleDataUtils {
 		Map<String, Object> languagesMap = null;
 		Map<String, String> regionMap = null;
 		Map<String, Object> langMap = null;
+		Map<String, Object> contextTransformsMap = null;
 		for (String locale : allLocales.values()) {
 			territoriesMap = new LinkedHashMap<String, Object>();
 			CLDR cldr = new CLDR(locale);
@@ -275,8 +273,42 @@ public class LocaleDataUtils {
 			languagesMap.put(Constants.LANGUAGES, langMap);
 			CLDRUtils.writePatternDataIntoFile(
 					CLDRConstants.GEN_CLDR_LOCALEDATA_DIR + locale + File.separator + "languages.json", languagesMap);
+
+			contextTransformsMap = new LinkedHashMap<>();
+			Map<String, Object> contextTransformsData = LocaleDataUtils.getInstance().getContextTransformsData(locale);
+			if (contextTransformsData != null) {
+				contextTransformsMap.put(Constants.LANGUAGES, cldr.getLanguage());
+				contextTransformsMap.put(Constants.CONTEXT_TRANSFORMS, contextTransformsData);
+				CLDRUtils.writePatternDataIntoFile(CLDRConstants.GEN_CLDR_LOCALEDATA_DIR + locale +
+						File.separator + CLDRConstants.CONTEXT_TRANSFORM_JSON, contextTransformsMap);
+			}
 		}
 		logger.info("Extract cldr locales data complete!");
+	}
+
+	/**
+	 * Get CLDR ContextTransforms data
+	 *
+	 * @param locale
+	 * @return
+	 */
+	private Map<String, Object> getContextTransformsData(String locale) {
+		Map<String, Object> contextTransformsMap = new LinkedHashMap<String, Object>();
+		String zipPath = CLDRConstants.MISC_ZIP_FILE_PATH;
+		String fileName = MessageFormat.format(CLDRConstants.MISC_CONTEXT_TRANSFORM, locale);
+		String json = CLDRUtils.readZip(fileName, zipPath);
+		if (CommonUtil.isEmpty(json)) {
+			return null;
+		}
+		JSONObject contextTransforms = JSONUtil.string2JSON(json);
+		String node = MessageFormat.format(CLDRConstants.CONTEXT_TRANSFORM_NODE, locale);
+		if (CommonUtil.isEmpty(JSONUtil.select(contextTransforms, node))) {
+			return null;
+		}
+
+		String contextTransformsDataJson = JSONUtil.select(contextTransforms, node).toString();
+		contextTransformsMap.putAll(JSONUtil.string2SortMap(contextTransformsDataJson));
+		return contextTransformsMap;
 	}
 
 }

@@ -31,6 +31,13 @@ import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePath
 @Service
 public class LocaleService implements ILocaleService {
     private static final String LANGUAGE_STR="languages";
+	private static final String CONTEXT_TRANSFORMS = "contextTransforms";
+	private static final String DISPLAY_NAME_SENTENCE_BEGINNING = "displayName-sentenceBeginning";
+	private static final String DISPLAY_NAME_UI_LIST = "displayName-uiListOrMenu";
+	private static final String DISPLAY_NAME_STANDALONE = "displayName-standalone";
+	private static final String STAND_ALONE = "stand-alone";
+	private static final String UI_LIST_OR_MENU = "uiListOrMenu";
+	private static final String NO_CHANGES = "no-change";
 	private static final Logger logger = LoggerFactory.getLogger(LocaleService.class.getName());
 
 	@Autowired
@@ -106,13 +113,50 @@ public class LocaleService implements ILocaleService {
 		languagesMap = (Map<String, String>) jsonMap.get(LANGUAGE_STR);
 
 		for (String language : languageList) {
+			Map<String, String> displayNameMap = getDisplayNameMap(language, languagesParser, languagesMap.get(language));
 			language = LocaleUtils.normalizeToLanguageTag(language);
 			dto = new DisplayLanguageDTO();
 			dto.setDisplayName(languagesMap.get(language) == null ? "" : languagesMap.get(language));
+			dto.setDisplayName_sentenceBeginning(StringUtils.isEmpty(displayNameMap.get(DISPLAY_NAME_SENTENCE_BEGINNING)) ? dto.getDisplayName() : displayNameMap.get(DISPLAY_NAME_SENTENCE_BEGINNING));
+			dto.setDisplayName_uiListOrMenu(StringUtils.isEmpty(displayNameMap.get(DISPLAY_NAME_UI_LIST)) ? dto.getDisplayName() : displayNameMap.get(DISPLAY_NAME_UI_LIST));
+			dto.setDisplayName_standalone(StringUtils.isEmpty(displayNameMap.get(DISPLAY_NAME_STANDALONE)) ? dto.getDisplayName() : displayNameMap.get(DISPLAY_NAME_STANDALONE));
 			dto.setLanguageTag(language);
 			dtoList.add(dto);
 		}
 		return dtoList;
+	}
+
+	private Map<String, String> getDisplayNameMap(String language, LanguagesFileParser languagesParser, String displayName) {
+		Map<String, Object> tmpContext = languagesParser.getContextTransforms(language);
+		Map<String, String> displayNameMap = new HashMap<>();
+		displayNameMap.put(DISPLAY_NAME_UI_LIST, "");
+		displayNameMap.put(DISPLAY_NAME_STANDALONE, "");
+		displayNameMap.put(DISPLAY_NAME_SENTENCE_BEGINNING, tittleCase(displayName));
+		if (tmpContext != null && tmpContext.get(CONTEXT_TRANSFORMS) != null) {
+			Map<String, Map<String, String>> contextTransformMap = (Map<String, Map<String, String>>) tmpContext.get(CONTEXT_TRANSFORMS);
+			if (contextTransformMap != null && contextTransformMap.get(LANGUAGE_STR) != null) {
+				Map<String, String> languageMap = contextTransformMap.get(LANGUAGE_STR);
+				if (languageMap.get(STAND_ALONE) != null) {
+					displayNameMap.put(DISPLAY_NAME_STANDALONE, languageMap.get(STAND_ALONE).equals(NO_CHANGES) ? displayName : tittleCase(displayName));
+				}
+				if (languageMap.get(UI_LIST_OR_MENU) != null) {
+					displayNameMap.put(DISPLAY_NAME_UI_LIST, languageMap.get(UI_LIST_OR_MENU).equals(NO_CHANGES) ? displayName : tittleCase(displayName));
+				}
+			}
+		}
+		return displayNameMap;
+	}
+
+	private String tittleCase(String language) {
+		if (StringUtils.isEmpty(language)) {
+			return language;
+		}
+
+		char[] chars = language.toCharArray();
+		if (chars[0] >= 'a' && chars[0] <= 'z') {
+			chars[0] = (char) (chars[0] - 32);
+		}
+		return String.valueOf(chars);
 	}
 
 	@Override
