@@ -1,9 +1,7 @@
 /*
- *******************************************************************************
- * Copyright, VMware, Inc. All Rights Reserved. -- VMware Confidential
- *******************************************************************************
+ * Copyright 2019 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
  */
-
 package com.vmware.vip;
 
 import org.springframework.boot.SpringApplication;
