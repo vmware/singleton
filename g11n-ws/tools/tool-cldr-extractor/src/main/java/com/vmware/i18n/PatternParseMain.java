@@ -14,6 +14,7 @@ public class PatternParseMain {
 //        CLDRUtils.download();
         CLDRUtils.patternDataExtract();
         LocaleDataUtils.localesExtract();
+        LocaleDataUtils.contextTransformsExtract();
         SupplementUtils.supplementalCurrencyExtract();
         CLDRUtils.aliasesExtract();
         CLDRUtils.defaultContentExtract();

@@ -65,6 +65,7 @@ public class LocaleService implements ILocaleService {
 		DisplayLanguageDTO dto = null;
 		Map<String, String> languagesMap = null;
 		Map<String, Object> jsonMap = null;
+		String disPlayLocale = null;
 		List<String> languageList = this.productService.getSupportedLanguageList(productName, version);
 		if (languageList.size() == 0 || languageList == null){
 			return dtoList;
@@ -102,8 +103,8 @@ public class LocaleService implements ILocaleService {
 				logger.info("get data from cache");
 				// VIP-2001:[Get LanguageList API]Can't parse the language(i.e. en-US) which in default content json file.
 				String locale = dispLanguage.replace("_", "-");
-				String newLocale = CommonUtil.getCLDRLocale(locale, localePathMap, localeAliasesMap);
-				jsonMap = languagesParser.getDisplayNames(newLocale);
+				disPlayLocale = CommonUtil.getCLDRLocale(locale, localePathMap, localeAliasesMap);
+				jsonMap = languagesParser.getDisplayNames(disPlayLocale);
 				if (jsonMap == null || jsonMap.get(LANGUAGE_STR) == null) {
 					return dtoList;
 				}
@@ -113,7 +114,12 @@ public class LocaleService implements ILocaleService {
 		languagesMap = (Map<String, String>) jsonMap.get(LANGUAGE_STR);
 
 		for (String language : languageList) {
-			Map<String, String> displayNameMap = getDisplayNameMap(language, languagesParser, languagesMap.get(language));
+			Map<String, String> displayNameMap = null;
+			if (StringUtils.isEmpty(disPlayLocale)) {
+				displayNameMap = getDisplayNameMap(language, languagesParser, languagesMap.get(language));
+			} else {
+				displayNameMap = getDisplayNameMap(disPlayLocale, languagesParser, languagesMap.get(language));
+			}
 			language = LocaleUtils.normalizeToLanguageTag(language);
 			dto = new DisplayLanguageDTO();
 			dto.setDisplayName(languagesMap.get(language) == null ? "" : languagesMap.get(language));
@@ -126,8 +132,8 @@ public class LocaleService implements ILocaleService {
 		return dtoList;
 	}
 
-	private Map<String, String> getDisplayNameMap(String language, LanguagesFileParser languagesParser, String displayName) {
-		Map<String, Object> tmpContext = languagesParser.getContextTransforms(language);
+	private Map<String, String> getDisplayNameMap(String displayLanguage, LanguagesFileParser languagesParser, String displayName) {
+		Map<String, Object> tmpContext = languagesParser.getContextTransforms(displayLanguage);
 		Map<String, String> displayNameMap = new HashMap<>();
 		displayNameMap.put(DISPLAY_NAME_UI_LIST, "");
 		displayNameMap.put(DISPLAY_NAME_STANDALONE, "");
@@ -147,12 +153,12 @@ public class LocaleService implements ILocaleService {
 		return displayNameMap;
 	}
 
-	private String tittleCase(String language) {
-		if (StringUtils.isEmpty(language)) {
-			return language;
+	private String tittleCase(String displayName) {
+		if (StringUtils.isEmpty(displayName)) {
+			return displayName;
 		}
 
-		char[] chars = language.toCharArray();
+		char[] chars = displayName.toCharArray();
 		if (chars[0] >= 'a' && chars[0] <= 'z') {
 			chars[0] = (char) (chars[0] - 32);
 		}

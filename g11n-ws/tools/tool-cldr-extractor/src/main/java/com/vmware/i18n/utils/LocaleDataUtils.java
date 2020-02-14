@@ -255,7 +255,6 @@ public class LocaleDataUtils {
 		Map<String, Object> languagesMap = null;
 		Map<String, String> regionMap = null;
 		Map<String, Object> langMap = null;
-		Map<String, Object> contextTransformsMap = null;
 		for (String locale : allLocales.values()) {
 			territoriesMap = new LinkedHashMap<String, Object>();
 			CLDR cldr = new CLDR(locale);
@@ -273,17 +272,26 @@ public class LocaleDataUtils {
 			languagesMap.put(Constants.LANGUAGES, langMap);
 			CLDRUtils.writePatternDataIntoFile(
 					CLDRConstants.GEN_CLDR_LOCALEDATA_DIR + locale + File.separator + "languages.json", languagesMap);
+		}
+		logger.info("Extract cldr locales data complete!");
+	}
 
+	public static void contextTransformsExtract() {
+		logger.info("Start to extract cldr contextTransforms data ... ");
+		Map<String, String> allLocales = CLDRUtils.getAllCldrLocales();
+		Map<String, Object> contextTransformsMap = null;
+		for (String locale : allLocales.values()) {
 			contextTransformsMap = new LinkedHashMap<>();
 			Map<String, Object> contextTransformsData = LocaleDataUtils.getInstance().getContextTransformsData(locale);
 			if (contextTransformsData != null) {
+				CLDR cldr = new CLDR(locale);
 				contextTransformsMap.put(Constants.LANGUAGES, cldr.getLanguage());
 				contextTransformsMap.put(Constants.CONTEXT_TRANSFORMS, contextTransformsData);
-				CLDRUtils.writePatternDataIntoFile(CLDRConstants.GEN_CLDR_LOCALEDATA_DIR + locale +
+				CLDRUtils.writePatternDataIntoFile(CLDRConstants.GEN_CLDR_CONTEXT_TRANSFORM_DIR + locale +
 						File.separator + CLDRConstants.CONTEXT_TRANSFORM_JSON, contextTransformsMap);
 			}
 		}
-		logger.info("Extract cldr locales data complete!");
+		logger.info("Extract cldr contextTransforms data complete!");
 	}
 
 	/**
