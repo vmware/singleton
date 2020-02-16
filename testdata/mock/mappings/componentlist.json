@@ -1,0 +1,28 @@
+{
+  "mappings": [
+    {
+      "id": "productComponents",
+      "request": {
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/componentlist",
+        "method": "GET"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "componentlist.json"
+
+      }
+    },
+    {
+      "id": "productComponents_secondtime",
+      "request": {
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/componentlist",
+        "method": "GET"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "componentlist_secondtime.json"
+
+      }
+    }
+  ]
+}

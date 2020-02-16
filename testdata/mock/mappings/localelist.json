@@ -1,0 +1,26 @@
+{
+  "mappings": [
+    {
+      "id": "productLocales",
+      "request": {
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/localelist",
+        "method": "GET"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "localelist.json"
+      }
+    },
+    {
+      "id": "productLocales_secondtime",
+      "request": {
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/localelist",
+        "method": "GET"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "localelist_secondtime.json"
+      }
+    }
+  ]
+}

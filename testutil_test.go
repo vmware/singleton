@@ -1,0 +1,288 @@
+/*
+ * Copyright 2020 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
+
+package sgtn
+
+import (
+	"bytes"
+	"encoding/json"
+	"flag"
+	"fmt"
+	"io"
+	"io/ioutil"
+	"net/http"
+	"os"
+	"path/filepath"
+	"reflect"
+	"runtime"
+	"strconv"
+	"strings"
+	"sync/atomic"
+	"testing"
+	"time"
+
+	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
+	"gopkg.in/h2non/gock.v1"
+)
+
+var backCfg Config
+var mockData map[string]MockMapping
+
+var loglevel = flag.Int("loglevel", 0, "sets log level to 0(debug), 1(info)...")
+
+func init() {
+	newLogger := log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
+	SetLogger(&defaultLogger{newLogger})
+}
+
+func TestMain(m *testing.M) {
+	if !flag.Parsed() {
+		flag.Parse()
+	}
+	zerolog.SetGlobalLevel(zerolog.Level(*loglevel))
+
+	cfg, err := NewConfig("testdata/conf/config.yaml")
+	if err != nil {
+		panic(err)
+	}
+	backCfg = *cfg
+
+	mockData = ReadMockJSONs("testdata/mock/mappings")
+
+	m.Run()
+}
+
+func PrintRespBody(url string, resp *http.Response) io.Reader {
+	fmt.Printf("The url is:%s\n", url)
+	fmt.Printf("The response from server is:\n %#v\n", resp)
+	bodyBytes, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Printf(err.Error())
+		return resp.Body
+	}
+
+	bodyString := string(bodyBytes)
+	fmt.Printf("The response body from server is:\n %#v\n", bodyString)
+
+	return bytes.NewReader(bodyBytes)
+}
+
+func Trace(msg string) func() {
+	start := time.Now()
+	logger.Debug(fmt.Sprintf("---Enter %s", msg))
+	return func() {
+		logger.Debug(fmt.Sprintf("---Exit  %s (%s)", msg, time.Since(start)))
+	}
+}
+
+//!+Display
+
+func Display(name string, x interface{}) {
+	fmt.Printf("Display %s (%T):\n", name, x)
+	display(name, reflect.ValueOf(x))
+}
+
+//!-Display
+
+// formatAtom formats a value without inspecting its internal structure.
+// It is a copy of the the function in gopl.io/ch11/format.
+func formatAtom(v reflect.Value) string {
+	switch v.Kind() {
+	case reflect.Invalid:
+		return "invalid"
+	case reflect.Int, reflect.Int8, reflect.Int16,
+		reflect.Int32, reflect.Int64:
+		return strconv.FormatInt(v.Int(), 10)
+	case reflect.Uint, reflect.Uint8, reflect.Uint16,
+		reflect.Uint32, reflect.Uint64, reflect.Uintptr:
+		return strconv.FormatUint(v.Uint(), 10)
+	// ...floating-point and complex cases omitted for brevity...
+	case reflect.Bool:
+		if v.Bool() {
+			return "true"
+		}
+		return "false"
+	case reflect.String:
+		return strconv.Quote(v.String())
+	case reflect.Chan, reflect.Func, reflect.Ptr,
+		reflect.Slice, reflect.Map:
+		return v.Type().String() + " 0x" +
+			strconv.FormatUint(uint64(v.Pointer()), 16)
+	default: // reflect.Array, reflect.Struct, reflect.Interface
+		return v.Type().String() + " value"
+	}
+}
+
+//!+display
+func display(path string, v reflect.Value) {
+	fmt.Printf("\tkind: %s\n", v.Kind())
+	switch v.Kind() {
+	case reflect.Invalid:
+		fmt.Printf("%s = invalid\n", path)
+	case reflect.Slice, reflect.Array:
+		for i := 0; i < v.Len(); i++ {
+			display(fmt.Sprintf("%s[%d]", path, i), v.Index(i))
+		}
+	case reflect.Struct:
+		for i := 0; i < v.NumField(); i++ {
+			fieldPath := fmt.Sprintf("%s.%s", path, v.Type().Field(i).Name)
+			display(fieldPath, v.Field(i))
+		}
+	case reflect.Map:
+		for _, key := range v.MapKeys() {
+			display(fmt.Sprintf("%s[%s]", path,
+				formatAtom(key)), v.MapIndex(key))
+		}
+	case reflect.Ptr:
+		if v.IsNil() {
+			fmt.Printf("%s = nil\n", path)
+		} else {
+			display(fmt.Sprintf("(*%s)", path), v.Elem())
+		}
+	case reflect.Interface:
+		if v.IsNil() {
+			fmt.Printf("%s = nil\n", path)
+		} else {
+			fmt.Printf("%s.type = %s\n", path, v.Elem().Type())
+			display(path+".value", v.Elem())
+		}
+	default: // basic types, channels, funcs
+		fmt.Printf("%s = %s\n", path, formatAtom(v))
+	}
+}
+
+//!-display
+
+func ReadMockJSONs(rootpath string) map[string]MockMapping {
+	results := map[string]MockMapping{}
+
+	wf := func(path string, info os.FileInfo, err error) error {
+		if info.IsDir() {
+			return nil
+		}
+
+		bs, err := ioutil.ReadFile(path)
+		if err != nil {
+			return err
+		}
+
+		result := MockMappings{}
+		err = json.Unmarshal(bs, &result)
+		if err != nil {
+			return fmt.Errorf("Error when reading %s. Error: %s", info.Name(), err.Error())
+		}
+
+		for _, v := range result.Mappings {
+			results[v.ID] = v
+		}
+
+		return nil
+	}
+
+	err := filepath.Walk(rootpath, wf)
+
+	if err != nil {
+		fmt.Printf("error reading mock data! %q: %v\n", rootpath, err)
+	}
+
+	return results
+}
+
+type MockMappings struct {
+	Mappings []MockMapping `json:"mappings"`
+}
+
+type MockMapping struct {
+	ID string `json:"id"`
+
+	Request struct {
+		URL     string            `json:"url"`
+		Method  string            `json:"method"`
+		Headers map[string]string `json:"headers"`
+		Params  map[string]string `json:"params"`
+		Times   int               `json:"times"`
+	} `json:"request"`
+
+	Response struct {
+		Status       int    `json:"status"`
+		BodyFileName string `json:"bodyFileName"`
+	} `json:"response"`
+
+	Headers struct {
+	} `json:"headers"`
+}
+
+func EnableMockData(key string) *gock.Request {
+	return EnableMockDataWithTimes(key, 1)
+}
+
+func EnableMockDataWithTimes(key string, times int) *gock.Request {
+	logger.Debug(fmt.Sprintf("Enabling mock %s, times %d", key, times))
+	data := mockData[key]
+
+	req := gock.New(backCfg.SingletonServer)
+	switch data.Request.Method {
+	case "GET":
+		req.Get(data.Request.URL)
+	}
+	req.Times(times)
+	for k, v := range data.Request.Headers {
+		req.MatchHeader(k, v)
+	}
+	for k, v := range data.Request.Params {
+		req.MatchParam(k, v)
+	}
+	resp := req.Reply(data.Response.Status)
+	if data.Response.BodyFileName != "" {
+		resp.File("./testdata/mock/__files/" + data.Response.BodyFileName)
+	}
+
+	return req
+}
+
+func fileNotExist(filepath string) (bool, error) {
+	_, err := os.Stat(filepath)
+	if os.IsNotExist(err) {
+		return true, nil
+	}
+
+	return false, err
+}
+
+func fileExist(filepath string) (bool, error) {
+	if _, err := os.Stat(filepath); err == nil {
+		return true, nil
+	} else if os.IsNotExist(err) {
+		return false, nil
+	} else {
+		// Schrodinger: file may or may not exist. See err for details.
+		return false, err
+	}
+}
+
+// This isn't thread safe because Go runs tests parallel possibly.
+func clearCache(testInst *Instance) {
+	logger.Debug("clearcache")
+	testInst.trans.dService.cache.(*defaultCache).tMessages.Clear()
+	testInst.trans.dService.cacheSyncInfo = newCacheSyncInfo(testInst.cfg)
+}
+
+func curFunName() string {
+	pc := make([]uintptr, 15)
+	n := runtime.Callers(2, pc)
+	frames := runtime.CallersFrames(pc[:n])
+	frame, _ := frames.Next()
+	return frame.Function[strings.LastIndex(frame.Function, "/")+1:]
+}
+
+func replaceInst(cfg *Config) (*Instance, bool) {
+	instMap.Delete(cfg.Name)
+	return NewInst(*cfg)
+}
+
+func expireCache(cacheUInfo *updateInfo, cacheExpiredTime int64) {
+	cacheUInfo.setTime(atomic.LoadInt64(&cacheUInfo.uTime) - cacheExpiredTime)
+}
