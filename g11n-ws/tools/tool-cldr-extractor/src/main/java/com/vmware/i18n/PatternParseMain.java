@@ -6,6 +6,7 @@ package com.vmware.i18n;
 
 import com.vmware.i18n.utils.CLDRUtils;
 import com.vmware.i18n.utils.LocaleDataUtils;
+import com.vmware.i18n.utils.MiscUtils;
 import com.vmware.i18n.utils.SupplementUtils;
 
 public class PatternParseMain {
@@ -14,7 +15,7 @@ public class PatternParseMain {
 //        CLDRUtils.download();
         CLDRUtils.patternDataExtract();
         LocaleDataUtils.localesExtract();
-        LocaleDataUtils.contextTransformsExtract();
+        MiscUtils.miscDataExtract();
         SupplementUtils.supplementalCurrencyExtract();
         CLDRUtils.aliasesExtract();
         CLDRUtils.defaultContentExtract();

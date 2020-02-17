@@ -32,8 +32,8 @@ public class CLDRConstants {
 			+ File.separator + "cldr" + File.separator + "plurals" + File.separator;
     public static final String GEN_CLDR_LANGUAGE_DATA_DIR = "src" + File.separator + "main" + File.separator + "resources"
             + File.separator + "cldr" + File.separator + "supplement" + File.separator;
-	public static final String GEN_CLDR_CONTEXT_TRANSFORM_DIR = "src" + File.separator + "main" + File.separator + "resources"
-			+ File.separator + "cldr" + File.separator + "contextTransforms" + File.separator;
+	public static final String GEN_CLDR_MISC_DIR = "src" + File.separator + "main" + File.separator + "resources"
+			+ File.separator + "cldr" + File.separator + "misc" + File.separator;
 
 	// zip path
 	public static final String CORE_ZIP_FILE_PATH = CLDR_DOWNLOAD_DIR + "cldr-core-" + FILE_NAME;
@@ -52,7 +52,7 @@ public class CLDRConstants {
 	public static final String ALL_CATEGORIES = "dates,numbers,plurals,measurements,currencies,dateFields";
 	public static final String LOCALE_TERRITORIES_PATH = "cldr/localedata/{0}/territories.json";
 	public static final String LOCALE_LANGUAGES_PATH = "cldr/localedata/{0}/languages.json";
-	public static final String CONTEXT_TRANSFORM_PATH = "cldr/contextTransforms/{0}/contextTransforms.json";
+	public static final String CONTEXT_TRANSFORM_PATH = "cldr/misc/{0}/contextTransforms.json";
 	public static final String DEFAULT_CONTENT_PATH = "cldr/defaultContent/defaultContent.json";
 	public static final String REGION_LANGUAGES_PATH = "cldr/regionLanguage/regionLanguageMapping.json";
 	public static final String LOCALE_ALIASES_PATH = "cldr/aliases/aliases.json";
