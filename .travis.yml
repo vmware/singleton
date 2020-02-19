@@ -1,0 +1,21 @@
+language: go
+ 
+go:
+  - 1.13
+
+install:
+  - echo "install"
+ 
+jobs:
+  fast_finish: true
+  include:
+    - stage: Unit Test
+      script:
+        - go build
+        - go test
+    - stage: Code Scan
+      script:
+        true  
+    - stage: Smoke Test
+      script:
+        true
