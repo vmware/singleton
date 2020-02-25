@@ -12,7 +12,7 @@ Prerequisites
     - [Golang binary](https://golang.org/doc/install)
     - [Git](https://git-scm.com/downloads)
 
-How to use the client library
+How to get the client library
 ------------
  * Create your Golang project
    
