@@ -221,7 +221,7 @@ public class TranslationProductAction  extends BaseAction {
           	 if(oldVersion.equals(version)) {
     			 return handleResponse(APIResponseStatus.MULTTRANSLATION_PART_CONTENT, resulttranslationDTO);
     		 }else {
-    			 return handleResponse(APIResponseStatus.FALLBACK_TRANSLATION, resulttranslationDTO);
+    			 return handleResponse(APIResponseStatus.VERSION_FALLBACK_TRANSLATION, resulttranslationDTO);
     		 }
           }
   

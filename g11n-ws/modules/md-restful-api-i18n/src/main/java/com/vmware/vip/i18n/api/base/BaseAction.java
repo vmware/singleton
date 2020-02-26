@@ -34,7 +34,7 @@ public class BaseAction {
 		 if(oldVersion.equals(newVersion)) {
 			 return handleResponse(APIResponseStatus.OK, data);
 		 }else {
-			 return handleResponse(APIResponseStatus.FALLBACK_TRANSLATION, data);
+			 return handleResponse(APIResponseStatus.VERSION_FALLBACK_TRANSLATION, data);
 		 }
 	}
 	
