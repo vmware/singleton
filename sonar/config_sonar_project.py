@@ -16,6 +16,7 @@ def getAllQualityGates(org_key, auth):
     print('Get quality gate id by project on SonarCloud ......')
     params={'organization':org_key}
     response = requests.get('https://sonarcloud.io/api/qualitygates/list', params=params, auth=auth)
+    print('response string: {}'.format(response))
     res_in_json = response.json()
     print(res_in_json)
     return res_in_json
