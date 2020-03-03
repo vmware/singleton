@@ -16,7 +16,7 @@ def getAllQualityGates(org_key, auth):
     print('Get quality gate id by project on SonarCloud ......')
     params={'organization':org_key}
     response = requests.get('https://sonarcloud.io/api/qualitygates/list', params=params, auth=auth)
-    print('organization key: {}'.format(response))
+    print('organization key: {}'.format(org_key))
     print('params: {}'.format(params))
     print('response string: {}'.format(response))
     res_in_json = response.json()
@@ -68,8 +68,13 @@ if __name__ == "__main__":
     parser.add_argument('-QualityGateConditions', required=True, help='Conditions description json file.')
     parser.add_argument('-SonarToken', required=True, help='Sonar token for authentication.')
     args = parser.parse_args()
-    #auth = HTTPBasicAuth(args.SonarToken, '')
-    auth = HTTPBasicAuth('860ceed60c24c8fc13c81c2efd8db830c192150a', '')
+    auth = HTTPBasicAuth(args.SonarToken, '')
+    print("SonarToken:{}".format(args.SonarToken))
+    print("ProjectName:{}".format(args.ProjectName))
+    print("ProjectKey:{}".format(args.ProjectKey))
+    print("OrgKey:{}".format(args.OrgKey))
+    print("QualityGateName:{}".format(args.QualityGateName))
+    print("QualityGateConditions:{}".format(args.QualityGateConditions))
 
     all_quality_gates = getAllQualityGates(args.OrgKey, auth)
     for gate in all_quality_gates['qualitygates']:
