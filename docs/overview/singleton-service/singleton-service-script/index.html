@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2020-03-02T15:29:12 CST">
-<title>Integrate Singleton in Python App :: Singleton</title>
+<title>Singleton Service Script :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://vmware.github.io/singleton/css/nucleus.css" rel="stylesheet">
@@ -25,7 +25,7 @@
 
     
   </head>
-  <body data-url="/docs/tutorials/integrate-singleton-in-python-app/">
+  <body data-url="/docs/overview/singleton-service/singleton-service-script/">
     
       <header>
   <div class="logo">
@@ -93,19 +93,21 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/docs/overview/" class="dd-item haschildren
+    <li data-nav-id="/docs/overview/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://vmware.github.io/singleton/docs/overview/">Overview</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="https://vmware.github.io/singleton/docs/overview/">Overview</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/docs/overview/singleton-service/" class="dd-item haschildren
+    <li data-nav-id="/docs/overview/singleton-service/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/">Singleton Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/">Singleton Service</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/docs/overview/singleton-service/singleton-service-script/" class="dd-item">
+      <li data-nav-id="/docs/overview/singleton-service/singleton-service-script/" class="dd-item active">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">
             Singleton Service Script
@@ -202,11 +204,10 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/docs/tutorials/" class="dd-item parent haschildren
+    <li data-nav-id="/docs/tutorials/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://vmware.github.io/singleton/docs/tutorials/">Tutorials</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="https://vmware.github.io/singleton/docs/tutorials/">Tutorials</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/docs/tutorials/integrate-singleton-in-java-app/" class="dd-item">
@@ -237,7 +238,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/tutorials/integrate-singleton-in-python-app/" class="dd-item active">
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-python-app/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-python-app/">
             Integrate Singleton in Python App
@@ -276,17 +277,23 @@
    Get Started</option>
     <option value="/docs/overview/" >
   - 
-   Overview</option>
+   Overview</option> 
+    <option value="/docs/overview/singleton-service/" >
+  -- 
+   Singleton Service</option> 
+      <option value="/docs/overview/singleton-service/singleton-service-script/"  selected>--- Singleton Service Script</option>
+    <option value="/docs/overview/singleton-service/configurations/" >
+  --- 
+   Configurations</option>
+      <option value="/docs/overview/singleton-service/singleton-service-apis/" >--- Singleton Service APIs</option>
+  
+    <option value="/docs/overview/singleton-sdk/" >
+  -- 
+   Singleton SDK</option>
+  
     <option value="/docs/tutorials/" >
   - 
-   Tutorials</option> 
-      <option value="/docs/tutorials/integrate-singleton-in-java-app/" >-- Integrate Singleton in Java App</option>
-      <option value="/docs/tutorials/integrate-singleton-in-javascript-app/" >-- Integrate Singleton in Javascript App</option>
-      <option value="/docs/tutorials/integrate-singleton-in-angular-app/" >-- Integrate Singleton in Angular App</option>
-      <option value="/docs/tutorials/integrate-singleton-in-csharp-app/" >-- Integrate Singleton in C# App</option>
-      <option value="/docs/tutorials/integrate-singleton-in-python-app/"  selected>-- Integrate Singleton in Python App</option>
-      <option value="/docs/tutorials/deploy-singleton-service-in-your-app/" >-- Deploy Singleton Service in Your App</option>
-  
+   Tutorials</option>
   
 
 
@@ -310,19 +317,73 @@
       </div>
     
 
-    <h1>Integrate Singleton in Python App</h1>
+    <h1>Singleton Service Script</h1>
     
     
     
-    <p>Coming soon</p>
+    <p>Singleton adds script files to help user to start/check/stop Singleton Service build.</p>
+<h1 id="how-to-generate-singleton-script">How to generate Singleton Script</h1>
+<p>The steps:</p>
+<ol>
+<li>Clone Singleton Service code using Git</li>
+</ol>
+<pre><code>git clone git@github.com:vmware/singleton.git
+</code></pre><ol start="2">
+<li>Complie a build using Gradle wrapper under <code>./g11n-ws</code> folder</li>
+</ol>
+<pre><code>./gradlew build -x test
+</code></pre><ol start="3">
+<li>Go to <code>./Singleton/Publish</code> folder, find <code>singletonScripts-0.1.0.zip</code>, and extract it, you will get 4 files as below:</li>
+</ol>
+<pre><code>singletonall.sh
+singletonstart.sh
+singletoncheck.sh
+singletonstop.sh
+</code></pre><h1 id="how-to-use-singleton-script">How to use Singleton Script</h1>
+<h3 id="singletonallsh">singletonall.sh</h3>
+<p>This script is used to start, stop, and status detect Singleton Service, also restart it when something wrong in Singleton Service running .</p>
+<p><strong>Prepare:</strong>
+Make sure that Singleton Service build (name like <em>singleton-xxx.jar</em>)  and <em>singletonall.sh</em> to same directory.</p>
+<p><strong>Usage:</strong> <code>./singletonall.sh [options]</code></p>
+<pre><code>	./singletonall.sh [options]
 
+where options include:
+	start	start Singleton Service
+	status	check Singleton Service current status
+	check	check whether Singleton Sevice is running, will restart it if NO running
+	stop	stop Singleton Service
+</code></pre><h3 id="singletonstartsh">singletonstart.sh</h3>
+<p>This script is used to start Singleton Service build name like singleton-xxx.jar by default, also can start specific xxx.jar app by given parameter.</p>
+<p><strong>Prepare:</strong>
+Make sure that Singleton Service build (name like <em>singleton-xxx.jar</em>) or any xxx.jar file you want to start, and <em>singletonstart.sh</em> to same directory.</p>
+<p><strong>Usages:</strong></p>
+<pre><code> 	 ./singletonstart.sh
+  or 
+ 	 ./singletonstart.sh jarfile
+</code></pre><h3 id="singletonchecksh">singletoncheck.sh</h3>
+<p>This script is used to check running status of singleton-xxx.jar by default, also can check the running status of any xxx.jar by given parameter. And it will restart the app when something wrong in running.</p>
+<p><strong>Prepare:</strong>
+Make sure that Singleton Service build (name like <em>singleton-xxx.jar</em>) or any xxx.jar file you want to check,  and <em>singletoncheck.sh</em> to same directory.</p>
+<p><strong>Usage:</strong></p>
+<pre><code>	./singletoncheck.sh 
+or
+	./singletoncheck.sh  xxx.jar
+</code></pre><h3 id="singletonstopsh">singletonstop.sh</h3>
+<p>This script is used to stop Singleton Service build name like singleton-xxx.jar by default, also can stop specific xxx.jar app by given parameter.</p>
+<p><strong>Prepare:</strong>
+Make sure that Singleton Service build (name like <em>singleton-xxx.jar</em>) or any xxx.jar file you want to check,  and <em>singletonstop.sh</em> to same directory.</p>
+<p><strong>Usage:</strong></p>
+<pre><code>	./singletonstop.sh
+or
+	./singletonstop.sh xxx.jar
+</code></pre>
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-csharp-app/" title="Integrate Singleton in C# App"> <i class="fa fa-chevron-left"></i><label>Integrate Singleton in C# App</label></a>
-    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/tutorials/deploy-singleton-service-in-your-app/" title="Deploy Singleton Service in Your App" style="margin-right: 0px;"><label>Deploy Singleton Service in Your App</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-service/" title="Singleton Service"> <i class="fa fa-chevron-left"></i><label>Singleton Service</label></a>
+    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/" title="Configurations" style="margin-right: 0px;"><label>Configurations</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -337,7 +398,7 @@
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 24/09/2019
+        <i class='fa fa-calendar'></i> Last update on 02/03/2020
     </div>
     
 

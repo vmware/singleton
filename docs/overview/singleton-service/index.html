@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-12-20T14:26:52 CST">
+<meta name="revised" content="2020-03-02T15:29:12 CST">
 <title>Singleton Service :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -100,19 +100,6 @@
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/docs/overview/singleton-service/" class="dd-item parent active haschildren
-        ">
-      <div>
-      <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/">Singleton Service</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-    <li data-nav-id="/docs/overview/singleton-service/configurations/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
       <li data-nav-id="/docs/overview/singleton-service/configurations/enable-source-collection/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-source-collection/">
@@ -140,60 +127,6 @@
             Enable S3 Storage
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
-    </li>
-        </ul>
-    </li>
-      <li data-nav-id="/docs/overview/singleton-service/singleton-service-apis/" class="dd-item">
-        <div>
-          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/">
-            Singleton Service APIs
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-        </ul>
-    </li>
-    <li data-nav-id="/docs/overview/singleton-sdk/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/">Singleton SDK</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/docs/overview/singleton-sdk/java-client-introduction/" class="dd-item">
-        <div>
-          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/">
-            Java Client Introduction
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/javascript-client-introduction/" class="dd-item">
-        <div>
-          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/javascript-client-introduction/">
-            Javascript Client Introduction
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/" class="dd-item">
-        <div>
-          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/">
-            Angular Client Introduction
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/csharp-client-introduction/" class="dd-item">
-        <div>
-          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/csharp-client-introduction/">
-            C# Client Introduction
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/python-client-introduction/" class="dd-item">
-        <div>
-          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/python-client-introduction/">
-            Python Client Introduction
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-        </ul>
     </li>
         </ul>
     </li>
@@ -274,6 +207,7 @@
     <option value="/docs/overview/singleton-service/"  selected>
   -- 
    Singleton Service</option> 
+      <option value="/docs/overview/singleton-service/singleton-service-script/" >--- Singleton Service Script</option>
     <option value="/docs/overview/singleton-service/configurations/" >
   --- 
    Configurations</option>
@@ -328,6 +262,25 @@
 
    <article class="post docs">
     <header class="post-header">
+        <h2 class="post-title"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p>Singleton adds script files to help user to start/check/stop Singleton Service build.
+How to generate Singleton Script The steps:
+ Clone Singleton Service code using Git  git clone git@github.com:vmware/singleton.gitComplie a build using Gradle wrapper under ./g11n-ws folder  ./gradlew build -x testGo to ./Singleton/Publish folder, find singletonScripts-0.1.0.zip, and extract it, you will get 4 files as below:  singletonall.shsingletonstart.shsingletoncheck.shsingletonstop.shHow to use Singleton Script singletonall. <a class="read-more" href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">&raquo;</a></p>
+    </section>
+    <footer class=" footline" >
+         
+        
+
+        
+        
+
+    </footer>
+</article>
+
+   <article class="post docs">
+    <header class="post-header">
         <h2 class="post-title"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/">Singleton Service APIs</a></h2>
     </header>
     <section class="post-excerpt">
@@ -361,7 +314,7 @@
         <div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/" title="Overview"> <i class="fa fa-chevron-left"></i><label>Overview</label></a>
-    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/" title="Configurations" style="margin-right: 0px;"><label>Configurations</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/" title="Singleton Service Script" style="margin-right: 0px;"><label>Singleton Service Script</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-12-20T14:26:52 CST">
+<meta name="revised" content="2020-03-02T15:29:12 CST">
 <title>Java Client Introduction :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -106,6 +106,13 @@
       <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/">Singleton Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+      <li data-nav-id="/docs/overview/singleton-service/singleton-service-script/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">
+            Singleton Service Script
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
     <li data-nav-id="/docs/overview/singleton-service/configurations/" class="dd-item haschildren
         ">
       <div>
@@ -314,8 +321,8 @@
     
     
     
-    <p>As we know in the last article, Singleton provides plenty of APIs to support G11N. However, calling the APIs directly is time-consuming and inefficient. So, Singleton has introduced several Clients for different programming language environments, to encapsulate the API calls to the Service, which significantly improves efficiency, and reduces the cost in development work. These Clients can call the Service's APIs to get the translation and pattern data, then parse the data to provide the translation and data formatting features.</p>
-<p>In this article, we'll talk about the Java Clients.</p>
+    <p>As we know in the last article, Singleton provides plenty of APIs to support G11N. However, calling the APIs directly is time-consuming and inefficient. So, Singleton has introduced several Clients for different programming language environments, to encapsulate the API calls to the Service, which significantly improves efficiency, and reduces the cost in development work. These Clients can call the Service&rsquo;s APIs to get the translation and pattern data, then parse the data to provide the translation and data formatting features.</p>
+<p>In this article, we&rsquo;ll talk about the Java Clients.</p>
 <h2 id="features-in-java-clients">Features in Java Clients</h2>
 <ul>
 <li>Getting the translation.</li>
@@ -615,10 +622,10 @@
 <li><em>false: Returns the translation in a normal way.</em></li>
 <li>collectSource: Sends the new source string to the server or not. Default: false.</li>
 <li><em>true: Sends the new string to the server.</em></li>
-<li><em>false: Doesn't send the new string to the server.</em></li>
+<li><em>false: Doesn&rsquo;t send the new string to the server.</em></li>
 <li>cleanCache: Clears the cache or not. The default value is false.</li>
 <li><em>true: Cleans up the cache regularly.</em></li>
-<li><em>false: Doesn't clean up the cache regularly.</em></li>
+<li><em>false: Doesn&rsquo;t clean up the cache regularly.</em></li>
 <li>cacheExpiredTime: The expiration time of the cache, in milliseconds.</li>
 <li>machineTranslation: Returns the MT (Machine Translation) output or not. The default value is false. Turned off at the server side by default.</li>
 <li><em>true: Returns the MT (Machine Translation) output, regardless of whether the existing translation is here.</em></li>
