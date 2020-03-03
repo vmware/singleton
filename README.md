@@ -17,7 +17,7 @@ How to get the client library
  * Create your Golang project
    
  * Download the client code by Go get tool.
-    ```
+    ```console
     go get -u github.com/vmware/singleton@g11n-go-client
     ```
     Here g11n-go-client is the branch name, it's better to use tag name to get a stable release.
@@ -25,7 +25,7 @@ How to get the client library
 Sample code
 ------------
 
-```Golang
+```go
 package main
 
 import (
@@ -69,11 +69,10 @@ Existing features
     * GetLocaleList: Get supported locale list
     * GetComponentList: Get supported component list
     * GetStringMessage: Get a message with optional arguments. Fallback to default locale is provided.
-    * GetComponentMessages: Get component messages. Fallback to default locale is not provided.
-    * GetComponentsMessages: Get messages of multiple components. Fallback to default locale is not provided.
+    * GetComponentMessages: Get component messages. Fallback to default locale is **NOT** provided.
  * Provide cache management as well as register cache.
- * Support falling back to locale bundles when failing to get from server
- * Support falling back to default locale when failing to get string message of a specified locale.
+ * Support falling back to local bundles when failing to get from server
+ * Support falling back to default locale when failing to get a string message of a nondefault locale.
 
 Upcoming features 
 ------------
@@ -82,5 +81,3 @@ Upcoming features
 Request for contributions from the community
 ------------
  * 
-   
-
