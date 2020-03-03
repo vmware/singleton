@@ -3,6 +3,12 @@ language: go
 go:
   - 1.13
 
+addons:
+  sonarcloud:
+    organization: $SONAR_ORG
+    token:
+      secure: $SONAR_TOKEN
+
 install:
   - echo "install"
  
@@ -15,7 +21,16 @@ jobs:
         - go test
     - stage: Code Scan
       script:
-        true  
+        - SONARSCANNER='sonar-scanner-cli-4.0.0.1744-linux'
+        - SONARSCANNERINNER='sonar-scanner-4.0.0.1744-linux'
+        - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/$SONARSCANNER.zip
+        - unzip $SONARSCANNER.zip
+        - rm -f $SONARSCANNER.zip
+        - go test -json > report.json
+        - go test -coverprofile=coverage.out
+        - ./$SONARSCANNERINNER/bin/sonar-scanner -Dsonar.sources=. -Dsonar.exclusions=**/testdata/**/*,**/$SONARSCANNERINNER/**/*,**/*_test.go -Dsonar.coverage.exclusions=**/testdata/**/*,**/$SONARSCANNERINNER/**/*,**/*_test.go -Dsonar.projectName=$SONAR_ORG-singleton-go-client-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.projectKey=$SONAR_ORG-singleton-go-client-$TRAVIS_BRANCH -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN -Dsonar.go.tests.reportPaths=./report.json -Dsonar.go.coverage.reportPaths=./coverage.out
     - stage: Smoke Test
       script:
         true
+
+
