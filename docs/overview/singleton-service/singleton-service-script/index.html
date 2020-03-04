@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-03-02T15:29:12 CST">
+<meta name="revised" content="2020-03-04T10:13:27 CST">
 <title>Singleton Service Script :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -322,7 +322,7 @@
     
     
     <p>Singleton adds script files to help user to start/check/stop Singleton Service build.</p>
-<h1 id="how-to-generate-singleton-script">How to generate Singleton Script</h1>
+<h2 id="how-to-generate-singleton-script">How to generate Singleton Script</h2>
 <p>The steps:</p>
 <ol>
 <li>Clone Singleton Service code using Git</li>
@@ -339,12 +339,12 @@
 singletonstart.sh
 singletoncheck.sh
 singletonstop.sh
-</code></pre><h1 id="how-to-use-singleton-script">How to use Singleton Script</h1>
+</code></pre><h2 id="how-to-use-singleton-script">How to use Singleton Script</h2>
 <h3 id="singletonallsh">singletonall.sh</h3>
 <p>This script is used to start, stop, and status detect Singleton Service, also restart it when something wrong in Singleton Service running .</p>
 <p><strong>Prepare:</strong>
 Make sure that Singleton Service build (name like <em>singleton-xxx.jar</em>)  and <em>singletonall.sh</em> to same directory.</p>
-<p><strong>Usage:</strong> <code>./singletonall.sh [options]</code></p>
+<p><strong>Usage:</strong></p>
 <pre><code>	./singletonall.sh [options]
 
 where options include:
@@ -367,7 +367,7 @@ Make sure that Singleton Service build (name like <em>singleton-xxx.jar</em>) or
 <p><strong>Usage:</strong></p>
 <pre><code>	./singletoncheck.sh 
 or
-	./singletoncheck.sh  xxx.jar
+	./singletoncheck.sh  jarfile
 </code></pre><h3 id="singletonstopsh">singletonstop.sh</h3>
 <p>This script is used to stop Singleton Service build name like singleton-xxx.jar by default, also can stop specific xxx.jar app by given parameter.</p>
 <p><strong>Prepare:</strong>
@@ -375,7 +375,7 @@ Make sure that Singleton Service build (name like <em>singleton-xxx.jar</em>) or
 <p><strong>Usage:</strong></p>
 <pre><code>	./singletonstop.sh
 or
-	./singletonstop.sh xxx.jar
+	./singletonstop.sh jarfile
 </code></pre>
 
     
