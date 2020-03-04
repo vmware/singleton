@@ -6,7 +6,9 @@ draft: false
 
 Singleton adds script files to help user to start/check/stop Singleton Service build.
 
-# How to generate Singleton Script
+How to generate Singleton Script
+------------------
+
 The steps:
 
 1. Clone Singleton Service code using Git
@@ -27,7 +29,8 @@ singletoncheck.sh
 singletonstop.sh
 ```
 
-# How to use Singleton Script
+How to use Singleton Script
+------------------
 
 ### singletonall.sh 
 This script is used to start, stop, and status detect Singleton Service, also restart it when something wrong in Singleton Service running .
@@ -35,7 +38,7 @@ This script is used to start, stop, and status detect Singleton Service, also re
 **Prepare:**
 Make sure that Singleton Service build (name like *singleton-xxx.jar*)  and *singletonall.sh* to same directory.
 
-**Usage:** `./singletonall.sh [options]`
+**Usage:** 
 ```
 	./singletonall.sh [options]
 
@@ -70,7 +73,7 @@ Make sure that Singleton Service build (name like *singleton-xxx.jar*) or any xx
 ```
 	./singletoncheck.sh 
 or
-	./singletoncheck.sh  xxx.jar
+	./singletoncheck.sh  jarfile
 ```
 
 
@@ -84,5 +87,5 @@ Make sure that Singleton Service build (name like *singleton-xxx.jar*) or any xx
 ```
 	./singletonstop.sh
 or
-	./singletonstop.sh xxx.jar
+	./singletonstop.sh jarfile
 ```
