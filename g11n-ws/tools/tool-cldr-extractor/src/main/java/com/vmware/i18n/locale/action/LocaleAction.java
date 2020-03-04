@@ -49,4 +49,11 @@ public class LocaleAction {
 		return service.getLocaleWithDefaultRegion(locale);
 	}
 
+	public String getContextTransforms(String displayLanguage) {
+		if (CommonUtil.isEmpty(displayLanguage))
+			return "";
+		displayLanguage = CommonUtil.normalizeToLanguageTag(displayLanguage).toLowerCase();
+		return service.getContextTransforms(displayLanguage);
+	}
+
 }

@@ -22,6 +22,7 @@ public class Constants {
 	public static final String CURRENCIES = "currencies";
 	public static final String CATEGORIES = "categories";
 	public static final String PLURALS = "plurals";
+	public static final String CONTEXT_TRANSFORMS = "contextTransforms";
 
 	// pattern
 	public static final String LIKELY_SUBTAG = "likelySubtag";
