@@ -140,25 +140,6 @@ func (ds *dataService) getComponentMessages(locale, component string) (Component
 	return compData, nil
 }
 
-func (ds *dataService) getComponentsMessages(locale string, components []string) (map[string]ComponentMsgs, error) {
-	var err error
-	if len(components) == 0 {
-		if components, err = ds.GetComponentList(); err != nil {
-			return nil, err
-		}
-	}
-	returnMsgs := make(map[string]ComponentMsgs, len(components))
-	for _, comp := range components {
-		msgs, err := ds.getComponentMessages(locale, comp)
-		if err != nil {
-			return nil, err
-		}
-		returnMsgs[comp] = msgs
-	}
-
-	return returnMsgs, nil
-}
-
 func (ds *dataService) fetchLocaleList() (data []string, err error) {
 	logger.Debug("Start fetching locale list")
 
