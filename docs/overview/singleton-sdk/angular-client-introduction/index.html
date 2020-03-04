@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-12-20T14:26:52 CST">
+<meta name="revised" content="2020-03-02T15:29:12 CST">
 <title>Angular Client Introduction :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -106,6 +106,13 @@
       <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/">Singleton Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+      <li data-nav-id="/docs/overview/singleton-service/singleton-service-script/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">
+            Singleton Service Script
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
     <li data-nav-id="/docs/overview/singleton-service/configurations/" class="dd-item haschildren
         ">
       <div>
@@ -371,7 +378,7 @@
 
 });
 </code></pre></div><h3 id="heading"></h3>
-<h3 id="getting-and-managing-locales1"><strong>Getting and managing locales</strong></h3>
+<h3 id="getting-and-managing-locales-1"><strong>Getting and managing locales</strong></h3>
 <h5 id="getting-locales-in-two-ways">Getting locales in two ways</h5>
 <p>Getting the language and region settings in the browser</p>
 <p>API: getBrowserCultureLang (): string</p>
@@ -444,7 +451,7 @@
 <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">localeService</span>.<span style="color:#a6e22e">setCurrentRegion</span> (<span style="color:#e6db74">&#39;US&#39;</span>);
 
 <span style="color:#960050;background-color:#1e0010">…</span>
-</code></pre></div><h3 id="loading-i18n-data1"><strong>Loading I18N Data</strong></h3>
+</code></pre></div><h3 id="loading-i18n-data-1"><strong>Loading I18N Data</strong></h3>
 <p>Load the i18n resources from Singleton Service according to the product information and the initial language and region.</p>
 <h5 id="initializing-the-configuration-items">Initializing the Configuration Items</h5>
 <p>Parameters</p>
@@ -491,7 +498,7 @@
 
 };
 </code></pre></div><h5 id="blocking-loading">Blocking Loading</h5>
-<p>Implement the blocking loading with Angular's &lsquo;APP-INITIALIZER&rsquo; API.</p>
+<p>Implement the blocking loading with Angular&rsquo;s &lsquo;APP-INITIALIZER&rsquo; API.</p>
 <p>Example</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">NgModule</span>, <span style="color:#a6e22e">APP_INITIALIZER</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@angular/core&#39;</span>;
 
@@ -544,7 +551,7 @@
   <span style="color:#960050;background-color:#1e0010">…</span>
 
 });
-</code></pre></div><h5 id="nonblocking-loading">Non-Blocking Loading</h5>
+</code></pre></div><h5 id="non-blocking-loading">Non-Blocking Loading</h5>
 <p>Asynchronous data loading.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">NgModule</span>, <span style="color:#a6e22e">APP_INITIALIZER</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@angular/core&#39;</span>;
 
@@ -607,7 +614,7 @@ export class LazyModule {
 
 }; 
 
-</code></pre><h3 id="translation-tool1"><strong>Translation Tool</strong></h3>
+</code></pre><h3 id="translation-tool-1"><strong>Translation Tool</strong></h3>
 <h5 id="l10n-pipe">L10n Pipe</h5>
 <p>Use the pipe to get the translation of a string</p>
 <p>Usage: {{ key | vtranslate:[ : variables [ : comment ] ]  }}</p>
@@ -632,11 +639,11 @@ export class LazyModule {
 <p>Return value</p>
 <p>The translation of the source string specified by key in SourceBundlekey</p>
 <p>Example</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">span</span> <span style="color:#a6e22e">l10n</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;app.title&#39;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&lt;</span><span style="color:#e6db74">/span&gt; /</span><span style="color:#f92672">/</span> <span style="color:#a6e22e">eg</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">你好</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">世界</span><span style="color:#960050;background-color:#1e0010">！</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">span</span> <span style="color:#a6e22e">l10n</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;app.title&#39;</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#e6db74">/span&gt; /</span><span style="color:#f92672">/</span> <span style="color:#a6e22e">eg</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">你好</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">世界</span><span style="color:#960050;background-color:#1e0010">！</span>
 
 <span style="color:#75715e">// 单复数示例
 </span><span style="color:#75715e"></span>
-<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">span</span> <span style="color:#a6e22e">l10n</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;plural.apples&#39;</span> [<span style="color:#a6e22e">params</span>]<span style="color:#f92672">=</span>[ <span style="color:#ae81ff">2</span> ] <span style="color:#f92672">&gt;</span><span style="color:#f92672">&lt;</span><span style="color:#e6db74">/span&gt; /</span><span style="color:#f92672">/</span> <span style="color:#a6e22e">eg</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> <span style="color:#a6e22e">apples</span>
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">span</span> <span style="color:#a6e22e">l10n</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;plural.apples&#39;</span> [<span style="color:#a6e22e">params</span>]<span style="color:#f92672">=</span>[ <span style="color:#ae81ff">2</span> ] <span style="color:#f92672">&gt;&lt;</span><span style="color:#e6db74">/span&gt; /</span><span style="color:#f92672">/</span> <span style="color:#a6e22e">eg</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> <span style="color:#a6e22e">apples</span>
 
 </code></pre></div><h3 id="formatting-the-pipe"><strong>Formatting the Pipe</strong></h3>
 <h5 id="formatting-the-date-and-time">Formatting the Date and Time</h5>

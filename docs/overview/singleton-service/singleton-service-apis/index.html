@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-12-20T14:26:52 CST">
+<meta name="revised" content="2020-03-02T15:29:12 CST">
 <title>Singleton Service APIs :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -107,6 +107,13 @@
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+      <li data-nav-id="/docs/overview/singleton-service/singleton-service-script/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">
+            Singleton Service Script
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
     <li data-nav-id="/docs/overview/singleton-service/configurations/" class="dd-item haschildren
         ">
       <div>
@@ -274,6 +281,7 @@
     <option value="/docs/overview/singleton-service/" >
   -- 
    Singleton Service</option> 
+      <option value="/docs/overview/singleton-service/singleton-service-script/" >--- Singleton Service Script</option>
     <option value="/docs/overview/singleton-service/configurations/" >
   --- 
    Configurations</option>
@@ -318,9 +326,9 @@
 <li>Formatting API, which is used to format the data like the date time/number/currency/unit of measure/singular and plural variations, just to name a few.</li>
 <li>Translation API</li>
 </ol>
-<p>Next, we'll talk about the usage of the main APIs under the two types.</p>
+<p>Next, we&rsquo;ll talk about the usage of the main APIs under the two types.</p>
 <h1 id="formatting-api"><strong>Formatting API</strong></h1>
-<h2 id="date-time-formatting-api-formattingdateapi"><em>Date Time Formatting API (formatting-date-api)</em></h2>
+<h2 id="date-time-formatting-api-formatting-date-api"><em>Date Time Formatting API (formatting-date-api)</em></h2>
 <p>Convert the specified time stamp to a new format suitable for the language as requested, using the provided pattern.</p>
 <h4 id="geti18napiv2formattingdatelocalizeddate"><strong>GET</strong>/i18n/api/v2/formatting/date/localizedDate</h4>
 <p><strong>Parameters:</strong></p>
@@ -332,7 +340,7 @@
 <p><strong>Example:</strong></p>
 <p><strong>{Singleton service}</strong>/i18n/api/v2/formatting/date/localizedDate?locale=zh&ndash;CN&amp;longDate=1472728030290&amp;pattern=QQQQ</p>
 <p>Return value: &ldquo;第三季度&rdquo; (the third quarter or Q3 in Chinese)</p>
-<h2 id="number-formatting-api-formattingnumberapi"><em>Number Formatting API (formatting-number-api)</em></h2>
+<h2 id="number-formatting-api-formatting-number-api"><em>Number Formatting API (formatting-number-api)</em></h2>
 <p>Convert the specified number to a new format suitable for the language as requested, with the decimal place provided.</p>
 <h4 id="geti18napiv2formattingnumberlocalizednumber"><strong>GET</strong>/i18n/api/v2/formatting/number/localizedNumber</h4>
 <p><strong>Parameters:</strong></p>
@@ -344,7 +352,7 @@
 <p><strong>Example:</strong></p>
 <p><strong>{Singleton service}</strong>/i18n/api/v2/formatting/number/localizedNumber?locale=zh-CN&amp;number=123.45&amp;scale=1</p>
 <p>Return value: &ldquo;123.5&rdquo;</p>
-<h2 id="datenumbercurrencyunit-of-measuresingular-and-plural-variations-pattern-api-formattingpatternapi"><em>Date/Number/Currency/Unit of Measure/Singular and Plural Variations Pattern API (formatting-pattern-api)</em></h2>
+<h2 id="datenumbercurrencyunit-of-measuresingular-and-plural-variations-pattern-api-formatting-pattern-api"><em>Date/Number/Currency/Unit of Measure/Singular and Plural Variations Pattern API (formatting-pattern-api)</em></h2>
 <p>With Singleton, you can get the pattern data in two ways: one is by the language and region settings (language [-region], such as en-US); the other is by the combined locale settings. The pattern data in Singleton is extracted from the CLDR (Unicode Common Locale Data Repository) version: 32.0.0.</p>
 <h4 id="geti18napiv2formattingpatterns"><strong>GET</strong>/i18n/api/v2/formatting/patterns</h4>
 <p>Get the pattern data of the type as requested according to the language and region settings.</p>
@@ -413,7 +421,7 @@
 <p>​         &ldquo;currencyFormats&rdquo;: &ldquo;¤#,##0.00&rdquo;,</p>
 <p>​         &ldquo;scientificFormats&rdquo;: &ldquo;#E0&rdquo;</p>
 <p>​        }</p>
-<h2 id="regionrelated-api-localeapi"><em>Region-Related API (locale-api)</em></h2>
+<h2 id="region-related-api-locale-api"><em>Region-Related API (locale-api)</em></h2>
 <p>The Region-Related API are used to get the current locale settings in the browser, the languages supported by the product, and local translations in specific languages.</p>
 <h4 id="geti18napiv2localebrowserlocale"><strong>GET</strong>/i18n/api/v2/locale/browserLocale</h4>
 <h4 id="geti18napiv2localenormalizedbrowserlocale"><strong>GET</strong>/i18n/api/v2/locale/normalizedBrowserLocale</h4>
@@ -490,8 +498,8 @@
 <p>​       &ldquo;AG&rdquo;: &ldquo;Antigua and Barbuda&rdquo;,</p>
 <p>​       &ldquo;AI&rdquo;: &ldquo;Anguilla&rdquo;,</p>
 <p>​        ……………………}}</p>
-<h1 id="translationrelated-api"><strong>Translation-Related API</strong></h1>
-<h2 id="productlevel-api-translationproductapi"><em>Product-Level API (translation-product-api)</em></h2>
+<h1 id="translation-related-api"><strong>Translation-Related API</strong></h1>
+<h2 id="product-level-api-translation-product-api"><em>Product-Level API (translation-product-api)</em></h2>
 <p>Get the component names defined in the whole product, supported languages in the product, and the translations in all those languages.</p>
 <h4 id="get-i18napiv2translationproductsproductnameversionsversion">GET /i18n/api/v2/translation/products/{productName}/versions/{version}</h4>
 <p>Get the translations in all languages supported by the product.</p>
@@ -521,7 +529,7 @@
 <p>(JSON Object) The list of languages supported by the product.</p>
 <p><strong>Example:</strong></p>
 <p><strong>{Singleton service}</strong><em>/i18n/api/v2/translation/products/Testing/versions/1.0.0/localelist</em></p>
-<h2 id="componentfunctionlevel-api-translationproductcomponentapi"><em>Component/Function-Level API (translation-product-component-api)</em></h2>
+<h2 id="componentfunction-level-api-translation-product-component-api"><em>Component/Function-Level API (translation-product-component-api)</em></h2>
 <h4 id="geti18napiv2translationproductsproductnameversionsversionlocaleslocalecomponentscomponent"><strong>GET</strong>/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}</h4>
 <p>Get the translations in the specified language for a component/function in the product.</p>
 <p><strong>Parameters:</strong></p>
@@ -537,7 +545,7 @@
 <p><strong>Example:</strong></p>
 <p><strong>{Singleton service}</strong>*/*i18n/api/v2/translation/products/Testing/versions/1.0.0/locales/zh_CN/components/default?pseudo=false&amp;machineTranslation=false&amp;checkTranslationStatus=false</p>
 <p>translation-sync-api</p>
-<h2 id="stringlevel-api-translationproductcomponentkeyapi"><em>String-Level API (translation-product-component-key-api)</em></h2>
+<h2 id="string-level-api-translation-product-component-key-api"><em>String-Level API (translation-product-component-key-api)</em></h2>
 <p>Get the translation of a string.</p>
 <h4 id="posti18napiv2translationproductsproductnameversionsversionlocaleslocalecomponentscomponentkeyskey"><strong>POST</strong>/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}</h4>
 <p>Get the translation of a string.</p>
@@ -557,7 +565,7 @@
 <p>(JSON Object) The translation in the language of the product for the component/function as requested.</p>
 <p>Example:</p>
 <p><strong>{Singleton service}</strong><em>/i18n/api/v2/translation/products/Testing/versions/1.0.0/locales/zh_CN/components/default/keys/testing.key?collectSource=false&amp;pseudo=false&amp;machineTranslation=false&amp;checkTranslationStatus=false</em></p>
-<h2 id="addingupdating-translation-api-translationsyncapi"><em>Adding/Updating Translation API (translation-sync-api)</em></h2>
+<h2 id="addingupdating-translation-api-translation-sync-api"><em>Adding/Updating Translation API (translation-sync-api)</em></h2>
 <p>Add the translation in another language or update the translation in the current language.</p>
 <h4 id="puti18napiv2translationproductsproductnameversionsversion">PUT/i18n/api/v2/translation/products/{productName}/versions/{version}</h4>
 <p>Add the translation in another language; add translations for one or more new strings in the current language; update the existing translations of a string, a component/function, or the whole product in one or more languages.</p>
@@ -569,7 +577,7 @@
 <p>(JSON Object) The relevant response status code and status message.</p>
 <p>Example:</p>
 <p><strong>{Singleton service}</strong><em>/i18n/api/v2/translation/products/Testing/versions/1.0.0</em></p>
-<h1 id="composite-api-translationwithpatternapi"><em>Composite API (translation-with-pattern-api)</em></h1>
+<h1 id="composite-api-translation-with-pattern-api"><em>Composite API (translation-with-pattern-api)</em></h1>
 <h4 id="posti18napiv2combinationtranslationsandpattern"><strong>POST</strong>/i18n/api/v2/combination/translationsAndPattern</h4>
 <p>This API, as the combination of the Formatting API and the Translation API, can be used to get the i18n-formatted data for the date time/number/currency/unit of measure/single and plural variations, as well as translations of a product.</p>
 <p><strong>Parameters:</strong></p>
