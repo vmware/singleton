@@ -44,14 +44,14 @@ Building from source code
  ```
  Jar files will be generated inside the following location:
  ```
- singleton/publish (Eg. singleton/publish/vip-manager-i18n-0.1.0.jar)
+ singleton/publish (Eg. singleton/publish/singleton-0.1.0.jar)
  ```
  
 To start using Singleton Service
 ---------
  Run the Spring Boot main application. Inside the singleton folder:
  ```
- java -jar publish/vip-manager-i18n-0.1.0.jar
+ java -jar publish/singleton-0.1.0.jar.jar
  ```
  A user interface for testing all available API endpoints will be available in the following URL:
  ```
