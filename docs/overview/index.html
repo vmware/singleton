@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-03-04T10:13:27 CST">
+<meta name="revised" content="2020-03-05T17:04:00 CST">
 <title>Overview :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -360,9 +360,9 @@
 <h3 id="compiling-singleton-source-code">Compiling Singleton source code</h3>
 <p>From the <code>singleton/g11n-ws</code> folder, generate the Singleton build file using the Gradle command - <code>./gradlew build</code>.</p>
 <p>The .jar files are generated in the <code>singleton/publish</code> location. For example:</p>
-<p><code>singleton/publish/vip-manager-i18n-0.1.0.jar</code></p>
+<p><code>singleton/publish/singleton-0.1.0.jar</code></p>
 <h3 id="running-singleton-application">Running Singleton application</h3>
-<p>To run the Singleton application, from the <code>singleton/g11n-ws</code> folder, run the Spring Boot main application, using the command: <code>java - jar publish/vip-manager-i18n-0.1.0.jar</code></p>
+<p>To run the Singleton application, from the <code>singleton/g11n-ws</code> folder, run the Spring Boot main application, using the command: <code>java - jar publish/singleton-0.1.0.jar</code></p>
 <p>NOTE: To test all available API endpoints from the user interface, see https://localhost:8090/i18n/api/doc/swagger-ui.html or http://localhost:8091/i18n/api/doc/swagger-ui.html.</p>
 <p>NOTE: Sample translation resources are available in the following location: <code>singleton/publish/l10n/bundles</code></p>
 <p>You can test the API using the following URI/request parameters:</p>
@@ -378,11 +378,11 @@ locale: &quot;en&quot;, &quot;ja&quot; or &quot;es&quot;
 <p>NOTE: If your product already has localized resource files, you must convert these files to JSON files manually to retain the existing translations. Please refer to the JSON file structure and folder structure from <code>singleton/publish/l10n/bundles</code>.</p>
 <h2 id="enabling-source-collection-on-singleton-service">Enabling source collection on Singleton service</h2>
 <p>About this task</p>
-<p>To enable the source collection feature on Singleton, both <strong>vip-manager-l10n-0.1.0.jar</strong> and <strong>vip-manager-i18n-0.1.0.jar</strong> under <code>singleton/publish</code> forlder are required.</p>
+<p>To enable the source collection feature on Singleton, both <strong>vip-manager-l10n-0.1.0.jar</strong> and <strong>singleton-0.1.0.jar</strong> under <code>singleton/publish</code> forlder are required.</p>
 <p>NOTE: This feature works for Singleton string-based and component-based APIs.</p>
 <p>Steps</p>
 <ul>
-<li>Open the <code>vip-manager-i18n-0.1.0.jar/BOOT-INF/classes/application-bundle.properties</code> file and make the following changes:</li>
+<li>Open the <code>singleton-0.1.0.jar/BOOT-INF/classes/application-bundle.properties</code> file and make the following changes:</li>
 </ul>
 <pre><code>// enables source collection 
 #collection source server
@@ -390,7 +390,7 @@ source.cache.flag = true
 source.cache.server.url = https://VIPl10n-ip-address:8088
 </code></pre><ul>
 <li>
-<p>Run <code>java -jar vip-manager-i18n-0.1.0.jar</code> command to start</p>
+<p>Run <code>java -jar singleton-0.1.0.jar</code> command to start</p>
 </li>
 <li>
 <p>Open the <code>vip-manager-l10n-0.1.0.jar/BOOT-INF/classes/application.properties</code> file and make the following changes:</p>
