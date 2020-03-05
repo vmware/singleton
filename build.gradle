@@ -5,6 +5,7 @@ description = 'VIP4Java'
 
 apply plugin: "jacoco"
 apply plugin: "org.sonarqube"
+
 buildscript {
   repositories {
     maven {
@@ -111,4 +112,12 @@ task javadocJar(type: Jar) {
     from javadoc
     archiveClassifier = 'javadoc'
 
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.enabled false
+    }
 }
