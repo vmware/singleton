@@ -80,14 +80,15 @@ Singleton Clients
  * [JAVA Client](https://github.com/vmware/singleton/tree/g11n-java-client)
  * [Angular Client](https://github.com/vmware/singleton/tree/g11n-angular-client)
  * [JS Client](https://github.com/vmware/singleton/tree/g11n-js-client)
+ * [Go Client](https://github.com/vmware/singleton/tree/g11n-go-client)
 
 Online Resources
 ----------------
  We welcome discussions about and contributions to the project!
  
  * Feel free to start a conversation with us at [Stackoverflow](https://stackoverflow.com/). Tag your question with "vmware-singleton" and we will get back to you.
- * User Guide:
- * Website: 
+ * User Guide: 
+ * Website: https://vmware.github.io/singleton/
 
 
 License
