@@ -1,3 +1,7 @@
+/*
+ * Copyright 2019 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 package com.vmware.vip.i18n.api.base;
 
 import java.util.ArrayList;
@@ -7,16 +11,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.servlet.http.HttpServletRequest;
-
-import com.vmware.vip.i18n.api.base.utils.CommonUtility;
-import com.vmware.vip.i18n.api.base.utils.VersionMatcher;
-
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.vmware.i18n.l2.service.pattern.IPatternService;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
@@ -30,6 +28,8 @@ import com.vmware.vip.core.messages.exception.L3APIException;
 import com.vmware.vip.core.messages.service.product.IProductService;
 import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO;
 import com.vmware.vip.core.messages.service.singlecomponent.IOneComponentService;
+import com.vmware.vip.i18n.api.base.utils.CommonUtility;
+import com.vmware.vip.i18n.api.base.utils.VersionMatcher;
 
 public class TranslationWithPatternAction extends BaseAction {
 
@@ -59,8 +59,8 @@ public class TranslationWithPatternAction extends BaseAction {
 	         map.put(ConstantsKeys.COMPONENTS, components);
 	         return super.handleResponse(APIResponseStatus.OK, map);
 	      } else {
-	         return super.handleResponse(APIResponseStatus.INTERNAL_SERVER_ERROR,
-	               ConstantsMsg.PARAM_NOT_VALIDATE);
+	         return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(),
+	                    ConstantsMsg.PARAM_NOT_VALIDATE, null);
 	      }
 	   }
 
@@ -78,9 +78,13 @@ public class TranslationWithPatternAction extends BaseAction {
         data.setLanguage(language);
         data.setScope(scope);
         data.setProductName(productName);
-        version = VersionMatcher.getMatchedVersion(version,
-                productService.getSupportVersionList(productName));
-        data.setVersion(version);
+        String newversion=null;
+        try {
+        	newversion = VersionMatcher.getMatchedVersion(version, productService.getSupportVersionList(productName));
+        }catch(Exception e) {
+        	newversion = version;
+        }
+        data.setVersion(newversion);
         if (!StringUtils.isEmpty(components)) {
             data.setComponents(Arrays.asList(components.split(ConstantsChar.COMMA)));
         }
@@ -94,8 +98,8 @@ public class TranslationWithPatternAction extends BaseAction {
             map.put(ConstantsKeys.COMPONENTS, compList);
             return super.handleResponse(APIResponseStatus.OK, map);
         } else {
-            return super.handleResponse(APIResponseStatus.INTERNAL_SERVER_ERROR,
-                    ConstantsMsg.PARAM_NOT_VALIDATE);
+            return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(),
+                    ConstantsMsg.PARAM_NOT_VALIDATE, null);
         }
     }
        /**

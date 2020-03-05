@@ -1,3 +1,7 @@
+/*
+ * Copyright 2019 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 package com.vmware.vip.i18n.config;
 
 import com.vmware.vip.common.constants.ConstantsTomcat;
