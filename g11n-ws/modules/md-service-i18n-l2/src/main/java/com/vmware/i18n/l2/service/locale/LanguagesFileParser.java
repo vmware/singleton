@@ -15,4 +15,9 @@ public class LanguagesFileParser {
 		String json = PatternUtil.getLanguageFromLib(displayLanguage);
 		return JSONUtils.getMapFromJson(json);
 	}
+
+	public Map<String, Object> getContextTransforms(String displayLanguage){
+		String json = PatternUtil.getContextTransformFromLib(displayLanguage);
+		return JSONUtils.getMapFromJson(json);
+	}
 }

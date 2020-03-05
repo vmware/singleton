@@ -27,7 +27,7 @@ import com.vmware.vip.i18n.api.v1.common.RequestUtil;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
-public class TranslationProductComponentAPITest {
+public class TranslationProductAPITest {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
@@ -85,12 +85,13 @@ public class TranslationProductComponentAPITest {
     
     
     private static String SingleComponentTranslationAPIURI="/i18n/api/v2/translation/products/MULTCOMP/versions/1.0.0/locales/es/components/component1?checkTranslationStatus=false&machineTranslation=false&pseudo=false";
-    private static String MultComponentTranslationAPIURI1="/i18n/api/v2/translation/products/MULTCOMP/versions/1.0.0/multlocales/en,es/multcomponents/component1,component2?pseudo=false";
-    private static String MultComponentTranslationAPIURI2="/i18n/api/v2/translation/products/MULTCOMP/versions/1.0.0/multlocales/en/multcomponents/component1,component5?pseudo=false";
-    private static String MultComponentTranslationAPIURI3="/i18n/api/v2/translation/products/MULTCOMP/versions/1.0.0/multlocales/en,zh-Hants/multcomponents/component1?pseudo=false";
-    private static String MultComponentTranslationAPIURI4="/i18n/api/v2/translation/products/MULTCOMP/versions/1.0.0/multlocales/zh-Hants/multcomponents/component1,component2?pseudo=false";
-    
-    
+    private static String MultComponentTranslationAPIURI1="/i18n/api/v2/translation/products/MULTCOMP/versions/1.0.0?pseudo=false";
+    private static String MultComponentTranslationAPIURI2="/i18n/api/v2/translation/products/MULTCOMP/versions/1.0.0?locales=en,es&&components=component1,component2&&pseudo=false";
+    private static String MultComponentTranslationAPIURI3="/i18n/api/v2/translation/products/MULTCOMP/versions/1.0.0?locales=en,zh-Hants&&components=component1,component5&&pseudo=false";
+    private static String MultComponentTranslationAPIURI4="/i18n/api/v2/translation/products/MULTCOMP/versions/1.0.0?locales=zh-Hants&&components=component1,component5&&pseudo=false";  
+    private static String MultComponentTranslationAPIURI5="/i18n/api/v2/translation/products/MULTCOMP/versions/1.0.0?components=component1,component2&&pseudo=false";
+    private static String MultComponentTranslationAPIURI6="/i18n/api/v2/translation/products/MULTCOMP/versions/1.0.0?locales=en&&pseudo=false";
+    private static String MultComponentTranslationAPIURI7="/i18n/api/v2/translation/products/MULTCOMP/versions/1.0.0?components=component1,component7&&pseudo=false";
     @Before
     public void setup() throws Exception {
         String authenticationResult=RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.POST, ConstantsForTest.AuthenticationAPIURI);
@@ -115,6 +116,20 @@ public class TranslationProductComponentAPITest {
     }
 
     /**
+     * * @throws Exception 
+     * get the mult-local and mult-component case
+     */
+    @Test
+    public void testMultiComponents1() throws Exception {
+        String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, MultComponentTranslationAPIURI1);
+        @SuppressWarnings("unchecked")
+        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        long code = (long) dataMap.get("code");
+        Assert.assertTrue(code==200L);
+    }
+    
+    
+    /**
      * * @throws Exception
      *  get result when translation only can't include component5
      */
@@ -124,7 +139,7 @@ public class TranslationProductComponentAPITest {
         @SuppressWarnings("unchecked")
         Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
         long code = (long) dataMap.get("code");
-        Assert.assertTrue(code==404L);
+        Assert.assertTrue(code==200L);
     }
     
     /**
@@ -137,7 +152,7 @@ public class TranslationProductComponentAPITest {
         @SuppressWarnings("unchecked")
         Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
         long code = (long) dataMap.get("code");
-        Assert.assertTrue(code==404L);
+        Assert.assertTrue(code==207L);
     }
     
     /**
@@ -153,6 +168,31 @@ public class TranslationProductComponentAPITest {
         Assert.assertTrue(code==404L);
     }
     
+    @Test
+    public void testMultiComponents5() throws Exception {
+        String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, MultComponentTranslationAPIURI5);
+        @SuppressWarnings("unchecked")
+        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        long code = (long) dataMap.get("code");
+        Assert.assertTrue(code==200L);
+    }
+    
+    @Test
+    public void testMultiComponents6() throws Exception {
+        String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, MultComponentTranslationAPIURI6);
+        @SuppressWarnings("unchecked")
+        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        long code = (long) dataMap.get("code");
+        Assert.assertTrue(code==200L);
+    }
+    @Test
+    public void testMultiComponents7() throws Exception {
+        String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, MultComponentTranslationAPIURI7);
+        @SuppressWarnings("unchecked")
+        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        long code = (long) dataMap.get("code");
+        Assert.assertTrue(code==207L);
+    }
 
     @Test
     public void testSingleComponent() throws Exception {
@@ -164,16 +204,5 @@ public class TranslationProductComponentAPITest {
        
     }
 
-    /**
-     * * @throws Exception 
-     * get the mult-local and mult-component case
-     */
-    @Test
-    public void testMultiComponents1() throws Exception {
-        String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, MultComponentTranslationAPIURI1);
-        @SuppressWarnings("unchecked")
-        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
-        long code = (long) dataMap.get("code");
-        Assert.assertTrue(code==200L);
-    }
+ 
 }

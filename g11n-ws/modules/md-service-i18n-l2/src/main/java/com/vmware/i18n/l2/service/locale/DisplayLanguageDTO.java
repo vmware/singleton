@@ -14,6 +14,12 @@ public class DisplayLanguageDTO implements Serializable {
 
 	private String displayName;
 
+	private String displayName_sentenceBeginning;
+
+	private String displayName_uiListOrMenu;
+
+	private String displayName_standalone;
+
 	public String getLanguageTag() {
 		return languageTag;
 	}
@@ -30,4 +36,27 @@ public class DisplayLanguageDTO implements Serializable {
 		this.displayName = displayName;
 	}
 
+	public String getDisplayName_sentenceBeginning() {
+		return displayName_sentenceBeginning;
+	}
+
+	public void setDisplayName_sentenceBeginning(String displayName_sentenceBeginning) {
+		this.displayName_sentenceBeginning = displayName_sentenceBeginning;
+	}
+
+	public String getDisplayName_uiListOrMenu() {
+		return displayName_uiListOrMenu;
+	}
+
+	public void setDisplayName_uiListOrMenu(String displayName_uiListOrMenu) {
+		this.displayName_uiListOrMenu = displayName_uiListOrMenu;
+	}
+
+	public String getDisplayName_standalone() {
+		return displayName_standalone;
+	}
+
+	public void setDisplayName_standalone(String displayName_standalone) {
+		this.displayName_standalone = displayName_standalone;
+	}
 }

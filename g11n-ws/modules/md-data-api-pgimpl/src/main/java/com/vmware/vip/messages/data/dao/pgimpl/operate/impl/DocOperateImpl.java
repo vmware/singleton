@@ -307,4 +307,17 @@ public class DocOperateImpl implements IDocOperate {
 		return result;
 	}
 
+    /* (non-Javadoc) * @see com.vmware.vip.messages.data.dao.pgimpl.operate.IDocOperate#getVersionList(java.lang.String, org.springframework.jdbc.core.JdbcTemplate) */
+    @Override
+    public List<String> getVersionList(String productName, JdbcTemplate jdbcTemplate) {
+        // TODO Auto-generated method stub
+        String localeSql = "select v.version from vip_msg v where v.product = ? group by v.version";
+        String[] params = { productName };
+        logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+        logger.debug(localeSql);
+        logger.debug(String.join(", ", params));
+        List<String> result = jdbcTemplate.queryForList(localeSql, params, String.class);
+        return result;
+    }
+
 }

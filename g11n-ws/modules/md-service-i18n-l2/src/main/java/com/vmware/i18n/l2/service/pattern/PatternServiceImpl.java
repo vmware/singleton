@@ -7,11 +7,7 @@ package com.vmware.i18n.l2.service.pattern;
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localeAliasesMap;
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePathMap;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.annotation.Resource;
 
@@ -34,6 +30,9 @@ import org.springframework.util.StringUtils;
 public class PatternServiceImpl implements IPatternService {
 
 	private static final Logger logger = LoggerFactory.getLogger(PatternServiceImpl.class.getName());
+
+	private static List<String> specialCategories = Arrays.asList(ConstantsKeys.PLURALS, ConstantsKeys.DATE_FIELDS);
+	private static List<String> otherCategories = Arrays.asList(ConstantsKeys.DATES, ConstantsKeys.NUMBERS, ConstantsKeys.MEASUREMENTS, ConstantsKeys.CURRENCIES);
 
 	@Resource
 	private IPatternDao patternDao;
@@ -152,16 +151,14 @@ public class PatternServiceImpl implements IPatternService {
 		}
 
 		if (categoryList.contains(ConstantsKeys.PLURALS)) {
-			Map<String, Object> pluralPatternMap = getPattern(language, Arrays.asList(ConstantsKeys.PLURALS));
-			Map<String, Object> pluralRulesMap = new LinkedHashMap<>();
-			pluralRulesMap.put(ConstantsKeys.PLURAL_RULES, null);
-			categoriesMap.put(ConstantsKeys.PLURALS, pluralRulesMap);
-			patternMap.put(ConstantsKeys.IS_EXIST_PATTERN, true);
-			if (null != pluralPatternMap.get(ConstantsKeys.CATEGORIES)) {
-				Map<String, Object> pluralMap = (Map<String, Object>) pluralPatternMap.get(ConstantsKeys.CATEGORIES);
-				if (null != pluralMap.get(ConstantsKeys.PLURALS)) {
-					categoriesMap.put(ConstantsKeys.PLURALS, pluralMap.get(ConstantsKeys.PLURALS));
-				}
+			handleSpecialCategory(ConstantsKeys.PLURALS, language, categoriesMap);
+		}
+
+		if (categoryList.contains(ConstantsKeys.DATE_FIELDS)) {
+			handleSpecialCategory(ConstantsKeys.DATE_FIELDS, language, categoriesMap);
+			// As long as the value of dateFields exist, the response needs to return its value.
+			if (null != categoriesMap.get(ConstantsKeys.DATE_FIELDS)) {
+				patternMap.put(ConstantsKeys.IS_EXIST_PATTERN, true);
 			}
 		}
 
@@ -169,10 +166,30 @@ public class PatternServiceImpl implements IPatternService {
 			patternMap.put(ConstantsKeys.LOCALEID, "");
 		}
 
+		// fix issue: https://github.com/vmware/singleton/issues/311
+		if (!Collections.disjoint(categoryList, specialCategories)) {
+			if (Collections.disjoint(categoryList, otherCategories)) {
+				patternMap.put(ConstantsKeys.LOCALEID, language);
+			} else if (!language.equals(localeDataDTO.getLocale())) {
+				patternMap.put(ConstantsKeys.LOCALEID, "");
+			}
+		}
+
 		patternMap.put(ConstantsKeys.LANGUAGE, language);
 		patternMap.put(ConstantsKeys.REGION, region);
 		patternMap.put(ConstantsKeys.CATEGORIES, categoriesMap);
 		return patternMap;
+	}
+
+	private void handleSpecialCategory(String category, String language, Map<String, Object> categoriesMap) throws VIPCacheException {
+		categoriesMap.put(category, null);
+		Map<String, Object> patternMap = getPattern(language, Arrays.asList(category));
+		if (null != patternMap.get(ConstantsKeys.CATEGORIES)) {
+			Map<String, Object> categoryMap = (Map<String, Object>) patternMap.get(ConstantsKeys.CATEGORIES);
+			if (null != categoryMap.get(category)) {
+				categoriesMap.put(category, categoryMap.get(category));
+			}
+		}
 	}
 
 	/**

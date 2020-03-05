@@ -6,8 +6,8 @@ apply plugin: "jacoco"
 apply plugin: "org.sonarqube"
 
 sourceCompatibility = 1.8
-description = 'vip i18n manager'
-
+description = 'singleton server'
+archivesBaseName = 'singleton'
 configurations {
 	bootJar
     war
@@ -54,8 +54,8 @@ dependencies {
     if (project.hasProperty('datatype') && project.getProperty('datatype') == 'bundle' && project.getProperty('syncdata') == 'true') {
        compile project(":md-restful-synch")
     }
-    compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.20')
-    compile ('org.apache.tomcat:tomcat-annotations-api:9.0.20')
+    compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.30')
+    compile ('org.apache.tomcat:tomcat-annotations-api:9.0.30')
     compile("org.springframework:spring-webmvc:$springWebVersion")
     compile ('org.springframework.boot:spring-boot-starter-log4j2')
     compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final")
@@ -80,6 +80,7 @@ dependencies {
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
     compile('io.swagger:swagger-annotations:1.5.22')
     compile('io.swagger:swagger-models:1.5.22')
+    compile('org.yaml:snakeyaml:1.25')
     //swagger UI -END
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("org.asciidoctor:asciidoctorj:1.5.6")
@@ -120,6 +121,13 @@ task copyLibs(type :Copy, dependsOn: bootJar) {
     include "**/*.jar","**/*.war"
 }
 
+
+task zipSingletonScripts(type: Zip,dependsOn: bootJar) {
+	from "$rootDir/scripts/"
+	destinationDir file("$rootDir/../publish/")
+	baseName 'singletonScripts'
+}
+
 processResources {
     excludes =[]
      if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
@@ -154,15 +162,15 @@ bootJar.doFirst {
 bootJar {
    
    
-    baseName = "vip-manager-i18n"
+    baseName = "singleton"
     if(project.hasProperty('productName')){
       def productName = project.getProperty('productName')
       if(productName == ''){
         productName = 'all'
       }
-      baseName = "vip-manager-i18n-$productName"
+      baseName = "singleton-$productName"
     }else{
-      baseName = "vip-manager-i18n"
+      baseName = "singleton"
     }
     version = "$branchName"
     classifier = "$buildNumber"
@@ -181,21 +189,22 @@ bootJar.doLast {
 }
 
 war {
-    baseName = "vip-manager-i18n"
+    baseName = "singleton"
     if(project.hasProperty('productName')){
       def productName = project.getProperty('productName')
       if(productName == ''){
         productName = 'all'
       }
-      baseName = "vip-manager-i18n-$productName"
+      baseName = "singleton-$productName"
     }else{
-      baseName = "vip-manager-i18n"
+      baseName = "singleton"
     }
     version = "$branchName"
     classifier = "$buildNumber"
 }
 
 assemble.dependsOn.add copyLibs
+assemble.dependsOn.add zipSingletonScripts
 
 task testFetchedTranslation(type: JavaExec, dependsOn: classes) {
     def jarPath = "${project(":vip-manager-i18n").buildDir}/libs/"
@@ -234,3 +243,15 @@ if (project.hasProperty('datatype') && (project.getProperty('datatype') == 'pgdb
 springBoot {
 	mainClassName = "com.vmware.vip.BootApplication"
 }
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    archiveClassifier = 'sources'
+}
+
+task javadocJar(type: Jar) {
+    from javadoc
+    archiveClassifier = 'javadoc'
+
+}
+

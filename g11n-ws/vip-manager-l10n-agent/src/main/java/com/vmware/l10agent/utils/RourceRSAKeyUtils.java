@@ -80,54 +80,48 @@ public class RourceRSAKeyUtils {
 
  
  private static String getKeysString(File path) throws IOException {
-	 BufferedReader br = new BufferedReader(new FileReader(path));
-	 
-	 StringBuilder sb = new StringBuilder();
-	 
-	 String str = null;
-     while((str = br.readLine()) != null){
-    	 if(str.charAt(0)=='-'){
-				continue;
-			}else {
-				
-				sb.append(str+"\r");
-			}
-     }
-     
-     br.close();
-     
+     StringBuilder sb = new StringBuilder();
+	 try(BufferedReader br = new BufferedReader(new FileReader(path))){
+	     String str = null;
+	     while((str = br.readLine()) != null){
+	         if(str.charAt(0)=='-'){
+	             continue;
+	         }else {
+	             
+	             sb.append(str+"\r");
+	         }
+	     }
+	     
+	 }     
      return sb.toString();
      
 }
 	 
  
  private static String getKeysString(InputStream inputStream) throws IOException {
-	 BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-	 
-	 StringBuilder sb = new StringBuilder();
-	 
-	 String str = null;
-     while((str = br.readLine()) != null){
-    	 if(str.charAt(0)=='-'){
-				continue;
-			}else {
-				
-				sb.append(str+"\r");
-			}
-     }
-     
-     br.close();
-     
+     StringBuilder sb = new StringBuilder();
+	try( BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))){
+	    String str = null;
+	    while((str = br.readLine()) != null){
+	        if(str.charAt(0)=='-'){
+	            continue;
+	        }else {
+	            
+	            sb.append(str+"\r");
+	        }
+	    }
+	}
+
      return sb.toString();
      
 }
  
  
  public static void writerKeyFile(File path, String keyStr) throws IOException {
-	 BufferedWriter br = new BufferedWriter(new FileWriter(path));
-	 br.write(keyStr);
-	 br.flush();
-	 br.close();
+	try(BufferedWriter br = new BufferedWriter(new FileWriter(path))){
+	    br.write(keyStr);
+	    br.flush();   
+	}
 	 
  }
 	 

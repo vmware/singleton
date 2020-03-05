@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.constants.ConstantsKeys;
+import com.vmware.vip.common.constants.ConstantsMsg;
 import com.vmware.vip.common.constants.ConstantsUnicode;
 import com.vmware.vip.common.i18n.resourcefile.LocalJSONReader;
 import com.vmware.vip.common.i18n.resourcefile.ResourceFilePathGetter;
@@ -38,7 +39,6 @@ import com.vmware.vip.messages.data.exception.BundleException;
 public class OneComponentDao implements IOneComponentDao {
 	
 	private static Logger logger = LoggerFactory.getLogger(OneComponentDao.class);
-	
 	@Autowired
 	private BundleConfig bundleConfig;
 	
@@ -46,7 +46,7 @@ public class OneComponentDao implements IOneComponentDao {
 	
 	@Override
 	public ResultI18Message get(String productName, String version, String component, String locale) throws DataException{
-		// TODO Auto-generated method stub
+	
 		
 		String jsonStr = get2JsonStr(productName, version, component, locale);
 		
@@ -58,16 +58,16 @@ public class OneComponentDao implements IOneComponentDao {
 		} catch (JsonParseException e) {
 			String errorLog = ConstantsKeys.FATA_ERROR + e.getMessage();
 			logger.error(errorLog, e);
-			throw new BundleException(e.getMessage());
+			throw new BundleException(e.getMessage(), e);
 
 		} catch (JsonMappingException e) {
 			String errorLog = ConstantsKeys.FATA_ERROR + e.getMessage();
 			logger.error(errorLog, e);
-			throw new BundleException("File is not existing: ");
+			throw new BundleException(ConstantsMsg.FIFE_NOT_FOUND, e);
 		} catch (IOException e) {
 			String errorLog = ConstantsKeys.FATA_ERROR + e.getMessage();
 			logger.error(errorLog, e);
-			throw new BundleException("File is not existing: ");
+			throw new BundleException(ConstantsMsg.FIFE_NOT_FOUND, e);
 
 		}
 		
@@ -77,7 +77,7 @@ public class OneComponentDao implements IOneComponentDao {
 			result.setComponent(component);
 			result.setLocale(locale);
 		}else {
-			throw new BundleException("File is not existing: ");
+			throw new BundleException(ConstantsMsg.FIFE_NOT_FOUND);
 		}
 
 
@@ -86,8 +86,7 @@ public class OneComponentDao implements IOneComponentDao {
 
 	@Override
 	public String get2JsonStr(String productName, String version, String component, String locale) throws DataException{
-		// TODO Auto-generated method stub
-
+	
 			String basepath = bundleConfig.getBasePathWithSeparator();
 			
 			String subpath = ConstantsFile.L10N_BUNDLES_PATH + productName
@@ -100,7 +99,7 @@ public class OneComponentDao implements IOneComponentDao {
 			}
 
 			if(result ==null) {
-				throw new BundleException("File is not existing: " + jsonfile);
+				throw new BundleException(ConstantsMsg.FIFE_NOT_FOUND+": " + jsonfile);
 			}
 
 			
@@ -112,7 +111,7 @@ public class OneComponentDao implements IOneComponentDao {
 	@Override
 	public boolean add(String productName, String version, String component, String locale,
 			Map<String, String> messages) throws DataException{
-		// TODO Auto-generated method stub
+	
 		return false;
 	}
 
@@ -143,7 +142,7 @@ public class OneComponentDao implements IOneComponentDao {
 		return true;
 	}
 
-	// TODO
+
 	public boolean delete(String productName, String version, String component,
 			String locale) throws DataException {
 		return false;

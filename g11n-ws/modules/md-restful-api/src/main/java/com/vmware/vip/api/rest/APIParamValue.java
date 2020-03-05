@@ -18,7 +18,7 @@ public class APIParamValue {
 	public final static String COMMENT_SOURCE = "detailed comment to the source for better transaltion";
 	public final static String SOURCE_FORMAT  = "the format of source(used to identify the source's secial chars like html tags)";
 	public final static String COLLECT_SOURCE = "a flag to require backend collect the source for translation";
-	public final static String SCOPE          = "pattern category string, separated by commas. e.g. 'dates, numbers, currencies, plurals, measurements'";
+	public final static String SCOPE          = "pattern category string, separated by commas. e.g. 'dates, numbers, currencies, plurals, measurements, dateFields'";
 	public final static String USERID         = "user id";
 	public final static String NUMBER         = "number";
 	public final static String SCALE          = "decimal digits";
@@ -26,6 +26,7 @@ public class APIParamValue {
 	public final static String PATTERN        = "pattern used to format the long date(the value could be one of this: YEAR = \"y\",QUARTER = \"QQQQ\",ABBR_QUARTER = \"QQQ\",QUARTER_YEAR = \"QQQQy\",QUARTER_ABBR_YEAR = \"QQQy\",MONTH = \"MMMM\",ABBR_MONTH = \"MMM\",NUM_MONTH = \"M\",MONTH_YEAR = \"MMMMy\",MONTH_ABBR_YEAR = \"MMMy\",MONTH_NUM_YEAR = \"My\",DAY = \"d\",MONTH_DAY_YEAR = \"MMMMdy\",ABBR_MONTH_DAY_YEAR = \"MMMdy\",NUM_MONTH_DAY_YEAR = \"Mdy\",WEEKDAY = \"EEEE\",ABBR_WEEKDAY = \"E\",WEEKDAY_MONTH_DAY_YEAR = \"EEEEMMMMdy\",ABBR_WEEKDAY_MONTH_DAY_YEAR = \"EMMMdy\",NUM_WEEKDAY_MONTH_DAY_YEAR = \"EMdy\",MONTH_DAY = \"MMMMd\",ABBR_MONTH_DAY = \"MMMd\",NUM_MONTH_DAY = \"Md\",WEEKDAY_MONTH_DAY = \"EEEEMMMMd\",ABBR_WEEKDAY_MONTH_DAY = \"EMMMd\",NUM_WEEKDAY_MONTH_DAY = \"EMd\")";
 	public final static String SUPPORTED_LANGUAGES = "the supported language list, separated by commas. e.g. 'en, zh, ja'";
 	public final static String DISPLAY_LANGUAGE   = "the display language. e.g. 'en'";
-	public final static String LANGUAGE   = "a string which represents language, e.g. en, en-US, pt, pt-BR, zh-Hans";
-	public final static String REGION   = "a string which represents region, e.g. US, PT, CN";
+	public final static String LANGUAGE       = "a string which represents language, e.g. en, en-US, pt, pt-BR, zh-Hans";
+	public final static String REGION         = "a string which represents region, e.g. US, PT, CN";
+	public final static String COMBINE        = "an integer which represents combine type number 1 or 2";
 }

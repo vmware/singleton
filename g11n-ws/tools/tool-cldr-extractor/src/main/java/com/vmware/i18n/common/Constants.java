@@ -22,6 +22,7 @@ public class Constants {
 	public static final String CURRENCIES = "currencies";
 	public static final String CATEGORIES = "categories";
 	public static final String PLURALS = "plurals";
+	public static final String CONTEXT_TRANSFORMS = "contextTransforms";
 
 	// pattern
 	public static final String LIKELY_SUBTAG = "likelySubtag";
@@ -48,6 +49,7 @@ public class Constants {
 	public static final String DEFAULT_CONTENT_JSON = "defaultContent.json";
 	public static final String REGION_LANGUAGE_MAPPING_JSON = "regionLanguageMapping.json";
 	public static final String PATTERN_JSON = "pattern.json";
+	public static final String DATE_FIELDS_JSON = "dateFields.json";
 
 	// key name
 	public static final String YEAR = "year";

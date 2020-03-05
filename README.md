@@ -44,14 +44,14 @@ Building from source code
  ```
  Jar files will be generated inside the following location:
  ```
- singleton/publish (Eg. singleton/publish/vip-manager-i18n-0.1.0.jar)
+ singleton/publish (Eg. singleton/publish/singleton-0.1.0.jar)
  ```
  
 To start using Singleton Service
 ---------
  Run the Spring Boot main application. Inside the singleton folder:
  ```
- java -jar publish/vip-manager-i18n-0.1.0.jar
+ java -jar publish/singleton-0.1.0.jar.jar
  ```
  A user interface for testing all available API endpoints will be available in the following URL:
  ```
@@ -80,14 +80,15 @@ Singleton Clients
  * [JAVA Client](https://github.com/vmware/singleton/tree/g11n-java-client)
  * [Angular Client](https://github.com/vmware/singleton/tree/g11n-angular-client)
  * [JS Client](https://github.com/vmware/singleton/tree/g11n-js-client)
+ * [Go Client](https://github.com/vmware/singleton/tree/g11n-go-client)
 
 Online Resources
 ----------------
  We welcome discussions about and contributions to the project!
  
  * Feel free to start a conversation with us at [Stackoverflow](https://stackoverflow.com/). Tag your question with "vmware-singleton" and we will get back to you.
- * User Guide:
- * Website: 
+ * User Guide: 
+ * Website: https://vmware.github.io/singleton/
 
 
 License

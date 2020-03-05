@@ -84,8 +84,26 @@ public class PgProductApiImpl implements IProductDao {
 		return "";
 	}
 
-	@Override
-	public Map<String, String[]> getProductsAndVersions() throws DataException {
-		return null;
-	}
+       /**
+        * get one product's all available versions
+        */
+       @Override
+        public List<String> getVersionList(String productName) throws DataException {
+             List<String> result = docOperate.getVersionList(productName, datanodes.getDataNodeByProduct(productName));
+             if(result != null && result.size()>0) {
+                return result;
+             }else {
+            throw new DataException(productName + " no available version in pgDB");   
+             }
+        }
+
+   /**
+    * get the white list content from pg db
+    */
+    @Override
+    public String getWhiteListContent() throws DataException {
+        return null;
+    }
+
+
 }

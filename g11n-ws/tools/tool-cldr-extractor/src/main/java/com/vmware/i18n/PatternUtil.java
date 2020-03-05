@@ -44,6 +44,15 @@ public class PatternUtil {
 	}
 
 	/**
+	 * @param displayLanguage
+	 * @return ContextTransform json string
+	 */
+	public static String getContextTransformFromLib(String displayLanguage) {
+		LocaleAction la = LocaleAction.getInstance();
+		return la.getContextTransforms(displayLanguage);
+	}
+
+	/**
 	 * @param locale
 	 * @return matching locale
 	 */

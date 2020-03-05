@@ -1,6 +1,7 @@
 /*
+ * Copyright 2019 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
  */
-
 package com.vmware.vip.i18n.api.v1.utils;
 
 import org.apache.commons.lang3.StringUtils;

@@ -173,9 +173,6 @@ public class CLDRUtils {
         // datetimeFormats
         Map<String, Object> dateTimeMap = dateTimeFormatExtract(locale, dateContents);
 
-        // dateFieldsFormats
-        Map<String, Object> dateFieldsMap = dateFieldsFormatExtract(locale);
-
         Map<String, Object> dateMap = new LinkedHashMap<String, Object>();
         dateMap.put(Constants.DAY_PERIODS_FORMAT, dayPeriodsFormatMap);
         dateMap.put(Constants.DAY_PERIODS_STANDALONE, dayPeriodsStandaloneMap);
@@ -189,7 +186,6 @@ public class CLDRUtils {
         dateMap.put(Constants.DATE_FORMATS, dateFormatMap);
         dateMap.put(Constants.TIME_FORMATS, timeFormatMap);
         dateMap.put(Constants.DATE_TIME_FORMATS, dateTimeMap);
-        dateMap.put(Constants.DATE_FIELDS, dateFieldsMap);
         return dateMap;
     }
 
@@ -865,9 +861,23 @@ public class CLDRUtils {
             filePath = GEN_CLDR_PATTERN_DIR + locale + File.separator + Constants.PATTERN_JSON;
             writePatternDataIntoFile(filePath, rootMap);
             recordMap.put(locale.toLowerCase(), locale);
+            dateFieldsExtract(locale);
         }
         dataRecordForParse(likelySubtags, recordMap);
         logger.info("Extract i18n pattern data complete!");
+    }
+
+    /**
+     * Get dateFields and generate dateFields.json file
+     * @param locale
+     */
+    public static void dateFieldsExtract(String locale) {
+        Map<String, Object> rootMap = new LinkedHashMap<>();
+        Map<String, Object> dateFieldsMap = dateFieldsFormatExtract(locale);
+        rootMap.put(Constants.LOCALE_ID, locale);
+        rootMap.put(Constants.DATE_FIELDS, dateFieldsMap);
+        String filePath = GEN_CLDR_PATTERN_DIR + locale + File.separator + Constants.DATE_FIELDS_JSON;
+        writePatternDataIntoFile(filePath, rootMap);
     }
 
     /**
