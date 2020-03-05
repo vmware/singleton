@@ -46,7 +46,7 @@ s3.bucketName=######
    Jar files will be generated to
 
 ```
-singleton/publish (Eg. singleton/publish/vip-manager-i18n-0.1.0.jar)
+singleton/publish (Eg. singleton/publish/singleton-0.1.0.jar)
 ```
 
 The translation bundle structure in AWS S3:

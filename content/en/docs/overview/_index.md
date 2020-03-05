@@ -58,11 +58,11 @@ From the `singleton/g11n-ws` folder, generate the Singleton build file using the
 
 The .jar files are generated in the `singleton/publish` location. For example:
 
-`singleton/publish/vip-manager-i18n-0.1.0.jar` 
+`singleton/publish/singleton-0.1.0.jar` 
 
 ### Running Singleton application
 
-To run the Singleton application, from the `singleton/g11n-ws` folder, run the Spring Boot main application, using the command: `java - jar publish/vip-manager-i18n-0.1.0.jar`
+To run the Singleton application, from the `singleton/g11n-ws` folder, run the Spring Boot main application, using the command: `java - jar publish/singleton-0.1.0.jar`
 
 NOTE: To test all available API endpoints from the user interface, see https://localhost:8090/i18n/api/doc/swagger-ui.html or http://localhost:8091/i18n/api/doc/swagger-ui.html.
 
@@ -92,13 +92,13 @@ Enabling source collection on Singleton service
 
 About this task
 
-To enable the source collection feature on Singleton, both **vip-manager-l10n-0.1.0.jar** and **vip-manager-i18n-0.1.0.jar** under `singleton/publish` forlder are required.
+To enable the source collection feature on Singleton, both **vip-manager-l10n-0.1.0.jar** and **singleton-0.1.0.jar** under `singleton/publish` forlder are required.
 
 NOTE: This feature works for Singleton string-based and component-based APIs.
 
 Steps
 
-* Open the `vip-manager-i18n-0.1.0.jar/BOOT-INF/classes/application-bundle.properties` file and make the following changes:
+* Open the `singleton-0.1.0.jar/BOOT-INF/classes/application-bundle.properties` file and make the following changes:
 ```
 // enables source collection 
 #collection source server
@@ -106,7 +106,7 @@ source.cache.flag = true
 source.cache.server.url = https://VIPl10n-ip-address:8088
 ```
 
-* Run `java -jar vip-manager-i18n-0.1.0.jar` command to start
+* Run `java -jar singleton-0.1.0.jar` command to start
 
 * Open the `vip-manager-l10n-0.1.0.jar/BOOT-INF/classes/application.properties` file and make the following changes:
 

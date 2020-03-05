@@ -45,12 +45,12 @@ From the `singleton/g11n-ws` folder, generate the Singleton build file using the
 
 The .jar files are generated in the `singleton/publish` location. For example:
 
-`singleton/publish/vip-manager-i18n-0.1.0.jar`
+`singleton/publish/singleton-0.1.0.jar`
 
 Running Singleton application
 -----------------------------
 
-To run the Singleton application, from the singleton/g11n-ws folder, run the Spring Boot main application, using the command: `java - jar publish/vip-manager-i18n-0.1.0.jar`.
+To run the Singleton application, from the singleton/g11n-ws folder, run the Spring Boot main application, using the command: `java - jar publish/singleton-0.1.0.jar`.
 
 NOTE: To test all available API endpoints from the user interface, see https://localhost:8090/i18n/api/doc/swagger-ui.html or http://localhost:8091/i18n/api/doc/swagger-ui.html.
 
