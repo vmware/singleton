@@ -92,6 +92,12 @@ public class TranslationProductAPITest {
     private static String MultComponentTranslationAPIURI5="/i18n/api/v2/translation/products/MULTCOMP/versions/1.0.0?components=component1,component2&&pseudo=false";
     private static String MultComponentTranslationAPIURI6="/i18n/api/v2/translation/products/MULTCOMP/versions/1.0.0?locales=en&&pseudo=false";
     private static String MultComponentTranslationAPIURI7="/i18n/api/v2/translation/products/MULTCOMP/versions/1.0.0?components=component1,component7&&pseudo=false";
+    private static String VersionFallbackMultComponentTranslationAPIURI1="/i18n/api/v2/translation/products/MULTCOMP/versions/2.0.0?pseudo=false";
+    private static String VersionFallbackSingleComponentTranslationAPIURI="/i18n/api/v2/translation/products/MULTCOMP/versions/2.0.0/locales/es/components/component1?checkTranslationStatus=false&machineTranslation=false&pseudo=false";
+    private static String VersionFallbackSupportLanguageList = "/i18n/api/v2/locale/supportedLanguageList?displayLanguage=es&productName=MULTCOMP&version=2.0.0";
+    private static String VersionFallbackComponentlist ="/i18n/api/v2/translation/products/MULTCOMP/versions/2.0.0/componentlist";
+    private static String VersionFallbackLocalelist="/i18n/api/v2/translation/products/MULTCOMP/versions/2.0.0/localelist";
+    
     @Before
     public void setup() throws Exception {
         String authenticationResult=RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.POST, ConstantsForTest.AuthenticationAPIURI);
@@ -127,6 +133,10 @@ public class TranslationProductAPITest {
         long code = (long) dataMap.get("code");
         Assert.assertTrue(code==200L);
     }
+    
+
+    
+    
     
     
     /**
@@ -204,5 +214,57 @@ public class TranslationProductAPITest {
        
     }
 
+    /**
+     * * @throws Exception 
+     * get the mult-local and mult-component case
+     */
+    @Test
+    public void testVersionFallbackMultiComponents1() throws Exception {
+        String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, VersionFallbackMultComponentTranslationAPIURI1);
+        @SuppressWarnings("unchecked")
+        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        long code = (long) dataMap.get("code");
+        Assert.assertTrue(code==604L);
+    }
+    
+    @Test
+    public void testVersionFallbackSingleComponent() throws Exception {
+      String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, VersionFallbackSingleComponentTranslationAPIURI);
+        @SuppressWarnings("unchecked")
+        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        long code = (long) dataMap.get("code");
+        Assert.assertTrue(code==604L);
+       
+    }
+    
+    @Test
+    public void testVersionSupportLanguageList() throws Exception {
+      String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, VersionFallbackSupportLanguageList);
+        @SuppressWarnings("unchecked")
+        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        long code = (long) dataMap.get("code");
+        Assert.assertTrue(code==604L);
+       
+    }
+    
+    @Test
+    public void testVersionComponentList() throws Exception {
+      String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, VersionFallbackComponentlist);
+        @SuppressWarnings("unchecked")
+        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        long code = (long) dataMap.get("code");
+        Assert.assertTrue(code==604L);
+       
+    }
+    
+    @Test
+    public void testVersionLocaleList() throws Exception {
+      String json = RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, VersionFallbackLocalelist);
+        @SuppressWarnings("unchecked")
+        Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        long code = (long) dataMap.get("code");
+        Assert.assertTrue(code==604L);
+       
+    }
  
 }
