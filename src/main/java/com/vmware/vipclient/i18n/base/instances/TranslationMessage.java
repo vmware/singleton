@@ -71,7 +71,7 @@ public class TranslationMessage implements Message {
      */
     public String getString(final Locale locale, final String component,
             final String key, final String source, final String comment, final Object... args) {
-        logger.debug("Start to execute TranslationMessage.getString");
+        logger.trace("Start to execute TranslationMessage.getString");
         if (key == null || key.equalsIgnoreCase("")) {
             return "";
         }
@@ -151,7 +151,7 @@ public class TranslationMessage implements Message {
      */
     public boolean postStrings(final Locale locale, final String component,
             final List<JSONObject> sources) {
-        logger.info("Start to execute TranslationMessage.postStrings");
+        logger.debug("Start to execute TranslationMessage.postStrings");
         if (sources == null || sources.isEmpty()) {
             return false;
         }
@@ -206,7 +206,7 @@ public class TranslationMessage implements Message {
      */
     public boolean postString(final Locale locale, final String component,
             final String key, final String source, final String comment) {
-        logger.info("Start to execute TranslationMessage.postString");
+        logger.debug("Start to execute TranslationMessage.postString");
         MessagesDTO dto = new MessagesDTO();
         dto.setComponent(component);
         dto.setComment(comment);
@@ -240,7 +240,7 @@ public class TranslationMessage implements Message {
      */
     public Map<String, String> getStrings(final Locale locale,
             final String component) {
-        logger.info("Start to execute TranslationMessage.getStrings");
+        logger.trace("Start to execute TranslationMessage.getStrings");
         MessagesDTO dto = new MessagesDTO();
         dto.setLocale(locale.toLanguageTag());
         dto.setComponent(component);
@@ -266,7 +266,7 @@ public class TranslationMessage implements Message {
      */
     public Map<Locale, Map<String, Map<String, String>>> getStrings(final Set<Locale> locales,
             final Set<String> components) {
-        logger.info("Start to execute TranslationMessage.getStrings of multiple components of multiple locales.");
+        logger.trace("Start to execute TranslationMessage.getStrings of multiple components of multiple locales.");
 
         Map<Locale, Map<String, Map<String, String>>> retMap = new HashMap<>();
         if (null == locales || locales.isEmpty() || null == components || components.isEmpty()) {
@@ -307,7 +307,7 @@ public class TranslationMessage implements Message {
      */
     public String getString2(final String component,
             final String bundle, final Locale locale, final String key, final Object... args) {
-        logger.debug("Start to execute TranslationMessage.getString2");
+        logger.trace("Start to execute TranslationMessage.getString2");
         if (key == null || key.equalsIgnoreCase("")) {
             return "";
         }
@@ -334,7 +334,7 @@ public class TranslationMessage implements Message {
      * @return
      */
     public boolean isAvailable(final String component, final Locale locale) {
-        logger.info("Start to execute component-based TranslationMessage.isAvailable");
+        logger.trace("Start to execute component-based TranslationMessage.isAvailable");
         boolean available = false;
         if (!LocaleUtility.isDefaultLocale(locale)) {
             MessagesDTO dto = new MessagesDTO();
@@ -358,7 +358,7 @@ public class TranslationMessage implements Message {
      * @return
      */
     public boolean isAvailable(final String component, final String key, final Locale locale) {
-        logger.info("Start to execute string-based TranslationMessage.isAvailable");
+        logger.trace("Start to execute string-based TranslationMessage.isAvailable");
         boolean available = false;
         if (!LocaleUtility.isDefaultLocale(locale)) {
             MessagesDTO dto = new MessagesDTO();

@@ -31,7 +31,7 @@ public class LocaleService {
         for (String language : languages) {
             language = language.toLowerCase();
             Map<String, String> regionMap = null;
-            logger.info("look for region list of '" + language + "' from cache");
+            logger.trace("look for region list of '" + language + "' from cache");
             Cache c = VIPCfg.getInstance().getCacheManager()
                     .getCache(VIPCfg.CACHE_L2);
             if (c != null) {
@@ -42,7 +42,7 @@ public class LocaleService {
                 respMap.put(language, regionMap);
                 continue;
             }
-            logger.info("get region list of '" + language
+            logger.trace("get region list of '" + language
                     + "' data from backend");
             Map<String, String> tmpMap = new LocaleOpt()
                     .getTerritoriesFromCLDR(language);
@@ -57,13 +57,13 @@ public class LocaleService {
 
     public Map<String, String> getDisplayNamesFromCLDR(String language) {
         Map<String, String> dispMap = null;
-        logger.info("look for displayNames from cache");
+        logger.trace("look for displayNames from cache");
         Cache c = VIPCfg.getInstance().getCacheManager()
                 .getCache(VIPCfg.CACHE_L2);
         if (c != null) {
             dispMap = (Map<String, String>) c.get(DISPN_PREFIX + language);
             if (dispMap == null || dispMap.size() == 0) {
-                logger.info("get displayname data from backend");
+                logger.trace("get displayname data from backend");
                 Map<String, String> tmpMap = new LocaleOpt()
                         .getDisplayNamesFromCLDR(language);
                 dispMap = JSONUtils.map2SortMap(tmpMap);
