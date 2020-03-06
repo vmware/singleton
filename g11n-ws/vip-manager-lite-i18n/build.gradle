@@ -131,3 +131,10 @@ springBoot {
 	mainClassName = "com.vmware.vip.LiteBootApplication"
 }
 
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.enabled false
+    }
+}

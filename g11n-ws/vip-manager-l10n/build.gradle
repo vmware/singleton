@@ -84,3 +84,11 @@ task javadocJar(type: Jar) {
     archiveClassifier = 'javadoc'
 
 }
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.enabled false
+    }
+}
