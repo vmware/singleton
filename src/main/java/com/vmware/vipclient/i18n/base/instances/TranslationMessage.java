@@ -71,7 +71,7 @@ public class TranslationMessage implements Message {
      */
     public String getString(final Locale locale, final String component,
             final String key, final String source, final String comment, final Object... args) {
-        this.logger.debug("Start to execute TranslationMessage.getString");
+        this.logger.trace("Start to execute TranslationMessage.getString");
         if (key == null || key.equalsIgnoreCase(""))
             return "";
         MessagesDTO dto = new MessagesDTO();
@@ -150,7 +150,7 @@ public class TranslationMessage implements Message {
      */
     public boolean postStrings(final Locale locale, final String component,
             final List<JSONObject> sources) {
-        this.logger.info("Start to execute TranslationMessage.postStrings");
+        this.logger.trace("Start to execute TranslationMessage.postStrings");
         if (sources == null || sources.isEmpty())
             return false;
         MessagesDTO dto = new MessagesDTO();
@@ -204,7 +204,7 @@ public class TranslationMessage implements Message {
      */
     public boolean postString(final Locale locale, final String component,
             final String key, final String source, final String comment) {
-        this.logger.info("Start to execute TranslationMessage.postString");
+        this.logger.trace("Start to execute TranslationMessage.postString");
         MessagesDTO dto = new MessagesDTO();
         dto.setComponent(component);
         dto.setComment(comment);
@@ -238,7 +238,7 @@ public class TranslationMessage implements Message {
      */
     public Map<String, String> getStrings(final Locale locale,
             final String component) {
-        this.logger.info("Start to execute TranslationMessage.getStrings");
+        this.logger.trace("Start to execute TranslationMessage.getStrings");
         MessagesDTO dto = new MessagesDTO();
         dto.setLocale(locale.toLanguageTag());
         dto.setComponent(component);
@@ -264,7 +264,7 @@ public class TranslationMessage implements Message {
      */
     public Map<Locale, Map<String, Map<String, String>>> getStrings(final Set<Locale> locales,
             final Set<String> components) {
-        this.logger.info("Start to execute TranslationMessage.getStrings of multiple components of multiple locales.");
+        this.logger.trace("Start to execute TranslationMessage.getStrings of multiple components of multiple locales.");
 
         Map<Locale, Map<String, Map<String, String>>> retMap = new HashMap<>();
         if (null == locales || locales.isEmpty() || null == components || components.isEmpty()) {
@@ -309,7 +309,7 @@ public class TranslationMessage implements Message {
      */
     public String getString2(final String component,
             final String bundle, final Locale locale, final String key, final Object... args) {
-        this.logger.debug("Start to execute TranslationMessage.getString2");
+        this.logger.trace("Start to execute TranslationMessage.getString2");
         if (key == null || key.equalsIgnoreCase(""))
             return "";
         String message = "";
@@ -335,7 +335,7 @@ public class TranslationMessage implements Message {
      * @return
      */
     public boolean isAvailable(final String component, final Locale locale) {
-        this.logger.info("Start to execute component-based TranslationMessage.isAvailable");
+        this.logger.trace("Start to execute component-based TranslationMessage.isAvailable");
         boolean available = false;
         if (!LocaleUtility.isDefaultLocale(locale)) {
             MessagesDTO dto = new MessagesDTO();
@@ -359,7 +359,7 @@ public class TranslationMessage implements Message {
      * @return
      */
     public boolean isAvailable(final String component, final String key, final Locale locale) {
-        this.logger.info("Start to execute string-based TranslationMessage.isAvailable");
+        this.logger.trace("Start to execute string-based TranslationMessage.isAvailable");
         boolean available = false;
         if (!LocaleUtility.isDefaultLocale(locale)) {
             MessagesDTO dto = new MessagesDTO();
