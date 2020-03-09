@@ -57,7 +57,7 @@ public class ParameterValidation implements IVlidation {
 			throw new ValidationException(ValidationMsg.PRODUCTNAME_NOT_VALIDE);
 		}
 		if ("get".equalsIgnoreCase(request.getMethod())) {
-            validateProductByWhiteList(productName, (Map<String, Object>)request.getAttribute(ParameterValidation.TAG_WHITE_LIST_MAP));
+			validateProductByWhiteList(productName, (Map<String, Object>)request.getAttribute(ParameterValidation.TAG_WHITE_LIST_MAP));
 		}
 	}
 
