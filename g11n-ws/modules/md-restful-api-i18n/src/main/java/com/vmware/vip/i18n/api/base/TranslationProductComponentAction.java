@@ -82,11 +82,11 @@ public class TranslationProductComponentAction extends BaseAction {
 						updateTranslationDTO);
 			}
 		} else {
-			String newVersion = super.availableVersion(productName, version);
+			String newVersion = super.getAvailableVersion(productName, version);
 			c.setVersion(newVersion);
 			c = singleComponentService.getComponentTranslation(c);
 		}
-		return super.versionFallbackHandleResponse(version, c.getVersion(), c);
+		return super.handleVersionFallbackResponse(version, c.getVersion(), c);
 	}
 
 	public APIResponseDTO getMultipleComponentsTrans(String productName,

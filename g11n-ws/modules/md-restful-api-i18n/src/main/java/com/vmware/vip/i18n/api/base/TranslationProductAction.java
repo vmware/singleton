@@ -185,7 +185,7 @@ public class TranslationProductAction  extends BaseAction {
                String components, String version, String locales, String pseudo,
                HttpServletRequest req) throws Exception {
           String oldVersion = version;
-          version = super.availableVersion(productName, oldVersion);
+          version = super.getAvailableVersion(productName, oldVersion);
           TranslationDTO resulttranslationDTO = getResultTranslationDTO( productName, version,components, locales,  pseudo, req);
           TranslationDTO allTranslationDTO  =  getAllCompTrans( resulttranslationDTO.getProductName(),  resulttranslationDTO.getVersion(), resulttranslationDTO.getPseudo(), req);
           List<String> reqLocales = resulttranslationDTO.getLocales();
@@ -212,7 +212,7 @@ public class TranslationProductAction  extends BaseAction {
               throw new L3APIException(ConstantsMsg.TRANS_IS_NOT_FOUND);
           }else if(ja.size() == (reqLocaleSize*reqComponentSite)) {
               resulttranslationDTO.setBundles(ja);
-              return  super.versionFallbackHandleResponse(oldVersion, version, resulttranslationDTO);
+              return super.handleVersionFallbackResponse(oldVersion, version, resulttranslationDTO);
           }else {
               for(JSONObject jsonNullObj:jsonNullList) {
                   ja.add(jsonNullObj);
@@ -250,25 +250,25 @@ public class TranslationProductAction  extends BaseAction {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public APIResponseDTO getSLocales(String productName,String version,
 			HttpServletRequest request) throws Exception{
-		String newVersion = super.availableVersion(productName, version);
+		String newVersion = super.getAvailableVersion(productName, version);
 		List<String> localeList = productService.getSupportedLocaleList(
 				productName, newVersion);
 		Map data = new HashMap();
 		data.put(PRODUCT_NAME, productName);
 		data.put(VERSION, newVersion);
 		data.put("locales", localeList);
-		return super.versionFallbackHandleResponse(version, newVersion, data);
+		return super.handleVersionFallbackResponse(version, newVersion, data);
 	}
 
     public APIResponseDTO getCNameList(String productName,String version,
             HttpServletRequest request)  throws Exception {
-    	String newVersion = super.availableVersion(productName, version);
+    	String newVersion = super.getAvailableVersion(productName, version);
         List<String> componentList= productService.getComponentNameList(productName, newVersion);
         Map<String,Object> data = new HashMap<String,Object>();
         data.put(PRODUCT_NAME, productName);
         data.put(VERSION, newVersion);
         data.put("components", componentList);
-        return super.versionFallbackHandleResponse(version, newVersion, data);
+        return super.handleVersionFallbackResponse(version, newVersion, data);
     }
 
     public APIResponseDTO getVersionInfo(String productName,String version) throws L3APIException{

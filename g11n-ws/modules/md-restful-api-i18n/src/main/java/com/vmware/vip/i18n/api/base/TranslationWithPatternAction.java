@@ -65,7 +65,7 @@ public class TranslationWithPatternAction extends BaseAction {
 	         Map<String, Object> map = new HashMap<String, Object>();
 	         map.put(ConstantsKeys.PATTERN, pattern);
 	         map.put(ConstantsKeys.COMPONENTS, components);
-	         return super.versionFallbackHandleResponse(oldVersion, data.getVersion(), map);
+	         return super.handleVersionFallbackResponse(oldVersion, data.getVersion(), map);
 	      } else {
 	         return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(),
 	                    ConstantsMsg.PARAM_NOT_VALIDATE, null);
@@ -104,7 +104,7 @@ public class TranslationWithPatternAction extends BaseAction {
             Map<String, Object> map = new HashMap<String, Object>();
             map.put(ConstantsKeys.PATTERN, pattern);
             map.put(ConstantsKeys.COMPONENTS, compList);
-            return super.versionFallbackHandleResponse(version, newversion, map);
+            return super.handleVersionFallbackResponse(version, newversion, map);
         } else {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(),
                     ConstantsMsg.PARAM_NOT_VALIDATE, null);

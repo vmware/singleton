@@ -22,7 +22,11 @@ public class BaseAction {
 	@Autowired
 	protected IProductService baseProductService;
 	
-	protected String availableVersion(String productName, String version) {
+	/**
+	 *The method use to get the available version string by matching support versions. 
+     *if not matching return the request version string
+	 */
+	protected String getAvailableVersion(String productName, String version) {
         try {
           return VersionMatcher.getMatchedVersion(version, baseProductService.getSupportVersionList(productName));
         }catch(Exception e) {
@@ -30,7 +34,11 @@ public class BaseAction {
         }
     }
    
-	protected APIResponseDTO versionFallbackHandleResponse(String oldVersion, String newVersion, Object data) {
+	/**
+	 * This method use to handle and package the version fallback response content 
+	 * 
+	 */
+	protected APIResponseDTO handleVersionFallbackResponse(String oldVersion, String newVersion, Object data) {
 		 if(oldVersion.equals(newVersion)) {
 			 return handleResponse(APIResponseStatus.OK, data);
 		 }else {
