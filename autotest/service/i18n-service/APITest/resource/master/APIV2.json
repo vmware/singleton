@@ -493,18 +493,82 @@
 		{
 			"name": "translation-with-pattern-api",
 			"apis": [{
-				"name": "getRranslationWithPatternUsingPOST",
-				"path": "/i18n/api/v2/combination/translationsAndPattern",
-				"description": "Get combination of translaiton and pattern",
-				"method": "post",
-				"params": [{
-					"name": "data",
-					"required": true,
-					"desc": "all parameters",
-					"paramType": "body",
-					"dataType": "Model Schema"
-				}]
-			}]
+					"name": "getRranslationWithPatternUsingGET",
+					"path": "/i18n/api/v2/combination/translationsAndPattern",
+					"description": "Get combination of translaiton and pattern",
+					"method": "get",
+					"params": [{
+							"name": "combine",
+							"required": true,
+							"desc": "which type: 1:language+region;2:locale",
+							"paramType": "query",
+							"dataType": "integer"
+						},
+						{
+							"name": "components",
+							"required": true,
+							"desc": "compoonents",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "language",
+							"required": true,
+							"desc": "language",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "productName",
+							"required": true,
+							"desc": "product name",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "pseudo",
+							"required": false,
+							"desc": "pseudo",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "region",
+							"required": false,
+							"desc": "region",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "scope",
+							"required": true,
+							"desc": "scope",
+							"paramType": "query",
+							"dataType": "string"
+						},
+						{
+							"name": "version",
+							"required": true,
+							"desc": "version",
+							"paramType": "query",
+							"dataType": "string"
+						}
+					]
+				},
+				{
+					"name": "getRranslationWithPatternUsingPOST",
+					"path": "/i18n/api/v2/combination/translationsAndPattern",
+					"description": "Get combination of translaiton and pattern",
+					"method": "post",
+					"params": [{
+						"name": "data",
+						"required": true,
+						"desc": "all parameters",
+						"paramType": "body",
+						"dataType": "Model Schema"
+					}]
+				}
+			]
 		},
 		{
 			"name": "postSourcesUsingPOST",
