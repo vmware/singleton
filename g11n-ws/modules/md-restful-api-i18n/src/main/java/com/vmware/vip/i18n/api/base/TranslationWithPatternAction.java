@@ -56,7 +56,6 @@ public class TranslationWithPatternAction extends BaseAction {
 	          try {
 	        	  availableVersions = productService.getSupportVersionList(data.getProductName());
 	          }catch(L3APIException e) {
-	        	  availableVersions = null;
 	          }
 	         String oldVersion = data.getVersion();
              data.setVersion(VersionMatcher.getMatchedVersion(data.getVersion(), availableVersions));
