@@ -255,3 +255,10 @@ task javadocJar(type: Jar) {
 
 }
 
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.enabled false
+    }
+}
