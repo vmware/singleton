@@ -1,3 +1,5 @@
+#Copyright 2019 VMware, Inc.
+#SPDX-License-Identifier: EPL-2.0
 #coding:utf-8
 '''
 Created on Mar 2, 2018
