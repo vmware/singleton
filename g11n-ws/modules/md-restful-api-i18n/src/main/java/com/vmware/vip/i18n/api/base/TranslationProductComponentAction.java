@@ -29,7 +29,6 @@ import com.vmware.vip.core.messages.service.multcomponent.TranslationDTO;
 import com.vmware.vip.core.messages.service.product.IProductService;
 import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO;
 import com.vmware.vip.core.messages.service.singlecomponent.IOneComponentService;
-import com.vmware.vip.i18n.api.base.utils.VersionMatcher;
 
 public class TranslationProductComponentAction extends BaseAction {
 	@Autowired
@@ -50,7 +49,7 @@ public class TranslationProductComponentAction extends BaseAction {
 		ComponentMessagesDTO c = new ComponentMessagesDTO();
 		c.setProductName(productName);
 		c.setComponent(component == null ? ConstantsKeys.DEFAULT : component);
-		c.setVersion(VersionMatcher.getMatchedVersion(version,productService.getSupportVersionList(productName)));
+		c.setVersion(version);
 		if (new Boolean(pseudo)) {
 			c.setLocale(ConstantsKeys.LATEST);
 		} else {
@@ -83,9 +82,11 @@ public class TranslationProductComponentAction extends BaseAction {
 						updateTranslationDTO);
 			}
 		} else {
+			String newVersion = super.getAvailableVersion(productName, version);
+			c.setVersion(newVersion);
 			c = singleComponentService.getComponentTranslation(c);
 		}
-		return super.handleResponse(APIResponseStatus.OK, c);
+		return super.handleVersionFallbackResponse(version, c.getVersion(), c);
 	}
 
 	public APIResponseDTO getMultipleComponentsTrans(String productName,

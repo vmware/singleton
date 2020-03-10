@@ -52,12 +52,19 @@ public class TranslationWithPatternAction extends BaseAction {
 	   public APIResponseDTO getTransPattern(TranslationWithPatternDTO data) throws Exception {
 	      logger.info("begin getTransPattern");
 	      if (validate(data)) {
+	    	  List<String> availableVersions = null;
+	          try {
+	        	  availableVersions = productService.getSupportVersionList(data.getProductName());
+	          }catch(L3APIException e) {
+	          }
+	         String oldVersion = data.getVersion();
+             data.setVersion(VersionMatcher.getMatchedVersion(data.getVersion(), availableVersions));
 	         Map<String, Object> pattern = getPattern(data);
 	         List<ComponentMessagesDTO> components = getTranslation(data);
 	         Map<String, Object> map = new HashMap<String, Object>();
 	         map.put(ConstantsKeys.PATTERN, pattern);
 	         map.put(ConstantsKeys.COMPONENTS, components);
-	         return super.handleResponse(APIResponseStatus.OK, map);
+	         return super.handleVersionFallbackResponse(oldVersion, data.getVersion(), map);
 	      } else {
 	         return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(),
 	                    ConstantsMsg.PARAM_NOT_VALIDATE, null);
@@ -96,7 +103,7 @@ public class TranslationWithPatternAction extends BaseAction {
             Map<String, Object> map = new HashMap<String, Object>();
             map.put(ConstantsKeys.PATTERN, pattern);
             map.put(ConstantsKeys.COMPONENTS, compList);
-            return super.handleResponse(APIResponseStatus.OK, map);
+            return super.handleVersionFallbackResponse(version, newversion, map);
         } else {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(),
                     ConstantsMsg.PARAM_NOT_VALIDATE, null);
