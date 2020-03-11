@@ -69,8 +69,5 @@ type (
 
 		// GetComponentMessages Get component messages
 		GetComponentMessages(locale string, component string) (ComponentMsgs, error)
-
-		// GetComponentsMessages Get messages of multiple components
-		GetComponentsMessages(locale string, components []string) (map[string]ComponentMsgs, error)
 	}
 )

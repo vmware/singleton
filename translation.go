@@ -40,8 +40,5 @@ func (t *defaultTrans) GetStringMessage(locale, component, key string, args ...s
 func (t *defaultTrans) GetComponentMessages(locale, component string) (ComponentMsgs, error) {
 	return t.dService.getComponentMessages(locale, component)
 }
-func (t *defaultTrans) GetComponentsMessages(locale string, components []string) (map[string]ComponentMsgs, error) {
-	return t.dService.getComponentsMessages(locale, components)
-}
 
 //!- defaultTrans
