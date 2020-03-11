@@ -4,11 +4,18 @@
  */
 package com.vmware.vipclient.i18n;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,6 +62,7 @@ public class VIPCfg {
     private String                     version;
     private String                     vipServer;
     private String                     i18nScope     = "numbers,dates,currencies,plurals,measurements";
+    private String 					   offline_resources_base_url;
 
     // define key for cache management
     public static final String         CACHE_L3      = "CACHE_L3";
@@ -117,17 +125,46 @@ public class VIPCfg {
         this.version = version;
         this.vipServer = vipServer;
     }
-
+    
+    /**
+     * Load client configuration from a JSON file in the resource folder 
+     * 
+     * @param configFile This is the name of the JSON configuration file 
+     * @throws ParseException 
+     * @throws IOException 
+     */
+    public void loadConfig(String configFile) throws VIPClientInitException {
+    	ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+    	InputStream is = classloader.getResourceAsStream(configFile + ".json");
+    	
+    	Reader reader = new InputStreamReader(is);
+    	JSONParser parser = new JSONParser();
+		JSONObject jsonObject = null;
+		try {
+			jsonObject = (JSONObject) parser.parse(reader);
+			this.vipServer = (String) jsonObject.get("online_service_url");
+			this.offline_resources_base_url = (String) jsonObject.get("offline_resources_base_url");
+			
+			// will be removed once product name becomes part of online_service_url
+			this.productName = (String) jsonObject.get("product");
+			// will be removed once version becomes part of online_service_url
+			this.version = (String) jsonObject.get("version");
+		} catch (NullPointerException | IOException | ParseException e) {
+			e.printStackTrace();
+			new VIPClientInitException("Failed to load configuration"); 
+		}
+    }
+    
     /**
      * initialize the instance by a properties file
      * 
      * @param cfg
      */
     public void initialize(String cfg) throws VIPClientInitException {
-        ResourceBundle prop = ResourceBundle.getBundle(cfg);
-        if (prop == null) {
-            throw new VIPClientInitException("Can't not initialize VIPCfg, resource bundle is null.");
-        }
+    	ResourceBundle prop = ResourceBundle.getBundle(cfg);
+    	if (prop == null) {
+    		throw new VIPClientInitException("Can't not initialize VIPCfg, resource bundle is null.");
+    	}
 
         if (prop.containsKey("productName"))
             this.productName = prop.getString("productName");
@@ -158,7 +195,8 @@ public class VIPCfg {
         if (prop.containsKey("cacheExpiredTime"))
             this.cacheExpiredTime = Long.parseLong(prop
                     .getString("cacheExpiredTime"));
-    }
+		
+	}	
 
     /**
      * initialize VIPService instances to provide HTTP requester
@@ -169,7 +207,7 @@ public class VIPCfg {
             this.vipService.initializeVIPService(this.productName, this.version,
                     this.vipServer);
         } catch (MalformedURLException e) {
-            logger.error("'vipServer' in configuration isn't a valid URL!");
+            logger.error("'vipServer' " + this.vipServer + " in configuration isn't a valid URL!");
         }
     }
 

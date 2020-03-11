@@ -29,7 +29,8 @@ public class Main {
 		// Initialize
 		VIPCfg cfg = VIPCfg.getInstance();
 		try {
-			cfg.initialize("sampleconfig");
+			//cfg.initialize("sampleconfig");
+			cfg.loadConfig("sampleconfig");
 		} catch (VIPClientInitException e) {
 			System.out.println(e.getMessage());
 		}
