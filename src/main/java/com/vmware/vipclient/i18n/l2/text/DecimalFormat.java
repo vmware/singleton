@@ -305,10 +305,9 @@ public class DecimalFormat extends NumberFormat {
         // -0.0. This is a double which has a zero mantissa (and exponent), but a negative
         // sign bit. It is semantically distinct from a zero with a positive sign bit, and
         // this distinction is important to certain kinds of computations. However, it's a
-        // little tricky to detect, since (-0.0 == 0.0) and !(-0.0 < 0.0). How then, you
-        // may ask, does it behave distinctly from +0.0? Well, 1/(-0.0) ==
-        // -Infinity. Proper detection of -0.0 is needed to deal with the issues raised by
-        // bugs 4106658, 4106667, and 4147706. Liu 7/6/98.
-        return (number < 0.0) || (number == 0.0 && 1 / number < 0.0);
+        // little tricky to detect, since (-0.0 == 0.0) and !(-0.0 < 0.0). Use the Double.equals test
+    	// where if d1 represents +0.0 while d2 represents -0.0, or vice versa, 
+    	// it will return false, even though +0.0==-0.0 has the value true.
+        return (number < 0.0) || (number == 0.0 && Double.valueOf(number).equals(-0.0));
     }
 }

@@ -151,7 +151,7 @@ public class VIPCfg {
 			this.version = (String) jsonObject.get("version");
 		} catch (NullPointerException | IOException | ParseException e) {
 			e.printStackTrace();
-			new VIPClientInitException("Failed to load configuration"); 
+			throw new VIPClientInitException("Failed to load configuration"); 
 		}
     }
     
