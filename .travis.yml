@@ -3,11 +3,21 @@ language: go
 go:
   - 1.13
 
+python:
+  - 3.4
+
 addons:
   sonarcloud:
     organization: $SONAR_ORG
     token:
       secure: $SONAR_TOKEN
+
+before_install:
+- |
+    git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.md$' || {
+      echo "Only docs were updated, stopping build process."
+      exit
+    }
 
 install:
   - echo "install"
@@ -15,6 +25,11 @@ install:
 jobs:
   fast_finish: true
   include:
+    - stage: check header
+      script:
+        - git clone --branch=devops https://github.com/vmware/singleton.git devops
+        - cp $TRAVIS_BUILD_DIR/devops/check_headers.py . && chmod +x check_headers.py
+        - python3 ./check_headers.py -f "$(git diff --name-only $TRAVIS_COMMIT_RANGE)"
     - stage: Unit Test
       script:
         - go build
