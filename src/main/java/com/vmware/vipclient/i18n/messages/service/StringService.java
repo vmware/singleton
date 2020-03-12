@@ -4,6 +4,7 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,7 +54,11 @@ public class StringService {
         String r = "";
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
             ComponentBasedOpt dao = new ComponentBasedOpt(dto);
-            r = dao.postString();
+            try {
+				r = dao.postString();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+			}
         }
         if (null != r && !r.equals("")) {
             dto.setLocale(ConstantsKeys.LATEST);
@@ -72,7 +77,12 @@ public class StringService {
         boolean r = false;
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
             ComponentBasedOpt dao = new ComponentBasedOpt(dto);
-            r = "200".equalsIgnoreCase(dao.postSourceSet(sources.toString()));
+            try {
+				String result = dao.postSourceSet(sources.toString());
+				r = "200".equalsIgnoreCase(result);
+			} catch (IOException e) {
+				// Keep r value false;
+			}
         }
         if (r) {
             dto.setLocale(ConstantsKeys.LATEST);
@@ -99,7 +109,12 @@ public class StringService {
                 status = statusMap.get(dto.getKey());
             } else if (!c.isContainStatus()) {
                 StringBasedOpt dao = new StringBasedOpt(dto);
-                String json = dao.getTranslationStatus();
+                String json = "";
+				try {
+					json = dao.getTranslationStatus();
+				} catch (IOException e1) {
+					// Do nothing
+				}
                 Map m = null;
                 if (!JSONUtils.isEmpty(json)) {
                     try {

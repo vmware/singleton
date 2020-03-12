@@ -4,6 +4,9 @@
  */
 package com.vmware.vipclient.i18n.formats;
 
+import java.io.IOException;
+import java.util.Map;
+
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
@@ -12,6 +15,7 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.BaseFormat;
+import com.vmware.vipclient.i18n.base.HttpRequester;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 
@@ -26,13 +30,18 @@ public class NumberFormat extends BaseFormat {
             throw new VIPJavaClientException("scale can't be empty");
         }
         if (VIPCfg.getInstance().getVipService().getHttpRequester().isConnected()) {
-            return this.getFormatFromRemote(number, scale);
+            try {
+				return this.getFormatFromRemote(number, scale);
+			} catch (IOException e) {
+				// TODO throw exception if prodMode = false. Otherwise, return number;
+				return number;
+			}
         } else {
             return "";
         }
     }
 
-    private String getFormatFromRemote(String number, String scale) {
+    private String getFormatFromRemote(String number, String scale) throws IOException {
         String format = "";
         StringBuffer numberAPIUrl = new StringBuffer(
                 VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
@@ -42,8 +51,9 @@ public class NumberFormat extends BaseFormat {
         numberAPIUrl.append(number);
         numberAPIUrl.append("&scale=");
         numberAPIUrl.append(scale);
-        String retJsonStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(
+        Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(
                 numberAPIUrl.toString(), ConstantsKeys.GET, null);
+        String retJsonStr = (String) response.get(HttpRequester.BODY);
         if (null == retJsonStr || retJsonStr.length() == 0) {
             return format;
         }

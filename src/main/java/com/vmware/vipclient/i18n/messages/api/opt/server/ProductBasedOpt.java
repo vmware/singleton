@@ -4,9 +4,13 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
+import java.io.IOException;
+import java.util.Map;
+
 import org.json.simple.JSONArray;
 
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.base.HttpRequester;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
@@ -25,12 +29,13 @@ public class ProductBasedOpt extends BaseOpt implements Opt {
      * 
      * @see com.vmware.vipclient.i18n.messages.dao.IComponentDao#getComponents()
      */
-    public JSONArray getComponentsFromRemoteVIP() {
+    public JSONArray getComponentsFromRemoteVIP() throws IOException {
         JSONArray msgObject = new JSONArray();
         String responseStr = "";
-        responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(
+        Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(
                 V2URL.getComponentListURL(dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.GET, null);
+        responseStr = (String) response.get(HttpRequester.BODY);
         if (null != responseStr && !responseStr.equals("")) {
             Object dataObj = this.getMessagesFromResponse(responseStr,
                     ConstantsKeys.COMPONENTS);
@@ -46,11 +51,12 @@ public class ProductBasedOpt extends BaseOpt implements Opt {
      * 
      * @see com.vmware.vipclient.i18n.messages.dao.ILocaleDao#getSupportedLocales()
      */
-    public JSONArray getSupportedLocalesFromRemoteVIP() {
+    public JSONArray getSupportedLocalesFromRemoteVIP() throws IOException {
         JSONArray msgObject = new JSONArray();
         String responseStr = "";
-        responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL.getSupportedLocaleListURL(
+        Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL.getSupportedLocaleListURL(
                 dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()), ConstantsKeys.GET, null);
+        responseStr = (String) response.get(HttpRequester.BODY);
         if (null != responseStr && !responseStr.equals("")) {
             Object dataObj = this.getMessagesFromResponse(responseStr,
                     ConstantsKeys.LOCALES);

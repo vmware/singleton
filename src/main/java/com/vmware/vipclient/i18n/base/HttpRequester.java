@@ -16,6 +16,7 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -107,7 +108,13 @@ public class HttpRequester {
      *            The remote server url.
      * @return
      */
-    public String request(final String url, final String method, final Object requestData) {
+    public static final String BODY = "body";
+    public static final String HEADERS = "headers";
+    public static final String RESPONSE_CODE = "response_code";
+    public static final String RESPONSE_MSG = "response_msg";
+    
+    public Map<String, Object> request(final String url, final String method, final Object requestData) throws IOException {
+    	Map <String, Object> response = new HashMap<String, Object>();
         String r = "";
         HttpURLConnection conn = null;
         try {
@@ -131,18 +138,24 @@ public class HttpRequester {
                 }
                 if (HttpURLConnection.HTTP_OK == conn.getResponseCode()) {
                     r = this.handleResult(conn);
+                    response.put(BODY, r);
                     // logger.debug("The response from server is:\n"+r);
+                    
+                    response.put(HEADERS, conn.getHeaderFields());
+                    response.put(RESPONSE_CODE, conn.getResponseCode());
+                    response.put(RESPONSE_MSG, conn.getResponseMessage());
                 }
             }
         } catch (IOException e) {
             logger.info(e.getMessage());
+            throw e;
         } finally {
             if (conn != null) {
                 conn.disconnect();
                 conn = null;
             }
         }
-        return r;
+        return response;
     }
 
     public String getBaseURL() {

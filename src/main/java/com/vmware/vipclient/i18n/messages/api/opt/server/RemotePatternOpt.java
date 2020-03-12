@@ -4,6 +4,9 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
+import java.io.IOException;
+import java.util.Map;
+
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
@@ -19,13 +22,14 @@ import com.vmware.vipclient.i18n.util.ConstantsKeys;
 public class RemotePatternOpt {
     Logger logger = LoggerFactory.getLogger(RemotePatternOpt.class);
 
-    public JSONObject getPatternsByLocale(String locale) {
+    public JSONObject getPatternsByLocale(String locale) throws IOException {
         String responseStr = "";
         String i18nScope = VIPCfg.getInstance().getI18nScope();
         HttpRequester httpRequester = VIPCfg.getInstance().getVipService().getHttpRequester();
         if (i18nScope != null && !"".equalsIgnoreCase(i18nScope)) {
-            responseStr = httpRequester.request(V2URL.getPatternURL(locale,
+        	Map<String, Object> response = httpRequester.request(V2URL.getPatternURL(locale,
                     httpRequester.getBaseURL()), ConstantsKeys.GET, null);
+        	responseStr = (String) response.get(HttpRequester.BODY);
         }
         if (null == responseStr || responseStr.equals("")) {
             return null;
@@ -39,13 +43,14 @@ public class RemotePatternOpt {
         }
     }
 
-    public JSONObject getPatternsByLocale(String language, String region) {
+    public JSONObject getPatternsByLocale(String language, String region) throws IOException {
         String responseStr = "";
         String i18nScope = VIPCfg.getInstance().getI18nScope();
         HttpRequester httpRequester = VIPCfg.getInstance().getVipService().getHttpRequester();
         if (i18nScope != null && !"".equalsIgnoreCase(i18nScope)) {
-            responseStr = httpRequester.request(V2URL.getPatternURL(language, region,
+        	Map<String, Object> response = httpRequester.request(V2URL.getPatternURL(language, region,
                     httpRequester.getBaseURL()), ConstantsKeys.GET, null);
+        	responseStr = (String) response.get(HttpRequester.BODY);
         }
         if (null == responseStr || responseStr.equals("")) {
             return null;

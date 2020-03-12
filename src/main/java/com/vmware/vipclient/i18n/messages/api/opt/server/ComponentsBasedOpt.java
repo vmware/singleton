@@ -4,7 +4,10 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.json.simple.JSONObject;
@@ -13,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.base.HttpRequester;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
@@ -33,7 +37,7 @@ public class ComponentsBasedOpt extends BaseOpt implements Opt {
         this.cfg = cfg;
     }
 
-    public JSONObject queryFromServer(final Set<String> components, final Set<String> locales) {
+    public JSONObject queryFromServer(final Set<String> components, final Set<String> locales) throws IOException {
         String url = V2URL
                 .getComponentsTranslationURL(VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL(),
                         this.cfg);
@@ -41,8 +45,9 @@ public class ComponentsBasedOpt extends BaseOpt implements Opt {
         HashMap<String, String> requestData = new HashMap<>();
         requestData.put(ConstantsKeys.LOCALES, String.join(",", locales));
         requestData.put(ConstantsKeys.COMPONENTS, String.join(",", components));
-        this.responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(url, ConstantsKeys.GET,
+        Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(url, ConstantsKeys.GET,
                 requestData);
+        this.responseStr = (String) response.get(HttpRequester.BODY);
         if (StringUtil.isEmpty(this.responseStr))
             throw new VIPJavaClientException(ConstantsMsg.SERVER_RETURN_EMPTY);
 

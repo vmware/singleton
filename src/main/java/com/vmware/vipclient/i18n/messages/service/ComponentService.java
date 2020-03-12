@@ -4,6 +4,7 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,8 +41,13 @@ public class ComponentService {
     @SuppressWarnings("unchecked")
     public Map<String, String> getMessages() {
         Map<String, String> transMap = new HashMap<String, String>();
+        
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
-            transMap = new ComponentBasedOpt(dto).getComponentMessages();
+            try {
+				transMap = new ComponentBasedOpt(dto).getComponentMessages();
+			} catch (IOException e) {
+				transMap = new LocalMessagesOpt(dto).getComponentMessages();
+			}
         } else if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.Bundle) {
             transMap = new LocalMessagesOpt(dto).getComponentMessages();
         }
@@ -76,7 +82,12 @@ public class ComponentService {
         Long s = null;
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
             ComponentBasedOpt dao = new ComponentBasedOpt(dto);
-            String json = dao.getTranslationStatus();
+            String json = "";
+			try {
+				json = dao.getTranslationStatus();
+			} catch (IOException e1) {
+				// Do nothing
+			}
             if (!JSONUtils.isEmpty(json)) {
                 try {
                     s = (Long) JSONValue.parseWithException(json);

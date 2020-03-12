@@ -4,12 +4,14 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
 
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.base.HttpRequester;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
@@ -23,10 +25,11 @@ public class StringBasedOpt extends BaseOpt implements Opt {
         this.dto = dto;
     }
 
-    public JSONObject getComponentMessages() {
-        String responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL
+    public JSONObject getComponentMessages() throws IOException {
+    	Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL
                 .getComponentTranslationURL(dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.GET, null);
+    	String responseStr = (String) response.get(HttpRequester.BODY);
         if (null == responseStr || responseStr.equals("")) {
             return null;
         } else {
@@ -41,18 +44,25 @@ public class StringBasedOpt extends BaseOpt implements Opt {
     }
 
     public String getString() {
-        JSONObject jo = this.getComponentMessages();
+        JSONObject jo;
+		try {
+			jo = this.getComponentMessages();
+		} catch (IOException e) {
+			// TODO throw exception if prodMode = false. Otherwise, return key;
+			return dto.getKey();
+		}
         String k = dto.getKey();
         Object v = jo.get(k);
         return (v == null ? "" : (String) v);
     }
 
-    public String postString() {
+    public String postString() throws IOException {
         Map<String, String> params = new HashMap<String, String>();
         params.put("source", this.dto.getSource());
-        String responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL
+        Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL
                 .getKeyTranslationURL(dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.POST, params);
+        String responseStr = (String) response.get(HttpRequester.BODY);
         Object o = this.getMessagesFromResponse(responseStr,
                 ConstantsKeys.TRANSLATION);
         if (o != null)
@@ -66,29 +76,32 @@ public class StringBasedOpt extends BaseOpt implements Opt {
      * 
      * @param sourceSet
      * @return
+     * @throws IOException 
      */
-    public String postSourceSet(String sourceSet) {
+    public String postSourceSet(String sourceSet) throws IOException {
         String status = "";
         if (sourceSet == null || "".equalsIgnoreCase(sourceSet)) {
             return status;
         }
-        String responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(
+        Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(
                 V2URL.getPostKeys(dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.POST, sourceSet);
+        String responseStr = (String) response.get(HttpRequester.BODY);
         Object o = this.getStatusFromResponse(responseStr, ConstantsKeys.CODE);
         if (o != null)
             status = o.toString();
         return status;
     }
 
-    public String getTranslationStatus() {
+    public String getTranslationStatus() throws IOException {
         String status = "";
         Map<String, String> params = new HashMap<String, String>();
         params.put("checkTranslationStatus", "true");
         String getURL = V2URL.getComponentTranslationURL(dto,
                 VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
-        String responseStr = VIPCfg.getInstance().getVipService().getHttpRequester().request(getURL, ConstantsKeys.GET,
+        Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(getURL, ConstantsKeys.GET,
                 params);
+        String responseStr = (String) response.get(HttpRequester.BODY);
         if (null == responseStr || responseStr.equals("")) {
             return status;
         } else {
