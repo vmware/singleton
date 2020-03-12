@@ -86,7 +86,6 @@ public class MessageCache implements Cache {
         	} else {
         		cachedData.putAll(dataToCache);
         	}
-        	
         	// a map of properties associated to this cache key (e.g. etag and cache control)
         	cacheProperties.put(cacheKey, null);
         }
