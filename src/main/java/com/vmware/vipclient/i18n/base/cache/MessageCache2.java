@@ -31,7 +31,7 @@ public class MessageCache2 implements Cache {
         return r;
     }
 
-    public synchronized boolean put(String cacheKey, Map<String, String> map) {
+    public synchronized boolean put(String cacheKey, Map<String, String> map, Map<String, Object> cacheProps) {
         boolean created = true;
         for (int i = 0; i < messageCacheList.size(); i++) {
             MessageCache m = messageCacheList.get(i);
@@ -70,7 +70,7 @@ public class MessageCache2 implements Cache {
         }
         MessageCache mc = messageCacheList.get(targetIndex);
         if (mc != null) {
-            return mc.put(cacheKey, map);
+            return mc.put(cacheKey, map, cacheProps);
         } else {
             return false;
         }

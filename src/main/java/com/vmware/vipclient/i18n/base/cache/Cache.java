@@ -20,11 +20,12 @@ public interface Cache {
     /**
      * put strings to cache by key
      * 
-     * @param key
-     * @param map
+     * @param key cache key
+     * @param dataToCache data to be stored in the cache (e.g. message keys mapped to message values)
+     * @param cacheProps associated cache properties (e.g. etag, cache control)
      * @return false if failed to put
      */
-    public boolean put(String key, Map<String, String> map);
+    public boolean put(String key, Map<String, String> dataToCache, Map<String, Object> cacheProps);
 
     /**
      * remove a component from cache by key

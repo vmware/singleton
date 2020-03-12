@@ -51,6 +51,7 @@ public class MessageCache2Test2 extends BaseTestClass {
 
     @Test
     public void testDisableCache() {
+    	Map<String, Object> cacheProps = new HashMap<String, Object>();
         VIPCfg gc = VIPCfg.getInstance();
         Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
         c.setXCapacity(0);
@@ -60,7 +61,7 @@ public class MessageCache2Test2 extends BaseTestClass {
         String v = "It's a test";
         data.put(k, v);
         String cachedKey = "key";
-        c.put(cachedKey, data);
+        c.put(cachedKey, data, cacheProps);
         long expired = 60000;
         c.setExpiredTime(expired);
         Map cachedData = TranslationCacheManager.getCache(VIPCfg.CACHE_L3).get(cachedKey);

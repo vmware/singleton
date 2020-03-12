@@ -40,7 +40,10 @@ public class StringService {
             if (!cacheservice.isContainComponent()) {
                 Object o = new ComponentService(dto).getMessages();
                 map = (Map<String, String>) o;
-                cacheservice.addCacheOfComponent(map);
+                
+                // TODO pass map of cache properties such as etag and cache control headers
+                Map<String, Object> cacheProps = null;
+                cacheservice.addCacheOfComponent(map, cacheProps);
             }
         }
         return (map == null || map.get(key) == null ? "" : map.get(key));
@@ -57,7 +60,10 @@ public class StringService {
             CacheService c = new CacheService(dto);
             Map<String, String> dataMap = new HashMap<>();
             dataMap.put(dto.getKey(), dto.getSource());
-            c.updateCacheOfComponent(dataMap);
+            
+            // TODO pass map of cache properties such as etag and cache control headers
+            Map<String, Object> cacheProps = null;
+            c.updateCacheOfComponent(dataMap, cacheProps);
         }
         return r;
     }
@@ -76,7 +82,9 @@ public class StringService {
                 dataMap.put((String) jo.get(ConstantsKeys.KEY),
                         jo.get(ConstantsKeys.SOURCE) == null ? "" : (String) jo.get(ConstantsKeys.SOURCE));
             }
-            c.updateCacheOfComponent(dataMap);
+            // TODO pass map of cache properties such as etag and cache control headers
+            Map<String, Object> cacheProps = null;
+            c.updateCacheOfComponent(dataMap, cacheProps);
         }
         return r;
     }
@@ -104,7 +112,8 @@ public class StringService {
                         logger.error(e.getMessage());
                     }
                 }
-                c.addCacheOfStatus(m);
+                
+                c.addCacheOfStatus(m, null);
 
             }
             r = "1".equalsIgnoreCase(status);

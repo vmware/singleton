@@ -50,15 +50,16 @@ public class MessageCache2Test1 extends BaseTestClass {
 
     @Test
     public void testLookForComponentTranslationInCache() {
+    	Map<String, Object> cacheProps = new HashMap<String, Object>();
         Map<String, String> msgObj = new HashMap<String, String>();
         msgObj.put("book", "@zh_CN@book");
-        cacheService.addCacheOfComponent(msgObj);
+        cacheService.addCacheOfComponent(msgObj, cacheProps);
         Map<String, String> msgObj2 = new HashMap<String, String>();
         msgObj2.put("book2", "@zh_CN@book2");
-        cacheService.addCacheOfComponent(msgObj2);
+        cacheService.addCacheOfComponent(msgObj2, cacheProps);
         Map<String, String> msgObj3 = new HashMap<String, String>();
         msgObj3.put("book3", "@zh_CN@book3");
-        cacheService.addCacheOfComponent(msgObj3);
+        cacheService.addCacheOfComponent(msgObj3, cacheProps);
         Map<String, String> messageMap = cacheService
                 .getCacheOfComponent();
         Assert.assertTrue(messageMap.size() == 3);
@@ -67,9 +68,10 @@ public class MessageCache2Test1 extends BaseTestClass {
 
     @Test
     public void testLookForTranslationInCache() {
+    	Map<String, Object> cacheProps = new HashMap<String, Object>();
         Map<String, String> msgObj = new HashMap<String, String>();
         msgObj.put("book", "@zh_CN@book");
-        cacheService.addCacheOfComponent(msgObj);
+        cacheService.addCacheOfComponent(msgObj, cacheProps);
         Map<String, String> result = cacheService
                 .getCacheOfComponent();
         Assert.assertTrue(result.size() > 0);
@@ -78,18 +80,19 @@ public class MessageCache2Test1 extends BaseTestClass {
 
     @Test
     public void testAddCacheByComponent() {
+    	Map<String, Object> cacheProps = new HashMap<String, Object>();
         Map<String, String> msgObj = new HashMap<String, String>();
         msgObj.put("book", "@zh_CN@book");
-        cacheService.addCacheOfComponent(msgObj);
+        cacheService.addCacheOfComponent(msgObj, cacheProps);
         Map<String, String> msgObj2 = new HashMap<String, String>();
         msgObj2.put("book2", "@zh_CN@book3");
-        cacheService.addCacheOfComponent(msgObj2);
+        cacheService.addCacheOfComponent(msgObj2, cacheProps);
         Map<String, String> msgObj3 = new HashMap<String, String>();
         msgObj3.put("book3", "@zh_CN@book3");
-        cacheService.addCacheOfComponent(msgObj3);
+        cacheService.addCacheOfComponent(msgObj3, cacheProps);
         Map<String, String> msgObj4 = new HashMap<String, String>();
         msgObj4.put("book4", "@zh_CN@book4");
-        cacheService.addCacheOfComponent(msgObj4);
+        cacheService.addCacheOfComponent(msgObj4, cacheProps);
         Assert.assertEquals("@zh_CN@book", cacheService.getCacheOfComponent().get("book"));
         VIPCfg.getInstance().getCacheManager().clearCache();
         Assert.assertNull(cacheService.getCacheOfComponent());
@@ -98,6 +101,7 @@ public class MessageCache2Test1 extends BaseTestClass {
     @SuppressWarnings({ "static-access", "rawtypes", "unchecked" })
     // @Test
     public void testExpired() throws InterruptedException {
+    	Map<String, Object> cacheProps = new HashMap<String, Object>();
         VIPCfg gc = VIPCfg.getInstance();
         Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
         Map data = new HashMap();
@@ -105,7 +109,7 @@ public class MessageCache2Test1 extends BaseTestClass {
         String v = "It's a test";
         data.put(k, v);
         String cachedKey = "key";
-        c.put(cachedKey, data);
+        c.put(cachedKey, data, cacheProps);
         long expired = 2000;
         c.setExpiredTime(expired);
         Map cachedData = TranslationCacheManager.getCache(VIPCfg.CACHE_L3).get(cachedKey);

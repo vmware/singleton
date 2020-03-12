@@ -97,7 +97,10 @@ public class ComponentsService {
             final MessagesDTO dto = new MessagesDTO();
             dto.setComponent(comp);
             dto.setLocale(locale);
-            new CacheService(dto).addCacheOfComponent(messages);
+            
+            // TODO pass map of cache properties such as etag and cache control headers
+            Map<String, Object> cacheProps = null;         
+            new CacheService(dto).addCacheOfComponent(messages, cacheProps);
 
             // update map to return.
             dataMap.get(locale).put(comp, messages);

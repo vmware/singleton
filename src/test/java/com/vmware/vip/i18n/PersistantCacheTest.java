@@ -5,6 +5,7 @@
 package com.vmware.vip.i18n;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import org.junit.Before;
@@ -61,7 +62,8 @@ public class PersistantCacheTest extends BaseTestClass {
                 cacheDTO.setSource(source);
                 map2.put(key, source);
             }
-            cacheService.addCacheOfComponent(map2);
+            Map<String, Object> cacheProps = new HashMap<String, Object>();
+            cacheService.addCacheOfComponent(map2, cacheProps);
             Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
             logger.debug(String.valueOf(c.size()));
         }

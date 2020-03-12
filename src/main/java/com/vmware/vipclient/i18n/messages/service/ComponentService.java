@@ -62,7 +62,10 @@ public class ComponentService {
             Object o = this.getMessages();
             Map<String, String> dataMap = (o == null ? null
                     : (Map<String, String>) o);
-            cs.addCacheOfComponent(dataMap);
+            
+            // TODO pass map of cache properties such as etag and cache control headers
+            Map<String, Object> cacheProps = null;
+            cs.addCacheOfComponent(dataMap, cacheProps);
             retMap = dataMap;
         }
         return retMap;

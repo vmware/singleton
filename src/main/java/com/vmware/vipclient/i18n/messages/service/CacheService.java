@@ -40,24 +40,24 @@ public class CacheService {
         }
     }
 
-    public void addCacheOfComponent(Map<String, String> dataMap) {
+    public void addCacheOfComponent(Map<String, String> dataMap, Map<String, Object> cacheProps) {
         String cacheKey = dto.getCompositStrAsCacheKey();
         Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
         if (c != null) {
-            c.put(cacheKey, dataMap);
+            c.put(cacheKey, dataMap, cacheProps);
         }
     }
 
-    public void updateCacheOfComponent(Map<String, String> dataMap) {
+    public void updateCacheOfComponent(Map<String, String> dataMap, Map<String, Object> cacheProps) {
         String cacheKey = dto.getCompositStrAsCacheKey();
         Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
         if (c != null) {
             Map<String, String> oldmap = c.get(cacheKey);
             if (oldmap == null) {
-                c.put(cacheKey, dataMap);
+                c.put(cacheKey, dataMap, cacheProps);
             } else {
                 oldmap.putAll(dataMap);
-                c.put(cacheKey, oldmap);
+                c.put(cacheKey, oldmap, cacheProps);
             }
         }
     }
@@ -92,11 +92,11 @@ public class CacheService {
         }
     }
 
-    public void addCacheOfStatus(Map<String, String> dataMap) {
+    public void addCacheOfStatus(Map<String, String> dataMap, Map<String, Object> cacheProps) {
         String cacheKey = dto.getTransStatusAsCacheKey();
         Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
         if (c != null) {
-            c.put(cacheKey, dataMap);
+            c.put(cacheKey, dataMap, cacheProps);
         }
     }
 

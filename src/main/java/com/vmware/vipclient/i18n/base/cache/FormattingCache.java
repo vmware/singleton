@@ -24,7 +24,7 @@ public class FormattingCache implements Cache {
         return cachedObject == null ? null : (Map<String, String>) cachedObject;
     }
 
-    public synchronized boolean put(String cacheKey, Map<String, String> map) {
+    public synchronized boolean put(String cacheKey, Map<String, String> map, Map<String, Object> cacheProps) {
         formattingMap.put(cacheKey, map);
         return formattingMap.get(cacheKey) != null;
     }

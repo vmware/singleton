@@ -52,11 +52,12 @@ public class MessageCacheTest2 extends BaseTestClass {
         Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
         c.setXCapacity(0);
         Map data = new HashMap();
+        Map<String, Object> cacheProps = new HashMap<String, Object>();
         String k = "com.vmware.test";
         String v = "It's a test";
         data.put(k, v);
         String cachedKey = "key";
-        c.put(cachedKey, data);
+        c.put(cachedKey, data, cacheProps);
         long expired = 30000;
         c.setExpiredTime(expired);
         Map cachedData = TranslationCacheManager.getCache(VIPCfg.CACHE_L3).get(cachedKey);

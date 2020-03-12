@@ -15,6 +15,7 @@ public class MessageCache implements Cache {
     private long                             lastClean           = System.currentTimeMillis();
 
     private Map<String, Map<String, String>> cachedComponentsMap = new LinkedHashMap<String, Map<String, String>>();
+    private Map<String, Map<String, String>> cacheProperties = new LinkedHashMap<String, Map<String, String>>();
 
     public Map<String, Map<String, String>> getCachedTranslationMap() {
         return cachedComponentsMap;
@@ -73,22 +74,21 @@ public class MessageCache implements Cache {
         return key;
     }
 
-    public synchronized boolean put(String cacheKey, Map<String, String> map) {
+    public synchronized boolean put(String cacheKey, Map<String, String> dataToCache, Map<String, Object> cacheProps) {
         if (this.isFull()) {
             String k = getRemovedKeyFromHitMap();
             this.remove(k);
             hitMap.remove(k);
-        }
-        if (!this.isFull()) {
-            if (cachedComponentsMap.get(cacheKey) != null) {
-                Map<String, String> t = cachedComponentsMap.get(cacheKey);
-                if (t != null) {
-                    t.putAll(map);
-                }
-            } else {
-                cachedComponentsMap.put(cacheKey, map);
-            }
-
+        } else {
+        	Map<String, String> cachedData = cachedComponentsMap.get(cacheKey);
+        	if (cachedData == null) {
+        		cachedComponentsMap.put(cacheKey, dataToCache);
+        	} else {
+        		cachedData.putAll(dataToCache);
+        	}
+        	
+        	// a map of properties associated to this cache key (e.g. etag and cache control)
+        	cacheProperties.put(cacheKey, null);
         }
         return cachedComponentsMap.containsKey(cacheKey);
     }

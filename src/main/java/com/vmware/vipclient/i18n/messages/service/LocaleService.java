@@ -49,7 +49,9 @@ public class LocaleService {
             regionMap = JSONUtils.map2SortMap(tmpMap);
             respMap.put(language, regionMap);
             if (c != null) {
-                c.put(REGION_PREFIX + language, regionMap);
+            	// TODO pass map of cache properties such as etag and cache control headers
+                Map<String, Object> cacheProps = null;
+                c.put(REGION_PREFIX + language, regionMap, cacheProps);
             }
         }
         return respMap;
@@ -68,7 +70,9 @@ public class LocaleService {
                         .getDisplayNamesFromCLDR(language);
                 dispMap = JSONUtils.map2SortMap(tmpMap);
                 if (dispMap != null && dispMap.size() > 0) {
-                    c.put(DISPN_PREFIX + language, dispMap);
+                	// TODO pass map of cache properties such as etag and cache control headers
+                    Map<String, Object> cacheProps = null;
+                    c.put(DISPN_PREFIX + language, dispMap, cacheProps);
                 }
             }
         }

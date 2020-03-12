@@ -48,26 +48,27 @@ public class MessageCacheTest1 extends BaseTestClass {
 
     @Test
     public void testSetCapacityByKey() {
+    	Map<String, Object> cacheProps = new HashMap<String, Object>();
         VIPCfg gc = VIPCfg.getInstance();
         MessageCache c = (MessageCache) gc.createTranslationCache(MessageCache.class);
         c.setCapacityByKey(5);
         Map<String, String> msgObj = new HashMap<String, String>();
         msgObj.put("book", "@zh_CN@book");
-        cacheService.addCacheOfComponent(msgObj);
+        cacheService.addCacheOfComponent(msgObj, cacheProps);
         Map<String, String> msgObj2 = new HashMap<String, String>();
         msgObj2.put("book2", "@zh_CN@book2");
-        cacheService.addCacheOfComponent(msgObj2);
+        cacheService.addCacheOfComponent(msgObj2, cacheProps);
         Map<String, String> msgObj3 = new HashMap<String, String>();
         msgObj3.put("book3", "@zh_CN@book3");
         msgObj3.put("book4", "@zh_CN@book4");
         msgObj3.put("book5", "@zh_CN@book5");
-        cacheService.addCacheOfComponent(msgObj3);
+        cacheService.addCacheOfComponent(msgObj3, cacheProps);
         Map<String, String> msgObj4 = new HashMap<String, String>();
         msgObj4.put("book6", "@zh_CN@book6");
         msgObj4.put("book7", "@zh_CN@book7");
         msgObj4.put("book8", "@zh_CN@book8");
         msgObj4.put("book9", "@zh_CN@book9");
-        cacheService.addCacheOfComponent(msgObj4);
+        cacheService.addCacheOfComponent(msgObj4, cacheProps);
         Map<String, String> messageMap = cacheService
                 .getCacheOfComponent();
         Assert.assertTrue(messageMap.size() == 4);
@@ -82,9 +83,10 @@ public class MessageCacheTest1 extends BaseTestClass {
     @Test
     public void testAddCacheByComponent() {
         this.init();
+        Map<String, Object> cacheProps = new HashMap<String, Object>();
         Map<String, String> msgObj = new HashMap<String, String>();
         msgObj.put("book", "@zh_CN@book");
-        cacheService.addCacheOfComponent(msgObj);
+        cacheService.addCacheOfComponent(msgObj, cacheProps);
         Map<String, String> mp = cacheService.getCacheOfComponent();
         Assert.assertEquals("@zh_CN@book", mp.get("book"));
         VIPCfg.getInstance().getCacheManager().clearCache();
@@ -101,7 +103,8 @@ public class MessageCacheTest1 extends BaseTestClass {
         String v = "It's a test";
         data.put(k, v);
         String cachedKey = "key";
-        c.put(cachedKey, data);
+        Map<String, Object> cacheProps = new HashMap<String, Object>();
+        c.put(cachedKey, data, cacheProps);
         long expired = 20000;
         c.setExpiredTime(expired);
         Map cachedData = TranslationCacheManager.getCache(VIPCfg.CACHE_L3).get(cachedKey);

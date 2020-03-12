@@ -4,6 +4,8 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
+import java.util.Map;
+
 import org.json.simple.JSONObject;
 
 import com.vmware.vipclient.i18n.VIPCfg;
@@ -19,7 +21,9 @@ public class PatternCacheService {
             Cache c = VIPCfg.getInstance().getCacheManager()
                     .getCache(VIPCfg.CACHE_L2);
             if (c != null) {
-                c.put(key, o);
+            	// TODO pass map of cache properties such as etag and cache control headers
+                Map<String, Object> cacheProps = null;
+                c.put(key, o, cacheProps);
             }
         }
     }
