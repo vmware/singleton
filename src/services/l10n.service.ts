@@ -20,11 +20,13 @@ export class L10nService {
     constructor(
         public coreService: CoreService,
         private cacheManager: Store,
-        private messageFormat: MessageFormat
+        private messageFormat: MessageFormat,
+        private component?: string
     ) {
         this.isPseudo = coreService.getIsPseudo();
         this.sourceData = this.coreService.getSourceBundle();
         this.logger = basedLogger.create('L10nService');
+        this.component = isDefined(component) ? component : this.coreService.getComponent();
     }
 
     /**
@@ -46,7 +48,8 @@ export class L10nService {
         if (isSourceLanguage) {
             translation = source;
         } else {
-            translation = this.getTranslationInCache(key);
+            const component = this.component || this.coreService.getComponent();
+            translation = this.getTranslationInCache(component, key);
             if (!translation || translation === '') {
                 translation = this.isPseudo ? `${pseudoTag}${source}${pseudoTag}` : source;
                 // source fallback to sourceLocale, plural & number format should fallback to sourceLocale too.
@@ -71,8 +74,8 @@ export class L10nService {
     /**
      * Get translation from cache
      */
-    private getTranslationInCache(key: string) {
-        const translation = this.cacheManager.lookforTranslationByKey(key, this.coreService.getComponent(), this.coreService.getLanguage());
+    private getTranslationInCache(component: string, key: string) {
+        const translation = this.cacheManager.lookforTranslationByKey(key, component, this.coreService.getLanguage());
         return translation;
     }
 
@@ -85,6 +88,9 @@ export class L10nService {
         if (this.sourceData && this.sourceData[key]) {
             return this.sourceData && this.sourceData[key];
         }
+        // get source string from multiple component sourceBundle
+        const sourceString = this.sourceData && this.sourceData[this.component] && this.sourceData[this.component][key];
+        if (sourceString) { return sourceString; }
         this.logger.error('No English found for key: ' + key + ' in sourceBundle');
         return key;
     }

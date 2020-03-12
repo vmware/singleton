@@ -10,6 +10,9 @@ addons:
 
 node_js:
   - "10"
+
+python:
+  - 3.4
   
 before_install:
 - |
@@ -27,6 +30,11 @@ install:
 
 jobs:
   include:
+    - stage: check header
+      script:
+        - git clone --branch=devops https://github.com/vmware/singleton.git devops
+        - cp $TRAVIS_BUILD_DIR/devops/check_headers.py . && chmod +x check_headers.py
+        - python3 ./check_headers.py -f "$(git diff --name-only $TRAVIS_COMMIT_RANGE)"
     - stage: unit test and code scan
       script:
         - SONARSCANNER='sonar-scanner-cli-4.0.0.1744-linux'
@@ -69,7 +77,7 @@ jobs:
         - cp -a devops/autotest/client/jscoresdk/resources/bundles/JSCoreSDKTest service/g11n-ws/vip-manager-i18n/src/main/resources/l10n/bundles/
         - cd $TRAVIS_BUILD_DIR/service/g11n-ws && ./gradlew build -x test
         - cp $TRAVIS_BUILD_DIR/devops/deploy/i18n-service/Dockerfile $TRAVIS_BUILD_DIR/service/publish/
-        - cd $TRAVIS_BUILD_DIR/service/publish && mv vip-manager-i18n-*.jar i18n-service.jar
+        - cd $TRAVIS_BUILD_DIR/service/publish && mv singleton-[0-9\.]*.jar i18n-service.jar
         - docker build -t singleton .
         - docker run -d -p 8090:8090 -p 8091:8091 --name singleton singleton
         - docker ps
