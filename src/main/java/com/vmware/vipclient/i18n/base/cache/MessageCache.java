@@ -79,7 +79,8 @@ public class MessageCache implements Cache {
             String k = getRemovedKeyFromHitMap();
             this.remove(k);
             hitMap.remove(k);
-        } else {
+        } 
+        if (!this.isFull()) {
         	Map<String, String> cachedData = cachedComponentsMap.get(cacheKey);
         	if (cachedData == null) {
         		cachedComponentsMap.put(cacheKey, dataToCache);
