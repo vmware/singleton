@@ -41,19 +41,19 @@ npm install
 
 Package the client library
 
-> Note: The client library has two package.json files, the default is package.json,which is based on Node, and the other is package.client.json.
+> Note: The client library has two package.json files, the default is package.json to generate the package available in the Node environment, and the other is package.client.json which will generate the package used in the browser environment.
 
 ```
 npm pack
 ```
 
-The library will be packaged in the same directory (eg. vip-vip-core-sdk-server-0.1.0.tgz)
+The library will be packaged in the same directory (eg. vip-vip-core-sdk-server-0.4.0.tgz)
 
 Import the library in your ES2015 application
 
 ```
 cd <root path of your app>
-npm install <path-to-location-of-library-in-previous-step/vip-vip-core-sdk-server-0.1.0.tgz>
+npm install <path-to-location-of-library-in-previous-step/vip-vip-core-sdk-server-0.4.0.tgz>
 ```
 
 Configure your main module file :
@@ -151,7 +151,7 @@ formatDate:
 - @param {string | number | Date} date The date to format, as a Date, or milliseconds
 - @param {string} pattern The definition of the format
   */
-i18nClient.i18nService.formatDate(date: any, pattern: string="MMM D, YYYY, HH:mm",timezone?: string); 
+i18nClient.i18nService.formatDate(date: any, pattern: string="mediumDate", timezone?: string); 
 
 ```
 
@@ -181,12 +181,12 @@ formatCurrency:
 
 ```
 /**
-- Transform a number to a number with a currency symbol according to the pattern
+- Transform a number to a number with a currency symbol according to the currencyCode
 - @param {number} value The number to format
 - @param {string} currencies symbol
 - @param {string = 'USD'} currencies symbol
 */ 
-i18nClient.i18nService.formatCurrency(value: any,pattern: string = 'USD'); 
+i18nClient.i18nService.formatCurrency(value: any, currencyCode: string = 'USD'); 
 
 ```
 

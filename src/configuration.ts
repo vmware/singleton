@@ -1,3 +1,5 @@
+import { HttpRequestOptions } from './loader';
+
 /*
  * Copyright 2019 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
@@ -12,15 +14,17 @@ export interface Configuration {
     productID: string;
     version: string;
     component?: string;
+    components?: string[];
+    combineRequest?: boolean;
     host: string;
     isPseudo?: boolean;
     language?: string;
     region?: string;
     i18nScope?: PatternCategories[];
     sourceBundle?: { [key: string]: any };
-    sourceBundles?: Array<{ [key: string]: any }>;
+    sourceBundles?: { [key: string]: any };
     i18nAssets?: string;
-    timeout?: number;
+    httpOptions?: HttpRequestOptions;
 }
 
 export function getDefaultConfig(): {} {
@@ -32,6 +36,7 @@ export function getDefaultConfig(): {} {
         i18nScope: [],
         sourceBundle: {},
         i18nAssets: '',
-        timeout: 3000
+        combineRequest: true,
+        httpOptions: { timeout: 3000 }
     };
 }

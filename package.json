@@ -1,6 +1,6 @@
 {
     "name": "@vip/vip-core-sdk-server",
-    "version": "0.1.0",
+    "version": "0.4.0",
     "publishConfig": {
         "registry": ""
     },
@@ -28,14 +28,13 @@
         "build": "webpack",
         "prepublish": "rimraf dist && tsc -p ./ --outDir dist/ && npm run build",
         "jest": "NODE_ENV=test jest -c jest.config.json",
-        "test": "npm run jest "
+        "test": "npm run jest"
     },
     "dependencies": {
         "decimal.js-light": "^2.4.1"
     },
     "peerDependencies": {
-        "axios": "^0.18.0",
-        "superagent": "^3.8.3"
+        "axios": "^0.18.0"
     },
     "devDependencies": {
         "@types/jest": "^24.0.11",
@@ -54,6 +53,15 @@
         "webpack-cli": "^3.3.0"
     },
     "changelogHistory": [
+        {
+            "date": "07/01/20",
+            "version": "0.4.0",
+            "notes": [
+                {
+                    "description": "Add new feature: support multiple component."
+                }
+            ]
+        },
         {
             "date": "21/07/19",
             "version": "0.1.0",

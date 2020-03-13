@@ -1,0 +1,93 @@
+dist: trusty
+
+language: node_js
+
+addons:
+  sonarcloud:
+    organization: $SONAR_ORG
+    token:
+      secure: $SONAR_TOKEN
+
+node_js:
+  - "10"
+
+python:
+  - 3.4
+  
+before_install:
+- |
+    git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.md$' || {
+      echo "Only docs were updated, stopping build process."
+      exit
+    }
+    sudo apt-get -y install unzip
+    sudo apt-get -y install wget
+    sudo apt-get -y install python3-pip python-dev
+    python3 -V
+    pip3 -V
+install:
+  - sudo pip3 install requests
+
+jobs:
+  include:
+    - stage: check header
+      script:
+        - git clone --branch=devops https://github.com/vmware/singleton.git devops
+        - cp $TRAVIS_BUILD_DIR/devops/check_headers.py . && chmod +x check_headers.py
+        - python3 ./check_headers.py -f "$(git diff --name-only $TRAVIS_COMMIT_RANGE)"
+    - stage: unit test and code scan
+      script:
+        - SONARSCANNER='sonar-scanner-cli-4.0.0.1744-linux'
+        - SONARSCANNERINNER='sonar-scanner-4.0.0.1744-linux'
+        - npm install npm
+        - npm install tslint
+        - npm install typescript
+        - tsc -v
+        - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/$SONARSCANNER.zip
+        - unzip $SONARSCANNER.zip
+        - rm -f $SONARSCANNER.zip
+        - mkdir -p g11n-js-client
+        - shopt -s extglob
+        - mv !($SONARSCANNERINNER|g11n-js-client) g11n-js-client/
+        - git clone --branch=devops https://github.com/vmware/singleton.git devops
+        - cp -a devops/sonar/* .
+        - rm -rf devops
+        - cd g11n-js-client
+        - npm install --registry https://registry.npmjs.org
+        - npm run test
+        - cd ..
+        - python ./config_sonar_project.py -ProjectName $SONAR_ORG-singleton-js-core-sdk-$TRAVIS_BRANCH -ProjectKey $SONAR_ORG-singleton-js-core-sdk-$TRAVIS_BRANCH -OrgKey $SONAR_ORG -QualityGateName js-core-sdk-gate -QualityGateConditions ./quality_gates/js-core-sdk.json -SonarToken $SONAR_TOKEN
+        - ./$SONARSCANNERINNER/bin/sonar-scanner -Dsonar.sources=./g11n-js-client -Dsonar.exclusions=**/node_modules/**/* -Dsonar.coverage.exclusions=**/samples/**/* -Dsonar.projectName=$SONAR_ORG-singleton-js-core-sdk-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.projectKey=$SONAR_ORG-singleton-js-core-sdk-$TRAVIS_BRANCH -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN -Dsonar.javascript.lcov.reportPaths=./g11n-js-client/coverage/lcov.info  -Dsonar.typescript.lcov.reportPaths=./g11n-js-client/coverage/lcov.info
+        - |
+            git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.travis\.yml$' || {
+              echo "No need to check sonar quality gate for only travis configuration updates"
+              exit
+            }
+            sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-singleton-js-core-sdk-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
+    - stage: smoke test
+      script:
+        - TZ='Asia/Shanghai'; export TZ 
+        - mkdir -p g11n-js-client
+        - shopt -s extglob
+        - mv !(g11n-js-client) g11n-js-client/
+        - mv .npmignore g11n-js-client/
+        - git clone --branch=master https://github.com/vmware/singleton.git service
+        - git clone --branch=devops https://github.com/vmware/singleton.git devops
+        - mkdir -p service/g11n-ws/vip-manager-i18n/src/main/resources/l10n/bundles/
+        - cp -a devops/autotest/client/jscoresdk/resources/bundles/JSCoreSDKTest service/g11n-ws/vip-manager-i18n/src/main/resources/l10n/bundles/
+        - cd $TRAVIS_BUILD_DIR/service/g11n-ws && ./gradlew build -x test
+        - cp $TRAVIS_BUILD_DIR/devops/deploy/i18n-service/Dockerfile $TRAVIS_BUILD_DIR/service/publish/
+        - cd $TRAVIS_BUILD_DIR/service/publish && mv singleton-[0-9\.]*.jar i18n-service.jar
+        - docker build -t singleton .
+        - docker run -d -p 8090:8090 -p 8091:8091 --name singleton singleton
+        - docker ps
+        - cd $TRAVIS_BUILD_DIR
+        - cd g11n-js-client
+        - sed -i 's:@vip/vip-core-sdk-server:@vip/vip-core-sdk-dev:' package.json
+        - npm install --registry https://registry.npmjs.org
+        - npm link
+        - cd $TRAVIS_BUILD_DIR/devops/autotest/client/jscoresdk
+        - npm install --registry https://registry.npmjs.org
+        - npm link @vip/vip-core-sdk-dev
+        - ./node_modules/.bin/jest
+

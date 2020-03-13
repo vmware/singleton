@@ -12,6 +12,7 @@ export abstract class ResponseParser {
     abstract validateResponse( res: ResType ): Object|null;
     abstract getPatterns( res: ResType ): Object|null;
     abstract getTranslations( res: ResType ): Object|null;
+    abstract getTranslationBundles?( res: ResType ): {}[]|null;
     abstract getSupportedRegions?( res: ResType ): Object|null;
     abstract getSupportedLanguages?( res: ResType ): {}[]|null;
 }
@@ -52,6 +53,11 @@ export abstract class ResponseParser {
         const data = this.validateResponse( res );
         const regions = data &&  data[0] && data[0].territories ? data[0].territories : null;
         return regions;
+    }
+    getTranslationBundles( res: ResType ): {}[]|null {
+        const data = this.validateResponse( res );
+        const bundles = data && data.bundles ? data.bundles : null;
+        return bundles;
     }
 }
 

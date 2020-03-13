@@ -2,7 +2,7 @@
  * Copyright 2019 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
-const superagent = require('superagent');
+const axios = require('axios');
 
 class VIPConfig {
     get TRANSLATION_PREFIX() {
@@ -135,36 +135,33 @@ class VIPService {
             `/keys/${key}`;
         return this.post(url, data);
     }
-    get(url) {
-        let that = this;
-        if (!this.token) {
-            return superagent.get(url).retry(3, function (err, res) {
-                // node request will fall because the overload work of dns search, when this happen we retry it
-                // think add throttle mechanism to remove this fix
-                if (!err) {
-                    return false;
-                }
-                that.logger.error('get request faild ', err);
-                that.logger.info('get request retry');
-                return true;
-            });
+    get(url, token) {
+        if (!token) {
+            return axios.get(url);
         }
-        return superagent.get(url).set('csp-auth-token', this.token);
+
+        return axios.get(url, {
+            headers: { 'csp-auth-token': token }
+        });
     }
     post(url, data, query) {
         query = query ? query : {
             collectSource: true,
             pseudo: false,
         }
-        var superPromise = superagent
-            .post(url)
-            .query(query)
-            .send(data)
-            .set('Content-Type', 'application/json');
+
+        let headers = {
+            'Content-Type': 'application/json'
+        };
+
         if (this.token) {
-            superPromise.set('csp-auth-token', this.token);
+            headers['csp-auth-token'] = this.token;
         }
-        return superPromise;
+
+        return axios.post(url, data, {
+            params: query,
+            headers
+        });
     }
 }
 exports.VIPConfig = VIPConfig;

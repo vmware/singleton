@@ -1,6 +1,6 @@
 {
     "name": "@vip/vip-core-sdk",
-    "version": "0.0.1",
+    "version": "0.4.0",
     "publishConfig": {
         "registry": ""
     },
@@ -34,8 +34,7 @@
         "decimal.js-light": "^2.4.1"
     },
     "peerDependencies": {
-        "axios": "^0.18.0",
-        "superagent": "^3.8.3"
+        "axios": "^0.18.0"
     },
     "devDependencies": {
         "@types/jest": "^24.0.11",
@@ -55,8 +54,17 @@
     },
     "changelogHistory": [
         {
+            "date": "07/01/20",
+            "version": "0.4.0",
+            "notes": [
+                {
+                    "description": "Add new feature: support multiple component."
+                }
+            ]
+        },
+        {
             "date": "21/07/19",
-            "version": "0.0.1",
+            "version": "0.1.0",
             "notes": [
                 {
                     "description": "An implementation of Singleton JS client."
