@@ -19,6 +19,11 @@ install:
   - sudo pip3 install requests
 jobs:
   include:
+    - stage: check header
+      script:
+        - git clone --branch=devops https://github.com/vmware/singleton.git devops
+        - cp $TRAVIS_BUILD_DIR/devops/check_headers.py . && chmod +x check_headers.py
+        - python3 ./check_headers.py -f "$(git diff --name-only $TRAVIS_COMMIT_RANGE)"
     - stage: unit test
       script:
         - cd $TRAVIS_BUILD_DIR/g11n-ws && ./gradlew build
@@ -27,7 +32,7 @@ jobs:
         - git clone --branch=devops https://github.com/vmware/singleton.git devops
         - cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG-singleton-service-$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG-singleton-service-$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=service-gate -QualityGateConditions="./quality_gates/service_quality_gate.json" -SonarToken=$SONAR_TOKEN
         - cd $TRAVIS_BUILD_DIR/g11n-ws && sed -i "s/rootProject.name = 'vip'/rootProject.name = '$SONAR_ORG-singleton-service-$TRAVIS_BRANCH'/" settings.gradle && cat settings.gradle
-        - cd $TRAVIS_BUILD_DIR/g11n-ws && ./gradlew sonarqube --stacktrace -Dsonar.login=$SONAR_TOKEN -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.projectKey=$SONAR_ORG-singleton-service-$TRAVIS_BRANCH -Dsonar.projectName=$SONAR_ORG-singleton-service-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.coverage.exclusions=modules/**,tools/tool-trans-fetcher/src/**,vip-common/src/main/java/com/vmware/vip/common/**,vip-manager-l10n-agent/src/** --info
+        - cd $TRAVIS_BUILD_DIR/g11n-ws && ./gradlew jacocoTestReport sonarqube --stacktrace -Dsonar.login=$SONAR_TOKEN -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.projectKey=$SONAR_ORG-singleton-service-$TRAVIS_BRANCH -Dsonar.projectName=$SONAR_ORG-singleton-service-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.coverage.exclusions=modules/**,tools/tool-trans-fetcher/src/**,vip-common/src/main/java/com/vmware/vip/common/**,vip-manager-l10n-agent/src/** --info
         - |
             git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.travis\.yml$' || {
               echo "Only docs were updated, stopping build process."

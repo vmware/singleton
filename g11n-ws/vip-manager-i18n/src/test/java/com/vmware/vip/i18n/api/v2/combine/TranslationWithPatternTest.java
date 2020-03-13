@@ -5,6 +5,8 @@
 package com.vmware.vip.i18n.api.v2.combine;
 
 import java.io.File;
+import java.util.Map;
+
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.Before;
@@ -18,6 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 import com.vmware.vip.BootApplication;
 import com.vmware.vip.common.constants.ConstantsFile;
+import com.vmware.vip.common.utils.JSONUtils;
 import com.vmware.vip.i18n.api.v1.common.CacheUtil;
 import com.vmware.vip.i18n.api.v1.common.ConstantsForTest;
 import com.vmware.vip.i18n.api.v1.common.RequestUtil;
@@ -29,20 +32,32 @@ public class TranslationWithPatternTest {
    private static Logger logger = LoggerFactory.getLogger(TranslationWithPatternTest.class);
 
    private static String noRegionJsonReq = "{\n" + "  \"combine\": 2,\n" + "  \"components\": [\n"
-         + "    \"default\"\n" + "  ],\n" + "  \"language\": \"en-US\",\n"
+         + "    \"testing\"\n" + "  ],\n" + "  \"language\": \"en-US\",\n"
          + "  \"productName\": \"Testing\",\n" + "  \"pseudo\": \"false\",\n"
          + "  \"scope\": \"dates,numbers\",\n" + "  \"version\": \"2.0.0\"\n" + "}";
    private static String regionJsonReq =
-         "{\n" + "  \"combine\": 1,\n" + "  \"components\": [\n" + "    \"default\"\n" + "  ],\n"
+         "{\n" + "  \"combine\": 1,\n" + "  \"components\": [\n" + "    \"testing\"\n" + "  ],\n"
                + "  \"language\": \"en\",\n" + "  \"productName\": \"Testing\",\n"
                + "  \"region\":\"US\",\n" + "  \"pseudo\": \"false\",\n"
                + "  \"scope\": \"dates,numbers\",\n" + "  \"version\": \"2.0.0\"\n" + "}";
+   
+   private static String regionJsonReqVersionFallback =
+	         "{\n" + "  \"combine\": 1,\n" + "  \"components\": [\n" + "    \"testing\"\n" + "  ],\n"
+	               + "  \"language\": \"en\",\n" + "  \"productName\": \"Testing\",\n"
+	               + "  \"region\":\"US\",\n" + "  \"pseudo\": \"false\",\n"
+	               + "  \"scope\": \"dates,numbers\",\n" + "  \"version\": \"3.0.0\"\n" + "}";
+	   
+   
 
    private static String TranslationWithPatternAPIURI =
          "/i18n/api/v2/combination/translationsAndPattern";
 
-
-   private static String msg = "{\n" + "    \"component\" : \"default\",\n"
+   private static String noRegionParaReq= "/i18n/api/v2/combination/translationsAndPattern?combine=2&components=testing&language=en-US&productName=Testing&pseudo=false&scope=dates,numbers&version=2.0.0";
+   
+   private static String regionParaReq = "/i18n/api/v2/combination/translationsAndPattern?combine=1&components=testing&language=en&productName=Testing&pseudo=false&region=US&scope=dates,numbers&version=2.0.0";
+   
+   private static String versionFallfackRegionParaReq = "/i18n/api/v2/combination/translationsAndPattern?combine=1&components=testing&language=en&productName=Testing&pseudo=false&region=US&scope=dates,numbers&version=3.0.0";
+   private static String msg = "{\n" + "    \"component\" : \"testing\",\n"
          + "    \"messages\": {\n" + "        \"sample.apple\" : \"apple\",\n"
          + "        \"sample.banana\" : \"banana\",\n" + "        \"sample.cat\" : \"cat\",\n"
          + "        \"sample.dog\" : \"dog\",\n" + "        \"sample.egg\" : \"egg\",\n"
@@ -57,9 +72,9 @@ public class TranslationWithPatternTest {
       String authenticationResult = RequestUtil.sendRequest(webApplicationContext,
             ConstantsForTest.POST, ConstantsForTest.AuthenticationAPIURI);
       CacheUtil.cacheSessionAndToken(webApplicationContext, authenticationResult);
-   
+    
       String filepath = "."+File.separator + ConstantsFile.L10N_BUNDLES_PATH
-            + "1.5.0" + File.separator + "default" +File.separator
+    		  +"Testing"+ File.separator+ "2.0.0" + File.separator + "testing" +File.separator
             + "messages_en.json";
 
       FileUtils.write(new File(filepath), msg, "UTF-8", false);
@@ -74,7 +89,10 @@ public class TranslationWithPatternTest {
             TranslationWithPatternAPIURI, noRegionJsonReq);
 
       logger.info(responseStr);
-      Assert.assertNotNull(responseStr);
+      @SuppressWarnings("unchecked")
+      Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(responseStr).get("response");
+      long code = (long) dataMap.get("code");
+      Assert.assertTrue(code==200L);
       
    }
 
@@ -84,7 +102,64 @@ public class TranslationWithPatternTest {
       String responseStr = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.POST,
             TranslationWithPatternAPIURI, regionJsonReq);
       logger.info(responseStr);
-      Assert.assertNotNull(responseStr);
+      @SuppressWarnings("unchecked")
+      Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(responseStr).get("response");
+      long code = (long) dataMap.get("code");
+      Assert.assertTrue(code==200L);
+   }
+   
+   
+  
+   
+   @Test
+   public void testTranslationWithPatternWithoutRegionGet() throws Exception {
+
+      String responseStr = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET,
+    		  noRegionParaReq);
+
+      logger.info(responseStr);
+      @SuppressWarnings("unchecked")
+      Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(responseStr).get("response");
+      long code = (long) dataMap.get("code");
+      Assert.assertTrue(code==200L);
+      
    }
 
+   @Test
+   public void testTranslationWithPatternRegionGet() throws Exception {
+
+      String responseStr = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET,
+    		  regionParaReq);
+      logger.info(responseStr);
+      @SuppressWarnings("unchecked")
+      Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(responseStr).get("response");
+      long code = (long) dataMap.get("code");
+      Assert.assertTrue(code==200L);
+   }
+   
+   @Test
+   public void testTranslationWithPatternRegionVersionFallback() throws Exception {
+
+      String responseStr = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.POST,
+            TranslationWithPatternAPIURI, regionJsonReqVersionFallback);
+      logger.info(responseStr);
+      @SuppressWarnings("unchecked")
+      Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(responseStr).get("response");
+      long code = (long) dataMap.get("code");
+      Assert.assertTrue(code==604L);
+   }
+   
+   @Test
+   public void testTranslationWithPatternRegionGetVersionFallback() throws Exception {
+
+      String responseStr = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET,
+    		  versionFallfackRegionParaReq);
+      logger.info(responseStr);
+      @SuppressWarnings("unchecked")
+      Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(responseStr).get("response");
+      long code = (long) dataMap.get("code");
+      Assert.assertTrue(code==604L);
+   }
+
+  
 }
