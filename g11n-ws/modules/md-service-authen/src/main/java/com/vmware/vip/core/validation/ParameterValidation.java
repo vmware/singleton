@@ -5,17 +5,16 @@
 package com.vmware.vip.core.validation;
 
 
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.servlet.HandlerMapping;
 
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.common.constants.ConstantsKeys;
+import com.vmware.vip.common.constants.ValidationMsg;
 import com.vmware.vip.common.utils.RegExpValidatorUtils;
 
 public class ParameterValidation implements IVlidation {
@@ -34,6 +33,7 @@ public class ParameterValidation implements IVlidation {
 		validateComponent(request);
 		validateKey(request);
 		validateLocale(request);
+		validateLanguage(request);
 		validateSourceformat(request);
 		validateCollectsource(request);
 		validatePseudo(request);
@@ -125,6 +125,23 @@ public class ParameterValidation implements IVlidation {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	private void validateLanguage(HttpServletRequest request)
+			throws ValidationException {
+		Map<String, String> pathVariables = (Map<String, String>) request
+				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
+		String language = pathVariables.get(APIParamName.LANGUAGE) == null ? request
+				.getParameter(APIParamName.LANGUAGE) : pathVariables
+				.get(APIParamName.LANGUAGE);
+		if (StringUtils.isEmpty(language)) {
+			return;
+		}
+		if (!RegExpValidatorUtils.IsLetterAndNumberAndValidchar(language)) {
+			throw new ValidationException(ValidationMsg.LOCALE_NOT_VALIDE);
+		}
+	}
+	
+	
 	@SuppressWarnings("unchecked")
 	private void validateNumber(HttpServletRequest request)
 			throws ValidationException {

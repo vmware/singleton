@@ -29,6 +29,7 @@ import com.vmware.vip.core.messages.service.product.IProductService;
 import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO;
 import com.vmware.vip.core.messages.service.singlecomponent.IOneComponentService;
 import com.vmware.vip.i18n.api.base.utils.CommonUtility;
+import com.vmware.vip.i18n.api.base.utils.ParameterValidationUtility;
 import com.vmware.vip.i18n.api.base.utils.VersionMatcher;
 
 public class TranslationWithPatternAction extends BaseAction {
@@ -51,6 +52,12 @@ public class TranslationWithPatternAction extends BaseAction {
 	    */
 	   public APIResponseDTO getTransPattern(TranslationWithPatternDTO data) throws Exception {
 	      logger.info("begin getTransPattern");
+	      try {
+	    	  ParameterValidationUtility.validateTranslationWithPatternAPI(data);
+	      }catch(RuntimeException excep) {
+	    	  return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(),
+	    			  excep.getMessage(), null);
+	      }
 	      if (validate(data)) {
 	    	  List<String> availableVersions = null;
 	          try {
