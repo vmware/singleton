@@ -65,7 +65,6 @@ public class LocaleService implements ILocaleService {
 		DisplayLanguageDTO dto = null;
 		Map<String, String> languagesMap = null;
 		Map<String, Object> jsonMap = null;
-		String disPlayLocale = null;
 		List<String> languageList = this.productService.getSupportedLanguageList(productName, version);
 		if (languageList.size() == 0 || languageList == null){
 			return dtoList;
@@ -103,8 +102,8 @@ public class LocaleService implements ILocaleService {
 				logger.info("get data from cache");
 				// VIP-2001:[Get LanguageList API]Can't parse the language(i.e. en-US) which in default content json file.
 				String locale = dispLanguage.replace("_", "-");
-				disPlayLocale = CommonUtil.getCLDRLocale(locale, localePathMap, localeAliasesMap);
-				jsonMap = languagesParser.getDisplayNames(disPlayLocale);
+				locale = CommonUtil.getCLDRLocale(locale, localePathMap, localeAliasesMap);
+				jsonMap = languagesParser.getDisplayNames(locale);
 				if (jsonMap == null || jsonMap.get(LANGUAGE_STR) == null) {
 					return dtoList;
 				}
@@ -115,9 +114,11 @@ public class LocaleService implements ILocaleService {
 
 		for (String language : languageList) {
 			Map<String, String> displayNameMap = null;
-			if (StringUtils.isEmpty(disPlayLocale)) {
+			if (StringUtils.isEmpty(dispLanguage)) {
 				displayNameMap = getDisplayNameMap(language, languagesParser, languagesMap.get(language));
 			} else {
+				String disPlayLocale = CommonUtil.getCLDRLocale(dispLanguage.replace("_", "-"),
+						localePathMap, localeAliasesMap);
 				displayNameMap = getDisplayNameMap(disPlayLocale, languagesParser, languagesMap.get(language));
 			}
 			language = LocaleUtils.normalizeToLanguageTag(language);
