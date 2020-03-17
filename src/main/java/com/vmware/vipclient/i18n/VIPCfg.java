@@ -135,7 +135,7 @@ public class VIPCfg {
      */
     public void loadConfig(String configFile) throws VIPClientInitException {
     	ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-    	InputStream is = classloader.getResourceAsStream(configFile + ".json");
+    	InputStream is = classloader.getResourceAsStream(configFile);
     	
     	Reader reader = new InputStreamReader(is);
     	JSONParser parser = new JSONParser();
@@ -145,10 +145,18 @@ public class VIPCfg {
 			this.vipServer = (String) jsonObject.get("online_service_url");
 			this.offline_resources_base_url = (String) jsonObject.get("offline_resources_base_url");
 			
-			// will be removed once product name becomes part of online_service_url
+			// TODO will be removed once product name becomes part of online_service_url
 			this.productName = (String) jsonObject.get("product");
-			// will be removed once version becomes part of online_service_url
+			// TODO will be removed once version becomes part of online_service_url
 			this.version = (String) jsonObject.get("version");
+			
+			// TODO get these from json config file
+	        this.pseudo = false;
+	        this.collectSource = false;
+	        this.initializeCache = false;
+	        this.cleanCache = false;
+	        this.machineTranslation = false;
+	        
 		} catch (NullPointerException | IOException | ParseException e) {
 			e.printStackTrace();
 			throw new VIPClientInitException("Failed to load configuration"); 
