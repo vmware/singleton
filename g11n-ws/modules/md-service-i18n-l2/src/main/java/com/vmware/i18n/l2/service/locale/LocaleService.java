@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.vmware.i18n.utils.CommonUtil;
 import org.slf4j.Logger;
@@ -73,6 +74,8 @@ public class LocaleService implements ILocaleService {
 		if (StringUtils.isEmpty(dispLanguage)) {
 			cacheKey = productName + "_" + version + "_" + languageList.size();
 		}
+		languageList = languageList.stream().map(language -> LocaleUtils.normalizeToLanguageTag(language))
+				.collect(Collectors.toList());
 		jsonMap = TranslationCache3.getCachedObject(CacheName.LANGUAGE, cacheKey, HashMap.class);
 		if (jsonMap == null) {
 			logger.info("get data from file");
@@ -121,7 +124,6 @@ public class LocaleService implements ILocaleService {
 						localePathMap, localeAliasesMap);
 				displayNameMap = getDisplayNameMap(disPlayLocale, languagesParser, languagesMap.get(language));
 			}
-			language = LocaleUtils.normalizeToLanguageTag(language);
 			dto = new DisplayLanguageDTO();
 			dto.setDisplayName(languagesMap.get(language) == null ? "" : languagesMap.get(language));
 			dto.setDisplayName_sentenceBeginning(StringUtils.isEmpty(displayNameMap.get(DISPLAY_NAME_SENTENCE_BEGINNING)) ? dto.getDisplayName() : displayNameMap.get(DISPLAY_NAME_SENTENCE_BEGINNING));
