@@ -25,34 +25,25 @@ func TestGetLocaleCompAbnormal(t *testing.T) {
 		return errors.New(errMsg)
 	}
 
-	testCfg := backCfg
-	testCfg.LocalBundles = ""
-	testInst, _ := replaceInst(&testCfg)
+	testCfg := testCfg
+	testCfg.OfflineResourcesBaseURL = ""
+	testInst := resetInst(&testCfg)
 
 	trans := testInst.GetTranslation()
 
-	components, errcomp := trans.GetComponentList()
+	components, errcomp := trans.GetComponentList(name, version)
 	assert.Nil(t, components)
 	assert.Contains(t, errcomp.Error(), errMsg)
 
-	components, errcomp = trans.GetComponentList()
+	components, errcomp = trans.GetComponentList(name, version)
 	assert.Nil(t, components)
 	assert.Contains(t, errcomp.Error(), errMsg)
 
-	locales, errlocale := trans.GetLocaleList()
+	locales, errlocale := trans.GetLocaleList(name, version)
 	assert.Nil(t, locales)
 	assert.Contains(t, errlocale.Error(), errMsg)
 
-	locales, errlocale = trans.GetLocaleList()
+	locales, errlocale = trans.GetLocaleList(name, version)
 	assert.Nil(t, locales)
 	assert.Contains(t, errlocale.Error(), errMsg)
-
-	clearCache(testInst)
-	errinit := testInst.InitializeCache()
-	assert.Contains(t, errinit.Error(), errMsg)
-
-	// Test return nil when disabling cache
-	testInst.cfg.EnableCache = false
-	errInit := testInst.InitializeCache()
-	assert.Nil(t, errInit)
 }

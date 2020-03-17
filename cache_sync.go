@@ -13,14 +13,15 @@ import (
 
 type (
 	cacheSyncInfo struct {
-		cfg                  *Config
 		updateInfo           *sync.Map
 		localesUpdateInfo    *updateInfo
 		componentsUpdateInfo *updateInfo
 	}
 	updateInfo struct {
-		status uint32
-		uTime  int64
+		status      uint32
+		uTime       int64
+		ageDuration int64
+		eTag        string
 	}
 )
 
@@ -29,9 +30,8 @@ const (
 	updating
 )
 
-func newCacheSyncInfo(cfg *Config) *cacheSyncInfo {
+func newCacheSyncInfo() *cacheSyncInfo {
 	syncInfo := cacheSyncInfo{
-		cfg,
 		new(sync.Map),
 		newCacheUpdateInfo(),
 		newCacheUpdateInfo(),
@@ -41,7 +41,7 @@ func newCacheSyncInfo(cfg *Config) *cacheSyncInfo {
 }
 
 func newCacheUpdateInfo() *updateInfo {
-	ui := updateInfo{0, 0}
+	ui := updateInfo{0, 0, 0, ""}
 
 	return &ui
 }
@@ -69,7 +69,7 @@ func (uInfo *updateInfo) waitUpdate() {
 	}
 }
 
-func (cs *cacheSyncInfo) getCompUpdateInfo(locale, component string) *updateInfo {
+func (cs *cacheSyncInfo) getCompUpdateInfo(name, version, locale, component string) *updateInfo {
 	components, _ := cs.updateInfo.LoadOrStore(locale, &sync.Map{})
 
 	t, _ := components.(*sync.Map).LoadOrStore(component, newCacheUpdateInfo())
@@ -77,10 +77,10 @@ func (cs *cacheSyncInfo) getCompUpdateInfo(locale, component string) *updateInfo
 	return t.(*updateInfo)
 }
 
-func (cs *cacheSyncInfo) getLocalesUpdateInfo() *updateInfo {
+func (cs *cacheSyncInfo) getLocalesUpdateInfo(name, version string) *updateInfo {
 	return cs.localesUpdateInfo
 }
 
-func (cs *cacheSyncInfo) getComponentsUpdateInfo() *updateInfo {
+func (cs *cacheSyncInfo) getComponentsUpdateInfo(name, version string) *updateInfo {
 	return cs.componentsUpdateInfo
 }

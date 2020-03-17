@@ -22,11 +22,10 @@ import (
 type (
 	// serverDAO serverDAO definition
 	serverDAO struct {
-		cfg         *Config
-		svrURL      *url.URL
-		status      uint32
-		errormoment int64
-		headers     map[string]string
+		svrURL          *url.URL
+		status          uint32
+		lastErrorMoment int64
+		headers         map[string]string
 	}
 
 	respBody struct {
@@ -63,24 +62,24 @@ type (
 	}
 )
 
-const serverRetryInter = 1 //second
+const serverRetryInterval = 1 //second
 const (
 	serverNormal uint32 = iota
 	serverTimeout
 )
 
-func newServer(cfg *Config) (*serverDAO, error) {
-	svrURL, err := url.Parse(cfg.SingletonServer)
+func newServer(OnlineServiceURL string) (*serverDAO, error) {
+	svrURL, err := url.Parse(OnlineServiceURL)
 	if err != nil {
 		return nil, err
 	}
 
-	return &serverDAO{cfg: cfg, svrURL: svrURL}, nil
+	return &serverDAO{svrURL: svrURL}, nil
 }
 
 // getComponentMessages Get a component's messages
-func (s *serverDAO) getComponentMessages(locale, component string) (ComponentMsgs, error) {
-	urlToQuery := s.processURL(componentTranslationGetConst, locale, component)
+func (s *serverDAO) getComponentMessages(name, version, locale, component string) (ComponentMsgs, error) {
+	urlToQuery := s.processURL(componentTranslationGetConst, name, version, locale, component)
 
 	data := new(queryByCompData)
 	if err := s.sendRequest(urlToQuery, s.headers, data); err != nil {
@@ -93,8 +92,8 @@ func (s *serverDAO) getComponentMessages(locale, component string) (ComponentMsg
 }
 
 // getLocales Get supported locales
-func (s *serverDAO) getLocales() ([]string, error) {
-	urlToQuery := s.processURL(productLocaleListGetConst)
+func (s *serverDAO) getLocales(name, version string) ([]string, error) {
+	urlToQuery := s.processURL(productLocaleListGetConst, name, version)
 
 	data := new(queryLocales)
 	if err := s.sendRequest(urlToQuery, s.headers, data); err != nil {
@@ -105,8 +104,8 @@ func (s *serverDAO) getLocales() ([]string, error) {
 }
 
 // getComponents Get supported components
-func (s *serverDAO) getComponents() ([]string, error) {
-	urlToQuery := s.processURL(productComponentListGetConst)
+func (s *serverDAO) getComponents(name, version string) ([]string, error) {
+	urlToQuery := s.processURL(productComponentListGetConst, name, version)
 
 	data := new(queryComponents)
 	if err := s.sendRequest(urlToQuery, s.headers, data); err != nil {
@@ -121,23 +120,23 @@ func (s *serverDAO) addHTTPHeaders(h map[string]string) {
 }
 
 func (s *serverDAO) processURL(relURL string, args ...string) *url.URL {
-	newRelURL := strings.Replace(relURL, "{"+productNameConst+"}", s.cfg.Name, 1)
-	newRelURL = strings.Replace(newRelURL, "{"+versionConst+"}", s.cfg.Version, 1)
+	newRelURL := strings.Replace(relURL, "{"+productNameConst+"}", args[0], 1)
+	newRelURL = strings.Replace(newRelURL, "{"+versionConst+"}", args[1], 1)
 
 	urlToQuery := url.URL(*s.svrURL)
 	urlToQuery.Path = path.Join(urlToQuery.Path, newRelURL)
 
 	switch relURL {
 	case componentTranslationGetConst:
-		urlToQuery.Path = strings.Replace(urlToQuery.Path, "{"+localeConst+"}", args[0], 1)
-		urlToQuery.Path = strings.Replace(urlToQuery.Path, "{"+componentConst+"}", args[1], 1)
+		urlToQuery.Path = strings.Replace(urlToQuery.Path, "{"+localeConst+"}", args[2], 1)
+		urlToQuery.Path = strings.Replace(urlToQuery.Path, "{"+componentConst+"}", args[3], 1)
 	}
 
 	return &urlToQuery
 }
 func (s *serverDAO) sendRequest(u *url.URL, header map[string]string, data interface{}) error {
 	if atomic.LoadUint32(&s.status) == serverTimeout {
-		if time.Now().Unix()-atomic.LoadInt64(&s.errormoment) < serverRetryInter {
+		if time.Now().Unix()-atomic.LoadInt64(&s.lastErrorMoment) < serverRetryInterval {
 			return errors.New("Server times out")
 		}
 		atomic.StoreUint32(&s.status, serverNormal)
@@ -148,7 +147,7 @@ func (s *serverDAO) sendRequest(u *url.URL, header map[string]string, data inter
 		if oe, ok := err.(net.Error); ok {
 			if oe.Timeout() {
 				atomic.StoreUint32(&s.status, serverTimeout)
-				atomic.StoreInt64(&s.errormoment, time.Now().Unix())
+				atomic.StoreInt64(&s.lastErrorMoment, time.Now().Unix())
 			}
 		}
 

@@ -14,10 +14,24 @@ type (
 	defaultComponentMsgs struct {
 		messages map[string]string
 	}
+
+	translationID struct {
+		name, version string
+	}
+	componentID struct {
+		Name, Version, locale, component string
+	}
+
+	transMsgs interface {
+		Put(key componentID, value ComponentMsgs)
+		Get(key componentID) (value ComponentMsgs, found bool)
+		Size() int
+		Clear()
+	}
 )
 
 // Get Get messages of a component
-func (d *defaultTransMsgs) Get(key compAsKey) (value ComponentMsgs, found bool) {
+func (d *defaultTransMsgs) Get(key componentID) (value ComponentMsgs, found bool) {
 	v, ok := d.dataMap.Load(key)
 	if ok {
 		return v.(ComponentMsgs), ok
@@ -27,7 +41,7 @@ func (d *defaultTransMsgs) Get(key compAsKey) (value ComponentMsgs, found bool) 
 }
 
 // Put Set messages of a component
-func (d *defaultTransMsgs) Put(key compAsKey, value ComponentMsgs) {
+func (d *defaultTransMsgs) Put(key componentID, value ComponentMsgs) {
 	d.dataMap.Store(key, value)
 }
 

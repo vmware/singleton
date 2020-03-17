@@ -7,57 +7,55 @@ package sgtn
 
 import (
 	"sync"
-	"sync/atomic"
 )
+
+var cacheExpiredTime int64 = 100
 
 type (
 	defaultCache struct {
 		tMessages  transMsgs
-		locales    atomic.Value
-		components atomic.Value
+		locales    *sync.Map
+		components *sync.Map
 	}
 )
 
 func newCache() Cache {
 	c := &defaultCache{
 		&defaultTransMsgs{new(sync.Map)},
-		atomic.Value{},
-		atomic.Value{},
+		new(sync.Map),
+		new(sync.Map),
 	}
-
-	c.locales.Store([]string{})
-	c.components.Store([]string{})
 
 	return c
 }
-func (c *defaultCache) GetLocales() []string {
-	data := c.locales.Load()
-	if nil != data {
+func (c *defaultCache) GetLocales(name, version string) []string {
+	data, ok := c.locales.Load(translationID{name, version})
+	if ok {
 		return data.([]string)
 	}
 	return nil
 }
-func (c *defaultCache) GetComponents() []string {
-	data := c.components.Load()
-	if nil != data {
+func (c *defaultCache) GetComponents(name, version string) []string {
+	data, ok := c.components.Load(translationID{name, version})
+	if ok {
 		return data.([]string)
 	}
 	return nil
 }
-func (c *defaultCache) SetLocales(locales []string) {
-	c.locales.Store(locales)
+func (c *defaultCache) SetLocales(name, version string, locales []string) {
+	c.locales.Store(translationID{name, version}, locales)
 }
-func (c *defaultCache) SetComponents(components []string) {
-	c.components.Store(components)
+func (c *defaultCache) SetComponents(name, version string, components []string) {
+	c.components.Store(translationID{name, version}, components)
 }
-func (c *defaultCache) GetComponentMessages(locale, comp string) (data ComponentMsgs, found bool) {
-	compData, ok := c.tMessages.Get(compAsKey{locale, comp})
+func (c *defaultCache) GetComponentMessages(name, version, locale, comp string) (data ComponentMsgs, found bool) {
+	compData, ok := c.tMessages.Get(componentID{name, version, locale, comp})
 	if !ok {
 		return nil, ok
 	}
 
 	return compData, true
 }
-func (c *defaultCache) SetComponentMessages(locale, comp string, data ComponentMsgs) {
-	c.tMessages.Put(compAsKey{locale, comp}, data)
+func (c *defaultCache) SetComponentMessages(name, version, locale, comp string, data ComponentMsgs) {
+	c.tMessages.Put(componentID{name, version, locale, comp}, data)
 }

@@ -6,152 +6,128 @@
 package sgtn
 
 import (
-	"fmt"
-	"strings"
 	"time"
 
 	"errors"
 )
 
 //!+dataService
-type dataService struct {
-	cfg *Config
+type (
+	dataService struct {
+		enableCache bool
 
-	cache         Cache
-	cacheSyncInfo *cacheSyncInfo
+		cache         Cache
+		cacheSyncInfo *cacheSyncInfo
 
-	bundle *bundleDAO
-	server *serverDAO
-}
-
-func newDataService(cfg *Config) (*dataService, error) {
-	var err error
-	service := new(dataService)
-	service.cfg = cfg
-
-	if cfg.EnableCache {
-		service.cacheSyncInfo = newCacheSyncInfo(cfg)
+		bundle *bundleDAO
+		server *serverDAO
 	}
 
-	if len(cfg.SingletonServer) != 0 {
-		service.server, err = newServer(cfg)
-		if err != nil {
-			logger.Error("Fail to create server. " + err.Error())
-		}
+	transKey struct {
+		Name, Version string
+	}
+)
+
+func (ds *dataService) GetLocaleList(name, version string) ([]string, error) {
+	if !ds.enableCache {
+		return ds.fetchLocaleList(name, version)
 	}
 
-	if strings.TrimSpace(cfg.LocalBundles) != "" {
-		service.bundle = &bundleDAO{cfg}
-	}
-
-	return service, nil
-}
-
-func (ds *dataService) GetLocaleList() ([]string, error) {
-	if !ds.cfg.EnableCache {
-		return ds.fetchLocaleList()
-	}
-
-	localeList := ds.cache.GetLocales()
+	localeList := ds.cache.GetLocales(name, version)
 	if len(localeList) != 0 {
-		if ds.cfg.CacheExpiredTime > 0 {
-			if uInfo := ds.cacheSyncInfo.getLocalesUpdateInfo(); uInfo.isExpired(ds.cfg.CacheExpiredTime) {
-				go ds.refreshLocaleList()
+		if cacheExpiredTime > 0 {
+			if uInfo := ds.cacheSyncInfo.getLocalesUpdateInfo(name, version); uInfo.isExpired(cacheExpiredTime) {
+				go ds.refreshLocaleList(name, version)
 			}
 		}
 
 		return localeList, nil
 	}
 
-	if errRefresh := ds.refreshLocaleList(); errRefresh != nil {
+	if errRefresh := ds.refreshLocaleList(name, version); errRefresh != nil {
 		return nil, errRefresh
 	}
 
-	localeList = ds.cache.GetLocales()
+	localeList = ds.cache.GetLocales(name, version)
 
 	return localeList, nil
 }
 
-func (ds *dataService) GetComponentList() ([]string, error) {
-	if !ds.cfg.EnableCache {
-		return ds.fetchComponentList()
+func (ds *dataService) GetComponentList(name, version string) ([]string, error) {
+	if !ds.enableCache {
+		return ds.fetchComponentList(name, version)
 	}
 
-	compList := ds.cache.GetComponents()
+	compList := ds.cache.GetComponents(name, version)
 	if len(compList) != 0 {
-		if ds.cfg.CacheExpiredTime > 0 {
-			if uInfo := ds.cacheSyncInfo.getComponentsUpdateInfo(); uInfo.isExpired(ds.cfg.CacheExpiredTime) {
-				go ds.refreshComponentList()
+		if cacheExpiredTime > 0 {
+			if uInfo := ds.cacheSyncInfo.getComponentsUpdateInfo(name, version); uInfo.isExpired(cacheExpiredTime) {
+				go ds.refreshComponentList(name, version)
 			}
 		}
 
 		return compList, nil
 	}
 
-	if errRefresh := ds.refreshComponentList(); errRefresh != nil {
+	if errRefresh := ds.refreshComponentList(name, version); errRefresh != nil {
 		return nil, errRefresh
 	}
 
-	compList = ds.cache.GetComponents()
+	compList = ds.cache.GetComponents(name, version)
 
 	return compList, nil
 }
 
-func (ds *dataService) getStringMessage(locale, component, key string) (string, error) {
+func (ds *dataService) GetStringMessage(name, version, locale, component, key string) (string, error) {
 	var errMsg string
-	compData, err := ds.getComponentMessages(locale, component)
-	if err != nil {
-		if strings.Compare(strings.ToLower(locale), strings.ToLower(ds.cfg.DefaultLocale)) != 0 {
-			logger.Error("Fallback to default locale because of error: " + err.Error())
-			locale = ds.cfg.DefaultLocale
-			compData, err = ds.getComponentMessages(locale, component)
-		}
-	}
+	compData, err := ds.GetComponentMessages(name, version, locale, component)
 	if err != nil {
 		return key, err
 	}
 
-	if message, ok := compData.Get(key); ok {
-		return message, nil
+	message, ok := compData.Get(key)
+	if !ok {
+		errMsg = "No key in locale: " + locale + ", component: " + component
+		return key, errors.New(errMsg)
 	}
-	errMsg = "No key in locale: " + locale + ", component: " + component
-	return key, errors.New(errMsg)
+
+	return message, nil
 }
 
-func (ds *dataService) getComponentMessages(locale, component string) (ComponentMsgs, error) {
-	if !ds.cfg.EnableCache {
-		return ds.fetchCompData(locale, component)
+func (ds *dataService) GetComponentMessages(name, version, locale, component string) (ComponentMsgs, error) {
+	if !ds.enableCache {
+		return ds.fetchCompData(name, version, locale, component)
 	}
 
-	compData, ok := ds.cache.GetComponentMessages(locale, component)
+	compData, ok := ds.cache.GetComponentMessages(name, version, locale, component)
 	if ok {
-		if ds.cfg.CacheExpiredTime > 0 {
-			if uInfo := ds.cacheSyncInfo.getCompUpdateInfo(locale, component); uInfo.isExpired(ds.cfg.CacheExpiredTime) {
-				go ds.refreshCompCache(locale, component, false)
+		if cacheExpiredTime > 0 {
+			if uInfo := ds.cacheSyncInfo.getCompUpdateInfo(name, version, locale, component); uInfo.isExpired(cacheExpiredTime) {
+				go ds.refreshCompCache(name, version, locale, component, false)
 			}
 		}
 		return compData, nil
 	}
 
-	compData, errRefresh := ds.refreshCompCache(locale, component, true)
+	compData, errRefresh := ds.refreshCompCache(name, version, locale, component, true)
 	if errRefresh != nil {
 		return nil, errRefresh
 	}
 	return compData, nil
 }
 
-func (ds *dataService) fetchLocaleList() (data []string, err error) {
+func (ds *dataService) fetchLocaleList(name, version string) (data []string, err error) {
 	logger.Debug("Start fetching locale list")
 
 	if ds.server != nil {
-		data, err = ds.server.getLocales()
+		data, err = ds.server.getLocales(name, version)
 		if err == nil {
 			return data, nil
 		}
 	}
 
 	if ds.bundle != nil {
-		data, err = ds.bundle.getLocales()
+		data, err = ds.bundle.getLocales(name, version)
 		if err == nil {
 			return data, nil
 		}
@@ -159,18 +135,18 @@ func (ds *dataService) fetchLocaleList() (data []string, err error) {
 
 	return data, err
 }
-func (ds *dataService) fetchComponentList() (data []string, err error) {
+func (ds *dataService) fetchComponentList(name, version string) (data []string, err error) {
 	logger.Debug("Start fetching component list")
 
 	if ds.server != nil {
-		data, err = ds.server.getComponents()
+		data, err = ds.server.getComponents(name, version)
 		if err == nil {
 			return data, nil
 		}
 	}
 
 	if ds.bundle != nil {
-		data, err = ds.bundle.getComponents()
+		data, err = ds.bundle.getComponents(name, version)
 		if err == nil {
 			return data, nil
 		}
@@ -178,18 +154,18 @@ func (ds *dataService) fetchComponentList() (data []string, err error) {
 
 	return data, err
 }
-func (ds *dataService) fetchCompData(locale, component string) (data ComponentMsgs, err error) {
+func (ds *dataService) fetchCompData(name, version, locale, component string) (data ComponentMsgs, err error) {
 	logger.Debug("Start fetching data for locale: " + locale + ", component: " + component)
 
 	if ds.server != nil {
-		data, err = ds.server.getComponentMessages(locale, component)
+		data, err = ds.server.getComponentMessages(name, version, locale, component)
 		if err == nil {
 			return data, nil
 		}
 	}
 
 	if ds.bundle != nil {
-		data, err = ds.bundle.getComponentMessages(locale, component)
+		data, err = ds.bundle.getComponentMessages(name, version, locale, component)
 		if err == nil {
 			return data, nil
 		}
@@ -198,123 +174,62 @@ func (ds *dataService) fetchCompData(locale, component string) (data ComponentMs
 	return data, err
 }
 
-func (ds *dataService) refreshLocaleList() error {
-	uInfo := ds.cacheSyncInfo.getLocalesUpdateInfo()
+func (ds *dataService) refreshLocaleList(name, version string) error {
+	uInfo := ds.cacheSyncInfo.getLocalesUpdateInfo(name, version)
 
 	logger.Debug("Start refreshing cache")
 	uInfo.setTime(time.Now().Unix())
 
-	compData, err := ds.fetchLocaleList()
+	compData, err := ds.fetchLocaleList(name, version)
 	if err != nil {
 		return err
 	}
 
-	ds.cache.SetLocales(compData)
+	ds.cache.SetLocales(name, version, compData)
 	return nil
 }
-func (ds *dataService) refreshComponentList() error {
-	uInfo := ds.cacheSyncInfo.getComponentsUpdateInfo()
+func (ds *dataService) refreshComponentList(name, version string) error {
+	uInfo := ds.cacheSyncInfo.getComponentsUpdateInfo(name, version)
 
 	logger.Debug("Start refreshing cache")
 	uInfo.setTime(time.Now().Unix())
 
-	compData, err := ds.fetchComponentList()
+	compData, err := ds.fetchComponentList(name, version)
 	if err != nil {
 		return err
 	}
 
-	ds.cache.SetComponents(compData)
+	ds.cache.SetComponents(name, version, compData)
 	return nil
 }
-func (ds *dataService) refreshCompCache(locale, component string, wait bool) (ComponentMsgs, error) {
-	uInfo := ds.cacheSyncInfo.getCompUpdateInfo(locale, component)
+func (ds *dataService) refreshCompCache(name, version, locale, component string, wait bool) (ComponentMsgs, error) {
+	uInfo := ds.cacheSyncInfo.getCompUpdateInfo(name, version, locale, component)
 
 	if uInfo.setUpdating() {
 		defer uInfo.setUpdated()
 		uInfo.setTime(time.Now().Unix())
 
 		logger.Debug("Start refreshing cache for locale: " + locale + ", component: " + component)
-		compData, err := ds.fetchCompData(locale, component)
+		compData, err := ds.fetchCompData(name, version, locale, component)
 		if err != nil {
 			return nil, err
 		}
 
-		ds.cache.SetComponentMessages(locale, component, compData)
+		ds.cache.SetComponentMessages(name, version, locale, component, compData)
 		return compData, nil
 	} else if wait {
 		uInfo.waitUpdate()
 	}
 
-	compData, found := ds.cache.GetComponentMessages(locale, component)
+	compData, found := ds.cache.GetComponentMessages(name, version, locale, component)
 	if !found {
 		return nil, errors.New("Fail to refresh cache of component messages")
 	}
 	return compData, nil
 }
 
-func (ds *dataService) initializeCache() error {
-	logger.Info("Start initializing cache of " + ds.cfg.Name)
-
-	ch := make(chan error, 2)
-	localesCh := make(chan []string, 1)
-	componentsCh := make(chan []string, 1)
-	go func() {
-		err := ds.refreshLocaleList()
-		if nil == err {
-			localesCh <- ds.cache.GetLocales()
-		}
-		ch <- err
-	}()
-	go func() {
-		err := ds.refreshComponentList()
-		if nil == err {
-			componentsCh <- ds.cache.GetComponents()
-		}
-		ch <- err
-	}()
-
-	for i := 0; i < cap(ch); i++ {
-		err := <-ch
-		if err != nil {
-			return err
-		}
-	}
-
-	locales := <-localesCh
-	components := <-componentsCh
-	close(localesCh)
-	close(componentsCh)
-	total := len(locales) * len(components)
-
-	type compresult struct {
-		locale, component string
-		err               error
-	}
-	results := make(chan compresult, total)
-	for _, locale := range locales {
-		for _, component := range components {
-			go func(locale, component string) {
-				_, errComp := ds.refreshCompCache(locale, component, true)
-				results <- compresult{locale, component, errComp}
-			}(locale, component)
-		}
-	}
-
-	var errorReturn error
-	for i := 0; i < total; i++ {
-		r := <-results
-		if r.err != nil {
-			logger.Error(fmt.Sprintf("Error when initializing cache of locale '%s', component '%s'. Error is: %s", r.locale, r.component, r.err.Error()))
-			errorReturn = r.err
-		}
-	}
-	close(results)
-
-	return errorReturn
-}
-
 func (ds *dataService) registerCache(cs Cache) {
-	if ds.cfg.EnableCache {
+	if ds.enableCache {
 		ds.cache = cs
 	}
 }

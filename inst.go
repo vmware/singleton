@@ -7,19 +7,24 @@ package sgtn
 
 import (
 	"net/http"
+	"net/url"
+	"strings"
 	"sync"
 	"time"
 )
 
 var (
-	instMap sync.Map
-	logger  Logger
+	// instMap sync.Map
+	inst   = Instance{}
+	logger Logger
 )
 
 // Instance Singleton instance
 type Instance struct {
-	cfg           *Config
+	cfg           Config
+	dService      *dataService
 	trans         *defaultTrans
+	components    []componentID
 	initializOnce sync.Once
 }
 
@@ -28,54 +33,48 @@ func init() {
 	httpclient = &http.Client{Timeout: time.Second * servertimeout}
 }
 
-// NewInst Create a new Singleton instance
-func NewInst(cfg Config) (*Instance, bool) {
-	actual, loaded := instMap.LoadOrStore(cfg.Name, new(Instance))
-	if !loaded {
-		logger.Info("Creating a new instance of " + cfg.Name)
-	}
-
-	actualInst := actual.(*Instance)
-	actualInst.cfg = &cfg
-	actualInst.initialize()
-
-	return actualInst, loaded
+// GetInst Get the Singleton instance
+func GetInst() *Instance {
+	return &inst
 }
 
-// GetInst Get a Singleton instance by name
-func GetInst(name string) (*Instance, bool) {
-	inst, ok := instMap.Load(name)
-	if ok {
-		return inst.(*Instance), ok
-	}
-	return nil, ok
-}
-
-func (i *Instance) initialize() {
+//Initialize initialize the instance
+func (i *Instance) Initialize() {
 	i.initializOnce.Do(i.doInitialize)
 }
 
 func (i *Instance) doInitialize() {
-	logger.Debug("Initializing the instance of " + i.cfg.Name)
-	service, _ := newDataService(i.cfg)
-	i.trans = &defaultTrans{cfg: i.cfg, dService: service}
-	i.RegisterCache(newCache())
-	if i.cfg.EnableCache && i.cfg.InitializeCache {
-		i.InitializeCache()
+	logger.Debug("Initializing Singleton instance.")
+
+	dService := new(dataService)
+	if i.cfg.EnableCache {
+		dService.enableCache = i.cfg.EnableCache
+		dService.cacheSyncInfo = newCacheSyncInfo()
 	}
+	if len(i.cfg.OnlineServiceURL) != 0 {
+		svrURL, err := url.Parse(i.cfg.OnlineServiceURL)
+		if err != nil {
+			logger.Error("Fail to parse URL: " + i.cfg.OnlineServiceURL)
+		}
+		dService.server = &serverDAO{svrURL: svrURL}
+	}
+	if strings.TrimSpace(i.cfg.OfflineResourcesBaseURL) != "" {
+		dService.bundle = &bundleDAO{i.cfg.OfflineResourcesBaseURL}
+	}
+	i.dService = dService
+
+	i.trans = &defaultTrans{i.dService, i.cfg.DefaultLocale}
+	i.RegisterCache(newCache())
 }
 
-// InitializeCache Initialize cache
-func (i *Instance) InitializeCache() error {
-	if i.cfg.EnableCache {
-		return i.trans.dService.initializeCache()
-	}
-	return nil
+// SetConfig set config of instance
+func (i *Instance) SetConfig(cfg *Config) {
+	i.cfg = *cfg
 }
 
 // GetConfig Get the config of Singleton instance
 func (i *Instance) GetConfig() Config {
-	return *i.cfg
+	return i.cfg
 }
 
 // GetTranslation Get translation instance
@@ -85,12 +84,12 @@ func (i *Instance) GetTranslation() Translation {
 
 // AddHTTPHeaders Add customized HTTP headers
 func (i *Instance) AddHTTPHeaders(h map[string]string) {
-	i.trans.dService.server.addHTTPHeaders(h)
+	i.trans.server.addHTTPHeaders(h)
 }
 
 // RegisterCache Register cache implementation. There is a default implementation
 func (i *Instance) RegisterCache(cs Cache) {
-	i.trans.dService.registerCache(cs)
+	i.trans.registerCache(cs)
 }
 
 // SetLogger Set a global logger. There is a default console logger

@@ -6,27 +6,23 @@
 package sgtn
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
-
-	yaml "gopkg.in/yaml.v2"
 )
 
 // Config Singleton configuration
 type Config struct {
-	Name    string
-	Version string
+	OnlineServiceURL string `json:"online_service_url"`
 
-	SingletonServer string `yaml:"singletonServer"`
+	DefaultLocale string `json:"default_locale"`
 
-	EnableCache     bool `yaml:"enableCache"`
-	InitializeCache bool `yaml:"initializeCache"`
+	OfflineResourcesBaseURL string `json:"offline_resources_base_url"`
+	CacheExpiredTime        int64  `json:"cacheExpiredTime"` //seconds
 
-	CacheExpiredTime int64 `yaml:"cacheExpiredTime"` //seconds
+	EnableCache bool `json:"enable_cache"`
 
-	DefaultLocale string `yaml:"defaultLocale"`
-
-	LocalBundles string `yaml:"localBundles"`
+	Components []transKey `json:"components"`
 }
 
 // NewConfig Create a new Singleton configuration instance
@@ -37,10 +33,11 @@ func NewConfig(path string) (*Config, error) {
 	}
 
 	var cfg Config
-	err = yaml.Unmarshal(contents, &cfg)
-	if err != nil {
+	if err := json.Unmarshal(contents, &cfg); err != nil {
 		return nil, err
 	}
+
+	cfg.EnableCache = true
 
 	logger.Debug(fmt.Sprintf("Created a new config: %#v", cfg))
 

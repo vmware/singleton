@@ -6,39 +6,58 @@
 package sgtn
 
 import (
+	"errors"
 	"fmt"
 	"strings"
 )
 
+// Translation interface of translation
+type Translation interface {
+	// GetLocaleList Get locale list
+	GetLocaleList(name, version string) ([]string, error)
+
+	// GetComponentList Get component list
+	GetComponentList(name, version string) ([]string, error)
+
+	// GetStringMessage Get a message with optional arguments
+	GetStringMessage(name, version, locale, component, key string, args ...string) (string, error)
+
+	// GetComponentMessages Get component messages
+	GetComponentMessages(name, version, locale, component string) (ComponentMsgs, error)
+}
+
 //!+ defaultTrans
 type defaultTrans struct {
-	cfg      *Config
-	dService *dataService
+	*dataService
+	defaultLocale string
 }
 
-func (t *defaultTrans) GetLocaleList() ([]string, error) {
-	return t.dService.GetLocaleList()
-}
-
-func (t *defaultTrans) GetComponentList() ([]string, error) {
-	return t.dService.GetComponentList()
-}
-
-func (t *defaultTrans) GetStringMessage(locale, component, key string, args ...string) (string, error) {
-	message, err := t.dService.getStringMessage(locale, component, key)
+func (t *defaultTrans) GetStringMessage(name, version, locale, component, key string, args ...string) (string, error) {
+	var errMsg string
+	compData, err := t.dataService.GetComponentMessages(name, version, locale, component)
 	if err != nil {
-		return message, err
+		if strings.Compare(strings.ToLower(locale), strings.ToLower(t.defaultLocale)) != 0 {
+			logger.Error("Fallback to default locale because of error: " + err.Error())
+			locale = t.defaultLocale
+			compData, err = t.dataService.GetComponentMessages(name, version, locale, component)
+		}
+	}
+	if err != nil {
+		return key, err
+	}
+
+	message, ok := compData.Get(key)
+	if !ok {
+		errMsg = "No key in locale: " + locale + ", component: " + component
+		return key, errors.New(errMsg)
 	}
 
 	for i, arg := range args {
 		placeholder := fmt.Sprintf("{%d}", i)
 		message = strings.Replace(message, placeholder, arg, 1)
 	}
-	return message, nil
-}
 
-func (t *defaultTrans) GetComponentMessages(locale, component string) (ComponentMsgs, error) {
-	return t.dService.getComponentMessages(locale, component)
+	return message, nil
 }
 
 //!- defaultTrans

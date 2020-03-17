@@ -20,7 +20,7 @@ type ConfigTestSuite struct {
 }
 
 func (suite *ConfigTestSuite) SetupSuite() {
-	suite.cfpath = "testdata/conf/config.yaml"
+	suite.cfpath = "testdata/conf/config.json"
 	var err error
 	suite.fileBytes, err = ioutil.ReadFile(suite.cfpath)
 	assert.Nil(suite.T(), err)

@@ -33,15 +33,14 @@ func TestGetCompMessages(t *testing.T) {
 
 	defer gock.Off()
 
-	testCfg := backCfg
-	testInst, _ := replaceInst(&testCfg)
+	testInst := resetInst(&testCfg)
 	trans := testInst.GetTranslation()
 	for _, testData := range tests {
 		for _, m := range testData.mocks {
 			EnableMockData(m)
 		}
 
-		messages, err := trans.GetComponentMessages(testData.locale, testData.component)
+		messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
 		if err != nil {
 			t.Errorf("%s failed: %v", testData.desc, err)
 			continue
@@ -50,7 +49,7 @@ func TestGetCompMessages(t *testing.T) {
 			t.Errorf("%s = %d, want %d", testData.desc, messages.Size(), testData.expected)
 		}
 
-		messagesInCache, found := testInst.trans.dService.cache.GetComponentMessages(testData.locale, testData.component)
+		messagesInCache, found := testInst.dService.cache.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.True(t, found)
 		assert.NotNil(t, messagesInCache)
 		assert.Equal(t, testData.expected, messagesInCache.Size())
@@ -76,15 +75,14 @@ func TestGetStringMessage(t *testing.T) {
 
 	defer gock.Off()
 
-	testCfg := backCfg
-	testInst, _ := replaceInst(&testCfg)
+	testInst := resetInst(&testCfg)
 	trans := testInst.GetTranslation()
 	for _, testData := range tests {
 		for _, m := range testData.mocks {
 			EnableMockData(m)
 		}
 
-		message, err := trans.GetStringMessage(testData.locale, testData.component, testData.key)
+		message, err := trans.GetStringMessage(name, version, testData.locale, testData.component, testData.key)
 		if err != nil {
 			t.Errorf("%s failed: %v", testData.desc, err)
 			continue
@@ -113,17 +111,16 @@ func TestRefreshCache(t *testing.T) {
 
 	defer gock.Off()
 
-	testCfg := backCfg
-	testInst, _ := replaceInst(&testCfg)
+	testInst := resetInst(&testCfg)
 	trans := testInst.GetTranslation()
-	dataService := testInst.trans.dService
-	cacheObj := testInst.trans.dService.cache
-	cacheSyncInfo := testInst.trans.dService.cacheSyncInfo
+	dataService := testInst.trans
+	cacheObj := testInst.dService.cache
+	cacheSyncInfo := testInst.dService.cacheSyncInfo
 	for _, testData := range tests {
 		EnableMockData(testData.mocks[0])
 
 		// Get component messages first to populate cache
-		messages, err := trans.GetComponentMessages(testData.locale, testData.component)
+		messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
 		if messages.Size() != testData.expected {
 			t.Errorf("%s = %d, want %d", testData.desc, messages.Size(), testData.expected)
 		}
@@ -133,13 +130,13 @@ func TestRefreshCache(t *testing.T) {
 		gock.Clean()
 
 		// Check the data in cache
-		messagesInCache, found := cacheObj.GetComponentMessages(testData.locale, testData.component)
+		messagesInCache, found := cacheObj.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.True(t, found)
 		assert.NotNil(t, messagesInCache)
 		assert.Equal(t, testData.expected, messagesInCache.Size())
 
 		// Getting before time out, no communication to server because mock is enabled
-		messages, err = dataService.getComponentMessages(testData.locale, testData.component)
+		messages, err = dataService.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.Nil(t, err)
 		if messages.Size() != testData.expected {
 			t.Errorf("%s = %d, want %d", testData.desc, messages.Size(), testData.expected)
@@ -147,9 +144,9 @@ func TestRefreshCache(t *testing.T) {
 
 		// Enable mock, time out cache and refresh again. This time the data is same as before
 		EnableMockData(testData.mocks[1])
-		cacheUInfo := cacheSyncInfo.getCompUpdateInfo(testData.locale, testData.component)
+		cacheUInfo := cacheSyncInfo.getCompUpdateInfo(name, version, testData.locale, testData.component)
 		expireCache(cacheUInfo, testCfg.CacheExpiredTime)
-		messages, err = trans.GetComponentMessages(testData.locale, testData.component)
+		messages, err = trans.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.Nil(t, err)
 		assert.Equal(t, testData.expected, messages.Size())
 
@@ -160,7 +157,7 @@ func TestRefreshCache(t *testing.T) {
 		assert.True(t, gock.IsDone())
 
 		// Check the data in cache
-		messagesInCache, found = cacheObj.GetComponentMessages(testData.locale, testData.component)
+		messagesInCache, found = cacheObj.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.True(t, found)
 		assert.Equal(t, 7, messagesInCache.Size())
 	}
@@ -185,8 +182,7 @@ func TestRefreshCache2(t *testing.T) {
 
 	defer gock.Off()
 
-	testCfg := backCfg
-	testInst, _ := replaceInst(&testCfg)
+	testInst := resetInst(&testCfg)
 	trans := testInst.GetTranslation()
 	for _, testData := range tests {
 		EnableMockDataWithTimes(testData.mocks[0], 100).Response.Delay(time.Microsecond)
@@ -196,7 +192,7 @@ func TestRefreshCache2(t *testing.T) {
 			wg.Add(1)
 			go func() {
 				defer wg.Done()
-				messages, err := trans.GetComponentMessages(testData.locale, testData.component)
+				messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
 				assert.Nil(t, err)
 				if messages.Size() != testData.expected {
 					t.Errorf("%s = %d, want %d", testData.desc, messages.Size(), testData.expected)
@@ -207,7 +203,7 @@ func TestRefreshCache2(t *testing.T) {
 
 		gock.Flush()
 
-		messages, err := trans.GetComponentMessages(testData.locale, testData.component)
+		messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.Nil(t, err)
 		if messages.Size() != testData.expected {
 			t.Errorf("%s = %d, want %d", testData.desc, messages.Size(), testData.expected)
@@ -234,8 +230,7 @@ func TestGetStringFallback(t *testing.T) {
 		EnableMockData(test.mocks[m])
 	}
 
-	testCfg := backCfg
-	testInst, _ := replaceInst(&testCfg)
+	testInst := resetInst(&testCfg)
 	trans := testInst.GetTranslation()
 
 	// Normal fallback
@@ -244,7 +239,7 @@ func TestGetStringFallback(t *testing.T) {
 	key := "Singleton.description"
 	arg := "MyArg"
 	expected := "MyArg est une bibliothèque commune développée par G11n Team."
-	message, err := trans.GetStringMessage(locale, comp, key, arg)
+	message, err := trans.GetStringMessage(name, version, locale, comp, key, arg)
 	st.Expect(t, err, nil)
 	assert.Equal(t, expected, message)
 
@@ -272,9 +267,9 @@ func TestGetStringAbnormal(t *testing.T) {
 		EnableMockData(test.mocks[m])
 	}
 
-	testCfg := backCfg
-	testCfg.LocalBundles = ""
-	testInst, _ := replaceInst(&testCfg)
+	newCfg := testCfg
+	newCfg.OfflineResourcesBaseURL = ""
+	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
 
 	locale := "zh-Hans"
@@ -285,7 +280,7 @@ func TestGetStringAbnormal(t *testing.T) {
 
 	// original locale has component, but doesn't have Key
 	keyNonexistent := "nonexistent"
-	message2, err2 := trans.GetStringMessage(locale, comp, keyNonexistent, arg)
+	message2, err2 := trans.GetStringMessage(name, version, locale, comp, keyNonexistent, arg)
 	assert.Contains(t, err2.Error(), locale)
 	assert.Contains(t, err2.Error(), comp)
 	assert.Contains(t, err2.Error(), "No key in")
@@ -294,7 +289,7 @@ func TestGetStringAbnormal(t *testing.T) {
 	// original locale doesn't have component.
 	// default locale has component, but doesn't have Key
 	comp2 := "users"
-	message3, err3 := trans.GetStringMessage(locale, comp2, keyNonexistent, arg)
+	message3, err3 := trans.GetStringMessage(name, version, locale, comp2, keyNonexistent, arg)
 	assert.Contains(t, err3.Error(), defaultLocale)
 	assert.Contains(t, err3.Error(), comp2)
 	assert.Contains(t, err3.Error(), "No key in")
@@ -302,19 +297,19 @@ func TestGetStringAbnormal(t *testing.T) {
 
 	// Both locales doesn't have the component
 	compNonexistent := "comp-notexist"
-	message4, err4 := trans.GetStringMessage(locale, compNonexistent, key, arg)
+	message4, err4 := trans.GetStringMessage(name, version, locale, compNonexistent, key, arg)
 	assert.NotNil(t, err4)
 	assert.NotContains(t, err4.Error(), "No key in")
 	assert.Equal(t, key, message4)
 
 	// Get default locale directly. Default locale doesn't have the component
-	message5, err5 := trans.GetStringMessage(defaultLocale, compNonexistent, key, arg)
+	message5, err5 := trans.GetStringMessage(name, version, defaultLocale, compNonexistent, key, arg)
 	assert.NotNil(t, err5)
 	assert.NotContains(t, err5.Error(), "No key in")
 	assert.Equal(t, key, message5)
 
 	// Get default locale directly. Default locale doesn't have the key
-	message6, err6 := trans.GetStringMessage(defaultLocale, comp2, keyNonexistent, arg)
+	message6, err6 := trans.GetStringMessage(name, version, defaultLocale, comp2, keyNonexistent, arg)
 	assert.NotNil(t, err6)
 	assert.Contains(t, err6.Error(), "No key in")
 	assert.Equal(t, keyNonexistent, message6)
@@ -336,16 +331,16 @@ func TestDecodeError(t *testing.T) {
 	}
 	defer gock.Off()
 
-	testCfg := backCfg
-	testCfg.LocalBundles = ""
-	testInst, _ := replaceInst(&testCfg)
+	newCfg := testCfg
+	newCfg.OfflineResourcesBaseURL = ""
+	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
 	for _, testData := range tests {
 		for _, m := range testData.mocks {
 			EnableMockData(m)
 		}
 
-		messages, err := trans.GetComponentMessages(testData.locale, testData.component)
+		messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.Nil(t, messages)
 		assert.Contains(t, err.Error(), testData.err)
 	}
@@ -370,21 +365,21 @@ func TestGetCompMessagesAbnormal(t *testing.T) {
 
 	defer gock.Off()
 
-	testCfg := backCfg
-	testCfg.LocalBundles = ""
-	testInst, _ := replaceInst(&testCfg)
+	newCfg := testCfg
+	newCfg.OfflineResourcesBaseURL = ""
+	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
-	cache := testInst.trans.dService.cache
+	cache := testInst.dService.cache
 	for _, testData := range tests {
 		for _, m := range testData.mocks {
 			EnableMockData(m)
 		}
 
-		messages, err := trans.GetComponentMessages(testData.locale, testData.component)
+		messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.Nil(t, messages)
 		assert.Contains(t, err.Error(), testData.err)
 
-		compCache, found := cache.GetComponentMessages(testData.locale, testData.component)
+		compCache, found := cache.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.False(t, found, testData.desc)
 		assert.Nil(t, compCache, testData.desc)
 	}
@@ -395,12 +390,12 @@ func TestGetCompMessagesAbnormal(t *testing.T) {
 func TestGetCompMessagesWrongServer(t *testing.T) {
 	defer Trace(curFunName())()
 
-	testCfg := backCfg
-	testCfg.LocalBundles = ""
-	testInst, _ := replaceInst(&testCfg)
+	newCfg := testCfg
+	newCfg.OfflineResourcesBaseURL = ""
+	testInst := resetInst(&newCfg)
 	wrongServer, err := url.Parse("wrongserver")
 	assert.Nil(t, err)
-	testInst.trans.dService.server.svrURL = wrongServer
+	testInst.dService.server.svrURL = wrongServer
 
 	var tests = []struct {
 		desc      string
@@ -423,7 +418,7 @@ func TestGetCompMessagesWrongServer(t *testing.T) {
 			EnableMockData(m)
 		}
 
-		messages, err := trans.GetComponentMessages(testData.locale, testData.component)
+		messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.Nil(t, messages)
 		assert.Contains(t, err.Error(), testData.err)
 
@@ -448,16 +443,16 @@ func TestGetCompMessagesWrongResponseContent(t *testing.T) {
 
 	defer gock.Off()
 
-	testCfg := backCfg
-	testCfg.LocalBundles = ""
-	testInst, _ := replaceInst(&testCfg)
+	newCfg := testCfg
+	newCfg.OfflineResourcesBaseURL = ""
+	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
 	for _, testData := range tests {
 		for _, m := range testData.mocks {
 			EnableMockData(m)
 		}
 
-		messages, err := trans.GetComponentMessages(testData.locale, testData.component)
+		messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.Nil(t, messages)
 		assert.Contains(t, err.Error(), testData.err)
 	}
@@ -481,15 +476,15 @@ func TestGetCompMessagesResponsePartial(t *testing.T) {
 
 	defer gock.Off()
 
-	testCfg := backCfg
-	testInst, _ := replaceInst(&testCfg)
+	newCfg := testCfg
+	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
 	for _, testData := range tests {
 		for _, m := range testData.mocks {
 			EnableMockData(m)
 		}
 
-		messages, _ := trans.GetComponentMessages(testData.locale, testData.component)
+		messages, _ := trans.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.True(t, messages == nil || messages.Size() == 0)
 	}
 
@@ -512,8 +507,8 @@ func TestAddHTTPHeader(t *testing.T) {
 
 	defer gock.Off()
 
-	testCfg := backCfg
-	testInst, _ := replaceInst(&testCfg)
+	newCfg := testCfg
+	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
 	for _, testData := range tests {
 		for _, m := range testData.mocks {
@@ -525,7 +520,7 @@ func TestAddHTTPHeader(t *testing.T) {
 			"pass": "goodpadd",
 		})
 
-		messages, err := trans.GetComponentMessages(testData.locale, testData.component)
+		messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.Nil(t, err)
 
 		if messages.Size() != testData.expected {
@@ -550,14 +545,14 @@ func TestGetComponents(t *testing.T) {
 
 	defer gock.Off()
 
-	testCfg := backCfg
-	testInst, _ := replaceInst(&testCfg)
+	newCfg := testCfg
+	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
 	for _, testData := range tests {
 
 		EnableMockData(testData.mocks[0])
 
-		components, err := trans.GetComponentList()
+		components, err := trans.GetComponentList(name, version)
 		if err != nil {
 			t.Errorf("%s failed: %v", testData.desc, err)
 			continue
@@ -566,7 +561,7 @@ func TestGetComponents(t *testing.T) {
 		assert.True(t, gock.IsDone())
 
 		// Get second time to test cache is working correctly
-		components, err = trans.GetComponentList()
+		components, err = trans.GetComponentList(name, version)
 		if err != nil {
 			t.Errorf("%s failed: %v", testData.desc, err)
 			continue
@@ -575,9 +570,9 @@ func TestGetComponents(t *testing.T) {
 
 		// Expire cache and get again
 		EnableMockData(testData.mocks[1])
-		ui := testInst.trans.dService.cacheSyncInfo.getComponentsUpdateInfo()
+		ui := testInst.dService.cacheSyncInfo.getComponentsUpdateInfo(name, version)
 		expireCache(ui, testCfg.CacheExpiredTime)
-		components, err = trans.GetComponentList()
+		components, err = trans.GetComponentList(name, version)
 		time.Sleep(time.Millisecond * 10)
 		if err != nil {
 			t.Errorf("%s failed: %v", testData.desc, err)
@@ -587,7 +582,7 @@ func TestGetComponents(t *testing.T) {
 		assert.True(t, gock.IsDone())
 
 		// test cache is working correctly
-		components, err = trans.GetComponentList()
+		components, err = trans.GetComponentList(name, version)
 		if err != nil {
 			t.Errorf("%s failed: %v", testData.desc, err)
 			continue
@@ -612,13 +607,13 @@ func TestGetLocales(t *testing.T) {
 
 	defer gock.Off()
 
-	testCfg := backCfg
-	testInst, _ := replaceInst(&testCfg)
+	newCfg := testCfg
+	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
 	for _, testData := range tests {
 		EnableMockData(testData.mocks[0])
 
-		locales, err := trans.GetLocaleList()
+		locales, err := trans.GetLocaleList(name, version)
 		if err != nil {
 			t.Errorf("%s failed: %v", testData.desc, err)
 			continue
@@ -628,7 +623,7 @@ func TestGetLocales(t *testing.T) {
 		assert.True(t, gock.IsDone())
 
 		// Get second time to test cache is working correctly
-		locales, err = trans.GetLocaleList()
+		locales, err = trans.GetLocaleList(name, version)
 		if err != nil {
 			t.Errorf("%s failed: %v", testData.desc, err)
 			continue
@@ -637,9 +632,9 @@ func TestGetLocales(t *testing.T) {
 
 		// Expire cache and get again
 		EnableMockData(testData.mocks[1])
-		ui := testInst.trans.dService.cacheSyncInfo.getLocalesUpdateInfo()
+		ui := testInst.dService.cacheSyncInfo.getLocalesUpdateInfo(name, version)
 		expireCache(ui, testCfg.CacheExpiredTime)
-		locales, err = trans.GetLocaleList()
+		locales, err = trans.GetLocaleList(name, version)
 		time.Sleep(time.Millisecond * 10)
 		if err != nil {
 			t.Errorf("%s failed: %v", testData.desc, err)
@@ -649,7 +644,7 @@ func TestGetLocales(t *testing.T) {
 		assert.True(t, gock.IsDone())
 
 		// test cache is working correctly
-		locales, err = trans.GetLocaleList()
+		locales, err = trans.GetLocaleList(name, version)
 		if err != nil {
 			t.Errorf("%s failed: %v", testData.desc, err)
 			continue
@@ -674,14 +669,14 @@ func TestHTTP404(t *testing.T) {
 
 	defer gock.Off()
 
-	testCfg := backCfg
-	testInst, _ := replaceInst(&testCfg)
+	newCfg := testCfg
+	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
 	for _, m := range testData.mocks {
 		EnableMockData(m)
 	}
 
-	messages, err := trans.GetComponentMessages(testData.locale, testData.component)
+	messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
 	assert.NotNil(t, err)
 	assert.Nil(t, messages)
 

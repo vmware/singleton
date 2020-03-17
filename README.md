@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	cfg, err := sgtn.NewConfig("resource/conf/singletonconfig.yaml")
+	cfg, err := sgtn.NewConfig("resource/conf/singletonconfig.json")
 	if err != nil {
 		log.Fatal(err)
 	}

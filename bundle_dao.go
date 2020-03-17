@@ -19,11 +19,11 @@ const (
 
 //!+bundleDAO
 type bundleDAO struct {
-	cfg *Config
+	OfflineResourcesBaseURL string
 }
 
-func (d *bundleDAO) getComponents() ([]string, error) {
-	fis, err := ioutil.ReadDir(d.cfg.LocalBundles)
+func (d *bundleDAO) getComponents(name, version string) ([]string, error) {
+	fis, err := ioutil.ReadDir(filepath.Join(d.OfflineResourcesBaseURL, name, version))
 	if err != nil {
 		return nil, err
 	}
@@ -37,15 +37,15 @@ func (d *bundleDAO) getComponents() ([]string, error) {
 
 	return comps, nil
 }
-func (d *bundleDAO) getLocales() ([]string, error) {
-	comps, err := d.getComponents()
+func (d *bundleDAO) getLocales(name, version string) ([]string, error) {
+	comps, err := d.getComponents(name, version)
 	if err != nil {
 		return nil, err
 	}
 
 	locales := map[string]struct{}{}
 	for _, comp := range comps {
-		fPath := filepath.Join(d.cfg.LocalBundles, comp)
+		fPath := filepath.Join(d.OfflineResourcesBaseURL, name, version, comp)
 		fis, err := ioutil.ReadDir(fPath)
 		if err != nil {
 			return nil, err
@@ -66,8 +66,8 @@ func (d *bundleDAO) getLocales() ([]string, error) {
 	return lSlice, nil
 }
 
-func (d *bundleDAO) getComponentMessages(locale, component string) (ComponentMsgs, error) {
-	compDirPath := filepath.Join(d.cfg.LocalBundles, component)
+func (d *bundleDAO) getComponentMessages(name, version, locale, component string) (ComponentMsgs, error) {
+	compDirPath := filepath.Join(d.OfflineResourcesBaseURL, name, version, component)
 	files, err := ioutil.ReadDir(compDirPath)
 	if err != nil {
 		return nil, err

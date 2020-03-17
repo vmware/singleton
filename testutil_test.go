@@ -28,7 +28,8 @@ import (
 	"gopkg.in/h2non/gock.v1"
 )
 
-var backCfg Config
+var name, version = "SgtnTest", "1.0.0"
+var testCfg Config
 var mockData map[string]MockMapping
 
 var loglevel = flag.Int("loglevel", 0, "sets log level to 0(debug), 1(info)...")
@@ -44,11 +45,11 @@ func TestMain(m *testing.M) {
 	}
 	zerolog.SetGlobalLevel(zerolog.Level(*loglevel))
 
-	cfg, err := NewConfig("testdata/conf/config.yaml")
+	cfg, err := NewConfig("testdata/conf/config.json")
 	if err != nil {
 		panic(err)
 	}
-	backCfg = *cfg
+	testCfg = *cfg
 
 	mockData = ReadMockJSONs("testdata/mock/mappings")
 
@@ -223,7 +224,7 @@ func EnableMockDataWithTimes(key string, times int) *gock.Request {
 	logger.Debug(fmt.Sprintf("Enabling mock %s, times %d", key, times))
 	data := mockData[key]
 
-	req := gock.New(backCfg.SingletonServer)
+	req := gock.New(testCfg.OnlineServiceURL)
 	switch data.Request.Method {
 	case "GET":
 		req.Get(data.Request.URL)
@@ -266,8 +267,8 @@ func fileExist(filepath string) (bool, error) {
 // This isn't thread safe because Go runs tests parallel possibly.
 func clearCache(testInst *Instance) {
 	logger.Debug("clearcache")
-	testInst.trans.dService.cache.(*defaultCache).tMessages.Clear()
-	testInst.trans.dService.cacheSyncInfo = newCacheSyncInfo(testInst.cfg)
+	testInst.trans.cache.(*defaultCache).tMessages.Clear()
+	testInst.trans.cacheSyncInfo = newCacheSyncInfo()
 }
 
 func curFunName() string {
@@ -278,9 +279,11 @@ func curFunName() string {
 	return frame.Function[strings.LastIndex(frame.Function, "/")+1:]
 }
 
-func replaceInst(cfg *Config) (*Instance, bool) {
-	instMap.Delete(cfg.Name)
-	return NewInst(*cfg)
+func resetInst(cfg *Config) *Instance {
+	inst = Instance{}
+	inst.SetConfig(cfg)
+	inst.Initialize()
+	return &inst
 }
 
 func expireCache(cacheUInfo *updateInfo, cacheExpiredTime int64) {
