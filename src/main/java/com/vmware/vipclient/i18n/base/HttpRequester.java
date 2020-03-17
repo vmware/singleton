@@ -101,6 +101,12 @@ public class HttpRequester {
         return status;
     }
 
+   
+    public static final String BODY = "body";
+    public static final String HEADERS = "headers";
+    public static final String RESPONSE_CODE = "response_code";
+    public static final String RESPONSE_MSG = "response_msg";
+    
     /**
      * The get method of requesting a remote server.
      *
@@ -108,11 +114,6 @@ public class HttpRequester {
      *            The remote server url.
      * @return
      */
-    public static final String BODY = "body";
-    public static final String HEADERS = "headers";
-    public static final String RESPONSE_CODE = "response_code";
-    public static final String RESPONSE_MSG = "response_msg";
-    
     public Map<String, Object> request(final String url, final String method, final Object requestData) throws IOException {
     	Map <String, Object> response = new HashMap<String, Object>();
         String r = "";

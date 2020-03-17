@@ -5,6 +5,7 @@
 package com.vmware.vipclient.i18n.base.cache.persist;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.Set;
 
 import org.json.simple.JSONObject;
@@ -43,11 +44,14 @@ public class CacheSyncThread extends Thread {
     }
 
     private String fetch(MessagesDTO dto) {
+    	Map<String, Object> response = null;
+			
         String r = "";
         ComponentBasedOpt opt = new ComponentBasedOpt(dto);
         JSONObject jo = null;
 		try {
-			jo = opt.getComponentMessages();
+			response = opt.getComponentMessages();
+			jo = opt.getMsgsJson(response);
 		} catch (IOException e) {
 			// Do nothing
 		}

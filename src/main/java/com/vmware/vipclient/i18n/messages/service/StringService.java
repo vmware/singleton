@@ -34,16 +34,16 @@ public class StringService {
 
     @SuppressWarnings("unchecked")
     public String getString() {
+        Map<String, Object> cacheProps = new HashMap<String, Object>();
+        
         String key = dto.getKey();
         CacheService cacheservice = new CacheService(dto);
         Map<String, String> map = cacheservice.getCacheOfComponent();
         if (map == null) {
             if (!cacheservice.isContainComponent()) {
-                Object o = new ComponentService(dto).getMessages();
+                Object o = new ComponentService(dto).getMessages(cacheProps);
                 map = (Map<String, String>) o;
                 
-                // TODO pass map of cache properties such as etag and cache control headers
-                Map<String, Object> cacheProps = null;
                 cacheservice.addCacheOfComponent(map, cacheProps);
             }
         }

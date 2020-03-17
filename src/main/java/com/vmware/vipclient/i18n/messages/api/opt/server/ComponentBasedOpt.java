@@ -28,7 +28,7 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
         this.dto = dto;
     }
 
-    public JSONObject getComponentMessages() throws IOException {
+    public Map<String, Object> getComponentMessages() throws IOException {
         String url = V2URL.getComponentTranslationURL(this.dto,
                 VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
         if (ConstantsKeys.LATEST.equals(this.dto.getLocale())) {
@@ -36,30 +36,37 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
         }
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(url, ConstantsKeys.GET,
                 null);
-        String responseStr = (String) response.get(HttpRequester.BODY);
-        if (null == responseStr || responseStr.equals(""))
-            return null;
-        else {
-            if (ConstantsKeys.LATEST.equals(this.dto.getLocale())) {
-                responseStr = responseStr.replace(ConstantsKeys.PSEUDOCHAR, "");
-            }
-
-            JSONObject msgObject = (JSONObject) this.getMessagesFromResponse(responseStr,
-                    ConstantsKeys.MESSAGES);
-
-            return msgObject;
-        }
+        
+        return response;
     }
 
+    public JSONObject getMsgsJson(Map<String, Object> response) {
+    	String responseStr = (String) response.get(HttpRequester.BODY);
+		if (null == responseStr || responseStr.equals(""))
+			return null;
+		else {
+			if (ConstantsKeys.LATEST.equals(this.dto.getLocale())) {
+				responseStr = responseStr.replace(ConstantsKeys.PSEUDOCHAR, "");
+			}
+
+			JSONObject msgObject = (JSONObject) this.getMessagesFromResponse(responseStr,
+                ConstantsKeys.MESSAGES);
+
+			return msgObject;
+		}
+    }
+    
     public String getString() {
-        JSONObject jo;
+    	Map<String, Object> response;
 		try {
-			jo = this.getComponentMessages();
+			response = this.getComponentMessages();
 		} catch (IOException e) {
 			// TODO throw exception if prodMode = false. Otherwise, return key;
 			return this.dto.getKey();
 		}
-        String k = this.dto.getKey();
+		
+		JSONObject jo = this.getMsgsJson(response);
+		String k = this.dto.getKey();
         Object v = jo.get(k);
         return (v == null ? "" : (String) v);
     }
