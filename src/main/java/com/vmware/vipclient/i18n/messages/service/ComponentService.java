@@ -50,7 +50,9 @@ public class ComponentService {
             	response = cbo.getComponentMessages();
             	transMap = cbo.getMsgsJson(response);
             	Map<String, List<String>> headers = (Map<String, List<String>>) response.get(HttpRequester.HEADERS);
-            	cacheProps.putAll(headers);
+            	if (headers != null) {
+            		cacheProps.putAll(headers);
+            	}
 			} catch (IOException e) {
 				transMap = new LocalMessagesOpt(dto).getComponentMessages();
 			}
