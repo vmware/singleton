@@ -18,7 +18,7 @@ type Config struct {
 	DefaultLocale string `json:"default_locale"`
 
 	OfflineResourcesBaseURL string `json:"offline_resources_base_url"`
-	CacheExpiredTime        int64  `json:"cacheExpiredTime"` //seconds
+	// CacheExpiredTime        int64  `json:"cacheExpiredTime"` //seconds
 
 	EnableCache bool `json:"enable_cache"`
 

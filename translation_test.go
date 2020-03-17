@@ -145,7 +145,7 @@ func TestRefreshCache(t *testing.T) {
 		// Enable mock, time out cache and refresh again. This time the data is same as before
 		EnableMockData(testData.mocks[1])
 		cacheUInfo := cacheSyncInfo.getCompUpdateInfo(name, version, testData.locale, testData.component)
-		expireCache(cacheUInfo, testCfg.CacheExpiredTime)
+		expireCache(cacheUInfo, cacheExpiredTime)
 		messages, err = trans.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.Nil(t, err)
 		assert.Equal(t, testData.expected, messages.Size())
@@ -571,7 +571,7 @@ func TestGetComponents(t *testing.T) {
 		// Expire cache and get again
 		EnableMockData(testData.mocks[1])
 		ui := testInst.dService.cacheSyncInfo.getComponentsUpdateInfo(name, version)
-		expireCache(ui, testCfg.CacheExpiredTime)
+		expireCache(ui, cacheExpiredTime)
 		components, err = trans.GetComponentList(name, version)
 		time.Sleep(time.Millisecond * 10)
 		if err != nil {
@@ -633,7 +633,7 @@ func TestGetLocales(t *testing.T) {
 		// Expire cache and get again
 		EnableMockData(testData.mocks[1])
 		ui := testInst.dService.cacheSyncInfo.getLocalesUpdateInfo(name, version)
-		expireCache(ui, testCfg.CacheExpiredTime)
+		expireCache(ui, cacheExpiredTime)
 		locales, err = trans.GetLocaleList(name, version)
 		time.Sleep(time.Millisecond * 10)
 		if err != nil {

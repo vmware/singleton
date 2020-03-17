@@ -102,8 +102,11 @@ func TestDisableCache(t *testing.T) {
 func TestCacheNotExpire(t *testing.T) {
 	defer Trace(curFunName())()
 
+	old := cacheExpiredTime
+	defer func() { cacheExpiredTime = old }()
+	cacheExpiredTime = 0
+
 	newCfg := testCfg
-	newCfg.CacheExpiredTime = 0
 	newInst := resetInst(&newCfg)
 
 	var tests = []struct {
