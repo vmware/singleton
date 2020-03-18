@@ -4,7 +4,6 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -27,32 +26,20 @@ public class ProductService {
 
     // get supported components defined in vip service
     public JSONArray getComponentsFromRemoteVIP() {
-    	JSONArray result = new JSONArray();
         BaseDTO baseDTO = new BaseDTO();
         baseDTO.setProductID(dto.getProductID());
         baseDTO.setVersion(dto.getVersion());
         ProductBasedOpt dao = new ProductBasedOpt(baseDTO);
-        try {
-			result =  dao.getComponentsFromRemoteVIP();
-		} catch (IOException e) {
-			// Do nothing
-		}
-        return result;
+        return dao.getComponentsFromRemoteVIP();
     }
 
     // get supported locales defined in vip service
     public JSONArray getSupportedLocalesFromRemoteVIP() {
-    	JSONArray result = new JSONArray();
         BaseDTO baseDTO = new BaseDTO();
         baseDTO.setProductID(dto.getProductID());
         baseDTO.setVersion(dto.getVersion());
         ProductBasedOpt dao = new ProductBasedOpt(baseDTO);
-        try {
-        	result = dao.getSupportedLocalesFromRemoteVIP();
-		} catch (IOException e) {
-			// Do nothing
-		}
-        return result;
+        return dao.getSupportedLocalesFromRemoteVIP();
     }
 
     public List<Map> getAllComponentTranslation() {

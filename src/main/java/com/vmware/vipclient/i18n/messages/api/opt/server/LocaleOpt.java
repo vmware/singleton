@@ -28,7 +28,7 @@ public class LocaleOpt {
     public LocaleOpt() {
     }
 
-    public Map<String, String> getTerritoriesFromCLDR(String language) throws IOException {
+    public Map<String, String> getTerritoriesFromCLDR(String language) {
     	Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(
                 V2URL.getRegionListURL(language, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.GET, null);
@@ -47,7 +47,7 @@ public class LocaleOpt {
         return respMap;
     }
 
-    public Map<String, String> getDisplayNamesFromCLDR(String language) throws IOException {
+    public Map<String, String> getDisplayNamesFromCLDR(String language) {
     	Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester()
                 .request(
                         V2URL.getSupportedLanguageListURL(language,

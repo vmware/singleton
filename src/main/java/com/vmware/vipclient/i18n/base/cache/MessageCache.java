@@ -15,7 +15,7 @@ public class MessageCache implements Cache {
     private long                             lastClean           = System.currentTimeMillis();
 
     private Map<String, Map<String, String>> cachedComponentsMap = new LinkedHashMap<String, Map<String, String>>();
-    private Map<String, Map<String, String>> cacheProperties = new LinkedHashMap<String, Map<String, String>>();
+    private Map<String, Map<String, Object>> cacheProperties = new LinkedHashMap<String, Map<String, Object>>();
 
     public Map<String, Map<String, String>> getCachedTranslationMap() {
         return cachedComponentsMap;
@@ -88,7 +88,7 @@ public class MessageCache implements Cache {
         		cachedData.putAll(dataToCache);
         	}
         	// a map of properties associated to this cache key (e.g. etag and cache control)
-        	cacheProperties.put(cacheKey, null);
+        	cacheProperties.put(cacheKey, cacheProps);
         }
         return cachedComponentsMap.containsKey(cacheKey);
     }

@@ -4,7 +4,6 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
-import java.io.IOException;
 import java.util.Map;
 
 import org.json.simple.JSONArray;
@@ -29,7 +28,7 @@ public class ProductBasedOpt extends BaseOpt implements Opt {
      * 
      * @see com.vmware.vipclient.i18n.messages.dao.IComponentDao#getComponents()
      */
-    public JSONArray getComponentsFromRemoteVIP() throws IOException {
+    public JSONArray getComponentsFromRemoteVIP() {
         JSONArray msgObject = new JSONArray();
         String responseStr = "";
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(
@@ -51,7 +50,7 @@ public class ProductBasedOpt extends BaseOpt implements Opt {
      * 
      * @see com.vmware.vipclient.i18n.messages.dao.ILocaleDao#getSupportedLocales()
      */
-    public JSONArray getSupportedLocalesFromRemoteVIP() throws IOException {
+    public JSONArray getSupportedLocalesFromRemoteVIP() {
         JSONArray msgObject = new JSONArray();
         String responseStr = "";
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL.getSupportedLocaleListURL(

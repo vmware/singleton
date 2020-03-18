@@ -4,7 +4,6 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,18 +43,14 @@ public class ComponentService {
     public Map<String, String> getMessages(final Map<String, Object> cacheProps) {
         Map<String, String> transMap = new HashMap<String, String>();
         ComponentBasedOpt cbo = new ComponentBasedOpt(dto);
-        Map<String, Object> response = null;
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
-            try {
-            	response = cbo.getComponentMessages();
-            	transMap = cbo.getMsgsJson(response);
-            	Map<String, List<String>> headers = (Map<String, List<String>>) response.get(HttpRequester.HEADERS);
-            	if (headers != null) {
-            		cacheProps.putAll(headers);
-            	}
-			} catch (IOException e) {
-				transMap = new LocalMessagesOpt(dto).getComponentMessages();
-			}
+        	Map<String, Object> response = cbo.getComponentMessages();
+	    	transMap = cbo.getMsgsJson(response);
+	    	Map<String, List<String>> headers = (Map<String, List<String>>) response.get(HttpRequester.HEADERS);
+	    	if (headers != null) {
+	    		cacheProps.putAll(headers);
+	    	}
+			
         } else if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.Bundle) {
             transMap = new LocalMessagesOpt(dto).getComponentMessages();
         }
@@ -90,12 +85,7 @@ public class ComponentService {
         Long s = null;
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
             ComponentBasedOpt dao = new ComponentBasedOpt(dto);
-            String json = "";
-			try {
-				json = dao.getTranslationStatus();
-			} catch (IOException e1) {
-				// Do nothing
-			}
+            String json = dao.getTranslationStatus();
             if (!JSONUtils.isEmpty(json)) {
                 try {
                     s = (Long) JSONValue.parseWithException(json);

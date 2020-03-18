@@ -4,8 +4,6 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import java.io.IOException;
-
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,11 +69,7 @@ public class PatternService {
                     .getPatternsByLocale(ConstantsKeys.EN);
         } else {
             if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
-                try {
-					patterns = new RemotePatternOpt().getPatternsByLocale(locale);
-				} catch (IOException e) {
-					patterns = new LocalPatternOpt().getPatternsByLocale(locale);
-				}
+            	patterns = new RemotePatternOpt().getPatternsByLocale(locale);
             } else {
                 patterns = new LocalPatternOpt().getPatternsByLocale(locale);
             }
@@ -86,11 +80,7 @@ public class PatternService {
     private JSONObject getPatternsFromBundle(String language, String region) {
         JSONObject patterns = null;
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
-            try {
-				patterns = new RemotePatternOpt().getPatternsByLocale(language, region);
-			} catch (IOException e) {
-				patterns = new LocalPatternOpt().getPatternsByLocale(ConstantsKeys.EN);
-			}
+        	patterns = new RemotePatternOpt().getPatternsByLocale(language, region);
         } else {
             patterns = new LocalPatternOpt().getPatternsByLocale(ConstantsKeys.EN);
         }

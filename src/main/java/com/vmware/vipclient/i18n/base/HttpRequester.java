@@ -114,7 +114,7 @@ public class HttpRequester {
      *            The remote server url.
      * @return
      */
-    public Map<String, Object> request(final String url, final String method, final Object requestData) throws IOException {
+    public Map<String, Object> request(final String url, final String method, final Object requestData) {
     	Map <String, Object> response = new HashMap<String, Object>();
         String r = "";
         HttpURLConnection conn = null;
@@ -149,7 +149,6 @@ public class HttpRequester {
             }
         } catch (IOException e) {
             logger.info(e.getMessage());
-            throw e;
         } finally {
             if (conn != null) {
                 conn.disconnect();

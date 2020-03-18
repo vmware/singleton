@@ -4,7 +4,6 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -81,38 +80,31 @@ public class ComponentsService {
 
         // Query from server.
         final ComponentsBasedOpt opt = new ComponentsBasedOpt(this.cfg);
-        JSONObject response;
-		try {
-			response = opt.queryFromServer(componentsToQuery, localesToQuery);
-			final JSONArray bundles = (JSONArray) opt.getDataPart(response).get(ConstantsKeys.BUNDLES);
-	        final JSONArray localesFromServer = (JSONArray) opt.getDataPart(response).get(ConstantsKeys.LOCALES);
-	        final Map<String, String> localeMap = this.makeLocaleMap(localesToQuery, localesFromServer);
+        JSONObject response = opt.queryFromServer(componentsToQuery, localesToQuery);
+		final JSONArray bundles = (JSONArray) opt.getDataPart(response).get(ConstantsKeys.BUNDLES);
+        final JSONArray localesFromServer = (JSONArray) opt.getDataPart(response).get(ConstantsKeys.LOCALES);
+        final Map<String, String> localeMap = this.makeLocaleMap(localesToQuery, localesFromServer);
 
-	        // combine data from server into the map to return.
-	        final Iterator<?> iter = bundles.iterator();
-	        while (iter.hasNext()) {
-	            final JSONObject bundle = (JSONObject) iter.next();
-	            final String locale = localeMap.get(bundle.get(ConstantsKeys.LOCALE));
-	            final String comp = (String) bundle.get(ConstantsKeys.COMPONENT);
-	            final JSONObject messages = (JSONObject) bundle.get(ConstantsKeys.MESSAGES);
+        // combine data from server into the map to return.
+        final Iterator<?> iter = bundles.iterator();
+        while (iter.hasNext()) {
+            final JSONObject bundle = (JSONObject) iter.next();
+            final String locale = localeMap.get(bundle.get(ConstantsKeys.LOCALE));
+            final String comp = (String) bundle.get(ConstantsKeys.COMPONENT);
+            final JSONObject messages = (JSONObject) bundle.get(ConstantsKeys.MESSAGES);
 
-	            // update cache.
-	            final MessagesDTO dto = new MessagesDTO();
-	            dto.setComponent(comp);
-	            dto.setLocale(locale);
-	            
-	            // TODO pass map of cache properties such as etag and cache control headers
-	            Map<String, Object> cacheProps = null;         
-	            new CacheService(dto).addCacheOfComponent(messages, cacheProps);
+            // update cache.
+            final MessagesDTO dto = new MessagesDTO();
+            dto.setComponent(comp);
+            dto.setLocale(locale);
+            
+            // TODO pass map of cache properties such as etag and cache control headers
+            Map<String, Object> cacheProps = null;         
+            new CacheService(dto).addCacheOfComponent(messages, cacheProps);
 
-	            // update map to return.
-	            dataMap.get(locale).put(comp, messages);
-	        }
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+            // update map to return.
+            dataMap.get(locale).put(comp, messages);
+        }
         return this.convertDataMap(dataMap, locales);
     }
 

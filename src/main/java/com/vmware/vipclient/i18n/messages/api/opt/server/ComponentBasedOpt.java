@@ -28,7 +28,7 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
         this.dto = dto;
     }
 
-    public Map<String, Object> getComponentMessages() throws IOException {
+    public Map<String, Object> getComponentMessages() {
         String url = V2URL.getComponentTranslationURL(this.dto,
                 VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
         if (ConstantsKeys.LATEST.equals(this.dto.getLocale())) {
@@ -57,13 +57,7 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
     }
     
     public String getString() {
-    	Map<String, Object> response;
-		try {
-			response = this.getComponentMessages();
-		} catch (IOException e) {
-			// TODO throw exception if prodMode = false. Otherwise, return key;
-			return this.dto.getKey();
-		}
+    	Map<String, Object> response = this.getComponentMessages();
 		
 		JSONObject jo = this.getMsgsJson(response);
 		String k = this.dto.getKey();
@@ -71,7 +65,7 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
         return (v == null ? "" : (String) v);
     }
 
-    public String postString() throws IOException {
+    public String postString() {
     	Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL
                 .getKeyTranslationURL(this.dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.POST, this.dto.getSource());
@@ -96,7 +90,7 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
      * @return
      * @throws IOException 
      */
-    public String postSourceSet(final String sourceSet) throws IOException {
+    public String postSourceSet(final String sourceSet) {
         String status = "";
         if (sourceSet == null || "".equalsIgnoreCase(sourceSet))
             return status;
@@ -111,7 +105,7 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
         return status;
     }
 
-    public String getTranslationStatus() throws IOException {
+    public String getTranslationStatus() {
         String status = "";
         Map<String, String> params = new HashMap<>();
         params.put("checkTranslationStatus", "true");

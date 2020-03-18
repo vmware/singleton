@@ -4,7 +4,6 @@
  */
 package com.vmware.vipclient.i18n.formats;
 
-import java.io.IOException;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
@@ -30,18 +29,13 @@ public class NumberFormat extends BaseFormat {
             throw new VIPJavaClientException("scale can't be empty");
         }
         if (VIPCfg.getInstance().getVipService().getHttpRequester().isConnected()) {
-            try {
-				return this.getFormatFromRemote(number, scale);
-			} catch (IOException e) {
-				// TODO throw exception if prodMode = false. Otherwise, return number;
-				return number;
-			}
+            return this.getFormatFromRemote(number, scale);
         } else {
             return "";
         }
     }
 
-    private String getFormatFromRemote(String number, String scale) throws IOException {
+    private String getFormatFromRemote(String number, String scale) {
         String format = "";
         StringBuffer numberAPIUrl = new StringBuffer(
                 VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());

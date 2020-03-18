@@ -25,7 +25,7 @@ public class StringBasedOpt extends BaseOpt implements Opt {
         this.dto = dto;
     }
 
-    public JSONObject getComponentMessages() throws IOException {
+    public JSONObject getComponentMessages() {
     	Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL
                 .getComponentTranslationURL(dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.GET, null);
@@ -44,19 +44,13 @@ public class StringBasedOpt extends BaseOpt implements Opt {
     }
 
     public String getString() {
-        JSONObject jo;
-		try {
-			jo = this.getComponentMessages();
-		} catch (IOException e) {
-			// TODO throw exception if prodMode = false. Otherwise, return key;
-			return dto.getKey();
-		}
+        JSONObject jo = this.getComponentMessages();
         String k = dto.getKey();
         Object v = jo.get(k);
         return (v == null ? "" : (String) v);
     }
 
-    public String postString() throws IOException {
+    public String postString() {
         Map<String, String> params = new HashMap<String, String>();
         params.put("source", this.dto.getSource());
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL
@@ -78,7 +72,7 @@ public class StringBasedOpt extends BaseOpt implements Opt {
      * @return
      * @throws IOException 
      */
-    public String postSourceSet(String sourceSet) throws IOException {
+    public String postSourceSet(String sourceSet) {
         String status = "";
         if (sourceSet == null || "".equalsIgnoreCase(sourceSet)) {
             return status;
@@ -93,7 +87,7 @@ public class StringBasedOpt extends BaseOpt implements Opt {
         return status;
     }
 
-    public String getTranslationStatus() throws IOException {
+    public String getTranslationStatus() {
         String status = "";
         Map<String, String> params = new HashMap<String, String>();
         params.put("checkTranslationStatus", "true");

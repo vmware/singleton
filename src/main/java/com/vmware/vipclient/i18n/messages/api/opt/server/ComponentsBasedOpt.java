@@ -6,7 +6,6 @@ package com.vmware.vipclient.i18n.messages.api.opt.server;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -37,7 +36,7 @@ public class ComponentsBasedOpt extends BaseOpt implements Opt {
         this.cfg = cfg;
     }
 
-    public JSONObject queryFromServer(final Set<String> components, final Set<String> locales) throws IOException {
+    public JSONObject queryFromServer(final Set<String> components, final Set<String> locales) {
         String url = V2URL
                 .getComponentsTranslationURL(VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL(),
                         this.cfg);

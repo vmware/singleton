@@ -4,7 +4,6 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
-import java.io.IOException;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
@@ -22,7 +21,7 @@ import com.vmware.vipclient.i18n.util.ConstantsKeys;
 public class RemotePatternOpt {
     Logger logger = LoggerFactory.getLogger(RemotePatternOpt.class);
 
-    public JSONObject getPatternsByLocale(String locale) throws IOException {
+    public JSONObject getPatternsByLocale(String locale) {
         String responseStr = "";
         String i18nScope = VIPCfg.getInstance().getI18nScope();
         HttpRequester httpRequester = VIPCfg.getInstance().getVipService().getHttpRequester();
@@ -43,7 +42,7 @@ public class RemotePatternOpt {
         }
     }
 
-    public JSONObject getPatternsByLocale(String language, String region) throws IOException {
+    public JSONObject getPatternsByLocale(String language, String region) {
         String responseStr = "";
         String i18nScope = VIPCfg.getInstance().getI18nScope();
         HttpRequester httpRequester = VIPCfg.getInstance().getVipService().getHttpRequester();

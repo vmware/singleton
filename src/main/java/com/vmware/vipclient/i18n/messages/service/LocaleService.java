@@ -45,13 +45,8 @@ public class LocaleService {
             }
             logger.trace("get region list of '" + language
                     + "' data from backend");
-            Map<String, String> tmpMap = new HashMap<String, String>();
-			try {
-				tmpMap = new LocaleOpt()
+            Map<String, String> tmpMap = new LocaleOpt()
 				        .getTerritoriesFromCLDR(language);
-			} catch (IOException e) {
-				// TODO throw exception if prodMode = false. Otherwise, keep empty map;
-			}
             regionMap = JSONUtils.map2SortMap(tmpMap);
             respMap.put(language, regionMap);
             if (c != null) {
@@ -72,13 +67,8 @@ public class LocaleService {
             dispMap = (Map<String, String>) c.get(DISPN_PREFIX + language);
             if (dispMap == null || dispMap.size() == 0) {
                 logger.trace("get displayname data from backend");
-                Map<String, String> tmpMap = new HashMap<String, String>();
-				try {
-					tmpMap = new LocaleOpt()
+                Map<String, String> tmpMap = new LocaleOpt()
 					        .getDisplayNamesFromCLDR(language);
-				} catch (IOException e) {
-					// TODO throw exception if prodMode = false. Otherwise, keep empty map;
-				}
                 dispMap = JSONUtils.map2SortMap(tmpMap);
                 if (dispMap != null && dispMap.size() > 0) {
                 	// TODO pass map of cache properties such as etag and cache control headers

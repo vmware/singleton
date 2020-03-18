@@ -4,7 +4,6 @@
  */
 package com.vmware.vipclient.i18n.formats;
 
-import java.io.IOException;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
@@ -30,18 +29,13 @@ public class DateFormat extends BaseFormat {
             throw new VIPJavaClientException("pattern can't be empty");
         }
         if (VIPCfg.getInstance().getVipService().getHttpRequester().isConnected()) {
-            try {
-				return this.getFormatFromRemote(longDate, pattern);
-			} catch (IOException e) {
-				// TODO throw exception if prodMode = false. Otherwise, return pattern;
-				return pattern;
-			}
+            return this.getFormatFromRemote(longDate, pattern);
         } else {
             return "";
         }
     }
 
-    private String getFormatFromRemote(String longDate, String pattern) throws IOException {
+    private String getFormatFromRemote(String longDate, String pattern) {
         String format = "";
         StringBuffer dateAPIUrl = new StringBuffer(
                 VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
