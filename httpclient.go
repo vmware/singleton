@@ -7,7 +7,6 @@ package sgtn
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 )
 
@@ -38,7 +37,7 @@ func httpget(urlToGet string, header map[string]string, respData interface{}) er
 	defer resp.Body.Close()
 
 	if !isSuccess(resp.StatusCode) {
-		return fmt.Errorf("Getting failed, status code is: %s", resp.Status)
+		return &sgtnError{httpError, resp.StatusCode, "", resp.Header}
 	}
 
 	err = json.NewDecoder(resp.Body).Decode(respData)

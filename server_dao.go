@@ -18,48 +18,13 @@ import (
 	"github.com/mitchellh/mapstructure"
 )
 
-type (
-	// serverDAO serverDAO definition
-	serverDAO struct {
-		svrURL          *url.URL
-		status          uint32
-		lastErrorMoment int64
-		headers         map[string]string
-	}
-
-	respBody struct {
-		Result    respResult  `json:"response"`
-		Signature string      `json:"signature"`
-		Data      interface{} `json:"data"`
-	}
-
-	respResult struct {
-		Code       int    `json:"code"`
-		Message    string `json:"message"`
-		ServerTime string `json:"serverTime"`
-	}
-
-	queryByCompData struct {
-		Name      string            `json:"productName"`
-		Version   string            `json:"version"`
-		Component string            `json:"component"`
-		Messages  map[string]string `json:"messages"`
-		Locale    string            `json:"locale"`
-		Status    string            `json:"status"`
-		ID        int               `json:"id"`
-	}
-
-	queryComponents struct {
-		Components []string `json:"components"`
-		Version    string   `json:"version"`
-		Name       string   `json:"productName"`
-	}
-	queryLocales struct {
-		Locales []string `json:"locales"`
-		Version string   `json:"version"`
-		Name    string   `json:"productName"`
-	}
-)
+// serverDAO serverDAO definition
+type serverDAO struct {
+	svrURL          *url.URL
+	status          uint32
+	lastErrorMoment int64
+	headers         map[string]string
+}
 
 const serverRetryInterval = 1 //second
 const (
@@ -175,9 +140,8 @@ var getDataFromServer = func(u *url.URL, header map[string]string, data interfac
 		return err
 	}
 
-	if !isSuccess(respData.Result.Code) {
-		err = sgtnError{serverError, respData.Result.Code, respData.Result.Message}
-		return err
+	if !isBusinessSuccess(respData.Result.Code) {
+		return &sgtnError{businessError, respData.Result.Code, respData.Result.Message, nil}
 	}
 
 	if err = mapstructure.Decode(respData.Data, &data); err != nil {
@@ -186,3 +150,43 @@ var getDataFromServer = func(u *url.URL, header map[string]string, data interfac
 
 	return nil
 }
+
+func isBusinessSuccess(code int) bool {
+	// return code >= 600 && code < 700
+	return true
+}
+
+type (
+	respBody struct {
+		Result    respResult  `json:"response"`
+		Signature string      `json:"signature"`
+		Data      interface{} `json:"data"`
+	}
+
+	respResult struct {
+		Code       int    `json:"code"`
+		Message    string `json:"message"`
+		ServerTime string `json:"serverTime"`
+	}
+
+	queryByCompData struct {
+		Name      string            `json:"productName"`
+		Version   string            `json:"version"`
+		Component string            `json:"component"`
+		Messages  map[string]string `json:"messages"`
+		Locale    string            `json:"locale"`
+		Status    string            `json:"status"`
+		ID        int               `json:"id"`
+	}
+
+	queryComponents struct {
+		Components []string `json:"components"`
+		Version    string   `json:"version"`
+		Name       string   `json:"productName"`
+	}
+	queryLocales struct {
+		Locales []string `json:"locales"`
+		Version string   `json:"version"`
+		Name    string   `json:"productName"`
+	}
+)
