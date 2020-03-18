@@ -11,7 +11,7 @@ import (
 
 type (
 	defaultCache struct {
-		tMessages  transMsgs
+		tMessages  translationMsgs
 		locales    *sync.Map
 		components *sync.Map
 	}
@@ -19,7 +19,7 @@ type (
 
 func newCache() Cache {
 	c := &defaultCache{
-		&defaultTransMsgs{new(sync.Map)},
+		&defaultTranslationMsgs{new(sync.Map)},
 		new(sync.Map),
 		new(sync.Map),
 	}

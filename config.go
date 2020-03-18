@@ -22,7 +22,7 @@ type Config struct {
 
 	EnableCache bool `json:"enable_cache"`
 
-	Components []transKey `json:"components"`
+	Components []translationID `json:"components"`
 }
 
 // NewConfig Create a new Singleton configuration instance

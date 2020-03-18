@@ -8,7 +8,7 @@ package sgtn
 import "sync"
 
 type (
-	defaultTransMsgs struct {
+	defaultTranslationMsgs struct {
 		dataMap *sync.Map
 	}
 	defaultComponentMsgs struct {
@@ -16,13 +16,13 @@ type (
 	}
 
 	translationID struct {
-		name, version string
+		Name, Version string
 	}
 	componentID struct {
-		Name, Version, locale, component string
+		Name, Version, Locale, Component string
 	}
 
-	transMsgs interface {
+	translationMsgs interface {
 		Put(key componentID, value ComponentMsgs)
 		Get(key componentID) (value ComponentMsgs, found bool)
 		Size() int
@@ -31,7 +31,7 @@ type (
 )
 
 // Get Get messages of a component
-func (d *defaultTransMsgs) Get(key componentID) (value ComponentMsgs, found bool) {
+func (d *defaultTranslationMsgs) Get(key componentID) (value ComponentMsgs, found bool) {
 	v, ok := d.dataMap.Load(key)
 	if ok {
 		return v.(ComponentMsgs), ok
@@ -41,17 +41,17 @@ func (d *defaultTransMsgs) Get(key componentID) (value ComponentMsgs, found bool
 }
 
 // Put Set messages of a component
-func (d *defaultTransMsgs) Put(key componentID, value ComponentMsgs) {
+func (d *defaultTranslationMsgs) Put(key componentID, value ComponentMsgs) {
 	d.dataMap.Store(key, value)
 }
 
-func (d *defaultTransMsgs) Size() int {
+func (d *defaultTranslationMsgs) Size() int {
 	s := 0
 	d.dataMap.Range(func(key, value interface{}) bool { s++; return true })
 	return s
 }
 
-func (d *defaultTransMsgs) Clear() {
+func (d *defaultTranslationMsgs) Clear() {
 	d.dataMap.Range(func(key, value interface{}) bool { d.dataMap.Delete(key); return true })
 }
 

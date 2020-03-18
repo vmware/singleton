@@ -12,21 +12,15 @@ import (
 )
 
 //!+dataService
-type (
-	dataService struct {
-		enableCache bool
+type dataService struct {
+	enableCache bool
 
-		cache         Cache
-		cacheSyncInfo *cacheSyncInfo
+	cache         Cache
+	cacheSyncInfo *cacheSyncInfo
 
-		bundle *bundleDAO
-		server *serverDAO
-	}
-
-	transKey struct {
-		Name, Version string
-	}
-)
+	bundle *bundleDAO
+	server *serverDAO
+}
 
 func (ds *dataService) GetLocaleList(name, version string) ([]string, error) {
 	if !ds.enableCache {
