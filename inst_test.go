@@ -8,7 +8,6 @@ package sgtn
 import (
 	"testing"
 
-	"github.com/nbio/st"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/h2non/gock.v1"
 )
@@ -97,44 +96,4 @@ func TestDisableCache(t *testing.T) {
 		assert.True(t, gock.IsDone())
 	}
 
-}
-
-func TestCacheNotExpire(t *testing.T) {
-	defer Trace(curFunName())()
-
-	old := cacheExpiredTime
-	defer func() { cacheExpiredTime = old }()
-	cacheExpiredTime = 0
-
-	newCfg := testCfg
-	newInst := resetInst(&newCfg)
-
-	var tests = []struct {
-		desc      string
-		mocks     []string
-		locale    string
-		component string
-		expected  int
-		err       string
-	}{
-		{"Get messages of a component which cache never expires", []string{"componentMessages-zh-Hans-sunglow"}, "zh-Hans", "sunglow", 7, ""},
-	}
-
-	defer gock.Off()
-
-	trans := newInst.GetTranslation()
-	for _, testData := range tests {
-		for _, m := range testData.mocks {
-			EnableMockData(m)
-		}
-
-		messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
-		assert.True(t, gock.IsDone())
-		st.Expect(t, err, nil)
-		assert.Equal(t, testData.expected, messages.Size())
-
-		_, err = trans.GetComponentMessages(name, version, testData.locale, testData.component)
-		st.Expect(t, err, nil)
-	}
-	assert.True(t, gock.IsDone())
 }

@@ -6,7 +6,6 @@
 package sgtn
 
 import (
-	"fmt"
 	"net"
 	"net/url"
 	"path"
@@ -177,7 +176,7 @@ var getDataFromServer = func(u *url.URL, header map[string]string, data interfac
 	}
 
 	if !isSuccess(respData.Result.Code) {
-		err = fmt.Errorf("Fail to load from server. The code is: %d, message is: %s", respData.Result.Code, respData.Result.Message)
+		err = sgtnError{serverError, respData.Result.Code, respData.Result.Message}
 		return err
 	}
 

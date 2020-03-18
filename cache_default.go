@@ -9,8 +9,6 @@ import (
 	"sync"
 )
 
-var cacheExpiredTime int64 = 100
-
 type (
 	defaultCache struct {
 		tMessages  transMsgs

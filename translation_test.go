@@ -118,6 +118,8 @@ func TestRefreshCache(t *testing.T) {
 	cacheSyncInfo := testInst.dService.cacheSyncInfo
 	for _, testData := range tests {
 		EnableMockData(testData.mocks[0])
+		cacheUInfo := cacheSyncInfo.getCompUpdateInfo(name, version, testData.locale, testData.component)
+		cacheUInfo.setAge(100)
 
 		// Get component messages first to populate cache
 		messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
@@ -144,8 +146,7 @@ func TestRefreshCache(t *testing.T) {
 
 		// Enable mock, time out cache and refresh again. This time the data is same as before
 		EnableMockData(testData.mocks[1])
-		cacheUInfo := cacheSyncInfo.getCompUpdateInfo(name, version, testData.locale, testData.component)
-		expireCache(cacheUInfo, cacheExpiredTime)
+		expireCache(cacheUInfo, cacheUInfo.age)
 		messages, err = trans.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.Nil(t, err)
 		assert.Equal(t, testData.expected, messages.Size())
@@ -548,6 +549,8 @@ func TestGetComponents(t *testing.T) {
 	newCfg := testCfg
 	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
+	ui := testInst.dService.cacheSyncInfo.getComponentsUpdateInfo(name, version)
+	ui.setAge(100)
 	for _, testData := range tests {
 
 		EnableMockData(testData.mocks[0])
@@ -570,8 +573,7 @@ func TestGetComponents(t *testing.T) {
 
 		// Expire cache and get again
 		EnableMockData(testData.mocks[1])
-		ui := testInst.dService.cacheSyncInfo.getComponentsUpdateInfo(name, version)
-		expireCache(ui, cacheExpiredTime)
+		expireCache(ui, ui.age)
 		components, err = trans.GetComponentList(name, version)
 		time.Sleep(time.Millisecond * 10)
 		if err != nil {
@@ -613,6 +615,9 @@ func TestGetLocales(t *testing.T) {
 	for _, testData := range tests {
 		EnableMockData(testData.mocks[0])
 
+		ui := testInst.dService.cacheSyncInfo.getLocalesUpdateInfo(name, version)
+		ui.setAge(100)
+
 		locales, err := trans.GetLocaleList(name, version)
 		if err != nil {
 			t.Errorf("%s failed: %v", testData.desc, err)
@@ -632,8 +637,7 @@ func TestGetLocales(t *testing.T) {
 
 		// Expire cache and get again
 		EnableMockData(testData.mocks[1])
-		ui := testInst.dService.cacheSyncInfo.getLocalesUpdateInfo(name, version)
-		expireCache(ui, cacheExpiredTime)
+		expireCache(ui, ui.age)
 		locales, err = trans.GetLocaleList(name, version)
 		time.Sleep(time.Millisecond * 10)
 		if err != nil {

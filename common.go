@@ -5,6 +5,8 @@
 
 package sgtn
 
+import "fmt"
+
 type (
 
 	// ComponentMsgs The interface of a component's messages
@@ -23,4 +25,29 @@ type (
 		Warn(message string)
 		Error(message string)
 	}
+
+	errorType uint16
+	sgtnError struct {
+		errorType errorType
+		errorCode int
+		errorMsg  string
+	}
 )
+
+const (
+	serverError errorType = iota
+	clientError
+)
+
+func (et errorType) String() string {
+	switch et {
+	case serverError:
+		return "Error from server"
+	default:
+		return ""
+	}
+}
+
+func (e sgtnError) Error() string {
+	return fmt.Sprintf("%s is code: %d, message: %s", e.errorType.String(), e.errorCode, e.errorMsg)
+}

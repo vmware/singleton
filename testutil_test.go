@@ -287,5 +287,5 @@ func resetInst(cfg *Config) *Instance {
 }
 
 func expireCache(cacheUInfo *updateInfo, cacheExpiredTime int64) {
-	cacheUInfo.setTime(atomic.LoadInt64(&cacheUInfo.uTime) - cacheExpiredTime)
+	cacheUInfo.setTime(atomic.LoadInt64(&cacheUInfo.lastUpdate) - cacheExpiredTime)
 }

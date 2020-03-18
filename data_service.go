@@ -35,10 +35,8 @@ func (ds *dataService) GetLocaleList(name, version string) ([]string, error) {
 
 	localeList := ds.cache.GetLocales(name, version)
 	if len(localeList) != 0 {
-		if cacheExpiredTime > 0 {
-			if uInfo := ds.cacheSyncInfo.getLocalesUpdateInfo(name, version); uInfo.isExpired(cacheExpiredTime) {
-				go ds.refreshLocaleList(name, version)
-			}
+		if uInfo := ds.cacheSyncInfo.getLocalesUpdateInfo(name, version); uInfo.isExpired() {
+			go ds.refreshLocaleList(name, version)
 		}
 
 		return localeList, nil
@@ -60,10 +58,8 @@ func (ds *dataService) GetComponentList(name, version string) ([]string, error) 
 
 	compList := ds.cache.GetComponents(name, version)
 	if len(compList) != 0 {
-		if cacheExpiredTime > 0 {
-			if uInfo := ds.cacheSyncInfo.getComponentsUpdateInfo(name, version); uInfo.isExpired(cacheExpiredTime) {
-				go ds.refreshComponentList(name, version)
-			}
+		if uInfo := ds.cacheSyncInfo.getComponentsUpdateInfo(name, version); uInfo.isExpired() {
+			go ds.refreshComponentList(name, version)
 		}
 
 		return compList, nil
@@ -101,10 +97,8 @@ func (ds *dataService) GetComponentMessages(name, version, locale, component str
 
 	compData, ok := ds.cache.GetComponentMessages(name, version, locale, component)
 	if ok {
-		if cacheExpiredTime > 0 {
-			if uInfo := ds.cacheSyncInfo.getCompUpdateInfo(name, version, locale, component); uInfo.isExpired(cacheExpiredTime) {
-				go ds.refreshCompCache(name, version, locale, component, false)
-			}
+		if uInfo := ds.cacheSyncInfo.getCompUpdateInfo(name, version, locale, component); uInfo.isExpired() {
+			go ds.refreshCompCache(name, version, locale, component, false)
 		}
 		return compData, nil
 	}

@@ -33,7 +33,7 @@ type defaultTrans struct {
 }
 
 func (t *defaultTrans) GetStringMessage(name, version, locale, component, key string, args ...string) (string, error) {
-	var errMsg string
+
 	compData, err := t.dataService.GetComponentMessages(name, version, locale, component)
 	if err != nil {
 		if strings.Compare(strings.ToLower(locale), strings.ToLower(t.defaultLocale)) != 0 {
@@ -48,7 +48,7 @@ func (t *defaultTrans) GetStringMessage(name, version, locale, component, key st
 
 	message, ok := compData.Get(key)
 	if !ok {
-		errMsg = "No key in locale: " + locale + ", component: " + component
+		errMsg := "No key in locale: " + locale + ", component: " + component
 		return key, errors.New(errMsg)
 	}
 
