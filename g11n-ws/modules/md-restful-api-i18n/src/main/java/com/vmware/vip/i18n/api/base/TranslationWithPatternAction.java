@@ -53,7 +53,14 @@ public class TranslationWithPatternAction extends BaseAction {
 	    */
 	   public APIResponseDTO getTransPattern(TranslationWithPatternDTO data) throws Exception {
 	      logger.info("begin getTransPattern");
-	      if (validate(data)) {
+	      boolean validateResult;
+	      try {
+	    	  validateResult = validate(data);
+	      }catch(VIPAPIException excep) {
+	    	  return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(),
+	    			  excep.getMessage(), null);
+	      }
+	      if (validateResult) {
 	    	  List<String> availableVersions = null;
 	          try {
 	        	  availableVersions = productService.getSupportVersionList(data.getProductName());
