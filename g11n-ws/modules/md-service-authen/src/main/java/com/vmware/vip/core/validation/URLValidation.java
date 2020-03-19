@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vmware.vip.api.rest.API;
+import com.vmware.vip.common.constants.ValidationMsg;
 
 public class URLValidation implements IVlidation {
    private static Logger logger = LoggerFactory.getLogger(URLValidation.class);
