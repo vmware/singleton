@@ -1,4 +1,4 @@
-﻿Singleton
+Singleton
 ============
 
 A service that provides support for Software Internationalization and Localization
@@ -29,7 +29,7 @@ Upcoming features
 
 Prerequisites
 ---------
- * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+ * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (Java 9+ are not supported, will get compiler issue)
  * [Git](https://git-scm.com/downloads)
 
 Building from source code
