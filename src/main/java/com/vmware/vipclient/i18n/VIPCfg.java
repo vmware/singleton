@@ -165,9 +165,12 @@ public class VIPCfg {
     
     /**
      * initialize the instance by a properties file
-     * 
+     * @deprecated
+     * This method is no longer acceptable to load configurations.
+     * <p> Use {@link VIPCfg#loadConfig(String)} instead.
      * @param cfg
      */
+    @Deprecated
     public void initialize(String cfg) throws VIPClientInitException {
     	ResourceBundle prop = ResourceBundle.getBundle(cfg);
     	if (prop == null) {

@@ -4,7 +4,6 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -70,7 +69,7 @@ public class StringBasedOpt extends BaseOpt implements Opt {
      * 
      * @param sourceSet
      * @return
-     * @throws IOException 
+     * @throws 
      */
     public String postSourceSet(String sourceSet) {
         String status = "";
