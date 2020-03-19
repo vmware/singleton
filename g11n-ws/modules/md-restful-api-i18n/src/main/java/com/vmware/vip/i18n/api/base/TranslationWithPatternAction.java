@@ -21,6 +21,7 @@ import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsMsg;
 import com.vmware.vip.common.constants.ConstantsUnicode;
 import com.vmware.vip.common.constants.TransWithPatternDataScope;
+import com.vmware.vip.common.exceptions.VIPAPIException;
 import com.vmware.vip.common.i18n.dto.TranslationWithPatternDTO;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
@@ -52,12 +53,6 @@ public class TranslationWithPatternAction extends BaseAction {
 	    */
 	   public APIResponseDTO getTransPattern(TranslationWithPatternDTO data) throws Exception {
 	      logger.info("begin getTransPattern");
-	      try {
-	    	  ParameterValidationUtility.validateTranslationWithPatternAPI(data);
-	      }catch(RuntimeException excep) {
-	    	  return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(),
-	    			  excep.getMessage(), null);
-	      }
 	      if (validate(data)) {
 	    	  List<String> availableVersions = null;
 	          try {
@@ -140,7 +135,8 @@ public class TranslationWithPatternAction extends BaseAction {
 	    * 
 	    * 
 	    */
-	   public boolean validate(TranslationWithPatternDTO data) {
+	   public boolean validate(TranslationWithPatternDTO data) throws VIPAPIException {
+		   ParameterValidationUtility.validateTranslationWithPatternAPI(data);
 	      if (data.getCombine() == TransWithPatternDataScope.TRANSLATION_PATTERN_WITH_REGION
 	            .getValue()) {
 	         return isPatternTransaltionWithRegion(data);
