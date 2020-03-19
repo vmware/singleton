@@ -10,11 +10,22 @@
         "version": "1.0.0",
         "dataOrigin": "cache",
         "machineTranslation": false,
-        "component": "sunglow",
-        "messages": {
-            "application.title": "#@Welcome to Singleton Go sample application!#@"
-        },
-        "locale": "latest",
+        "locales": [
+            "latest"
+        ],
+        "components": [
+            "sunglow"
+        ],
+        "bundles": [
+            {
+                "component": "sunglow",
+                "messages": {
+                    "application.title": "#@Welcome to Singleton Go sample application!#@"
+                },
+                "locale": "latest"
+            }
+        ],
+        "url": "",
         "status": "",
         "id": 0
     }

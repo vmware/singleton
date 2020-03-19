@@ -43,14 +43,17 @@ func newServer(OnlineServiceURL string) (*serverDAO, error) {
 
 // getComponentMessages Get a component's messages
 func (s *serverDAO) getComponentMessages(name, version, locale, component string) (ComponentMsgs, error) {
-	urlToQuery := s.processURL(componentTranslationGetConst, name, version, locale, component)
+	urlToQuery := s.processURL(productTranslationGetConst, name, version, locale, component)
 
-	data := new(queryByCompData)
+	data := new(queryProduct)
 	if err := s.sendRequest(urlToQuery, s.headers, data); err != nil {
 		return nil, err
 	}
 
-	compData := defaultComponentMsgs{messages: data.Messages}
+	if len(data.Bundles) != 1 {
+		return nil, errors.New("Wrong data from server")
+	}
+	compData := defaultComponentMsgs{messages: data.Bundles[0].Messages}
 
 	return &compData, nil
 }
@@ -91,9 +94,9 @@ func (s *serverDAO) processURL(relURL string, args ...string) *url.URL {
 	urlToQuery.Path = path.Join(urlToQuery.Path, newRelURL)
 
 	switch relURL {
-	case componentTranslationGetConst:
-		urlToQuery.Path = strings.Replace(urlToQuery.Path, "{"+localeConst+"}", args[2], 1)
-		urlToQuery.Path = strings.Replace(urlToQuery.Path, "{"+componentConst+"}", args[3], 1)
+	case productTranslationGetConst:
+		addURLParam(&urlToQuery, localesConst, args[2])
+		addURLParam(&urlToQuery, componentsConst, args[3])
 	}
 
 	return &urlToQuery
@@ -121,6 +124,7 @@ func (s *serverDAO) sendRequest(u *url.URL, header map[string]string, data inter
 	return nil
 }
 
+//!+ common functions
 func addURLParam(u *url.URL, k, v string) {
 	addURLParams(u, map[string]string{k: v})
 }
@@ -153,9 +157,12 @@ var getDataFromServer = func(u *url.URL, header map[string]string, data interfac
 
 func isBusinessSuccess(code int) bool {
 	// return code >= 600 && code < 700
-	return true
+	return code >= 200 && code < 300
 }
 
+//!- common functions
+
+//!+ REST API Response structures
 type (
 	respBody struct {
 		Result    respResult  `json:"response"`
@@ -169,14 +176,19 @@ type (
 		ServerTime string `json:"serverTime"`
 	}
 
-	queryByCompData struct {
-		Name      string            `json:"productName"`
-		Version   string            `json:"version"`
-		Component string            `json:"component"`
-		Messages  map[string]string `json:"messages"`
-		Locale    string            `json:"locale"`
-		Status    string            `json:"status"`
-		ID        int               `json:"id"`
+	queryProduct struct {
+		Name       string   `json:"productName"`
+		Version    string   `json:"version"`
+		Locales    []string `json:"locales"`
+		Components []string `json:"components"`
+		Bundles    []struct {
+			Component string            `json:"component"`
+			Messages  map[string]string `json:"messages"`
+			Locale    string            `json:"locale"`
+		} `json:"bundles"`
+		URL    string `json:"url"`
+		Status string `json:"status"`
+		ID     int    `json:"id"`
 	}
 
 	queryComponents struct {
@@ -190,3 +202,5 @@ type (
 		Name    string   `json:"productName"`
 	}
 )
+
+//!- REST API Response structures

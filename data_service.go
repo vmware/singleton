@@ -112,6 +112,7 @@ func (ds *dataService) fetchLocaleList(name, version string) (data []string, err
 		if err == nil {
 			return data, nil
 		}
+		logger.Error("Fail to get from server: " + err.Error())
 	}
 
 	if ds.bundle != nil {
@@ -131,6 +132,7 @@ func (ds *dataService) fetchComponentList(name, version string) (data []string, 
 		if err == nil {
 			return data, nil
 		}
+		logger.Error("Fail to get from server: " + err.Error())
 	}
 
 	if ds.bundle != nil {
@@ -150,6 +152,7 @@ func (ds *dataService) fetchCompData(name, version, locale, component string) (d
 		if err == nil {
 			return data, nil
 		}
+		logger.Error("Fail to get from server: " + err.Error())
 	}
 
 	if ds.bundle != nil {

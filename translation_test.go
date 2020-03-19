@@ -239,7 +239,7 @@ func TestGetStringFallback(t *testing.T) {
 	comp := "users"
 	key := "Singleton.description"
 	arg := "MyArg"
-	expected := "MyArg est une bibliothèque commune développée par G11n Team."
+	expected := "MyArg est une bibliothèque commune développée par Singleton Team."
 	message, err := trans.GetStringMessage(name, version, locale, comp, key, arg)
 	st.Expect(t, err, nil)
 	assert.Equal(t, expected, message)
@@ -273,44 +273,44 @@ func TestGetStringAbnormal(t *testing.T) {
 	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
 
-	locale := "zh-Hans"
-	defaultLocale := "fr"
-	comp := "sunglow"
+	localeZhhans := "zh-Hans"
+	defaultLocaleFr := "fr"
+	compSunglow := "sunglow"
 	key := "MyKey"
 	arg := "MyArg"
 
 	// original locale has component, but doesn't have Key
 	keyNonexistent := "nonexistent"
-	message2, err2 := trans.GetStringMessage(name, version, locale, comp, keyNonexistent, arg)
-	assert.Contains(t, err2.Error(), locale)
-	assert.Contains(t, err2.Error(), comp)
+	message2, err2 := trans.GetStringMessage(name, version, localeZhhans, compSunglow, keyNonexistent, arg)
+	assert.Contains(t, err2.Error(), localeZhhans)
+	assert.Contains(t, err2.Error(), compSunglow)
 	assert.Contains(t, err2.Error(), "No key in")
 	assert.Equal(t, keyNonexistent, message2)
 
 	// original locale doesn't have component.
 	// default locale has component, but doesn't have Key
-	comp2 := "users"
-	message3, err3 := trans.GetStringMessage(name, version, locale, comp2, keyNonexistent, arg)
-	assert.Contains(t, err3.Error(), defaultLocale)
-	assert.Contains(t, err3.Error(), comp2)
+	compUsers := "users"
+	message3, err3 := trans.GetStringMessage(name, version, localeZhhans, compUsers, keyNonexistent, arg)
+	assert.Contains(t, err3.Error(), defaultLocaleFr)
+	assert.Contains(t, err3.Error(), compUsers)
 	assert.Contains(t, err3.Error(), "No key in")
 	assert.Equal(t, keyNonexistent, message3)
 
 	// Both locales doesn't have the component
 	compNonexistent := "comp-notexist"
-	message4, err4 := trans.GetStringMessage(name, version, locale, compNonexistent, key, arg)
+	message4, err4 := trans.GetStringMessage(name, version, localeZhhans, compNonexistent, key, arg)
 	assert.NotNil(t, err4)
 	assert.NotContains(t, err4.Error(), "No key in")
 	assert.Equal(t, key, message4)
 
 	// Get default locale directly. Default locale doesn't have the component
-	message5, err5 := trans.GetStringMessage(name, version, defaultLocale, compNonexistent, key, arg)
+	message5, err5 := trans.GetStringMessage(name, version, defaultLocaleFr, compNonexistent, key, arg)
 	assert.NotNil(t, err5)
 	assert.NotContains(t, err5.Error(), "No key in")
 	assert.Equal(t, key, message5)
 
 	// Get default locale directly. Default locale doesn't have the key
-	message6, err6 := trans.GetStringMessage(name, version, defaultLocale, comp2, keyNonexistent, arg)
+	message6, err6 := trans.GetStringMessage(name, version, defaultLocaleFr, compUsers, keyNonexistent, arg)
 	assert.NotNil(t, err6)
 	assert.Contains(t, err6.Error(), "No key in")
 	assert.Equal(t, keyNonexistent, message6)

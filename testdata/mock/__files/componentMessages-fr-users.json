@@ -10,15 +10,26 @@
     "version": "1.0.0",
     "dataOrigin": "cache",
     "machineTranslation": false,
-    "component": "users",
-    "messages": {
-      "Singleton.files.plural.zero": "Il n'y a aucun fichier sur {0}.",
-      "Singleton.files.plural.other": "Il n'y a pas de fichiers sur {0}.",
-      "Singleton.files.plural.one": "Il y a un fichier sur {0}.",
-      "Singleton.description": "{0} est une bibliothèque commune développée par G11n Team.",
-      "plural.files": "{files, plural,one {Il y a # fichier sur {place}.}other {Il y a # fichiers sur {place}.}}"
-    },
-    "locale": "fr",
+    "locales": [
+      "fr"
+    ],
+    "components": [
+      "users"
+    ],
+    "bundles": [
+      {
+        "component": "users",
+        "messages": {
+          "Singleton.files.plural.zero": "Il n'y a aucun fichier sur {0}.",
+          "Singleton.files.plural.other": "Il n'y a pas de fichiers sur {0}.",
+          "Singleton.files.plural.one": "Il y a un fichier sur {0}.",
+          "Singleton.description": "{0} est une bibliothèque commune développée par Singleton Team.",
+          "plural.files": "{files, plural,one {Il y a # fichier sur {place}.}other {Il y a # fichiers sur {place}.}}"
+        },
+        "locale": "fr"
+      }
+    ],
+    "url": "",
     "status": "",
     "id": 0
   }
