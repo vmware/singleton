@@ -21,6 +21,7 @@ import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsMsg;
 import com.vmware.vip.common.constants.ConstantsUnicode;
 import com.vmware.vip.common.constants.TransWithPatternDataScope;
+import com.vmware.vip.common.exceptions.VIPAPIException;
 import com.vmware.vip.common.i18n.dto.TranslationWithPatternDTO;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
@@ -29,6 +30,7 @@ import com.vmware.vip.core.messages.service.product.IProductService;
 import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO;
 import com.vmware.vip.core.messages.service.singlecomponent.IOneComponentService;
 import com.vmware.vip.i18n.api.base.utils.CommonUtility;
+import com.vmware.vip.i18n.api.base.utils.ParameterValidationUtility;
 import com.vmware.vip.i18n.api.base.utils.VersionMatcher;
 
 public class TranslationWithPatternAction extends BaseAction {
@@ -51,7 +53,14 @@ public class TranslationWithPatternAction extends BaseAction {
 	    */
 	   public APIResponseDTO getTransPattern(TranslationWithPatternDTO data) throws Exception {
 	      logger.info("begin getTransPattern");
-	      if (validate(data)) {
+	      boolean validateResult;
+	      try {
+	    	  validateResult = validate(data);
+	      }catch(VIPAPIException excep) {
+	    	  return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(),
+	    			  excep.getMessage(), null);
+	      }
+	      if (validateResult) {
 	    	  List<String> availableVersions = null;
 	          try {
 	        	  availableVersions = productService.getSupportVersionList(data.getProductName());
@@ -133,7 +142,8 @@ public class TranslationWithPatternAction extends BaseAction {
 	    * 
 	    * 
 	    */
-	   public boolean validate(TranslationWithPatternDTO data) {
+	   public boolean validate(TranslationWithPatternDTO data) throws VIPAPIException {
+		   ParameterValidationUtility.validateTranslationWithPatternAPI(data);
 	      if (data.getCombine() == TransWithPatternDataScope.TRANSLATION_PATTERN_WITH_REGION
 	            .getValue()) {
 	         return isPatternTransaltionWithRegion(data);
