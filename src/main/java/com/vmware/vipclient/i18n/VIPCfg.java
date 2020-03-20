@@ -130,8 +130,7 @@ public class VIPCfg {
      * Load client configuration from a JSON file in the resource folder 
      * 
      * @param configFile This is the name of the JSON configuration file 
-     * @throws ParseException 
-     * @throws IOException 
+     * @throws VIPClientInitException  
      */
     public void loadConfig(String configFile) throws VIPClientInitException {
     	ClassLoader classloader = Thread.currentThread().getContextClassLoader();
@@ -158,8 +157,7 @@ public class VIPCfg {
 	        this.machineTranslation = false;
 	        
 		} catch (NullPointerException | IOException | ParseException e) {
-			e.printStackTrace();
-			throw new VIPClientInitException("Failed to load configuration"); 
+			throw new VIPClientInitException("Failed to load configuration", e); 
 		}
     }
     

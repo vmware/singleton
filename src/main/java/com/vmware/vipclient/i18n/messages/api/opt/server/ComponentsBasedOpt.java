@@ -4,8 +4,8 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
-import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -36,7 +36,7 @@ public class ComponentsBasedOpt extends BaseOpt implements Opt {
         this.cfg = cfg;
     }
 
-    public JSONObject queryFromServer(final Set<String> components, final Set<String> locales) {
+    public JSONObject queryFromServer(final Set<String> components, final Set<String> locales, final Map<String,Object> cacheProps) {
         String url = V2URL
                 .getComponentsTranslationURL(VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL(),
                         this.cfg);
@@ -46,6 +46,8 @@ public class ComponentsBasedOpt extends BaseOpt implements Opt {
         requestData.put(ConstantsKeys.COMPONENTS, String.join(",", components));
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(url, ConstantsKeys.GET,
                 requestData);
+        cacheProps.put(HttpRequester.HEADERS, response.get(HttpRequester.HEADERS));
+        cacheProps.put(HttpRequester.RESPONSE_CODE, response.get(HttpRequester.RESPONSE_CODE));
         this.responseStr = (String) response.get(HttpRequester.BODY);
         if (StringUtil.isEmpty(this.responseStr))
             throw new VIPJavaClientException(ConstantsMsg.SERVER_RETURN_EMPTY);
