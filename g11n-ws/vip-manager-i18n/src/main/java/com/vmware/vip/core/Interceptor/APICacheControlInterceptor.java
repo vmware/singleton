@@ -7,12 +7,16 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class APICacheControlInterceptor extends HandlerInterceptorAdapter{
-	private int second;
-	public APICacheControlInterceptor(int second) {
 	
+	private int second;
+	
+	public APICacheControlInterceptor(int second) {
 		this.second = second;
 	}
-	//Cache-Control: max-age=864000, public, no-transform
+	
+	/**
+	 * add Cache-Control: max-age in Translation APIs response
+	 */
 	  @Override
 	    public void afterCompletion(HttpServletRequest request, HttpServletResponse response,
 	            Object handler, Exception ex) throws Exception {
