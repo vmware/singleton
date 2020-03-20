@@ -140,9 +140,9 @@ public class LiteWebConfiguration implements WebMvcConfigurer {
 		}
 		
 		//cacheControl
-	   if (cacheControlMaxAge > 0) {
+		if (cacheControlMaxAge > 0) {
 		    registry.addInterceptor(new APICacheControlInterceptor(this.cacheControlMaxAge)).addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**");
-	   }
+		}
 	}
 
 	@Override
