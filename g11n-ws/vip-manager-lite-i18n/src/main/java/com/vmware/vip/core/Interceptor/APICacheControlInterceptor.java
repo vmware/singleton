@@ -1,3 +1,7 @@
+/*
+ * Copyright 2019 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 package com.vmware.vip.core.Interceptor;
 
 import javax.servlet.http.HttpServletRequest;
