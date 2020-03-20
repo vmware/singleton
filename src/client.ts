@@ -64,15 +64,6 @@ class I18nClient {
         return new I18nClient().init(Config);
     }
 
-    /**
-     * In multiple components support scenario, generate the corresponding l10nService based on the component
-     * @param component
-     */
-    getL10nService(component: string) {
-        const messageFormatter = new MessageFormat(this.i18nService);
-        return new L10nService(this.coreService, this.cacheManager, messageFormatter, component);
-    }
-
 }
 
 export const i18nClient = new I18nClient();

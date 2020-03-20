@@ -73,9 +73,4 @@ export class  CustomParser extends  ResponseParser {
         const regions = data ? data : null;
         return regions;
     }
-    getTranslationBundles( res: any ): {}[]|null {
-        const data = this.validateResponse( res );
-        const bundles = data && data.bundles ? data.bundles : null;
-        return bundles;
-    }
 }
