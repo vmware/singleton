@@ -31,6 +31,7 @@ import org.springframework.web.util.UrlPathHelper;
 import com.vmware.vip.api.rest.API;
 import com.vmware.vip.api.rest.APIV1;
 import com.vmware.vip.api.rest.APIV2;
+import com.vmware.vip.core.Interceptor.APICacheControlInterceptor;
 import com.vmware.vip.core.Interceptor.LiteAPICrossDomainInterceptor;
 
 /**
@@ -74,6 +75,9 @@ public class LiteWebConfiguration implements WebMvcConfigurer {
 
 	@Value("${vipservice.cross.domain.maxage}")
 	private String maxAge;
+	
+	@Value("${cache-control.maxage:0}")
+	private int cacheControlMaxAge;
 	
 	/**
 	 * Add ETag into response header for data cache
@@ -134,6 +138,11 @@ public class LiteWebConfiguration implements WebMvcConfigurer {
 			.addPathPatterns(API.I18N_API_ROOT + APIV1.V + "/**")
 			.addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**");
 		}
+		
+		//cacheControl
+	   if(cacheControlMaxAge >0) {
+					registry.addInterceptor(new APICacheControlInterceptor(this.cacheControlMaxAge)).addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**");
+	   }
 	}
 
 	@Override
