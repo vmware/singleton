@@ -32,7 +32,9 @@ Besides Localization, VIP client also provides I18n support for Datetime format,
 
 #### **Installation**
 
-![ngx-1](https://github.com/zmengjiao/singleton/raw/website/content/en/images/ngx-1.png)
+<p class="install"> <span class="function">1 | </span><span class="token">npm install</span> <span class="function">--registry</span> https://build-artifactory.eng.vmware.com/artifactory/api/npm/npm <span class="function">@vmw/ngx-vip --save</span><p>
+
+<!-- ![ngx-1](https://github.com/zmengjiao/singleton/raw/website/content/en/images/ngx-1.png) -->
 
 #### **Strings externalization**
 
@@ -99,5 +101,21 @@ If you cannot find the necessary documentation or the answer to your question by
     }
     table thead tr th:nth-child(3) {
         width:10rem;
+    }
+    .install {
+        font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+        border: 1px solid #ccc;
+        background-color: #FDF6E3;
+        width:100%;
+        height:4rem;
+        line-height:4rem;
+        padding-left:1.5rem;
+        border-radius: 4px;
+    }
+    .token {
+        color: #b58900;
+    }
+    .function {
+        color: #657C83;
     }
 </style>
