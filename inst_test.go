@@ -15,19 +15,19 @@ func TestGetInst(t *testing.T) {
 	defer Trace(curFunName())()
 
 	testInst := resetInst(&testCfg)
-	assert.Equal(t, testCfg, testInst.GetConfig())
-
+	// assert.Equal(t, testCfg, testInst.GetConfig())
+	assert.Equal(t, testCfg.OfflineResourcesBaseURL, testInst.dService.bundle.root)
 	// TODO: Test bundle
 
 	if len(testCfg.OnlineServiceURL) != 0 {
-		assert.NotNil(t, testInst.trans.server)
+		assert.NotNil(t, testInst.trans.ds.server)
 	}
 
 	// Verify translation manager
 	assert.NotNil(t, testInst.trans)
 
 	// Verify data service
-	dataService := testInst.trans.dataService
+	dataService := testInst.trans.ds
 	assert.NotNil(t, dataService)
 	// if testCfg.EnableCache {
 	assert.NotNil(t, dataService.cache)

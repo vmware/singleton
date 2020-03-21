@@ -268,7 +268,7 @@ func fileExist(filepath string) (bool, error) {
 // This isn't thread safe because Go runs tests parallel possibly.
 func clearCache(testInst *Instance) {
 	logger.Debug("clearcache")
-	testInst.trans.cache.(*defaultCache).componentMessages = new(sync.Map)
+	testInst.trans.ds.cache.(*defaultCache).m = new(sync.Map)
 	cacheInfoInst = newCacheInfo()
 }
 

@@ -28,18 +28,18 @@ type Translation interface {
 
 //!+ defaultTrans
 type defaultTrans struct {
-	*dataService
+	ds            *dataService
 	defaultLocale string
 }
 
 func (t *defaultTrans) GetStringMessage(name, version, locale, component, key string, args ...string) (string, error) {
 
-	compData, err := t.dataService.GetComponentMessages(name, version, locale, component)
+	compData, err := t.GetComponentMessages(name, version, locale, component)
 	if err != nil {
 		if strings.Compare(strings.ToLower(locale), strings.ToLower(t.defaultLocale)) != 0 {
 			logger.Error("Fallback to default locale because of error: " + err.Error())
 			locale = t.defaultLocale
-			compData, err = t.dataService.GetComponentMessages(name, version, locale, component)
+			compData, err = t.GetComponentMessages(name, version, locale, component)
 		}
 	}
 	if err != nil {
@@ -58,6 +58,30 @@ func (t *defaultTrans) GetStringMessage(name, version, locale, component, key st
 	}
 
 	return message, nil
+}
+
+func (t *defaultTrans) GetLocaleList(name, version string) (data []string, err error) {
+	item := &dataItem{itemLocales, translationID{name, version}, nil, nil}
+	err = t.ds.getItem(item)
+	data, _ = item.data.([]string)
+	return
+}
+func (t *defaultTrans) GetComponentList(name, version string) (data []string, err error) {
+	item := &dataItem{itemComponents, translationID{name, version}, nil, nil}
+
+	err = t.ds.getItem(item)
+	data, _ = item.data.([]string)
+
+	return
+}
+
+func (t *defaultTrans) GetComponentMessages(name, version, locale, component string) (data ComponentMsgs, err error) {
+	item := &dataItem{itemComponent, componentID{name, version, locale, component}, nil, nil}
+
+	err = t.ds.getItem(item)
+	data, _ = item.data.(ComponentMsgs)
+	// fmt.Printf("data to return: \n%#v\n", data)
+	return
 }
 
 //!- defaultTrans

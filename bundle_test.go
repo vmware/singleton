@@ -14,7 +14,7 @@ import (
 
 func TestBundleGetComponents(t *testing.T) {
 	testInst := resetInst(&testCfg)
-	bundle := testInst.trans.bundle
+	bundle := testInst.trans.ds.bundle
 
 	comps, err := bundle.getComponents(name, version)
 
@@ -25,7 +25,7 @@ func TestBundleGetComponents(t *testing.T) {
 func TestBundleGetLocales(t *testing.T) {
 	testInst := resetInst(&testCfg)
 
-	bundle := testInst.trans.bundle
+	bundle := testInst.trans.ds.bundle
 
 	locales, err := bundle.getLocales(name, version)
 	logger.Debug(fmt.Sprintf("%#v\n", locales))
@@ -36,7 +36,7 @@ func TestBundleGetLocales(t *testing.T) {
 func TestBundleGetCompMessages(t *testing.T) {
 	testInst := resetInst(&testCfg)
 
-	bundle := testInst.trans.bundle
+	bundle := testInst.trans.ds.bundle
 
 	locale := "fr"
 	comp := "sunglow"

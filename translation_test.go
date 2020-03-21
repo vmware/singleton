@@ -49,10 +49,10 @@ func TestGetCompMessages(t *testing.T) {
 			t.Errorf("%s = %d, want %d", testData.desc, messages.Size(), testData.expected)
 		}
 
-		messagesInCache, found := testInst.dService.cache.GetComponentMessages(name, version, testData.locale, testData.component)
+		messagesInCache, found := testInst.dService.cache.Get(componentID{name, version, testData.locale, testData.component})
 		assert.True(t, found)
 		assert.NotNil(t, messagesInCache)
-		assert.Equal(t, testData.expected, messagesInCache.Size())
+		assert.Equal(t, testData.expected, messagesInCache.(ComponentMsgs).Size())
 	}
 
 	assert.True(t, gock.IsDone())
@@ -132,10 +132,10 @@ func TestRefreshCache(t *testing.T) {
 		gock.Clean()
 
 		// Check the data in cache
-		messagesInCache, found := cacheObj.GetComponentMessages(name, version, testData.locale, testData.component)
+		messagesInCache, found := cacheObj.Get(componentID{name, version, testData.locale, testData.component})
 		assert.True(t, found)
 		assert.NotNil(t, messagesInCache)
-		assert.Equal(t, testData.expected, messagesInCache.Size())
+		assert.Equal(t, testData.expected, messagesInCache.(ComponentMsgs).Size())
 
 		// Getting before time out, no communication to server because mock is enabled
 		messages, err = dataService.GetComponentMessages(name, version, testData.locale, testData.component)
@@ -158,9 +158,9 @@ func TestRefreshCache(t *testing.T) {
 		assert.True(t, gock.IsDone())
 
 		// Check the data in cache
-		messagesInCache, found = cacheObj.GetComponentMessages(name, version, testData.locale, testData.component)
+		messagesInCache, found = cacheObj.Get(componentID{name, version, testData.locale, testData.component})
 		assert.True(t, found)
-		assert.Equal(t, 7, messagesInCache.Size())
+		assert.Equal(t, 7, messagesInCache.(ComponentMsgs).Size())
 	}
 
 	assert.True(t, gock.IsDone())
@@ -380,7 +380,7 @@ func TestGetCompMessagesAbnormal(t *testing.T) {
 		assert.Nil(t, messages)
 		assert.Contains(t, err.Error(), testData.err)
 
-		compCache, found := cache.GetComponentMessages(name, version, testData.locale, testData.component)
+		compCache, found := cache.Get(componentID{name, version, testData.locale, testData.component})
 		assert.False(t, found, testData.desc)
 		assert.Nil(t, compCache, testData.desc)
 	}

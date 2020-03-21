@@ -20,7 +20,7 @@ const (
 
 //!+bundleDAO
 type bundleDAO struct {
-	OfflineResourcesBaseURL string
+	root string
 }
 
 func (d *bundleDAO) getItem(item *dataItem) (err error) {
@@ -42,7 +42,7 @@ func (d *bundleDAO) getItem(item *dataItem) (err error) {
 }
 
 func (d *bundleDAO) getComponents(name, version string) ([]string, error) {
-	fis, err := ioutil.ReadDir(filepath.Join(d.OfflineResourcesBaseURL, name, version))
+	fis, err := ioutil.ReadDir(filepath.Join(d.root, name, version))
 	if err != nil {
 		return nil, err
 	}
@@ -64,7 +64,7 @@ func (d *bundleDAO) getLocales(name, version string) ([]string, error) {
 
 	locales := map[string]struct{}{}
 	for _, comp := range comps {
-		fPath := filepath.Join(d.OfflineResourcesBaseURL, name, version, comp)
+		fPath := filepath.Join(d.root, name, version, comp)
 		fis, err := ioutil.ReadDir(fPath)
 		if err != nil {
 			return nil, err
@@ -86,7 +86,7 @@ func (d *bundleDAO) getLocales(name, version string) ([]string, error) {
 }
 
 func (d *bundleDAO) getComponentMessages(name, version, locale, component string) (ComponentMsgs, error) {
-	compDirPath := filepath.Join(d.OfflineResourcesBaseURL, name, version, component)
+	compDirPath := filepath.Join(d.root, name, version, component)
 	files, err := ioutil.ReadDir(compDirPath)
 	if err != nil {
 		return nil, err

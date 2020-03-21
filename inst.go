@@ -79,12 +79,12 @@ func (i *Instance) GetTranslation() Translation {
 
 // SetHTTPHeaders Add customized HTTP headers
 func (i *Instance) SetHTTPHeaders(h map[string]string) {
-	i.trans.server.setHTTPHeaders(h)
+	i.trans.ds.server.setHTTPHeaders(h)
 }
 
 // RegisterCache Register cache implementation. There is a default implementation
-func (i *Instance) RegisterCache(cs Cache) {
-	i.trans.registerCache(cs)
+func (i *Instance) RegisterCache(c Cache) {
+	i.trans.ds.registerCache(c)
 }
 
 // SetLogger Set a global logger. There is a default console logger
