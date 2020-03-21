@@ -208,13 +208,4 @@ Besides live update, the other choice is using browser refresh to reload the res
         font-weight:500;
         text-transform: inherit;
     }
-    /* table thead tr th:first-child {
-        width:13rem;
-    }
-    table thead tr th:nth-child(2) {
-        width:10rem;
-    }
-    table thead tr th:nth-child(3) {
-        width:10rem;
-    } */
 </style>
