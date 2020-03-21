@@ -7,6 +7,7 @@ package sgtn
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"path/filepath"
 	"strings"
@@ -20,6 +21,24 @@ const (
 //!+bundleDAO
 type bundleDAO struct {
 	OfflineResourcesBaseURL string
+}
+
+func (d *bundleDAO) getItem(item *dataItem) (err error) {
+	switch item.iType {
+	case itemComponent:
+		id := item.id.(componentID)
+		item.data, err = d.getComponentMessages(id.Name, id.Version, id.Locale, id.Component)
+	case itemLocales:
+		id := item.id.(translationID)
+		item.data, err = d.getLocales(id.Name, id.Version)
+	case itemComponents:
+		id := item.id.(translationID)
+		item.data, err = d.getComponents(id.Name, id.Version)
+	default:
+		err = fmt.Errorf("Invalid item type: %s", item.iType)
+	}
+
+	return
 }
 
 func (d *bundleDAO) getComponents(name, version string) ([]string, error) {

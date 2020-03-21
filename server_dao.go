@@ -6,9 +6,13 @@
 package sgtn
 
 import (
+	"encoding/json"
+	"fmt"
 	"net"
+	"net/http"
 	"net/url"
 	"path"
+
 	"strings"
 	"sync/atomic"
 	"time"
@@ -38,78 +42,99 @@ func newServer(OnlineServiceURL string) (*serverDAO, error) {
 		return nil, err
 	}
 
-	return &serverDAO{svrURL: svrURL}, nil
+	s := &serverDAO{svrURL: svrURL, headers: map[string]string{}}
+	return s, nil
 }
 
-// getComponentMessages Get a component's messages
-func (s *serverDAO) getComponentMessages(name, version, locale, component string) (ComponentMsgs, error) {
-	urlToQuery := s.processURL(productTranslationGetConst, name, version, locale, component)
+func (s *serverDAO) getItem(item *dataItem) (err error) {
 
-	data := new(queryProduct)
-	if err := s.sendRequest(urlToQuery, s.headers, data); err != nil {
-		return nil, err
+	var data interface{}
+	uInfo := cacheInfoInst.getUpdateInfo(item)
+
+	switch item.iType {
+	case itemComponent:
+		data = new(queryProduct)
+	case itemLocales:
+		data = new(queryLocales)
+	case itemComponents:
+		data = new(queryComponents)
+	default:
+		return fmt.Errorf("Invalid item type: %s", item.iType)
 	}
 
-	if len(data.Bundles) != 1 {
-		return nil, errors.New("Wrong data from server")
-	}
-	compData := defaultComponentMsgs{messages: data.Bundles[0].Messages}
+	urlToQuery := s.prepareURL(item)
 
-	return &compData, nil
+	s.headers[httpHeaderIfNoneMatch] = uInfo.getETag()
+	defer func() { delete(s.headers, httpHeaderIfNoneMatch) }()
+	resp, err := s.sendRequest(urlToQuery, s.headers, data)
+	if resp != nil {
+		item.attrs = resp.Header
+	}
+	if err != nil {
+		return err
+	}
+
+	switch item.iType {
+	case itemComponent:
+		productData := data.(*queryProduct)
+		if len(productData.Bundles) != 1 {
+			return errors.New("Wrong data from server")
+		}
+		item.data = &defaultComponentMsgs{messages: productData.Bundles[0].Messages}
+	case itemLocales:
+		localesData := data.(*queryLocales)
+		item.data = localesData.Locales
+	case itemComponents:
+		componentsData := data.(*queryComponents)
+		item.data = componentsData.Components
+	default:
+		return fmt.Errorf("Invalid item type: %s", item.iType)
+	}
+
+	// fmt.Printf("item to return: \n%#v\n", item)
+
+	return nil
 }
 
-// getLocales Get supported locales
-func (s *serverDAO) getLocales(name, version string) ([]string, error) {
-	urlToQuery := s.processURL(productLocaleListGetConst, name, version)
-
-	data := new(queryLocales)
-	if err := s.sendRequest(urlToQuery, s.headers, data); err != nil {
-		return nil, err
-	}
-
-	return data.Locales, nil
-}
-
-// getComponents Get supported components
-func (s *serverDAO) getComponents(name, version string) ([]string, error) {
-	urlToQuery := s.processURL(productComponentListGetConst, name, version)
-
-	data := new(queryComponents)
-	if err := s.sendRequest(urlToQuery, s.headers, data); err != nil {
-		return nil, err
-	}
-
-	return data.Components, nil
-}
-
-func (s *serverDAO) addHTTPHeaders(h map[string]string) {
+func (s *serverDAO) setHTTPHeaders(h map[string]string) {
 	s.headers = h
 }
 
-func (s *serverDAO) processURL(relURL string, args ...string) *url.URL {
-	newRelURL := strings.Replace(relURL, "{"+productNameConst+"}", args[0], 1)
-	newRelURL = strings.Replace(newRelURL, "{"+versionConst+"}", args[1], 1)
-
+func (s *serverDAO) prepareURL(item *dataItem) *url.URL {
 	urlToQuery := url.URL(*s.svrURL)
-	urlToQuery.Path = path.Join(urlToQuery.Path, newRelURL)
-
-	switch relURL {
-	case productTranslationGetConst:
-		addURLParam(&urlToQuery, localesConst, args[2])
-		addURLParam(&urlToQuery, componentsConst, args[3])
+	var myURL, name, version, locale, component string
+	switch item.iType {
+	case itemComponent:
+		id := item.id.(componentID)
+		myURL = productTranslationGetConst
+		name, version, locale, component = id.Name, id.Version, id.Locale, id.Component
+		addURLParams(&urlToQuery, map[string]string{localesConst: locale, componentsConst: component})
+	case itemLocales:
+		id := item.id.(translationID)
+		name, version = id.Name, id.Version
+		myURL = productLocaleListGetConst
+	case itemComponents:
+		id := item.id.(translationID)
+		name, version = id.Name, id.Version
+		myURL = productComponentListGetConst
 	}
+
+	myURL = strings.Replace(myURL, "{"+productNameConst+"}", name, 1)
+	myURL = strings.Replace(myURL, "{"+versionConst+"}", version, 1)
+
+	urlToQuery.Path = path.Join(urlToQuery.Path, myURL)
 
 	return &urlToQuery
 }
-func (s *serverDAO) sendRequest(u *url.URL, header map[string]string, data interface{}) error {
+func (s *serverDAO) sendRequest(u *url.URL, header map[string]string, data interface{}) (*http.Response, error) {
 	if atomic.LoadUint32(&s.status) == serverTimeout {
 		if time.Now().Unix()-atomic.LoadInt64(&s.lastErrorMoment) < serverRetryInterval {
-			return errors.New("Server times out")
+			return nil, errors.New("Server times out")
 		}
 		atomic.StoreUint32(&s.status, serverNormal)
 	}
 
-	err := getDataFromServer(u, header, data)
+	resp, err := getDataFromServer(u, header, data)
 	if err != nil {
 		if oe, ok := err.(net.Error); ok {
 			if oe.Timeout() {
@@ -118,10 +143,10 @@ func (s *serverDAO) sendRequest(u *url.URL, header map[string]string, data inter
 			}
 		}
 
-		return err
+		return resp, err
 	}
 
-	return nil
+	return resp, nil
 }
 
 //!+ common functions
@@ -137,22 +162,34 @@ func addURLParams(u *url.URL, args map[string]string) {
 	u.RawQuery = values.Encode()
 }
 
-var getDataFromServer = func(u *url.URL, header map[string]string, data interface{}) error {
-	respData := new(respBody)
-	err := httpget(u.String(), header, respData)
+var getDataFromServer = func(u *url.URL, header map[string]string, data interface{}) (*http.Response, error) {
+	bodyObj := new(respBody)
+	var bodyBytes []byte
+	resp, err := httpget(u.String(), header, &bodyBytes)
 	if err != nil {
-		return err
+		return resp, err
 	}
 
-	if !isBusinessSuccess(respData.Result.Code) {
-		return &sgtnError{businessError, respData.Result.Code, respData.Result.Message, nil}
+	if !isSuccess(resp.StatusCode) {
+		return resp, &sgtnError{httpError, resp.StatusCode, resp.Status}
 	}
 
-	if err = mapstructure.Decode(respData.Data, &data); err != nil {
-		return err
+	err = json.Unmarshal(bodyBytes, bodyObj)
+	if err != nil {
+		return resp, err
 	}
 
-	return nil
+	if !isBusinessSuccess(bodyObj.Result.Code) {
+		return resp, &sgtnError{businessError, bodyObj.Result.Code, bodyObj.Result.Message}
+	}
+
+	if err = mapstructure.Decode(bodyObj.Data, &data); err != nil {
+		return resp, err
+	}
+
+	//fmt.Printf("decoded data is: %#v\n", data)
+
+	return resp, nil
 }
 
 func isBusinessSuccess(code int) bool {

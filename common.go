@@ -16,6 +16,16 @@ type ComponentMsgs interface {
 	Size() int
 }
 
+type (
+	translationID struct {
+		Name, Version string
+	}
+
+	componentID struct {
+		Name, Version, Locale, Component string
+	}
+)
+
 // Logger The logger interface
 type Logger interface {
 	Debug(message string)
@@ -36,15 +46,14 @@ type sgtnError struct {
 	etype errorType
 	code  int
 	msg   string
-	atrrs map[string][]string
 }
 
 func (e *sgtnError) Error() string {
 	switch e.etype {
 	case businessError:
-		return fmt.Sprintf("Business error from server is code: %d, message: %s", e.code, e.msg)
+		return fmt.Sprintf("Error from server is code: %d, message: %s", e.code, e.msg)
 	case httpError:
-		return fmt.Sprintf("HTTP error from server is code: %d, message: %s", e.code, e.msg)
+		return fmt.Sprintf("HTTP error is code: %d, message: %s", e.code, e.msg)
 	default:
 		return e.msg
 	}

@@ -7,7 +7,6 @@ package sgtn
 
 import (
 	"net/http"
-	"net/url"
 	"strings"
 	"sync"
 	"time"
@@ -39,7 +38,8 @@ func GetInst() *Instance {
 }
 
 //Initialize initialize the instance
-func (i *Instance) Initialize() {
+func (i *Instance) Initialize(cfg *Config) {
+	i.cfg = *cfg
 	i.initializOnce.Do(i.doInitialize)
 }
 
@@ -47,16 +47,16 @@ func (i *Instance) doInitialize() {
 	logger.Debug("Initializing Singleton instance.")
 
 	dService := new(dataService)
-	if i.cfg.EnableCache {
-		dService.enableCache = i.cfg.EnableCache
-		dService.cacheSyncInfo = newCacheSyncInfo()
-	}
+	// if i.cfg.EnableCache {
+	// dService.enableCache = i.cfg.EnableCache
+	cacheInfoInst = newCacheInfo()
+	// }
 	if len(i.cfg.OnlineServiceURL) != 0 {
-		svrURL, err := url.Parse(i.cfg.OnlineServiceURL)
+		var err error
+		dService.server, err = newServer(i.cfg.OnlineServiceURL)
 		if err != nil {
-			logger.Error("Fail to parse URL: " + i.cfg.OnlineServiceURL)
+			logger.Error(err.Error())
 		}
-		dService.server = &serverDAO{svrURL: svrURL}
 	}
 	if strings.TrimSpace(i.cfg.OfflineResourcesBaseURL) != "" {
 		dService.bundle = &bundleDAO{i.cfg.OfflineResourcesBaseURL}
@@ -67,24 +67,19 @@ func (i *Instance) doInitialize() {
 	i.RegisterCache(newCache())
 }
 
-// SetConfig set config of instance
-func (i *Instance) SetConfig(cfg *Config) {
-	i.cfg = *cfg
-}
-
 // GetConfig Get the config of Singleton instance
-func (i *Instance) GetConfig() Config {
-	return i.cfg
-}
+// func (i *Instance) GetConfig() Config {
+// 	return i.cfg
+// }
 
 // GetTranslation Get translation instance
 func (i *Instance) GetTranslation() Translation {
 	return i.trans
 }
 
-// AddHTTPHeaders Add customized HTTP headers
-func (i *Instance) AddHTTPHeaders(h map[string]string) {
-	i.trans.server.addHTTPHeaders(h)
+// SetHTTPHeaders Add customized HTTP headers
+func (i *Instance) SetHTTPHeaders(h map[string]string) {
+	i.trans.server.setHTTPHeaders(h)
 }
 
 // RegisterCache Register cache implementation. There is a default implementation

@@ -9,17 +9,19 @@ import (
 	"sync"
 )
 
+var cache Cache
+
 type (
 	defaultCache struct {
-		tMessages  translationMsgs
-		locales    *sync.Map
-		components *sync.Map
+		componentMessages *sync.Map
+		locales           *sync.Map
+		components        *sync.Map
 	}
 )
 
 func newCache() Cache {
 	c := &defaultCache{
-		&defaultTranslationMsgs{new(sync.Map)},
+		new(sync.Map),
 		new(sync.Map),
 		new(sync.Map),
 	}
@@ -47,13 +49,13 @@ func (c *defaultCache) SetComponents(name, version string, components []string) 
 	c.components.Store(translationID{name, version}, components)
 }
 func (c *defaultCache) GetComponentMessages(name, version, locale, comp string) (data ComponentMsgs, found bool) {
-	compData, ok := c.tMessages.Get(componentID{name, version, locale, comp})
-	if !ok {
-		return nil, ok
+	v, ok := c.componentMessages.Load(componentID{name, version, locale, comp})
+	if ok {
+		return v.(ComponentMsgs), ok
 	}
 
-	return compData, true
+	return nil, ok
 }
 func (c *defaultCache) SetComponentMessages(name, version, locale, comp string, data ComponentMsgs) {
-	c.tMessages.Put(componentID{name, version, locale, comp}, data)
+	c.componentMessages.Store(componentID{name, version, locale, comp}, data)
 }

@@ -7,6 +7,7 @@ package sgtn
 
 import (
 	"errors"
+	"net/http"
 	"net/url"
 	"testing"
 
@@ -17,17 +18,16 @@ func TestGetLocaleCompAbnormal(t *testing.T) {
 	defer Trace(curFunName())()
 
 	saved := getDataFromServer
-	getDataFromServer = saved
 	defer func() { getDataFromServer = saved }()
 
 	errMsg := "TestGetLocaleCompAbnormal"
-	getDataFromServer = func(u *url.URL, header map[string]string, data interface{}) error {
-		return errors.New(errMsg)
+	getDataFromServer = func(u *url.URL, header map[string]string, data interface{}) (*http.Response, error) {
+		return nil, errors.New(errMsg)
 	}
 
-	testCfg := testCfg
-	testCfg.OfflineResourcesBaseURL = ""
-	testInst := resetInst(&testCfg)
+	newCfg := testCfg
+	newCfg.OfflineResourcesBaseURL = ""
+	testInst := resetInst(&newCfg)
 
 	trans := testInst.GetTranslation()
 

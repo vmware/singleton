@@ -6,7 +6,7 @@
 package sgtn
 
 import (
-	"encoding/json"
+	"io/ioutil"
 	"net/http"
 )
 
@@ -19,12 +19,12 @@ var (
 	newHTTPRequest = http.NewRequest
 )
 
-func httpget(urlToGet string, header map[string]string, respData interface{}) error {
+func httpget(urlToGet string, header map[string]string, body *[]byte) (*http.Response, error) {
 	logger.Info("URL to get is: " + urlToGet)
 
 	req, err := newHTTPRequest(http.MethodGet, urlToGet, nil)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	req.Close = true
 	for k, v := range header {
@@ -32,17 +32,17 @@ func httpget(urlToGet string, header map[string]string, respData interface{}) er
 	}
 	resp, err := httpclient.Do(req)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	defer resp.Body.Close()
 
-	if !isSuccess(resp.StatusCode) {
-		return &sgtnError{httpError, resp.StatusCode, "", resp.Header}
+	b, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return resp, err
 	}
+	*body = b
 
-	err = json.NewDecoder(resp.Body).Decode(respData)
-
-	return err
+	return resp, err
 }
 
 func isSuccess(code int) bool {

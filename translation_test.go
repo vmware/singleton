@@ -115,10 +115,10 @@ func TestRefreshCache(t *testing.T) {
 	trans := testInst.GetTranslation()
 	dataService := testInst.trans
 	cacheObj := testInst.dService.cache
-	cacheSyncInfo := testInst.dService.cacheSyncInfo
 	for _, testData := range tests {
 		EnableMockData(testData.mocks[0])
-		cacheUInfo := cacheSyncInfo.getCompUpdateInfo(name, version, testData.locale, testData.component)
+		item := &dataItem{itemComponent, componentID{name, version, testData.locale, testData.component}, nil, nil}
+		cacheUInfo := cacheInfoInst.getUpdateInfo(item)
 		cacheUInfo.setAge(100)
 
 		// Get component messages first to populate cache
@@ -516,7 +516,7 @@ func TestAddHTTPHeader(t *testing.T) {
 			EnableMockData(m)
 		}
 
-		testInst.AddHTTPHeaders(map[string]string{
+		testInst.SetHTTPHeaders(map[string]string{
 			"user": "test_user",
 			"pass": "goodpadd",
 		})
@@ -549,7 +549,8 @@ func TestGetComponents(t *testing.T) {
 	newCfg := testCfg
 	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
-	ui := testInst.dService.cacheSyncInfo.getComponentsUpdateInfo(name, version)
+	item := &dataItem{itemComponents, translationID{name, version}, nil, nil}
+	ui := cacheInfoInst.getUpdateInfo(item)
 	ui.setAge(100)
 	for _, testData := range tests {
 
@@ -615,7 +616,8 @@ func TestGetLocales(t *testing.T) {
 	for _, testData := range tests {
 		EnableMockData(testData.mocks[0])
 
-		ui := testInst.dService.cacheSyncInfo.getLocalesUpdateInfo(name, version)
+		item := &dataItem{itemLocales, translationID{name, version}, nil, nil}
+		ui := cacheInfoInst.getUpdateInfo(item)
 		ui.setAge(100)
 
 		locales, err := trans.GetLocaleList(name, version)

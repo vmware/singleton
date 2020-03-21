@@ -6,6 +6,9 @@
 package sgtn
 
 import (
+	"fmt"
+	"net/http"
+	"strconv"
 	"time"
 
 	"errors"
@@ -13,59 +16,198 @@ import (
 
 //!+dataService
 type dataService struct {
-	enableCache bool
+	// enableCache bool
 
-	cache         Cache
-	cacheSyncInfo *cacheSyncInfo
+	cache Cache
 
 	bundle *bundleDAO
 	server *serverDAO
 }
 
-func (ds *dataService) GetLocaleList(name, version string) ([]string, error) {
-	if !ds.enableCache {
-		return ds.fetchLocaleList(name, version)
+type itemType int
+
+const (
+	itemComponent itemType = iota
+	itemLocales
+	itemComponents
+)
+
+func (t itemType) String() string {
+	switch t {
+	case itemComponent:
+		return "component"
+	case itemLocales:
+		return "locales"
+	case itemComponents:
+		return "components"
+	default:
+		return ""
 	}
-
-	localeList := ds.cache.GetLocales(name, version)
-	if len(localeList) != 0 {
-		if uInfo := ds.cacheSyncInfo.getLocalesUpdateInfo(name, version); uInfo.isExpired() {
-			go ds.refreshLocaleList(name, version)
-		}
-
-		return localeList, nil
-	}
-
-	if errRefresh := ds.refreshLocaleList(name, version); errRefresh != nil {
-		return nil, errRefresh
-	}
-
-	localeList = ds.cache.GetLocales(name, version)
-
-	return localeList, nil
 }
 
-func (ds *dataService) GetComponentList(name, version string) ([]string, error) {
-	if !ds.enableCache {
-		return ds.fetchComponentList(name, version)
-	}
+type dataItem struct {
+	iType itemType
+	id    interface{}
+	data  interface{}
+	attrs interface{}
+}
 
-	compList := ds.cache.GetComponents(name, version)
-	if len(compList) != 0 {
-		if uInfo := ds.cacheSyncInfo.getComponentsUpdateInfo(name, version); uInfo.isExpired() {
-			go ds.refreshComponentList(name, version)
+func (ds *dataService) GetLocaleList(name, version string) (data []string, err error) {
+	item := &dataItem{itemLocales, translationID{name, version}, nil, nil}
+
+	err = ds.getItem(item)
+	data, _ = item.data.([]string)
+	return
+}
+
+func (ds *dataService) getItem(item *dataItem) (err error) {
+	// if !ds.enableCache {
+	// 	err = ds.fetchItem(item)
+	// 	return
+	// }
+
+	ok := ds.getItemCache(item)
+	if ok {
+		if uInfo := ds.getItemUpdateInfo(item); uInfo.isExpired() {
+			go ds.refreshItemCache(item, false)
 		}
 
-		return compList, nil
+		return nil
 	}
 
-	if errRefresh := ds.refreshComponentList(name, version); errRefresh != nil {
-		return nil, errRefresh
+	errRefresh := ds.refreshItemCache(item, true)
+	if errRefresh != nil {
+		return errRefresh
 	}
 
-	compList = ds.cache.GetComponents(name, version)
+	return
+}
 
-	return compList, nil
+func (ds *dataService) fetchItem(item *dataItem) (err error) {
+	logger.Debug("Start fetching data")
+
+	uInfo := cacheInfoInst.getUpdateInfo(item)
+
+	if ds.server != nil {
+		err = ds.server.getItem(item)
+		if isNeedToUpdateCacheControl(err) {
+			if err != nil {
+				ds.getItemCache(item)
+				// err = nil
+			}
+			return nil
+		}
+
+		logger.Error("Fail to get from server: " + err.Error())
+	}
+
+	if ds.bundle != nil {
+		err = ds.bundle.getItem(item)
+		if err == nil {
+			uInfo.setAge(100) // Todo: for local bundles
+			return
+		}
+	}
+
+	return err
+}
+
+func (ds *dataService) updateCacheControl(item *dataItem, uInfo *singleCacheInfo) {
+	headers := item.attrs.(http.Header)
+	cc := headers.Get(httpHeaderCacheControl)
+	age, parseErr := strconv.ParseInt(cc, 10, 64)
+	if parseErr != nil {
+		logger.Error("Wrong cache control: " + cc)
+	} else {
+		uInfo.setAge(age)
+	}
+	uInfo.setETag(headers.Get(httpHeaderETag))
+
+}
+
+func isNeedToUpdateCacheControl(err error) bool {
+	if err != nil {
+		myErr, ok := err.(*sgtnError)
+		if !ok || myErr.etype != httpError || myErr.code != httpCode304 {
+			return false
+		}
+	}
+
+	return true
+}
+func (ds *dataService) getItemCache(item *dataItem) (ok bool) {
+	switch item.iType {
+	case itemComponent:
+		id := item.id.(componentID)
+		item.data, ok = ds.cache.GetComponentMessages(id.Name, id.Version, id.Locale, id.Component)
+		return
+	case itemLocales:
+		id := item.id.(translationID)
+		locales := ds.cache.GetLocales(id.Name, id.Version)
+		item.data = locales
+		return len(locales) != 0
+	case itemComponents:
+		id := item.id.(translationID)
+		components := ds.cache.GetComponents(id.Name, id.Version)
+		item.data = components
+		return len(components) != 0
+	default:
+		return false
+	}
+}
+func (ds *dataService) setItemCache(item *dataItem) {
+	switch item.iType {
+	case itemComponent:
+		id := item.id.(componentID)
+		compData, _ := item.data.(ComponentMsgs)
+		ds.cache.SetComponentMessages(id.Name, id.Version, id.Locale, id.Component, compData)
+	case itemLocales:
+		id := item.id.(translationID)
+		ds.cache.SetLocales(id.Name, id.Version, item.data.([]string))
+	case itemComponents:
+		id := item.id.(translationID)
+		ds.cache.SetComponents(id.Name, id.Version, item.data.([]string))
+	default:
+		return
+	}
+}
+func (ds *dataService) refreshItemCache(item *dataItem, wait bool) error {
+	uInfo := cacheInfoInst.getUpdateInfo(item)
+
+	if uInfo.setUpdating() {
+		defer uInfo.setUpdated()
+		uInfo.setTime(time.Now().Unix())
+
+		logger.Debug("Start refreshing cache")
+		err := ds.fetchItem(item)
+		if err != nil {
+			return err
+		}
+
+		ds.setItemCache(item)
+		return nil
+	} else if wait {
+		uInfo.waitUpdate()
+	}
+
+	found := ds.getItemCache(item)
+	if !found {
+		return errors.New("Fail to refresh cache")
+	}
+
+	return nil
+}
+func (ds *dataService) getItemUpdateInfo(item *dataItem) *singleCacheInfo {
+	return cacheInfoInst.getUpdateInfo(item)
+}
+
+func (ds *dataService) GetComponentList(name, version string) (data []string, err error) {
+	item := &dataItem{itemComponents, translationID{name, version}, nil, nil}
+
+	err = ds.getItem(item)
+	data, _ = item.data.([]string)
+
+	return
 }
 
 func (ds *dataService) GetStringMessage(name, version, locale, component, key string) (string, error) {
@@ -84,145 +226,108 @@ func (ds *dataService) GetStringMessage(name, version, locale, component, key st
 	return message, nil
 }
 
-func (ds *dataService) GetComponentMessages(name, version, locale, component string) (ComponentMsgs, error) {
-	if !ds.enableCache {
-		return ds.fetchCompData(name, version, locale, component)
-	}
+func (ds *dataService) GetComponentMessages(name, version, locale, component string) (data ComponentMsgs, err error) {
+	item := &dataItem{itemComponent, componentID{name, version, locale, component}, nil, nil}
 
-	compData, ok := ds.cache.GetComponentMessages(name, version, locale, component)
-	if ok {
-		if uInfo := ds.cacheSyncInfo.getCompUpdateInfo(name, version, locale, component); uInfo.isExpired() {
-			go ds.refreshCompCache(name, version, locale, component, false)
-		}
-		return compData, nil
-	}
-
-	compData, errRefresh := ds.refreshCompCache(name, version, locale, component, true)
-	if errRefresh != nil {
-		return nil, errRefresh
-	}
-	return compData, nil
+	err = ds.getItem(item)
+	data, _ = item.data.(ComponentMsgs)
+	fmt.Printf("data to return: \n%#v\n", data)
+	return
 }
 
 func (ds *dataService) fetchLocaleList(name, version string) (data []string, err error) {
 	logger.Debug("Start fetching locale list")
 
+	item := &dataItem{itemLocales, translationID{name, version}, nil, nil}
 	if ds.server != nil {
-		data, err = ds.server.getLocales(name, version)
+		err = ds.server.getItem(item)
 		if err == nil {
-			return data, nil
+			return item.data.([]string), nil
 		}
 		logger.Error("Fail to get from server: " + err.Error())
 	}
 
 	if ds.bundle != nil {
-		data, err = ds.bundle.getLocales(name, version)
+		err = ds.bundle.getItem(item)
 		if err == nil {
-			return data, nil
+			return item.data.([]string), nil
 		}
 	}
 
-	return data, err
+	return
 }
 func (ds *dataService) fetchComponentList(name, version string) (data []string, err error) {
 	logger.Debug("Start fetching component list")
 
+	item := &dataItem{itemComponents, translationID{name, version}, nil, nil}
 	if ds.server != nil {
-		data, err = ds.server.getComponents(name, version)
+		err = ds.server.getItem(item)
 		if err == nil {
-			return data, nil
+			return item.data.([]string), nil
 		}
 		logger.Error("Fail to get from server: " + err.Error())
 	}
 
 	if ds.bundle != nil {
-		data, err = ds.bundle.getComponents(name, version)
+		err = ds.bundle.getItem(item)
 		if err == nil {
-			return data, nil
+			return item.data.([]string), nil
 		}
 	}
 
-	return data, err
+	return
 }
 func (ds *dataService) fetchCompData(name, version, locale, component string) (data ComponentMsgs, err error) {
 	logger.Debug("Start fetching data for locale: " + locale + ", component: " + component)
 
+	item := &dataItem{itemComponent, componentID{name, version, locale, component}, nil, nil}
 	if ds.server != nil {
-		data, err = ds.server.getComponentMessages(name, version, locale, component)
+		err = ds.server.getItem(item)
 		if err == nil {
-			return data, nil
+			return item.data.(ComponentMsgs), nil
 		}
 		logger.Error("Fail to get from server: " + err.Error())
 	}
 
 	if ds.bundle != nil {
-		data, err = ds.bundle.getComponentMessages(name, version, locale, component)
+		err = ds.bundle.getItem(item)
 		if err == nil {
-			return data, nil
+			return item.data.(ComponentMsgs), nil
 		}
 	}
 
-	return data, err
+	return
 }
 
-func (ds *dataService) refreshLocaleList(name, version string) error {
-	uInfo := ds.cacheSyncInfo.getLocalesUpdateInfo(name, version)
+func (ds *dataService) refreshLocaleList(name, version string) (data []string, err error) {
+	item := dataItem{itemLocales, translationID{name, version}, nil, nil}
 
-	logger.Debug("Start refreshing cache")
-	uInfo.setTime(time.Now().Unix())
+	err = ds.refreshItemCache(&item, true)
+	data, _ = item.data.([]string)
 
-	compData, err := ds.fetchLocaleList(name, version)
-	if err != nil {
-		return err
-	}
-
-	ds.cache.SetLocales(name, version, compData)
-	return nil
+	return
 }
-func (ds *dataService) refreshComponentList(name, version string) error {
-	uInfo := ds.cacheSyncInfo.getComponentsUpdateInfo(name, version)
+func (ds *dataService) refreshComponentList(name, version string) (data []string, err error) {
+	item := dataItem{itemComponents, translationID{name, version}, nil, nil}
 
-	logger.Debug("Start refreshing cache")
-	uInfo.setTime(time.Now().Unix())
+	err = ds.refreshItemCache(&item, true)
+	data, _ = item.data.([]string)
 
-	compData, err := ds.fetchComponentList(name, version)
-	if err != nil {
-		return err
-	}
-
-	ds.cache.SetComponents(name, version, compData)
-	return nil
+	return
 }
-func (ds *dataService) refreshCompCache(name, version, locale, component string, wait bool) (ComponentMsgs, error) {
-	uInfo := ds.cacheSyncInfo.getCompUpdateInfo(name, version, locale, component)
+func (ds *dataService) refreshCompCache(name, version, locale, component string, wait bool) (data ComponentMsgs, err error) {
+	item := dataItem{itemComponent, componentID{name, version, locale, component}, nil, nil}
 
-	if uInfo.setUpdating() {
-		defer uInfo.setUpdated()
-		uInfo.setTime(time.Now().Unix())
+	err = ds.refreshItemCache(&item, true)
+	data, _ = item.data.(ComponentMsgs)
 
-		logger.Debug("Start refreshing cache for locale: " + locale + ", component: " + component)
-		compData, err := ds.fetchCompData(name, version, locale, component)
-		if err != nil {
-			return nil, err
-		}
-
-		ds.cache.SetComponentMessages(name, version, locale, component, compData)
-		return compData, nil
-	} else if wait {
-		uInfo.waitUpdate()
-	}
-
-	compData, found := ds.cache.GetComponentMessages(name, version, locale, component)
-	if !found {
-		return nil, errors.New("Fail to refresh cache of component messages")
-	}
-	return compData, nil
+	return
 }
 
 func (ds *dataService) registerCache(cs Cache) {
-	if ds.enableCache {
-		ds.cache = cs
-	}
+	// if ds.enableCache {
+	ds.cache = cs
+	// }
 }
 
 //!-dataService
