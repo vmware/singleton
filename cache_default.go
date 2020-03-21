@@ -11,23 +11,16 @@ import (
 
 var cache Cache
 
-type (
-	defaultCache struct {
-		m *sync.Map
-	}
-)
+type defaultCache struct {
+	m *sync.Map
+}
 
 func newCache() Cache {
-	c := &defaultCache{
-		new(sync.Map),
-	}
-
-	return c
+	return &defaultCache{new(sync.Map)}
 }
 func (c *defaultCache) Get(key interface{}) (value interface{}, found bool) {
 	return c.m.Load(key)
 }
-
 func (c *defaultCache) Set(key interface{}, value interface{}) {
 	c.m.Store(key, value)
 }

@@ -16,6 +16,14 @@ type ComponentMsgs interface {
 	Size() int
 }
 
+// Logger The logger interface
+type Logger interface {
+	Debug(message string)
+	Info(message string)
+	Warn(message string)
+	Error(message string)
+}
+
 type (
 	translationID struct {
 		Name, Version string
@@ -25,14 +33,6 @@ type (
 		Name, Version, Locale, Component string
 	}
 )
-
-// Logger The logger interface
-type Logger interface {
-	Debug(message string)
-	Info(message string)
-	Warn(message string)
-	Error(message string)
-}
 
 type errorType uint16
 
@@ -57,4 +57,32 @@ func (e *sgtnError) Error() string {
 	default:
 		return e.msg
 	}
+}
+
+type itemType int
+
+const (
+	itemComponent itemType = iota
+	itemLocales
+	itemComponents
+)
+
+func (t itemType) String() string {
+	switch t {
+	case itemComponent:
+		return "component"
+	case itemLocales:
+		return "locales"
+	case itemComponents:
+		return "components"
+	default:
+		return ""
+	}
+}
+
+type dataItem struct {
+	iType itemType
+	id    interface{}
+	data  interface{}
+	attrs interface{}
 }

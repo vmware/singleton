@@ -23,7 +23,7 @@ type bundleDAO struct {
 	root string
 }
 
-func (d *bundleDAO) getItem(item *dataItem) (err error) {
+func (d *bundleDAO) get(item *dataItem) (err error) {
 	switch item.iType {
 	case itemComponent:
 		id := item.id.(componentID)

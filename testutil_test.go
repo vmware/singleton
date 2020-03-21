@@ -269,7 +269,7 @@ func fileExist(filepath string) (bool, error) {
 func clearCache(testInst *Instance) {
 	logger.Debug("clearcache")
 	testInst.trans.ds.cache.(*defaultCache).m = new(sync.Map)
-	cacheInfoInst = newCacheInfo()
+	cacheInfosInst = newCacheInfo()
 }
 
 func curFunName() string {

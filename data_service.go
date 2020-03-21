@@ -23,50 +23,22 @@ type dataService struct {
 	server *serverDAO
 }
 
-type itemType int
-
-const (
-	itemComponent itemType = iota
-	itemLocales
-	itemComponents
-)
-
-func (t itemType) String() string {
-	switch t {
-	case itemComponent:
-		return "component"
-	case itemLocales:
-		return "locales"
-	case itemComponents:
-		return "components"
-	default:
-		return ""
-	}
-}
-
-type dataItem struct {
-	iType itemType
-	id    interface{}
-	data  interface{}
-	attrs interface{}
-}
-
-func (ds *dataService) getItem(item *dataItem) (err error) {
+func (ds *dataService) get(item *dataItem) (err error) {
 	// if !ds.enableCache {
-	// 	err = ds.fetchItem(item)
+	// 	err = ds.fetch(item)
 	// 	return
 	// }
 
-	ok := ds.getItemCache(item)
+	ok := ds.getCache(item)
 	if ok {
-		if uInfo := ds.getItemUpdateInfo(item); uInfo.isExpired() {
-			go ds.refreshItemCache(item, false)
+		if uInfo := ds.getCacheInfo(item); uInfo.isExpired() {
+			go ds.refreshCache(item, false)
 		}
 
 		return nil
 	}
 
-	errRefresh := ds.refreshItemCache(item, true)
+	errRefresh := ds.refreshCache(item, true)
 	if errRefresh != nil {
 		return errRefresh
 	}
@@ -74,16 +46,43 @@ func (ds *dataService) getItem(item *dataItem) (err error) {
 	return
 }
 
-func (ds *dataService) fetchItem(item *dataItem) (err error) {
+func (ds *dataService) refreshCache(item *dataItem, wait bool) error {
+	uInfo := cacheInfosInst.get(item)
+
+	if uInfo.setUpdating() {
+		defer uInfo.setUpdated()
+		uInfo.setTime(time.Now().Unix())
+
+		logger.Debug("Start refreshing cache")
+		err := ds.fetch(item)
+		if err != nil {
+			return err
+		}
+
+		ds.setCache(item)
+		return nil
+	} else if wait {
+		uInfo.waitUpdate()
+	}
+
+	found := ds.getCache(item)
+	if !found {
+		return errors.New("Fail to refresh cache")
+	}
+
+	return nil
+}
+
+func (ds *dataService) fetch(item *dataItem) (err error) {
 	logger.Debug("Start fetching data")
 
-	uInfo := cacheInfoInst.getUpdateInfo(item)
+	uInfo := cacheInfosInst.get(item)
 
 	if ds.server != nil {
-		err = ds.server.getItem(item)
+		err = ds.server.get(item)
 		if isNeedToUpdateCacheControl(err) {
 			if err != nil {
-				ds.getItemCache(item)
+				ds.getCache(item)
 				// err = nil
 			}
 			return nil
@@ -93,7 +92,7 @@ func (ds *dataService) fetchItem(item *dataItem) (err error) {
 	}
 
 	if ds.bundle != nil {
-		err = ds.bundle.getItem(item)
+		err = ds.bundle.get(item)
 		if err == nil {
 			uInfo.setAge(100) // Todo: for local bundles
 			return
@@ -101,6 +100,19 @@ func (ds *dataService) fetchItem(item *dataItem) (err error) {
 	}
 
 	return err
+}
+
+func (ds *dataService) getCache(item *dataItem) (ok bool) {
+	item.data, ok = ds.cache.Get(item.id)
+	return ok
+}
+
+func (ds *dataService) setCache(item *dataItem) {
+	ds.cache.Set(item.id, item.data)
+}
+
+func (ds *dataService) getCacheInfo(item *dataItem) *singleCacheInfo {
+	return cacheInfosInst.get(item)
 }
 
 func (ds *dataService) updateCacheControl(item *dataItem, uInfo *singleCacheInfo) {
@@ -113,7 +125,6 @@ func (ds *dataService) updateCacheControl(item *dataItem, uInfo *singleCacheInfo
 		uInfo.setAge(age)
 	}
 	uInfo.setETag(headers.Get(httpHeaderETag))
-
 }
 
 func isNeedToUpdateCacheControl(err error) bool {
@@ -125,49 +136,6 @@ func isNeedToUpdateCacheControl(err error) bool {
 	}
 
 	return true
-}
-func (ds *dataService) getItemCache(item *dataItem) (ok bool) {
-	item.data, ok = ds.cache.Get(item.id)
-	return ok
-}
-
-func (ds *dataService) setItemCache(item *dataItem) {
-	ds.cache.Set(item.id, item.data)
-}
-func (ds *dataService) refreshItemCache(item *dataItem, wait bool) error {
-	uInfo := cacheInfoInst.getUpdateInfo(item)
-
-	if uInfo.setUpdating() {
-		defer uInfo.setUpdated()
-		uInfo.setTime(time.Now().Unix())
-
-		logger.Debug("Start refreshing cache")
-		err := ds.fetchItem(item)
-		if err != nil {
-			return err
-		}
-
-		ds.setItemCache(item)
-		return nil
-	} else if wait {
-		uInfo.waitUpdate()
-	}
-
-	found := ds.getItemCache(item)
-	if !found {
-		return errors.New("Fail to refresh cache")
-	}
-
-	return nil
-}
-func (ds *dataService) getItemUpdateInfo(item *dataItem) *singleCacheInfo {
-	return cacheInfoInst.getUpdateInfo(item)
-}
-
-func (ds *dataService) registerCache(c Cache) {
-	// if ds.enableCache {
-	ds.cache = c
-	// }
 }
 
 //!-dataService

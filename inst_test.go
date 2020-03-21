@@ -16,7 +16,7 @@ func TestGetInst(t *testing.T) {
 
 	testInst := resetInst(&testCfg)
 	// assert.Equal(t, testCfg, testInst.GetConfig())
-	assert.Equal(t, testCfg.OfflineResourcesBaseURL, testInst.dService.bundle.root)
+	assert.Equal(t, testCfg.OfflineResourcesBaseURL, testInst.trans.ds.bundle.root)
 	// TODO: Test bundle
 
 	if len(testCfg.OnlineServiceURL) != 0 {
@@ -31,7 +31,7 @@ func TestGetInst(t *testing.T) {
 	assert.NotNil(t, dataService)
 	// if testCfg.EnableCache {
 	assert.NotNil(t, dataService.cache)
-	assert.NotNil(t, cacheInfoInst)
+	assert.NotNil(t, cacheInfosInst)
 	// }
 }
 

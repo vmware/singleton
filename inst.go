@@ -21,7 +21,6 @@ var (
 // Instance Singleton instance
 type Instance struct {
 	cfg           Config
-	dService      *dataService
 	trans         *defaultTrans
 	components    []componentID
 	initializOnce sync.Once
@@ -49,7 +48,7 @@ func (i *Instance) doInitialize() {
 	dService := new(dataService)
 	// if i.cfg.EnableCache {
 	// dService.enableCache = i.cfg.EnableCache
-	cacheInfoInst = newCacheInfo()
+	cacheInfosInst = newCacheInfo()
 	// }
 	if len(i.cfg.OnlineServiceURL) != 0 {
 		var err error
@@ -61,9 +60,8 @@ func (i *Instance) doInitialize() {
 	if strings.TrimSpace(i.cfg.OfflineResourcesBaseURL) != "" {
 		dService.bundle = &bundleDAO{i.cfg.OfflineResourcesBaseURL}
 	}
-	i.dService = dService
 
-	i.trans = &defaultTrans{i.dService, i.cfg.DefaultLocale}
+	i.trans = &defaultTrans{dService, i.cfg.DefaultLocale}
 	i.RegisterCache(newCache())
 }
 
@@ -84,7 +82,7 @@ func (i *Instance) SetHTTPHeaders(h map[string]string) {
 
 // RegisterCache Register cache implementation. There is a default implementation
 func (i *Instance) RegisterCache(c Cache) {
-	i.trans.ds.registerCache(c)
+	i.trans.ds.cache = c
 }
 
 // SetLogger Set a global logger. There is a default console logger

@@ -49,7 +49,7 @@ func TestGetCompMessages(t *testing.T) {
 			t.Errorf("%s = %d, want %d", testData.desc, messages.Size(), testData.expected)
 		}
 
-		messagesInCache, found := testInst.dService.cache.Get(componentID{name, version, testData.locale, testData.component})
+		messagesInCache, found := testInst.trans.ds.cache.Get(componentID{name, version, testData.locale, testData.component})
 		assert.True(t, found)
 		assert.NotNil(t, messagesInCache)
 		assert.Equal(t, testData.expected, messagesInCache.(ComponentMsgs).Size())
@@ -114,11 +114,11 @@ func TestRefreshCache(t *testing.T) {
 	testInst := resetInst(&testCfg)
 	trans := testInst.GetTranslation()
 	dataService := testInst.trans
-	cacheObj := testInst.dService.cache
+	cacheObj := testInst.trans.ds.cache
 	for _, testData := range tests {
 		EnableMockData(testData.mocks[0])
 		item := &dataItem{itemComponent, componentID{name, version, testData.locale, testData.component}, nil, nil}
-		cacheUInfo := cacheInfoInst.getUpdateInfo(item)
+		cacheUInfo := cacheInfosInst.get(item)
 		cacheUInfo.setAge(100)
 
 		// Get component messages first to populate cache
@@ -370,7 +370,7 @@ func TestGetCompMessagesAbnormal(t *testing.T) {
 	newCfg.OfflineResourcesBaseURL = ""
 	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
-	cache := testInst.dService.cache
+	cache := testInst.trans.ds.cache
 	for _, testData := range tests {
 		for _, m := range testData.mocks {
 			EnableMockData(m)
@@ -396,7 +396,7 @@ func TestGetCompMessagesWrongServer(t *testing.T) {
 	testInst := resetInst(&newCfg)
 	wrongServer, err := url.Parse("wrongserver")
 	assert.Nil(t, err)
-	testInst.dService.server.svrURL = wrongServer
+	testInst.trans.ds.server.svrURL = wrongServer
 
 	var tests = []struct {
 		desc      string
@@ -550,7 +550,7 @@ func TestGetComponents(t *testing.T) {
 	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
 	item := &dataItem{itemComponents, translationID{name, version}, nil, nil}
-	ui := cacheInfoInst.getUpdateInfo(item)
+	ui := cacheInfosInst.get(item)
 	ui.setAge(100)
 	for _, testData := range tests {
 
@@ -617,7 +617,7 @@ func TestGetLocales(t *testing.T) {
 		EnableMockData(testData.mocks[0])
 
 		item := &dataItem{itemLocales, translationID{name, version}, nil, nil}
-		ui := cacheInfoInst.getUpdateInfo(item)
+		ui := cacheInfosInst.get(item)
 		ui.setAge(100)
 
 		locales, err := trans.GetLocaleList(name, version)

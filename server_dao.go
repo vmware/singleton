@@ -22,15 +22,7 @@ import (
 	"github.com/mitchellh/mapstructure"
 )
 
-// serverDAO serverDAO definition
-type serverDAO struct {
-	svrURL          *url.URL
-	status          uint32
-	lastErrorMoment int64
-	headers         map[string]string
-}
-
-const serverRetryInterval = 1 //second
+const serverRetryInterval = 2 //second
 const (
 	serverNormal uint32 = iota
 	serverTimeout
@@ -46,10 +38,18 @@ func newServer(OnlineServiceURL string) (*serverDAO, error) {
 	return s, nil
 }
 
-func (s *serverDAO) getItem(item *dataItem) (err error) {
+//!+ serverDAO
+// serverDAO serverDAO definition
+type serverDAO struct {
+	svrURL          *url.URL
+	status          uint32
+	lastErrorMoment int64
+	headers         map[string]string
+}
 
+func (s *serverDAO) get(item *dataItem) (err error) {
 	var data interface{}
-	uInfo := cacheInfoInst.getUpdateInfo(item)
+	uInfo := cacheInfosInst.get(item)
 
 	switch item.iType {
 	case itemComponent:
@@ -76,11 +76,11 @@ func (s *serverDAO) getItem(item *dataItem) (err error) {
 
 	switch item.iType {
 	case itemComponent:
-		productData := data.(*queryProduct)
-		if len(productData.Bundles) != 1 {
+		pData := data.(*queryProduct)
+		if len(pData.Bundles) != 1 {
 			return errors.New("Wrong data from server")
 		}
-		item.data = &defaultComponentMsgs{messages: productData.Bundles[0].Messages}
+		item.data = &defaultComponentMsgs{messages: pData.Bundles[0].Messages}
 	case itemLocales:
 		localesData := data.(*queryLocales)
 		item.data = localesData.Locales
@@ -94,10 +94,6 @@ func (s *serverDAO) getItem(item *dataItem) (err error) {
 	// fmt.Printf("item to return: \n%#v\n", item)
 
 	return nil
-}
-
-func (s *serverDAO) setHTTPHeaders(h map[string]string) {
-	s.headers = h
 }
 
 func (s *serverDAO) prepareURL(item *dataItem) *url.URL {
@@ -126,6 +122,7 @@ func (s *serverDAO) prepareURL(item *dataItem) *url.URL {
 
 	return &urlToQuery
 }
+
 func (s *serverDAO) sendRequest(u *url.URL, header map[string]string, data interface{}) (*http.Response, error) {
 	if atomic.LoadUint32(&s.status) == serverTimeout {
 		if time.Now().Unix()-atomic.LoadInt64(&s.lastErrorMoment) < serverRetryInterval {
@@ -148,6 +145,12 @@ func (s *serverDAO) sendRequest(u *url.URL, header map[string]string, data inter
 
 	return resp, nil
 }
+
+func (s *serverDAO) setHTTPHeaders(h map[string]string) {
+	s.headers = h
+}
+
+//!- serverDAO
 
 //!+ common functions
 func addURLParam(u *url.URL, k, v string) {

@@ -11,33 +11,30 @@ import (
 	"time"
 )
 
+var cacheInfosInst *cacheInfos
+
+func newCacheInfo() *cacheInfos {
+	return &cacheInfos{new(sync.Map)}
+}
+
 //!+cacheInfo
-type cacheInfo struct {
+type cacheInfos struct {
 	m *sync.Map
 }
 
-var cacheInfoInst *cacheInfo
-
-func newCacheInfo() *cacheInfo {
-	return &cacheInfo{new(sync.Map)}
-}
-
-func (cs *cacheInfo) getUpdateInfo(item *dataItem) *singleCacheInfo {
-	var id interface{}
-	switch item.iType {
-	case itemComponent:
-		id = item.id.(componentID)
-	case itemLocales, itemComponents:
-		id = item.id.(translationID)
-	}
-
-	t, _ := cs.m.LoadOrStore(id, newCacheUpdateInfo())
+func (cs *cacheInfos) get(item *dataItem) *singleCacheInfo {
+	t, _ := cs.m.LoadOrStore(item.id, newSingleCacheInfo())
 	return t.(*singleCacheInfo)
 }
 
 //!-cacheInfo
 
 //!+singleCacheInfo
+const (
+	idle uint32 = iota
+	updating
+)
+
 type singleCacheInfo struct {
 	status     uint32
 	lastUpdate int64
@@ -45,20 +42,12 @@ type singleCacheInfo struct {
 	eTag       string
 }
 
-const (
-	idle uint32 = iota
-	updating
-)
-
-func newCacheUpdateInfo() *singleCacheInfo {
-	ui := singleCacheInfo{0, 0, 0, ""}
-
-	return &ui
+func newSingleCacheInfo() *singleCacheInfo {
+	return &singleCacheInfo{0, 0, 0, ""}
 }
 
 func (uInfo *singleCacheInfo) isExpired() bool {
-	age := atomic.LoadInt64(&uInfo.age)
-	return time.Now().Unix()-atomic.LoadInt64(&uInfo.lastUpdate) >= age
+	return time.Now().Unix()-atomic.LoadInt64(&uInfo.lastUpdate) >= uInfo.getAge()
 }
 func (uInfo *singleCacheInfo) setTime(t int64) {
 	atomic.StoreInt64(&uInfo.lastUpdate, t)
