@@ -9,8 +9,6 @@ import (
 	"net/http"
 	"strconv"
 	"time"
-
-	"errors"
 )
 
 //!+dataService
@@ -43,10 +41,13 @@ func (ds *dataService) get(item *dataItem) (err error) {
 		return errRefresh
 	}
 
+	ds.getCache(item)
+
 	return
 }
 
 func (ds *dataService) refreshCache(item *dataItem, wait bool) error {
+	var err error
 	info := getCacheInfo(item)
 
 	if info.setUpdating() {
@@ -54,52 +55,37 @@ func (ds *dataService) refreshCache(item *dataItem, wait bool) error {
 		info.setTime(time.Now().Unix())
 
 		logger.Debug("Start refreshing cache")
-		err := ds.fetch(item)
-		if err != nil {
-			return err
+
+		if ds.server != nil {
+			err = ds.server.get(item)
+			if err == nil {
+				ds.setCache(item)
+			}
+			if isNeedToUpdateCacheControl(err) {
+				// ds.getCache(item)
+				ds.updateCacheControl(item, info)
+				return nil
+			}
+
+			logger.Error("Fail to get from server: " + err.Error())
 		}
 
-		ds.setCache(item)
-		return nil
+		if ds.bundle != nil {
+			err = ds.bundle.get(item)
+			if err == nil {
+				info.setAge(100) // Todo: for local bundles
+				ds.setCache(item)
+				return nil
+			}
+		}
+
+		return err
+
 	} else if wait {
 		info.waitUpdate()
 	}
 
-	found := ds.getCache(item)
-	if !found {
-		return errors.New("Fail to refresh cache")
-	}
-
 	return nil
-}
-
-func (ds *dataService) fetch(item *dataItem) (err error) {
-	logger.Debug("Start fetching data")
-
-	info := getCacheInfo(item)
-
-	if ds.server != nil {
-		err = ds.server.get(item)
-		if isNeedToUpdateCacheControl(err) {
-			if err != nil {
-				ds.getCache(item)
-				// err = nil
-			}
-			return nil
-		}
-
-		logger.Error("Fail to get from server: " + err.Error())
-	}
-
-	if ds.bundle != nil {
-		err = ds.bundle.get(item)
-		if err == nil {
-			info.setAge(100) // Todo: for local bundles
-			return
-		}
-	}
-
-	return err
 }
 
 func (ds *dataService) getCache(item *dataItem) (ok bool) {
