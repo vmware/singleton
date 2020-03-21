@@ -11,74 +11,67 @@ import (
 	"time"
 )
 
-var cacheInfosInst *cacheInfos
+var cacheInfoMap *sync.Map
 
-func newCacheInfo() *cacheInfos {
-	return &cacheInfos{new(sync.Map)}
+func initCacheInfoMap() {
+	cacheInfoMap = new(sync.Map)
 }
 
-//!+cacheInfo
-type cacheInfos struct {
-	m *sync.Map
+func getCacheInfo(item *dataItem) *itemCacheInfo {
+	t, _ := cacheInfoMap.LoadOrStore(item.id, newSingleCacheInfo())
+	return t.(*itemCacheInfo)
 }
 
-func (cs *cacheInfos) get(item *dataItem) *singleCacheInfo {
-	t, _ := cs.m.LoadOrStore(item.id, newSingleCacheInfo())
-	return t.(*singleCacheInfo)
-}
-
-//!-cacheInfo
-
-//!+singleCacheInfo
+//!+itemCacheInfo
 const (
 	idle uint32 = iota
 	updating
 )
 
-type singleCacheInfo struct {
+type itemCacheInfo struct {
 	status     uint32
 	lastUpdate int64
 	age        int64
 	eTag       string
 }
 
-func newSingleCacheInfo() *singleCacheInfo {
-	return &singleCacheInfo{0, 0, 0, ""}
+func newSingleCacheInfo() *itemCacheInfo {
+	return &itemCacheInfo{0, 0, 0, ""}
 }
 
-func (uInfo *singleCacheInfo) isExpired() bool {
-	return time.Now().Unix()-atomic.LoadInt64(&uInfo.lastUpdate) >= uInfo.getAge()
+func (i *itemCacheInfo) isExpired() bool {
+	return time.Now().Unix()-atomic.LoadInt64(&i.lastUpdate) >= i.getAge()
 }
-func (uInfo *singleCacheInfo) setTime(t int64) {
-	atomic.StoreInt64(&uInfo.lastUpdate, t)
-}
-
-func (uInfo *singleCacheInfo) setUpdating() (b bool) {
-	return atomic.CompareAndSwapUint32(&uInfo.status, idle, updating)
-}
-func (uInfo *singleCacheInfo) setUpdated() {
-	atomic.StoreUint32(&uInfo.status, idle)
+func (i *itemCacheInfo) setTime(t int64) {
+	atomic.StoreInt64(&i.lastUpdate, t)
 }
 
-func (uInfo *singleCacheInfo) waitUpdate() {
+func (i *itemCacheInfo) setUpdating() (b bool) {
+	return atomic.CompareAndSwapUint32(&i.status, idle, updating)
+}
+func (i *itemCacheInfo) setUpdated() {
+	atomic.StoreUint32(&i.status, idle)
+}
+
+func (i *itemCacheInfo) waitUpdate() {
 	for {
-		if idle == atomic.LoadUint32(&uInfo.status) {
+		if idle == atomic.LoadUint32(&i.status) {
 			return
 		}
 		time.Sleep(time.Microsecond * 10)
 	}
 }
-func (uInfo *singleCacheInfo) setETag(t string) {
-	uInfo.eTag = t
+func (i *itemCacheInfo) setETag(t string) {
+	i.eTag = t
 }
-func (uInfo *singleCacheInfo) getETag() string {
-	return uInfo.eTag
+func (i *itemCacheInfo) getETag() string {
+	return i.eTag
 }
-func (uInfo *singleCacheInfo) setAge(d int64) {
-	atomic.StoreInt64(&uInfo.age, d)
+func (i *itemCacheInfo) setAge(d int64) {
+	atomic.StoreInt64(&i.age, d)
 }
-func (uInfo *singleCacheInfo) getAge() int64 {
-	return atomic.LoadInt64(&uInfo.age)
+func (i *itemCacheInfo) getAge() int64 {
+	return atomic.LoadInt64(&i.age)
 }
 
-//!-singleCacheInfo
+//!-itemCacheInfo

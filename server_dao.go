@@ -49,7 +49,7 @@ type serverDAO struct {
 
 func (s *serverDAO) get(item *dataItem) (err error) {
 	var data interface{}
-	uInfo := cacheInfosInst.get(item)
+	info := getCacheInfo(item)
 
 	switch item.iType {
 	case itemComponent:
@@ -64,7 +64,7 @@ func (s *serverDAO) get(item *dataItem) (err error) {
 
 	urlToQuery := s.prepareURL(item)
 
-	s.headers[httpHeaderIfNoneMatch] = uInfo.getETag()
+	s.headers[httpHeaderIfNoneMatch] = info.getETag()
 	defer func() { delete(s.headers, httpHeaderIfNoneMatch) }()
 	resp, err := s.sendRequest(urlToQuery, s.headers, data)
 	if resp != nil {

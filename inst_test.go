@@ -31,7 +31,7 @@ func TestGetInst(t *testing.T) {
 	assert.NotNil(t, dataService)
 	// if testCfg.EnableCache {
 	assert.NotNil(t, dataService.cache)
-	assert.NotNil(t, cacheInfosInst)
+	assert.NotNil(t, cacheInfoMap)
 	// }
 }
 

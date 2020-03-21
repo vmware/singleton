@@ -269,7 +269,7 @@ func fileExist(filepath string) (bool, error) {
 func clearCache(testInst *Instance) {
 	logger.Debug("clearcache")
 	testInst.trans.ds.cache.(*defaultCache).m = new(sync.Map)
-	cacheInfosInst = newCacheInfo()
+	initCacheInfoMap()
 }
 
 func curFunName() string {
@@ -286,6 +286,6 @@ func resetInst(cfg *Config) *Instance {
 	return &inst
 }
 
-func expireCache(cacheUInfo *singleCacheInfo, cacheExpiredTime int64) {
-	cacheUInfo.setTime(atomic.LoadInt64(&cacheUInfo.lastUpdate) - cacheExpiredTime)
+func expireCache(info *itemCacheInfo, cacheExpiredTime int64) {
+	info.setTime(atomic.LoadInt64(&info.lastUpdate) - cacheExpiredTime)
 }

@@ -48,7 +48,7 @@ func (i *Instance) doInitialize() {
 	dService := new(dataService)
 	// if i.cfg.EnableCache {
 	// dService.enableCache = i.cfg.EnableCache
-	cacheInfosInst = newCacheInfo()
+	initCacheInfoMap()
 	// }
 	if len(i.cfg.OnlineServiceURL) != 0 {
 		var err error

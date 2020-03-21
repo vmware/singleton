@@ -118,8 +118,8 @@ func TestRefreshCache(t *testing.T) {
 	for _, testData := range tests {
 		EnableMockData(testData.mocks[0])
 		item := &dataItem{itemComponent, componentID{name, version, testData.locale, testData.component}, nil, nil}
-		cacheUInfo := cacheInfosInst.get(item)
-		cacheUInfo.setAge(100)
+		info := getCacheInfo(item)
+		info.setAge(100)
 
 		// Get component messages first to populate cache
 		messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
@@ -146,14 +146,14 @@ func TestRefreshCache(t *testing.T) {
 
 		// Enable mock, time out cache and refresh again. This time the data is same as before
 		EnableMockData(testData.mocks[1])
-		expireCache(cacheUInfo, cacheUInfo.age)
+		expireCache(info, info.age)
 		messages, err = trans.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.Nil(t, err)
 		assert.Equal(t, testData.expected, messages.Size())
 
 		// Start the go routine of refresing cache, and wait for finish. Data entry number changes to 7.
 		time.Sleep(10 * time.Millisecond)
-		cacheUInfo.waitUpdate()
+		info.waitUpdate()
 		// Make sure mock data is comsumed
 		assert.True(t, gock.IsDone())
 
@@ -550,7 +550,7 @@ func TestGetComponents(t *testing.T) {
 	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
 	item := &dataItem{itemComponents, translationID{name, version}, nil, nil}
-	ui := cacheInfosInst.get(item)
+	ui := getCacheInfo(item)
 	ui.setAge(100)
 	for _, testData := range tests {
 
@@ -617,7 +617,7 @@ func TestGetLocales(t *testing.T) {
 		EnableMockData(testData.mocks[0])
 
 		item := &dataItem{itemLocales, translationID{name, version}, nil, nil}
-		ui := cacheInfosInst.get(item)
+		ui := getCacheInfo(item)
 		ui.setAge(100)
 
 		locales, err := trans.GetLocaleList(name, version)

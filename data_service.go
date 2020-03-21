@@ -31,7 +31,7 @@ func (ds *dataService) get(item *dataItem) (err error) {
 
 	ok := ds.getCache(item)
 	if ok {
-		if uInfo := ds.getCacheInfo(item); uInfo.isExpired() {
+		if info := ds.getCacheInfo(item); info.isExpired() {
 			go ds.refreshCache(item, false)
 		}
 
@@ -47,11 +47,11 @@ func (ds *dataService) get(item *dataItem) (err error) {
 }
 
 func (ds *dataService) refreshCache(item *dataItem, wait bool) error {
-	uInfo := cacheInfosInst.get(item)
+	info := getCacheInfo(item)
 
-	if uInfo.setUpdating() {
-		defer uInfo.setUpdated()
-		uInfo.setTime(time.Now().Unix())
+	if info.setUpdating() {
+		defer info.setUpdated()
+		info.setTime(time.Now().Unix())
 
 		logger.Debug("Start refreshing cache")
 		err := ds.fetch(item)
@@ -62,7 +62,7 @@ func (ds *dataService) refreshCache(item *dataItem, wait bool) error {
 		ds.setCache(item)
 		return nil
 	} else if wait {
-		uInfo.waitUpdate()
+		info.waitUpdate()
 	}
 
 	found := ds.getCache(item)
@@ -76,7 +76,7 @@ func (ds *dataService) refreshCache(item *dataItem, wait bool) error {
 func (ds *dataService) fetch(item *dataItem) (err error) {
 	logger.Debug("Start fetching data")
 
-	uInfo := cacheInfosInst.get(item)
+	info := getCacheInfo(item)
 
 	if ds.server != nil {
 		err = ds.server.get(item)
@@ -94,7 +94,7 @@ func (ds *dataService) fetch(item *dataItem) (err error) {
 	if ds.bundle != nil {
 		err = ds.bundle.get(item)
 		if err == nil {
-			uInfo.setAge(100) // Todo: for local bundles
+			info.setAge(100) // Todo: for local bundles
 			return
 		}
 	}
@@ -111,20 +111,20 @@ func (ds *dataService) setCache(item *dataItem) {
 	ds.cache.Set(item.id, item.data)
 }
 
-func (ds *dataService) getCacheInfo(item *dataItem) *singleCacheInfo {
-	return cacheInfosInst.get(item)
+func (ds *dataService) getCacheInfo(item *dataItem) *itemCacheInfo {
+	return getCacheInfo(item)
 }
 
-func (ds *dataService) updateCacheControl(item *dataItem, uInfo *singleCacheInfo) {
+func (ds *dataService) updateCacheControl(item *dataItem, info *itemCacheInfo) {
 	headers := item.attrs.(http.Header)
 	cc := headers.Get(httpHeaderCacheControl)
 	age, parseErr := strconv.ParseInt(cc, 10, 64)
 	if parseErr != nil {
 		logger.Error("Wrong cache control: " + cc)
 	} else {
-		uInfo.setAge(age)
+		info.setAge(age)
 	}
-	uInfo.setETag(headers.Get(httpHeaderETag))
+	info.setETag(headers.Get(httpHeaderETag))
 }
 
 func isNeedToUpdateCacheControl(err error) bool {

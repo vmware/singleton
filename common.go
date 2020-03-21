@@ -34,6 +34,7 @@ type (
 	}
 )
 
+//!+ error definition
 type errorType uint16
 
 const (
@@ -59,6 +60,9 @@ func (e *sgtnError) Error() string {
 	}
 }
 
+//!- error definition
+
+//!+ dataItem
 type itemType int
 
 const (
@@ -86,3 +90,5 @@ type dataItem struct {
 	data  interface{}
 	attrs interface{}
 }
+
+//!- dataItem
