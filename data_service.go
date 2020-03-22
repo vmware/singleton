@@ -6,6 +6,7 @@
 package sgtn
 
 import (
+	"errors"
 	"net/http"
 	"strconv"
 	"time"
@@ -30,40 +31,35 @@ func (ds *dataService) get(item *dataItem) (err error) {
 	ok := ds.getCache(item)
 	if ok {
 		if info := ds.getCacheInfo(item); info.isExpired() {
-			go ds.refreshCache(item, false)
+			go ds.fetch(item, false)
 		}
 
 		return nil
 	}
 
-	errRefresh := ds.refreshCache(item, true)
-	if errRefresh != nil {
-		return errRefresh
-	}
-
-	ds.getCache(item)
-
-	return
+	return ds.fetch(item, true)
 }
 
-func (ds *dataService) refreshCache(item *dataItem, wait bool) error {
+func (ds *dataService) fetch(item *dataItem, wait bool) error {
 	var err error
 	info := getCacheInfo(item)
 
 	if info.setUpdating() {
 		defer info.setUpdated()
+
 		info.setTime(time.Now().Unix())
 
-		logger.Debug("Start refreshing cache")
+		logger.Debug("Start fetching")
 
 		if ds.server != nil {
 			err = ds.server.get(item)
-			if err == nil {
-				ds.setCache(item)
-			}
-			if isNeedToUpdateCacheControl(err) {
-				// ds.getCache(item)
-				ds.updateCacheControl(item, info)
+			if isFetchSucess(err) {
+				updateCacheControl(item, info)
+				if err == nil {
+					ds.setCache(item)
+				} else {
+					ds.getCache(item)
+				}
 				return nil
 			}
 
@@ -83,6 +79,10 @@ func (ds *dataService) refreshCache(item *dataItem, wait bool) error {
 
 	} else if wait {
 		info.waitUpdate()
+		ok := ds.getCache(item)
+		if !ok {
+			return errors.New("Fail to fetch")
+		}
 	}
 
 	return nil
@@ -101,7 +101,18 @@ func (ds *dataService) getCacheInfo(item *dataItem) *itemCacheInfo {
 	return getCacheInfo(item)
 }
 
-func (ds *dataService) updateCacheControl(item *dataItem, info *itemCacheInfo) {
+func isFetchSucess(err error) bool {
+	if err != nil {
+		myErr, ok := err.(*serverError)
+		if !ok || myErr.code != httpCode304 {
+			return false
+		}
+	}
+
+	return true
+}
+
+func updateCacheControl(item *dataItem, info *itemCacheInfo) {
 	headers := item.attrs.(http.Header)
 	cc := headers.Get(httpHeaderCacheControl)
 	age, parseErr := strconv.ParseInt(cc, 10, 64)
@@ -111,17 +122,6 @@ func (ds *dataService) updateCacheControl(item *dataItem, info *itemCacheInfo) {
 		info.setAge(age)
 	}
 	info.setETag(headers.Get(httpHeaderETag))
-}
-
-func isNeedToUpdateCacheControl(err error) bool {
-	if err != nil {
-		myErr, ok := err.(*sgtnError)
-		if !ok || myErr.etype != httpError || myErr.code != httpCode304 {
-			return false
-		}
-	}
-
-	return true
 }
 
 //!-dataService

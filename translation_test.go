@@ -144,7 +144,7 @@ func TestRefreshCache(t *testing.T) {
 			t.Errorf("%s = %d, want %d", testData.desc, messages.Size(), testData.expected)
 		}
 
-		// Enable mock, time out cache and refresh again. This time the data is same as before
+		// Enable mock, time out cache and fetch(refresh) again. This time the data is same as before
 		EnableMockData(testData.mocks[1])
 		expireCache(info, info.age)
 		messages, err = trans.GetComponentMessages(name, version, testData.locale, testData.component)

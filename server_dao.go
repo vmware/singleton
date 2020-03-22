@@ -173,17 +173,13 @@ var getDataFromServer = func(u *url.URL, header map[string]string, data interfac
 		return resp, err
 	}
 
-	if !isSuccess(resp.StatusCode) {
-		return resp, &sgtnError{httpError, resp.StatusCode, resp.Status}
-	}
-
 	err = json.Unmarshal(bodyBytes, bodyObj)
 	if err != nil {
 		return resp, err
 	}
 
-	if !isBusinessSuccess(bodyObj.Result.Code) {
-		return resp, &sgtnError{businessError, bodyObj.Result.Code, bodyObj.Result.Message}
+	if !isHTTPSuccess(resp.StatusCode) || !isBusinessSuccess(bodyObj.Result.Code) {
+		return resp, &serverError{resp.StatusCode, bodyObj.Result.Code, resp.Status, bodyObj.Result.Message}
 	}
 
 	if err = mapstructure.Decode(bodyObj.Data, &data); err != nil {
@@ -193,6 +189,10 @@ var getDataFromServer = func(u *url.URL, header map[string]string, data interfac
 	//fmt.Printf("decoded data is: %#v\n", data)
 
 	return resp, nil
+}
+
+func isHTTPSuccess(code int) bool {
+	return code >= 200 && code < 300
 }
 
 func isBusinessSuccess(code int) bool {

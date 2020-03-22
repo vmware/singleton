@@ -35,29 +35,16 @@ type (
 )
 
 //!+ error definition
-type errorType uint16
 
-const (
-	clientError errorType = iota
-	businessError
-	httpError
-)
-
-type sgtnError struct {
-	etype errorType
-	code  int
-	msg   string
+type serverError struct {
+	code         int
+	businessCode int
+	msg          string
+	businessMsg  string
 }
 
-func (e *sgtnError) Error() string {
-	switch e.etype {
-	case businessError:
-		return fmt.Sprintf("Error from server is code: %d, message: %s", e.code, e.msg)
-	case httpError:
-		return fmt.Sprintf("HTTP error is code: %d, message: %s", e.code, e.msg)
-	default:
-		return e.msg
-	}
+func (e *serverError) Error() string {
+	return fmt.Sprintf("Error from server is HTTP code: %d, message: %s, business code: %d, message: %s", e.code, e.msg, e.businessCode, e.businessMsg)
 }
 
 //!- error definition

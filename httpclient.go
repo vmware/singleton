@@ -44,7 +44,3 @@ func httpget(urlToGet string, header map[string]string, body *[]byte) (*http.Res
 
 	return resp, err
 }
-
-func isSuccess(code int) bool {
-	return code >= 200 && code < 300
-}
