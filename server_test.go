@@ -6,10 +6,11 @@
 package sgtn
 
 import (
-	"errors"
 	"net/http"
 	"net/url"
 	"testing"
+
+	"github.com/pkg/errors"
 
 	"github.com/stretchr/testify/assert"
 )

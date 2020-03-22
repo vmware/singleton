@@ -17,7 +17,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"errors"
+	"github.com/pkg/errors"
 
 	"github.com/mitchellh/mapstructure"
 )
@@ -59,7 +59,7 @@ func (s *serverDAO) get(item *dataItem) (err error) {
 	case itemComponents:
 		data = new(queryComponents)
 	default:
-		return fmt.Errorf("Invalid item type: %s", item.iType)
+		return errors.Errorf("Invalid item type: %s", item.iType)
 	}
 
 	urlToQuery := s.prepareURL(item)
@@ -88,7 +88,7 @@ func (s *serverDAO) get(item *dataItem) (err error) {
 		componentsData := data.(*queryComponents)
 		item.data = componentsData.Components
 	default:
-		return fmt.Errorf("Invalid item type: %s", item.iType)
+		return errors.Errorf("Invalid item type: %s", item.iType)
 	}
 
 	// fmt.Printf("item to return: \n%#v\n", item)
@@ -173,20 +173,24 @@ var getDataFromServer = func(u *url.URL, header map[string]string, data interfac
 		return resp, err
 	}
 
-	err = json.Unmarshal(bodyBytes, bodyObj)
-	if err != nil {
-		return resp, err
+	if !isHTTPSuccess(resp.StatusCode) {
+		return resp, &serverError{resp.StatusCode, bodyObj.Result.Code, resp.Status, bodyObj.Result.Message}
 	}
 
-	if !isHTTPSuccess(resp.StatusCode) || !isBusinessSuccess(bodyObj.Result.Code) {
+	err = json.Unmarshal(bodyBytes, bodyObj)
+	if err != nil {
+		return resp, errors.WithStack(err)
+	}
+
+	if !isBusinessSuccess(bodyObj.Result.Code) {
 		return resp, &serverError{resp.StatusCode, bodyObj.Result.Code, resp.Status, bodyObj.Result.Message}
 	}
 
 	if err = mapstructure.Decode(bodyObj.Data, &data); err != nil {
-		return resp, err
+		return resp, errors.WithStack(err)
 	}
 
-	//fmt.Printf("decoded data is: %#v\n", data)
+	//logger.Debug(fmt.Sprintf("decoded data is: %#v", data))
 
 	return resp, nil
 }

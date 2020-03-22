@@ -44,7 +44,8 @@ type serverError struct {
 }
 
 func (e *serverError) Error() string {
-	return fmt.Sprintf("Error from server is HTTP code: %d, message: %s, business code: %d, message: %s", e.code, e.msg, e.businessCode, e.businessMsg)
+	return fmt.Sprintf("Error from server is HTTP code: %d, message: %s, business code: %d, message: %s",
+		e.code, e.msg, e.businessCode, e.businessMsg)
 }
 
 //!- error definition

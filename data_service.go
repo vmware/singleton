@@ -6,10 +6,12 @@
 package sgtn
 
 import (
-	"errors"
+	"fmt"
 	"net/http"
 	"strconv"
 	"time"
+
+	"github.com/pkg/errors"
 )
 
 //!+dataService
@@ -63,7 +65,14 @@ func (ds *dataService) fetch(item *dataItem, wait bool) error {
 				return nil
 			}
 
-			logger.Error("Fail to get from server: " + err.Error())
+			type stackTracer interface {
+				StackTrace() errors.StackTrace
+			}
+			if e, ok := err.(stackTracer); ok {
+				logger.Debug(fmt.Sprintf("%+v", e.StackTrace()))
+			} else {
+				logger.Error(fmt.Sprintf("Fail to get from server: %s", err))
+			}
 		}
 
 		if ds.bundle != nil {

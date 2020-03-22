@@ -6,9 +6,10 @@
 package sgtn
 
 import (
-	"errors"
 	"fmt"
 	"strings"
+
+	"github.com/pkg/errors"
 )
 
 //!+ defaultTrans

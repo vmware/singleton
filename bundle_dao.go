@@ -7,10 +7,11 @@ package sgtn
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"path/filepath"
 	"strings"
+
+	"github.com/pkg/errors"
 )
 
 const (
@@ -35,7 +36,7 @@ func (d *bundleDAO) get(item *dataItem) (err error) {
 		id := item.id.(translationID)
 		item.data, err = d.getComponents(id.Name, id.Version)
 	default:
-		err = fmt.Errorf("Invalid item type: %s", item.iType)
+		err = errors.Errorf("Invalid item type: %s", item.iType)
 	}
 
 	return

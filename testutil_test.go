@@ -24,6 +24,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/pkg/errors"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"gopkg.in/h2non/gock.v1"
@@ -174,7 +175,7 @@ func ReadMockJSONs(rootpath string) map[string]MockMapping {
 		result := MockMappings{}
 		err = json.Unmarshal(bs, &result)
 		if err != nil {
-			return fmt.Errorf("Error when reading %s. Error: %s", info.Name(), err.Error())
+			return errors.Errorf("Error when reading %s. Error: %s", info.Name(), err.Error())
 		}
 
 		for _, v := range result.Mappings {

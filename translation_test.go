@@ -547,6 +547,7 @@ func TestGetComponents(t *testing.T) {
 	defer gock.Off()
 
 	newCfg := testCfg
+	newCfg.OfflineResourcesBaseURL = ""
 	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
 	item := &dataItem{itemComponents, translationID{name, version}, nil, nil}
@@ -611,6 +612,7 @@ func TestGetLocales(t *testing.T) {
 	defer gock.Off()
 
 	newCfg := testCfg
+	newCfg.OfflineResourcesBaseURL = ""
 	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
 	for _, testData := range tests {

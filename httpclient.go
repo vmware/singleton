@@ -8,6 +8,8 @@ package sgtn
 import (
 	"io/ioutil"
 	"net/http"
+
+	"github.com/pkg/errors"
 )
 
 const (
@@ -24,7 +26,7 @@ func httpget(urlToGet string, header map[string]string, body *[]byte) (*http.Res
 
 	req, err := newHTTPRequest(http.MethodGet, urlToGet, nil)
 	if err != nil {
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 	req.Close = true
 	for k, v := range header {
@@ -32,13 +34,13 @@ func httpget(urlToGet string, header map[string]string, body *[]byte) (*http.Res
 	}
 	resp, err := httpclient.Do(req)
 	if err != nil {
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 	defer resp.Body.Close()
 
 	b, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return resp, err
+		return resp, errors.WithStack(err)
 	}
 	*body = b
 
