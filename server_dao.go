@@ -7,6 +7,7 @@ package sgtn
 
 import (
 	"encoding/json"
+	"fmt"
 	"net"
 	"net/http"
 	"net/url"
@@ -48,7 +49,7 @@ func (s *serverDAO) get(item *dataItem) (err error) {
 	var data interface{}
 	info := getCacheInfo(item)
 
-	switch item.iType {
+	switch item.id.iType {
 	case itemComponent:
 		data = new(queryProduct)
 	case itemLocales:
@@ -56,7 +57,7 @@ func (s *serverDAO) get(item *dataItem) (err error) {
 	case itemComponents:
 		data = new(queryComponents)
 	default:
-		return errors.Errorf("Invalid item type: %s", item.iType)
+		return errors.Errorf("Invalid item type: %s", item.id.iType)
 	}
 
 	urlToQuery := s.prepareURL(item)
@@ -71,7 +72,7 @@ func (s *serverDAO) get(item *dataItem) (err error) {
 		return err
 	}
 
-	switch item.iType {
+	switch item.id.iType {
 	case itemComponent:
 		pData := data.(*queryProduct)
 		if len(pData.Bundles) != 1 {
@@ -85,7 +86,7 @@ func (s *serverDAO) get(item *dataItem) (err error) {
 		componentsData := data.(*queryComponents)
 		item.data = componentsData.Components
 	default:
-		return errors.Errorf("Invalid item type: %s", item.iType)
+		return errors.Errorf("Invalid item type: %s", item.id.iType)
 	}
 
 	// fmt.Printf("item to return: \n%#v\n", item)
@@ -95,20 +96,18 @@ func (s *serverDAO) get(item *dataItem) (err error) {
 
 func (s *serverDAO) prepareURL(item *dataItem) *url.URL {
 	urlToQuery := url.URL(*s.svrURL)
-	var myURL, name, version, locale, component string
-	switch item.iType {
+	var myURL string
+
+	id := item.id
+	name, version, locale, component := id.Name, id.Version, id.Locale, id.Component
+
+	switch item.id.iType {
 	case itemComponent:
-		id := item.id.(componentID)
 		myURL = productTranslationGetConst
-		name, version, locale, component = id.Name, id.Version, id.Locale, id.Component
 		addURLParams(&urlToQuery, map[string]string{localesConst: locale, componentsConst: component})
 	case itemLocales:
-		id := item.id.(translationID)
-		name, version = id.Name, id.Version
 		myURL = productLocaleListGetConst
 	case itemComponents:
-		id := item.id.(translationID)
-		name, version = id.Name, id.Version
 		myURL = productComponentListGetConst
 	}
 
@@ -187,7 +186,7 @@ var getDataFromServer = func(u *url.URL, header map[string]string, data interfac
 		return resp, errors.WithStack(err)
 	}
 
-	//logger.Debug(fmt.Sprintf("decoded data is: %#v", data))
+	logger.Debug(fmt.Sprintf("decoded data is: %#v", data))
 
 	return resp, nil
 }

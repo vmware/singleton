@@ -22,7 +22,7 @@ var (
 type Instance struct {
 	cfg           Config
 	trans         *defaultTrans
-	components    []componentID
+	components    []dataItemID
 	initializOnce sync.Once
 }
 

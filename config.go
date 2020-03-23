@@ -24,6 +24,10 @@ type Config struct {
 	Components []translationID `json:"components"`
 }
 
+type translationID struct {
+	Name, Version string
+}
+
 // NewConfig Create a new Singleton configuration instance
 func NewConfig(path string) (*Config, error) {
 	contents, err := ioutil.ReadFile(path)

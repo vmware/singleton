@@ -24,15 +24,10 @@ type Logger interface {
 	Error(message string)
 }
 
-type (
-	translationID struct {
-		Name, Version string
-	}
-
-	componentID struct {
-		Name, Version, Locale, Component string
-	}
-)
+type dataItemID struct {
+	iType                            itemType
+	Name, Version, Locale, Component string
+}
 
 //!+ error definition
 
@@ -51,7 +46,7 @@ func (e *serverError) Error() string {
 //!- error definition
 
 //!+ dataItem
-type itemType int
+type itemType int8
 
 const (
 	itemComponent itemType = iota
@@ -73,8 +68,7 @@ func (t itemType) String() string {
 }
 
 type dataItem struct {
-	iType itemType
-	id    interface{}
+	id    dataItemID
 	data  interface{}
 	attrs interface{}
 }

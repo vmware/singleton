@@ -49,7 +49,7 @@ func TestGetCompMessages(t *testing.T) {
 			t.Errorf("%s = %d, want %d", testData.desc, messages.Size(), testData.expected)
 		}
 
-		messagesInCache, found := testInst.trans.ds.cache.Get(componentID{name, version, testData.locale, testData.component})
+		messagesInCache, found := testInst.trans.ds.cache.Get(dataItemID{itemComponent, name, version, testData.locale, testData.component})
 		assert.True(t, found)
 		assert.NotNil(t, messagesInCache)
 		assert.Equal(t, testData.expected, messagesInCache.(ComponentMsgs).Size())
@@ -117,7 +117,7 @@ func TestRefreshCache(t *testing.T) {
 	cacheObj := testInst.trans.ds.cache
 	for _, testData := range tests {
 		EnableMockData(testData.mocks[0])
-		item := &dataItem{itemComponent, componentID{name, version, testData.locale, testData.component}, nil, nil}
+		item := &dataItem{dataItemID{itemComponent, name, version, testData.locale, testData.component}, nil, nil}
 		info := getCacheInfo(item)
 		info.setAge(100)
 
@@ -132,7 +132,7 @@ func TestRefreshCache(t *testing.T) {
 		gock.Clean()
 
 		// Check the data in cache
-		messagesInCache, found := cacheObj.Get(componentID{name, version, testData.locale, testData.component})
+		messagesInCache, found := cacheObj.Get(dataItemID{itemComponent, name, version, testData.locale, testData.component})
 		assert.True(t, found)
 		assert.NotNil(t, messagesInCache)
 		assert.Equal(t, testData.expected, messagesInCache.(ComponentMsgs).Size())
@@ -158,7 +158,7 @@ func TestRefreshCache(t *testing.T) {
 		assert.True(t, gock.IsDone())
 
 		// Check the data in cache
-		messagesInCache, found = cacheObj.Get(componentID{name, version, testData.locale, testData.component})
+		messagesInCache, found = cacheObj.Get(dataItemID{itemComponent, name, version, testData.locale, testData.component})
 		assert.True(t, found)
 		assert.Equal(t, 7, messagesInCache.(ComponentMsgs).Size())
 	}
@@ -380,7 +380,7 @@ func TestGetCompMessagesAbnormal(t *testing.T) {
 		assert.Nil(t, messages)
 		assert.Contains(t, err.Error(), testData.err)
 
-		compCache, found := cache.Get(componentID{name, version, testData.locale, testData.component})
+		compCache, found := cache.Get(dataItemID{itemComponent, name, version, testData.locale, testData.component})
 		assert.False(t, found, testData.desc)
 		assert.Nil(t, compCache, testData.desc)
 	}
@@ -550,7 +550,7 @@ func TestGetComponents(t *testing.T) {
 	newCfg.OfflineResourcesBaseURL = ""
 	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
-	item := &dataItem{itemComponents, translationID{name, version}, nil, nil}
+	item := &dataItem{dataItemID{itemComponents, name, version, "", ""}, nil, nil}
 	ui := getCacheInfo(item)
 	ui.setAge(100)
 	for _, testData := range tests {
@@ -618,7 +618,7 @@ func TestGetLocales(t *testing.T) {
 	for _, testData := range tests {
 		EnableMockData(testData.mocks[0])
 
-		item := &dataItem{itemLocales, translationID{name, version}, nil, nil}
+		item := &dataItem{dataItemID{itemLocales, name, version, "", ""}, nil, nil}
 		ui := getCacheInfo(item)
 		ui.setAge(100)
 

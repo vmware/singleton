@@ -46,21 +46,21 @@ func (t *defaultTrans) GetStringMessage(name, version, locale, component, key st
 }
 
 func (t *defaultTrans) GetLocaleList(name, version string) (data []string, err error) {
-	item := &dataItem{itemLocales, translationID{name, version}, nil, nil}
+	item := &dataItem{dataItemID{itemLocales, name, version, "", ""}, nil, nil}
 	err = t.ds.get(item)
 	data, _ = item.data.([]string)
 	return
 }
 
 func (t *defaultTrans) GetComponentList(name, version string) (data []string, err error) {
-	item := &dataItem{itemComponents, translationID{name, version}, nil, nil}
+	item := &dataItem{dataItemID{itemComponents, name, version, "", ""}, nil, nil}
 	err = t.ds.get(item)
 	data, _ = item.data.([]string)
 	return
 }
 
 func (t *defaultTrans) GetComponentMessages(name, version, locale, component string) (data ComponentMsgs, err error) {
-	item := &dataItem{itemComponent, componentID{name, version, locale, component}, nil, nil}
+	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
 	err = t.ds.get(item)
 	data, _ = item.data.(ComponentMsgs)
 	return

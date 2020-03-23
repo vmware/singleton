@@ -25,18 +25,16 @@ type bundleDAO struct {
 }
 
 func (d *bundleDAO) get(item *dataItem) (err error) {
-	switch item.iType {
+	id := item.id
+	switch id.iType {
 	case itemComponent:
-		id := item.id.(componentID)
 		item.data, err = d.getComponentMessages(id.Name, id.Version, id.Locale, id.Component)
 	case itemLocales:
-		id := item.id.(translationID)
 		item.data, err = d.getLocales(id.Name, id.Version)
 	case itemComponents:
-		id := item.id.(translationID)
 		item.data, err = d.getComponents(id.Name, id.Version)
 	default:
-		err = errors.Errorf("Invalid item type: %s", item.iType)
+		err = errors.Errorf("Invalid item type: %s", item.id.iType)
 	}
 
 	return

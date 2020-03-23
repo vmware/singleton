@@ -52,7 +52,7 @@ func (ds *dataService) fetch(item *dataItem, wait bool) error {
 
 		info.setTime(time.Now().Unix())
 
-		logger.Debug(fmt.Sprintf("Start fetching %s, ID: %+v", item.iType, item.id))
+		logger.Debug(fmt.Sprintf("Start fetching ID: %+v", item.id))
 
 		if ds.server != nil {
 			err = ds.server.get(item)
