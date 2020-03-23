@@ -210,8 +210,9 @@ type MockMapping struct {
 	} `json:"request"`
 
 	Response struct {
-		Status       int    `json:"status"`
-		BodyFileName string `json:"bodyFileName"`
+		Status       int               `json:"status"`
+		Headers      map[string]string `json:"headers"`
+		BodyFileName string            `json:"bodyFileName"`
 	} `json:"response"`
 
 	Headers struct {
@@ -239,6 +240,7 @@ func EnableMockDataWithTimes(key string, times int) *gock.Request {
 		req.MatchParam(k, v)
 	}
 	resp := req.Reply(data.Response.Status)
+	resp.SetHeaders(data.Response.Headers)
 	if data.Response.BodyFileName != "" {
 		resp.File("./testdata/mock/__files/" + data.Response.BodyFileName)
 	}

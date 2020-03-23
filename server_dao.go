@@ -7,7 +7,6 @@ package sgtn
 
 import (
 	"encoding/json"
-	"fmt"
 	"net"
 	"net/http"
 	"net/url"
@@ -169,6 +168,8 @@ var getDataFromServer = func(u *url.URL, header map[string]string, data interfac
 		return resp, err
 	}
 
+	//logger.Debug(fmt.Sprintf("resp is: %#v", resp))
+
 	if !isHTTPSuccess(resp.StatusCode) {
 		return resp, &serverError{resp.StatusCode, bodyObj.Result.Code, resp.Status, bodyObj.Result.Message}
 	}
@@ -186,7 +187,7 @@ var getDataFromServer = func(u *url.URL, header map[string]string, data interfac
 		return resp, errors.WithStack(err)
 	}
 
-	logger.Debug(fmt.Sprintf("decoded data is: %#v", data))
+	//logger.Debug(fmt.Sprintf("decoded data is: %#v", data))
 
 	return resp, nil
 }

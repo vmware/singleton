@@ -9,8 +9,6 @@ import (
 	"sync"
 )
 
-var cache Cache
-
 type defaultCache struct {
 	m *sync.Map
 }

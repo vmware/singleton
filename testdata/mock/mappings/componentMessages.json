@@ -12,7 +12,55 @@
       },
       "response": {
         "status": 200,
+        "headers": {
+          "ETag": "1234567890",
+          "Cache-Control": "s-maxage=1221965, max-age=1221965"
+        },
         "bodyFileName": "componentMessages-zh-Hans-sunglow.json"
+      }
+    },
+    {
+      "id": "componentMessages-zh-Hans-sunglow-sendCC",
+      "request": {
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0",
+        "method": "GET",
+        "params": {
+          "components": "sunglow",
+          "locales": "zh-Hans"
+        },
+        "headers": {
+          "If-None-Match": "1234567890"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "ETag": "0987654321",
+          "Cache-Control": "s-maxage=1221965, max-age=2334"
+        },
+        "bodyFileName": "componentMessages-zh-Hans-sunglow.json"
+      }
+    },
+    {
+      "id": "componentMessages-zh-Hans-HTTP304",
+      "request": {
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0",
+        "method": "GET",
+        "params": {
+          "components": "sunglow",
+          "locales": "zh-Hans"
+        },
+        "headers": {
+          "If-None-Match": "0987654321"
+        }
+      },
+      "response": {
+        "status": 304,
+        "headers": {
+          "ETag": "0987654321-304",
+          "Cache-Control": "s-maxage=1221965, max-age=3445"
+        },
+        "bodyFileName": "componentMessages-zh-Hans-sunglow-HTTP304.json"
       }
     },
     {
