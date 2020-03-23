@@ -7,19 +7,16 @@ package sgtn
 
 import (
 	"encoding/json"
-	"fmt"
 	"net"
 	"net/http"
 	"net/url"
 	"path"
-
 	"strings"
 	"sync/atomic"
 	"time"
 
-	"github.com/pkg/errors"
-
 	"github.com/mitchellh/mapstructure"
+	"github.com/pkg/errors"
 )
 
 const serverRetryInterval = 2 //second
@@ -65,7 +62,7 @@ func (s *serverDAO) get(item *dataItem) (err error) {
 	urlToQuery := s.prepareURL(item)
 
 	s.headers[httpHeaderIfNoneMatch] = info.getETag()
-	defer func() { delete(s.headers, httpHeaderIfNoneMatch) }()
+	defer delete(s.headers, httpHeaderIfNoneMatch)
 	resp, err := s.sendRequest(urlToQuery, s.headers, data)
 	if resp != nil {
 		item.attrs = resp.Header

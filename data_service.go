@@ -8,6 +8,7 @@ package sgtn
 import (
 	"fmt"
 	"net/http"
+	"regexp"
 	"strconv"
 	"time"
 
@@ -32,7 +33,7 @@ func (ds *dataService) get(item *dataItem) (err error) {
 
 	ok := ds.getCache(item)
 	if ok {
-		if info := ds.getCacheInfo(item); info.isExpired() {
+		if info := getCacheInfo(item); info.isExpired() {
 			go ds.fetch(item, false)
 		}
 
@@ -51,7 +52,7 @@ func (ds *dataService) fetch(item *dataItem, wait bool) error {
 
 		info.setTime(time.Now().Unix())
 
-		logger.Debug("Start fetching")
+		logger.Debug(fmt.Sprintf("Start fetching %s, ID: %+v", item.iType, item.id))
 
 		if ds.server != nil {
 			err = ds.server.get(item)
@@ -69,9 +70,9 @@ func (ds *dataService) fetch(item *dataItem, wait bool) error {
 				StackTrace() errors.StackTrace
 			}
 			if e, ok := err.(stackTracer); ok {
-				logger.Debug(fmt.Sprintf("%+v", e.StackTrace()))
+				logger.Debug(fmt.Sprintf("Fail to get from server:\n%+v", e.StackTrace()))
 			} else {
-				logger.Error(fmt.Sprintf("Fail to get from server: %s", err))
+				logger.Error(fmt.Sprintf("Fail to get from server: %s", err.Error()))
 			}
 		}
 
@@ -82,6 +83,7 @@ func (ds *dataService) fetch(item *dataItem, wait bool) error {
 				ds.setCache(item)
 				return nil
 			}
+			logger.Error(fmt.Sprintf("Fail to get from bundle: %s", err.Error()))
 		}
 
 		return err
@@ -106,10 +108,6 @@ func (ds *dataService) setCache(item *dataItem) {
 	ds.cache.Set(item.id, item.data)
 }
 
-func (ds *dataService) getCacheInfo(item *dataItem) *itemCacheInfo {
-	return getCacheInfo(item)
-}
-
 func isFetchSucess(err error) bool {
 	if err != nil {
 		myErr, ok := err.(*serverError)
@@ -121,16 +119,24 @@ func isFetchSucess(err error) bool {
 	return true
 }
 
+var cacheControlRE = regexp.MustCompile(`\bmax-age\b\s*=\s*\b(\d+)\b`)
+
 func updateCacheControl(item *dataItem, info *itemCacheInfo) {
 	headers := item.attrs.(http.Header)
-	cc := headers.Get(httpHeaderCacheControl)
-	age, parseErr := strconv.ParseInt(cc, 10, 64)
-	if parseErr != nil {
-		logger.Error("Wrong cache control: " + cc)
-	} else {
-		info.setAge(age)
-	}
+
 	info.setETag(headers.Get(httpHeaderETag))
+
+	cc := headers.Get(httpHeaderCacheControl)
+	results := cacheControlRE.FindStringSubmatch(cc)
+	if len(results) == 2 {
+		age, parseErr := strconv.ParseInt(results[1], 10, 64)
+		if parseErr == nil {
+			info.setAge(age)
+			return
+		}
+	}
+
+	logger.Error("Wrong cache control: " + cc)
 }
 
 //!-dataService

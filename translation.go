@@ -19,7 +19,6 @@ type defaultTrans struct {
 }
 
 func (t *defaultTrans) GetStringMessage(name, version, locale, component, key string, args ...string) (string, error) {
-
 	compData, err := t.GetComponentMessages(name, version, locale, component)
 	if err != nil {
 		if strings.Compare(strings.ToLower(locale), strings.ToLower(t.defaultLocale)) != 0 {

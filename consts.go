@@ -25,7 +25,7 @@ const (
 )
 
 const (
-	httpHeaderCacheControl = "cache-control"
+	httpHeaderCacheControl = "Cache-Control"
 	httpHeaderETag         = "ETag"
 	httpHeaderIfNoneMatch  = "If-None-Match"
 )
