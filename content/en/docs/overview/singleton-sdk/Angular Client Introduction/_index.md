@@ -88,6 +88,7 @@ If you cannot find the necessary documentation or the answer to your question by
         border: 1px solid #f8b5b4;
         height: 3.5rem;
         line-height: 0rem;
+        color: #575757;
     }
     article section.page table th {
         font-weight:500;
