@@ -54,18 +54,18 @@ const (
 	itemComponents
 )
 
-func (t itemType) String() string {
-	switch t {
-	case itemComponent:
-		return "component"
-	case itemLocales:
-		return "locales"
-	case itemComponents:
-		return "components"
-	default:
-		return ""
-	}
-}
+// func (t itemType) String() string {
+// 	switch t {
+// 	case itemComponent:
+// 		return "component"
+// 	case itemLocales:
+// 		return "locales"
+// 	case itemComponents:
+// 		return "components"
+// 	default:
+// 		return ""
+// 	}
+// }
 
 type dataItem struct {
 	id    dataItemID

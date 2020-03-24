@@ -25,8 +25,8 @@ const (
 	serverTimeout
 )
 
-func newServer(OnlineServiceURL string) (*serverDAO, error) {
-	svrURL, err := url.Parse(OnlineServiceURL)
+func newServer(serverURL string) (*serverDAO, error) {
+	svrURL, err := url.Parse(serverURL)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +56,7 @@ func (s *serverDAO) get(item *dataItem) (err error) {
 	case itemComponents:
 		data = new(queryComponents)
 	default:
-		return errors.Errorf("Invalid item type: %s", item.id.iType)
+		return errors.Errorf("Invalid item type: %d", item.id.iType)
 	}
 
 	urlToQuery := s.prepareURL(item)
@@ -85,7 +85,7 @@ func (s *serverDAO) get(item *dataItem) (err error) {
 		componentsData := data.(*queryComponents)
 		item.data = componentsData.Components
 	default:
-		return errors.Errorf("Invalid item type: %s", item.id.iType)
+		return errors.Errorf("Invalid item type: %d", item.id.iType)
 	}
 
 	// fmt.Printf("item to return: \n%#v\n", item)

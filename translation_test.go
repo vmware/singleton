@@ -538,7 +538,7 @@ func TestAddHTTPHeader(t *testing.T) {
 	assert.True(t, gock.IsDone())
 }
 
-func TestGetComponents(t *testing.T) {
+func TestGetComponentList(t *testing.T) {
 	defer Trace(curFunName())()
 
 	var tests = []struct {
@@ -603,7 +603,7 @@ func TestGetComponents(t *testing.T) {
 	assert.True(t, gock.IsDone())
 }
 
-func TestGetLocales(t *testing.T) {
+func TestGetLocaleList(t *testing.T) {
 	defer Trace(curFunName())()
 
 	var tests = []struct {

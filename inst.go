@@ -77,7 +77,7 @@ func (i *Instance) GetTranslation() Translation {
 	return i.trans
 }
 
-// SetHTTPHeaders Add customized HTTP headers
+// SetHTTPHeaders Set customized HTTP headers
 func (i *Instance) SetHTTPHeaders(h map[string]string) {
 	i.trans.ds.server.setHTTPHeaders(h)
 }

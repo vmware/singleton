@@ -30,17 +30,17 @@ func (d *bundleDAO) get(item *dataItem) (err error) {
 	case itemComponent:
 		item.data, err = d.getComponentMessages(id.Name, id.Version, id.Locale, id.Component)
 	case itemLocales:
-		item.data, err = d.getLocales(id.Name, id.Version)
+		item.data, err = d.getLocaleList(id.Name, id.Version)
 	case itemComponents:
-		item.data, err = d.getComponents(id.Name, id.Version)
+		item.data, err = d.getComponentList(id.Name, id.Version)
 	default:
-		err = errors.Errorf("Invalid item type: %s", item.id.iType)
+		err = errors.Errorf("Invalid item type: %d", item.id.iType)
 	}
 
 	return
 }
 
-func (d *bundleDAO) getComponents(name, version string) ([]string, error) {
+func (d *bundleDAO) getComponentList(name, version string) ([]string, error) {
 	fis, err := ioutil.ReadDir(filepath.Join(d.root, name, version))
 	if err != nil {
 		return nil, err
@@ -55,8 +55,8 @@ func (d *bundleDAO) getComponents(name, version string) ([]string, error) {
 
 	return comps, nil
 }
-func (d *bundleDAO) getLocales(name, version string) ([]string, error) {
-	comps, err := d.getComponents(name, version)
+func (d *bundleDAO) getLocaleList(name, version string) ([]string, error) {
+	comps, err := d.getComponentList(name, version)
 	if err != nil {
 		return nil, err
 	}
