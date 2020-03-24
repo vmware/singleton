@@ -78,6 +78,9 @@ Using the local data to support i18n is not a recommended way that only for a tr
     section strong {
         font-weight: 400;
     }
+    ul li {
+        list-style: disc;
+    }
     article section.page table th {
         font-weight:500;
         text-transform: inherit;

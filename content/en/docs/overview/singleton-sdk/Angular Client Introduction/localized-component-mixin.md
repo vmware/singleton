@@ -42,6 +42,19 @@ The @vmw/ngx-vip library provides a script called collect-mixin-source which wil
 
 >Note that if you use refresh token in the host that isn't supported, it will through unexpected error, and the vice versa.
 
+When the refresh token is required by your host
+
+![localized-component-mixin-5](https://github.com/zmengjiao/singleton/raw/website/content/en/images/localized-component-mixin/localized-component-mixin-5.png)
+
+
+When the refresh token isn't required by your host
+
+![localized-component-mixin-6](https://github.com/zmengjiao/singleton/raw/website/content/en/images/localized-component-mixin/localized-component-mixin-6.png)
+
+
+##### **Use the script**
+
+![localized-component-mixin-7](https://github.com/zmengjiao/singleton/raw/website/content/en/images/localized-component-mixin/localized-component-mixin-7.png)
 
 
 
@@ -53,9 +66,9 @@ The @vmw/ngx-vip library provides a script called collect-mixin-source which wil
     section strong {
         font-weight: 400;
     }
-    /* ul li {
-        list-style: circle;
-    } */
+    ul li {
+        list-style: disc;
+    }
     blockquote {
         background: #f5dddb;
         border: 1px solid #f8b5b4;
