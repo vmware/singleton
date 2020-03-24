@@ -22,7 +22,7 @@ var (
 type Instance struct {
 	cfg           Config
 	trans         *defaultTrans
-	components    []dataItemID
+	components    []translationID
 	initializOnce sync.Once
 }
 
@@ -32,29 +32,26 @@ func init() {
 }
 
 // GetInst Get the Singleton instance
-func GetInst() *Instance {
-	return &inst
-}
+// func GetInst() *Instance {
+// 	return &inst
+// }
 
-//Initialize initialize the instance
-func (i *Instance) Initialize(cfg *Config) {
-	i.cfg = *cfg
-	i.initializOnce.Do(i.doInitialize)
+//GetInst initialize the instance
+func GetInst(cfg *Config) *Instance {
+	inst.cfg = *cfg
+	inst.initializOnce.Do(inst.doInitialize)
+	return &inst
 }
 
 func (i *Instance) doInitialize() {
 	logger.Debug("Initializing Singleton instance.")
 
 	dService := new(dataService)
-	// if i.cfg.EnableCache {
-	// dService.enableCache = i.cfg.EnableCache
-	initCacheInfoMap()
-	// }
 	if len(i.cfg.OnlineServiceURL) != 0 {
 		var err error
 		dService.server, err = newServer(i.cfg.OnlineServiceURL)
 		if err != nil {
-			logger.Error(err.Error())
+			panic(err)
 		}
 	}
 	if strings.TrimSpace(i.cfg.OfflineResourcesBaseURL) != "" {
@@ -62,7 +59,12 @@ func (i *Instance) doInitialize() {
 	}
 
 	i.trans = &defaultTrans{dService, i.cfg.DefaultLocale}
+
+	// if i.cfg.EnableCache {
+	// dService.enableCache = i.cfg.EnableCache
+	initCacheInfoMap()
 	i.RegisterCache(newCache())
+	// }
 }
 
 // GetConfig Get the config of Singleton instance

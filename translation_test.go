@@ -111,7 +111,9 @@ func TestRefreshCache(t *testing.T) {
 
 	defer gock.Off()
 
-	testInst := resetInst(&testCfg)
+	newCfg := testCfg
+	newCfg.OfflineResourcesBaseURL = ""
+	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
 	dataService := testInst.trans
 	cacheObj := testInst.trans.ds.cache
@@ -231,7 +233,9 @@ func TestGetStringFallback(t *testing.T) {
 		EnableMockData(test.mocks[m])
 	}
 
-	testInst := resetInst(&testCfg)
+	newCfg := testCfg
+	newCfg.OfflineResourcesBaseURL = ""
+	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
 
 	// Normal fallback
@@ -478,6 +482,7 @@ func TestGetCompMessagesResponsePartial(t *testing.T) {
 	defer gock.Off()
 
 	newCfg := testCfg
+	newCfg.OfflineResourcesBaseURL = ""
 	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
 	for _, testData := range tests {
@@ -486,6 +491,7 @@ func TestGetCompMessagesResponsePartial(t *testing.T) {
 		}
 
 		messages, _ := trans.GetComponentMessages(name, version, testData.locale, testData.component)
+		// assert.Contains(t, "Fail to get from server", err.Error())
 		assert.True(t, messages == nil || messages.Size() == 0)
 	}
 
@@ -678,6 +684,7 @@ func TestHTTP404(t *testing.T) {
 	defer gock.Off()
 
 	newCfg := testCfg
+	newCfg.OfflineResourcesBaseURL = ""
 	testInst := resetInst(&newCfg)
 	trans := testInst.GetTranslation()
 	for _, m := range testData.mocks {

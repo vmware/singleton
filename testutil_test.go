@@ -285,8 +285,7 @@ func curFunName() string {
 
 func resetInst(cfg *Config) *Instance {
 	inst = Instance{}
-	inst.Initialize(cfg)
-	return &inst
+	return GetInst(cfg)
 }
 
 func expireCache(info *itemCacheInfo, cacheExpiredTime int64) {
