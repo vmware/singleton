@@ -28,6 +28,7 @@ import org.springframework.web.util.UrlPathHelper;
 import com.vmware.vip.api.rest.API;
 import com.vmware.vip.api.rest.APIV1;
 import com.vmware.vip.api.rest.APIV2;
+import com.vmware.vip.core.Interceptor.APICacheControlInterceptor;
 import com.vmware.vip.core.Interceptor.APICrossDomainInterceptor;
 import com.vmware.vip.core.Interceptor.APISourceInterceptor;
 import com.vmware.vip.core.Interceptor.APIValidationInterceptor;
@@ -82,6 +83,8 @@ public class WebConfiguration implements WebMvcConfigurer {
 	@Value("${swagger-ui.enable}")
 	private boolean swagger2enable;
 
+	@Value("${cache-control.maxage:0}")
+	private int cacheControlMaxAge;
 	@Autowired
 	private TokenService tokenService;
 
@@ -153,6 +156,10 @@ public class WebConfiguration implements WebMvcConfigurer {
 			registry.addInterceptor(new APICrossDomainInterceptor(allowSet, allowHeaders, allowMethods, allowCredentials, maxAge))
 			.addPathPatterns(API.I18N_API_ROOT + APIV1.V + "/**")
 			.addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**");
+		}
+		//cacheControl
+		if (cacheControlMaxAge > 0) {
+			registry.addInterceptor(new APICacheControlInterceptor(this.cacheControlMaxAge)).addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**");
 		}
 	}
 
