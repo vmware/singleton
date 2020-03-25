@@ -18,10 +18,6 @@ type Config struct {
 	DefaultLocale string `json:"default_locale"`
 
 	OfflineResourcesBaseURL string `json:"offline_resources_base_url"`
-
-	// EnableCache bool `json:"enable_cache"`
-
-	Components []translationID `json:"components"`
 }
 
 type translationID struct {
@@ -39,8 +35,6 @@ func NewConfig(path string) (*Config, error) {
 	if err := json.Unmarshal(contents, &cfg); err != nil {
 		return nil, err
 	}
-
-	// cfg.EnableCache = true
 
 	logger.Debug(fmt.Sprintf("Created a new config: %#v", cfg))
 

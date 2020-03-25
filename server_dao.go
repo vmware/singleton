@@ -88,8 +88,6 @@ func (s *serverDAO) get(item *dataItem) (err error) {
 		return errors.Errorf("Invalid item type: %d", item.id.iType)
 	}
 
-	// fmt.Printf("item to return: \n%#v\n", item)
-
 	return nil
 }
 
@@ -197,7 +195,6 @@ func isHTTPSuccess(code int) bool {
 }
 
 func isBusinessSuccess(code int) bool {
-	// return code >= 600 && code < 700
 	return code >= 200 && code < 300
 }
 

@@ -17,7 +17,6 @@ import (
 
 //!+dataService
 type dataService struct {
-	// enableCache bool
 
 	cache Cache
 
@@ -26,11 +25,6 @@ type dataService struct {
 }
 
 func (ds *dataService) get(item *dataItem) (err error) {
-	// if !ds.enableCache {
-	// 	err = ds.fetch(item)
-	// 	return
-	// }
-
 	ok := ds.getCache(item)
 	if ok {
 		if info := getCacheInfo(item); info.isExpired() {

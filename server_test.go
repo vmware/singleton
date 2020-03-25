@@ -46,13 +46,4 @@ func TestGetLocaleCompAbnormal(t *testing.T) {
 	locales, errlocale = trans.GetLocaleList(name, version)
 	assert.Nil(t, locales)
 	assert.Contains(t, errlocale.Error(), errMsg)
-
-	// clearCache(testInst)
-	// errinit := testInst.InitializeCache()
-	// assert.Contains(t, errinit.Error(), errMsg)
-
-	// // Test return nil when disabling cache
-	// testInst.cfg.EnableCache = false
-	// errInit := testInst.InitializeCache()
-	// assert.Nil(t, errInit)
 }

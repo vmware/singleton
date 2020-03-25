@@ -13,7 +13,6 @@ import (
 )
 
 var (
-	// instMap sync.Map
 	inst   = Instance{}
 	logger Logger
 )
@@ -30,11 +29,6 @@ func init() {
 	SetLogger(newLogger())
 	httpclient = &http.Client{Timeout: time.Second * servertimeout}
 }
-
-// GetInst Get the Singleton instance
-// func GetInst() *Instance {
-// 	return &inst
-// }
 
 //GetInst initialize the instance
 func GetInst(cfg *Config) *Instance {
@@ -60,17 +54,10 @@ func (i *Instance) doInitialize() {
 
 	i.trans = &defaultTrans{dService, i.cfg.DefaultLocale}
 
-	// if i.cfg.EnableCache {
-	// dService.enableCache = i.cfg.EnableCache
 	initCacheInfoMap()
 	i.RegisterCache(newCache())
-	// }
-}
 
-// GetConfig Get the config of Singleton instance
-// func (i *Instance) GetConfig() Config {
-// 	return i.cfg
-// }
+}
 
 // GetTranslation Get translation instance
 func (i *Instance) GetTranslation() Translation {
