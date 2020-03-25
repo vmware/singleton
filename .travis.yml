@@ -2,12 +2,6 @@ dist: trusty
 
 language: node_js
 
-addons:
-  sonarcloud:
-    organization: $SONAR_ORG
-    token:
-      secure: $SONAR_TOKEN
-
 node_js:
   - "10"
 
@@ -35,7 +29,7 @@ jobs:
       script:
         - git clone --branch=devops https://github.com/vmware/singleton.git devops
         - cp $TRAVIS_BUILD_DIR/devops/check_headers.py . && chmod +x check_headers.py
-        - python3 ./check_headers.py -f "$(git diff --name-only $TRAVIS_COMMIT_RANGE)"
+        - python3 ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
     - stage: unit test and code scan
       script:
         - SONARSCANNER='sonar-scanner-cli-4.0.0.1744-linux'
