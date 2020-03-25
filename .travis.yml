@@ -23,7 +23,7 @@ jobs:
       script:
         - git clone --branch=devops https://github.com/vmware/singleton.git devops
         - cp $TRAVIS_BUILD_DIR/devops/check_headers.py . && chmod +x check_headers.py
-        - python3 ./check_headers.py -f "$(git diff --name-only $TRAVIS_COMMIT_RANGE)"
+        - python3 ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
     - stage: unit test
       script:
         - cd $TRAVIS_BUILD_DIR/g11n-ws && ./gradlew build
