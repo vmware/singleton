@@ -2,12 +2,6 @@ dist: trusty
 
 language: node_js
 
-addons:
-  sonarcloud:
-    organization: $SONAR_ORG
-    token:
-      secure: $SONAR_TOKEN
-
 node_js:
   - "10"
 
