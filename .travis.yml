@@ -6,12 +6,6 @@ go:
 python:
   - 3.4
 
-addons:
-  sonarcloud:
-    organization: $SONAR_ORG
-    token:
-      secure: $SONAR_TOKEN
-
 before_install:
 - |
     git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.md$' || {
@@ -29,7 +23,7 @@ jobs:
       script:
         - git clone --branch=devops https://github.com/vmware/singleton.git devops
         - cp $TRAVIS_BUILD_DIR/devops/check_headers.py . && chmod +x check_headers.py
-        - python3 ./check_headers.py -f "$(git diff --name-only $TRAVIS_COMMIT_RANGE)"
+        - python3 ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
     - stage: Unit Test
       script:
         - go build
@@ -43,9 +37,15 @@ jobs:
         - rm -f $SONARSCANNER.zip
         - go test -json > report.json
         - go test -coverprofile=coverage.out
-        - ./$SONARSCANNERINNER/bin/sonar-scanner -Dsonar.sources=. -Dsonar.exclusions=**/testdata/**/*,**/$SONARSCANNERINNER/**/*,**/*_test.go -Dsonar.coverage.exclusions=**/testdata/**/*,**/$SONARSCANNERINNER/**/*,**/*_test.go -Dsonar.projectName=$SONAR_ORG-singleton-go-client-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.projectKey=$SONAR_ORG-singleton-go-client-$TRAVIS_BRANCH -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN -Dsonar.go.tests.reportPaths=./report.json -Dsonar.go.coverage.reportPaths=./coverage.out
+        - git clone --branch=devops https://github.com/vmware/singleton.git devops
+        - cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG-singleton-go-client-$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG-singleton-go-client-$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=go-client-gate -QualityGateConditions="./quality_gates/go-client.json" -SonarToken=$SONAR_TOKEN
+        - cd $TRAVIS_BUILD_DIR && ./$SONARSCANNERINNER/bin/sonar-scanner -Dsonar.sources=. -Dsonar.exclusions=**/testdata/**/*,**/$SONARSCANNERINNER/**/*,**/*_test.go -Dsonar.coverage.exclusions=**/testdata/**/*,**/$SONARSCANNERINNER/**/*,**/*_test.go -Dsonar.projectName=$SONAR_ORG-singleton-go-client-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.projectKey=$SONAR_ORG-singleton-go-client-$TRAVIS_BRANCH -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN -Dsonar.go.tests.reportPaths=./report.json -Dsonar.go.coverage.reportPaths=./coverage.out
+        - |
+            git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.travis\.yml$' || {
+              echo "No need to check sonar quality gate for only travis configuration updates"
+              exit
+            }
+            cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-singleton-go-client-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
     - stage: Smoke Test
       script:
         true
-
-
