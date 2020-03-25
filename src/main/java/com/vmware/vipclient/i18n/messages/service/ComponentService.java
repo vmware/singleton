@@ -5,7 +5,6 @@
 package com.vmware.vipclient.i18n.messages.service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONValue;
@@ -16,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.HttpRequester;
+import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.CacheMode;
 import com.vmware.vipclient.i18n.base.cache.persist.DiskCacheLoader;
 import com.vmware.vipclient.i18n.base.cache.persist.Loader;
@@ -44,7 +44,7 @@ public class ComponentService {
         Map<String, String> transMap = new HashMap<String, String>();
         ComponentBasedOpt cbo = new ComponentBasedOpt(dto);
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
-        	Map<String, Object> response = cbo.getComponentMessages();
+        	Map<String, Object> response = cbo.getComponentMessages(cacheProps);
 	    	transMap = cbo.getMsgsJson(response);
 	    	cacheProps.put(HttpRequester.HEADERS, response.get(HttpRequester.HEADERS));
 	    	cacheProps.put(HttpRequester.RESPONSE_CODE, response.get(HttpRequester.RESPONSE_CODE));
@@ -56,26 +56,29 @@ public class ComponentService {
     }
 
     public Map<String, String> getComponentTranslation() {
-        Map<String, String> retMap = new HashMap<String, String>();
-        Map<String, Object> cacheProps = new HashMap<String, Object>();
-        
         CacheService cs = new CacheService(dto);
-        retMap = cs.getCacheOfComponent();
-        if (retMap == null
+        Map<String, Object> cache = cs.getCacheOfComponent();
+        Map<String, String> cachedMessages = (Map<String, String>) cache.get(Cache.MESSAGES);
+        Map<String, Object> cacheProps = (Map<String, Object>) cache.get(Cache.CACHE_PROPERTIES);
+        
+        if (cachedMessages == null
                 && VIPCfg.getInstance().getCacheMode() == CacheMode.DISK) {
             Loader loader = VIPCfg.getInstance().getCacheManager()
                     .getLoaderInstance(DiskCacheLoader.class);
-            retMap = loader.load(dto.getCompositStrAsCacheKey());
+            cachedMessages = loader.load(dto.getCompositStrAsCacheKey());
         }
-        if (retMap == null && !cs.isContainComponent()) {
+        if (cachedMessages == null && !cs.isContainComponent()) {
+        	if (cacheProps == null) {
+            	cacheProps = new HashMap<String, Object>();
+            }
             Object o = this.getMessages(cacheProps);
             Map<String, String> dataMap = (o == null ? null
                     : (Map<String, String>) o);
             
             cs.addCacheOfComponent(dataMap, cacheProps);
-            retMap = dataMap;
+            cachedMessages = dataMap;
         }
-        return retMap;
+        return cachedMessages;
     }
 
     public boolean isComponentAvailable() {

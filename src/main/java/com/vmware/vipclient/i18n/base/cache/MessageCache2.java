@@ -4,6 +4,7 @@
  */
 package com.vmware.vipclient.i18n.base.cache;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,16 +20,20 @@ public class MessageCache2 implements Cache {
     public MessageCache2() {
     }
 
-    public Map<String, String> get(String cacheKey) {
-        Map<String, String> r = null;
+    public Map<String, Object> get(String cacheKey) {
+    	Map<String, Object> cache = new HashMap<String, Object>();
+    	Map<String, Object> cacheProps = new HashMap<String, Object>();
+    	
         for (MessageCache m : messageCacheList) {
             Object o = m.getCachedTranslationMap().get(cacheKey);
             if (o != null) {
-                r = (Map<String, String>) o;
+            	cache.put(MESSAGES, (Map<String, String>) o);            	
+                cacheProps.putAll(m.getCacheProperties().get(cacheKey));
+                cache.put(CACHE_PROPERTIES, cacheProps);
                 break;
             }
         }
-        return r;
+        return cache;
     }
 
     public synchronized boolean put(String cacheKey, Map<String, String> map, Map<String, Object> cacheProps) {

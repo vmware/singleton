@@ -4,6 +4,7 @@
  */
 package com.vmware.vipclient.i18n.base.cache;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -19,9 +20,13 @@ public class FormattingCache implements Cache {
     }
 
     @SuppressWarnings("unchecked")
-    public Map<String, String> get(String cacheKey) {
+    public Map<String, Object> get(String cacheKey) {
         Object cachedObject = formattingMap.get(cacheKey);
-        return cachedObject == null ? null : (Map<String, String>) cachedObject;
+        Map<String, Object> cache = new HashMap<String, Object>();
+    	if (cachedObject != null) {
+    		cache.put(MESSAGES,  (Map<String, String>) cachedObject);
+    	}
+        return cache;
     }
 
     public synchronized boolean put(String cacheKey, Map<String, String> map, Map<String, Object> cacheProps) {

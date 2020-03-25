@@ -61,7 +61,17 @@ public class HttpRequester {
     private Map<String, String> customizedHeaderParams = null;
 
     public void setCustomizedHeaderParams(Map<String, String> params) {
-        customizedHeaderParams = params;
+    	if (params!=null && !params.isEmpty()) {
+    		if (customizedHeaderParams == null) {
+    			customizedHeaderParams = new HashMap<String, String>();
+    		}
+    		customizedHeaderParams.putAll(params);
+    	} 
+    }
+    
+    public void removeCustomizedHeaderParams(String key) {
+    	if (customizedHeaderParams != null)
+    		customizedHeaderParams.remove(key);
     }
 
     /**
@@ -106,6 +116,8 @@ public class HttpRequester {
     public static final String HEADERS = "headers";
     public static final String RESPONSE_CODE = "response_code";
     public static final String RESPONSE_MSG = "response_msg";
+    public static final String IF_NONE_MATCH_HEADER = "If-None-Match";
+    public static final String ETAG = "ETag";
     
     /**
      * The get method of requesting a remote server.
@@ -137,15 +149,18 @@ public class HttpRequester {
                 } else {
                     conn.connect();
                 }
-                if (HttpURLConnection.HTTP_OK == conn.getResponseCode()) {
-                    r = this.handleResult(conn);
-                    response.put(BODY, r);
-                    // logger.debug("The response from server is:\n"+r);
-                    
-                    response.put(HEADERS, conn.getHeaderFields());
-                    response.put(RESPONSE_CODE, conn.getResponseCode());
-                    response.put(RESPONSE_MSG, conn.getResponseMessage());
+                switch (conn.getResponseCode()) {
+                	case HttpURLConnection.HTTP_NOT_MODIFIED :
+                		break;
+                	case HttpURLConnection.HTTP_OK :
+                		r = this.handleResult(conn);
+	                    response.put(BODY, r);
+	                    // logger.debug("The response from server is:\n"+r);
+	                    break;
                 }
+                response.put(HEADERS, conn.getHeaderFields());
+                response.put(RESPONSE_CODE, conn.getResponseCode());
+                response.put(RESPONSE_MSG, conn.getResponseMessage());
             }
         } catch (IOException e) {
             logger.info(e.getMessage());
@@ -157,7 +172,7 @@ public class HttpRequester {
         }
         return response;
     }
-
+    
     public String getBaseURL() {
         return this.baseURL;
     }

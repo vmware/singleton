@@ -64,7 +64,7 @@ public class MessageCache2Test2 extends BaseTestClass {
         c.put(cachedKey, data, cacheProps);
         long expired = 60000;
         c.setExpiredTime(expired);
-        Map cachedData = TranslationCacheManager.getCache(VIPCfg.CACHE_L3).get(cachedKey);
+        Map cachedData = (Map) TranslationCacheManager.getCache(VIPCfg.CACHE_L3).get(cachedKey).get(Cache.MESSAGES);
         Assert.assertNull(cachedData);
     }
 }

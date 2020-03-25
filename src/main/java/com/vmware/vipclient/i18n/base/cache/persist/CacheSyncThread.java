@@ -48,7 +48,7 @@ public class CacheSyncThread extends Thread {
 			
         String r = "";
         ComponentBasedOpt opt = new ComponentBasedOpt(dto);
-		response = opt.getComponentMessages();
+		response = opt.getComponentMessages(null);
 		JSONObject	jo = opt.getMsgsJson(response);
 		
         if (jo != null) {

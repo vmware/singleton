@@ -9,13 +9,15 @@ import java.util.Set;
 
 public interface Cache {
 
+	public final static String MESSAGES = "messages";
+	public final static String CACHE_PROPERTIES = "cache_properties";
     /**
      * get a component's strings by key
      * 
      * @param key
      * @return map of all strings under the component
      */
-    public Map<String, String> get(String key);
+    public Map<String, Object> get(String key);
 
     /**
      * put strings to cache by key

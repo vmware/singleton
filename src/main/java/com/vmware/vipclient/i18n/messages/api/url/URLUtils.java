@@ -4,7 +4,12 @@
  */
 package com.vmware.vipclient.i18n.messages.api.url;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+
+import com.vmware.vipclient.i18n.base.HttpRequester;
 
 /**
  * 
@@ -50,5 +55,35 @@ public class URLUtils {
             }
         }
         return false;
+    }
+    
+    public static void addIfNoneMatchHeader(Map<String, Object> cacheProps, final HttpRequester requester) {
+    	if (cacheProps != null && !cacheProps.isEmpty()) {
+        	Map<String, List<String>> responseHeaders = (Map<String, List<String>>) cacheProps.get(HttpRequester.HEADERS);
+        	if (responseHeaders != null) {
+	        	List<String> etags = (List<String>) responseHeaders.get(requester.ETAG);
+	        	if (etags != null) {
+	        		String ifNoneMatch = createIfNoneMatchValue(etags);
+	        		Map<String, String> headers = new HashMap<String, String>();
+	        		headers.put(HttpRequester.IF_NONE_MATCH_HEADER,ifNoneMatch);
+	        		requester.setCustomizedHeaderParams(headers);
+	        	}
+        	}
+        } else {
+        	requester.removeCustomizedHeaderParams(HttpRequester.IF_NONE_MATCH_HEADER);
+        }
+    }
+    
+    private static String createIfNoneMatchValue(List<String> etags) {
+    	if(etags == null || etags.isEmpty()) {
+            return null;
+        }
+        final StringBuilder b = new StringBuilder();
+        final Iterator<String> it = etags.iterator();
+        b.append(it.next());
+        while(it.hasNext()) {
+            b.append(", ").append(it.next());
+        }
+        return b.toString();
     }
 }

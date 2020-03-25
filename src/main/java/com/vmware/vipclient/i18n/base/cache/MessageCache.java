@@ -4,6 +4,7 @@
  */
 package com.vmware.vipclient.i18n.base.cache;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -14,9 +15,13 @@ public class MessageCache implements Cache {
     private long                             expiredTime         = 864000000;                                       // 240hr
     private long                             lastClean           = System.currentTimeMillis();
 
-    private Map<String, Map<String, String>> cachedComponentsMap = new LinkedHashMap<String, Map<String, String>>();
-    private Map<String, Map<String, Object>> cacheProperties = new LinkedHashMap<String, Map<String, Object>>();
-
+    private final Map<String, Map<String, String>> cachedComponentsMap = new LinkedHashMap<String, Map<String, String>>();
+    private final Map<String, Map<String, Object>> cacheProperties = new LinkedHashMap<String, Map<String, Object>>();
+    
+    public Map<String, Map<String, Object>> getCacheProperties() {
+        return cacheProperties;
+    }
+    
     public Map<String, Map<String, String>> getCachedTranslationMap() {
         return cachedComponentsMap;
     }
@@ -44,13 +49,22 @@ public class MessageCache implements Cache {
     }
 
     @SuppressWarnings("unchecked")
-    public Map<String, String> get(String cacheKey) {
+    public Map<String, Object> get(String cacheKey) {
+    	Map<String, Object> cache = new HashMap<String, Object>();
+    	Map<String,Object> cacheProps = this.cacheProperties.get(cacheKey);
+    	if (cacheProps != null) {
+    		cache.put(CACHE_PROPERTIES, cacheProps);
+    	}
+    	
         Integer i = hitMap.get(cacheKey);
         if (i != null) {
             hitMap.put(cacheKey, i.intValue() + 1);
         }
         Object cachedObject = cachedComponentsMap.get(cacheKey);
-        return cachedObject == null ? null : (Map<String, String>) cachedObject;
+        if (cachedObject != null) {
+        	cache.put(MESSAGES,  (Map<String, String>) cachedObject);
+        }
+        return cache;
     }
 
     public String getRemovedKeyFromHitMap() {
@@ -96,12 +110,16 @@ public class MessageCache implements Cache {
     public synchronized boolean remove(String cacheKey) {
         Object o1 = cachedComponentsMap.get(cacheKey);
         Object o2 = hitMap.get(cacheKey);
+        Object o3 = cacheProperties.get(cacheKey);
         cachedComponentsMap.remove(cacheKey);
         hitMap.remove(cacheKey);
+        cacheProperties.remove(cacheKey);
         if (o1 != null)
             o1 = null;
         if (o2 != null)
             o2 = null;
+        if (o3 != null)
+            o3 = null;
         return !cachedComponentsMap.containsKey(cacheKey);
     }
 
@@ -122,6 +140,7 @@ public class MessageCache implements Cache {
             }
         }
         hitMap.clear();
+        cacheProperties.clear();
         return cachedComponentsMap.isEmpty();
     }
 

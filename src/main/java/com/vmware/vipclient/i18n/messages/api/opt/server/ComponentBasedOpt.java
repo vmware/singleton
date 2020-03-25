@@ -5,6 +5,7 @@
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
@@ -15,6 +16,7 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.HttpRequester;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
+import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
@@ -27,14 +29,16 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
         this.dto = dto;
     }
 
-    public Map<String, Object> getComponentMessages() {
+    public Map<String, Object> getComponentMessages(Map<String, Object> cacheProps) {
         String url = V2URL.getComponentTranslationURL(this.dto,
                 VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
         if (ConstantsKeys.LATEST.equals(this.dto.getLocale())) {
             url = url.replace("pseudo=false", "pseudo=true");
         }
-        Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(url, ConstantsKeys.GET,
-                null);
+        HttpRequester requester = VIPCfg.getInstance().getVipService().getHttpRequester();
+        URLUtils.addIfNoneMatchHeader (cacheProps, requester);
+        Map<String, Object> response = requester.request(url, ConstantsKeys.GET,
+        		null);
         
         return response;
     }
@@ -56,7 +60,7 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
     }
     
     public String getString() {
-    	Map<String, Object> response = this.getComponentMessages();
+    	Map<String, Object> response = this.getComponentMessages(null);
 		
 		JSONObject jo = this.getMsgsJson(response);
 		String k = this.dto.getKey();

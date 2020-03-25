@@ -17,12 +17,12 @@ public class PatternCacheService {
     }
 
     public void addPatterns(String key, JSONObject o) {
+    	// TODO pass map of cache properties such as etag and cache control headers
+        Map<String, Object> cacheProps = null;
         if (null != key && null != o) {
             Cache c = VIPCfg.getInstance().getCacheManager()
                     .getCache(VIPCfg.CACHE_L2);
             if (c != null) {
-            	// TODO pass map of cache properties such as etag and cache control headers
-                Map<String, Object> cacheProps = null;
                 c.put(key, o, cacheProps);
             }
         }
@@ -33,7 +33,8 @@ public class PatternCacheService {
         Cache c = VIPCfg.getInstance().getCacheManager()
                 .getCache(VIPCfg.CACHE_L2);
         if (c != null) {
-            o = (JSONObject) c.get(key);
+        	Map<String, Object> cache = c.get(key);    
+            o = (JSONObject) cache.get(Cache.MESSAGES);
         }
         if (null == o) {
             return null;

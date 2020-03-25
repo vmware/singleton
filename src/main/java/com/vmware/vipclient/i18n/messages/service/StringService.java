@@ -4,6 +4,7 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
+import java.net.HttpURLConnection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,8 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
+import com.vmware.vipclient.i18n.base.HttpRequester;
+import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.StringBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
@@ -33,20 +36,30 @@ public class StringService {
 
     @SuppressWarnings("unchecked")
     public String getString() {
-        Map<String, Object> cacheProps = new HashMap<String, Object>();
+    	String key = dto.getKey();
+    	CacheService cacheservice = new CacheService(dto);
+    	Map<String, Object> cache = cacheservice.getCacheOfComponent();
+    	Map<String, String> cacheOfComponent = (Map<String, String>) cache.get(Cache.MESSAGES);
+    	Map<String, Object> cacheProps = (Map<String, Object>) cache.get(Cache.CACHE_PROPERTIES);
         
-        String key = dto.getKey();
-        CacheService cacheservice = new CacheService(dto);
-        Map<String, String> map = cacheservice.getCacheOfComponent();
-        if (map == null) {
-            if (!cacheservice.isContainComponent()) {
-                Object o = new ComponentService(dto).getMessages(cacheProps);
-                map = (Map<String, String>) o;
-                
-                cacheservice.addCacheOfComponent(map, cacheProps);
+    	if ((cacheOfComponent == null && !cacheservice.isContainComponent()) ||
+    		   (cacheOfComponent != null && cacheservice.isContainComponent()) 
+    		   && (cacheProps!=null && !cacheProps.isEmpty())) { // TODO Fetch only if cache has expired. Check if expired using cacheProps.
+            if (cacheProps == null) {
+            	cacheProps = new HashMap<String, Object>();
             }
-        }
-        return (map == null || map.get(key) == null ? "" : map.get(key));
+    		Object o = new ComponentService(dto).getMessages(cacheProps);
+
+    		Integer responseCode = (Integer) cacheProps.get(HttpRequester.RESPONSE_CODE);
+    		if (responseCode != null && responseCode.equals(HttpURLConnection.HTTP_NOT_MODIFIED)) {
+    			logger.info(HttpURLConnection.HTTP_NOT_MODIFIED + "NOT_MODIFIED for " + dto.getCompositStrAsCacheKey());
+    			// Do not change the cache content
+    		} else {
+    			cacheOfComponent = (Map<String, String>) o;
+    			cacheservice.addCacheOfComponent(cacheOfComponent, cacheProps);
+    		}
+       }
+       return (cacheOfComponent == null || cacheOfComponent.get(key) == null ? "" : cacheOfComponent.get(key));
     }
 
     public String postString() {

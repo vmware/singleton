@@ -5,7 +5,6 @@
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 

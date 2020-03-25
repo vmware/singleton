@@ -24,7 +24,7 @@ public class CacheService {
         this.dto = dto;
     }
 
-    public Map<String, String> getCacheOfComponent() {
+    public Map<String, Object> getCacheOfComponent() {
         String cacheKey = dto.getCompositStrAsCacheKey();
         Locale matchedLocale = LocaleUtility.pickupLocaleFromList(
                 this.getSupportedLocalesFromCache(),
@@ -40,7 +40,7 @@ public class CacheService {
         }
     }
 
-    public void addCacheOfComponent(Map<String, String> dataMap, Map<String, Object> cacheProps) {
+    public void addCacheOfComponent(Map<String, String> dataMap, final Map<String, Object> cacheProps) {
         String cacheKey = dto.getCompositStrAsCacheKey();
         Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
         if (c != null) {
@@ -52,12 +52,13 @@ public class CacheService {
         String cacheKey = dto.getCompositStrAsCacheKey();
         Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
         if (c != null) {
-            Map<String, String> oldmap = c.get(cacheKey);
+            Map<String, Object> oldmap = c.get(cacheKey);
             if (oldmap == null) {
                 c.put(cacheKey, dataMap, cacheProps);
             } else {
                 oldmap.putAll(dataMap);
-                c.put(cacheKey, oldmap, cacheProps);
+                Map<String, String> cachedMessages = (Map<String, String>) oldmap.get(Cache.MESSAGES);
+                c.put(cacheKey, cachedMessages, cacheProps);
             }
         }
     }
@@ -88,7 +89,9 @@ public class CacheService {
         if (c == null) {
             return null;
         } else {
-            return c.get(cacheKey);
+        	Map<String, Object> oldmap = c.get(cacheKey);
+        	Map<String, String> cachedMessages = (Map<String, String>) oldmap.get(Cache.MESSAGES);
+            return cachedMessages;
         }
     }
 
