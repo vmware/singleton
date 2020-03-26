@@ -23,7 +23,13 @@ public class CacheService {
     public CacheService(MessagesDTO dto) {
         this.dto = dto;
     }
-
+    
+    public boolean isExpired() {
+    	String cacheKey = dto.getCompositStrAsCacheKey();
+    	Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
+    	return c.isExpired(cacheKey);
+    }
+    
     public Map<String, Object> getCacheOfComponent() {
         String cacheKey = dto.getCompositStrAsCacheKey();
         Locale matchedLocale = LocaleUtility.pickupLocaleFromList(

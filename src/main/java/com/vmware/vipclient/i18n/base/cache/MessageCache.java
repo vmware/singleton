@@ -6,8 +6,11 @@ package com.vmware.vipclient.i18n.base.cache;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import com.vmware.vipclient.i18n.base.HttpRequester;
 
 public class MessageCache implements Cache {
     private String                           id                  = "cache-default";
@@ -65,6 +68,36 @@ public class MessageCache implements Cache {
         	cache.put(MESSAGES,  (Map<String, String>) cachedObject);
         }
         return cache;
+    }
+    
+    public boolean isExpired(String cacheKey) {
+    	Map<String,Object> cacheProps = this.cacheProperties.get(cacheKey);
+    	if (cacheProps == null || cacheProps.isEmpty()) {
+    		return false;
+    	}
+    	Long responseTimeStamp = (Long) cacheProps.get(HttpRequester.RESPONSE_TIMESTAMP);
+    	if (responseTimeStamp == null) {
+    		return false;
+    	}
+    	Map<String, Object> headers = (Map<String, Object>) cacheProps.get(HttpRequester.HEADERS);
+    	if (headers == null) {
+    		return false;
+    	}
+    	List<String> cacheCtrlString = (List<String>) headers.get(HttpRequester.CACHE_CONTROL);
+    	if (cacheCtrlString == null || cacheCtrlString.isEmpty()) {
+    		return false;
+    	}
+    	long maxAgeMillis = Long.MAX_VALUE;
+    	for (String ccs : cacheCtrlString) {
+    		String[] cacheCtrlDirectives = ccs.split(",");
+    		for (String ccd: cacheCtrlDirectives) {
+    			String[] ccdString = ccd.split("=");
+    			if (ccdString[0].equals(HttpRequester.MAX_AGE)) {
+    				maxAgeMillis = Integer.parseInt(ccdString[1]) * 1000;
+    			}
+    		}	
+    	}
+    	return System.currentTimeMillis() - responseTimeStamp > maxAgeMillis;
     }
 
     public String getRemovedKeyFromHitMap() {

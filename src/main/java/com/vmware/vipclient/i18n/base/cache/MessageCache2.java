@@ -35,6 +35,10 @@ public class MessageCache2 implements Cache {
         }
         return cache;
     }
+    
+    public boolean isExpired(String cacheKey) {
+    	return isExpired();
+    }
 
     public synchronized boolean put(String cacheKey, Map<String, String> map, Map<String, Object> cacheProps) {
         boolean created = true;

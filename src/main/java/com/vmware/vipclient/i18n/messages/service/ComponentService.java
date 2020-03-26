@@ -46,9 +46,7 @@ public class ComponentService {
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
         	Map<String, Object> response = cbo.getComponentMessages(cacheProps);
 	    	transMap = cbo.getMsgsJson(response);
-	    	cacheProps.put(HttpRequester.HEADERS, response.get(HttpRequester.HEADERS));
-	    	cacheProps.put(HttpRequester.RESPONSE_CODE, response.get(HttpRequester.RESPONSE_CODE));
-			
+			cacheProps.putAll(response);
         } else if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.Bundle) {
             transMap = new LocalMessagesOpt(dto).getComponentMessages();
         }

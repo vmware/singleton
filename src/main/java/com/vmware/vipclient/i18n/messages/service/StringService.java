@@ -43,8 +43,8 @@ public class StringService {
     	Map<String, Object> cacheProps = (Map<String, Object>) cache.get(Cache.CACHE_PROPERTIES);
         
     	if ((cacheOfComponent == null && !cacheservice.isContainComponent()) ||
-    		   (cacheOfComponent != null && cacheservice.isContainComponent()) 
-    		   && (cacheProps!=null && !cacheProps.isEmpty())) { // TODO Fetch only if cache has expired. Check if expired using cacheProps.
+    		   (cacheOfComponent != null && cacheservice.isContainComponent() 
+    		   && cacheProps!=null && !cacheProps.isEmpty() && cacheservice.isExpired())) {
             if (cacheProps == null) {
             	cacheProps = new HashMap<String, Object>();
             }

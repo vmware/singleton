@@ -4,7 +4,6 @@
  */
 package com.vmware.vipclient.i18n.base.cache.persist;
 
-import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
 

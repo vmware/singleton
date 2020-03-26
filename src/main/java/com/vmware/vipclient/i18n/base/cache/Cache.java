@@ -20,6 +20,14 @@ public interface Cache {
     public Map<String, Object> get(String key);
 
     /**
+     * check if the cache is expired
+     * 
+     * @param key
+     * @return false if expired
+     */
+    public boolean isExpired(String key);
+    
+    /**
      * put strings to cache by key
      * 
      * @param key cache key
