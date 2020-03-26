@@ -2,7 +2,7 @@
  * Copyright 2019 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
-package com.vmware.vip.core.validation;
+package com.vmware.vip.common.constants;
 
 public final class ValidationMsg {
 	public final static String PRODUCTNAME_NOT_VALIDE = "Incorrect produtName(only allows letter and number)";
