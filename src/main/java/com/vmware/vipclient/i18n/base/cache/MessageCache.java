@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.vmware.vipclient.i18n.base.HttpRequester;
+import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 
 public class MessageCache implements Cache {
     private String                           id                  = "cache-default";
@@ -75,15 +75,15 @@ public class MessageCache implements Cache {
     	if (cacheProps == null || cacheProps.isEmpty()) {
     		return false;
     	}
-    	Long responseTimeStamp = (Long) cacheProps.get(HttpRequester.RESPONSE_TIMESTAMP);
+    	Long responseTimeStamp = (Long) cacheProps.get(URLUtils.RESPONSE_TIMESTAMP);
     	if (responseTimeStamp == null) {
     		return false;
     	}
-    	Map<String, Object> headers = (Map<String, Object>) cacheProps.get(HttpRequester.HEADERS);
+    	Map<String, Object> headers = (Map<String, Object>) cacheProps.get(URLUtils.HEADERS);
     	if (headers == null) {
     		return false;
     	}
-    	List<String> cacheCtrlString = (List<String>) headers.get(HttpRequester.CACHE_CONTROL);
+    	List<String> cacheCtrlString = (List<String>) headers.get(URLUtils.CACHE_CONTROL);
     	if (cacheCtrlString == null || cacheCtrlString.isEmpty()) {
     		return false;
     	}
@@ -92,7 +92,7 @@ public class MessageCache implements Cache {
     		String[] cacheCtrlDirectives = ccs.split(",");
     		for (String ccd: cacheCtrlDirectives) {
     			String[] ccdString = ccd.split("=");
-    			if (ccdString[0].equals(HttpRequester.MAX_AGE)) {
+    			if (ccdString[0].equals(URLUtils.MAX_AGE)) {
     				maxAgeMillis = Integer.parseInt(ccdString[1]) * 1000;
     			}
     		}	

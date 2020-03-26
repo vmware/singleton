@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.HttpRequester;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
+import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 
@@ -28,7 +29,7 @@ public class RemotePatternOpt {
         if (i18nScope != null && !"".equalsIgnoreCase(i18nScope)) {
         	Map<String, Object> response = httpRequester.request(V2URL.getPatternURL(locale,
                     httpRequester.getBaseURL()), ConstantsKeys.GET, null);
-        	responseStr = (String) response.get(HttpRequester.BODY);
+        	responseStr = (String) response.get(URLUtils.BODY);
         }
         if (null == responseStr || responseStr.equals("")) {
             return null;
@@ -49,7 +50,7 @@ public class RemotePatternOpt {
         if (i18nScope != null && !"".equalsIgnoreCase(i18nScope)) {
         	Map<String, Object> response = httpRequester.request(V2URL.getPatternURL(language, region,
                     httpRequester.getBaseURL()), ConstantsKeys.GET, null);
-        	responseStr = (String) response.get(HttpRequester.BODY);
+        	responseStr = (String) response.get(URLUtils.BODY);
         }
         if (null == responseStr || responseStr.equals("")) {
             return null;

@@ -17,10 +17,10 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
-import com.vmware.vipclient.i18n.base.HttpRequester;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.StringBasedOpt;
+import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.JSONUtils;
@@ -50,7 +50,7 @@ public class StringService {
             }
     		Object o = new ComponentService(dto).getMessages(cacheProps);
 
-    		Integer responseCode = (Integer) cacheProps.get(HttpRequester.RESPONSE_CODE);
+    		Integer responseCode = (Integer) cacheProps.get(URLUtils.RESPONSE_CODE);
     		if (responseCode != null) {
 	    		if (responseCode.equals(HttpURLConnection.HTTP_NOT_MODIFIED)) {
 	    			logger.info(HttpURLConnection.HTTP_NOT_MODIFIED + "NOT_MODIFIED for " + dto.getCompositStrAsCacheKey());

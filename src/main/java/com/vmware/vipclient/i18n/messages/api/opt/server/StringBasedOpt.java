@@ -10,9 +10,9 @@ import java.util.Map;
 import org.json.simple.JSONObject;
 
 import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.base.HttpRequester;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
+import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
@@ -28,7 +28,7 @@ public class StringBasedOpt extends BaseOpt implements Opt {
     	Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL
                 .getComponentTranslationURL(dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.GET, null);
-    	String responseStr = (String) response.get(HttpRequester.BODY);
+    	String responseStr = (String) response.get(URLUtils.BODY);
         if (null == responseStr || responseStr.equals("")) {
             return null;
         } else {
@@ -55,7 +55,7 @@ public class StringBasedOpt extends BaseOpt implements Opt {
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL
                 .getKeyTranslationURL(dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.POST, params);
-        String responseStr = (String) response.get(HttpRequester.BODY);
+        String responseStr = (String) response.get(URLUtils.BODY);
         Object o = this.getMessagesFromResponse(responseStr,
                 ConstantsKeys.TRANSLATION);
         if (o != null)
@@ -79,7 +79,7 @@ public class StringBasedOpt extends BaseOpt implements Opt {
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(
                 V2URL.getPostKeys(dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.POST, sourceSet);
-        String responseStr = (String) response.get(HttpRequester.BODY);
+        String responseStr = (String) response.get(URLUtils.BODY);
         Object o = this.getStatusFromResponse(responseStr, ConstantsKeys.CODE);
         if (o != null)
             status = o.toString();
@@ -94,7 +94,7 @@ public class StringBasedOpt extends BaseOpt implements Opt {
                 VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(getURL, ConstantsKeys.GET,
                 params);
-        String responseStr = (String) response.get(HttpRequester.BODY);
+        String responseStr = (String) response.get(URLUtils.BODY);
         if (null == responseStr || responseStr.equals("")) {
             return status;
         } else {

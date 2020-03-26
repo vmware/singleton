@@ -14,8 +14,8 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.BaseFormat;
-import com.vmware.vipclient.i18n.base.HttpRequester;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
+import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 
 public class NumberFormat extends BaseFormat {
@@ -47,7 +47,7 @@ public class NumberFormat extends BaseFormat {
         numberAPIUrl.append(scale);
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(
                 numberAPIUrl.toString(), ConstantsKeys.GET, null);
-        String retJsonStr = (String) response.get(HttpRequester.BODY);
+        String retJsonStr = (String) response.get(URLUtils.BODY);
         if (null == retJsonStr || retJsonStr.length() == 0) {
             return format;
         }

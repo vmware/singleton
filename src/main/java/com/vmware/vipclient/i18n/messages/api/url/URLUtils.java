@@ -18,6 +18,16 @@ import com.vmware.vipclient.i18n.base.HttpRequester;
  */
 public class URLUtils {
 
+	public static final String BODY = "body";
+    public static final String HEADERS = "headers";
+    public static final String RESPONSE_CODE = "response_code";
+    public static final String RESPONSE_MSG = "response_msg";
+    public static final String RESPONSE_TIMESTAMP = "response_timestamp";
+    public static final String IF_NONE_MATCH_HEADER = "If-None-Match";
+    public static final String ETAG = "ETag";
+    public static final String CACHE_CONTROL = "Cache-Control";
+    public static final String MAX_AGE = "max-age";
+    
     private URLUtils() {
 
     }
@@ -59,18 +69,18 @@ public class URLUtils {
     
     public static void addIfNoneMatchHeader(Map<String, Object> cacheProps, final HttpRequester requester) {
     	if (cacheProps != null && !cacheProps.isEmpty()) {
-        	Map<String, List<String>> responseHeaders = (Map<String, List<String>>) cacheProps.get(HttpRequester.HEADERS);
+        	Map<String, List<String>> responseHeaders = (Map<String, List<String>>) cacheProps.get(HEADERS);
         	if (responseHeaders != null) {
-	        	List<String> etags = (List<String>) responseHeaders.get(requester.ETAG);
+	        	List<String> etags = (List<String>) responseHeaders.get(ETAG);
 	        	if (etags != null) {
 	        		String ifNoneMatch = createIfNoneMatchValue(etags);
 	        		Map<String, String> headers = new HashMap<String, String>();
-	        		headers.put(HttpRequester.IF_NONE_MATCH_HEADER,ifNoneMatch);
+	        		headers.put(IF_NONE_MATCH_HEADER,ifNoneMatch);
 	        		requester.setCustomizedHeaderParams(headers);
 	        	}
         	}
         } else {
-        	requester.removeCustomizedHeaderParams(HttpRequester.IF_NONE_MATCH_HEADER);
+        	requester.removeCustomizedHeaderParams(IF_NONE_MATCH_HEADER);
         }
     }
     

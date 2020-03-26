@@ -5,7 +5,6 @@
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
@@ -44,7 +43,7 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
     }
 
     public JSONObject getMsgsJson(Map<String, Object> response) {
-    	String responseStr = (String) response.get(HttpRequester.BODY);
+    	String responseStr = (String) response.get(URLUtils.BODY);
 		if (null == responseStr || responseStr.equals(""))
 			return null;
 		else {
@@ -72,7 +71,7 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
     	Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL
                 .getKeyTranslationURL(this.dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.POST, this.dto.getSource());
-    	String responseStr = (String) response.get(HttpRequester.BODY);
+    	String responseStr = (String) response.get(URLUtils.BODY);
         Object o = this.getMessagesFromResponse(responseStr,
                 ConstantsKeys.TRANSLATION);
         if (o != null)
@@ -100,7 +99,7 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(
                 V2URL.getPostKeys(this.dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.POST, sourceSet);
-        String responseStr = (String) response.get(HttpRequester.BODY);
+        String responseStr = (String) response.get(URLUtils.BODY);
         Object o = this.getStatusFromResponse(responseStr, ConstantsKeys.CODE);
         if (o != null) {
             status = o.toString();
@@ -115,7 +114,7 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL
                 .getComponentTranslationURL(this.dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.GET, params);
-        String responseStr = (String) response.get(HttpRequester.BODY);
+        String responseStr = (String) response.get(URLUtils.BODY);
         if (null == responseStr || responseStr.equals(""))
             return status;
         else {

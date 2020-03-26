@@ -14,11 +14,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.base.HttpRequester;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
+import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.StringUtil;
@@ -45,9 +45,9 @@ public class ComponentsBasedOpt extends BaseOpt implements Opt {
         requestData.put(ConstantsKeys.COMPONENTS, String.join(",", components));
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(url, ConstantsKeys.GET,
                 requestData);
-        cacheProps.put(HttpRequester.HEADERS, response.get(HttpRequester.HEADERS));
-        cacheProps.put(HttpRequester.RESPONSE_CODE, response.get(HttpRequester.RESPONSE_CODE));
-        this.responseStr = (String) response.get(HttpRequester.BODY);
+        cacheProps.put(URLUtils.HEADERS, response.get(URLUtils.HEADERS));
+        cacheProps.put(URLUtils.RESPONSE_CODE, response.get(URLUtils.RESPONSE_CODE));
+        this.responseStr = (String) response.get(URLUtils.BODY);
         if (StringUtil.isEmpty(this.responseStr))
             throw new VIPJavaClientException(ConstantsMsg.SERVER_RETURN_EMPTY);
 

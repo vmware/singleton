@@ -9,9 +9,9 @@ import java.util.Map;
 import org.json.simple.JSONArray;
 
 import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.base.HttpRequester;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
+import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
@@ -34,7 +34,7 @@ public class ProductBasedOpt extends BaseOpt implements Opt {
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(
                 V2URL.getComponentListURL(dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.GET, null);
-        responseStr = (String) response.get(HttpRequester.BODY);
+        responseStr = (String) response.get(URLUtils.BODY);
         if (null != responseStr && !responseStr.equals("")) {
             Object dataObj = this.getMessagesFromResponse(responseStr,
                     ConstantsKeys.COMPONENTS);
@@ -55,7 +55,7 @@ public class ProductBasedOpt extends BaseOpt implements Opt {
         String responseStr = "";
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL.getSupportedLocaleListURL(
                 dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()), ConstantsKeys.GET, null);
-        responseStr = (String) response.get(HttpRequester.BODY);
+        responseStr = (String) response.get(URLUtils.BODY);
         if (null != responseStr && !responseStr.equals("")) {
             Object dataObj = this.getMessagesFromResponse(responseStr,
                     ConstantsKeys.LOCALES);

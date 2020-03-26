@@ -110,17 +110,6 @@ public class HttpRequester {
         }
         return status;
     }
-
-   
-    public static final String BODY = "body";
-    public static final String HEADERS = "headers";
-    public static final String RESPONSE_CODE = "response_code";
-    public static final String RESPONSE_MSG = "response_msg";
-    public static final String RESPONSE_TIMESTAMP = "response_timestamp";
-    public static final String IF_NONE_MATCH_HEADER = "If-None-Match";
-    public static final String ETAG = "ETag";
-    public static final String CACHE_CONTROL = "Cache-Control";
-    public static final String MAX_AGE = "max-age";
     
     /**
      * The get method of requesting a remote server.
@@ -157,14 +146,14 @@ public class HttpRequester {
                 		break;
                 	case HttpURLConnection.HTTP_OK :
                 		r = this.handleResult(conn);
-	                    response.put(BODY, r);
+	                    response.put(URLUtils.BODY, r);
 	                    // logger.debug("The response from server is:\n"+r);
 	                    break;
                 }
-                response.put(HEADERS, conn.getHeaderFields());
-                response.put(RESPONSE_CODE, conn.getResponseCode());
-                response.put(RESPONSE_MSG, conn.getResponseMessage());
-                response.put(RESPONSE_TIMESTAMP, System.currentTimeMillis());
+                response.put(URLUtils.HEADERS, conn.getHeaderFields());
+                response.put(URLUtils.RESPONSE_CODE, conn.getResponseCode());
+                response.put(URLUtils.RESPONSE_MSG, conn.getResponseMessage());
+                response.put(URLUtils.RESPONSE_TIMESTAMP, System.currentTimeMillis());
             }
         } catch (IOException e) {
             logger.info(e.getMessage());

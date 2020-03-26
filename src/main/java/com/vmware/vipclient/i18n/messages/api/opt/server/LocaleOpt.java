@@ -15,7 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.base.HttpRequester;
+import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.JSONUtils;
@@ -31,7 +31,7 @@ public class LocaleOpt {
     	Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(
                 V2URL.getRegionListURL(language, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.GET, null);
-    	String responseData = (String) response.get(HttpRequester.BODY);
+    	String responseData = (String) response.get(URLUtils.BODY);
         Map<String, String> respMap = null;
         try {
             JSONObject jsonObject = (JSONObject) JSONValue.parseWithException(responseData);
@@ -52,7 +52,7 @@ public class LocaleOpt {
                         V2URL.getSupportedLanguageListURL(language,
                                 VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                         ConstantsKeys.GET, null);
-    	String responseData = (String) response.get(HttpRequester.BODY);
+    	String responseData = (String) response.get(URLUtils.BODY);
         Map<String, String> dispMap = null;
         try {
             JSONObject jsonObject = (JSONObject) JSONValue.parseWithException(responseData);
