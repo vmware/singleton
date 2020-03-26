@@ -72,8 +72,12 @@ public class SharedComponentTest extends BaseTestClass {
         VIPCfg gc = VIPCfg.getInstance();
         Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
         Map<String, Map<String, String>> m = ((MessageCache) c).getCachedTranslationMap();
-        Assert.assertTrue(m.size() == 4);
-        Assert.assertTrue(m.containsKey("JavaclientTest_1.0.0_JAVA_false_#zh"));
-        Assert.assertTrue(m.containsKey("JavaclientTest1_2.0.0_JSP_false_#de"));
+        // TODO: Null values when service is not available are not stored in cache anymore.
+        //Assert.assertTrue(m.size() == 4);
+        //Assert.assertTrue(m.containsKey("JavaclientTest_1.0.0_JAVA_false_#zh"));
+        //Assert.assertTrue(m.containsKey("JavaclientTest1_2.0.0_JSP_false_#de"));
+        
+        Assert.assertTrue(m.size() == 1);
+        Assert.assertTrue(m.containsKey("JavaclientTest_1.0.0_JAVA_false_#en-US"));
     }
 }

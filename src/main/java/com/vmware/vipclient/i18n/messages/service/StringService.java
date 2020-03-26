@@ -51,12 +51,16 @@ public class StringService {
     		Object o = new ComponentService(dto).getMessages(cacheProps);
 
     		Integer responseCode = (Integer) cacheProps.get(HttpRequester.RESPONSE_CODE);
-    		if (responseCode != null && responseCode.equals(HttpURLConnection.HTTP_NOT_MODIFIED)) {
-    			logger.info(HttpURLConnection.HTTP_NOT_MODIFIED + "NOT_MODIFIED for " + dto.getCompositStrAsCacheKey());
-    			// Do not change the cache content
-    		} else {
-    			cacheOfComponent = (Map<String, String>) o;
-    			cacheservice.addCacheOfComponent(cacheOfComponent, cacheProps);
+    		if (responseCode != null) {
+	    		if (responseCode.equals(HttpURLConnection.HTTP_NOT_MODIFIED)) {
+	    			logger.info(HttpURLConnection.HTTP_NOT_MODIFIED + "NOT_MODIFIED for " + dto.getCompositStrAsCacheKey());
+	    			// Do not change the cache content
+	    		} else if (responseCode.equals(HttpURLConnection.HTTP_OK)) {
+	    			cacheOfComponent = (Map<String, String>) o;
+	    			cacheservice.addCacheOfComponent(cacheOfComponent, cacheProps);
+	    		} else {
+	    			logger.error("HTTP error: " + responseCode + " for " + dto.getCompositStrAsCacheKey());
+	    		}
     		}
        }
        return (cacheOfComponent == null || cacheOfComponent.get(key) == null ? "" : cacheOfComponent.get(key));

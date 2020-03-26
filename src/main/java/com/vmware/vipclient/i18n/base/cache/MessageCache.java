@@ -95,11 +95,13 @@ public class MessageCache implements Cache {
             hitMap.remove(k);
         } 
         if (!this.isFull()) {
-        	Map<String, String> cachedData = cachedComponentsMap.get(cacheKey);
-        	if (cachedData == null) {
-        		cachedComponentsMap.put(cacheKey, dataToCache);
-        	} else {
-        		cachedData.putAll(dataToCache);
+        	if (dataToCache != null) {
+	        	Map<String, String> cachedData = cachedComponentsMap.get(cacheKey);
+	        	if (cachedData == null) {
+	        		cachedComponentsMap.put(cacheKey, dataToCache);
+	        	} else {
+	        		cachedData.putAll(dataToCache);
+	        	}
         	}
         	// a map of properties associated to this cache key (e.g. etag and cache control)
         	cacheProperties.put(cacheKey, cacheProps);
