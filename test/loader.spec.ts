@@ -1,3 +1,7 @@
+/*
+ * Copyright 2020 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 import { defaultLoader } from '../src/loader';
 import mockAxios from './__mocks__/axios';
 

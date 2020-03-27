@@ -1,3 +1,7 @@
+/*
+ * Copyright 2019 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 import * as vipCore from '@vip/vip-core-sdk';
 import { ENGLISH } from './source.l10n';
 import { config as defaultConfig } from './config';

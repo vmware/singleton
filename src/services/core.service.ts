@@ -41,26 +41,23 @@ export class CoreService {
      * @param callback
      */
     async loadI18nData(callback?: () => void): Promise<any> {
-        const pendingList = [];
-        let i18nResources = [];
-
+        const scope = this.config.i18nScope ? this.config.i18nScope.join(',') : '';
         // callback should be performed always
         try {
             // for translations
-            if (!this.isSourceLanguage(this.currentLanguage)) {
-                pendingList.push(this.loadTranslations(this.currentLanguage));
+            if (!this.isSourceLanguage(this.currentLanguage) && scope === '') {
+                return await this.loadTranslations(this.currentLanguage);
             }
-            // for formatting patterns
-            if (!this.isSourceLocale(this.currentLanguage, this.currentRegion)) {
-                pendingList.push(this.loadPatterns(this.currentRegion, this.currentLanguage));
+            // for translations and formatting patterns
+            if (!this.isSourceLocale(this.currentLanguage, this.currentRegion) && scope !== '') {
+                return await this.loadTranslationsAndPattern(this.currentLanguage, this.currentRegion);
             }
-            i18nResources = await (pendingList.length > 0 ? Promise.all(pendingList) : Promise.resolve([]));
         } catch (error) {
             this.logger.error('Load i18n resources failed.', error.message);
         } finally {
             if (callback && typeof callback === 'function') { callback(); }
         }
-        return i18nResources;
+        return Promise.resolve({});
     }
 
     private validateConfig(config: Configuration): any {
@@ -163,6 +160,23 @@ export class CoreService {
             .concat('?pseudo=' + this.config.isPseudo);
     }
 
+    public getI18nResourceUrl(language: string, region?: string): string {
+        if (isDefined(this.config.i18nAssets)) {
+            const path = `${this.config.i18nAssets}${language}${Constants.ASSETS_SUFFIX}`;
+            return path;
+        }
+        return this.config.host
+            .concat(Constants.TRANSLATION_PATTERN)
+            .concat('?productName=' + this.config.productID)
+            .concat('&components=' + this.config.component)
+            .concat('&version=' + this.config.version)
+            .concat('&language=' + language)
+            .concat(region ? `&region = ${region}` : '')
+            .concat('&scope=' + this.config.i18nScope.join(','))
+            .concat('&pseudo=' + this.config.isPseudo)
+            .concat('&combine=' + (region ? 1 : 2));
+    }
+
     /**
      * return promise with processed result.
      * @param language
@@ -182,6 +196,35 @@ export class CoreService {
                     return translations;
                 }
             }).catch((err: any) => { this.logger.error('Load translations failed.', err.message); });
+    }
+
+    public loadTranslationsAndPattern(language: string, region: string): Promise<any> | Promise<any>[] {
+        const cachePattern = this.cacheManager.lookforPattern(language, region);
+        if (typeof cachePattern !== 'undefined') {
+            const cacheTranslation = this.cacheManager.lookforTranslationByComponent(this.config.component, language);
+            if (typeof cacheTranslation === 'undefined') {
+                return Promise.resolve({
+                    components: [cacheTranslation],
+                    pattern: cachePattern
+                });
+            }
+        }
+
+        const url = this.getI18nResourceUrl(language, region);
+        const promise = this.coreLoader.getI18nResource(url, this.httpOptions);
+        return promise.then(
+            (result: any) => {
+                const translations = this.resParser.getTranslations(result);
+                if (translations) {
+                    this.setTranslations(language, translations);
+                    const patterns = this.resParser.getPatterns(result);
+                    if (patterns) {
+                        this.setPatterns(patterns, language, region);
+                        return result.data;
+                    }
+                }
+
+            }).catch((err: any) => { this.logger.error('Load I18n Resouorce failed.', err.message); });
     }
 
     public getPatternUrl(region: string, language: string): string {

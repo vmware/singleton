@@ -1,3 +1,7 @@
+/*
+ * Copyright 2019 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 import {defaultResponseParser} from '../src/parser';
 
 const rsp = {
@@ -13,6 +17,12 @@ const rsp2 = {
     response: { code: 200 },
     data: [{territories:'US'}]
 };
+const rsp3 = {
+    response: { code: 200 },
+    data: { 
+        pattern: {categories: 'patterns'},
+    },
+};
 
 describe('Parser Module', () => {
     it("validateResponse",() => {
@@ -21,7 +31,7 @@ describe('Parser Module', () => {
     });
     it("getPatterns",() => {
         expect(defaultResponseParser.getPatterns({data:{}})).toEqual(null);
-        expect(defaultResponseParser.getPatterns(rsp)).toEqual(rsp.data.categories);
+        expect(defaultResponseParser.getPatterns(rsp3)).toEqual(rsp.data.categories);
     });
     it("getTranslations",() => {
         expect(defaultResponseParser.getTranslations({data:{}})).toEqual(null);
