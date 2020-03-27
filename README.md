@@ -31,13 +31,17 @@ Prerequisites
 ---------
  * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (Java 9+ are not supported, will get compiler issue)
  * [Git](https://git-scm.com/downloads)
- * [Gradle](https://gradle.org/install/)
 
 Building from source code
 ---------
- Clone the repository using Git and go to the root directory
+ Clone the repository using Git.
  ```
  git clone https://github.com/vmware/singleton.git
+ Or
+ git clone git@github.com:vmware/singleton.git
+ ```
+ Then go to the root directory.
+ ```
  cd singleton
  ```
  Inside singleton/g11n-ws, run a build using Gradle.
