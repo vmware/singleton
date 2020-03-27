@@ -31,16 +31,18 @@ Prerequisites
 ---------
  * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (Java 9+ are not supported, will get compiler issue)
  * [Git](https://git-scm.com/downloads)
+ * [Gradle](https://gradle.org/install/)
 
 Building from source code
 ---------
- Clone the repository using Git.
+ Clone the repository using Git and go to the root directory
  ```
- git clone git@github.com:vmware/singleton.git
+ git clone https://github.com/vmware/singleton.git
+ cd singleton
  ```
  Inside singleton/g11n-ws, run a build using Gradle.
  ```
- ./gradlew build
+ g11n-ws/gradlew build
  ```
  Jar files will be generated inside the following location:
  ```
@@ -51,7 +53,7 @@ To start using Singleton Service
 ---------
  Run the Spring Boot main application. Inside the singleton folder:
  ```
- java -jar publish/singleton-0.1.0.jar.jar
+ java -jar publish/singleton-0.1.0.jar
  ```
  A user interface for testing all available API endpoints will be available in the following URL:
  ```
