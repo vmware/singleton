@@ -93,7 +93,7 @@ public class MessageCache implements Cache {
     		for (String ccd: cacheCtrlDirectives) {
     			String[] ccdString = ccd.split("=");
     			if (ccdString[0].equals(URLUtils.MAX_AGE)) {
-    				maxAgeMillis = Integer.parseInt(ccdString[1]) * 1000;
+    				maxAgeMillis = Long.parseLong(ccdString[1]) * 1000l;
     			}
     		}	
     	}
