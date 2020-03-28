@@ -1,0 +1,25 @@
+﻿# product name
+productName: Testing
+
+# product version
+version: 4.0.0
+
+singletonServer: http://127.0.0.1:8092/
+
+pseudo: false
+machineTranslation: false
+collectSource: true
+
+cacheType: default
+accessServiceType: default
+
+logger: default
+logType: Debug
+
+tryDelay: 10
+cacheExpiredTime: 60
+
+components: 
+  - component : JAVA
+    resource: 
+      - name: my_source
