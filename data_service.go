@@ -17,7 +17,6 @@ import (
 
 //!+dataService
 type dataService struct {
-
 	cache Cache
 
 	bundle *bundleDAO
@@ -73,7 +72,12 @@ func (ds *dataService) fetch(item *dataItem, wait bool) error {
 		if ds.bundle != nil {
 			err = ds.bundle.get(item)
 			if err == nil {
-				info.setAge(100) // Todo: for local bundles
+				var age int64 = -1
+				if ds.server != nil {
+					age = 7200 // set to 7200 seconds if server is unavailable temporarily
+				}
+				info.setAge(age)
+
 				ds.setCache(item)
 				return nil
 			}
@@ -113,7 +117,7 @@ func isFetchSucess(err error) bool {
 	return true
 }
 
-var cacheControlRE = regexp.MustCompile(`\bmax-age\b\s*=\s*\b(\d+)\b`)
+var cacheControlRE = regexp.MustCompile(`(?i)\bmax-age\b\s*=\s*\b(\d+)\b`)
 
 func updateCacheControl(item *dataItem, info *itemCacheInfo) {
 	headers := item.attrs.(http.Header)
@@ -130,6 +134,7 @@ func updateCacheControl(item *dataItem, info *itemCacheInfo) {
 		}
 	}
 
+	info.setAge(7200) // set default age time to 7200 seconds
 	logger.Error("Wrong cache control: " + cc)
 }
 

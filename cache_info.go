@@ -40,7 +40,11 @@ func newSingleCacheInfo() *itemCacheInfo {
 }
 
 func (i *itemCacheInfo) isExpired() bool {
-	return time.Now().Unix()-atomic.LoadInt64(&i.lastUpdate) >= i.getAge()
+	age := i.getAge()
+	if age == -1 {
+		return false
+	}
+	return time.Now().Unix()-atomic.LoadInt64(&i.lastUpdate) >= age
 }
 func (i *itemCacheInfo) setTime(t int64) {
 	atomic.StoreInt64(&i.lastUpdate, t)

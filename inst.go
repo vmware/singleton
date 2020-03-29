@@ -10,6 +10,8 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/pkg/errors"
 )
 
 var (
@@ -57,6 +59,15 @@ func (i *Instance) doInitialize() {
 	initCacheInfoMap()
 	i.RegisterCache(newCache())
 
+}
+
+func checkConfig(cfg *Config) error {
+	switch {
+	case cfg.OfflineResourcesBaseURL == "" && cfg.OnlineServiceURL == "":
+		return errors.New("Both online_service_url and offline_resources_base_url are empty")
+	}
+
+	return nil
 }
 
 // GetTranslation Get translation instance
