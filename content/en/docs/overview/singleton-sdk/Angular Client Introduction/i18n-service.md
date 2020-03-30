@@ -17,7 +17,7 @@ I18n service provides APIs which are supposed to be used in JavaScript module to
 
 ##### **getSupportedLanguages**
 
-Get the supported languages which are available in VIP service for the specific product.
+Get the supported languages which are available in singleton service for the specific product.
 
 ```
 getSupportedLanguages(): Promise<languagesList>;
@@ -26,7 +26,7 @@ getSupportedLanguages(): Promise<languagesList>;
 
 ##### **getSupportedRegions**
 
-Get the supported regions from VIP service, the supported region list should be unified in all products.
+Get the supported regions from singleton service, the supported region list should be unified in all products.
 
 ```
 getSupportedRegions(languageTag: string): Promise<regionsList>;

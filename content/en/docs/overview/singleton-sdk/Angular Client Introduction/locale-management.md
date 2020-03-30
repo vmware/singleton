@@ -13,7 +13,7 @@ A locale consists of a number of categories for which country-dependent formatti
 For example, German language is de, an abbreviation for Deutsch, while Swiss German is de_CH, CH being an abbreviation for Confederation Helvetica. This convention allows for specific differences by country, such as currency unit notation. The locale naming convention is:**language[_territory][.codeset][@modifier]**
 
 
-VIP client uses language to determine the translations that need to be displayed in the user interface, as well as the rules for singular plural processing and relative time display. The combination of region and language determines the format of the date time, number, currency, and other string display.
+singleton client uses language to determine the translations that need to be displayed in the user interface, as well as the rules for singular plural processing and relative time display. The combination of region and language determines the format of the date time, number, currency, and other string display.
 
 
 #### **Get available languages & regions**
@@ -36,7 +36,7 @@ getBrowserCultureLang(): string
 ![locale-management-1](https://github.com/zmengjiao/singleton/raw/website/content/en/images/locale-management/locale-management-1.png)
 
 
-Get supported languages list from VIP:
+Get supported languages list from singleton:
 
 ```
 getSupportedLanguages(): Promise<languagesList>;
@@ -48,7 +48,7 @@ getSupportedLanguages(): Promise<languagesList>;
 
 ##### **Region**
 
-As mentioned above, normally VIP client accepts two parameters to determine which translations and patterns should be used in the current. The available regions can be got from VIP client API, user can pick up the correct one and store into the user profile.
+As mentioned above, normally singleton client accepts two parameters to determine which translations and patterns should be used in the current. The available regions can be got from singleton client API, user can pick up the correct one and store into the user profile.
 
 
 ```

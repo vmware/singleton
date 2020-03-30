@@ -8,7 +8,7 @@ weight: 30
 
 #### **Overview**
 
-As the application is growing, some modules will be defined as the lazy module. In that situation, the translation and patterns could be loaded as lazy mode to enhance performance. The VIP client provides this option to load translation and patterns along with lazy module. Using the 'forChild' API to initialize the VIP module, thus the lazy module will use the separated VIP services instances and injectors.
+As the application is growing, some modules will be defined as the lazy module. In that situation, the translation and patterns could be loaded as lazy mode to enhance performance. The singleton client provides this option to load translation and patterns along with lazy module. Using the 'forChild' API to initialize the singleton module, thus the lazy module will use the separated singleton services instances and injectors.
 
 
 #### **Example**

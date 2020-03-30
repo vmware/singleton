@@ -12,7 +12,7 @@ The LocalizedComponent mixin provides a nice abstraction for localizing componen
 Using the Mixin approach allows you to achieve three things:
 
 - Extract English strings to a separate file, keeping your HTML template clean and containing only DOM.
-- Provides a consistent pattern of where and how English strings are stored allowing easy automation and parsing of those files to collect the English into VIP.
+- Provides a consistent pattern of where and how English strings are stored allowing easy automation and parsing of those files to collect the English into singleton.
 - Your translation keys will always be prefixed with the key provided in the mixin, helping to avoid namespace clashes with other components.
 
 It also is useful to avoid using the translate pipe in HTML as the Angular linter often has trouble with complex English strings.
@@ -32,7 +32,7 @@ It also is useful to avoid using the translate pipe in HTML as the Angular linte
 
 With the English sources isolated to a single type of file, we can easily write a script that collects all the English and dumps it into a JSON file for passing it to the translation team.
 
-The @vmw/ngx-vip library provides a script called collect-mixin-source which will find all files in your project that end in .l10n.ts and pass them through the TypeScript compiler and send them to VIP for translation.
+The @vmw/ngx-vip library provides a script called collect-mixin-source which will find all files in your project that end in .l10n.ts and pass them through the TypeScript compiler and send them to singleton for translation.
 
 ##### **Command line arguments description**
 

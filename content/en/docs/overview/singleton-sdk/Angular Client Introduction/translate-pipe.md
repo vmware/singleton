@@ -7,7 +7,7 @@ weight: 30
 
 #### **Overview**
 
-Use the translate pipe in your HTML templates to retrieve translations from the VIP service.
+Use the translate pipe in your HTML templates to retrieve translations from the singleton service.
 
 
 #### **API**
@@ -38,7 +38,7 @@ Get translation by key, will find the source in the sourceBundle according to th
 
 | Parameter |  Type   | Required |                         Description                          |
 | :-------: | :-----: | :------: | :----------------------------------------------------------: |
-|  source   | String  |    No    | English string as default value, API will return it when there's no translation found either from cache or remote VIP server. |
+|  source   | String  |    No    | English string as default value, API will return it when there's no translation found either from cache or remote singleton server. |
 | variables | Array[] |    No    | Parameter array, it's used to format the translation/source when they contain placeholders. |
 
 

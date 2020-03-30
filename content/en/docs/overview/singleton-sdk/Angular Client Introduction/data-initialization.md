@@ -6,11 +6,11 @@ weight: 30
 ---
 
 
-In general, for most of products, it's good enough to load all translations and patterns one time in root module when the application starts, but for some special requirements, such like: isolated translation for feature module or using lazy module to enhance performance, please refer to [Isolated feature module](https://ngx.eng.vmware.com/@vmw/ngx-vip/isolated-module/documentation) and [Lazy Load Module](https://ngx.eng.vmware.com/@vmw/ngx-vip/lazy-load/documentation). VIP client provides two ways to load i18n data and initialize the services in root module:
+In general, for most of products, it's good enough to load all translations and patterns one time in root module when the application starts, but for some special requirements, such like: isolated translation for feature module or using lazy module to enhance performance, please refer to [Isolated feature module](https://ngx.eng.vmware.com/@vmw/ngx-vip/isolated-module/documentation) and [Lazy Load Module](https://ngx.eng.vmware.com/@vmw/ngx-vip/lazy-load/documentation). singleton client provides two ways to load i18n data and initialize the services in root module:
 
 ##### **Blocking loading**
 
-Get the translations from an VIP service API and keep it ready before the application renders the page.
+Get the translations from an singleton service API and keep it ready before the application renders the page.
 
 
 **Pros**: There is no race condition when UI rendering, the page will be rendered only when the translations are settled. <br/>
@@ -24,7 +24,7 @@ This loading method is suitable for the number of UI strings does not exceed 500
 
 ##### **Non-blocking loading**
 
-The page is updated by asynchronous requesting data from the VIP service. If the data load failed, the UI will show the source string instead.
+The page is updated by asynchronous requesting data from the singleton service. If the data load failed, the UI will show the source string instead.
 
 **Pros**: Will not block application start.<br/>
 **Cons**: If the data load slowly, UI will display blank in a short period of time.
