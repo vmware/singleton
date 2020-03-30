@@ -29,7 +29,3 @@ const (
 	httpHeaderETag         = "ETag"
 	httpHeaderIfNoneMatch  = "If-None-Match"
 )
-
-const (
-	httpCode304 = 304
-)

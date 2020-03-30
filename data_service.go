@@ -109,7 +109,7 @@ func (ds *dataService) setCache(item *dataItem) {
 func isFetchSucess(err error) bool {
 	if err != nil {
 		myErr, ok := err.(*serverError)
-		if !ok || myErr.code != httpCode304 {
+		if !ok || myErr.code != http.StatusNotModified {
 			return false
 		}
 	}

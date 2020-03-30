@@ -168,6 +168,7 @@ var getDataFromServer = func(u *url.URL, header map[string]string, data interfac
 
 	//logger.Debug(fmt.Sprintf("resp is: %#v", resp))
 
+	// Todo: change the order of check code in order to get http status code and business code
 	if !isHTTPSuccess(resp.StatusCode) {
 		return resp, &serverError{resp.StatusCode, bodyObj.Result.Code, resp.Status, bodyObj.Result.Message}
 	}
