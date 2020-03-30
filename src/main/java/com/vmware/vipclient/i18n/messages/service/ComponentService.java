@@ -20,6 +20,7 @@ import com.vmware.vipclient.i18n.base.cache.persist.DiskCacheLoader;
 import com.vmware.vipclient.i18n.base.cache.persist.Loader;
 import com.vmware.vipclient.i18n.messages.api.opt.local.LocalMessagesOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
+import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.JSONUtils;
 
@@ -45,7 +46,8 @@ public class ComponentService {
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
         	Map<String, Object> response = cbo.getComponentMessages(cacheProps);
 	    	transMap = cbo.getMsgsJson(response);
-			cacheProps.putAll(response);
+	    	cacheProps.clear();
+	    	cacheProps.putAll(response);
         } else if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.Bundle) {
             transMap = new LocalMessagesOpt(dto).getComponentMessages();
         }

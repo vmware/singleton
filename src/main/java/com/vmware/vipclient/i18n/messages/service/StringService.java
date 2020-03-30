@@ -42,26 +42,12 @@ public class StringService {
     	Map<String, String> cacheOfComponent = (Map<String, String>) cache.get(Cache.MESSAGES);
     	Map<String, Object> cacheProps = (Map<String, Object>) cache.get(Cache.CACHE_PROPERTIES);
         
-    	if ((cacheOfComponent == null && !cacheservice.isContainComponent()) ||
-    		   (cacheOfComponent != null && cacheservice.isContainComponent() 
-    		   && cacheProps!=null && !cacheProps.isEmpty() && cacheservice.isExpired())) {
-            if (cacheProps == null) {
-            	cacheProps = new HashMap<String, Object>();
-            }
+    	if ((cacheOfComponent == null && !cacheservice.isContainComponent()) || cacheservice.isExpired()) {
+    		cacheProps = (cacheProps == null ? new HashMap<String, Object>() : cacheProps);
     		Object o = new ComponentService(dto).getMessages(cacheProps);
-
-    		Integer responseCode = (Integer) cacheProps.get(URLUtils.RESPONSE_CODE);
-    		if (responseCode != null) {
-	    		if (responseCode.equals(HttpURLConnection.HTTP_NOT_MODIFIED)) {
-	    			logger.info(HttpURLConnection.HTTP_NOT_MODIFIED + "NOT_MODIFIED for " + dto.getCompositStrAsCacheKey());
-	    			// Do not change the cache content
-	    		} else if (responseCode.equals(HttpURLConnection.HTTP_OK)) {
-	    			cacheOfComponent = (Map<String, String>) o;
-	    			cacheservice.addCacheOfComponent(cacheOfComponent, cacheProps);
-	    		} else {
-	    			logger.error("HTTP error: " + responseCode + " for " + dto.getCompositStrAsCacheKey());
-	    		}
-    		}
+    		cacheOfComponent = (Map<String, String>) o;
+    		if (cacheOfComponent != null)
+    			cacheservice.addCacheOfComponent(cacheOfComponent, cacheProps);
        }
        return (cacheOfComponent == null || cacheOfComponent.get(key) == null ? "" : cacheOfComponent.get(key));
     }

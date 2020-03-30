@@ -73,30 +73,37 @@ public class MessageCache implements Cache {
     public boolean isExpired(String cacheKey) {
     	Map<String,Object> cacheProps = this.cacheProperties.get(cacheKey);
     	if (cacheProps == null || cacheProps.isEmpty()) {
-    		return false;
+    		return true;
     	}
     	Long responseTimeStamp = (Long) cacheProps.get(URLUtils.RESPONSE_TIMESTAMP);
     	if (responseTimeStamp == null) {
-    		return false;
+    		return true;
     	}
-    	Map<String, Object> headers = (Map<String, Object>) cacheProps.get(URLUtils.HEADERS);
-    	if (headers == null) {
-    		return false;
-    	}
-    	List<String> cacheCtrlString = (List<String>) headers.get(URLUtils.CACHE_CONTROL);
-    	if (cacheCtrlString == null || cacheCtrlString.isEmpty()) {
-    		return false;
-    	}
-    	long maxAgeMillis = Long.MAX_VALUE;
-    	for (String ccs : cacheCtrlString) {
-    		String[] cacheCtrlDirectives = ccs.split(",");
-    		for (String ccd: cacheCtrlDirectives) {
-    			String[] ccdString = ccd.split("=");
-    			if (ccdString[0].equals(URLUtils.MAX_AGE)) {
-    				maxAgeMillis = Long.parseLong(ccdString[1]) * 1000l;
-    			}
-    		}	
-    	}
+    	Long maxAgeMillis = Long.MAX_VALUE;
+    	Long maxAgeFromConfig = (Long) cacheProps.get(URLUtils.MAX_AGE); 
+    	if (maxAgeFromConfig != null) {
+    		 // override response header max age
+    		maxAgeMillis = maxAgeFromConfig; 
+    	} else { 
+    		//gets max age from response header
+    		Map<String, Object> headers = (Map<String, Object>) cacheProps.get(URLUtils.HEADERS);
+        	if (headers == null) {
+        		return true;
+        	}
+        	List<String> cacheCtrlString = (List<String>) headers.get(URLUtils.CACHE_CONTROL);
+        	if (cacheCtrlString == null || cacheCtrlString.isEmpty()) {
+        		return true;
+        	}
+    		for (String ccs : cacheCtrlString) { 
+        		String[] cacheCtrlDirectives = ccs.split(",");
+        		for (String ccd: cacheCtrlDirectives) {
+        			String[] ccdString = ccd.split("=");
+        			if (ccdString[0].equals(URLUtils.MAX_AGE)) {
+        				maxAgeMillis = Long.parseLong(ccdString[1]) * 1000l;
+        			}
+        		}	
+        	}
+    	}	  	
     	return System.currentTimeMillis() - responseTimeStamp > maxAgeMillis;
     }
 

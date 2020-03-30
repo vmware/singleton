@@ -4,6 +4,7 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
+import java.net.HttpURLConnection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,19 +44,25 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
     }
 
     public JSONObject getMsgsJson(Map<String, Object> response) {
-    	String responseStr = (String) response.get(URLUtils.BODY);
-		if (null == responseStr || responseStr.equals(""))
-			return null;
-		else {
-			if (ConstantsKeys.LATEST.equals(this.dto.getLocale())) {
-				responseStr = responseStr.replace(ConstantsKeys.PSEUDOCHAR, "");
-			}
-
-			JSONObject msgObject = (JSONObject) this.getMessagesFromResponse(responseStr,
-                ConstantsKeys.MESSAGES);
-
-			return msgObject;
-		}
+    	if (response != null && response.get(URLUtils.RESPONSE_CODE) != null) {
+    		logger.info("HTTP response code: " + response.get(URLUtils.RESPONSE_CODE) + " for " + dto.getCompositStrAsCacheKey());
+    		if (response.get(URLUtils.RESPONSE_CODE).equals(HttpURLConnection.HTTP_OK)) {
+		    	String responseStr = (String) response.get(URLUtils.BODY);
+				if (null == responseStr || responseStr.equals(""))
+					return null;
+				else {
+					if (ConstantsKeys.LATEST.equals(this.dto.getLocale())) {
+						responseStr = responseStr.replace(ConstantsKeys.PSEUDOCHAR, "");
+					}
+		
+					JSONObject msgObject = (JSONObject) this.getMessagesFromResponse(responseStr,
+		                ConstantsKeys.MESSAGES);
+		
+					return msgObject;
+				}
+    		}
+    	}
+    	return null;
     }
     
     public String getString() {
