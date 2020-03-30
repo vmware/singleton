@@ -6,19 +6,19 @@ v0.2.0
 ## Downloads for v0.2.0
 
 ### Service Binaries
-
 filename | sha1 hash | branch/tag
 -------- | --- | ------
-[singleton-manager-i18n-s3-0.2.0.jar](http://repo1.maven.org/maven2/com/vmware/singleton/singleton-manager-i18n-s3/0.2.0/singleton-manager-i18n-s3-0.2.0.jar) | `3f646a402c5131eea3c8be2ccec3f0d37fc8eede` | master/[v0.2.0-Singleton-Service](https://github.com/vmware/singleton/releases/tag/v0.2.0-Singleton-Service)
-[singleton-manager-i18n-0.2.0.jar](http://repo1.maven.org/maven2/com/vmware/singleton/singleton-manager-i18n/0.2.0/singleton-manager-i18n-0.2.0.jar) | `157db7cbf5ded0d0c844ea437e368b91c5912318` | master/[v0.2.0-Singleton-Service](https://github.com/vmware/singleton/releases/tag/v0.2.0-Singleton-Service)
-[singleton-manager-l10n-0.2.0.jar](http://repo1.maven.org/maven2/com/vmware/singleton/singleton-manager-l10n/0.2.0/singleton-manager-l10n-0.2.0.jar) | `5883e09c70484a10e1c1b94b203f9a184011eb27` | master/[v0.2.0-Singleton-Service](https://github.com/vmware/singleton/releases/tag/v0.2.0-Singleton-Service)
+[singleton-manager-i18n-s3-0.2.0.jar](https://repo1.maven.org/maven2/com/vmware/singleton/singleton-manager-i18n-s3/0.2.0/singleton-manager-i18n-s3-0.2.0.jar) | `3f646a402c5131eea3c8be2ccec3f0d37fc8eede` | master/[v0.2.0-Singleton-Service](https://github.com/vmware/singleton/releases/tag/v0.2.0-Singleton-Service)
+[singleton-manager-i18n-0.2.0.jar](https://repo1.maven.org/maven2/com/vmware/singleton/singleton-manager-i18n/0.2.0/singleton-manager-i18n-0.2.0.jar) | `157db7cbf5ded0d0c844ea437e368b91c5912318` | master/[v0.2.0-Singleton-Service](https://github.com/vmware/singleton/releases/tag/v0.2.0-Singleton-Service)
+[singleton-manager-l10n-0.2.0.jar](https://repo1.maven.org/maven2/com/vmware/singleton/singleton-manager-l10n/0.2.0/singleton-manager-l10n-0.2.0.jar) | `5883e09c70484a10e1c1b94b203f9a184011eb27` | master/[v0.2.0-Singleton-Service](https://github.com/vmware/singleton/releases/tag/v0.2.0-Singleton-Service)
 
 ### Client Binaries
 filename | sha1 hash | branch/tag
 -------- | --- | ------
-[singleton-client-java.jar](#) | No update | No update
-[@singleton-i18n/js-core-sdk](https://www.npmjs.com/package/@singleton-i18n/js-core-sdk) | - | No update
-[@singleton-i18n/angular-client](https://www.npmjs.com/package/@singleton-i18n/angular-client) | - | No update
+[singleton-client-java.jar](https://repo1.maven.org/maven2/com/vmware/singleton/singleton-client-java/0.1.0/) | No update | No update
+[@singleton-i18n/js-client](https://www.npmjs.com/package/@singleton-i18n/js-core-sdk/v/0.1.0) | - | No update
+[@singleton-i18n/nodejs-client](https://www.npmjs.com/package/@singleton-i18n/js-core-sdk-server/v/0.1.0) | - | No update
+[@singleton-i18n/angular-client](https://www.npmjs.com/package/@singleton-i18n/angular-client/v/0.1.0) | - | No update
 
 ## Changelog since v0.1.0
 

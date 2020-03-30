@@ -86,6 +86,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 
 	@Value("${cache-control.value:}")
 	private String cacheControlValue;
+
 	@Autowired
 	private TokenService tokenService;
 
