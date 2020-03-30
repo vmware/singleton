@@ -34,6 +34,10 @@ func init() {
 
 //GetInst initialize the instance
 func GetInst(cfg *Config) *Instance {
+	if err := checkConfig(cfg); err != nil {
+		panic(err)
+	}
+
 	inst.cfg = *cfg
 	inst.initializOnce.Do(inst.doInitialize)
 	return &inst
