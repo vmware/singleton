@@ -37,12 +37,26 @@ public class TranslationCacheManager {
 
     public static Cache getCache(String name) {
         Cache c = container.get(name);
-        if (c != null && c.isExpired()) {
-            c.clear();
-            c.setLastClean(System.currentTimeMillis());
+        
+        // Clean the entire cache only if cacheExpireTime config is present.
+        if (VIPCfg.getInstance().getCacheExpiredTime() != -1) {
+        	if (c != null && c.isExpired()) {
+        		cleanCache(c);
+        	}
         }
+        
         return c;
     }
+    
+    /**
+     * Cleans the entire cache 
+   	 * @param c Cache to be cleaned.
+     */
+    public static void cleanCache(Cache c) {
+        c.clear();
+        c.setLastClean(System.currentTimeMillis());  
+    }
+    
 
     public int registerCache(String className, Cache c) {
         if (c == null) {

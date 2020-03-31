@@ -20,7 +20,6 @@ import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.StringBasedOpt;
-import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.JSONUtils;
@@ -45,9 +44,10 @@ public class StringService {
     	if ((cacheOfComponent == null && !cacheservice.isContainComponent()) || cacheservice.isExpired()) {
     		cacheProps = (cacheProps == null ? new HashMap<String, Object>() : cacheProps);
     		Object o = new ComponentService(dto).getMessages(cacheProps);
-    		cacheOfComponent = (Map<String, String>) o;
-    		if (cacheOfComponent != null)
+    		if (o != null) {
+    			cacheOfComponent = (Map<String, String>) o;
     			cacheservice.addCacheOfComponent(cacheOfComponent, cacheProps);
+    		}	
        }
        return (cacheOfComponent == null || cacheOfComponent.get(key) == null ? "" : cacheOfComponent.get(key));
     }

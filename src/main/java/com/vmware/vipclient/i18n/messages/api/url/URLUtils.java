@@ -26,7 +26,7 @@ public class URLUtils {
     public static final String IF_NONE_MATCH_HEADER = "If-None-Match";
     public static final String ETAG = "ETag";
     public static final String CACHE_CONTROL = "Cache-Control";
-    public static final String MAX_AGE = "max-age";
+    public static final String MAX_AGE_MILLIS = "max-age";
     
     private URLUtils() {
 
@@ -82,6 +82,25 @@ public class URLUtils {
         } else {
         	requester.removeCustomizedHeaderParams(IF_NONE_MATCH_HEADER);
         }
+    }
+    
+    public static Long getMaxAgeMillis(Map<String, List<String>> responseHeaders) {
+    	Long maxAge = null;
+    	if (responseHeaders != null) {
+    		List<String> cacheCtrlString = (List<String>) responseHeaders.get(URLUtils.CACHE_CONTROL);
+    		if (cacheCtrlString != null && !cacheCtrlString.isEmpty()) {
+				for (String ccs : cacheCtrlString) { 
+		    		String[] cacheCtrlDirectives = ccs.split(",");
+		    		for (String ccd: cacheCtrlDirectives) {
+		    			String[] ccdString = ccd.split("=");
+		    			if (ccdString[0].equals(URLUtils.MAX_AGE_MILLIS)) {
+		    				return Long.parseLong(ccdString[1]) * 1000l;
+		    			}
+		    		}
+				}
+	    	}
+    	}
+    	return maxAge;
     }
     
     private static String createIfNoneMatchValue(List<String> etags) {

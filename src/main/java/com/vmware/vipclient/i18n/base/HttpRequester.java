@@ -154,6 +154,9 @@ public class HttpRequester {
                 response.put(URLUtils.RESPONSE_CODE, conn.getResponseCode());
                 response.put(URLUtils.RESPONSE_MSG, conn.getResponseMessage());
                 response.put(URLUtils.RESPONSE_TIMESTAMP, System.currentTimeMillis());
+                Long maxAgeMillis = URLUtils.getMaxAgeMillis(conn.getHeaderFields());
+                if (maxAgeMillis != null)
+                	response.put(URLUtils.MAX_AGE_MILLIS, maxAgeMillis);
             }
         } catch (IOException e) {
             logger.info(e.getMessage());

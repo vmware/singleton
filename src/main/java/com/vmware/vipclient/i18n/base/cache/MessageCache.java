@@ -6,10 +6,10 @@ package com.vmware.vipclient.i18n.base.cache;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 
 public class MessageCache implements Cache {
@@ -80,28 +80,13 @@ public class MessageCache implements Cache {
     		return true;
     	}
     	Long maxAgeMillis = Long.MAX_VALUE;
-    	Long maxAgeFromConfig = (Long) cacheProps.get(URLUtils.MAX_AGE); 
-    	if (maxAgeFromConfig != null) {
-    		 // override response header max age
-    		maxAgeMillis = maxAgeFromConfig; 
-    	} else { 
-    		//gets max age from response header
-    		Map<String, Object> headers = (Map<String, Object>) cacheProps.get(URLUtils.HEADERS);
-        	if (headers == null) {
-        		return true;
-        	}
-        	List<String> cacheCtrlString = (List<String>) headers.get(URLUtils.CACHE_CONTROL);
-        	if (cacheCtrlString == null || cacheCtrlString.isEmpty()) {
-        		return true;
-        	}
-    		for (String ccs : cacheCtrlString) { 
-        		String[] cacheCtrlDirectives = ccs.split(",");
-        		for (String ccd: cacheCtrlDirectives) {
-        			String[] ccdString = ccd.split("=");
-        			if (ccdString[0].equals(URLUtils.MAX_AGE)) {
-        				maxAgeMillis = Long.parseLong(ccdString[1]) * 1000l;
-        			}
-        		}	
+    	long maxAgeFromConfig = VIPCfg.getInstance().getCacheExpiredTime(); 
+    	if (maxAgeFromConfig != -1) { // If maxAgeFromConfig is present, use it instead of response header max age
+    		maxAgeMillis = maxAgeFromConfig;
+    	} else { // Gets max age from response header
+    		Long maxAgeResponse = (Long) cacheProps.get(URLUtils.MAX_AGE_MILLIS);
+        	if (maxAgeResponse != null) {
+        		maxAgeMillis = maxAgeResponse;
         	}
     	}	  	
     	return System.currentTimeMillis() - responseTimeStamp > maxAgeMillis;

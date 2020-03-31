@@ -54,7 +54,7 @@ public class VIPCfg {
     private boolean                    pseudo;
     private boolean                    collectSource;
     private boolean                    cleanCache;
-    private long                       cacheExpiredTime;
+    private long                       cacheExpiredTime = -1;
     private boolean                    machineTranslation;
     private boolean                    initializeCache;
     private int                        interalCleanCache;
@@ -242,7 +242,7 @@ public class VIPCfg {
         }
         Cache createdCache = TranslationCacheManager
                 .getCache(VIPCfg.CACHE_L3);
-        if (createdCache != null && this.getCacheExpiredTime() > 0) {
+        if (createdCache != null && this.getCacheExpiredTime() > -1) {
             c.setExpiredTime(this.getCacheExpiredTime());
         }
     }
@@ -270,7 +270,7 @@ public class VIPCfg {
                     Task.startTaskOfCacheClean(VIPCfg.getInstance(), interalCleanCache);
                 }
                 Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
-                if (c != null && this.getCacheExpiredTime() > 0) {
+                if (c != null && this.getCacheExpiredTime() > -1) {
                     c.setExpiredTime(this.getCacheExpiredTime());
                 }
             }
