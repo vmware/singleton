@@ -137,7 +137,7 @@ public class CacheServiceTest extends BaseTestClass {
         responseCode = (Integer) cacheProps.get(URLUtils.RESPONSE_CODE);
         assertEquals(new Integer(304), responseCode);
         
-        // The response time that stored in cache is updated to the time the 304 response was received. 
+        // The cached response time is updated to the timestamp of the 304 response.  
         // This, in effect, extends the cache expiration.
         Long responseTime3 = (Long) cacheProps.get(URLUtils.RESPONSE_TIMESTAMP);
         assertTrue(responseTime3 > responseTime); 
@@ -188,10 +188,9 @@ public class CacheServiceTest extends BaseTestClass {
         responseCode = (Integer) cacheProps.get(URLUtils.RESPONSE_CODE);
         assertEquals(new Integer(200), responseCode);
         
-        // The response time that stored in cache is updated to the time the 304 response was received. 
+        // The cached response time is updated to the timestamp of the 2nd 200 response. 
         // This, in effect, extends the cache expiration.
         Long responseTime2 = (Long) cacheProps.get(URLUtils.RESPONSE_TIMESTAMP);
         assertTrue(responseTime2 > responseTime); 
-        assertTrue((long)cacheProps.get(URLUtils.MAX_AGE_MILLIS) > 0l);
     }  
 }
