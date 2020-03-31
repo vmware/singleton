@@ -42,10 +42,10 @@ public class ComponentService {
     @SuppressWarnings("unchecked")
     public Map<String, String> getMessages(final Map<String, Object> cacheProps) {
         Map<String, String> transMap = new HashMap<String, String>();
-        ComponentBasedOpt cbo = new ComponentBasedOpt(dto);
+        ComponentBasedOpt opt = new ComponentBasedOpt(dto);
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
-        	Map<String, Object> response = cbo.getComponentMessages(cacheProps);
-	    	transMap = cbo.getMsgsJson(response);
+        	Map<String, Object> response = opt.getComponentMessages(cacheProps);
+	    	transMap = opt.getMsgsJson(response);
 	    	cacheProps.clear();
 	    	cacheProps.putAll(response);
         } else if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.Bundle) {

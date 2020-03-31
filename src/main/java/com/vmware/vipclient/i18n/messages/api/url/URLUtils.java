@@ -72,12 +72,12 @@ public class URLUtils {
         	Map<String, List<String>> responseHeaders = (Map<String, List<String>>) cacheProps.get(HEADERS);
         	if (responseHeaders != null) {
 	        	List<String> etags = (List<String>) responseHeaders.get(ETAG);
-	        	if (etags != null) {
-	        		String ifNoneMatch = createIfNoneMatchValue(etags);
-	        		Map<String, String> headers = new HashMap<String, String>();
-	        		headers.put(IF_NONE_MATCH_HEADER,ifNoneMatch);
-	        		requester.setCustomizedHeaderParams(headers);
-	        	}
+        		String ifNoneMatch = createIfNoneMatchValue(etags);
+        		if (ifNoneMatch != null) {
+        			Map<String, String> headers = new HashMap<String, String>();
+        			headers.put(IF_NONE_MATCH_HEADER,ifNoneMatch);
+        			requester.setCustomizedHeaderParams(headers);
+        		}
         	}
         } else {
         	requester.removeCustomizedHeaderParams(IF_NONE_MATCH_HEADER);
