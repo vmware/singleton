@@ -36,7 +36,7 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
             url = url.replace("pseudo=false", "pseudo=true");
         }
         HttpRequester requester = VIPCfg.getInstance().getVipService().getHttpRequester();
-        if (VIPCfg.getInstance().getCacheExpiredTime() == -1)
+        if (VIPCfg.getInstance().getCacheExpiredTime() == VIPCfg.cacheExpiredTimeNotSet)
         	URLUtils.addIfNoneMatchHeader (cacheProps, requester);
         Map<String, Object> response = requester.request(url, ConstantsKeys.GET,
         		null);

@@ -39,7 +39,7 @@ public class TranslationCacheManager {
         Cache c = container.get(name);
         
         // Clean the entire cache only if cacheExpireTime config is present.
-        if (VIPCfg.getInstance().getCacheExpiredTime() != -1) {
+        if (VIPCfg.getInstance().getCacheExpiredTime() != VIPCfg.cacheExpiredTimeNotSet) {
         	if (c != null && c.isExpired()) {
         		cleanCache(c);
         	}

@@ -81,7 +81,7 @@ public class MessageCache implements Cache {
     	}
     	Long maxAgeMillis = Long.MAX_VALUE;
     	long maxAgeFromConfig = VIPCfg.getInstance().getCacheExpiredTime(); 
-    	if (maxAgeFromConfig != -1) { // If maxAgeFromConfig is present, use it instead of response header max age
+    	if (maxAgeFromConfig != VIPCfg.cacheExpiredTimeNotSet) { // If maxAgeFromConfig is present, use it instead of response header max age
     		maxAgeMillis = maxAgeFromConfig;
     	} else { // Gets max age from response header
     		Long maxAgeResponse = (Long) cacheProps.get(URLUtils.MAX_AGE_MILLIS);

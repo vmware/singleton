@@ -105,7 +105,7 @@ public class CacheServiceTest extends BaseTestClass {
     	
     	// Explicitly set this config to the default which is -1, as if the config property was not set.
         // This is done so that the cache-control max age form the server response is used instead.
-        VIPCfg.getInstance().setCacheExpiredTime(-1l);
+        VIPCfg.getInstance().setCacheExpiredTime(VIPCfg.cacheExpiredTimeNotSet);
         
         Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
         TranslationCacheManager.cleanCache(c);
@@ -158,7 +158,7 @@ public class CacheServiceTest extends BaseTestClass {
     	// If cacheExpiredTime config is set, it means  that the value of this config will be used 
     	// to indicate cache expiration. Cache control max age from http response will be ignored.
     	long cacheExpiredTime = VIPCfg.getInstance().getCacheExpiredTime();
-    	assertNotEquals(cacheExpiredTime, -1l);
+    	assertNotEquals(cacheExpiredTime, VIPCfg.cacheExpiredTimeNotSet);
     	
     	Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
     	TranslationCacheManager.cleanCache(c);
