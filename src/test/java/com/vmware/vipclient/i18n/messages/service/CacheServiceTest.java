@@ -123,6 +123,7 @@ public class CacheServiceTest extends BaseTestClass {
     	Map<String, Object> cacheProps = (Map<String, Object>) cache.get(Cache.CACHE_PROPERTIES);
     	Integer responseCode = (Integer) cacheProps.get(URLUtils.RESPONSE_CODE);
         Long responseTime = (Long) cacheProps.get(URLUtils.RESPONSE_TIMESTAMP);
+        assertEquals(new Integer(200), responseCode);
         
         // Set max age to 0 to explicitly expire the cache for testing purposes.
         cacheProps.put(URLUtils.MAX_AGE_MILLIS, 0l);
