@@ -31,3 +31,14 @@ func TestGetInst(t *testing.T) {
 	assert.NotNil(t, dataService.cache)
 	assert.NotNil(t, cacheInfoMap)
 }
+
+func TestCheckConfig(t *testing.T) {
+	defer Trace(curFunName())()
+
+	newCfg := testCfg
+	newCfg.OnlineServiceURL, newCfg.OfflineResourcesBaseURL = "", ""
+
+	errString := "Both online_service_url and offline_resources_base_url are empty"
+	err := checkConfig(&newCfg)
+	assert.Equal(t, errString, err.Error())
+}

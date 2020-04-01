@@ -62,8 +62,8 @@ func (d *bundleDAO) getLocaleList(name, version string) ([]string, error) {
 	}
 
 	locales := map[string]struct{}{}
-	for _, comp := range comps {
-		fPath := filepath.Join(d.root, name, version, comp)
+	for _, component := range comps {
+		fPath := filepath.Join(d.root, name, version, component)
 		fis, err := ioutil.ReadDir(fPath)
 		if err != nil {
 			return nil, err

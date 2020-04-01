@@ -29,3 +29,8 @@ const (
 	httpHeaderETag         = "ETag"
 	httpHeaderIfNoneMatch  = "If-None-Match"
 )
+
+const (
+	cacheNeverExpires   = -1
+	cacheDefaultExpires = 7200 //seconds
+)

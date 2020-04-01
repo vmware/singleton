@@ -13,6 +13,8 @@ import (
 )
 
 func TestBundleGetComponentList(t *testing.T) {
+	defer Trace(curFunName())()
+
 	newCfg := testCfg
 	newCfg.OnlineServiceURL = ""
 	testInst := resetInst(&newCfg)
@@ -24,6 +26,8 @@ func TestBundleGetComponentList(t *testing.T) {
 }
 
 func TestBundleGetLocaleList(t *testing.T) {
+	defer Trace(curFunName())()
+
 	newCfg := testCfg
 	newCfg.OnlineServiceURL = ""
 	testInst := resetInst(&newCfg)
@@ -35,13 +39,15 @@ func TestBundleGetLocaleList(t *testing.T) {
 }
 
 func TestBundleGetCompMessages(t *testing.T) {
+	defer Trace(curFunName())()
+
 	newCfg := testCfg
 	newCfg.OnlineServiceURL = ""
 	testInst := resetInst(&newCfg)
 
 	locale := "fr"
-	comp := "sunglow"
-	msgs, err := testInst.trans.GetComponentMessages(name, version, locale, comp)
+	component := "sunglow"
+	msgs, err := testInst.trans.GetComponentMessages(name, version, locale, component)
 	assert.Nil(t, err)
 	assert.Equal(t, 4, msgs.Size())
 }

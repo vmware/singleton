@@ -126,7 +126,9 @@ func (s *serverDAO) sendRequest(u *url.URL, header map[string]string, data inter
 
 	resp, err := getDataFromServer(u, header, data)
 	if err != nil {
-		if oe, ok := err.(net.Error); ok {
+		rootErr := errors.Cause(err)
+		switch oe := rootErr.(type) {
+		case net.Error:
 			if oe.Timeout() {
 				atomic.StoreUint32(&s.status, serverTimeout)
 				atomic.StoreInt64(&s.lastErrorMoment, time.Now().Unix())
@@ -146,10 +148,6 @@ func (s *serverDAO) setHTTPHeaders(h map[string]string) {
 //!- serverDAO
 
 //!+ common functions
-func addURLParam(u *url.URL, k, v string) {
-	addURLParams(u, map[string]string{k: v})
-}
-
 func addURLParams(u *url.URL, args map[string]string) {
 	values := u.Query()
 	for k, v := range args {

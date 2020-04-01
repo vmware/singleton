@@ -12,6 +12,7 @@ import (
 	"gopkg.in/h2non/gock.v1"
 )
 
+// Test cache control
 func TestCC(t *testing.T) {
 	defer Trace(curFunName())()
 
@@ -58,4 +59,19 @@ func TestCC(t *testing.T) {
 
 		assert.True(t, gock.IsDone())
 	}
+}
+
+func TestFallbackToLocalBundles(t *testing.T) {
+	defer Trace(curFunName())()
+
+	inst := resetInst(&testCfg)
+
+	locale, component := "fr", "sunglow"
+	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
+	info := getCacheInfo(item)
+
+	msgs, err := inst.GetTranslation().GetComponentMessages(name, version, locale, component)
+	assert.Nil(t, err)
+	assert.Equal(t, 4, msgs.Size())
+	assert.Equal(t, int64(cacheDefaultExpires), info.getAge()) //Set max age to cacheDefaultExpires when server is unavailable temporarily.
 }

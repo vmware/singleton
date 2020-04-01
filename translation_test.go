@@ -17,7 +17,6 @@ import (
 )
 
 func TestGetCompMessages(t *testing.T) {
-
 	defer Trace(curFunName())()
 
 	var tests = []struct {
@@ -60,6 +59,7 @@ func TestGetCompMessages(t *testing.T) {
 
 func TestGetStringMessage(t *testing.T) {
 	defer Trace(curFunName())()
+
 	var tests = []struct {
 		desc      string
 		mocks     []string
@@ -188,7 +188,7 @@ func TestRefreshCache2(t *testing.T) {
 	testInst := resetInst(&testCfg)
 	trans := testInst.GetTranslation()
 	for _, testData := range tests {
-		EnableMockDataWithTimes(testData.mocks[0], 100).Response.Delay(time.Microsecond)
+		EnableMockDataWithTimes(testData.mocks[0], 100).Response.Delay(time.Microsecond)// Delay to simulate concurrency
 
 		var wg sync.WaitGroup
 		for i := 0; i < 100; i++ {
@@ -214,6 +214,7 @@ func TestRefreshCache2(t *testing.T) {
 	}
 }
 
+// Test locale fallback when querying a message of a string
 func TestGetStringFallback(t *testing.T) {
 	defer Trace(curFunName())()
 
@@ -240,11 +241,11 @@ func TestGetStringFallback(t *testing.T) {
 
 	// Normal fallback
 	locale := "zh-Hans"
-	comp := "users"
+	component := "users"
 	key := "Singleton.description"
 	arg := "MyArg"
 	expected := "MyArg est une bibliothèque commune développée par Singleton Team."
-	message, err := trans.GetStringMessage(name, version, locale, comp, key, arg)
+	message, err := trans.GetStringMessage(name, version, locale, component, key, arg)
 	st.Expect(t, err, nil)
 	assert.Equal(t, expected, message)
 

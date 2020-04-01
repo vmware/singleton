@@ -63,7 +63,7 @@ func (ds *dataService) fetch(item *dataItem, wait bool) error {
 				StackTrace() errors.StackTrace
 			}
 			if e, ok := err.(stackTracer); ok {
-				logger.Error(fmt.Sprintf("Fail to get from server:%+v", e.StackTrace()))
+				logger.Error(fmt.Sprintf("Fail to get from server: %#v", e))
 			} else {
 				logger.Error(fmt.Sprintf("Fail to get from server: %s", err.Error()))
 			}
@@ -72,9 +72,9 @@ func (ds *dataService) fetch(item *dataItem, wait bool) error {
 		if ds.bundle != nil {
 			err = ds.bundle.get(item)
 			if err == nil {
-				var age int64 = -1
+				var age int64 = cacheNeverExpires
 				if ds.server != nil {
-					age = 7200 // set to 7200 seconds if server is unavailable temporarily
+					age = cacheDefaultExpires // set to 7200 seconds if server is unavailable temporarily
 				}
 				info.setAge(age)
 
@@ -90,7 +90,7 @@ func (ds *dataService) fetch(item *dataItem, wait bool) error {
 		info.waitUpdate()
 		ok := ds.getCache(item)
 		if !ok {
-			return errors.New("Fail to fetch")
+			return errors.New(fmt.Sprintf("Fail to fetch ID: %+v", item.id))
 		}
 	}
 
@@ -134,7 +134,7 @@ func updateCacheControl(item *dataItem, info *itemCacheInfo) {
 		}
 	}
 
-	info.setAge(7200) // set default age time to 7200 seconds
+	info.setAge(cacheDefaultExpires) // set default age time to 7200 seconds
 	logger.Error("Wrong cache control: " + cc)
 }
 
