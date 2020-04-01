@@ -121,3 +121,10 @@ jacocoTestReport {
         html.enabled false
     }
 }
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat "full"
+    }
+}
