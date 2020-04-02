@@ -34,8 +34,8 @@ func TestCC(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.OfflineResourcesBaseURL = ""
-	testInst := resetInst(&newCfg)
-	trans := testInst.GetTranslation()
+	resetInst(&newCfg)
+	trans := GetTranslation()
 	for _, testData := range tests {
 		for _, m := range testData.mocks {
 			EnableMockData(m)
@@ -64,13 +64,13 @@ func TestCC(t *testing.T) {
 func TestFallbackToLocalBundles(t *testing.T) {
 	defer Trace(curFunName())()
 
-	inst := resetInst(&testCfg)
+	resetInst(&testCfg)
 
 	locale, component := "fr", "sunglow"
 	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
 	info := getCacheInfo(item)
 
-	msgs, err := inst.GetTranslation().GetComponentMessages(name, version, locale, component)
+	msgs, err := GetTranslation().GetComponentMessages(name, version, locale, component)
 	assert.Nil(t, err)
 	assert.Equal(t, 4, msgs.(*defaultComponentMsgs).Size())
 	assert.Equal(t, int64(cacheDefaultExpires), info.getAge()) //Set max age to cacheDefaultExpires when server is unavailable temporarily.

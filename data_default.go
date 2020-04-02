@@ -5,6 +5,8 @@
 
 package sgtn
 
+var cache Cache
+
 type (
 	defaultComponentMsgs struct {
 		messages map[string]string

@@ -17,8 +17,6 @@ import (
 
 //!+dataService
 type dataService struct {
-	cache Cache
-
 	bundle *bundleDAO
 	server *serverDAO
 }
@@ -98,12 +96,12 @@ func (ds *dataService) fetch(item *dataItem, wait bool) error {
 }
 
 func (ds *dataService) getCache(item *dataItem) (ok bool) {
-	item.data, ok = ds.cache.Get(item.id)
+	item.data, ok = cache.Get(item.id)
 	return ok
 }
 
 func (ds *dataService) setCache(item *dataItem) {
-	ds.cache.Set(item.id, item.data)
+	cache.Set(item.id, item.data)
 }
 
 func isFetchSucess(err error) bool {

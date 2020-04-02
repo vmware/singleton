@@ -15,12 +15,12 @@ import (
 )
 
 var (
-	inst   = Instance{}
+	inst   *instance
 	logger Logger
 )
 
-// Instance Singleton instance
-type Instance struct {
+// instance Singleton instance
+type instance struct {
 	cfg           Config
 	trans         *defaultTrans
 	components    []struct{ Name, Version string }
@@ -32,19 +32,19 @@ func init() {
 	httpclient = &http.Client{Timeout: time.Second * servertimeout}
 }
 
-//GetInst initialize the instance
-func GetInst(cfg *Config) *Instance {
+//Initialize initialize the client
+func Initialize(cfg *Config) {
 	if err := checkConfig(cfg); err != nil {
 		panic(err)
 	}
 
+	inst = &instance{}
 	inst.cfg = *cfg
 	inst.initializOnce.Do(inst.doInitialize)
-	return &inst
 }
 
-func (i *Instance) doInitialize() {
-	logger.Debug("Initializing Singleton instance.")
+func (i *instance) doInitialize() {
+	logger.Debug("Initializing Singleton client.")
 
 	dService := new(dataService)
 	if len(i.cfg.OnlineServiceURL) != 0 {
@@ -61,32 +61,46 @@ func (i *Instance) doInitialize() {
 	i.trans = &defaultTrans{dService, i.cfg.DefaultLocale}
 
 	initCacheInfoMap()
-	i.RegisterCache(newCache())
-
+	if cache == nil {
+		RegisterCache(newCache())
+	}
 }
 
 func checkConfig(cfg *Config) error {
 	switch {
 	case cfg.OfflineResourcesBaseURL == "" && cfg.OnlineServiceURL == "":
-		return errors.New("Both online_service_url and offline_resources_base_url are empty")
+		return errors.New("Neither online_service_url nor offline_resources_base_url is provided")
+	case cfg.DefaultLocale == "":
+		return errors.New("default_locale isn't provided")
+	default:
+		return nil
 	}
-
-	return nil
 }
 
 // GetTranslation Get translation instance
-func (i *Instance) GetTranslation() Translation {
-	return i.trans
+func GetTranslation() Translation {
+	if inst == nil {
+		panic(errors.New("Client isn't initialized"))
+	}
+
+	return inst.trans
 }
 
 // SetHTTPHeaders Set customized HTTP headers
-func (i *Instance) SetHTTPHeaders(h map[string]string) {
-	i.trans.ds.server.setHTTPHeaders(h)
+func SetHTTPHeaders(h map[string]string) {
+	if inst == nil {
+		panic(errors.New("Client isn't initialized"))
+	}
+
+	server := inst.trans.ds.server
+	if server != nil {
+		server.setHTTPHeaders(h)
+	}
 }
 
 // RegisterCache Register cache implementation. There is a default implementation
-func (i *Instance) RegisterCache(c Cache) {
-	i.trans.ds.cache = c
+func RegisterCache(c Cache) {
+	cache = c
 }
 
 // SetLogger Set a global logger. There is a default console logger

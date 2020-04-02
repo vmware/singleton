@@ -17,7 +17,7 @@ func TestCacheNeverExpire(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.OnlineServiceURL = ""
-	inst := resetInst(&newCfg)
+	resetInst(&newCfg)
 
 	locale, component := "fr", "sunglow"
 	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
@@ -25,7 +25,7 @@ func TestCacheNeverExpire(t *testing.T) {
 
 	// assert Initial value isn't cacheNeverExpires(-1)
 	assert.NotEqual(t, int64(cacheNeverExpires), info.getAge())
-	inst.GetTranslation().GetComponentMessages(name, version, locale, component)
+	GetTranslation().GetComponentMessages(name, version, locale, component)
 
 	// assert value is cacheNeverExpires(-1) because only local bundles are available.
 	assert.Equal(t, int64(cacheNeverExpires), info.getAge())
@@ -36,25 +36,25 @@ func TestCacheExpireWhenNeverExpire(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.OnlineServiceURL = ""
-	inst := resetInst(&newCfg)
+	resetInst(&newCfg)
 
 	locale, component := "fr", "sunglow"
 	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
 	info := getCacheInfo(item)
 
-	inst.GetTranslation().GetComponentMessages(name, version, locale, component)
+	GetTranslation().GetComponentMessages(name, version, locale, component)
 
 	// value is cacheNeverExpires(-1) because only local bundles are available.
 	assert.Equal(t, int64(cacheNeverExpires), info.getAge())
 
 	// Run again to get from cache
-	bundleDir := inst.GetTranslation().(*defaultTrans).ds.bundle.root
+	bundleDir := GetTranslation().(*defaultTrans).ds.bundle.root
 	tempDir := bundleDir + "temp"
 	os.Rename(bundleDir, tempDir)
 	defer os.Rename(tempDir, bundleDir)
 
 	// Run again to get from cache
-	msgs, err := inst.GetTranslation().GetComponentMessages(name, version, locale, component)
+	msgs, err := GetTranslation().GetComponentMessages(name, version, locale, component)
 	assert.Nil(t, err)
 	assert.Equal(t, 4, msgs.(*defaultComponentMsgs).Size())
 }

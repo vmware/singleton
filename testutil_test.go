@@ -19,7 +19,6 @@ import (
 	"runtime"
 	"strconv"
 	"strings"
-	"sync"
 	"sync/atomic"
 	"testing"
 	"time"
@@ -269,9 +268,9 @@ func fileExist(filepath string) (bool, error) {
 }
 
 // This isn't thread safe because Go runs tests parallel possibly.
-func clearCache(testInst *Instance) {
+func clearCache() {
 	logger.Debug("clearcache")
-	testInst.trans.ds.cache.(*defaultCache).m = new(sync.Map)
+	cache = newCache()
 	initCacheInfoMap()
 }
 
@@ -283,9 +282,10 @@ func curFunName() string {
 	return frame.Function[strings.LastIndex(frame.Function, "/")+1:]
 }
 
-func resetInst(cfg *Config) *Instance {
-	inst = Instance{}
-	return GetInst(cfg)
+func resetInst(cfg *Config) {
+	inst = &instance{}
+	cache = newCache()
+	Initialize(cfg)
 }
 
 func expireCache(info *itemCacheInfo, cacheExpiredTime int64) {

@@ -30,9 +30,9 @@ func TestGetLocaleCompAbnormal(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.OfflineResourcesBaseURL = ""
-	testInst := resetInst(&newCfg)
+	resetInst(&newCfg)
 
-	trans := testInst.GetTranslation()
+	trans := GetTranslation()
 
 	components, errcomp := trans.GetComponentList(name, version)
 	assert.Nil(t, components)
@@ -74,8 +74,8 @@ func TestTimeout(t *testing.T) {
 	locale, component := "fr", "sunglow"
 	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
 
-	inst := resetInst(&testCfg)
-	sgtnServer := inst.GetTranslation().(*defaultTrans).ds.server
+	resetInst(&testCfg)
+	sgtnServer := GetTranslation().(*defaultTrans).ds.server
 
 	//Get first time to set server stats as timeout
 	err := sgtnServer.get(item)
@@ -101,8 +101,8 @@ func TestTimeout2(t *testing.T) {
 	locale, component := "fr", "sunglow"
 	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
 
-	inst := resetInst(&testCfg)
-	sgtnServer := inst.GetTranslation().(*defaultTrans).ds.server
+	resetInst(&testCfg)
+	sgtnServer := GetTranslation().(*defaultTrans).ds.server
 
 	sgtnServer.status = serverTimeout
 	sgtnServer.lastErrorMoment = time.Now().Unix() - serverRetryInterval - 1

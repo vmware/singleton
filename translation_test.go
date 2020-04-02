@@ -32,8 +32,8 @@ func TestGetCompMessages(t *testing.T) {
 
 	defer gock.Off()
 
-	testInst := resetInst(&testCfg)
-	trans := testInst.GetTranslation()
+	resetInst(&testCfg)
+	trans := GetTranslation()
 	for _, testData := range tests {
 		for _, m := range testData.mocks {
 			EnableMockData(m)
@@ -48,7 +48,7 @@ func TestGetCompMessages(t *testing.T) {
 			t.Errorf("%s = %d, want %d", testData.desc, messages.(*defaultComponentMsgs).Size(), testData.expected)
 		}
 
-		messagesInCache, found := testInst.trans.ds.cache.Get(dataItemID{itemComponent, name, version, testData.locale, testData.component})
+		messagesInCache, found := cache.Get(dataItemID{itemComponent, name, version, testData.locale, testData.component})
 		assert.True(t, found)
 		assert.NotNil(t, messagesInCache)
 		assert.Equal(t, testData.expected, messagesInCache.(*defaultComponentMsgs).Size())
@@ -75,8 +75,8 @@ func TestGetStringMessage(t *testing.T) {
 
 	defer gock.Off()
 
-	testInst := resetInst(&testCfg)
-	trans := testInst.GetTranslation()
+	resetInst(&testCfg)
+	trans := GetTranslation()
 	for _, testData := range tests {
 		for _, m := range testData.mocks {
 			EnableMockData(m)
@@ -113,10 +113,8 @@ func TestRefreshCache(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.OfflineResourcesBaseURL = ""
-	testInst := resetInst(&newCfg)
-	trans := testInst.GetTranslation()
-	dataService := testInst.trans
-	cacheObj := testInst.trans.ds.cache
+	resetInst(&newCfg)
+	trans := GetTranslation()
 	for _, testData := range tests {
 		EnableMockData(testData.mocks[0])
 		item := &dataItem{dataItemID{itemComponent, name, version, testData.locale, testData.component}, nil, nil}
@@ -134,13 +132,13 @@ func TestRefreshCache(t *testing.T) {
 		gock.Clean()
 
 		// Check the data in cache
-		messagesInCache, found := cacheObj.Get(dataItemID{itemComponent, name, version, testData.locale, testData.component})
+		messagesInCache, found := cache.Get(dataItemID{itemComponent, name, version, testData.locale, testData.component})
 		assert.True(t, found)
 		assert.NotNil(t, messagesInCache)
 		assert.Equal(t, testData.expected, messagesInCache.(*defaultComponentMsgs).Size())
 
 		// Getting before time out, no communication to server because mock is enabled
-		messages, err = dataService.GetComponentMessages(name, version, testData.locale, testData.component)
+		messages, err = trans.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.Nil(t, err)
 		if messages.(*defaultComponentMsgs).Size() != testData.expected {
 			t.Errorf("%s = %d, want %d", testData.desc, messages.(*defaultComponentMsgs).Size(), testData.expected)
@@ -160,7 +158,7 @@ func TestRefreshCache(t *testing.T) {
 		assert.True(t, gock.IsDone())
 
 		// Check the data in cache
-		messagesInCache, found = cacheObj.Get(dataItemID{itemComponent, name, version, testData.locale, testData.component})
+		messagesInCache, found = cache.Get(dataItemID{itemComponent, name, version, testData.locale, testData.component})
 		assert.True(t, found)
 		assert.Equal(t, 7, messagesInCache.(ComponentMsgs).(*defaultComponentMsgs).Size())
 	}
@@ -185,8 +183,8 @@ func TestRefreshCache2(t *testing.T) {
 
 	defer gock.Off()
 
-	testInst := resetInst(&testCfg)
-	trans := testInst.GetTranslation()
+	resetInst(&testCfg)
+	trans := GetTranslation()
 	for _, testData := range tests {
 		EnableMockDataWithTimes(testData.mocks[0], 100).Response.Delay(time.Microsecond) // Delay to simulate concurrency
 
@@ -236,8 +234,8 @@ func TestGetStringFallback(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.OfflineResourcesBaseURL = ""
-	testInst := resetInst(&newCfg)
-	trans := testInst.GetTranslation()
+	resetInst(&newCfg)
+	trans := GetTranslation()
 
 	// Normal fallback
 	locale := "zh-Hans"
@@ -275,8 +273,8 @@ func TestGetStringAbnormal(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.OfflineResourcesBaseURL = ""
-	testInst := resetInst(&newCfg)
-	trans := testInst.GetTranslation()
+	resetInst(&newCfg)
+	trans := GetTranslation()
 
 	localeZhhans := "zh-Hans"
 	defaultLocaleFr := "fr"
@@ -339,8 +337,8 @@ func TestDecodeError(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.OfflineResourcesBaseURL = ""
-	testInst := resetInst(&newCfg)
-	trans := testInst.GetTranslation()
+	resetInst(&newCfg)
+	trans := GetTranslation()
 	for _, testData := range tests {
 		for _, m := range testData.mocks {
 			EnableMockData(m)
@@ -373,9 +371,8 @@ func TestGetCompMessagesAbnormal(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.OfflineResourcesBaseURL = ""
-	testInst := resetInst(&newCfg)
-	trans := testInst.GetTranslation()
-	cache := testInst.trans.ds.cache
+	resetInst(&newCfg)
+	trans := GetTranslation()
 	for _, testData := range tests {
 		for _, m := range testData.mocks {
 			EnableMockData(m)
@@ -398,10 +395,10 @@ func TestGetCompMessagesWrongServer(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.OfflineResourcesBaseURL = ""
-	testInst := resetInst(&newCfg)
+	resetInst(&newCfg)
 	wrongServer, err := url.Parse("wrongserver")
 	assert.Nil(t, err)
-	testInst.trans.ds.server.svrURL = wrongServer
+	inst.trans.ds.server.svrURL = wrongServer
 
 	var tests = []struct {
 		desc      string
@@ -418,7 +415,7 @@ func TestGetCompMessagesWrongServer(t *testing.T) {
 	defer gock.DisableNetworking()
 	gock.EnableNetworking()
 
-	trans := testInst.GetTranslation()
+	trans := GetTranslation()
 	for _, testData := range tests {
 		for _, m := range testData.mocks {
 			EnableMockData(m)
@@ -451,8 +448,8 @@ func TestGetCompMessagesWrongResponseContent(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.OfflineResourcesBaseURL = ""
-	testInst := resetInst(&newCfg)
-	trans := testInst.GetTranslation()
+	resetInst(&newCfg)
+	trans := GetTranslation()
 	for _, testData := range tests {
 		for _, m := range testData.mocks {
 			EnableMockData(m)
@@ -484,8 +481,8 @@ func TestGetCompMessagesResponsePartial(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.OfflineResourcesBaseURL = ""
-	testInst := resetInst(&newCfg)
-	trans := testInst.GetTranslation()
+	resetInst(&newCfg)
+	trans := GetTranslation()
 	for _, testData := range tests {
 		for _, m := range testData.mocks {
 			EnableMockData(m)
@@ -516,14 +513,14 @@ func TestAddHTTPHeader(t *testing.T) {
 	defer gock.Off()
 
 	newCfg := testCfg
-	testInst := resetInst(&newCfg)
-	trans := testInst.GetTranslation()
+	resetInst(&newCfg)
+	trans := GetTranslation()
 	for _, testData := range tests {
 		for _, m := range testData.mocks {
 			EnableMockData(m)
 		}
 
-		testInst.SetHTTPHeaders(map[string]string{
+		SetHTTPHeaders(map[string]string{
 			"user": "test_user",
 			"pass": "goodpadd",
 		})
@@ -555,8 +552,8 @@ func TestGetComponentList(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.OfflineResourcesBaseURL = ""
-	testInst := resetInst(&newCfg)
-	trans := testInst.GetTranslation()
+	resetInst(&newCfg)
+	trans := GetTranslation()
 	item := &dataItem{dataItemID{itemComponents, name, version, "", ""}, nil, nil}
 	ui := getCacheInfo(item)
 	ui.setAge(100)
@@ -620,8 +617,8 @@ func TestGetLocaleList(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.OfflineResourcesBaseURL = ""
-	testInst := resetInst(&newCfg)
-	trans := testInst.GetTranslation()
+	resetInst(&newCfg)
+	trans := GetTranslation()
 	for _, testData := range tests {
 		EnableMockData(testData.mocks[0])
 
@@ -686,8 +683,8 @@ func TestHTTP404(t *testing.T) {
 
 	newCfg := testCfg
 	newCfg.OfflineResourcesBaseURL = ""
-	testInst := resetInst(&newCfg)
-	trans := testInst.GetTranslation()
+	resetInst(&newCfg)
+	trans := GetTranslation()
 	for _, m := range testData.mocks {
 		EnableMockData(m)
 	}

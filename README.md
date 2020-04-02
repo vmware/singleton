@@ -38,8 +38,8 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	inst := sgtn.GetInst(cfg)
-	trans := inst.GetTranslation()
+	sgtn.Initialize(cfg)
+	trans := sgtn.GetTranslation()
 
 	name, version, locale, component, key := "SgtnTest", "1.0.0", "zh-Hans", "sunglow", "application.title"
 
