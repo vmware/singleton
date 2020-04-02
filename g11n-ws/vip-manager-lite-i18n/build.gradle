@@ -4,7 +4,6 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: "jacoco"
 apply plugin: "org.sonarqube"
-apply plugin: "jacoco"
 
 sourceCompatibility = 1.8
 description = 'singleton lite manager'
@@ -124,7 +123,6 @@ bootJar{
   classifier = 'boot'
   enabled = true
 }
-
 assemble.dependsOn.add copyLibs
 
 springBoot {
@@ -136,5 +134,11 @@ jacocoTestReport {
         xml.enabled true
         csv.enabled false
         html.enabled false
+    }
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
     }
 }
