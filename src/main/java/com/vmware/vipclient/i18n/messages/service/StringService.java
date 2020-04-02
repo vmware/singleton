@@ -4,7 +4,6 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import java.net.HttpURLConnection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

@@ -19,7 +19,7 @@ public class MessageCache implements Cache {
     private long                             lastClean           = System.currentTimeMillis();
 
     private final Map<String, Map<String, String>> cachedComponentsMap = new LinkedHashMap<String, Map<String, String>>();
-    private final Map<String, Map<String, Object>> cacheProperties = new LinkedHashMap<String, Map<String, Object>>();
+    private final Map<String, Map<String, Object>> cacheProperties = new HashMap<String, Map<String, Object>>();
     
     public Map<String, Map<String, Object>> getCacheProperties() {
         return cacheProperties;
