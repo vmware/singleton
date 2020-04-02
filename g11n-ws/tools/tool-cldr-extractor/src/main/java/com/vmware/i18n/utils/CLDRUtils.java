@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
@@ -138,7 +139,7 @@ public class CLDRUtils {
 
     public static Map<String, Object> dateDataExtract(String locale) {
         String zipPath = CLDRConstants.DATE_ZIP_FILE_PATH;
-        String fileName = "cldr-dates-full-" + CLDR_VERSION + "/main/" + locale + "/ca-gregorian.json";
+        String fileName = MessageFormat.format(CLDRConstants.CLDR_DATES_FULL_CA_GREGORIAN, CLDR_VERSION, locale);
         String json = CLDRUtils.readZip(fileName, zipPath);
         JSONObject dateContents = JSONUtil.string2JSON(json);
 
@@ -173,19 +174,35 @@ public class CLDRUtils {
         Map<String, Object> dateTimeMap = dateTimeFormatExtract(locale, dateContents);
 
         Map<String, Object> dateMap = new LinkedHashMap<String, Object>();
-        dateMap.put("dayPeriodsFormat", dayPeriodsFormatMap);
-        dateMap.put("dayPeriodsStandalone", dayPeriodsStandaloneMap);
-        dateMap.put("daysFormat", daysFormatMap);
-        dateMap.put("daysStandalone", daysStandaloneMap);
-        dateMap.put("monthsFormat", monthsFormatMap);
-        dateMap.put("monthsStandalone", monthsStandaloneMap);
-        dateMap.put("eras", erasMap);
-        dateMap.put("firstDayOfWeek", 0);
-        dateMap.put("weekendRange", Arrays.asList(6, 0));
-        dateMap.put("dateFormats", dateFormatMap);
-        dateMap.put("timeFormats", timeFormatMap);
-        dateMap.put("dateTimeFormats", dateTimeMap);
+        dateMap.put(Constants.DAY_PERIODS_FORMAT, dayPeriodsFormatMap);
+        dateMap.put(Constants.DAY_PERIODS_STANDALONE, dayPeriodsStandaloneMap);
+        dateMap.put(Constants.DAYS_FORMAT, daysFormatMap);
+        dateMap.put(Constants.DAYS_STANDALONE, daysStandaloneMap);
+        dateMap.put(Constants.MONTH_FORMAT, monthsFormatMap);
+        dateMap.put(Constants.MONTHS_STANDALONE, monthsStandaloneMap);
+        dateMap.put(Constants.ERAS, erasMap);
+        dateMap.put(Constants.FIRST_DAY_OF_WEEK, 0);
+        dateMap.put(Constants.WEEKEND_RANGE, Arrays.asList(6, 0));
+        dateMap.put(Constants.DATE_FORMATS, dateFormatMap);
+        dateMap.put(Constants.TIME_FORMATS, timeFormatMap);
+        dateMap.put(Constants.DATE_TIME_FORMATS, dateTimeMap);
         return dateMap;
+    }
+
+    private static Map<String, Object> dateFieldsFormatExtract(String locale) {
+        String fileName = MessageFormat.format(CLDRConstants.CLDR_DATES_FULL_DATE_FIELDS, CLDR_VERSION, locale);
+        String json = CLDRUtils.readZip(fileName, CLDRConstants.DATE_ZIP_FILE_PATH);
+        String fieldsFormat = JSONUtil
+                .select(JSONUtil.string2JSON(json),  MessageFormat.format(CLDRConstants.DATE_FIELDS_KEY_PATH, locale)).toString();
+        Map<String, Object> fieldsFormatMap = JSONUtil.getMapFromJson(fieldsFormat);
+        Map<String, Object> dateFieldsFormatMap = new LinkedHashMap<String, Object>();
+        dateFieldsFormatMap.put(Constants.YEAR, fieldsFormatMap.get(Constants.YEAR));
+        dateFieldsFormatMap.put(Constants.MONTH, fieldsFormatMap.get(Constants.MONTH));
+        dateFieldsFormatMap.put(Constants.DAY, fieldsFormatMap.get(Constants.DAY));
+        dateFieldsFormatMap.put(Constants.HOUR, fieldsFormatMap.get(Constants.HOUR));
+        dateFieldsFormatMap.put(Constants.MINUTE, fieldsFormatMap.get(Constants.MINUTE));
+        dateFieldsFormatMap.put(Constants.SECOND, fieldsFormatMap.get(Constants.SECOND));
+        return dateFieldsFormatMap;
     }
 
     private static Map<String, Object> dayPeriodsFormatExtract(String locale, JSONObject content) {
@@ -844,9 +861,23 @@ public class CLDRUtils {
             filePath = GEN_CLDR_PATTERN_DIR + locale + File.separator + Constants.PATTERN_JSON;
             writePatternDataIntoFile(filePath, rootMap);
             recordMap.put(locale.toLowerCase(), locale);
+            dateFieldsExtract(locale);
         }
         dataRecordForParse(likelySubtags, recordMap);
         logger.info("Extract i18n pattern data complete!");
+    }
+
+    /**
+     * Get dateFields and generate dateFields.json file
+     * @param locale
+     */
+    public static void dateFieldsExtract(String locale) {
+        Map<String, Object> rootMap = new LinkedHashMap<>();
+        Map<String, Object> dateFieldsMap = dateFieldsFormatExtract(locale);
+        rootMap.put(Constants.LOCALE_ID, locale);
+        rootMap.put(Constants.DATE_FIELDS, dateFieldsMap);
+        String filePath = GEN_CLDR_PATTERN_DIR + locale + File.separator + Constants.DATE_FIELDS_JSON;
+        writePatternDataIntoFile(filePath, rootMap);
     }
 
     /**

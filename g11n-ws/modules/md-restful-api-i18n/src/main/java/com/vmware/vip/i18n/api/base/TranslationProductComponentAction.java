@@ -11,6 +11,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,6 @@ import com.vmware.vip.core.messages.service.multcomponent.TranslationDTO;
 import com.vmware.vip.core.messages.service.product.IProductService;
 import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO;
 import com.vmware.vip.core.messages.service.singlecomponent.IOneComponentService;
-import com.vmware.vip.i18n.api.base.BaseAction;
 
 public class TranslationProductComponentAction extends BaseAction {
 	@Autowired
@@ -82,9 +82,11 @@ public class TranslationProductComponentAction extends BaseAction {
 						updateTranslationDTO);
 			}
 		} else {
+			String newVersion = super.getAvailableVersion(productName, version);
+			c.setVersion(newVersion);
 			c = singleComponentService.getComponentTranslation(c);
 		}
-		return super.handleResponse(APIResponseStatus.OK, c);
+		return super.handleVersionFallbackResponse(version, c.getVersion(), c);
 	}
 
 	public APIResponseDTO getMultipleComponentsTrans(String productName,
@@ -180,5 +182,6 @@ public class TranslationProductComponentAction extends BaseAction {
 						en);
 		}
 		return m;
-	}	
+	}
+
 }

@@ -22,4 +22,7 @@ public interface IProductDao {
 	
 	public String getVersionInfo(String productName, String version) throws DataException;
 
+	public List<String> getVersionList(String productName) throws DataException;
+	
+	public String getWhiteListContent() throws DataException;
 }

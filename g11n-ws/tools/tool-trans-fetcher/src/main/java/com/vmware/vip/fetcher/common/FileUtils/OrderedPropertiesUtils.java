@@ -37,8 +37,8 @@ public class OrderedPropertiesUtils {
         OrderedProperties p = new OrderedProperties();
 
         try {
-            InputStream inputStream = new FileInputStream(fileName);
-            p.load(new InputStreamReader(inputStream, ConstantsUnicode.UTF8));
+          
+            p.load(new InputStreamReader(new FileInputStream(fileName), ConstantsUnicode.UTF8));
         } catch (IOException e) {
             e.printStackTrace();
         }

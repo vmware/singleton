@@ -6,6 +6,7 @@ package com.vmware.vip.messages.data.dao.pgimpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -82,5 +83,27 @@ public class PgProductApiImpl implements IProductDao {
 	public String getVersionInfo(String productName, String version) throws DataException {
 		return "";
 	}
+
+       /**
+        * get one product's all available versions
+        */
+       @Override
+        public List<String> getVersionList(String productName) throws DataException {
+             List<String> result = docOperate.getVersionList(productName, datanodes.getDataNodeByProduct(productName));
+             if(result != null && result.size()>0) {
+                return result;
+             }else {
+            throw new DataException(productName + " no available version in pgDB");   
+             }
+        }
+
+   /**
+    * get the white list content from pg db
+    */
+    @Override
+    public String getWhiteListContent() throws DataException {
+        return null;
+    }
+
 
 }

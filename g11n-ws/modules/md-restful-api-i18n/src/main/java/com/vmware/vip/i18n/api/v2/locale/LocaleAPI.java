@@ -124,10 +124,11 @@ public class LocaleAPI extends BaseAction {
 			@ApiParam(name = APIParamName.DISPLAY_LANGUAGE, required = false, value = APIParamValue.DISPLAY_LANGUAGE) @RequestParam(value = APIParamName.DISPLAY_LANGUAGE, required = false) String displayLanguage)
 			throws Exception {
 		Map<String, Object> data = new HashMap<String, Object>();
-		data.put(ConstantsKeys.LANGUAGES, this.localeService.getDisplayNamesFromCLDR(productName, version, displayLanguage));
-		data.put(ConstantsKeys.VERSION, version);
+		String newVersion = super.getAvailableVersion(productName, version);
+		data.put(ConstantsKeys.LANGUAGES, this.localeService.getDisplayNamesFromCLDR(productName, newVersion, displayLanguage));
+		data.put(ConstantsKeys.VERSION, newVersion);
 		data.put(ConstantsKeys.PRODUCTNAME, productName);
 		data.put(ConstantsKeys.DISPLAY_LANGUAGE, StringUtils.isEmpty(displayLanguage) ? "" : displayLanguage);
-		return super.handleResponse(APIResponseStatus.OK, data);
+		return super.handleVersionFallbackResponse(version, newVersion, data);
 	}
 }

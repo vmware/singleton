@@ -111,6 +111,7 @@ public class SourceRequestCron {
 					// TODO Auto-generated catch block
 					
 					logger.error(e.getMessage(), e);
+					 Thread.currentThread().interrupt();
 				}
 			}else {
 				singleComponentService.delSourceComponentFile(model);
@@ -152,6 +153,7 @@ public class SourceRequestCron {
 			// TODO Auto-generated catch block
 		
 			logger.error(e.getMessage(), e);
+			Thread.currentThread().interrupt();
 		}
 	}
 
@@ -213,6 +215,7 @@ public class SourceRequestCron {
 									// TODO Auto-generated catch block
 								
 									logger.error(e.getMessage(), e);
+									Thread.currentThread().interrupt();
 								}
 								logger.info("synch Record Model from Remote successfully!!!");
 							} else {

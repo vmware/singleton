@@ -69,4 +69,12 @@ public class LocaleServiceImpl implements ILocaleService {
 		return "";
 	}
 
+	@Override
+	public String getContextTransforms(String displayLanguage) {
+		if (localePathMap.get(displayLanguage) == null)
+			return "";
+		String filePath = MessageFormat.format(CLDRConstants.CONTEXT_TRANSFORM_PATH, localePathMap.get(displayLanguage));
+		return new LocaleDaoImpl().getLocaleData(CLDRConstants.JSON_PATH, filePath);
+	}
+
 }

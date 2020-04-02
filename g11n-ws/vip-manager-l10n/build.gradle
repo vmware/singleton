@@ -37,11 +37,13 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web"){
     exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
     }
-    compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.20')
-    compile ('org.apache.tomcat:tomcat-annotations-api:9.0.20')
+    compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.31')
+    compile ('org.apache.tomcat:tomcat-annotations-api:9.0.31')
     compile ('org.xerial:sqlite-jdbc:3.28.0')
-    compile ('com.fasterxml.jackson.core:jackson-databind:2.9.9')
+    compile ('com.fasterxml.jackson.core:jackson-databind:2.10.0.pr1')
+    compile ('com.fasterxml.jackson.core:jackson-core:2.10.0.pr1')
     compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final")
+    compile('org.yaml:snakeyaml:1.25') 
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 
@@ -64,4 +66,29 @@ tasks.withType(JavaCompile) {
 
 assemble.dependsOn.add copyCommonJars
 
+if (JavaVersion.current().isJava8Compatible()) {
+    allprojects {
+      tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+      }
+    }
+}
 
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    archiveClassifier = 'sources'
+}
+
+task javadocJar(type: Jar) {
+    from javadoc
+    archiveClassifier = 'javadoc'
+
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.enabled false
+    }
+}

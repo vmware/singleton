@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ import org.springframework.web.util.UrlPathHelper;
 import com.vmware.vip.api.rest.API;
 import com.vmware.vip.api.rest.APIV1;
 import com.vmware.vip.api.rest.APIV2;
+import com.vmware.vip.core.Interceptor.APICacheControlInterceptor;
 import com.vmware.vip.core.Interceptor.APICrossDomainInterceptor;
 import com.vmware.vip.core.Interceptor.APISourceInterceptor;
 import com.vmware.vip.core.Interceptor.APIValidationInterceptor;
@@ -35,6 +37,7 @@ import com.vmware.vip.core.auth.interceptor.AuthInterceptor;
 import com.vmware.vip.core.auth.interceptor.VipAPIAuthInterceptor;
 import com.vmware.vip.core.csp.service.TokenService;
 import com.vmware.vip.core.login.VipAuthConfig;
+import com.vmware.vip.core.messages.service.product.IProductService;
 
 /**
  * Web Configuration
@@ -78,9 +81,11 @@ public class WebConfiguration implements WebMvcConfigurer {
 	@Value("${vipservice.cross.domain.maxage}")
 	private String maxAge;
 	
-	
 	@Value("${swagger-ui.enable}")
 	private boolean swagger2enable;
+
+	@Value("${cache-control.value:}")
+	private String cacheControlValue;
 
 	@Autowired
 	private TokenService tokenService;
@@ -90,8 +95,10 @@ public class WebConfiguration implements WebMvcConfigurer {
 
 	@Autowired
 	private VipAuthConfig authConfig;
-
 	
+	@Autowired
+	private IProductService productService;
+
 	/**
 	 * Add ETag into response header for data cache
 	 */
@@ -116,7 +123,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 		 */
 
 		// Request Validation
-		InterceptorRegistration apival = registry.addInterceptor(new APIValidationInterceptor()).addPathPatterns("/**").excludePathPatterns(API.I18N_API_ROOT+"doc/**");
+		InterceptorRegistration apival = registry.addInterceptor(new APIValidationInterceptor(productService.getWhiteList())).addPathPatterns("/**").excludePathPatterns(API.I18N_API_ROOT+"doc/**");
 
 		// authentication
 
@@ -151,6 +158,10 @@ public class WebConfiguration implements WebMvcConfigurer {
 			registry.addInterceptor(new APICrossDomainInterceptor(allowSet, allowHeaders, allowMethods, allowCredentials, maxAge))
 			.addPathPatterns(API.I18N_API_ROOT + APIV1.V + "/**")
 			.addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**");
+		}
+		//cacheControl
+		if (StringUtils.isNotEmpty(this.cacheControlValue)) {
+			registry.addInterceptor(new APICacheControlInterceptor(this.cacheControlValue)).addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**");
 		}
 	}
 

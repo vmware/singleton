@@ -42,5 +42,12 @@ public interface IDocOperate {
 	public List<String> getComponentList(String productName, String version, JdbcTemplate jdbcTemplate);
 
 	public List<String> getLocaleList(String productName, String version, JdbcTemplate jdbcTemplate);
+	/**
+	 * get a product's all available version list
+	 * @param productName
+     * @param jdbcTemplate
+	  * @return
+	 */
+	public List<String> getVersionList(String productName, JdbcTemplate jdbcTemplate);
 
 }

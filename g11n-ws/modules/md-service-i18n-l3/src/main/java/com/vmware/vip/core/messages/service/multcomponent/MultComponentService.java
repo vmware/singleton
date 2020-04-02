@@ -45,8 +45,8 @@ public class MultComponentService implements IMultComponentService {
 
 	@Resource
 	private IMultComponentDao multipleComponentsDao;
-
-	@Autowired
+	
+    @Autowired
 	private PseudoConfig pseudoConfig;
 
 	@Override
@@ -56,27 +56,31 @@ public class MultComponentService implements IMultComponentService {
 		String key = CachedKeyGetter
 				.getMultiComponentsCachedKey(translationDTO);
 		try {
-			result =  TranslationCache3.getCachedObject(CacheName.MULTCOMPONENT, key, TranslationDTO.class);
+		    try {
+		        result =  TranslationCache3.getCachedObject(CacheName.MULTCOMPONENT, key, TranslationDTO.class);
+		  } catch (VIPCacheException e) {
+              LOGGER.error("Add data to cache failure");
+          }
 			
 			
 			if (StringUtils.isEmpty(result)) {
 				LOGGER.info("Not found in cache, try to get data from local");
 				result = this.getTranslation(translationDTO);
-				TranslationCache3.addCachedObject(CacheName.MULTCOMPONENT, key,TranslationDTO.class,
-						result);
+				try {
+				    TranslationCache3.addCachedObject(CacheName.MULTCOMPONENT, key,TranslationDTO.class, result);
+				} catch (VIPCacheException e) {
+				    LOGGER.error("Add data to cache failure");
+				}
 			} else {
 				LOGGER.info("Found data from cache["+ key + "]");
 			}
-		} catch (VIPCacheException e) {
-			throw new L3APIException(
-					"Faild to get translation from data for  "
-							+ translationDTO.getProductName() + ConstantsChar.BACKSLASH
-							+ translationDTO.getVersion(), e);
-		} catch (ParseException e) {
+		}  catch (ParseException e) {
+		    LOGGER.error(e.getMessage(), e);
 			throw new L3APIException(ConstantsKeys.FATA_ERROR + "Parse error when get translation for "
 					+ translationDTO.getProductName() + ConstantsChar.BACKSLASH
 					+ translationDTO.getVersion(), e);
 		} catch (DataException e) {
+		    LOGGER.error(e.getMessage(), e);
 			throw new L3APIException(
 					"Faild to get translation from data for "
 							+ translationDTO.getProductName() + ConstantsChar.BACKSLASH
@@ -110,5 +114,5 @@ public class MultComponentService implements IMultComponentService {
 		translationDTO.setBundles(ja);
 		return translationDTO;
 	}
-
+	
 }

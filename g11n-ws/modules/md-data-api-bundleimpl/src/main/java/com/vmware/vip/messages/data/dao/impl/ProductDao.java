@@ -5,7 +5,9 @@
 package com.vmware.vip.messages.data.dao.impl;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -32,7 +34,7 @@ public class ProductDao implements IProductDao {
 
 	public List<String> getComponentList(String productName, String version)
 			throws BundleException {
-		List<String> componentList = new ArrayList<String>();
+		List<String> componentList = new ArrayList<>();
 
 		String basePath = bundleConfig.getBasePathWithSeparator();
 
@@ -49,7 +51,7 @@ public class ProductDao implements IProductDao {
 				}
 			}
 
-			if (componentList.size() == 0) {
+			if (componentList.isEmpty()) {
 				throw new BundleException("Component list is empty.");
 			}
 		} else {
@@ -59,7 +61,7 @@ public class ProductDao implements IProductDao {
 	}
 
 	public List<String> getLocaleList(String productName, String version) throws BundleException {
-		List<String> supportedLocaleList = new ArrayList<String>();
+		List<String> supportedLocaleList = new ArrayList<>();
 
 		String basePath = bundleConfig.getBasePathWithSeparator();
 
@@ -81,7 +83,7 @@ public class ProductDao implements IProductDao {
 		} else {
 			throw new BundleException("The file is not existing: " + bundlePath);
 		}
-		if (supportedLocaleList.size() == 0) {
+		if (supportedLocaleList.isEmpty()) {
 			throw new BundleException("The locae list is empty.");
 		}
 		return supportedLocaleList;
@@ -124,4 +126,49 @@ public class ProductDao implements IProductDao {
 		return result;
 
 	}
+	/**
+     * Get one product corresponding versions
+     *
+     * @return a map with the product names as key and with version list as value
+     * @throws BundleException
+     */
+    @Override
+    public List<String> getVersionList(String productName) throws DataException {
+   
+        String basePath = bundleConfig.getBasePathWithSeparator() + ConstantsFile.L10N_BUNDLES_PATH + productName
+                + File.separator;
+        File fileBase = new File(basePath);
+        if (fileBase.exists() && fileBase.isDirectory()) {
+            String[] versionNames = fileBase.list(new FilenameFilter() {
+                @Override
+                public boolean accept(File dir, String name) {
+                    // TODO Auto-generated method stub
+                    if(dir.isDirectory()) {
+                        return true;
+                    }else {
+                        return false;
+                    }
+                   
+                }
+                
+            });
+           return Arrays.asList(versionNames);
+        }else {
+            throw new BundleException("The base l10n dir is not existing, the missed dir is: " + basePath);
+        }
+    }
+
+    /**
+     * Get the content of the White List by whiteList file name
+     */
+    @Override
+    public String getWhiteListContent() throws DataException {
+        String contentFilePath = bundleConfig.getBasePathWithSeparator() + ConstantsFile.L10N_BUNDLES_PATH +ConstantsFile.WHITE_LIST_FILE;
+        if (new File(contentFilePath).exists()) {
+         return new LocalJSONReader().readLocalJSONFile(contentFilePath);
+        }else {
+            return null;
+        }
+        
+    }
 }

@@ -5,6 +5,7 @@
 package com.vmware.vip.core.messages.service.product;
 
 import java.util.List;
+import java.util.Map;
 
 import org.json.simple.parser.ParseException;
 
@@ -59,4 +60,16 @@ public interface IProductService {
      * @throws L3APIException
      */
 	public DropVersionDTO getVersionInfo(String productName, String version) throws L3APIException;
+
+    /**
+     * get a products support versions
+     * @return
+     * @throws L3APIException
+     */
+    public List<String> getSupportVersionList(String productName) throws L3APIException;
+    
+    /**
+     * get the whiteList
+     */
+    public Map<String, Object> getWhiteList();
 }

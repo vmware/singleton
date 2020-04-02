@@ -6,8 +6,8 @@ apply plugin: "jacoco"
 apply plugin: "org.sonarqube"
 
 sourceCompatibility = 1.8
-description = 'vip i18n manager'
-
+description = 'singleton server'
+archivesBaseName = 'singleton'
 configurations {
 	bootJar
     war
@@ -35,14 +35,10 @@ repositories {
 
 sourceSets {
   test {
-    java {
-      srcDir 'src/test/java'
-      output.classesDir   = 'build/classes/test'
-    }
-    resources {
-      srcDir 'src/test/resources'
-      output.resourcesDir = 'build/classes/test'
-    }
+    java.srcDirs = ['src/test/java']
+    java.outputDir = file('build/classes/test')
+    output.resourcesDir = file('build/classes/test')
+    resources.srcDirs = ['src/test/resources']
   }
 }
 
@@ -58,29 +54,34 @@ dependencies {
     if (project.hasProperty('datatype') && project.getProperty('datatype') == 'bundle' && project.getProperty('syncdata') == 'true') {
        compile project(":md-restful-synch")
     }
-    compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.20')
-    compile ('org.apache.tomcat:tomcat-annotations-api:9.0.20')
+    compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.31')
+    compile ('org.apache.tomcat:tomcat-annotations-api:9.0.31')
     compile("org.springframework:spring-webmvc:$springWebVersion")
     compile ('org.springframework.boot:spring-boot-starter-log4j2')
     compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final")
     compile("org.apache.commons:commons-lang3:$commonsLangVersion")
     compile("commons-io:commons-io:$commonsIoVersion")
-    compile("io.springfox:springfox-core:2.5.0")
-    compile("io.springfox:springfox-schema:2.5.0")
-    compile("io.springfox:springfox-spi:2.5.0")
-    compile("io.springfox:springfox-spring-web:2.5.0")
     compile('com.google.guava:guava:28.0-jre')
     compile("commons-codec:commons-codec:1.10")
     compile("io.jsonwebtoken:jjwt:0.9.0")
     compile ('org.xerial:sqlite-jdbc:3.28.0')
-    compile ('com.fasterxml.jackson.core:jackson-databind:2.9.9')
+    compile ('com.fasterxml.jackson.core:jackson-databind:2.10.0.pr1')
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.10.0.pr1'
     // Actuator - START
     compile group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.1.0'
 	compile group: 'io.micrometer', name: 'micrometer-core', version: '1.1.0'
 	compile ('org.springframework.boot:spring-boot-starter-actuator')
     // Actuator - END
-    compile fileTree(dir: 'lib', include: [ '*.jar'])
-    
+    //swagger UI -START  
+     compile('io.springfox:springfox-swagger2:2.9.2'){
+       exclude group: 'io.swagger', module:'swagger-annotations'
+       exclude group: 'io.swagger', module:'swagger-models'
+    }
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+    compile('io.swagger:swagger-annotations:1.5.22')
+    compile('io.swagger:swagger-models:1.5.22')
+    compile('org.yaml:snakeyaml:1.25')
+    //swagger UI -END
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("org.asciidoctor:asciidoctorj:1.5.6")
     testCompile("io.swagger:swagger-annotations:1.5.6")
@@ -120,27 +121,39 @@ task copyLibs(type :Copy, dependsOn: bootJar) {
     include "**/*.jar","**/*.war"
 }
 
+
+task zipSingletonScripts(type: Zip,dependsOn: bootJar) {
+	from "$rootDir/scripts/"
+	destinationDir file("$rootDir/../publish/")
+	baseName 'singletonScripts'
+}
+
 processResources {
     excludes =[]
      if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
         println "begin to exclude pgdb builder configuration file"
-        excludes=['**/application-testing.properties', '**/application-staging.properties', '**/application-bundle.properties', '**/application-prod.properties']
-        
-        
+        excludes=['**/application-s3.properties', '**/application-bundle.properties', '/l10n']
     }else if(project.hasProperty('datatype') && project.getProperty('datatype') == 'bundle'){
-       println "begin to exclude bundle builder configuration file"
-        excludes=['**/application-pgdb_staging.yml', '**/application-pgdb.yml']
+        println "begin to exclude bundle builder configuration file"
+        excludes=['**/application-s3.properties', '**/application-pgdb.properties']
+    }else if(project.hasProperty('datatype') && project.getProperty('datatype') == 's3'){
+       println "begin to exclude S3 builder configuration file"
+       excludes=['**/application-bundle.properties', '**/application-pgdb.properties', '/l10n']
+      
     }
 }
 
 
 
 bootJar.doFirst {
+      def propPath = "${buildDir}/resources/main/application.properties"
+       println propPath
      if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
-       def propPath = "${buildDir}/resources/main/application.properties"
-      println propPath
-      def updatedContent = new File(propPath).getText('UTF-8').replaceFirst("spring.profiles.active=bundle", "spring.profiles.active=pgdb")
-      new File(propPath).write(updatedContent, 'UTF-8')
+       def updatedPgdbContent = new File(propPath).getText('UTF-8').replaceFirst("spring.profiles.active=bundle", "spring.profiles.active=pgdb")
+       new File(propPath).write(updatedPgdbContent, 'UTF-8')
+	  }else if (project.hasProperty('datatype') && project.getProperty('datatype') == 's3') {
+       def updatedS3Content = new File(propPath).getText('UTF-8').replaceFirst("spring.profiles.active=bundle", "spring.profiles.active=s3")
+       new File(propPath).write(updatedS3Content, 'UTF-8')
 	  }
 	
 }
@@ -149,15 +162,15 @@ bootJar.doFirst {
 bootJar {
    
    
-    baseName = "vip-manager-i18n"
+    baseName = "singleton"
     if(project.hasProperty('productName')){
       def productName = project.getProperty('productName')
       if(productName == ''){
         productName = 'all'
       }
-      baseName = "vip-manager-i18n-$productName"
+      baseName = "singleton-$productName"
     }else{
-      baseName = "vip-manager-i18n"
+      baseName = "singleton"
     }
     version = "$branchName"
     classifier = "$buildNumber"
@@ -176,21 +189,22 @@ bootJar.doLast {
 }
 
 war {
-    baseName = "vip-manager-i18n"
+    baseName = "singleton"
     if(project.hasProperty('productName')){
       def productName = project.getProperty('productName')
       if(productName == ''){
         productName = 'all'
       }
-      baseName = "vip-manager-i18n-$productName"
+      baseName = "singleton-$productName"
     }else{
-      baseName = "vip-manager-i18n"
+      baseName = "singleton"
     }
     version = "$branchName"
     classifier = "$buildNumber"
 }
 
 assemble.dependsOn.add copyLibs
+assemble.dependsOn.add zipSingletonScripts
 
 task testFetchedTranslation(type: JavaExec, dependsOn: classes) {
     def jarPath = "${project(":vip-manager-i18n").buildDir}/libs/"
@@ -222,10 +236,29 @@ tasks.withType(JavaCompile) {
 //test.dependsOn.add fetchTranslationForTest
 test.dependsOn.add testFetchedTranslation
 
-if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
+if (project.hasProperty('datatype') && (project.getProperty('datatype') == 'pgdb') || (project.getProperty('datatype') == 's3') ) {
 	check.dependsOn.remove(test)
 }
 
 springBoot {
 	mainClassName = "com.vmware.vip.BootApplication"
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    archiveClassifier = 'sources'
+}
+
+task javadocJar(type: Jar) {
+    from javadoc
+    archiveClassifier = 'javadoc'
+
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.enabled false
+    }
 }

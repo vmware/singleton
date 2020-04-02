@@ -23,6 +23,13 @@ public final class RegExpValidatorUtils {
 	}
 
 	/*
+	 * is letter array
+	 */
+	public static boolean isLetterArray(String str) {
+		String regex = "^[A-Za-z\\,\\s]+$";
+		return match(regex, str);
+	}
+	/*
 	 * is letter or number
 	 */
 	public static boolean IsLetterOrNumber(String str) {
@@ -46,13 +53,27 @@ public final class RegExpValidatorUtils {
 	}
 
 	/*
+	 * is number and dot and length is (5,10)
+	 */
+	public static boolean isOneOrTwo(String str) {
+		String regex = "^[1-2]";
+		return match(regex, str);
+	}
+	/*
 	 * is letter and -, _
 	 */
 	public static boolean IsLetterAndNumberAndValidchar(String str) {
 		String regex = "^[A-Za-z0-9_\\-\\.]+$";
 		return match(regex, str);
 	}
-
+	/*
+	 * is letter number,comma, -, _
+	 */
+	public static boolean isLetterNumbCommaAndValidchar(String str) {
+		String regex = "^[A-Za-z0-9_\\-\\.\\,\\s]+$";
+		return match(regex, str);
+	}
+	
 	/*
 	 * is letter and -, _
 	 */

@@ -46,6 +46,7 @@ private static Logger logger = LoggerFactory.getLogger(TranslationCommitGitContr
 	} catch (InterruptedException e) {
 		// TODO Auto-generated catch block
 		logger.error(e.getMessage(), e);
+		Thread.currentThread().interrupt();
 		return APIResponseStatus.INTERNAL_SERVER_ERROR;
 	}
 	 

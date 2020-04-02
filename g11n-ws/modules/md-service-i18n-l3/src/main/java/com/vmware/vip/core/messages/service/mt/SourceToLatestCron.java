@@ -5,14 +5,11 @@
 package com.vmware.vip.core.messages.service.mt;
 
 import java.util.List;
-
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -48,14 +45,20 @@ public class SourceToLatestCron {
 	
 		    	List<String> keys;
 		    	try {
+		    		try {
 		    		keys = TranslationCache3.getKeys(CacheName.MTSOURCE, ComponentMessagesDTO.class);
-		    		for(String key: keys) {
-		    			ComponentMessagesDTO d = TranslationCache3.getCachedObject(CacheName.MTSOURCE, key, ComponentMessagesDTO.class);
-		    			if(d != null && !StringUtils.isEmpty(d.getMessages()) && key.contains(ConstantsKeys.LATEST + ConstantsChar.UNDERLINE + ConstantsKeys.MT)) {
-		    				LOGGER.info("Sync data to latest.json for " + key);
-		    				productService.updateTranslation(d);
-		    				TranslationCache3.deleteCachedObject(CacheName.MTSOURCE, key, ComponentMessagesDTO.class);
-		    			}
+		    		}catch(NullPointerException e) {
+		    			keys = null;
+		    		}
+		    		if(keys != null) {
+		    			for(String key: keys) {
+			    			ComponentMessagesDTO d = TranslationCache3.getCachedObject(CacheName.MTSOURCE, key, ComponentMessagesDTO.class);
+			    			if(d != null && !StringUtils.isEmpty(d.getMessages()) && key.contains(ConstantsKeys.LATEST + ConstantsChar.UNDERLINE + ConstantsKeys.MT)) {
+			    				LOGGER.info("Sync data to latest.json for " + key);
+			    				productService.updateTranslation(d);
+			    				TranslationCache3.deleteCachedObject(CacheName.MTSOURCE, key, ComponentMessagesDTO.class);
+			    			}
+			    		}
 		    		}
 		    	} catch (VIPCacheException | DataException | ParseException e1) {
 		    		// TODO Auto-generated catch block

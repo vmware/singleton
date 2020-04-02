@@ -34,7 +34,7 @@ public class SynchInfoSchedule {
    private final static long SYNCSECOND= 30000L;
    private static Logger logger = LoggerFactory.getLogger(SynchInfoSchedule.class);
    
-   private static volatile UpdateSyncInfoResp syncInfo =null;
+   private static UpdateSyncInfoResp syncInfo =null;
 	@Value("${source.cache.server.url}")
 	private String sourceCacheServerUrl;
 
@@ -54,6 +54,7 @@ public class SynchInfoSchedule {
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 			   logger.warn(e.getMessage(), e);
+			   Thread.currentThread().interrupt();
 			}
 		}
 		

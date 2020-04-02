@@ -19,6 +19,7 @@ import com.vmware.vip.api.rest.API;
 import com.vmware.vip.api.rest.APIOperation;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.APIParamValue;
+import com.vmware.vip.api.rest.APIV1;
 import com.vmware.vip.api.rest.APIV2;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.i18n.api.base.TranslationProductComponentAction;
@@ -80,9 +81,7 @@ public class TranslationProductComponentAPI extends TranslationProductComponentA
     	}
     	
     }
-    
-    
-    
+
     
   
 }

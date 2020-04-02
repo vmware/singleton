@@ -5,11 +5,7 @@
 package com.vmware.i18n.utils;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -278,5 +274,4 @@ public class LocaleDataUtils {
 		}
 		logger.info("Extract cldr locales data complete!");
 	}
-
 }
