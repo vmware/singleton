@@ -20,10 +20,6 @@ type Config struct {
 	OfflineResourcesBaseURL string `json:"offline_resources_base_url"`
 }
 
-type translationID struct {
-	Name, Version string
-}
-
 // NewConfig Create a new Singleton configuration instance
 func NewConfig(path string) (*Config, error) {
 	contents, err := ioutil.ReadFile(path)

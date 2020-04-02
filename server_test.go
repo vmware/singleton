@@ -69,7 +69,7 @@ func TestTimeout(t *testing.T) {
 	httpclient = &http.Client{Transport: &transport}
 
 	mockReq := EnableMockDataWithTimes("componentMessages-fr-sunglow", 1)
-	mockReq.Mock.Response().Delay(time.Microsecond * 1000)
+	mockReq.Mock.Response().Delay(time.Microsecond * 11)
 
 	locale, component := "fr", "sunglow"
 	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}

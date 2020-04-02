@@ -44,14 +44,14 @@ func TestGetCompMessages(t *testing.T) {
 			t.Errorf("%s failed: %v", testData.desc, err)
 			continue
 		}
-		if messages.Size() != testData.expected {
-			t.Errorf("%s = %d, want %d", testData.desc, messages.Size(), testData.expected)
+		if messages.(*defaultComponentMsgs).Size() != testData.expected {
+			t.Errorf("%s = %d, want %d", testData.desc, messages.(*defaultComponentMsgs).Size(), testData.expected)
 		}
 
 		messagesInCache, found := testInst.trans.ds.cache.Get(dataItemID{itemComponent, name, version, testData.locale, testData.component})
 		assert.True(t, found)
 		assert.NotNil(t, messagesInCache)
-		assert.Equal(t, testData.expected, messagesInCache.(ComponentMsgs).Size())
+		assert.Equal(t, testData.expected, messagesInCache.(*defaultComponentMsgs).Size())
 	}
 
 	assert.True(t, gock.IsDone())
@@ -125,8 +125,8 @@ func TestRefreshCache(t *testing.T) {
 
 		// Get component messages first to populate cache
 		messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
-		if messages.Size() != testData.expected {
-			t.Errorf("%s = %d, want %d", testData.desc, messages.Size(), testData.expected)
+		if messages.(*defaultComponentMsgs).Size() != testData.expected {
+			t.Errorf("%s = %d, want %d", testData.desc, messages.(*defaultComponentMsgs).Size(), testData.expected)
 		}
 
 		// Make sure mock data is comsumed
@@ -137,13 +137,13 @@ func TestRefreshCache(t *testing.T) {
 		messagesInCache, found := cacheObj.Get(dataItemID{itemComponent, name, version, testData.locale, testData.component})
 		assert.True(t, found)
 		assert.NotNil(t, messagesInCache)
-		assert.Equal(t, testData.expected, messagesInCache.(ComponentMsgs).Size())
+		assert.Equal(t, testData.expected, messagesInCache.(*defaultComponentMsgs).Size())
 
 		// Getting before time out, no communication to server because mock is enabled
 		messages, err = dataService.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.Nil(t, err)
-		if messages.Size() != testData.expected {
-			t.Errorf("%s = %d, want %d", testData.desc, messages.Size(), testData.expected)
+		if messages.(*defaultComponentMsgs).Size() != testData.expected {
+			t.Errorf("%s = %d, want %d", testData.desc, messages.(*defaultComponentMsgs).Size(), testData.expected)
 		}
 
 		// Enable mock, time out cache and fetch(refresh) again. This time the data is same as before
@@ -151,7 +151,7 @@ func TestRefreshCache(t *testing.T) {
 		expireCache(info, info.age)
 		messages, err = trans.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.Nil(t, err)
-		assert.Equal(t, testData.expected, messages.Size())
+		assert.Equal(t, testData.expected, messages.(*defaultComponentMsgs).Size())
 
 		// Start the go routine of refresing cache, and wait for finish. Data entry number changes to 7.
 		time.Sleep(10 * time.Millisecond)
@@ -162,7 +162,7 @@ func TestRefreshCache(t *testing.T) {
 		// Check the data in cache
 		messagesInCache, found = cacheObj.Get(dataItemID{itemComponent, name, version, testData.locale, testData.component})
 		assert.True(t, found)
-		assert.Equal(t, 7, messagesInCache.(ComponentMsgs).Size())
+		assert.Equal(t, 7, messagesInCache.(ComponentMsgs).(*defaultComponentMsgs).Size())
 	}
 
 	assert.True(t, gock.IsDone())
@@ -188,7 +188,7 @@ func TestRefreshCache2(t *testing.T) {
 	testInst := resetInst(&testCfg)
 	trans := testInst.GetTranslation()
 	for _, testData := range tests {
-		EnableMockDataWithTimes(testData.mocks[0], 100).Response.Delay(time.Microsecond)// Delay to simulate concurrency
+		EnableMockDataWithTimes(testData.mocks[0], 100).Response.Delay(time.Microsecond) // Delay to simulate concurrency
 
 		var wg sync.WaitGroup
 		for i := 0; i < 100; i++ {
@@ -197,8 +197,8 @@ func TestRefreshCache2(t *testing.T) {
 				defer wg.Done()
 				messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
 				assert.Nil(t, err)
-				if messages.Size() != testData.expected {
-					t.Errorf("%s = %d, want %d", testData.desc, messages.Size(), testData.expected)
+				if messages.(*defaultComponentMsgs).Size() != testData.expected {
+					t.Errorf("%s = %d, want %d", testData.desc, messages.(*defaultComponentMsgs).Size(), testData.expected)
 				}
 			}()
 		}
@@ -208,8 +208,8 @@ func TestRefreshCache2(t *testing.T) {
 
 		messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.Nil(t, err)
-		if messages.Size() != testData.expected {
-			t.Errorf("%s = %d, want %d", testData.desc, messages.Size(), testData.expected)
+		if messages.(*defaultComponentMsgs).Size() != testData.expected {
+			t.Errorf("%s = %d, want %d", testData.desc, messages.(*defaultComponentMsgs).Size(), testData.expected)
 		}
 	}
 }
@@ -493,7 +493,7 @@ func TestGetCompMessagesResponsePartial(t *testing.T) {
 
 		messages, _ := trans.GetComponentMessages(name, version, testData.locale, testData.component)
 		// assert.Contains(t, "Fail to get from server", err.Error())
-		assert.True(t, messages == nil || messages.Size() == 0)
+		assert.True(t, messages == nil || messages.(*defaultComponentMsgs).Size() == 0)
 	}
 
 	assert.True(t, gock.IsDone())
@@ -531,8 +531,8 @@ func TestAddHTTPHeader(t *testing.T) {
 		messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
 		assert.Nil(t, err)
 
-		if messages.Size() != testData.expected {
-			t.Errorf("%s = %d, want %d", testData.desc, messages.Size(), testData.expected)
+		if messages.(*defaultComponentMsgs).Size() != testData.expected {
+			t.Errorf("%s = %d, want %d", testData.desc, messages.(*defaultComponentMsgs).Size(), testData.expected)
 		}
 	}
 

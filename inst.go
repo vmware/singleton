@@ -23,7 +23,7 @@ var (
 type Instance struct {
 	cfg           Config
 	trans         *defaultTrans
-	components    []translationID
+	components    []struct{ Name, Version string }
 	initializOnce sync.Once
 }
 

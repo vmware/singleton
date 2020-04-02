@@ -11,9 +11,6 @@ import "fmt"
 type ComponentMsgs interface {
 	// Get Get a message by key
 	Get(key string) (value string, found bool)
-
-	// Size Get the size of messages
-	Size() int
 }
 
 // Logger The logger interface

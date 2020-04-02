@@ -49,5 +49,5 @@ func TestBundleGetCompMessages(t *testing.T) {
 	component := "sunglow"
 	msgs, err := testInst.trans.GetComponentMessages(name, version, locale, component)
 	assert.Nil(t, err)
-	assert.Equal(t, 4, msgs.Size())
+	assert.Equal(t, 4, msgs.(*defaultComponentMsgs).Size())
 }

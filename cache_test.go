@@ -47,6 +47,7 @@ func TestCacheExpireWhenNeverExpire(t *testing.T) {
 	// value is cacheNeverExpires(-1) because only local bundles are available.
 	assert.Equal(t, int64(cacheNeverExpires), info.getAge())
 
+	// Run again to get from cache
 	bundleDir := inst.GetTranslation().(*defaultTrans).ds.bundle.root
 	tempDir := bundleDir + "temp"
 	os.Rename(bundleDir, tempDir)
@@ -55,5 +56,5 @@ func TestCacheExpireWhenNeverExpire(t *testing.T) {
 	// Run again to get from cache
 	msgs, err := inst.GetTranslation().GetComponentMessages(name, version, locale, component)
 	assert.Nil(t, err)
-	assert.Equal(t, 4, msgs.Size())
+	assert.Equal(t, 4, msgs.(*defaultComponentMsgs).Size())
 }
