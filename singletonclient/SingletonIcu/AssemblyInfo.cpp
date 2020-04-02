@@ -1,3 +1,8 @@
+/*
+ * Copyright 2020 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
+
 #include "pch.h"
 
 using namespace System;

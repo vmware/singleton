@@ -1,3 +1,8 @@
+/*
+ * Copyright 2020 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
+
 // pch.cpp: source file corresponding to the pre-compiled header
 
 #include "pch.h"
