@@ -1,4 +1,9 @@
-﻿using SingletonClient;
+﻿/*
+ * Copyright 2020 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
+
+using SingletonClient;
 using SingletonClient.Implementation.Support;
 using System;
 using System.Collections;

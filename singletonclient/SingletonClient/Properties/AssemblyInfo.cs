@@ -1,4 +1,9 @@
-﻿using System.Reflection;
+﻿/*
+ * Copyright 2020 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
+
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
