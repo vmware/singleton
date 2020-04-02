@@ -10,6 +10,7 @@ import java.util.Set;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
 import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.slf4j.Logger;
@@ -76,8 +77,8 @@ public class LiteWebConfiguration implements WebMvcConfigurer {
 	@Value("${vipservice.cross.domain.maxage}")
 	private String maxAge;
 	
-	@Value("${cache-control.maxage:0}")
-	private int cacheControlMaxAge;
+	@Value("${cache-control.value:}")
+	private String cacheControlValue;
 	
 	/**
 	 * Add ETag into response header for data cache
@@ -140,8 +141,8 @@ public class LiteWebConfiguration implements WebMvcConfigurer {
 		}
 		
 		//cacheControl
-		if (cacheControlMaxAge > 0) {
-		    registry.addInterceptor(new APICacheControlInterceptor(this.cacheControlMaxAge)).addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**");
+		if (StringUtils.isNotEmpty(this.cacheControlValue)) {
+		    registry.addInterceptor(new APICacheControlInterceptor(this.cacheControlValue)).addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**");
 		}
 	}
 

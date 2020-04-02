@@ -12,10 +12,10 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class APICacheControlInterceptor extends HandlerInterceptorAdapter {
 
-	private int second;
+	private String cacheControlValue;
 
-	public APICacheControlInterceptor(int second) {
-		this.second = second;
+	public APICacheControlInterceptor(String cacheControlValue) {
+		this.cacheControlValue = cacheControlValue;
 	}
 
 	/**
@@ -25,8 +25,7 @@ public class APICacheControlInterceptor extends HandlerInterceptorAdapter {
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
 		if (request.getMethod().equalsIgnoreCase(HttpMethod.GET.toString())) {
-			String CacheVal = "max-age=" + this.second + ", public";
-			response.setHeader("Cache-Control", CacheVal);
+			response.setHeader("Cache-Control", cacheControlValue);
 		}
 	}
 
