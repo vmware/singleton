@@ -63,10 +63,10 @@ public class TranslationWithPatternAction extends BaseAction {
 	      }
 	      if (validateResult) {
 	    	  List<String> categories = CommonUtility.getCategoriesByEnum(data.getScope(), true);
-		      if (CommonUtil.isEmpty(categories)) {
-		    	  return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.PATTERN_NOT_VALIDATE, null);
+	    	  if (CommonUtil.isEmpty(categories)) {
+	        	  return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.PATTERN_NOT_VALIDATE, null);
 		      }
-	    	  List<String> availableVersions = null;
+	          List<String> availableVersions = null;
 	          try {
 	        	  availableVersions = productService.getSupportVersionList(data.getProductName());
 	          }catch(L3APIException e) {
