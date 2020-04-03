@@ -11,6 +11,7 @@ import java.util.Map;
 
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vip.common.constants.ConstantsKeys;
+import com.vmware.vip.common.constants.ConstantsMsg;
 import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.i18n.api.base.utils.CommonUtility;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,7 @@ public class FormattingPatternAPI extends BaseAction {
     ) throws Exception {
         List<String> categories = CommonUtility.getCategoriesByEnum(scope, true);
         if (CommonUtil.isEmpty(categories)) {
-            return super.handleResponse(APIResponseStatus.BAD_REQUEST, "Parameter error");
+            return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.PATTERN_NOT_VALIDATE, null);
         }
 
         Map<String, Object> patternMap = patternService.getPattern(locale, categories);
@@ -72,7 +73,7 @@ public class FormattingPatternAPI extends BaseAction {
     ) throws VIPCacheException {
         List<String> categories = CommonUtility.getCategoriesByEnum(scope, true);
         if (CommonUtil.isEmpty(categories)) {
-            return super.handleResponse(APIResponseStatus.BAD_REQUEST, "Parameter error");
+        	return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.PATTERN_NOT_VALIDATE, null);
         }
 
         Map<String, Object> patternMap = patternService.getPatternWithLanguageAndRegion(language, region, categories);
