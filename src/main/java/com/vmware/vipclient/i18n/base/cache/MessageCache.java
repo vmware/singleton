@@ -52,9 +52,6 @@ public class MessageCache implements Cache {
         if (i != null) {
             hitMap.put(cacheKey, i.intValue() + 1);
         }
-        if (cacheItem == null) {
-    		return null;
-    	}
         return cacheItem;
     }
     
@@ -114,8 +111,7 @@ public class MessageCache implements Cache {
         		if (cacheItem == null) {
         			cachedComponentsMap.put(cacheKey, itemToCache);
         		} else {
-        			cacheItem.addCachedData(itemToCache.getCachedData());
-        			cacheItem.addCacheProperties(itemToCache.getCacheProperties());
+        			cacheItem.addCacheDataAndProperties(itemToCache);
         		}
 
         	}
@@ -187,8 +183,7 @@ public class MessageCache implements Cache {
         int size = 0;
         for (String key : s) {
         	CacheItem cacheItem = this.getCachedTranslationMap().get(key);
-            if (cacheItem != null) {
-                
+            if (cacheItem != null) {              
                 size = size + cacheItem.getCachedData().keySet().size();
             }
         }

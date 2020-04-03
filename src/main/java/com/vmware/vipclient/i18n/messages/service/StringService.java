@@ -45,7 +45,7 @@ public class StringService {
     			cacheOfComponent = (Map<String, String>) o;
     			cacheservice.addCacheOfComponent(new CacheItem (cacheOfComponent, cacheProps));
     		}	
-       } else if (cacheItem!=null) {
+       } else if (cacheItem != null) {
     	   cacheOfComponent = cacheItem.getCachedData();
        }
        return (cacheOfComponent == null || cacheOfComponent.get(key) == null ? "" : cacheOfComponent.get(key));

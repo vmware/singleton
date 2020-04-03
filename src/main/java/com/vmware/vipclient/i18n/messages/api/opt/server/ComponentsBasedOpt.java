@@ -45,9 +45,9 @@ public class ComponentsBasedOpt extends BaseOpt implements Opt {
         requestData.put(ConstantsKeys.COMPONENTS, String.join(",", components));
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(url, ConstantsKeys.GET,
                 requestData);
-        cacheProps.put(URLUtils.HEADERS, response.get(URLUtils.HEADERS));
-        cacheProps.put(URLUtils.RESPONSE_CODE, response.get(URLUtils.RESPONSE_CODE));
-        this.responseStr = (String) response.get(URLUtils.BODY);
+        this.responseStr = (String) response.remove(URLUtils.BODY);
+        cacheProps.clear();
+        cacheProps.putAll(response);
         if (StringUtil.isEmpty(this.responseStr))
             throw new VIPJavaClientException(ConstantsMsg.SERVER_RETURN_EMPTY);
 

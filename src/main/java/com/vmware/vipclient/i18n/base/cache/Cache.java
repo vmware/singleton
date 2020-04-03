@@ -147,24 +147,26 @@ public interface Cache {
 			return cachedData;
 		}
         
-        public Map<String, String> addCachedData(Map<String, String> cachedData) {
+        public void addCachedData(Map<String, String> cachedData) {
 			if (cachedData != null) {
 				this.cachedData.putAll(cachedData);
 			}
-			return this.getCachedData();
-			
 		}
         
 		public Map<String, Object> getCacheProperties() {
 			return cacheProperties;
 		}
 		
-		public Map<String, Object> addCacheProperties(Map<String, Object> cacheProperties) {
+		public void addCacheProperties(Map<String, Object> cacheProperties) {
 			if (cacheProperties != null) {
 				this.cacheProperties.putAll(cacheProperties);
 			}
-			return this.getCacheProperties();
 			
+		}
+		
+		public void addCacheDataAndProperties (CacheItem cacheItem) {
+			this.addCacheProperties(cacheItem.getCacheProperties());
+			this.addCachedData(cacheItem.getCachedData());
 		}
 		
     }

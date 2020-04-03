@@ -46,9 +46,8 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
 
     public JSONObject getMsgsJson(Map<String, Object> response) {
     	if (response != null && response.get(URLUtils.RESPONSE_CODE) != null) {
-    		logger.info("HTTP response code: " + response.get(URLUtils.RESPONSE_CODE) + " for " + dto.getCompositStrAsCacheKey());
     		if (response.get(URLUtils.RESPONSE_CODE).equals(HttpURLConnection.HTTP_OK)) {
-		    	String responseStr = (String) response.get(URLUtils.BODY);
+		    	String responseStr = (String) response.remove(URLUtils.BODY);
 				if (null == responseStr || responseStr.equals(""))
 					return null;
 				else {

@@ -20,8 +20,7 @@ public class FormattingCache implements Cache {
 
     @SuppressWarnings("unchecked")
     public CacheItem get(String cacheKey) {
-    	CacheItem cacheItem = formattingMap.get(cacheKey);
-    	return cacheItem;
+    	return formattingMap.get(cacheKey);
     }
 
     public synchronized boolean put(String cacheKey, CacheItem itemToCache) {

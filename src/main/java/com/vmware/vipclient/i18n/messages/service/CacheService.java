@@ -63,8 +63,7 @@ public class CacheService {
             if (cacheItem == null) {
             	cacheItem = new CacheItem();
             }
-            cacheItem.addCachedData(itemToCache.getCachedData());
-            cacheItem.addCacheProperties(itemToCache.getCacheProperties());
+            cacheItem.addCacheDataAndProperties(itemToCache);
             c.put(cacheKey, cacheItem);
         }
     }
