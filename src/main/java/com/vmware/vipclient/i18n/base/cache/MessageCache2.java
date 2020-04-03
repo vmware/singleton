@@ -4,7 +4,6 @@
  */
 package com.vmware.vipclient.i18n.base.cache;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,27 +19,22 @@ public class MessageCache2 implements Cache {
     public MessageCache2() {
     }
 
-    public Map<String, Object> get(String cacheKey) {
-    	Map<String, Object> cache = new HashMap<String, Object>();
-    	Map<String, Object> cacheProps = new HashMap<String, Object>();
-    	
+    public CacheItem get(String cacheKey) {
+    	CacheItem cacheItem = null;
         for (MessageCache m : messageCacheList) {
-            Object o = m.getCachedTranslationMap().get(cacheKey);
-            if (o != null) {
-            	cache.put(MESSAGES, (Map<String, String>) o);            	
-                cacheProps.putAll(m.getCacheProperties().get(cacheKey));
-                cache.put(CACHE_PROPERTIES, cacheProps);
+            cacheItem = m.getCachedTranslationMap().get(cacheKey);
+            if (cacheItem != null) {
                 break;
             }
         }
-        return cache;
+        return cacheItem;
     }
     
     public boolean isExpired(String cacheKey) {
     	return isExpired();
     }
 
-    public synchronized boolean put(String cacheKey, Map<String, String> map, Map<String, Object> cacheProps) {
+    public synchronized boolean put(String cacheKey, CacheItem itemToCache) {
         boolean created = true;
         for (int i = 0; i < messageCacheList.size(); i++) {
             MessageCache m = messageCacheList.get(i);
@@ -79,7 +73,7 @@ public class MessageCache2 implements Cache {
         }
         MessageCache mc = messageCacheList.get(targetIndex);
         if (mc != null) {
-            return mc.put(cacheKey, map, cacheProps);
+            return mc.put(cacheKey, itemToCache);
         } else {
             return false;
         }

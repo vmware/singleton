@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
+import com.vmware.vipclient.i18n.base.cache.Cache.CacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.server.LocaleOpt;
 import com.vmware.vipclient.i18n.util.JSONUtils;
 
@@ -28,7 +29,6 @@ public class LocaleService {
 
     public Map<String, Map<String, String>> getTerritoriesFromCLDR(
             List<String> languages) {
-        Map<String, Object> cacheProps = null;
         
         Map<String, Map<String, String>> respMap = new HashMap<String, Map<String, String>>();
         for (String language : languages) {
@@ -38,10 +38,9 @@ public class LocaleService {
             Cache c = VIPCfg.getInstance().getCacheManager()
                     .getCache(VIPCfg.CACHE_L2);
             if (c != null) {
-            	Map<String, Object> cache = c.get(REGION_PREFIX
+            	CacheItem cacheItem = c.get(REGION_PREFIX
                         + language);    
-                regionMap = (Map<String, String>) cache.get(Cache.MESSAGES);
-                cacheProps = (Map<String, Object>) cache.get(Cache.CACHE_PROPERTIES);
+                regionMap = cacheItem == null ? regionMap : cacheItem.getCachedData();
             }
             if (regionMap != null) {
                 respMap.put(language, regionMap);
@@ -54,31 +53,31 @@ public class LocaleService {
             regionMap = JSONUtils.map2SortMap(tmpMap);
             respMap.put(language, regionMap);
             if (c != null) {
-            	
-                c.put(REGION_PREFIX + language, regionMap, cacheProps);
+            	CacheItem cacheItem = new CacheItem(regionMap);
+                c.put(REGION_PREFIX + language, cacheItem);
             }
         }
         return respMap;
     }
 
     public Map<String, String> getDisplayNamesFromCLDR(String language) {
-    	// TODO pass map of cache properties such as etag and cache control headers
-        Map<String, Object> cacheProps = null;
         Map<String, String> dispMap = null;
         logger.trace("look for displayNames from cache");
         Cache c = VIPCfg.getInstance().getCacheManager()
                 .getCache(VIPCfg.CACHE_L2);
         if (c != null) {
-        	Map<String, Object> cache = c.get(DISPN_PREFIX + language);           
-            dispMap = (Map<String, String>) cache.get(Cache.MESSAGES);
+        	CacheItem cacheItem = c.get(DISPN_PREFIX + language); 
+        	if (cacheItem == null) {
+        		cacheItem = new CacheItem();
+        	}
+            dispMap = cacheItem == null ? dispMap : cacheItem.getCachedData();
             if (dispMap == null || dispMap.size() == 0) {
                 logger.trace("get displayname data from backend");
                 Map<String, String> tmpMap = new LocaleOpt()
 					        .getDisplayNamesFromCLDR(language);
                 dispMap = JSONUtils.map2SortMap(tmpMap);
                 if (dispMap != null && dispMap.size() > 0) {
-                	
-                    c.put(DISPN_PREFIX + language, dispMap, cacheProps);
+                    c.put(DISPN_PREFIX + language, new CacheItem(dispMap));
                 }
             }
         }

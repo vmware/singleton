@@ -20,7 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.base.cache.Cache;
+import com.vmware.vipclient.i18n.base.cache.Cache.CacheItem;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentsBasedOpt;
@@ -61,8 +61,8 @@ public class ComponentsService {
 
                 // Get existing data from cache.
                 final CacheService cs = new CacheService(dto);
-                Map<String, Object> cache = cs.getCacheOfComponent();
-                final Map<String, String> translations = (Map<String, String>) cache.get(Cache.MESSAGES);
+                CacheItem cacheItem = cs.getCacheOfComponent();
+                final Map<String, String> translations = cacheItem == null ? null : cacheItem.getCachedData();
 
                 // If cache doesn't have data, query from server.
                 if (translations == null && !cs.isContainComponent()) {
@@ -101,7 +101,7 @@ public class ComponentsService {
             dto.setComponent(comp);
             dto.setLocale(locale);
                      
-            new CacheService(dto).addCacheOfComponent(messages, cacheProps);
+            new CacheService(dto).addCacheOfComponent(new CacheItem(messages, cacheProps));
 
             // update map to return.
             dataMap.get(locale).put(comp, messages);

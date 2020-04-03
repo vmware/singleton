@@ -15,6 +15,7 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
+import com.vmware.vipclient.i18n.base.cache.Cache.CacheItem;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.CacheService;
@@ -52,15 +53,14 @@ public class MessageCacheTest2 extends BaseTestClass {
         Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
         c.setXCapacity(0);
         Map data = new HashMap();
-        Map<String, Object> cacheProps = new HashMap<String, Object>();
         String k = "com.vmware.test";
         String v = "It's a test";
         data.put(k, v);
         String cachedKey = "key";
-        c.put(cachedKey, data, cacheProps);
+        c.put(cachedKey, new CacheItem(data));
         long expired = 30000;
         c.setExpiredTime(expired);
-        Map cachedData = (Map) TranslationCacheManager.getCache(VIPCfg.CACHE_L3).get(cachedKey).get(Cache.MESSAGES);
+        Map cachedData = (Map) TranslationCacheManager.getCache(VIPCfg.CACHE_L3).get(cachedKey);
         Assert.assertNull(cachedData);
     }
 }

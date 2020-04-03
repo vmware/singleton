@@ -4,7 +4,6 @@
  */
 package com.vmware.vipclient.i18n.base.cache;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -18,14 +17,9 @@ public class MessageCache implements Cache {
     private long                             expiredTime         = 864000000;                                       // 240hr
     private long                             lastClean           = System.currentTimeMillis();
 
-    private final Map<String, Map<String, String>> cachedComponentsMap = new LinkedHashMap<String, Map<String, String>>();
-    private final Map<String, Map<String, Object>> cacheProperties = new HashMap<String, Map<String, Object>>();
+    private final Map<String, CacheItem> cachedComponentsMap = new LinkedHashMap<String, CacheItem>();
     
-    public Map<String, Map<String, Object>> getCacheProperties() {
-        return cacheProperties;
-    }
-    
-    public Map<String, Map<String, String>> getCachedTranslationMap() {
+    public Map<String, CacheItem> getCachedTranslationMap() {
         return cachedComponentsMap;
     }
 
@@ -52,29 +46,24 @@ public class MessageCache implements Cache {
     }
 
     @SuppressWarnings("unchecked")
-    public Map<String, Object> get(String cacheKey) {
-    	Map<String, Object> cache = new HashMap<String, Object>();
-    	Map<String,Object> cacheProps = this.cacheProperties.get(cacheKey);
-    	if (cacheProps != null) {
-    		cache.put(CACHE_PROPERTIES, cacheProps);
-    	}
-    	
+    public CacheItem get(String cacheKey) {
+    	CacheItem cacheItem = cachedComponentsMap.get(cacheKey);
         Integer i = hitMap.get(cacheKey);
         if (i != null) {
             hitMap.put(cacheKey, i.intValue() + 1);
         }
-        Object cachedObject = cachedComponentsMap.get(cacheKey);
-        if (cachedObject != null) {
-        	cache.put(MESSAGES,  (Map<String, String>) cachedObject);
-        }
-        return cache;
+        if (cacheItem == null) {
+    		return null;
+    	}
+        return cacheItem;
     }
     
     public boolean isExpired(String cacheKey) {
-    	Map<String,Object> cacheProps = this.cacheProperties.get(cacheKey);
-    	if (cacheProps == null || cacheProps.isEmpty()) {
+    	CacheItem cacheItem = cachedComponentsMap.get(cacheKey);
+    	if (cacheItem == null) {
     		return true;
     	}
+    	Map<String,Object> cacheProps = cacheItem.getCacheProperties();
     	Long responseTimeStamp = (Long) cacheProps.get(URLUtils.RESPONSE_TIMESTAMP);
     	if (responseTimeStamp == null) {
     		return true;
@@ -113,23 +102,23 @@ public class MessageCache implements Cache {
         return key;
     }
 
-    public synchronized boolean put(String cacheKey, Map<String, String> dataToCache, Map<String, Object> cacheProps) {
+    public synchronized boolean put(String cacheKey, CacheItem itemToCache) {
         if (this.isFull()) {
             String k = getRemovedKeyFromHitMap();
             this.remove(k);
             hitMap.remove(k);
         } 
         if (!this.isFull()) {
-        	if (dataToCache != null) {
-	        	Map<String, String> cachedData = cachedComponentsMap.get(cacheKey);
-	        	if (cachedData == null) {
-	        		cachedComponentsMap.put(cacheKey, dataToCache);
-	        	} else {
-	        		cachedData.putAll(dataToCache);
-	        	}
+        	if (itemToCache != null) {
+        		CacheItem cacheItem = cachedComponentsMap.get(cacheKey);
+        		if (cacheItem == null) {
+        			cachedComponentsMap.put(cacheKey, itemToCache);
+        		} else {
+        			cacheItem.addCachedData(itemToCache.getCachedData());
+        			cacheItem.addCacheProperties(itemToCache.getCacheProperties());
+        		}
+
         	}
-        	// a map of properties associated to this cache key (e.g. etag and cache control)
-        	cacheProperties.put(cacheKey, cacheProps);
         }
         return cachedComponentsMap.containsKey(cacheKey);
     }
@@ -137,16 +126,12 @@ public class MessageCache implements Cache {
     public synchronized boolean remove(String cacheKey) {
         Object o1 = cachedComponentsMap.get(cacheKey);
         Object o2 = hitMap.get(cacheKey);
-        Object o3 = cacheProperties.get(cacheKey);
         cachedComponentsMap.remove(cacheKey);
         hitMap.remove(cacheKey);
-        cacheProperties.remove(cacheKey);
         if (o1 != null)
             o1 = null;
         if (o2 != null)
             o2 = null;
-        if (o3 != null)
-            o3 = null;
         return !cachedComponentsMap.containsKey(cacheKey);
     }
 
@@ -167,7 +152,6 @@ public class MessageCache implements Cache {
             }
         }
         hitMap.clear();
-        cacheProperties.clear();
         return cachedComponentsMap.isEmpty();
     }
 
@@ -202,10 +186,10 @@ public class MessageCache implements Cache {
         Set<String> s = this.getCachedTranslationMap().keySet();
         int size = 0;
         for (String key : s) {
-            Object o = this.getCachedTranslationMap().get(key);
-            if (o != null) {
-                Map<String, String> m = (Map<String, String>) o;
-                size = size + m.keySet().size();
+        	CacheItem cacheItem = this.getCachedTranslationMap().get(key);
+            if (cacheItem != null) {
+                
+                size = size + cacheItem.getCachedData().keySet().size();
             }
         }
         return size;

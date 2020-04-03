@@ -13,6 +13,7 @@ import java.util.Set;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
+import com.vmware.vipclient.i18n.base.cache.Cache.CacheItem;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
@@ -30,7 +31,7 @@ public class CacheService {
     	return c.isExpired(cacheKey);
     }
     
-    public Map<String, Object> getCacheOfComponent() {
+    public CacheItem getCacheOfComponent() {
         String cacheKey = dto.getCompositStrAsCacheKey();
         Locale matchedLocale = LocaleUtility.pickupLocaleFromList(
                 this.getSupportedLocalesFromCache(),
@@ -46,26 +47,25 @@ public class CacheService {
         }
     }
 
-    public void addCacheOfComponent(Map<String, String> dataMap, final Map<String, Object> cacheProps) {
+    public void addCacheOfComponent(CacheItem itemToCache) {
         String cacheKey = dto.getCompositStrAsCacheKey();
         Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
         if (c != null) {
-            c.put(cacheKey, dataMap, cacheProps);
+            c.put(cacheKey, itemToCache);
         }
     }
 
-    public void updateCacheOfComponent(Map<String, String> dataMap, Map<String, Object> cacheProps) {
+    public void updateCacheOfComponent(CacheItem itemToCache) {
         String cacheKey = dto.getCompositStrAsCacheKey();
         Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
         if (c != null) {
-            Map<String, Object> oldmap = c.get(cacheKey);
-            if (oldmap == null) {
-                c.put(cacheKey, dataMap, cacheProps);
-            } else {
-                oldmap.putAll(dataMap);
-                Map<String, String> cachedMessages = (Map<String, String>) oldmap.get(Cache.MESSAGES);
-                c.put(cacheKey, cachedMessages, cacheProps);
+            CacheItem cacheItem = c.get(cacheKey);
+            if (cacheItem == null) {
+            	cacheItem = new CacheItem();
             }
+            cacheItem.addCachedData(itemToCache.getCachedData());
+            cacheItem.addCacheProperties(itemToCache.getCacheProperties());
+            c.put(cacheKey, cacheItem);
         }
     }
 
@@ -92,20 +92,20 @@ public class CacheService {
     public Map<String, String> getCacheOfStatus() {
         String cacheKey = dto.getTransStatusAsCacheKey();
         Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
-        if (c == null) {
-            return null;
-        } else {
-        	Map<String, Object> oldmap = c.get(cacheKey);
-        	Map<String, String> cachedMessages = (Map<String, String>) oldmap.get(Cache.MESSAGES);
-            return cachedMessages;
+        if (c != null) {
+        	CacheItem cacheItem = c.get(cacheKey);
+        	if (cacheItem != null) {
+        		return (Map<String, String>) cacheItem.getCachedData();
+        	}
         }
+        return null;
     }
 
     public void addCacheOfStatus(Map<String, String> dataMap, Map<String, Object> cacheProps) {
         String cacheKey = dto.getTransStatusAsCacheKey();
         Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
         if (c != null) {
-            c.put(cacheKey, dataMap, cacheProps);
+            c.put(cacheKey, new CacheItem(dataMap, cacheProps));
         }
     }
 

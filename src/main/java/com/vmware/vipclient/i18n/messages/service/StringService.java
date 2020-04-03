@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
-import com.vmware.vipclient.i18n.base.cache.Cache;
+import com.vmware.vipclient.i18n.base.cache.Cache.CacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.StringBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
@@ -36,17 +36,17 @@ public class StringService {
     public String getString() {
     	String key = dto.getKey();
     	CacheService cacheservice = new CacheService(dto);
-    	Map<String, Object> cache = cacheservice.getCacheOfComponent();
-    	Map<String, String> cacheOfComponent = (Map<String, String>) cache.get(Cache.MESSAGES);
-    	Map<String, Object> cacheProps = (Map<String, Object>) cache.get(Cache.CACHE_PROPERTIES);
-        
-    	if ((cacheOfComponent == null && !cacheservice.isContainComponent()) || cacheservice.isExpired()) {
-    		cacheProps = (cacheProps == null ? new HashMap<String, Object>() : cacheProps);
+    	CacheItem cacheItem = cacheservice.getCacheOfComponent();
+    	Map<String, String> cacheOfComponent = null;
+    	if ((cacheItem == null && !cacheservice.isContainComponent()) || cacheservice.isExpired()) {
+    		Map<String, Object> cacheProps = cacheItem == null ? new HashMap<String, Object>() : cacheItem.getCacheProperties();
     		Object o = new ComponentService(dto).getMessages(cacheProps);
     		if (o != null) {
     			cacheOfComponent = (Map<String, String>) o;
-    			cacheservice.addCacheOfComponent(cacheOfComponent, cacheProps);
+    			cacheservice.addCacheOfComponent(new CacheItem (cacheOfComponent, cacheProps));
     		}	
+       } else {
+    	   cacheOfComponent = cacheItem.getCachedData();
        }
        return (cacheOfComponent == null || cacheOfComponent.get(key) == null ? "" : cacheOfComponent.get(key));
     }
@@ -63,9 +63,7 @@ public class StringService {
             Map<String, String> dataMap = new HashMap<>();
             dataMap.put(dto.getKey(), dto.getSource());
             
-            // TODO pass map of cache properties such as etag and cache control headers
-            Map<String, Object> cacheProps = null;
-            c.updateCacheOfComponent(dataMap, cacheProps);
+            c.updateCacheOfComponent(new CacheItem(dataMap));
         }
         return r;
     }
@@ -84,9 +82,8 @@ public class StringService {
                 dataMap.put((String) jo.get(ConstantsKeys.KEY),
                         jo.get(ConstantsKeys.SOURCE) == null ? "" : (String) jo.get(ConstantsKeys.SOURCE));
             }
-            // TODO pass map of cache properties such as etag and cache control headers
-            Map<String, Object> cacheProps = null;
-            c.updateCacheOfComponent(dataMap, cacheProps);
+            
+            c.updateCacheOfComponent(new CacheItem(dataMap));
         }
         return r;
     }
@@ -115,7 +112,7 @@ public class StringService {
                     }
                 }
                 
-                c.addCacheOfStatus(m, null);
+                c.addCacheOfStatus(m, new HashMap<String, Object>());
 
             }
             r = "1".equalsIgnoreCase(status);

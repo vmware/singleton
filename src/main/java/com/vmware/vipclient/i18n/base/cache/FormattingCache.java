@@ -4,7 +4,6 @@
  */
 package com.vmware.vipclient.i18n.base.cache;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -13,24 +12,20 @@ public class FormattingCache implements Cache {
     private long                             expiredTime   = 86400000;                                        // 24hr
     private long                             lastClean     = System.currentTimeMillis();
 
-    private Map<String, Map<String, String>> formattingMap = new LinkedHashMap<String, Map<String, String>>();
+    private Map<String, CacheItem> formattingMap = new LinkedHashMap<String, CacheItem>();
 
     public FormattingCache() {
         super();
     }
 
     @SuppressWarnings("unchecked")
-    public Map<String, Object> get(String cacheKey) {
-        Object cachedObject = formattingMap.get(cacheKey);
-        Map<String, Object> cache = new HashMap<String, Object>();
-    	if (cachedObject != null) {
-    		cache.put(MESSAGES,  (Map<String, String>) cachedObject);
-    	}
-        return cache;
+    public CacheItem get(String cacheKey) {
+    	CacheItem cacheItem = formattingMap.get(cacheKey);
+    	return cacheItem;
     }
 
-    public synchronized boolean put(String cacheKey, Map<String, String> map, Map<String, Object> cacheProps) {
-        formattingMap.put(cacheKey, map);
+    public synchronized boolean put(String cacheKey, CacheItem itemToCache) {
+    	formattingMap.put(cacheKey, itemToCache);
         return formattingMap.get(cacheKey) != null;
     }
 

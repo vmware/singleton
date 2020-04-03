@@ -4,6 +4,8 @@
  */
 package com.vmware.vip.i18n;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,9 +15,11 @@ import org.junit.Test;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
+import com.vmware.vipclient.i18n.base.cache.Cache.CacheItem;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
+import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.CacheService;
 
@@ -48,29 +52,28 @@ public class MessageCacheTest1 extends BaseTestClass {
 
     @Test
     public void testSetCapacityByKey() {
-    	Map<String, Object> cacheProps = new HashMap<String, Object>();
         VIPCfg gc = VIPCfg.getInstance();
         MessageCache c = (MessageCache) gc.createTranslationCache(MessageCache.class);
         c.setCapacityByKey(5);
         Map<String, String> msgObj = new HashMap<String, String>();
         msgObj.put("book", "@zh_CN@book");
-        cacheService.addCacheOfComponent(msgObj, cacheProps);
+        cacheService.addCacheOfComponent(new CacheItem(msgObj));
         Map<String, String> msgObj2 = new HashMap<String, String>();
         msgObj2.put("book2", "@zh_CN@book2");
-        cacheService.addCacheOfComponent(msgObj2, cacheProps);
+        cacheService.addCacheOfComponent(new CacheItem(msgObj2));
         Map<String, String> msgObj3 = new HashMap<String, String>();
         msgObj3.put("book3", "@zh_CN@book3");
         msgObj3.put("book4", "@zh_CN@book4");
         msgObj3.put("book5", "@zh_CN@book5");
-        cacheService.addCacheOfComponent(msgObj3, cacheProps);
+        cacheService.addCacheOfComponent(new CacheItem(msgObj3));
         Map<String, String> msgObj4 = new HashMap<String, String>();
         msgObj4.put("book6", "@zh_CN@book6");
         msgObj4.put("book7", "@zh_CN@book7");
         msgObj4.put("book8", "@zh_CN@book8");
         msgObj4.put("book9", "@zh_CN@book9");
-        cacheService.addCacheOfComponent(msgObj4, cacheProps);
+        cacheService.addCacheOfComponent(new CacheItem(msgObj4));
         Map<String, String> messageMap = (Map<String, String>) cacheService
-                .getCacheOfComponent().get(Cache.MESSAGES);
+                .getCacheOfComponent().getCachedData();
         Assert.assertTrue(messageMap.size() == 4);
         c.clear();
         Assert.assertTrue(c.size() == 0);
@@ -83,11 +86,10 @@ public class MessageCacheTest1 extends BaseTestClass {
     @Test
     public void testAddCacheByComponent() {
         this.init();
-        Map<String, Object> cacheProps = new HashMap<String, Object>();
         Map<String, String> msgObj = new HashMap<String, String>();
         msgObj.put("book", "@zh_CN@book");
-        cacheService.addCacheOfComponent(msgObj, cacheProps);
-        Map<String, String> mp = (Map<String, String>) cacheService.getCacheOfComponent().get(Cache.MESSAGES);
+        cacheService.addCacheOfComponent(new CacheItem(msgObj));
+        Map<String, String> mp = (Map<String, String>) cacheService.getCacheOfComponent().getCachedData();
         Assert.assertEquals("@zh_CN@book", mp.get("book"));
         VIPCfg.getInstance().getCacheManager().clearCache();
         Assert.assertNull(cacheService.getCacheOfComponent());
@@ -104,16 +106,21 @@ public class MessageCacheTest1 extends BaseTestClass {
         data.put(k, v);
         String cachedKey = "key";
         Map<String, Object> cacheProps = new HashMap<String, Object>();
-        c.put(cachedKey, data, cacheProps);
+        cacheProps.put(URLUtils.RESPONSE_TIMESTAMP, System.currentTimeMillis());
+        c.put(cachedKey, new CacheItem(data, cacheProps));
         long expired = 20000;
         c.setExpiredTime(expired);
-        Map cachedData = (Map) TranslationCacheManager.getCache(VIPCfg.CACHE_L3).get(cachedKey).get(Cache.MESSAGES);
+        CacheItem cacheItem = c.get(cachedKey);
+        Assert.assertNotNull(cacheItem);
+        Map cachedData = cacheItem.getCachedData();
+        assertTrue(!c.isExpired(cachedKey));
         Assert.assertNotNull(cachedData);
         Assert.assertEquals(v, cachedData.get(k));
         try {
-            Thread.sleep(expired + 10000);
-            Map cachedData2 = (Map) TranslationCacheManager.getCache(VIPCfg.CACHE_L3).get(cachedKey).get(Cache.MESSAGES);
-            Assert.assertNull(cachedData2);
+            Thread.sleep(1000);
+        	VIPCfg.getInstance().setCacheExpiredTime(0l);
+        	assertTrue(c.isExpired(cachedKey));
+        	cacheItem = c.get(cachedKey);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

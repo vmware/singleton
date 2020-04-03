@@ -14,13 +14,12 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
-import com.vmware.vipclient.i18n.base.cache.Cache;
+import com.vmware.vipclient.i18n.base.cache.Cache.CacheItem;
 import com.vmware.vipclient.i18n.base.cache.CacheMode;
 import com.vmware.vipclient.i18n.base.cache.persist.DiskCacheLoader;
 import com.vmware.vipclient.i18n.base.cache.persist.Loader;
 import com.vmware.vipclient.i18n.messages.api.opt.local.LocalMessagesOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
-import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.JSONUtils;
 
@@ -56,25 +55,22 @@ public class ComponentService {
 
     public Map<String, String> getComponentTranslation() {
         CacheService cs = new CacheService(dto);
-        Map<String, Object> cache = cs.getCacheOfComponent();
-        Map<String, String> cachedMessages = (Map<String, String>) cache.get(Cache.MESSAGES);
-        Map<String, Object> cacheProps = (Map<String, Object>) cache.get(Cache.CACHE_PROPERTIES);
-        
-        if (cachedMessages == null
-                && VIPCfg.getInstance().getCacheMode() == CacheMode.DISK) {
+        CacheItem cacheItem = cs.getCacheOfComponent(); 
+        cacheItem = cacheItem == null ? new CacheItem() : cacheItem;
+        Map<String, String> cachedMessages = cacheItem.getCachedData();
+ 
+        if (cachedMessages.isEmpty() && VIPCfg.getInstance().getCacheMode() == CacheMode.DISK) {
             Loader loader = VIPCfg.getInstance().getCacheManager()
                     .getLoaderInstance(DiskCacheLoader.class);
             cachedMessages = loader.load(dto.getCompositStrAsCacheKey());
         }
-        if (cachedMessages == null && !cs.isContainComponent()) {
-        	if (cacheProps == null) {
-            	cacheProps = new HashMap<String, Object>();
-            }
+        if (cachedMessages.isEmpty() && !cs.isContainComponent()) {
+        	Map<String, Object> cacheProps = new HashMap<String, Object>();
             Object o = this.getMessages(cacheProps);
             Map<String, String> dataMap = (o == null ? null
                     : (Map<String, String>) o);
             
-            cs.addCacheOfComponent(dataMap, cacheProps);
+            cs.addCacheOfComponent(new CacheItem (dataMap, cacheProps));
             cachedMessages = dataMap;
         }
         return cachedMessages;

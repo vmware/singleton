@@ -4,20 +4,19 @@
  */
 package com.vmware.vipclient.i18n.base.cache;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
 public interface Cache {
-
-	public final static String MESSAGES = "messages";
-	public final static String CACHE_PROPERTIES = "cache_properties";
+	
     /**
-     * get a component's strings by key
+     * get a component's cached data by key
      * 
      * @param key
-     * @return map of all strings under the component
+     * @return CacheItem object instance that holds the cached data (messages and associated properties)
      */
-    public Map<String, Object> get(String key);
+    public CacheItem get(String key);
 
     /**
      * check if the cache is expired
@@ -31,11 +30,10 @@ public interface Cache {
      * put strings to cache by key
      * 
      * @param key cache key
-     * @param dataToCache data to be stored in the cache (e.g. message keys mapped to message values)
-     * @param cacheProps associated cache properties (e.g. etag, cache control)
+     * @param cacheItem item to be stored in the cache 
      * @return false if failed to put
      */
-    public boolean put(String key, Map<String, String> dataToCache, Map<String, Object> cacheProps);
+    public boolean put(String key, CacheItem cacheItem);
 
     /**
      * remove a component from cache by key
@@ -121,5 +119,54 @@ public interface Cache {
      * @return a drop id
      */
     public String getDropId();
+    
+    public class CacheItem {
+    	public CacheItem() {
+    		
+    	}
+    	
+    	public CacheItem (Map<String, String> dataMap, final Map<String, Object> cacheProps) {
+    		super();
+    		this.addCachedData(dataMap);
+    		this.addCacheProperties(cacheProps);
+    	}
+    	
+    	public CacheItem (Map<String, String> dataMap) {
+    		super();
+    		this.addCachedData(dataMap);
+    	}
+    	
+    	private final Map<String, String> cachedData = new HashMap<String, String>();
+
+		/*
+    	 * A map of properties associated to the cachedData (e.g. etag and cache control)
+    	 */
+    	private final Map<String, Object> cacheProperties = new HashMap<String, Object>();
+        
+        public Map<String, String> getCachedData() {
+			return cachedData;
+		}
+        
+        public Map<String, String> addCachedData(Map<String, String> cachedData) {
+			if (cachedData != null) {
+				this.cachedData.putAll(cachedData);
+			}
+			return this.getCachedData();
+			
+		}
+        
+		public Map<String, Object> getCacheProperties() {
+			return cacheProperties;
+		}
+		
+		public Map<String, Object> addCacheProperties(Map<String, Object> cacheProperties) {
+			if (cacheProperties != null) {
+				this.cacheProperties.putAll(cacheProperties);
+			}
+			return this.getCacheProperties();
+			
+		}
+		
+    }
 
 }

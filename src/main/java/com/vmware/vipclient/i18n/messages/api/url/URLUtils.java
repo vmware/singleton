@@ -77,11 +77,11 @@ public class URLUtils {
         			Map<String, String> headers = new HashMap<String, String>();
         			headers.put(IF_NONE_MATCH_HEADER,ifNoneMatch);
         			requester.setCustomizedHeaderParams(headers);
+        			return;
         		}
         	}
-        } else {
-        	requester.removeCustomizedHeaderParams(IF_NONE_MATCH_HEADER);
         }
+        requester.removeCustomizedHeaderParams(IF_NONE_MATCH_HEADER);
     }
     
     public static Long getMaxAgeMillis(Map<String, List<String>> responseHeaders) {

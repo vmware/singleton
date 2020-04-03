@@ -19,6 +19,7 @@ import com.vmware.vip.i18n.BaseTestClass;
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
+import com.vmware.vipclient.i18n.base.cache.Cache.CacheItem;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
@@ -69,8 +70,8 @@ public class CacheServiceTest extends BaseTestClass {
         // This triggers the first http call
     	translation.getString(locale, component, key, source, comment, args);
     	
-    	Map<String, Object> cache = cs.getCacheOfComponent();
-    	Map<String, Object> cacheProps = (Map<String, Object>) cache.get(Cache.CACHE_PROPERTIES);
+    	CacheItem cacheItem = cs.getCacheOfComponent();
+    	Map<String, Object> cacheProps = cacheItem.getCacheProperties();
     	Integer responseCode = (Integer) cacheProps.get(URLUtils.RESPONSE_CODE);
         assertEquals(new Integer(200), responseCode);
         
@@ -119,8 +120,8 @@ public class CacheServiceTest extends BaseTestClass {
         // This triggers the first http call
     	translation.getString(locale, component, key, source, comment, args);
 
-    	Map<String, Object> cache = cs.getCacheOfComponent();
-    	Map<String, Object> cacheProps = (Map<String, Object>) cache.get(Cache.CACHE_PROPERTIES);
+    	CacheItem cacheItem = cs.getCacheOfComponent();
+    	Map<String, Object> cacheProps = cacheItem.getCacheProperties();
     	Integer responseCode = (Integer) cacheProps.get(URLUtils.RESPONSE_CODE);
         Long responseTime = (Long) cacheProps.get(URLUtils.RESPONSE_TIMESTAMP);
         assertEquals(new Integer(200), responseCode);
@@ -172,8 +173,8 @@ public class CacheServiceTest extends BaseTestClass {
         // This triggers the first http call
     	translation.getString(locale, component, key, source, comment, args);
     	
-    	Map<String, Object> cache = cs.getCacheOfComponent();
-    	Map<String, Object> cacheProps = (Map<String, Object>) cache.get(Cache.CACHE_PROPERTIES);
+    	CacheItem cacheItem = cs.getCacheOfComponent();
+    	Map<String, Object> cacheProps = cacheItem.getCacheProperties();
     	Integer responseCode = (Integer) cacheProps.get(URLUtils.RESPONSE_CODE); 
         Long responseTime = (Long) cacheProps.get(URLUtils.RESPONSE_TIMESTAMP);
         
