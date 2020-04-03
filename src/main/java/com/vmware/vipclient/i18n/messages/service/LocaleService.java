@@ -70,7 +70,7 @@ public class LocaleService {
         	if (cacheItem == null) {
         		cacheItem = new CacheItem();
         	}
-            dispMap = cacheItem == null ? dispMap : cacheItem.getCachedData();
+            dispMap = cacheItem.getCachedData();
             if (dispMap == null || dispMap.size() == 0) {
                 logger.trace("get displayname data from backend");
                 Map<String, String> tmpMap = new LocaleOpt()
