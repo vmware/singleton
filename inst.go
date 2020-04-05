@@ -100,6 +100,10 @@ func SetHTTPHeaders(h map[string]string) {
 
 // RegisterCache Register cache implementation. There is a default implementation
 func RegisterCache(c Cache) {
+	if cache != nil {
+		return
+	}
+
 	cache = c
 }
 
