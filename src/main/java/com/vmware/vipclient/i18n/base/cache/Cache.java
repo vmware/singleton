@@ -140,8 +140,9 @@ public interface Cache {
 
 		/*
     	 * A map of properties associated to the cachedData (e.g. etag and cache control)
+    	 * This map is optional and will not be instantiated if not needed.
     	 */
-    	private final Map<String, Object> cacheProperties = new HashMap<String, Object>();
+    	private Map<String, Object> cacheProperties;
         
         public Map<String, String> getCachedData() {
 			return cachedData;
@@ -158,6 +159,11 @@ public interface Cache {
 		}
 		
 		public void addCacheProperties(Map<String, Object> cacheProperties) {
+			synchronized(this) {
+				if (this.cacheProperties == null) {
+					this.cacheProperties = new HashMap<String, Object>();
+				}
+			}
 			if (cacheProperties != null) {
 				this.cacheProperties.putAll(cacheProperties);
 			}

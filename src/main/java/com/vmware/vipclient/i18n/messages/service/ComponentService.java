@@ -64,12 +64,16 @@ public class ComponentService {
                     .getLoaderInstance(DiskCacheLoader.class);
             cachedMessages = loader.load(dto.getCompositStrAsCacheKey());
         }
+        
+        // If messages are not yet in cach
         if (cachedMessages.isEmpty() && !cs.isContainComponent()) {
+        	// Prepare a HashMap 'cacheProps' to store cache properties
         	Map<String, Object> cacheProps = new HashMap<String, Object>();
+        	// Pass this cacheProps to getMessages so that it will be populated from the http request
             Object o = this.getMessages(cacheProps);
             Map<String, String> dataMap = (o == null ? null
                     : (Map<String, String>) o);
-            
+            // Store the messages and properties in cache using a single CacheItem object
             cs.addCacheOfComponent(new CacheItem (dataMap, cacheProps));
             cachedMessages = dataMap;
         }

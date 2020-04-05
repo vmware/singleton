@@ -39,13 +39,23 @@ public class StringService {
     	CacheItem cacheItem = cacheservice.getCacheOfComponent();
     	Map<String, String> cacheOfComponent = null;
     	if ((cacheItem == null && !cacheservice.isContainComponent()) || cacheservice.isExpired()) {
+    		// If messages are not yet in cache, create a HashMap 'cacheProps' for cache properties.
+    		// Otherwise, use the cacheProps that is already in the cache.
     		Map<String, Object> cacheProps = cacheItem == null ? new HashMap<String, Object>() : cacheItem.getCacheProperties();
+    		
+    		// Pass cacheProps to getMessages so that:
+    		// 1. ETag (and others) can be used for the next HTTP request.
+    		// 2. Cached properties can be refreshed with new properties from the next HTTP response.
     		Object o = new ComponentService(dto).getMessages(cacheProps);
-    		if (o != null) {
+    		
+    		// If cacheProps from the cache was passed to getMessages above, 
+    		// then the cache already contains the new properties from the response (eg. 200 or 304) at this point
+    		// so only call cacheservice.addCacheOfComponent to refresh cached messages.
+    		if (o != null) { // Messages were retrieved from the http response
     			cacheOfComponent = (Map<String, String>) o;
     			cacheservice.addCacheOfComponent(new CacheItem (cacheOfComponent, cacheProps));
     		}	
-       } else if (cacheItem != null) {
+       } else if (cacheItem != null) { // cacheItem has not expired
     	   cacheOfComponent = cacheItem.getCachedData();
        }
        return (cacheOfComponent == null || cacheOfComponent.get(key) == null ? "" : cacheOfComponent.get(key));
