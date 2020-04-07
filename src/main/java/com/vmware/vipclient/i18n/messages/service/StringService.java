@@ -38,7 +38,7 @@ public class StringService {
     			// Update the cache in a separate thread
     			populateCacheTask(cacheItem.getCacheProperties(), cacheService, dto); 		
     		}
-    	} else if ((cacheItem == null && !cacheService.isContainComponent())) { // Item is not in cache
+    	} else { // Item is not in cache
     		// Create a new HashMap to store cache properties.
     		cacheOfComponent = populateCache(new HashMap<String, Object>(), cacheService, dto);
        } 
@@ -65,11 +65,12 @@ public class StringService {
 			CacheService cacheService, MessagesDTO dto) {
     	// Pass cacheProps to getMessages so that:
 		// 1. A previously stored ETag, if any, can be used for the next HTTP request.
-		// 2. Cached properties can be refreshed with new properties from the next HTTP response.
-		Object o = new ComponentService(dto).getMessages(cacheProps);
+		// 2. Cached properties can be refreshed with new properties from the next HTTP response.	
+		Map<String, String>  cacheOfComponent = new ComponentService(dto).getMessages(cacheProps);
 		
-		Map<String, String>  cacheOfComponent = (Map<String, String>) o;
+		//Store the CacheItem object in cache
 		cacheService.addCacheOfComponent(new CacheItem (cacheOfComponent, cacheProps));
+		
 		return cacheOfComponent;
     }
 

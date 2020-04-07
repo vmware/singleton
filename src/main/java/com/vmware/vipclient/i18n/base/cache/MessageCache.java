@@ -182,7 +182,7 @@ public class MessageCache implements Cache {
         for (String key : s) {
         	CacheItem cacheItem = this.getCachedTranslationMap().get(key);
             if (cacheItem != null) {              
-                size += cacheItem.getCachedData().keySet().size();
+                size += cacheItem.getCachedData().size();
             }
         }
         return size;
