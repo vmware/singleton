@@ -73,7 +73,7 @@ public class CacheService {
         String cacheKey = dto.getCompositStrAsCacheKey();
         Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
         if (c != null) {
-            f = c.keySet().contains(cacheKey);
+            f = c.get(cacheKey) != null;
         }
         return f;
     }

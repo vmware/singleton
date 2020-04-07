@@ -59,18 +59,14 @@ public class ComponentsService {
                 dto.setLocale(locale);
                 dto.setComponent(component);
 
-                // Get existing data from cache.
-                final CacheService cs = new CacheService(dto);
-                CacheItem cacheItem = cs.getCacheOfComponent();
-                final Map<String, String> translations = cacheItem == null ? null : cacheItem.getCachedData();
-
-                // If cache doesn't have data, query from server.
-                if (translations == null && !cs.isContainComponent()) {
-                    componentsToQuery.add(component);
+                final CacheService cs = new CacheService(dto);                
+                if (cs.isContainComponent()) { // Get data from cache.
+                	CacheItem cacheItem = cs.getCacheOfComponent();
+                	localeMap.put(component, cacheItem.getCachedData());
+                } else { // Data is not in cache.
+                	componentsToQuery.add(component);
                     localesToQuery.add(locale);
-                } else {
-                    localeMap.put(component, translations);
-                }
+                } 
             }
 
             dataMap.put(locale, localeMap);

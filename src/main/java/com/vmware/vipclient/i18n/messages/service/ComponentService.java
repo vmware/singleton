@@ -55,27 +55,29 @@ public class ComponentService {
 
     public Map<String, String> getComponentTranslation() {
         CacheService cs = new CacheService(dto);
-        CacheItem cacheItem = cs.getCacheOfComponent(); 
-        cacheItem = cacheItem == null ? new CacheItem() : cacheItem;
-        Map<String, String> cachedMessages = cacheItem.getCachedData();
  
-        if (cachedMessages.isEmpty() && VIPCfg.getInstance().getCacheMode() == CacheMode.DISK) {
-            Loader loader = VIPCfg.getInstance().getCacheManager()
-                    .getLoaderInstance(DiskCacheLoader.class);
-            cachedMessages = loader.load(dto.getCompositStrAsCacheKey());
+        if (cs.isContainComponent()) {
+        	return cs.getCacheOfComponent().getCachedData();
+        } else {
+	        // Messages are not cached in memory, so try to look in disk cache
+	        if (VIPCfg.getInstance().getCacheMode() == CacheMode.DISK) {
+	            Loader loader = VIPCfg.getInstance().getCacheManager()
+	                    .getLoaderInstance(DiskCacheLoader.class);
+	            Map<String, String> cachedMessages = loader.load(dto.getCompositStrAsCacheKey());
+	            if (cachedMessages != null) // Messages are in disk cache
+	            	return cachedMessages;
+	        }
+	        
+			// Prepare a HashMap 'cacheProps' to store cache properties
+			Map<String, Object> cacheProps = new HashMap<String, Object>();
+			// Pass this cacheProps to getMessages so that it will be populated from the http request
+			Map<String, String> cachedMessages = this.getMessages(cacheProps);
+			// Store the messages and properties in cache using a single CacheItem object
+			cs.addCacheOfComponent(new CacheItem (cachedMessages, cacheProps));
+			
+			return cachedMessages;
+	        
         }
-        
-        // If messages are not yet in cache
-        if (cachedMessages.isEmpty() && !cs.isContainComponent()) {
-        	// Prepare a HashMap 'cacheProps' to store cache properties
-        	Map<String, Object> cacheProps = new HashMap<String, Object>();
-        	// Pass this cacheProps to getMessages so that it will be populated from the http request
-        	cachedMessages = this.getMessages(cacheProps);
-            // Store the messages and properties in cache using a single CacheItem object
-            cs.addCacheOfComponent(new CacheItem (cachedMessages, cacheProps));
-           
-        }
-        return cachedMessages;
     }
 
     public boolean isComponentAvailable() {

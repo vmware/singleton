@@ -30,9 +30,9 @@ public class StringService {
     public String getString(MessagesDTO dto) {
     	String key = dto.getKey();
     	CacheService cacheService = new CacheService(dto);
-    	CacheItem cacheItem = cacheService.getCacheOfComponent();
     	Map<String, String> cacheOfComponent = null;
-    	if (cacheItem != null) { // Item is in cache
+    	if (cacheService.isContainComponent()) { // Item is in cache
+    		CacheItem cacheItem = cacheService.getCacheOfComponent();
     		cacheOfComponent = cacheItem.getCachedData();
     		if (cacheService.isExpired()) { // cacheItem has expired
     			// Update the cache in a separate thread
@@ -45,14 +45,14 @@ public class StringService {
        return (cacheOfComponent == null || cacheOfComponent.get(key) == null ? "" : cacheOfComponent.get(key));
     }
     
-    private volatile boolean running = true;
 	private void populateCacheTask(Map<String, Object> cacheProps, final CacheService cacheService, MessagesDTO dto) {
 		Runnable task = () -> {
+			boolean running = true;
 	    	while (running) {
 	    		try {
 			    	// Use the cacheProps that is already in the cache.
 			    	populateCache(cacheProps, cacheService, dto);
-	    		} finally {
+	    		} finally { // To make sure that the thread will close
 			    	running = false;
 			    }
 	    	}
