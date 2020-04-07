@@ -20,7 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.base.cache.Cache.CacheItem;
+import com.vmware.vipclient.i18n.base.cache.CacheItem;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentsBasedOpt;

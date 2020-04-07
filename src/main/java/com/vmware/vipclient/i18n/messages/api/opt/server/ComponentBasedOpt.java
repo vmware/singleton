@@ -36,8 +36,8 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
             url = url.replace("pseudo=false", "pseudo=true");
         }
         HttpRequester requester = VIPCfg.getInstance().getVipService().getHttpRequester();
-        if (VIPCfg.getInstance().getCacheExpiredTime() == VIPCfg.cacheExpiredTimeNotSet)
-        	URLUtils.addIfNoneMatchHeader (cacheProps, requester);
+        
+        URLUtils.addIfNoneMatchHeader (cacheProps, requester);
         Map<String, Object> response = requester.request(url, ConstantsKeys.GET,
         		null);
         
@@ -45,22 +45,21 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
     }
 
     public JSONObject getMsgsJson(Map<String, Object> response) {
-    	if (response != null && response.get(URLUtils.RESPONSE_CODE) != null) {
-    		if (response.get(URLUtils.RESPONSE_CODE).equals(HttpURLConnection.HTTP_OK)) {
-		    	String responseStr = (String) response.remove(URLUtils.BODY);
-				if (null == responseStr || responseStr.equals(""))
-					return null;
-				else {
-					if (ConstantsKeys.LATEST.equals(this.dto.getLocale())) {
-						responseStr = responseStr.replace(ConstantsKeys.PSEUDOCHAR, "");
-					}
-		
-					JSONObject msgObject = (JSONObject) this.getMessagesFromResponse(responseStr,
-		                ConstantsKeys.MESSAGES);
-		
-					return msgObject;
+    	if (response != null && response.get(URLUtils.RESPONSE_CODE) != null 
+    			&& response.get(URLUtils.RESPONSE_CODE).equals(HttpURLConnection.HTTP_OK)) {
+	    	String responseStr = (String) response.remove(URLUtils.BODY);
+			if (null == responseStr || responseStr.equals(""))
+				return null;
+			else {
+				if (ConstantsKeys.LATEST.equals(this.dto.getLocale())) {
+					responseStr = responseStr.replace(ConstantsKeys.PSEUDOCHAR, "");
 				}
-    		}
+	
+				JSONObject msgObject = (JSONObject) this.getMessagesFromResponse(responseStr,
+	                ConstantsKeys.MESSAGES);
+	
+				return msgObject;
+			}
     	}
     	return null;
     }

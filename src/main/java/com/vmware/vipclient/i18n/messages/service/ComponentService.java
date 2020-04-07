@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
-import com.vmware.vipclient.i18n.base.cache.Cache.CacheItem;
+import com.vmware.vipclient.i18n.base.cache.CacheItem;
 import com.vmware.vipclient.i18n.base.cache.CacheMode;
 import com.vmware.vipclient.i18n.base.cache.persist.DiskCacheLoader;
 import com.vmware.vipclient.i18n.base.cache.persist.Loader;
@@ -41,8 +41,8 @@ public class ComponentService {
     @SuppressWarnings("unchecked")
     public Map<String, String> getMessages(final Map<String, Object> cacheProps) {
         Map<String, String> transMap = new HashMap<String, String>();
-        ComponentBasedOpt opt = new ComponentBasedOpt(dto);
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
+        	ComponentBasedOpt opt = new ComponentBasedOpt(dto);
         	Map<String, Object> response = opt.getComponentMessages(cacheProps);
 	    	transMap = opt.getMsgsJson(response);
 	    	cacheProps.clear();
@@ -65,17 +65,15 @@ public class ComponentService {
             cachedMessages = loader.load(dto.getCompositStrAsCacheKey());
         }
         
-        // If messages are not yet in cach
+        // If messages are not yet in cache
         if (cachedMessages.isEmpty() && !cs.isContainComponent()) {
         	// Prepare a HashMap 'cacheProps' to store cache properties
         	Map<String, Object> cacheProps = new HashMap<String, Object>();
         	// Pass this cacheProps to getMessages so that it will be populated from the http request
-            Object o = this.getMessages(cacheProps);
-            Map<String, String> dataMap = (o == null ? null
-                    : (Map<String, String>) o);
+        	cachedMessages = this.getMessages(cacheProps);
             // Store the messages and properties in cache using a single CacheItem object
-            cs.addCacheOfComponent(new CacheItem (dataMap, cacheProps));
-            cachedMessages = dataMap;
+            cs.addCacheOfComponent(new CacheItem (cachedMessages, cacheProps));
+           
         }
         return cachedMessages;
     }

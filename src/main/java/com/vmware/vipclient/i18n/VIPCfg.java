@@ -130,41 +130,6 @@ public class VIPCfg {
     }
     
     /**
-     * Load client configuration from a JSON file in the resource folder 
-     * 
-     * @param configFile This is the name of the JSON configuration file 
-     * @throws VIPClientInitException  
-     */
-    public void loadConfig(String configFile) throws VIPClientInitException {
-    	ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-    	InputStream is = classloader.getResourceAsStream(configFile);
-    	
-    	Reader reader = new InputStreamReader(is);
-    	JSONParser parser = new JSONParser();
-		JSONObject jsonObject = null;
-		try {
-			jsonObject = (JSONObject) parser.parse(reader);
-			this.vipServer = (String) jsonObject.get("online_service_url");
-			this.offline_resources_base_url = (String) jsonObject.get("offline_resources_base_url");
-			
-			// TODO will be removed once product name becomes part of online_service_url
-			this.productName = (String) jsonObject.get("product");
-			// TODO will be removed once version becomes part of online_service_url
-			this.version = (String) jsonObject.get("version");
-			
-			// TODO get these from json config file
-	        this.pseudo = false;
-	        this.collectSource = false;
-	        this.initializeCache = false;
-	        this.cleanCache = false;
-	        this.machineTranslation = false;
-	        
-		} catch (NullPointerException | IOException | ParseException e) {
-			throw new VIPClientInitException("Failed to load configuration", e); 
-		}
-    }
-    
-    /**
      * initialize the instance by a properties file
      * @deprecated
      * This method is no longer acceptable to load configurations.

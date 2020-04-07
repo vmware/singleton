@@ -8,7 +8,7 @@ import org.json.simple.JSONObject;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
-import com.vmware.vipclient.i18n.base.cache.Cache.CacheItem;
+import com.vmware.vipclient.i18n.base.cache.CacheItem;
 
 public class PatternCacheService {
 

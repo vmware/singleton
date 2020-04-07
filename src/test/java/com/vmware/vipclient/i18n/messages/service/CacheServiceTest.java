@@ -19,7 +19,7 @@ import com.vmware.vip.i18n.BaseTestClass;
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
-import com.vmware.vipclient.i18n.base.cache.Cache.CacheItem;
+import com.vmware.vipclient.i18n.base.cache.CacheItem;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
@@ -135,15 +135,39 @@ public class CacheServiceTest extends BaseTestClass {
         translation.getString(locale, component, key, source, comment, args);
         
         // Because nothing has changed on the server and If-None-Match request header was properly set, 
-        // the server responds with a 304 Not Modified
+        // the server responds with a 304 Not Modified.
+        // However, cache update happens in a separate thread, and the previously cached item 
+        // was immediately returned in the main thread for optimal performance.
+        // This means no changes yet in the cached response code nor the response time.
+        responseCode = (Integer) cacheProps.get(URLUtils.RESPONSE_CODE);
+        assertEquals(new Integer(200), responseCode);
+        Long responseTime2 = (Long) cacheProps.get(URLUtils.RESPONSE_TIMESTAMP);
+        assertTrue(responseTime2 == responseTime); 
+        assertTrue((long)cacheProps.get(URLUtils.MAX_AGE_MILLIS) == 0l);
+        
+        
+        // Give time for the separate thread to finish.
+        try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        // Third request for the same message.
+        // This should fetch messages and properties from cache 
+        translation.getString(locale, component, key, source, comment, args);
+        
+        // cacheProps had been updated by the separate thread from the 2nd request.
         responseCode = (Integer) cacheProps.get(URLUtils.RESPONSE_CODE);
         assertEquals(new Integer(304), responseCode);
         
-        // The cached response time is updated to the timestamp of the 304 response.  
+        // The cached response time had been updated to the timestamp of the second response.  
         // This, in effect, extends the cache expiration.
         Long responseTime3 = (Long) cacheProps.get(URLUtils.RESPONSE_TIMESTAMP);
         assertTrue(responseTime3 > responseTime); 
         assertTrue((long)cacheProps.get(URLUtils.MAX_AGE_MILLIS) > 0l);
+        
     }
     
     @Test
@@ -180,19 +204,41 @@ public class CacheServiceTest extends BaseTestClass {
         
         // Set cacheExpiredTime to 0 to explicitly expire the cache for testing purposes.
         VIPCfg.getInstance().setCacheExpiredTime(0l);
-        
+    
         // Second request for the same message.
-        // This should trigger another HTTP request because cache had been explicitly expired above.
+        // This should trigger another HTTP request in a separate thread 
+        // because cache had been explicitly expired above.
         // The http request includes If-None-Match header that is set to the previously received eTag value.
         translation.getString(locale, component, key, source, comment, args);
         
-        // Because If-None-Match request header was NOT set, the server responds with a 200 OK
+        // Because If-None-Match request header is set, the server responds with a 304 Not Modified.
+        // However, cache update happens in a separate thread and the previously cached item 
+        // was immediately returned in the main thread for optimal performance.
+        // This means no changes yet in the cached response code nor the response time.
         responseCode = (Integer) cacheProps.get(URLUtils.RESPONSE_CODE);
         assertEquals(new Integer(200), responseCode);
-        
-        // The cached response time is updated to the timestamp of the 2nd 200 response. 
-        // This, in effect, extends the cache expiration.
         Long responseTime2 = (Long) cacheProps.get(URLUtils.RESPONSE_TIMESTAMP);
-        assertTrue(responseTime2 > responseTime); 
+        assertTrue(responseTime2 == responseTime); 
+        
+        // Give time for the separate thread to finish.
+        try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    
+        // Third request for the same message.
+        // This should fetch messages and properties from cache 
+        translation.getString(locale, component, key, source, comment, args);
+        
+        // cacheProps had been updated by the separate thread from the 2nd request.
+        responseCode = (Integer) cacheProps.get(URLUtils.RESPONSE_CODE);
+        assertEquals(new Integer(304), responseCode);
+        
+        // The cached response time had been updated to the timestamp of the second http response. 
+        // This, in effect, extends the cache expiration.
+        Long responseTime3 = (Long) cacheProps.get(URLUtils.RESPONSE_TIMESTAMP);
+        assertTrue(responseTime3 > responseTime); 
     }  
 }

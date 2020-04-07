@@ -32,6 +32,23 @@ public class MessagesDTO extends BaseDTO {
         super.setProductID(VIPCfg.getInstance().getProductName());
         super.setVersion(VIPCfg.getInstance().getVersion());
     }
+    
+    public MessagesDTO(String component, String comment, String key, String source, 
+    		String localeLanguageTag, VIPCfg cfg) {
+    	this.setComponent(component);
+    	this.setComment(comment);
+    	this.setKey(key);
+    	this.setSource(source);
+    	this.setLocale(localeLanguageTag);
+    	if (cfg != null) {
+    		this.setProductID(cfg.getProductName());
+            this.setVersion(cfg.getVersion());
+    	} else {
+    		super.setProductID(VIPCfg.getInstance().getProductName());
+            super.setVersion(VIPCfg.getInstance().getVersion());
+    	}
+    	
+    }
 
     /**
      * assembly the key of cache by productID, version, component and locale.

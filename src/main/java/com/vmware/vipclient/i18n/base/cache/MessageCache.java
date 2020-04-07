@@ -47,12 +47,11 @@ public class MessageCache implements Cache {
 
     @SuppressWarnings("unchecked")
     public CacheItem get(String cacheKey) {
-    	CacheItem cacheItem = cachedComponentsMap.get(cacheKey);
         Integer i = hitMap.get(cacheKey);
         if (i != null) {
             hitMap.put(cacheKey, i.intValue() + 1);
         }
-        return cacheItem;
+        return cachedComponentsMap.get(cacheKey);
     }
     
     public boolean isExpired(String cacheKey) {
@@ -65,7 +64,7 @@ public class MessageCache implements Cache {
     	if (responseTimeStamp == null) {
     		return true;
     	}
-    	Long maxAgeMillis = Long.MAX_VALUE;
+    	Long maxAgeMillis = Long.MIN_VALUE;
     	long maxAgeFromConfig = VIPCfg.getInstance().getCacheExpiredTime(); 
     	if (maxAgeFromConfig != VIPCfg.cacheExpiredTimeNotSet) { // If maxAgeFromConfig is present, use it instead of response header max age
     		maxAgeMillis = maxAgeFromConfig;
@@ -100,22 +99,21 @@ public class MessageCache implements Cache {
     }
 
     public synchronized boolean put(String cacheKey, CacheItem itemToCache) {
-        if (this.isFull()) {
-            String k = getRemovedKeyFromHitMap();
-            this.remove(k);
-            hitMap.remove(k);
-        } 
-        if (!this.isFull()) {
-        	if (itemToCache != null) {
-        		CacheItem cacheItem = cachedComponentsMap.get(cacheKey);
-        		if (cacheItem == null) {
-        			cachedComponentsMap.put(cacheKey, itemToCache);
-        		} else {
-        			cacheItem.addCacheDataAndProperties(itemToCache);
-        		}
-
-        	}
-        }
+    	if (itemToCache != null) {
+	        if (this.isFull()) {
+	            String k = getRemovedKeyFromHitMap();
+	            this.remove(k);
+	            hitMap.remove(k);
+	        } 
+	        if (!this.isFull()) {
+	    		CacheItem cacheItem = cachedComponentsMap.get(cacheKey);
+	    		if (cacheItem == null) {
+	    			cachedComponentsMap.put(cacheKey, itemToCache);
+	    		} else {
+	    			cacheItem.addCacheDataAndProperties(itemToCache);
+	    		}
+	        }
+    	}
         return cachedComponentsMap.containsKey(cacheKey);
     }
 
@@ -184,7 +182,7 @@ public class MessageCache implements Cache {
         for (String key : s) {
         	CacheItem cacheItem = this.getCachedTranslationMap().get(key);
             if (cacheItem != null) {              
-                size = size + cacheItem.getCachedData().keySet().size();
+                size += cacheItem.getCachedData().keySet().size();
             }
         }
         return size;

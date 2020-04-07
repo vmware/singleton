@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
-import com.vmware.vipclient.i18n.base.cache.Cache.CacheItem;
+import com.vmware.vipclient.i18n.base.cache.CacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.StringBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
@@ -24,44 +24,59 @@ import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.JSONUtils;
 
 public class StringService {
-    private MessagesDTO dto    = null;
-
     Logger              logger = LoggerFactory.getLogger(StringService.class);
-
-    public StringService(MessagesDTO dto) {
-        this.dto = dto;
-    }
-
+    
     @SuppressWarnings("unchecked")
-    public String getString() {
+    public String getString(MessagesDTO dto) {
     	String key = dto.getKey();
-    	CacheService cacheservice = new CacheService(dto);
-    	CacheItem cacheItem = cacheservice.getCacheOfComponent();
+    	CacheService cacheService = new CacheService(dto);
+    	CacheItem cacheItem = cacheService.getCacheOfComponent();
     	Map<String, String> cacheOfComponent = null;
-    	if ((cacheItem == null && !cacheservice.isContainComponent()) || cacheservice.isExpired()) {
-    		// If messages are not yet in cache, create a HashMap 'cacheProps' for cache properties.
-    		// Otherwise, use the cacheProps that is already in the cache.
-    		Map<String, Object> cacheProps = cacheItem == null ? new HashMap<String, Object>() : cacheItem.getCacheProperties();
-    		
-    		// Pass cacheProps to getMessages so that:
-    		// 1. ETag (and others) can be used for the next HTTP request.
-    		// 2. Cached properties can be refreshed with new properties from the next HTTP response.
-    		Object o = new ComponentService(dto).getMessages(cacheProps);
-    		
-    		// If cacheProps from the cache was passed to getMessages above, 
-    		// then the cache already contains the new properties from the response (eg. 200 or 304) at this point
-    		// so only call cacheservice.addCacheOfComponent to refresh cached messages.
-    		if (o != null) { // Messages were retrieved from the http response
-    			cacheOfComponent = (Map<String, String>) o;
-    			cacheservice.addCacheOfComponent(new CacheItem (cacheOfComponent, cacheProps));
-    		}	
-       } else if (cacheItem != null) { // cacheItem has not expired
-    	   cacheOfComponent = cacheItem.getCachedData();
-       }
+    	if (cacheItem != null) { // Item is in cache
+    		cacheOfComponent = cacheItem.getCachedData();
+    		if (cacheService.isExpired()) { // cacheItem has expired
+    			// Update the cache in a separate thread
+    			populateCacheTask(cacheItem.getCacheProperties(), cacheService, dto); 		
+    		}
+    	} else if ((cacheItem == null && !cacheService.isContainComponent())) { // Item is not in cache
+    		// Create a new HashMap to store cache properties.
+    		cacheOfComponent = populateCache(new HashMap<String, Object>(), cacheService, dto);
+       } 
        return (cacheOfComponent == null || cacheOfComponent.get(key) == null ? "" : cacheOfComponent.get(key));
     }
+    
+    private volatile boolean running = true;
+	private void populateCacheTask(Map<String, Object> cacheProps, CacheService cacheService, MessagesDTO dto) {
+		Runnable task = () -> {
+	    	while (running) {
+	    		synchronized(cacheProps) {
+		    		try {
+				    	// Use the cacheProps that is already in the cache.
+				    	populateCache(cacheProps, cacheService, dto);
+		    		} finally {
+				    	running = false;
+				    }
+	    		}
+		    	
+	    	}
+		    
+		};
+		new Thread(task).start();
+	}
+	
+	private Map<String, String> populateCache(Map<String, Object> cacheProps, 
+			CacheService cacheService, MessagesDTO dto) {
+    	// Pass cacheProps to getMessages so that:
+		// 1. A previously stored ETag, if any, can be used for the next HTTP request.
+		// 2. Cached properties can be refreshed with new properties from the next HTTP response.
+		Object o = new ComponentService(dto).getMessages(cacheProps);
+		
+		Map<String, String>  cacheOfComponent = (Map<String, String>) o;
+		cacheService.addCacheOfComponent(new CacheItem (cacheOfComponent, cacheProps));
+		return cacheOfComponent;
+    }
 
-    public String postString() {
+    public String postString(MessagesDTO dto) {
         String r = "";
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
             ComponentBasedOpt dao = new ComponentBasedOpt(dto);
@@ -78,7 +93,7 @@ public class StringService {
         return r;
     }
 
-    public boolean postStrings(List<JSONObject> sources) {
+    public boolean postStrings(List<JSONObject> sources, MessagesDTO dto) {
         boolean r = false;
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
             ComponentBasedOpt dao = new ComponentBasedOpt(dto);
@@ -98,7 +113,7 @@ public class StringService {
         return r;
     }
 
-    public boolean isStringAvailable() {
+    public boolean isStringAvailable(MessagesDTO dto) {
         boolean r = false;
         String status = "";
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {

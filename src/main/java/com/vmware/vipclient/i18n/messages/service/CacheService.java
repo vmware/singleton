@@ -13,7 +13,7 @@ import java.util.Set;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
-import com.vmware.vipclient.i18n.base.cache.Cache.CacheItem;
+import com.vmware.vipclient.i18n.base.cache.CacheItem;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
@@ -135,4 +135,5 @@ public class CacheService {
                 key.indexOf(ConstantsKeys.UNDERLINE_POUND) + 2, key.length());
         return Locale.forLanguageTag(locale.replace("_", "-"));
     }
+    
 }
