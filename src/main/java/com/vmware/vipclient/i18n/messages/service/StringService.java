@@ -49,15 +49,12 @@ public class StringService {
 	private void populateCacheTask(Map<String, Object> cacheProps, final CacheService cacheService, MessagesDTO dto) {
 		Runnable task = () -> {
 	    	while (running) {
-	    		synchronized(cacheService) {
-		    		try {
-				    	// Use the cacheProps that is already in the cache.
-				    	populateCache(cacheProps, cacheService, dto);
-		    		} finally {
-				    	running = false;
-				    }
-	    		}
-		    	
+	    		try {
+			    	// Use the cacheProps that is already in the cache.
+			    	populateCache(cacheProps, cacheService, dto);
+	    		} finally {
+			    	running = false;
+			    }
 	    	}
 		    
 		};
