@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Copyright 2020 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
+
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SingletonIcu;
 

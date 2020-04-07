@@ -1,4 +1,9 @@
-﻿using Product1ResLib;
+﻿/*
+ * Copyright 2020 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
+
+using Product1ResLib;
 using Product2ResLib;
 using SingletonIcu;
 using System;
