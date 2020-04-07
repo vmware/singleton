@@ -26,7 +26,7 @@ jobs:
         - python3 ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
     - stage: unit test
       script:
-        - cd $TRAVIS_BUILD_DIR/g11n-ws && ./gradlew build
+        - cd $TRAVIS_BUILD_DIR/g11n-ws && ./gradlew test --console=plain
     - stage: code scan
       script:
         - git clone --branch=devops https://github.com/vmware/singleton.git devops
