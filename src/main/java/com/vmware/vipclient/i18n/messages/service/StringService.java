@@ -46,10 +46,10 @@ public class StringService {
     }
     
     private volatile boolean running = true;
-	private void populateCacheTask(Map<String, Object> cacheProps, CacheService cacheService, MessagesDTO dto) {
+	private void populateCacheTask(Map<String, Object> cacheProps, final CacheService cacheService, MessagesDTO dto) {
 		Runnable task = () -> {
 	    	while (running) {
-	    		synchronized(cacheProps) {
+	    		synchronized(cacheService) {
 		    		try {
 				    	// Use the cacheProps that is already in the cache.
 				    	populateCache(cacheProps, cacheService, dto);
