@@ -30,7 +30,7 @@ func (suite *ConfigTestSuite) TestNewConfigNoFile() {
 	defer Trace(curFunName())()
 
 	cfPath := "C:/doesn't exist"
-	cfg, err := NewConfig(cfPath)
+	cfg, err := LoadConfig(cfPath)
 
 	assert.Nil(suite.T(), cfg)
 	assert.NotNil(suite.T(), err)

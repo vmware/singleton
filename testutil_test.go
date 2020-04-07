@@ -46,7 +46,7 @@ func TestMain(m *testing.M) {
 	}
 	zerolog.SetGlobalLevel(zerolog.Level(*loglevel))
 
-	cfg, err := NewConfig("testdata/conf/config.json")
+	cfg, err := LoadConfig("testdata/conf/config.json")
 	if err != nil {
 		panic(err)
 	}
