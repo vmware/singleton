@@ -36,16 +36,20 @@ public class TranslationCacheManager {
     }
 
     public static Cache getCache(String name) {
-        Cache c = container.get(name);
+        Cache c = container.get(name);      
+        cleanEntireCache(c);
         
-        // Clean the entire cache only if cacheExpireTime config is present.
-        if (VIPCfg.getInstance().getCacheExpiredTime() != VIPCfg.cacheExpiredTimeNotSet) {
+        return c;
+    }
+    
+    @Deprecated
+    private static void cleanEntireCache(Cache c) {
+    	// Clean the entire cache only if cacheExpireTime config is set.
+        if (VIPCfg.getInstance().isCacheExpiredTimeSet()) {
         	if (c != null && c.isExpired()) {
         		cleanCache(c);
         	}
         }
-        
-        return c;
     }
     
     /**

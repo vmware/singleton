@@ -55,25 +55,29 @@ public class MessageCache implements Cache {
     }
     
     public boolean isExpired(String cacheKey) {
+    	// If maxAgeFromConfig is present, it means it is using the old way 
+    	// of caching expiration, so do not expire individual CacheItem object
+    	if (VIPCfg.getInstance().isCacheExpiredTimeSet()) {
+    		return false;
+    	}
+    	
     	CacheItem cacheItem = cachedComponentsMap.get(cacheKey);
     	if (cacheItem == null) {
     		return true;
     	}
+    	
     	Map<String,Object> cacheProps = cacheItem.getCacheProperties();
     	Long responseTimeStamp = (Long) cacheProps.get(URLUtils.RESPONSE_TIMESTAMP);
     	if (responseTimeStamp == null) {
     		return true;
     	}
+    	
     	Long maxAgeMillis = this.getExpiredTime();
-    	long maxAgeFromConfig = VIPCfg.getInstance().getCacheExpiredTime(); 
-    	if (maxAgeFromConfig != VIPCfg.cacheExpiredTimeNotSet) { // If maxAgeFromConfig is present, use it instead of response header max age
-    		maxAgeMillis = maxAgeFromConfig;
-    	} else { // Gets max age from response header
-    		Long maxAgeResponse = (Long) cacheProps.get(URLUtils.MAX_AGE_MILLIS);
-        	if (maxAgeResponse != null) {
-        		maxAgeMillis = maxAgeResponse;
-        	}
-    	}	  	
+    	Long maxAgeResponse = (Long) cacheProps.get(URLUtils.MAX_AGE_MILLIS);
+    	if (maxAgeResponse != null) {
+    		maxAgeMillis = maxAgeResponse;
+    	}
+    		  	
     	return System.currentTimeMillis() - responseTimeStamp > maxAgeMillis;
     }
 

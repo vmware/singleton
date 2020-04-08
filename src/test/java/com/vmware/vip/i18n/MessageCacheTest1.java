@@ -4,6 +4,7 @@
  */
 package com.vmware.vip.i18n;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
@@ -98,7 +99,6 @@ public class MessageCacheTest1 extends BaseTestClass {
     @SuppressWarnings({ "static-access", "rawtypes", "unchecked" })
     @Test
     public void testExpired() {
-        VIPCfg gc = VIPCfg.getInstance();
         Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
         Map data = new HashMap();
         String k = "com.vmware.test";
@@ -116,14 +116,20 @@ public class MessageCacheTest1 extends BaseTestClass {
         assertTrue(!c.isExpired(cachedKey));
         Assert.assertNotNull(cachedData);
         Assert.assertEquals(v, cachedData.get(k));
+        
+        // Explicitly expire the cache
+        c.setExpiredTime(0l);
+        
+        // Add some delay so that there is difference in "current time"
         try {
-            Thread.sleep(1000);
-        	VIPCfg.getInstance().setCacheExpiredTime(0l);
-        	assertTrue(c.isExpired(cachedKey));
-        	cacheItem = c.get(cachedKey);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+			Thread.sleep(10);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        cacheItem = TranslationCacheManager.getCache(VIPCfg.CACHE_L3).get(cachedKey);
+        assertNull(cacheItem);
     }
 
 }

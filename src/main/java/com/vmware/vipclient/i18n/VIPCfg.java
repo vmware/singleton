@@ -4,18 +4,11 @@
  */
 package com.vmware.vipclient.i18n;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,8 +48,10 @@ public class VIPCfg {
     private boolean                    collectSource;
     private boolean                    cleanCache;
     
-    public static final long 		   cacheExpiredTimeNotSet = -1;
-    private long                       cacheExpiredTime = cacheExpiredTimeNotSet;
+    @Deprecated
+    public static final long 		   CACHE_EXP_TIME_NOT_SET = -1;
+    @Deprecated
+    private long                       cacheExpiredTime = CACHE_EXP_TIME_NOT_SET;
     
     private boolean                    machineTranslation;
     private boolean                    initializeCache;
@@ -134,7 +129,6 @@ public class VIPCfg {
      * 
      * @param cfg
      */
-    @Deprecated
     public void initialize(String cfg) throws VIPClientInitException {
     	ResourceBundle prop = ResourceBundle.getBundle(cfg);
     	if (prop == null) {
@@ -208,7 +202,7 @@ public class VIPCfg {
         }
         Cache createdCache = TranslationCacheManager
                 .getCache(VIPCfg.CACHE_L3);
-        if (createdCache != null && this.getCacheExpiredTime() != VIPCfg.cacheExpiredTimeNotSet) {
+        if (createdCache != null && this.isCacheExpiredTimeSet()) {
             c.setExpiredTime(this.getCacheExpiredTime());
         }
     }
@@ -236,7 +230,7 @@ public class VIPCfg {
                     Task.startTaskOfCacheClean(VIPCfg.getInstance(), interalCleanCache);
                 }
                 Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
-                if (c != null && this.getCacheExpiredTime() != VIPCfg.cacheExpiredTimeNotSet) {
+                if (c != null && this.isCacheExpiredTimeSet()) {
                     c.setExpiredTime(this.getCacheExpiredTime());
                 }
             }
@@ -377,15 +371,22 @@ public class VIPCfg {
     public void setInitializeCache(boolean initializeCache) {
         this.initializeCache = initializeCache;
     }
-
+    
+    @Deprecated
     public long getCacheExpiredTime() {
         return cacheExpiredTime;
     }
-
+    
+    @Deprecated
     public void setCacheExpiredTime(long cacheExpiredTime) {
         this.cacheExpiredTime = cacheExpiredTime;
     }
-
+    
+    @Deprecated
+    public boolean isCacheExpiredTimeSet() {
+    	return (this.cacheExpiredTime != -1);
+    }
+    
     public CacheMode getCacheMode() {
         return cacheMode;
     }

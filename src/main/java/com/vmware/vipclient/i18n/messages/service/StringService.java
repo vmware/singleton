@@ -41,22 +41,18 @@ public class StringService {
     	} else { // Item is not in cache
     		// Create a new HashMap to store cache properties.
     		cacheOfComponent = populateCache(new HashMap<String, Object>(), cacheService, dto);
-       } 
-       return (cacheOfComponent == null || cacheOfComponent.get(key) == null ? "" : cacheOfComponent.get(key));
+    	} 
+    	return (cacheOfComponent == null || cacheOfComponent.get(key) == null ? "" : cacheOfComponent.get(key));
     }
     
 	private void populateCacheTask(Map<String, Object> cacheProps, final CacheService cacheService, MessagesDTO dto) {
 		Runnable task = () -> {
-			boolean running = true;
-	    	while (running) {
-	    		try {
-			    	// Use the cacheProps that is already in the cache.
-			    	populateCache(cacheProps, cacheService, dto);
-	    		} finally { // To make sure that the thread will close
-			    	running = false;
-			    }
-	    	}
-		    
+    		try {
+		    	// Use the cacheProps that is already in the cache.
+		    	populateCache(cacheProps, cacheService, dto);
+    		} finally { // To make sure that the thread will close
+		    	return;
+		    }
 		};
 		new Thread(task).start();
 	}
