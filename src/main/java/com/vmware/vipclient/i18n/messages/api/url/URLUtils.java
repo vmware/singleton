@@ -67,21 +67,17 @@ public class URLUtils {
         return false;
     }
     
-    public static void addIfNoneMatchHeader(Map<String, Object> cacheProps, final HttpRequester requester) {
+    public static void addIfNoneMatchHeader(Map<String, Object> cacheProps, Map<String, String> headers) {
     	if (cacheProps != null && !cacheProps.isEmpty()) {
         	Map<String, List<String>> responseHeaders = (Map<String, List<String>>) cacheProps.get(HEADERS);
         	if (responseHeaders != null) {
 	        	List<String> etags = (List<String>) responseHeaders.get(ETAG);
         		String ifNoneMatch = createIfNoneMatchValue(etags);
-        		if (ifNoneMatch != null) {
-        			Map<String, String> headers = new HashMap<String, String>();
-        			headers.put(IF_NONE_MATCH_HEADER,ifNoneMatch);
-        			requester.setCustomizedHeaderParams(headers);
-        			return;
+        		if (ifNoneMatch != null) {	
+        			headers.put(IF_NONE_MATCH_HEADER,ifNoneMatch);        			
         		}
         	}
         }
-        requester.removeCustomizedHeaderParams(IF_NONE_MATCH_HEADER);
     }
     
     public static Long getMaxAgeMillis(Map<String, List<String>> responseHeaders) {

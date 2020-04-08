@@ -13,7 +13,7 @@ import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 
 public class MessageCache implements Cache {
     private String                           id                  = "cache-default";
-
+ 
     private long                             expiredTime         = 864000000;                                       // 240hr
     private long                             lastClean           = System.currentTimeMillis();
 
@@ -64,7 +64,7 @@ public class MessageCache implements Cache {
     	if (responseTimeStamp == null) {
     		return true;
     	}
-    	Long maxAgeMillis = Long.MIN_VALUE;
+    	Long maxAgeMillis = this.getExpiredTime();
     	long maxAgeFromConfig = VIPCfg.getInstance().getCacheExpiredTime(); 
     	if (maxAgeFromConfig != VIPCfg.cacheExpiredTimeNotSet) { // If maxAgeFromConfig is present, use it instead of response header max age
     		maxAgeMillis = maxAgeFromConfig;

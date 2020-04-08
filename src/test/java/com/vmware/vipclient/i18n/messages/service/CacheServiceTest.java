@@ -222,12 +222,15 @@ public class CacheServiceTest extends BaseTestClass {
         
         // Give time for the separate thread to finish.
         try {
-			Thread.sleep(10000);
+			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    
+        
+        // Set cacheExpiredTime back to default.
+         VIPCfg.getInstance().setCacheExpiredTime(c.getExpiredTime());
+         
         // Third request for the same message.
         // This should fetch messages and properties from cache 
         translation.getString(locale, component, key, source, comment, args);
