@@ -50,7 +50,9 @@ public class StringService {
     		try {
 		    	// Use the cacheProps that is already in the cache.
 		    	populateCache(cacheProps, cacheService, dto);
-    		} finally { // To make sure that the thread will close
+    		} catch (Exception e) { 
+    			// To make sure that the thread will close 
+    			// even when an exception is thrown
 		    	return;
 		    }
 		};
@@ -66,7 +68,6 @@ public class StringService {
 		
 		//Store the CacheItem object in cache
 		cacheService.addCacheOfComponent(new CacheItem (cacheOfComponent, cacheProps));
-		
 		return cacheOfComponent;
     }
 
