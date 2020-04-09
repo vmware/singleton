@@ -57,12 +57,7 @@ public class HttpRequester {
     private Map<String, String> commonHeaderParams = null;
 
     public void setCustomizedHeaderParams(Map<String, String> params) {
-    	if (params!=null && !params.isEmpty()) {
-    		if (commonHeaderParams == null) {
-    			commonHeaderParams = new HashMap<String, String>();
-    		}
-    		commonHeaderParams.putAll(params);
-    	} 
+    	commonHeaderParams = params; 
     }
     
     
