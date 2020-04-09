@@ -6,6 +6,7 @@ package com.vmware.vipclient.i18n.messages.api.opt.server;
 
 import java.net.HttpURLConnection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
@@ -13,7 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.base.HttpRequester;
+import com.vmware.vipclient.i18n.base.cache.CacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
 import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
@@ -29,22 +30,33 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
         this.dto = dto;
     }
 
-    public Map<String, Object> getComponentMessages(Map<String, Object> cacheProps) {
+    public void getComponentMessages(CacheItem cacheItem) {
         String url = V2URL.getComponentTranslationURL(this.dto,
                 VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
         if (ConstantsKeys.LATEST.equals(this.dto.getLocale())) {
             url = url.replace("pseudo=false", "pseudo=true");
         }
-        HttpRequester requester = VIPCfg.getInstance().getVipService().getHttpRequester();
-        Map<String, String> headers = new HashMap<String, String>();
-        URLUtils.addIfNoneMatchHeader (cacheProps, headers);
-        Map<String, Object> response = requester.request(url, ConstantsKeys.GET,
-        		null, headers);
         
-        return response;
+        Map<String, String> headers = new HashMap<String, String>();
+        if (cacheItem.getEtag() != null)
+        	headers.put(URLUtils.IF_NONE_MATCH_HEADER, cacheItem.getEtag());
+        
+        Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester()
+        		.request(url, ConstantsKeys.GET,null, headers);
+        
+        if (response.get(URLUtils.HEADERS) != null)
+        	cacheItem.setEtag(URLUtils.createEtagString((Map<String, List<String>>) response.get(URLUtils.HEADERS)));
+        if (response.get(URLUtils.RESPONSE_TIMESTAMP) != null)
+        	cacheItem.setTimestamp((long) response.get(URLUtils.RESPONSE_TIMESTAMP) );
+        if (response.get(URLUtils.MAX_AGE_MILLIS) != null)
+        	cacheItem.setMaxAgeMillis((Long) response.get(URLUtils.MAX_AGE_MILLIS));
+        Map<String,String> messages = this.getMsgsJson(response);
+        if (messages != null) {
+        	cacheItem.addCachedData(messages);
+        }
     }
 
-    public JSONObject getMsgsJson(Map<String, Object> response) {
+    private JSONObject getMsgsJson(Map<String, Object> response) {
     	if (response != null && response.get(URLUtils.RESPONSE_CODE) != null 
     			&& response.get(URLUtils.RESPONSE_CODE).equals(HttpURLConnection.HTTP_OK)) {
 	    	String responseStr = (String) response.remove(URLUtils.BODY);
@@ -65,12 +77,11 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
     }
     
     public String getString() {
-    	Map<String, Object> response = this.getComponentMessages(null);
+    	CacheItem cacheItem = new CacheItem();
+    	this.getComponentMessages(cacheItem);
 		
-		JSONObject jo = this.getMsgsJson(response);
-		String k = this.dto.getKey();
-        Object v = jo.get(k);
-        return (v == null ? "" : (String) v);
+		String message = cacheItem.getCachedData().get(this.dto.getKey());
+        return (message == null ? "" : message);
     }
 
     public String postString() {

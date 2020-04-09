@@ -36,20 +36,26 @@ public class StringService {
     		cacheOfComponent = cacheItem.getCachedData();
     		if (cacheService.isExpired()) { // cacheItem has expired
     			// Update the cache in a separate thread
-    			populateCacheTask(cacheItem.getCacheProperties(), cacheService, dto); 		
+    			populateCacheTask(cacheService, dto, cacheItem); 		
     		}
     	} else { // Item is not in cache
-    		// Create a new HashMap to store cache properties.
-    		cacheOfComponent = populateCache(new HashMap<String, Object>(), cacheService, dto);
+    		// Create a new cacheItem object to be stored in cache
+    		CacheItem cacheItem = new CacheItem();
+    		
+    		cacheOfComponent = populateCache(cacheService, dto, cacheItem);
+    		
+    		if (cacheOfComponent != null) {
+    			cacheService.addCacheOfComponent(cacheItem);
+    		}
     	} 
     	return (cacheOfComponent == null || cacheOfComponent.get(key) == null ? "" : cacheOfComponent.get(key));
     }
     
-	private void populateCacheTask(Map<String, Object> cacheProps, final CacheService cacheService, MessagesDTO dto) {
+	private void populateCacheTask(final CacheService cacheService, MessagesDTO dto, CacheItem cacheItem) {
 		Runnable task = () -> {
     		try {
 		    	// Use the cacheProps that is already in the cache.
-		    	populateCache(cacheProps, cacheService, dto);
+		    	populateCache(cacheService, dto, cacheItem);
     		} catch (Exception e) { 
     			// To make sure that the thread will close 
     			// even when an exception is thrown
@@ -59,16 +65,14 @@ public class StringService {
 		new Thread(task).start();
 	}
 	
-	private Map<String, String> populateCache(Map<String, Object> cacheProps, 
-			CacheService cacheService, MessagesDTO dto) {
-    	// Pass cacheProps to getMessages so that:
-		// 1. A previously stored ETag, if any, can be used for the next HTTP request.
-		// 2. Cached properties can be refreshed with new properties from the next HTTP response.	
-		Map<String, String>  cacheOfComponent = new ComponentService(dto).getMessages(cacheProps);
+	private Map<String, String> populateCache(CacheService cacheService, MessagesDTO dto, CacheItem cacheItem) {
+    	// Pass cacheitem to getMessages so that:
+		// 1. A previously stored etag, if any, can be used for the next HTTP request.
+		// 2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed 
+		// 	 with new properties from the next HTTP response.	
+		new ComponentService(dto).getMessages(cacheItem);
 		
-		//Store the CacheItem object in cache
-		cacheService.addCacheOfComponent(new CacheItem (cacheOfComponent, cacheProps));
-		return cacheOfComponent;
+		return cacheItem.getCachedData();
     }
 
     public String postString(MessagesDTO dto) {
@@ -132,7 +136,7 @@ public class StringService {
                     }
                 }
                 
-                c.addCacheOfStatus(m, new HashMap<String, Object>());
+                c.addCacheOfStatus(m);
 
             }
             r = "1".equalsIgnoreCase(status);

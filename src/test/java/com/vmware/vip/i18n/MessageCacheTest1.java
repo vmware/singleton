@@ -20,7 +20,6 @@ import com.vmware.vipclient.i18n.base.cache.CacheItem;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
-import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.CacheService;
 
@@ -105,12 +104,12 @@ public class MessageCacheTest1 extends BaseTestClass {
         String v = "It's a test";
         data.put(k, v);
         String cachedKey = "key";
-        Map<String, Object> cacheProps = new HashMap<String, Object>();
-        cacheProps.put(URLUtils.RESPONSE_TIMESTAMP, System.currentTimeMillis());
-        c.put(cachedKey, new CacheItem(data, cacheProps));
+        CacheItem cacheItem = new CacheItem(data);
+        c.put(cachedKey, cacheItem);
+        cacheItem.setTimestamp(System.currentTimeMillis());
         long expired = 20000;
         c.setExpiredTime(expired);
-        CacheItem cacheItem = c.get(cachedKey);
+        cacheItem = c.get(cachedKey);
         Assert.assertNotNull(cacheItem);
         Map cachedData = cacheItem.getCachedData();
         assertTrue(!c.isExpired(cachedKey));

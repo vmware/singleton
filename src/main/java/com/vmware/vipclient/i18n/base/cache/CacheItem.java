@@ -12,11 +12,13 @@ public class CacheItem {
 		
 	}
 	
-	public CacheItem (Map<String, String> dataMap, final Map<String, Object> cacheProps) {
+	public CacheItem (Map<String, String> dataMap, String etag, long timestamp, Long maxAgeMillis) {
 		super();
 		if (dataMap != null) 
 			this.addCachedData(dataMap);
-		this.addCacheProperties(cacheProps);
+		this.etag = etag;
+		this.timestamp = timestamp;
+		this.maxAgeMillis = maxAgeMillis;
 	}
 	
 	public CacheItem (Map<String, String> dataMap) {
@@ -26,40 +28,47 @@ public class CacheItem {
 	}
 	
 	private final Map<String, String> cachedData = new HashMap<String, String>();
+	private String etag;
+	private long timestamp;
+	private Long maxAgeMillis;
+	
+	public void addCachedData(Map<String, String> cachedData) {
+		this.cachedData.putAll(cachedData);
+	}
+	
+	public void addCacheItem (CacheItem cacheItem) {
+		this.addCachedData(cacheItem.getCachedData());
+		this.etag = cacheItem.etag;
+		this.timestamp = cacheItem.timestamp;
+		this.maxAgeMillis = cacheItem.maxAgeMillis;
+	}
+		
+	public String getEtag() {
+		return etag;
+	}
 
-	/*
-	 * A map of properties associated to the cachedData (e.g. etag and cache control)
-	 * This map is optional and will not be instantiated if not needed.
-	 */
-	private Map<String, Object> cacheProperties;
+	public void setEtag(String etag) {
+		this.etag = etag;
+	}
+
+	public long getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(long timestamp) {
+		this.timestamp = timestamp;
+	}
     
     public Map<String, String> getCachedData() {
 		return cachedData;
 	}
-    
-    public void addCachedData(Map<String, String> cachedData) {
-		this.cachedData.putAll(cachedData);
+
+	public Long getMaxAgeMillis() {
+		return maxAgeMillis;
 	}
-    
-	public Map<String, Object> getCacheProperties() {
-		return cacheProperties;
-	}
-	
-	public void addCacheProperties(Map<String, Object> cacheProperties) {
-		synchronized(this) {
-			if (this.cacheProperties == null) {
-				this.cacheProperties = new HashMap<String, Object>();
-			}
-		}
-		if (cacheProperties != null) {
-			this.cacheProperties.putAll(cacheProperties);
-		}
-		
-	}
-	
-	public void addCacheDataAndProperties (CacheItem cacheItem) {
-		this.addCacheProperties(cacheItem.getCacheProperties());
-		this.addCachedData(cacheItem.getCachedData());
+
+	public void setMaxAgeMillis(Long maxAgeMillis) {
+		this.maxAgeMillis = maxAgeMillis;
 	}
 	
 }

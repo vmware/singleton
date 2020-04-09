@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Set;
 
 import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 
 public class MessageCache implements Cache {
     private String                           id                  = "cache-default";
@@ -66,14 +65,13 @@ public class MessageCache implements Cache {
     		return true;
     	}
     	
-    	Map<String,Object> cacheProps = cacheItem.getCacheProperties();
-    	Long responseTimeStamp = (Long) cacheProps.get(URLUtils.RESPONSE_TIMESTAMP);
+    	Long responseTimeStamp = (Long) cacheItem.getTimestamp();
     	if (responseTimeStamp == null) {
     		return true;
     	}
     	
     	Long maxAgeMillis = this.getExpiredTime();
-    	Long maxAgeResponse = (Long) cacheProps.get(URLUtils.MAX_AGE_MILLIS);
+    	Long maxAgeResponse = cacheItem.getMaxAgeMillis();
     	if (maxAgeResponse != null) {
     		maxAgeMillis = maxAgeResponse;
     	}
@@ -114,7 +112,7 @@ public class MessageCache implements Cache {
 	    		if (cacheItem == null) {
 	    			cachedComponentsMap.put(cacheKey, itemToCache);
 	    		} else {
-	    			cacheItem.addCacheDataAndProperties(itemToCache);
+	    			cacheItem.addCacheItem(itemToCache);
 	    		}
 	        }
     	}

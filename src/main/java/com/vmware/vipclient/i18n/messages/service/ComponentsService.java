@@ -78,8 +78,8 @@ public class ComponentsService {
 
         // Query from server.
         final ComponentsBasedOpt opt = new ComponentsBasedOpt(this.cfg);
-        Map<String, Object> cacheProps = new HashMap<String, Object>();
-        JSONObject response = opt.queryFromServer(componentsToQuery, localesToQuery, cacheProps);
+        CacheItem cacheItem = new CacheItem();
+        JSONObject response = opt.queryFromServer(componentsToQuery, localesToQuery, cacheItem);
 		final JSONArray bundles = (JSONArray) opt.getDataPart(response).get(ConstantsKeys.BUNDLES);
         final JSONArray localesFromServer = (JSONArray) opt.getDataPart(response).get(ConstantsKeys.LOCALES);
         final Map<String, String> localeMap = this.makeLocaleMap(localesToQuery, localesFromServer);
@@ -96,8 +96,8 @@ public class ComponentsService {
             final MessagesDTO dto = new MessagesDTO();
             dto.setComponent(comp);
             dto.setLocale(locale);
-                     
-            new CacheService(dto).addCacheOfComponent(new CacheItem(messages, cacheProps));
+            new CacheService(dto).addCacheOfComponent(new CacheItem(messages, cacheItem.getEtag(), 
+            		cacheItem.getTimestamp(), cacheItem.getMaxAgeMillis()));
 
             // update map to return.
             dataMap.get(locale).put(comp, messages);

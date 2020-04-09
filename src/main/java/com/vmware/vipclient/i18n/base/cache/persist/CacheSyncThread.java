@@ -10,6 +10,7 @@ import java.util.Set;
 import org.json.simple.JSONObject;
 
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.base.cache.CacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 
@@ -43,17 +44,9 @@ public class CacheSyncThread extends Thread {
     }
 
     private String fetch(MessagesDTO dto) {
-    	Map<String, Object> response = null;
-			
-        String r = "";
-        ComponentBasedOpt opt = new ComponentBasedOpt(dto);
-		response = opt.getComponentMessages(null);
-		JSONObject	jo = opt.getMsgsJson(response);
-		
-        if (jo != null) {
-            r = jo.toJSONString();
-        }
-        return r;
+        CacheItem cacheItem = new CacheItem();
+        new ComponentBasedOpt(dto).getComponentMessages(cacheItem);
+		return cacheItem.getCachedData().toString();
     }
 
 }

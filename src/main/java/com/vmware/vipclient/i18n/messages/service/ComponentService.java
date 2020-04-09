@@ -39,18 +39,13 @@ public class ComponentService {
      * (com.vmware.vipclient.i18n.base.DataSourceEnum)
      */
     @SuppressWarnings("unchecked")
-    public Map<String, String> getMessages(final Map<String, Object> cacheProps) {
-        Map<String, String> transMap = new HashMap<String, String>();
+    public void getMessages(final CacheItem cacheItem) {
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
         	ComponentBasedOpt opt = new ComponentBasedOpt(dto);
-        	Map<String, Object> response = opt.getComponentMessages(cacheProps);
-	    	transMap = opt.getMsgsJson(response);
-	    	cacheProps.clear();
-	    	cacheProps.putAll(response);
+        	opt.getComponentMessages(cacheItem);
         } else if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.Bundle) {
-            transMap = new LocalMessagesOpt(dto).getComponentMessages();
+        	cacheItem.addCachedData(new LocalMessagesOpt(dto).getComponentMessages());
         }
-        return transMap;
     }
 
     public Map<String, String> getComponentTranslation() {
@@ -68,15 +63,13 @@ public class ComponentService {
 	            	return cachedMessages;
 	        }
 	        
-			// Prepare a HashMap 'cacheProps' to store cache properties
-			Map<String, Object> cacheProps = new HashMap<String, Object>();
-			// Pass this cacheProps to getMessages so that it will be populated from the http request
-			Map<String, String> cachedMessages = this.getMessages(cacheProps);
+			// Prepare a new CacheItem to store cache properties
+	        CacheItem cacheItem = new CacheItem();
+			// Pass this cacheItem to getMessages so that it will be populated from the http request
+			this.getMessages(cacheItem);
 			// Store the messages and properties in cache using a single CacheItem object
-			cs.addCacheOfComponent(new CacheItem (cachedMessages, cacheProps));
-			
-			return cachedMessages;
-	        
+			cs.addCacheOfComponent(cacheItem);
+			return cacheItem.getCachedData(); 
         }
     }
 

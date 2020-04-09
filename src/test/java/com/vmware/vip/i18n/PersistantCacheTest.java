@@ -5,17 +5,16 @@
 package com.vmware.vip.i18n;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 import org.junit.Before;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
+import com.vmware.vipclient.i18n.base.cache.CacheItem;
 import com.vmware.vipclient.i18n.base.cache.CacheMode;
 import com.vmware.vipclient.i18n.base.cache.MessageCache2;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
-import com.vmware.vipclient.i18n.base.cache.CacheItem;
 import com.vmware.vipclient.i18n.base.cache.persist.CacheSyncThreadPool;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
@@ -63,8 +62,8 @@ public class PersistantCacheTest extends BaseTestClass {
                 cacheDTO.setSource(source);
                 map2.put(key, source);
             }
-            Map<String, Object> cacheProps = new HashMap<String, Object>();
-            cacheService.addCacheOfComponent(new CacheItem(map2, cacheProps));
+            CacheItem cacheItem = new CacheItem(map2);
+            cacheService.addCacheOfComponent(cacheItem);
             Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
             logger.debug(String.valueOf(c.size()));
         }

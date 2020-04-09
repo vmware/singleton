@@ -64,7 +64,7 @@ public class CacheService {
             	cacheItem = new CacheItem();
             	c.put(cacheKey, cacheItem);
             }
-            cacheItem.addCacheDataAndProperties(itemToCache);
+            cacheItem.addCacheItem(itemToCache);
         }
     }
 
@@ -100,11 +100,11 @@ public class CacheService {
         return null;
     }
 
-    public void addCacheOfStatus(Map<String, String> dataMap, Map<String, Object> cacheProps) {
+    public void addCacheOfStatus(Map<String, String> dataMap) {
         String cacheKey = dto.getTransStatusAsCacheKey();
         Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
         if (c != null) {
-            c.put(cacheKey, new CacheItem(dataMap, cacheProps));
+            c.put(cacheKey, new CacheItem(dataMap));
         }
     }
 
