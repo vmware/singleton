@@ -49,4 +49,4 @@ jobs:
               echo "No need to check sonar quality gate for only travis configuration updates"
               exit
             }
-            cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-singleton-go-client-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
+            cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-singleton-csharp-client-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
