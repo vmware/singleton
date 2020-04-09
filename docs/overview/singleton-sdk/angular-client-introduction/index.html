@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-03-05T17:12:13 CST">
+<meta name="revised" content="2020-04-08T21:16:54 PDT">
 <title>Angular Client Introduction :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -200,6 +200,13 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/go-client-introduction/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/go-client-introduction/">
+            Go Client Introduction
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
         </ul>
     </li>
         </ul>
@@ -289,6 +296,7 @@
       <option value="/docs/overview/singleton-sdk/angular-client-introduction/"  selected>--- Angular Client Introduction</option>
       <option value="/docs/overview/singleton-sdk/csharp-client-introduction/" >--- C# Client Introduction</option>
       <option value="/docs/overview/singleton-sdk/python-client-introduction/" >--- Python Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/go-client-introduction/" >--- Go Client Introduction</option>
   
   
     <option value="/docs/tutorials/" >
@@ -321,34 +329,64 @@
     
     
     
-    <p>The Singleton Angular Client is a Singleton Service-based library used for SW i18n. Unlike the Singleton JavaScript Client mentioned earlier, the Angular Client is an end-to-end solution that includes specific data loading methods and the Angular-specific template API support. The Singleton Angular Client now supports the Angular 7.x.</p>
+    
+
+<p>The Singleton Angular Client is a Singleton Service-based library used for SW i18n. Unlike the Singleton JavaScript Client mentioned earlier, the Angular Client is an end-to-end solution that includes specific data loading methods and the Angular-specific template API support. The Singleton Angular Client now supports the Angular 7.x.</p>
+
 <h2 id="features-overview"><strong>Features Overview</strong></h2>
+
 <p>Getting and managing locales.</p>
+
 <p>Loading i18n resources, including lazy loading mode.</p>
+
 <p>Providing support for the l10n of individual components.</p>
+
 <p>Loading the local translation resource files (for environments without Singleton Service).</p>
+
 <p>Formatting the data: Formatting the date and time, number, and currency as defined in <a href="https://www.unicode.org/reports/tr35/tr35-dates.html">CLDR</a> is supported at this time.</p>
+
 <p>Formatting the string, including the singular and plural variations.</p>
+
 <p>Providing support for pseudo translation, mainly for integration testing and local debugging.</p>
+
 <p>Collecting source language strings in bulk.</p>
+
 <h1 id="introducing-modules"><strong>Introducing Modules</strong></h1>
+
 <h3 id="getting-and-managing-locales">Getting and managing locales</h3>
+
 <p>A locale includes two parts: language and region.</p>
+
 <p>Language determines the translations to be shown in the current user interface, as well as rules to deal with singular and plural variations.</p>
+
 <p>The combination of language and region determines how strings like the current date and time, number, and currency are shown.</p>
+
 <h3 id="defining-components">Defining components</h3>
+
 <p>Singleton provides a parameter named &ldquo;component&rdquo; to organize strings to be translated. For products with a large data volume, it is recommended to manage resources by component. Components can be categorized by function modules, or front-end/back-end attributes, provided that a component does not contain more than 5,000 strings.</p>
+
 <h3 id="loading-i18n-data">Loading i18n data</h3>
+
 <p>The i18n data (i.e. the information required for translation and data formatting) can be extracted according to the product information and the locale setting. Data can be loaded in a customized way according to the project size and the module attributes. If the project is small, you can load all the resources at once before the application starts. Otherwise, you can load the translations in the lazy loading mode of the module.</p>
+
 <h3 id="translation-tool">Translation tool</h3>
+
 <p>The Singleton Angular Client provides pipes and directives to localize the UI by converting key-value pairs to strings according to the current language setting.</p>
+
 <h3 id="data-formatting-tool">Data formatting tool</h3>
+
 <p>The Singleton Angular Client provides pipes to format such data as the date and time, number and currency, among others, according to the current region settings.</p>
+
 <h2 id="apis-available"><strong>APIs Available</strong></h2>
+
 <h3 id="import-modules"><strong>Import Modules</strong></h3>
+
 <h5 id="extract-the-source-language-strings-into-resource-files">Extract the source language strings into resource files</h5>
+
 <p>Extract all source language strings into resource files. The resource file contains an object named ENGLISH, where all source strings are stored as key-value pairs. The resource file should be named with the suffix &ldquo;.l10n.ts&rdquo;, to help collect source language strings in bulk with a script.</p>
+
 <p>Example:  source.l10n.ts</p>
+
 <pre><code>export const ENGLISH = {
 
     'app.title': 'Hello, world! ',
@@ -356,236 +394,311 @@
     'plural.apples': '{0, one{ # apple}  other{ # apples} }'
 
 };
-</code></pre><h5 id="importing-the-singleton-angular-client-module">Importing the Singleton Angular Client module</h5>
+</code></pre>
+
+<h5 id="importing-the-singleton-angular-client-module">Importing the Singleton Angular Client module</h5>
+
 <p>Import VIPModule and other dependencies.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">HttpClientModule</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@angular/common/http&#39;</span>;
 
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">VIPModule</span>, <span style="color:#a6e22e">VIPService</span>, <span style="color:#a6e22e">LocaleService</span>, <span style="color:#a6e22e">PatternCategories</span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@vmw/ngx-vip&#39;</span>;
+<pre><code class="language-javascript">import { HttpClientModule } from '@angular/common/http';
 
-<span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">NgModule</span>({
+import { VIPModule, VIPService, LocaleService, PatternCategories} from '@vmw/ngx-vip';
 
-       <span style="color:#a6e22e">imports</span><span style="color:#f92672">:</span> [
+@NgModule({
 
-              <span style="color:#a6e22e">HttpClientModule</span>
+       imports: [
 
-              <span style="color:#a6e22e">VIPModule</span>.<span style="color:#a6e22e">forRoot</span>()
+              HttpClientModule
 
-              <span style="color:#960050;background-color:#1e0010">…</span>
+              VIPModule.forRoot()
+
+              …
 
        ],
 
-       <span style="color:#960050;background-color:#1e0010">…</span>
+       …
 
 });
-</code></pre></div><h3 id="heading"></h3>
+</code></pre>
+
 <h3 id="getting-and-managing-locales-1"><strong>Getting and managing locales</strong></h3>
+
 <h5 id="getting-locales-in-two-ways">Getting locales in two ways</h5>
+
 <p>Getting the language and region settings in the browser</p>
+
 <p>API: getBrowserCultureLang (): string</p>
+
 <p>Return value</p>
+
 <p>The language and region settings used by the browser</p>
-<p>Example</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">getBrowserCultureLang</span>  } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@vmw/ngx-vip&#39;</span>;
 
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">locale</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getBrowserCultureLang</span>(); <span style="color:#75715e">// eg: zh-CN
-</span></code></pre></div><p>Get the languages and regions supported by the product from Singleton Service</p>
+<p>Example</p>
+
+<pre><code class="language-javascript">import { getBrowserCultureLang  } from '@vmw/ngx-vip';
+
+const locale = getBrowserCultureLang(); // eg: zh-CN
+</code></pre>
+
+<p>Get the languages and regions supported by the product from Singleton Service</p>
+
 <p>Get the list of languages supported by the product</p>
-<p>API: getSupportedLanguages(): Promise<!-- raw HTML omitted --></p>
+
+<p>API: getSupportedLanguages(): Promise<languagesList></p>
+
 <p>Return value</p>
+
 <p>The list of languages supported.</p>
+
 <p>Get the list of regions supported by the product</p>
-<p>API: getSupportedRegions(language: string): Promise<!-- raw HTML omitted --></p>
+
+<p>API: getSupportedRegions(language: string): Promise<regionsList></p>
+
 <p>Parameters</p>
+
 <p>language: (required), to indicate the language for the current use, which is used to show the list of regions returned.</p>
+
 <p>Return value</p>
+
 <p>The list of regions shown in the language specified in &ldquo;language&rdquo;.</p>
+
 <p>Example</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#960050;background-color:#1e0010">…</span>
 
-<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">i18nService</span>. <span style="color:#a6e22e">getSupportedLanguages</span>().<span style="color:#a6e22e">then</span>(
+<pre><code class="language-javascript">…
 
-    (<span style="color:#a6e22e">languageList</span>) =&gt; { <span style="color:#66d9ef">this</span>. <span style="color:#a6e22e">languageList</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">languageList</span>; }
+this.i18nService. getSupportedLanguages().then(
 
-    <span style="color:#75715e">// eg: [ { &#39;displayName&#39;: &#39;français&#39;, languageTag: &#39;fr&#39; } ]
-</span><span style="color:#75715e"></span>
+    (languageList) =&gt; { this. languageList = languageList; }
+
+    // eg: [ { 'displayName': 'français', languageTag: 'fr' } ]
+
 );
 
-<span style="color:#960050;background-color:#1e0010">…</span>
+…
 
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">currentLanguage</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">getItem</span>(<span style="color:#e6db74">&#39;currentLanguage&#39;</span>);
+const currentLanguage = localStorage.getItem('currentLanguage');
 
-<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">i18nService</span>. <span style="color:#a6e22e">getSupportedRegions</span>(<span style="color:#a6e22e">currentLanguage</span>).<span style="color:#a6e22e">then</span>(
+this.i18nService. getSupportedRegions(currentLanguage).then(
 
-(<span style="color:#a6e22e">regionList</span>) =&gt; { <span style="color:#66d9ef">this</span>. <span style="color:#a6e22e">regionList</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">regionList</span>;
+(regionList) =&gt; { this. regionList = regionList;
 
-    <span style="color:#75715e">// eg: [ [ &#39;FR&#39;: &#39;France&#39;], [ &#39;GE&#39;: &#39;Géorgie&#39; ] ]
-</span><span style="color:#75715e"></span>
+    // eg: [ [ 'FR': 'France'], [ 'GE': 'Géorgie' ] ]
+
 });
 
-<span style="color:#960050;background-color:#1e0010">…</span>
-</code></pre></div><h5 id="set-up-the-locale">Set up the locale</h5>
+…
+</code></pre>
+
+<h5 id="set-up-the-locale">Set up the locale</h5>
+
 <p>Three methods are available to set up the locale, language, and region. When setLocale is used alone in the product, and there is only one parameter, the language is used to request translations, and the returned value for data formatting is the data required for formatting in the default region of the current language.</p>
+
 <p>Set up the locale</p>
+
 <p>Method: setCurrentLocale (languageTag: string, regionCode?: string, silentMode?: boolean = false)</p>
+
 <p>Parameters</p>
+
 <p>language: string (required), to indicate the language</p>
+
 <p>region: string (optional) to indicate the region</p>
+
 <p>silentMode: : Boolean (optional) the default value is false. When the locale of the page is changed, an event is triggered to update the translation on this page. However, when the application is initialized, this method is used to set the initial language and region only, without any event triggered. and the silentMode value is set to true.</p>
+
 <p>Set up the language</p>
+
 <p>Methods: setCurrentLanguage(languageTag: string)</p>
+
 <p>Parameters:</p>
+
 <p>languageTag: string (required), to indicate the language</p>
+
 <p>Set up the region</p>
+
 <p>Methods: setCurrentRegion(regionCode: string)</p>
+
 <p>Parameters</p>
+
 <p>regionCode: string (required), to indicate the region</p>
+
 <p>Example</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">LocaleService</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@vmw/ngx-vip&#39;</span>;
 
-<span style="color:#960050;background-color:#1e0010">…</span>
+<pre><code class="language-javascript">import { LocaleService } from '@vmw/ngx-vip';
 
-<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">localeService</span>.<span style="color:#a6e22e">setCurrentLocale</span>(<span style="color:#e6db74">&#39;en&#39;</span>, <span style="color:#e6db74">&#39;US&#39;</span>);
+…
 
-<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">localeService</span>.<span style="color:#a6e22e">setCurrentLanguage</span> (<span style="color:#e6db74">&#39;en&#39;</span>);
+this.localeService.setCurrentLocale('en', 'US');
 
-<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">localeService</span>.<span style="color:#a6e22e">setCurrentRegion</span> (<span style="color:#e6db74">&#39;US&#39;</span>);
+this.localeService.setCurrentLanguage ('en');
 
-<span style="color:#960050;background-color:#1e0010">…</span>
-</code></pre></div><h3 id="loading-i18n-data-1"><strong>Loading I18N Data</strong></h3>
+this.localeService.setCurrentRegion ('US');
+
+…
+</code></pre>
+
+<h3 id="loading-i18n-data-1"><strong>Loading I18N Data</strong></h3>
+
 <p>Load the i18n resources from Singleton Service according to the product information and the initial language and region.</p>
+
 <h5 id="initializing-the-configuration-items">Initializing the Configuration Items</h5>
+
 <p>Parameters</p>
+
 <p>productId: string (required), to indicate the product name</p>
+
 <p>component: string (required), to indicate the component name</p>
+
 <p>version: string (required), to indicate the release number</p>
-<p>host: string (required), to indicate the Singleton server address. Example: http://localhost:8090</p>
+
+<p>host: string (required), to indicate the Singleton server address. Example: <a href="http://localhost:8090">http://localhost:8090</a></p>
+
 <p>isPseudo: boolean (optional) , to indicate whether the pseudo translation is used. Setting to true specifies that the pseudo translation shall be returned, regardless of whether the translated string is here. The default value is false.</p>
-<p>i18nScope: PatternCategories [ ] (optional), to indicate the scope for i18n support. The default value is empty.</p>
+
+<p>i18nScope: PatternCategories <a href="optional"> </a>, to indicate the scope for i18n support. The default value is empty.</p>
+
 <ul>
 <li>PatternCategories.DATE, to indicate the date and time format</li>
 <li>PatternCategories.NUMBER, to indicate the number and percentage format</li>
 <li>PatternCategories.CURRENCIES, to indicate the currency format</li>
 </ul>
+
 <p>sourceBundle: {[key: string]: string} (optional), which is a collection of all source language strings. It is recommended to extract these strings into separate js/ts files</p>
+
 <p>To ensure that every key (key name) is unique in the project, the following naming convention is recommended for keys: &lsquo;namespace.moduleName&rsquo;</p>
+
 <p>timeout: number (optional), to limit the time duration of the request, the default value is 3,000ms</p>
+
 <p>Example</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">config</span> <span style="color:#f92672">=</span> {
 
-  <span style="color:#a6e22e">productID</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;vipngxsample&#39;</span>,
+<pre><code class="language-javascript">const config = {
 
-  <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;default&#39;</span>,
+  productID: 'vipngxsample',
 
-  <span style="color:#a6e22e">version</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;1.0.0&#39;</span>,
+  component: 'default',
 
-  <span style="color:#a6e22e">host</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;https://localhost:8090/&#39;</span>, 
+  version: '1.0.0',
 
-  <span style="color:#a6e22e">i18nScope</span><span style="color:#f92672">:</span> [
+  host: 'https://localhost:8090/', 
 
-      <span style="color:#a6e22e">PatternCategories</span>.<span style="color:#a6e22e">DATE</span>,
+  i18nScope: [
 
-      <span style="color:#a6e22e">PatternCategories</span>.<span style="color:#a6e22e">NUMBER</span>,
+      PatternCategories.DATE,
 
-      <span style="color:#a6e22e">PatternCategories</span>.<span style="color:#a6e22e">CURRENCIES</span>
+      PatternCategories.NUMBER,
+
+      PatternCategories.CURRENCIES
 
   ],
 
-  <span style="color:#a6e22e">isPseudo</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+  isPseudo: false,
 
-  <span style="color:#a6e22e">sourceBundle</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ENGLISH</span>,
+  sourceBundle: ENGLISH,
 
-  <span style="color:#a6e22e">timeout</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5000</span>
+  timeout: 5000
 
 };
-</code></pre></div><h5 id="blocking-loading">Blocking Loading</h5>
-<p>Implement the blocking loading with Angular&rsquo;s &lsquo;APP-INITIALIZER&rsquo; API.</p>
-<p>Example</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">NgModule</span>, <span style="color:#a6e22e">APP_INITIALIZER</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@angular/core&#39;</span>;
+</code></pre>
 
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">VIPModule</span>, <span style="color:#a6e22e">VIPService</span>, <span style="color:#a6e22e">LocaleService</span>, <span style="color:#a6e22e">PatternCategories</span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@vmw/ngx-vip&#39;</span>;
+<h5 id="blocking-loading">Blocking Loading</h5>
+
+<p>Implement the blocking loading with Angular&rsquo;s &lsquo;APP-INITIALIZER&rsquo; API.</p>
+
+<p>Example</p>
+
+<pre><code class="language-javascript">import { NgModule, APP_INITIALIZER } from '@angular/core';
+
+import { VIPModule, VIPService, LocaleService, PatternCategories} from '@vmw/ngx-vip';
 
  
 
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">initI18nData</span>(<span style="color:#a6e22e">service</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">VIPService</span>, <span style="color:#a6e22e">localeService</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">LocaleService</span>){
+export function initI18nData(service: VIPService, localeService: LocaleService){
 
-          <span style="color:#a6e22e">localeService</span>.<span style="color:#a6e22e">setCurrentLocale</span>(<span style="color:#e6db74">&#39;zh-Hans&#39;</span>, <span style="color:#e6db74">&#39;CN&#39;</span>, <span style="color:#66d9ef">true</span>);
+          localeService.setCurrentLocale('zh-Hans', 'CN', true);
 
-          <span style="color:#66d9ef">return</span> () =&gt; <span style="color:#a6e22e">service</span>.<span style="color:#a6e22e">initData</span>(<span style="color:#a6e22e">config</span>);
+          return () =&gt; service.initData(config);
 
 }
 
-<span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">NgModule</span>({
+@NgModule({
 
-  <span style="color:#a6e22e">imports</span><span style="color:#f92672">:</span> [
+  imports: [
 
-         <span style="color:#a6e22e">HttpClientModule</span>
+         HttpClientModule
 
-         <span style="color:#a6e22e">VIPModule</span>.<span style="color:#a6e22e">forRoot</span>()
+         VIPModule.forRoot()
 
-         <span style="color:#960050;background-color:#1e0010">…</span>
+         …
 
   ],
 
-<span style="color:#a6e22e">providers</span><span style="color:#f92672">:</span> [
+providers: [
 
         {
 
-            <span style="color:#a6e22e">provide</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">APP_INITIALIZER</span>,
+            provide: APP_INITIALIZER,
 
-            <span style="color:#a6e22e">useFactory</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">initI18nData</span>,
+            useFactory: initI18nData,
 
-            <span style="color:#a6e22e">deps</span><span style="color:#f92672">:</span> [
+            deps: [
 
-                <span style="color:#a6e22e">VIPService</span>,
+                VIPService,
 
-                <span style="color:#a6e22e">LocaleService</span>
+                LocaleService
 
             ],
 
-            <span style="color:#a6e22e">multi</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+            multi: true
 
         }
 
 ]
 
-  <span style="color:#960050;background-color:#1e0010">…</span>
+  …
 
 });
-</code></pre></div><h5 id="non-blocking-loading">Non-Blocking Loading</h5>
+</code></pre>
+
+<h5 id="non-blocking-loading">Non-Blocking Loading</h5>
+
 <p>Asynchronous data loading.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">NgModule</span>, <span style="color:#a6e22e">APP_INITIALIZER</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@angular/core&#39;</span>;
 
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">VIPModule</span>, <span style="color:#a6e22e">VIPService</span>, <span style="color:#a6e22e">LocaleService</span>, <span style="color:#a6e22e">PatternCategories</span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@vmw/ngx-vip&#39;</span>;
+<pre><code class="language-javascript">import { NgModule, APP_INITIALIZER } from '@angular/core';
 
-<span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">NgModule</span>({
+import { VIPModule, VIPService, LocaleService, PatternCategories} from '@vmw/ngx-vip';
 
-  <span style="color:#a6e22e">imports</span><span style="color:#f92672">:</span> [
+@NgModule({
 
-         <span style="color:#a6e22e">HttpClientModule</span>
+  imports: [
 
-         <span style="color:#a6e22e">VIPModule</span>.<span style="color:#a6e22e">forRoot</span>()
+         HttpClientModule
 
-         <span style="color:#960050;background-color:#1e0010">…</span>
+         VIPModule.forRoot()
+
+         …
 
   ],
 
-<span style="color:#960050;background-color:#1e0010">…</span>
+…
 
 });
 
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppModule</span> {
+export class AppModule {
 
-    <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">localeService</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">LocaleService</span>, <span style="color:#a6e22e">vipService</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">VIPService</span>) {
+    constructor(localeService: LocaleService, vipService: VIPService) {
 
-         <span style="color:#a6e22e">localeService</span>.<span style="color:#a6e22e">setCurrentLocale</span>(<span style="color:#e6db74">&#39;zh-Hans&#39;</span>, <span style="color:#e6db74">&#39;CN&#39;</span>, <span style="color:#66d9ef">true</span>);
+         localeService.setCurrentLocale('zh-Hans', 'CN', true);
 
-         <span style="color:#a6e22e">vipService</span>.<span style="color:#a6e22e">initData</span>(<span style="color:#a6e22e">config</span>);
+         vipService.initData(config);
 
     }
 
 }
-</code></pre></div><h5 id="lazy-loading-module">Lazy Loading Module</h5>
+</code></pre>
+
+<h5 id="lazy-loading-module">Lazy Loading Module</h5>
+
 <p>Use the Singleton Angular Client in lazy loading modules.</p>
+
 <pre><code>import { VIPModule, VIPService } from '@vmw/ngx-vip';
 
 @NgModule({
@@ -614,99 +727,179 @@ export class LazyModule {
 
 }; 
 
-</code></pre><h3 id="translation-tool-1"><strong>Translation Tool</strong></h3>
+</code></pre>
+
+<h3 id="translation-tool-1"><strong>Translation Tool</strong></h3>
+
 <h5 id="l10n-pipe">L10n Pipe</h5>
+
 <p>Use the pipe to get the translation of a string</p>
+
 <p>Usage: {{ key | vtranslate:[ : variables [ : comment ] ]  }}</p>
+
 <p>Parameters</p>
+
 <p>key: string (required), to indicate the key value in sourceBundle</p>
-<p>args: number|string[ ] (optional), to indicate the variable for index placeholders in the source string specified by key</p>
+
+<p>args: number|string<a href="optional"> </a>, to indicate the variable for index placeholders in the source string specified by key</p>
+
 <p>Return value</p>
+
 <p>The translation of the source string specified by key in SourceBundlekey.</p>
+
 <p>Example</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{{ <span style="color:#e6db74">&#39;app.title&#39;</span><span style="color:#f92672">|</span> <span style="color:#a6e22e">vtranslate</span> }};  <span style="color:#75715e">// eg: 你好，世界！
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">// 单复数示例
-</span><span style="color:#75715e"></span>
-{{ <span style="color:#e6db74">&#39;plural.apples&#39;</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">vtranslate</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>}}  <span style="color:#75715e">// eg: 2 apples
-</span><span style="color:#75715e"></span>
-</code></pre></div><h5 id="l10n-directive">L10n Directive</h5>
+
+<pre><code class="language-javascript">{{ 'app.title'| vtranslate }};  // eg: 你好，世界！
+
+// 单复数示例
+
+{{ 'plural.apples' | vtranslate: 2}}  // eg: 2 apples
+
+</code></pre>
+
+<h5 id="l10n-directive">L10n Directive</h5>
+
 <p>Use directives to get the translation of a string</p>
+
 <p>Selector: [l10n]</p>
+
 <p>Parameters</p>
+
 <p>key: string (required), to indicate the key value in sourceBundle</p>
-<p>params: number|string[ ] (optional), to indicate the variable for index placeholders in the source string specified by key</p>
+
+<p>params: number|string<a href="optional"> </a>, to indicate the variable for index placeholders in the source string specified by key</p>
+
 <p>Return value</p>
+
 <p>The translation of the source string specified by key in SourceBundlekey</p>
+
 <p>Example</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">span</span> <span style="color:#a6e22e">l10n</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;app.title&#39;</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#e6db74">/span&gt; /</span><span style="color:#f92672">/</span> <span style="color:#a6e22e">eg</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">你好</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">世界</span><span style="color:#960050;background-color:#1e0010">！</span>
 
-<span style="color:#75715e">// 单复数示例
-</span><span style="color:#75715e"></span>
-<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">span</span> <span style="color:#a6e22e">l10n</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;plural.apples&#39;</span> [<span style="color:#a6e22e">params</span>]<span style="color:#f92672">=</span>[ <span style="color:#ae81ff">2</span> ] <span style="color:#f92672">&gt;&lt;</span><span style="color:#e6db74">/span&gt; /</span><span style="color:#f92672">/</span> <span style="color:#a6e22e">eg</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> <span style="color:#a6e22e">apples</span>
+<pre><code class="language-javascript">&lt;span l10n='app.title'&gt;&lt;/span&gt; // eg: 你好，世界！
 
-</code></pre></div><h3 id="formatting-the-pipe"><strong>Formatting the Pipe</strong></h3>
+// 单复数示例
+
+&lt;span l10n='plural.apples' [params]=[ 2 ] &gt;&lt;/span&gt; // eg: 2 apples
+
+</code></pre>
+
+<h3 id="formatting-the-pipe"><strong>Formatting the Pipe</strong></h3>
+
 <h5 id="formatting-the-date-and-time">Formatting the Date and Time</h5>
+
 <p>Format the specified date and time according to the locale setting</p>
+
 <p>Usage: {{ value | dateFormat [ : format [ : timezone ] ] }}</p>
+
 <p>Parameters</p>
+
 <p>date: (required), to indicate the standard date object for i18n (ms or ISO-compliant date string). <a href="https://www.w3.org/TR/NOTE-datetime">https://www.w3.org/TR/NOTE-datetime</a></p>
+
 <p>pattern: string (optional) the default value is mediumDate, to indicate the date format shown after i18n</p>
+
 <p>timezone: string (optional), to indicate the time zone, the default value is the current user system time zone</p>
+
 <p>Return value</p>
+
 <p>The formatted date string</p>
+
 <p>Example</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{{ <span style="color:#a6e22e">dateTime</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">dateFormat</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;short&#39;</span>}}  <span style="color:#75715e">// eg: 8/19/19, 3:51 PM
-</span><span style="color:#75715e"></span>
-</code></pre></div><h5 id="formatting-the-number">Formatting the number</h5>
+
+<pre><code class="language-javascript">{{ dateTime | dateFormat: 'short'}}  // eg: 8/19/19, 3:51 PM
+
+</code></pre>
+
+<h5 id="formatting-the-number">Formatting the number</h5>
+
 <p>Format the specified number according to the locale setting.</p>
+
 <p>Usage: {{ value | numberFormat }}</p>
+
 <p>Parameters</p>
+
 <p>value: number, to indicate the number to format</p>
+
 <p>Return value</p>
+
 <p>The formatted numeric string</p>
+
 <p>Example</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{{ <span style="color:#ae81ff">1123.789</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">numberFormat</span> }}   <span style="color:#75715e">// eg: 1,123.789
-</span><span style="color:#75715e"></span>
-</code></pre></div><h5 id="formatting-the-percentage">Formatting the percentage</h5>
+
+<pre><code class="language-javascript">{{ 1123.789 | numberFormat }}   // eg: 1,123.789
+
+</code></pre>
+
+<h5 id="formatting-the-percentage">Formatting the percentage</h5>
+
 <p>Format the specified number as a percentage according to the locale setting.</p>
+
 <p>Usage: {{ value | percentFormat }}</p>
+
 <p>Parameters</p>
+
 <p>value: number, to indicate the number to format</p>
+
 <p>Return value</p>
+
 <p>The formatted number in percentage</p>
+
 <p>Example</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{{ <span style="color:#ae81ff">0.123</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">percentFormat</span> }};   <span style="color:#75715e">// eg: 12%
-</span><span style="color:#75715e"></span>
-</code></pre></div><h5 id="formatting-the-currency">Formatting the currency</h5>
+
+<pre><code class="language-javascript">{{ 0.123 | percentFormat }};   // eg: 12%
+
+</code></pre>
+
+<h5 id="formatting-the-currency">Formatting the currency</h5>
+
 <p>Format the specified currency number as another style according to the locale setting. The default currency is USD.</p>
+
 <p>Usage: {{ value | currencyFormat [ : currencyCode ]  }}</p>
+
 <p>Parameters</p>
+
 <p>value: number, to indicate the string to format</p>
+
 <p>currencyCode: string, to indicate the currency code. See <a href="https://en.wikipedia.org/wiki/ISO_4217">https://en.wikipedia.org/wiki/ISO_4217</a></p>
+
 <p>Return value</p>
+
 <p>The formatted string</p>
+
 <p>Example</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{{ <span style="color:#ae81ff">0.23</span> <span style="color:#f92672">|</span>  <span style="color:#a6e22e">currencyFormat</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;JPY&#39;</span> }};   <span style="color:#75715e">// eg: 0¥
-</span><span style="color:#75715e"></span>
-</code></pre></div><h2 id="scripting-tool"><strong>Scripting Tool</strong></h2>
+
+<pre><code class="language-javascript">{{ 0.23 |  currencyFormat: 'JPY' }};   // eg: 0¥
+
+</code></pre>
+
+<h2 id="scripting-tool"><strong>Scripting Tool</strong></h2>
+
 <h5 id="collecting-the-source-language-strings-in-bulk">Collecting the Source Language Strings in Bulk</h5>
+
 <p>When the source language strings are extracted into the resource files in the specified format, use the command tool to send them in bulk to Singleton Service, which triggers the translation process.</p>
+
 <p>Parameters in CLI</p>
+
 <p>collect-source-bundle</p>
-<p>&ndash;source-dir <!-- raw HTML omitted --></p>
-<p>&ndash;host <!-- raw HTML omitted --></p>
-<p>&ndash;product <!-- raw HTML omitted --></p>
-<p>&ndash;component <!-- raw HTML omitted --></p>
-<p>&ndash;version <!-- raw HTML omitted --></p>
+
+<p>&ndash;source-dir <the folder path of the resource file></p>
+
+<p>&ndash;host <Singleton server address></p>
+
+<p>&ndash;product <Singleton product name></p>
+
+<p>&ndash;component <Singleton component name></p>
+
+<p>&ndash;version <Singleton release number></p>
+
 <p>Defining Commands in package.json</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
+
+<pre><code class="language-javascript">{
 
     ...
 
-    <span style="color:#a6e22e">scripts</span><span style="color:#f92672">:</span> {   
+    scripts: {   
 
-        <span style="color:#e6db74">&#34;collect-source &#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34; collect-source-bundle --source-dir ./src/source --product vipnodesample --component NodeJS --host http://localhost:8090 --version 1.0.0&#34;</span>
+        &quot;collect-source &quot;: &quot; collect-source-bundle --source-dir ./src/source --product vipnodesample --component NodeJS --host http://localhost:8090 --version 1.0.0&quot;
 
     }
 
@@ -714,10 +907,16 @@ export class LazyModule {
 
 }
 
-</code></pre></div><p>Running Commands for Bulk Collection</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">npm</span> <span style="color:#a6e22e">run</span> <span style="color:#a6e22e">collect</span><span style="color:#f92672">-</span><span style="color:#a6e22e">source</span>
+</code></pre>
 
-</code></pre></div><h2 id="sample-project"><strong>Sample Project</strong></h2>
+<p>Running Commands for Bulk Collection</p>
+
+<pre><code class="language-javascript">npm run collect-source
+
+</code></pre>
+
+<h2 id="sample-project"><strong>Sample Project</strong></h2>
+
 <p>Link to the sample project: [](<a href="https://github.com/vmware/singleton/tree/g11n-angular-client/sample">https://github.com/vmware/singleton/tree/g11n-angular-client/sample</a>)</p>
 
 

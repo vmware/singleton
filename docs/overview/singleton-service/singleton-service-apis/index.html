@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-03-05T17:12:13 CST">
+<meta name="revised" content="2020-04-08T21:16:54 PDT">
 <title>Singleton Service APIs :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -200,6 +200,13 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/go-client-introduction/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/go-client-introduction/">
+            Go Client Introduction
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
         </ul>
     </li>
         </ul>
@@ -321,286 +328,565 @@
     
     
     
-    <p>Singleton Service has two API versions available at present: v1 and v2. API v1 was created in the early times of Singleton, while API v2 has been validated with many VMware products over years, which includes the largest number of APIs, and is closer to the Restful style. It is recommended to use API v2 in practice. This version provides two types of APIs:</p>
+    
+
+<p>Singleton Service has two API versions available at present: v1 and v2. API v1 was created in the early times of Singleton, while API v2 has been validated with many VMware products over years, which includes the largest number of APIs, and is closer to the Restful style. It is recommended to use API v2 in practice. This version provides two types of APIs:</p>
+
 <ol>
 <li>Formatting API, which is used to format the data like the date time/number/currency/unit of measure/singular and plural variations, just to name a few.</li>
 <li>Translation API</li>
 </ol>
+
 <p>Next, we&rsquo;ll talk about the usage of the main APIs under the two types.</p>
+
 <h1 id="formatting-api"><strong>Formatting API</strong></h1>
+
 <h2 id="date-time-formatting-api-formatting-date-api"><em>Date Time Formatting API (formatting-date-api)</em></h2>
+
 <p>Convert the specified time stamp to a new format suitable for the language as requested, using the provided pattern.</p>
-<h4 id="geti18napiv2formattingdatelocalizeddate"><strong>GET</strong>/i18n/api/v2/formatting/date/localizedDate</h4>
+
+<h4 id="get-i18n-api-v2-formatting-date-localizeddate"><strong>GET</strong>/i18n/api/v2/formatting/date/localizedDate</h4>
+
 <p><strong>Parameters:</strong></p>
+
 <p>locale: <strong>(required)</strong> (String), to indicate the language as requested; e.g. en, zh-CN etc.</p>
+
 <p>longDate: <strong>(required)</strong> (String), to indicate the time stamp in long date format; e.g. 1472728030290</p>
-<p>pattern: <strong>(required)</strong> (String), to indicate the pattern to be used; e.g. YEAR = &ldquo;y&rdquo;, QUARTER = &ldquo;QQQQ&rdquo;, ABBR_QUARTER =&quot;QQQ&rdquo;, QUARTER_YEAR = &ldquo;QQQQy&rdquo; etc.</p>
+
+<p>pattern: <strong>(required)</strong> (String), to indicate the pattern to be used; e.g. YEAR = &ldquo;y&rdquo;, QUARTER = &ldquo;QQQQ&rdquo;, ABBR_QUARTER =&ldquo;QQQ&rdquo;, QUARTER_YEAR = &ldquo;QQQQy&rdquo; etc.</p>
+
 <p><strong>Return value:</strong></p>
+
 <p>(JSON Object) The formatted date time value.</p>
+
 <p><strong>Example:</strong></p>
+
 <p><strong>{Singleton service}</strong>/i18n/api/v2/formatting/date/localizedDate?locale=zh&ndash;CN&amp;longDate=1472728030290&amp;pattern=QQQQ</p>
+
 <p>Return value: &ldquo;第三季度&rdquo; (the third quarter or Q3 in Chinese)</p>
+
 <h2 id="number-formatting-api-formatting-number-api"><em>Number Formatting API (formatting-number-api)</em></h2>
+
 <p>Convert the specified number to a new format suitable for the language as requested, with the decimal place provided.</p>
-<h4 id="geti18napiv2formattingnumberlocalizednumber"><strong>GET</strong>/i18n/api/v2/formatting/number/localizedNumber</h4>
+
+<h4 id="get-i18n-api-v2-formatting-number-localizednumber"><strong>GET</strong>/i18n/api/v2/formatting/number/localizedNumber</h4>
+
 <p><strong>Parameters:</strong></p>
+
 <p>locale: <strong>(required)</strong> (String), to indicate the language as requested; e.g. zh-CN etc.</p>
+
 <p>number: <strong>(required)</strong> (String), to indicate the number to be converted; e.g. 123.45</p>
+
 <p>scale: (optional) (Integer), to indicate the decimal place to use in the formatted number; e.g. 2. The default value is 0.</p>
+
 <p><strong>Return value:</strong></p>
+
 <p>(JSON Object) The formatted number.</p>
+
 <p><strong>Example:</strong></p>
+
 <p><strong>{Singleton service}</strong>/i18n/api/v2/formatting/number/localizedNumber?locale=zh-CN&amp;number=123.45&amp;scale=1</p>
+
 <p>Return value: &ldquo;123.5&rdquo;</p>
-<h2 id="datenumbercurrencyunit-of-measuresingular-and-plural-variations-pattern-api-formatting-pattern-api"><em>Date/Number/Currency/Unit of Measure/Singular and Plural Variations Pattern API (formatting-pattern-api)</em></h2>
+
+<h2 id="date-number-currency-unit-of-measure-singular-and-plural-variations-pattern-api-formatting-pattern-api"><em>Date/Number/Currency/Unit of Measure/Singular and Plural Variations Pattern API (formatting-pattern-api)</em></h2>
+
 <p>With Singleton, you can get the pattern data in two ways: one is by the language and region settings (language [-region], such as en-US); the other is by the combined locale settings. The pattern data in Singleton is extracted from the CLDR (Unicode Common Locale Data Repository) version: 32.0.0.</p>
-<h4 id="geti18napiv2formattingpatterns"><strong>GET</strong>/i18n/api/v2/formatting/patterns</h4>
+
+<h4 id="get-i18n-api-v2-formatting-patterns"><strong>GET</strong>/i18n/api/v2/formatting/patterns</h4>
+
 <p>Get the pattern data of the type as requested according to the language and region settings.</p>
+
 <p><strong>Parameters:</strong></p>
+
 <p>language: <strong>(required)</strong> (String), to indicate the language for the pattern data as requested, e.g. en, en-CA, zh-Hans, etc.</p>
+
 <p>region: <strong>(required)</strong> (String), to indicate the region for the pattern data as requested; e.g. US, CN etc.</p>
+
 <p>scope: <strong>(required)</strong> (String), to indicate the type of the pattern data as requested. Only one or more of &ldquo;dates, numbers, currencies, plurals, measurements&rdquo; is allowed; Separate the multiple items by comma (,).</p>
+
 <p><strong>Return value:</strong></p>
+
 <p>(JSON Object) The pattern data of the type as requested.</p>
+
 <p><strong>Example:</strong></p>
+
 <p><strong>{Singleton service}</strong>/i18n/api/v2/formatting/patterns?language=zh-Hans&amp;region=CN&amp;scope=numbers</p>
+
 <p>Return value:</p>
+
 <p>&ldquo;numbers&rdquo;: {</p>
+
 <p>​       &ldquo;numberSymbols&rdquo;: {</p>
-<p>​         &ldquo;decimal&rdquo;: &ldquo;.&quot;,</p>
-<p>​         &ldquo;group&rdquo;: &ldquo;,&quot;,</p>
-<p>​         &ldquo;list&rdquo;: &ldquo;;&quot;,</p>
-<p>​         &ldquo;percentSign&rdquo;: &ldquo;%&quot;,</p>
+
+<p>​         &ldquo;decimal&rdquo;: &ldquo;.&rdquo;,</p>
+
+<p>​         &ldquo;group&rdquo;: &ldquo;,&rdquo;,</p>
+
+<p>​         &ldquo;list&rdquo;: &ldquo;;&rdquo;,</p>
+
+<p>​         &ldquo;percentSign&rdquo;: &ldquo;%&rdquo;,</p>
+
 <p>​         &ldquo;plusSign&rdquo;: &ldquo;+&rdquo;,</p>
-<p>​         &ldquo;minusSign&rdquo;: &ldquo;-&quot;,</p>
+
+<p>​         &ldquo;minusSign&rdquo;: &ldquo;-&rdquo;,</p>
+
 <p>​         &ldquo;exponential&rdquo;: &ldquo;E&rdquo;,</p>
+
 <p>​         &ldquo;superscriptingExponent&rdquo;: &ldquo;×&rdquo;,</p>
-<p>​         &ldquo;perMille&rdquo;: &ldquo;‰&quot;,</p>
+
+<p>​         &ldquo;perMille&rdquo;: &ldquo;‰&rdquo;,</p>
+
 <p>​         &ldquo;infinity&rdquo;: &ldquo;∞&rdquo;,</p>
+
 <p>​         &ldquo;nan&rdquo;: &ldquo;NaN&rdquo;,</p>
+
 <p>​         &ldquo;timeSeparator&rdquo;: &ldquo;:&rdquo;</p>
+
 <p>​       },</p>
+
 <p>​       &ldquo;numberFormats&rdquo;: {</p>
-<p>​         &ldquo;decimalFormats&rdquo;: &ldquo;#,##0.###&quot;,</p>
-<p>​         &ldquo;percentFormats&rdquo;: &ldquo;#,##0%&quot;,</p>
+
+<p>​         &ldquo;decimalFormats&rdquo;: &ldquo;#,##0.###&rdquo;,</p>
+
+<p>​         &ldquo;percentFormats&rdquo;: &ldquo;#,##0%&rdquo;,</p>
+
 <p>​         &ldquo;currencyFormats&rdquo;: &ldquo;¤#,##0.00&rdquo;,</p>
+
 <p>​         &ldquo;scientificFormats&rdquo;: &ldquo;#E0&rdquo;</p>
+
 <p>​        }</p>
+
 <p><strong>Note:</strong></p>
+
 <p>\1.    If the combination of the language and region as requested is available and valid (e.g. en-US, zh-Hans-CN), the pattern data returned shall be specific to that combination; In this case, the result of this API is almost the same as the one of the API shown below, except when &ldquo;plurals&rdquo; is included in scope;</p>
+
 <p>\2.    If the combination of the requested language and region is invalid (e.g. en-DE), the region takes precedence to return the pattern data, which represents the mostly spoken language in the requested region, with the exception of &ldquo;plurals&rdquo; in scope, which is always language-based.</p>
+
 <p>\3.    The &ldquo;plurals&rdquo; in scope is always language-based, regardless of whether the combination of the requested language and region is valid or not.</p>
-<h4 id="geti18napiv2formattingpatternslocaleslocale"><strong>GET</strong>/i18n/api/v2/formatting/patterns/locales/{locale}</h4>
+
+<h4 id="get-i18n-api-v2-formatting-patterns-locales-locale"><strong>GET</strong>/i18n/api/v2/formatting/patterns/locales/{locale}</h4>
+
 <p>Get the pattern data of the type as requested according to the combined locale settings.</p>
+
 <p><strong>Parameters:</strong></p>
+
 <p>locale: <strong>(required)</strong> (String), to indicate the region for the pattern data as requested, e.g. en-CA, zh-Hans, zh-Hans-CN etc.</p>
+
 <p>scope: <strong>(required)</strong> (String), to indicate the type of the pattern data as requested. Only one or more of &ldquo;dates, numbers, currencies, plurals, measurements&rdquo; is allowed; Separate the multiple items by comma (,).</p>
+
 <p><strong>Return value:</strong></p>
+
 <p>(JSON Object) The pattern data of the type as requested.</p>
+
 <p><strong>Example:</strong></p>
+
 <p><strong>{Singleton service}</strong>/ i18n/api/v2/formatting/patterns/locales/zh-Hans-CN?scope=numbers</p>
+
 <p>Return value:</p>
+
 <p>&ldquo;numbers&rdquo;: {</p>
+
 <p>​       &ldquo;numberSymbols&rdquo;: {</p>
-<p>​         &ldquo;decimal&rdquo;: &ldquo;.&quot;,</p>
-<p>​         &ldquo;group&rdquo;: &ldquo;,&quot;,</p>
-<p>​         &ldquo;list&rdquo;: &ldquo;;&quot;,</p>
-<p>​         &ldquo;percentSign&rdquo;: &ldquo;%&quot;,</p>
+
+<p>​         &ldquo;decimal&rdquo;: &ldquo;.&rdquo;,</p>
+
+<p>​         &ldquo;group&rdquo;: &ldquo;,&rdquo;,</p>
+
+<p>​         &ldquo;list&rdquo;: &ldquo;;&rdquo;,</p>
+
+<p>​         &ldquo;percentSign&rdquo;: &ldquo;%&rdquo;,</p>
+
 <p>​         &ldquo;plusSign&rdquo;: &ldquo;+&rdquo;,</p>
-<p>​         &ldquo;minusSign&rdquo;: &ldquo;-&quot;,</p>
+
+<p>​         &ldquo;minusSign&rdquo;: &ldquo;-&rdquo;,</p>
+
 <p>​         &ldquo;exponential&rdquo;: &ldquo;E&rdquo;,</p>
+
 <p>​         &ldquo;superscriptingExponent&rdquo;: &ldquo;×&rdquo;,</p>
-<p>​         &ldquo;perMille&rdquo;: &ldquo;‰&quot;,</p>
+
+<p>​         &ldquo;perMille&rdquo;: &ldquo;‰&rdquo;,</p>
+
 <p>​         &ldquo;infinity&rdquo;: &ldquo;∞&rdquo;,</p>
+
 <p>​         &ldquo;nan&rdquo;: &ldquo;NaN&rdquo;,</p>
+
 <p>​         &ldquo;timeSeparator&rdquo;: &ldquo;:&rdquo;</p>
+
 <p>​       },</p>
+
 <p>​       &ldquo;numberFormats&rdquo;: {</p>
-<p>​         &ldquo;decimalFormats&rdquo;: &ldquo;#,##0.###&quot;,</p>
-<p>​         &ldquo;percentFormats&rdquo;: &ldquo;#,##0%&quot;,</p>
+
+<p>​         &ldquo;decimalFormats&rdquo;: &ldquo;#,##0.###&rdquo;,</p>
+
+<p>​         &ldquo;percentFormats&rdquo;: &ldquo;#,##0%&rdquo;,</p>
+
 <p>​         &ldquo;currencyFormats&rdquo;: &ldquo;¤#,##0.00&rdquo;,</p>
+
 <p>​         &ldquo;scientificFormats&rdquo;: &ldquo;#E0&rdquo;</p>
+
 <p>​        }</p>
+
 <h2 id="region-related-api-locale-api"><em>Region-Related API (locale-api)</em></h2>
+
 <p>The Region-Related API are used to get the current locale settings in the browser, the languages supported by the product, and local translations in specific languages.</p>
-<h4 id="geti18napiv2localebrowserlocale"><strong>GET</strong>/i18n/api/v2/locale/browserLocale</h4>
-<h4 id="geti18napiv2localenormalizedbrowserlocale"><strong>GET</strong>/i18n/api/v2/locale/normalizedBrowserLocale</h4>
+
+<h4 id="get-i18n-api-v2-locale-browserlocale"><strong>GET</strong>/i18n/api/v2/locale/browserLocale</h4>
+
+<h4 id="get-i18n-api-v2-locale-normalizedbrowserlocale"><strong>GET</strong>/i18n/api/v2/locale/normalizedBrowserLocale</h4>
+
 <p>Get the locale settings in the browser.</p>
+
 <p><strong>Parameters:</strong></p>
+
 <p>None</p>
+
 <p><strong>Return value:</strong></p>
+
 <p>(JSON Object) The first value in the locale list of the current browser.</p>
+
 <p><strong>Example:</strong></p>
+
 <p><strong>{Singleton service}</strong>/i18n/api/v2/locale/browserLocale</p>
+
 <p><strong>{Singleton service}</strong>/i18n/api/v2/locale/normalizedBrowserLocale</p>
+
 <p>Return value:</p>
+
 <p>&ldquo;data&rdquo;: {</p>
-<p>&ldquo;displayName&rdquo;: &ldquo;English (UnitedStates)&quot;,</p>
+
+<p>&ldquo;displayName&rdquo;: &ldquo;English (UnitedStates)&rdquo;,</p>
+
 <p>&ldquo;locale&rdquo;: &ldquo;en-US&rdquo;</p>
+
 <p>}</p>
-<h4 id="geti18napiv2localesupportedlanguagelist"><strong>GET</strong>/i18n/api/v2/locale/supportedLanguageList</h4>
+
+<h4 id="get-i18n-api-v2-locale-supportedlanguagelist"><strong>GET</strong>/i18n/api/v2/locale/supportedLanguageList</h4>
+
 <p>Get the list of languages supported by the product.</p>
+
 <p><strong>Parameters:</strong></p>
+
 <p>productName:<strong>(required)</strong> (String), to indicate the product name registered in Singleton; e.g. Testing</p>
+
 <p>version:<strong>(required)</strong> (String), to indicate the product version registered in Singleton; e.g. 1.0.0</p>
+
 <p>displayLanguage: (optional) (String), to indicate the language used to show the returned values; e.g. en, zh-Hans; If it is left blank, the returned values shall be shown in its own language, e.g. en-&gt;English, zh-Hans-&gt;Chinese Simplified</p>
+
 <p><strong>Return value:</strong></p>
+
 <p>(JSON Object) The list of languages supported by the product in Singleton.</p>
+
 <p><strong>Example:</strong></p>
+
 <p><strong>{Singleton service}</strong>/i18n/api/v2/locale/supportedLanguageList?productName=Testing&amp;version=1.0.0</p>
+
 <p>Return value:</p>
+
 <p>&ldquo;languages&rdquo;: [</p>
+
 <p>​      {</p>
+
 <p>​       &ldquo;languageTag&rdquo;: &ldquo;zh-Hans&rdquo;,</p>
+
 <p>​       &ldquo;displayName&rdquo;: &ldquo;简体中文&rdquo;</p>
+
 <p>​      },</p>
+
 <p>​      {</p>
+
 <p>​       &ldquo;languageTag&rdquo;: &ldquo;en&rdquo;,</p>
+
 <p>​       &ldquo;displayName&rdquo;: &ldquo;English&rdquo;</p>
+
 <p>​      },</p>
+
 <p>​      {</p>
+
 <p>​       &ldquo;languageTag&rdquo;: &ldquo;ja&rdquo;,</p>
+
 <p>​       &ldquo;displayName&rdquo;: &ldquo;日本語&rdquo;</p>
+
 <p>​      },</p>
+
 <p>​      {</p>
+
 <p>​       &ldquo;languageTag&rdquo;: &ldquo;es&rdquo;,</p>
+
 <p>​       &ldquo;displayName&rdquo;: &ldquo;español&rdquo;</p>
+
 <p>​      },</p>
+
 <p>​      {</p>
+
 <p>​       &ldquo;languageTag&rdquo;: &ldquo;fr&rdquo;,</p>
+
 <p>​       &ldquo;displayName&rdquo;: &ldquo;français&rdquo;</p>
+
 <p>​      },</p>
+
 <p>​      {</p>
+
 <p>​       &ldquo;languageTag&rdquo;: &ldquo;ko&rdquo;,</p>
+
 <p>​       &ldquo;displayName&rdquo;: &ldquo;한국어&rdquo;</p>
+
 <p>​      },</p>
+
 <p>​      {</p>
+
 <p>​       &ldquo;languageTag&rdquo;: &ldquo;de&rdquo;,</p>
+
 <p>​       &ldquo;displayName&rdquo;: &ldquo;Deutsch&rdquo;</p>
+
 <p>​      }]</p>
-<h4 id="geti18napiv2localeregionlist"><strong>GET</strong>/i18n/api/v2/locale/regionList</h4>
+
+<h4 id="get-i18n-api-v2-locale-regionlist"><strong>GET</strong>/i18n/api/v2/locale/regionList</h4>
+
 <p>Get the list of regions for the language as requested.</p>
+
 <p><strong>Parameters:</strong></p>
+
 <p>supportedLanguageList: <strong>(required)</strong> (String), to indicate the language as requested; e.g. en, zh-Hans, etc.</p>
+
 <p><strong>Return value:</strong></p>
+
 <p>(JSON Object) The default region of the language as requested, as well as the full list of regions for this language.</p>
+
 <p><strong>Example:</strong></p>
+
 <p><strong>{Singleton service}</strong>/i18n/api/v2/locale/regionList?supportedLanguageList=zh-Hans</p>
+
 <p>Return value:</p>
+
 <p>{</p>
+
 <p>​     &ldquo;language&rdquo;: &ldquo;zh-hans&rdquo;,</p>
+
 <p>​     &ldquo;defaultRegionCode&rdquo;: &ldquo;CN&rdquo;,</p>
+
 <p>​     &ldquo;territories&rdquo;: {</p>
+
 <p>​       &ldquo;AC&rdquo;: &ldquo;Ascension Island&rdquo;,</p>
+
 <p>​       &ldquo;AD&rdquo;: &ldquo;Andorra&rdquo;,</p>
+
 <p>​       &ldquo;AE&rdquo;: &ldquo;United Arab Emirates&rdquo;,</p>
+
 <p>​       &ldquo;AF&rdquo;: &ldquo;Afghanistan&rdquo;,</p>
+
 <p>​       &ldquo;AG&rdquo;: &ldquo;Antigua and Barbuda&rdquo;,</p>
+
 <p>​       &ldquo;AI&rdquo;: &ldquo;Anguilla&rdquo;,</p>
+
 <p>​        ……………………}}</p>
+
 <h1 id="translation-related-api"><strong>Translation-Related API</strong></h1>
+
 <h2 id="product-level-api-translation-product-api"><em>Product-Level API (translation-product-api)</em></h2>
+
 <p>Get the component names defined in the whole product, supported languages in the product, and the translations in all those languages.</p>
-<h4 id="get-i18napiv2translationproductsproductnameversionsversion">GET /i18n/api/v2/translation/products/{productName}/versions/{version}</h4>
+
+<h4 id="get-i18n-api-v2-translation-products-productname-versions-version">GET /i18n/api/v2/translation/products/{productName}/versions/{version}</h4>
+
 <p>Get the translations in all languages supported by the product.</p>
+
 <p><strong>Parameters:</strong></p>
+
 <p>productName:<strong>(required)</strong>, (String), to indicate the product name registered in Singleton; e.g. Testing</p>
+
 <p>version:<strong>(required)</strong>, (String), to indicate the product version registered in Singleton; e.g. 1.0.0</p>
+
 <p>pseudo: (String), True or False (Default: False); to return the real translations in Singleton, or pseudo translations</p>
+
 <p><strong>Return value:</strong></p>
+
 <p>(JSON Object) The translations in all languages supported by the product as requested.</p>
+
 <p><strong>Example:</strong></p>
+
 <p><strong>{Singleton service}</strong>/i18n/api/v2/translation/products/Testing/versions/1.0.0?pseudo=false</p>
-<h4 id="geti18napiv2translationproductsproductnameversionsversioncomponentlist"><strong>GET</strong>/i18n/api/v2/translation/products/{productName}/versions/{version}/componentlist</h4>
+
+<h4 id="get-i18n-api-v2-translation-products-productname-versions-version-componentlist"><strong>GET</strong>/i18n/api/v2/translation/products/{productName}/versions/{version}/componentlist</h4>
+
 <p>It is recommended to define and store strings by product and component/function in Singleton. This API is used to get the list of all components/functions defined in the product.</p>
+
 <p><strong>Parameters:</strong></p>
+
 <p>productName:<strong>(required)</strong>, (String), to indicate the product name registered in Singleton; e.g. Testing</p>
+
 <p>version:<strong>(required)</strong>, (String), to indicate the product version registered in Singleton; e.g. 1.0.0</p>
+
 <p><strong>Return value:</strong></p>
+
 <p>(JSON Object) The list of all components/functions defined in the product.</p>
+
 <p><strong>Example:</strong></p>
+
 <p><strong>{Singleton service}</strong>/i18n/api/v2/translation/products/Testing/versions/1.0.0/componentlist</p>
-<h4 id="geti18napiv2translationproductsproductnameversionsversionlocalelist"><strong>GET</strong>/i18n/api/v2/translation/products/{productName}/versions/{version}/localelist</h4>
+
+<h4 id="get-i18n-api-v2-translation-products-productname-versions-version-localelist"><strong>GET</strong>/i18n/api/v2/translation/products/{productName}/versions/{version}/localelist</h4>
+
 <p>Get the list of languages supported by the product.</p>
+
 <p><strong>Parameters:</strong></p>
+
 <p>productName:<strong>(required)</strong>, (String), to indicate the product name registered in Singleton; e.g. Testing</p>
+
 <p>version:<strong>(required)</strong>, (String), to indicate the product version registered in Singleton; e.g. 1.0.0</p>
+
 <p><strong>Return value:</strong></p>
+
 <p>(JSON Object) The list of languages supported by the product.</p>
+
 <p><strong>Example:</strong></p>
+
 <p><strong>{Singleton service}</strong><em>/i18n/api/v2/translation/products/Testing/versions/1.0.0/localelist</em></p>
-<h2 id="componentfunction-level-api-translation-product-component-api"><em>Component/Function-Level API (translation-product-component-api)</em></h2>
-<h4 id="geti18napiv2translationproductsproductnameversionsversionlocaleslocalecomponentscomponent"><strong>GET</strong>/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}</h4>
+
+<h2 id="component-function-level-api-translation-product-component-api"><em>Component/Function-Level API (translation-product-component-api)</em></h2>
+
+<h4 id="get-i18n-api-v2-translation-products-productname-versions-version-locales-locale-components-component"><strong>GET</strong>/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}</h4>
+
 <p>Get the translations in the specified language for a component/function in the product.</p>
+
 <p><strong>Parameters:</strong></p>
+
 <p>productName:<strong>(required)</strong> (String), to indicate the product name registered in Singleton; e.g. Testing</p>
+
 <p>component: <strong>(required)</strong> (String), to indicate the component/function name defined in Singleton; e.g. default</p>
+
 <p>version:<strong>(required)</strong> (String), to indicate the product version registered in Singleton; e.g. 1.0.0</p>
+
 <p>locale: <strong>(required)</strong> (String), to indicate the region for which you want to get translations; e.g. en, ja-JP, etc.</p>
+
 <p>pseudo: (Default: False); Setting to True returns the pseudo translation in the language as requested.</p>
+
 <p>machineTranslation: (Default: False); Setting to True returns the MT (Machine Translation) output.</p>
+
 <p>checkTranslationStatus: (Default: False); Setting to True checks if the translation is ready now. The user can determine whether to use the current translation according to the result.</p>
+
 <p><strong>Return value:</strong></p>
+
 <p>(JSON Object) The translation in the language of the product for the component/function as requested.</p>
+
 <p><strong>Example:</strong></p>
+
 <p><strong>{Singleton service}</strong>*/*i18n/api/v2/translation/products/Testing/versions/1.0.0/locales/zh_CN/components/default?pseudo=false&amp;machineTranslation=false&amp;checkTranslationStatus=false</p>
+
 <p>translation-sync-api</p>
+
 <h2 id="string-level-api-translation-product-component-key-api"><em>String-Level API (translation-product-component-key-api)</em></h2>
+
 <p>Get the translation of a string.</p>
-<h4 id="posti18napiv2translationproductsproductnameversionsversionlocaleslocalecomponentscomponentkeyskey"><strong>POST</strong>/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}</h4>
+
+<h4 id="post-i18n-api-v2-translation-products-productname-versions-version-locales-locale-components-component-keys-key"><strong>POST</strong>/i18n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}</h4>
+
 <p>Get the translation of a string.</p>
+
 <p><strong>Parameters:</strong></p>
+
 <p>productName:<strong>(required)</strong> (String), to indicate the product name registered in Singleton; e.g. Testing</p>
+
 <p>version:<strong>(required)</strong> (String), to indicate the product version registered in Singleton; e.g. 1.0.0</p>
+
 <p>locale: <strong>(required)</strong> (String), to indicate the region for which you want to get translations; e.g. en, ja-JP, etc.</p>
+
 <p>component: <strong>(required)</strong> (String), to indicate the component/function name defined in Singleton; e.g. default</p>
+
 <p>key: <strong>(required)</strong> (String), to indicate the unique identifier of the string in the component/function.</p>
+
 <p>source: (optional) (String), to indicate the source language string. If it is left blank, the translation of this string in Singleton is returned; In case that the provided string value is not the same as the one stored in Singleton, the input string value is returned without the translation.</p>
+
 <p>commentForSource: (optional) (String), to provide comments on the source language string</p>
+
 <p>collectSource: (Default: False). Setting to True with the string collection turned on in Singleton, the requested string can be sent directly to Singleton.</p>
+
 <p>pseudo: (Default: False); Setting to True returns the pseudo translation in the language as requested.</p>
+
 <p>machineTranslation: (Default: False); Setting to True returns the MT (Machine Translation) output.</p>
+
 <p>checkTranslationStatus: (Default: False); Setting to True checks if the translation is ready now. The user can determine whether to use the current translation according to the result.</p>
+
 <p><strong>Return value:</strong></p>
+
 <p>(JSON Object) The translation in the language of the product for the component/function as requested.</p>
+
 <p>Example:</p>
+
 <p><strong>{Singleton service}</strong><em>/i18n/api/v2/translation/products/Testing/versions/1.0.0/locales/zh_CN/components/default/keys/testing.key?collectSource=false&amp;pseudo=false&amp;machineTranslation=false&amp;checkTranslationStatus=false</em></p>
-<h2 id="addingupdating-translation-api-translation-sync-api"><em>Adding/Updating Translation API (translation-sync-api)</em></h2>
+
+<h2 id="adding-updating-translation-api-translation-sync-api"><em>Adding/Updating Translation API (translation-sync-api)</em></h2>
+
 <p>Add the translation in another language or update the translation in the current language.</p>
-<h4 id="puti18napiv2translationproductsproductnameversionsversion">PUT/i18n/api/v2/translation/products/{productName}/versions/{version}</h4>
+
+<h4 id="put-i18n-api-v2-translation-products-productname-versions-version">PUT/i18n/api/v2/translation/products/{productName}/versions/{version}</h4>
+
 <p>Add the translation in another language; add translations for one or more new strings in the current language; update the existing translations of a string, a component/function, or the whole product in one or more languages.</p>
+
 <p><strong>Parameters:</strong></p>
+
 <p>productName:<strong>(required)</strong> (String), to indicate the product name registered in Singleton; e.g. Testing</p>
+
 <p>version:<strong>(required)</strong> (String), to indicate the product version registered in Singleton; e.g. 1.0.0</p>
+
 <p>translationData: <strong>(required)</strong> (JSON Object), to include the productName/version/component/locale defined in Singleton, as well as the keys and values of strings for which to add/update translations. Note: **The productName/version should be the same as the ones mentioned above.</p>
+
 <p><strong>Return value:</strong></p>
+
 <p>(JSON Object) The relevant response status code and status message.</p>
+
 <p>Example:</p>
+
 <p><strong>{Singleton service}</strong><em>/i18n/api/v2/translation/products/Testing/versions/1.0.0</em></p>
+
 <h1 id="composite-api-translation-with-pattern-api"><em>Composite API (translation-with-pattern-api)</em></h1>
-<h4 id="posti18napiv2combinationtranslationsandpattern"><strong>POST</strong>/i18n/api/v2/combination/translationsAndPattern</h4>
+
+<h4 id="post-i18n-api-v2-combination-translationsandpattern"><strong>POST</strong>/i18n/api/v2/combination/translationsAndPattern</h4>
+
 <p>This API, as the combination of the Formatting API and the Translation API, can be used to get the i18n-formatted data for the date time/number/currency/unit of measure/single and plural variations, as well as translations of a product.</p>
+
 <p><strong>Parameters:</strong></p>
+
 <p>data: <strong>(required)</strong> (JSON Object). Requires the following parameter values:</p>
+
 <p>{</p>
+
 <p>&ldquo;combine&rdquo;: 0,</p>
+
 <p>&ldquo;components&rdquo;: [</p>
+
 <p>&ldquo;string&rdquo;</p>
+
 <p>],</p>
+
 <p>&ldquo;language&rdquo;: &ldquo;string&rdquo;,</p>
+
 <p>&ldquo;productName&rdquo;: &ldquo;string&rdquo;,</p>
+
 <p>&ldquo;pseudo&rdquo;: &ldquo;string&rdquo;,</p>
+
 <p>&ldquo;region&rdquo;: &ldquo;string&rdquo;,</p>
+
 <p>&ldquo;scope&rdquo;: &ldquo;string&rdquo;,</p>
+
 <p>&ldquo;version&rdquo;: &ldquo;string&rdquo;</p>
+
 <p>}</p>
+
 <p><strong>Note</strong>:</p>
+
 <p>combine: (Integer). Only two values are allowed: 1 or 2</p>
+
 <p>The value of 1 returns the formatted pattern data according to the provided language and region parameters.</p>
+
 <p>The value of 2 returns the formatted pattern data according to the provided language parameter. In this case, the region parameter can be empty.</p>
+
 <p><strong>Return value:</strong></p>
+
 <p>(JSON Object) The formatted pattern data and the translations as requested.</p>
+
 <h1 id="rules-to-define-parameters-in-singleton-service"><strong>Rules to Define Parameters in Singleton Service</strong></h1>
+
 <ol>
 <li>productName: Only the English letters and numbers are allowed</li>
 <li>version: Only the English numbers and the period (.) are allowed</li>

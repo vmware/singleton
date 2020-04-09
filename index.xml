@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>About Singleton on Singleton</title>
@@ -85,7 +85,7 @@ Features Overview  Getting and managing locales. Getting the i18n resources from
       <guid>https://vmware.github.io/singleton/docs/get-started/quick-start/</guid>
       <description>The Singleton application suite includes:
  Singleton Service: It contains an Application Program Interface (API), which is a web service that is used for i18n features, such as providing translated text. Singleton Client: It is used to communicate with Singleton Service to get the localized resources.  Features and functionality Singleton offers the following features and functionality:
- Singleton Core API - Provides RESTful web services for delivering localized resources. Source collection - Offers a source collection feature for Singleton string-based APIs.</description>
+ Singleton Core API - Provides RESTful web services for delivering localized resources.</description>
     </item>
     
     <item>
@@ -106,8 +106,7 @@ Features Overview  Getting and managing locales. Getting the i18n resources from
       <description>The Singleton Angular Client is a Singleton Service-based library used for SW i18n. Unlike the Singleton JavaScript Client mentioned earlier, the Angular Client is an end-to-end solution that includes specific data loading methods and the Angular-specific template API support. The Singleton Angular Client now supports the Angular 7.x.
 Features Overview Getting and managing locales.
 Loading i18n resources, including lazy loading mode.
-Providing support for the l10n of individual components.
-Loading the local translation resource files (for environments without Singleton Service).</description>
+Providing support for the l10n of individual components.</description>
     </item>
     
     <item>
@@ -156,6 +155,16 @@ Loading the local translation resource files (for environments without Singleton
     </item>
     
     <item>
+      <title>Go Client Introduction</title>
+      <link>https://vmware.github.io/singleton/docs/overview/singleton-sdk/go-client-introduction/</link>
+      <pubDate>Tue, 07 Apr 2020 10:30:59 +0800</pubDate>
+      
+      <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/go-client-introduction/</guid>
+      <description>The Singleton Go Client is a Singleton SDK to fetch translations from Singleton service or bundles easily.
+Features in Go Client SDK  Supported interfaces:  GetLocaleList: Get supported locale list GetComponentList: Get supported component list GetStringMessage: Get a message with optional arguments. Fallback to default locale is provided. GetComponentMessages: Get messages of a component. Fallback to default locale is NOT provided.  Provide cache management as well as cache registration.</description>
+    </item>
+    
+    <item>
       <title>Singleton Service Script</title>
       <link>https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/</link>
       <pubDate>Mon, 02 Mar 2020 14:52:31 +0800</pubDate>
@@ -163,7 +172,10 @@ Loading the local translation resource files (for environments without Singleton
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/</guid>
       <description>Singleton adds script files to help user to start/check/stop Singleton Service build.
 How to generate Singleton Script The steps:
- Clone Singleton Service code using Git  git clone git@github.com:vmware/singleton.gitComplie a build using Gradle wrapper under ./g11n-ws folder  ./gradlew build -x testGo to ./Singleton/Publish folder, find singletonScripts-0.1.0.zip, and extract it, you will get 4 files as below:  singletonall.shsingletonstart.shsingletoncheck.shsingletonstop.shHow to use Singleton Script singletonall.</description>
+ Clone Singleton Service code using Git
+git clone git@github.com:vmware/singleton.git  Complie a build using Gradle wrapper under ./g11n-ws folder
+./gradlew build -x test  Go to ./Singleton/Publish folder, find singletonScripts-0.1.0.zip, and extract it, you will get 4 files as below:
+singletonall.sh singletonstart.sh singletoncheck.sh singletonstop.sh   How to use Singleton Script singletonall.</description>
     </item>
     
     <item>
@@ -187,8 +199,8 @@ How to enable product white list in Singleton Service?</description>
       <description>Singleton Service now supports to store the translation bundle files on AWS S3.
 This page will introduce the details about Singleton Service S3 build.
 How to generate Singleton Service S3 build? The steps to generate S3 build:
- Clone Singleton Service code using Git.  git clone git@github.com:vmware/singleton.gitUpdate the complie configuration file in singleton/g11n-ws/gradle.properties  datatype=bundleto
-datatype=s3Update the below s3 config items according to your requirements in singleton/g11n-ws/vip-manager-i18n/src/main/resources/application-s3.</description>
+ Clone Singleton Service code using Git.  git clone git@github.com:vmware/singleton.git   Update the complie configuration file in singleton/g11n-ws/gradle.properties  datatype=bundle  to
+datatype=s3   Update the below s3 config items according to your requirements in singleton/g11n-ws/vip-manager-i18n/src/main/resources/application-s3.</description>
     </item>
     
     <item>

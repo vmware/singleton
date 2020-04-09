@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-03-05T17:12:13 CST">
+<meta name="revised" content="2020-04-08T21:16:54 PDT">
 <title>Enable Product White List :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -201,6 +201,13 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/go-client-introduction/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/go-client-introduction/">
+            Go Client Introduction
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
         </ul>
     </li>
         </ul>
@@ -327,33 +334,38 @@
     
     
     
-    <p>Singleton Service adds a new feature to support the product white list defination, that means only the product in the white list can work well to get translations and get supported language list. It is no impact for <em>DateTimes / Numbers / Currencies / Plurals / Measurements / DateFields / RegionList</em> .</p>
+    
+
+<p>Singleton Service adds a new feature to support the product white list defination, that means only the product in the white list can work well to get translations and get supported language list. It is no impact for <em>DateTimes / Numbers / Currencies / Plurals / Measurements / DateFields / RegionList</em> .</p>
+
 <p>By default, this feature is disabled.</p>
+
 <p>This page will introduce the details about this new feature.</p>
+
 <h2 id="how-to-enable-product-white-list-in-singleton-service">How to enable product white list in Singleton Service?</h2>
+
 <p>The steps:</p>
+
 <ol>
-<li>
-<p>Generate a Singleton Service build or get a Singleton service build based on v0.3.0;</p>
-</li>
-<li>
-<p>Create a JSON file named <code>bundle.json</code>, and put it into the folder <code>.\l10n\bundles\</code>.
-The content is like:</p>
-</li>
+<li><p>Generate a Singleton Service build or get a Singleton service build based on v0.3.0;</p></li>
+
+<li><p>Create a JSON file named <code>bundle.json</code>, and put it into the folder <code>.\l10n\bundles\</code>.
+The content is like:</p></li>
 </ol>
+
 <pre><code>{
     &quot;Testing&quot;: [&quot;1.0.0&quot;, &quot;1.0.5&quot;],
     &quot;SampleAPP&quot;: [&quot;1.0.0&quot;]
 }
-</code></pre><p>The products in this file will be supported by Singleton Service, it&rsquo;s not related to <em>version</em>, only <strong>productName</strong>.</p>
-<p><strong>Notes</strong>:</p>
+</code></pre>
+
+<p>The products in this file will be supported by Singleton Service, it&rsquo;s not related to <em>version</em>, only <strong>productName</strong>.</p>
+
+<p><strong>Notes</strong>:
+1. This configuration file will be loaded into cache when Singleton Service starts. Please restart Singleton Service if any change for this configuration file.</p>
+
 <ol>
-<li>
-<p>This configuration file will be loaded into cache when Singleton Service starts. Please restart Singleton Service if any change for this configuration file.</p>
-</li>
-<li>
-<p>If you use Singleton Service S3 build, please also put this configuration file into local folder <code>.\l10n\bundles\</code> with Singleton Service S3 build together. Don&rsquo;t move it to AWS storage.</p>
-</li>
+<li>If you use Singleton Service S3 build, please also put this configuration file into local folder <code>.\l10n\bundles\</code> with Singleton Service S3 build together. Don&rsquo;t move it to AWS storage.</li>
 </ol>
 
 
