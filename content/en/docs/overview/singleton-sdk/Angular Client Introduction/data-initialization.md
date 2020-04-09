@@ -6,7 +6,7 @@ weight: 30
 ---
 
 
-In general, for most of products, it's good enough to load all translations and patterns one time in root module when the application starts, but for some special requirements, such like: isolated translation for feature module or using lazy module to enhance performance, please refer to [Isolated feature module](https://ngx.eng.vmware.com/@vmw/ngx-vip/isolated-module/documentation) and [Lazy Load Module](https://ngx.eng.vmware.com/@vmw/ngx-vip/lazy-load/documentation). singleton client provides two ways to load i18n data and initialize the services in root module:
+In general, for most of products, it's good enough to load all translations and patterns one time in root module when the application starts, but for some special requirements, such like: isolated translation for feature module or using lazy module to enhance performance, please refer to [Isolated feature module](../isolated-feature-module) and [Lazy Load Module](../lazy-load-module). singleton client provides two ways to load i18n data and initialize the services in root module:
 
 ##### **Blocking loading**
 

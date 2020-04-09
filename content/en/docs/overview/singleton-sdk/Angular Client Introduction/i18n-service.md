@@ -62,8 +62,8 @@ formatDate(value: any, pattern: string, locale?: string, timezone?: string): str
 | Parameter |  Type  |                         Description                          |
 | :-------: | :----: | :----------------------------------------------------------: |
 |   value   |  any   | a date object or a number (milliseconds since UTC epoch) or an ISO string (https://www.w3.org/TR/NOTE-datetime). |
-|  pattern  | string | indicates which date/time components to include. The format can be predefined as shown [here](https://ngx.eng.vmware.com/@vmw/ngx-vip/date-format). Default is 'mediumDate'. |
-|  locale   | string | The locale is only required in async mode for non-blocking loading. Please refer to the [stream API](https://ngx.eng.vmware.com/@vmw/ngx-vip/locale-management/documentation#Asynchronous-API) usage. |
+|  pattern  | string | indicates which date/time components to include. The format can be predefined as shown [here](../date-time-format-pipe). Default is 'mediumDate'. |
+|  locale   | string | The locale is only required in async mode for non-blocking loading. Please refer to the [stream API](../locale-management#asynchronous-api) usage. |
 | timezone  | string | to be used for formatting. It understands UTC/GMT and the continental US time zone abbreviations, but for general use, use a time zone offset, for example, '+0430' (4 hours, 30 minutes east of the Greenwich meridian) If not specified, the local system time zone of the end-user's browser will be used. |
 
 
@@ -79,7 +79,7 @@ formatNumber(value: any, locale?: string): string;
 | Parameter |     Type      |                         Description                          |
 | :-------: | :-----------: | :----------------------------------------------------------: |
 |   value   | number/string |                 The number to be formatted.                  |
-|  locale   |    string     | The locale is only required in async mode for non-blocking loading. Please refer to the [stream API](https://ngx.eng.vmware.com/@vmw/ngx-vip/locale-management/documentation#Asynchronous-API) usage. |
+|  locale   |    string     | The locale is only required in async mode for non-blocking loading. Please refer to the [stream API](../locale-management#asynchronous-api) usage. |
 
 
 
@@ -97,12 +97,12 @@ formatCurrency(value: any, currencyCode?: string, locale?: string): string;
 | :----------: | :-----------: | :----------------------------------------------------------: |
 |    value     | number/string |                 The number to be formatted.                  |
 | currencyCode |    string     | Currency code should be in accordance with [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) standard, such as USD for the US dollar and EUR for the euro. Optional. Default value is USD. |
-|    locale    |    string     | The locale is only required in async mode for non-blocking loading. Please refer to the [stream API](https://ngx.eng.vmware.com/@vmw/ngx-vip/locale-management/documentation#Asynchronous-API) usage. |
+|    locale    |    string     | The locale is only required in async mode for non-blocking loading. Please refer to the [stream API](../locale-management#asynchronous-api) usage. |
 
 
 ##### **Format relative time**
 
-Formats simple relative dates. [Details](https://ngx.eng.vmware.com/@vmw/ngx-vip/relative-time-format)
+Formats simple relative dates. [Details](../relative-time-format)
 
 ```
 formatRelativeTime( from: Date, to: Date, locale?: string, options?: Object ): string

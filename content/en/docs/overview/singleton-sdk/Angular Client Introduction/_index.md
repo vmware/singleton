@@ -27,7 +27,7 @@ Besides Localization, singleton client also provides I18n support for Datetime f
 - 1.x (support Angular4.x & Angular5.x)
 - 0.7.x is no longer maintained, only for bugfix
 
->"VIPServiceConfig" has been removed from Version 8.x and the singleton host information are listed here: [Singleton instances](https://ngx.eng.vmware.com/@vmw/ngx-vip/vip-instance/documentation). For more changes in Version 8.x, please check the changelog.
+>"VIPServiceConfig" has been removed from Version 8.x and the singleton host information are listed here: [Singleton instances](./singleton-instances). For more changes in Version 8.x, please check the changelog.
 
 
 #### **Installation**
@@ -56,7 +56,7 @@ Besides Localization, singleton client also provides I18n support for Datetime f
 |     i18nScope      | optional |               []               | Define the scope of i18n support. The default scope is empty.<br/>PatternCategories.DATE means date&time format support.<br/>PatternCategories.NUMBER means decimal and percent format support.<br/>PatternCategories.PLURAL means single plural support.<br/>PatternCategories.CURRENCIES means currency format support.<br/>PatternCategories.DATEFIELDS means relative time format support. |
 |      isPseudo      | optional |             string             | A flag to determine whether to show pseudo translation in debugging or developing stage. |
 |   collectSource    | optional |             string             | A flag to determine whether to push source strings to singleton service, but new UI strings will be only collected on singleton staging instance for the translations when collectSource is set properly to true. The application in CSP platform which needs to consume singleton service should add auth token for source collection request. |
-|    sourceBundle    | optional | {key: string]: source: string} | Source string collection.<br/>Externalize all source strings to separated typescript file instead of hardcode strings in template files. Thus use [L10nPlusPipe](https://ngx.eng.vmware.com/@vmw/ngx-vip/translate-pipe/documentation) and [translate directive](https://ngx.eng.vmware.com/@vmw/ngx-vip/translate-directive/documentation) to consume translation without specifying source strings in template. |
+|    sourceBundle    | optional | {key: string]: source: string} | Source string collection.<br/>Externalize all source strings to separated typescript file instead of hardcode strings in template files. Thus use [L10nPlusPipe](./translate-pipe) and [translate directive](./translate-directive) to consume translation without specifying source strings in template. |
 |     i18nAssets     | optional |             string             | The folder path is used to save translation files. Files naming rule: translation_${language}.json<br/>The all translations could be fetched from singleton service into local bundle files at build time, thus the application can support localization without singleton service at runtime. |
 | translationBundles | optional |   { [key: string]: object }    | A collection of languages and their corresponding translations. Naming rule: { ${language}: { key: translation_string } }<br/>The difference with 'i18nAssets' is this object will compiled into the final bundle, but 'i18nAssets' relies on Http call to get translation bundle per language. |
 #### **singleton module initialization**

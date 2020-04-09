@@ -23,7 +23,7 @@ public formatRelativeTime( from: Date, to: Date, locale?: string, options?: Obje
 | :-------: | :----: | :------: | :----------------------------------------------------------: |
 |   from    |  Date  | Required |                  Relative time start time.                   |
 |    to     |  Date  | Required |                   Relative time end time.                    |
-|  locale   | String | Optional | The locale is only required in async mode for non-blocking loading. Please refer to the [stream API](https://ngx.eng.vmware.com/@vmw/ngx-vip/locale-management/documentation#Asynchronous-API) usage. |
+|  locale   | String | Optional | The locale is only required in async mode for non-blocking loading. Please refer to the [stream API](../locale-management#asynchronous-api) usage. |
 |  options  | Object | Optional | The numeric default value is 'always'. If numeric: 'auto' option is passed, it will produce the string yesterday or tomorrow instead of 1 day ago or in 1 day, this allows to not always have to use numeric values in the output. |
 
 
