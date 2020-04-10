@@ -20,7 +20,7 @@ import org.junit.Test;
 
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.base.cache.MessageCache;
+import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.instances.LocaleMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
@@ -37,7 +37,7 @@ public class LocaleTest extends BaseTestClass {
             logger.error(e.getMessage());
         }
         gc.initializeVIPService();
-        gc.createFormattingCache(MessageCache.class);
+        gc.createFormattingCache(FormattingCache.class);
         I18nFactory i18n = I18nFactory.getInstance(gc);
         localeI18n = (LocaleMessage) i18n.getMessageInstance(LocaleMessage.class);
     }

@@ -47,7 +47,7 @@ public class MessageCacheItem implements CacheItem {
 		this.maxAgeMillis = cacheItem.maxAgeMillis;
 	}
 		
-	public String getEtag() {
+	public synchronized String getEtag() {
 		return etag;
 	}
 
@@ -55,7 +55,7 @@ public class MessageCacheItem implements CacheItem {
 		this.etag = etag;
 	}
 
-	public long getTimestamp() {
+	public synchronized long getTimestamp() {
 		return timestamp;
 	}
 
@@ -67,7 +67,7 @@ public class MessageCacheItem implements CacheItem {
 		return cachedData;
 	}
 
-	public Long getMaxAgeMillis() {
+	public synchronized Long getMaxAgeMillis() {
 		return maxAgeMillis;
 	}
 
