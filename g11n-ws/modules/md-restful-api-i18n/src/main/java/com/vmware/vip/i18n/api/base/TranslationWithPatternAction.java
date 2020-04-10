@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.vmware.i18n.l2.service.pattern.IPatternService;
+import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsMsg;
@@ -61,14 +62,18 @@ public class TranslationWithPatternAction extends BaseAction {
 	    			  excep.getMessage(), null);
 	      }
 	      if (validateResult) {
-	    	  List<String> availableVersions = null;
+	    	  List<String> categories = CommonUtility.getCategoriesByEnum(data.getScope(), true);
+	    	  if (CommonUtil.isEmpty(categories)) {
+	        	  return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.PATTERN_NOT_VALIDATE, null);
+		      }
+	          List<String> availableVersions = null;
 	          try {
 	        	  availableVersions = productService.getSupportVersionList(data.getProductName());
 	          }catch(L3APIException e) {
 	          }
 	         String oldVersion = data.getVersion();
              data.setVersion(VersionMatcher.getMatchedVersion(data.getVersion(), availableVersions));
-	         Map<String, Object> pattern = getPattern(data);
+	         Map<String, Object> pattern = getPattern(data, categories);
 	         List<ComponentMessagesDTO> components = getTranslation(data);
 	         Map<String, Object> map = new HashMap<String, Object>();
 	         map.put(ConstantsKeys.PATTERN, pattern);
@@ -94,6 +99,10 @@ public class TranslationWithPatternAction extends BaseAction {
         data.setLanguage(language);
         data.setScope(scope);
         data.setProductName(productName);
+        List<String> categories = CommonUtility.getCategoriesByEnum(scope, true);
+        if (CommonUtil.isEmpty(categories)) {
+            return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.PATTERN_NOT_VALIDATE, null);
+        }
         String newversion=null;
         try {
         	newversion = VersionMatcher.getMatchedVersion(version, productService.getSupportVersionList(productName));
@@ -107,7 +116,7 @@ public class TranslationWithPatternAction extends BaseAction {
         data.setRegion(region);
         data.setPseudo(pseudo);
         if (validateCombineType(data)) {
-            Map<String, Object> pattern = getPattern(data);
+            Map<String, Object> pattern = getPattern(data, categories);
             List<ComponentMessagesDTO> compList = getTranslation(data);
             Map<String, Object> map = new HashMap<String, Object>();
             map.put(ConstantsKeys.PATTERN, pattern);
@@ -212,9 +221,8 @@ public class TranslationWithPatternAction extends BaseAction {
 	    *
 	    */
 	   @SuppressWarnings("unchecked")
-	   public Map<String, Object> getPattern(TranslationWithPatternDTO data) throws Exception {
+	   public Map<String, Object> getPattern(TranslationWithPatternDTO data, List<String> categories) throws Exception {
 	      Map<String, Object> pattern = null;
-		   List<String> categories = CommonUtility.getCategoriesByEnum(data.getScope(), false);
 	      if (data.getCombine() == TransWithPatternDataScope.TRANSLATION_PATTERN_WITH_REGION.getValue()
 	            || data.getCombine() == TransWithPatternDataScope.ONLY_PATTERN_WITH_REGION.getValue()) {
 	         pattern = patternService.getPatternWithLanguageAndRegion(data.getLanguage(),

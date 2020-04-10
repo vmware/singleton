@@ -25,6 +25,7 @@ public class ConstantsMsg {
          "The pseudo %s, return the received source with pseudo tag.";
    public static final String PSEUDO_FOUND = "The pseudo %s.";
    public static final String PARAM_NOT_VALIDATE = "The parameter is not pass the validate";
+   public static final String PATTERN_NOT_VALIDATE = "The request pattern name is invalid";
    public static final String FIFE_NOT_FOUND= "File is not existing";
 
    private ConstantsMsg() {

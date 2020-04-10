@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,8 +84,9 @@ public class WebConfiguration implements WebMvcConfigurer {
 	@Value("${swagger-ui.enable}")
 	private boolean swagger2enable;
 
-	@Value("${cache-control.maxage:0}")
-	private int cacheControlMaxAge;
+	@Value("${cache-control.value:}")
+	private String cacheControlValue;
+
 	@Autowired
 	private TokenService tokenService;
 
@@ -158,8 +160,8 @@ public class WebConfiguration implements WebMvcConfigurer {
 			.addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**");
 		}
 		//cacheControl
-		if (cacheControlMaxAge > 0) {
-			registry.addInterceptor(new APICacheControlInterceptor(this.cacheControlMaxAge)).addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**");
+		if (StringUtils.isNotEmpty(this.cacheControlValue)) {
+			registry.addInterceptor(new APICacheControlInterceptor(this.cacheControlValue)).addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**");
 		}
 	}
 
