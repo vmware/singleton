@@ -1,0 +1,34 @@
+﻿# product name
+productName: CSharpClient
+
+# product version
+version: 1.0
+
+singletonServer: https://localhost:8090
+
+pseudo: false
+machineTranslation: false
+collectSource: false
+
+cacheType: default
+accessServiceType: default
+
+logger: default
+logType: Debug
+
+tryDelay: 10
+cacheExpiredTime: 60
+
+components: 
+  - component : DefaultComponent
+    resource: 
+      - name: DefaultComponent      
+  - component : contact
+    resource: 
+      - name: contact
+  - component : about
+    resource: 
+      - name: about
+  - component : RESX
+    resource: 
+      - name: (source.ResourceResx)
