@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
-import com.vmware.vipclient.i18n.base.cache.CacheItem;
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.StringBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
@@ -32,15 +32,15 @@ public class StringService {
     	CacheService cacheService = new CacheService(dto);
     	Map<String, String> cacheOfComponent = null;
     	if (cacheService.isContainComponent()) { // Item is in cache
-    		CacheItem cacheItem = cacheService.getCacheOfComponent();
+    		MessageCacheItem cacheItem = cacheService.getCacheOfComponent();
     		cacheOfComponent = cacheItem.getCachedData();
-    		if (cacheService.isExpired()) { // cacheItem has expired
+    		if (cacheItem.isExpired()) { // cacheItem has expired
     			// Update the cache in a separate thread
     			populateCacheTask(cacheService, dto, cacheItem); 		
     		}
     	} else { // Item is not in cache
     		// Create a new cacheItem object to be stored in cache
-    		CacheItem cacheItem = new CacheItem();
+    		MessageCacheItem cacheItem = new MessageCacheItem();
     		
     		cacheOfComponent = populateCache(cacheService, dto, cacheItem);
     		
@@ -51,7 +51,7 @@ public class StringService {
     	return (cacheOfComponent == null || cacheOfComponent.get(key) == null ? "" : cacheOfComponent.get(key));
     }
     
-	private void populateCacheTask(final CacheService cacheService, MessagesDTO dto, CacheItem cacheItem) {
+	private void populateCacheTask(final CacheService cacheService, MessagesDTO dto, MessageCacheItem cacheItem) {
 		Runnable task = () -> {
     		try {
 		    	// Use the cacheProps that is already in the cache.
@@ -65,7 +65,7 @@ public class StringService {
 		new Thread(task).start();
 	}
 	
-	private Map<String, String> populateCache(CacheService cacheService, MessagesDTO dto, CacheItem cacheItem) {
+	private Map<String, String> populateCache(CacheService cacheService, MessagesDTO dto, MessageCacheItem cacheItem) {
     	// Pass cacheitem to getMessages so that:
 		// 1. A previously stored etag, if any, can be used for the next HTTP request.
 		// 2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed 
@@ -87,7 +87,7 @@ public class StringService {
             Map<String, String> dataMap = new HashMap<>();
             dataMap.put(dto.getKey(), dto.getSource());
             
-            c.updateCacheOfComponent(new CacheItem(dataMap));
+            c.updateCacheOfComponent(new MessageCacheItem(dataMap));
         }
         return r;
     }
@@ -107,7 +107,7 @@ public class StringService {
                         jo.get(ConstantsKeys.SOURCE) == null ? "" : (String) jo.get(ConstantsKeys.SOURCE));
             }
             
-            c.updateCacheOfComponent(new CacheItem(dataMap));
+            c.updateCacheOfComponent(new MessageCacheItem(dataMap));
         }
         return r;
     }

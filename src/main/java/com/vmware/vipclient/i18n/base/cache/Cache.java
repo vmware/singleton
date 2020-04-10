@@ -4,9 +4,8 @@
  */
 package com.vmware.vipclient.i18n.base.cache;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
+import com.vmware.vipclient.i18n.base.cache.CacheItem;
 
 public interface Cache {
 	
@@ -17,14 +16,6 @@ public interface Cache {
      * @return CacheItem object instance that holds the cached data (messages and associated properties)
      */
     public CacheItem get(String key);
-
-    /**
-     * check if the cache is expired
-     * 
-     * @param key
-     * @return false if expired
-     */
-    public boolean isExpired(String key);
     
     /**
      * put strings to cache by key

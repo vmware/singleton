@@ -14,7 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.base.cache.CacheItem;
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
 import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
@@ -30,7 +30,7 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
         this.dto = dto;
     }
 
-    public void getComponentMessages(CacheItem cacheItem) {
+    public void getComponentMessages(MessageCacheItem cacheItem) {
         String url = V2URL.getComponentTranslationURL(this.dto,
                 VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
         if (ConstantsKeys.LATEST.equals(this.dto.getLocale())) {
@@ -77,7 +77,7 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
     }
     
     public String getString() {
-    	CacheItem cacheItem = new CacheItem();
+    	MessageCacheItem cacheItem = new MessageCacheItem();
     	this.getComponentMessages(cacheItem);
 		
 		String message = cacheItem.getCachedData().get(this.dto.getKey());

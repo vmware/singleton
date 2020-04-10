@@ -7,7 +7,6 @@ package com.vmware.vipclient.i18n.base.cache;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 public class MessageCache2 implements Cache {
@@ -19,8 +18,8 @@ public class MessageCache2 implements Cache {
     public MessageCache2() {
     }
 
-    public CacheItem get(String cacheKey) {
-    	CacheItem cacheItem = null;
+    public MessageCacheItem get(String cacheKey) {
+    	MessageCacheItem cacheItem = null;
         for (MessageCache m : messageCacheList) {
             cacheItem = m.getCachedTranslationMap().get(cacheKey);
             if (cacheItem != null) {
@@ -34,6 +33,7 @@ public class MessageCache2 implements Cache {
     	return isExpired();
     }
 
+    @Override
     public synchronized boolean put(String cacheKey, CacheItem itemToCache) {
         boolean created = true;
         for (int i = 0; i < messageCacheList.size(); i++) {

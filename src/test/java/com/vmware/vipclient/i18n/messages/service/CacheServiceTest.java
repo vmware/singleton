@@ -4,8 +4,7 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Locale;
@@ -17,8 +16,8 @@ import com.vmware.vip.i18n.BaseTestClass;
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
-import com.vmware.vipclient.i18n.base.cache.CacheItem;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
@@ -55,7 +54,7 @@ public class CacheServiceTest extends BaseTestClass {
     	
     	// Explicitly set this config to the default which is -1, as if the config property was not set.
         // This is done so that the cache-control max age form the server response is used instead.
-        VIPCfg.getInstance().setCacheExpiredTime(VIPCfg.CACHE_EXP_TIME_NOT_SET);
+        VIPCfg.getInstance().setCacheExpiredTime(0l);
         
         Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
         TranslationCacheManager.cleanCache(c);
@@ -66,13 +65,14 @@ public class CacheServiceTest extends BaseTestClass {
         dto.setVersion(VIPCfg.getInstance().getVersion());
         CacheService cs = new CacheService(dto);
         
-        // Cache is considered as "expired" for the very first HTTP call
-        assertTrue(cs.isExpired());
+        // CacheItem does not exist yet
+        MessageCacheItem cacheItem = cs.getCacheOfComponent();
+        assertNull(cacheItem);
         
         // This triggers the first http call
     	translation.getString(locale, component, key, source, comment, args);
-
-    	CacheItem cacheItem = cs.getCacheOfComponent();
+    	
+    	cacheItem = cs.getCacheOfComponent();
         Long responseTime = (Long) cacheItem.getTimestamp();
         
         // TODO Store response code in cache if we want to test this
@@ -139,7 +139,6 @@ public class CacheServiceTest extends BaseTestClass {
     	// If cacheExpiredTime config is set, it means  that the value of this config will be used 
     	// to indicate cache expiration. Cache control max age from http response will be ignored.
     	long cacheExpiredTime = VIPCfg.getInstance().getCacheExpiredTime();
-    	assertNotEquals(cacheExpiredTime, VIPCfg.CACHE_EXP_TIME_NOT_SET);
     	
     	Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
     	TranslationCacheManager.cleanCache(c);
@@ -150,16 +149,18 @@ public class CacheServiceTest extends BaseTestClass {
         dto.setVersion(VIPCfg.getInstance().getVersion());
         CacheService cs = new CacheService(dto);
         
-        // Cache is considered as "not expired" for the very first HTTP call
-        assertFalse(cs.isExpired());
+        // CacheItem does not exist yet
+        MessageCacheItem cacheItem = cs.getCacheOfComponent();
+        assertNull(cacheItem);
         
         // This triggers the first http call
     	translation.getString(locale, component, key, source, comment, args);
-    	CacheItem cacheItem = cs.getCacheOfComponent();
+    	
+    	cacheItem = cs.getCacheOfComponent();
     	Long responseTime = cacheItem.getTimestamp();
          
     	//Explicitly expire the cache
-    	c.setExpiredTime(0l);
+    	c.setExpiredTime(-1l);
         TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
         // Second request for the same message.
         // This should trigger another HTTP request because cache had been explicitly expired above.

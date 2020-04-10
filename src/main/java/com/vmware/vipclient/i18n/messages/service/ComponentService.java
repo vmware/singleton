@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
-import com.vmware.vipclient.i18n.base.cache.CacheItem;
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.base.cache.CacheMode;
 import com.vmware.vipclient.i18n.base.cache.persist.DiskCacheLoader;
 import com.vmware.vipclient.i18n.base.cache.persist.Loader;
@@ -39,7 +39,7 @@ public class ComponentService {
      * (com.vmware.vipclient.i18n.base.DataSourceEnum)
      */
     @SuppressWarnings("unchecked")
-    public void getMessages(final CacheItem cacheItem) {
+    public void getMessages(final MessageCacheItem cacheItem) {
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
         	ComponentBasedOpt opt = new ComponentBasedOpt(dto);
         	opt.getComponentMessages(cacheItem);
@@ -64,7 +64,7 @@ public class ComponentService {
 	        }
 	        
 			// Prepare a new CacheItem to store cache properties
-	        CacheItem cacheItem = new CacheItem();
+	        MessageCacheItem cacheItem = new MessageCacheItem();
 			// Pass this cacheItem to getMessages so that it will be populated from the http request
 			this.getMessages(cacheItem);
 			// Store the messages and properties in cache using a single CacheItem object

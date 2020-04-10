@@ -20,7 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.base.cache.CacheItem;
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentsBasedOpt;
@@ -61,7 +61,7 @@ public class ComponentsService {
 
                 final CacheService cs = new CacheService(dto);                
                 if (cs.isContainComponent()) { // Get data from cache.
-                	CacheItem cacheItem = cs.getCacheOfComponent();
+                	MessageCacheItem cacheItem = cs.getCacheOfComponent();
                 	localeMap.put(component, cacheItem.getCachedData());
                 } else { // Data is not in cache.
                 	componentsToQuery.add(component);
@@ -78,7 +78,7 @@ public class ComponentsService {
 
         // Query from server.
         final ComponentsBasedOpt opt = new ComponentsBasedOpt(this.cfg);
-        CacheItem cacheItem = new CacheItem();
+        MessageCacheItem cacheItem = new MessageCacheItem();
         JSONObject response = opt.queryFromServer(componentsToQuery, localesToQuery, cacheItem);
 		final JSONArray bundles = (JSONArray) opt.getDataPart(response).get(ConstantsKeys.BUNDLES);
         final JSONArray localesFromServer = (JSONArray) opt.getDataPart(response).get(ConstantsKeys.LOCALES);
@@ -96,7 +96,7 @@ public class ComponentsService {
             final MessagesDTO dto = new MessagesDTO();
             dto.setComponent(comp);
             dto.setLocale(locale);
-            new CacheService(dto).addCacheOfComponent(new CacheItem(messages, cacheItem.getEtag(), 
+            new CacheService(dto).addCacheOfComponent(new MessageCacheItem(messages, cacheItem.getEtag(), 
             		cacheItem.getTimestamp(), cacheItem.getMaxAgeMillis()));
 
             // update map to return.

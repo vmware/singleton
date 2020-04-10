@@ -45,7 +45,7 @@ public class TranslationCacheManager {
     @Deprecated
     private static void cleanEntireCache(Cache c) {
     	// Clean the entire cache only if cacheExpireTime config is set.
-        if (VIPCfg.getInstance().isCacheExpiredTimeSet()) {
+        if (VIPCfg.getInstance().getCacheExpiredTime() != 0) {
         	if (c != null && c.isExpired()) {
         		cleanCache(c);
         	}

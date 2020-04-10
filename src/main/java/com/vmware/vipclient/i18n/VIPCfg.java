@@ -47,11 +47,7 @@ public class VIPCfg {
     private boolean                    pseudo;
     private boolean                    collectSource;
     private boolean                    cleanCache;
-    
-    @Deprecated
-    public static final long 		   CACHE_EXP_TIME_NOT_SET = -1;
-    @Deprecated
-    private long                       cacheExpiredTime = CACHE_EXP_TIME_NOT_SET;
+    private long                       cacheExpiredTime;
     
     private boolean                    machineTranslation;
     private boolean                    initializeCache;
@@ -60,7 +56,6 @@ public class VIPCfg {
     private String                     version;
     private String                     vipServer;
     private String                     i18nScope     = "numbers,dates,currencies,plurals,measurements";
-    private String 					   offline_resources_base_url;
 
     // define key for cache management
     public static final String         CACHE_L3      = "CACHE_L3";
@@ -202,7 +197,7 @@ public class VIPCfg {
         }
         Cache createdCache = TranslationCacheManager
                 .getCache(VIPCfg.CACHE_L3);
-        if (createdCache != null && this.isCacheExpiredTimeSet()) {
+        if (createdCache != null && this.getCacheExpiredTime() != 0) {
             c.setExpiredTime(this.getCacheExpiredTime());
         }
     }
@@ -230,7 +225,7 @@ public class VIPCfg {
                     Task.startTaskOfCacheClean(VIPCfg.getInstance(), interalCleanCache);
                 }
                 Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
-                if (c != null && this.isCacheExpiredTimeSet()) {
+                if (c != null && this.getCacheExpiredTime() != 0) {
                     c.setExpiredTime(this.getCacheExpiredTime());
                 }
             }
@@ -380,11 +375,6 @@ public class VIPCfg {
     @Deprecated
     public void setCacheExpiredTime(long cacheExpiredTime) {
         this.cacheExpiredTime = cacheExpiredTime;
-    }
-    
-    @Deprecated
-    public boolean isCacheExpiredTimeSet() {
-    	return (this.cacheExpiredTime != -1);
     }
     
     public CacheMode getCacheMode() {
