@@ -2,7 +2,7 @@
 title: "Number Format Pipe"
 date: 2019-09-24T20:08:31+08:00
 draft: false
-weight: 30
+weight: 27
 ---
 
 
@@ -51,5 +51,9 @@ Formats a number as text. Group sizing and separator and other locale-specific c
     }
     table thead tr th:nth-child(2) {
         width:10rem;
+    }
+    article section.page h1:first-of-type {
+        text-transform: inherit;
+        font-family: inherit;
     }
 </style>

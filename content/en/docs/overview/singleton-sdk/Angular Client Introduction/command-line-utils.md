@@ -98,4 +98,8 @@ For example
     table thead tr th:nth-child(3) {
         width:10rem;
     }
+    article section.page h1:first-of-type {
+        text-transform: inherit;
+        font-family: inherit;
+    }
 </style>

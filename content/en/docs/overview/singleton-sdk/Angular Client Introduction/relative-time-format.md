@@ -2,7 +2,7 @@
 title: "Relative Time Format"
 date: 2019-09-24T20:08:31+08:00
 draft: false
-weight: 30
+weight: 25
 ---
 
 #### **Overview**
@@ -66,5 +66,9 @@ public formatRelativeTime( from: Date, to: Date, locale?: string, options?: Obje
     article section.page table th {
         font-weight:500;
         text-transform: inherit;
+    }
+    article section.page h1:first-of-type {
+        text-transform: inherit;
+        font-family: inherit;
     }
 </style>

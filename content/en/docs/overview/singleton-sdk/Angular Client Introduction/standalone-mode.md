@@ -2,7 +2,7 @@
 title: "Standalone Mode"
 date: 2019-09-24T20:08:31+08:00
 draft: false
-weight: 30
+weight: 31
 ---
 
 Standalone mode is designed for the application without singleton service at runtime to support internationalization, the translations and formatting patterns need to be downloaded from singleton service into local asset folder at buildtime. In this way, when the application starts, the ngx-vip client will get translations and patterns from application web server through HTTP request.
@@ -93,5 +93,9 @@ Using the local data to support i18n is not a recommended way that only for a tr
     }
     table thead tr th:nth-child(3) {
         width:10rem;
+    }
+    article section.page h1:first-of-type {
+        text-transform: inherit;
+        font-family: inherit;
     }
 </style>

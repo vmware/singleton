@@ -119,4 +119,8 @@ If you cannot find the necessary documentation or the answer to your question by
     .function {
         color: #657C83;
     }
+    article section.page h1:first-of-type {
+        text-transform: inherit;
+        font-family: inherit;
+    }
 </style>

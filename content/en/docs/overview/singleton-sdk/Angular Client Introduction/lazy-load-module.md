@@ -2,7 +2,7 @@
 title: "Lazy Load Module"
 date: 2019-09-24T20:08:31+08:00
 draft: false
-weight: 30
+weight: 18
 ---
 
 
@@ -23,5 +23,9 @@ As the application is growing, some modules will be defined as the lazy module. 
     }
     section strong {
         font-weight: 400;
+    }
+    article section.page h1:first-of-type {
+        text-transform: inherit;
+        font-family: inherit;
     }
 </style>

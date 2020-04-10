@@ -2,7 +2,7 @@
 title: "Singleton Instances"
 date: 2019-09-24T20:08:31+08:00
 draft: false
-weight: 30
+weight: 32
 ---
 
 | Instance  Type                          | Host                                                         | Port | Purpose                                                      | Connected by                | swagger-ui URL                                               |
@@ -40,5 +40,9 @@ weight: 30
     }
     table thead tr th:nth-child(5) {
         width:10rem;
+    }
+    article section.page h1:first-of-type {
+        text-transform: inherit;
+        font-family: inherit;
     }
 </style>

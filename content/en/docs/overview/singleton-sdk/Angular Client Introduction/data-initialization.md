@@ -2,7 +2,7 @@
 title: "Data Initialization"
 date: 2019-09-24T20:08:31+08:00
 draft: false
-weight: 30
+weight: 15
 ---
 
 
@@ -45,5 +45,9 @@ This loading method is suitable for the number of UI strings more than 5000.
     }
     section p>strong {
         font-weight: 600;
+    }
+    article section.page h1:first-of-type {
+        text-transform: inherit;
+        font-family: inherit;
     }
 </style>

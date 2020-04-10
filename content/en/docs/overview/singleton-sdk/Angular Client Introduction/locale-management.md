@@ -2,7 +2,7 @@
 title: "Locale Management"
 date: 2019-09-24T20:08:31+08:00
 draft: false
-weight: 30
+weight: 16
 ---
 
 #### **Overview**
@@ -207,5 +207,9 @@ Besides live update, the other choice is using browser refresh to reload the res
     article section.page table th {
         font-weight:500;
         text-transform: inherit;
+    }
+    article section.page h1:first-of-type {
+        text-transform: inherit;
+        font-family: inherit;
     }
 </style>

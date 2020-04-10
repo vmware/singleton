@@ -2,7 +2,7 @@
 title: "Plural Format"
 date: 2019-09-24T20:08:31+08:00
 draft: false
-weight: 30
+weight: 24
 ---
 
 
@@ -72,5 +72,9 @@ source in bundle
     }
     ul li {
         list-style: circle;
+    }
+    article section.page h1:first-of-type {
+        text-transform: inherit;
+        font-family: inherit;
     }
 </style>

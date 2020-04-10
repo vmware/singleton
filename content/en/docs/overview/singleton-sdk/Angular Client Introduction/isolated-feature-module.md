@@ -2,7 +2,7 @@
 title: "Isolated Feature Module"
 date: 2019-09-24T20:08:31+08:00
 draft: false
-weight: 30
+weight: 17
 ---
 
 #### **Overview**
@@ -56,5 +56,9 @@ Import singleton module and invoke the API to set current locale and default loc
     }
     section strong {
         font-weight: 400;
+    }
+    article section.page h1:first-of-type {
+        text-transform: inherit;
+        font-family: inherit;
     }
 </style>

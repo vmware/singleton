@@ -2,7 +2,7 @@
 title: "L10n Service"
 date: 2019-09-24T20:08:31+08:00
 draft: false
-weight: 30
+weight: 22
 ---
 
 
@@ -92,5 +92,9 @@ public translate(key: string, source: string, variables?: string[]|{}, locale?: 
     }
     table thead tr th:nth-child(3) {
         width:10rem;
+    }
+    article section.page h1:first-of-type {
+        text-transform: inherit;
+        font-family: inherit;
     }
 </style>

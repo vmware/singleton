@@ -2,7 +2,7 @@
 title: "Percent Format Pipe"
 date: 2019-09-24T20:08:31+08:00
 draft: false
-weight: 30
+weight: 29
 ---
 
 
@@ -34,5 +34,9 @@ Formats a number into percentage string. Group sizing and separator and other lo
         background-color: #fafafa;
         border:1px solid #ccc;
         padding-top: 2rem;
+    }
+    article section.page h1:first-of-type {
+        text-transform: inherit;
+        font-family: inherit;
     }
 </style>

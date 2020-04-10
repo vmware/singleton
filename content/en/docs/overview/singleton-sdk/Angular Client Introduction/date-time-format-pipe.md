@@ -2,7 +2,7 @@
 title: "Date Time Format Pipe"
 date: 2019-09-24T20:08:31+08:00
 draft: false
-weight: 30
+weight: 26
 ---
 
 
@@ -80,6 +80,10 @@ Assuming 'date' is (year: 2018, month: 2, day: 09, hour: 17, minute: 40, second:
     }
     table thead tr th:nth-child(2) {
         width:26rem;
+    }
+    article section.page h1:first-of-type {
+        text-transform: inherit;
+        font-family: inherit;
     }
 </style>
 

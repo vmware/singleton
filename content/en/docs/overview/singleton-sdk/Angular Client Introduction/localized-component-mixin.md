@@ -2,7 +2,7 @@
 title: "Localized Component Mixin"
 date: 2019-09-24T20:08:31+08:00
 draft: false
-weight: 30
+weight: 19
 ---
 
 #### **Overview**
@@ -75,5 +75,9 @@ When the refresh token isn't required by your host
         height: 3.5rem;
         line-height: 0rem;
         color: #575757;
+    }
+    article section.page h1:first-of-type {
+        text-transform: inherit;
+        font-family: inherit;
     }
 </style>
