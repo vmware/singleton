@@ -13,7 +13,6 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
-import com.vmware.vipclient.i18n.base.cache.CacheItem;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.server.LocaleOpt;
 import com.vmware.vipclient.i18n.util.JSONUtils;

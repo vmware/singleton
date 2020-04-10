@@ -35,12 +35,12 @@ public class MessageCacheItem implements CacheItem {
 	
 	public final Map<String, String> cachedData = new HashMap<String, String>();
 	
-	public void addCachedData(Map<String, String> cachedData) {
+	public synchronized void addCachedData(Map<String, String> cachedData) {
 		if (cachedData != null) 
 			this.cachedData.putAll(cachedData);
 	}
 	
-	public void addCacheItem (MessageCacheItem cacheItem) {
+	public synchronized void addCacheItem (MessageCacheItem cacheItem) {
 		this.addCachedData(cacheItem.getCachedData());
 		this.etag = cacheItem.etag;
 		this.timestamp = cacheItem.timestamp;
@@ -51,7 +51,7 @@ public class MessageCacheItem implements CacheItem {
 		return etag;
 	}
 
-	public void setEtag(String etag) {
+	public synchronized void setEtag(String etag) {
 		this.etag = etag;
 	}
 
@@ -59,7 +59,7 @@ public class MessageCacheItem implements CacheItem {
 		return timestamp;
 	}
 
-	public void setTimestamp(long timestamp) {
+	public synchronized void setTimestamp(long timestamp) {
 		this.timestamp = timestamp;
 	}
     
@@ -71,7 +71,7 @@ public class MessageCacheItem implements CacheItem {
 		return maxAgeMillis;
 	}
 
-	public void setMaxAgeMillis(Long maxAgeMillis) {
+	public synchronized void setMaxAgeMillis(Long maxAgeMillis) {
 		this.maxAgeMillis = maxAgeMillis;
 	}
 

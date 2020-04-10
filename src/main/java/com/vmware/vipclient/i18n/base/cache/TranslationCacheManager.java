@@ -42,10 +42,11 @@ public class TranslationCacheManager {
         return c;
     }
     
-    @Deprecated
     private static void cleanEntireCache(Cache c) {
-    	// Clean the entire cache only if cacheExpireTime config is set.
-        if (VIPCfg.getInstance().getCacheExpiredTime() != 0) {
+    	// If cache is MessageCache and cacheExpireTime config is not set, 
+    	// this means that the expiration and cleanup is per MessageCacheItem.
+        if ((c instanceof MessageCache && VIPCfg.getInstance().getCacheExpiredTime() != 0)
+        		|| !(c instanceof MessageCache)) {
         	if (c != null && c.isExpired()) {
         		cleanCache(c);
         	}

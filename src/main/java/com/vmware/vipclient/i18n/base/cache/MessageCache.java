@@ -190,7 +190,8 @@ public class MessageCache implements Cache {
         }
         return f;
     }
-
+    
+    @Deprecated
     public boolean isExpired() {
         boolean f = false;
         long expired = this.getExpiredTime();

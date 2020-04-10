@@ -82,9 +82,6 @@ public class FormattingCache implements Cache {
         return this.capacityX;
     }
 
-    public boolean isExpired(String cacheKey) {
-    	return isExpired();
-    }
     public boolean isExpired() {
         boolean f = false;
         long expired = this.getExpiredTime();
