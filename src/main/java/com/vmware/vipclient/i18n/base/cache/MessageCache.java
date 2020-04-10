@@ -8,8 +8,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
-import com.vmware.vipclient.i18n.VIPCfg;
-
 public class MessageCache implements Cache {
     private String                           id                  = "cache-default";
  

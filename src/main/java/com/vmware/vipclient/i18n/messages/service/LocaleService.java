@@ -13,7 +13,8 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
-import com.vmware.vipclient.i18n.base.cache.FormatCacheItem;
+import com.vmware.vipclient.i18n.base.cache.CacheItem;
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.server.LocaleOpt;
 import com.vmware.vipclient.i18n.util.JSONUtils;
 
@@ -37,7 +38,7 @@ public class LocaleService {
             Cache c = VIPCfg.getInstance().getCacheManager()
                     .getCache(VIPCfg.CACHE_L2);
             if (c != null) {
-            	FormatCacheItem cacheItem = (FormatCacheItem) c.get(REGION_PREFIX
+            	MessageCacheItem cacheItem = (MessageCacheItem) c.get(REGION_PREFIX
                         + language);    
                 regionMap = cacheItem == null ? regionMap : cacheItem.getCachedData();
             }
@@ -52,7 +53,7 @@ public class LocaleService {
             regionMap = JSONUtils.map2SortMap(tmpMap);
             respMap.put(language, regionMap);
             if (c != null) {
-            	FormatCacheItem cacheItem = new FormatCacheItem(regionMap);
+            	MessageCacheItem cacheItem = new MessageCacheItem(regionMap);
                 c.put(REGION_PREFIX + language, cacheItem);
             }
         }
@@ -65,9 +66,9 @@ public class LocaleService {
         Cache c = VIPCfg.getInstance().getCacheManager()
                 .getCache(VIPCfg.CACHE_L2);
         if (c != null) {
-        	FormatCacheItem cacheItem = (FormatCacheItem) c.get(DISPN_PREFIX + language); 
+        	MessageCacheItem cacheItem = (MessageCacheItem) c.get(DISPN_PREFIX + language); 
         	if (cacheItem == null) {
-        		cacheItem = new FormatCacheItem();
+        		cacheItem = new MessageCacheItem();
         	}
             dispMap = cacheItem.getCachedData();
             if (dispMap == null || dispMap.size() == 0) {
@@ -76,7 +77,7 @@ public class LocaleService {
 					        .getDisplayNamesFromCLDR(language);
                 dispMap = JSONUtils.map2SortMap(tmpMap);
                 if (dispMap != null && dispMap.size() > 0) {
-                    c.put(DISPN_PREFIX + language, new FormatCacheItem(dispMap));
+                    c.put(DISPN_PREFIX + language, new MessageCacheItem(dispMap));
                 }
             }
         }
