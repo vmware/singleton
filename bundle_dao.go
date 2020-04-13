@@ -34,7 +34,7 @@ func (d *bundleDAO) get(item *dataItem) (err error) {
 	case itemComponents:
 		item.data, err = d.getComponentList(id.Name, id.Version)
 	default:
-		err = errors.Errorf("Invalid item type: %d", item.id.iType)
+		err = errors.Errorf(invalidItemType, item.id.iType)
 	}
 
 	return

@@ -61,9 +61,9 @@ func (ds *dataService) fetch(item *dataItem, wait bool) error {
 				StackTrace() errors.StackTrace
 			}
 			if e, ok := err.(stackTracer); ok {
-				logger.Error(fmt.Sprintf("Fail to get from server: %#v", e))
+				logger.Error(fmt.Sprintf(serverFail+": %#v", e))
 			} else {
-				logger.Error(fmt.Sprintf("Fail to get from server: %s", err.Error()))
+				logger.Error(fmt.Sprintf(serverFail+": %s", err.Error()))
 			}
 		}
 

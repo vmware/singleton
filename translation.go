@@ -20,7 +20,7 @@ type defaultTrans struct {
 
 func (t *defaultTrans) GetStringMessage(name, version, locale, component, key string, args ...string) (string, error) {
 	if name == "" || version == "" || locale == "" || component == "" || key == "" {
-		return key, errors.New("Wrong parameters")
+		return key, errors.New(wrongPara)
 	}
 
 	compData, err := t.GetComponentMessages(name, version, locale, component)
@@ -51,7 +51,7 @@ func (t *defaultTrans) GetStringMessage(name, version, locale, component, key st
 
 func (t *defaultTrans) GetLocaleList(name, version string) (data []string, err error) {
 	if name == "" || version == "" {
-		return nil, errors.New("Wrong parameters")
+		return nil, errors.New(wrongPara)
 	}
 
 	item := &dataItem{dataItemID{itemLocales, name, version, "", ""}, nil, nil}
@@ -62,7 +62,7 @@ func (t *defaultTrans) GetLocaleList(name, version string) (data []string, err e
 
 func (t *defaultTrans) GetComponentList(name, version string) (data []string, err error) {
 	if name == "" || version == "" {
-		return nil, errors.New("Wrong parameters")
+		return nil, errors.New(wrongPara)
 	}
 
 	item := &dataItem{dataItemID{itemComponents, name, version, "", ""}, nil, nil}
@@ -73,7 +73,7 @@ func (t *defaultTrans) GetComponentList(name, version string) (data []string, er
 
 func (t *defaultTrans) GetComponentMessages(name, version, locale, component string) (data ComponentMsgs, err error) {
 	if name == "" || version == "" || locale == "" || component == "" {
-		return nil, errors.New("Wrong parameters")
+		return nil, errors.New(wrongPara)
 	}
 
 	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}

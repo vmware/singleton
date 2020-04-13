@@ -80,7 +80,7 @@ func checkConfig(cfg *Config) error {
 // GetTranslation Get translation instance
 func GetTranslation() Translation {
 	if inst == nil {
-		panic(errors.New("Client isn't initialized"))
+		panic(errors.New(uninitialzed))
 	}
 
 	return inst.trans
@@ -89,7 +89,7 @@ func GetTranslation() Translation {
 // SetHTTPHeaders Set customized HTTP headers
 func SetHTTPHeaders(h map[string]string) {
 	if inst == nil {
-		panic(errors.New("Client isn't initialized"))
+		panic(errors.New(uninitialzed))
 	}
 
 	server := inst.trans.ds.server

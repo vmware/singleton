@@ -56,7 +56,7 @@ func (s *serverDAO) get(item *dataItem) (err error) {
 	case itemComponents:
 		data = new(queryComponents)
 	default:
-		return errors.Errorf("Invalid item type: %d", item.id.iType)
+		return errors.Errorf(invalidItemType, item.id.iType)
 	}
 
 	urlToQuery := s.prepareURL(item)
@@ -75,7 +75,7 @@ func (s *serverDAO) get(item *dataItem) (err error) {
 	case itemComponent:
 		pData := data.(*queryProduct)
 		if len(pData.Bundles) != 1 {
-			return errors.New("Wrong data from server")
+			return errors.New(wrongServerData)
 		}
 		item.data = &defaultComponentMsgs{messages: pData.Bundles[0].Messages}
 	case itemLocales:
@@ -85,7 +85,7 @@ func (s *serverDAO) get(item *dataItem) (err error) {
 		componentsData := data.(*queryComponents)
 		item.data = componentsData.Components
 	default:
-		return errors.Errorf("Invalid item type: %d", item.id.iType)
+		return errors.Errorf(invalidItemType, item.id.iType)
 	}
 
 	return nil
