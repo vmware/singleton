@@ -43,6 +43,36 @@ public class CacheServiceTest extends BaseTestClass {
     }
     
     @Test
+    public void testCacheNoUpdateIfErrorResponse() {
+    	VIPCfg gc = VIPCfg.getInstance();
+        try {
+            gc.initialize("vipconfig");
+        } catch (VIPClientInitException e) {
+            logger.error(e.getMessage());
+        }
+    	gc.initializeVIPService();
+        
+        Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
+        TranslationCacheManager.cleanCache(c);
+        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
+        TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
+        
+        dto.setProductID(VIPCfg.getInstance().getProductName());
+        dto.setVersion(VIPCfg.getInstance().getVersion());
+        
+        // Explicitly set an empty string component to get an HTTP 404 from the service
+        String emptyComponent = "";
+    	dto.setComponent(emptyComponent);
+    	CacheService cs = new CacheService(dto);
+    	
+        // This triggers the first http call
+    	translation.getString(locale, emptyComponent, key, source, comment, args);
+    	
+    	MessageCacheItem cacheItem = cs.getCacheOfComponent();
+    	assertNull(cacheItem);
+    }
+    
+    @Test
     public void testExpireUsingCacheControlMaxAge() {
     	VIPCfg gc = VIPCfg.getInstance();
         try {
@@ -52,8 +82,8 @@ public class CacheServiceTest extends BaseTestClass {
         }
     	gc.initializeVIPService();
     	
-    	// Explicitly set this config to the default which is -1, as if the config property was not set.
-        // This is done so that the cache-control max age form the server response is used instead.
+    	// Explicitly set this config to the default which is 0, as if the config property was not set.
+        // This is done so that the cache-control max age from the server response is used instead.
         VIPCfg.getInstance().setCacheExpiredTime(0l);
         
         Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
@@ -102,15 +132,14 @@ public class CacheServiceTest extends BaseTestClass {
         
         // Give time for the separate thread to finish.
         try {
-			Thread.sleep(5000);
+			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
-        // Third request for the same message.
         // This should fetch messages and properties from cache 
-        translation.getString(locale, component, key, source, comment, args);
+        cacheItem = cs.getCacheOfComponent();
         
         // TODO Store response code in cache if we want to test 
         //responseCode = cacheItem.getResponseCode();        
@@ -119,6 +148,7 @@ public class CacheServiceTest extends BaseTestClass {
         // The cached response time had been updated by the separate thread 
         // to the timestamp of the second response.  
         // This, in effect, extends the cache expiration.
+        
         Long responseTime3 = cacheItem.getTimestamp();
         assertTrue(responseTime3 > responseTime); 
         assertTrue(cacheItem.getMaxAgeMillis() > 0l);

@@ -4,12 +4,9 @@
  */
 package com.vmware.vipclient.i18n.messages.api.url;
 
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import com.vmware.vipclient.i18n.base.HttpRequester;
 
 /**
  * 

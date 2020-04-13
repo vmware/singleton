@@ -44,7 +44,7 @@ public class StringService {
     		
     		cacheOfComponent = populateCache(cacheService, dto, cacheItem);
     		
-    		if (cacheOfComponent != null) {
+    		if (cacheOfComponent != null && !cacheOfComponent.isEmpty()) {
     			cacheService.addCacheOfComponent(cacheItem);
     		}
     	} 

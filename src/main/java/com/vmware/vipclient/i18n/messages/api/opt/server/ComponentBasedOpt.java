@@ -44,16 +44,25 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester()
         		.request(url, ConstantsKeys.GET,null, headers);
         
-        if (response.get(URLUtils.HEADERS) != null)
-        	cacheItem.setEtag(URLUtils.createEtagString((Map<String, List<String>>) response.get(URLUtils.HEADERS)));
-        if (response.get(URLUtils.RESPONSE_TIMESTAMP) != null)
-        	cacheItem.setTimestamp((long) response.get(URLUtils.RESPONSE_TIMESTAMP) );
-        if (response.get(URLUtils.MAX_AGE_MILLIS) != null)
-        	cacheItem.setMaxAgeMillis((Long) response.get(URLUtils.MAX_AGE_MILLIS));
-        Map<String,String> messages = this.getMsgsJson(response);
-        if (messages != null) {
-        	cacheItem.addCachedData(messages);
-        }
+        Integer responseCode = (Integer) response.get(URLUtils.RESPONSE_CODE);
+        
+        if (responseCode != null && (responseCode.equals(HttpURLConnection.HTTP_OK) || 
+        		responseCode.equals(HttpURLConnection.HTTP_NOT_MODIFIED))) {
+        	
+        	if (response.get(URLUtils.RESPONSE_TIMESTAMP) != null)
+	        	cacheItem.setTimestamp((long) response.get(URLUtils.RESPONSE_TIMESTAMP) );
+        	if (response.get(URLUtils.HEADERS) != null)
+	        	cacheItem.setEtag(URLUtils.createEtagString((Map<String, List<String>>) response.get(URLUtils.HEADERS)));
+	        if (response.get(URLUtils.MAX_AGE_MILLIS) != null)
+	        	cacheItem.setMaxAgeMillis((Long) response.get(URLUtils.MAX_AGE_MILLIS));
+	        
+        	if (responseCode.equals(HttpURLConnection.HTTP_OK)) {
+		        Map<String,String> messages = this.getMsgsJson(response);
+		        if (messages != null) {
+		        	cacheItem.addCachedData(messages);
+		        }
+        	}
+        } 
     }
 
     private JSONObject getMsgsJson(Map<String, Object> response) {
