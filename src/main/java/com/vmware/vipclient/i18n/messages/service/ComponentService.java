@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.base.cache.CacheMode;
 import com.vmware.vipclient.i18n.base.cache.persist.DiskCacheLoader;
 import com.vmware.vipclient.i18n.base.cache.persist.Loader;
@@ -31,41 +32,45 @@ public class ComponentService {
     }
 
     /*
-     * get messages from local bundle or from remote vip service(non-Javadoc)
+     * Get messages from local bundle or from remote vip service(non-Javadoc)
      * 
      * @see
      * com.vmware.vipclient.i18n.messages.service.IComponentService#getMessages
      * (com.vmware.vipclient.i18n.base.DataSourceEnum)
      */
     @SuppressWarnings("unchecked")
-    public Map<String, String> getMessages() {
-        Map<String, String> transMap = new HashMap<String, String>();
+    public void getMessages(final MessageCacheItem cacheItem) {
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
-            transMap = new ComponentBasedOpt(dto).getComponentMessages();
+        	ComponentBasedOpt opt = new ComponentBasedOpt(dto);
+        	opt.getComponentMessages(cacheItem);
         } else if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.Bundle) {
-            transMap = new LocalMessagesOpt(dto).getComponentMessages();
+        	cacheItem.addCachedData(new LocalMessagesOpt(dto).getComponentMessages());
         }
-        return transMap;
     }
 
     public Map<String, String> getComponentTranslation() {
-        Map<String, String> retMap = new HashMap<String, String>();
         CacheService cs = new CacheService(dto);
-        retMap = cs.getCacheOfComponent();
-        if (retMap == null
-                && VIPCfg.getInstance().getCacheMode() == CacheMode.DISK) {
-            Loader loader = VIPCfg.getInstance().getCacheManager()
-                    .getLoaderInstance(DiskCacheLoader.class);
-            retMap = loader.load(dto.getCompositStrAsCacheKey());
+ 
+        if (cs.isContainComponent()) {
+        	return cs.getCacheOfComponent().getCachedData();
+        } else {
+	        // Messages are not cached in memory, so try to look in disk cache
+	        if (VIPCfg.getInstance().getCacheMode() == CacheMode.DISK) {
+	            Loader loader = VIPCfg.getInstance().getCacheManager()
+	                    .getLoaderInstance(DiskCacheLoader.class);
+	            Map<String, String> cachedMessages = loader.load(dto.getCompositStrAsCacheKey());
+	            if (cachedMessages != null) // Messages are in disk cache
+	            	return cachedMessages;
+	        }
+	        
+			// Prepare a new CacheItem to store cache properties
+	        MessageCacheItem cacheItem = new MessageCacheItem();
+			// Pass this cacheItem to getMessages so that it will be populated from the http request
+			this.getMessages(cacheItem);
+			// Store the messages and properties in cache using a single CacheItem object
+			cs.addCacheOfComponent(cacheItem);
+			return cacheItem.getCachedData(); 
         }
-        if (retMap == null && !cs.isContainComponent()) {
-            Object o = this.getMessages();
-            Map<String, String> dataMap = (o == null ? null
-                    : (Map<String, String>) o);
-            cs.addCacheOfComponent(dataMap);
-            retMap = dataMap;
-        }
-        return retMap;
     }
 
     public boolean isComponentAvailable() {

@@ -10,13 +10,13 @@ import java.util.Set;
 
 public class MessageCache implements Cache {
     private String                           id                  = "cache-default";
-
+ 
     private long                             expiredTime         = 864000000;                                       // 240hr
     private long                             lastClean           = System.currentTimeMillis();
 
-    private Map<String, Map<String, String>> cachedComponentsMap = new LinkedHashMap<String, Map<String, String>>();
-
-    public Map<String, Map<String, String>> getCachedTranslationMap() {
+    private final Map<String, MessageCacheItem> cachedComponentsMap = new LinkedHashMap<String, MessageCacheItem>();
+    
+    public Map<String, MessageCacheItem> getCachedTranslationMap() {
         return cachedComponentsMap;
     }
 
@@ -43,13 +43,12 @@ public class MessageCache implements Cache {
     }
 
     @SuppressWarnings("unchecked")
-    public Map<String, String> get(String cacheKey) {
+    public CacheItem get(String cacheKey) {
         Integer i = hitMap.get(cacheKey);
         if (i != null) {
             hitMap.put(cacheKey, i.intValue() + 1);
         }
-        Object cachedObject = cachedComponentsMap.get(cacheKey);
-        return cachedObject == null ? null : (Map<String, String>) cachedObject;
+        return cachedComponentsMap.get(cacheKey);
     }
 
     public String getRemovedKeyFromHitMap() {
@@ -72,24 +71,24 @@ public class MessageCache implements Cache {
         }
         return key;
     }
-
-    public synchronized boolean put(String cacheKey, Map<String, String> map) {
-        if (this.isFull()) {
-            String k = getRemovedKeyFromHitMap();
-            this.remove(k);
-            hitMap.remove(k);
-        }
-        if (!this.isFull()) {
-            if (cachedComponentsMap.get(cacheKey) != null) {
-                Map<String, String> t = cachedComponentsMap.get(cacheKey);
-                if (t != null) {
-                    t.putAll(map);
-                }
-            } else {
-                cachedComponentsMap.put(cacheKey, map);
-            }
-
-        }
+    
+    @Override
+    public synchronized boolean put(String cacheKey, CacheItem itemToCache) {
+    	if (itemToCache != null) {
+	        if (this.isFull()) {
+	            String k = getRemovedKeyFromHitMap();
+	            this.remove(k);
+	            hitMap.remove(k);
+	        } 
+	        if (!this.isFull()) {
+	    		MessageCacheItem cacheItem = cachedComponentsMap.get(cacheKey);
+	    		if (cacheItem == null) {
+	    			cachedComponentsMap.put(cacheKey, (MessageCacheItem) itemToCache);
+	    		} else {
+	    			cacheItem.addCacheItem((MessageCacheItem) itemToCache);
+	    		}
+	        }
+    	}
         return cachedComponentsMap.containsKey(cacheKey);
     }
 
@@ -156,10 +155,9 @@ public class MessageCache implements Cache {
         Set<String> s = this.getCachedTranslationMap().keySet();
         int size = 0;
         for (String key : s) {
-            Object o = this.getCachedTranslationMap().get(key);
-            if (o != null) {
-                Map<String, String> m = (Map<String, String>) o;
-                size = size + m.keySet().size();
+        	MessageCacheItem cacheItem = this.getCachedTranslationMap().get(key);
+            if (cacheItem != null) {              
+                size += cacheItem.getCachedData().size();
             }
         }
         return size;
@@ -192,7 +190,8 @@ public class MessageCache implements Cache {
         }
         return f;
     }
-
+    
+    @Deprecated
     public boolean isExpired() {
         boolean f = false;
         long expired = this.getExpiredTime();

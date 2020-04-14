@@ -14,6 +14,7 @@ import org.junit.Test;
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
@@ -71,9 +72,14 @@ public class SharedComponentTest extends BaseTestClass {
 
         VIPCfg gc = VIPCfg.getInstance();
         Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
-        Map<String, Map<String, String>> m = ((MessageCache) c).getCachedTranslationMap();
-        Assert.assertTrue(m.size() == 4);
-        Assert.assertTrue(m.containsKey("JavaclientTest_1.0.0_JAVA_false_#zh"));
-        Assert.assertTrue(m.containsKey("JavaclientTest1_2.0.0_JSP_false_#de"));
+        Map<String, MessageCacheItem> m = ((MessageCache) c).getCachedTranslationMap();
+        
+        Assert.assertTrue(m.size() == 1);
+        // TODO Null values are not allowed to be stored in the cache anymore. 
+        // The following keys must have non-null values to be stored. 
+        //Assert.assertTrue(m.containsKey("JavaclientTest_1.0.0_JAVA_false_#zh"));
+        //Assert.assertTrue(m.containsKey("JavaclientTest1_2.0.0_JSP_false_#de"));
+        
+        Assert.assertTrue(m.containsKey("JavaclientTest_1.0.0_JAVA_false_#en-US"));
     }
 }

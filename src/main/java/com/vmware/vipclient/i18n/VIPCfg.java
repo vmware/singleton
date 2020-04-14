@@ -48,6 +48,7 @@ public class VIPCfg {
     private boolean                    collectSource;
     private boolean                    cleanCache;
     private long                       cacheExpiredTime;
+    
     private boolean                    machineTranslation;
     private boolean                    initializeCache;
     private int                        interalCleanCache;
@@ -117,17 +118,17 @@ public class VIPCfg {
         this.version = version;
         this.vipServer = vipServer;
     }
-
+    
     /**
      * initialize the instance by a properties file
      * 
      * @param cfg
      */
     public void initialize(String cfg) throws VIPClientInitException {
-        ResourceBundle prop = ResourceBundle.getBundle(cfg);
-        if (prop == null) {
-            throw new VIPClientInitException("Can't not initialize VIPCfg, resource bundle is null.");
-        }
+    	ResourceBundle prop = ResourceBundle.getBundle(cfg);
+    	if (prop == null) {
+    		throw new VIPClientInitException("Can't not initialize VIPCfg, resource bundle is null.");
+    	}
 
         if (prop.containsKey("productName"))
             this.productName = prop.getString("productName");
@@ -158,7 +159,8 @@ public class VIPCfg {
         if (prop.containsKey("cacheExpiredTime"))
             this.cacheExpiredTime = Long.parseLong(prop
                     .getString("cacheExpiredTime"));
-    }
+		
+	}	
 
     /**
      * initialize VIPService instances to provide HTTP requester
@@ -169,7 +171,7 @@ public class VIPCfg {
             this.vipService.initializeVIPService(this.productName, this.version,
                     this.vipServer);
         } catch (MalformedURLException e) {
-            logger.error("'vipServer' in configuration isn't a valid URL!");
+            logger.error("'vipServer' " + this.vipServer + " in configuration isn't a valid URL!");
         }
     }
 
@@ -195,7 +197,7 @@ public class VIPCfg {
         }
         Cache createdCache = TranslationCacheManager
                 .getCache(VIPCfg.CACHE_L3);
-        if (createdCache != null && this.getCacheExpiredTime() > 0) {
+        if (createdCache != null && this.getCacheExpiredTime() != 0) {
             c.setExpiredTime(this.getCacheExpiredTime());
         }
     }
@@ -223,7 +225,7 @@ public class VIPCfg {
                     Task.startTaskOfCacheClean(VIPCfg.getInstance(), interalCleanCache);
                 }
                 Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
-                if (c != null && this.getCacheExpiredTime() > 0) {
+                if (c != null && this.getCacheExpiredTime() != 0) {
                     c.setExpiredTime(this.getCacheExpiredTime());
                 }
             }
@@ -364,15 +366,17 @@ public class VIPCfg {
     public void setInitializeCache(boolean initializeCache) {
         this.initializeCache = initializeCache;
     }
-
+    
+    @Deprecated
     public long getCacheExpiredTime() {
         return cacheExpiredTime;
     }
-
+    
+    @Deprecated
     public void setCacheExpiredTime(long cacheExpiredTime) {
         this.cacheExpiredTime = cacheExpiredTime;
     }
-
+    
     public CacheMode getCacheMode() {
         return cacheMode;
     }

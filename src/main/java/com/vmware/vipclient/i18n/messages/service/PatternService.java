@@ -69,7 +69,7 @@ public class PatternService {
                     .getPatternsByLocale(ConstantsKeys.EN);
         } else {
             if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
-                patterns = new RemotePatternOpt().getPatternsByLocale(locale);
+            	patterns = new RemotePatternOpt().getPatternsByLocale(locale);
             } else {
                 patterns = new LocalPatternOpt().getPatternsByLocale(locale);
             }
@@ -80,7 +80,7 @@ public class PatternService {
     private JSONObject getPatternsFromBundle(String language, String region) {
         JSONObject patterns = null;
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
-            patterns = new RemotePatternOpt().getPatternsByLocale(language, region);
+        	patterns = new RemotePatternOpt().getPatternsByLocale(language, region);
         } else {
             patterns = new LocalPatternOpt().getPatternsByLocale(ConstantsKeys.EN);
         }

@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
+import com.vmware.vipclient.i18n.base.cache.FormatCacheItem;
 
 public class PatternCacheService {
 
@@ -19,7 +20,7 @@ public class PatternCacheService {
             Cache c = VIPCfg.getInstance().getCacheManager()
                     .getCache(VIPCfg.CACHE_L2);
             if (c != null) {
-                c.put(key, o);
+                c.put(key, new FormatCacheItem(o));
             }
         }
     }
@@ -29,10 +30,9 @@ public class PatternCacheService {
         Cache c = VIPCfg.getInstance().getCacheManager()
                 .getCache(VIPCfg.CACHE_L2);
         if (c != null) {
-            o = (JSONObject) c.get(key);
-        }
-        if (null == o) {
-            return null;
+        	FormatCacheItem cacheItem = (FormatCacheItem) c.get(key);  
+        	if (cacheItem != null)
+        		o = new JSONObject (cacheItem.getCachedData());
         }
         return o;
     }

@@ -20,6 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentsBasedOpt;
@@ -58,17 +59,14 @@ public class ComponentsService {
                 dto.setLocale(locale);
                 dto.setComponent(component);
 
-                // Get existing data from cache.
-                final CacheService cs = new CacheService(dto);
-                final Map<String, String> translations = cs.getCacheOfComponent();
-
-                // If cache doesn't have data, query from server.
-                if (translations == null && !cs.isContainComponent()) {
-                    componentsToQuery.add(component);
+                final CacheService cs = new CacheService(dto);                
+                if (cs.isContainComponent()) { // Get data from cache.
+                	MessageCacheItem cacheItem = cs.getCacheOfComponent();
+                	localeMap.put(component, cacheItem.getCachedData());
+                } else { // Data is not in cache.
+                	componentsToQuery.add(component);
                     localesToQuery.add(locale);
-                } else {
-                    localeMap.put(component, translations);
-                }
+                } 
             }
 
             dataMap.put(locale, localeMap);
@@ -80,8 +78,9 @@ public class ComponentsService {
 
         // Query from server.
         final ComponentsBasedOpt opt = new ComponentsBasedOpt(this.cfg);
-        final JSONObject response = opt.queryFromServer(componentsToQuery, localesToQuery);
-        final JSONArray bundles = (JSONArray) opt.getDataPart(response).get(ConstantsKeys.BUNDLES);
+        MessageCacheItem cacheItem = new MessageCacheItem();
+        JSONObject response = opt.queryFromServer(componentsToQuery, localesToQuery, cacheItem);
+		final JSONArray bundles = (JSONArray) opt.getDataPart(response).get(ConstantsKeys.BUNDLES);
         final JSONArray localesFromServer = (JSONArray) opt.getDataPart(response).get(ConstantsKeys.LOCALES);
         final Map<String, String> localeMap = this.makeLocaleMap(localesToQuery, localesFromServer);
 
@@ -97,12 +96,12 @@ public class ComponentsService {
             final MessagesDTO dto = new MessagesDTO();
             dto.setComponent(comp);
             dto.setLocale(locale);
-            new CacheService(dto).addCacheOfComponent(messages);
+            new CacheService(dto).addCacheOfComponent(new MessageCacheItem(messages, cacheItem.getEtag(), 
+            		cacheItem.getTimestamp(), cacheItem.getMaxAgeMillis()));
 
             // update map to return.
             dataMap.get(locale).put(comp, messages);
         }
-
         return this.convertDataMap(dataMap, locales);
     }
 

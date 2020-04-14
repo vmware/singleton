@@ -11,6 +11,7 @@ import org.junit.Before;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.base.cache.CacheMode;
 import com.vmware.vipclient.i18n.base.cache.MessageCache2;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
@@ -61,7 +62,8 @@ public class PersistantCacheTest extends BaseTestClass {
                 cacheDTO.setSource(source);
                 map2.put(key, source);
             }
-            cacheService.addCacheOfComponent(map2);
+            MessageCacheItem cacheItem = new MessageCacheItem(map2);
+            cacheService.addCacheOfComponent(cacheItem);
             Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
             logger.debug(String.valueOf(c.size()));
         }

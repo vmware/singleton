@@ -36,13 +36,32 @@ public class TranslationCacheManager {
     }
 
     public static Cache getCache(String name) {
-        Cache c = container.get(name);
-        if (c != null && c.isExpired()) {
-            c.clear();
-            c.setLastClean(System.currentTimeMillis());
-        }
+        Cache c = container.get(name);      
+        cleanEntireCache(c);
+        
         return c;
     }
+    
+    private static void cleanEntireCache(Cache c) {
+    	// If cache is MessageCache and cacheExpireTime config is not set, 
+    	// this means that the expiration and cleanup is per MessageCacheItem.
+        if ((c instanceof MessageCache && VIPCfg.getInstance().getCacheExpiredTime() != 0)
+        		|| !(c instanceof MessageCache)) {
+        	if (c != null && c.isExpired()) {
+        		cleanCache(c);
+        	}
+        }
+    }
+    
+    /**
+     * Cleans the entire cache 
+   	 * @param c Cache to be cleaned.
+     */
+    public static void cleanCache(Cache c) {
+        c.clear();
+        c.setLastClean(System.currentTimeMillis());  
+    }
+    
 
     public int registerCache(String className, Cache c) {
         if (c == null) {

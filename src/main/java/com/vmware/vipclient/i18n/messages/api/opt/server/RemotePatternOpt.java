@@ -4,6 +4,8 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
+import java.util.Map;
+
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
@@ -13,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.HttpRequester;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
+import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 
@@ -24,8 +27,9 @@ public class RemotePatternOpt {
         String i18nScope = VIPCfg.getInstance().getI18nScope();
         HttpRequester httpRequester = VIPCfg.getInstance().getVipService().getHttpRequester();
         if (i18nScope != null && !"".equalsIgnoreCase(i18nScope)) {
-            responseStr = httpRequester.request(V2URL.getPatternURL(locale,
+        	Map<String, Object> response = httpRequester.request(V2URL.getPatternURL(locale,
                     httpRequester.getBaseURL()), ConstantsKeys.GET, null);
+        	responseStr = (String) response.get(URLUtils.BODY);
         }
         if (null == responseStr || responseStr.equals("")) {
             return null;
@@ -44,8 +48,9 @@ public class RemotePatternOpt {
         String i18nScope = VIPCfg.getInstance().getI18nScope();
         HttpRequester httpRequester = VIPCfg.getInstance().getVipService().getHttpRequester();
         if (i18nScope != null && !"".equalsIgnoreCase(i18nScope)) {
-            responseStr = httpRequester.request(V2URL.getPatternURL(language, region,
+        	Map<String, Object> response = httpRequester.request(V2URL.getPatternURL(language, region,
                     httpRequester.getBaseURL()), ConstantsKeys.GET, null);
+        	responseStr = (String) response.get(URLUtils.BODY);
         }
         if (null == responseStr || responseStr.equals("")) {
             return null;

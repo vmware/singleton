@@ -12,20 +12,20 @@ public class FormattingCache implements Cache {
     private long                             expiredTime   = 86400000;                                        // 24hr
     private long                             lastClean     = System.currentTimeMillis();
 
-    private Map<String, Map<String, String>> formattingMap = new LinkedHashMap<String, Map<String, String>>();
+    private Map<String, FormatCacheItem> formattingMap = new LinkedHashMap<String, FormatCacheItem>();
 
     public FormattingCache() {
         super();
     }
 
     @SuppressWarnings("unchecked")
-    public Map<String, String> get(String cacheKey) {
-        Object cachedObject = formattingMap.get(cacheKey);
-        return cachedObject == null ? null : (Map<String, String>) cachedObject;
+    public FormatCacheItem get(String cacheKey) {
+    	return formattingMap.get(cacheKey);
     }
 
-    public synchronized boolean put(String cacheKey, Map<String, String> map) {
-        formattingMap.put(cacheKey, map);
+    @Override
+    public synchronized boolean put(String cacheKey, CacheItem itemToCache) {
+    	formattingMap.put(cacheKey, (FormatCacheItem) itemToCache);
         return formattingMap.get(cacheKey) != null;
     }
 

@@ -4,11 +4,13 @@
  */
 package com.vmware.vipclient.i18n.base.cache.persist;
 
+import java.util.Map;
 import java.util.Set;
 
 import org.json.simple.JSONObject;
 
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 
@@ -42,13 +44,9 @@ public class CacheSyncThread extends Thread {
     }
 
     private String fetch(MessagesDTO dto) {
-        String r = "";
-        ComponentBasedOpt opt = new ComponentBasedOpt(dto);
-        JSONObject jo = opt.getComponentMessages();
-        if (jo != null) {
-            r = jo.toJSONString();
-        }
-        return r;
+        MessageCacheItem cacheItem = new MessageCacheItem();
+        new ComponentBasedOpt(dto).getComponentMessages(cacheItem);
+		return cacheItem.getCachedData().toString();
     }
 
 }

@@ -4,27 +4,27 @@
  */
 package com.vmware.vipclient.i18n.base.cache;
 
-import java.util.Map;
 import java.util.Set;
+import com.vmware.vipclient.i18n.base.cache.CacheItem;
 
 public interface Cache {
-
+	
     /**
-     * get a component's strings by key
+     * get a component's cached data by key
      * 
      * @param key
-     * @return map of all strings under the component
+     * @return CacheItem object instance that holds the cached data (messages and associated properties)
      */
-    public Map<String, String> get(String key);
-
+    public CacheItem get(String key);
+    
     /**
      * put strings to cache by key
      * 
-     * @param key
-     * @param map
+     * @param key cache key
+     * @param cacheItem item to be stored in the cache 
      * @return false if failed to put
      */
-    public boolean put(String key, Map<String, String> map);
+    public boolean put(String key, CacheItem cacheItem);
 
     /**
      * remove a component from cache by key
@@ -110,5 +110,4 @@ public interface Cache {
      * @return a drop id
      */
     public String getDropId();
-
 }

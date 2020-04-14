@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.StringBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
@@ -23,30 +24,58 @@ import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.JSONUtils;
 
 public class StringService {
-    private MessagesDTO dto    = null;
-
     Logger              logger = LoggerFactory.getLogger(StringService.class);
-
-    public StringService(MessagesDTO dto) {
-        this.dto = dto;
-    }
-
+    
     @SuppressWarnings("unchecked")
-    public String getString() {
-        String key = dto.getKey();
-        CacheService cacheservice = new CacheService(dto);
-        Map<String, String> map = cacheservice.getCacheOfComponent();
-        if (map == null) {
-            if (!cacheservice.isContainComponent()) {
-                Object o = new ComponentService(dto).getMessages();
-                map = (Map<String, String>) o;
-                cacheservice.addCacheOfComponent(map);
-            }
-        }
-        return (map == null || map.get(key) == null ? "" : map.get(key));
+    public String getString(MessagesDTO dto) {
+    	String key = dto.getKey();
+    	CacheService cacheService = new CacheService(dto);
+    	Map<String, String> cacheOfComponent = null;
+    	if (cacheService.isContainComponent()) { // Item is in cache
+    		MessageCacheItem cacheItem = cacheService.getCacheOfComponent();
+    		cacheOfComponent = cacheItem.getCachedData();
+    		if (cacheItem.isExpired()) { // cacheItem has expired
+    			// Update the cache in a separate thread
+    			populateCacheTask(cacheService, dto, cacheItem); 		
+    		}
+    	} else { // Item is not in cache
+    		// Create a new cacheItem object to be stored in cache
+    		MessageCacheItem cacheItem = new MessageCacheItem();
+    		
+    		cacheOfComponent = populateCache(cacheService, dto, cacheItem);
+    		
+    		if (cacheOfComponent != null && !cacheOfComponent.isEmpty()) {
+    			cacheService.addCacheOfComponent(cacheItem);
+    		}
+    	} 
+    	return (cacheOfComponent == null || cacheOfComponent.get(key) == null ? "" : cacheOfComponent.get(key));
+    }
+    
+	private void populateCacheTask(final CacheService cacheService, MessagesDTO dto, MessageCacheItem cacheItem) {
+		Runnable task = () -> {
+    		try {
+		    	// Use the cacheProps that is already in the cache.
+		    	populateCache(cacheService, dto, cacheItem);
+    		} catch (Exception e) { 
+    			// To make sure that the thread will close 
+    			// even when an exception is thrown
+		    	return;
+		    }
+		};
+		new Thread(task).start();
+	}
+	
+	private Map<String, String> populateCache(CacheService cacheService, MessagesDTO dto, MessageCacheItem cacheItem) {
+    	// Pass cacheitem to getMessages so that:
+		// 1. A previously stored etag, if any, can be used for the next HTTP request.
+		// 2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed 
+		// 	 with new properties from the next HTTP response.	
+		new ComponentService(dto).getMessages(cacheItem);
+		
+		return cacheItem.getCachedData();
     }
 
-    public String postString() {
+    public String postString(MessagesDTO dto) {
         String r = "";
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
             ComponentBasedOpt dao = new ComponentBasedOpt(dto);
@@ -57,12 +86,13 @@ public class StringService {
             CacheService c = new CacheService(dto);
             Map<String, String> dataMap = new HashMap<>();
             dataMap.put(dto.getKey(), dto.getSource());
-            c.updateCacheOfComponent(dataMap);
+            
+            c.updateCacheOfComponent(new MessageCacheItem(dataMap));
         }
         return r;
     }
 
-    public boolean postStrings(List<JSONObject> sources) {
+    public boolean postStrings(List<JSONObject> sources, MessagesDTO dto) {
         boolean r = false;
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
             ComponentBasedOpt dao = new ComponentBasedOpt(dto);
@@ -76,12 +106,13 @@ public class StringService {
                 dataMap.put((String) jo.get(ConstantsKeys.KEY),
                         jo.get(ConstantsKeys.SOURCE) == null ? "" : (String) jo.get(ConstantsKeys.SOURCE));
             }
-            c.updateCacheOfComponent(dataMap);
+            
+            c.updateCacheOfComponent(new MessageCacheItem(dataMap));
         }
         return r;
     }
 
-    public boolean isStringAvailable() {
+    public boolean isStringAvailable(MessagesDTO dto) {
         boolean r = false;
         String status = "";
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
@@ -104,6 +135,7 @@ public class StringService {
                         logger.error(e.getMessage());
                     }
                 }
+                
                 c.addCacheOfStatus(m);
 
             }

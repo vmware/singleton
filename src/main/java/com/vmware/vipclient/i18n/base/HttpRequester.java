@@ -16,6 +16,7 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -50,17 +51,18 @@ public class HttpRequester {
      */
     private String                  baseURL;
 
-    public void setBaseURL(String baseURL) {
-        this.baseURL = baseURL;
-    }
-
     /**
-     * The extra parameters to add to http header
+     * HTTP headers that are common to all HTTP requests
      */
-    private Map<String, String> customizedHeaderParams = null;
+    private Map<String, String> commonHeaderParams = null;
 
     public void setCustomizedHeaderParams(Map<String, String> params) {
-        customizedHeaderParams = params;
+    	commonHeaderParams = params; 
+    }
+    
+    
+    public void setBaseURL(String baseURL) {
+        this.baseURL = baseURL;
     }
 
     /**
@@ -99,15 +101,33 @@ public class HttpRequester {
         }
         return status;
     }
-
+    
     /**
-     * The get method of requesting a remote server.
+     * Send an HTTP request.
      *
-     * @param url
-     *            The remote server url.
-     * @return
+     * @param url The remote server url
+     * @param method HTTP method
+     * @param requestData HTTP URL parameters
+     * 
+     * @return Map<String, Object> response 
      */
-    public String request(final String url, final String method, final Object requestData) {
+    public Map<String, Object> request(final String url, final String method, final Object requestData) {
+    	return request(url, method, requestData, null);
+    }
+    
+    /**
+     * Send an HTTP request.
+     *
+     * @param url The remote server url
+     * @param method HTTP method
+     * @param requestData HTTP URL parameters
+     * @param customizedHeaderParams customized HTTP request header for this request
+     * 
+     * @return Map<String, Object> response
+     */
+    public Map<String, Object> request(final String url, final String method, final Object requestData,
+    		final Map<String, String> customizedHeaderParams) {
+    	Map <String, Object> response = new HashMap<String, Object>();
         String r = "";
         HttpURLConnection conn = null;
         try {
@@ -121,7 +141,8 @@ public class HttpRequester {
                 urlStr.append(url);
             }
             logger.info("[" + method + "]" + urlStr.toString());
-            conn = createConnection(urlStr.toString());
+            
+            conn = createConnection(urlStr.toString(), customizedHeaderParams);
             if (conn != null) {
                 conn.setRequestMethod(method);
                 if (ConstantsKeys.POST.equalsIgnoreCase(method)) {
@@ -129,10 +150,22 @@ public class HttpRequester {
                 } else {
                     conn.connect();
                 }
-                if (HttpURLConnection.HTTP_OK == conn.getResponseCode()) {
-                    r = this.handleResult(conn);
-                    // logger.debug("The response from server is:\n"+r);
+                switch (conn.getResponseCode()) {
+                	case HttpURLConnection.HTTP_NOT_MODIFIED :
+                		break;
+                	case HttpURLConnection.HTTP_OK :
+                		r = this.handleResult(conn);
+	                    response.put(URLUtils.BODY, r);
+	                    // logger.debug("The response from server is:\n"+r);
+	                    break;
                 }
+                response.put(URLUtils.HEADERS, conn.getHeaderFields());
+                response.put(URLUtils.RESPONSE_CODE, conn.getResponseCode());
+                response.put(URLUtils.RESPONSE_MSG, conn.getResponseMessage());
+                response.put(URLUtils.RESPONSE_TIMESTAMP, System.currentTimeMillis());
+                Long maxAgeMillis = URLUtils.getMaxAgeMillis(conn.getHeaderFields());
+                if (maxAgeMillis != null)
+                	response.put(URLUtils.MAX_AGE_MILLIS, maxAgeMillis);
             }
         } catch (IOException e) {
             logger.info(e.getMessage());
@@ -142,9 +175,9 @@ public class HttpRequester {
                 conn = null;
             }
         }
-        return r;
+        return response;
     }
-
+    
     public String getBaseURL() {
         return this.baseURL;
     }
@@ -210,7 +243,7 @@ public class HttpRequester {
      *            The remote server url.
      * @return
      */
-    private HttpURLConnection createConnection(String path) {
+    private HttpURLConnection createConnection(String path, Map<String, String> customizedHeaderParams) {
         HttpURLConnection connection = null;
         try {
             URL url = new URL(path.trim());
@@ -239,7 +272,7 @@ public class HttpRequester {
             connection.setDoInput(true);
             connection.setRequestProperty("accept", "*/*");
 
-            addHeaderParams(connection);
+            addHeaderParams(connection, customizedHeaderParams);
         }
         return connection;
     }
@@ -283,13 +316,17 @@ public class HttpRequester {
         return HttpRequester.ping(ipAddress);
     }
 
-    private void addHeaderParams(HttpURLConnection connection) {
-        if (null == customizedHeaderParams || null == connection) {
-            return;
+    private void addHeaderParams(HttpURLConnection connection, Map<String, String> customizedHeaderParams) {
+        if (customizedHeaderParams != null) {
+	        for (final Entry<String, String> entry : customizedHeaderParams.entrySet()) {
+	            connection.setRequestProperty(entry.getKey(), entry.getValue());
+	        }
         }
-
-        for (final Entry<String, String> entry : customizedHeaderParams.entrySet()) {
-            connection.setRequestProperty(entry.getKey(), entry.getValue());
+        
+        if (commonHeaderParams != null) {
+	        for (final Entry<String, String> entry : commonHeaderParams.entrySet()) {
+	            connection.setRequestProperty(entry.getKey(), entry.getValue());
+	        }
         }
     }
 }
