@@ -3,7 +3,7 @@
 # Copyright 2020 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 #
-""" Check files license and copyright headers
+""" Check files license and copyright header
     Argument: -f, --files, given files or directories list, split by ':' in local
                 and '\n' in Travis CI(TRAVIS_COMMIT_RANGE shows each files in line)
                 if no given arg, all files in current folder(including sub folder) will be checked.
@@ -12,6 +12,10 @@
               -a, --all, check files with any extension.
               -p, --pattern, regular expression to match mutiple lines header, using '\n' to separate each line.
                 If no given, use Singleton pattern in constant 'SINGLETON_COPYRIGHT_PATTERN'
+              -r, --required, name pattern list of file required header even file extension is not in the check list
+                If same pattern in required and unrequired arguments, required argument will take priority.
+              -u, --unrequired, name pattern list of file not required header even file extension is in the check list
+                If same pattern in required and unrequired arguments, required argument will take priority
               -l, --list, extensions of files to be checked, separate by ':', invalid once argument '-a' exists.
                 If no given, use extensions in constant 'SOURCE_CODE_EXTENSIONS'
 
@@ -30,19 +34,25 @@ import re
 import sys
 import argparse
 
-SOURCE_CODE_EXTENSIONS = [".java", ".go", ".ts", ".js", ".asp", ".aspx", ".jsp", ".html", ".php",
-".sh", ".py", ".rb", ".cpp", ".c", ".cs", ".swift", ".sql", ".vb", ".ps1", ".m", ".mm"]
+SOURCE_CODE_EXTENSIONS = [".java", ".go", ".ts", ".js", ".asp", ".aspx", ".jsp", ".html", ".css", ".php",
+".sh", ".py", ".rb", ".cpp", ".c", ".cs", ".h", ".hpp", ".swift", ".sql", ".vb", ".ps1", ".m", ".mm", ".gradle", ".bat", ".xml"]
+REQUIRED_PATTERN_LIST = ["makefile", "dockerfile"] #name list of file must to be checked even extension name is not in the list or has no extension name, case not sensitive
 SINGLETON_PATTERN = ".*Copyright [1-9][0-9]{3}(-[1-9][0-9]{3})? VMware, Inc\.\s+\n.*SPDX-License-Identifier: EPL-2.0\s+$"
+NOT_REQUIRED_PATTERN_LIST = ["__init__.py", ".*.designer.cs"]
 PATH_SEPARATOR = ":"
 EXTENSION_SEPARATOR = ":"
 TRAVIS_COMMIT_RANGE_PATH_SEPARATOR = "\n"
 
-def need_header(filepath, ext_list):
-    # only source code need header
-    if not filepath.endswith(tuple(ext_list)):
-        return False
-    # __init__.py file has no code
-    if filepath.endswith("__init__.py"):
+def need_header(filepath, ext_list, required_pattern_list, unrequired_pattern_list):
+    path, filename = os.path.split(filepath)
+    filename = filename.lower()
+    for pattern in required_pattern_list:
+        if re.match(pattern, filename):
+            return True
+    for pattern in unrequired_pattern_list:
+        if re.match(pattern, filename):
+            return False
+    if not filename.endswith(tuple(ext_list)):
         return False
     return True
 
@@ -81,6 +91,8 @@ if __name__ == "__main__":
     parser.add_argument("-n", "--number", help="line number to check", type=int, default=5)
     parser.add_argument("-a", "--all", help="check all kind of extension", action="store_true")
     parser.add_argument("-p", "--pattern", help="headers pattern", type=str, default=SINGLETON_PATTERN)
+    parser.add_argument("-r", "--required", help="file name list must have header", type=str, default=REQUIRED_PATTERN_LIST)
+    parser.add_argument("-u", "--unrequired", help="file name list have no header", type=str, default=NOT_REQUIRED_PATTERN_LIST)
     parser.add_argument("-l", "--list", help="extensions of files to be checked", type=str, default="")
     args = parser.parse_args()
 
@@ -89,6 +101,8 @@ if __name__ == "__main__":
     exclude_str = args.exclude
     check_all_extension = args.all
     headers_pattern = args.pattern
+    required_pattern_list = args.required
+    unrequired_pattern_list = args.unrequired
     ext_list_str = args.list
 
     errs = []
@@ -121,12 +135,12 @@ if __name__ == "__main__":
                     continue
                 for filename in filenames:
                     filepath = os.path.join(dirpath, filename)
-                    if check_all_extension or need_header(filepath, ext_list):
+                    if check_all_extension or need_header(filepath, ext_list, required_pattern_list, unrequired_pattern_list):
                         # print("Checking current file: '{}'".format(filepath))
                         if check_header(filepath, line_num, headers_pattern) is False:
                             errs.append(filepath)
         else:
-            if check_all_extension or need_header(f, ext_list):
+            if check_all_extension or need_header(f, ext_list, required_pattern_list, unrequired_pattern_list):
                 # print("Checking current file: '{}'".format(f))
                 if check_header(f, line_num, headers_pattern) is False:
                     errs.append(f)
