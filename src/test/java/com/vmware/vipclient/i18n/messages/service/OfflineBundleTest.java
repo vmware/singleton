@@ -74,6 +74,8 @@ public class OfflineBundleTest extends BaseTestClass {
     	assertNotNull(cacheItem);
     	assertEquals(messageFr, cacheItem.cachedData.get(key));
     	
+    	// Seems that the same VIPCfg instanc eis being used b other test classes
+    	// so putting this back to DataSourceEnum.VIP
+    	cfg.setMessageOrigin(DataSourceEnum.VIP);
     }
-     
 }
