@@ -87,6 +87,7 @@ public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
     	return null;
     }
     
+
     @Override
     public String getString() {
     	MessageCacheItem cacheItem = new MessageCacheItem();
