@@ -16,20 +16,22 @@ import org.slf4j.LoggerFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
+import com.vmware.vipclient.i18n.messages.api.opt.MessageOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
 import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 
-public class ComponentBasedOpt extends BaseOpt implements Opt {
+public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
     private final Logger      logger = LoggerFactory.getLogger(ComponentBasedOpt.class.getName());
     private MessagesDTO dto    = null;
-
+    
     public ComponentBasedOpt(final MessagesDTO dto) {
         this.dto = dto;
     }
 
+    @Override
     public void getComponentMessages(MessageCacheItem cacheItem) {
         String url = V2URL.getComponentTranslationURL(this.dto,
                 VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
@@ -85,6 +87,7 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
     	return null;
     }
     
+    @Override
     public String getString() {
     	MessageCacheItem cacheItem = new MessageCacheItem();
     	this.getComponentMessages(cacheItem);
@@ -151,4 +154,5 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
         }
         return status;
     }
+
 }

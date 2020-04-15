@@ -56,6 +56,7 @@ public class VIPCfg {
     private String                     version;
     private String                     vipServer;
     private String                     i18nScope     = "numbers,dates,currencies,plurals,measurements";
+    private String					   offlineResourcesBaseUrl;
 
     // define key for cache management
     public static final String         CACHE_L3      = "CACHE_L3";
@@ -392,5 +393,13 @@ public class VIPCfg {
     public void setCachePath(String cachePath) {
         this.cachePath = cachePath;
     }
+
+	public String getOfflineResourcesBaseUrl() {
+		return offlineResourcesBaseUrl;
+	}
+
+	public void setOfflineResourcesBaseUrl(String offlineResourcesBaseUrl) {
+		this.offlineResourcesBaseUrl = offlineResourcesBaseUrl;
+	}
 
 }

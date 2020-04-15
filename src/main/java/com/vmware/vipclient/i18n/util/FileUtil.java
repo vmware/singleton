@@ -6,6 +6,7 @@ package com.vmware.vipclient.i18n.util;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -19,7 +20,31 @@ import org.slf4j.LoggerFactory;
 
 public class FileUtil {
     static Logger logger = LoggerFactory.getLogger(FileUtil.class);
-
+    
+    public static JSONObject readJson(String pathName)  {
+        JSONObject jsonObj = null;
+        
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        InputStream is = classloader.getResourceAsStream(pathName);
+        try {
+			Reader reader = new InputStreamReader(is, "UTF-8");
+			jsonObj = (JSONObject) (new JSONParser().parse(reader));
+		} catch (Exception e) {
+			logger.error("Failed to read json file " + pathName);
+		}
+        
+        if (is != null) {
+            try {
+                is.close();
+            } catch (IOException e) {
+                
+            }
+        }
+        
+        return jsonObj;
+    }
+    
+    @Deprecated
     public static JSONObject readJarJsonFile(String jarPath, String filePath) {
         JSONObject jsonObj = null;
         URL url = null;
@@ -51,7 +76,8 @@ public class FileUtil {
 
         return jsonObj;
     }
-
+    
+    @Deprecated
     public static JSONObject readLocalJsonFile(String filePath) {
         String basePath = FileUtil.class.getClassLoader()
                 .getResource("").getFile();

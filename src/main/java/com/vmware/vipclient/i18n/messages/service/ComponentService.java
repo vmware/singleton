@@ -4,7 +4,6 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.json.simple.JSONValue;
@@ -14,11 +13,10 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
-import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.base.cache.CacheMode;
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.base.cache.persist.DiskCacheLoader;
 import com.vmware.vipclient.i18n.base.cache.persist.Loader;
-import com.vmware.vipclient.i18n.messages.api.opt.local.LocalMessagesOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.JSONUtils;
@@ -40,12 +38,7 @@ public class ComponentService {
      */
     @SuppressWarnings("unchecked")
     public void getMessages(final MessageCacheItem cacheItem) {
-        if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
-        	ComponentBasedOpt opt = new ComponentBasedOpt(dto);
-        	opt.getComponentMessages(cacheItem);
-        } else if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.Bundle) {
-        	cacheItem.addCachedData(new LocalMessagesOpt(dto).getComponentMessages());
-        }
+    	VIPCfg.getInstance().getMessageOrigin().createMessageOpt(dto).getComponentMessages(cacheItem);
     }
 
     public Map<String, String> getComponentTranslation() {
