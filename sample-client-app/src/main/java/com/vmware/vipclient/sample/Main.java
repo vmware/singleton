@@ -10,6 +10,7 @@ import java.util.Locale;
 
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
@@ -33,11 +34,24 @@ public class Main {
 		} catch (VIPClientInitException e) {
 			System.out.println(e.getMessage());
 		}
+    	
 		cfg.initializeVIPService();
 		cfg.createTranslationCache(MessageCache.class);
 		cfg.createFormattingCache(FormattingCache.class);
 		I18nFactory.getInstance(cfg);
 
+		// Demonstrate French locale (online mode - from remote service)
+		demonstrate(thislocale);
+		
+		// Demonstrate Filipino locale (offline mode - from local bundle)
+		cfg.setMessageOrigin(DataSourceEnum.Bundle);
+    	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
+    	LocaleUtility.setLocale(new Locale("fil"));
+    	demonstrate(new Locale("fil"));
+		
+	}
+	
+	private static void demonstrate(Locale locale) {
 		// Get translation
 		String key = "global_text_username";
 		String source = "User name";
@@ -49,9 +63,9 @@ public class Main {
 		System.out.println(">>>>>> Get translation by key: \"" + key + "\"");
 		String trans2 = Translation.getTranslation2(key);
 		System.out.println(trans2);
-
+		
 		System.out.println(">>>>>> Check translation status of key: \"" + key + "\"");
-		boolean bReady = Translation.isTranslationReady("default", key, thislocale);
+		boolean bReady = Translation.isTranslationReady("default", key, locale);
 		System.out.println(bReady);
 
 		// Number format

@@ -12,6 +12,8 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -21,25 +23,14 @@ import org.slf4j.LoggerFactory;
 public class FileUtil {
     static Logger logger = LoggerFactory.getLogger(FileUtil.class);
     
-    public static JSONObject readJson(String pathName)  {
+    public static JSONObject readJson(Path path)  {
         JSONObject jsonObj = null;
-        
-        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        InputStream is = classloader.getResourceAsStream(pathName);
-        try {
-			Reader reader = new InputStreamReader(is, "UTF-8");
+        try (InputStream is = Files.newInputStream(path);
+    			Reader reader = new InputStreamReader(is, "UTF-8");){
 			jsonObj = (JSONObject) (new JSONParser().parse(reader));
 		} catch (Exception e) {
-			logger.error("Failed to read json file " + pathName);
+			logger.error("Failed to read json file " + path);
 		}
-        
-        if (is != null) {
-            try {
-                is.close();
-            } catch (IOException e) {
-                
-            }
-        }
         
         return jsonObj;
     }

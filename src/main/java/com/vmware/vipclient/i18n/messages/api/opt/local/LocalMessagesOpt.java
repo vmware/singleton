@@ -4,6 +4,8 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.local;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
@@ -33,15 +35,21 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
     
     @Override
     public void getComponentMessages(MessageCacheItem cacheItem) {
-    	String pathName = VIPCfg.getInstance().getOfflineResourcesBaseUrl();
+    	String resource = VIPCfg.getInstance().getOfflineResourcesBaseUrl();
     	String filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), dto.getLocale());
-    	if (pathName != null) {
-    		pathName = pathName.concat(filePath);
+    	if (resource != null) {
+    		resource = resource.concat(filePath);
     	} else {
-    		pathName = filePath;
+    		resource = filePath;
     	}
-    	Map<String, String> messages = JSONBundleUtil.getMessages(pathName);
-    	cacheItem.addCachedData(messages);
+		try {
+			Path path = Paths.get(Thread.currentThread().getContextClassLoader().
+					getResource(resource).toURI());
+			Map<String, String> messages = JSONBundleUtil.getMessages(path);
+	    	cacheItem.addCachedData(messages);
+		} catch (Exception e) {
+			// Do not update cacheItem
+		}
     }
 
     @Override

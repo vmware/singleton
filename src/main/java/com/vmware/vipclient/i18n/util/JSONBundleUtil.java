@@ -4,6 +4,8 @@
  */
 package com.vmware.vipclient.i18n.util;
 
+import java.nio.file.Path;
+
 import org.json.simple.JSONObject;
 
 public class JSONBundleUtil {
@@ -11,8 +13,8 @@ public class JSONBundleUtil {
 	@Deprecated
     private static final String JSON_MESSAGES = "l10n/bundles/{0}/{1}/{2}/messages_{3}.json";
     
-    public static JSONObject getMessages(String pathName) {
-    	JSONObject obj = FileUtil.readJson(pathName);
+    public static JSONObject getMessages(Path path) {
+    	JSONObject obj = FileUtil.readJson(path);
     	if (obj == null) 
     		return null;
     	return (JSONObject) obj.get("messages");

@@ -30,9 +30,9 @@ public class OfflineBundleTest extends BaseTestClass {
 	String component = "JAVA";
     String key = "LeadTest";
     String source = "[{0}] Test alert";
-    Locale locale = new Locale("fr");
+    Locale locale = new Locale("fil");
     String comment = "comment";
-    String messageFr = "[{0}] Alerte de test";
+    String messageFil = "[{0}] Alerto sa pagsusuri";
     Object[] args = { "a" };
 
     MessagesDTO dto = new MessagesDTO();
@@ -72,9 +72,9 @@ public class OfflineBundleTest extends BaseTestClass {
     	
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertNotNull(cacheItem);
-    	assertEquals(messageFr, cacheItem.cachedData.get(key));
+    	assertEquals(messageFil, cacheItem.cachedData.get(key));
     	
-    	// Seems that the same VIPCfg instanc eis being used b other test classes
+    	// Seems that the same VIPCfg instance is being used by other test classes
     	// so putting this back to DataSourceEnum.VIP
     	cfg.setMessageOrigin(DataSourceEnum.VIP);
     }
