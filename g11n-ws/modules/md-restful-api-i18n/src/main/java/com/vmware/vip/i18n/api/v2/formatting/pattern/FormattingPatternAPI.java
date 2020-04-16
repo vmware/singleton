@@ -45,14 +45,15 @@ public class FormattingPatternAPI extends BaseAction {
     @ResponseStatus(HttpStatus.OK)
     public APIResponseDTO getI18nPattern(
             @ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @PathVariable(value = APIParamName.LOCALE) String locale,
-            @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope
+            @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope,
+            @ApiParam(name = APIParamName.SCOPE_FILTER, required = false, value = APIParamValue.SCOPE_FILTER) @RequestParam(value = APIParamName.SCOPE_FILTER, required = false) String scopeFilter
     ) throws Exception {
         List<String> categories = CommonUtility.getCategoriesByEnum(scope, true);
         if (CommonUtil.isEmpty(categories)) {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.PATTERN_NOT_VALIDATE, null);
         }
 
-        Map<String, Object> patternMap = patternService.getPattern(locale, categories);
+        Map<String, Object> patternMap = patternService.getPattern(locale, categories, scopeFilter);
         if (CommonUtil.isEmpty(patternMap.get(ConstantsKeys.CATEGORIES))) {
             return super.handleResponse(APIResponseStatus.INTERNAL_NO_RESOURCE_ERROR, "Pattern file not found or parse failed.");
         }
@@ -69,14 +70,15 @@ public class FormattingPatternAPI extends BaseAction {
     public APIResponseDTO getI18nPatternWithLanguageAndRegion(
             @ApiParam(name = APIParamName.LANGUAGE, required = true, value = APIParamValue.LANGUAGE) @RequestParam(value = APIParamName.LANGUAGE, required = true) String language,
             @ApiParam(name = APIParamName.REGION, required = true, value = APIParamValue.REGION) @RequestParam(value = APIParamName.REGION, required = true) String region,
-            @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope
+            @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE, required = true) String scope,
+            @ApiParam(name = APIParamName.SCOPE_FILTER, required = false, value = APIParamValue.SCOPE_FILTER) @RequestParam(value = APIParamName.SCOPE_FILTER, required = false) String scopeFilter
     ) throws VIPCacheException {
         List<String> categories = CommonUtility.getCategoriesByEnum(scope, true);
         if (CommonUtil.isEmpty(categories)) {
         	return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.PATTERN_NOT_VALIDATE, null);
         }
 
-        Map<String, Object> patternMap = patternService.getPatternWithLanguageAndRegion(language, region, categories);
+        Map<String, Object> patternMap = patternService.getPatternWithLanguageAndRegion(language, region, categories, scopeFilter);
         if (!(boolean)patternMap.get("isExistPattern")) {
             return super.handleResponse(APIResponseStatus.INTERNAL_NO_RESOURCE_ERROR, "'No mapping language found for region!");
         }

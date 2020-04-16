@@ -55,9 +55,10 @@ public class TranslationWithPatternAPI extends TranslationWithPatternAction {
           @ApiParam(name = APIParamName.SCOPE, required = true, value = APIParamValue.SCOPE) @RequestParam(value = APIParamName.SCOPE) String scope,
           @ApiParam(name = APIParamName.REGION, required=false, value = APIParamValue.REGION) @RequestParam(value = APIParamName.REGION, required=false, defaultValue="") String region,
           @ApiParam(name = APIParamName.PSEUDO, required=false, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required=false, defaultValue="false") String pseudo,
+          @ApiParam(name = APIParamName.SCOPE_FILTER, required = false, value = APIParamValue.SCOPE_FILTER) @RequestParam(value = APIParamName.SCOPE_FILTER, required = false) String scopeFilter,
           HttpServletRequest req)  throws Exception  {
       
-       return super.getTransPattern(combine, productName, version, components, language, scope, region, pseudo);
+       return super.getTransPattern(combine, productName, version, components, language, scope, region, pseudo, scopeFilter);
    }
 
 }

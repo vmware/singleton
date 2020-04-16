@@ -26,6 +26,7 @@ public class TranslationWithPatternDTO implements Serializable {
    private String region;
    private String pseudo;
    private int combine;
+   private String scopeFilter;
 
    public String getLanguage() {
       return language;
@@ -94,4 +95,11 @@ public class TranslationWithPatternDTO implements Serializable {
       this.combine = combine;
    }
 
+   public String getScopeFilter() {
+      return scopeFilter;
+   }
+
+   public void setScopeFilter(String scopeFilter) {
+      this.scopeFilter = scopeFilter;
+   }
 }

@@ -29,4 +29,5 @@ public class APIParamValue {
 	public final static String LANGUAGE       = "a string which represents language, e.g. en, en-US, pt, pt-BR, zh-Hans";
 	public final static String REGION         = "a string which represents region, e.g. US, PT, CN";
 	public final static String COMBINE        = "an integer which represents combine type number 1 or 2";
+	public final static String SCOPE_FILTER   = "a String for filtering out the pattern data, separated by commas and underline. e.g. 'dates-eras,dates-intervalFormats'";
 }
