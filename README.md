@@ -36,10 +36,13 @@ Building from source code
 ---------
  Clone the repository using Git.
  ```
+ git clone https://github.com/vmware/singleton.git
+ Or
  git clone git@github.com:vmware/singleton.git
  ```
- Inside singleton/g11n-ws, run a build using Gradle.
+ Go to singleton/g11n-ws to run a build using Gradle.
  ```
+ cd singleton/g11n-ws
  ./gradlew build
  ```
  Jar files will be generated inside the following location:
@@ -49,9 +52,10 @@ Building from source code
  
 To start using Singleton Service
 ---------
- Run the Spring Boot main application. Inside the singleton folder:
+ Navigate to singleton/publish and run the Spring Boot main application.
  ```
- java -jar publish/singleton-0.1.0.jar.jar
+ cd ../publish
+ java -jar singleton-0.1.0.jar
  ```
  A user interface for testing all available API endpoints will be available in the following URL:
  ```

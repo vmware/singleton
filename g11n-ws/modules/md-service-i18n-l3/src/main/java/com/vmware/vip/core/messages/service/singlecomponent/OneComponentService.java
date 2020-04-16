@@ -142,7 +142,7 @@ public class OneComponentService implements IOneComponentService {
 			supportedLocales.add(Locale.forLanguageTag(supportedLocale));
 		}
 		String requestLocale = inputLocale.replace("_", "-");
-		Locale fallbackLocale = LocaleUtility.pickupLocaleFromList(
+		Locale fallbackLocale = LocaleUtility.pickupLocaleFromListNoDefault(
 				supportedLocales, Locale.forLanguageTag(requestLocale));
 		return fallbackLocale.toLanguageTag();
 	}
