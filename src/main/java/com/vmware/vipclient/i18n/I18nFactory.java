@@ -55,6 +55,10 @@ public class I18nFactory {
         }
         return factory;
     }
+    
+    public static synchronized void resetInstance() {
+        factory = null;
+    }
 
     /**
      * get the instance of I18nFactory

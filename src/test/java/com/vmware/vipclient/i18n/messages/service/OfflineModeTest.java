@@ -44,6 +44,7 @@ public class OfflineModeTest extends BaseTestClass {
         dto.setSource(source);
         dto.setLocale(locale.toLanguageTag());
         VIPCfg.resetInstance();
+        I18nFactory.resetInstance();
     }
     
     @Test
