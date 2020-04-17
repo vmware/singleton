@@ -74,15 +74,21 @@ func (s *serverDAO) get(item *dataItem) (err error) {
 	switch item.id.iType {
 	case itemComponent:
 		pData := data.(*queryProduct)
-		if len(pData.Bundles) != 1 {
+		if len(pData.Bundles) != 1 || pData.Bundles[0].Messages == nil {
 			return errors.New(wrongServerData)
 		}
 		item.data = &defaultComponentMsgs{messages: pData.Bundles[0].Messages}
 	case itemLocales:
 		localesData := data.(*queryLocales)
+		if localesData.Locales == nil {
+			return errors.New(wrongServerData)
+		}
 		item.data = localesData.Locales
 	case itemComponents:
 		componentsData := data.(*queryComponents)
+		if componentsData.Components == nil {
+			return errors.New(wrongServerData)
+		}
 		item.data = componentsData.Components
 	default:
 		return errors.Errorf(invalidItemType, item.id.iType)
@@ -157,7 +163,17 @@ func addURLParams(u *url.URL, args map[string]string) {
 }
 
 var getDataFromServer = func(u *url.URL, header map[string]string, data interface{}) (*http.Response, error) {
-	bodyObj := new(respBody)
+	type respResult struct {
+		Code       int    `json:"code"`
+		Message    string `json:"message"`
+		ServerTime string `json:"serverTime"`
+	}
+	bodyObj := &struct {
+		Result    respResult  `json:"response"`
+		Signature string      `json:"signature"`
+		Data      interface{} `json:"data"`
+	}{}
+
 	var bodyBytes []byte
 	resp, err := httpget(u.String(), header, &bodyBytes)
 	if err != nil {
@@ -201,18 +217,6 @@ func isBusinessSuccess(code int) bool {
 
 //!+ REST API Response structures
 type (
-	respBody struct {
-		Result    respResult  `json:"response"`
-		Signature string      `json:"signature"`
-		Data      interface{} `json:"data"`
-	}
-
-	respResult struct {
-		Code       int    `json:"code"`
-		Message    string `json:"message"`
-		ServerTime string `json:"serverTime"`
-	}
-
 	queryProduct struct {
 		Name       string   `json:"productName"`
 		Version    string   `json:"version"`

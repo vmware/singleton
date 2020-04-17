@@ -109,6 +109,9 @@ func (d *bundleDAO) getComponentMessages(name, version, locale, component string
 	if err != nil {
 		return nil, err
 	}
+	if len(b.Messages) == 0 {
+		return nil, errors.New("Wrong data from local bundle file")
+	}
 
 	return &defaultComponentMsgs{b.Messages}, nil
 }
