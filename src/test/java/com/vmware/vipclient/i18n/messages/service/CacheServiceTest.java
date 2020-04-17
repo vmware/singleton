@@ -9,6 +9,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Locale;
 
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -41,6 +42,7 @@ public class CacheServiceTest extends BaseTestClass {
         dto.setSource(source);
         dto.setLocale(locale.toLanguageTag());
         VIPCfg.resetInstance();
+        I18nFactory.resetInstance();
     }
     
     @Test
@@ -210,4 +212,10 @@ public class CacheServiceTest extends BaseTestClass {
         Long responseTime3 = cacheItem.getTimestamp();
         assertTrue(responseTime3.equals(responseTime2)); 
     }  
+    
+    @AfterClass
+    public void after() {
+        VIPCfg.resetInstance();
+        I18nFactory.resetInstance();
+    }
 }

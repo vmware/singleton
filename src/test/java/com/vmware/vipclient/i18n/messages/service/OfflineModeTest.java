@@ -10,6 +10,7 @@ import static org.junit.Assert.assertNull;
 
 import java.util.Locale;
 
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -190,5 +191,11 @@ public class OfflineModeTest extends BaseTestClass {
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertNotNull(cacheItem);
     	assertEquals(source, cacheItem.cachedData.get(key));
+    }
+    
+    @AfterClass
+    public void after() {
+        VIPCfg.resetInstance();
+        I18nFactory.resetInstance();
     }
 }
