@@ -70,6 +70,10 @@ public class BaseOpt {
     public JSONObject getDataPart(JSONObject obj) {
         return (JSONObject) obj.get(ConstantsKeys.DATA);
     }
+    
+    public String getLocale(JSONObject obj) {
+    	return (String) getDataPart(obj).get(ConstantsKeys.LOCALE);
+    }
 
     public JSONObject getResponsePart(JSONObject obj) {
         return ((JSONObject) obj.get(ConstantsKeys.RESPONSE));
@@ -78,7 +82,7 @@ public class BaseOpt {
     public int getResponseCode(JSONObject obj) {
         return Integer.parseInt(getResponsePart(obj).get(ConstantsKeys.CODE).toString());
     }
-
+    
     public String getResponseMessage(JSONObject obj) {
         return (String) getResponsePart(obj).get(ConstantsKeys.MESSAGE);
     }

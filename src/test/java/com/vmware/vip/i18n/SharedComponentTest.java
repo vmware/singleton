@@ -74,7 +74,7 @@ public class SharedComponentTest extends BaseTestClass {
         Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
         Map<String, MessageCacheItem> m = ((MessageCache) c).getCachedTranslationMap();
         
-        Assert.assertTrue(m.size() == 1);
+        Assert.assertTrue(m.size() == 2);
         // TODO Null values are not allowed to be stored in the cache anymore. 
         // The following keys must have non-null values to be stored. 
         //Assert.assertTrue(m.containsKey("JavaclientTest_1.0.0_JAVA_false_#zh"));

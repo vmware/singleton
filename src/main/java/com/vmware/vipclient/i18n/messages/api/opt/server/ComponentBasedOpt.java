@@ -4,12 +4,14 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
+import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,6 +24,7 @@ import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
     private final Logger      logger = LoggerFactory.getLogger(ComponentBasedOpt.class.getName());
@@ -57,13 +60,27 @@ public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
 	        	cacheItem.setEtag(URLUtils.createEtagString((Map<String, List<String>>) response.get(URLUtils.HEADERS)));
 	        if (response.get(URLUtils.MAX_AGE_MILLIS) != null)
 	        	cacheItem.setMaxAgeMillis((Long) response.get(URLUtils.MAX_AGE_MILLIS));
-	        
-        	if (responseCode.equals(HttpURLConnection.HTTP_OK)) {
-		        Map<String,String> messages = this.getMsgsJson(response);
-		        if (messages != null) {
-		        	cacheItem.addCachedData(messages);
-		        }
-        	}
+			      
+	        if (responseCode.equals(HttpURLConnection.HTTP_OK)) {
+		        JSONObject respObj = (JSONObject) JSONValue.parse((String) response.get(URLUtils.BODY));
+		        try {
+	        		if (getResponseCode(respObj) == 200 && 
+	        				// Do not use service response if not matching the locale in the request
+	        				(LocaleUtility.isDefaultLocale(this.dto.getLocale()) || 
+	        						!LocaleUtility.isDefaultLocale(getLocale(respObj)))){    	
+
+				        Map<String,String> messages = this.getMsgsJson(response);
+				        if (messages != null) {
+				        	cacheItem.addCachedData(messages);
+				        }
+			        	
+        			}
+        		
+	        	} catch (Exception e) {
+	        		logger.error("Failed to get messages");
+	        	}
+	        }
+
         } 
     }
 

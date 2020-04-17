@@ -6,6 +6,8 @@ package com.vmware.vipclient.i18n;
 
 import java.net.MalformedURLException;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -36,8 +38,10 @@ public class VIPCfg {
     private TranslationCacheManager    translationCacheManager;
 
     // data origin
+    @Deprecated
     private DataSourceEnum             messageOrigin = DataSourceEnum.VIP;
-
+    private List<DataSourceEnum>	   msgOriginsQueue = new LinkedList<DataSourceEnum>();
+    
     // cache mode
     private CacheMode                  cacheMode     = CacheMode.MEMORY;
 
@@ -86,6 +90,10 @@ public class VIPCfg {
             gcInstance = new VIPCfg();
         }
         return gcInstance;
+    }
+    
+    public static synchronized void resetInstance() {
+        gcInstance = null;
     }
 
     /**
@@ -139,8 +147,17 @@ public class VIPCfg {
         }
         if (prop.containsKey("version"))
             this.version = prop.getString("version");
-        if (prop.containsKey("vipServer"))
+        
+        // Remote VIP resources takes priority over offline resources
+        // so add DataSourceEnum.VIP first to msgOriginsQueue
+        if (prop.containsKey("vipServer")) {
             this.vipServer = prop.getString("vipServer");
+            this.msgOriginsQueue.add(DataSourceEnum.VIP);
+        }
+        if (prop.containsKey("offlineResourcesBaseUrl")) {
+        	this.offlineResourcesBaseUrl = prop.getString("offlineResourcesBaseUrl");
+        	this.msgOriginsQueue.add(DataSourceEnum.Bundle);
+        }
         if (prop.containsKey("pseudo"))
             this.pseudo = Boolean.parseBoolean(prop.getString("pseudo"));
         if (prop.containsKey("collectSource"))
@@ -160,7 +177,6 @@ public class VIPCfg {
         if (prop.containsKey("cacheExpiredTime"))
             this.cacheExpiredTime = Long.parseLong(prop
                     .getString("cacheExpiredTime"));
-		
 	}	
 
     /**
@@ -351,11 +367,13 @@ public class VIPCfg {
     public void setMachineTranslation(boolean machineTranslation) {
         this.machineTranslation = machineTranslation;
     }
-
+    
+    @Deprecated
     public DataSourceEnum getMessageOrigin() {
         return messageOrigin;
     }
 
+    @Deprecated
     public void setMessageOrigin(DataSourceEnum messageOrigin) {
         this.messageOrigin = messageOrigin;
     }
@@ -400,6 +418,14 @@ public class VIPCfg {
 
 	public void setOfflineResourcesBaseUrl(String offlineResourcesBaseUrl) {
 		this.offlineResourcesBaseUrl = offlineResourcesBaseUrl;
+	}
+
+	public List<DataSourceEnum> getMsgOriginsQueue() {
+		return msgOriginsQueue;
+	}
+
+	public void setMsgOriginsQueue(List<DataSourceEnum> msgOriginsQueue) {
+		this.msgOriginsQueue = msgOriginsQueue;
 	}
 
 }

@@ -40,6 +40,7 @@ public class CacheServiceTest extends BaseTestClass {
         dto.setKey(key);
         dto.setSource(source);
         dto.setLocale(locale.toLanguageTag());
+        VIPCfg.resetInstance();
     }
     
     @Test
@@ -76,15 +77,11 @@ public class CacheServiceTest extends BaseTestClass {
     public void testExpireUsingCacheControlMaxAge() {
     	VIPCfg gc = VIPCfg.getInstance();
         try {
-            gc.initialize("vipconfig");
+            gc.initialize("vipconfig-no-cache-expired-time");
         } catch (VIPClientInitException e) {
             logger.error(e.getMessage());
         }
     	gc.initializeVIPService();
-    	
-    	// Explicitly set this config to the default which is 0, as if the config property was not set.
-        // This is done so that the cache-control max age from the server response is used instead.
-        VIPCfg.getInstance().setCacheExpiredTime(0l);
         
         Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
         TranslationCacheManager.cleanCache(c);
@@ -168,7 +165,7 @@ public class CacheServiceTest extends BaseTestClass {
     	
     	// If cacheExpiredTime config is set, it means  that the value of this config will be used 
     	// to indicate cache expiration. Cache control max age from http response will be ignored.
-    	long cacheExpiredTime = VIPCfg.getInstance().getCacheExpiredTime();
+    	assertTrue (VIPCfg.getInstance().getCacheExpiredTime() > 0l);
     	
     	Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
     	TranslationCacheManager.cleanCache(c);
@@ -190,7 +187,7 @@ public class CacheServiceTest extends BaseTestClass {
     	Long responseTime = cacheItem.getTimestamp();
          
     	//Explicitly expire the cache
-    	c.setExpiredTime(-1l);
+    	c.setExpiredTime(0l);
         TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
         // Second request for the same message.
         // This should trigger another HTTP request because cache had been explicitly expired above.

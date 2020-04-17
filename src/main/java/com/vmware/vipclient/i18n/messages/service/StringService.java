@@ -22,6 +22,7 @@ import com.vmware.vipclient.i18n.messages.api.opt.server.StringBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.JSONUtils;
+import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 public class StringService {
     Logger              logger = LoggerFactory.getLogger(StringService.class);
@@ -29,10 +30,34 @@ public class StringService {
     @SuppressWarnings("unchecked")
     public String getString(MessagesDTO dto) {
     	String key = dto.getKey();
+    	
+    	MessageCacheItem cacheItem = getComponentLocaleCache(dto);
+    	
+    	// If failed to get MessageCacheItem of a non-default locale, 
+    	// use MessageCacheItem of the default locale instead. 
+    	Map<String, String> cacheOfComponent = cacheItem.getCachedData();	
+    	if (cacheOfComponent.isEmpty() && !LocaleUtility.isDefaultLocale(dto.getLocale())) {
+			MessagesDTO defaultLocaleDTO = new MessagesDTO(dto.getComponent(), dto.getComment(), 
+					dto.getKey(), dto.getSource(), LocaleUtility.defaultLocale.toLanguageTag(), null);
+			// MessageCacheItem of the default locale
+			cacheItem = getComponentLocaleCache(defaultLocaleDTO);
+			
+			// The MessageCacheItem for the requested locale will be a reference 
+			// to the MessageCacheItem of the default locale 
+			if (!cacheItem.cachedData.isEmpty()) {
+				CacheService cacheService = new CacheService(dto);
+				cacheService.addCacheOfComponent(cacheItem);
+			}
+		}
+    	return (cacheOfComponent == null || cacheOfComponent.get(key) == null ? "" : cacheOfComponent.get(key));
+    }
+    
+    public MessageCacheItem getComponentLocaleCache(MessagesDTO dto) {
     	CacheService cacheService = new CacheService(dto);
     	Map<String, String> cacheOfComponent = null;
+    	MessageCacheItem cacheItem = null;
     	if (cacheService.isContainComponent()) { // Item is in cache
-    		MessageCacheItem cacheItem = cacheService.getCacheOfComponent();
+    		cacheItem = cacheService.getCacheOfComponent();
     		cacheOfComponent = cacheItem.getCachedData();
     		if (cacheItem.isExpired()) { // cacheItem has expired
     			// Update the cache in a separate thread
@@ -40,15 +65,14 @@ public class StringService {
     		}
     	} else { // Item is not in cache
     		// Create a new cacheItem object to be stored in cache
-    		MessageCacheItem cacheItem = new MessageCacheItem();
-    		
+    		cacheItem = new MessageCacheItem();   		
     		cacheOfComponent = populateCache(cacheService, dto, cacheItem);
     		
     		if (cacheOfComponent != null && !cacheOfComponent.isEmpty()) {
     			cacheService.addCacheOfComponent(cacheItem);
     		}
     	} 
-    	return (cacheOfComponent == null || cacheOfComponent.get(key) == null ? "" : cacheOfComponent.get(key));
+    	return cacheItem;
     }
     
 	private void populateCacheTask(final CacheService cacheService, MessagesDTO dto, MessageCacheItem cacheItem) {
@@ -70,7 +94,7 @@ public class StringService {
 		// 1. A previously stored etag, if any, can be used for the next HTTP request.
 		// 2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed 
 		// 	 with new properties from the next HTTP response.	
-		new ComponentService(dto).getMessages(cacheItem);
+		new ComponentService(dto).getMessages(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
 		
 		return cacheItem.getCachedData();
     }

@@ -4,6 +4,7 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
+import java.util.ListIterator;
 import java.util.Map;
 
 import org.json.simple.JSONValue;
@@ -15,7 +16,6 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.base.cache.CacheMode;
-import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.base.cache.persist.DiskCacheLoader;
 import com.vmware.vipclient.i18n.base.cache.persist.Loader;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
@@ -30,16 +30,23 @@ public class ComponentService {
         this.dto = dto;
     }
 
-    /*
-     * Get messages from local bundle or from remote vip service(non-Javadoc)
+    /**
+     * Get messages from either remote vip service or local bundle
      * 
-     * @see
-     * com.vmware.vipclient.i18n.messages.service.IComponentService#getMessages
-     * (com.vmware.vipclient.i18n.base.DataSourceEnum)
+     * @param cacheItem MessageCacheItem object to store the messages
+     * @param msgSourceQueueIter ListIterator of the msgSourceQueue (e.g. [DataSourceEnum.VIP, DataSourceEnum.Bundle])
      */
     @SuppressWarnings("unchecked")
-    public void getMessages(final MessageCacheItem cacheItem) {
-    	VIPCfg.getInstance().getMessageOrigin().createMessageOpt(dto).getComponentMessages(cacheItem);
+    public void getMessages(final MessageCacheItem cacheItem, ListIterator msgSourceQueueIter) {
+    	if (!msgSourceQueueIter.hasNext()) 
+    		return;
+    	DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
+    	dataSource.createMessageOpt(dto).getComponentMessages(cacheItem);
+    	
+    	// If failed to get messages from the source, try the next source in the queue
+    	if (cacheItem.getCachedData().isEmpty()) {
+    		getMessages(cacheItem, msgSourceQueueIter);
+    	}
     }
 
     public Map<String, String> getComponentTranslation() {
@@ -60,7 +67,7 @@ public class ComponentService {
 			// Prepare a new CacheItem to store cache properties
 	        MessageCacheItem cacheItem = new MessageCacheItem();
 			// Pass this cacheItem to getMessages so that it will be populated from the http request
-			this.getMessages(cacheItem);
+			this.getMessages(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
 			// Store the messages and properties in cache using a single CacheItem object
 			cs.addCacheOfComponent(cacheItem);
 			return cacheItem.getCachedData(); 
