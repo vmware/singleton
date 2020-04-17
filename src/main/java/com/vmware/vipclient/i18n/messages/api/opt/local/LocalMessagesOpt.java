@@ -37,14 +37,10 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
     public void getComponentMessages(MessageCacheItem cacheItem) {
     	String resource = VIPCfg.getInstance().getOfflineResourcesBaseUrl();
     	String filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), dto.getLocale());
-    	if (resource != null) {
-    		resource = resource.concat(filePath);
-    	} else {
-    		resource = filePath;
-    	}
+    	Path path = Paths.get(resource, filePath);
 		try {
-			Path path = Paths.get(Thread.currentThread().getContextClassLoader().
-					getResource(resource).toURI());
+			path = Paths.get(Thread.currentThread().getContextClassLoader().
+					getResource(path.toString()).toURI());
 			Map<String, String> messages = JSONBundleUtil.getMessages(path);
 	    	cacheItem.addCachedData(messages);
 		} catch (Exception e) {
