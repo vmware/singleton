@@ -9,7 +9,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Locale;
 
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -42,7 +41,6 @@ public class CacheServiceTest extends BaseTestClass {
         dto.setSource(source);
         dto.setLocale(locale.toLanguageTag());
         VIPCfg.resetInstance();
-        I18nFactory.resetInstance();
     }
     
     @Test
@@ -158,6 +156,7 @@ public class CacheServiceTest extends BaseTestClass {
     @Deprecated
     public void testExpireUsingCacheExpiredTimeConfig() { 
     	VIPCfg gc = VIPCfg.getInstance();
+
         try {
             gc.initialize("vipconfig");
         } catch (VIPClientInitException e) {
@@ -211,11 +210,8 @@ public class CacheServiceTest extends BaseTestClass {
         // Timestamp remains the same because no http request was made.
         Long responseTime3 = cacheItem.getTimestamp();
         assertTrue(responseTime3.equals(responseTime2)); 
+        
+        // Put the expiry time back because same MessageCache instance is used in other test classes
+        c.setExpiredTime(VIPCfg.getInstance().getCacheExpiredTime());
     }  
-    
-    @AfterClass
-    public void after() {
-        VIPCfg.resetInstance();
-        I18nFactory.resetInstance();
-    }
 }

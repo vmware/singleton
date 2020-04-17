@@ -7,10 +7,10 @@ package com.vmware.vipclient.i18n.messages.service;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Locale;
 
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -45,21 +45,21 @@ public class OfflineModeTest extends BaseTestClass {
         dto.setSource(source);
         dto.setLocale(locale.toLanguageTag());
         VIPCfg.resetInstance();
-        I18nFactory.resetInstance();
     }
     
     @Test
     public void testGetMsgsOfflineMode() {
     	VIPCfg cfg = VIPCfg.getInstance();
+  
         try {
             cfg.initialize("vipconfig-offline");
         } catch (VIPClientInitException e) {
             logger.error(e.getMessage());
         }
     	
-        Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
+        Cache c = cfg.createTranslationCache(MessageCache.class);
         TranslationCacheManager.cleanCache(c);
-        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
+        I18nFactory i18n = I18nFactory.getInstance(cfg);
         TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
         
         dto.setProductID(VIPCfg.getInstance().getProductName());
@@ -134,6 +134,7 @@ public class OfflineModeTest extends BaseTestClass {
     @Test
     public void testGetMsgsOnlineModePriority() {
     	VIPCfg cfg = VIPCfg.getInstance();
+
         try {
             cfg.initialize("vipconfig-online-offline");
         } catch (VIPClientInitException e) {
@@ -143,7 +144,7 @@ public class OfflineModeTest extends BaseTestClass {
     	
         Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
         TranslationCacheManager.cleanCache(c);
-        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
+        I18nFactory i18n = I18nFactory.getInstance(cfg);
         TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
         
         dto.setProductID(VIPCfg.getInstance().getProductName());
@@ -191,11 +192,5 @@ public class OfflineModeTest extends BaseTestClass {
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertNotNull(cacheItem);
     	assertEquals(source, cacheItem.cachedData.get(key));
-    }
-    
-    @AfterClass
-    public void after() {
-        VIPCfg.resetInstance();
-        I18nFactory.resetInstance();
     }
 }
