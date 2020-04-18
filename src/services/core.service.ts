@@ -171,7 +171,7 @@ export class CoreService {
             .concat('&components=' + this.config.component)
             .concat('&version=' + this.config.version)
             .concat('&language=' + language)
-            .concat(region ? `&region = ${region}` : '')
+            .concat(region ? `&region=${region}` : '')
             .concat('&scope=' + this.config.i18nScope.join(','))
             .concat('&pseudo=' + this.config.isPseudo)
             .concat('&combine=' + (region ? 1 : 2));
@@ -200,14 +200,12 @@ export class CoreService {
 
     public loadTranslationsAndPattern(language: string, region: string): Promise<any> | Promise<any>[] {
         const cachePattern = this.cacheManager.lookforPattern(language, region);
-        if (typeof cachePattern !== 'undefined') {
-            const cacheTranslation = this.cacheManager.lookforTranslationByComponent(this.config.component, language);
-            if (typeof cacheTranslation === 'undefined') {
-                return Promise.resolve({
-                    components: [cacheTranslation],
-                    pattern: cachePattern
-                });
-            }
+        const cacheTranslation = this.cacheManager.lookforTranslationByComponent(this.config.component, language);
+        if (typeof cachePattern !== 'undefined' && typeof cacheTranslation !== 'undefined') {
+            return Promise.resolve({
+                components: [cacheTranslation],
+                pattern: cachePattern
+            });
         }
 
         const url = this.getI18nResourceUrl(language, region);
@@ -217,13 +215,12 @@ export class CoreService {
                 const translations = this.resParser.getTranslations(result);
                 if (translations) {
                     this.setTranslations(language, translations);
-                    const patterns = this.resParser.getPatterns(result);
-                    if (patterns) {
-                        this.setPatterns(patterns, language, region);
-                        return result.data;
-                    }
                 }
-
+                const patterns = this.resParser.getPatterns(result);
+                if (patterns) {
+                    this.setPatterns(patterns, language, region);
+                }
+                return result && result.data;
             }).catch((err: any) => { this.logger.error('Load I18n Resouorce failed.', err.message); });
     }
 
