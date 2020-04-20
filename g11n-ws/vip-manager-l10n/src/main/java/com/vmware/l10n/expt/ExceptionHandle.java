@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
-
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
 @ControllerAdvice
 public class ExceptionHandle {
 	private static Logger logger = LoggerFactory.getLogger(ExceptionHandle.class);

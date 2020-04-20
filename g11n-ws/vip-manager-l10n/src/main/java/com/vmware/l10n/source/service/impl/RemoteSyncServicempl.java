@@ -9,12 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.vmware.l10n.expt.L10nAPIException;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.l10n.source.service.RemoteSyncService;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.l10n.L10NAPIV1;
-import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ConstantsUnicode;
 import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;

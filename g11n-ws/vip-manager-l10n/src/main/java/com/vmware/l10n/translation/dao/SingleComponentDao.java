@@ -4,7 +4,7 @@
  */
 package com.vmware.l10n.translation.dao;
 
-import com.vmware.l10n.expt.L10nAPIException;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.l10n.translation.dto.ComponentMessagesDTO;
 
 /**

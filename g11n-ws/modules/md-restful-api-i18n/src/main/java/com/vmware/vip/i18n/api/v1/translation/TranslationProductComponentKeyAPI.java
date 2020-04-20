@@ -90,6 +90,7 @@ public class TranslationProductComponentKeyAPI extends
 	 * source
 	 * 
 	 */
+	@Deprecated
 	@ApiOperation(value = APIOperation.SOURCE_TRANSLATION_POST_VALUE, notes = APIOperation.SOURCE_TRANSLATION_POST_NOTES)
 	@RequestMapping(value = APIV1.KEY2_POST, method = RequestMethod.POST, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
