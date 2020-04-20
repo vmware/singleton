@@ -33,6 +33,7 @@ public class TranslationWithPatternAPI extends TranslationWithPatternAction {
     *
     */
    @ApiOperation(value = APIOperation.TRANSLATION_WITH_PATTERN_VALUE, notes = APIOperation.TRANSLATION_WITH_PATTERN_NOTES)
+   @Deprecated
    @RequestMapping(value = APIV2.TRANSLATION_WITH_PATTERN, method = RequestMethod.POST, produces = {
          API.API_CHARSET })
    @ResponseStatus(HttpStatus.OK)
