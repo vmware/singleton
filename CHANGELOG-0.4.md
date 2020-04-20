@@ -34,8 +34,8 @@ filename | sha1 hash | branch/tag
 filename | sha1 hash | branch/tag
 -------- | --- | ------
 [singleton-client-java-0.4.1.jar](https://repo1.maven.org/maven2/com/vmware/singleton/singleton-client-java/0.4.1/singleton-client-java-0.4.1.jar) | `c17bad6f6ec4445dba484c1bb3c71a7937a1a340` | g11n-javaclient/[v0.4.1-Singleton-Javaclient](https://github.com/vmware/singleton/releases/tag/v0.4.1-Singleton-Java-Client)
-[@singleton-i18n/js-client](https://www.npmjs.com/package/@singleton-i18n/js-core-sdk/v/0.4.0--) | - | No update
-[@singleton-i18n/nodejs-client](https://www.npmjs.com/package/@singleton-i18n/js-core-sdk-server/v/0.4.0--) | - | No update
+[@singleton-i18n/js-client](https://www.npmjs.com/package/@singleton-i18n/js-core-sdk/v/0.4.1) | `c88be0515010119ae477a8e96e8dbb808c89eac6` | g11n-js-client/[v0.4.1-Singleton-JS-Client](https://github.com/vmware/singleton/releases/tag/v0.4.1-Singleton-JS-Client)
+[@singleton-i18n/nodejs-client](https://www.npmjs.com/package/@singleton-i18n/js-core-sdk-server/v/0.4.1) | `472a3663ff9e6c93846c3df6ffc6c987162dc429` | g11n-js-client/[v0.4.1-Singleton-JS-Client](https://github.com/vmware/singleton/releases/tag/v0.4.1-Singleton-JS-Client)
 [@singleton-i18n/angular-client](https://www.npmjs.com/package/@singleton-i18n/angular-client/v/0.2.0) | - | No update
 [singleton-go-client](https://github.com/vmware/singleton/tree/g11n-go-client) | - | No update
 
@@ -45,6 +45,9 @@ filename | sha1 hash | branch/tag
 #### SDK
 #### Java Client
 - Improve log level defination ([#416](https://github.com/vmware/singleton/pull/416))
+
+#### JS Client
+- Revert the feature: fetching translations of multiple components in one call
 
 v0.4.0
 -------
