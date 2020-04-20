@@ -56,8 +56,7 @@ public class BaseTestClass {
 
     @ClassRule
     public static WireMockClassRule wireMockClassRule = new WireMockClassRule(
-            WireMockConfiguration.options().port(8099).usingFilesUnderClasspath("mockserver")
-            .maxRequestJournalEntries(100));
+            WireMockConfiguration.options().port(8099).usingFilesUnderClasspath("mockserver"));
 
     @Rule
     public WireMockClassRule        instanceRule      = wireMockClassRule;
