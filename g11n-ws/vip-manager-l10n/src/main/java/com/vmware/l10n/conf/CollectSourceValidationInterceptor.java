@@ -1,3 +1,7 @@
+/*
+ * Copyright 2019 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 package com.vmware.l10n.conf;
 
 import java.io.IOException;
@@ -90,7 +94,7 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 		validateVersion(request);
 		validateComponent(request);
 		validateKey(request);
-		validateLocale(request);
+		validateLocale(request, sourceLocales);
 		validateSourceformat(request);
 		validateCollectsource(request);
 		validatePseudo(request);
@@ -163,7 +167,7 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 	}
 
 	@SuppressWarnings("unchecked")
-	private static void validateLocale(HttpServletRequest request)
+	private static void validateLocale(HttpServletRequest request, List<String> sourceLocales2)
 			throws VIPAPIException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
@@ -174,6 +178,8 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 			return;
 		}
 		if (!RegExpValidatorUtils.IsLetterAndNumberAndValidchar(locale)) {
+			throw new VIPAPIException(ValidationMsg.LOCALE_NOT_VALIDE);
+		}else if (!sourceLocales2.contains(locale)) {
 			throw new VIPAPIException(ValidationMsg.LOCALE_NOT_VALIDE);
 		}
 	}
