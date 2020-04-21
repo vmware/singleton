@@ -70,11 +70,6 @@ func (ds *dataService) fetch(item *dataItem, wait bool) error {
 		if ds.bundle != nil {
 			err = ds.bundle.get(item)
 			if err == nil {
-				var age int64 = cacheNeverExpires
-				if ds.server != nil {
-					age = cacheDefaultExpires // set to 7200 seconds if server is unavailable temporarily
-				}
-				info.setAge(age)
 
 				ds.setCache(item)
 				return nil
@@ -132,7 +127,7 @@ func updateCacheControl(item *dataItem, info *itemCacheInfo) {
 		}
 	}
 
-	info.setAge(cacheDefaultExpires) // set default age time to 7200 seconds
+	info.setAge(cacheDefaultExpires)
 	logger.Error("Wrong cache control: " + cc)
 }
 
