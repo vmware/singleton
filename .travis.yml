@@ -25,7 +25,7 @@ jobs:
       script:
         - git clone --branch=devops https://github.com/vmware/singleton.git devops
         - cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=java-client-gate -QualityGateConditions="./quality_gates/java-client.json" -SonarToken=$SONAR_TOKEN
-        - cd $TRAVIS_BUILD_DIR && ./gradlew jacocoTestReport sonarqube --stacktrace -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN -Dsonar.projectKey=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH -Dsonar.projectName=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.host.url=https://sonarcloud.io --info
+        - cd $TRAVIS_BUILD_DIR && ./gradlew jacocoTestReport sonarqube --stacktrace -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN -Dsonar.projectKey=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH -Dsonar.projectName=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.host.url=https://sonarcloud.io --warn
         - |
             git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.travis\.yml$' || {
               echo "No need to check sonar quality gate for only travis configuration updates"
