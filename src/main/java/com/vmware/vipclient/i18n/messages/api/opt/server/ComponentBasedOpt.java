@@ -65,7 +65,10 @@ public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
 		        JSONObject respObj = (JSONObject) JSONValue.parse((String) response.get(URLUtils.BODY));
 		        try {
 	        		if (getResponseCode(respObj) == 200 && 
-	        				// Do not use service response if not matching the locale in the request
+	        				// If the response is 200, there are 2 possible cases:
+	        				// 1. the response's locale matches the request's locale OR
+	        				// 2. the response's locale is for the default locale (service's fall back behavior)
+	        				// Use the response only if its locale matches the request's locale
 	        				(LocaleUtility.isDefaultLocale(this.dto.getLocale()) || 
 	        						!LocaleUtility.isDefaultLocale(getLocale(respObj)))){    	
 
