@@ -43,6 +43,7 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 					getResource(path.toString()).toURI());
 			Map<String, String> messages = JSONBundleUtil.getMessages(path);
 	    	cacheItem.addCachedData(messages);
+	    	cacheItem.setTimestamp(System.currentTimeMillis());
 		} catch (Exception e) {
 			// Do not update cacheItem
 		}

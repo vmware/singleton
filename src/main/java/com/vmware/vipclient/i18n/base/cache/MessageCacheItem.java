@@ -31,7 +31,7 @@ public class MessageCacheItem implements CacheItem {
 	
 	private String etag;
 	private long timestamp;
-	private Long maxAgeMillis = 864000000l;
+	private Long maxAgeMillis = 86400000l;
 	
 	public final Map<String, String> cachedData = new HashMap<String, String>();
 	
