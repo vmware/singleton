@@ -82,7 +82,7 @@ public class VIPCfgTest extends BaseTestClass {
         // Assert.assertThat(message3, org.hamcrest.text.IsEqualIgnoringCase.equalToIgnoringCase("Test source"));
     }
 
-    @Test
+    //@Test
     public void testMT2() {
         String component = "default";
         Locale locale1 = new Locale("en", "US");
