@@ -17,23 +17,34 @@ describe('negative - UnsupportedLanguage', () => {
         await i18nClient.coreService.loadI18nData();
     });
 
-    it("getTranslation, source is provided.", function () {
+    it("get sending source when source and en are different, source is provided.", function () {
         let sourceForTest = 'sourceForTest';
         let expected = 'Message-en';
         let actualValue3 = i18nClient.l10nService.getTranslation(Consts.TranslationResource.key_onlystring, sourceForTest);
-        expect(actualValue3).toEqual(expected);
+        // When sending source and en are different, fallback to source.
+        expect(actualValue3).toEqual(sourceForTest);
+    });
+
+    it("fallback to en source, source is provided and same with local en content.", function () {
+        let sourceForTest_1 = 'Message';
+        let expected_1 = 'Message';
+        let actualValue3_1 = i18nClient.l10nService.getTranslation(Consts.TranslationResource.key_onlystring, sourceForTest_1);
+        // When sending source and en are different, fallback to source.
+        expect(actualValue3_1).toEqual(expected_1);
     });
 
     it("getMessage by key, source isn't there.", function () {
         let actualValue4 = i18nClient.l10nService.getMessage(Consts.TranslationResource.key_onlystring);
-        expect(actualValue4).toEqual('Message-en');
+        // fallback to local en source if get nothing from service
+        expect(actualValue4).toEqual('Message');
     });
 
     it("getMessage by key, source is ready.", async function () {
         i18nClient.init({ ...config, sourceBundle: EnglishBundle, language: currentLanguage });
         // await i18nClient.coreService.loadI18nData();
+        // fallback to local en source if get nothing from service
         let actualValue5 = i18nClient.l10nService.getMessage(Consts.TranslationResource.key_onlystring);
-        expect(actualValue5).toEqual('Message-en');
+        expect(actualValue5).toEqual('Message');
     });
 });
 
