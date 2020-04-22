@@ -31,5 +31,6 @@ const (
 )
 
 const (
-	cacheDefaultExpires = 864000 //seconds
+	cacheNeverExpires   = -1
+	cacheDefaultExpires = 86400 //seconds
 )

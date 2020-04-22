@@ -70,6 +70,11 @@ func (ds *dataService) fetch(item *dataItem, wait bool) error {
 		if ds.bundle != nil {
 			err = ds.bundle.get(item)
 			if err == nil {
+				var age int64 = cacheNeverExpires
+				if ds.server != nil {
+					age = cacheDefaultExpires
+				}
+				info.setAge(age)
 
 				ds.setCache(item)
 				return nil

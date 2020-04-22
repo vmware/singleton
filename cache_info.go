@@ -36,11 +36,14 @@ type itemCacheInfo struct {
 }
 
 func newSingleCacheInfo() *itemCacheInfo {
-	return &itemCacheInfo{0, 0, cacheDefaultExpires, ""}
+	return &itemCacheInfo{0, 0, 0, ""}
 }
 
 func (i *itemCacheInfo) isExpired() bool {
 	age := i.getAge()
+	if age == cacheNeverExpires {
+		return false
+	}
 	return time.Now().Unix()-atomic.LoadInt64(&i.lastUpdate) >= age
 }
 func (i *itemCacheInfo) setTime(t int64) {

@@ -12,24 +12,24 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-// func TestCacheNeverExpire(t *testing.T) {
-// 	defer Trace(curFunName())()
+func TestCacheNeverExpire(t *testing.T) {
+	defer Trace(curFunName())()
 
-// 	newCfg := testCfg
-// 	newCfg.OnlineServiceURL = ""
-// 	resetInst(&newCfg)
+	newCfg := testCfg
+	newCfg.OnlineServiceURL = ""
+	resetInst(&newCfg)
 
-// 	locale, component := "fr", "sunglow"
-// 	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
-// 	info := getCacheInfo(item)
+	locale, component := "fr", "sunglow"
+	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
+	info := getCacheInfo(item)
 
-// 	// assert Initial value isn't cacheNeverExpires(-1)
-// 	assert.NotEqual(t, int64(cacheNeverExpires), info.getAge())
-// 	GetTranslation().GetComponentMessages(name, version, locale, component)
+	// assert Initial value isn't cacheNeverExpires(-1)
+	assert.NotEqual(t, int64(cacheNeverExpires), info.getAge())
+	GetTranslation().GetComponentMessages(name, version, locale, component)
 
-// 	// assert value is cacheNeverExpires(-1) because only local bundles are available.
-// 	assert.Equal(t, int64(cacheNeverExpires), info.getAge())
-// }
+	// assert value is cacheNeverExpires(-1) because only local bundles are available.
+	assert.Equal(t, int64(cacheNeverExpires), info.getAge())
+}
 
 func TestCacheExpireWhenNeverExpire(t *testing.T) {
 	defer Trace(curFunName())()
@@ -44,8 +44,8 @@ func TestCacheExpireWhenNeverExpire(t *testing.T) {
 
 	GetTranslation().GetComponentMessages(name, version, locale, component)
 
-	// value is cacheDefaultExpires because only local bundles are available.
-	assert.Equal(t, int64(cacheDefaultExpires), info.getAge())
+	// value is cacheNeverExpires(-1) because only local bundles are available.
+	assert.Equal(t, int64(cacheNeverExpires), info.getAge())
 
 	// Run again to get from cache
 	bundleDir := GetTranslation().(*defaultTrans).ds.bundle.root
