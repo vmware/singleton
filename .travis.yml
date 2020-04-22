@@ -15,8 +15,7 @@ jobs:
   include:
     - stage: check header
       script:
-        - git clone --branch=devops https://github.com/vmware/singleton.git devops
-        - cp $TRAVIS_BUILD_DIR/devops/check_headers.py . && chmod +x check_headers.py
+        - git clone --branch=devops https://github.com/vmware/singleton.git devops && cp $TRAVIS_BUILD_DIR/devops/check_headers.py . && chmod +x check_headers.py
         - python3 ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
     - stage: unit test
       script:
@@ -24,8 +23,11 @@ jobs:
     - stage: code scan
       script:
         - git clone --branch=devops https://github.com/vmware/singleton.git devops
+        - str=$(printf '=%.0s' {1..50})
+        - echo $str Code Scan Start $str
         - cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=java-client-gate -QualityGateConditions="./quality_gates/java-client.json" -SonarToken=$SONAR_TOKEN
         - cd $TRAVIS_BUILD_DIR && ./gradlew jacocoTestReport sonarqube --stacktrace -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN -Dsonar.projectKey=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH -Dsonar.projectName=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.host.url=https://sonarcloud.io --warn
+        - echo $str Code Scan End $str
         - |
             git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.travis\.yml$' || {
               echo "No need to check sonar quality gate for only travis configuration updates"
@@ -48,5 +50,8 @@ jobs:
         - cd $TRAVIS_BUILD_DIR && ./gradlew clean build -x test && cp ./build/libs/*.jar $TRAVIS_BUILD_DIR/devops/autotest/client/java/lib/
         - cd $TRAVIS_BUILD_DIR/devops/autotest/client/java && ./gradlew build
         - docker cp l10n singleton:/
+        - str=$(printf '=%.0s' {1..50})
+        - echo $str Smoke Test Start $str
         - java -cp './target/*' org.testng.TestNG -d test-output ./target/testng.xml
         - cd $TRAVIS_BUILD_DIR/devops/autotest/client/java_client_sample_app && ./sample_app_sanity_test.sh $TRAVIS_BUILD_DIR
+        - echo $str Smoke Test End $str
