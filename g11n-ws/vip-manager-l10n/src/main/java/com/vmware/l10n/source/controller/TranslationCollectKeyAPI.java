@@ -36,6 +36,7 @@ import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import springfox.documentation.annotations.ApiIgnore;
 
 @RestController("i10n-TranslationCollectKeyAPI")
 public class TranslationCollectKeyAPI {
@@ -46,6 +47,7 @@ public class TranslationCollectKeyAPI {
 	/**
 	 * Post a string key's source to l10n server
 	 */
+	@ApiIgnore
 	@ApiOperation(value = APIOperation.KEY_SOURCE_POST_VALUE, notes = APIOperation.KEY_SOURCE_POST_NOTES)
 	@RequestMapping(value = L10nI18nAPI.TRANSLATION_KEY_APIV1, method = RequestMethod.POST, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
@@ -89,6 +91,7 @@ public class TranslationCollectKeyAPI {
 	 * @return
 	 * @throws L10nAPIException
 	 */
+	@ApiIgnore
 	@ApiOperation(value = APIOperation.SOURCE_TRANSLATION_POST_VALUE, notes = APIOperation.SOURCE_TRANSLATION_POST_NOTES)
 	@RequestMapping(value = L10nI18nAPI.TRANSLATION_PRODUCT_COMOPONENT_KEY_APIV1, method = RequestMethod.POST, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
@@ -125,6 +128,7 @@ public class TranslationCollectKeyAPI {
 	 *Post a string key's source to l10n server.
 	 *
 	 */
+	@ApiIgnore
 	@ApiOperation(value = APIOperation.KEY_SOURCE_POST_VALUE, notes = APIOperation.KEY_SOURCE_POST_NOTES)
 	@RequestMapping(value = L10nI18nAPI.TRANSLATION_PRODUCT_NOCOMOPONENT_KEY_APIV1, method = RequestMethod.POST, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)

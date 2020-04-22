@@ -33,6 +33,7 @@ import com.vmware.vip.common.utils.KeyUtils;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * Provide RESTful API for product to get translation by String base.
@@ -48,7 +49,7 @@ public class TranslationSourceAPI  {
 	 * source
 	 * 
 	 */
-	
+	@ApiIgnore
 	@ApiOperation(value = APIOperation.SOURCE_TRANSLATION_POST_VALUE, notes = APIOperation.SOURCE_TRANSLATION_POST_NOTES)
 	@RequestMapping(value = L10nI18nAPI.TRANSLATION_SOURCE_APIV1, method = RequestMethod.POST, produces = { API.API_CHARSET })
 	@ResponseBody

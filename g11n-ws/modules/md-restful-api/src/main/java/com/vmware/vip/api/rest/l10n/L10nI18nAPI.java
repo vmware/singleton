@@ -5,7 +5,7 @@
 package com.vmware.vip.api.rest.l10n;
 
 public interface L10nI18nAPI {
-	public static String BASE_COLLECT_SOURCE_PATH = "/i10n/source";
+	public static String BASE_COLLECT_SOURCE_PATH = "/i18n/source";
     
 	//v1
 	public static String TRANSLATION_KEY_APIV1 = BASE_COLLECT_SOURCE_PATH + "/api/v1/translation/string";
