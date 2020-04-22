@@ -21,13 +21,15 @@ jobs:
   include:
     - stage: check header
       script:
-        - git clone --branch=devops https://github.com/vmware/singleton.git devops
-        - cp $TRAVIS_BUILD_DIR/devops/check_headers.py . && chmod +x check_headers.py
+        - git clone --branch=devops https://github.com/vmware/singleton.git devops && cp $TRAVIS_BUILD_DIR/devops/check_headers.py . && chmod +x check_headers.py
         - python3 ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
     - stage: Unit Test
       script:
         - go build
+        - str=$(printf '=%.0s' {1..50})
+        - echo $str Unit Test Start $str
         - go test
+        - echo $str Unit Test End $str
     - stage: Code Scan
       script:
         - SONARSCANNER='sonar-scanner-cli-4.0.0.1744-linux'
@@ -38,8 +40,11 @@ jobs:
         - go test -json > report.json
         - go test -coverprofile=coverage.out
         - git clone --branch=devops https://github.com/vmware/singleton.git devops
+        - str=$(printf '=%.0s' {1..50})
+        - echo $str Unit Test Start $str
         - cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG-singleton-go-client-$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG-singleton-go-client-$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=go-client-gate -QualityGateConditions="./quality_gates/go-client.json" -SonarToken=$SONAR_TOKEN
         - cd $TRAVIS_BUILD_DIR && ./$SONARSCANNERINNER/bin/sonar-scanner -Dsonar.sources=. -Dsonar.exclusions=**/testdata/**/*,**/$SONARSCANNERINNER/**/*,**/*_test.go -Dsonar.coverage.exclusions=**/testdata/**/*,**/$SONARSCANNERINNER/**/*,**/*_test.go -Dsonar.projectName=$SONAR_ORG-singleton-go-client-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.projectKey=$SONAR_ORG-singleton-go-client-$TRAVIS_BRANCH -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN -Dsonar.go.tests.reportPaths=./report.json -Dsonar.go.coverage.reportPaths=./coverage.out
+        - echo $str Unit Test End $str
         - |
             git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.travis\.yml$' || {
               echo "No need to check sonar quality gate for only travis configuration updates"
