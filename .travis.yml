@@ -27,8 +27,7 @@ jobs:
   include:
     - stage: check header
       script:
-        - git clone --branch=devops https://github.com/vmware/singleton.git devops
-        - cp $TRAVIS_BUILD_DIR/devops/check_headers.py . && chmod +x check_headers.py
+        - git clone --branch=devops https://github.com/vmware/singleton.git devops && cp $TRAVIS_BUILD_DIR/devops/check_headers.py . && chmod +x check_headers.py
         - python3 ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
     - stage: unit test and code scan
       script:
@@ -50,11 +49,16 @@ jobs:
         - cd g11n-angular-client
         - sed -i "s/'Chrome'/'ChromeHeadless'/g" config/karma.conf.js && cat config/karma.conf.js
         - npm install --registry https://registry.npmjs.org
+        - str=$(printf '=%.0s' {1..50})
+        - echo $str Unit Test Start $str
         - npm run test
+        - echo $str Unit Test End $str
         - cd ..
         - ls -al coverage
+        - echo $str Code Scan Start $str
         - python ./config_sonar_project.py -ProjectName $SONAR_ORG-singleton-angular-client-$TRAVIS_BRANCH -ProjectKey $SONAR_ORG-singleton-angular-client-$TRAVIS_BRANCH -OrgKey $SONAR_ORG -QualityGateName angular-client-gate -QualityGateConditions ./quality_gates/angular-client.json -SonarToken $SONAR_TOKEN
         - ./$SONARSCANNERINNER/bin/sonar-scanner -Dsonar.sources=./g11n-angular-client -Dsonar.exclusions=**/node_modules/**/*,**/sample/**/*,**/*.js,**/*.d.ts -Dsonar.projectName=$SONAR_ORG-singleton-angular-client-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.projectKey=$SONAR_ORG-singleton-angular-client-$TRAVIS_BRANCH -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN -Dsonar.javascript.lcov.reportPaths="./coverage/HeadlessChrome 62.0.3202 (Ubuntu 0.0.0)/lcov.info"  -Dsonar.typescript.lcov.reportPaths="./coverage/HeadlessChrome 62.0.3202 (Ubuntu 0.0.0)/lcov.info" -Dsonar.c.file.suffixes=- -Dsonar.cpp.file.suffixes=- -Dsonar.objc.file.suffixes=-
+        - echo $str Code Scan End $str
         - |
             git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.travis\.yml$' || {
               echo "No need to check sonar quality gate for only travis configuration updates"
