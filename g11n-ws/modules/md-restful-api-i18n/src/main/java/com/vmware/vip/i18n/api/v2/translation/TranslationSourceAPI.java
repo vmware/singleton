@@ -58,9 +58,9 @@ public class TranslationSourceAPI extends TranslationSourceAction {
     public APIResponseDTO getTranslationBySource (
             @PathVariable(APIParamName.PRODUCT_NAME) String productName,
             @PathVariable(APIParamName.COMPONENT) String component,
-            @RequestParam(value = APIParamName.VERSION) String version,
-            @RequestParam(value = APIParamName.LOCALE, required = false) String locale,
-            @RequestParam(value = APIParamName.SOURCE, required = true) String source,
+            @PathVariable(value = APIParamName.VERSION) String version,
+            @PathVariable(value = APIParamName.LOCALE, required = true) String locale,
+            @PathVariable(value = APIParamName.SOURCE, required = true) String source,
             @RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
             @ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO)
             @RequestParam(value = APIParamName.PSEUDO, required=false, defaultValue="false") String pseudo,
