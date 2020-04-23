@@ -1,6 +1,6 @@
 {
     "name": "@vip/vip-core-sdk-server",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "publishConfig": {
         "registry": ""
     },
@@ -15,7 +15,8 @@
     },
     "bin": {
         "load-translation": "cli/load-i18n-package.js",
-        "collect-source-bundle": "cli/collect-source-bundle.js"
+        "collect-source-bundle": "cli/collect-source-bundle.js",
+        "load-locale-data": "cli/load-locale-data.js"
     },
     "keywords": [
         "i18n",
@@ -53,6 +54,15 @@
         "webpack-cli": "^3.3.0"
     },
     "changelogHistory": [
+        {
+            "date": "03/26/20",
+            "version": "0.4.2",
+            "notes": [
+                {
+                    "description": "Support downloading both translations and patterns by only one request to Singleton Service"
+                }
+            ]
+        },
         {
             "date": "20/03/20",
             "version": "0.4.1",

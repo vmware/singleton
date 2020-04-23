@@ -102,7 +102,7 @@ export class MessageFormat {
     }
 
     private interpretNumber(value: number): string {
-        return this.i18nService.formatNumber(value, this.locale);
+        return this.i18nService.formatNumber(value);
     }
 
     private getFunctionName(type: string) {

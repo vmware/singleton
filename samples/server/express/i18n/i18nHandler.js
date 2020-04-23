@@ -1,3 +1,7 @@
+/*
+ * Copyright 2019 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 const vipCore = require('@vip/vip-core-sdk-server');
 const bundle = require('./source.l10n');
 

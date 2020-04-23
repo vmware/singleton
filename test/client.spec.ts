@@ -42,8 +42,8 @@ describe('i18nClient', () => {
         describe('validate response ', () => {
             it('loadI18nData', () => {
                 i18nClient.coreService.loadI18nData().then( res => {
-                    expect( res[0] ).toEqual( mockResponse.trans);
-                    expect( res[1] ).toEqual( mockResponse.pattern.categories);
+                    expect( res.components ).toEqual( mockResponse.res.data.components);
+                    expect( res.pattern.categories ).toEqual( mockResponse.res.data.pattern.categories);
                 });
             });
             it('getSupportedLanguages', () => {

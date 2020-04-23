@@ -33,14 +33,16 @@ export abstract class ResponseParser {
         }
         return res.data;
     }
-    getPatterns( res: ResType ): Object|null {
-        const data = this.validateResponse( res );
-        const pattern = data && data.categories ? data.categories : null;
+    getPatterns(res: ResType): Object | null {
+        const data = this.validateResponse(res);
+        const pattern = data && data.pattern && data.pattern.categories
+            ? data.pattern.categories : null;
         return pattern;
     }
-    getTranslations( res: ResType ): Object|null {
-        const data = this.validateResponse( res );
-        const translations = data && data.messages ? data.messages : null;
+    getTranslations(res: ResType): Object | null {
+        const data = this.validateResponse(res);
+        const translations = data && data.messages ? data.messages :
+            data && data.components && data.components[0].messages ? data.components[0].messages : null;
         return translations;
     }
     getSupportedLanguages( res: ResType ): {}[]|null {

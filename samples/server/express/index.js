@@ -1,3 +1,7 @@
+/*
+ * Copyright 2019 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 const express = require('express');
 const i18nHandler = require('./i18n/i18nHandler')
 
