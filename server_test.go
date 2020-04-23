@@ -73,6 +73,7 @@ func TestTimeout(t *testing.T) {
 
 	locale, component := "fr", "sunglow"
 	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
+	item.attrs = getCacheInfo(item)
 
 	resetInst(&testCfg)
 	sgtnServer := GetTranslation().(*defaultTrans).ds.server
@@ -100,6 +101,7 @@ func TestTimeout2(t *testing.T) {
 
 	locale, component := "fr", "sunglow"
 	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
+	item.attrs = getCacheInfo(item)
 
 	resetInst(&testCfg)
 	sgtnServer := GetTranslation().(*defaultTrans).ds.server

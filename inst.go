@@ -69,7 +69,7 @@ func (i *instance) doInitialize() {
 func checkConfig(cfg *Config) error {
 	switch {
 	case cfg.LocalBundles == "" && cfg.ServerURL == "":
-		return errors.New("Neither online_service_url nor offline_resources_base_url is provided")
+		return errors.New("Neither Server URL nor Local Bundles is provided")
 	case cfg.DefaultLocale == "":
 		return errors.New("default_locale isn't provided")
 	default:

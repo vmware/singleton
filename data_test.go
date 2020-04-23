@@ -43,6 +43,7 @@ func TestCC(t *testing.T) {
 
 		item := &dataItem{dataItemID{itemComponent, name, version, testData.locale, testData.component}, nil, nil}
 		info := getCacheInfo(item)
+		item.attrs = info
 
 		err := trans.(*defaultTrans).ds.fetch(item, true)
 		if err != nil {

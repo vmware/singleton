@@ -46,7 +46,7 @@ type serverDAO struct {
 
 func (s *serverDAO) get(item *dataItem) (err error) {
 	var data interface{}
-	info := getCacheInfo(item)
+	info := item.attrs.(*itemCacheInfo)
 
 	switch item.id.iType {
 	case itemComponent:

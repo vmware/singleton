@@ -23,8 +23,10 @@ type dataService struct {
 
 func (ds *dataService) get(item *dataItem) (err error) {
 	ok := ds.getCache(item)
+	info := getCacheInfo(item)
+	item.attrs = info
 	if ok {
-		if info := getCacheInfo(item); info.isExpired() {
+		if info.isExpired() {
 			go ds.fetch(item, false)
 		}
 
@@ -36,7 +38,7 @@ func (ds *dataService) get(item *dataItem) (err error) {
 
 func (ds *dataService) fetch(item *dataItem, wait bool) error {
 	var err error
-	info := getCacheInfo(item)
+	info := item.attrs.(*itemCacheInfo)
 
 	if info.setUpdating() {
 		defer info.setUpdated()

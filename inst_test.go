@@ -38,7 +38,7 @@ func TestCheckConfig(t *testing.T) {
 	newCfg := testCfg
 	newCfg.ServerURL, newCfg.LocalBundles = "", ""
 
-	errString := "Neither online_service_url nor offline_resources_base_url is provided"
+	errString := "Neither Server URL nor Local Bundles is provided"
 	err := checkConfig(&newCfg)
 	assert.Equal(t, errString, err.Error())
 }
