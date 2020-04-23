@@ -112,7 +112,7 @@ func TestRefreshCache(t *testing.T) {
 	defer gock.Off()
 
 	newCfg := testCfg
-	newCfg.OfflineResourcesBaseURL = ""
+	newCfg.LocalBundles = ""
 	resetInst(&newCfg)
 	trans := GetTranslation()
 	for _, testData := range tests {
@@ -233,7 +233,7 @@ func TestGetStringFallback(t *testing.T) {
 	}
 
 	newCfg := testCfg
-	newCfg.OfflineResourcesBaseURL = ""
+	newCfg.LocalBundles = ""
 	resetInst(&newCfg)
 	trans := GetTranslation()
 
@@ -272,7 +272,7 @@ func TestGetStringAbnormal(t *testing.T) {
 	}
 
 	newCfg := testCfg
-	newCfg.OfflineResourcesBaseURL = ""
+	newCfg.LocalBundles = ""
 	resetInst(&newCfg)
 	trans := GetTranslation()
 
@@ -336,7 +336,7 @@ func TestDecodeError(t *testing.T) {
 	defer gock.Off()
 
 	newCfg := testCfg
-	newCfg.OfflineResourcesBaseURL = ""
+	newCfg.LocalBundles = ""
 	resetInst(&newCfg)
 	trans := GetTranslation()
 	for _, testData := range tests {
@@ -370,7 +370,7 @@ func TestGetCompMessagesAbnormal(t *testing.T) {
 	defer gock.Off()
 
 	newCfg := testCfg
-	newCfg.OfflineResourcesBaseURL = ""
+	newCfg.LocalBundles = ""
 	resetInst(&newCfg)
 	trans := GetTranslation()
 	for _, testData := range tests {
@@ -394,7 +394,7 @@ func TestGetCompMessagesWrongServer(t *testing.T) {
 	defer Trace(curFunName())()
 
 	newCfg := testCfg
-	newCfg.OfflineResourcesBaseURL = ""
+	newCfg.LocalBundles = ""
 	resetInst(&newCfg)
 	wrongServer, err := url.Parse("wrongserver")
 	assert.Nil(t, err)
@@ -447,7 +447,7 @@ func TestGetCompMessagesWrongResponseContent(t *testing.T) {
 	defer gock.Off()
 
 	newCfg := testCfg
-	newCfg.OfflineResourcesBaseURL = ""
+	newCfg.LocalBundles = ""
 	resetInst(&newCfg)
 	trans := GetTranslation()
 	for _, testData := range tests {
@@ -480,7 +480,7 @@ func TestGetCompMessagesResponsePartial(t *testing.T) {
 	defer gock.Off()
 
 	newCfg := testCfg
-	newCfg.OfflineResourcesBaseURL = ""
+	newCfg.LocalBundles = ""
 	resetInst(&newCfg)
 	trans := GetTranslation()
 	for _, testData := range tests {
@@ -551,7 +551,7 @@ func TestGetComponentList(t *testing.T) {
 	defer gock.Off()
 
 	newCfg := testCfg
-	newCfg.OfflineResourcesBaseURL = ""
+	newCfg.LocalBundles = ""
 	resetInst(&newCfg)
 	trans := GetTranslation()
 	item := &dataItem{dataItemID{itemComponents, name, version, "", ""}, nil, nil}
@@ -616,7 +616,7 @@ func TestGetLocaleList(t *testing.T) {
 	defer gock.Off()
 
 	newCfg := testCfg
-	newCfg.OfflineResourcesBaseURL = ""
+	newCfg.LocalBundles = ""
 	resetInst(&newCfg)
 	trans := GetTranslation()
 	for _, testData := range tests {
@@ -682,7 +682,7 @@ func TestHTTP404(t *testing.T) {
 	defer gock.Off()
 
 	newCfg := testCfg
-	newCfg.OfflineResourcesBaseURL = ""
+	newCfg.LocalBundles = ""
 	resetInst(&newCfg)
 	trans := GetTranslation()
 	for _, m := range testData.mocks {

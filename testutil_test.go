@@ -226,7 +226,7 @@ func EnableMockDataWithTimes(key string, times int) *gock.Request {
 	logger.Debug(fmt.Sprintf("Enabling mock %s, times %d", key, times))
 	data := mockData[key]
 
-	req := gock.New(testCfg.OnlineServiceURL)
+	req := gock.New(testCfg.ServerURL)
 	switch data.Request.Method {
 	case "GET":
 		req.Get(data.Request.URL)

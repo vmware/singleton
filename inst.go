@@ -47,15 +47,15 @@ func (i *instance) doInitialize() {
 	logger.Debug("Initializing Singleton client.")
 
 	dService := new(dataService)
-	if len(i.cfg.OnlineServiceURL) != 0 {
+	if len(i.cfg.ServerURL) != 0 {
 		var err error
-		dService.server, err = newServer(i.cfg.OnlineServiceURL)
+		dService.server, err = newServer(i.cfg.ServerURL)
 		if err != nil {
 			panic(err)
 		}
 	}
-	if strings.TrimSpace(i.cfg.OfflineResourcesBaseURL) != "" {
-		dService.bundle = &bundleDAO{i.cfg.OfflineResourcesBaseURL}
+	if strings.TrimSpace(i.cfg.LocalBundles) != "" {
+		dService.bundle = &bundleDAO{i.cfg.LocalBundles}
 	}
 
 	i.trans = &defaultTrans{dService, i.cfg.DefaultLocale}
@@ -68,7 +68,7 @@ func (i *instance) doInitialize() {
 
 func checkConfig(cfg *Config) error {
 	switch {
-	case cfg.OfflineResourcesBaseURL == "" && cfg.OnlineServiceURL == "":
+	case cfg.LocalBundles == "" && cfg.ServerURL == "":
 		return errors.New("Neither online_service_url nor offline_resources_base_url is provided")
 	case cfg.DefaultLocale == "":
 		return errors.New("default_locale isn't provided")

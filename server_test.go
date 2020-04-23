@@ -29,7 +29,7 @@ func TestGetLocaleCompAbnormal(t *testing.T) {
 	}
 
 	newCfg := testCfg
-	newCfg.OfflineResourcesBaseURL = ""
+	newCfg.LocalBundles = ""
 	resetInst(&newCfg)
 
 	trans := GetTranslation()

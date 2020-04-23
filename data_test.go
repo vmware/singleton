@@ -33,7 +33,7 @@ func TestCC(t *testing.T) {
 	defer gock.Off()
 
 	newCfg := testCfg
-	newCfg.OfflineResourcesBaseURL = ""
+	newCfg.LocalBundles = ""
 	resetInst(&newCfg)
 	trans := GetTranslation()
 	for _, testData := range tests {

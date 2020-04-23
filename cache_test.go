@@ -16,7 +16,7 @@ func TestCacheNeverExpire(t *testing.T) {
 	defer Trace(curFunName())()
 
 	newCfg := testCfg
-	newCfg.OnlineServiceURL = ""
+	newCfg.ServerURL = ""
 	resetInst(&newCfg)
 
 	locale, component := "fr", "sunglow"
@@ -35,7 +35,7 @@ func TestCacheExpireWhenNeverExpire(t *testing.T) {
 	defer Trace(curFunName())()
 
 	newCfg := testCfg
-	newCfg.OnlineServiceURL = ""
+	newCfg.ServerURL = ""
 	resetInst(&newCfg)
 
 	locale, component := "fr", "sunglow"

@@ -15,10 +15,10 @@ func TestGetInst(t *testing.T) {
 	defer Trace(curFunName())()
 
 	resetInst(&testCfg)
-	assert.Equal(t, testCfg.OfflineResourcesBaseURL, inst.trans.ds.bundle.root)
+	assert.Equal(t, testCfg.LocalBundles, inst.trans.ds.bundle.root)
 	// TODO: Test bundle
 
-	if len(testCfg.OnlineServiceURL) != 0 {
+	if len(testCfg.ServerURL) != 0 {
 		assert.NotNil(t, inst.trans.ds.server)
 	}
 
@@ -36,7 +36,7 @@ func TestCheckConfig(t *testing.T) {
 	defer Trace(curFunName())()
 
 	newCfg := testCfg
-	newCfg.OnlineServiceURL, newCfg.OfflineResourcesBaseURL = "", ""
+	newCfg.ServerURL, newCfg.LocalBundles = "", ""
 
 	errString := "Neither online_service_url nor offline_resources_base_url is provided"
 	err := checkConfig(&newCfg)

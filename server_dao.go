@@ -192,9 +192,9 @@ var getDataFromServer = func(u *url.URL, header map[string]string, data interfac
 		return resp, errors.WithStack(err)
 	}
 
-	if !isBusinessSuccess(bodyObj.Result.Code) {
-		return resp, &serverError{resp.StatusCode, bodyObj.Result.Code, resp.Status, bodyObj.Result.Message}
-	}
+	// if !isBusinessSuccess(bodyObj.Result.Code) {
+	// 	return resp, &serverError{resp.StatusCode, bodyObj.Result.Code, resp.Status, bodyObj.Result.Message}
+	// }
 
 	if err = mapstructure.Decode(bodyObj.Data, &data); err != nil {
 		return resp, errors.WithStack(err)

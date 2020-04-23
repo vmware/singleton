@@ -16,7 +16,7 @@ func TestBundleGetComponentList(t *testing.T) {
 	defer Trace(curFunName())()
 
 	newCfg := testCfg
-	newCfg.OnlineServiceURL = ""
+	newCfg.ServerURL = ""
 	resetInst(&newCfg)
 
 	comps, err := inst.trans.GetComponentList(name, version)
@@ -29,7 +29,7 @@ func TestBundleGetLocaleList(t *testing.T) {
 	defer Trace(curFunName())()
 
 	newCfg := testCfg
-	newCfg.OnlineServiceURL = ""
+	newCfg.ServerURL = ""
 	resetInst(&newCfg)
 
 	locales, err := inst.trans.GetLocaleList(name, version)
@@ -42,7 +42,7 @@ func TestBundleGetCompMessages(t *testing.T) {
 	defer Trace(curFunName())()
 
 	newCfg := testCfg
-	newCfg.OnlineServiceURL = ""
+	newCfg.ServerURL = ""
 	resetInst(&newCfg)
 
 	locale := "fr"
