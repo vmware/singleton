@@ -31,7 +31,9 @@ func newServer(serverURL string) (*serverDAO, error) {
 		return nil, err
 	}
 
-	s := &serverDAO{svrURL: svrURL, headers: map[string]string{}}
+	s := &serverDAO{svrURL: svrURL, headers: atomic.Value{}}
+	s.headers.Store(make(map[string]string, 0))
+
 	return s, nil
 }
 
@@ -41,7 +43,7 @@ type serverDAO struct {
 	svrURL          *url.URL
 	status          uint32
 	lastErrorMoment int64
-	headers         map[string]string
+	headers         atomic.Value
 }
 
 func (s *serverDAO) get(item *dataItem) (err error) {
@@ -61,9 +63,9 @@ func (s *serverDAO) get(item *dataItem) (err error) {
 
 	urlToQuery := s.prepareURL(item)
 
-	s.headers[httpHeaderIfNoneMatch] = info.getETag()
-	defer delete(s.headers, httpHeaderIfNoneMatch)
-	resp, err := s.sendRequest(urlToQuery, s.headers, data)
+	headers := s.getHTTPHeaders()
+	headers[httpHeaderIfNoneMatch] = info.getETag()
+	resp, err := s.sendRequest(urlToQuery, headers, data)
 	if resp != nil {
 		item.attrs = resp.Header
 	}
@@ -148,7 +150,22 @@ func (s *serverDAO) sendRequest(u *url.URL, header map[string]string, data inter
 }
 
 func (s *serverDAO) setHTTPHeaders(h map[string]string) {
-	s.headers = h
+	newHeaders := make(map[string]string, len(h))
+	for k, v := range h {
+		newHeaders[k] = v
+	}
+
+	s.headers.Store(newHeaders)
+}
+
+func (s *serverDAO) getHTTPHeaders() (newHeaders map[string]string) {
+	originalHeaders := s.headers.Load().(map[string]string)
+	newHeaders = make(map[string]string, len(originalHeaders))
+	for k, v := range originalHeaders {
+		newHeaders[k] = v
+	}
+
+	return
 }
 
 //!- serverDAO

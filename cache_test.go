@@ -6,7 +6,6 @@
 package sgtn
 
 import (
-	"os"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -47,11 +46,11 @@ func TestCacheExpireWhenNeverExpire(t *testing.T) {
 	// value is cacheNeverExpires(-1) because only local bundles are available.
 	assert.Equal(t, int64(cacheNeverExpires), info.getAge())
 
-	// Run again to get from cache
-	bundleDir := GetTranslation().(*defaultTrans).ds.bundle.root
-	tempDir := bundleDir + "temp"
-	os.Rename(bundleDir, tempDir)
-	defer os.Rename(tempDir, bundleDir)
+	// Rename dir to make sure getting from cache
+	// bundleDir := GetTranslation().(*defaultTrans).ds.bundle.root
+	// tempDir := bundleDir + "temp"
+	// os.Rename(bundleDir, tempDir)
+	// defer os.Rename(tempDir, bundleDir)
 
 	// Run again to get from cache
 	msgs, err := GetTranslation().GetComponentMessages(name, version, locale, component)
