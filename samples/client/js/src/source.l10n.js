@@ -1,3 +1,7 @@
+/*
+ * Copyright 2019 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 export const ENGLISH = {
     "page.title": "Title",
     "page.header": "Example usage of the Singleton Library for JS Clients with static page.",
