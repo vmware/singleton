@@ -1,4 +1,5 @@
 import * as CoreSDK from '@vip/vip-core-sdk-dev';
+import { EnglishBundle } from '../resources/EnglishBundle';
 
 export enum DateTimeFormat {
     SHORT = 'short',
@@ -49,11 +50,11 @@ export const config = {
     component: 'sunglow',
     host: 'http://localhost:8091/',
     language: 'en',
-    i18nScope: [CoreSDK.PatternCategories.DATE, CoreSDK.PatternCategories.CURRENCIES, CoreSDK.PatternCategories.NUMBER, CoreSDK.PatternCategories.PLURAL]
+    i18nScope: [CoreSDK.PatternCategories.DATE, CoreSDK.PatternCategories.CURRENCIES, CoreSDK.PatternCategories.NUMBER, CoreSDK.PatternCategories.PLURAL],
     // isPseudo?: boolean;
     // language?: string;
     // region?: string;
-    // sourceBundle?: { [key: string]: any };
+    sourceBundle: EnglishBundle,
     // i18nAssets?: string;
     // timeout?: number;
 };
