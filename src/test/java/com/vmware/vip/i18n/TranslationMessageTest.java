@@ -25,6 +25,8 @@ import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
+import com.vmware.vipclient.i18n.messages.api.opt.SourceOpt;
+import com.vmware.vipclient.i18n.messages.api.opt.source.ResourceBundleSrcOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ProductService;
 
@@ -213,8 +215,33 @@ public class TranslationMessageTest extends BaseTestClass {
         boolean ff = translation.postString(new Locale("zh", "CN"), component2, "key1", "source1", "It's a comment1");
         Assert.assertTrue(ff);
     }
+    
+    @Test
+    public void testGetTranslation_SingleQuota_() {
+        Locale zhLocale = new Locale("zh", "Hans");
+        String comp = "Component1";
+        String key = "single quotation marks-notcollected";
+        Object[] args = { "aaa", "bbb" };
+
+        VIPCfg vc = VIPCfg.getInstance();
+        boolean existing_collect = vc.isCollectSource();
+        vc.setCollectSource(false);
+        boolean existing_pseudo = vc.isPseudo();
+        vc.setPseudo(true);
+
+        SourceOpt srcOpt = new ResourceBundleSrcOpt("messages", Locale.ENGLISH);
+        String enTrans1 = translation.getMessage(zhLocale, comp, srcOpt, key, "", args);
+
+        vc.setPseudo(existing_pseudo);
+        vc.setCollectSource(existing_collect);
+
+        String expected = "@@Operator 'aaa' 不支持 for property ' bbb '@@";
+        logger.debug("enTrans1: " + enTrans1);
+        Assert.assertArrayEquals(new Object[] { expected }, new Object[] { enTrans1 });
+    }
 
     @Test
+    @Deprecated
     public void testGetTranslation_SingleQuota() {
         Locale zhLocale = new Locale("zh", "Hans");
         String comp = "Component1";
@@ -239,6 +266,30 @@ public class TranslationMessageTest extends BaseTestClass {
     }
 
     @Test
+    public void testGetPseudoTranslation_NotCollected_1_() {
+        Locale zhLocale = new Locale("zh", "Hans");
+        String comp = "Component1";
+        String key = "getPseudoTranslation";
+        String expected = "@@Operator@@";
+
+        VIPCfg vc = VIPCfg.getInstance();
+        boolean existing_collect = vc.isCollectSource();
+        vc.setCollectSource(false);
+        boolean existing_pseudo = vc.isPseudo();
+        vc.setPseudo(true);
+
+        SourceOpt srcOpt = new ResourceBundleSrcOpt("messages", Locale.ENGLISH);
+        String pseudoTrans1 = translation.getMessage(zhLocale, comp, srcOpt, key, "");
+        
+        vc.setPseudo(existing_pseudo);
+        vc.setCollectSource(existing_collect);
+
+        logger.debug("pseudoTrans1: " + pseudoTrans1);
+        Assert.assertArrayEquals(new Object[] { expected }, new Object[] { pseudoTrans1 });
+    }
+    
+    @Test
+    @Deprecated
     public void testGetPseudoTranslation_NotCollected_1() {
         Locale zhLocale = new Locale("zh", "Hans");
         String comp = "Component1";
@@ -259,7 +310,43 @@ public class TranslationMessageTest extends BaseTestClass {
         logger.debug("pseudoTrans1: " + pseudoTrans1);
         Assert.assertArrayEquals(new Object[] { expected }, new Object[] { pseudoTrans1 });
     }
+    
+    @Test
+    public void testGetMessage__NotCollected_2_() throws InterruptedException {
+        VIPCfg gc = VIPCfg.getInstance();
+        gc.setPseudo(true);
+        gc.initializeVIPService();
 
+        // new key and source
+        Locale locale1 = new Locale("en", "US");
+        String key1 = "MessagesNotFound";
+        
+        SourceOpt srcOpt = new ResourceBundleSrcOpt("messages2", Locale.ENGLISH);
+        String source1 = srcOpt.getMessage(key1);
+        
+        String message1 = translation.getMessage(locale1, component1, srcOpt, key1, "");
+        //String message1 = translation.getString(locale1, component1, key1, source1, "");
+        String expected1 = "@@" + source1 + "@@";
+        Assert.assertEquals(expected1, message1);
+
+        // server already collected
+        String key2 = "LeadTest";
+        String source2 = srcOpt.getMessage(key2);
+        String message2 = translation.getMessage(locale1, component1, srcOpt, key2, "");
+        //String message2 = translation.getString(locale1, component1, key2, source2, "");
+        String expected2 = "@@" + source2 + "@@";
+        Assert.assertEquals(expected2, message2);
+
+        // source1 changed
+        srcOpt = new ResourceBundleSrcOpt("messages3", Locale.ENGLISH);
+        String source1_1 = srcOpt.getMessage(key1);
+        
+        String message1_1 = translation.getMessage(locale1, component1, srcOpt, key1, "");
+        //String message1_1 = translation.getString(locale1, component1, key1, source1_1, "");
+        String expected1_1 = "@@" + source1_1 + "@@";
+        Assert.assertEquals(expected1_1, message1_1);
+    }
+    
     /*
      * bug: 2360553
      * cannot get pseudo translation when set 'source collection' and 'pseudo' to true for a new key
@@ -268,6 +355,7 @@ public class TranslationMessageTest extends BaseTestClass {
      */
     // locale: en-US. client won't contact server in any case.
     @Test
+    @Deprecated
     public void testGetMessage__NotCollected_2() throws InterruptedException {
         VIPCfg gc = VIPCfg.getInstance();
         // gc.setProductName("Sample");
@@ -299,7 +387,43 @@ public class TranslationMessageTest extends BaseTestClass {
         String expected1_1 = "@@" + source1_1 + "@@";
         Assert.assertEquals(expected1_1, message1_1);
     }
+    
+    @Test
+    public void testGetMessage__NotCollected_3_() throws InterruptedException {
+        VIPCfg gc = VIPCfg.getInstance();
+        gc.setPseudo(true);
+        gc.setCollectSource(true);
+        gc.initializeVIPService();
 
+        String component = component1;
+
+        // new key and source
+        Locale locale1 = new Locale("zh", "CN");
+        String key1 = "MessagesNotFound";
+        SourceOpt srcOpt = new ResourceBundleSrcOpt("messages2", Locale.ENGLISH);
+        String source1 = srcOpt.getMessage(key1);
+        
+        String message1 = translation.getMessage(locale1, component1, srcOpt, key1, "");
+        
+        String expected1 = "@@" + source1 + "@@";
+        Assert.assertEquals(expected1, message1);
+
+        // server already collected
+        String key2 = "LeadTest";
+        String source2 = "[{0}] Test alert";
+        String message2 = translation.getMessage(locale1, "JAVA", srcOpt, key2, "");
+        String expected2 = "#@" + source2 + "#@";
+        Assert.assertEquals(expected2, message2);
+
+        // source1 changed
+        srcOpt = new ResourceBundleSrcOpt("messages3", Locale.ENGLISH);
+        String source1_1 = srcOpt.getMessage(key1);
+
+        String message1_1 = translation.getMessage(locale1, component, srcOpt, key1, "");
+        String expected1_1 = "@@" + source1_1 + "@@";
+        Assert.assertEquals(expected1_1, message1_1);
+    }
+    
     /*
      * bug: 2360553
      * cannot get pseudo translation when set 'source collection' and 'pseudo' to true for a new key
@@ -308,6 +432,7 @@ public class TranslationMessageTest extends BaseTestClass {
      */
     // locale: zh-CN
     @Test
+    @Deprecated
     public void testGetMessage__NotCollected_3() throws InterruptedException {
         VIPCfg gc = VIPCfg.getInstance();
         gc.setPseudo(true);
@@ -341,6 +466,27 @@ public class TranslationMessageTest extends BaseTestClass {
     }
 
     @Test
+    public void testGetPseudoTranslation_Collected_() {
+        Locale zhLocale = new Locale("zh", "Hans");
+        String comp = "JAVA";
+        String key = "table.host";
+        String expected = "#@Host#@";
+
+        VIPCfg vc = VIPCfg.getInstance();
+        boolean existing_pseudo = vc.isPseudo();
+        vc.setPseudo(true);
+
+        SourceOpt srcOpt = new ResourceBundleSrcOpt("messages", Locale.ENGLISH);
+        String pseudoTrans1 = translation.getMessage(zhLocale, comp, srcOpt, key, "");
+
+        vc.setPseudo(existing_pseudo);
+
+        logger.debug("pseudoTrans1: " + pseudoTrans1);
+        Assert.assertEquals(expected, pseudoTrans1);
+    }
+    
+    @Test
+    @Deprecated
     public void testGetPseudoTranslation_Collected() {
         Locale zhLocale = new Locale("zh", "Hans");
         String comp = "JAVA";

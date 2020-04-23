@@ -21,7 +21,10 @@ import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
+import com.vmware.vipclient.i18n.messages.api.opt.SourceOpt;
+import com.vmware.vipclient.i18n.messages.api.opt.source.ResourceBundleSrcOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
+import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 public class CacheServiceTest extends BaseTestClass {
 
@@ -67,7 +70,8 @@ public class CacheServiceTest extends BaseTestClass {
     	CacheService cs = new CacheService(dto);
     	
         // This triggers the first http call
-    	translation.getString(locale, emptyComponent, key, source, comment, args);
+    	SourceOpt srcOpt = new ResourceBundleSrcOpt("messages", LocaleUtility.defaultLocale);
+    	translation.getMessage(locale, emptyComponent, srcOpt, key, comment, args);
     	
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertNull(cacheItem);
@@ -97,7 +101,8 @@ public class CacheServiceTest extends BaseTestClass {
         assertNull(cacheItem);
         
         // This triggers the first http call
-    	translation.getString(locale, component, key, source, comment, args);
+        SourceOpt srcOpt = new ResourceBundleSrcOpt("messages", LocaleUtility.defaultLocale);
+    	translation.getMessage(locale, component, srcOpt, key, comment, args);
     	
     	cacheItem = cs.getCacheOfComponent();
         Long responseTime = (Long) cacheItem.getTimestamp();
@@ -112,7 +117,7 @@ public class CacheServiceTest extends BaseTestClass {
         // Second request for the same message.
         // This should trigger another HTTP request because cache had been explicitly expired above.
         // The http request includes If-None-Match header that is set to the previously received eTag value.
-        translation.getString(locale, component, key, source, comment, args);
+        translation.getMessage(locale, component, srcOpt, key, comment, args);
         
         // Because nothing has changed on the server and If-None-Match request header was properly set, 
         // the server responds with a 304 Not Modified.
@@ -182,7 +187,8 @@ public class CacheServiceTest extends BaseTestClass {
         assertNull(cacheItem);
         
         // This triggers the first http call
-    	translation.getString(locale, component, key, source, comment, args);
+        SourceOpt srcOpt = new ResourceBundleSrcOpt("messages", LocaleUtility.defaultLocale);
+    	translation.getMessage(locale, component, srcOpt, key, comment, args);
     	
     	cacheItem = cs.getCacheOfComponent();
     	Long responseTime = cacheItem.getTimestamp();
@@ -192,7 +198,7 @@ public class CacheServiceTest extends BaseTestClass {
         TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
         // Second request for the same message.
         // This should trigger another HTTP request because cache had been explicitly expired above.
-        translation.getString(locale, component, key, source, comment, args);
+        translation.getMessage(locale, component, srcOpt, key, comment, args);
         
         // Because nothing has changed on the server and If-None-Match request header was properly set, 
         // the server responds with a 304 Not Modified.
@@ -201,7 +207,7 @@ public class CacheServiceTest extends BaseTestClass {
         
         // Second request for the same message.
         // This should fetch messages and properties from cache 
-        translation.getString(locale, component, key, source, comment, args);
+        translation.getMessage(locale, component, srcOpt, key, comment, args);
         
         // TODO Store response code in cache if we want to test this
         //responseCode = cacheItem.getResponseCode();  

@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
+import com.vmware.vipclient.i18n.messages.api.opt.SourceOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ComponentService;
 import com.vmware.vipclient.i18n.messages.service.ComponentsService;
@@ -48,6 +49,43 @@ public class TranslationMessage implements Message {
         super();
     }
 
+    public String getMessage(final Locale locale, final String component, final SourceOpt sourceOpt,
+            final String key, final String comment, final Object... args) {
+    	String message = null;
+    	String source = sourceOpt.getMessage(key);
+	
+    	MessagesDTO dto = new MessagesDTO(component, comment, key, null, locale.toLanguageTag(), this.cfg);
+    	StringService s = new StringService();
+    	message = s.getString(dto);
+    	
+    	if (message == null || message.isEmpty()) {
+     		message = source;
+     	} else { 
+	    	// If the source message is not equal to the cached source (loaded from remote or from offline bundle file),
+	    	// it means that this source message hasn't been collected for localization, so return the source message
+	    	if (source != null && !source.isEmpty() && !VIPCfg.getInstance().isPseudo()) {
+	    		MessagesDTO defaultLocaleDTO = new MessagesDTO(component, comment, key, source,
+	            		LocaleUtility.defaultLocale.toLanguageTag(), this.cfg);
+	            String cachedDefaultLocaleMsg = s.getString(defaultLocaleDTO);
+	            if (!source.equals(cachedDefaultLocaleMsg) || 
+	            		cachedDefaultLocaleMsg == null || cachedDefaultLocaleMsg.isEmpty()) {
+	                message = source;
+	            }  
+	    	}
+     	}
+        
+    	if (VIPCfg.getInstance().isPseudo() && message.equals(source) && source != null) {
+            message = ConstantsKeys.PSEUDOCHAR2 + source + ConstantsKeys.PSEUDOCHAR2;
+        } 
+    	
+		if (message.equals(source)) {
+			message = FormatUtils.format(message, LocaleUtility.defaultLocale, args);
+		} else {
+			message = FormatUtils.format(message, locale, args);
+		}    
+    	return message;	
+    }
+    
     /**
      * get a translation under the component of the configured product
      *

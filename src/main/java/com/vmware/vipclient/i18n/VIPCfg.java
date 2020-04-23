@@ -49,6 +49,7 @@ public class VIPCfg {
 
     // define the global parameters
     private boolean                    pseudo;
+    @Deprecated
     private boolean                    collectSource;
     private boolean                    cleanCache;
     private long                       cacheExpiredTime;
@@ -320,10 +321,12 @@ public class VIPCfg {
         this.pseudo = pseudo;
     }
 
+    @Deprecated
     public boolean isCollectSource() {
         return collectSource;
     }
 
+    @Deprecated
     public void setCollectSource(boolean collectSource) {
         this.collectSource = collectSource;
     }
@@ -427,5 +430,5 @@ public class VIPCfg {
 	public void setMsgOriginsQueue(List<DataSourceEnum> msgOriginsQueue) {
 		this.msgOriginsQueue = msgOriginsQueue;
 	}
-
+	
 }

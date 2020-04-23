@@ -51,13 +51,11 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 
     @Override
     public String getString() {
-        JSONObject jo = this.getComponentMessages();
-        String k = dto.getKey();
-        String v = "";
-        if (jo != null) {
-            v = jo.get(k) == null ? "" : v;
-        }
-        return v;
+    	MessageCacheItem cacheItem = new MessageCacheItem();
+    	this.getComponentMessages(cacheItem);
+    	String message = cacheItem.getCachedData().get(dto.getKey()) == null ? 
+    			"" : cacheItem.getCachedData().get(dto.getKey());
+        return message;
     }
 	
 }

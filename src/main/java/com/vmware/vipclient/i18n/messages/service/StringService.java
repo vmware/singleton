@@ -44,7 +44,7 @@ public class StringService {
 			
 			// The MessageCacheItem for the requested locale will be a reference 
 			// to the MessageCacheItem of the default locale 
-			if (!cacheItem.cachedData.isEmpty()) {
+			if (!cacheItem.isCachedDataEmpty()) {
 				CacheService cacheService = new CacheService(dto);
 				cacheService.addCacheOfComponent(cacheItem);
 			}

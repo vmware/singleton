@@ -33,7 +33,15 @@ public class MessageCacheItem implements CacheItem {
 	private long timestamp;
 	private Long maxAgeMillis = 86400000l;
 	
-	public final Map<String, String> cachedData = new HashMap<String, String>();
+	private final Map<String, String> cachedData = new HashMap<String, String>();
+	
+	public void addCacheData(String key, String value) {
+		this.cachedData.put(key, value);
+	}
+	
+	public boolean isCachedDataEmpty() {
+		return this.cachedData.isEmpty();
+	}
 	
 	public synchronized void addCachedData(Map<String, String> cachedData) {
 		if (cachedData != null) 
@@ -94,5 +102,5 @@ public class MessageCacheItem implements CacheItem {
     		  	
     	return System.currentTimeMillis() - responseTimeStamp > maxAgeMillis;
     }
-	
+
 }

@@ -65,7 +65,7 @@ public class HttpRequesterTest extends BaseTestClass {
 
         TranslationMessage tm = (TranslationMessage) I18nFactory.getInstance()
                 .getMessageInstance(TranslationMessage.class);
-        tm.getString2("default", "JAVA", new Locale("zh", "Hans"), "table.host");
+        tm.getString2("default", "messages", new Locale("zh", "Hans"), "table.host");
 
         WireMock.verify(WireMock.getRequestedFor(WireMock.urlMatching(url)).withHeader(key1, WireMock.equalTo(value1))
                 .withHeader(key2, WireMock.equalTo(value2)));

@@ -30,7 +30,10 @@ public class FormatUtils {
     }
 
     public static String format(String pattern, Locale locale, Object... arguments) {
-        MessageFormat messageFormat = new MessageFormat(pattern, locale);
-        return messageFormat.format(arguments, new StringBuilder(), new FieldPosition(0)).toString();
+    	if (pattern != null && !pattern.isEmpty() && arguments != null && arguments.length > 0) {
+	        MessageFormat messageFormat = new MessageFormat(pattern, locale);
+	        return messageFormat.format(arguments, new StringBuilder(), new FieldPosition(0)).toString();
+    	}
+    	return pattern;
     }
 }

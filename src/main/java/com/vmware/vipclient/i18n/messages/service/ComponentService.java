@@ -43,7 +43,7 @@ public class ComponentService {
     	DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
     	dataSource.createMessageOpt(dto).getComponentMessages(cacheItem);
     	
-    	// If failed to get messages from the source, try the next source in the queue
+    	// If failed to get messages from the dataSource, try the next dataSource in the queue
     	if (cacheItem.getCachedData().isEmpty()) {
     		getMessages(cacheItem, msgSourceQueueIter);
     	}
