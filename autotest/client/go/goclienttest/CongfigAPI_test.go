@@ -87,7 +87,7 @@ func TestAvailableConfig(t *testing.T) {
 	})
 
 	SkipConvey("local bundle test", t, func() {
-		Convey("local bundle path with non-ASCII character, can't create config", func() {
+		Convey("local bundle path with non-ASCII character, can create config", func() {
 			cfPath := "testdata/Config/configLocalBundlePathNonASCII.yaml"
 			cfg, err := sgtn.NewConfig(cfPath)
 			So(err, ShouldBeNil)

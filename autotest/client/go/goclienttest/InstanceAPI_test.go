@@ -6,6 +6,7 @@
 package main
 
 import (
+	"fmt"
 	"testing"
 
 	. "github.com/smartystreets/goconvey/convey"
@@ -17,10 +18,14 @@ func TestCreatAndGetInstance(t *testing.T) {
 	Convey("Available Instance creation and get", t, func() {
 
 		Convey("Config is available, instance can be created and got(P0)", func() {
-			cfPath := "testdata/Config/config.yaml"
+			cfPath := "testdata/Config/config3.yaml"
 			testcfg, _ := sgtn.NewConfig(cfPath)
 			inst, loaded := sgtn.NewInst(*testcfg)
+			fmt.Println("inst", inst)
+			fmt.Println("loaded", loaded)
 			gotinst, ok := sgtn.GetInst(testcfg.Name)
+			fmt.Println("gotinst", gotinst)
+			fmt.Println("ok", ok)
 
 			So(loaded, ShouldBeFalse)
 			So(inst, ShouldNotBeNil)
@@ -30,10 +35,14 @@ func TestCreatAndGetInstance(t *testing.T) {
 		})
 
 		SkipConvey("Config is available, first instance is returned and got(P1)", func() {
-			cfPath := "testdata/Config/config.yaml"
+			cfPath := "testdata/Config/config3.yaml"
 			testcfg, _ := sgtn.NewConfig(cfPath)
 			inst, loaded := sgtn.NewInst(*testcfg)
+			fmt.Println("inst", inst)
+			fmt.Println("loaded", loaded)
 			gotinst, ok := sgtn.GetInst(testcfg.Name)
+			fmt.Println("gotinst", gotinst)
+			fmt.Println("ok", ok)
 
 			So(loaded, ShouldBeTrue)
 			So(inst, ShouldNotBeNil)
@@ -47,8 +56,12 @@ func TestCreatAndGetInstance(t *testing.T) {
 			secinst, secloaded := sgtn.NewInst(*sectestcfg)
 			secgotinst, secok := sgtn.GetInst(sectestcfg.Name)
 
-			// fmt.Println(*secinst)
-			// fmt.Println(&secinst)
+			//fmt.Println(*secinst)
+			//fmt.Println(&secinst)
+			fmt.Println("secloaded", secloaded)
+			fmt.Println("secinst", secinst)
+			fmt.Println("secgotinst", secgotinst)
+			fmt.Println("secok", secok)
 			So(secloaded, ShouldBeFalse)
 			So(secinst, ShouldNotBeNil)
 

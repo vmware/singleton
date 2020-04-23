@@ -24,7 +24,7 @@ func TestGetComponentTranslation(t *testing.T) {
 
 	Convey("component-localbundles-requestlocale: Get request locale's translation from localbundles", t, func() {
 
-		Convey("component-localbundle-requestlocale: request locale(fr) is in localebundle, return request locale translation from localbundles(P0)", func() {
+		Convey("component-localbundle-requestlocale: request locale(fr) is in localbundle, return request locale translation from localbundles(P0)", func() {
 
 			commsg, _ := translation.GetComponentMessages("fr", contactcom)
 			fmt.Print(commsg)
@@ -35,7 +35,7 @@ func TestGetComponentTranslation(t *testing.T) {
 			// So(cfg, ShouldNotBeNil)
 		})
 
-		SkipConvey("component-localbundle-requestlocale: request non-existing locale(abc) is in localebundle(P1)", func() {
+		SkipConvey("component-localbundle-requestlocale: request non-existing locale(abc) is in localbundle(P1)", func() {
 
 			commsg, err := translation.GetComponentMessages("abc", contactcom)
 			//fmt.Println("commsg:", commsg)
