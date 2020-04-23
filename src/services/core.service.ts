@@ -57,6 +57,13 @@ export class CoreService {
         } finally {
             if (callback && typeof callback === 'function') { callback(); }
         }
+        /**
+         * Only when language or region as belew, it returns Promise with {} Object,
+         * on which some products might rely to handle .then() method
+        1. language = 'en-US'
+        2. language = 'en', region = 'US'
+        3. language = 'en' 
+        */
         return Promise.resolve({});
     }
 
