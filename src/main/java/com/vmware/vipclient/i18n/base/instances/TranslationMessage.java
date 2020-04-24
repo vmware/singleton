@@ -49,41 +49,51 @@ public class TranslationMessage implements Message {
         super();
     }
 
+    public String getMessage(final Locale locale, final String component, final String key, 
+    		final String comment, final Object... args) {
+    	return FormatUtils.format(getCachedMessage(component, comment, key, locale, this.cfg, args), locale, args);	
+    }
+    
     public String getMessage(final Locale locale, final String component, final SourceOpt sourceOpt,
             final String key, final String comment, final Object... args) {
     	String message = null;
-    	String source = sourceOpt.getMessage(key);
-	
+    	String source = (sourceOpt == null) ? null : sourceOpt.getMessage(key);
+    	
+    	if (VIPCfg.getInstance().isPseudo() && source != null && sourceOpt.getLocale().equals(locale)) {
+    		return ConstantsKeys.PSEUDOCHAR2 + FormatUtils.format(source, sourceOpt.getLocale(), args) + ConstantsKeys.PSEUDOCHAR2;
+    	}
+    	
+    	message = getCachedMessage(component, comment, key, locale, this.cfg, args);
+    	
+    	if (source != null) {
+    		if (message == null || message.isEmpty()) {
+    			message = FormatUtils.format(source, sourceOpt.getLocale(), args);
+    			if (VIPCfg.getInstance().isPseudo()) {
+    				message = ConstantsKeys.PSEUDOCHAR2 + message + ConstantsKeys.PSEUDOCHAR2;
+    			}
+    			return message;
+    		} else if (!VIPCfg.getInstance().isPseudo()) {
+		    	// If the source message is not equal to the cached source (loaded from remote or from offline bundle file),
+		    	// it means that this source message hasn't been collected for localization, so return the source message
+	    		MessagesDTO sourceLocaleDTO = new MessagesDTO(component, comment, key, source,
+	            		sourceOpt.getLocale().toLanguageTag(), this.cfg);
+	    		StringService s = new StringService();
+	            String cachedSrcLocaleMsg = s.getString(sourceLocaleDTO);
+	            if (!source.equals(cachedSrcLocaleMsg) || 
+	            		cachedSrcLocaleMsg == null || cachedSrcLocaleMsg.isEmpty()) {
+	            	return FormatUtils.format(source, sourceOpt.getLocale(), args);
+	            }  
+		    	
+    		}
+    	}
+    	return FormatUtils.format(message, locale, args);	
+    }
+    
+    private String getCachedMessage(String component, String comment, String key, 
+    		Locale locale, VIPCfg cfg, Object[] args) {
     	MessagesDTO dto = new MessagesDTO(component, comment, key, null, locale.toLanguageTag(), this.cfg);
     	StringService s = new StringService();
-    	message = s.getString(dto);
-    	
-    	if (message == null || message.isEmpty()) {
-     		message = source;
-     	} else { 
-	    	// If the source message is not equal to the cached source (loaded from remote or from offline bundle file),
-	    	// it means that this source message hasn't been collected for localization, so return the source message
-	    	if (source != null && !source.isEmpty() && !VIPCfg.getInstance().isPseudo()) {
-	    		MessagesDTO defaultLocaleDTO = new MessagesDTO(component, comment, key, source,
-	            		LocaleUtility.defaultLocale.toLanguageTag(), this.cfg);
-	            String cachedDefaultLocaleMsg = s.getString(defaultLocaleDTO);
-	            if (!source.equals(cachedDefaultLocaleMsg) || 
-	            		cachedDefaultLocaleMsg == null || cachedDefaultLocaleMsg.isEmpty()) {
-	                message = source;
-	            }  
-	    	}
-     	}
-        
-    	if (VIPCfg.getInstance().isPseudo() && message.equals(source) && source != null) {
-            message = ConstantsKeys.PSEUDOCHAR2 + source + ConstantsKeys.PSEUDOCHAR2;
-        } 
-    	
-		if (message.equals(source)) {
-			message = FormatUtils.format(message, LocaleUtility.defaultLocale, args);
-		} else {
-			message = FormatUtils.format(message, locale, args);
-		}    
-    	return message;	
+    	return s.getString(dto);
     }
     
     /**
@@ -129,7 +139,7 @@ public class TranslationMessage implements Message {
                 }
             }
 
-            if ("".equals(translation)) {
+            if (translation == null || translation.isEmpty()) {
                 translation = source;
             }
         } else {

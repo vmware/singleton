@@ -25,6 +25,7 @@ import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.messages.api.opt.SourceOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.source.ResourceBundleSrcOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
+import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 public class OfflineModeTest extends BaseTestClass {
@@ -68,8 +69,7 @@ public class OfflineModeTest extends BaseTestClass {
         dto.setVersion(VIPCfg.getInstance().getVersion());
         
     	CacheService cs = new CacheService(dto);
-    	 SourceOpt srcOpt = new ResourceBundleSrcOpt("messages", LocaleUtility.defaultLocale);
-    	translation.getMessage(locale, component, srcOpt, key, comment, args);
+    	translation.getMessage(locale, component, key, comment, args);
     	
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertNotNull(cacheItem);
@@ -100,8 +100,8 @@ public class OfflineModeTest extends BaseTestClass {
     	CacheService cs = new CacheService(dto);
     	
     	SourceOpt srcOpt = new ResourceBundleSrcOpt("messages", LocaleUtility.defaultLocale);
-    	translation.getMessage(newLocale, component, srcOpt, key, comment, args);
-    	
+    	String message = translation.getMessage(newLocale, component, srcOpt, key, comment, args);
+    	assertEquals(FormatUtils.format(srcOpt.getMessage(key), srcOpt.getLocale(), args), message);
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertNull(cacheItem);
     }
@@ -126,8 +126,7 @@ public class OfflineModeTest extends BaseTestClass {
         
     	CacheService cs = new CacheService(dto);
     	
-    	SourceOpt srcOpt = new ResourceBundleSrcOpt("messages", LocaleUtility.defaultLocale);
-    	translation.getMessage(locale, component, srcOpt, key, comment, args);
+    	translation.getMessage(locale, component, key, comment, args);
     	
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertNotNull(cacheItem);
@@ -160,8 +159,7 @@ public class OfflineModeTest extends BaseTestClass {
         
     	CacheService cs = new CacheService(dto);
     	
-    	SourceOpt srcOpt = new ResourceBundleSrcOpt("messages", LocaleUtility.defaultLocale);
-    	translation.getMessage(newLocale, component, srcOpt, key, comment, args);
+    	translation.getMessage(newLocale, component, key, comment, args);
     	
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertNotNull(cacheItem);
@@ -191,9 +189,8 @@ public class OfflineModeTest extends BaseTestClass {
         dto.setLocale(newLocale.toLanguageTag());
         
     	CacheService cs = new CacheService(dto);
-    	
-    	SourceOpt srcOpt = new ResourceBundleSrcOpt("messages", LocaleUtility.defaultLocale);
-    	translation.getMessage(newLocale, component, srcOpt, key, comment, args);
+
+    	translation.getMessage(newLocale, component, key, comment, args);
     	
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertNotNull(cacheItem);

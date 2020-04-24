@@ -14,9 +14,11 @@ import com.vmware.vipclient.i18n.messages.api.opt.SourceOpt;
 public class ResourceBundleSrcOpt implements SourceOpt {
 	
     private ResourceBundle rb;
+    private Locale locale;
 
     public ResourceBundleSrcOpt(String bundle, Locale locale) {
         this.rb = ResourceBundle.getBundle(bundle, locale);
+        this.locale = locale;
     }
     
     @Override
@@ -32,5 +34,10 @@ public class ResourceBundleSrcOpt implements SourceOpt {
     public String getMessage(String key) {
         return rb.getString(key);
     }
+
+    @Override
+	public Locale getLocale() {
+		return locale;
+	}
 	
 }

@@ -47,9 +47,11 @@ public class StringService {
 			if (!cacheItem.isCachedDataEmpty()) {
 				CacheService cacheService = new CacheService(dto);
 				cacheService.addCacheOfComponent(cacheItem);
+				cacheOfComponent = cacheItem.getCachedData();
 			}
 		}
-    	return (cacheOfComponent == null || cacheOfComponent.get(key) == null ? "" : cacheOfComponent.get(key));
+		return  cacheOfComponent.get(key) == null ? null : cacheOfComponent.get(key);
+    	
     }
     
     public MessageCacheItem getComponentLocaleCache(MessagesDTO dto) {
