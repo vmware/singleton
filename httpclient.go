@@ -6,9 +6,10 @@
 package sgtn
 
 import (
-	"encoding/json"
-	"fmt"
+	"io/ioutil"
 	"net/http"
+
+	"github.com/pkg/errors"
 )
 
 const (
@@ -20,12 +21,12 @@ var (
 	newHTTPRequest = http.NewRequest
 )
 
-func httpget(urlToGet string, header map[string]string, respData interface{}) error {
+func httpget(urlToGet string, header map[string]string, body *[]byte) (*http.Response, error) {
 	logger.Info("URL to get is: " + urlToGet)
 
 	req, err := newHTTPRequest(http.MethodGet, urlToGet, nil)
 	if err != nil {
-		return err
+		return nil, errors.WithStack(err)
 	}
 	req.Close = true
 	for k, v := range header {
@@ -33,19 +34,15 @@ func httpget(urlToGet string, header map[string]string, respData interface{}) er
 	}
 	resp, err := httpclient.Do(req)
 	if err != nil {
-		return err
+		return nil, errors.WithStack(err)
 	}
 	defer resp.Body.Close()
 
-	if !isSuccess(resp.StatusCode) {
-		return fmt.Errorf("Getting failed, status code is: %s", resp.Status)
+	b, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return resp, errors.WithStack(err)
 	}
+	*body = b
 
-	err = json.NewDecoder(resp.Body).Decode(respData)
-
-	return err
-}
-
-func isSuccess(code int) bool {
-	return code >= 200 && code < 300
+	return resp, err
 }

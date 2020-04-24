@@ -7,22 +7,30 @@ package sgtn
 
 // api url
 const (
-	i18nApiroot          = "/i18n/api/v2"
-	typeTranslationConst = "translation"
-	apiTranslatoin       = i18nApiroot + "/" + typeTranslationConst
+	apiRoot        = "/i18n/api/v2/translation"
+	aipProductRoot = apiRoot + "/products/{" + productNameConst + "}/versions/{" + versionConst + "}"
 
 	// product-based
-	productLocaleListGetConst    = apiTranslatoin + "/products/{" + productNameConst + "}/versions/{" + versionConst + "}/localelist"
-	productComponentListGetConst = apiTranslatoin + "/products/{" + productNameConst + "}/versions/{" + versionConst + "}/componentlist"
-
-	// component-based
-	componentTranslationGetConst = apiTranslatoin + "/products/{" + productNameConst + "}/versions/{" + versionConst + "}/locales/{" + localeConst + "}/components/{" + componentConst + "}"
+	productTranslationGetConst   = aipProductRoot
+	productLocaleListGetConst    = aipProductRoot + "/localelist"
+	productComponentListGetConst = aipProductRoot + "/componentlist"
 )
 
 // api param name
 const (
 	productNameConst = "productname"
 	versionConst     = "version"
-	componentConst   = "component"
-	localeConst      = "locale"
+	componentsConst  = "components"
+	localesConst     = "locales"
+)
+
+const (
+	httpHeaderCacheControl = "Cache-Control"
+	httpHeaderETag         = "ETag"
+	httpHeaderIfNoneMatch  = "If-None-Match"
+)
+
+const (
+	cacheNeverExpires   = -1
+	cacheDefaultExpires = 86400 //seconds
 )

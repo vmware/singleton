@@ -34,17 +34,17 @@ import (
 )
 
 func main() {
-	cfg, err := sgtn.NewConfig("resource/conf/singletonconfig.yaml")
+	cfg, err := sgtn.LoadConfig("resource/conf/singletonconfig.json")
 	if err != nil {
 		log.Fatal(err)
 	}
-	inst, _ := sgtn.NewInst(*cfg)
-	trans := inst.GetTranslation()
+	sgtn.Initialize(cfg)
+	trans := sgtn.GetTranslation()
 
-	locale, component, key := "zh-Hans", "sunglow", "application.title"
+	name, version, locale, component, key := "SgtnTest", "1.0.0", "zh-Hans", "sunglow", "application.title"
 
 	// Get translation of a component
-	compData, err := trans.GetComponentMessages(locale, component)
+	compData, err := trans.GetComponentMessages(name, version, locale, component)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -52,7 +52,7 @@ func main() {
 	fmt.Printf("\nComponent translation:\n%#v\n", compData)
 
 	// Get translation of a string
-	zhMsg, err := trans.GetStringMessage(locale, component, key)
+	zhMsg, err := trans.GetStringMessage(name, version, locale, component, key)
 	if err != nil {
 		fmt.Println(err)
 		return

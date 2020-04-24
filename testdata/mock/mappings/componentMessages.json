@@ -3,19 +3,75 @@
     {
       "id": "componentMessages-zh-Hans-sunglow",
       "request": {
-        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/zh-Hans/components/sunglow",
-        "method": "GET"
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0",
+        "method": "GET",
+        "params": {
+          "components": "sunglow",
+          "locales": "zh-Hans"
+        }
       },
       "response": {
         "status": 200,
+        "headers": {
+          "ETag": "1234567890",
+          "Cache-Control": "s-maxage=1221965, max-age=1221965"
+        },
         "bodyFileName": "componentMessages-zh-Hans-sunglow.json"
+      }
+    },
+    {
+      "id": "componentMessages-zh-Hans-sunglow-sendCC",
+      "request": {
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0",
+        "method": "GET",
+        "params": {
+          "components": "sunglow",
+          "locales": "zh-Hans"
+        },
+        "headers": {
+          "If-None-Match": "1234567890"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "ETag": "0987654321",
+          "Cache-Control": "s-maxage=1221965, max-age=2334"
+        },
+        "bodyFileName": "componentMessages-zh-Hans-sunglow.json"
+      }
+    },
+    {
+      "id": "componentMessages-zh-Hans-HTTP304",
+      "request": {
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0",
+        "method": "GET",
+        "params": {
+          "components": "sunglow",
+          "locales": "zh-Hans"
+        },
+        "headers": {
+          "If-None-Match": "0987654321"
+        }
+      },
+      "response": {
+        "status": 304,
+        "headers": {
+          "ETag": "0987654321-304",
+          "Cache-Control": "s-maxage=1221965, max-age=3445"
+        },
+        "bodyFileName": "componentMessages-zh-Hans-sunglow-HTTP304.json"
       }
     },
     {
       "id": "componentMessages-en-US-sunglow",
       "request": {
-        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/en-US/components/sunglow",
-        "method": "GET"
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0",
+        "method": "GET",
+        "params": {
+          "components": "sunglow",
+          "locales": "en-US"
+        }
       },
       "response": {
         "status": 200,
@@ -25,8 +81,12 @@
     {
       "id": "componentMessages-fr-sunglow",
       "request": {
-        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/fr/components/sunglow",
-        "method": "GET"
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0",
+        "method": "GET",
+        "params": {
+          "components": "sunglow",
+          "locales": "fr"
+        }
       },
       "response": {
         "status": 200,
@@ -36,8 +96,12 @@
     {
       "id": "componentMessages-zh-Hans-users",
       "request": {
-        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/zh-Hans/components/users",
-        "method": "GET"
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0",
+        "method": "GET",
+        "params": {
+          "components": "users",
+          "locales": "zh-Hans"
+        }
       },
       "response": {
         "status": 200
@@ -46,8 +110,12 @@
     {
       "id": "componentMessages-en-US-users",
       "request": {
-        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/en-US/components/users",
-        "method": "GET"
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0",
+        "method": "GET",
+        "params": {
+          "components": "users",
+          "locales": "en-US"
+        }
       },
       "response": {
         "status": 200
@@ -56,8 +124,12 @@
     {
       "id": "componentMessages-fr-users",
       "request": {
-        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/fr/components/users",
-        "method": "GET"
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0",
+        "method": "GET",
+        "params": {
+          "components": "users",
+          "locales": "fr"
+        }
       },
       "response": {
         "status": 200,
@@ -67,8 +139,12 @@
     {
       "id": "componentMessages-zh-Hans-comp-notexist",
       "request": {
-        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/zh-Hans/components/comp-notexist",
-        "method": "GET"
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0",
+        "method": "GET",
+        "params": {
+          "components": "comp-notexist",
+          "locales": "zh-Hans"
+        }
       },
       "response": {
         "status": 200,
@@ -78,8 +154,12 @@
     {
       "id": "HTTPHeader",
       "request": {
-        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/zh-Hans/components/headertest",
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0",
         "method": "GET",
+        "params": {
+          "components": "headertest",
+          "locales": "zh-Hans"
+        },
         "headers": {
           "user": "test_user",
           "pass": "goodpadd"
@@ -93,8 +173,12 @@
     {
       "id": "componentMessages-zh-Hans-sunglow-WrongResponseContent",
       "request": {
-        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/zh-Hans/components/WrongResponseContent",
-        "method": "GET"
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0",
+        "method": "GET",
+        "params": {
+          "components": "WrongResponseContent",
+          "locales": "zh-Hans"
+        }
       },
       "response": {
         "status": 200,
@@ -104,8 +188,12 @@
     {
       "id": "componentMessages-zh-Hans-sunglow-ResponsePartial",
       "request": {
-        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/zh-Hans/components/ResponsePartial",
-        "method": "GET"
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0",
+        "method": "GET",
+        "params": {
+          "components": "ResponsePartial",
+          "locales": "zh-Hans"
+        }
       },
       "response": {
         "status": 200,
@@ -115,8 +203,12 @@
     {
       "id": "RefreshCache",
       "request": {
-        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/RefreshCache/components/sunglow",
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0",
         "method": "GET",
+        "params": {
+          "components": "sunglow",
+          "locales": "RefreshCache"
+        },
         "times": 1
       },
       "response": {
@@ -127,8 +219,12 @@
     {
       "id": "RefreshCacheSecondTime",
       "request": {
-        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/RefreshCache/components/sunglow",
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0",
         "method": "GET",
+        "params": {
+          "components": "sunglow",
+          "locales": "RefreshCache"
+        },
         "times": 1
       },
       "response": {
@@ -139,8 +235,12 @@
     {
       "id": "HTTP404",
       "request": {
-        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/zh-Hans/components/HTTP404",
-        "method": "GET"
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0",
+        "method": "GET",
+        "params": {
+          "components": "HTTP404",
+          "locales": "zh-Hans"
+        }
       },
       "response": {
         "status": 404,
@@ -150,8 +250,12 @@
     {
       "id": "componentMessages-zh-Hans-sunglow-decodeerror",
       "request": {
-        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0/locales/zh-Hans/components/sunglow",
-        "method": "GET"
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.0",
+        "method": "GET",
+        "params": {
+          "components": "sunglow",
+          "locales": "zh-Hans"
+        }
       },
       "response": {
         "status": 200,

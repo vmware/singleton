@@ -20,7 +20,7 @@ type ConfigTestSuite struct {
 }
 
 func (suite *ConfigTestSuite) SetupSuite() {
-	suite.cfpath = "testdata/conf/config.yaml"
+	suite.cfpath = "testdata/conf/config.json"
 	var err error
 	suite.fileBytes, err = ioutil.ReadFile(suite.cfpath)
 	assert.Nil(suite.T(), err)
@@ -30,7 +30,7 @@ func (suite *ConfigTestSuite) TestNewConfigNoFile() {
 	defer Trace(curFunName())()
 
 	cfPath := "C:/doesn't exist"
-	cfg, err := NewConfig(cfPath)
+	cfg, err := LoadConfig(cfPath)
 
 	assert.Nil(suite.T(), cfg)
 	assert.NotNil(suite.T(), err)

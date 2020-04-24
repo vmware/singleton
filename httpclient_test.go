@@ -6,11 +6,11 @@
 package sgtn
 
 import (
-	"errors"
 	"io"
 	"net/http"
 	"testing"
 
+	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -26,8 +26,7 @@ func TestNewRequest(t *testing.T) {
 	}
 
 	urlToGet := "any url"
-	respData := struct{}{}
-	err := httpget(urlToGet, map[string]string{}, respData)
+	_, err := httpget(urlToGet, map[string]string{}, nil)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), errMsg)
 }

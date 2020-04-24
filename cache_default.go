@@ -7,57 +7,18 @@ package sgtn
 
 import (
 	"sync"
-	"sync/atomic"
 )
 
-type (
-	defaultCache struct {
-		tMessages  transMsgs
-		locales    atomic.Value
-		components atomic.Value
-	}
-)
+type defaultCache struct {
+	m *sync.Map
+}
 
 func newCache() Cache {
-	c := &defaultCache{
-		&defaultTransMsgs{new(sync.Map)},
-		atomic.Value{},
-		atomic.Value{},
-	}
-
-	c.locales.Store([]string{})
-	c.components.Store([]string{})
-
-	return c
+	return &defaultCache{new(sync.Map)}
 }
-func (c *defaultCache) GetLocales() []string {
-	data := c.locales.Load()
-	if nil != data {
-		return data.([]string)
-	}
-	return nil
+func (c *defaultCache) Get(key interface{}) (value interface{}, found bool) {
+	return c.m.Load(key)
 }
-func (c *defaultCache) GetComponents() []string {
-	data := c.components.Load()
-	if nil != data {
-		return data.([]string)
-	}
-	return nil
-}
-func (c *defaultCache) SetLocales(locales []string) {
-	c.locales.Store(locales)
-}
-func (c *defaultCache) SetComponents(components []string) {
-	c.components.Store(components)
-}
-func (c *defaultCache) GetComponentMessages(locale, comp string) (data ComponentMsgs, found bool) {
-	compData, ok := c.tMessages.Get(compAsKey{locale, comp})
-	if !ok {
-		return nil, ok
-	}
-
-	return compData, true
-}
-func (c *defaultCache) SetComponentMessages(locale, comp string, data ComponentMsgs) {
-	c.tMessages.Put(compAsKey{locale, comp}, data)
+func (c *defaultCache) Set(key interface{}, value interface{}) {
+	c.m.Store(key, value)
 }

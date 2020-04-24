@@ -8,37 +8,78 @@ package sgtn
 import (
 	"fmt"
 	"strings"
+
+	"github.com/pkg/errors"
 )
 
 //!+ defaultTrans
 type defaultTrans struct {
-	cfg      *Config
-	dService *dataService
+	ds            *dataService
+	defaultLocale string
 }
 
-func (t *defaultTrans) GetLocaleList() ([]string, error) {
-	return t.dService.GetLocaleList()
-}
+func (t *defaultTrans) GetStringMessage(name, version, locale, component, key string, args ...string) (string, error) {
+	if name == "" || version == "" || locale == "" || component == "" || key == "" {
+		return key, errors.New(wrongPara)
+	}
 
-func (t *defaultTrans) GetComponentList() ([]string, error) {
-	return t.dService.GetComponentList()
-}
-
-func (t *defaultTrans) GetStringMessage(locale, component, key string, args ...string) (string, error) {
-	message, err := t.dService.getStringMessage(locale, component, key)
+	compData, err := t.GetComponentMessages(name, version, locale, component)
 	if err != nil {
-		return message, err
+		if strings.Compare(strings.ToLower(locale), strings.ToLower(t.defaultLocale)) != 0 {
+			logger.Error("Fallback to default locale because of error: " + err.Error())
+			locale = t.defaultLocale
+			compData, err = t.GetComponentMessages(name, version, locale, component)
+		}
+	}
+	if err != nil {
+		return key, err
+	}
+
+	message, ok := compData.Get(key)
+	if !ok {
+		errMsg := "No key in locale: " + locale + ", component: " + component
+		return key, errors.New(errMsg)
 	}
 
 	for i, arg := range args {
 		placeholder := fmt.Sprintf("{%d}", i)
 		message = strings.Replace(message, placeholder, arg, 1)
 	}
+
 	return message, nil
 }
 
-func (t *defaultTrans) GetComponentMessages(locale, component string) (ComponentMsgs, error) {
-	return t.dService.getComponentMessages(locale, component)
+func (t *defaultTrans) GetLocaleList(name, version string) (data []string, err error) {
+	if name == "" || version == "" {
+		return nil, errors.New(wrongPara)
+	}
+
+	item := &dataItem{dataItemID{itemLocales, name, version, "", ""}, nil, nil}
+	err = t.ds.get(item)
+	data, _ = item.data.([]string)
+	return
+}
+
+func (t *defaultTrans) GetComponentList(name, version string) (data []string, err error) {
+	if name == "" || version == "" {
+		return nil, errors.New(wrongPara)
+	}
+
+	item := &dataItem{dataItemID{itemComponents, name, version, "", ""}, nil, nil}
+	err = t.ds.get(item)
+	data, _ = item.data.([]string)
+	return
+}
+
+func (t *defaultTrans) GetComponentMessages(name, version, locale, component string) (data ComponentMsgs, err error) {
+	if name == "" || version == "" || locale == "" || component == "" {
+		return nil, errors.New(wrongPara)
+	}
+
+	item := &dataItem{dataItemID{itemComponent, name, version, locale, component}, nil, nil}
+	err = t.ds.get(item)
+	data, _ = item.data.(ComponentMsgs)
+	return
 }
 
 //!- defaultTrans

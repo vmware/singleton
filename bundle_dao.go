@@ -10,6 +10,8 @@ import (
 	"io/ioutil"
 	"path/filepath"
 	"strings"
+
+	"github.com/pkg/errors"
 )
 
 const (
@@ -19,11 +21,27 @@ const (
 
 //!+bundleDAO
 type bundleDAO struct {
-	cfg *Config
+	root string
 }
 
-func (d *bundleDAO) getComponents() ([]string, error) {
-	fis, err := ioutil.ReadDir(d.cfg.LocalBundles)
+func (d *bundleDAO) get(item *dataItem) (err error) {
+	id := item.id
+	switch id.iType {
+	case itemComponent:
+		item.data, err = d.GetComponentMessages(id.Name, id.Version, id.Locale, id.Component)
+	case itemLocales:
+		item.data, err = d.GetLocaleList(id.Name, id.Version)
+	case itemComponents:
+		item.data, err = d.GetComponentList(id.Name, id.Version)
+	default:
+		err = errors.Errorf(invalidItemType, item.id.iType)
+	}
+
+	return
+}
+
+func (d *bundleDAO) GetComponentList(name, version string) ([]string, error) {
+	fis, err := ioutil.ReadDir(filepath.Join(d.root, name, version))
 	if err != nil {
 		return nil, err
 	}
@@ -37,15 +55,15 @@ func (d *bundleDAO) getComponents() ([]string, error) {
 
 	return comps, nil
 }
-func (d *bundleDAO) getLocales() ([]string, error) {
-	comps, err := d.getComponents()
+func (d *bundleDAO) GetLocaleList(name, version string) ([]string, error) {
+	comps, err := d.GetComponentList(name, version)
 	if err != nil {
 		return nil, err
 	}
 
 	locales := map[string]struct{}{}
-	for _, comp := range comps {
-		fPath := filepath.Join(d.cfg.LocalBundles, comp)
+	for _, component := range comps {
+		fPath := filepath.Join(d.root, name, version, component)
 		fis, err := ioutil.ReadDir(fPath)
 		if err != nil {
 			return nil, err
@@ -66,8 +84,8 @@ func (d *bundleDAO) getLocales() ([]string, error) {
 	return lSlice, nil
 }
 
-func (d *bundleDAO) getComponentMessages(locale, component string) (ComponentMsgs, error) {
-	compDirPath := filepath.Join(d.cfg.LocalBundles, component)
+func (d *bundleDAO) GetComponentMessages(name, version, locale, component string) (ComponentMsgs, error) {
+	compDirPath := filepath.Join(d.root, name, version, component)
 	files, err := ioutil.ReadDir(compDirPath)
 	if err != nil {
 		return nil, err
@@ -90,6 +108,9 @@ func (d *bundleDAO) getComponentMessages(locale, component string) (ComponentMsg
 	err = json.Unmarshal(contents, b)
 	if err != nil {
 		return nil, err
+	}
+	if len(b.Messages) == 0 {
+		return nil, errors.New("Wrong data from local bundle file")
 	}
 
 	return &defaultComponentMsgs{b.Messages}, nil

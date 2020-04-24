@@ -23,12 +23,14 @@ import (
 	"testing"
 	"time"
 
+	"github.com/pkg/errors"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"gopkg.in/h2non/gock.v1"
 )
 
-var backCfg Config
+var name, version = "SgtnTest", "1.0.0"
+var testCfg Config
 var mockData map[string]MockMapping
 
 var loglevel = flag.Int("loglevel", 0, "sets log level to 0(debug), 1(info)...")
@@ -44,11 +46,11 @@ func TestMain(m *testing.M) {
 	}
 	zerolog.SetGlobalLevel(zerolog.Level(*loglevel))
 
-	cfg, err := NewConfig("testdata/conf/config.yaml")
+	cfg, err := LoadConfig("testdata/conf/config.json")
 	if err != nil {
 		panic(err)
 	}
-	backCfg = *cfg
+	testCfg = *cfg
 
 	mockData = ReadMockJSONs("testdata/mock/mappings")
 
@@ -172,7 +174,7 @@ func ReadMockJSONs(rootpath string) map[string]MockMapping {
 		result := MockMappings{}
 		err = json.Unmarshal(bs, &result)
 		if err != nil {
-			return fmt.Errorf("Error when reading %s. Error: %s", info.Name(), err.Error())
+			return errors.Errorf("Error when reading %s. Error: %s", info.Name(), err.Error())
 		}
 
 		for _, v := range result.Mappings {
@@ -207,8 +209,9 @@ type MockMapping struct {
 	} `json:"request"`
 
 	Response struct {
-		Status       int    `json:"status"`
-		BodyFileName string `json:"bodyFileName"`
+		Status       int               `json:"status"`
+		Headers      map[string]string `json:"headers"`
+		BodyFileName string            `json:"bodyFileName"`
 	} `json:"response"`
 
 	Headers struct {
@@ -223,7 +226,7 @@ func EnableMockDataWithTimes(key string, times int) *gock.Request {
 	logger.Debug(fmt.Sprintf("Enabling mock %s, times %d", key, times))
 	data := mockData[key]
 
-	req := gock.New(backCfg.SingletonServer)
+	req := gock.New(testCfg.ServerURL)
 	switch data.Request.Method {
 	case "GET":
 		req.Get(data.Request.URL)
@@ -236,6 +239,7 @@ func EnableMockDataWithTimes(key string, times int) *gock.Request {
 		req.MatchParam(k, v)
 	}
 	resp := req.Reply(data.Response.Status)
+	resp.SetHeaders(data.Response.Headers)
 	if data.Response.BodyFileName != "" {
 		resp.File("./testdata/mock/__files/" + data.Response.BodyFileName)
 	}
@@ -264,10 +268,10 @@ func fileExist(filepath string) (bool, error) {
 }
 
 // This isn't thread safe because Go runs tests parallel possibly.
-func clearCache(testInst *Instance) {
+func clearCache() {
 	logger.Debug("clearcache")
-	testInst.trans.dService.cache.(*defaultCache).tMessages.Clear()
-	testInst.trans.dService.cacheSyncInfo = newCacheSyncInfo(testInst.cfg)
+	cache = newCache()
+	initCacheInfoMap()
 }
 
 func curFunName() string {
@@ -278,11 +282,12 @@ func curFunName() string {
 	return frame.Function[strings.LastIndex(frame.Function, "/")+1:]
 }
 
-func replaceInst(cfg *Config) (*Instance, bool) {
-	instMap.Delete(cfg.Name)
-	return NewInst(*cfg)
+func resetInst(cfg *Config) {
+	inst = &instance{}
+	cache = newCache()
+	Initialize(cfg)
 }
 
-func expireCache(cacheUInfo *updateInfo, cacheExpiredTime int64) {
-	cacheUInfo.setTime(atomic.LoadInt64(&cacheUInfo.uTime) - cacheExpiredTime)
+func expireCache(info *itemCacheInfo, cacheExpiredTime int64) {
+	info.setTime(atomic.LoadInt64(&info.lastUpdate) - cacheExpiredTime)
 }

@@ -12,39 +12,42 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestBundleGetComponents(t *testing.T) {
-	testCfg := backCfg
-	testInst, _ := replaceInst(&testCfg)
+func TestBundleGetComponentList(t *testing.T) {
+	defer Trace(curFunName())()
 
-	bundle := testInst.trans.dService.bundle
+	newCfg := testCfg
+	newCfg.ServerURL = ""
+	resetInst(&newCfg)
 
-	comps, err := bundle.getComponents()
+	comps, err := inst.trans.GetComponentList(name, version)
 
 	assert.Nil(t, err)
 	assert.Equal(t, 2, len(comps))
 }
 
-func TestBundleGetLocales(t *testing.T) {
-	testCfg := backCfg
-	testInst, _ := replaceInst(&testCfg)
+func TestBundleGetLocaleList(t *testing.T) {
+	defer Trace(curFunName())()
 
-	bundle := testInst.trans.dService.bundle
+	newCfg := testCfg
+	newCfg.ServerURL = ""
+	resetInst(&newCfg)
 
-	locales, err := bundle.getLocales()
+	locales, err := inst.trans.GetLocaleList(name, version)
 	logger.Debug(fmt.Sprintf("%#v\n", locales))
 	assert.Nil(t, err)
 	assert.Equal(t, 16, len(locales))
 }
 
 func TestBundleGetCompMessages(t *testing.T) {
-	testCfg := backCfg
-	testInst, _ := replaceInst(&testCfg)
+	defer Trace(curFunName())()
 
-	bundle := testInst.trans.dService.bundle
+	newCfg := testCfg
+	newCfg.ServerURL = ""
+	resetInst(&newCfg)
 
 	locale := "fr"
-	comp := "sunglow"
-	msgs, err := bundle.getComponentMessages(locale, comp)
+	component := "sunglow"
+	msgs, err := inst.trans.GetComponentMessages(name, version, locale, component)
 	assert.Nil(t, err)
-	assert.Equal(t, 4, msgs.Size())
+	assert.Equal(t, 4, msgs.(*defaultComponentMsgs).Size())
 }

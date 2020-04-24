@@ -6,39 +6,29 @@
 package sgtn
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
-
-	yaml "gopkg.in/yaml.v2"
 )
 
 // Config Singleton configuration
 type Config struct {
-	Name    string
-	Version string
+	ServerURL string `json:"online_service_url"`
 
-	SingletonServer string `yaml:"singletonServer"`
+	DefaultLocale string `json:"default_locale"`
 
-	EnableCache     bool `yaml:"enableCache"`
-	InitializeCache bool `yaml:"initializeCache"`
-
-	CacheExpiredTime int64 `yaml:"cacheExpiredTime"` //seconds
-
-	DefaultLocale string `yaml:"defaultLocale"`
-
-	LocalBundles string `yaml:"localBundles"`
+	LocalBundles string `json:"offline_resources_base_url"`
 }
 
-// NewConfig Create a new Singleton configuration instance
-func NewConfig(path string) (*Config, error) {
+// LoadConfig Create a new Singleton configuration instance
+func LoadConfig(path string) (*Config, error) {
 	contents, err := ioutil.ReadFile(path)
 	if err != nil {
 		return nil, err
 	}
 
 	var cfg Config
-	err = yaml.Unmarshal(contents, &cfg)
-	if err != nil {
+	if err := json.Unmarshal(contents, &cfg); err != nil {
 		return nil, err
 	}
 

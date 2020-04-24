@@ -14,6 +14,8 @@ import (
 )
 
 func TestLogger(t *testing.T) {
+	defer Trace(curFunName())()
+
 	saved := logger
 	defer func() { logger = saved }()
 
