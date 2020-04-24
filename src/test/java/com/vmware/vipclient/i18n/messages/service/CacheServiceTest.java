@@ -69,10 +69,13 @@ public class CacheServiceTest extends BaseTestClass {
     	dto.setComponent(emptyComponent);
     	CacheService cs = new CacheService(dto);
     	
+    	MessageCacheItem cacheItem = cs.getCacheOfComponent();
+    	assertNull(cacheItem);
+    	
         // This triggers the first http call
     	translation.getMessage(locale, emptyComponent, key, comment, args);
     	
-    	MessageCacheItem cacheItem = cs.getCacheOfComponent();
+    	cacheItem = cs.getCacheOfComponent();
     	assertNull(cacheItem);
     }
     
@@ -118,40 +121,24 @@ public class CacheServiceTest extends BaseTestClass {
         translation.getMessage(locale, component, key, comment, args);
         
         // Because nothing has changed on the server and If-None-Match request header was properly set, 
-        // the server responds with a 304 Not Modified.
-        // However, cache update happens in a separate thread, and the previously cached item 
-        // was immediately returned in the main thread for optimal performance.
-        // This means no changes yet in the cached response code nor the response time.
+        // the server responds with a 304 Not Modified. However, the responseTime will not be updated right away 
+        // because it happens in a separate thread.
         Long responseTime2 = cacheItem.getTimestamp();
         assertTrue(responseTime2.equals(responseTime)); 
         assertTrue(cacheItem.getMaxAgeMillis() == 0l);
         
-        // TODO Store response code in cache if we want to test this
-        //responseCode = cacheItem.getResponseCode();
-        //assertEquals(new Integer(200), responseCode);
-        
         // Give time for the separate thread to finish.
         try {
-			Thread.sleep(10000);
+			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
-        // This should fetch messages and properties from cache 
-        cacheItem = cs.getCacheOfComponent();
-        
-        // TODO Store response code in cache if we want to test 
-        //responseCode = cacheItem.getResponseCode();        
-        //assertEquals(new Integer(304), responseCode);
-        
-        // The cached response time had been updated by the separate thread 
-        // to the timestamp of the second response.  
-        // This, in effect, extends the cache expiration.
-        
-        Long responseTime3 = cacheItem.getTimestamp();
-        //assertTrue(responseTime3 > responseTime); 
-        //assertTrue(cacheItem.getMaxAgeMillis() > 0l);
+        // The response time has been updated by the separate thread 
+        responseTime2 = cacheItem.getTimestamp();
+        assertTrue(responseTime2 > responseTime); 
+        assertTrue(cacheItem.getMaxAgeMillis() > 0l);
         
     }
     
@@ -194,27 +181,29 @@ public class CacheServiceTest extends BaseTestClass {
     	c.setExpiredTime(0l);
         TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
         // Second request for the same message.
-        // This should trigger another HTTP request because cache had been explicitly expired above.
+        // This should trigger another HTTP request in a separate thread because cache had been explicitly expired above.
         translation.getMessage(locale, component, key, comment, args);
         
         // Because nothing has changed on the server and If-None-Match request header was properly set, 
-        // the server responds with a 304 Not Modified.
+        // the server responds with a 304 Not Modified. However, the responseTime will not be updated right away 
+        // because it happens in a separate thread.
         Long responseTime2 = cacheItem.getTimestamp();
         assertTrue(responseTime2.equals(responseTime)); 
         
-        // Second request for the same message.
-        // This should fetch messages and properties from cache 
-        translation.getMessage(locale, component, key, comment, args);
-        
-        // TODO Store response code in cache if we want to test this
-        //responseCode = cacheItem.getResponseCode();  
-        //assertEquals(new Integer(200), responseCode);
-        
-        // Timestamp remains the same because no http request was made.
-        Long responseTime3 = cacheItem.getTimestamp();
-        assertTrue(responseTime3.equals(responseTime2)); 
-        
-        // Put the expiry time back because same MessageCache instance is used in other test classes
+        // Put the expiry time back
         c.setExpiredTime(VIPCfg.getInstance().getCacheExpiredTime());
+        
+        // Give time for the separate thread to finish.
+        try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        // Timestamp has been updated by the separate thread.
+        cacheItem = cs.getCacheOfComponent();
+        responseTime2 = cacheItem.getTimestamp();
+        assertTrue(responseTime2 > responseTime); 
     }  
 }

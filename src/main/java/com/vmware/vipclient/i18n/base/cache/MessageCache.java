@@ -85,7 +85,7 @@ public class MessageCache implements Cache {
 	    		if (cacheItem == null) {
 	    			cachedComponentsMap.put(cacheKey, (MessageCacheItem) itemToCache);
 	    		} else {
-	    			cacheItem.addCacheItem((MessageCacheItem) itemToCache);
+	    			cacheItem.setCacheItem((MessageCacheItem) itemToCache);
 	    		}
 	        }
     	}

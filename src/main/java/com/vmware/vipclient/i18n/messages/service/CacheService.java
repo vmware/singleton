@@ -58,7 +58,7 @@ public class CacheService {
             	cacheItem = new MessageCacheItem();
             	c.put(cacheKey, cacheItem);
             }
-            cacheItem.addCacheItem(itemToCache);
+            cacheItem.setCacheItem(itemToCache);
         }
     }
 

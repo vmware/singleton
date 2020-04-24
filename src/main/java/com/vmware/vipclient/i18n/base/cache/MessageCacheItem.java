@@ -48,7 +48,11 @@ public class MessageCacheItem implements CacheItem {
 			this.cachedData.putAll(cachedData);
 	}
 	
-	public synchronized void addCacheItem (MessageCacheItem cacheItem) {
+	public synchronized void setCacheItem (MessageCacheItem cacheItem) {
+		// Do not update cacheItem if timestamp is earlier than current. 
+		// An older timestamp comes from an old thread that was blocked.
+		if (cacheItem.getTimestamp() < this.timestamp) 
+			return;
 		this.addCachedData(cacheItem.getCachedData());
 		this.etag = cacheItem.etag;
 		this.timestamp = cacheItem.timestamp;
