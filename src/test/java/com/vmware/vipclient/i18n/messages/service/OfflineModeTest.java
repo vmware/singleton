@@ -69,15 +69,16 @@ public class OfflineModeTest extends BaseTestClass {
         dto.setVersion(VIPCfg.getInstance().getVersion());
         
     	CacheService cs = new CacheService(dto);
-    	translation.getMessage(locale, component, key, args);
+    	String message = translation.getMessage(locale, component, key, args);
+    	assertEquals(FormatUtils.format(messageFil, locale, args), message);
     	
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
-    	assertNotNull(cacheItem);
     	assertEquals(messageFil, cacheItem.getCachedData().get(key));	
+    	
     }
     
     @Test
-    public void testGetMsgsOfflineModeBundleNotExist() {
+    public void testGetMsgsOfflineUseSourceMessage() { // Neither target locale bundle nor default locale bundle exists. 
     	VIPCfg cfg = VIPCfg.getInstance();
         try {
             cfg.initialize("vipconfig-offline");
@@ -101,7 +102,10 @@ public class OfflineModeTest extends BaseTestClass {
     	
     	SourceOpt srcOpt = new ResourceBundleSrcOpt("messages", LocaleUtility.defaultLocale);
     	String message = translation.getMessage(newLocale, component, srcOpt, key, args);
+    	// Returns source message
     	assertEquals(FormatUtils.format(srcOpt.getMessage(key), srcOpt.getLocale(), args), message);
+    	
+    	// Nothing is stored in cache
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertNull(cacheItem);
     }
@@ -126,12 +130,11 @@ public class OfflineModeTest extends BaseTestClass {
         
     	CacheService cs = new CacheService(dto);
     	
-    	translation.getMessage(locale, component, key, args);
+    	String message = translation.getMessage(locale, component, key, args);
+    	assertEquals(FormatUtils.format(messageFil, locale, args), message);
     	
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
-    	assertNotNull(cacheItem);
     	assertEquals(messageFil, cacheItem.getCachedData().get(key));
-    	
     }
     
     @Test
@@ -159,11 +162,12 @@ public class OfflineModeTest extends BaseTestClass {
         
     	CacheService cs = new CacheService(dto);
     	
-    	translation.getMessage(newLocale, component, key, args);
+    	String message = translation.getMessage(newLocale, component, key, args);
+    	assertEquals(FormatUtils.format(messageFr, newLocale, args), message);
     	
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
-    	assertNotNull(cacheItem);
     	assertEquals(messageFr, cacheItem.getCachedData().get(key));
+    	
     }
     
     @Test
@@ -194,6 +198,13 @@ public class OfflineModeTest extends BaseTestClass {
     	
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertNotNull(cacheItem);
-    	assertEquals(source, cacheItem.getCachedData().get(key));
+    	
+    	MessagesDTO defaultLocaleDTO = new MessagesDTO(dto.getComponent(), 
+				dto.getKey(), dto.getSource(), LocaleUtility.defaultLocale.toLanguageTag(), null);
+    	CacheService csDefault = new CacheService(defaultLocaleDTO);
+    	MessageCacheItem cacheItemDefaultLocale = csDefault.getCacheOfComponent();
+    	
+    	// Cache of default locale and cache of Locale.ITALIAN refer to the same object
+    	assertEquals(cacheItemDefaultLocale, cacheItem);
     }
 }
