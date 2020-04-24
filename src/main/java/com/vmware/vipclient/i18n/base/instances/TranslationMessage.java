@@ -57,10 +57,18 @@ public class TranslationMessage implements Message {
      * @param component The Singleton component in which the message belongs
      * @param key The key that represents the message
      * @param args Values to replace placeholders in the message with 
-     * @return The localized message
+     * @return One of the items in the following priority-ordered list: 
+     * <ul>
+     * 		<li>The message in the requested locale</li> 
+     * 		<li>The message in the default locale</li>
+     * 		<li>key</li>
+     * </ul>
      */
     public String getMessage(final Locale locale, final String component, final String key, final Object... args) {
-    	return FormatUtils.format(getCachedMessage(component, key, locale, args), locale, args);	
+    	String message = getCachedMessage(component, key, locale, args);
+    	if (message == null)
+    		return key;
+    	return FormatUtils.format(message, locale, args);	
     }
     
     
@@ -71,7 +79,12 @@ public class TranslationMessage implements Message {
      * @param key The key that represents the message
      * @param locale The locale in which the message is requested to be localized
      * @param args Values to replace placeholders in the message with
-     * @return The message in the requested locale, if available. Otherwise, the message in the default locale.
+     * @return One of the items in the following priority-ordered list: 
+     * <ul>
+     * 		<li>The message in the requested locale</li> 
+     * 		<li>The message in the default locale</li>
+     * 		<li>null</li>
+     * </ul>
      */
     private String getCachedMessage(String component, String key, Locale locale, Object[] args) {
     	MessagesDTO dto = new MessagesDTO(component, key, null, locale.toLanguageTag(), this.cfg);
@@ -92,12 +105,12 @@ public class TranslationMessage implements Message {
      * @param sourceOpt The SourceOpt object which gives access to the source messages written by developers
      * @param key The key that represents the message
      * @param args Values to replace placeholders in the message with
-     * @return One of the following: 
+     * @return One of the items in the following priority-ordered list: 
      * <ul>
      * 		<li>The pseudo message, if isPseudo is true</li> 
      * 		<li>The message in the requested locale, if available</li>
-     * 		<li>The message in the default locale</li>
-     * 		<li>The message from SourceOpt, if message is available neither in the requested locale nor in the default locale. </li>
+     * 		<li>The message in the default locale, if available</li>
+     * 		<li>The message from SourceOpt</li>
      * </ul>
      */
     public String getMessage(final Locale locale, final String component, final SourceOpt sourceOpt,
