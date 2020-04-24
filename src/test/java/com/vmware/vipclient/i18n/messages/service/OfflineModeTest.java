@@ -69,7 +69,7 @@ public class OfflineModeTest extends BaseTestClass {
         dto.setVersion(VIPCfg.getInstance().getVersion());
         
     	CacheService cs = new CacheService(dto);
-    	translation.getMessage(locale, component, key, comment, args);
+    	translation.getMessage(locale, component, key, args);
     	
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertNotNull(cacheItem);
@@ -100,7 +100,7 @@ public class OfflineModeTest extends BaseTestClass {
     	CacheService cs = new CacheService(dto);
     	
     	SourceOpt srcOpt = new ResourceBundleSrcOpt("messages", LocaleUtility.defaultLocale);
-    	String message = translation.getMessage(newLocale, component, srcOpt, key, comment, args);
+    	String message = translation.getMessage(newLocale, component, srcOpt, key, args);
     	assertEquals(FormatUtils.format(srcOpt.getMessage(key), srcOpt.getLocale(), args), message);
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertNull(cacheItem);
@@ -126,7 +126,7 @@ public class OfflineModeTest extends BaseTestClass {
         
     	CacheService cs = new CacheService(dto);
     	
-    	translation.getMessage(locale, component, key, comment, args);
+    	translation.getMessage(locale, component, key, args);
     	
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertNotNull(cacheItem);
@@ -159,7 +159,7 @@ public class OfflineModeTest extends BaseTestClass {
         
     	CacheService cs = new CacheService(dto);
     	
-    	translation.getMessage(newLocale, component, key, comment, args);
+    	translation.getMessage(newLocale, component, key, args);
     	
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertNotNull(cacheItem);
@@ -190,7 +190,7 @@ public class OfflineModeTest extends BaseTestClass {
         
     	CacheService cs = new CacheService(dto);
 
-    	translation.getMessage(newLocale, component, key, comment, args);
+    	translation.getMessage(newLocale, component, key, args);
     	
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertNotNull(cacheItem);

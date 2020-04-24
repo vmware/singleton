@@ -49,13 +49,59 @@ public class TranslationMessage implements Message {
         super();
     }
 
-    public String getMessage(final Locale locale, final String component, final String key, 
-    		final String comment, final Object... args) {
-    	return FormatUtils.format(getCachedMessage(component, comment, key, locale, this.cfg, args), locale, args);	
+    
+    /**
+     * Gets the localized message 
+     * 
+     * @param locale The locale in which the message is requested to be localized
+     * @param component The Singleton component in which the message belongs
+     * @param key The key that represents the message
+     * @param args Values to replace placeholders in the message with 
+     * @return The localized message
+     */
+    public String getMessage(final Locale locale, final String component, final String key, final Object... args) {
+    	return FormatUtils.format(getCachedMessage(component, key, locale, args), locale, args);	
     }
     
+    
+    /**
+     * Retrieves the localized message from the cache
+     * 
+     * @param component The Singleton component in which the message belongs
+     * @param key The key that represents the message
+     * @param locale The locale in which the message is requested to be localized
+     * @param args Values to replace placeholders in the message with
+     * @return The message in the requested locale, if available. Otherwise, the message in the default locale.
+     */
+    private String getCachedMessage(String component, String key, Locale locale, Object[] args) {
+    	MessagesDTO dto = new MessagesDTO(component, key, null, locale.toLanguageTag(), this.cfg);
+    	StringService s = new StringService();
+    	return s.getString(dto);
+    }
+    
+    
+    /**
+     * Retrieves the localized message from the cache, with added functionality such as:
+     * <ul>
+     * 	<li>Pseudo-localization</li>
+     * 	<li>Fallback to source message when message is neither collected nor translated yet</li>
+     * </ul>
+     * 
+     * @param locale The locale in which the message is requested to be localized
+     * @param component The Singleton component in which the message belongs
+     * @param sourceOpt The SourceOpt object which gives access to the source messages written by developers
+     * @param key The key that represents the message
+     * @param args Values to replace placeholders in the message with
+     * @return One of the following: 
+     * <ul>
+     * 		<li>The pseudo message, if isPseudo is true</li> 
+     * 		<li>The message in the requested locale, if available</li>
+     * 		<li>The message in the default locale</li>
+     * 		<li>The message from SourceOpt, if message is available neither in the requested locale nor in the default locale. </li>
+     * </ul>
+     */
     public String getMessage(final Locale locale, final String component, final SourceOpt sourceOpt,
-            final String key, final String comment, final Object... args) {
+            final String key, final Object... args) {
     	String message = null;
     	String source = (sourceOpt == null) ? null : sourceOpt.getMessage(key);
     	
@@ -63,7 +109,7 @@ public class TranslationMessage implements Message {
     		return ConstantsKeys.PSEUDOCHAR2 + FormatUtils.format(source, sourceOpt.getLocale(), args) + ConstantsKeys.PSEUDOCHAR2;
     	}
     	
-    	message = getCachedMessage(component, comment, key, locale, this.cfg, args);
+    	message = getCachedMessage(component, key, locale, args);
     	
     	if (source != null) {
     		if (message == null || message.isEmpty()) {
@@ -75,8 +121,7 @@ public class TranslationMessage implements Message {
     		} else if (!VIPCfg.getInstance().isPseudo()) {
 		    	// If the source message is not equal to the cached source (loaded from remote or from offline bundle file),
 		    	// it means that this source message hasn't been collected for localization, so return the source message
-	    		MessagesDTO sourceLocaleDTO = new MessagesDTO(component, comment, key, source,
-	            		sourceOpt.getLocale().toLanguageTag(), this.cfg);
+	    		MessagesDTO sourceLocaleDTO = new MessagesDTO(component, key, source, sourceOpt.getLocale().toLanguageTag(), this.cfg);
 	    		StringService s = new StringService();
 	            String cachedSrcLocaleMsg = s.getString(sourceLocaleDTO);
 	            if (!source.equals(cachedSrcLocaleMsg) || 
@@ -89,35 +134,14 @@ public class TranslationMessage implements Message {
     	return FormatUtils.format(message, locale, args);	
     }
     
-    private String getCachedMessage(String component, String comment, String key, 
-    		Locale locale, VIPCfg cfg, Object[] args) {
-    	MessagesDTO dto = new MessagesDTO(component, comment, key, null, locale.toLanguageTag(), this.cfg);
-    	StringService s = new StringService();
-    	return s.getString(dto);
-    }
-    
     /**
      * get a translation under the component of the configured product
      *
-     * @param locale
-     *            an object used to get the source's translation
-     * @param component
-     *            defined on VIP service, it will be created automatically if
-     *            not exist
-     * @param key
-     *            identify the source
-     * @param source
-     *            it's English source which will be return if no translation
-     *            available
-     * @param comment
-     *            used to describe the source to help understand the source for
-     *            the translators.
-     * @param args
-     *            used to format the message with placeholder, it's not required
-     *            if the message doesn't contain any placeholder
-     * @return string
+     * @deprecated  Not for public use. 
+     * 	Replaced by {@link #getMessage(Locale, String, String, Object...)} 
+     * 		or {@link #getMessage(Locale, String, SourceOpt, String, Object...)}
      */
-    public String getString(final Locale locale, final String component,
+    @Deprecated public String getString(final Locale locale, final String component,
             final String key, final String source, final String comment, final Object... args) {
         this.logger.trace("Start to execute TranslationMessage.getString");
         if (key == null || key.equalsIgnoreCase(""))
@@ -126,12 +150,12 @@ public class TranslationMessage implements Message {
         StringService s = new StringService();
         
         if (!LocaleUtility.isDefaultLocale(locale)) {  
-        	MessagesDTO dto = new MessagesDTO(component, comment, key, source, locale.toLanguageTag(), this.cfg);
+        	MessagesDTO dto = new MessagesDTO(component, key, source, locale.toLanguageTag(), this.cfg);
             translation = s.getString(dto);
             // if the source is not equal to remote's source version, return the
             // source as latest, not return the old translation
             if (source != null && !"".equals(source) && !VIPCfg.getInstance().isPseudo()) {
-                MessagesDTO remoteEnDTO = new MessagesDTO(component, comment, key, source, 
+                MessagesDTO remoteEnDTO = new MessagesDTO(component, key, source, 
                 		LocaleUtility.defaultLocale.toLanguageTag(), this.cfg);
                 String remoteEnMsg = s.getString(remoteEnDTO);
                 if (!source.equals(remoteEnMsg)) {
@@ -147,11 +171,11 @@ public class TranslationMessage implements Message {
         }
 
         if (VIPCfg.getInstance().isCollectSource() || VIPCfg.getInstance().isMachineTranslation()) {
-        	MessagesDTO latestSourceDTO = new MessagesDTO(component, comment, key, source, 
+        	MessagesDTO latestSourceDTO = new MessagesDTO(component, key, source, 
         			ConstantsKeys.LATEST, this.cfg);
             String latestStr = s.getString(latestSourceDTO);
             if (source != null && !source.equals(latestStr)) {
-            	MessagesDTO dto2 = new MessagesDTO(component, comment, key, source, 
+            	MessagesDTO dto2 = new MessagesDTO(component, key, source, 
             			locale.toLanguageTag(), this.cfg);
                 String mt = s.postString(dto2);
                 if (VIPCfg.getInstance().isMachineTranslation() && !"".equalsIgnoreCase(mt)) {
@@ -329,27 +353,13 @@ public class TranslationMessage implements Message {
     }
 
     /**
-     * get one translation of the configured product from VIP, if message not
-     * found will get the English message from specified bundle.
+     * get a translation under the component of the configured product
      *
-     * @param component
-     *            defined on VIP service, it will be created automatically if
-     *            not exist
-     * @param bundle
-     *            properties file name, normally it should be put under the root
-     *            'src' path
-     * @param locale
-     *            an object used to get the source's translation
-     * @param key
-     *            identify the source
-     * @param args
-     *            used to format the message with placeholder, it's not required
-     *            if the message doesn't contain any placeholder
-     * @return a message of translation, if the translation is not found from
-     *         VIP service, it will return the value defined in the bundle
-     *         searching by the key
+     * @deprecated  Not for public use. 
+     * 	Replaced by {@link #getMessage(Locale, String, String, Object...)} 
+     * 		or {@link #getMessage(Locale, String, SourceOpt, String, Object...)}
      */
-    public String getString2(final String component,
+    @Deprecated public String getString2(final String component,
             final String bundle, final Locale locale, final String key, final Object... args) {
         this.logger.trace("Start to execute TranslationMessage.getString2");
         if (key == null || key.equalsIgnoreCase(""))

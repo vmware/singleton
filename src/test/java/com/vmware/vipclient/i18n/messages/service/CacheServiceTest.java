@@ -4,6 +4,7 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -21,10 +22,7 @@ import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
-import com.vmware.vipclient.i18n.messages.api.opt.SourceOpt;
-import com.vmware.vipclient.i18n.messages.api.opt.source.ResourceBundleSrcOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
-import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 public class CacheServiceTest extends BaseTestClass {
 
@@ -73,10 +71,55 @@ public class CacheServiceTest extends BaseTestClass {
     	assertNull(cacheItem);
     	
         // This triggers the first http call
-    	translation.getMessage(locale, emptyComponent, key, comment, args);
+    	translation.getMessage(locale, emptyComponent, key, args);
     	
     	cacheItem = cs.getCacheOfComponent();
     	assertNull(cacheItem);
+    }
+    
+    @Test
+    public void testNotExpired() {
+    	VIPCfg gc = VIPCfg.getInstance();
+        try {
+            gc.initialize("vipconfig-no-cache-expired-time");
+        } catch (VIPClientInitException e) {
+            logger.error(e.getMessage());
+        }
+    	gc.initializeVIPService();
+        
+        Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
+        TranslationCacheManager.cleanCache(c);
+        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
+        TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
+        
+        dto.setProductID(VIPCfg.getInstance().getProductName());
+        dto.setVersion(VIPCfg.getInstance().getVersion());
+        CacheService cs = new CacheService(dto);
+        
+        // CacheItem does not exist yet
+        MessageCacheItem cacheItem = cs.getCacheOfComponent();
+        assertNull(cacheItem);
+        
+        // This triggers the first http call
+    	translation.getMessage(locale, component, key, args);
+    	
+    	cacheItem = cs.getCacheOfComponent();
+        Long responseTime = (Long) cacheItem.getTimestamp();
+        assertTrue(!cacheItem.isExpired());
+        
+        // Second request for the same message fetches from cache.
+        translation.getMessage(locale, component, key, args);
+        
+        // No update should happen.
+        try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        cacheItem = cs.getCacheOfComponent();
+        Long responseTime2 = cacheItem.getTimestamp();
+        assertEquals(responseTime2,responseTime); 
     }
     
     @Test
@@ -103,26 +146,20 @@ public class CacheServiceTest extends BaseTestClass {
         assertNull(cacheItem);
         
         // This triggers the first http call
-    	translation.getMessage(locale, component, key, comment, args);
+    	translation.getMessage(locale, component, key, args);
     	
     	cacheItem = cs.getCacheOfComponent();
         Long responseTime = (Long) cacheItem.getTimestamp();
         
-        // TODO Store response code in cache if we want to test this
-        //int responseCode = cacheItem.getResponseCode();
-        //assertEquals(new Integer(200), responseCode);
-        
         // Set max age to 0 to explicitly expire the cache for testing purposes.
         cacheItem.setMaxAgeMillis(0l);
         
-        // Second request for the same message.
-        // This should trigger another HTTP request because cache had been explicitly expired above.
-        // The http request includes If-None-Match header that is set to the previously received eTag value.
-        translation.getMessage(locale, component, key, comment, args);
+        // Second request for the same message triggers an HTTP request because cacheItem has expired.
+        // The http request includes an If-None-Match header that is set to the previously received eTag value.
+        // The server responds with a 304 Not Modified.
+        translation.getMessage(locale, component, key, args);
         
-        // Because nothing has changed on the server and If-None-Match request header was properly set, 
-        // the server responds with a 304 Not Modified. However, the responseTime will not be updated right away 
-        // because it happens in a separate thread.
+        // The responseTime will not be updated right away because it happens in a separate thread.
         Long responseTime2 = cacheItem.getTimestamp();
         assertTrue(responseTime2.equals(responseTime)); 
         assertTrue(cacheItem.getMaxAgeMillis() == 0l);
@@ -139,7 +176,6 @@ public class CacheServiceTest extends BaseTestClass {
         responseTime2 = cacheItem.getTimestamp();
         assertTrue(responseTime2 > responseTime); 
         assertTrue(cacheItem.getMaxAgeMillis() > 0l);
-        
     }
     
     @Test
@@ -172,7 +208,7 @@ public class CacheServiceTest extends BaseTestClass {
         assertNull(cacheItem);
         
         // This triggers the first http call
-    	translation.getMessage(locale, component, key, comment, args);
+    	translation.getMessage(locale, component, key, args);
     	
     	cacheItem = cs.getCacheOfComponent();
     	Long responseTime = cacheItem.getTimestamp();
@@ -180,13 +216,13 @@ public class CacheServiceTest extends BaseTestClass {
     	//Explicitly expire the cache
     	c.setExpiredTime(0l);
         TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
-        // Second request for the same message.
-        // This should trigger another HTTP request in a separate thread because cache had been explicitly expired above.
-        translation.getMessage(locale, component, key, comment, args);
         
-        // Because nothing has changed on the server and If-None-Match request header was properly set, 
-        // the server responds with a 304 Not Modified. However, the responseTime will not be updated right away 
-        // because it happens in a separate thread.
+        // Second request for the same message triggers an HTTP request because cacheItem has expired.
+        // The http request includes an If-None-Match header that is set to the previously received eTag value.
+        // The server responds with a 304 Not Modified.
+        translation.getMessage(locale, component, key, args);
+        
+        // The responseTime will not be updated right away because it happens in a separate thread.
         Long responseTime2 = cacheItem.getTimestamp();
         assertTrue(responseTime2.equals(responseTime)); 
         

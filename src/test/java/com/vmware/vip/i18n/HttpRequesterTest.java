@@ -20,8 +20,6 @@ import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
-import com.vmware.vipclient.i18n.messages.api.opt.SourceOpt;
-import com.vmware.vipclient.i18n.messages.api.opt.source.ResourceBundleSrcOpt;
 
 public class HttpRequesterTest extends BaseTestClass {
 
@@ -68,7 +66,7 @@ public class HttpRequesterTest extends BaseTestClass {
         TranslationMessage tm = (TranslationMessage) I18nFactory.getInstance()
                 .getMessageInstance(TranslationMessage.class);
         
-        tm.getMessage(new Locale("zh", "Hans"), "default", "table.host", "", null);
+        tm.getMessage(new Locale("zh", "Hans"), "default", "table.host", null);
         
         WireMock.verify(WireMock.getRequestedFor(WireMock.urlMatching(url)).withHeader(key1, WireMock.equalTo(value1))
                 .withHeader(key2, WireMock.equalTo(value2)));

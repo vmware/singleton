@@ -37,7 +37,7 @@ public class StringService {
     	// use MessageCacheItem of the default locale instead. 
     	Map<String, String> cacheOfComponent = cacheItem.getCachedData();	
     	if (cacheOfComponent.isEmpty() && !LocaleUtility.isDefaultLocale(dto.getLocale())) {
-			MessagesDTO defaultLocaleDTO = new MessagesDTO(dto.getComponent(), dto.getComment(), 
+			MessagesDTO defaultLocaleDTO = new MessagesDTO(dto.getComponent(), 
 					dto.getKey(), dto.getSource(), LocaleUtility.defaultLocale.toLanguageTag(), null);
 			// MessageCacheItem of the default locale
 			cacheItem = getComponentLocaleCache(defaultLocaleDTO);
