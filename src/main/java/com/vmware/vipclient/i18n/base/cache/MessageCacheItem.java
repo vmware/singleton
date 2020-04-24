@@ -1,4 +1,5 @@
 /*
+
  * Copyright 2019 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
@@ -88,6 +89,10 @@ public class MessageCacheItem implements CacheItem {
 	}
 
 	public boolean isExpired() {
+		// If offline mode only, cache never expires.
+		if (VIPCfg.getInstance().getVipServer() == null) {
+			return false;
+		}
     	// If maxAgeFromConfig is present, it means it is using the old way 
     	// of caching expiration, so do not expire individual CacheItem object
     	if (VIPCfg.getInstance().getCacheExpiredTime() != 0) {

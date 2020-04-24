@@ -48,14 +48,5 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 			// Do not update cacheItem
 		}
     }
-
-    @Override
-    public String getString() {
-    	MessageCacheItem cacheItem = new MessageCacheItem();
-    	this.getComponentMessages(cacheItem);
-    	String message = cacheItem.getCachedData().get(dto.getKey()) == null ? 
-    			"" : cacheItem.getCachedData().get(dto.getKey());
-        return message;
-    }
 	
 }

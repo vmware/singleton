@@ -105,16 +105,6 @@ public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
     	}
     	return null;
     }
-    
-
-    @Override
-    public String getString() {
-    	MessageCacheItem cacheItem = new MessageCacheItem();
-    	this.getComponentMessages(cacheItem);
-		
-		String message = cacheItem.getCachedData().get(this.dto.getKey());
-        return (message == null ? "" : message);
-    }
 
     public String postString() {
     	Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL
