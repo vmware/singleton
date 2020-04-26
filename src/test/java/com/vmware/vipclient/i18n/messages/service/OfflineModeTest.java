@@ -78,7 +78,48 @@ public class OfflineModeTest extends BaseTestClass {
     }
     
     @Test
-    public void testGetMsgsOfflineUseSourceMessage() { // Neither target locale bundle nor default locale bundle exists. 
+    public void testGetMsgsFailedUseSourceMessage() { 
+    	// Offline mode only; neither target locale bundle nor default locale bundle exists 
+    	// SourceOpt is defined to use the source message
+    	VIPCfg cfg = VIPCfg.getInstance();
+    	
+    	// SourceOpt is identified 
+    	// This allows fallback to source message when all else fails. 
+    	SourceOpt srcOpt = new ResourceBundleSrcOpt("messages", LocaleUtility.defaultLocale);
+        try {
+            cfg.initialize("vipconfig-offline", srcOpt);
+        } catch (VIPClientInitException e) {
+            logger.error(e.getMessage());
+        }
+    	
+        Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
+        TranslationCacheManager.cleanCache(c);
+        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
+        TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
+
+        dto.setProductID(VIPCfg.getInstance().getProductName());
+        dto.setVersion(VIPCfg.getInstance().getVersion());
+        
+        // Bundle does not exist locally
+        Locale newLocale = new Locale("es");
+        dto.setLocale(newLocale.toLanguageTag());
+        
+    	CacheService cs = new CacheService(dto);
+    	
+    	String message = translation.getMessage(newLocale, component,  key, args);
+    	// Returns source message
+    	assertEquals(FormatUtils.format(srcOpt.getMessage(key), srcOpt.getLocale(), args), message);
+    	
+    	// Nothing is stored in cache
+    	MessageCacheItem cacheItem = cs.getCacheOfComponent();
+    	assertNull(cacheItem);
+    }
+    
+    @Test
+    public void testGetMsgsFailedNoSourceOpt() { 
+    	// Offline mode only; neither target locale bundle nor default locale bundle exists
+    	// SourceOpt is not defined so return the key
+    	String key = "does.not.exist";
     	VIPCfg cfg = VIPCfg.getInstance();
         try {
             cfg.initialize("vipconfig-offline");
@@ -100,10 +141,47 @@ public class OfflineModeTest extends BaseTestClass {
         
     	CacheService cs = new CacheService(dto);
     	
-    	SourceOpt srcOpt = new ResourceBundleSrcOpt("messages", LocaleUtility.defaultLocale);
-    	String message = translation.getMessage(newLocale, component, srcOpt, key, args);
-    	// Returns source message
-    	assertEquals(FormatUtils.format(srcOpt.getMessage(key), srcOpt.getLocale(), args), message);
+    	
+    	String message = translation.getMessage(newLocale, component, key, args);
+    	// Returns key
+    	assertEquals(key, message);
+    	
+    	// Nothing is stored in cache
+    	MessageCacheItem cacheItem = cs.getCacheOfComponent();
+    	assertNull(cacheItem);
+    }
+    
+    @Test
+    public void testGetMsgsFailedMissingKey() { 
+    	// Offline mode only; neither target locale bundle nor default locale bundle exists
+    	// Source message does not exist in SourceOpt so return the key
+    	String key = "does.not.exist";
+    	VIPCfg cfg = VIPCfg.getInstance();
+        try {
+        	SourceOpt srcOpt = new ResourceBundleSrcOpt("messages", LocaleUtility.defaultLocale);
+            cfg.initialize("vipconfig-offline", srcOpt);
+        } catch (VIPClientInitException e) {
+            logger.error(e.getMessage());
+        }
+    	
+        Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
+        TranslationCacheManager.cleanCache(c);
+        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
+        TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
+
+        dto.setProductID(VIPCfg.getInstance().getProductName());
+        dto.setVersion(VIPCfg.getInstance().getVersion());
+        
+        // Bundle does not exist locally
+        Locale newLocale = new Locale("es");
+        dto.setLocale(newLocale.toLanguageTag());
+        
+    	CacheService cs = new CacheService(dto);
+    	
+    	
+    	String message = translation.getMessage(newLocale, component, key, args);
+    	// Returns key
+    	assertEquals(key, message);
     	
     	// Nothing is stored in cache
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();

@@ -66,8 +66,7 @@ public class SharedComponentTest extends BaseTestClass {
         Locale zhLocale2 = new Locale("de", "");
         String comp2 = "JSP";
         String key2 = "table.head";
-        SourceOpt srcOpt = new ResourceBundleSrcOpt("messages", Locale.ENGLISH);
-        String trans2 = subTranslation.getMessage(zhLocale2, comp2, srcOpt, key2);
+        String trans2 = subTranslation.getMessage(zhLocale2, comp2, key2);
         		
         logger.debug("pseudoTrans1: " + trans2);
         Assert.assertTrue(VIPCfg.getInstance().getProductName().equals(mainProductName));

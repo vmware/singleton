@@ -6,6 +6,7 @@ package com.vmware.vipclient.i18n.messages.api.opt.source;
 
 import java.util.Enumeration;
 import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
@@ -32,7 +33,12 @@ public class ResourceBundleSrcOpt implements SourceOpt {
 
     @Override
     public String getMessage(String key) {
-        return rb.getString(key);
+    	try {
+    		return rb.getString(key);
+    	} catch (MissingResourceException e) { 
+    		
+    	}
+        return key;
     }
 
     @Override

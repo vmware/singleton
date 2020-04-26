@@ -112,7 +112,7 @@ public class CacheServiceTest extends BaseTestClass {
         
         // No update should happen.
         try {
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -166,7 +166,7 @@ public class CacheServiceTest extends BaseTestClass {
         
         // Give time for the separate thread to finish.
         try {
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -231,7 +231,7 @@ public class CacheServiceTest extends BaseTestClass {
         
         // Give time for the separate thread to finish.
         try {
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

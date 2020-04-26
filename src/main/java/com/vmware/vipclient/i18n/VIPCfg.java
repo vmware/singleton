@@ -21,6 +21,7 @@ import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.CacheMode;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
+import com.vmware.vipclient.i18n.messages.api.opt.SourceOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ProductService;
 
@@ -62,7 +63,8 @@ public class VIPCfg {
     private String                     vipServer;
     private String                     i18nScope     = "numbers,dates,currencies,plurals,measurements";
     private String					   offlineResourcesBaseUrl;
-
+    private SourceOpt				   srcOpt;
+    
     // define key for cache management
     public static final String         CACHE_L3      = "CACHE_L3";
     public static final String         CACHE_L2      = "CACHE_L2";
@@ -130,9 +132,19 @@ public class VIPCfg {
     }
     
     /**
-     * initialize the instance by a properties file
+     * Initialize VIPCfg instance using a configuration file
      * 
-     * @param cfg
+     * @param cfg The configuration file
+     * @param srcOpt The optional SourceOpt object which gives access to source messages
+     */
+    public void initialize(String cfg, SourceOpt srcOpt) throws VIPClientInitException {
+    	initialize(cfg);
+    	this.setSrcOpt(srcOpt);
+    }
+    /**
+     * Initialize VIPCfg instance using a configuration file
+     * 
+     * @param cfg The configuration file
      */
     public void initialize(String cfg) throws VIPClientInitException {
     	ResourceBundle prop = ResourceBundle.getBundle(cfg);
@@ -430,5 +442,12 @@ public class VIPCfg {
 	public void setMsgOriginsQueue(List<DataSourceEnum> msgOriginsQueue) {
 		this.msgOriginsQueue = msgOriginsQueue;
 	}
-	
+
+	public SourceOpt getSrcOpt() {
+		return srcOpt;
+	}
+
+	public void setSrcOpt(SourceOpt srcOpt) {
+		this.srcOpt = srcOpt;
+	}
 }

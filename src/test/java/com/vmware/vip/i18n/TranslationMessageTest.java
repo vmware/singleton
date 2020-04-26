@@ -40,9 +40,10 @@ public class TranslationMessageTest extends BaseTestClass {
 
     @Before
     public void init() {
+    	SourceOpt srcOpt = new ResourceBundleSrcOpt("messages", Locale.ENGLISH);
         VIPCfg gc = VIPCfg.getInstance();
         try {
-            gc.initialize("vipconfig");
+            gc.initialize("vipconfig", srcOpt);
         } catch (VIPClientInitException e) {
             logger.error(e.getMessage());
         }
@@ -268,8 +269,8 @@ public class TranslationMessageTest extends BaseTestClass {
         boolean existing_pseudo = vc.isPseudo();
         vc.setPseudo(true);
 
-        SourceOpt srcOpt = new ResourceBundleSrcOpt("messages", Locale.ENGLISH);
-        String enTrans1 = translation.getMessage(zhLocale, comp, srcOpt, key, args);
+        
+        String enTrans1 = translation.getMessage(zhLocale, comp, key, args);
 
         vc.setPseudo(existing_pseudo);
         vc.setCollectSource(existing_collect);
@@ -317,8 +318,7 @@ public class TranslationMessageTest extends BaseTestClass {
         boolean existing_pseudo = vc.isPseudo();
         vc.setPseudo(true);
 
-        SourceOpt srcOpt = new ResourceBundleSrcOpt("messages", Locale.ENGLISH);
-        String pseudoTrans1 = translation.getMessage(zhLocale, comp, srcOpt, key);
+        String pseudoTrans1 = translation.getMessage(zhLocale, comp, key);
         
         vc.setPseudo(existing_pseudo);
         vc.setCollectSource(existing_collect);
@@ -360,30 +360,33 @@ public class TranslationMessageTest extends BaseTestClass {
         Locale locale1 = new Locale("en", "US");
         String key1 = "MessagesNotFound";
         
-        SourceOpt srcOpt = new ResourceBundleSrcOpt("messages2", Locale.ENGLISH);
-        String source1 = srcOpt.getMessage(key1);
+        String source1 = gc.getSrcOpt().getMessage(key1);
         
-        String message1 = translation.getMessage(locale1, component1, srcOpt, key1);
+        String message1 = translation.getMessage(locale1, component1, key1);
         //String message1 = translation.getString(locale1, component1, key1, source1, "");
         String expected1 = "@@" + source1 + "@@";
         Assert.assertEquals(expected1, message1);
 
         // server already collected
         String key2 = "LeadTest";
-        String source2 = srcOpt.getMessage(key2);
-        String message2 = translation.getMessage(locale1, component1, srcOpt, key2);
+        String source2 = gc.getSrcOpt().getMessage(key2);
+        String message2 = translation.getMessage(locale1, component1, key2);
         //String message2 = translation.getString(locale1, component1, key2, source2, "");
         String expected2 = "@@" + source2 + "@@";
         Assert.assertEquals(expected2, message2);
 
         // source1 changed
-        srcOpt = new ResourceBundleSrcOpt("messages3", Locale.ENGLISH);
-        String source1_1 = srcOpt.getMessage(key1);
+        SourceOpt origSrcOpt = gc.getSrcOpt();
+        SourceOpt srcOpt = new ResourceBundleSrcOpt("messages3", Locale.ENGLISH);
+        gc.setSrcOpt(srcOpt);
+        String source1_1 = gc.getSrcOpt().getMessage(key1);
         
-        String message1_1 = translation.getMessage(locale1, component1, srcOpt, key1);
+        String message1_1 = translation.getMessage(locale1, component1, key1);
         //String message1_1 = translation.getString(locale1, component1, key1, source1_1, "");
         String expected1_1 = "@@" + source1_1 + "@@";
         Assert.assertEquals(expected1_1, message1_1);
+        
+        gc.setSrcOpt(origSrcOpt);
     }
     
     /*
@@ -439,10 +442,12 @@ public class TranslationMessageTest extends BaseTestClass {
         // new key and source
         Locale locale1 = new Locale("zh", "CN");
         String key1 = "MessagesNotFound";
+        SourceOpt origSrcOpt = gc.getSrcOpt();
         SourceOpt srcOpt = new ResourceBundleSrcOpt("messages2", Locale.ENGLISH);
+        gc.setSrcOpt(srcOpt);
         String source1 = srcOpt.getMessage(key1);
         
-        String message1 = translation.getMessage(locale1, component1, srcOpt, key1);
+        String message1 = translation.getMessage(locale1, component1, key1);
         
         String expected1 = "@@" + source1 + "@@";
         Assert.assertEquals(expected1, message1);
@@ -450,17 +455,19 @@ public class TranslationMessageTest extends BaseTestClass {
         // server already collected
         String key2 = "LeadTest";
         String source2 = "[{0}] Test alert";
-        String message2 = translation.getMessage(locale1, "JAVA", srcOpt, key2);
+        String message2 = translation.getMessage(locale1, "JAVA", key2);
         String expected2 = "#@" + source2 + "#@";
         Assert.assertEquals(expected2, message2);
 
         // source1 changed
         srcOpt = new ResourceBundleSrcOpt("messages3", Locale.ENGLISH);
+        gc.setSrcOpt(srcOpt);
         String source1_1 = srcOpt.getMessage(key1);
 
-        String message1_1 = translation.getMessage(locale1, component, srcOpt, key1);
+        String message1_1 = translation.getMessage(locale1, component, key1);
         String expected1_1 = "@@" + source1_1 + "@@";
         Assert.assertEquals(expected1_1, message1_1);
+        gc.setSrcOpt(origSrcOpt);
     }
     
     /*

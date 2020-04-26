@@ -48,29 +48,6 @@ public class TranslationMessage implements Message {
     public TranslationMessage() {
         super();
     }
-
-    
-    /**
-     * Gets the localized message 
-     * 
-     * @param locale The locale in which the message is requested to be localized
-     * @param component The Singleton component in which the message belongs
-     * @param key The key that represents the message
-     * @param args Values to replace placeholders in the message with 
-     * @return One of the items in the following priority-ordered list: 
-     * <ul>
-     * 		<li>The message in the requested locale</li> 
-     * 		<li>The message in the default locale</li>
-     * 		<li>key</li>
-     * </ul>
-     */
-    public String getMessage(final Locale locale, final String component, final String key, final Object... args) {
-    	String message = getCachedMessage(component, key, locale, args);
-    	if (message == null)
-    		return key;
-    	return FormatUtils.format(message, locale, args);	
-    }
-    
     
     /**
      * Retrieves the localized message from the cache
@@ -102,7 +79,7 @@ public class TranslationMessage implements Message {
      * 
      * @param locale The locale in which the message is requested to be localized
      * @param component The Singleton component in which the message belongs
-     * @param sourceOpt The SourceOpt object which gives access to the source messages written by developers
+     * @param sourceOpt The optional SourceOpt object which gives access to source messages
      * @param key The key that represents the message
      * @param args Values to replace placeholders in the message with
      * @return One of the items in the following priority-ordered list: 
@@ -110,41 +87,57 @@ public class TranslationMessage implements Message {
      * 		<li>The pseudo message, if isPseudo is true</li> 
      * 		<li>The message in the requested locale, if available</li>
      * 		<li>The message in the default locale, if available</li>
-     * 		<li>The message from SourceOpt</li>
+     * 		<li>The message from sourceOpt, if available</li>
+     * 		<li>key</li>
      * </ul>
      */
-    public String getMessage(final Locale locale, final String component, final SourceOpt sourceOpt,
-            final String key, final Object... args) {
+    public String getMessage(final Locale locale, final String component, final String key, final Object... args) {
     	String message = null;
+    	SourceOpt sourceOpt = VIPCfg.getInstance().getSrcOpt();
     	String source = (sourceOpt == null) ? null : sourceOpt.getMessage(key);
     	
+    	// If sourceOpt is defined, pseudo-translation which uses the source message is supported
     	if (VIPCfg.getInstance().isPseudo() && source != null && sourceOpt.getLocale().equals(locale)) {
     		return ConstantsKeys.PSEUDOCHAR2 + FormatUtils.format(source, sourceOpt.getLocale(), args) + ConstantsKeys.PSEUDOCHAR2;
     	}
     	
+    	// Get the message in the target locale
     	message = getCachedMessage(component, key, locale, args);
     	
+    	// If sourceOpt is defined and source message was retrieved, then you can use the source message:
+    	// 	a. if neither localized message nor default locale message was not retrieved successfully
+    	// 	b. for pseudo-translation
+    	//  c. if the message hasn't been collected for localization
     	if (source != null) {
+    		
+    		// a. Neither localized message nor default locale message was retrieved
     		if (message == null || message.isEmpty()) {
     			message = FormatUtils.format(source, sourceOpt.getLocale(), args);
+    			
+    			// b. Wrap the source message in pseudo tags for pseudo-translation
     			if (VIPCfg.getInstance().isPseudo()) {
     				message = ConstantsKeys.PSEUDOCHAR2 + message + ConstantsKeys.PSEUDOCHAR2;
     			}
     			return message;
+    			
+    		// c. If message was retrieved from cache, check if the message has been collected for localization 
     		} else if (!VIPCfg.getInstance().isPseudo()) {
-		    	// If the source message is not equal to the cached source (loaded from remote or from offline bundle file),
-		    	// it means that this source message hasn't been collected for localization, so return the source message
-	    		MessagesDTO sourceLocaleDTO = new MessagesDTO(component, key, source, sourceOpt.getLocale().toLanguageTag(), this.cfg);
-	    		StringService s = new StringService();
-	            String cachedSrcLocaleMsg = s.getString(sourceLocaleDTO);
+    			
+    			// Get the message in the source locale
+    			String cachedSrcLocaleMsg = getCachedMessage(component, key, sourceOpt.getLocale(), args); 
+    			
+	            // Cached messages are either from Singleton service or from an offline bundle.
+    			// If the message from SourceOpt is not the same as the cached message for the source locale, 
+		    	// then the source message hasn't been collected for localization, so use the source message.
 	            if (!source.equals(cachedSrcLocaleMsg) || 
 	            		cachedSrcLocaleMsg == null || cachedSrcLocaleMsg.isEmpty()) {
 	            	return FormatUtils.format(source, sourceOpt.getLocale(), args);
 	            }  
-		    	
     		}
     	}
-    	return FormatUtils.format(message, locale, args);	
+    	
+    	message = FormatUtils.format(message, locale, args);
+    	return message == null ? key : message;	
     }
     
     /**
