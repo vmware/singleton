@@ -12,6 +12,11 @@ import java.util.ResourceBundle;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.SourceOpt;
 
+/**
+ * 
+ * SourceOpt implementation that gets source messages from a ResourceBundle .properties file
+ * 
+ */
 public class ResourceBundleSrcOpt implements SourceOpt {
 	
     private ResourceBundle rb;

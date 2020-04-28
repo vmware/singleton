@@ -55,7 +55,6 @@ public class TranslationMessage implements Message {
      * @param component The Singleton component in which the message belongs
      * @param key The key that represents the message
      * @param locale The locale in which the message is requested to be localized
-     * @param args Values to replace placeholders in the message with
      * @return One of the items in the following priority-ordered list: 
      * <ul>
      * 		<li>The message in the requested locale</li> 
@@ -63,7 +62,7 @@ public class TranslationMessage implements Message {
      * 		<li>null</li>
      * </ul>
      */
-    private String getCachedMessage(String component, String key, Locale locale, Object[] args) {
+    private String getCachedMessage(String component, String key, Locale locale) {
     	MessagesDTO dto = new MessagesDTO(component, key, null, locale.toLanguageTag(), this.cfg);
     	StringService s = new StringService();
     	return s.getString(dto);
@@ -102,7 +101,7 @@ public class TranslationMessage implements Message {
     	}
     	
     	// Get the message in the target locale
-    	message = getCachedMessage(component, key, locale, args);
+    	message = getCachedMessage(component, key, locale);
     	
     	// If sourceOpt is defined and source message was retrieved, then you can use the source message:
     	// 	a. if neither localized message nor default locale message was not retrieved successfully
@@ -124,13 +123,12 @@ public class TranslationMessage implements Message {
     		} else if (!VIPCfg.getInstance().isPseudo()) {
     			
     			// Get the message in the source locale
-    			String cachedSrcLocaleMsg = getCachedMessage(component, key, sourceOpt.getLocale(), args); 
+    			String cachedSrcLocaleMsg = getCachedMessage(component, key, sourceOpt.getLocale()); 
     			
 	            // Cached messages are either from Singleton service or from an offline bundle.
     			// If the message from SourceOpt is not the same as the cached message for the source locale, 
 		    	// then the source message hasn't been collected for localization, so use the source message.
-	            if (!source.equals(cachedSrcLocaleMsg) || 
-	            		cachedSrcLocaleMsg == null || cachedSrcLocaleMsg.isEmpty()) {
+	            if (!source.equals(cachedSrcLocaleMsg)) {
 	            	return FormatUtils.format(source, sourceOpt.getLocale(), args);
 	            }  
     		}

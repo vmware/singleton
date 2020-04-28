@@ -63,6 +63,13 @@ public class VIPCfg {
     private String                     vipServer;
     private String                     i18nScope     = "numbers,dates,currencies,plurals,measurements";
     private String					   offlineResourcesBaseUrl;
+    
+    /**
+     * The SourceOpt object to access source messages. 
+     * e.g. ResourceBundleSrcOpt is the SourceOpt implementation that retrieves source messages from a .properties file. 
+     * If source messages need to come from another location such as a DB, then have another implementation like DBSourceOpt.
+     * 
+     */
     private SourceOpt				   srcOpt;
     
     // define key for cache management
