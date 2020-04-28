@@ -1,3 +1,7 @@
+/*
+ * Copyright 2019 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 package com.vmware.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
