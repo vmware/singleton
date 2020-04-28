@@ -95,46 +95,35 @@ public class TranslationMessage implements Message {
     	SourceOpt sourceOpt = VIPCfg.getInstance().getSrcOpt();
     	String source = (sourceOpt == null) ? null : sourceOpt.getMessage(key);
     	
-    	// If sourceOpt is defined, pseudo-translation which uses the source message is supported
-    	if (VIPCfg.getInstance().isPseudo() && source != null && sourceOpt.getLocale().equals(locale)) {
-    		return ConstantsKeys.PSEUDOCHAR2 + FormatUtils.format(source, sourceOpt.getLocale(), args) + ConstantsKeys.PSEUDOCHAR2;
-    	}
-    	
     	// Get the message in the target locale
     	message = getCachedMessage(component, key, locale);
     	
-    	// If sourceOpt is defined and source message was retrieved, then you can use the source message:
-    	// 	a. if neither localized message nor default locale message was not retrieved successfully
-    	// 	b. for pseudo-translation
-    	//  c. if the message hasn't been collected for localization
+    	// If sourceOpt is defined and source message was retrieved, then you can use the source message for:
+    	// 	a. if neither localized message nor default locale message was retrieved successfully
+    	// 	b. if the message hasn't been collected for localization 
+    	//  c. for client-side pseudo-translation in FormatUtils.format
     	if (source != null) {
-    		
     		// a. Neither localized message nor default locale message was retrieved
     		if (message == null || message.isEmpty()) {
     			message = FormatUtils.format(source, sourceOpt.getLocale(), args);
     			
-    			// b. Wrap the source message in pseudo tags for pseudo-translation
-    			if (VIPCfg.getInstance().isPseudo()) {
-    				message = ConstantsKeys.PSEUDOCHAR2 + message + ConstantsKeys.PSEUDOCHAR2;
-    			}
-    			return message;
-    			
-    		// c. If message was retrieved from cache, check if the message has been collected for localization 
-    		} else if (!VIPCfg.getInstance().isPseudo()) {
-    			
+    		// b. If message was retrieved from cache, check if the message has been collected for localization 
+    		} else {  			
     			// Get the message in the source locale
     			String cachedSrcLocaleMsg = getCachedMessage(component, key, sourceOpt.getLocale()); 
     			
 	            // Cached messages are either from Singleton service or from an offline bundle.
     			// If the message from SourceOpt is not the same as the cached message for the source locale, 
 		    	// then the source message hasn't been collected for localization, so use the source message.
-	            if (!source.equals(cachedSrcLocaleMsg)) {
-	            	return FormatUtils.format(source, sourceOpt.getLocale(), args);
-	            }  
+	            if (!message.startsWith(ConstantsKeys.PSEUDOCHAR) && !source.equals(cachedSrcLocaleMsg)) {
+	            	message = FormatUtils.format(source, sourceOpt.getLocale(), args);
+	            } else {
+	            	message = FormatUtils.format(message, locale, args);
+	            }
     		}
+    	} else {
+    		message = FormatUtils.format(message, locale, args);
     	}
-    	
-    	message = FormatUtils.format(message, locale, args);
     	return message == null ? key : message;	
     }
     
@@ -196,10 +185,10 @@ public class TranslationMessage implements Message {
 
         if (args != null && args.length > 0) {
             if ((null != translation && translation.equals(source)) || VIPCfg.getInstance().isPseudo()) {
-                translation = FormatUtils.format(translation,
+                translation = FormatUtils.formatMsg(translation,
                         LocaleUtility.defaultLocale, args);
             } else {
-                translation = FormatUtils.format(translation, locale, args);
+                translation = FormatUtils.formatMsg(translation, locale, args);
             }
         }
         return translation;
