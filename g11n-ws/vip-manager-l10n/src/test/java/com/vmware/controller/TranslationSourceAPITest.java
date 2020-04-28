@@ -58,10 +58,10 @@ public class TranslationSourceAPITest {
 		}
 		
 		@Test
-		public void test002collectV1StringTranslation() throws Exception {
+		public void test002v2createsource() throws Exception {
 			MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(
 					webApplicationContext).build();
-			String API = L10nI18nAPI.KEYS_TRANSLATION_APIV2
+			String API = L10nI18nAPI.TRANSLATION_SOURCE_APIV2
 					.replace("{" + APIParamName.PRODUCT_NAME + "}", "devCenter")
 					.replace("{" + APIParamName.VERSION + "}", "2.2.0")
 					.replace("{" + APIParamName.COMPONENT + "}", "test")
