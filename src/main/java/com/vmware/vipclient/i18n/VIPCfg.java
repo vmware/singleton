@@ -65,10 +65,12 @@ public class VIPCfg {
     private String					   offlineResourcesBaseUrl;
     
     /**
-     * The SourceOpt object to access source messages. 
+     * The optional SourceOpt object to access source messages. If SourceOpt is defined, then you can use a source message:
+     * 	a. as fallback if neither localized message nor default locale message was not retrieved successfully
+     * 	b. for pseudo-translation
+     * 	c. if the message hasn't been collected for localization
      * e.g. ResourceBundleSrcOpt is the SourceOpt implementation that retrieves source messages from a .properties file. 
      * If source messages need to come from another location such as a DB, then have another implementation like DBSourceOpt.
-     * 
      */
     private SourceOpt				   srcOpt;
     
