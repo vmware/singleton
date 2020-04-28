@@ -66,9 +66,9 @@ public class VIPCfg {
     
     /**
      * The optional SourceOpt object to access source messages. If SourceOpt is defined, then you can use a source message:
-     * 	a. as fallback if neither localized message nor default locale message was not retrieved successfully
-     * 	b. for pseudo-translation
-     * 	c. if the message hasn't been collected for localization
+     * 	a. as fallback if neither localized message nor default locale message was retrieved successfully
+     * 	b. if the message hasn't been collected for localization
+     *  c. for client-side pseudo-translation
      * e.g. ResourceBundleSrcOpt is the SourceOpt implementation that retrieves source messages from a .properties file. 
      * If source messages need to come from another location such as a DB, then have another implementation like DBSourceOpt.
      */
