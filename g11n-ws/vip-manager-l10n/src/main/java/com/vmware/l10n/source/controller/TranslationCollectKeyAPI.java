@@ -63,12 +63,11 @@ public class TranslationCollectKeyAPI {
 			@ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = true, defaultValue = "true") String collectSource,
 			//@ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
 			HttpServletRequest request) throws L10nAPIException {
-		String newComponent = StringUtils.isEmpty(component) ? ConstantsFile.DEFAULT_COMPONENT : component;
 		String newLocale =  StringUtils.isEmpty(locale) ? ConstantsUnicode.EN : locale;
 		String newKey = StringUtils.isEmpty(sourceFormat) ? key
 				: (key + ConstantsChar.DOT + ConstantsChar.POUND + sourceFormat.toUpperCase());
 		String newSource = source == null ? "" : source;
-		StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, newComponent, newLocale, newKey,
+		StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, newLocale, newKey,
 				newSource, commentForSource, sourceFormat);
 		boolean isSourceCached = sourceService.cacheSource(sourceObj);
 		return SourceUtils.handleSourceResponse(isSourceCached);
@@ -108,7 +107,6 @@ public class TranslationCollectKeyAPI {
 			//@ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
 			HttpServletRequest request)
 			throws L10nAPIException {
-		String newComponent = StringUtils.isEmpty(component) ? ConstantsFile.DEFAULT_COMPONENT : component;
 		String newLocale = locale == null ? ConstantsUnicode.EN : locale;
 		String newKey = StringUtils.isEmpty(sourceFormat) ? key
 				: (key + ConstantsChar.DOT + ConstantsChar.POUND + sourceFormat.toUpperCase());
@@ -117,7 +115,7 @@ public class TranslationCollectKeyAPI {
 		if(!StringUtils.isEmpty(source) || !StringUtils.isEmpty(querySource)) {
 		   newSource = source == null ? querySource : source;
 		}
-		StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, newComponent, newLocale, newKey,
+		StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, newLocale, newKey,
 				newSource, commentForSource, sourceFormat);
 		boolean isSourceCached = sourceService.cacheSource(sourceObj);
 		return SourceUtils.handleSourceResponse(isSourceCached);

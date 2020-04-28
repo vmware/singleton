@@ -54,7 +54,23 @@ public class TranslationCollectKeyAPITest {
 			 String resultStr =   mvcRS.getResponse().getContentAsString();
 			   
 			   logger.info(resultStr);
-			
+			 
+				MvcResult mvcRS2 =mockMvc.perform(
+						MockMvcRequestBuilders.post(API).param(Constants.VERSION, "1.0.0")
+						        .param(APIParamName.PRODUCT_NAME, "PRODUCTTEST")
+						        .param(APIParamName.COMPONENT, "testComp")
+						       /// .param(APIParamName.LOCALE, "en")
+						        .param(APIParamName.KEY, "testsourcenullkey")
+						       // .param(APIParamName.SOURCE_FORMAT, "")
+						        .param(APIParamName.COLLECT_SOURCE, "true")
+								//.param(Constants.SOURCE, "this open3's value")
+								//.param(Constants.COMMENT_FOR_SOURCE, "dc new string")
+								.accept(MediaType.APPLICATION_JSON))
+						.andExpect(status().isOk()).andReturn();
+				
+				 String resultStr2 =   mvcRS2.getResponse().getContentAsString();
+				   
+				   logger.info(resultStr2);
 			
 		}
 
@@ -74,8 +90,6 @@ public class TranslationCollectKeyAPITest {
 					        .param(APIParamName.LOCALE, "en")
 							.param(APIParamValue.SOURCE, "this open3's value")
 							.param(APIParamName.COMMENT_SOURCE, "dc new string")
-							.param(APIParamName.LOCALE, "en")
-							.param(APIParamName.SOURCE_FORMAT, "")
 							.param(APIParamName.COLLECT_SOURCE, "true")
 							.accept(MediaType.APPLICATION_JSON))
 					.andExpect(status().isOk()).andReturn();
@@ -84,7 +98,17 @@ public class TranslationCollectKeyAPITest {
 			   
 			   logger.info(resultStr);
 			
-			
+			   MvcResult mvcRS2 =mockMvc.perform(
+						MockMvcRequestBuilders.post(API)
+						        .param(Constants.VERSION, "1.1.0")
+						        .content("test body request")
+								.param(APIParamName.COLLECT_SOURCE, "true")
+								.accept(MediaType.APPLICATION_JSON))
+						.andExpect(status().isOk()).andReturn();
+				
+				 String resultStr2 =   mvcRS2.getResponse().getContentAsString();
+				   
+				   logger.info(resultStr2);
 		}
 		
 		@Test
@@ -101,7 +125,6 @@ public class TranslationCollectKeyAPITest {
 					        .param(APIParamName.LOCALE, "en")
 							.param(APIParamValue.SOURCE, "this open3's value")
 							.param(APIParamName.COMMENT_SOURCE, "dc new string")
-							.param(APIParamName.LOCALE, "en")
 							.param(APIParamName.SOURCE_FORMAT, "")
 							.param(APIParamName.COLLECT_SOURCE, "true")
 							.accept(MediaType.APPLICATION_JSON))
@@ -111,22 +134,35 @@ public class TranslationCollectKeyAPITest {
 			   
 			   logger.info(resultStr);
 			
-			
+			   MvcResult mvcRS2 =mockMvc.perform(
+						MockMvcRequestBuilders.post(API)
+						        .param(Constants.VERSION, "1.1.0")
+						        .param(APIParamName.LOCALE, "en")
+								.param(APIParamValue.SOURCE, "this open3's value")
+								.param(APIParamName.COMMENT_SOURCE, "dc new string")
+								.param(APIParamName.COLLECT_SOURCE, "true")
+								.accept(MediaType.APPLICATION_JSON))
+						.andExpect(status().isOk()).andReturn();
+				
+				 String resultStr2 =   mvcRS2.getResponse().getContentAsString();
+				   
+				   logger.info(resultStr2);
 		}
 		
 		@Test
 		public void test004collectV2KeyTranslation() throws Exception {
 			MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(
 					webApplicationContext).build();
-			String API = L10nI18nAPI.KEYS_TRANSLATION_APIV2
-					.replace("{" + APIParamName.PRODUCT_NAME + "}", "devCenter")
+			String API = L10nI18nAPI.KEY_TRANSLATION_APIV2
+					.replace("{" + APIParamName.PRODUCT_NAME + "}", "TestCenter")
 					.replace("{" + APIParamName.VERSION + "}", "2.0.0")
-					.replace("{" + APIParamName.COMPONENT + "}", "test")
+					.replace("{" + APIParamName.COMPONENT + "}", "testing")
 					.replace("{" + APIParamName.LOCALE + "}", "en")
-					.replace("{" +APIParamName.KEY+ "}", "dc.myhome.open3");
+					.replace("{" +APIParamName.KEY+ "}", "testkey");
+			 logger.info(API);
 			MvcResult mvcRS =mockMvc.perform(
 					MockMvcRequestBuilders.post(API)
-							.param(APIParamValue.SOURCE, "this open3's value")
+							.content("this open3's value")
 							.param(APIParamName.COMMENT_SOURCE, "dc new string")
 							.param(APIParamName.SOURCE_FORMAT, "")
 							.param(APIParamName.COLLECT_SOURCE, "true")
@@ -148,24 +184,25 @@ public class TranslationCollectKeyAPITest {
 					"    \"commentForSource\": \"testa comment\",\r\n" + 
 					"    \"key\": \"testa\",\r\n" + 
 					"    \"source\": \"this is a testa source\"\r\n" + 
-					"  }\r\n" + 
+					"  }\r\n" + ","+
 					"  {\r\n" + 
 					"    \"commentForSource\": \"testb comment\",\r\n" + 
 					"    \"key\": \"testb\",\r\n" + 
 					"    \"source\": \"this is a testb source\"\r\n" + 
 					"  }\r\n" + 
 					"]";
+			logger.info(jsonStr);
 			MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(
 					webApplicationContext).build();
 			String API = L10nI18nAPI.KEYS_TRANSLATION_APIV2
-					.replace("{" + APIParamName.PRODUCT_NAME + "}", "devCenter")
+					.replace("{" + APIParamName.PRODUCT_NAME + "}", "devtest")
 					.replace("{" + APIParamName.VERSION + "}", "2.1.0")
-					.replace("{" + APIParamName.COMPONENT + "}", "test")
+					.replace("{" + APIParamName.COMPONENT + "}", "testmult")
 					.replace("{" + APIParamName.LOCALE + "}", "en");
 			MvcResult mvcRS =mockMvc.perform(
 					MockMvcRequestBuilders.post(API)
-							.param(APIParamName.COLLECT_SOURCE, "true")
 							.content(jsonStr)
+							.param(APIParamName.COLLECT_SOURCE, "true")
 							.accept(MediaType.APPLICATION_JSON))
 					.andExpect(status().isOk()).andReturn();
 			
