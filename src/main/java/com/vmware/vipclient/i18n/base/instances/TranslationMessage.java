@@ -18,7 +18,6 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
-import com.vmware.vipclient.i18n.messages.api.opt.SourceOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ComponentService;
 import com.vmware.vipclient.i18n.messages.service.ComponentsService;
@@ -92,49 +91,40 @@ public class TranslationMessage implements Message {
      */
     public String getMessage(final Locale locale, final String component, final String key, final Object... args) {
     	String message = null;
-    	SourceOpt sourceOpt = VIPCfg.getInstance().getSrcOpt();
-    	String source = (sourceOpt == null) ? null : sourceOpt.getMessage(key);
     	
     	// Get the message in the target locale
-    	message = getCachedMessage(component, key, locale);
+    	message = FormatUtils.format(getCachedMessage(component, key, locale), locale, args);
     	
-    	// If sourceOpt is defined and source message was retrieved, then you can use the source message for:
+    	// TODO Use source message for 
     	// 	a. if neither localized message nor default locale message was retrieved successfully
     	// 	b. if the message hasn't been collected for localization 
     	//  c. for client-side pseudo-translation in FormatUtils.format
-    	if (source != null) {
-    		// a. Neither localized message nor default locale message was retrieved
-    		if (message == null || message.isEmpty()) {
-    			message = FormatUtils.format(source, sourceOpt.getLocale(), args);
-    			
-    		// b. If message was retrieved from cache, check if the message has been collected for localization 
-    		} else {  			
-    			// Get the message in the source locale
-    			String cachedSrcLocaleMsg = getCachedMessage(component, key, sourceOpt.getLocale()); 
-    			
-	            // Cached messages are either from Singleton service or from an offline bundle.
-    			// If the message from SourceOpt is not the same as the cached message for the source locale, 
-		    	// then the source message hasn't been collected for localization, so use the source message.
-	            if (!message.startsWith(ConstantsKeys.PSEUDOCHAR) && !source.equals(cachedSrcLocaleMsg)) {
-	            	message = FormatUtils.format(source, sourceOpt.getLocale(), args);
-	            } else {
-	            	message = FormatUtils.format(message, locale, args);
-	            }
-    		}
-    	} else {
-    		message = FormatUtils.format(message, locale, args);
-    	}
+
     	return message == null ? key : message;	
     }
     
     /**
      * get a translation under the component of the configured product
      *
-     * @deprecated  Not for public use. 
-     * 	Replaced by {@link #getMessage(Locale, String, String, Object...)} 
-     * 		or {@link #getMessage(Locale, String, SourceOpt, String, Object...)}
-     */
-    @Deprecated public String getString(final Locale locale, final String component,
+     * @param locale
+     *            an object used to get the source's translation
+     * @param component
+     *            defined on VIP service, it will be created automatically if
+     *            not exist
+     * @param key
+     *            identify the source
+     * @param source
+     *            it's English source which will be return if no translation
+     *            available
+     * @param comment
+     *            used to describe the source to help understand the source for
+     *            the translators.
+     * @param args
+     *            used to format the message with placeholder, it's not required
+     *            if the message doesn't contain any placeholder
+     * @return string
+     */ 
+    public String getString(final Locale locale, final String component,
             final String key, final String source, final String comment, final Object... args) {
         this.logger.trace("Start to execute TranslationMessage.getString");
         if (key == null || key.equalsIgnoreCase(""))
@@ -346,13 +336,28 @@ public class TranslationMessage implements Message {
     }
 
     /**
+     * get one translation of the configured product from VIP, if message not
+     * found will get the English message from specified bundle.
      * get a translation under the component of the configured product
      *
-     * @deprecated  Not for public use. 
-     * 	Replaced by {@link #getMessage(Locale, String, String, Object...)} 
-     * 		or {@link #getMessage(Locale, String, SourceOpt, String, Object...)}
+     * @param component
+     *            defined on VIP service, it will be created automatically if
+     *            not exist
+     * @param bundle
+     *            properties file name, normally it should be put under the root
+     *            'src' path
+     * @param locale
+     *            an object used to get the source's translation
+     * @param key
+     *            identify the source
+     * @param args
+     *            used to format the message with placeholder, it's not required
+     *            if the message doesn't contain any placeholder
+     * @return a message of translation, if the translation is not found from
+     *         VIP service, it will return the value defined in the bundle
+     *         searching by the key
      */
-    @Deprecated public String getString2(final String component,
+    public String getString2(final String component,
             final String bundle, final Locale locale, final String key, final Object... args) {
         this.logger.trace("Start to execute TranslationMessage.getString2");
         if (key == null || key.equalsIgnoreCase(""))

@@ -63,21 +63,12 @@ public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
 	        if (responseCode.equals(HttpURLConnection.HTTP_OK)) {
 		        JSONObject respObj = (JSONObject) JSONValue.parse((String) response.get(URLUtils.BODY));
 		        try {
-	        		if (getResponseCode(respObj) == 200 && 
-	        				// If the response is 200, there are 2 possible cases:
-	        				// 1. the response's locale matches the request's locale OR
-	        				// 2. the response's locale is for the default locale (service's fall back behavior)
-	        				// Use the response only if its locale matches the request's locale
-	        				(LocaleUtility.isDefaultLocale(this.dto.getLocale()) || 
-	        						!LocaleUtility.isDefaultLocale(getLocale(respObj)))){    	
-
+	        		if (getResponseCode(respObj) == 200){    	
 				        Map<String,String> messages = this.getMsgsJson(response);
 				        if (messages != null) {
 				        	cacheItem.addCachedData(messages);
 				        }
-			        	
         			}
-        		
 	        	} catch (Exception e) {
 	        		logger.error("Failed to get messages");
 	        	}

@@ -34,6 +34,7 @@ public class CacheServiceTest extends BaseTestClass {
     Object[] args = { "a" };
 
     MessagesDTO dto = new MessagesDTO();
+    VIPCfg cfg;
     
     @Before
     public void init() {
@@ -41,18 +42,17 @@ public class CacheServiceTest extends BaseTestClass {
         dto.setKey(key);
         dto.setSource(source);
         dto.setLocale(locale.toLanguageTag());
-        VIPCfg.resetInstance();
+        cfg = VIPCfg.getInstance();
+        try {
+            cfg.initialize("vipconfig");
+        } catch (VIPClientInitException e) {
+            logger.error(e.getMessage());
+        }
     }
     
     @Test
     public void testCacheNoUpdateIfErrorResponse() {
-    	VIPCfg gc = VIPCfg.getInstance();
-        try {
-            gc.initialize("vipconfig");
-        } catch (VIPClientInitException e) {
-            logger.error(e.getMessage());
-        }
-    	gc.initializeVIPService();
+    	cfg.initializeVIPService();
         
         Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
         TranslationCacheManager.cleanCache(c);
@@ -79,13 +79,10 @@ public class CacheServiceTest extends BaseTestClass {
     
     @Test
     public void testNotExpired() {
-    	VIPCfg gc = VIPCfg.getInstance();
-        try {
-            gc.initialize("vipconfig-no-cache-expired-time");
-        } catch (VIPClientInitException e) {
-            logger.error(e.getMessage());
-        }
-    	gc.initializeVIPService();
+    	long cacheExpiredTimeOrig = cfg.getCacheExpiredTime();
+    	cfg.setCacheExpiredTime(0l);
+    	
+    	cfg.initializeVIPService();
         
         Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
         TranslationCacheManager.cleanCache(c);
@@ -120,17 +117,16 @@ public class CacheServiceTest extends BaseTestClass {
         cacheItem = cs.getCacheOfComponent();
         Long responseTime2 = cacheItem.getTimestamp();
         assertEquals(responseTime2,responseTime); 
+        
+        cfg.setCacheExpiredTime(cacheExpiredTimeOrig);
     }
     
     @Test
     public void testExpireUsingCacheControlMaxAge() {
-    	VIPCfg gc = VIPCfg.getInstance();
-        try {
-            gc.initialize("vipconfig-no-cache-expired-time");
-        } catch (VIPClientInitException e) {
-            logger.error(e.getMessage());
-        }
-    	gc.initializeVIPService();
+    	long cacheExpiredTimeOrig = cfg.getCacheExpiredTime();
+    	cfg.setCacheExpiredTime(0l);
+    	
+    	cfg.initializeVIPService();
         
         Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
         TranslationCacheManager.cleanCache(c);
@@ -164,24 +160,19 @@ public class CacheServiceTest extends BaseTestClass {
         assertTrue(responseTime2.equals(responseTime)); 
         assertTrue(cacheItem.getMaxAgeMillis() == 0l);
         
-        // TODO: Teasting for asynchronous thread
+        // TODO: Testing for asynchronous thread
         // The response time has been updated by the separate thread 
         // responseTime2 = cacheItem.getTimestamp();
         // assertTrue(responseTime2 > responseTime); 
         // assertTrue(cacheItem.getMaxAgeMillis() > 0l);
+        
+        cfg.setCacheExpiredTime(cacheExpiredTimeOrig);
     }
     
     @Test
     @Deprecated
     public void testExpireUsingCacheExpiredTimeConfig() { 
-    	VIPCfg gc = VIPCfg.getInstance();
-
-        try {
-            gc.initialize("vipconfig");
-        } catch (VIPClientInitException e) {
-            logger.error(e.getMessage());
-        }
-    	gc.initializeVIPService();
+    	cfg.initializeVIPService();
     	
     	// If cacheExpiredTime config is set, it means  that the value of this config will be used 
     	// to indicate cache expiration. Cache control max age from http response will be ignored.

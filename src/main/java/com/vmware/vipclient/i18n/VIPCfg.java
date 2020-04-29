@@ -21,7 +21,6 @@ import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.CacheMode;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
-import com.vmware.vipclient.i18n.messages.api.opt.SourceOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ProductService;
 
@@ -50,7 +49,7 @@ public class VIPCfg {
 
     // define the global parameters
     private boolean                    pseudo;
-    @Deprecated
+
     private boolean                    collectSource;
     private boolean                    cleanCache;
     private long                       cacheExpiredTime;
@@ -64,15 +63,6 @@ public class VIPCfg {
     private String                     i18nScope     = "numbers,dates,currencies,plurals,measurements";
     private String					   offlineResourcesBaseUrl;
     
-    /**
-     * The optional SourceOpt object to access source messages. If SourceOpt is defined, then you can use a source message:
-     * 	a. as fallback if neither localized message nor default locale message was retrieved successfully
-     * 	b. if the message hasn't been collected for localization
-     *  c. for client-side pseudo-translation
-     * e.g. ResourceBundleSrcOpt is the SourceOpt implementation that retrieves source messages from a .properties file. 
-     * If source messages need to come from another location such as a DB, then have another implementation like DBSourceOpt.
-     */
-    private SourceOpt				   srcOpt;
     
     // define key for cache management
     public static final String         CACHE_L3      = "CACHE_L3";
@@ -81,7 +71,7 @@ public class VIPCfg {
     public boolean isSubInstance() {
         return isSubInstance;
     }
-
+    
     public void setSubInstance(boolean subInstance) {
         isSubInstance = subInstance;
     }
@@ -102,10 +92,6 @@ public class VIPCfg {
             gcInstance = new VIPCfg();
         }
         return gcInstance;
-    }
-    
-    public static synchronized void resetInstance() {
-        gcInstance = null;
     }
 
     /**
@@ -144,16 +130,6 @@ public class VIPCfg {
      * Initialize VIPCfg instance using a configuration file
      * 
      * @param cfg The configuration file
-     * @param srcOpt The optional SourceOpt object which gives access to source messages
-     */
-    public void initialize(String cfg, SourceOpt srcOpt) throws VIPClientInitException {
-    	initialize(cfg);
-    	this.setSrcOpt(srcOpt);
-    }
-    /**
-     * Initialize VIPCfg instance using a configuration file
-     * 
-     * @param cfg The configuration file
      */
     public void initialize(String cfg) throws VIPClientInitException {
     	ResourceBundle prop = ResourceBundle.getBundle(cfg);
@@ -174,12 +150,13 @@ public class VIPCfg {
         // so add DataSourceEnum.VIP first to msgOriginsQueue
         if (prop.containsKey("vipServer")) {
             this.vipServer = prop.getString("vipServer");
-            this.msgOriginsQueue.add(DataSourceEnum.VIP);
+            this.addMsgOriginsQueue(DataSourceEnum.VIP);
         }
         if (prop.containsKey("offlineResourcesBaseUrl")) {
         	this.offlineResourcesBaseUrl = prop.getString("offlineResourcesBaseUrl");
-        	this.msgOriginsQueue.add(DataSourceEnum.Bundle);
+        	this.addMsgOriginsQueue(DataSourceEnum.Bundle);
         }
+        
         if (prop.containsKey("pseudo"))
             this.pseudo = Boolean.parseBoolean(prop.getString("pseudo"));
         if (prop.containsKey("collectSource"))
@@ -342,12 +319,10 @@ public class VIPCfg {
         this.pseudo = pseudo;
     }
 
-    @Deprecated
     public boolean isCollectSource() {
         return collectSource;
     }
 
-    @Deprecated
     public void setCollectSource(boolean collectSource) {
         this.collectSource = collectSource;
     }
@@ -448,15 +423,12 @@ public class VIPCfg {
 		return msgOriginsQueue;
 	}
 
+	public void addMsgOriginsQueue(DataSourceEnum dataSource) {
+		this.msgOriginsQueue.add(dataSource);
+	}
+
 	public void setMsgOriginsQueue(List<DataSourceEnum> msgOriginsQueue) {
 		this.msgOriginsQueue = msgOriginsQueue;
 	}
-
-	public SourceOpt getSrcOpt() {
-		return srcOpt;
-	}
-
-	public void setSrcOpt(SourceOpt srcOpt) {
-		this.srcOpt = srcOpt;
-	}
+	
 }
