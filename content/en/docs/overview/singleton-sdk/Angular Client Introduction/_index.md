@@ -27,7 +27,7 @@ Besides Localization, singleton client also provides I18n support for Datetime f
 - 1.x (support Angular4.x & Angular5.x)
 - 0.7.x is no longer maintained, only for bugfix
 
->"VIPServiceConfig" has been removed from Version 8.x and the singleton host information are listed here: [Singleton instances](./singleton-instances). For more changes in Version 8.x, please check the changelog.
+>"VIPServiceConfig" has been removed from Version 8.x. For more changes in Version 8.x, please check the changelog.
 
 
 #### **Installation**
@@ -52,7 +52,7 @@ Besides Localization, singleton client also provides I18n support for Datetime f
 |     productID      | required |             string             | Product name. singleton service doesn’t explicitly restrict name of product, but it's better to keep short and sync with the name in release master. |
 |     component      | required |             string             | Component name. singleton internal concept is used to divide UI strings into different units according to certain rules, make sure each component doesn’t exceed 5000 strings. |
 |      version       | required |             string             | Release version. singleton internal concept is used to indicate the current version of the UI strings. |
-|        host        | required |             string             | URL of singleton host, please refer to the known [Singleton Instances](https://confluence.eng.vmware.com/pages/viewpage.action?spaceKey=GQ&title=VIP+Instances). The host can be optional when an isolated feature module which configured with translationBundles. |
+|        host        | required |             string             | This is singleton service which provides clients with translations and pattern.  The host can be optional when an isolated feature module which configured with translationBundles. |
 |     i18nScope      | optional |               []               | Define the scope of i18n support. The default scope is empty.<br/>PatternCategories.DATE means date&time format support.<br/>PatternCategories.NUMBER means decimal and percent format support.<br/>PatternCategories.PLURAL means single plural support.<br/>PatternCategories.CURRENCIES means currency format support.<br/>PatternCategories.DATEFIELDS means relative time format support. |
 |      isPseudo      | optional |             string             | A flag to determine whether to show pseudo translation in debugging or developing stage. |
 |   collectSource    | optional |             string             | A flag to determine whether to push source strings to singleton service, but new UI strings will be only collected on singleton staging instance for the translations when collectSource is set properly to true. The application in CSP platform which needs to consume singleton service should add auth token for source collection request. |

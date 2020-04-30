@@ -33,7 +33,7 @@ Use npm command line script to download locale data (translation and formatting 
 |  Parameter  |    Type    |  Value   |                         Description                          |
 | :---------: | :--------: | :------: | :----------------------------------------------------------: |
 | --directory |   string   | required |        The directory you want to put locale data in.         |
-|   --host    |   string   | required | About singleton host, please see [singleton Instances](../singleton-instances). |
+|   --host    |   string   | required | This is singleton service which provides clients with translations and pattern. |
 |  --product  |   string   | required | Product name. For now, singleton service doesn’t explicitly restrict name of product, but it's better to keep short and sync with the name in release master. |
 | --component |   string   | required |                       Component name.                        |
 |  --version  |   string   | required |                       Release version.                       |

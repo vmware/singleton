@@ -22,7 +22,7 @@ Download the specified languages of translation files in your project location.
 | Parameter |  Type  | Value  |             Description             |
 | :---------: | :--------: | :------: | :----------------------------------------------------------: |
 | --directory |  string  | required |    The directory you want to put translations in.    |
-|  --host  |  string  | required | About singleton host, please see [Singleton Instances](../singleton-instances). |
+|  --host  |  string  | required | This is singleton service which provides clients with translations and pattern. |
 | --product |  string  | required | Product name. For now, singleton service doesn’t explicitly restrict name of product, but it's better to keep short and sync with the name in release master. |
 | --component |  string  | required |            Component name.            |
 | --version |  string  | required |            Release version.            |
@@ -57,7 +57,7 @@ Collect source strings when using source bundle feature in the singleton
 |  Parameter   |       Type       |  Value   |                         Description                          |
 | :----------: | :--------------: | :------: | :----------------------------------------------------------: |
 | --source-dir |      string      | required |              The directory your source code in.              |
-|    --host    |      string      | required | About singleton host, please see [Singleton Instances](../singleton-instances). |
+|    --host    |      string      | required | This is singleton service which provides clients with translations and pattern. |
 |  --product   |      string      | required | Product name. For now, singleton service doesn’t explicitly restrict name of product, but it's better to keep short and sync with the name in release master. |
 | --component  |      string      | required |                       Component name.                        |
 |  --version   |      string      | required |                       Release version.                       |
