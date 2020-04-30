@@ -10,26 +10,30 @@ import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
+import com.vmware.vipclient.i18n.messages.api.opt.MessageOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
 import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+import com.vmware.vipclient.i18n.util.LocaleUtility;
 
-public class ComponentBasedOpt extends BaseOpt implements Opt {
+public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
     private final Logger      logger = LoggerFactory.getLogger(ComponentBasedOpt.class.getName());
     private MessagesDTO dto    = null;
-
+    
     public ComponentBasedOpt(final MessagesDTO dto) {
         this.dto = dto;
     }
 
+    @Override
     public void getComponentMessages(MessageCacheItem cacheItem) {
         String url = V2URL.getComponentTranslationURL(this.dto,
                 VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
@@ -55,13 +59,21 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
 	        	cacheItem.setEtag(URLUtils.createEtagString((Map<String, List<String>>) response.get(URLUtils.HEADERS)));
 	        if (response.get(URLUtils.MAX_AGE_MILLIS) != null)
 	        	cacheItem.setMaxAgeMillis((Long) response.get(URLUtils.MAX_AGE_MILLIS));
-	        
-        	if (responseCode.equals(HttpURLConnection.HTTP_OK)) {
-		        Map<String,String> messages = this.getMsgsJson(response);
-		        if (messages != null) {
-		        	cacheItem.addCachedData(messages);
-		        }
-        	}
+			      
+	        if (responseCode.equals(HttpURLConnection.HTTP_OK)) {
+		        JSONObject respObj = (JSONObject) JSONValue.parse((String) response.get(URLUtils.BODY));
+		        try {
+	        		if (getResponseCode(respObj) == 200){    	
+				        Map<String,String> messages = this.getMsgsJson(response);
+				        if (messages != null) {
+				        	cacheItem.addCachedData(messages);
+				        }
+        			}
+	        	} catch (Exception e) {
+	        		logger.error("Failed to get messages");
+	        	}
+	        }
+
         } 
     }
 
@@ -83,14 +95,6 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
 			}
     	}
     	return null;
-    }
-    
-    public String getString() {
-    	MessageCacheItem cacheItem = new MessageCacheItem();
-    	this.getComponentMessages(cacheItem);
-		
-		String message = cacheItem.getCachedData().get(this.dto.getKey());
-        return (message == null ? "" : message);
     }
 
     public String postString() {
@@ -151,4 +155,5 @@ public class ComponentBasedOpt extends BaseOpt implements Opt {
         }
         return status;
     }
+
 }

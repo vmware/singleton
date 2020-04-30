@@ -7,6 +7,8 @@ package com.vmware.vipclient.i18n.messages.service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.concurrent.FutureTask;
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -22,6 +24,7 @@ import com.vmware.vipclient.i18n.messages.api.opt.server.StringBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.JSONUtils;
+import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 public class StringService {
     Logger              logger = LoggerFactory.getLogger(StringService.class);
@@ -29,10 +32,36 @@ public class StringService {
     @SuppressWarnings("unchecked")
     public String getString(MessagesDTO dto) {
     	String key = dto.getKey();
+    	
+    	MessageCacheItem cacheItem = fetchMessages(dto);
+    	
+    	// If failed to get MessageCacheItem of a non-default locale, 
+    	// use MessageCacheItem of the default locale instead. 
+    	Map<String, String> cacheOfComponent = cacheItem.getCachedData();	
+    	if (cacheOfComponent.isEmpty() && !LocaleUtility.isDefaultLocale(dto.getLocale())) {
+			MessagesDTO defaultLocaleDTO = new MessagesDTO(dto.getComponent(), 
+					dto.getKey(), dto.getSource(), LocaleUtility.defaultLocale.toLanguageTag(), null);
+			// MessageCacheItem of the default locale
+			cacheItem = fetchMessages(defaultLocaleDTO);
+			
+			// The MessageCacheItem for the requested locale will be a reference 
+			// to the MessageCacheItem of the default locale 
+			if (!cacheItem.isCachedDataEmpty()) {
+				CacheService cacheService = new CacheService(dto);
+				cacheService.addCacheOfComponent(cacheItem);
+				cacheOfComponent = cacheItem.getCachedData();
+			}
+		}
+		return  cacheOfComponent.get(key) == null ? null : cacheOfComponent.get(key);
+    	
+    }
+    
+    public MessageCacheItem fetchMessages(MessagesDTO dto) {
     	CacheService cacheService = new CacheService(dto);
     	Map<String, String> cacheOfComponent = null;
+    	MessageCacheItem cacheItem = null;
     	if (cacheService.isContainComponent()) { // Item is in cache
-    		MessageCacheItem cacheItem = cacheService.getCacheOfComponent();
+    		cacheItem = cacheService.getCacheOfComponent();
     		cacheOfComponent = cacheItem.getCachedData();
     		if (cacheItem.isExpired()) { // cacheItem has expired
     			// Update the cache in a separate thread
@@ -40,39 +69,41 @@ public class StringService {
     		}
     	} else { // Item is not in cache
     		// Create a new cacheItem object to be stored in cache
-    		MessageCacheItem cacheItem = new MessageCacheItem();
-    		
-    		cacheOfComponent = populateCache(cacheService, dto, cacheItem);
+    		cacheItem = new MessageCacheItem();   		
+    		cacheOfComponent = populateCache(cacheService, dto, cacheItem).getCachedData();
     		
     		if (cacheOfComponent != null && !cacheOfComponent.isEmpty()) {
     			cacheService.addCacheOfComponent(cacheItem);
     		}
     	} 
-    	return (cacheOfComponent == null || cacheOfComponent.get(key) == null ? "" : cacheOfComponent.get(key));
+    	return cacheItem;
     }
     
 	private void populateCacheTask(final CacheService cacheService, MessagesDTO dto, MessageCacheItem cacheItem) {
-		Runnable task = () -> {
+		Callable<MessageCacheItem> callable = () -> {
     		try {
 		    	// Use the cacheProps that is already in the cache.
-		    	populateCache(cacheService, dto, cacheItem);
+    			MessageCacheItem updatedCacheItem = populateCache(cacheService, dto, cacheItem);
+    			return updatedCacheItem;
     		} catch (Exception e) { 
     			// To make sure that the thread will close 
     			// even when an exception is thrown
-		    	return;
+    			return null;
 		    }
 		};
-		new Thread(task).start();
+		FutureTask<MessageCacheItem> task = new FutureTask<MessageCacheItem>(callable); 
+		Thread thread = new Thread(task);
+		thread.start();	
 	}
 	
-	private Map<String, String> populateCache(CacheService cacheService, MessagesDTO dto, MessageCacheItem cacheItem) {
+	private MessageCacheItem populateCache(CacheService cacheService, MessagesDTO dto, MessageCacheItem cacheItem) {
     	// Pass cacheitem to getMessages so that:
 		// 1. A previously stored etag, if any, can be used for the next HTTP request.
 		// 2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed 
 		// 	 with new properties from the next HTTP response.	
-		new ComponentService(dto).getMessages(cacheItem);
+		new ComponentService(dto).getMessages(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
 		
-		return cacheItem.getCachedData();
+		return cacheItem;
     }
 
     public String postString(MessagesDTO dto) {

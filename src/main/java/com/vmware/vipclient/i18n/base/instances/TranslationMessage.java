@@ -47,7 +47,62 @@ public class TranslationMessage implements Message {
     public TranslationMessage() {
         super();
     }
+    
+    /**
+     * Retrieves the localized message from the cache
+     * 
+     * @param component The Singleton component in which the message belongs
+     * @param key The key that represents the message
+     * @param locale The locale in which the message is requested to be localized
+     * @return One of the items in the following priority-ordered list: 
+     * <ul>
+     * 		<li>The message in the requested locale</li> 
+     * 		<li>The message in the default locale</li>
+     * 		<li>null</li>
+     * </ul>
+     */
+    private String getCachedMessage(String component, String key, Locale locale) {
+    	MessagesDTO dto = new MessagesDTO(component, key, null, locale.toLanguageTag(), this.cfg);
+    	StringService s = new StringService();
+    	return s.getString(dto);
+    }
+    
+    
+    /**
+     * Retrieves the localized message from the cache, with added functionality such as:
+     * <ul>
+     * 	<li>Pseudo-localization</li>
+     * 	<li>Fallback to source message when message is neither collected nor translated yet</li>
+     * </ul>
+     * 
+     * @param locale The locale in which the message is requested to be localized
+     * @param component The Singleton component in which the message belongs
+     * @param sourceOpt The optional SourceOpt object which gives access to source messages
+     * @param key The key that represents the message
+     * @param args Values to replace placeholders in the message with
+     * @return One of the items in the following priority-ordered list: 
+     * <ul>
+     * 		<li>The pseudo message, if isPseudo is true</li> 
+     * 		<li>The message in the requested locale, if available</li>
+     * 		<li>The message in the default locale, if available</li>
+     * 		<li>The message from sourceOpt, if available</li>
+     * 		<li>key</li>
+     * </ul>
+     */
+    public String getMessage(final Locale locale, final String component, final String key, final Object... args) {
+    	String message = null;
+    	
+    	// Get the message in the target locale
+    	message = FormatUtils.format(getCachedMessage(component, key, locale), locale, args);
+    	
+    	// TODO Use source message for 
+    	// 	a. if neither localized message nor default locale message was retrieved successfully
+    	// 	b. if the message hasn't been collected for localization 
+    	//  c. for client-side pseudo-translation in FormatUtils.format
 
+    	return message == null ? key : message;	
+    }
+    
     /**
      * get a translation under the component of the configured product
      *
@@ -68,7 +123,7 @@ public class TranslationMessage implements Message {
      *            used to format the message with placeholder, it's not required
      *            if the message doesn't contain any placeholder
      * @return string
-     */
+     */ 
     public String getString(final Locale locale, final String component,
             final String key, final String source, final String comment, final Object... args) {
         this.logger.trace("Start to execute TranslationMessage.getString");
@@ -78,12 +133,12 @@ public class TranslationMessage implements Message {
         StringService s = new StringService();
         
         if (!LocaleUtility.isDefaultLocale(locale)) {  
-        	MessagesDTO dto = new MessagesDTO(component, comment, key, source, locale.toLanguageTag(), this.cfg);
+        	MessagesDTO dto = new MessagesDTO(component, key, source, locale.toLanguageTag(), this.cfg);
             translation = s.getString(dto);
             // if the source is not equal to remote's source version, return the
             // source as latest, not return the old translation
             if (source != null && !"".equals(source) && !VIPCfg.getInstance().isPseudo()) {
-                MessagesDTO remoteEnDTO = new MessagesDTO(component, comment, key, source, 
+                MessagesDTO remoteEnDTO = new MessagesDTO(component, key, source, 
                 		LocaleUtility.defaultLocale.toLanguageTag(), this.cfg);
                 String remoteEnMsg = s.getString(remoteEnDTO);
                 if (!source.equals(remoteEnMsg)) {
@@ -91,7 +146,7 @@ public class TranslationMessage implements Message {
                 }
             }
 
-            if ("".equals(translation)) {
+            if (translation == null || translation.isEmpty()) {
                 translation = source;
             }
         } else {
@@ -99,11 +154,11 @@ public class TranslationMessage implements Message {
         }
 
         if (VIPCfg.getInstance().isCollectSource() || VIPCfg.getInstance().isMachineTranslation()) {
-        	MessagesDTO latestSourceDTO = new MessagesDTO(component, comment, key, source, 
+        	MessagesDTO latestSourceDTO = new MessagesDTO(component, key, source, 
         			ConstantsKeys.LATEST, this.cfg);
             String latestStr = s.getString(latestSourceDTO);
             if (source != null && !source.equals(latestStr)) {
-            	MessagesDTO dto2 = new MessagesDTO(component, comment, key, source, 
+            	MessagesDTO dto2 = new MessagesDTO(component, key, source, 
             			locale.toLanguageTag(), this.cfg);
                 String mt = s.postString(dto2);
                 if (VIPCfg.getInstance().isMachineTranslation() && !"".equalsIgnoreCase(mt)) {
@@ -120,10 +175,10 @@ public class TranslationMessage implements Message {
 
         if (args != null && args.length > 0) {
             if ((null != translation && translation.equals(source)) || VIPCfg.getInstance().isPseudo()) {
-                translation = FormatUtils.format(translation,
+                translation = FormatUtils.formatMsg(translation,
                         LocaleUtility.defaultLocale, args);
             } else {
-                translation = FormatUtils.format(translation, locale, args);
+                translation = FormatUtils.formatMsg(translation, locale, args);
             }
         }
         return translation;
@@ -283,6 +338,7 @@ public class TranslationMessage implements Message {
     /**
      * get one translation of the configured product from VIP, if message not
      * found will get the English message from specified bundle.
+     * get a translation under the component of the configured product
      *
      * @param component
      *            defined on VIP service, it will be created automatically if

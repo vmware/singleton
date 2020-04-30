@@ -1,4 +1,5 @@
 /*
+
  * Copyright 2019 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
@@ -31,16 +32,28 @@ public class MessageCacheItem implements CacheItem {
 	
 	private String etag;
 	private long timestamp;
-	private Long maxAgeMillis = 864000000l;
+	private Long maxAgeMillis = 86400000l;
 	
-	public final Map<String, String> cachedData = new HashMap<String, String>();
+	private final Map<String, String> cachedData = new HashMap<String, String>();
+	
+	public void addCacheData(String key, String value) {
+		this.cachedData.put(key, value);
+	}
+	
+	public boolean isCachedDataEmpty() {
+		return this.cachedData.isEmpty();
+	}
 	
 	public synchronized void addCachedData(Map<String, String> cachedData) {
 		if (cachedData != null) 
 			this.cachedData.putAll(cachedData);
 	}
 	
-	public synchronized void addCacheItem (MessageCacheItem cacheItem) {
+	public synchronized void setCacheItem (MessageCacheItem cacheItem) {
+		// Do not update cacheItem if timestamp is earlier than current. 
+		// An older timestamp comes from an old thread that was blocked.
+		if (cacheItem.getTimestamp() < this.timestamp) 
+			return;
 		this.addCachedData(cacheItem.getCachedData());
 		this.etag = cacheItem.etag;
 		this.timestamp = cacheItem.timestamp;
@@ -76,6 +89,10 @@ public class MessageCacheItem implements CacheItem {
 	}
 
 	public boolean isExpired() {
+		// If offline mode only, cache never expires.
+		if (VIPCfg.getInstance().getVipServer() == null) {
+			return false;
+		}
     	// If maxAgeFromConfig is present, it means it is using the old way 
     	// of caching expiration, so do not expire individual CacheItem object
     	if (VIPCfg.getInstance().getCacheExpiredTime() != 0) {
@@ -94,5 +111,5 @@ public class MessageCacheItem implements CacheItem {
     		  	
     	return System.currentTimeMillis() - responseTimeStamp > maxAgeMillis;
     }
-	
+
 }

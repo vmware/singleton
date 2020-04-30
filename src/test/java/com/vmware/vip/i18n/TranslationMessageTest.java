@@ -55,6 +55,45 @@ public class TranslationMessageTest extends BaseTestClass {
     }
 
     @Test
+    public void testGetMessageWithBundle_() {
+        // this.init(); //don't need to call again, this has been called in Before.
+        vipCfg.setPseudo(false);
+        String component = "JAVA";
+        String key = "LeadTest";
+        Object[] args = { "a" };
+
+        this.init();
+        vipCfg.setPseudo(false);
+        Locale locale2 = new Locale("de");
+        
+        String message2 = translation.getMessage(locale2, component, key, args);
+       
+        Assert.assertEquals("[a] Testwarnung", message2);
+
+        this.init();
+        vipCfg.setPseudo(false);
+        Locale locale3 = Locale.forLanguageTag("zh-Hans");
+        String message3 = translation.getMessage(locale3, component, key, args);
+        
+        Assert.assertEquals("[a] 测试警示", message3);
+
+        Locale locale4 = Locale.forLanguageTag("zh-Hant");
+        String message4 = translation.getMessage(locale4, component, key, args);
+        Assert.assertEquals("[a] 測試警示", message4);
+
+        Locale locale5 = Locale.forLanguageTag("zh-Hans-CN");
+        String message5 = translation.getMessage(locale5, component, key, args);
+       
+        Assert.assertEquals("[a] 测试警示", message5);
+
+        Locale locale6 = Locale.forLanguageTag("zh-Hant-TW");
+        String message6 = translation.getMessage(locale6, component, key, args);
+        Assert.assertEquals("[a] 測試警示", message6);
+
+    }
+    
+    @Test
+    @Deprecated
     public void testGetMessageWithBundle() {
         // this.init(); //don't need to call again, this has been called in Before.
 
@@ -63,10 +102,10 @@ public class TranslationMessageTest extends BaseTestClass {
         Locale locale1 = new Locale("en", "US");
         String key = "LeadTest";
         Object[] args = { "a" };
-        String message1 = translation.getString2(component, bundle, locale1, key,
+       /* String message1 = translation.getString2(component, bundle, locale1, key,
                 args);
         Assert.assertEquals("[a] Test alert", message1);
-
+*/
         this.init();
         vipCfg.setPseudo(false);
         Locale locale2 = new Locale("de");
@@ -215,6 +254,7 @@ public class TranslationMessageTest extends BaseTestClass {
     }
 
     @Test
+    @Deprecated
     public void testGetTranslation_SingleQuota() {
         Locale zhLocale = new Locale("zh", "Hans");
         String comp = "Component1";
@@ -237,8 +277,9 @@ public class TranslationMessageTest extends BaseTestClass {
         logger.debug("enTrans1: " + enTrans1);
         Assert.assertArrayEquals(new Object[] { expected }, new Object[] { enTrans1 });
     }
-
+    
     @Test
+    @Deprecated
     public void testGetPseudoTranslation_NotCollected_1() {
         Locale zhLocale = new Locale("zh", "Hans");
         String comp = "Component1";
@@ -259,7 +300,7 @@ public class TranslationMessageTest extends BaseTestClass {
         logger.debug("pseudoTrans1: " + pseudoTrans1);
         Assert.assertArrayEquals(new Object[] { expected }, new Object[] { pseudoTrans1 });
     }
-
+    
     /*
      * bug: 2360553
      * cannot get pseudo translation when set 'source collection' and 'pseudo' to true for a new key
@@ -299,7 +340,7 @@ public class TranslationMessageTest extends BaseTestClass {
         String expected1_1 = "@@" + source1_1 + "@@";
         Assert.assertEquals(expected1_1, message1_1);
     }
-
+    
     /*
      * bug: 2360553
      * cannot get pseudo translation when set 'source collection' and 'pseudo' to true for a new key
@@ -341,6 +382,26 @@ public class TranslationMessageTest extends BaseTestClass {
     }
 
     @Test
+    public void testGetPseudoTranslation_Collected_() {
+        Locale zhLocale = new Locale("zh", "Hans");
+        String comp = "JAVA";
+        String key = "table.host";
+        String expected = "#@Host#@";
+
+        VIPCfg vc = VIPCfg.getInstance();
+        boolean existing_pseudo = vc.isPseudo();
+        vc.setPseudo(true);
+
+        String pseudoTrans1 = translation.getMessage(zhLocale, comp, key, "");
+
+        vc.setPseudo(existing_pseudo);
+
+        logger.debug("pseudoTrans1: " + pseudoTrans1);
+        Assert.assertEquals(expected, pseudoTrans1);
+    }
+    
+    @Test
+    @Deprecated
     public void testGetPseudoTranslation_Collected() {
         Locale zhLocale = new Locale("zh", "Hans");
         String comp = "JAVA";

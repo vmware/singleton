@@ -6,6 +6,8 @@ package com.vmware.vipclient.i18n;
 
 import java.net.MalformedURLException;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -36,8 +38,10 @@ public class VIPCfg {
     private TranslationCacheManager    translationCacheManager;
 
     // data origin
+    @Deprecated
     private DataSourceEnum             messageOrigin = DataSourceEnum.VIP;
-
+    private List<DataSourceEnum>	   msgOriginsQueue = new LinkedList<DataSourceEnum>();
+    
     // cache mode
     private CacheMode                  cacheMode     = CacheMode.MEMORY;
 
@@ -45,6 +49,7 @@ public class VIPCfg {
 
     // define the global parameters
     private boolean                    pseudo;
+
     private boolean                    collectSource;
     private boolean                    cleanCache;
     private long                       cacheExpiredTime;
@@ -56,7 +61,9 @@ public class VIPCfg {
     private String                     version;
     private String                     vipServer;
     private String                     i18nScope     = "numbers,dates,currencies,plurals,measurements";
-
+    private String					   offlineResourcesBaseUrl;
+    
+    
     // define key for cache management
     public static final String         CACHE_L3      = "CACHE_L3";
     public static final String         CACHE_L2      = "CACHE_L2";
@@ -64,7 +71,7 @@ public class VIPCfg {
     public boolean isSubInstance() {
         return isSubInstance;
     }
-
+    
     public void setSubInstance(boolean subInstance) {
         isSubInstance = subInstance;
     }
@@ -120,9 +127,9 @@ public class VIPCfg {
     }
     
     /**
-     * initialize the instance by a properties file
+     * Initialize VIPCfg instance using a configuration file
      * 
-     * @param cfg
+     * @param cfg The configuration file
      */
     public void initialize(String cfg) throws VIPClientInitException {
     	ResourceBundle prop = ResourceBundle.getBundle(cfg);
@@ -138,8 +145,18 @@ public class VIPCfg {
         }
         if (prop.containsKey("version"))
             this.version = prop.getString("version");
-        if (prop.containsKey("vipServer"))
+        
+        // Remote VIP resources takes priority over offline resources
+        // so add DataSourceEnum.VIP first to msgOriginsQueue
+        if (prop.containsKey("vipServer")) {
             this.vipServer = prop.getString("vipServer");
+            this.addMsgOriginsQueue(DataSourceEnum.VIP);
+        }
+        if (prop.containsKey("offlineResourcesBaseUrl")) {
+        	this.offlineResourcesBaseUrl = prop.getString("offlineResourcesBaseUrl");
+        	this.addMsgOriginsQueue(DataSourceEnum.Bundle);
+        }
+        
         if (prop.containsKey("pseudo"))
             this.pseudo = Boolean.parseBoolean(prop.getString("pseudo"));
         if (prop.containsKey("collectSource"))
@@ -159,7 +176,6 @@ public class VIPCfg {
         if (prop.containsKey("cacheExpiredTime"))
             this.cacheExpiredTime = Long.parseLong(prop
                     .getString("cacheExpiredTime"));
-		
 	}	
 
     /**
@@ -350,11 +366,13 @@ public class VIPCfg {
     public void setMachineTranslation(boolean machineTranslation) {
         this.machineTranslation = machineTranslation;
     }
-
+    
+    @Deprecated
     public DataSourceEnum getMessageOrigin() {
         return messageOrigin;
     }
 
+    @Deprecated
     public void setMessageOrigin(DataSourceEnum messageOrigin) {
         this.messageOrigin = messageOrigin;
     }
@@ -393,4 +411,24 @@ public class VIPCfg {
         this.cachePath = cachePath;
     }
 
+	public String getOfflineResourcesBaseUrl() {
+		return offlineResourcesBaseUrl;
+	}
+
+	public void setOfflineResourcesBaseUrl(String offlineResourcesBaseUrl) {
+		this.offlineResourcesBaseUrl = offlineResourcesBaseUrl;
+	}
+
+	public List<DataSourceEnum> getMsgOriginsQueue() {
+		return msgOriginsQueue;
+	}
+
+	public void addMsgOriginsQueue(DataSourceEnum dataSource) {
+		this.msgOriginsQueue.add(dataSource);
+	}
+
+	public void setMsgOriginsQueue(List<DataSourceEnum> msgOriginsQueue) {
+		this.msgOriginsQueue = msgOriginsQueue;
+	}
+	
 }

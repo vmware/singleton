@@ -49,6 +49,31 @@ public class HttpRequesterTest extends BaseTestClass {
     }
 
     @Test
+    public void addHeaderParamsTest_() {
+        String url = "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0/locales/[^/]*?/components/default\\?pseudo=false";
+
+        HashMap<String, String> params = new HashMap<>();
+        String key1 = "key-1";
+        String value1 = "value-1";
+        String key2 = "key-2";
+        String value2 = "value-2";
+        params.put(key1, value1);
+        params.put(key2, value2);
+        VIPCfg.getInstance().getVipService().setHeaderParams(params);
+
+        WireMock.stubFor(WireMock.get(WireMock.urlMatching(url)).willReturn(WireMock.aResponse().withStatus(200)));
+
+        TranslationMessage tm = (TranslationMessage) I18nFactory.getInstance()
+                .getMessageInstance(TranslationMessage.class);
+        
+        tm.getMessage(new Locale("zh", "Hans"), "default", "table.host");
+        
+        WireMock.verify(WireMock.getRequestedFor(WireMock.urlMatching(url)).withHeader(key1, WireMock.equalTo(value1))
+                .withHeader(key2, WireMock.equalTo(value2)));
+    }
+    
+    @Test
+    @Deprecated
     public void addHeaderParamsTest() {
         String url = "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0/locales/[^/]*?/components/default\\?pseudo=false";
 
@@ -65,7 +90,7 @@ public class HttpRequesterTest extends BaseTestClass {
 
         TranslationMessage tm = (TranslationMessage) I18nFactory.getInstance()
                 .getMessageInstance(TranslationMessage.class);
-        tm.getString2("default", "JAVA", new Locale("zh", "Hans"), "table.host");
+        tm.getString2("default", "messages", new Locale("zh", "Hans"), "table.host");
 
         WireMock.verify(WireMock.getRequestedFor(WireMock.urlMatching(url)).withHeader(key1, WireMock.equalTo(value1))
                 .withHeader(key2, WireMock.equalTo(value2)));

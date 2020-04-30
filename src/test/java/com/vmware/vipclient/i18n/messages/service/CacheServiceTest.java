@@ -4,6 +4,7 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -33,6 +34,7 @@ public class CacheServiceTest extends BaseTestClass {
     Object[] args = { "a" };
 
     MessagesDTO dto = new MessagesDTO();
+    VIPCfg cfg;
     
     @Before
     public void init() {
@@ -40,17 +42,17 @@ public class CacheServiceTest extends BaseTestClass {
         dto.setKey(key);
         dto.setSource(source);
         dto.setLocale(locale.toLanguageTag());
+        cfg = VIPCfg.getInstance();
+        try {
+            cfg.initialize("vipconfig");
+        } catch (VIPClientInitException e) {
+            logger.error(e.getMessage());
+        }
     }
     
     @Test
     public void testCacheNoUpdateIfErrorResponse() {
-    	VIPCfg gc = VIPCfg.getInstance();
-        try {
-            gc.initialize("vipconfig");
-        } catch (VIPClientInitException e) {
-            logger.error(e.getMessage());
-        }
-    	gc.initializeVIPService();
+    	cfg.initializeVIPService();
         
         Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
         TranslationCacheManager.cleanCache(c);
@@ -65,26 +67,22 @@ public class CacheServiceTest extends BaseTestClass {
     	dto.setComponent(emptyComponent);
     	CacheService cs = new CacheService(dto);
     	
-        // This triggers the first http call
-    	translation.getString(locale, emptyComponent, key, source, comment, args);
-    	
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
+    	assertNull(cacheItem);
+    	
+        // This triggers the first http call
+    	translation.getMessage(locale, emptyComponent, key, args);
+    	
+    	cacheItem = cs.getCacheOfComponent();
     	assertNull(cacheItem);
     }
     
     @Test
-    public void testExpireUsingCacheControlMaxAge() {
-    	VIPCfg gc = VIPCfg.getInstance();
-        try {
-            gc.initialize("vipconfig");
-        } catch (VIPClientInitException e) {
-            logger.error(e.getMessage());
-        }
-    	gc.initializeVIPService();
+    public void testNotExpired() {
+    	long cacheExpiredTimeOrig = cfg.getCacheExpiredTime();
+    	cfg.setCacheExpiredTime(0l);
     	
-    	// Explicitly set this config to the default which is 0, as if the config property was not set.
-        // This is done so that the cache-control max age from the server response is used instead.
-        VIPCfg.getInstance().setCacheExpiredTime(0l);
+    	cfg.initializeVIPService();
         
         Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
         TranslationCacheManager.cleanCache(c);
@@ -100,75 +98,85 @@ public class CacheServiceTest extends BaseTestClass {
         assertNull(cacheItem);
         
         // This triggers the first http call
-    	translation.getString(locale, component, key, source, comment, args);
+    	translation.getMessage(locale, component, key, args);
     	
     	cacheItem = cs.getCacheOfComponent();
         Long responseTime = (Long) cacheItem.getTimestamp();
+        assertTrue(!cacheItem.isExpired());
         
-        // TODO Store response code in cache if we want to test this
-        //int responseCode = cacheItem.getResponseCode();
-        //assertEquals(new Integer(200), responseCode);
+        // Second request for the same message fetches from cache.
+        translation.getMessage(locale, component, key, args);
         
-        // Set max age to 0 to explicitly expire the cache for testing purposes.
-        cacheItem.setMaxAgeMillis(0l);
-        
-        // Second request for the same message.
-        // This should trigger another HTTP request because cache had been explicitly expired above.
-        // The http request includes If-None-Match header that is set to the previously received eTag value.
-        translation.getString(locale, component, key, source, comment, args);
-        
-        // Because nothing has changed on the server and If-None-Match request header was properly set, 
-        // the server responds with a 304 Not Modified.
-        // However, cache update happens in a separate thread, and the previously cached item 
-        // was immediately returned in the main thread for optimal performance.
-        // This means no changes yet in the cached response code nor the response time.
-        Long responseTime2 = cacheItem.getTimestamp();
-        assertTrue(responseTime2.equals(responseTime)); 
-        assertTrue(cacheItem.getMaxAgeMillis() == 0l);
-        
-        // TODO Store response code in cache if we want to test this
-        //responseCode = cacheItem.getResponseCode();
-        //assertEquals(new Integer(200), responseCode);
-        
-        // Give time for the separate thread to finish.
+        // No update should happen.
         try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
-        // This should fetch messages and properties from cache 
         cacheItem = cs.getCacheOfComponent();
+        Long responseTime2 = cacheItem.getTimestamp();
+        assertEquals(responseTime2,responseTime); 
         
-        // TODO Store response code in cache if we want to test 
-        //responseCode = cacheItem.getResponseCode();        
-        //assertEquals(new Integer(304), responseCode);
+        cfg.setCacheExpiredTime(cacheExpiredTimeOrig);
+    }
+    
+    @Test
+    public void testExpireUsingCacheControlMaxAge() {
+    	long cacheExpiredTimeOrig = cfg.getCacheExpiredTime();
+    	cfg.setCacheExpiredTime(0l);
+    	
+    	cfg.initializeVIPService();
         
-        // The cached response time had been updated by the separate thread 
-        // to the timestamp of the second response.  
-        // This, in effect, extends the cache expiration.
+        Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
+        TranslationCacheManager.cleanCache(c);
+        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
+        TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
         
-        Long responseTime3 = cacheItem.getTimestamp();
-        assertTrue(responseTime3 > responseTime); 
-        assertTrue(cacheItem.getMaxAgeMillis() > 0l);
+        dto.setProductID(VIPCfg.getInstance().getProductName());
+        dto.setVersion(VIPCfg.getInstance().getVersion());
+        CacheService cs = new CacheService(dto);
         
+        // CacheItem does not exist yet
+        MessageCacheItem cacheItem = cs.getCacheOfComponent();
+        assertNull(cacheItem);
+        
+        // This triggers the first http call
+    	translation.getMessage(locale, component, key, args);
+    	
+    	cacheItem = cs.getCacheOfComponent();
+        Long responseTime = (Long) cacheItem.getTimestamp();
+        
+        // Set max age to 0 to explicitly expire the cache for testing purposes.
+        cacheItem.setMaxAgeMillis(0l);
+        
+        // Second request for the same message triggers an HTTP request because cacheItem has expired.
+        // The http request includes an If-None-Match header that is set to the previously received eTag value.
+        // The server responds with a 304 Not Modified.
+        translation.getMessage(locale, component, key, args);
+        
+        // The responseTime will not be updated right away because it happens in a separate thread.
+        Long responseTime2 = cacheItem.getTimestamp();
+        assertTrue(responseTime2.equals(responseTime)); 
+        assertTrue(cacheItem.getMaxAgeMillis() == 0l);
+        
+        // TODO: Testing for asynchronous thread
+        // The response time has been updated by the separate thread 
+        // responseTime2 = cacheItem.getTimestamp();
+        // assertTrue(responseTime2 > responseTime); 
+        // assertTrue(cacheItem.getMaxAgeMillis() > 0l);
+        
+        cfg.setCacheExpiredTime(cacheExpiredTimeOrig);
     }
     
     @Test
     @Deprecated
     public void testExpireUsingCacheExpiredTimeConfig() { 
-    	VIPCfg gc = VIPCfg.getInstance();
-        try {
-            gc.initialize("vipconfig");
-        } catch (VIPClientInitException e) {
-            logger.error(e.getMessage());
-        }
-    	gc.initializeVIPService();
+    	cfg.initializeVIPService();
     	
     	// If cacheExpiredTime config is set, it means  that the value of this config will be used 
     	// to indicate cache expiration. Cache control max age from http response will be ignored.
-    	long cacheExpiredTime = VIPCfg.getInstance().getCacheExpiredTime();
+    	assertTrue (VIPCfg.getInstance().getCacheExpiredTime() > 0l);
     	
     	Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
     	TranslationCacheManager.cleanCache(c);
@@ -184,33 +192,38 @@ public class CacheServiceTest extends BaseTestClass {
         assertNull(cacheItem);
         
         // This triggers the first http call
-    	translation.getString(locale, component, key, source, comment, args);
+    	translation.getMessage(locale, component, key, args);
     	
     	cacheItem = cs.getCacheOfComponent();
     	Long responseTime = cacheItem.getTimestamp();
          
     	//Explicitly expire the cache
-    	c.setExpiredTime(-1l);
+    	c.setExpiredTime(0l);
         TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
-        // Second request for the same message.
-        // This should trigger another HTTP request because cache had been explicitly expired above.
-        translation.getString(locale, component, key, source, comment, args);
         
-        // Because nothing has changed on the server and If-None-Match request header was properly set, 
-        // the server responds with a 304 Not Modified.
+        // Second request for the same message triggers an HTTP request because cacheItem has expired.
+        // The http request includes an If-None-Match header that is set to the previously received eTag value.
+        // The server responds with a 304 Not Modified.
+        translation.getMessage(locale, component, key, args);
+        
+        // The responseTime will not be updated right away because it happens in a separate thread.
         Long responseTime2 = cacheItem.getTimestamp();
         assertTrue(responseTime2.equals(responseTime)); 
         
-        // Second request for the same message.
-        // This should fetch messages and properties from cache 
-        translation.getString(locale, component, key, source, comment, args);
+        // Put the expiry time back
+        c.setExpiredTime(VIPCfg.getInstance().getCacheExpiredTime());
         
-        // TODO Store response code in cache if we want to test this
-        //responseCode = cacheItem.getResponseCode();  
-        //assertEquals(new Integer(200), responseCode);
+        // Give time for the separate thread to finish.
+        try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         
-        // Timestamp remains the same because no http request was made.
-        Long responseTime3 = cacheItem.getTimestamp();
-        assertTrue(responseTime3.equals(responseTime2)); 
+        // Timestamp has been updated by the separate thread.
+        cacheItem = cs.getCacheOfComponent();
+        responseTime2 = cacheItem.getTimestamp();
+        assertTrue(responseTime2 > responseTime); 
     }  
 }

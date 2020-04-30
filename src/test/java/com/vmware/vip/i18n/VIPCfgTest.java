@@ -121,6 +121,7 @@ public class VIPCfgTest extends BaseTestClass {
     }
 
     @Test
+    @Deprecated
     public void testCollectSource() {
         vipCfg.setPseudo(false);
 

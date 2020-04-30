@@ -53,6 +53,7 @@ public class I18nFactory {
         if (factory == null) {
             factory = new I18nFactory(cfg);
         }
+        factory.setCfg(cfg);
         return factory;
     }
 
@@ -76,10 +77,13 @@ public class I18nFactory {
         Message i = null;
         if (c == null) {
             return i;
-        } else if (this.getCfg().getVipServer() == null
-                || this.getCfg().getProductName() == null
+        } else if (this.getCfg().getProductName() == null
                 || this.getCfg().getVersion() == null) {
-            logger.error("VipServer|ProductName|Version is null!");
+            logger.error("ProductName|Version is null!");
+            return i;
+        } else if (this.getCfg().getVipServer() == null 
+        		&& this.getCfg().getOfflineResourcesBaseUrl() == null) {
+        	logger.error("One of offlineResourcesBaseUrl and vipServer must not be null!");
             return i;
         }
         String key;
