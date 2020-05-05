@@ -28,7 +28,7 @@ import com.vmware.vipclient.i18n.util.JSONBundleUtil;
 public class LocalMessagesOpt implements Opt, MessageOpt {
 	
 	private Logger logger = LoggerFactory.getLogger(LocalMessagesOpt.class.getName());
-	
+
 	private static final String OFFLINE_RESOURCE_PATH = "{0}/messages_{1}.json";
     private MessagesDTO dto;
 
@@ -70,5 +70,4 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
     	}
     	return supportedLocales;
     }
-    
 }

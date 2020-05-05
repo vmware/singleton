@@ -23,6 +23,7 @@ import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
     private final Logger      logger = LoggerFactory.getLogger(ComponentBasedOpt.class.getName());
