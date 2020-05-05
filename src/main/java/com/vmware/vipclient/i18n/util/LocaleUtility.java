@@ -4,9 +4,7 @@
  */
 package com.vmware.vipclient.i18n.util;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -15,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class LocaleUtility {
 
-    private static Locale defaultLocale  = Locale.US;
+    private static Locale defaultLocale  = Locale.ENGLISH;
 
     // Use ThreadLocal to combine the locale with local thread so that the
     // locale can be used by any code places.
