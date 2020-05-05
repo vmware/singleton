@@ -4,6 +4,9 @@
  */
 package com.vmware.vipclient.i18n.util;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -11,9 +14,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class LocaleUtility {
-    protected static final String[]                            defaultLocales = { "en", "en-US", "en_US" };
 
-    public static final Locale                                 defaultLocale  = Locale.US;
+    private static Locale defaultLocale  = Locale.US;
 
     // Use ThreadLocal to combine the locale with local thread so that the
     // locale can be used by any code places.
@@ -90,7 +92,7 @@ public class LocaleUtility {
     }
 
     /*
-     * Judge if a locale object is English locale.
+     * Check if a locale is the default
      */
     public static boolean isDefaultLocale(Locale locale) {
         if (locale != null) {
@@ -101,19 +103,13 @@ public class LocaleUtility {
     }
 
     /*
-     * Judge if a locale string is English locale string.
+     * Check if a language tag matches the default locale
      */
-    public static boolean isDefaultLocale(String locale) {
-        boolean isDefault = false;
-        if (locale != null && !locale.trim().equals("")) {
-            for (String ls : LocaleUtility.defaultLocales) {
-                if (locale.equals(ls)) {
-                    isDefault = true;
-                    break;
-                }
-            }
-        }
-        return isDefault;
+    public static boolean isDefaultLocale(String languageTag) {
+    	languageTag = languageTag.replaceAll("_", "-");
+        Locale match = Locale.lookup(Arrays.asList(new Locale.LanguageRange(languageTag)),
+        		Arrays.asList(getDefaultLocale()));
+        return match != null;
     }
 
     /*
@@ -223,4 +219,13 @@ public class LocaleUtility {
         }
         return languageTag.contains("-");
     }
+
+	public static Locale getDefaultLocale() {
+		return defaultLocale;
+	}
+
+	public static void setDefaultLocale(Locale defaultLocale) {
+		LocaleUtility.defaultLocale = defaultLocale;
+	}
+    
 }

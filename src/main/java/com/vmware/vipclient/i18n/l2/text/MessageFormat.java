@@ -53,7 +53,7 @@ public class MessageFormat {
     }
 
     public MessageFormat(String pattern) {
-        this.locale = LocaleUtility.defaultLocale;
+        this.locale = LocaleUtility.getDefaultLocale();
         applyPattern(pattern);
     }
 

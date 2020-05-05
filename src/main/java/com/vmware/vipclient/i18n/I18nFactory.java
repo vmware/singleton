@@ -53,7 +53,6 @@ public class I18nFactory {
         if (factory == null) {
             factory = new I18nFactory(cfg);
         }
-        factory.setCfg(cfg);
         return factory;
     }
 

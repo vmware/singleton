@@ -40,7 +40,7 @@ public class StringService {
     	Map<String, String> cacheOfComponent = cacheItem.getCachedData();	
     	if (cacheOfComponent.isEmpty() && !LocaleUtility.isDefaultLocale(dto.getLocale())) {
 			MessagesDTO defaultLocaleDTO = new MessagesDTO(dto.getComponent(), 
-					dto.getKey(), dto.getSource(), LocaleUtility.defaultLocale.toLanguageTag(), null);
+					dto.getKey(), dto.getSource(), LocaleUtility.getDefaultLocale().toLanguageTag(), null);
 			// MessageCacheItem of the default locale
 			cacheItem = fetchMessages(defaultLocaleDTO);
 			

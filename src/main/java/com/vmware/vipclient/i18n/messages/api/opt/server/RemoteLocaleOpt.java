@@ -15,16 +15,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.messages.api.opt.LocaleOpt;
 import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.JSONUtils;
 
-public class LocaleOpt {
+public class RemoteLocaleOpt implements LocaleOpt{
 
-    private Logger logger = LoggerFactory.getLogger(LocaleOpt.class.getName());
+    private Logger logger = LoggerFactory.getLogger(RemoteLocaleOpt.class.getName());
 
-    public LocaleOpt() {
+    public RemoteLocaleOpt() {
     }
 
     public Map<String, String> getTerritoriesFromCLDR(String language) {
@@ -46,6 +47,7 @@ public class LocaleOpt {
         return respMap;
     }
 
+    @Override
     public Map<String, String> getDisplayNamesFromCLDR(String language) {
     	Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester()
                 .request(
@@ -70,7 +72,7 @@ public class LocaleOpt {
                             tmpMap.get(ConstantsKeys.DISPLAY_NAME).toString());
                 }
             }
-        } catch (ParseException e) {
+        } catch (Exception e) {
             logger.error(e.getMessage());
         }
         return dispMap;

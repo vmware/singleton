@@ -35,7 +35,7 @@ public class OfflineModeTest extends BaseTestClass {
 	String component = "JAVA";
     String key = "LeadTest";
     String source = "[{0}] Test alert";
-    Locale locale = new Locale("fil");
+    Locale locale = Locale.forLanguageTag("fil-PH");
     String comment = "comment";
     String messageFil = "[{0}] Alerto sa pagsusuri";
     String messageFr ="[{0}] Alerte de test";
@@ -290,7 +290,7 @@ public class OfflineModeTest extends BaseTestClass {
     	assertNotNull(cacheItem);
     	
     	MessagesDTO defaultLocaleDTO = new MessagesDTO(dto.getComponent(), 
-				dto.getKey(), dto.getSource(), LocaleUtility.defaultLocale.toLanguageTag(), null);
+				dto.getKey(), dto.getSource(), LocaleUtility.getDefaultLocale().toLanguageTag(), null);
     	CacheService csDefault = new CacheService(defaultLocaleDTO);
     	MessageCacheItem cacheItemDefaultLocale = csDefault.getCacheOfComponent();
     	
