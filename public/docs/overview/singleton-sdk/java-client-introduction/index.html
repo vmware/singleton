@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Singleton</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2020-05-06T14:07:13 CST">
+<title>Java Client Introduction :: Singleton</title>
+<link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
+<link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://vmware.github.io/singleton/css/nucleus.css" rel="stylesheet">
+<link href="https://vmware.github.io/singleton/theme-flex/style.css" rel="stylesheet">
+
+	<link href="https://vmware.github.io/singleton/theme-flex/variant-blue.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://vmware.github.io/singleton/css/bootstrap.min.css">
+<script src="https://vmware.github.io/singleton/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/vmware.github.io\/singleton\/";
+</script>
+<meta name="description" content="One-fits-all Internationalization Solution">
+
+
+
+    
+  </head>
+  <body data-url="/docs/overview/singleton-sdk/java-client-introduction/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="https://vmware.github.io/singleton/">Singleton</a>
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://vmware.github.io/singleton/"  rel="noopener">
+                  <i class='fa fa-home'></i> <label>Home</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://vmware.github.io/singleton/docs/get-started/download-and-installation"  rel="noopener">
+                  <i class='fa fa-download'></i> <label>Download</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://vmware.github.io/singleton/docs"  rel="noopener">
+                  <i class='fa fa-book'></i> <label>Documentation</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://github.com/vmware/singleton"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github Repo</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="/docs/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/">Documentation</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/docs/get-started/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/get-started/">Get Started</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/docs/get-started/download-and-installation/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/get-started/download-and-installation/">
+            Download and Installation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/get-started/quick-start/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/get-started/quick-start/">
+            Quick Start
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/docs/overview/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/overview/">Overview</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/docs/overview/singleton-service/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/">Singleton Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/docs/overview/singleton-service/configurations/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-source-collection/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-source-collection/">
+            Enable Source Collection
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-pseudo-translation/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-pseudo-translation/">
+            Enable Pseudo Translation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-s3-storage/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/">
+            Enable S3 Storage
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-service/singleton-service-apis/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/">
+            Singleton Service APIs
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/docs/overview/singleton-sdk/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/">Singleton SDK</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/docs/overview/singleton-sdk/java-client-introduction/" class="dd-item active">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/">
+            Java Client Introduction
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/javascript-client-introduction/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/javascript-client-introduction/">
+            Javascript Client Introduction
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/">Angular Client Introduction</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/data-initialization/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/data-initialization/">
+            Data Initialization
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/locale-management/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/locale-management/">
+            Locale Management
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/isolated-feature-module/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/isolated-feature-module/">
+            Isolated Feature Module
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/lazy-load-module/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/lazy-load-module/">
+            Lazy Load Module
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/localized-component-mixin/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/localized-component-mixin/">
+            Localized Component Mixin
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/translate-pipe/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-pipe/">
+            Translate Pipe
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/translate-directive/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-directive/">
+            Translate Directive
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/l10n-service/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/l10n-service/">
+            L10n Service
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/i18n-service/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/i18n-service/">
+            I18n Service
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/plural-format/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/plural-format/">
+            Plural Format
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/relative-time-format/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/relative-time-format/">
+            Relative Time Format
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/">
+            Date Time Format Pipe
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/number-format-pipe/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/number-format-pipe/">
+            Number Format Pipe
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/">
+            Currency Format Pipe
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/">
+            Percent Format Pipe
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/command-line-utils/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/command-line-utils/">
+            Command Line Utils
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/standalone-mode/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/standalone-mode/">
+            Standalone Mode
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/csharp-client-introduction/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/csharp-client-introduction/">
+            C# Client Introduction
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/python-client-introduction/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/python-client-introduction/">
+            Python Client Introduction
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/docs/tutorials/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/tutorials/">Tutorials</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-java-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-java-app/">
+            Integrate Singleton in Java App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-javascript-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-javascript-app/">
+            Integrate Singleton in Javascript App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-angular-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-angular-app/">
+            Integrate Singleton in Angular App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-csharp-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-csharp-app/">
+            Integrate Singleton in C# App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-python-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-python-app/">
+            Integrate Singleton in Python App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/tutorials/deploy-singleton-service-in-your-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/deploy-singleton-service-in-your-app/">
+            Deploy Singleton Service in Your App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/docs/" >
+   Documentation</option> 
+    <option value="/docs/get-started/" >
+  - 
+   Get Started</option>
+    <option value="/docs/overview/" >
+  - 
+   Overview</option> 
+    <option value="/docs/overview/singleton-service/" >
+  -- 
+   Singleton Service</option>
+    <option value="/docs/overview/singleton-sdk/" >
+  -- 
+   Singleton SDK</option> 
+      <option value="/docs/overview/singleton-sdk/java-client-introduction/"  selected>--- Java Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/javascript-client-introduction/" >--- Javascript Client Introduction</option>
+    <option value="/docs/overview/singleton-sdk/angular-client-introduction/" >
+  --- 
+   Angular Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/csharp-client-introduction/" >--- C# Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/python-client-introduction/" >--- Python Client Introduction</option>
+  
+  
+    <option value="/docs/tutorials/" >
+  - 
+   Tutorials</option>
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="https://vmware.github.io/singleton/js/lunr.min.js"></script>
+        <script type="text/javascript" src="https://vmware.github.io/singleton/js/auto-complete.js"></script>
+        <link href="https://vmware.github.io/singleton/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "https:\/\/vmware.github.io\/singleton\/";
+          
+        </script>
+        <script type="text/javascript" src="https://vmware.github.io/singleton/js/search.js"></script>
+      </div>
+    
+
+    <h1>Java Client Introduction</h1>
+    
+    
+    
+    
+
+<p>As we know in the last article, Singleton provides plenty of APIs to support G11N. However, calling the APIs directly is time-consuming and inefficient. So, Singleton has introduced several Clients for different programming language environments, to encapsulate the API calls to the Service, which significantly improves efficiency, and reduces the cost in development work. These Clients can call the Service&rsquo;s APIs to get the translation and pattern data, then parse the data to provide the translation and data formatting features.</p>
+
+<p>In this article, we&rsquo;ll talk about the Java Clients.</p>
+
+<h2 id="features-in-java-clients">Features in Java Clients</h2>
+
+<ul>
+<li>Getting the translation.</li>
+<li>Formatting the data: Formatting the date and time, number, currency, and the singular and plural variations is supported at this time. All the data should be CLDR-compliant.</li>
+<li>Collecting the resources to be translated (source): Sends the strings to be translated to Singleton Service, for the translation team to work on.</li>
+<li>Getting the pseudo translation: If the translated string is not there, returns the pseudo translation to check if the Client calls are OK.</li>
+<li>Checking the translation status: Checks if the translated string is there at the server side.</li>
+<li>Providing the cache: Makes quicker responses by avoiding the frequent server connections.</li>
+</ul>
+
+<h2 id="apis-available">APIs Available</h2>
+
+<h3 id="formatting-api">Formatting API</h3>
+
+<h5 id="formatting-the-date-and-time">Formatting the Date and Time</h5>
+
+<p><strong>Format the specified date and time according to the locale setting.</strong></p>
+
+<p>Methods: <code>DateFormatting.formatDate</code></p>
+
+<p>Parameters</p>
+
+<p><code>obj</code>: (required), to indicate the date time object to be formatted. Supported types: Calendar, Date, Number, String.</p>
+
+<p><code>pattern</code>: (optional), to indicate the format type. Supports 12 types of formats at this time: full, long, medium, short, fullDate, longDate, mediumDate, shortDate, fullTime, longTime, mediumTime, shortTime. The default value is medium.</p>
+
+<p><code>locale</code>: (required), to indicate the target locale for formatting. Example: en-US, zh-Hans, etc.</p>
+
+<p>Return value</p>
+
+<p>The formatted string.</p>
+
+<p>Example</p>
+
+<pre><code>DateFormatting df = (DateFormatting) I18nFactory.getInstance().getFormattingInstance(DateFormatting.class);df.formatDate(1511156364801l, &quot;long&quot;, Locale.forLanguageTag(&quot;zh-Hans&quot;));
+返回:2017年11月20日 GMT+8 下午1:39:24
+</code></pre>
+
+<p><strong>Format the specified date and time according to the locale and time zone settings.</strong></p>
+
+<p>Methods: <code>DateFormatting.formatDate</code></p>
+
+<p>Parameters</p>
+
+<p><code>obj</code>: (required), to indicate the date time object to be formatted.</p>
+
+<p><code>pattern</code>: (optional), to indicate the format type. The default value is medium.</p>
+
+<p><code>timeZone</code>: (optional) Specify the time zone. If no time zone is provided, the default time zone of Java VMs is used.</p>
+
+<p><code>locale</code>: (required), to indicate the target locale for formatting.</p>
+
+<p>Return value</p>
+
+<p>The formatted string.</p>
+
+<p>Example</p>
+
+<pre><code>DateFormatting df = (DateFormatting) I18nFactory.getInstance().getFormattingInstance(DateFormatting.class);df.formatDate(1511156364801l, &quot;long&quot;, &quot;GMT-8&quot;, Locale.forLanguageTag(&quot;zh-Hans&quot;));
+返回:2017年11月19日 GMT-8 下午9:39:24
+</code></pre>
+
+<p><strong>Format the specified date and time according to the language and locale settings.</strong></p>
+
+<p>Methods: <code>DateFormatting.formatDat</code></p>
+
+<p>Parameters</p>
+
+<p><code>obj</code>: (required), to indicate the date time object to be formatted.</p>
+
+<p><code>pattern</code>: (optional), to indicate the format type. The default value is medium.</p>
+
+<p><code>timeZone</code>: (optional) Specify the time zone. If no time zone is provided, the default time zone of VMs is used.</p>
+
+<p><code>language</code>: (required), to indicate the target language for formatting.</p>
+
+<p><code>region</code>: (required), to indicate the target locale for formatting. Example: us, cn, etc.</p>
+
+<p>Return value</p>
+
+<p>The formatted string.</p>
+
+<p><strong>Note</strong></p>
+
+<p>If the combination of the requested language and region is invalid (e.g. en-DE), the region takes precedence to return the pattern data, which represents the mostly spoken language in the requested region.</p>
+
+<p>Example</p>
+
+<pre><code>DateFormatting df = (DateFormatting) I18nFactory.getInstance().getFormattingInstance(DateFormatting.class);df.formatDate(1511156364801l, &quot;long&quot;, &quot;GMT-8&quot;, &quot;zh-Hans&quot;, &quot;CN&quot;);
+返回:2017年11月19日 GMT-8 下午9:39:24
+</code></pre>
+
+<h5 id="formatting-the-number">Formatting the Number</h5>
+
+<p><strong>Format the specified number as another style according to the locale setting.</strong></p>
+
+<p>Methods: <code>NumberFormatting.formatNumber</code></p>
+
+<p>Parameters</p>
+
+<p><code>value</code>: (required), to indicate the number to be formatted. Example: 123.45.</p>
+
+<p><code>locale</code>: (required), to indicate the target locale for formatting.</p>
+
+<p>Return value</p>
+
+<p>The formatted string.</p>
+
+<p>Example</p>
+
+<pre><code>NumberFormatting nf = (NumberFormatting) I18nFactory.getInstance().getFormattingInstance(NumberFormatting.class);nf.formatNumber(123.45, Locale.forLanguageTag(&quot;zh-Hans&quot;));
+返回:123.45
+</code></pre>
+
+<p><strong>Format the specified number as another style according to the locale setting, and the specified decimal place.</strong></p>
+
+<p>Methods: <code>NumberFormatting.formatNumber</code></p>
+
+<p>Parameters</p>
+
+<p><code>value</code>: (required), to indicate the number to be formatted.</p>
+
+<p><code>fractionSize</code>: (optional), to indicate the decimal place. The default value depends on the language.</p>
+
+<p><code>locale</code>: (required), to indicate the target locale for formatting.</p>
+
+<p>Return value</p>
+
+<p>The formatted string.</p>
+
+<p>Example</p>
+
+<pre><code>NumberFormatting nf = (NumberFormatting) I18nFactory.getInstance().getFormattingInstance(NumberFormatting.class);nf.formatNumber(123.45, 1, Locale.forLanguageTag(&quot;zh-Hans&quot;));
+返回:123.4
+</code></pre>
+
+<p><strong>Format the specified number as another style according to the language and locale settings.</strong></p>
+
+<p>Methods: <code>NumberFormatting.formatNumber</code></p>
+
+<p>Parameters</p>
+
+<p><code>value</code>: (required), to indicate the number to be formatted.</p>
+
+<p><code>language</code>: (required), to indicate the target language for formatting.</p>
+
+<p><code>region</code>: (required), to indicate the target locale for formatting.</p>
+
+<p>Return value</p>
+
+<p>The formatted string.</p>
+
+<p>Example</p>
+
+<pre><code>NumberFormatting nf = (NumberFormatting) I18nFactory.getInstance().getFormattingInstance(NumberFormatting.class);nf.formatNumber(123.45, &quot;zh-Hans&quot;, &quot;CN&quot;);
+返回:123.45
+</code></pre>
+
+<p><strong>Format the specified number as another style according to the language and locale settings, as well as the specified decimal place.</strong></p>
+
+<p>Methods: <code>NumberFormatting.formatNumber</code></p>
+
+<p>Parameters</p>
+
+<p><code>value</code>: (required), to indicate the number to be formatted.</p>
+
+<p><code>fractionSize</code>: (optional), to indicate the decimal place. The default value depends on the language.</p>
+
+<p><code>language</code>: (required), to indicate the target language for formatting.</p>
+
+<p><code>region</code>: (required), to indicate the target locale for formatting.</p>
+
+<p>Return value</p>
+
+<p>The formatted string.</p>
+
+<p>Example</p>
+
+<pre><code>NumberFormatting nf = (NumberFormatting) I18nFactory.getInstance().getFormattingInstance(NumberFormatting.class);nf.formatNumber(123.45, 1, &quot;zh-Hans&quot;, &quot;CN&quot;);
+返回:123.4
+</code></pre>
+
+<h5 id="formatting-the-percentage">Formatting the Percentage</h5>
+
+<p><strong>Format the specified percentage number as another style according to the locale setting.</strong></p>
+
+<p>Methods: <code>NumberFormatting.formatPercent</code></p>
+
+<p>Parameters</p>
+
+<p><code>value</code>: (required), to indicate the percentage number to be formatted. Example: 0.12.</p>
+
+<p><code>locale</code>: (required), to indicate the target locale for formatting.</p>
+
+<p>Return value</p>
+
+<p>The formatted string.</p>
+
+<p>Example</p>
+
+<pre><code>NumberFormatting nf = (NumberFormatting) I18nFactory.getInstance().getFormattingInstance(NumberFormatting.class);nf.formatPercent(0.1345, Locale.forLanguageTag(&quot;zh-Hans&quot;));
+返回:13%
+</code></pre>
+
+<p><strong>Format the specified percentage number as another style according to the locale setting, and the specified decimal place.</strong></p>
+
+<p>Methods: <code>NumberFormatting.formatPercent</code></p>
+
+<p>Parameters</p>
+
+<p><code>value</code>: (required), to indicate the percentage number to be formatted.</p>
+
+<p><code>fractionSize</code>: (optional), to indicate the decimal place. The default value depends on the language.</p>
+
+<p><code>locale</code>: (required), to indicate the target locale for formatting.</p>
+
+<p>Return value</p>
+
+<p>The formatted string.</p>
+
+<p>Example</p>
+
+<pre><code>NumberFormatting nf = (NumberFormatting) I18nFactory.getInstance().getFormattingInstance(NumberFormatting.class);nf.formatPercent(0.1345, 1, Locale.forLanguageTag(&quot;zh-Hans&quot;));
+返回:13.5%
+
+</code></pre>
+
+<p><strong>Format the specified percentage number as another style according to the language and locale settings.</strong></p>
+
+<p>Methods: <code>NumberFormatting.formatPercent</code></p>
+
+<p>Parameters</p>
+
+<p><code>value</code>: (required), to indicate the percentage number to be formatted.</p>
+
+<p><code>language</code>: (required), to indicate the target language for formatting.</p>
+
+<p><code>region</code>: (required), to indicate the target locale for formatting.</p>
+
+<p>Return value</p>
+
+<p>The formatted string.</p>
+
+<p>Example</p>
+
+<pre><code>NumberFormatting nf = (NumberFormatting) I18nFactory.getInstance().getFormattingInstance(NumberFormatting.class);nf.formatPercent(0.1345, &quot;zh-Hans&quot;, &quot;CN&quot;);
+返回:13%
+
+</code></pre>
+
+<p><strong>Format the specified percentage number as another style according to the language and locale settings, as well as the specified decimal place.</strong></p>
+
+<p>Methods: <code>NumberFormatting.formatPercent</code></p>
+
+<p>Parameters</p>
+
+<p><code>value</code>: (required), to indicate the percentage number to be formatted.</p>
+
+<p><code>fractionSize</code>: (optional), to indicate the decimal place. The default value depends on the language.</p>
+
+<p><code>language</code>: (required), to indicate the target language for formatting.</p>
+
+<p><code>region</code>: (required), to indicate the target locale for formatting.</p>
+
+<p>Return value</p>
+
+<p>The formatted string.</p>
+
+<p>Example</p>
+
+<pre><code>NumberFormatting nf = (NumberFormatting) I18nFactory.getInstance().getFormattingInstance(NumberFormatting.class);nf.formatPercent(0.1345, 1, &quot;zh-Hans&quot;, &quot;CN&quot;);
+返回:13.5%
+
+</code></pre>
+
+<h5 id="formatting-the-currency">Formatting the Currency</h5>
+
+<p><strong>Format the specified currency number as another style according to the locale setting. The default currency is USD.</strong></p>
+
+<p>Methods: <code>NumberFormatting.formatCurrency</code></p>
+
+<p>Parameters</p>
+
+<p><code>amount</code>: (required), to indicate the currency number to be formatted. Example: 123.45</p>
+
+<p><code>locale</code>: (required), to indicate the target locale for formatting.</p>
+
+<p>Return value</p>
+
+<p>The formatted string.</p>
+
+<p>Example</p>
+
+<pre><code>NumberFormatting nf = (NumberFormatting) I18nFactory.getInstance().getFormattingInstance(NumberFormatting.class);nf.formatCurrency(123.45, Locale.forLanguageTag(&quot;zh-Hans&quot;));
+返回:US$123.45
+
+</code></pre>
+
+<p><strong>Format the specified currency number as another style according to the locale and the specified currency code.</strong></p>
+
+<p>Methods: <code>NumberFormatting.formatCurrency</code></p>
+
+<p>Parameters</p>
+
+<p><code>amount</code>: (required), to indicate the currency number to be formatted.</p>
+
+<p><code>currencyCode</code>: (required), to indicate the currency code. Example: EUR. For all the currency codes, see <a href="https://en.wikipedia.org/wiki/ISO_4217">https://en.wikipedia.org/wiki/ISO_4217</a>.</p>
+
+<p><code>locale</code>: (required), to indicate the target locale for formatting.</p>
+
+<p>Return value</p>
+
+<p>The formatted string.</p>
+
+<p>Example</p>
+
+<pre><code>NumberFormatting nf = (NumberFormatting) I18nFactory.getInstance().getFormattingInstance(NumberFormatting.class);nf.formatCurrency(123.45, &quot;EUR&quot;, Locale.forLanguageTag(&quot;zh-Hans&quot;));
+返回:€123.45
+
+</code></pre>
+
+<p><strong>Format the specified currency number as another style according to the language and region settings.</strong></p>
+
+<p>Methods: <code>NumberFormatting.formatCurrency</code></p>
+
+<p>Parameters</p>
+
+<p><code>amount</code>: (required), to indicate the currency number to be formatted.</p>
+
+<p><code>language</code>: (required), to indicate the target language for formatting.</p>
+
+<p><code>region</code>: (required), to indicate the target locale for formatting.</p>
+
+<p>Return value</p>
+
+<p>The formatted string.</p>
+
+<p>Example</p>
+
+<pre><code>NumberFormatting nf = (NumberFormatting) I18nFactory.getInstance().getFormattingInstance(NumberFormatting.class);nf.formatCurrency(123.45, &quot;zh-Hans&quot;, &quot;CN&quot;);
+返回:US$123.45
+
+</code></pre>
+
+<p><strong>Format the specified currency number as another style according to the language and region settings, as well as the specified currency code.</strong></p>
+
+<p>Methods: <code>NumberFormatting.formatCurrency</code></p>
+
+<p>Parameters</p>
+
+<p><code>amount</code>: (required), to indicate the currency number to be formatted.</p>
+
+<p><code>currencyCode</code>: (required), to indicate the currency code.</p>
+
+<p><code>language</code>: (required), to indicate the target language for formatting.</p>
+
+<p><code>region</code>: (required), to indicate the target locale for formatting.</p>
+
+<p>Return value</p>
+
+<p>The formatted string.</p>
+
+<p>Example</p>
+
+<pre><code>NumberFormatting nf = (NumberFormatting) I18nFactory.getInstance().getFormattingInstance(NumberFormatting.class);nf.formatCurrency(123.45, &quot;EUR&quot;, &quot;zh-Hans&quot;, &quot;CN&quot;);
+返回:€123.45
+
+</code></pre>
+
+<h3 id="translation-api">Translation API</h3>
+
+<h5 id="getting-the-translation">Getting the translation</h5>
+
+<p><strong>Getting the translation of a string</strong></p>
+
+<p>Methods: <code>TranslationMessage.getString</code></p>
+
+<p>Parameters</p>
+
+<p><code>locale</code>: (required), to indicate the locale used for the translation.</p>
+
+<p><code>component</code>: (required), to indicate the component using the translation.</p>
+
+<p><code>key</code>: (required), to indicate the key for the translation.</p>
+
+<p><code>source</code>: (optional), to indicate the source for the translation.</p>
+
+<p><code>comment</code>: (optional), to provide the comment.</p>
+
+<p><code>args</code>: (optional) If the translated string contains variables, replaces them with the values in args.</p>
+
+<p>Return value</p>
+
+<p>The translated string.</p>
+
+<p>Example</p>
+
+<ul>
+<li><pre><code>TranslationMessage tMessage = (TranslationMessage) I18nFactory.getInstance().getMessageInstance(TranslationMessage.class);tMessage.getString(Locale.forLanguageTag(&quot;zh-Hans&quot;), &quot;default&quot;, &quot;global_text_username&quot;, &quot;User name&quot;, &quot;comments of user name&quot;, null);
+
+</code></pre></li>
+</ul>
+
+<p><strong>Get the translation of a string according to the key (no source required).</strong></p>
+
+<p>Methods: <code>TranslationMessage.getString2</code></p>
+
+<p>Parameters</p>
+
+<p><code>locale</code>: (required), to indicate the locale used for the translation.</p>
+
+<p><code>component</code>: (required), to indicate the component using the translation.</p>
+
+<p><code>key</code>: (required), to indicate the key for the translation.</p>
+
+<p><code>bundle</code>: (required), to indicate the file containing the source, which is a collection of key-value pairs.</p>
+
+<p><code>args</code>: (optional) If the translated string contains variables, replaces them with the values in args.</p>
+
+<p>Return value</p>
+
+<p>The translated string.</p>
+
+<p>Example</p>
+
+<pre><code>TranslationMessage tMessage = (TranslationMessage) I18nFactory.getInstance().getMessageInstance(TranslationMessage.class);tMessage.getString2(&quot;default&quot;, &quot;messages&quot;, Locale.forLanguageTag(&quot;zh-Hans&quot;), &quot;global_text_username&quot;, null);
+
+</code></pre>
+
+<p><strong>Get the translation of a component.</strong></p>
+
+<p>Methods: <code>TranslationMessage.getStrings</code></p>
+
+<p>Parameters</p>
+
+<p><code>locale</code>: (required), to indicate the locale used for the translation.</p>
+
+<p><code>component</code>: (required), to indicate the component using the translation.</p>
+
+<p>Return value</p>
+
+<p>The translated strings for the component.</p>
+
+<p>Example</p>
+
+<pre><code>TranslationMessage tMessage = (TranslationMessage) I18nFactory.getInstance().getMessageInstance(TranslationMessage.class);tMessage.getStrings(Locale.forLanguageTag(&quot;zh-Hans&quot;), &quot;default&quot;);
+
+</code></pre>
+
+<h5 id="collecting-the-source-string-s">Collecting the source string(s)</h5>
+
+<p><strong>Collecting a source string by sending it to the server.</strong></p>
+
+<p>Methods: <code>TranslationMessage.postString</code></p>
+
+<p>Parameters</p>
+
+<p><code>locale</code>: (required), to indicate the locale.</p>
+
+<p><code>component</code>: (required), to indicate the component using the source string.</p>
+
+<p><code>key</code>: (required), to indicate the key for the source string.</p>
+
+<p><code>source</code>: (required), to indicate the source string to be sent.</p>
+
+<p><code>comment</code>: (optional), to provide the comment.</p>
+
+<p>Return value</p>
+
+<p>true: Sent successfully.</p>
+
+<p>false: Sent failed.</p>
+
+<p>Example</p>
+
+<pre><code>TranslationMessage tMessage = (TranslationMessage) I18nFactory.getInstance().getMessageInstance(TranslationMessage.class);tMessage.postString(Locale.forLanguageTag(&quot;zh-Hans&quot;), &quot;default&quot;, &quot;global_text_username&quot;, &quot;User name&quot;, &quot;comments of user name&quot;);
+
+</code></pre>
+
+<p><strong>Collecting several source strings by sending them to the server.</strong></p>
+
+<p>Methods: <code>TranslationMessage.postStrings</code></p>
+
+<p>Parameters</p>
+
+<p><code>locale</code>: (required), to indicate the locale.</p>
+
+<p><code>component</code>: (required), to indicate the component using the source strings.</p>
+
+<p><code>sources</code>: (required), to indicate the source strings to be sent.</p>
+
+<p>Return value</p>
+
+<p>true: Sent successfully.</p>
+
+<p>false: Sent failed.</p>
+
+<p>Example</p>
+
+<pre><code>TranslationMessage tMessage = (TranslationMessage) I18nFactory.getInstance().getMessageInstance(TranslationMessage.class);List&lt;JSONObject&gt; sources = new ArrayList&lt;JSONObject&gt;();JSONObject s1 = new JSONObject();s1.put(&quot;key&quot;, &quot;key-1&quot;);s1.put(&quot;source&quot;, &quot;source-1&quot;);s1.put(&quot;commentForSource&quot;, &quot;It's a comment&quot;);sources.add(s1);tMessage.postStrings(Locale.forLanguageTag(&quot;zh-Hans&quot;), &quot;default&quot;, sources);
+
+</code></pre>
+
+<h5 id="finding-the-translation-status-es">Finding the translation status(es)</h5>
+
+<p><strong>Finding the translation status of a string.</strong></p>
+
+<p>Methods: <code>TranslationMessage.isAvailable</code></p>
+
+<p>Parameters</p>
+
+<p><code>locale</code>: (required), to indicate the locale.</p>
+
+<p><code>component</code>: (required), to indicate the component.</p>
+
+<p><code>key</code>: (required), to indicate the key for the string.</p>
+
+<p>Return value</p>
+
+<p>true: Translation is ready.</p>
+
+<p>false: Translation is not ready.</p>
+
+<p>Example</p>
+
+<pre><code>TranslationMessage tMessage = (TranslationMessage) I18nFactory.getInstance().getMessageInstance(TranslationMessage.class);tMessage.isAvailable(&quot;default&quot;, &quot;global_text_username&quot;, Locale.forLanguageTag(&quot;zh-Hans&quot;));
+
+</code></pre>
+
+<p><strong>Finding the translation statuses of all strings in a component.</strong></p>
+
+<p>Methods: <code>TranslationMessage.isAvailable</code></p>
+
+<p>Parameters</p>
+
+<p><code>locale</code>: (required), to indicate the locale.</p>
+
+<p><code>component</code>: (required), to indicate the component.</p>
+
+<p>Return value</p>
+
+<p>true: Translation is ready.</p>
+
+<p>false: Translation is not ready.</p>
+
+<p>Example</p>
+
+<pre><code>TranslationMessage tMessage = (TranslationMessage) I18nFactory.getInstance().getMessageInstance(TranslationMessage.class);tMessage.isAvailable(&quot;default&quot;, Locale.forLanguageTag(&quot;zh-Hans&quot;));
+
+</code></pre>
+
+<h2 id="profile">Profile</h2>
+
+<p>The Client provides several parameters, which can be configured easily through a profile. The parameters include:</p>
+
+<ul>
+<li>productName: Product name. The server returns the translation resources according to the product name.</li>
+<li>version: Version number. The server returns the translation resources for the version.</li>
+<li>vipServer: Singleton server address. Example: <a href="https://localhost:8090">https://localhost:8090</a>.</li>
+<li>initializeCache: Initializes the cache or not. The default value is false.</li>
+<li><em>true: When the application starts, the data of all components of the product are loaded into the cache from the server.</em></li>
+<li><em>false: Caches the translation data of a component only when accessing the component.</em></li>
+<li>pseudo: Returns the pseudo translation or not. The default value is false.</li>
+<li><em>true: Returns the pseudo translation, regardless of whether the translated string is here.</em></li>
+<li><em>false: Returns the translation in a normal way.</em></li>
+<li>collectSource: Sends the new source string to the server or not. Default: false.</li>
+<li><em>true: Sends the new string to the server.</em></li>
+<li><em>false: Doesn&rsquo;t send the new string to the server.</em></li>
+<li>cleanCache: Clears the cache or not. The default value is false.</li>
+<li><em>true: Cleans up the cache regularly.</em></li>
+<li><em>false: Doesn&rsquo;t clean up the cache regularly.</em></li>
+<li>cacheExpiredTime: The expiration time of the cache, in milliseconds.</li>
+<li>machineTranslation: Returns the MT (Machine Translation) output or not. The default value is false. Turned off at the server side by default.</li>
+<li><em>true: Returns the MT (Machine Translation) output, regardless of whether the existing translation is here.</em></li>
+<li><em>false: Returns the translation in a normal way.</em></li>
+</ul>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/" title="Singleton SDK"> <i class="fa fa-chevron-left"></i><label>Singleton SDK</label></a>
+    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/" title="Angular Client Introduction" style="margin-right: 0px;"><label>Angular Client Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 24/09/2019
+    </div>
+    
+
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="https://vmware.github.io/singleton/js/clipboard.min.js"></script>
+
+<link href="https://vmware.github.io/singleton/css/featherlight.min.css" rel="stylesheet">
+<script src="https://vmware.github.io/singleton/js/featherlight.min.js"></script>
+
+
+
+<script src="https://vmware.github.io/singleton/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

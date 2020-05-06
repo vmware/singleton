@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Singleton</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2020-05-06T14:07:13 CST">
+<title>Javascript Client Introduction :: Singleton</title>
+<link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
+<link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://vmware.github.io/singleton/css/nucleus.css" rel="stylesheet">
+<link href="https://vmware.github.io/singleton/theme-flex/style.css" rel="stylesheet">
+
+	<link href="https://vmware.github.io/singleton/theme-flex/variant-blue.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://vmware.github.io/singleton/css/bootstrap.min.css">
+<script src="https://vmware.github.io/singleton/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/vmware.github.io\/singleton\/";
+</script>
+<meta name="description" content="One-fits-all Internationalization Solution">
+
+
+
+    
+  </head>
+  <body data-url="/docs/overview/singleton-sdk/javascript-client-introduction/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="https://vmware.github.io/singleton/">Singleton</a>
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://vmware.github.io/singleton/"  rel="noopener">
+                  <i class='fa fa-home'></i> <label>Home</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://vmware.github.io/singleton/docs/get-started/download-and-installation"  rel="noopener">
+                  <i class='fa fa-download'></i> <label>Download</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://vmware.github.io/singleton/docs"  rel="noopener">
+                  <i class='fa fa-book'></i> <label>Documentation</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://github.com/vmware/singleton"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github Repo</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="/docs/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/">Documentation</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/docs/get-started/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/get-started/">Get Started</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/docs/get-started/download-and-installation/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/get-started/download-and-installation/">
+            Download and Installation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/get-started/quick-start/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/get-started/quick-start/">
+            Quick Start
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/docs/overview/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/overview/">Overview</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/docs/overview/singleton-service/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/">Singleton Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/docs/overview/singleton-service/configurations/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-source-collection/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-source-collection/">
+            Enable Source Collection
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-pseudo-translation/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-pseudo-translation/">
+            Enable Pseudo Translation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-s3-storage/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/">
+            Enable S3 Storage
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-service/singleton-service-apis/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/">
+            Singleton Service APIs
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/docs/overview/singleton-sdk/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/">Singleton SDK</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/docs/overview/singleton-sdk/java-client-introduction/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/">
+            Java Client Introduction
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/javascript-client-introduction/" class="dd-item active">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/javascript-client-introduction/">
+            Javascript Client Introduction
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/">Angular Client Introduction</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/data-initialization/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/data-initialization/">
+            Data Initialization
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/locale-management/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/locale-management/">
+            Locale Management
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/isolated-feature-module/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/isolated-feature-module/">
+            Isolated Feature Module
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/lazy-load-module/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/lazy-load-module/">
+            Lazy Load Module
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/localized-component-mixin/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/localized-component-mixin/">
+            Localized Component Mixin
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/translate-pipe/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-pipe/">
+            Translate Pipe
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/translate-directive/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-directive/">
+            Translate Directive
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/l10n-service/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/l10n-service/">
+            L10n Service
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/i18n-service/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/i18n-service/">
+            I18n Service
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/plural-format/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/plural-format/">
+            Plural Format
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/relative-time-format/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/relative-time-format/">
+            Relative Time Format
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/">
+            Date Time Format Pipe
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/number-format-pipe/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/number-format-pipe/">
+            Number Format Pipe
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/">
+            Currency Format Pipe
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/">
+            Percent Format Pipe
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/command-line-utils/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/command-line-utils/">
+            Command Line Utils
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/standalone-mode/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/standalone-mode/">
+            Standalone Mode
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/csharp-client-introduction/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/csharp-client-introduction/">
+            C# Client Introduction
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/python-client-introduction/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/python-client-introduction/">
+            Python Client Introduction
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/docs/tutorials/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/tutorials/">Tutorials</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-java-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-java-app/">
+            Integrate Singleton in Java App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-javascript-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-javascript-app/">
+            Integrate Singleton in Javascript App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-angular-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-angular-app/">
+            Integrate Singleton in Angular App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-csharp-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-csharp-app/">
+            Integrate Singleton in C# App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-python-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-python-app/">
+            Integrate Singleton in Python App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/tutorials/deploy-singleton-service-in-your-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/deploy-singleton-service-in-your-app/">
+            Deploy Singleton Service in Your App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/docs/" >
+   Documentation</option> 
+    <option value="/docs/get-started/" >
+  - 
+   Get Started</option>
+    <option value="/docs/overview/" >
+  - 
+   Overview</option> 
+    <option value="/docs/overview/singleton-service/" >
+  -- 
+   Singleton Service</option>
+    <option value="/docs/overview/singleton-sdk/" >
+  -- 
+   Singleton SDK</option> 
+      <option value="/docs/overview/singleton-sdk/java-client-introduction/" >--- Java Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/javascript-client-introduction/"  selected>--- Javascript Client Introduction</option>
+    <option value="/docs/overview/singleton-sdk/angular-client-introduction/" >
+  --- 
+   Angular Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/csharp-client-introduction/" >--- C# Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/python-client-introduction/" >--- Python Client Introduction</option>
+  
+  
+    <option value="/docs/tutorials/" >
+  - 
+   Tutorials</option>
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="https://vmware.github.io/singleton/js/lunr.min.js"></script>
+        <script type="text/javascript" src="https://vmware.github.io/singleton/js/auto-complete.js"></script>
+        <link href="https://vmware.github.io/singleton/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "https:\/\/vmware.github.io\/singleton\/";
+          
+        </script>
+        <script type="text/javascript" src="https://vmware.github.io/singleton/js/search.js"></script>
+      </div>
+    
+
+    <h1>Javascript Client Introduction</h1>
+    
+    
+    
+    
+
+<p>The Singleton JavaScript Client is a Singleton Service-based JavaScript library used for SW i18n. It supports all JavaScript frameworks, you can run it in browsers, as well as NodeJS environments. With the Singleton JavaScript Client, it is much easier to use the Web front-end for SW i18n. Now, let&rsquo;s look at what the Client does, and how it is used.</p>
+
+<h2 id="features-overview">Features Overview</h2>
+
+<ul>
+<li>Getting and managing locales.</li>
+<li>Getting the i18n resources from Singleton Service.</li>
+<li>Loading the local translation resource files (for environments without Singleton Service).</li>
+<li>Formatting the data: Formatting the time, number, and currency as defined in CLDR is supported at this time.</li>
+<li>Formatting the string, including the singular and plural variations.</li>
+<li>Providing support for pseudo translation, mainly for integration testing and local debugging.</li>
+<li>Collecting source language strings in bulk.</li>
+</ul>
+
+<h2 id="introducing-modules">Introducing Modules</h2>
+
+<h3 id="getting-and-managing-locales">Getting and managing locales</h3>
+
+<p>A locale includes two parts: language and region.</p>
+
+<p>Language determines the translations to be shown in the current user interface, as well as rules to deal with singular and plural variations.</p>
+
+<p>The combination of language and region determines how strings like the current date and time, number, and currency are shown.</p>
+
+<h3 id="defining-components">Defining components</h3>
+
+<p>Singleton provides a parameter named &ldquo;component&rdquo; to organize strings to be translated. For products with a large data volume, it is recommended to manage resources by component.</p>
+
+<p>Components can be categorized by function modules, or front-end/back-end attributes, provided that a component does not contain more than 5,000 strings.</p>
+
+<h3 id="loading-i18n-data">Loading i18n data</h3>
+
+<p>The i18n data (i.e. the information required for translation and data formatting) can be extracted according to the product information and the locale setting.</p>
+
+<p>Please be sure to load all the i18n data before calling the relevant i18n API.</p>
+
+<h2 id="apis-available">APIs Available</h2>
+
+<h3 id="getting-locales">Getting locales</h3>
+
+<h5 id="getting-locales-in-two-ways">Getting locales in two ways</h5>
+
+<p><strong>Getting the language and region settings in the browser</strong></p>
+
+<p>API: getBrowserCultureLang (): string</p>
+
+<p>Return value</p>
+
+<p>The language and region settings used by the browser</p>
+
+<p>Example</p>
+
+<pre><code>import { getBrowserCultureLang  } from ‘@vip/vip-core-sdk’;
+const locale = getBrowserCultureLang(); // eg: zh-CN
+</code></pre>
+
+<p><strong>Get the languages and regions supported by the product from Singleton Service</strong></p>
+
+<ul>
+<li>Get the list of languages supported by the product</li>
+</ul>
+
+<p>API: getSupportedLanguages( displayLang?: string ): Promise</p>
+
+<p>Parameters</p>
+
+<p>displayLang: string (optional) Used to show the list of languages returned. If it is left blank, each language in the list shall be shown in its native way. The default value is blank.</p>
+
+<p>Return value</p>
+
+<p>The list of languages supported.</p>
+
+<ul>
+<li>Get the list of regions supported by the product</li>
+</ul>
+
+<p>API: getSupportedRegions(language: string): Promise</p>
+
+<p>Parameters</p>
+
+<p>language: string (required) Used to show the list of regions returned.</p>
+
+<p>Return value</p>
+
+<p>The list of regions shown in the chosen language.</p>
+
+<p>Example</p>
+
+<pre><code>…
+i18nClient.i18nService. getSupportedLanguages().then(
+(languageList) =&gt; { this. languageList = languageList; }
+// eg: [ { displayName: ‘français’, languageTag: ‘fr’ } ]
+);
+…
+const currentLanguage = localStorage.getItem(‘currentLanguage’);
+i18nClient.i18nService. getSupportedRegions(currentLanguage).then(
+(regionList) =&gt; { this. regionList = regionList; });
+// eg: [ [ ‘FR’: ‘France’], [ ‘GE’: ‘Géorgie’ ] ]
+…
+</code></pre>
+
+<h3 id="loading-i18n-data-1">Loading i18n data</h3>
+
+<p>Loading the i18n resources from Singleton Service according to the product information.</p>
+
+<h5 id="creating-an-instance-of-the-client-for-i18n">Creating an instance of the Client for i18n</h5>
+
+<p><strong>Initializing the configuration items</strong></p>
+
+<p>Methods</p>
+
+<p>init(configs)</p>
+
+<p>createInstance(configs)</p>
+
+<p>Parameters</p>
+
+<p>productId: string (required), to indicate the product name</p>
+
+<p>component: string (required), to indicate the component name</p>
+
+<p>version: string (required), to indicate the release number</p>
+
+<p>host: string (required), to indicate the Singleton server address. Example: <a href="http://localhost:8091">http://localhost:8091</a></p>
+
+<p>isPseudo: boolean (optional) , to indicate whether the pseudo translation is used. Setting to true specifies that the pseudo translation shall be returned, regardless of whether the translated string is here. The default value is false.</p>
+
+<p>language: string (optional), to indicate the language string (e.g. &lsquo;zh-Hans&rsquo;). You can use the current language in the browser. The default value is &lsquo;en&rsquo;.</p>
+
+<p>region: string (optional), to indicate the region string (e.g. &lsquo;CN&rsquo;). The language and the region must be defined together. The default value is &lsquo;US&rsquo;.</p>
+
+<p>i18nScope: PatternCategories <a href="optional"> </a>, to indicate the scope for i18n support. The default value is empty.</p>
+
+<ul>
+<li>PatternCategories.DATE, to indicate the date and time format.</li>
+<li>PatternCategories.NUMBER, to indicate the number and percentage format.</li>
+<li>PatternCategories.CURRENCIES, to indicate the currency format.</li>
+</ul>
+
+<p>sourceBundle: {[key: string]: string} (optional), which is a collection of all source language strings. It is recommended to extract these strings into separate js/ts files.</p>
+
+<ul>
+<li>Value: An object with the key as the unique string, and its value as the source English string.</li>
+<li>All the resource files should be named as &ldquo;xxx.l10n.js&rdquo;, which is helpful to collect the source language strings with scripts.</li>
+<li>To ensure that every key (key name) is unique in the project, the following naming convention is recommended for keys: &lsquo;namespace.moduleName&rsquo;.</li>
+<li>The type of Array is supported, and the duplicate entries can be removed.</li>
+</ul>
+
+<p>timeout: number (optional), to limit the time duration of the request, the default value is 3,000ms.</p>
+
+<h5 id="load-the-data">Load the data</h5>
+
+<p>Load the i18n data according to the configuration of the instance. If you divide the product into several components, you should call this method multiple times for different instances.</p>
+
+<p>Methods: loadI18nData( callback?: () =&gt; void ): Promise</p>
+
+<p>Parameters</p>
+
+<p>The callback function to be executed when the request is complete, which is used to initialize the UI.</p>
+
+<p>Return value</p>
+
+<p>Promise of the data request.</p>
+
+<p>Example</p>
+
+<pre><code>import { vipClient, getBrowserCultureLang, PatternCategories} from '@vip/vip-core-sdk';
+…
+const i18nClient = vipClient.init(
+{
+       productID: 'vipnodesample',
+       version: '1.0.0',
+       component: 'NodeJS',
+       host: 'http://localhost:8091',
+       language: currentLanguage,
+       i18nScope: [PatternCategories.DATE],
+       region: currentRegion,
+       sourceBundle : {
+    'app.title': 'Hello, world!',
+    'plural.apples': '{0, one{ # apple}  other{ # apples} }'
+},
+       timeout: 5000
+}
+);
+i18nClient.loadI18nData().then( () =&gt; {
+…
+});
+</code></pre>
+
+<h3 id="translation-api"><strong>Translation API</strong></h3>
+
+<h5 id="getting-the-translation">Getting the Translation</h5>
+
+<p>Getting the Translation of a String</p>
+
+<p>Methods: getMessage(key: string, args?:[ number|string ]): string</p>
+
+<p>Parameters</p>
+
+<p>key: string (required), to indicate the key value in sourceBundle</p>
+
+<p>args: number|string<a href="optional"> </a>, to indicate the variable for index placeholders in the source string specified by key</p>
+
+<p>Return value</p>
+
+<p>The translation of the source string specified by key in SourceBundlekey.</p>
+
+<p>Example</p>
+
+<pre><code>const translation = i18nClient.l10nService.getMessage('app.title');  // eg: 你好，世界！
+// 单复数示例
+const apple =  i18nClient.l10nService.getMessage('plural.apples', [2]);  // eg: 2 apples
+</code></pre>
+
+<h3 id="formatting-api"><strong>Formatting API</strong></h3>
+
+<h5 id="formatting-the-date-and-time">Formatting the Date and Time</h5>
+
+<p>Format the specified date and time according to the locale setting</p>
+
+<p>Methods: formatDate(dateTime: number|Date|string, pattern: string = ‘short’, timezone?: string): string</p>
+
+<p>Parameters</p>
+
+<p>date: (required), to indicate the standard date object for i18n (ms or ISO-compliant date string). <a href="https://www.w3.org/TR/NOTE-datetime">https://www.w3.org/TR/NOTE-datetime</a></p>
+
+<p>pattern: (required), to indicate the date format shown after i18n</p>
+
+<p>timezone: (optional), to indicate the time zone</p>
+
+<p>Return value</p>
+
+<p>The formatted date string</p>
+
+<p>Example</p>
+
+<pre><code>i18nClient.i18nService.formatDate(new Date(),' short');  // eg: 8/19/19, 3:51 PM
+</code></pre>
+
+<h5 id="formatting-the-number">Formatting the Number</h5>
+
+<p>Format the specified number according to the locale setting.</p>
+
+<p>Methods: formatNumber(value: number): string</p>
+
+<p>Parameters</p>
+
+<p>The number to be formatted</p>
+
+<p>Return value</p>
+
+<p>The formatted numeric string</p>
+
+<p>Example</p>
+
+<pre><code>i18nClient.i18nService.formatNumber(1123.7892);   // eg: 1,123.789
+</code></pre>
+
+<h5 id="formatting-the-percentage">Formatting the Percentage</h5>
+
+<p>Format the specified number as a percentage according to the locale setting.</p>
+
+<p>Methods: formatPercent(value: number): string</p>
+
+<p>Parameters</p>
+
+<p>The number to be formatted</p>
+
+<p>Return value</p>
+
+<p>The formatted number in percentage</p>
+
+<p>Example</p>
+
+<pre><code>i18nClient.i18nService. formatPercent (0.123);   // eg: 12%
+</code></pre>
+
+<h5 id="formatting-the-currency">Formatting the Currency</h5>
+
+<p>Format the specified currency number as another style according to the locale setting. The default currency is USD.</p>
+
+<p>Methods: formatCurrency(value: number|string, currencyCode: string = ‘USD’): string</p>
+
+<p>Parameters</p>
+
+<p>value: The number to be formatted</p>
+
+<p>currencyCode: The currency code. See <a href="https://en.wikipedia.org/wiki/ISO_4217">https://en.wikipedia.org/wiki/ISO_4217</a></p>
+
+<p>Return value</p>
+
+<p>The formatted string</p>
+
+<p>Example</p>
+
+<pre><code>i18nClient. i18nService.formatCurrency(0.23, 'JPY');   // eg: 0¥
+</code></pre>
+
+<h2 id="scripting-tool"><strong>Scripting Tool</strong></h2>
+
+<h5 id="collecting-the-source-language-strings-in-bulk">Collecting the Source Language Strings in Bulk</h5>
+
+<p>After you extract the source language strings into a single type of resource files, you can use the command tool to send the strings to Singleton Service in bulk, for the translation team to work on.</p>
+
+<p>Parameters in CLI</p>
+
+<pre><code>collect-source-bundle
+--source-dir &lt;资源文件所在文件夹路径&gt;
+--host &lt;Singleton服务器地址&gt;
+--product &lt;Singleton产品名称&gt;
+--component &lt;Singleton 组件名称&gt;
+--version &lt;Singleton 发布版本&gt;
+
+</code></pre>
+
+<p>Defining Commands in package.json</p>
+
+<pre><code>{
+...
+scripts: {
+&quot;collect-source &quot;: &quot; collect-source-bundle --source-dir ./src/source --product vipnodesample --component NodeJS --host http://localhost:8090 --version 1.0.0&quot;
+}
+...
+}
+
+</code></pre>
+
+<p>Running Commands for Bulk Collection</p>
+
+<pre><code>npm run collect-source
+
+</code></pre>
+
+<h2 id="sample-project"><strong>Sample Project</strong></h2>
+
+<p>Link to the sample project: <a href="https://github.com/vmware/singleton/tree/g11n-js-client">https://github.com/vmware/singleton/tree/g11n-js-client</a></p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/standalone-mode/" title="Standalone Mode"> <i class="fa fa-chevron-left"></i><label>Standalone Mode</label></a>
+    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/" title="Angular Client Introduction" style="margin-right: 0px;"><label>Angular Client Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 24/09/2019
+    </div>
+    
+
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="https://vmware.github.io/singleton/js/clipboard.min.js"></script>
+
+<link href="https://vmware.github.io/singleton/css/featherlight.min.css" rel="stylesheet">
+<script src="https://vmware.github.io/singleton/js/featherlight.min.js"></script>
+
+
+
+<script src="https://vmware.github.io/singleton/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>
