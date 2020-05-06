@@ -119,7 +119,7 @@ public class LocaleTest extends BaseTestClass {
     	List<DataSourceEnum> msgOriginsQueueOrig = gc.getMsgOriginsQueue();
     	gc.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
     	
-    	// There is no service response mock for "fil" language tag, so service request will fail.
+    	// There is no service response mock for "fil" display language, so service request will fail.
     	// List of supported locales shall be dertermined from available offline bundle files.
         Map<String, String> resp = localeI18n.getDisplayLanguagesList("fil");
         Assert.assertTrue(resp.containsKey("fil"));
@@ -128,6 +128,8 @@ public class LocaleTest extends BaseTestClass {
     	List<Locale> supportedLocales = cs.getSupportedLocalesFromCache();
         Assert.assertNotNull(supportedLocales);
         Assert.assertTrue(supportedLocales.contains(Locale.forLanguageTag("fil")));
+        Assert.assertEquals("Filipino", supportedLocales.get(
+        		supportedLocales.indexOf(Locale.forLanguageTag("fil"))).getDisplayName());
         localeI18n.getDisplayLanguagesList("invalid_locale");// get data from cache
         
         // Disable offline mode off for next tests.

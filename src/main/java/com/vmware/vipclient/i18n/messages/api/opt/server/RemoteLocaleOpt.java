@@ -48,7 +48,7 @@ public class RemoteLocaleOpt implements LocaleOpt{
     }
 
     @Override
-    public Map<String, String> getDisplayNamesFromCLDR(String language) {
+    public Map<String, String> getLanguages(String language) {
     	Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester()
                 .request(
                         V2URL.getSupportedLanguageListURL(language,

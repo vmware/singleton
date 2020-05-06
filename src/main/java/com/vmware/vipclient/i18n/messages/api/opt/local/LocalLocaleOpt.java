@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Stream;
 
@@ -19,21 +20,24 @@ import com.vmware.vipclient.i18n.messages.api.opt.LocaleOpt;
 
 public class LocalLocaleOpt implements LocaleOpt{
 
-    private Logger logger = LoggerFactory.getLogger(LocalLocaleOpt.class.getName());
+    private Logger logger = LoggerFactory.getLogger(LocalLocaleOpt.class);
+    private static final String BUNDLE_PREFIX = "messages_";
     
     @Override
-    public Map<String, String> getDisplayNamesFromCLDR(String language) {
+    public Map<String, String> getLanguages(String displayLanguage) {
    
     	Map<String, String> supportedLocales = new HashMap<String, String>();
-    	
+    	Locale inLocale = Locale.forLanguageTag(displayLanguage); 
     	String offlineResourcesBaseUrl = VIPCfg.getInstance().getOfflineResourcesBaseUrl();
 		try {
 			Path path = Paths.get(Thread.currentThread().getContextClassLoader().
 					getResource(Paths.get(offlineResourcesBaseUrl).toString()).toURI());
 			
 			try (Stream<Path> listOfFiles = Files.walk(path).filter(Files::isRegularFile)) {
-				listOfFiles.map(file -> file.getFileName().toString().substring(9, file.getFileName().toString().indexOf(".")))
-						.forEach(s->supportedLocales.put(s, s));
+				listOfFiles.map(file -> {
+					String fileName = file.getFileName().toString();
+					return fileName.substring(BUNDLE_PREFIX.length(), fileName.indexOf("."));
+				}).forEach(s->supportedLocales.put(s, Locale.forLanguageTag(s).getDisplayName(inLocale)));
 			}		
 		} catch (Exception e) {
 			logger.debug(e.getMessage());

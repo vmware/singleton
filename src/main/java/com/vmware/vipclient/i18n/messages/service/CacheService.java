@@ -13,6 +13,7 @@ import java.util.Set;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
+import com.vmware.vipclient.i18n.base.cache.FormatCacheItem;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
@@ -109,15 +110,16 @@ public class CacheService {
             return locales;
         }
         Set<String> keySet = c.keySet();
-        Map<String, Object> tempMap = new HashMap<String, Object>();
+       
         for (String key : keySet) {
-            String locale = key.substring(
-                    key.indexOf(ConstantsKeys.UNDERLINE_POUND) + 2,
-                    key.length());
-            if (!tempMap.containsKey(locale)) {
-                locales.add(Locale.forLanguageTag(locale.replace("_", "-")));
-                tempMap.put(locale, locale);
-            }
+        	if (key.startsWith(LocaleService.DISPN_PREFIX)) {
+        		FormatCacheItem cacheItem = (FormatCacheItem) c.get(key);
+        		Map<String, String> langTagToDisplayNameMap = cacheItem.getCachedData();
+        		for (String languageTag : langTagToDisplayNameMap.keySet()) {
+        			locales.add(Locale.forLanguageTag(languageTag));
+        		}
+        		break;
+        	}
         }
         return locales;
     }

@@ -101,7 +101,7 @@ public class LocaleUtility {
     }
 
     /*
-     * Check if a language tag matches the default locale
+     * Check if a language tag matches the default locale that is from the config file
      */
     public static boolean isDefaultLocale(String languageTag) {
     	languageTag = languageTag.replaceAll("_", "-");

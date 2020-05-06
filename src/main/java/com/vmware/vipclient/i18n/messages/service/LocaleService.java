@@ -23,7 +23,7 @@ public class LocaleService {
 
     Logger                      logger        = LoggerFactory.getLogger(LocaleService.class.getName());
     private static final String REGION_PREFIX = "region_";
-    private static final String DISPN_PREFIX  = "dispn_";
+    public static final String DISPN_PREFIX  = "dispn_";
 
     public LocaleService() {
     }
@@ -78,7 +78,7 @@ public class LocaleService {
             dispMap = cacheItem.getCachedData();
             if (dispMap.isEmpty()) {
             	DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
-            	Map<String, String> tmpMap = dataSource.createLocaleOpt().getDisplayNamesFromCLDR(language);
+            	Map<String, String> tmpMap = dataSource.createLocaleOpt().getLanguages(language);
                 dispMap = JSONUtils.map2SortMap(tmpMap);
                 if (dispMap != null && dispMap.size() > 0) {
                     c.put(DISPN_PREFIX + language, new FormatCacheItem(dispMap));
