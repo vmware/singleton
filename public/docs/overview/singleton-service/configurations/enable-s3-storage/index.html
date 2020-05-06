@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Singleton</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2020-05-06T14:07:13 CST">
+<title>Enable S3 Storage :: Singleton</title>
+<link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
+<link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://vmware.github.io/singleton/css/nucleus.css" rel="stylesheet">
+<link href="https://vmware.github.io/singleton/theme-flex/style.css" rel="stylesheet">
+
+	<link href="https://vmware.github.io/singleton/theme-flex/variant-blue.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://vmware.github.io/singleton/css/bootstrap.min.css">
+<script src="https://vmware.github.io/singleton/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/vmware.github.io\/singleton\/";
+</script>
+<meta name="description" content="One-fits-all Internationalization Solution">
+
+
+
+    
+  </head>
+  <body data-url="/docs/overview/singleton-service/configurations/enable-s3-storage/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="https://vmware.github.io/singleton/">Singleton</a>
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://vmware.github.io/singleton/"  rel="noopener">
+                  <i class='fa fa-home'></i> <label>Home</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://vmware.github.io/singleton/docs/get-started/download-and-installation"  rel="noopener">
+                  <i class='fa fa-download'></i> <label>Download</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://vmware.github.io/singleton/docs"  rel="noopener">
+                  <i class='fa fa-book'></i> <label>Documentation</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://github.com/vmware/singleton"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github Repo</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="/docs/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/">Documentation</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/docs/get-started/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/get-started/">Get Started</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/docs/get-started/download-and-installation/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/get-started/download-and-installation/">
+            Download and Installation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/get-started/quick-start/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/get-started/quick-start/">
+            Quick Start
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/docs/overview/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/overview/">Overview</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+        </ul>
+    </li>
+    <li data-nav-id="/docs/tutorials/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/tutorials/">Tutorials</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-java-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-java-app/">
+            Integrate Singleton in Java App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-javascript-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-javascript-app/">
+            Integrate Singleton in Javascript App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-angular-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-angular-app/">
+            Integrate Singleton in Angular App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-csharp-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-csharp-app/">
+            Integrate Singleton in C# App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-python-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-python-app/">
+            Integrate Singleton in Python App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/tutorials/deploy-singleton-service-in-your-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/deploy-singleton-service-in-your-app/">
+            Deploy Singleton Service in Your App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/docs/" >
+   Documentation</option> 
+    <option value="/docs/get-started/" >
+  - 
+   Get Started</option>
+    <option value="/docs/overview/" >
+  - 
+   Overview</option> 
+    <option value="/docs/overview/singleton-service/" >
+  -- 
+   Singleton Service</option> 
+    <option value="/docs/overview/singleton-service/configurations/" >
+  --- 
+   Configurations</option> 
+      <option value="/docs/overview/singleton-service/configurations/enable-source-collection/" >---- Enable Source Collection</option>
+      <option value="/docs/overview/singleton-service/configurations/enable-pseudo-translation/" >---- Enable Pseudo Translation</option>
+      <option value="/docs/overview/singleton-service/configurations/enable-s3-storage/"  selected>---- Enable S3 Storage</option>
+  
+      <option value="/docs/overview/singleton-service/singleton-service-apis/" >--- Singleton Service APIs</option>
+  
+    <option value="/docs/overview/singleton-sdk/" >
+  -- 
+   Singleton SDK</option>
+  
+    <option value="/docs/tutorials/" >
+  - 
+   Tutorials</option>
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="https://vmware.github.io/singleton/js/lunr.min.js"></script>
+        <script type="text/javascript" src="https://vmware.github.io/singleton/js/auto-complete.js"></script>
+        <link href="https://vmware.github.io/singleton/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "https:\/\/vmware.github.io\/singleton\/";
+          
+        </script>
+        <script type="text/javascript" src="https://vmware.github.io/singleton/js/search.js"></script>
+      </div>
+    
+
+    <h1>Enable S3 Storage</h1>
+    
+    
+    
+    
+
+<p>Singleton Service now supports to store the translation bundle files on AWS S3.</p>
+
+<p>This page will introduce the details about Singleton Service S3 build.</p>
+
+<h2 id="how-to-generate-singleton-service-s3-build">How to generate Singleton Service S3 build?</h2>
+
+<p>The steps to generate S3 build:</p>
+
+<ol>
+<li><p>Clone Singleton Service code using Git.</p>
+
+<pre><code>git clone git@github.com:vmware/singleton.git
+</code></pre></li>
+
+<li><p>Update the complie configuration file in <code>singleton/g11n-ws/gradle.properties</code></p>
+
+<pre><code>datatype=bundle
+</code></pre></li>
+</ol>
+
+<p>to</p>
+
+<pre><code>datatype=s3
+</code></pre>
+
+<ol>
+<li><p>Update the below s3 config items according to your requirements in <code>singleton/g11n-ws/vip-manager-i18n/src/main/resources/application-s3.properties</code></p>
+
+<pre><code>#S3 store config
+s3.accessKey=#####
+s3.secretkey=######
+s3.region=######
+s3.bucketName=######
+</code></pre></li>
+
+<li><p>Complie a build using Gradle wrapper under
+<code>./gradlew build</code>
+Jar files will be generated to</p>
+
+<pre><code>singleton/publish (Eg. singleton/publish/vip-manager-i18n-0.1.0.jar)
+</code></pre></li>
+</ol>
+
+<p>The translation bundle structure in AWS S3:</p>
+
+<pre><code>[bucket name]/l10n/bundles/[product name]/[version]/[component name]/messages_xx.json
+</code></pre>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-pseudo-translation/" title="Enable Pseudo Translation"> <i class="fa fa-chevron-left"></i><label>Enable Pseudo Translation</label></a>
+    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/" title="Singleton SDK" style="margin-right: 0px;"><label>Singleton SDK</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 01/11/2019
+    </div>
+    
+
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="https://vmware.github.io/singleton/js/clipboard.min.js"></script>
+
+<link href="https://vmware.github.io/singleton/css/featherlight.min.css" rel="stylesheet">
+<script src="https://vmware.github.io/singleton/js/featherlight.min.js"></script>
+
+
+
+<script src="https://vmware.github.io/singleton/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>
