@@ -76,10 +76,10 @@ public class SharedComponentTest extends BaseTestClass {
         
         Assert.assertTrue(m.size() == 2);
         // TODO Null values are not allowed to be stored in the cache anymore. 
-        // The following keys must have non-null values to be stored. 
-        //Assert.assertTrue(m.containsKey("JavaclientTest_1.0.0_JAVA_false_#zh"));
+        // The following key must have non-null values to be stored. 
         //Assert.assertTrue(m.containsKey("JavaclientTest1_2.0.0_JSP_false_#de"));
         
-        Assert.assertTrue(m.containsKey("JavaclientTest_1.0.0_JAVA_false_#en-US"));
+        Assert.assertTrue(m.containsKey("JavaclientTest_1.0.0_JAVA_false_#zh"));
+        Assert.assertTrue(m.containsKey("JavaclientTest_1.0.0_JAVA_false_#en"));
     }
 }

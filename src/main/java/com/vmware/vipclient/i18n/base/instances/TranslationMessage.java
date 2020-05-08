@@ -139,7 +139,7 @@ public class TranslationMessage implements Message {
             // source as latest, not return the old translation
             if (source != null && !"".equals(source) && !VIPCfg.getInstance().isPseudo()) {
                 MessagesDTO remoteEnDTO = new MessagesDTO(component, key, source, 
-                		LocaleUtility.defaultLocale.toLanguageTag(), this.cfg);
+                		LocaleUtility.getDefaultLocale().toLanguageTag(), this.cfg);
                 String remoteEnMsg = s.getString(remoteEnDTO);
                 if (!source.equals(remoteEnMsg)) {
                     translation = source;
@@ -176,7 +176,7 @@ public class TranslationMessage implements Message {
         if (args != null && args.length > 0) {
             if ((null != translation && translation.equals(source)) || VIPCfg.getInstance().isPseudo()) {
                 translation = FormatUtils.formatMsg(translation,
-                        LocaleUtility.defaultLocale, args);
+                        LocaleUtility.getDefaultLocale(), args);
             } else {
                 translation = FormatUtils.formatMsg(translation, locale, args);
             }
@@ -366,7 +366,7 @@ public class TranslationMessage implements Message {
         String source;
         try {
             ResourceBundle rb = ResourceBundle.getBundle(bundle,
-                    LocaleUtility.defaultLocale);
+                    LocaleUtility.getDefaultLocale());
             source = rb.getString(key);
         } catch (Exception e) {
             this.logger.error(e.getMessage());

@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.messages.service.LocaleService;
 
 /**
@@ -45,7 +46,8 @@ public class LocaleMessage implements Message {
      *         determined by the displanLanguage parameter
      */
     public Map<String, String> getDisplayLanguagesList(String displayLanguage) {
-        return new LocaleService().getDisplayNamesFromCLDR(displayLanguage);
+        return new LocaleService().getDisplayNamesFromCLDR(displayLanguage, 
+        		VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
     }
 
     /**
@@ -55,7 +57,8 @@ public class LocaleMessage implements Message {
      */
     public List<String> getSupportedLanguageTagList() {
         Map<String, String> languageTagMap = new LocaleService()
-                .getDisplayNamesFromCLDR(java.util.Locale.ENGLISH.toLanguageTag());
+                .getDisplayNamesFromCLDR(java.util.Locale.ENGLISH.toLanguageTag(), 
+                		VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
         Collection<String> keyCollection = languageTagMap.keySet();
         List<String> languageTagList = new ArrayList<String>(keyCollection);
         return languageTagList;
@@ -69,7 +72,8 @@ public class LocaleMessage implements Message {
      * @return a list contains the display names
      */
     public List<String> getSupportedDisplayNameList(String displayLanguage) {
-        Map<String, String> dispNameMap = new LocaleService().getDisplayNamesFromCLDR(displayLanguage);
+        Map<String, String> dispNameMap = new LocaleService().getDisplayNamesFromCLDR(displayLanguage, 
+        		VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
         Collection<String> valueCollection = dispNameMap.values();
         List<String> dispNameList = new ArrayList<String>(valueCollection);
         return dispNameList;
