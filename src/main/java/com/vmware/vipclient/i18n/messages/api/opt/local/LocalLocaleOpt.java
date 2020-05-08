@@ -36,7 +36,7 @@ public class LocalLocaleOpt implements LocaleOpt{
 			try (Stream<Path> listOfFiles = Files.walk(path).filter(p -> p.toFile().isFile())) {
 				listOfFiles.map(file -> {
 					String fileName = file.getFileName().toString();
-					return fileName.substring(BUNDLE_PREFIX.length(), fileName.indexOf("."));
+					return fileName.substring(BUNDLE_PREFIX.length(), fileName.indexOf('.'));
 				}).forEach(s->supportedLocales.put(s, Locale.forLanguageTag(s).getDisplayName(inLocale)));
 			}		
 		} catch (Exception e) {
