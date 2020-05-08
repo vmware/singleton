@@ -33,7 +33,7 @@ public class LocalLocaleOpt implements LocaleOpt{
 			Path path = Paths.get(Thread.currentThread().getContextClassLoader().
 					getResource(Paths.get(offlineResourcesBaseUrl).toString()).toURI());
 			
-			try (Stream<Path> listOfFiles = Files.walk(path).filter(Files::isRegularFile)) {
+			try (Stream<Path> listOfFiles = Files.walk(path).filter(p -> p.toFile().isFile())) {
 				listOfFiles.map(file -> {
 					String fileName = file.getFileName().toString();
 					return fileName.substring(BUNDLE_PREFIX.length(), fileName.indexOf("."));
