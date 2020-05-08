@@ -67,5 +67,5 @@ public class ConstantsKeys {
     public static final String      DISPLAY_NAME                       = "displayName";
     public static final String      JSON_KEYSET                        = "jsonkeyset";
     public static final String      TRANSLATION_STATUS                 = "translationStatus";
-
+    public static final String   	GET_MESSAGES_FAILED				   = "Failed to get messages for component {0}, locale: {1}.";
 }
