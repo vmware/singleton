@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
+import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
@@ -55,7 +56,7 @@ public class ComponentService {
     			getMessages(cacheItem, msgSourceQueueIter);
     		// If no more data source in queue, log the error. This means that neither online nor offline fetch succeeded.
     		} else {
-    			logger.error(FormatUtils.format(ConstantsKeys.GET_MESSAGES_FAILED, LocaleUtility.getDefaultLocale(), 
+    			logger.error(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED, LocaleUtility.getDefaultLocale(), 
     					dto.getComponent(), dto.getLocale()));
     		}
     	}
