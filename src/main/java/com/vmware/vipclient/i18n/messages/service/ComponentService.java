@@ -60,10 +60,6 @@ public class ComponentService {
     	}
     }
     
-    public Map<String, String> getComponentTranslation() {
-    	return getMessages().getCachedData();
-    }
-    
     /**
      * Get messages from cache
      */

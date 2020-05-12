@@ -296,7 +296,7 @@ public class TranslationMessage implements Message {
             dto.setVersion(this.cfg.getVersion());
         }
         ComponentService cs = new ComponentService(dto);
-        return cs.getComponentTranslation();
+        return cs.getMessages().getCachedData();
     }
 
     /**
