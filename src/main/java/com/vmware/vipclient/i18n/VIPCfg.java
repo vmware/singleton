@@ -180,6 +180,8 @@ public class VIPCfg {
                     .getString("cacheExpiredTime"));
         if (prop.containsKey("defaultLocale"))
         	LocaleUtility.setDefaultLocale(Locale.forLanguageTag(prop.getString("defaultLocale")));
+        if (prop.containsKey("sourceLocale"))
+        	LocaleUtility.setSourceLocale(Locale.forLanguageTag(prop.getString("sourceLocale")));
 	}	
 
     /**

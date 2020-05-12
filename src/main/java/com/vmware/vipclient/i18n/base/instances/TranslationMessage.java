@@ -67,40 +67,40 @@ public class TranslationMessage implements Message {
     	return s.getString(dto);
     }
     
-    
     /**
-     * Retrieves the localized message from the cache, with added functionality such as:
-     * <ul>
-     * 	<li>Pseudo-localization</li>
-     * 	<li>Fallback to source message when message is neither collected nor translated yet</li>
-     * </ul>
+     * Retrieves the localized message
      * 
      * @param locale The locale in which the message is requested to be localized
      * @param component The Singleton component in which the message belongs
-     * @param sourceOpt The optional SourceOpt object which gives access to source messages
      * @param key The key that represents the message
      * @param args Values to replace placeholders in the message with
      * @return One of the items in the following priority-ordered list: 
      * <ul>
      * 		<li>The pseudo message, if isPseudo is true</li> 
      * 		<li>The message in the requested locale, if available</li>
-     * 		<li>The message in the default locale, if available</li>
-     * 		<li>The message from sourceOpt, if available</li>
-     * 		<li>key</li>
+     * 		<li>The message in the next available fallback locale, if any</li>
+     * 		<li>The source, if available</li>
+     * 		<li>The key</li>
      * </ul>
      */
     public String getMessage(final Locale locale, final String component, final String key, final Object... args) {
-    	String message = null;
+    	// Use source message if the message hasn't been collected/translated 
+    	String source = getCachedMessage(component, key, Locale.forLanguageTag(ConstantsKeys.SOURCE));
+    	String collectedSourceMsg = getCachedMessage(component, key, LocaleUtility.getSourceLocale());
+    	if (source!=null && !source.isEmpty() && !source.equals(collectedSourceMsg)) {
+			return FormatUtils.format(source, LocaleUtility.getSourceLocale(), args);
+		}
     	
-    	// Get the message in the target locale
-    	message = FormatUtils.format(getCachedMessage(component, key, locale), locale, args);
+    	String message = FormatUtils.format(getCachedMessage(component, key, locale), locale, args);
+    	if (message == null || message.isEmpty()) {
+    		if (source != null && !source.isEmpty()) {
+    			return FormatUtils.format(source, LocaleUtility.getSourceLocale(), args);
+    		}
+    		return key;
+    	}
     	
-    	// TODO Use source message for 
-    	// 	a. if neither localized message nor default locale message was retrieved successfully
-    	// 	b. if the message hasn't been collected for localization 
-    	//  c. for client-side pseudo-translation in FormatUtils.format
-
-    	return message == null ? key : message;	
+    	return message;
+    	
     }
     
     /**
