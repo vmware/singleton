@@ -67,5 +67,4 @@ public class ConstantsKeys {
     public static final String      DISPLAY_NAME                       = "displayName";
     public static final String      JSON_KEYSET                        = "jsonkeyset";
     public static final String      TRANSLATION_STATUS                 = "translationStatus";
-
 }

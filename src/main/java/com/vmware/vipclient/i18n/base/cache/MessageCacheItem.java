@@ -40,10 +40,6 @@ public class MessageCacheItem implements CacheItem {
 		this.cachedData.put(key, value);
 	}
 	
-	public boolean isCachedDataEmpty() {
-		return this.cachedData.isEmpty();
-	}
-	
 	public synchronized void addCachedData(Map<String, String> cachedData) {
 		if (cachedData != null) 
 			this.cachedData.putAll(cachedData);
