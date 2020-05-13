@@ -79,7 +79,7 @@ public class TranslationMessage implements Message {
      * 		<li>The pseudo message, if isPseudo is true</li> 
      * 		<li>The message in the requested locale, if available</li>
      * 		<li>The message in the next available fallback locale, if any</li>
-     * 		<li>The source, if available</li>
+     * 		<li>The source message, if available</li>
      * 		<li>The key</li>
      * </ul>
      */
@@ -123,8 +123,10 @@ public class TranslationMessage implements Message {
      *            used to format the message with placeholder, it's not required
      *            if the message doesn't contain any placeholder
      * @return string
+     * @deprecated Replaced by {@link #getMessage(Locale, String, String, Object...)} 
+     * 		which fetches source messages from messages_source.json of the component.
      */ 
-    public String getString(final Locale locale, final String component,
+     public String getString(final Locale locale, final String component,
             final String key, final String source, final String comment, final Object... args) {
         this.logger.trace("Start to execute TranslationMessage.getString");
         if (key == null || key.equalsIgnoreCase(""))
@@ -197,6 +199,7 @@ public class TranslationMessage implements Message {
      *            the JSONObject should contain three attributes(key, source,
      *            commentForSource).
      * @return a boolean to indicate the post status
+     * @deprecated Collection of source message is not supported at runtime.
      */
     public boolean postStrings(final Locale locale, final String component,
             final List<JSONObject> sources) {
@@ -250,6 +253,7 @@ public class TranslationMessage implements Message {
      *            used to describe the source to help understand the source for
      *            the translators.
      * @return a boolean to indicate post succeeded or failed
+     * @deprecated Collection of source message is not supported at runtime.
      */
     public boolean postString(final Locale locale, final String component,
             final String key, final String source, final String comment) {
@@ -284,8 +288,9 @@ public class TranslationMessage implements Message {
      *            not exist
      * @return a map contains all translations of the component mapped by the
      *         source's key
+     * @deprecated Replaced by {@link #getMessages(Locale, String)} 
      */
-    public Map<String, String> getStrings(final Locale locale,
+    @Deprecated public Map<String, String> getStrings(final Locale locale,
             final String component) {
         this.logger.trace("Start to execute TranslationMessage.getStrings");
         MessagesDTO dto = new MessagesDTO();
@@ -295,6 +300,19 @@ public class TranslationMessage implements Message {
             dto.setProductID(this.cfg.getProductName());
             dto.setVersion(this.cfg.getVersion());
         }
+        ComponentService cs = new ComponentService(dto);
+        return cs.getMessages().getCachedData();
+    }
+    
+    /**
+     * Retrieves localized messages
+     *
+     * @param locale The locale in which the message is requested to be localized
+     * @param component The Singleton component 
+     * @return Message keys, each one mapped to the localized message
+     */
+    public Map<String, String> getMessages(final Locale locale, final String component) {
+        MessagesDTO dto = new MessagesDTO(component, null, null, locale.toLanguageTag(), this.cfg);
         ComponentService cs = new ComponentService(dto);
         return cs.getMessages().getCachedData();
     }
@@ -356,8 +374,10 @@ public class TranslationMessage implements Message {
      * @return a message of translation, if the translation is not found from
      *         VIP service, it will return the value defined in the bundle
      *         searching by the key
+     * @deprecated Replaced by {@link #getMessage(Locale, String, String, Object...)} 
+     * 		which fetches source messages from messages_source.json of the component.
      */
-    public String getString2(final String component,
+     public String getString2(final String component,
             final String bundle, final Locale locale, final String key, final Object... args) {
         this.logger.trace("Start to execute TranslationMessage.getString2");
         if (key == null || key.equalsIgnoreCase(""))
