@@ -22,7 +22,6 @@ import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.JSONUtils;
-import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 public class ComponentService {
     private MessagesDTO dto    = null;
@@ -96,7 +95,6 @@ public class ComponentService {
 				// 2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed 
 				// 	 with new properties from the next HTTP response.	
 				fetchMessages(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-				
     			return cacheItem;
     		} catch (Exception e) { 
     			// To make sure that the thread will close 
