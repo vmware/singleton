@@ -54,7 +54,7 @@ public class ComponentService {
     			fetchMessages(cacheItem, msgSourceQueueIter);
     		// If no more data source in queue, log the error. This means that neither online nor offline fetch succeeded.
     		} else {
-    			logger.error(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED, dto.getComponent(), dto.getLocale()));
+    			logger.error(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED, dto.getComponent(), dto.getLocale(), dataSource.toString()));
     		}
     	}
     }
