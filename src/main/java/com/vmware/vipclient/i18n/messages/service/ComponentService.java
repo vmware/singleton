@@ -38,7 +38,7 @@ public class ComponentService {
      * @param msgSourceQueueIter Iterator of the msgSourceQueue (e.g. [DataSourceEnum.VIP, DataSourceEnum.Bundle])
      */
     @SuppressWarnings("unchecked")
-    public void fetchMessages(final MessageCacheItem cacheItem, Iterator<DataSourceEnum> msgSourceQueueIter) {
+    private void fetchMessages(final MessageCacheItem cacheItem, Iterator<DataSourceEnum> msgSourceQueueIter) {
     	if (!msgSourceQueueIter.hasNext()) 
     		return;
     	

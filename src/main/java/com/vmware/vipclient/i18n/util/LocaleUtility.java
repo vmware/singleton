@@ -17,7 +17,7 @@ public class LocaleUtility {
     private static Locale defaultLocale = Locale.ENGLISH;
     private static Locale sourceLocale;
     
-    // A locale fallback priority queue. For now, it only contains the defaultLocale and the source locale.
+    // A locale fallback priority queue. For now, it only contains the default locale and the source messages (from "messages_source.json").
     private static List<Locale> fallbackLocales = new LinkedList<Locale>(Arrays.asList(defaultLocale, Locale.forLanguageTag(ConstantsKeys.SOURCE)));
     
     // Use ThreadLocal to combine the locale with local thread so that the
