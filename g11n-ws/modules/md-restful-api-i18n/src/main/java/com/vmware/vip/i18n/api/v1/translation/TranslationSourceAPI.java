@@ -5,6 +5,7 @@
 package com.vmware.vip.i18n.api.v1.translation;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,7 +42,8 @@ public class TranslationSourceAPI extends TranslationSourceAction {
 	 */
 	@ApiOperation(value = APIOperation.SOURCE_TRANSLATION_GET_VALUE, notes = APIOperation.SOURCE_TRANSLATION_POST_NOTES)
 	@RequestMapping(value = APIV1.SOURCES_GET, method = RequestMethod.GET, produces = { API.API_CHARSET })
-	public APIResponseDTO getTranslationBySource(
+	@Override
+	public String getTranslationBySource(
 			@PathVariable(APIParamName.PRODUCT_NAME) String productName,
 			@RequestParam(value = APIParamName.VERSION) String version,
 			@PathVariable(APIParamName.COMPONENT) String component,
@@ -50,9 +52,10 @@ public class TranslationSourceAPI extends TranslationSourceAction {
 			@RequestParam(value = APIParamName.LOCALE, required = false) String locale,
 			@ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = false, defaultValue = "false") String collectSource,
 			@ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
-			HttpServletRequest request) throws L3APIException{
+			HttpServletRequest request, HttpServletResponse response) {
 		return super.getTranslationBySource(productName, component, version,
-				locale, source, sourceFormat, pseudo, request);
+				locale, source, sourceFormat, collectSource, pseudo, request,
+				response);
 	}
 
 	/**
@@ -60,7 +63,6 @@ public class TranslationSourceAPI extends TranslationSourceAction {
 	 * source
 	 * 
 	 */
-	@Deprecated
 	@ApiOperation(value = APIOperation.SOURCE_TRANSLATION_POST_VALUE, notes = APIOperation.SOURCE_TRANSLATION_POST_NOTES)
 	@RequestMapping(value = APIV1.SOURCES_POST, method = RequestMethod.POST, produces = { API.API_CHARSET })
 	@ResponseBody

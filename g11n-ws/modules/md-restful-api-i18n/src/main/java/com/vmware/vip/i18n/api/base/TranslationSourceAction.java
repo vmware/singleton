@@ -36,14 +36,30 @@ public class TranslationSourceAction extends BaseAction {
 	@Autowired
 	private ApplicationContext context;
 
-	public APIResponseDTO getTranslationBySource(String productName, String component,
+	public String getTranslationBySource(String productName, String component,
 			String version, String locale, String source, String sourceFormat,
-			String pseudo, HttpServletRequest request) throws L3APIException{
-		String key = KeyUtils.generateKey(component, null, source.toString());
-
-		return context.getBean(TranslationProductComponentKeyAPI.class)
-				.getStringBasedTranslation(productName, version, component,
-						locale, key, source, pseudo, "false", sourceFormat, "false");
+			String collectSource, String pseudo, HttpServletRequest request,
+			HttpServletResponse response) {
+		String key = KeyUtils.generateKey(component, null, source);
+		request.setAttribute("version", version);
+		request.setAttribute("source", source);
+		request.setAttribute("locale", locale);
+		request.setAttribute("sourceFormat", sourceFormat);
+		request.setAttribute("pseudo", pseudo);
+		String newURI = APIV1.KEY2_GET
+				.replace("{" + APIParamName.PRODUCT_NAME + "}", productName)
+				.replace("{" + APIParamName.COMPONENT + "}", component)
+				.replace("{" + APIParamName.KEY2 + "}", key);
+		try {
+			request.getRequestDispatcher(newURI).forward(request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			logger.error(e.getMessage(), e);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			logger.error(e.getMessage(), e);
+		}
+		return null;
 	}
 
 	public APIResponseDTO createSource(String productName, String component,

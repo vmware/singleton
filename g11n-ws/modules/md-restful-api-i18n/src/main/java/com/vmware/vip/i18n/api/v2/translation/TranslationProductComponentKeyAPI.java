@@ -57,7 +57,6 @@ public class TranslationProductComponentKeyAPI extends TranslationProductCompone
 	 * Provide translation based on String
 	 *
 	 */
-	/*
 	@ApiIgnore
 	@ApiOperation(value = APIOperation.KEY_TRANSLATION_GET_VALUE, notes = APIOperation.KEY_TRANSLATION_GET_NOTES)
 	@RequestMapping(value = APIV2.KEY_TRANSLATION_GET, method = RequestMethod.GET, produces = { API.API_CHARSET })
@@ -77,44 +76,12 @@ public class TranslationProductComponentKeyAPI extends TranslationProductCompone
 		
 		return super.getTransByGet(productName, version, locale, component, key, source, commentForSource, sourceFormat, collectSource, pseudo, request);
 	}
-*/
-	
+
 	/**
 	 * Create source with post data, especially it's used for creating long
 	 * source
 	 * 
 	 */
-	@ApiOperation(value = APIOperation.KEY_TRANSLATION_GET_VALUE, notes = APIOperation.KEY_TRANSLATION_GET_NOTES)
-	@RequestMapping(value = APIV2.KEY_TRANSLATION_GET, method = RequestMethod.GET, produces = { API.API_CHARSET })
-	@ResponseStatus(HttpStatus.OK)
-	public APIResponseDTO getTranslationByGet(
-			@ApiParam(name = APIParamName.PRODUCT_NAME, required = true, value = APIParamValue.PRODUCT_NAME) @PathVariable(APIParamName.PRODUCT_NAME) String productName,
-			@ApiParam(name = APIParamName.VERSION, required = true, value = APIParamValue.VERSION) @PathVariable(value = APIParamName.VERSION) String version,
-			@ApiParam(name = APIParamName.LOCALE, required = true, value = APIParamValue.LOCALE) @PathVariable(value = APIParamName.LOCALE) String locale,
-			@ApiParam(name = APIParamName.COMPONENT, required = true, value = APIParamValue.COMPONENT) @PathVariable(APIParamName.COMPONENT) String component,
-			@ApiParam(name = APIParamName.KEY, required = true, value = APIParamValue.KEY) @PathVariable(APIParamName.KEY) String key,
-			@ApiParam(value = APIParamValue.SOURCE, required = false) String source,
-			@ApiParam(name = APIParamName.COMMENT_SOURCE, value = APIParamValue.COMMENT_SOURCE) @RequestParam(value = APIParamName.COMMENT_SOURCE, required = false) String commentForSource,
-			@ApiParam(name = APIParamName.SOURCE_FORMAT, value = APIParamValue.SOURCE_FORMAT) @RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
-			//@ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = false, defaultValue = "false") String collectSource,
-			@ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
-            @ApiParam(name = APIParamName.MT, value = APIParamValue.MT)
-            @RequestParam(value = APIParamName.MT, required=false, defaultValue="false") String machineTranslation,
-            @RequestParam(value = APIParamName.CHECK_TRANS_STATUS, required=false, defaultValue="false") String checkTranslationStatus,
-         	//	@RequestHeader(required = true) String authorization,
-            HttpServletRequest request, HttpServletResponse response)
-			throws L3APIException,IOException {
-	    if(meterRegistry!= null) {
-	    	meterRegistry.counter("vip.translation.key", APIParamName.KEY, key).increment();
-	    }
-		return super.getTransByPost(productName, version, locale, component, key, source, commentForSource, sourceFormat, String.valueOf(false), pseudo, machineTranslation, checkTranslationStatus, request, response);
-	}
-	/**
-	 * Create source with post data, especially it's used for creating long
-	 * source
-	 * 
-	 */
-	@Deprecated
 	@ApiOperation(value = APIOperation.KEY_TRANSLATION_POST_VALUE, notes = APIOperation.KEY_TRANSLATION_POST_NOTES)
 	@RequestMapping(value = APIV2.KEY_TRANSLATION_POST, method = RequestMethod.POST, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
@@ -145,7 +112,6 @@ public class TranslationProductComponentKeyAPI extends TranslationProductCompone
 	 * API to post a bunch of strings
 	 *
 	 */
-	@Deprecated
 	@ApiOperation(value = APIOperation.KEY_SET_POST_VALUE, notes = APIOperation.KEY_SET_POST_NOTES)
 	@RequestMapping(value = APIV2.KEY_SET_POST, method = RequestMethod.POST, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
