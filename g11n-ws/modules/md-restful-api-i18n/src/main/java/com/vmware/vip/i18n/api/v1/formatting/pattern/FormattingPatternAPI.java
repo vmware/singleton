@@ -8,9 +8,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vip.common.constants.ConstantsKeys;
+import com.vmware.vip.common.constants.ConstantsMsg;
 import com.vmware.vip.i18n.api.base.utils.CommonUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -57,6 +59,10 @@ public class FormattingPatternAPI extends BaseAction {
         List<String> categories = CommonUtility.getCategoriesByEnum(scope, true);
         if (CommonUtil.isEmpty(categories)) {
             return super.handleResponse(APIResponseStatus.BAD_REQUEST, "Parameter error");
+        }
+
+        if (!CommonUtil.isEmpty(scopeFilter) && !Pattern.matches(ConstantsKeys.SCOPE_FILTER_MATCH, scopeFilter)) {
+            return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.SCOPE_FILTER_NOT_VALIDATE, null);
         }
 
         Map<String, Object> patternMap = patternService.getPattern(locale, categories, scopeFilter);
