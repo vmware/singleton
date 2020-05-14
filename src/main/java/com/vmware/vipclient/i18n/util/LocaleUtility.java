@@ -14,11 +14,11 @@ import java.util.stream.Collectors;
 
 public class LocaleUtility {
 
-    private static Locale defaultLocale = Locale.ENGLISH;
-    private static Locale sourceLocale;
+    private static Locale defaultLocale;
+    private static Locale sourceLocale = Locale.ENGLISH;
     
     // A locale fallback priority queue. For now, it only contains the default locale and the source messages (from "messages_source.json").
-    private static List<Locale> fallbackLocales = new LinkedList<Locale>(Arrays.asList(defaultLocale, Locale.forLanguageTag(ConstantsKeys.SOURCE)));
+    private static List<Locale> fallbackLocales = new LinkedList<Locale>(Arrays.asList(getDefaultLocale(), Locale.forLanguageTag(ConstantsKeys.SOURCE)));
     
     // Use ThreadLocal to combine the locale with local thread so that the
     // locale can be used by any code places.
@@ -224,7 +224,7 @@ public class LocaleUtility {
     }
 
 	public static Locale getDefaultLocale() {
-		return defaultLocale;
+		return defaultLocale == null ? getSourceLocale() : defaultLocale;
 	}
 
 	public static void setDefaultLocale(Locale defaultLocale) {
@@ -232,7 +232,7 @@ public class LocaleUtility {
 	}
 
 	public static Locale getSourceLocale() {
-		return sourceLocale == null ? getDefaultLocale() : sourceLocale; 
+		return sourceLocale; 
 	}
 
 	public static void setSourceLocale(Locale sourceLocale) {
