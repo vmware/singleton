@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-05-06T15:58:38 CST">
+<meta name="revised" content="2020-05-14T11:26:10 CST">
 <title>Overview :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -545,7 +545,7 @@ grm.server.url = local
 #sync source to VIP service
 vip.server.url = https://VIPi18n-ip-address:8090
 </code></pre><ul>
-<li>Run <code>java -jar vip-manager-l10n-0.1.0.jar</code> command to start the source collector If required, you can choose to run the source collector (l10n) on the same server as Singleton (i18n), but please put these 2 jar files in different folders. 
+<li>Run <code>java -jar vip-manager-l10n-0.1.0.jar</code> command to start the source collector If required, you can choose to run the source collector (l10n) on the same server as Singleton (i18n), but please put these 2 jar files in different folders.
 You can perform source collection by calling the Singleton service by setting collectSource to true. For example:</li>
 </ul>
 <pre><code>https://VIPi18n-ip-address:8090/i18n/api/v1/translation/product/Testing/component/default/key/test.key.1?source=test%20key%201&amp;version=1.0.0&amp;locale=zh_CN&amp;collectSource=true
