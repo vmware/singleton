@@ -91,7 +91,7 @@ public class TranslationWithPatternAction extends BaseAction {
      * 
      */
     public APIResponseDTO getTransPattern(int combine, String productName, String version,
-            String components, String language, String scope, String region, String pseudo)
+            String components, String language, String scope, String region, String pseudo, String scopeFilter)
             throws Exception {
         // TODO Auto-generated method stub
         TranslationWithPatternDTO data = new TranslationWithPatternDTO();
@@ -115,6 +115,7 @@ public class TranslationWithPatternAction extends BaseAction {
         }
         data.setRegion(region);
         data.setPseudo(pseudo);
+		data.setScopeFilter(scopeFilter);
         if (validateCombineType(data)) {
             Map<String, Object> pattern = getPattern(data, categories);
             List<ComponentMessagesDTO> compList = getTranslation(data);
@@ -226,11 +227,11 @@ public class TranslationWithPatternAction extends BaseAction {
 	      if (data.getCombine() == TransWithPatternDataScope.TRANSLATION_PATTERN_WITH_REGION.getValue()
 	            || data.getCombine() == TransWithPatternDataScope.ONLY_PATTERN_WITH_REGION.getValue()) {
 	         pattern = patternService.getPatternWithLanguageAndRegion(data.getLanguage(),
-	               data.getRegion(), categories);
+	               data.getRegion(), categories, data.getScopeFilter());
 	      } else if (data.getCombine() == TransWithPatternDataScope.TRANSLATION_PATTERN_NO_REGION
 	            .getValue()
 	            || data.getCombine() == TransWithPatternDataScope.ONLY_PATTERN_NO_REGION.getValue()) {
-	         pattern = patternService.getPattern(data.getLanguage(), categories);
+	         pattern = patternService.getPattern(data.getLanguage(), categories, data.getScopeFilter());
 	      }
 	      if (pattern == null) {
 	         pattern = new HashMap<String, Object>();
