@@ -71,7 +71,7 @@ Using the Mixin approach allows you to achieve three things:
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-pipe/</guid>
       <description>Overview Use the translate pipe in your HTML templates to retrieve translations from the singleton service.
 API L10nPlus pipe Get translation by key, will find the source in the sourceBundle according to the key.
-{{ key | vtranslate:[ : variables ] }}L10n pipe (deprecated) {{ key | translate: [ : source [ : variables ] ] }}Input    Parameter Type Description     key string Define the key to identify the translation, it should name like this: component_module_page_control_shortmsg.</description>
+{{ key | vtranslate:[ : variables ] }} L10n pipe (deprecated) {{ key | translate: [ : source [ : variables ] ] }} Input    Parameter Type Description     key string Define the key to identify the translation, it should name like this: component_module_page_control_shortmsg.</description>
     </item>
     
     <item>
@@ -81,7 +81,7 @@ API L10nPlus pipe Get translation by key, will find the source in the sourceBund
       
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-directive/</guid>
       <description>Overview Use the translate directive in your HTML templates to retrieve translations from the singleton service.
-@Directive({ selector: &#39;[l10n]&#39; })class L10nDirective implements AfterViewInit {l10n: string;source: string;params: string[];constructor(el: ElementRef, ...)ngAfterViewInit()}Selector [l10n]
+@Directive({ selector: &#39;[l10n]&#39; }) class L10nDirective implements AfterViewInit { l10n: string; source: string; params: string[]; constructor(el: ElementRef, ...) ngAfterViewInit() } Selector [l10n]
 Inputs    Attribute Type Required Description     key String Required Bound to L10nDirective.l10n.Define the key to identify the translation, it should name like this: component_module_page_control_shortmsg. e.g. web_settings_stats_statsTable_host;   source String No Bound to L10nDirective.</description>
     </item>
     
@@ -93,7 +93,7 @@ Inputs    Attribute Type Required Description     key String Required Bound to L
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/l10n-service/</guid>
       <description>Overview The pipe or directive can&amp;rsquo;t cover all situations, some strings need to be processed in JavaScript module rather than in the template. L10nService provides APIs for translation related information in addition to pipe and directive.
 API Get source string Will return source string in sourceBundle by key.
-public getSourceString(key: string): string;Get formatted message The parameters and return values are the same as the l10n pipe and directive. Get formatted message by key and variables.</description>
+public getSourceString(key: string): string; Get formatted message The parameters and return values are the same as the l10n pipe and directive. Get formatted message by key and variables.</description>
     </item>
     
     <item>
@@ -104,8 +104,8 @@ public getSourceString(key: string): string;Get formatted message The parameter
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/i18n-service/</guid>
       <description>Overview I18n service provides APIs which are supposed to be used in JavaScript module to get supported languages &amp;amp; regions, and format locale-sensitive data.
 Supported Language &amp;amp; Region APIs getSupportedLanguages Get the supported languages which are available in singleton service for the specific product.
-getSupportedLanguages(): Promise&amp;lt;languagesList&amp;gt;;getSupportedRegions Get the supported regions from singleton service, the supported region list should be unified in all products.
-getSupportedRegions(languageTag: string): Promise&amp;lt;regionsList&amp;gt;;   Parameter Type Description     languageTag String Get supported region list with the localized display name by the &amp;lsquo;languageTag&amp;rsquo;.</description>
+getSupportedLanguages(): Promise&amp;lt;languagesList&amp;gt;; getSupportedRegions Get the supported regions from singleton service, the supported region list should be unified in all products.
+getSupportedRegions(languageTag: string): Promise&amp;lt;regionsList&amp;gt;;    Parameter Type Description     languageTag String Get supported region list with the localized display name by the &amp;lsquo;languageTag&amp;rsquo;.</description>
     </item>
     
     <item>
@@ -116,7 +116,7 @@ getSupportedRegions(languageTag: string): Promise&amp;lt;regionsList&amp;gt;;  
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/plural-format/</guid>
       <description>Overview Transform a plural message string to a string that pluralizes the value according to locale rules and translations. It can be implemented using l10n utils, the only difference is the definition of the source.
 Plural Source Text The source text defines the message output for each plural case of the specified locale. Syntax:
-selector { message }/*** selector: explicitValue | keyword* explicitValue: &#39;=&#39; number // adjacent, no white space in between* keyword: Pluralization categories* message: string*/Pluralization categories include (depending on the language):</description>
+selector { message } /** * selector: explicitValue | keyword * explicitValue: &#39;=&#39; number // adjacent, no white space in between * keyword: Pluralization categories * message: string */ Pluralization categories include (depending on the language):</description>
     </item>
     
     <item>
@@ -126,7 +126,7 @@ selector { message }/*** selector: explicitValue | keyword* explicitValue: &#
       
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/relative-time-format/</guid>
       <description>Overview Formats simple relative dates. Try to give the best relative time span representation based on start time and end time.
-API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: Object ): stringParameters    Parameter Type Required Description     from Date Required Relative time start time.   to Date Required Relative time end time.   locale String Optional The locale is only required in async mode for non-blocking loading.</description>
+API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: Object ): string Parameters    Parameter Type Required Description     from Date Required Relative time start time.   to Date Required Relative time end time.   locale String Optional The locale is only required in async mode for non-blocking loading.</description>
     </item>
     
     <item>
@@ -136,7 +136,7 @@ API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: 
       
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/</guid>
       <description>Overview Use the dateFormat pipe in your HTML templates to format a date according to locale rules.
-Usage {{ value | dateFormat [ : format [ : timezone ] ] }}Input Value    Parameter Type Description     value any a date object or a number (milliseconds since UTC epoch) or an ISO string (https://www.w3.org/TR/NOTE-datetime).    Parameters    Parameter Type Description     format string indicates which date/time components to include.</description>
+Usage {{ value | dateFormat [ : format [ : timezone ] ] }} Input Value    Parameter Type Description     value any a date object or a number (milliseconds since UTC epoch) or an ISO string (https://www.w3.org/TR/NOTE-datetime).    Parameters    Parameter Type Description     format string indicates which date/time components to include.</description>
     </item>
     
     <item>
@@ -146,7 +146,7 @@ Usage {{ value | dateFormat [ : format [ : timezone ] ] }}Input Value    Parame
       
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/number-format-pipe/</guid>
       <description>Overview Formats a number as text. Group sizing and separator and other locale-specific configurations are based on the pattern data.
-Usage {{ value | numberFormat }}Input Value    Parameter Type Description     value number The number to be formatted.    Example Code   </description>
+Usage {{ value | numberFormat }} Input Value    Parameter Type Description     value number The number to be formatted.    Example Code   </description>
     </item>
     
     <item>
@@ -156,7 +156,7 @@ Usage {{ value | numberFormat }}Input Value    Parameter Type Description     v
       
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/</guid>
       <description>Overview Formats a number into currency string. Group sizing and separator and other locale-specific configurations are based on the pattern data.
-Usage {{ value | currencyFormat [ : currencyCode ] }}Parameters    Parameter Type Description     currencyCode string Currencycode should be in accordance with ISO 4217 standard, such as USD for the US dollar and EUR for the euro. Optional. Default value is USD.    Example Code </description>
+Usage {{ value | currencyFormat [ : currencyCode ] }} Parameters    Parameter Type Description     currencyCode string Currencycode should be in accordance with ISO 4217 standard, such as USD for the US dollar and EUR for the euro. Optional. Default value is USD.    Example Code </description>
     </item>
     
     <item>
@@ -166,7 +166,7 @@ Usage {{ value | currencyFormat [ : currencyCode ] }}Parameters    Parameter Ty
       
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/</guid>
       <description>Overview Formats a number into percentage string. Group sizing and separator and other locale-specific configurations are based on the pattern data.
-Usage {{ value | percentFormat }}Example Code   </description>
+Usage {{ value | percentFormat }} Example Code   </description>
     </item>
     
     <item>
