@@ -33,3 +33,6 @@ After your modification is done, please run the following command to publish the
 ./publish_to_ghpages.sh
 ```
 
+After publish_to_ghpages.sh execution, the updated contents will be submit to your remote folded branch 'gh-pages', you should go to GitHub and merge the new content to https://github.com/vmware/singleton/tree/gh-pages, finally you will see the change on the website https://vmware.github.io/singleton/docs/
+
+
