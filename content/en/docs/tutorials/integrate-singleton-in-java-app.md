@@ -13,8 +13,7 @@ For I18n formatting, Singleton Client(Java) also provides I18n support for datet
 
 
 ## Requirement
- - Java 8+
- - Dependency libraries:  
+ - Java 8+ - Dependency libraries:  
      json-simple-1.1.1.jar
      slf4j-api-1.7.26
 
