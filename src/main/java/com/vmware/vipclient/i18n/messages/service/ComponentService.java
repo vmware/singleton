@@ -4,7 +4,7 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import java.util.ListIterator;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
@@ -20,10 +20,8 @@ import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
-import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.JSONUtils;
-import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 public class ComponentService {
     private MessagesDTO dto    = null;
@@ -34,13 +32,13 @@ public class ComponentService {
     }
 
     /**
-     * Get messages from either remote vip service or local bundle
+     * Fetch messages from either remote vip service or local bundle
      * 
      * @param cacheItem MessageCacheItem object to store the messages
-     * @param msgSourceQueueIter ListIterator of the msgSourceQueue (e.g. [DataSourceEnum.VIP, DataSourceEnum.Bundle])
+     * @param msgSourceQueueIter Iterator of the msgSourceQueue (e.g. [DataSourceEnum.VIP, DataSourceEnum.Bundle])
      */
     @SuppressWarnings("unchecked")
-    public void getMessages(final MessageCacheItem cacheItem, ListIterator<DataSourceEnum> msgSourceQueueIter) {
+    private void fetchMessages(final MessageCacheItem cacheItem, Iterator<DataSourceEnum> msgSourceQueueIter) {
     	if (!msgSourceQueueIter.hasNext()) 
     		return;
     	
@@ -53,20 +51,18 @@ public class ComponentService {
     	if (timestampNew == timestampOld) {
     		// Try the next dataSource in the queue
     		if (msgSourceQueueIter.hasNext()) {
-    			getMessages(cacheItem, msgSourceQueueIter);
+    			fetchMessages(cacheItem, msgSourceQueueIter);
     		// If no more data source in queue, log the error. This means that neither online nor offline fetch succeeded.
     		} else {
-    			logger.error(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED, LocaleUtility.getDefaultLocale(), 
-    					dto.getComponent(), dto.getLocale()));
+    			logger.error(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED, dto.getComponent(), dto.getLocale(), dataSource.toString()));
     		}
     	}
     }
     
-    public Map<String, String> getComponentTranslation() {
-    	return fetchMessages().getCachedData();
-    }
-    
-    public MessageCacheItem fetchMessages() {
+    /**
+     * Get messages from cache
+     */
+    public MessageCacheItem getMessages() {
     	CacheService cacheService = new CacheService(dto);
     	Map<String, String> cacheOfComponent = null;
     	MessageCacheItem cacheItem = null;
@@ -75,12 +71,12 @@ public class ComponentService {
     		cacheOfComponent = cacheItem.getCachedData();
     		if (cacheItem.isExpired()) { // cacheItem has expired
     			// Update the cache in a separate thread
-    			populateCacheTask(cacheService, dto, cacheItem); 		
+    			populateCacheTask(cacheItem); 		
     		}
     	} else { // Item is not in cache
     		// Create a new cacheItem object to be stored in cache
     		cacheItem = new MessageCacheItem();  
-    		getMessages(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
+    		fetchMessages(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().iterator());
     		cacheOfComponent = cacheItem.getCachedData();
     		
     		if (cacheOfComponent != null && !cacheOfComponent.isEmpty()) {
@@ -90,7 +86,7 @@ public class ComponentService {
     	return cacheItem;
     }
     
-	private void populateCacheTask(final CacheService cacheService, MessagesDTO dto, MessageCacheItem cacheItem) {
+	private void populateCacheTask(MessageCacheItem cacheItem) {
 		Callable<MessageCacheItem> callable = () -> {
     		try {
     			
@@ -98,8 +94,7 @@ public class ComponentService {
 				// 1. A previously stored etag, if any, can be used for the next HTTP request.
 				// 2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed 
 				// 	 with new properties from the next HTTP response.	
-				getMessages(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-				
+				fetchMessages(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
     			return cacheItem;
     		} catch (Exception e) { 
     			// To make sure that the thread will close 

@@ -122,7 +122,7 @@ public class CacheServiceTest extends BaseTestClass {
     }
     
     @Test
-    public void testExpireUsingCacheControlMaxAge() {
+    public void testExpireUsingCacheControlMaxAge() throws InterruptedException {
     	long cacheExpiredTimeOrig = cfg.getCacheExpiredTime();
     	cfg.setCacheExpiredTime(0l);
     	
@@ -160,18 +160,19 @@ public class CacheServiceTest extends BaseTestClass {
         assertTrue(responseTime2.equals(responseTime)); 
         assertTrue(cacheItem.getMaxAgeMillis() == 0l);
         
+//        Thread.sleep(3000);
         // TODO: Testing for asynchronous thread
         // The response time has been updated by the separate thread 
-        // responseTime2 = cacheItem.getTimestamp();
-        // assertTrue(responseTime2 > responseTime); 
-        // assertTrue(cacheItem.getMaxAgeMillis() > 0l);
+//        responseTime2 = cacheItem.getTimestamp();
+//        assertTrue(responseTime2 > responseTime); 
+//        assertTrue(cacheItem.getMaxAgeMillis() > 0l);
         
         cfg.setCacheExpiredTime(cacheExpiredTimeOrig);
     }
     
     @Test
     @Deprecated
-    public void testExpireUsingCacheExpiredTimeConfig() { 
+    public void testExpireUsingCacheExpiredTimeConfig() throws InterruptedException { 
     	cfg.initializeVIPService();
     	
     	// If cacheExpiredTime config is set, it means  that the value of this config will be used 
@@ -214,12 +215,10 @@ public class CacheServiceTest extends BaseTestClass {
         c.setExpiredTime(VIPCfg.getInstance().getCacheExpiredTime());
         
         // Give time for the separate thread to finish.
-        try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        Thread.sleep(3000);
+        
+        //fetch the messages again because the cache was cleaned before setting the expired time back
+        translation.getMessage(locale, component, key, args);
         
         // Timestamp has been updated by the separate thread.
         cacheItem = cs.getCacheOfComponent();

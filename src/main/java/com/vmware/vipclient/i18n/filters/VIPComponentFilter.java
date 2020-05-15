@@ -42,7 +42,7 @@ public class VIPComponentFilter implements Filter {
         Map<String, String> ctmap;
         String messages = "{}";
         if (!LocaleUtility.isDefaultLocale(locale) && translation != null) {
-            ctmap = translation.getStrings(LocaleUtility.fmtToMappedLocale(locale),
+            ctmap = translation.getMessages(LocaleUtility.fmtToMappedLocale(locale),
                     component);
             if (ctmap != null) {
                 messages = JSONObject.toJSONString(ctmap);

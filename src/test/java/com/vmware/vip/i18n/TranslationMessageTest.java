@@ -193,6 +193,38 @@ public class TranslationMessageTest extends BaseTestClass {
         String message_de = "Benutzername";
         String message_zh_CN = "用户名";
         String message_zh_TW = "使用者名稱";
+        Map<String, String> retMap1 = translation.getMessages(new Locale("en", "US"), component);
+        Assert.assertEquals(message_en_US, retMap1.get(key));
+
+        Map<String, String> retMap2 = translation.getMessages(new Locale("de", ""), component);
+        Assert.assertEquals(message_de, retMap2.get(key));
+
+        Map<String, String> retMap3 = translation.getMessages(Locale.forLanguageTag("zh-Hans"), component);
+        logger.debug(retMap3.get(key));
+        logger.debug(message_zh_CN);
+        Assert.assertEquals(message_zh_CN, retMap3.get(key));
+
+        Map<String, String> retMap4 = translation.getMessages(Locale.forLanguageTag("zh-Hant"), component);
+        Assert.assertEquals(message_zh_TW, retMap4.get(key));
+
+        Map<String, String> retMap5 = translation.getMessages(Locale.forLanguageTag("zh-Hans-CN"), component);
+        Assert.assertEquals(message_zh_CN, retMap5.get(key));
+
+        Map<String, String> retMap6 = translation.getMessages(Locale.forLanguageTag("zh-Hant-TW"), component);
+        Assert.assertEquals(message_zh_TW, retMap6.get(key));
+    }
+    
+    @Test
+    @Deprecated
+    public void testGetComponentMessages_() {
+        vipCfg.setPseudo(false);
+
+        String component = "JAVA";
+        String key = "global_text_username";
+        String message_en_US = "User name";
+        String message_de = "Benutzername";
+        String message_zh_CN = "用户名";
+        String message_zh_TW = "使用者名稱";
         Map<String, String> retMap1 = translation.getStrings(new Locale("en", "US"), component);
         Assert.assertEquals(message_en_US, retMap1.get(key));
 
@@ -221,6 +253,7 @@ public class TranslationMessageTest extends BaseTestClass {
     }
 
     @Test
+    @Deprecated
     public void testPostSourceSet() {
         Locale locale = new Locale("zh", "CN");
         List<JSONObject> sources = new ArrayList<>();
@@ -246,6 +279,7 @@ public class TranslationMessageTest extends BaseTestClass {
     }
 
     @Test
+    @Deprecated
     public void testSendSource() {
         boolean f = translation.postString(new Locale("zh", "CN"), component1, "key", "Host", "It's a comment");
         Assert.assertTrue(f);

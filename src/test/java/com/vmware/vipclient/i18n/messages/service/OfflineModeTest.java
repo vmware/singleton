@@ -6,7 +6,6 @@ package com.vmware.vipclient.i18n.messages.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -86,49 +85,38 @@ public class OfflineModeTest extends BaseTestClass {
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
     }
     
-    // TODO Enable source message fallback @Test
-//    public void testGetMsgsFailedUseSourceMessage() { 
-//    	// Offline mode only; neither target locale bundle nor default locale bundle exists 
-//    	// SourceOpt is defined to use the source message
-//    	VIPCfg cfg = VIPCfg.getInstance();
-//    	
-//    	// SourceOpt is identified 
-//    	// This allows fallback to source message when all else fails. 
-//    	Source srcOpt = new ResourceBundleSrc("messages", LocaleUtility.defaultLocale);
-//        try {
-//            cfg.initialize("vipconfig-offline", srcOpt);
-//        } catch (VIPClientInitException e) {
-//            logger.error(e.getMessage());
-//        }
-//    	
-//        Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
-//        TranslationCacheManager.cleanCache(c);
-//        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
-//        TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
-//
-//        dto.setProductID(VIPCfg.getInstance().getProductName());
-//        dto.setVersion(VIPCfg.getInstance().getVersion());
-//        
-//        // Bundle does not exist locally
-//        Locale newLocale = new Locale("es");
-//        dto.setLocale(newLocale.toLanguageTag());
-//        
-//    	CacheService cs = new CacheService(dto);
-//    	
-//    	String message = translation.getMessage(newLocale, component,  key, args);
-//    	// Returns source message
-//    	assertEquals(FormatUtils.format(srcOpt.getMessage(key), srcOpt.getLocale(), args), message);
-//    	
-//    	// Nothing is stored in cache
-//    	MessageCacheItem cacheItem = cs.getCacheOfComponent();
-//    	assertNull(cacheItem);
-//    }
+    @Test
+    public void testGetMsgsFailedKeyNotFound() { 
+    	// Offline mode only; message key does not exist
+    	String key = "does.not.exist";
+    	String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
+    	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
+    	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
+    	cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
+    	
+        Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
+        TranslationCacheManager.cleanCache(c);
+        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
+        TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
+
+        dto.setProductID(VIPCfg.getInstance().getProductName());
+        dto.setVersion(VIPCfg.getInstance().getVersion());
+        
+        // Bundle does not exist locally
+        Locale newLocale = new Locale("en");
+        dto.setLocale(newLocale.toLanguageTag());
+    	
+    	String message = translation.getMessage(newLocale, component, key, args);
+    	// Return the key because message does not exist in any locale
+    	assertEquals(key, message);
+    	
+    	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
+    	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+    }
     
     @Test
-    public void testGetMsgsFailedNoSourceOpt() { 
-    	// Offline mode only; neither target locale bundle nor default locale bundle exists
-    	// SourceOpt is not defined so return the key
-    	String key = "does.not.exist";
+    public void testGetMsgsFailedUseDefault() { 
+    	// Offline mode only; target locale bundle does not exist
     	String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
     	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
     	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
@@ -148,55 +136,66 @@ public class OfflineModeTest extends BaseTestClass {
         
     	CacheService cs = new CacheService(dto);
     	
-    	
     	String message = translation.getMessage(newLocale, component, key, args);
-    	// Returns key
-    	assertEquals(key, message);
+    	// Returns the message in the default locale
+    	assertEquals(FormatUtils.format(source, args), message);
     	
-    	// Nothing is stored in cache
-    	MessageCacheItem cacheItem = cs.getCacheOfComponent();
-    	assertNull(cacheItem);
+    	// Cache for "es" locale is now pointing to the cache for the default locale
+    	MessageCacheItem cacheItem = cs.getCacheOfComponent();   	
+    	assertEquals(source, cacheItem.getCachedData().get(key));
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
     }
     
- // TODO Enable source message fallback @Test
-//    public void testGetMsgsFailedMissingKey() { 
-//    	// Offline mode only; neither target locale bundle nor default locale bundle exists
-//    	// Source message does not exist in SourceOpt so return the key
-//    	String key = "does.not.exist";
-//    	VIPCfg cfg = VIPCfg.getInstance();
-//        try {
-//        	Source srcOpt = new ResourceBundleSrc("messages", LocaleUtility.defaultLocale);
-//            cfg.initialize("vipconfig-offline", srcOpt);
-//        } catch (VIPClientInitException e) {
-//            logger.error(e.getMessage());
-//        }
-//    	
-//        Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
-//        TranslationCacheManager.cleanCache(c);
-//        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
-//        TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
-//
-//        dto.setProductID(VIPCfg.getInstance().getProductName());
-//        dto.setVersion(VIPCfg.getInstance().getVersion());
-//        
-//        // Bundle does not exist locally
-//        Locale newLocale = new Locale("es");
-//        dto.setLocale(newLocale.toLanguageTag());
-//        
-//    	CacheService cs = new CacheService(dto);
-//    	
-//    	
-//    	String message = translation.getMessage(newLocale, component, key, args);
-//    	// Returns key
-//    	assertEquals(key, message);
-//    	
-//    	// Nothing is stored in cache
-//    	MessageCacheItem cacheItem = cs.getCacheOfComponent();
-//    	assertNull(cacheItem);
-//    }
+    @Test
+    public void testGetMsgsFailedNewSource() { 
+    	// Offline mode only; Message is new and hasn't been collected
+    	String key = "new.key";
+    	String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
+    	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
+    	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
+    	cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
+    	
+        Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
+        TranslationCacheManager.cleanCache(c);
+        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
+        TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
+
+        dto.setProductID(VIPCfg.getInstance().getProductName());
+        dto.setVersion(VIPCfg.getInstance().getVersion());
+    	
+    	String message = translation.getMessage(locale, component, key, args);
+    	// Returns the source message because message hasn't been collected
+    	assertEquals("Not yet collected", message);
+    	
+    	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
+    	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+    }
+    
+    @Test
+    public void testGetMsgsFailedUpdatedSource() { 
+    	// Offline mode only; Message has been updated but hasn't been collected
+    	String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
+    	cfg.setOfflineResourcesBaseUrl("offlineBundles2/");
+    	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
+    	cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
+    	
+        Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
+        TranslationCacheManager.cleanCache(c);
+        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
+        TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
+
+        dto.setProductID(VIPCfg.getInstance().getProductName());
+        dto.setVersion(VIPCfg.getInstance().getVersion());
+    	
+    	String message = translation.getMessage(locale, component, key, args);
+    	// Returns the source message because message hasn't been collected
+    	assertEquals(FormatUtils.format(source, args).concat(" - updated"), message);
+    	
+    	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
+    	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+    }
     
     @Test
     public void testGetMsgsOfflineModeAfterOnlineError() {

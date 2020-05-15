@@ -5,6 +5,7 @@
 package com.vmware.vipclient.i18n;
 
 import java.net.MalformedURLException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,6 +25,7 @@ import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ProductService;
+import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 /**
@@ -178,8 +180,12 @@ public class VIPCfg {
         if (prop.containsKey("cacheExpiredTime"))
             this.cacheExpiredTime = Long.parseLong(prop
                     .getString("cacheExpiredTime"));
-        if (prop.containsKey("defaultLocale"))
+        if (prop.containsKey("defaultLocale")) {
         	LocaleUtility.setDefaultLocale(Locale.forLanguageTag(prop.getString("defaultLocale")));
+        	LocaleUtility.setFallbackLocales(new LinkedList<Locale>(Arrays.asList(LocaleUtility.getDefaultLocale(), Locale.forLanguageTag(ConstantsKeys.SOURCE))));
+        }
+        if (prop.containsKey("sourceLocale"))
+        	LocaleUtility.setSourceLocale(Locale.forLanguageTag(prop.getString("sourceLocale")));
 	}	
 
     /**

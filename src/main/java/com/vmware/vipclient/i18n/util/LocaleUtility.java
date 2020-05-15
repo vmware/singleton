@@ -6,6 +6,7 @@ package com.vmware.vipclient.i18n.util;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -13,8 +14,12 @@ import java.util.stream.Collectors;
 
 public class LocaleUtility {
 
-    private static Locale defaultLocale  = Locale.ENGLISH;
-
+    private static Locale defaultLocale;
+    private static Locale sourceLocale = Locale.ENGLISH;
+    
+    // A locale fallback priority queue. For now, it only contains the default locale and the source messages (from "messages_source.json").
+    private static List<Locale> fallbackLocales = new LinkedList<Locale>(Arrays.asList(getDefaultLocale(), Locale.forLanguageTag(ConstantsKeys.SOURCE)));
+    
     // Use ThreadLocal to combine the locale with local thread so that the
     // locale can be used by any code places.
     private static InheritableThreadLocal<Map<String, Locale>> threadLocal    = new InheritableThreadLocal<Map<String, Locale>>() {
@@ -219,11 +224,27 @@ public class LocaleUtility {
     }
 
 	public static Locale getDefaultLocale() {
-		return defaultLocale;
+		return defaultLocale == null ? getSourceLocale() : defaultLocale;
 	}
 
 	public static void setDefaultLocale(Locale defaultLocale) {
 		LocaleUtility.defaultLocale = defaultLocale;
+	}
+
+	public static Locale getSourceLocale() {
+		return sourceLocale; 
+	}
+
+	public static void setSourceLocale(Locale sourceLocale) {
+		LocaleUtility.sourceLocale = sourceLocale;
+	}
+
+	public static List<Locale> getFallbackLocales() {
+		return fallbackLocales;
+	}
+
+	public static void setFallbackLocales(List<Locale> fallbackLocales) {
+		LocaleUtility.fallbackLocales = fallbackLocales;
 	}
     
 }

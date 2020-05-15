@@ -5,7 +5,9 @@
 package com.vmware.vipclient.i18n.messages.service;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
@@ -31,29 +33,26 @@ public class StringService {
     public String getString(MessagesDTO dto) {
     	String key = dto.getKey();
     	
-    	MessageCacheItem cacheItem = new ComponentService(dto).fetchMessages();
+    	Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
+    	MessageCacheItem cacheItem = new ComponentService(dto).getMessages();
     	
-    	// If failed to get MessageCacheItem of a non-default locale, 
-    	// use MessageCacheItem of the default locale instead. 
-    	Map<String, String> cacheOfComponent = cacheItem.getCachedData();	
-    	if (cacheOfComponent.isEmpty() && !LocaleUtility.isDefaultLocale(dto.getLocale())) {
-			MessagesDTO defaultLocaleDTO = new MessagesDTO(dto.getComponent(), 
-					dto.getKey(), dto.getSource(), LocaleUtility.getDefaultLocale().toLanguageTag(), null);
-			// MessageCacheItem of the default locale
-			cacheItem = new ComponentService(defaultLocaleDTO).fetchMessages();
+    	// While failed to get MessageCacheItem, use MessageCacheItem of the next fallback locale. 
+    	while (cacheItem.getCachedData().isEmpty() && fallbackLocalesIter.hasNext()) {
+    		Locale fallback = fallbackLocalesIter.next();
+			MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), 
+					key, dto.getSource(), fallback.toLanguageTag(), null);
+			cacheItem = new ComponentService(fallbackLocaleDTO).getMessages();
 			
-			// The MessageCacheItem for the requested locale will be a reference 
-			// to the MessageCacheItem of the default locale 
+			// Cache a reference to the MessageCacheItem of the fallback locale 
 			if (!cacheItem.getCachedData().isEmpty()) {
 				CacheService cacheService = new CacheService(dto);
 				cacheService.addCacheOfComponent(cacheItem);
-				cacheOfComponent = cacheItem.getCachedData();
 			}
 		}
-		return  cacheOfComponent.get(key) == null ? null : cacheOfComponent.get(key);
     	
+    	Map<String, String> cachedData = cacheItem.getCachedData();
+		return cachedData.get(key) == null ? null : cachedData.get(key);
     }
-    
 
     public String postString(MessagesDTO dto) {
         String r = "";

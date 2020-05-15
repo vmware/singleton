@@ -12,6 +12,6 @@ public class ConstantsMsg {
     public static final String SERVER_RETURN_ERROR  = "Server returned error! Status: %d. Message: %s";
     public static final String SERVER_CONTENT_ERROR = "The content from server is wrong!";
     public static final String UNKNOWN_ERROR        = "Unknown error.";
-    public static final String GET_MESSAGES_FAILED  = "Failed to get messages for component {0}, locale: {1}.";
+    public static final String GET_MESSAGES_FAILED  = "Failed to get messages for component {0}, locale: {1}, data source: {2}.";
 
 }

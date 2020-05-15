@@ -67,40 +67,40 @@ public class TranslationMessage implements Message {
     	return s.getString(dto);
     }
     
-    
     /**
-     * Retrieves the localized message from the cache, with added functionality such as:
-     * <ul>
-     * 	<li>Pseudo-localization</li>
-     * 	<li>Fallback to source message when message is neither collected nor translated yet</li>
-     * </ul>
+     * Retrieves the localized message
      * 
      * @param locale The locale in which the message is requested to be localized
      * @param component The Singleton component in which the message belongs
-     * @param sourceOpt The optional SourceOpt object which gives access to source messages
      * @param key The key that represents the message
      * @param args Values to replace placeholders in the message with
      * @return One of the items in the following priority-ordered list: 
      * <ul>
      * 		<li>The pseudo message, if isPseudo is true</li> 
      * 		<li>The message in the requested locale, if available</li>
-     * 		<li>The message in the default locale, if available</li>
-     * 		<li>The message from sourceOpt, if available</li>
-     * 		<li>key</li>
+     * 		<li>The message in the next available fallback locale, if any</li>
+     * 		<li>The source message, if available</li>
+     * 		<li>The key</li>
      * </ul>
      */
     public String getMessage(final Locale locale, final String component, final String key, final Object... args) {
-    	String message = null;
+    	// Use source message if the message hasn't been collected/translated 
+    	String source = getCachedMessage(component, key, Locale.forLanguageTag(ConstantsKeys.SOURCE));
+    	String collectedSourceMsg = getCachedMessage(component, key, LocaleUtility.getSourceLocale());
+    	if (source!=null && !source.isEmpty() && !source.equals(collectedSourceMsg)) {
+			return FormatUtils.format(source, LocaleUtility.getSourceLocale(), args);
+		}
     	
-    	// Get the message in the target locale
-    	message = FormatUtils.format(getCachedMessage(component, key, locale), locale, args);
+    	String message = FormatUtils.format(getCachedMessage(component, key, locale), locale, args);
+    	if (message == null || message.isEmpty()) {
+    		if (source != null && !source.isEmpty()) {
+    			return FormatUtils.format(source, LocaleUtility.getSourceLocale(), args);
+    		}
+    		return key;
+    	}
     	
-    	// TODO Use source message for 
-    	// 	a. if neither localized message nor default locale message was retrieved successfully
-    	// 	b. if the message hasn't been collected for localization 
-    	//  c. for client-side pseudo-translation in FormatUtils.format
-
-    	return message == null ? key : message;	
+    	return message;
+    	
     }
     
     /**
@@ -123,8 +123,10 @@ public class TranslationMessage implements Message {
      *            used to format the message with placeholder, it's not required
      *            if the message doesn't contain any placeholder
      * @return string
+     * @deprecated Replaced by {@link #getMessage(Locale, String, String, Object...)} 
+     * 		which fetches source messages from messages_source.json of the component.
      */ 
-    public String getString(final Locale locale, final String component,
+     public String getString(final Locale locale, final String component,
             final String key, final String source, final String comment, final Object... args) {
         this.logger.trace("Start to execute TranslationMessage.getString");
         if (key == null || key.equalsIgnoreCase(""))
@@ -197,6 +199,7 @@ public class TranslationMessage implements Message {
      *            the JSONObject should contain three attributes(key, source,
      *            commentForSource).
      * @return a boolean to indicate the post status
+     * @deprecated Collection of source message is not supported at runtime.
      */
     public boolean postStrings(final Locale locale, final String component,
             final List<JSONObject> sources) {
@@ -250,6 +253,7 @@ public class TranslationMessage implements Message {
      *            used to describe the source to help understand the source for
      *            the translators.
      * @return a boolean to indicate post succeeded or failed
+     * @deprecated Collection of source message is not supported at runtime.
      */
     public boolean postString(final Locale locale, final String component,
             final String key, final String source, final String comment) {
@@ -284,8 +288,9 @@ public class TranslationMessage implements Message {
      *            not exist
      * @return a map contains all translations of the component mapped by the
      *         source's key
+     * @deprecated Replaced by {@link #getMessages(Locale, String)} 
      */
-    public Map<String, String> getStrings(final Locale locale,
+    @Deprecated public Map<String, String> getStrings(final Locale locale,
             final String component) {
         this.logger.trace("Start to execute TranslationMessage.getStrings");
         MessagesDTO dto = new MessagesDTO();
@@ -296,7 +301,20 @@ public class TranslationMessage implements Message {
             dto.setVersion(this.cfg.getVersion());
         }
         ComponentService cs = new ComponentService(dto);
-        return cs.getComponentTranslation();
+        return cs.getMessages().getCachedData();
+    }
+    
+    /**
+     * Retrieves localized messages
+     *
+     * @param locale The locale in which the message is requested to be localized
+     * @param component The Singleton component 
+     * @return Message keys, each one mapped to the localized message
+     */
+    public Map<String, String> getMessages(final Locale locale, final String component) {
+        MessagesDTO dto = new MessagesDTO(component, null, null, locale.toLanguageTag(), this.cfg);
+        ComponentService cs = new ComponentService(dto);
+        return cs.getMessages().getCachedData();
     }
 
     /**
@@ -356,8 +374,10 @@ public class TranslationMessage implements Message {
      * @return a message of translation, if the translation is not found from
      *         VIP service, it will return the value defined in the bundle
      *         searching by the key
+     * @deprecated Replaced by {@link #getMessage(Locale, String, String, Object...)} 
+     * 		which fetches source messages from messages_source.json of the component.
      */
-    public String getString2(final String component,
+     public String getString2(final String component,
             final String bundle, final Locale locale, final String key, final Object... args) {
         this.logger.trace("Start to execute TranslationMessage.getString2");
         if (key == null || key.equalsIgnoreCase(""))

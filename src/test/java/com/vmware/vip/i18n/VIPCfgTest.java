@@ -82,7 +82,7 @@ public class VIPCfgTest extends BaseTestClass {
         // Assert.assertThat(message3, org.hamcrest.text.IsEqualIgnoringCase.equalToIgnoringCase("Test source"));
     }
 
-    @Test
+    //@Test
     public void testMT2() {
         String component = "default";
         Locale locale1 = new Locale("en", "US");
@@ -103,6 +103,26 @@ public class VIPCfgTest extends BaseTestClass {
 
     @Test
     public void testMT3() {
+        VIPCfg gc = VIPCfg.getInstance();
+        gc.setProductName("Sample");
+        gc.setVersion("1.0.0");
+        String component = "default";
+        Locale locale1 = new Locale("ru");
+        VIPCfg.getInstance().setMachineTranslation(true);
+        Map message1 = translation.getMessages(locale1, component);
+        // Assert.assertTrue(message1.size()>0);
+        // String mt = (String)message1.get("global_text_username");
+        // Assert.assertThat(mt, org.hamcrest.text.IsEqualIgnoringCase.equalToIgnoringCase("Имя пользователя"));
+        String key = "key.mt";
+        String source = "It's a testing source";
+        String message2 = translation.getString(locale1, component, key, source, "It's a comment");
+        // Assert.assertThat(message2, org.hamcrest.text.IsEqualIgnoringCase.equalToIgnoringCase("Это тестовый
+        // источник"));
+    }
+    
+    @Test
+    @Deprecated
+    public void testMT3_() {
         VIPCfg gc = VIPCfg.getInstance();
         gc.setProductName("Sample");
         gc.setVersion("1.0.0");
