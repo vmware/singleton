@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Singleton</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2020-05-15T19:40:57 CST">
+<title>Go Client Introduction :: Singleton</title>
+<link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
+<link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://vmware.github.io/singleton/css/nucleus.css" rel="stylesheet">
+<link href="https://vmware.github.io/singleton/theme-flex/style.css" rel="stylesheet">
+
+	<link href="https://vmware.github.io/singleton/theme-flex/variant-blue.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://vmware.github.io/singleton/css/bootstrap.min.css">
+<script src="https://vmware.github.io/singleton/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/vmware.github.io\/singleton\/";
+</script>
+<meta name="description" content="One-fits-all Internationalization Solution">
+
+
+
+    
+  </head>
+  <body data-url="/docs/overview/singleton-sdk/go-client-introduction/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="https://vmware.github.io/singleton/">Singleton</a>
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://vmware.github.io/singleton/"  rel="noopener">
+                  <i class='fa fa-home'></i> <label>Home</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://vmware.github.io/singleton/docs/get-started/download-and-installation"  rel="noopener">
+                  <i class='fa fa-download'></i> <label>Download</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://vmware.github.io/singleton/docs"  rel="noopener">
+                  <i class='fa fa-book'></i> <label>Documentation</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://github.com/vmware/singleton"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github Repo</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="/docs/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/">Documentation</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/docs/get-started/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/get-started/">Get Started</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/docs/get-started/download-and-installation/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/get-started/download-and-installation/">
+            Download and Installation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/get-started/quick-start/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/get-started/quick-start/">
+            Quick Start
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/docs/overview/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/overview/">Overview</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/docs/overview/singleton-service/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/">Singleton Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/docs/overview/singleton-service/singleton-service-script/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">
+            Singleton Service Script
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/docs/overview/singleton-service/configurations/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/">Configurations</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-source-collection/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-source-collection/">
+            Enable Source Collection
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-pseudo-translation/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-pseudo-translation/">
+            Enable Pseudo Translation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-product-white-list/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-product-white-list/">
+            Enable Product White List
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-s3-storage/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/">
+            Enable S3 Storage
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-service/singleton-service-apis/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/">
+            Singleton Service APIs
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/docs/overview/singleton-sdk/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/">Singleton SDK</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/docs/overview/singleton-sdk/java-client-introduction/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/">
+            Java Client Introduction
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/javascript-client-introduction/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/javascript-client-introduction/">
+            Javascript Client Introduction
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/">Angular Client Introduction</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/data-initialization/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/data-initialization/">
+            Data Initialization
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/locale-management/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/locale-management/">
+            Locale Management
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/isolated-feature-module/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/isolated-feature-module/">
+            Isolated Feature Module
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/lazy-load-module/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/lazy-load-module/">
+            Lazy Load Module
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/localized-component-mixin/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/localized-component-mixin/">
+            Localized Component Mixin
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/translate-pipe/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-pipe/">
+            Translate Pipe
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/translate-directive/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-directive/">
+            Translate Directive
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/l10n-service/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/l10n-service/">
+            L10n Service
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/i18n-service/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/i18n-service/">
+            I18n Service
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/plural-format/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/plural-format/">
+            Plural Format
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/relative-time-format/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/relative-time-format/">
+            Relative Time Format
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/">
+            Date Time Format Pipe
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/number-format-pipe/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/number-format-pipe/">
+            Number Format Pipe
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/">
+            Currency Format Pipe
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/">
+            Percent Format Pipe
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/command-line-utils/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/command-line-utils/">
+            Command Line Utils
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/angular-client-introduction/standalone-mode/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/standalone-mode/">
+            Standalone Mode
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/csharp-client-introduction/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/csharp-client-introduction/">
+            C# Client Introduction
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/python-client-introduction/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/python-client-introduction/">
+            Python Client Introduction
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/go-client-introduction/" class="dd-item active">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/go-client-introduction/">
+            Go Client Introduction
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/docs/tutorials/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/tutorials/">Tutorials</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-java-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-java-app/">
+            Integrate Singleton in Java App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-javascript-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-javascript-app/">
+            Integrate Singleton in Javascript App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-angular-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-angular-app/">
+            Integrate Singleton in Angular App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-csharp-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-csharp-app/">
+            Integrate Singleton in C# App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/tutorials/integrate-singleton-in-python-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-python-app/">
+            Integrate Singleton in Python App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/tutorials/deploy-singleton-service-in-your-app/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/tutorials/deploy-singleton-service-in-your-app/">
+            Deploy Singleton Service in Your App
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/docs/" >
+   Documentation</option> 
+    <option value="/docs/get-started/" >
+  - 
+   Get Started</option>
+    <option value="/docs/overview/" >
+  - 
+   Overview</option> 
+    <option value="/docs/overview/singleton-service/" >
+  -- 
+   Singleton Service</option>
+    <option value="/docs/overview/singleton-sdk/" >
+  -- 
+   Singleton SDK</option> 
+      <option value="/docs/overview/singleton-sdk/java-client-introduction/" >--- Java Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/javascript-client-introduction/" >--- Javascript Client Introduction</option>
+    <option value="/docs/overview/singleton-sdk/angular-client-introduction/" >
+  --- 
+   Angular Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/csharp-client-introduction/" >--- C# Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/python-client-introduction/" >--- Python Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/go-client-introduction/"  selected>--- Go Client Introduction</option>
+  
+  
+    <option value="/docs/tutorials/" >
+  - 
+   Tutorials</option>
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="https://vmware.github.io/singleton/js/lunr.min.js"></script>
+        <script type="text/javascript" src="https://vmware.github.io/singleton/js/auto-complete.js"></script>
+        <link href="https://vmware.github.io/singleton/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "https:\/\/vmware.github.io\/singleton\/";
+          
+        </script>
+        <script type="text/javascript" src="https://vmware.github.io/singleton/js/search.js"></script>
+      </div>
+    
+
+    <h1>Go Client Introduction</h1>
+    
+    
+    
+    <p>The Singleton Go Client is a Singleton SDK to fetch translations from Singleton service or bundles easily.</p>
+<h2 id="features-in-go-client-sdk">Features in Go Client SDK</h2>
+<hr>
+<ul>
+<li>Supported interfaces:
+<ul>
+<li>GetLocaleList: Get supported locale list</li>
+<li>GetComponentList: Get supported component list</li>
+<li>GetStringMessage: Get a message with optional arguments. Fallback to default locale is provided.</li>
+<li>GetComponentMessages: Get messages of a component. Fallback to default locale is <strong>NOT</strong> provided.</li>
+</ul>
+</li>
+<li>Provide cache management as well as cache registration.</li>
+<li>Support fallback to local bundles when failing to get from server</li>
+<li>Support fallback to default locale when failing to get a <strong>string</strong> message of a nondefault locale.</li>
+</ul>
+<h2 id="apis-available">APIs Available</h2>
+<h3 id="global">Global</h3>
+<h4 id="loadconfig">LoadConfig</h4>
+<p>Load configuration from a file.</p>
+<ul>
+<li>Parameters</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">path</td>
+<td align="left">string</td>
+<td align="left">The path to a config file</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return values</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">*Config</td>
+<td align="left">The config instance created</td>
+</tr>
+<tr>
+<td align="left">error</td>
+<td align="left">nil if successful</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Example</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">cfg</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">sgtn</span>.<span style="color:#a6e22e">LoadConfig</span>(<span style="color:#e6db74">&#34;resource/conf/singletonconfig.json&#34;</span>)
+</code></pre></div></li>
+</ul>
+<h4 id="initialize">Initialize</h4>
+<p>Initialize the client by the config.</p>
+<ul>
+<li>Parameters</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">cfg</td>
+<td align="left">*Config</td>
+<td align="left">The config to initialize client</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return values</li>
+</ul>
+<p>None</p>
+<ul>
+<li>
+<p>Example</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">sgtn</span>.<span style="color:#a6e22e">Initialize</span>(<span style="color:#a6e22e">cfg</span>)
+</code></pre></div></li>
+</ul>
+<h4 id="gettranslation">GetTranslation</h4>
+<p>Get translation instance.</p>
+<ul>
+<li>Parameters</li>
+</ul>
+<p>None</p>
+<ul>
+<li>Return values</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Translation</td>
+<td align="left">The translation instance</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Example</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">trans</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">sgtn</span>.<span style="color:#a6e22e">GetTranslation</span>()
+</code></pre></div></li>
+</ul>
+<h4 id="sethttpheaders">SetHTTPHeaders</h4>
+<p>Set customized http headers.</p>
+<ul>
+<li>Parameters</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">h</td>
+<td align="left">map[string]string</td>
+<td align="left">The headers to set</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return values</li>
+</ul>
+<p>None</p>
+<ul>
+<li>
+<p>Example</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">sgtn</span>.<span style="color:#a6e22e">SetHTTPHeaders</span>(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>{
+          <span style="color:#e6db74">&#34;user&#34;</span>: <span style="color:#e6db74">&#34;username&#34;</span>,
+          <span style="color:#e6db74">&#34;pass&#34;</span>: <span style="color:#e6db74">&#34;password&#34;</span>,
+      })
+</code></pre></div></li>
+</ul>
+<h4 id="setlogger">SetLogger</h4>
+<p>Set logger for client.</p>
+<ul>
+<li>Parameters</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">l</td>
+<td align="left">Logger</td>
+<td align="left">The logger to set</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return values</li>
+</ul>
+<p>None</p>
+<ul>
+<li>
+<p>Example</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">sgtn</span>.<span style="color:#a6e22e">SetLogger</span>(&lt;<span style="color:#a6e22e">your</span> <span style="color:#a6e22e">logger</span>&gt;)
+</code></pre></div></li>
+</ul>
+<h4 id="registercache">RegisterCache</h4>
+<p>Register a separate cache implementation</p>
+<ul>
+<li>Parameters</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">c</td>
+<td align="left">Cache</td>
+<td align="left">The cache to register</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return values</li>
+</ul>
+<p>None</p>
+<ul>
+<li>
+<p>Example</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">sgtn</span>.<span style="color:#a6e22e">RegisterCache</span>(&lt;<span style="color:#a6e22e">your</span> <span style="color:#a6e22e">cache</span>&gt;)
+</code></pre></div></li>
+</ul>
+<h3 id="translation-interface">Translation interface</h3>
+<h4 id="getlocalelist">GetLocaleList</h4>
+<p>Get available locale list</p>
+<ul>
+<li>Parameters</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">name</td>
+<td align="left">string</td>
+<td align="left">The name of translation</td>
+</tr>
+<tr>
+<td align="left">version</td>
+<td align="left">string</td>
+<td align="left">The version of translation</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return values</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">[]string</td>
+<td align="left">The available locale list</td>
+</tr>
+<tr>
+<td align="left">error</td>
+<td align="left">nil if successful</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Example</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">locales</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">sgtn</span>.<span style="color:#a6e22e">GetTranslation</span>().<span style="color:#a6e22e">GetLocaleList</span>(<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">version</span>)
+</code></pre></div></li>
+</ul>
+<h4 id="getcomponentlist">GetComponentList</h4>
+<p>Get available component list</p>
+<ul>
+<li>Parameters</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">name</td>
+<td align="left">string</td>
+<td align="left">The name of translation</td>
+</tr>
+<tr>
+<td align="left">version</td>
+<td align="left">string</td>
+<td align="left">The version of translation</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return values</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">[]string</td>
+<td align="left">The available component list</td>
+</tr>
+<tr>
+<td align="left">error</td>
+<td align="left">nil if successful</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Example</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">components</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">sgtn</span>.<span style="color:#a6e22e">GetTranslation</span>().<span style="color:#a6e22e">GetComponentList</span>(<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">version</span>)
+</code></pre></div></li>
+</ul>
+<h4 id="getstringmessage">GetStringMessage</h4>
+<p>Get a message with optional arguments</p>
+<ul>
+<li>Parameters</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">name</td>
+<td align="left">string</td>
+<td align="left">The name of translation</td>
+</tr>
+<tr>
+<td align="left">version</td>
+<td align="left">string</td>
+<td align="left">The version of translation</td>
+</tr>
+<tr>
+<td align="left">locale</td>
+<td align="left">string</td>
+<td align="left">The locale which the key belongs to</td>
+</tr>
+<tr>
+<td align="left">component</td>
+<td align="left">string</td>
+<td align="left">The component which the key belongs to</td>
+</tr>
+<tr>
+<td align="left">key</td>
+<td align="left">string</td>
+<td align="left">The key</td>
+</tr>
+<tr>
+<td align="left">args</td>
+<td align="left">&hellip;string</td>
+<td align="left">The arguments to replace placeholders</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return values</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">string</td>
+<td align="left">The translation of the key</td>
+</tr>
+<tr>
+<td align="left">error</td>
+<td align="left">nil if successful</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Example</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">message</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">sgtn</span>.<span style="color:#a6e22e">GetTranslation</span>().<span style="color:#a6e22e">GetStringMessage</span>(<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">version</span>, <span style="color:#a6e22e">locale</span>, <span style="color:#a6e22e">component</span>, <span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">args</span>)
+</code></pre></div></li>
+</ul>
+<h4 id="getcomponentmessages">GetComponentMessages</h4>
+<p>Get messages of a component</p>
+<ul>
+<li>Parameters</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">name</td>
+<td align="left">string</td>
+<td align="left">The name of translation</td>
+</tr>
+<tr>
+<td align="left">version</td>
+<td align="left">string</td>
+<td align="left">The version of translation</td>
+</tr>
+<tr>
+<td align="left">locale</td>
+<td align="left">string</td>
+<td align="left">The locale of the component</td>
+</tr>
+<tr>
+<td align="left">component</td>
+<td align="left">string</td>
+<td align="left">The component name</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return values</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">ComponentMsgs</td>
+<td align="left">The messages of the component</td>
+</tr>
+<tr>
+<td align="left">error</td>
+<td align="left">nil if successful</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Example</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">messages</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">sgtn</span>.<span style="color:#a6e22e">GetTranslation</span>().<span style="color:#a6e22e">GetComponentMessages</span>(<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">version</span>, <span style="color:#a6e22e">locale</span>, <span style="color:#a6e22e">component</span>)
+</code></pre></div></li>
+</ul>
+<h3 id="componentmsgs-interface">ComponentMsgs interface</h3>
+<h4 id="get">Get</h4>
+<p>Get a message by key</p>
+<ul>
+<li>Parameters</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">key</td>
+<td align="left">string</td>
+<td align="left">The key to get</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return values</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">string</td>
+<td align="left">The value of the key</td>
+</tr>
+<tr>
+<td align="left">found</td>
+<td align="left">true if found, false if not found</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Example</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">messages</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">sgtn</span>.<span style="color:#a6e22e">GetTranslation</span>().<span style="color:#a6e22e">GetComponentMessages</span>(<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">version</span>, <span style="color:#a6e22e">locale</span>, <span style="color:#a6e22e">component</span>)
+<span style="color:#a6e22e">message</span>, <span style="color:#a6e22e">found</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">messages</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#e6db74">&#34;a key&#34;</span>)
+</code></pre></div></li>
+</ul>
+<h3 id="cache-interface">Cache interface</h3>
+<h4 id="get-1">Get</h4>
+<p>Get an item from cache</p>
+<ul>
+<li>Parameters</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">key</td>
+<td align="left">interface{}</td>
+<td align="left">The key to get</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return values</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">interface{}</td>
+<td align="left">The value of key</td>
+</tr>
+<tr>
+<td align="left">bool</td>
+<td align="left">true if found, false if not found</td>
+</tr>
+</tbody>
+</table>
+<h4 id="set">Set</h4>
+<p>Set an item to cache</p>
+<ul>
+<li>Parameters</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">key</td>
+<td align="left">interface{}</td>
+<td align="left">The key to set</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">interface{}</td>
+<td align="left">The value to set</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return values</li>
+</ul>
+<p>None</p>
+<h3 id="logger-interface">Logger interface</h3>
+<h4 id="debug">Debug</h4>
+<p>Log a message of <em>Debug</em> level</p>
+<ul>
+<li>Parameters</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">message</td>
+<td align="left">string</td>
+<td align="left">The message to log</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return values</li>
+</ul>
+<p>None</p>
+<h4 id="info">Info</h4>
+<p>Log a message of <em>Information</em> level</p>
+<ul>
+<li>Parameters</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">message</td>
+<td align="left">string</td>
+<td align="left">The message to log</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return values</li>
+</ul>
+<p>None</p>
+<h4 id="warn">Warn</h4>
+<p>Log a message of <em>Warning</em> level</p>
+<ul>
+<li>Parameters</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">message</td>
+<td align="left">string</td>
+<td align="left">The message to log</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return values</li>
+</ul>
+<p>None</p>
+<h4 id="error">Error</h4>
+<p>Log a message of <em>Error</em> level</p>
+<ul>
+<li>Parameters</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">message</td>
+<td align="left">string</td>
+<td align="left">The message to log</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Return values</li>
+</ul>
+<p>None</p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/python-client-introduction/" title="Python Client Introduction"> <i class="fa fa-chevron-left"></i><label>Python Client Introduction</label></a>
+    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/tutorials/" title="Tutorials" style="margin-right: 0px;"><label>Tutorials</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 07/04/2020
+    </div>
+    
+
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="https://vmware.github.io/singleton/js/clipboard.min.js"></script>
+
+<link href="https://vmware.github.io/singleton/css/featherlight.min.css" rel="stylesheet">
+<script src="https://vmware.github.io/singleton/js/featherlight.min.js"></script>
+
+
+
+<script src="https://vmware.github.io/singleton/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>
