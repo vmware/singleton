@@ -27,4 +27,3 @@ Note: The library jar will be created under "build/libs" directory.
    ```
    java -jar build/libs/<jar file> <locale>
    ```
-   Currently sample application supports four locales: en, zh-Hans, ja, fr.

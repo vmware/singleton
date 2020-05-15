@@ -63,7 +63,7 @@ public class PatternService {
 
     private JSONObject getPatternsFromBundle(String locale) {
         JSONObject patterns = null;
-        if (LocaleUtility.isDefaultLocale(locale)) {
+        if (LocaleUtility.isDefaultLocale(locale) || locale.contains("en")) {
             logger.debug("Got pattern from local bundle!");
             patterns = new LocalPatternOpt()
                     .getPatternsByLocale(ConstantsKeys.EN);

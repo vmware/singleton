@@ -15,6 +15,24 @@ import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 
 public class Translation {
 
+	public static void demo(Locale locale) {
+		// Get translation
+		String key = "global_text_username";
+		String source = "User name";
+
+		System.out.println(">>>>>> Get translation by key: \"" + key + "\" and source: \"" + source + "\"");
+		String trans1 = Translation.getTranslation(key, source);
+		System.out.println(trans1);
+
+		System.out.println(">>>>>> Get translation by key: \"" + key + "\"");
+		String trans2 = Translation.getTranslation2(key);
+		System.out.println(trans2);
+		
+		System.out.println(">>>>>> Check translation status of key: \"" + key + "\"");
+		boolean bReady = Translation.isTranslationReady("default", key, locale);
+		System.out.println(bReady);
+	}
+	
 	/**
 	 * get one string's translation
 	 * 
@@ -22,6 +40,7 @@ public class Translation {
 	 * @param source
 	 * @param args
 	 * @return
+	 * @deprecated
 	 */
 	public static String getTranslation(String key, String source,
 			Object... args) {
@@ -41,6 +60,7 @@ public class Translation {
 	 * @param locale
 	 * @param component
 	 * @return
+	 * @deprecated
 	 */
 	public static Map getTranslations(Locale locale, String component) {
 		TranslationMessage t = (TranslationMessage) I18nFactory.getInstance()
@@ -55,6 +75,7 @@ public class Translation {
 	 * @param key
 	 * @param args
 	 * @return
+	 * @deprecated
 	 */
 	public static String getTranslation2(String key, Object... args) {
 		Locale locale = com.vmware.vipclient.i18n.util.LocaleUtility
