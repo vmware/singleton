@@ -73,7 +73,7 @@ module.exports.handle = (req, res, next) => {
             host: 'http://localhost:8091',
             language: currentLanguage,
             region: currentRegion,
-            sourceBundle: bundle.ENGLISH,
+            sourceBundles: [ bundle.ENGLISH ],
             i18nScope: [
                 vipCore.PatternCategories.DATE,
                 vipCore.PatternCategories.NUMBER,
