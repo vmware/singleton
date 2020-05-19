@@ -23,7 +23,7 @@ public class MTConfigContent {
 	@Value("${mt.translatedCount:20}")
 	private String translatedCount;
 
-	@Value("${mt.region}")
+	@Value("${mt.region:}")
 	private String region;
 
 	@PostConstruct
