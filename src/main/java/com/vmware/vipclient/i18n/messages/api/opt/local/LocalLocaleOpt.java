@@ -7,7 +7,6 @@ package com.vmware.vipclient.i18n.messages.api.opt.local;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.FileSystem;
-import java.nio.file.FileSystemAlreadyExistsException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,7 +22,6 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.messages.api.opt.LocaleOpt;
-import com.vmware.vipclient.i18n.util.FileUtil;
 
 public class LocalLocaleOpt implements LocaleOpt{
 
@@ -41,15 +39,16 @@ public class LocalLocaleOpt implements LocaleOpt{
 			URI uri = Thread.currentThread().getContextClassLoader().
 					getResource(path.toString()).toURI();
 
-			FileSystem fileSystem = null;
 	    	if (uri.getScheme().equals("jar")) {
-	    		fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap());
-				path = fileSystem.getPath(path.toString());
+	    		try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
+	    			path = fileSystem.getPath(path.toString());
+	    			getSupportedLocales(path, supportedLocales, displayLanguage);
+	    		}
 			} else {
 				path = Paths.get(uri);
+				getSupportedLocales(path, supportedLocales, displayLanguage);
 			}
-	    	getSupportedLocales(path, supportedLocales, displayLanguage);
-	    	fileSystem.close();
+	    	
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
 		}

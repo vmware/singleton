@@ -59,19 +59,19 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 			URI uri = Thread.currentThread().getContextClassLoader().
 					getResource(path.toString()).toURI();
 			
-			FileSystem fileSystem = null;
+			Map<String, String> messages = null;
 	    	if (uri.getScheme().equals("jar")) {
-				fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap());
-				System.out.println("&&& " + fileSystem.toString());
-				path = fileSystem.getPath(path.toString());
+				try(FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
+					path = fileSystem.getPath(path.toString());
+					messages = JSONBundleUtil.getMessages(path);
+				}
 			} else {
 				path = Paths.get(uri);
+				messages = JSONBundleUtil.getMessages(path);
 			}
-			
-			Map<String, String> messages = JSONBundleUtil.getMessages(path);
+				
 	    	cacheItem.addCachedData(messages);
 	    	cacheItem.setTimestamp(System.currentTimeMillis());
-	    	fileSystem.close();
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
 			// Do not update cacheItem
