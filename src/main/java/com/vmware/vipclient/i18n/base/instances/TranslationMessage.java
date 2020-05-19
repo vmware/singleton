@@ -125,6 +125,7 @@ public class TranslationMessage implements Message {
      * @return string
      * @deprecated Replaced by {@link #getMessage(Locale, String, String, Object...)} 
      * 		which fetches source messages from messages_source.json of the component.
+     * 		This method only supports English as both the default and the source locale.
      */ 
      public String getString(final Locale locale, final String component,
             final String key, final String source, final String comment, final Object... args) {
@@ -376,6 +377,7 @@ public class TranslationMessage implements Message {
      *         searching by the key
      * @deprecated Replaced by {@link #getMessage(Locale, String, String, Object...)} 
      * 		which fetches source messages from messages_source.json of the component.
+     * 		This method only supports English as both the default and the source locale.
      */
      public String getString2(final String component,
             final String bundle, final Locale locale, final String key, final Object... args) {

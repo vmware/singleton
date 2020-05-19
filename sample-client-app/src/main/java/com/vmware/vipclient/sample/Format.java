@@ -4,6 +4,7 @@
  */
 package com.vmware.vipclient.sample;
 
+import java.util.Date;
 import java.util.Locale;
 
 import com.vmware.vipclient.i18n.I18nFactory;
@@ -11,6 +12,41 @@ import com.vmware.vipclient.i18n.base.instances.DateFormatting;
 import com.vmware.vipclient.i18n.base.instances.NumberFormatting;
 
 public class Format {
+	
+	public static void demo(Locale locale) {
+		// Number format
+		double num = 201703.5416926;
+		System.out.println(">>>>>> Number format: " + num);
+		String resultOfNumber = formatNumber(num);
+		System.out.println(resultOfNumber);
+
+		// Percent format
+		double numOfPercent = 12.3456;
+		System.out.println(">>>>>> Percent format: " + numOfPercent);
+		String resultOfPercent = formatPercent(numOfPercent);
+		System.out.println(resultOfPercent);
+
+		// Currency format
+		double numOfCurrency = 201703.5416926;
+		System.out.println(">>>>>> Currency format: " + numOfCurrency);
+		String resultOfCurrency = formatCurrency(numOfCurrency);
+		System.out.println(resultOfCurrency);
+
+		String code = "EUR";
+		System.out.println(">>>>>> Currency format with code \"" + code + "\": " + numOfCurrency);
+		String resultOfCurrency2 = formatCurrency(numOfCurrency, code);
+		System.out.println(resultOfCurrency2);
+
+		// Date format
+		Date date = new Date(1511156364801l);
+		String pattern = "long";
+		String tz = "GMT-8";
+		System.out.println(">>>>>> Date format with pattern \"" + pattern + "\": " + date);
+		System.out.println(formatDate(date, pattern));
+		System.out.println(">>>>>> Date format with pattern \"" + pattern + "\" and timezone \"" + tz + "\": " + date);
+		System.out.println(formatDate(date, pattern, tz));
+	}
+	
 	/**
 	 * Format a number to an localized number string in decimal style according to locale's decimal format defined in cldr.
 	 * Default fraction size in cldr decimal format is: the minimum is 0, the maximum is 3.

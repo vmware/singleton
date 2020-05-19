@@ -4,6 +4,8 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
+import java.util.Locale;
+
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

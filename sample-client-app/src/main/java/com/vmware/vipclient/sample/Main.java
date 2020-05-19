@@ -5,27 +5,25 @@
 
 package com.vmware.vipclient.sample;
 
-import java.util.Date;
 import java.util.Locale;
 
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
-import com.vmware.vipclient.i18n.util.LocaleUtility;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
+import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 public class Main {
 	
 	public static void main(String[] args) {
-		Locale thislocale = Locale.ENGLISH;
+		Locale locale = Locale.ENGLISH;
 		if (args.length > 0) {
 			// set locale
 			System.out.println("Set locale to: " + args[0]);
-			thislocale = Locale.forLanguageTag(args[0]);
+			locale = Locale.forLanguageTag(args[0]);
 		}
-		LocaleUtility.setLocale(thislocale);
+		LocaleUtility.setLocale(locale);
 
 		// Initialize
 		VIPCfg cfg = VIPCfg.getInstance();
@@ -40,64 +38,11 @@ public class Main {
 		cfg.createFormattingCache(FormattingCache.class);
 		I18nFactory.getInstance(cfg);
 
-		// Demonstrate French locale (online mode - from remote service)
-		demonstrate(thislocale);
+		TranslationDemo.demo(locale);
+		Translation.demo(locale);
 		
-		// Demonstrate Filipino locale (offline mode - from local bundle)
-		cfg.setMessageOrigin(DataSourceEnum.Bundle);
-    	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
-    	LocaleUtility.setLocale(new Locale("fil"));
-    	demonstrate(new Locale("fil"));
+		LocaleUtility.setDefaultLocale(Locale.ENGLISH);
+		Format.demo(locale);
 		
-	}
-	
-	private static void demonstrate(Locale locale) {
-		// Get translation
-		String key = "global_text_username";
-		String source = "User name";
-
-		System.out.println(">>>>>> Get translation by key: \"" + key + "\" and source: \"" + source + "\"");
-		String trans1 = Translation.getTranslation(key, source);
-		System.out.println(trans1);
-
-		System.out.println(">>>>>> Get translation by key: \"" + key + "\"");
-		String trans2 = Translation.getTranslation2(key);
-		System.out.println(trans2);
-		
-		System.out.println(">>>>>> Check translation status of key: \"" + key + "\"");
-		boolean bReady = Translation.isTranslationReady("default", key, locale);
-		System.out.println(bReady);
-
-		// Number format
-		double num = 201703.5416926;
-		System.out.println(">>>>>> Number format: " + num);
-		String resultOfNumber = Format.formatNumber(num);
-		System.out.println(resultOfNumber);
-
-		// Percent format
-		double numOfPercent = 12.3456;
-		System.out.println(">>>>>> Percent format: " + numOfPercent);
-		String resultOfPercent = Format.formatPercent(numOfPercent);
-		System.out.println(resultOfPercent);
-
-		// Currency format
-		double numOfCurrency = 201703.5416926;
-		System.out.println(">>>>>> Currency format: " + numOfCurrency);
-		String resultOfCurrency = Format.formatCurrency(numOfCurrency);
-		System.out.println(resultOfCurrency);
-
-		String code = "EUR";
-		System.out.println(">>>>>> Currency format with code \"" + code + "\": " + numOfCurrency);
-		String resultOfCurrency2 = Format.formatCurrency(numOfCurrency, code);
-		System.out.println(resultOfCurrency2);
-
-		// Date format
-		Date date = new Date(1511156364801l);
-		String pattern = "long";
-		String tz = "GMT-8";
-		System.out.println(">>>>>> Date format with pattern \"" + pattern + "\": " + date);
-		System.out.println(Format.formatDate(date, pattern));
-		System.out.println(">>>>>> Date format with pattern \"" + pattern + "\" and timezone \"" + tz + "\": " + date);
-		System.out.println(Format.formatDate(date, pattern, tz));
 	}
 }

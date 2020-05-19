@@ -1,0 +1,105 @@
+/*
+ * Copyright 2019 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
+package com.vmware.vipclient.sample;
+
+import static org.junit.Assert.assertEquals;
+
+import java.util.Locale;
+
+import com.vmware.vipclient.i18n.I18nFactory;
+import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
+
+public class TranslationDemo {
+	static TranslationMessage t = (TranslationMessage) I18nFactory.getInstance().getMessageInstance(TranslationMessage.class);
+	static String key = "global_text_username";
+	static Locale locale = Locale.ENGLISH;
+	static String component = "default";
+	
+	public static void demo(Locale locale) {
+		getMessage(locale);
+	
+		getMessage();
+		getMessageLocaleNotSupported();
+		getMessageNewKeyInSource();
+		getMessageNewlyUpdatedSourceMsg();
+	}
+	
+	public static String getMessage(Locale locale) {
+		System.out.println(">>>>>> TranslationDemo.getMessage(Locale \"" + locale.toLanguageTag() + "\") key: \"" + key + "\"");
+		String msg = t.getMessage(locale, component, key);
+		System.out.println(msg);
+		return msg;
+	}
+	
+	/**
+	 * Demonstrates how to get a message in a few supported locales
+	 */
+	private static void getMessage() {
+		System.out.println(">>>>>> TranslationDemo.getMessage start");
+		// See offline mode supported languages inside the offlineResourcesBaseUrl path 
+		// The offlineResourcesBaseUrl path is configured in sampleconfig.properties
+		
+		String enMessage = getMessage(Locale.ENGLISH);
+		assertEquals("User name", enMessage);
+		
+		String enUSMessage = getMessage(Locale.forLanguageTag("en-US"));
+		assertEquals("User name", enUSMessage);
+		
+		String filMessage = getMessage(Locale.forLanguageTag("fil"));
+		assertEquals("Pangalan ng gumagamit", filMessage);
+		
+		String frMessage = getMessage(Locale.FRENCH);
+		assertEquals("Nom d'utilisateur", frMessage);
+		
+		System.out.println(">>>>>> TranslationDemo.getMessage success");
+	}
+	
+	/**
+	 * Demonstrates how to get a message in a locale that is not supported locally 
+	 * Note: Service call must fail for the offline mode to kick in
+	 */
+	private static void getMessageLocaleNotSupported() {
+		System.out.println(">>>>>> TranslationDemo.getMessageLocaleNotSupported start");
+		// Chinese is supported neither in online or offline mode. 
+		// See offline mode supported languages inside the offlineResourcesBaseUrl path 
+		// The offlineResourcesBaseUrl path is configured in sampleconfig.properties
+		String chMessage = t.getMessage(Locale.CHINESE, component, key);
+		
+		// Use default locale instead. The default locale is configured in sampleconfig.properties
+		assertEquals("Nom d'utilisateur", chMessage); 
+		
+		System.out.println(">>>>>> TranslationDemo.getMessageLocaleNotSupported success");
+	}
+	
+	/**
+	 * Demonstrates that a new/untranslated source message will be displayed, regardless of the locale passed
+	 */
+	private static void getMessageNewKeyInSource() {
+		System.out.println(">>>>>> TranslationDemo.getMessageNewKeyInSource start");
+		//"new.key" is a new key that can be found only in messages_source.json
+		String chMessage = t.getMessage(Locale.CHINESE, component, "new.key");
+		String filMessage = t.getMessage(Locale.forLanguageTag("fil"), component, "new.key");
+		
+		// Use source message that is in messages_source.json
+		assertEquals("New message", chMessage); 
+		assertEquals("New message", filMessage); 
+		
+		System.out.println(">>>>>> TranslationDemo.getMessageNewKeyInSource success");
+	}
+	
+	private static void getMessageNewlyUpdatedSourceMsg() {
+		System.out.println(">>>>>> TranslationDemo.getMessageNewlyUpdatedSourceMsg start");
+		// messages_source.json has "updated.message": "Updated message"
+		// But messages_en.json has "updated.message": "Old message"
+		// This means that the source message hasn't been collected and translated
+		String frMessage = t.getMessage(Locale.FRENCH, component, "updated.message");
+		
+		// Use message that is in messages_source.json
+		assertEquals("Updated message", frMessage); 
+		
+		System.out.println(">>>>>> TranslationDemo.getMessageNewlyUpdatedSourceMsg success");
+	}
+	
+}

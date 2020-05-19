@@ -74,7 +74,7 @@ I18nFactory i18n = I18nFactory.getInstance(cfg);
 // Create TranslationMessage Instance
 cfg.createTranslationCache(MessageCache.class);
 TranslationMessage tm = (TranslationMessage)i18n.getMessageInstance(TranslationMessage.class);
-String translation = tm.getString(…);
+String translation = tm.getMessage(…);
 
 // Create Formatting instance
 cfg.createFormattingCache(FormattingCache.class);
@@ -85,19 +85,16 @@ dateformatting.formatDate(…);
 Existing features
 ------------
  * Provides default I18n (translation and formatting) instances as well as supporting customized I18n instance.
- * Supports collecting source (English String) to Singleton server.
  * Provides cache management as well as supporting customized cache management.
- * Supports locale fallback and handling.
- * Supports the switch between local bundle and data from Singleton server.
+ * Supports locale matching and fallback.
+ * Supports the switch between local bundle (offline mode) and data from Singleton server (online mode).
  * Supports getting pseudo translations on development stage.
- * Supports getting machine translations on development stage.
- * Supports checking translation’s available status.
  * Provides configured filters extended from javax.servlet.Filter as a proxy for client(browser) to communicate with Singleton server.
  * Provides fmt tag to support JSP localization.
 
 Upcoming features 
 ------------
- * <TO DO: Add upcoming features if any>
+ * Support for formatting (date, number, currency, etc.) in offline mode
 
 Request for contributions from the community
 ------------
