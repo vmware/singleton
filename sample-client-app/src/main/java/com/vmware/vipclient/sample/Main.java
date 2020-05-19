@@ -17,8 +17,6 @@ import com.vmware.vipclient.i18n.util.LocaleUtility;
 public class Main {
 	
 	public static void main(String[] args) {
-		
-		
 		Locale locale = Locale.ENGLISH;
 		if (args.length > 0) {
 			// set locale
@@ -42,6 +40,8 @@ public class Main {
 
 		TranslationDemo.demo(locale);
 		Translation.demo(locale);
+		
+		LocaleUtility.setDefaultLocale(Locale.ENGLISH);
 		Format.demo(locale);
 		
 	}
