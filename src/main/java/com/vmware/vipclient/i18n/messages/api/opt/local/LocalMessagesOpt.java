@@ -4,9 +4,14 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.local;
 
+import java.net.URI;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystemAlreadyExistsException;
+import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
@@ -50,11 +55,23 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 		try {
 			String filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), bestMatch.toLanguageTag());
 			Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl(), filePath);
-			path = FileUtil.getPath(path);
+			
+			URI uri = Thread.currentThread().getContextClassLoader().
+					getResource(path.toString()).toURI();
+			
+			FileSystem fileSystem = null;
+	    	if (uri.getScheme().equals("jar")) {
+				fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap());
+				System.out.println("&&& " + fileSystem.toString());
+				path = fileSystem.getPath(path.toString());
+			} else {
+				path = Paths.get(uri);
+			}
 			
 			Map<String, String> messages = JSONBundleUtil.getMessages(path);
 	    	cacheItem.addCachedData(messages);
 	    	cacheItem.setTimestamp(System.currentTimeMillis());
+	    	fileSystem.close();
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
 			// Do not update cacheItem
