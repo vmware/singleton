@@ -6,13 +6,21 @@ package com.vmware.vipclient.i18n.util;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystemAlreadyExistsException;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Collections;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -86,6 +94,25 @@ public class FileUtil {
         }
 
         return jsonObj;
+    }
+    
+    public static Path getPath(Path path) throws URISyntaxException, IOException {
+    	URI uri = Thread.currentThread().getContextClassLoader().
+				getResource(path.toString()).toURI();
+
+    	if (uri.getScheme().equals("jar")) {
+			FileSystem fileSystem = null;
+			try {
+				fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap());
+			} catch (FileSystemAlreadyExistsException e) {
+				fileSystem = FileSystems.getFileSystem(uri);
+			}
+			path = fileSystem.getPath(path.toString());
+		} else {
+			path = Paths.get(uri);
+		}
+    
+		return path;
     }
 
 }

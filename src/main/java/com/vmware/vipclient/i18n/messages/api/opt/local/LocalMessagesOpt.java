@@ -22,6 +22,7 @@ import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.MessageOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
+import com.vmware.vipclient.i18n.util.FileUtil;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.JSONBundleUtil;
 
@@ -46,12 +47,11 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
     public void getComponentMessages(MessageCacheItem cacheItem) {
         Locale bestMatch = Locale.lookup(Arrays.asList(new Locale.LanguageRange((dto.getLocale()))),
         		getSupportedLocales());
-        
 		try {
 			String filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), bestMatch.toLanguageTag());
-	    	Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl(), filePath);
-			path = Paths.get(Thread.currentThread().getContextClassLoader().
-					getResource(path.toString()).toURI());
+			Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl(), filePath);
+			path = FileUtil.getPath(path);
+			
 			Map<String, String> messages = JSONBundleUtil.getMessages(path);
 	    	cacheItem.addCachedData(messages);
 	    	cacheItem.setTimestamp(System.currentTimeMillis());
