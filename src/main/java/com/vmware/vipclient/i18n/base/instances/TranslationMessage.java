@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
+import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ComponentService;
 import com.vmware.vipclient.i18n.messages.service.ComponentsService;
@@ -96,7 +97,9 @@ public class TranslationMessage implements Message {
     		if (source != null && !source.isEmpty()) {
     			return FormatUtils.format(source, LocaleUtility.getSourceLocale(), args);
     		}
-    		return key;
+    		if (VIPCfg.getInstance().isProdMode())
+    			return key;
+    		throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component));
     	}
     	
     	return message;

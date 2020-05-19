@@ -6,6 +6,8 @@ package com.vmware.vipclient.i18n.messages.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThrows;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -24,7 +26,9 @@ import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
+import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
+import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
@@ -86,7 +90,7 @@ public class OfflineModeTest extends BaseTestClass {
     }
     
     @Test
-    public void testGetMsgsFailedKeyNotFound() { 
+    public void testGetMsgsFailedKeyNotFoundProdMode() { 
     	// Offline mode only; message key does not exist
     	String key = "does.not.exist";
     	String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
@@ -115,7 +119,42 @@ public class OfflineModeTest extends BaseTestClass {
     }
     
     @Test
-    public void testGetMsgsFailedUseDefault() { 
+    public void testGetMsgsFailedKeyNotFound() { 
+    	// Offline mode only; message key does not exist
+    	String key = "does.not.exist";
+    	String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
+    	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
+    	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
+    	cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
+    	boolean prodModeOrig = cfg.isProdMode();
+    	cfg.setProdMode(false);
+    	
+        Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
+        TranslationCacheManager.cleanCache(c);
+        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
+        TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
+
+        dto.setProductID(VIPCfg.getInstance().getProductName());
+        dto.setVersion(VIPCfg.getInstance().getVersion());
+        
+        // Bundle does not exist locally
+        Locale newLocale = new Locale("en");
+        dto.setLocale(newLocale.toLanguageTag());
+    	
+        VIPJavaClientException e = assertThrows(VIPJavaClientException.class, () -> {
+        	translation.getMessage(newLocale, component, key, args);
+        });
+        
+    	// Return the key because message does not exist in any locale
+    	assertEquals(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component), e.getMessage());
+    	
+    	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
+    	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+    	cfg.setProdMode(prodModeOrig);
+    }
+    
+    @Test
+    public void testGetMsgsFailedProdModeUseDefault() { 
     	// Offline mode only; target locale bundle does not exist
     	String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
     	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
@@ -146,6 +185,44 @@ public class OfflineModeTest extends BaseTestClass {
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+    }
+    
+    @Test
+    public void testGetMsgsFailedNotProdMode() { 
+    	// Offline mode only; target locale bundle does not exist
+    	String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
+    	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
+    	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
+    	cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
+    	boolean prodModeOrig = VIPCfg.getInstance().isProdMode();
+    	VIPCfg.getInstance().setProdMode(false);
+    	
+        Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
+        TranslationCacheManager.cleanCache(c);
+        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
+        TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
+
+        dto.setProductID(VIPCfg.getInstance().getProductName());
+        dto.setVersion(VIPCfg.getInstance().getVersion());
+        
+        // Bundle does not exist locally
+        Locale newLocale = new Locale("es");
+        dto.setLocale(newLocale.toLanguageTag());
+        
+    	CacheService cs = new CacheService(dto);
+    	
+    	
+    	String message = translation.getMessage(newLocale, component, key, args);
+    	// Returns the source message
+    	assertEquals(FormatUtils.format(source, args), message);
+    	
+    	// There is no fallback locale for "es" in the cache 
+    	MessageCacheItem cacheItem = cs.getCacheOfComponent();   	
+    	assertNull(cacheItem);
+    	
+    	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
+    	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+    	cfg.setProdMode(prodModeOrig);
     }
     
     @Test
