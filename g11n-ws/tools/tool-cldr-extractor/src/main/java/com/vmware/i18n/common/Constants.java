@@ -71,4 +71,36 @@ public class Constants {
 	public static final String TIME_FORMATS = "timeFormats";
 	public static final String DATE_TIME_FORMATS = "dateTimeFormats";
 	public static final String DATE_FIELDS = "dateFields";
+
+	// number data
+	public static final String DECIMAL = "decimal";
+	public static final String GROUP = "group";
+	public static final String LIST = "list";
+	public static final String PERCENT_SIGN = "percentSign";
+	public static final String PLUS_SIGN = "plusSign";
+	public static final String MINUS_SIGN = "minusSign";
+	public static final String EXPONENTIAL = "exponential";
+	public static final String SUPER_SCRIPT_EXPONENT = "superscriptingExponent";
+	public static final String PER_MILLE = "perMille";
+	public static final String INFINITY = "infinity";
+	public static final String NAN = "nan";
+	public static final String TIME_SEPARATOR = "timeSeparator";
+	public static final String STANDARD = "standard";
+	public static final String LONG = "long";
+	public static final String SHORT = "short";
+	public static final String LONG_DECIMAL_FORMATS = "long.decimalFormat";
+	public static final String SHORT_DECIMAL_FORMATS = "short.decimalFormat";
+	public static final String SHORT_STANDARD = "short.standard";
+	public static final String DECIMAL_FORMAT = "decimalFormat";
+	public static final String DECIMAL_FORMATS = "decimalFormats";
+	public static final String PERCENT_FORMATS = "percentFormats";
+	public static final String CURRENCY_FORMATS = "currencyFormats";
+	public static final String SCIENTIFIC_FORMATS = "scientificFormats";
+	public static final String NUMBER_SYMBOLS = "numberSymbols";
+	public static final String NUMBER_FORMATS = "numberFormats";
+	public static final String DEFAULT_NUMBER_SYSTEM = "defaultNumberingSystem";
+	public static final String DECIMAL_FORMATS_LONG = "decimalFormats-long";
+	public static final String DECIMAL_FORMATS_SHORT = "decimalFormats-short";
+	public static final String CURRENCY_FORMATS_SHORT = "currencyFormats-short";
+
 }
