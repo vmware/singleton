@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vmware.l10n.expt.L10nAPIException;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.l10n.translation.dto.ComponentMessagesDTO;
 import com.vmware.l10n.translation.service.TranslationSyncServerService;
 import com.vmware.vip.api.rest.API;

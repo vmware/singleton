@@ -6,7 +6,7 @@ package com.vmware.l10n.translation.service;
 
 import java.util.List;
 
-import com.vmware.l10n.expt.L10nAPIException;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.l10n.translation.dto.ComponentMessagesDTO;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO.TranslationDTO;
 

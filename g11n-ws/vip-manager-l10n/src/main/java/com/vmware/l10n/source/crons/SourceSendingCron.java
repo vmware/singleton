@@ -25,12 +25,12 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.vmware.l10n.expt.L10nAPIException;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.l10n.source.service.RemoteSyncService;
 import com.vmware.l10n.source.service.SourceService;
 import com.vmware.l10n.source.service.impl.SourceServiceImpl;
-import com.vmware.l10n.translation.dto.ComponentMessagesDTO;
+import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 import com.vmware.l10n.utils.DiskQueueUtils;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.APIV2;
@@ -137,62 +137,6 @@ public class SourceSendingCron {
 
 	/**
 	 * Synchronize the updated source to local resource file and GRM timingly
-	 */
-
-	/*
-	 * @Scheduled(fixedDelay = THREESECOND) public void syncSourceToRemoteAndLocal()
-	 * { if (syncEnabled) { if(instruments.isEmpty()) { return; } do {
-	 * instruments.poll();
-	 * 
-	 * }while(!instruments.isEmpty());
-	 * 
-	 * 
-	 * LOGGER.
-	 * debug("------------------------Synchronize the updated source to local------------------------------"
-	 * );
-	 * 
-	 * 
-	 * try { List<String> ehcachekeyList =
-	 * TranslationCache.getKeys(CacheName.SOURCE);
-	 * LOGGER.debug("the source cache's size ----------------{}",
-	 * ehcachekeyList.size()); for (String ehcachekey : ehcachekeyList) {
-	 * ComponentSourceDTO cachedComDTO =
-	 * SourceCacheUtils.getSourceCacheWithDel(ehcachekey); if
-	 * (!StringUtils.isEmpty(cachedComDTO)) { SingleComponentDTO sdto = new
-	 * SingleComponentDTO(); BeanUtils.copyProperties(cachedComDTO, sdto); String
-	 * result = sourceDao.getFromBundle(sdto,basePath); ComponentMessagesDTO
-	 * componentMessagesDTO = sourceDao.mergeCacheWithBundle(cachedComDTO, result);
-	 * boolean updateFlag = false; // update the source to bundle. updateFlag =
-	 * sourceDao.updateToBundle(componentMessagesDTO, basePath); if (updateFlag) {
-	 * if (connected) { // push the source to GRM.
-	 * if(!remoteGRMURL.equalsIgnoreCase(LOCAL_STR)) {
-	 * remoteSyncService.send(cachedComDTO,remoteGRMURL); } // push the source to
-	 * VIP. if(!remoteVIPURL.equalsIgnoreCase(LOCAL_STR)) {
-	 * putDataToRemoteVIP(cachedComDTO); }
-	 * 
-	 * } else { flushCacheToDisk(TranslationCache.getCache(CacheName.SOURCEBACKUP));
-	 * }
-	 * 
-	 * } else {
-	 * 
-	 * LOGGER.warn("Failed to update source: {}", ehcachekey);
-	 * 
-	 * //put the failed the source to collection queue
-	 * SourceServiceImpl.setParpareMap(cachedComDTO, ehcachekey); } } } } catch
-	 * (VIPCacheException e) { LOGGER.error(e.getMessage(), e); } catch
-	 * (L10nAPIException e) {
-	 * 
-	 * setConnected(false); try {
-	 * flushCacheToDisk(TranslationCache.getCache(CacheName.SOURCEBACKUP)); } catch
-	 * (VIPCacheException e1) {
-	 * 
-	 * LOGGER.error(e1.getMessage(), e1); }
-	 * LOGGER.info("Fail to push source to remote."); } catch (VIPHttpException e) {
-	 * 
-	 * 
-	 * LOGGER.error("Http request error occurs.",e); }
-	 * 
-	 * } }
 	 */
 
 	@Scheduled(fixedDelay = THREESECOND)
