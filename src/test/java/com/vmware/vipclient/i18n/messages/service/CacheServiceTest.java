@@ -52,6 +52,8 @@ public class CacheServiceTest extends BaseTestClass {
     
     @Test
     public void testCacheNoUpdateIfErrorResponse() {
+    	boolean prodModeOrig = cfg.isProdMode();
+        cfg.setProdMode(true);
     	cfg.initializeVIPService();
         
         Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
@@ -75,6 +77,7 @@ public class CacheServiceTest extends BaseTestClass {
     	
     	cacheItem = cs.getCacheOfComponent();
     	assertNull(cacheItem);
+    	cfg.setProdMode(prodModeOrig);
     }
     
     @Test

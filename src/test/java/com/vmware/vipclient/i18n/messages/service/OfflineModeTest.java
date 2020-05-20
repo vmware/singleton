@@ -97,6 +97,8 @@ public class OfflineModeTest extends BaseTestClass {
     	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
     	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
     	cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
+    	boolean prodModeOrig = cfg.isProdMode();
+    	cfg.setProdMode(true);
     	
         Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
         TranslationCacheManager.cleanCache(c);
@@ -116,6 +118,7 @@ public class OfflineModeTest extends BaseTestClass {
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+    	cfg.setProdMode(prodModeOrig);
     }
     
     @Test
@@ -126,8 +129,6 @@ public class OfflineModeTest extends BaseTestClass {
     	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
     	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
     	cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
-    	boolean prodModeOrig = cfg.isProdMode();
-    	cfg.setProdMode(false);
     	
         Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
         TranslationCacheManager.cleanCache(c);
@@ -146,11 +147,9 @@ public class OfflineModeTest extends BaseTestClass {
         });
         
     	// Return the key because message does not exist in any locale
-    	assertEquals(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component), e.getMessage());
+    	assertEquals(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component, newLocale), e.getMessage());
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
-    	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
-    	cfg.setProdMode(prodModeOrig);
     }
     
     @Test
@@ -160,6 +159,8 @@ public class OfflineModeTest extends BaseTestClass {
     	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
     	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
     	cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
+    	boolean prodModeOrig = cfg.isProdMode();
+    	cfg.setProdMode(true);
     	
         Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
         TranslationCacheManager.cleanCache(c);
@@ -185,6 +186,7 @@ public class OfflineModeTest extends BaseTestClass {
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+    	cfg.setProdMode(prodModeOrig);
     }
     
     @Test
@@ -194,8 +196,6 @@ public class OfflineModeTest extends BaseTestClass {
     	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
     	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
     	cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
-    	boolean prodModeOrig = VIPCfg.getInstance().isProdMode();
-    	VIPCfg.getInstance().setProdMode(false);
     	
         Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
         TranslationCacheManager.cleanCache(c);
@@ -222,7 +222,6 @@ public class OfflineModeTest extends BaseTestClass {
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
-    	cfg.setProdMode(prodModeOrig);
     }
     
     @Test
@@ -343,6 +342,8 @@ public class OfflineModeTest extends BaseTestClass {
     	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
     	cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(
     			Arrays.asList(DataSourceEnum.Bundle, DataSourceEnum.VIP)));
+    	boolean prodModeOrig = cfg.isProdMode();
+    	cfg.setProdMode(true);
     	
     	cfg.initializeVIPService();
     	
@@ -375,5 +376,6 @@ public class OfflineModeTest extends BaseTestClass {
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+    	cfg.setProdMode(prodModeOrig);
     }
 }

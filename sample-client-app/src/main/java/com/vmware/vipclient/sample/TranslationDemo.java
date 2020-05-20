@@ -9,7 +9,11 @@ import static org.junit.Assert.assertEquals;
 import java.util.Locale;
 
 import com.vmware.vipclient.i18n.I18nFactory;
+import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
+import com.vmware.vipclient.i18n.common.ConstantsMsg;
+import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
+import com.vmware.vipclient.i18n.util.FormatUtils;
 
 public class TranslationDemo {
 	static TranslationMessage t = (TranslationMessage) I18nFactory.getInstance().getMessageInstance(TranslationMessage.class);
@@ -22,8 +26,11 @@ public class TranslationDemo {
 	
 		getMessage();
 		getMessageLocaleNotSupported();
+		getMessageLocaleNotSupportedProdMode();
 		getMessageNewKeyInSource();
 		getMessageNewlyUpdatedSourceMsg();
+		getMessageKeyNotFound();
+		
 	}
 	
 	public static String getMessage(Locale locale) {
@@ -57,11 +64,31 @@ public class TranslationDemo {
 	}
 	
 	/**
-	 * Demonstrates how to get a message in a locale that is not supported locally 
+	 * Demonstrates how a the source message will be returned 
+	 * if locale is not supported and prodMode = false
 	 * Note: Service call must fail for the offline mode to kick in
 	 */
 	private static void getMessageLocaleNotSupported() {
 		System.out.println(">>>>>> TranslationDemo.getMessageLocaleNotSupported start");
+		// Chinese is supported neither in online or offline mode. 
+		// See offline mode supported languages inside the offlineResourcesBaseUrl path 
+		// The offlineResourcesBaseUrl path is configured in sampleconfig.properties
+		
+		String chMessage = t.getMessage(Locale.CHINESE, component, key);
+		assertEquals("User name", chMessage); 
+		
+		System.out.println(">>>>>> TranslationDemo.getMessageLocaleNotSupported success");
+	}
+	
+	/**
+	 * Demonstrates how getting a message in the default locale 
+	 * if the requested locale is not supported and prodMode = true  
+	 * Note: Service call must fail for the offline mode to kick in
+	 */
+	private static void getMessageLocaleNotSupportedProdMode() {
+		VIPCfg.getInstance().setProdMode(true); // Or set prodMode = true in the configuration file
+		
+		System.out.println(">>>>>> TranslationDemo.getMessageLocaleNotSupportedProdMode start");
 		// Chinese is supported neither in online or offline mode. 
 		// See offline mode supported languages inside the offlineResourcesBaseUrl path 
 		// The offlineResourcesBaseUrl path is configured in sampleconfig.properties
@@ -70,7 +97,9 @@ public class TranslationDemo {
 		// Use default locale instead. The default locale is configured in sampleconfig.properties
 		assertEquals("Nom d'utilisateur", chMessage); 
 		
-		System.out.println(">>>>>> TranslationDemo.getMessageLocaleNotSupported success");
+		System.out.println(">>>>>> TranslationDemo.getMessageLocaleNotSupportedProdMode success");
+		
+		VIPCfg.getInstance().setProdMode(false); //set prodMode back to false
 	}
 	
 	/**
@@ -100,6 +129,22 @@ public class TranslationDemo {
 		assertEquals("Updated message", frMessage); 
 		
 		System.out.println(">>>>>> TranslationDemo.getMessageNewlyUpdatedSourceMsg success");
+	}
+	
+	private static void getMessageKeyNotFound() {
+		System.out.println(">>>>>> TranslationDemo.getMessageKeyNotFound start");
+		
+		VIPJavaClientException e = null;
+		try {
+			t.getMessage(Locale.FRENCH, component, "key.not.found");
+		} catch (VIPJavaClientException exc) {
+			e = exc;
+		}
+		
+		assertEquals(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, "key.not.found", component, Locale.FRENCH), 
+				e.getMessage());
+		
+		System.out.println(">>>>>> TranslationDemo.getMessageKeyNotFound success");
 	}
 	
 }

@@ -99,7 +99,7 @@ public class TranslationMessage implements Message {
     		}
     		if (VIPCfg.getInstance().isProdMode())
     			return key;
-    		throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component));
+    		throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component, locale));
     	}
     	
     	return message;

@@ -187,7 +187,7 @@ public class VIPCfg {
         if (prop.containsKey("sourceLocale"))
         	LocaleUtility.setSourceLocale(Locale.forLanguageTag(prop.getString("sourceLocale")));
         if (prop.containsKey("prodMode"))
-        	this.prodMode = true;
+        	this.prodMode = Boolean.parseBoolean(prop.getString("prodMode"));
 	}	
 
     /**
