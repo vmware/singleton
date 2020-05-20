@@ -76,7 +76,7 @@ func TestTimeout(t *testing.T) {
 	item.attrs = getCacheInfo(item)
 
 	resetInst(&testCfg)
-	sgtnServer := GetTranslation().(*defaultTrans).ds.server
+	sgtnServer := inst.server
 
 	//Get first time to set server stats as timeout
 	err := sgtnServer.get(item)
@@ -104,7 +104,7 @@ func TestTimeout2(t *testing.T) {
 	item.attrs = getCacheInfo(item)
 
 	resetInst(&testCfg)
-	sgtnServer := GetTranslation().(*defaultTrans).ds.server
+	sgtnServer := inst.server
 
 	sgtnServer.status = serverTimeout
 	sgtnServer.lastErrorMoment = time.Now().Unix() - serverRetryInterval - 1

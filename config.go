@@ -13,11 +13,10 @@ import (
 
 // Config Singleton configuration
 type Config struct {
-	ServerURL string `json:"online_service_url"`
-
+	ServerURL     string `json:"online_service_url"`
+	LocalBundles  string `json:"offline_resource_location"`
 	DefaultLocale string `json:"default_locale"`
-
-	LocalBundles string `json:"offline_resources_base_url"`
+	SourceLocale  string `json:"source_locale"`
 }
 
 // LoadConfig Create a new Singleton configuration instance

@@ -15,11 +15,11 @@ func TestGetInst(t *testing.T) {
 	defer Trace(curFunName())()
 
 	resetInst(&testCfg)
-	assert.Equal(t, testCfg.LocalBundles, inst.trans.ds.bundle.root)
+	assert.Equal(t, testCfg.LocalBundles, inst.bundle.root)
 	// TODO: Test bundle
 
 	if len(testCfg.ServerURL) != 0 {
-		assert.NotNil(t, inst.trans.ds.server)
+		assert.NotNil(t, inst.server)
 	}
 
 	// Verify translation manager

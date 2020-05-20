@@ -261,6 +261,7 @@ func TestGetStringAbnormal(t *testing.T) {
 		[]string{
 			"componentMessages-fr-users",
 			"componentMessages-zh-Hans-sunglow",
+			"componentMessages-fr-sunglow",
 			"componentMessages-zh-Hans-comp-notexist",
 		},
 	}
@@ -287,35 +288,35 @@ func TestGetStringAbnormal(t *testing.T) {
 	message2, err2 := trans.GetStringMessage(name, version, localeZhhans, compSunglow, keyNonexistent, arg)
 	assert.Contains(t, err2.Error(), localeZhhans)
 	assert.Contains(t, err2.Error(), compSunglow)
-	assert.Contains(t, err2.Error(), "No key in")
+	assert.Contains(t, err2.Error(), "Fail to get message")
 	assert.Equal(t, keyNonexistent, message2)
 
 	// original locale doesn't have component.
 	// default locale has component, but doesn't have Key
 	compUsers := "users"
 	message3, err3 := trans.GetStringMessage(name, version, localeZhhans, compUsers, keyNonexistent, arg)
-	assert.Contains(t, err3.Error(), defaultLocaleFr)
+	assert.Contains(t, err3.Error(), localeZhhans)
 	assert.Contains(t, err3.Error(), compUsers)
-	assert.Contains(t, err3.Error(), "No key in")
+	assert.Contains(t, err3.Error(), "Fail to get message")
 	assert.Equal(t, keyNonexistent, message3)
 
 	// Both locales doesn't have the component
 	compNonexistent := "comp-notexist"
 	message4, err4 := trans.GetStringMessage(name, version, localeZhhans, compNonexistent, key, arg)
 	assert.NotNil(t, err4)
-	assert.NotContains(t, err4.Error(), "No key in")
+	assert.NotContains(t, err4.Error(), "Fail to get message")
 	assert.Equal(t, key, message4)
 
 	// Get default locale directly. Default locale doesn't have the component
 	message5, err5 := trans.GetStringMessage(name, version, defaultLocaleFr, compNonexistent, key, arg)
 	assert.NotNil(t, err5)
-	assert.NotContains(t, err5.Error(), "No key in")
+	assert.NotContains(t, err5.Error(), "Fail to get message")
 	assert.Equal(t, key, message5)
 
 	// Get default locale directly. Default locale doesn't have the key
 	message6, err6 := trans.GetStringMessage(name, version, defaultLocaleFr, compUsers, keyNonexistent, arg)
 	assert.NotNil(t, err6)
-	assert.Contains(t, err6.Error(), "No key in")
+	assert.Contains(t, err6.Error(), "Fail to get message")
 	assert.Equal(t, keyNonexistent, message6)
 
 	assert.True(t, gock.IsDone())
@@ -398,7 +399,7 @@ func TestGetCompMessagesWrongServer(t *testing.T) {
 	resetInst(&newCfg)
 	wrongServer, err := url.Parse("wrongserver")
 	assert.Nil(t, err)
-	inst.trans.ds.server.svrURL = wrongServer
+	inst.server.svrURL = wrongServer
 
 	var tests = []struct {
 		desc      string

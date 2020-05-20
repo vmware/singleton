@@ -23,7 +23,8 @@ var (
 type instance struct {
 	cfg           Config
 	trans         *defaultTrans
-	components    []struct{ Name, Version string }
+	server        *serverDAO
+	bundle        *bundleDAO
 	initializOnce sync.Once
 }
 
@@ -48,17 +49,24 @@ func (i *instance) doInitialize() {
 
 	dService := new(dataService)
 	if len(i.cfg.ServerURL) != 0 {
-		var err error
-		dService.server, err = newServer(i.cfg.ServerURL)
+		server, err := newServer(i.cfg.ServerURL)
 		if err != nil {
 			panic(err)
 		}
+		i.server = server
+		dService.originChain = append(dService.originChain, &serverService{server})
 	}
 	if strings.TrimSpace(i.cfg.LocalBundles) != "" {
-		dService.bundle = &bundleDAO{i.cfg.LocalBundles}
+		i.bundle = &bundleDAO{i.cfg.LocalBundles}
+		dService.originChain = append(dService.originChain, &bundleService{i.bundle})
 	}
 
-	i.trans = &defaultTrans{dService, i.cfg.DefaultLocale}
+	fallbackChains := []string{}
+	fallbackChains = append(fallbackChains, i.cfg.DefaultLocale)
+	if len(i.cfg.SourceLocale) != 0 && contains(fallbackChains, i.cfg.SourceLocale) == -1 {
+		fallbackChains = append(fallbackChains, i.cfg.SourceLocale)
+	}
+	i.trans = &defaultTrans{dService, fallbackChains}
 
 	initCacheInfoMap()
 	if cache == nil {
@@ -87,15 +95,17 @@ func GetTranslation() Translation {
 }
 
 // SetHTTPHeaders Set customized HTTP headers
-func SetHTTPHeaders(h map[string]string) {
+func SetHTTPHeaders(h map[string]string) error {
 	if inst == nil {
-		panic(errors.New(uninitialzed))
+		return errors.New(uninitialzed)
 	}
 
-	server := inst.trans.ds.server
+	server := inst.server
 	if server != nil {
 		server.setHTTPHeaders(h)
 	}
+
+	return nil
 }
 
 // RegisterCache Register cache implementation. There is a default implementation

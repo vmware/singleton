@@ -15,7 +15,7 @@ import (
 //!+ defaultTrans
 type defaultTrans struct {
 	ds            *dataService
-	defaultLocale string
+	fallbackChain []string
 }
 
 func (t *defaultTrans) GetStringMessage(name, version, locale, component, key string, args ...string) (string, error) {
@@ -23,21 +23,42 @@ func (t *defaultTrans) GetStringMessage(name, version, locale, component, key st
 		return key, errors.New(wrongPara)
 	}
 
+	var message string
+
+	// localeSlice := make([]string, 0, len(t.fallbackChain)+1)
+	// localeSlice = append(localeSlice, locale)
+	// index := contains(t.fallbackChain, locale)
+	// if index < 0 {
+	// 	localeSlice = append(localeSlice, t.fallbackChain...)
+	// } else {
+	// 	localeSlice = append(localeSlice, t.fallbackChain[0:index]...)
+	// 	localeSlice = append(localeSlice, t.fallbackChain[index+1:]...)
+	// }
+
 	compData, err := t.GetComponentMessages(name, version, locale, component)
-	if err != nil {
-		if strings.Compare(strings.ToLower(locale), strings.ToLower(t.defaultLocale)) != 0 {
-			logger.Error("Fallback to default locale because of error: " + err.Error())
-			locale = t.defaultLocale
-			compData, err = t.GetComponentMessages(name, version, locale, component)
+	if err == nil {
+		message, _ = compData.Get(key)
+	}
+	if len(message) == 0 {
+		for _, fbLocle := range t.fallbackChain {
+			if strings.ToLower(locale) != strings.ToLower(fbLocle) {
+				logger.Warn(fmt.Sprintf("Fallback to %s because of error: %v", fbLocle, err))
+				compData, err = t.GetComponentMessages(name, version, fbLocle, component)
+				if err == nil {
+					if message, _ = compData.Get(key); len(message) != 0 {
+						break
+					}
+				}
+			}
 		}
 	}
+
 	if err != nil {
 		return key, err
 	}
 
-	message, ok := compData.Get(key)
-	if !ok {
-		errMsg := "No key in locale: " + locale + ", component: " + component
+	if len(message) == 0 {
+		errMsg := fmt.Sprintf("Fail to get message for locale: %s, component: %s, key: %s", locale, component, key)
 		return key, errors.New(errMsg)
 	}
 

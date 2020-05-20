@@ -5,7 +5,10 @@
 
 package sgtn
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 // ComponentMsgs The interface of a component's messages
 type ComponentMsgs interface {
@@ -58,3 +61,14 @@ type dataItem struct {
 }
 
 //!- dataItem
+
+//contains determin if slices contains item. it's case insensitive
+func contains(slices []string, item string) int {
+	for i, s := range slices {
+		if strings.ToLower(s) == strings.ToLower(item) {
+			return i
+		}
+	}
+
+	return -1
+}

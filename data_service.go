@@ -15,17 +15,25 @@ import (
 	"github.com/pkg/errors"
 )
 
-//!+dataService
-type dataService struct {
-	bundle *bundleDAO
-	server *serverDAO
+var cacheControlRE = regexp.MustCompile(`(?i)\bmax-age\b\s*=\s*\b(\d+)\b`)
+
+type messageOrigin interface {
+	Get(item *dataItem) error
 }
 
+//!+dataService
+type (
+	dataService struct {
+		originChain []messageOrigin
+	}
+)
+
 func (ds *dataService) get(item *dataItem) (err error) {
-	ok := ds.getCache(item)
+	data, ok := cache.Get(item.id)
 	info := getCacheInfo(item)
 	item.attrs = info
 	if ok {
+		item.data = data
 		if info.isExpired() {
 			go ds.fetch(item, false)
 		}
@@ -42,53 +50,21 @@ func (ds *dataService) fetch(item *dataItem, wait bool) error {
 
 	if info.setUpdating() {
 		defer info.setUpdated()
+		logger.Debug(fmt.Sprintf("Start fetching ID: %+v", item.id))
 
 		info.setTime(time.Now().Unix())
 
-		logger.Debug(fmt.Sprintf("Start fetching ID: %+v", item.id))
-
-		if ds.server != nil {
-			err = ds.server.get(item)
-			if isFetchSucess(err) {
-				updateCacheControl(item, info)
-				if err == nil {
-					ds.setCache(item)
-				} else {
-					ds.getCache(item)
-				}
-				return nil
-			}
-
-			type stackTracer interface {
-				StackTrace() errors.StackTrace
-			}
-			if e, ok := err.(stackTracer); ok {
-				logger.Error(fmt.Sprintf(serverFail+": %#v", e))
-			} else {
-				logger.Error(fmt.Sprintf(serverFail+": %s", err.Error()))
+		for _, o := range ds.originChain {
+			if err = o.Get(item); err == nil {
+				break
 			}
 		}
-
-		if ds.bundle != nil {
-			err = ds.bundle.get(item)
-			if err == nil {
-				var age int64 = cacheNeverExpires
-				if ds.server != nil {
-					age = cacheDefaultExpires
-				}
-				info.setAge(age)
-
-				ds.setCache(item)
-				return nil
-			}
-			logger.Error(fmt.Sprintf("Fail to get from bundle: %s", err.Error()))
-		}
-
 		return err
 
 	} else if wait {
 		info.waitUpdate()
-		ok := ds.getCache(item)
+		var ok bool
+		item.data, ok = cache.Get(item.id)
 		if !ok {
 			return errors.New(fmt.Sprintf("Fail to fetch ID: %+v", item.id))
 		}
@@ -97,15 +73,37 @@ func (ds *dataService) fetch(item *dataItem, wait bool) error {
 	return nil
 }
 
-func (ds *dataService) getCache(item *dataItem) (ok bool) {
-	item.data, ok = cache.Get(item.id)
-	return ok
+//!-dataService
+
+//!+serverService
+type serverService struct {
+	server *serverDAO
 }
 
-func (ds *dataService) setCache(item *dataItem) {
-	cache.Set(item.id, item.data)
-}
+func (s *serverService) Get(item *dataItem) (err error) {
+	info := item.attrs.(*itemCacheInfo)
+	err = s.server.get(item)
+	if isFetchSucess(err) {
+		updateCacheControl(item, info)
+		if err == nil {
+			cache.Set(item.id, item.data)
+		} else {
+			item.data, _ = cache.Get(item.id)
+		}
+		return nil
+	}
 
+	type stackTracer interface {
+		StackTrace() errors.StackTrace
+	}
+	if e, ok := err.(stackTracer); ok {
+		logger.Error(fmt.Sprintf(serverFail+": %#v", e))
+	} else {
+		logger.Error(fmt.Sprintf(serverFail+": %s", err.Error()))
+	}
+
+	return err
+}
 func isFetchSucess(err error) bool {
 	if err != nil {
 		myErr, ok := err.(*serverError)
@@ -116,8 +114,6 @@ func isFetchSucess(err error) bool {
 
 	return true
 }
-
-var cacheControlRE = regexp.MustCompile(`(?i)\bmax-age\b\s*=\s*\b(\d+)\b`)
 
 func updateCacheControl(item *dataItem, info *itemCacheInfo) {
 	headers := item.attrs.(http.Header)
@@ -138,4 +134,31 @@ func updateCacheControl(item *dataItem, info *itemCacheInfo) {
 	logger.Error("Wrong cache control: " + cc)
 }
 
-//!-dataService
+//!-serverService
+
+//!+bundleService
+type bundleService struct {
+	bundle *bundleDAO
+}
+
+func (s *bundleService) Get(item *dataItem) (err error) {
+	info := item.attrs.(*itemCacheInfo)
+
+	err = s.bundle.Get(item)
+	if err == nil {
+		var age int64 = cacheNeverExpires
+		if inst.server != nil {
+			age = cacheDefaultExpires
+		}
+		info.setAge(age)
+
+		cache.Set(item.id, item.data)
+		return nil
+	}
+
+	//	logger.Error(fmt.Sprintf("Fail to get from bundle: %s", err.Error()))
+
+	return err
+}
+
+//!-bundleService
