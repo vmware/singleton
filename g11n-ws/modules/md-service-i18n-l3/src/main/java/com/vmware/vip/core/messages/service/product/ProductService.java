@@ -148,7 +148,6 @@ public class ProductService implements IProductService {
 		List<TranslationDTO> translationDTOList = new ArrayList<TranslationDTO>();
 		String productName = null;
 		String version = null;
-	
 		for (ComponentMessagesDTO componentMessagesDTO : componentMessagesDTOList) {
 			try {
 				updateTranslation(componentMessagesDTO);
