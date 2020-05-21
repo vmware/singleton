@@ -37,7 +37,7 @@ namespace CSharp
             string head = string.Format(VipPathHead, "CSharpClient", "2.1");
             string path = string.Format(VipGetComponent, locale, component);
             string para = string.Format(VipParameter);
-            string api = string.Format("{0}{1}{2}{3}", "https://g11n-vip-testing-1.eng.vmware.com:8090", head, path, para);
+            string api = string.Format("{0}{1}{2}{3}", "http://localhost:8091", head, path, para);
             return api;
         }
 
