@@ -55,8 +55,8 @@ The language and region settings used by the browser
 
 Example
 
-```
-import { getBrowserCultureLang  } from ‘@vip/vip-core-sdk’;
+```javascript
+import { getBrowserCultureLang  } from ‘@singleton-i18n/vip-core-sdk’;
 const locale = getBrowserCultureLang(); // eg: zh-CN
 ```
 
@@ -88,7 +88,7 @@ The list of regions shown in the chosen language.
 
 Example
 
-```
+```js
 …
 i18nClient.i18nService. getSupportedLanguages().then(
 (languageList) => { this. languageList = languageList; }
@@ -163,8 +163,8 @@ Promise of the data request.
 
 Example
 
-```
-import { vipClient, getBrowserCultureLang, PatternCategories} from '@vip/vip-core-sdk';
+```js
+import { vipClient, getBrowserCultureLang, PatternCategories} from '@singleton-i18n/vip-core-sdk';
 …
 const i18nClient = vipClient.init(
 {
@@ -207,9 +207,9 @@ The translation of the source string specified by key in SourceBundlekey.
 
 Example
 
-```
-const translation = i18nClient.l10nService.getMessage('app.title');  // eg: 你好，世界！
-// 单复数示例
+```js
+const translation = i18nClient.l10nService.getMessage('app.title');  // eg:  it translates into '你好，世界！' on zh-CN locale
+// Plural example
 const apple =  i18nClient.l10nService.getMessage('plural.apples', [2]);  // eg: 2 apples
 ```
 
@@ -235,7 +235,7 @@ The formatted date string
 
 Example
 
-```
+```js
 i18nClient.i18nService.formatDate(new Date(),' short');  // eg: 8/19/19, 3:51 PM
 ```
 
@@ -255,7 +255,7 @@ The formatted numeric string
 
 Example
 
-```
+```js
 i18nClient.i18nService.formatNumber(1123.7892);   // eg: 1,123.789
 ```
 
@@ -275,7 +275,7 @@ The formatted number in percentage
 
 Example
 
-```
+```js
 i18nClient.i18nService. formatPercent (0.123);   // eg: 12%
 ```
 
@@ -297,7 +297,7 @@ The formatted string
 
 Example
 
-```
+```js
 i18nClient. i18nService.formatCurrency(0.23, 'JPY');   // eg: 0¥
 ```
 
@@ -309,23 +309,23 @@ After you extract the source language strings into a single type of resource fil
 
 Parameters in CLI
 
-```
+```js
 collect-source-bundle
---source-dir <资源文件所在文件夹路径>
---host <Singleton服务器地址>
---product <Singleton产品名称>
---component <Singleton 组件名称>
---version <Singleton 发布版本>
+--source-dir <The Path where are source files>
+--host <Singleton service URL>
+--product <Singleton product name>
+--component <Singleton component name>
+--version <Singleton release version>
 
 ```
 
 Defining Commands in package.json
 
-```
+```js
 {
 ...
 scripts: {
-"collect-source ": " collect-source-bundle --source-dir ./src/source --product vipnodesample --component NodeJS --host http://localhost:8090 --version 1.0.0"
+"collect-source ": " collect-source-bundle --source-dir ./src/source --product sample --component NodeJS --host http://localhost:8090 --version 1.0.0"
 }
 ...
 }
@@ -334,7 +334,7 @@ scripts: {
 
 Running Commands for Bulk Collection
 
-```
+```js
 npm run collect-source
 
 ```
