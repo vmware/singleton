@@ -600,73 +600,100 @@ public class CLDRUtils {
 
     public static Map<String, Object> numberDataExtract(String locale) {
         String zipPath = CLDRConstants.NUMBER_ZIP_FILE_PATH;
-        String fileName = "cldr-numbers-full-" + CLDR_VERSION + "/main/" + locale + "/numbers.json";
+        String fileName = MessageFormat.format(CLDRConstants.CLDR_NUMBERS_FULL_NUMBERS, CLDR_VERSION, locale);
         String json = CLDRUtils.readZip(fileName, zipPath);
         JSONObject numberContents = JSONUtil.string2JSON(json);
 
+        String defaultNumberingSystem = JSONUtil
+                .select(numberContents, MessageFormat.format(CLDRConstants.DEFAULT_NUMBER_SYSTEM, locale)).toString();
+
         String decimal = JSONUtil
-                .select(numberContents, "main." + locale + ".numbers.symbols-numberSystem-latn.decimal").toString();
-        String group = JSONUtil.select(numberContents, "main." + locale + ".numbers.symbols-numberSystem-latn.group")
+                .select(numberContents, MessageFormat.format(CLDRConstants.SYMBOLS_NUMBER_SYSTEM, locale, defaultNumberingSystem, Constants.DECIMAL)).toString();
+        String group = JSONUtil.select(numberContents, MessageFormat.format(CLDRConstants.SYMBOLS_NUMBER_SYSTEM, locale, defaultNumberingSystem, Constants.GROUP))
                 .toString();
-        String list = JSONUtil.select(numberContents, "main." + locale + ".numbers.symbols-numberSystem-latn.list")
+        String list = JSONUtil.select(numberContents, MessageFormat.format(CLDRConstants.SYMBOLS_NUMBER_SYSTEM, locale, defaultNumberingSystem, Constants.LIST))
                 .toString();
         String percentSign = JSONUtil
-                .select(numberContents, "main." + locale + ".numbers.symbols-numberSystem-latn.percentSign").toString();
+                .select(numberContents, MessageFormat.format(CLDRConstants.SYMBOLS_NUMBER_SYSTEM, locale, defaultNumberingSystem, Constants.PERCENT_SIGN)).toString();
         String plusSign = JSONUtil
-                .select(numberContents, "main." + locale + ".numbers.symbols-numberSystem-latn.plusSign").toString();
+                .select(numberContents, MessageFormat.format(CLDRConstants.SYMBOLS_NUMBER_SYSTEM, locale, defaultNumberingSystem, Constants.PLUS_SIGN)).toString();
         String minusSign = JSONUtil
-                .select(numberContents, "main." + locale + ".numbers.symbols-numberSystem-latn.minusSign").toString();
+                .select(numberContents, MessageFormat.format(CLDRConstants.SYMBOLS_NUMBER_SYSTEM, locale, defaultNumberingSystem, Constants.MINUS_SIGN)).toString();
         String exponential = JSONUtil
-                .select(numberContents, "main." + locale + ".numbers.symbols-numberSystem-latn.exponential").toString();
+                .select(numberContents, MessageFormat.format(CLDRConstants.SYMBOLS_NUMBER_SYSTEM, locale, defaultNumberingSystem, Constants.EXPONENTIAL)).toString();
         String superscriptingExponent = JSONUtil
-                .select(numberContents, "main." + locale + ".numbers.symbols-numberSystem-latn.superscriptingExponent")
+                .select(numberContents, MessageFormat.format(CLDRConstants.SYMBOLS_NUMBER_SYSTEM, locale, defaultNumberingSystem, Constants.SUPER_SCRIPT_EXPONENT))
                 .toString();
         String perMille = JSONUtil
-                .select(numberContents, "main." + locale + ".numbers.symbols-numberSystem-latn.perMille").toString();
+                .select(numberContents, MessageFormat.format(CLDRConstants.SYMBOLS_NUMBER_SYSTEM, locale, defaultNumberingSystem, Constants.PER_MILLE)).toString();
         String infinity = JSONUtil
-                .select(numberContents, "main." + locale + ".numbers.symbols-numberSystem-latn.infinity").toString();
-        String nan = JSONUtil.select(numberContents, "main." + locale + ".numbers.symbols-numberSystem-latn.nan")
+                .select(numberContents, MessageFormat.format(CLDRConstants.SYMBOLS_NUMBER_SYSTEM, locale, defaultNumberingSystem, Constants.INFINITY)).toString();
+        String nan = JSONUtil.select(numberContents, MessageFormat.format(CLDRConstants.SYMBOLS_NUMBER_SYSTEM, locale, defaultNumberingSystem, Constants.NAN))
                 .toString();
         String timeSeparator = JSONUtil
-                .select(numberContents, "main." + locale + ".numbers.symbols-numberSystem-latn.timeSeparator")
+                .select(numberContents, MessageFormat.format(CLDRConstants.SYMBOLS_NUMBER_SYSTEM, locale, defaultNumberingSystem, Constants.TIME_SEPARATOR))
                 .toString();
         Map<String, Object> numberSymbolsMap = new LinkedHashMap<String, Object>();
-        numberSymbolsMap.put("decimal", decimal);
-        numberSymbolsMap.put("group", group);
-        numberSymbolsMap.put("list", list);
-        numberSymbolsMap.put("percentSign", percentSign);
-        numberSymbolsMap.put("plusSign", plusSign);
-        numberSymbolsMap.put("minusSign", minusSign);
-        numberSymbolsMap.put("exponential", exponential);
-        numberSymbolsMap.put("superscriptingExponent", superscriptingExponent);
-        numberSymbolsMap.put("perMille", perMille);
-        numberSymbolsMap.put("infinity", infinity);
-        numberSymbolsMap.put("nan", nan);
-        numberSymbolsMap.put("timeSeparator", timeSeparator);
+        numberSymbolsMap.put(Constants.DECIMAL, decimal);
+        numberSymbolsMap.put(Constants.GROUP, group);
+        numberSymbolsMap.put(Constants.LIST, list);
+        numberSymbolsMap.put(Constants.PERCENT_SIGN, percentSign);
+        numberSymbolsMap.put(Constants.PLUS_SIGN, plusSign);
+        numberSymbolsMap.put(Constants.MINUS_SIGN, minusSign);
+        numberSymbolsMap.put(Constants.EXPONENTIAL, exponential);
+        numberSymbolsMap.put(Constants.SUPER_SCRIPT_EXPONENT, superscriptingExponent);
+        numberSymbolsMap.put(Constants.PER_MILLE, perMille);
+        numberSymbolsMap.put(Constants.INFINITY, infinity);
+        numberSymbolsMap.put(Constants.NAN, nan);
+        numberSymbolsMap.put(Constants.TIME_SEPARATOR, timeSeparator);
 
-        String decimalFormats = JSONUtil
-                .select(numberContents, "main." + locale + ".numbers.decimalFormats-numberSystem-latn.standard")
-                .toString();
-        String percentFormats = JSONUtil
-                .select(numberContents, "main." + locale + ".numbers.percentFormats-numberSystem-latn.standard")
-                .toString();
-        String currencyFormats = JSONUtil
-                .select(numberContents, "main." + locale + ".numbers.currencyFormats-numberSystem-latn.standard")
-                .toString();
-        String scientificFormats = JSONUtil
-                .select(numberContents, "main." + locale + ".numbers.scientificFormats-numberSystem-latn.standard")
-                .toString();
-
-        Map<String, Object> numberFormatsMap = new LinkedHashMap<String, Object>();
-        numberFormatsMap.put("decimalFormats", decimalFormats);
-        numberFormatsMap.put("percentFormats", percentFormats);
-        numberFormatsMap.put("currencyFormats", currencyFormats);
-        numberFormatsMap.put("scientificFormats", scientificFormats);
-
-        Map<String, Object> numberMap = new LinkedHashMap<String, Object>();
-        numberMap.put("numberSymbols", numberSymbolsMap);
-        numberMap.put("numberFormats", numberFormatsMap);
+        Map<String, Object> numberMap = new LinkedHashMap<>();
+        numberMap.put(Constants.DEFAULT_NUMBER_SYSTEM, defaultNumberingSystem);
+        numberMap.put(Constants.NUMBER_SYMBOLS, numberSymbolsMap);
+        numberMap.put(Constants.NUMBER_FORMATS, getNumberFormatData(numberContents, locale, defaultNumberingSystem, Constants.STANDARD));
         return numberMap;
+    }
+
+    private static Map<String, Object> getNumberFormatData(JSONObject numberContents, String locale, String defaultNumberingSystem, String tag) {
+        Object decimalFormats = JSONUtil
+                .select(numberContents, MessageFormat.format(CLDRConstants.DECIMAL_FORMATS_NUMBER_SYSTEM, locale, defaultNumberingSystem, tag));
+        Object percentFormats = JSONUtil
+                .select(numberContents, MessageFormat.format(CLDRConstants.PERCENT_FORMATS_NUMBER_SYSTEM, locale, defaultNumberingSystem, tag));
+        Object currencyFormats = JSONUtil
+                .select(numberContents, MessageFormat.format(CLDRConstants.CURRENCY_FORMATS_NUMBER_SYSTEM, locale, defaultNumberingSystem, tag));
+        Object scientificFormats = JSONUtil
+                .select(numberContents, MessageFormat.format(CLDRConstants.SCIENTIFIC_FORMATS_NUMBER_SYSTEM, locale, defaultNumberingSystem, tag));
+        Object decimalFormats_long = JSONUtil
+                .select(numberContents, MessageFormat.format(CLDRConstants.DECIMAL_FORMATS_NUMBER_SYSTEM, locale, defaultNumberingSystem, Constants.LONG));
+        Object decimalFormats_short = JSONUtil
+                .select(numberContents, MessageFormat.format(CLDRConstants.DECIMAL_FORMATS_NUMBER_SYSTEM, locale, defaultNumberingSystem, Constants.SHORT));
+        Object currencyFormats_short = JSONUtil
+                .select(numberContents, MessageFormat.format(CLDRConstants.CURRENCY_FORMATS_NUMBER_SYSTEM, locale, defaultNumberingSystem, Constants.SHORT));
+
+        Map<String, Object> numberFormatsMap = new LinkedHashMap<>();
+        numberFormatsMap.put(Constants.DECIMAL_FORMATS, decimalFormats);
+        numberFormatsMap.put(Constants.PERCENT_FORMATS, percentFormats);
+        numberFormatsMap.put(Constants.CURRENCY_FORMATS, currencyFormats);
+        numberFormatsMap.put(Constants.SCIENTIFIC_FORMATS, scientificFormats);
+        numberFormatsMap.put(Constants.DECIMAL_FORMATS_LONG, CommonUtil.isEmpty(decimalFormats_long) ?
+                null: dataSort(decimalFormats_long, Constants.DECIMAL_FORMAT));
+        numberFormatsMap.put(Constants.DECIMAL_FORMATS_SHORT, CommonUtil.isEmpty(decimalFormats_long) ?
+                null: dataSort(decimalFormats_short, Constants.DECIMAL_FORMAT));
+        numberFormatsMap.put(Constants.CURRENCY_FORMATS_SHORT, CommonUtil.isEmpty(decimalFormats_long) ?
+                null: dataSort(currencyFormats_short, Constants.STANDARD));
+        return numberFormatsMap;
+
+    }
+
+    private static Map<String, Object> dataSort(Object data, String key) {
+        if (data instanceof Map) {
+            Map<String, Object> datMap = (Map<String, Object>)data;
+            Map<String, Object> sortedMap = new HashMap<>();
+            sortedMap.put(key, JSONUtil.string2SortMap(datMap.get(key).toString()));
+            return sortedMap;
+        }
+
+        return null;
     }
 
     /**

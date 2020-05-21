@@ -11,6 +11,7 @@ public class CLDRConstants {
 	public static final String CLDR_CORE = "cldr-core-";
 	public static final String CLDR_DATES_FULL =  "cldr-dates-full-";
 	public static final String CLDR_MISC_FULL =  "cldr-misc-full-";
+	public static final String CLDR_NUMBERS_FULL =  "cldr-numbers-full-";
 	public static final String CLDR_VERSION = "32.0.0";
 	public static final String FILE_NAME = CLDR_VERSION + ".zip";
 	public static final String CONTEXT_TRANSFORM_JSON = "contextTransforms.json";
@@ -65,6 +66,7 @@ public class CLDRConstants {
 	public static final String CLDR_CORE_ALIASES = CLDRConstants.CLDR_CORE + CLDR_VERSION + "/supplemental/aliases.json";
 	public static final String CLDR_DATES_FULL_DATE_FIELDS = CLDR_DATES_FULL + "{0}/main/{1}/dateFields.json";
 	public static final String CLDR_DATES_FULL_CA_GREGORIAN = CLDR_DATES_FULL + "{0}/main/{1}/ca-gregorian.json";
+	public static final String CLDR_NUMBERS_FULL_NUMBERS = CLDR_NUMBERS_FULL + "{0}/main/{1}/numbers.json";
 
 	public static final String LANGUAGE_DATA_KEY_PATH = "supplemental.languageData";
 	public static final String PLURALS_KEY_PATH = "supplemental.plurals-type-cardinal";
@@ -74,4 +76,11 @@ public class CLDRConstants {
 
 	public static final String MISC_CONTEXT_TRANSFORM = CLDR_MISC_FULL + CLDR_VERSION + "/main/{0}/contextTransforms.json";
 	public static final String CONTEXT_TRANSFORM_NODE = "main.{0}.contextTransforms";
+
+	public static final String DEFAULT_NUMBER_SYSTEM = "main.{0}.numbers.defaultNumberingSystem";
+	public static final String SYMBOLS_NUMBER_SYSTEM = "main.{0}.numbers.symbols-numberSystem-{1}.{2}";
+	public static final String DECIMAL_FORMATS_NUMBER_SYSTEM = "main.{0}.numbers.decimalFormats-numberSystem-{1}.{2}";
+	public static final String PERCENT_FORMATS_NUMBER_SYSTEM = "main.{0}.numbers.percentFormats-numberSystem-{1}.{2}";
+	public static final String CURRENCY_FORMATS_NUMBER_SYSTEM = "main.{0}.numbers.currencyFormats-numberSystem-{1}.{2}";
+	public static final String SCIENTIFIC_FORMATS_NUMBER_SYSTEM = "main.{0}.numbers.scientificFormats-numberSystem-{1}.{2}";
 }

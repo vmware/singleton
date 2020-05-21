@@ -17,7 +17,8 @@ public class APIResponseStatus {
     public static final Response TRANSLATION_READY = new Response(206, "Collected resource's translations have been ready");
     public static final Response MULTTRANSLATION_PART_CONTENT = new Response(207, "Part of the translation is available");
     public static final Response VERSION_FALLBACK_TRANSLATION = new Response(604, "The content of response have been version fallback");
-    
+    public static final Response TRANSLATION_COLLECT_SUCCESS = new Response(200, "Source is collected successfully");
+    public static final Response TRANSLATION_COLLECT_FAILURE = new Response(704, "Source is not collected successfully");
     public static final Response BAD_REQUEST = new Response(400, "Bad Request");
     public static final Response UNAUTHORIZED = new Response(401, "Unauthorized");
     public static final Response FORBIDDEN = new Response(403, "Forbidden");

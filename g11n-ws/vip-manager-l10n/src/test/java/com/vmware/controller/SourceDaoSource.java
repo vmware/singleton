@@ -19,8 +19,7 @@ import org.springframework.web.context.WebApplicationContext;
 import com.vmware.l10n.BootApplication;
 import com.vmware.l10n.source.crons.SourceSendingCron;
 import com.vmware.l10n.source.dao.SourceDao;
-import com.vmware.l10n.translation.dto.ComponentMessagesDTO;
-import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
+import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)

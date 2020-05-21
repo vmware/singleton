@@ -19,7 +19,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.vmware.l10n.expt.L10nAPIException;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.l10n.source.service.SourceService;
 import com.vmware.l10n.utils.DiskQueueUtils;
 import com.vmware.l10n.utils.MapUtil;

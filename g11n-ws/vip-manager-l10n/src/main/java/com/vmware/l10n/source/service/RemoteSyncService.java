@@ -4,7 +4,7 @@
  */
 package com.vmware.l10n.source.service;
 
-import com.vmware.l10n.expt.L10nAPIException;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
 
 public interface RemoteSyncService {
