@@ -21,4 +21,7 @@ public class ConstantsChar {
     public static final String SPACING = " ";
     public static final String POUND = "#";
     public static final String AT = "@";
+    public static final String REVERSE = "^";
+    public static final String LEFT_PARENTHESIS = "(";
+    public static final String RIGHT_PARENTHESIS = ")";
 }
