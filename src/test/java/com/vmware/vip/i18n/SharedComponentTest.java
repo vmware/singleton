@@ -27,7 +27,6 @@ public class SharedComponentTest extends BaseTestClass {
     TranslationMessage subTranslation;
     String             mainProductName = "JavaclientTest";
     String             subProductName  = "JavaclientTest1";
-    boolean prodModeOrig;
     
     @Before
     public void init() {
@@ -37,7 +36,6 @@ public class SharedComponentTest extends BaseTestClass {
         } catch (VIPClientInitException e) {
             logger.error(e.getMessage());
         }
-        prodModeOrig = mainCfg.isProdMode();
         mainCfg.setProdMode(true);
         mainCfg.initializeVIPService();
         if (mainCfg.getCacheManager() != null)
@@ -85,10 +83,5 @@ public class SharedComponentTest extends BaseTestClass {
         
         Assert.assertTrue(m.containsKey("JavaclientTest_1.0.0_JAVA_false_#zh"));
         Assert.assertTrue(m.containsKey("JavaclientTest_1.0.0_JAVA_false_#en"));
-    }
-    
-    @After
-    public void after() {
-    	VIPCfg.getInstance().setProdMode(prodModeOrig);
     }
 }

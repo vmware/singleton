@@ -60,8 +60,6 @@ public class HttpRequesterTest extends BaseTestClass {
         params.put(key1, value1);
         params.put(key2, value2);
         VIPCfg cfg = VIPCfg.getInstance();
-        boolean prodModeOrig = cfg.isProdMode();
-        cfg.setProdMode(true);
         
         VIPCfg.getInstance().getVipService().setHeaderParams(params);
 
@@ -74,8 +72,6 @@ public class HttpRequesterTest extends BaseTestClass {
         
         WireMock.verify(WireMock.getRequestedFor(WireMock.urlMatching(url)).withHeader(key1, WireMock.equalTo(value1))
                 .withHeader(key2, WireMock.equalTo(value2)));
-        
-        cfg.setProdMode(prodModeOrig);
     }
     
     @Test

@@ -25,11 +25,11 @@ public class TranslationDemo {
 		getMessage(locale);
 	
 		getMessage();
+		getMessageLocaleNotSupportedProdModeFalse();
 		getMessageLocaleNotSupported();
-		getMessageLocaleNotSupportedProdMode();
 		getMessageNewKeyInSource();
 		getMessageNewlyUpdatedSourceMsg();
-		getMessageKeyNotFound();
+		getMessageKeyNotFoundProdModeFalse();
 		
 	}
 	
@@ -68,7 +68,8 @@ public class TranslationDemo {
 	 * if locale is not supported and prodMode = false
 	 * Note: Service call must fail for the offline mode to kick in
 	 */
-	private static void getMessageLocaleNotSupported() {
+	private static void getMessageLocaleNotSupportedProdModeFalse() {
+		VIPCfg.getInstance().setProdMode(false); // Or set prodMode = false in the configuration file
 		System.out.println(">>>>>> TranslationDemo.getMessageLocaleNotSupported start");
 		// Chinese is supported neither in online or offline mode. 
 		// See offline mode supported languages inside the offlineResourcesBaseUrl path 
@@ -77,7 +78,8 @@ public class TranslationDemo {
 		String chMessage = t.getMessage(Locale.CHINESE, component, key);
 		assertEquals("User name", chMessage); 
 		
-		System.out.println(">>>>>> TranslationDemo.getMessageLocaleNotSupported success");
+		VIPCfg.getInstance().setProdMode(true); //set prodMode back to true
+		System.out.println(">>>>>> TranslationDemo.getMessageLocaleNotSupported success");	
 	}
 	
 	/**
@@ -85,9 +87,7 @@ public class TranslationDemo {
 	 * if the requested locale is not supported and prodMode = true  
 	 * Note: Service call must fail for the offline mode to kick in
 	 */
-	private static void getMessageLocaleNotSupportedProdMode() {
-		VIPCfg.getInstance().setProdMode(true); // Or set prodMode = true in the configuration file
-		
+	private static void getMessageLocaleNotSupported() {
 		System.out.println(">>>>>> TranslationDemo.getMessageLocaleNotSupportedProdMode start");
 		// Chinese is supported neither in online or offline mode. 
 		// See offline mode supported languages inside the offlineResourcesBaseUrl path 
@@ -98,8 +98,6 @@ public class TranslationDemo {
 		assertEquals("Nom d'utilisateur", chMessage); 
 		
 		System.out.println(">>>>>> TranslationDemo.getMessageLocaleNotSupportedProdMode success");
-		
-		VIPCfg.getInstance().setProdMode(false); //set prodMode back to false
 	}
 	
 	/**
@@ -131,7 +129,8 @@ public class TranslationDemo {
 		System.out.println(">>>>>> TranslationDemo.getMessageNewlyUpdatedSourceMsg success");
 	}
 	
-	private static void getMessageKeyNotFound() {
+	private static void getMessageKeyNotFoundProdModeFalse() {
+		VIPCfg.getInstance().setProdMode(false); // Or set prodMode = false in the configuration file
 		System.out.println(">>>>>> TranslationDemo.getMessageKeyNotFound start");
 		
 		VIPJavaClientException e = null;
@@ -145,6 +144,21 @@ public class TranslationDemo {
 				e.getMessage());
 		
 		System.out.println(">>>>>> TranslationDemo.getMessageKeyNotFound success");
+		VIPCfg.getInstance().setProdMode(true); //set prodMode back to true
+	}
+	
+	private static void getMessageKeyNotFound() {
+		VIPCfg.getInstance().setProdMode(false); // Or set prodMode = false in the configuration file
+		System.out.println(">>>>>> TranslationDemo.getMessageKeyNotFound start");
+		
+		VIPJavaClientException e = null;
+		
+		String message = t.getMessage(Locale.FRENCH, component, "key.not.found");
+		
+		assertEquals("key.not.found", message);
+		
+		System.out.println(">>>>>> TranslationDemo.getMessageKeyNotFound success");
+		VIPCfg.getInstance().setProdMode(true); //set prodMode back to true
 	}
 	
 }
