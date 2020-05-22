@@ -10,6 +10,7 @@ using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Resources;
+using System.Text;
 using YamlDotNet.RepresentationModel;
 
 namespace SingletonClient.Implementation
@@ -46,18 +47,35 @@ namespace SingletonClient.Implementation
         /// <param name="resourceBaseName"></param>
         /// <param name="assembly"></param>
         /// <returns></returns>
-        public static Hashtable ReadResourceMap(string resourceBaseName, Assembly assembly)
+        public static Hashtable ReadResourceMap(string resourceBaseName, string locale, Assembly assembly)
         {
-            ResourceManager resourceManager = new ResourceManager(resourceBaseName, assembly);
-            CultureInfo cultureInfo = new System.Globalization.CultureInfo("en-US");
-            ResourceSet resourceSet = resourceManager.GetResourceSet(cultureInfo, true, true);
-            IDictionaryEnumerator enumerator = resourceSet.GetEnumerator();
-
             Hashtable table = new Hashtable();
-            while (enumerator.MoveNext()) {
-                table[enumerator.Key] = enumerator.Value;
+
+            ResourceManager resourceManager = new ResourceManager(resourceBaseName, assembly);
+            string localeInUse = locale;
+            if (resourceBaseName.EndsWith("_" + locale) || resourceBaseName.EndsWith("_" + NearLocale(locale)))
+            {
+                localeInUse = ConfigConst.DefaultLocale;
             }
-            resourceSet.Close();
+
+            bool tryParents = SingletonUtil.NearLocale(ConfigConst.DefaultLocale).Equals(
+                SingletonUtil.NearLocale(localeInUse));
+
+            CultureInfo cultureInfo = new System.Globalization.CultureInfo(localeInUse);
+            try
+            {
+                ResourceSet resourceSet = resourceManager.GetResourceSet(cultureInfo, true, tryParents);
+                IDictionaryEnumerator enumerator = resourceSet.GetEnumerator();
+
+                while (enumerator.MoveNext())
+                {
+                    table[enumerator.Key] = enumerator.Value;
+                }
+                resourceSet.Close();
+            }
+            catch (Exception e)
+            {
+            }
             return table;
         }
 
@@ -68,6 +86,10 @@ namespace SingletonClient.Implementation
         /// <returns></returns>
         public static string ConvertToText(Byte[] bytes)
         {
+            if (bytes == null)
+            {
+                return null;
+            }
             if (bytes.Length > 2 && bytes[0] == 0xef && bytes[1] == 0xbb && bytes[2] == 0xbf)
             {
                 bytes[0] = 0x01;
@@ -81,8 +103,18 @@ namespace SingletonClient.Implementation
 
         public static JObject ConvertToDict(string text)
         {
-            JObject dict = JObject.Parse(text);
-            return dict;
+            if (text == null)
+            {
+                return null;
+            }
+            try
+            {
+                JObject dict = JObject.Parse(text);
+                return dict;
+            } catch (Exception e)
+            {
+            }
+            return null;
         }
 
         public static bool CheckResponseValid(JToken token, Hashtable headers)
@@ -143,13 +175,33 @@ namespace SingletonClient.Implementation
             var yaml = new YamlStream();
             yaml.Load(input);
 
-            YamlMappingNode root = (YamlMappingNode)yaml.Documents[0].RootNode;
-            return root;
+            try
+            {
+                YamlMappingNode root = (YamlMappingNode)yaml.Documents[0].RootNode;
+                return root;
+            }
+            catch (Exception e)
+            {
+            }
+
+            return null;
         }
 
         public static string NearLocale(string locale)
         {
             return SingletonClientManager.GetInstance().GetFallbackLocale(locale);
+        }
+
+        public static string ReadTextFile(string path)
+        {
+            try
+            {
+                string text = File.ReadAllText(path, Encoding.UTF8);
+                return text;
+            } catch (Exception e)
+            {
+            }
+            return null;
         }
     }
 }

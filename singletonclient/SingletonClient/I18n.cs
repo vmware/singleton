@@ -56,8 +56,8 @@ namespace SingletonClient
         /// <returns></returns>
         public static IExtension GetExtension()
         {
-            SingletonClientManager client = SingletonClientManager.GetInstance();
-            return client;
+            IExtension extension = SingletonClientManager.GetInstance();
+            return extension;
         }
     }
 }

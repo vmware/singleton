@@ -1,0 +1,64 @@
+﻿{
+  "online_service_url": "http://127.0.0.1:8090/singleton/CSHARP/",
+  "offline_resources_base_url": "file:///d:/l10n/CSHARP/",
+  "l10n_version": "1.0.0",
+
+  "prod_mode": false,
+  "default_locale": "en-US",
+
+  "internal_resources_root": "SingletonRes",
+  "default_resource_format": "bundle, external",
+
+  "cache_type": "default",
+  "cache_expire": 60,
+  "try_delay": 10,
+  "logger_type": "default",
+  "log_level": "Debug",
+
+  "locales": [
+    {
+      "language_tag": "en-US",
+      "prod_mode": false,
+      "offline_resources_path": [
+        "source.*, resx, internal"
+      ]
+    }
+  ],
+
+  "components": [
+    {
+      "name": "about",
+      "default_locale": "en-US"
+    },
+    {
+      "name": "index",
+      "locales": [
+        {
+          "language_tag": "en-US",
+          "offline_resources_path": [
+            "index, properties, internal"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "contact",
+      "locales": [
+        {
+          "language_tag": "en-US"
+        }
+      ]
+    },
+    {
+      "name": "common",
+      "locales": [
+        {
+          "language_tag": "en-US",
+          "offline_resources_path": [
+            "common, properties, internal"
+          ]
+        }
+      ]
+    }
+  ]
+}

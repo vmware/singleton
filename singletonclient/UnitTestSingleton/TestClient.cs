@@ -43,15 +43,16 @@ namespace UnitTestSingleton
             Assert.AreEqual(text, null);
 
             config = I18n.GetConfig("CSHARP", "1.0.0");
-            string productName = config.GetStringValue(ConfigConst.KeyProduct);
+            ISingletonConfig configWrapper = new SingletonConfigWrapper(config);
+            string productName = configWrapper.GetProduct();
             Assert.AreEqual(productName, "CSHARP");
 
             SingletonConfig theConfig = (SingletonConfig)config;
-            string jointKey = theConfig.GetKey();
+            string jointKey = configWrapper.GetReleaseName();
             Assert.AreEqual(jointKey, "CSHARP^1.0.0");
 
-            text = theConfig.GetStringValue("_none");
-            Assert.AreEqual(text, null);
+            IConfigItem textItem = configWrapper.GetConfig().GetItem("_none");
+            Assert.AreEqual(textItem, null);
 
             theConfig.SetConfigData("another");
 
@@ -73,9 +74,6 @@ namespace UnitTestSingleton
 
             ICacheManager tempCache = mgr.GetCacheManager("try");
             Assert.AreEqual(tempCache.GetType() != null, true);
-
-            SingletonAccessRemoteTask task = new SingletonAccessRemoteTask((ISingletonAccessRemote)release, 3, 1);
-            task.LaunchUpdateThread();
         }
 
         [TestMethod]
@@ -111,10 +109,6 @@ namespace UnitTestSingleton
             translation = Util.Translation().Format("de", null, "AAA");
             Assert.AreEqual(translation, null);
 
-            List<ISource> srcList = new List<ISource>();
-            srcList.Add(Util.Source("about", "about.message"));
-            Util.Translation().SendSource(srcList);
-
             Util.Translation().SetCurrentLocale("zh-CN");
             string locale = Util.Translation().GetCurrentLocale();
             Assert.AreEqual(locale, "zh-CN");
@@ -127,16 +121,16 @@ namespace UnitTestSingleton
         [TestMethod]
         public void TestMessages()
         {
-            IProductMessages messages = Util.Messages();
+            IReleaseMessages messages = Util.Messages();
             List<String> localeList = messages.GetLocaleList();
             Assert.AreEqual(localeList.Contains("de"), true);
             List<String> componentList = messages.GetComponentList();
             Assert.AreEqual(componentList.Contains("about"), true);
 
-            ILanguageMessages languageMessages = messages.GetTranslation(null);
+            ILocaleMessages languageMessages = messages.GetLocaleMessages(null);
             Assert.AreEqual(languageMessages, null);
 
-            languageMessages = messages.GetTranslation("de");
+            languageMessages = messages.GetLocaleMessages("de");
             componentList = languageMessages.GetComponentList();
             Assert.AreEqual(componentList.Contains("about"), true);
 
@@ -160,10 +154,7 @@ namespace UnitTestSingleton
             translation = componentMessages.GetString("about.message");
             Assert.AreEqual(translation, "Ihrer Bewerbungs Beschreibung Seite.");
 
-            ILanguageMessages sources = messages.GetAllSource();
-            Assert.AreEqual(sources.GetString("about", "about.message"), "Your application description page.");
-
-            Dictionary<string, ILanguageMessages> allTranslations = messages.GetAllTranslation();
+            Dictionary<string, ILocaleMessages> allTranslations = messages.GetAllLocaleMessages();
             languageMessages = allTranslations["de"];
             translation = languageMessages.GetString("about", "about.message");
             Assert.AreEqual(translation, "Ihrer Bewerbungs Beschreibung Seite.");

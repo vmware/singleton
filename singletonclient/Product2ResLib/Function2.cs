@@ -40,10 +40,25 @@ namespace Product2ResLib
 
         public void UseProduct()
         {
+            Thread.Sleep(7 * 1000);
+
             SetCurrentLocale("de");
             GetTranslation("about", "about.message");
 
+            SetCurrentLocale("my-MY");
+            GetTranslation("about", "about.message");
+
             SetCurrentLocale("zh-Hans");
+            GetTranslation("about", "about.message");
+
+            SetCurrentLocale("zh-Hans");
+            GetTranslation("index", "index.title");
+
+            SetCurrentLocale("zh-Hans");
+            GetTranslation("contact", "contact.applicationname");
+
+            Thread.Sleep(7 * 1000);
+            SetCurrentLocale("de");
             GetTranslation("about", "about.message");
 
             Util2.CountDown();

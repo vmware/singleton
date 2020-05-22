@@ -1,0 +1,22 @@
+﻿
+offline_resources_base_url: CSHARP/1.0.0
+
+default_resource_format: resx, internal
+internal_resources_root: SingletonRes
+
+offline_resources_path:
+  - source.$COMPONENT_$LOCALE
+
+locales:
+  - language_tag: en-US
+    offline_resources_path:
+      - source.$COMPONENT
+  - language_tag: de-DE
+  - language_tag: zh-Hans
+
+components: 
+  - name: about
+  - name: index
+  - name: contact
+  - name: common
+

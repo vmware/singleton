@@ -7,8 +7,6 @@ namespace SingletonClient.Implementation
 {
     public class SingletonConst
     {
-        public const string LocaleSource = "latest";
-        public const string LocaleEnglish = "en";
         public const string KeyResult = "result";
         public const string KeyResponse = "response";
         public const string KeyCode = "code";
@@ -17,6 +15,8 @@ namespace SingletonClient.Implementation
         public const string KeyPath = "path";
         public const string KeyMessages = "messages";
         public const string KeyLocales = "locales";
+        public const string KeyComponent = "component";
+        public const string KeyLocale = "locale";
 
         public const string HeaderEtag = "etag";
         public const string HeaderCacheControl = "cache-control";
@@ -24,6 +24,8 @@ namespace SingletonClient.Implementation
         public const string HeaderResponseCode = "response-code";
 
         public const string StatusNotModified = "NotModified";
+
+        public const string PlaceNoLocaleDefine = "$NO_LOCALE_DEFINE";
     }
 }
 

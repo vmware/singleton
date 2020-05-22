@@ -73,6 +73,16 @@ namespace Product2ResLib.SingletonRes {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] about_de {
+            get {
+                object obj = ResourceManager.GetObject("about_de", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] common {
             get {
                 object obj = ResourceManager.GetObject("common", resourceCulture);
@@ -96,6 +106,116 @@ namespace Product2ResLib.SingletonRes {
         internal static byte[] index {
             get {
                 object obj = ResourceManager.GetObject("index", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_offline_disk {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_offline_disk", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_offline_external {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_offline_external", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_offline_external_de {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_offline_external_de", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_offline_internal {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_offline_internal", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_offline_internal_native {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_offline_internal_native", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_offline_internal_properties {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_offline_internal_properties", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_online_only {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_online_only", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_online_only_component {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_online_only_component", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_online_with_external {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_online_with_external", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_online_with_internal {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_online_with_internal", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_sample_comment {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_sample_comment", resourceCulture);
                 return ((byte[])(obj));
             }
         }

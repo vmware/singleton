@@ -65,11 +65,11 @@ namespace SingletonClient
         string GetCurrentLocale();
 
         /// <summary>
-        /// Send a group of sources.
+        /// Get supported locale.
         /// </summary>
-        /// <param name="sourceList"></param>
+        /// <param name="locale"></param>
         /// <returns></returns>
-        bool SendSource(List<ISource> sourceList);
+        string GetLocaleSupported(string locale);
     }
 }
 

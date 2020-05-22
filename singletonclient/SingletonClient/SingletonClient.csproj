@@ -51,9 +51,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementation\SingletonUpdate.cs" />
     <Compile Include="Implementation\Helpers\CultureHelper.cs" />
     <Compile Include="Implementation\SingletonAccessRemoteTask.cs" />
     <Compile Include="Implementation\SingletonSource.cs" />
+    <Compile Include="Implementation\Support\SingletonParserBundle.cs" />
     <Compile Include="Implementation\Support\SingletonBaseIo.cs" />
     <Compile Include="Implementation\Support\SingletonAccessService.cs" />
     <Compile Include="Implementation\Support\SingletonParserProperties.cs" />
@@ -61,7 +63,7 @@
     <Compile Include="ITranslation.cs" />
     <Compile Include="IRelease.cs" />
     <Compile Include="IExtension.cs" />
-    <Compile Include="IProductMessages.cs" />
+    <Compile Include="IReleaseMessages.cs" />
     <Compile Include="IConfig.cs" />
     <Compile Include="I18n.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

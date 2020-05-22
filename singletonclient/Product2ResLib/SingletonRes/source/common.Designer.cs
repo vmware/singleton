@@ -22,24 +22,24 @@ namespace Product2ResLib.SingletonRes.source {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class about {
+    internal class common {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal about() {
+        internal common() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Product2ResLib.SingletonRes.source.about", typeof(about).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Product2ResLib.SingletonRes.source.common", typeof(common).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Product2ResLib.SingletonRes.source {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,29 +61,38 @@ namespace Product2ResLib.SingletonRes.source {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use this area to provide additional information..
-        /// </summary>
-        public static string about_description {
-            get {
-                return ResourceManager.GetString("about.description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Your application description page..
-        /// </summary>
-        public static string about_message {
-            get {
-                return ResourceManager.GetString("about.message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
-        public static string about_title {
+        internal static string common_about {
             get {
-                return ResourceManager.GetString("about.title", resourceCulture);
+                return ResourceManager.GetString("common.about", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sample Application.
+        /// </summary>
+        internal static string common_applicationname {
+            get {
+                return ResourceManager.GetString("common.applicationname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact.
+        /// </summary>
+        internal static string common_contact {
+            get {
+                return ResourceManager.GetString("common.contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        internal static string common_home {
+            get {
+                return ResourceManager.GetString("common.home", resourceCulture);
             }
         }
     }

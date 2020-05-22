@@ -22,14 +22,14 @@ namespace Product2ResLib.SingletonRes.source {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class about {
+    public class about_de {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal about() {
+        internal about_de() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Product2ResLib.SingletonRes.source {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Product2ResLib.SingletonRes.source.about", typeof(about).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Product2ResLib.SingletonRes.source.about_de", typeof(about_de).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace Product2ResLib.SingletonRes.source {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use this area to provide additional information..
+        ///   Looks up a localized string similar to 999Use this area to provide additional information..
         /// </summary>
         public static string about_description {
             get {
@@ -70,7 +70,7 @@ namespace Product2ResLib.SingletonRes.source {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your application description page..
+        ///   Looks up a localized string similar to 99Your application description page..
         /// </summary>
         public static string about_message {
             get {
@@ -79,7 +79,7 @@ namespace Product2ResLib.SingletonRes.source {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About.
+        ///   Looks up a localized string similar to 9About.
         /// </summary>
         public static string about_title {
             get {

@@ -22,24 +22,24 @@ namespace Product2ResLib.SingletonRes.source {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class about {
+    internal class contact {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal about() {
+        internal contact() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Product2ResLib.SingletonRes.source.about", typeof(about).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Product2ResLib.SingletonRes.source.contact", typeof(contact).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Product2ResLib.SingletonRes.source {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,29 +61,56 @@ namespace Product2ResLib.SingletonRes.source {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use this area to provide additional information..
+        ///   Looks up a localized string similar to One Microsoft Way&lt;br/&gt; Redmond, WA 98052 - 6399 &lt;br/&gt;&lt;abbr title = \&quot;Phone\&quot;&gt; P:&lt;/abbr&gt;425.555.0100.
         /// </summary>
-        public static string about_description {
+        internal static string contact_address {
             get {
-                return ResourceManager.GetString("about.description", resourceCulture);
+                return ResourceManager.GetString("contact.address", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your application description page..
+        ///   Looks up a localized string similar to VIP Sample Web Application.
         /// </summary>
-        public static string about_message {
+        internal static string contact_applicationname {
             get {
-                return ResourceManager.GetString("about.message", resourceCulture);
+                return ResourceManager.GetString("contact.applicationname", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About.
+        ///   Looks up a localized string similar to Marketing:.
         /// </summary>
-        public static string about_title {
+        internal static string contact_marketing {
             get {
-                return ResourceManager.GetString("about.title", resourceCulture);
+                return ResourceManager.GetString("contact.marketing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your contact page..
+        /// </summary>
+        internal static string contact_message {
+            get {
+                return ResourceManager.GetString("contact.message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Support:.
+        /// </summary>
+        internal static string contact_support {
+            get {
+                return ResourceManager.GetString("contact.support", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact.
+        /// </summary>
+        internal static string contact_title {
+            get {
+                return ResourceManager.GetString("contact.title", resourceCulture);
             }
         }
     }

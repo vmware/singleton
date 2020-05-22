@@ -53,9 +53,9 @@ namespace SingletonClient
     }
 
     /// <summary>
-    /// Interface for a source parser.
+    /// Interface for a resource parser.
     /// </summary>
-    public interface ISourceParser
+    public interface IResourceParser
     {
         /// <summary>
         /// Parse the text into a hash table.
@@ -76,7 +76,7 @@ namespace SingletonClient
         /// <param name="product"></param>
         /// <param name="version"></param>
         /// <returns></returns>
-        ICacheMessages GetProductCache(string product, string version);
+        ICacheMessages GetReleaseCache(string product, string version);
     }
 
     /// <summary>
@@ -89,7 +89,7 @@ namespace SingletonClient
         /// </summary>
         /// <param name="locale"></param>
         /// <returns></returns>
-        ILanguageMessages GetLanguageMessages(string locale);
+        ILocaleMessages GetLocaleMessages(string locale);
     }
 
     /// <summary>
@@ -98,32 +98,32 @@ namespace SingletonClient
     public interface IExtension
     {
         /// <summary>
-        /// Set a cache manager with its name.
+        /// Register a cache manager with its name.
         /// </summary>
         /// <param name="cacheManager"></param>
         /// <param name="cacheManagerName"></param>
-        void SetCacheManager(ICacheManager cacheManager, string cacheManagerName);
+        void RegisterCacheManager(ICacheManager cacheManager, string cacheManagerName);
 
         /// <summary>
-        /// Set a logger with its name.
+        /// Register a logger with its name.
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="loggerName"></param>
-        void SetLogger(ILog logger, string loggerName);
+        void RegisterLogger(ILog logger, string loggerName);
 
         /// <summary>
-        /// Set a source parser with its name.
+        /// Register a resource parser with its name.
         /// </summary>
         /// <param name="parser"></param>
         /// <param name="parserName"></param>
-        void SetSourceParser(ISourceParser parser, string parserName);
+        void RegisterResourceParser(IResourceParser parser, string parserName);
 
         /// <summary>
-        /// Set service access object with its name. 
+        /// Register service access object with its name.
         /// </summary>
         /// <param name="accessService"></param>
         /// <param name="accessrName"></param>
-        void SetAccessService(IAccessService accessService, string accessrName);
+        void RegisterAccessService(IAccessService accessService, string accessrName);
     }
 }
 
