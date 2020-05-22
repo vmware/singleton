@@ -94,4 +94,6 @@ public class ConstantsKeys {
 
    public static final String PLURAL_RULES = "pluralRules";
 
+   public static final String SCOPE_FILTER_MATCH = "(^[a-zA-Z]+[,-_a-zA-Z0-9]+[a-zA-Z0-9]+$)|(^[\\^\\(]+[,-_a-zA-Z0-9]+[\\)]+$)";
+
 }

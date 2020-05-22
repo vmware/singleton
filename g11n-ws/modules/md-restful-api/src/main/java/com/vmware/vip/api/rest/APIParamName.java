@@ -33,4 +33,5 @@ public class APIParamName {
 	public final static String LANGUAGE= "language";
 	public final static String REGION= "region";
 	public final static String COMBINE = "combine";
+	public final static String SCOPE_FILTER = "scopeFilter";
 }

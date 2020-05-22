@@ -37,10 +37,13 @@ import com.vmware.vip.common.i18n.dto.KeySourceCommentDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
 
+import springfox.documentation.annotations.ApiIgnore;
+
 /**
  * This class is the controller for collecting dynamic english strings in
  * product code.
  */
+@ApiIgnore
 @RestController
 public class SourceController {
 	private static Logger LOGGER = LoggerFactory.getLogger(SourceController.class);

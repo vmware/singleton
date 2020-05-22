@@ -6,7 +6,7 @@ package com.vmware.l10n.source.dao;
 
 import java.util.Map;
 
-import com.vmware.l10n.translation.dto.ComponentMessagesDTO;
+import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
 

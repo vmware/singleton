@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.vmware.l10n.BootApplication;
-import com.vmware.l10n.expt.L10nAPIException;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.l10n.source.crons.SourceSendingCron;
 import com.vmware.l10n.source.service.impl.SourceServiceImpl;
 import com.vmware.vip.common.cache.CacheName;
