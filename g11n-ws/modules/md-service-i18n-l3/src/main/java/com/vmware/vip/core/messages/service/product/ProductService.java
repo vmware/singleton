@@ -146,13 +146,9 @@ public class ProductService implements IProductService {
 			List<ComponentMessagesDTO> componentMessagesDTOList)
 			throws L3APIException {
 		List<TranslationDTO> translationDTOList = new ArrayList<TranslationDTO>();
-		String productName = null;
-		String version = null;
 		for (ComponentMessagesDTO componentMessagesDTO : componentMessagesDTOList) {
 			try {
 				updateTranslation(componentMessagesDTO);
-				productName = componentMessagesDTO.getProductName();
-				version = componentMessagesDTO.getVersion();
 			} catch (VIPCacheException e) {
 				throw new L3APIException(
 						"Cache occurs error when update translation.", e);
@@ -171,6 +167,18 @@ public class ProductService implements IProductService {
 						+ componentMessagesDTO.getVersion(), e);
 			}
 		}
+		updateMultComponentCache(componentMessagesDTOList.get(0).getProductName(), componentMessagesDTOList.get(0).getVersion());
+		return translationDTOList;
+	}
+	
+	/**
+	 * update the MultComponent Cache project when update translations
+	 * 
+	 * @param productName
+	 * @param version
+	 * @throws L3APIException
+	 */
+	private void updateMultComponentCache(String productName, String version) throws L3APIException {
 		com.vmware.vip.core.messages.service.multcomponent.TranslationDTO multComp = new com.vmware.vip.core.messages.service.multcomponent.TranslationDTO();
 		multComp.setProductName(productName);
 		multComp.setVersion(version);
@@ -178,13 +186,11 @@ public class ProductService implements IProductService {
 		multComp.setComponents(getComponentNameList(productName, version));
 		String multKey = CachedKeyGetter.getMultiComponentsCachedKey(multComp);
 		try {
-			TranslationCache3.deleteCachedObject(CacheName.MULTCOMPONENT, multKey, com.vmware.vip.core.messages.service.multcomponent.TranslationDTO.class);
+			TranslationCache3.deleteCachedObject(CacheName.MULTCOMPONENT, multKey,
+					com.vmware.vip.core.messages.service.multcomponent.TranslationDTO.class);
 		} catch (VIPCacheException e) {
-			// TODO Auto-generated catch block
-			throw new L3APIException(
-					"MULTCOMPONENT cache occurs error when update translation.", e);
+			throw new L3APIException("MULTCOMPONENT cache occurs error when update translation.", e);
 		}
-		return translationDTOList;
 	}
 
 	/**
