@@ -40,13 +40,13 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web"){
     exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
     }
-    compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.31')
-    compile ('org.apache.tomcat:tomcat-annotations-api:9.0.31')
-    compile ('org.xerial:sqlite-jdbc:3.28.0')
+    compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.35')
+    compile ('org.apache.tomcat:tomcat-annotations-api:9.0.35')
+    compile ('org.xerial:sqlite-jdbc:3.31.1')
     compile ('com.fasterxml.jackson.core:jackson-databind:2.10.0.pr1')
     compile ('com.fasterxml.jackson.core:jackson-core:2.10.0.pr1')
     compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final")
-    compile('org.yaml:snakeyaml:1.25') 
+    compile('org.yaml:snakeyaml:1.26') 
     compile("io.springfox:springfox-swagger-ui:2.9.2")
     compile("io.springfox:springfox-swagger2:2.9.2")
     testCompile("org.springframework.boot:spring-boot-starter-test")
