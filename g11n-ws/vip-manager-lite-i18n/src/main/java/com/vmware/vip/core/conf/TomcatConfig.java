@@ -46,6 +46,7 @@ public class TomcatConfig {
 		protocol.setKeystoreType(serverProperties.getHttpsKeyStoreType());
 		protocol.setKeyPass(serverProperties.getHttpsKeyPassword());
 		protocol.setKeyAlias(serverProperties.getHttpsKeyAlias());
+		protocol.setMaxHttpHeaderSize(serverProperties.getMaxHttpHeaderSize());
 		connector.setRedirectPort(ConstantsTomcat.REDIRECT_PORT);
 		connector.setAllowTrace(serverProperties.isAllowTrace());
 		return connector;
