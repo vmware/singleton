@@ -15,15 +15,15 @@ import (
 )
 
 func TestComponentList(t *testing.T) {
+
+	cfPath := "config.json"
+	cfg, _ := sgtn.LoadConfig(cfPath)
+	sgtn.Initialize(cfg)
+	translation := sgtn.GetTranslation()
+
 	Convey("Get all components successfully(P0)", t, func() {
 
-		cfPath := "config.yaml"
-		cfg, _ := sgtn.NewConfig(cfPath)
-		inst, _ := sgtn.NewInst(*cfg)
-		fmt.Print(inst)
-		translation := inst.GetTranslation()
-
-		comlist, err := translation.GetComponentList()
+		comlist, err := translation.GetComponentList("GoClientTest", "1.0.0")
 		fmt.Print(comlist)
 		fmt.Print(err)
 
@@ -34,13 +34,7 @@ func TestComponentList(t *testing.T) {
 
 	SkipConvey("Get nothing when the localbundle path is incorrect(P1)", t, func() {
 
-		cfPath := "confignull.yaml"
-		cfg, _ := sgtn.NewConfig(cfPath)
-		inst, _ := sgtn.NewInst(*cfg)
-		fmt.Print(inst)
-		translation := inst.GetTranslation()
-
-		comlist1, err1 := translation.GetComponentList()
+		comlist1, err1 := translation.GetComponentList("NonExistenceProduct", "1.0")
 		fmt.Print(comlist1)
 		fmt.Print(err1)
 

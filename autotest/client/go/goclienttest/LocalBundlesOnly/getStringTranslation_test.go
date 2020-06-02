@@ -1,7 +1,6 @@
 package LocalBundlesOnly
 
 import (
-	"fmt"
 	"testing"
 
 	. "github.com/smartystreets/goconvey/convey"
@@ -11,12 +10,11 @@ import (
 
 func TestGetStringTranslation(t *testing.T) {
 
-	cfPath := "config.yaml"
+	cfPath := "config.json"
 
-	cfg, _ := sgtn.NewConfig(cfPath)
-	inst, _ := sgtn.NewInst(*cfg)
-	fmt.Print(inst)
-	translation := inst.GetTranslation()
+	cfg, _ := sgtn.LoadConfig(cfPath)
+	sgtn.Initialize(cfg)
+	translation := sgtn.GetTranslation()
 
 	Convey("localbundles-requestlocale: Get request locale's translation from localbundle", t, func() {
 
@@ -29,7 +27,7 @@ func TestGetStringTranslation(t *testing.T) {
 
 		Convey("localbundles-requestlocale: Get common strings successfully from localbundle(P0)", func() {
 
-			tran1, _ := translation.GetStringMessage("zh-Hans", Defaultcom, commonkey)
+			tran1, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "zh-Hans", Defaultcom, commonkey)
 			// fmt.Print(tran1)
 
 			So(tran1, ShouldEqual, dlcncommonvalue)
@@ -38,14 +36,14 @@ func TestGetStringTranslation(t *testing.T) {
 
 		Convey("localbundles-requestlocale: Get placehodler strings successfully from localbundle(P0)", func() {
 
-			tran2, _ := translation.GetStringMessage("fr", Defaultcom, holderkey, "a", "b")
+			tran2, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "fr", Defaultcom, holderkey, "a", "b")
 
 			So(tran2, ShouldEqual, "L'opérateur 'a' n'est pas pris en charge pour la propriété 'b'.")
 		})
 
 		Convey("localbundles-requestlocale: Get long and html tag strings successfully from localbundle(P0)", func() {
 
-			tran2, _ := translation.GetStringMessage("fr", Defaultcom, htmlkey)
+			tran2, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "fr", Defaultcom, htmlkey)
 			// should add check if send out http request as the previous case has cached fr component translation
 
 			So(tran2, ShouldEqual, frhtmlvalue)
@@ -53,7 +51,7 @@ func TestGetStringTranslation(t *testing.T) {
 
 		Convey("localbundles-requestlocale: request a component(contact) is in localbundle but key isn't in localbundles, return key(P1)", func() {
 
-			tran2, _ := translation.GetStringMessage("fr", "contact", "non-existing.key")
+			tran2, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "fr", "contact", "non-existing.key")
 			So(tran2, ShouldEqual, "non-existing.key")
 		})
 	})
@@ -69,7 +67,7 @@ func TestGetStringTranslation(t *testing.T) {
 		Convey("localbundles-defaultlocale: request a non-existing locale(abc) and a component is in localbundle, get default locale translation from localbundles(P1)", func() {
 
 			//messages_zh-Hans.json of component "contact" isn't in service but in localbundle
-			tran1, _ := translation.GetStringMessage("abc", "contact", "contact.title")
+			tran1, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "abc", "contact", "contact.title")
 
 			//zh-Hans is default locale
 			So(tran1, ShouldEqual, "联系")
@@ -77,7 +75,7 @@ func TestGetStringTranslation(t *testing.T) {
 
 		Convey("localbundles-defaultlocale: request a non-existing locale(abc) and non-existing component(abc) in localbundle, return key(P1)", func() {
 
-			tran1, _ := translation.GetStringMessage("abc", "abc", "contact.title")
+			tran1, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "abc", "abc", "contact.title")
 
 			//zh-Hans is default locale
 			So(tran1, ShouldEqual, "contact.title")
@@ -85,7 +83,7 @@ func TestGetStringTranslation(t *testing.T) {
 
 		Convey("localbundles-defaultlocale: request an existing locale(fr) and non-existing component(abc) in localbundle, return key(P1)", func() {
 
-			tran1, _ := translation.GetStringMessage("fr", "abc", "contact.title")
+			tran1, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "fr", "abc", "contact.title")
 
 			//zh-Hans is default locale
 			So(tran1, ShouldEqual, "contact.title")
@@ -93,7 +91,7 @@ func TestGetStringTranslation(t *testing.T) {
 
 		Convey("localbundles-defaultlocale: request a non-existing locale(abc), request a component(contact) is in localbundle and key isn't in localbundles, return key(P1)", func() {
 
-			tran2, _ := translation.GetStringMessage("abc", "contact", "non-existing.key")
+			tran2, _ := translation.GetStringMessage("GoClientTest", "1.0.0", "abc", "contact", "non-existing.key")
 			So(tran2, ShouldEqual, "non-existing.key")
 		})
 	})
