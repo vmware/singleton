@@ -17,69 +17,76 @@ import (
 func TestAvailableConfig(t *testing.T) {
 	Convey("Available config", t, func() {
 
-		Convey("boolean are true, config can be created(P0)", func() {
-			cfPath := "testdata/Config/configTrue.yaml"
-			cfg, err := sgtn.NewConfig(cfPath)
+		Convey("all value are provided, config can be created(P0)", func() {
+			cfPath := "testdata/Config/config.json"
+			cfg, err := sgtn.LoadConfig(cfPath)
 			So(err, ShouldBeNil)
 			So(cfg, ShouldNotBeNil)
 		})
+		//No boolean option in config file
+		// Convey("boolean are true, config can be created(P0)", func() {
+		// 	cfPath := "testdata/Config/configTrue.yaml"
+		// 	cfg, err := sgtn.NewConfig(cfPath)
+		// 	So(err, ShouldBeNil)
+		// 	So(cfg, ShouldNotBeNil)
+		// })
 
-		Convey("boolean are false, config can be created(P0)", func() {
-			cfPath := "testdata/Config/configFalse.yaml"
-			cfg, err := sgtn.NewConfig(cfPath)
-			So(err, ShouldBeNil)
-			So(cfg, ShouldNotBeNil)
-		})
+		// Convey("boolean are false, config can be created(P0)", func() {
+		// 	cfPath := "testdata/Config/configFalse.yaml"
+		// 	cfg, err := sgtn.NewConfig(cfPath)
+		// 	So(err, ShouldBeNil)
+		// 	So(cfg, ShouldNotBeNil)
+		// })
 	})
 
 	SkipConvey("singlton server info is empty, config can be created(P1)", t, func() {
-		cfPath := "testdata/Config/configServerEmpty.yaml"
-		cfg, err := sgtn.NewConfig(cfPath)
+		cfPath := "testdata/Config/configServerEmpty.json"
+		cfg, err := sgtn.LoadConfig(cfPath)
 		So(err, ShouldBeNil)
 		So(cfg, ShouldNotBeNil)
 	})
 
-	SkipConvey("enable cache with invail value(12ab), config can't be created(P1)", t, func() {
-		// message := "strconv.ParseBool: parsing \"aaaa\": invalid syntax"
-		cfPath := "testdata/Config/configInvalidCacheValue.yaml"
-		cfg, err := sgtn.NewConfig(cfPath)
-		So(err, ShouldNotBeNil)
-		So(cfg, ShouldBeNil)
-		fmt.Printf(err.Error())
+	// SkipConvey("enable cache with invail value(12ab), config can't be created(P1)", t, func() {
+	// 	// message := "strconv.ParseBool: parsing \"aaaa\": invalid syntax"
+	// 	cfPath := "testdata/Config/configInvalidCacheValue.yaml"
+	// 	cfg, err := sgtn.NewConfig(cfPath)
+	// 	So(err, ShouldNotBeNil)
+	// 	So(cfg, ShouldBeNil)
+	// 	fmt.Printf(err.Error())
 
-	})
+	// })
 
-	SkipConvey("initialize cache with invail value(12ab), config can't be created(P1)", t, func() {
-		// message := "strconv.ParseBool: parsing \"aaaa\": invalid syntax"
-		cfPath := "testdata/Config/configInvalidCacheValue.yaml"
-		cfg, err := sgtn.NewConfig(cfPath)
-		So(err, ShouldNotBeNil)
-		So(cfg, ShouldBeNil)
-		fmt.Printf(err.Error())
+	// SkipConvey("initialize cache with invail value(12ab), config can't be created(P1)", t, func() {
+	// 	// message := "strconv.ParseBool: parsing \"aaaa\": invalid syntax"
+	// 	cfPath := "testdata/Config/configInvalidCacheValue.yaml"
+	// 	cfg, err := sgtn.NewConfig(cfPath)
+	// 	So(err, ShouldNotBeNil)
+	// 	So(cfg, ShouldBeNil)
+	// 	fmt.Printf(err.Error())
 
-	})
+	// })
 
-	SkipConvey("cache expired time with invail value(12ab), config can't be created(P1)", t, func() {
-		// message := "strconv.ParseBool: parsing \"aaaa\": invalid syntax"
-		cfPath := "testdata/Config/configInvaildCacheExpiredTime.yaml"
-		cfg, err := sgtn.NewConfig(cfPath)
-		So(err, ShouldNotBeNil)
-		So(cfg, ShouldBeNil)
-		fmt.Printf(err.Error())
+	// SkipConvey("cache expired time with invail value(12ab), config can't be created(P1)", t, func() {
+	// 	// message := "strconv.ParseBool: parsing \"aaaa\": invalid syntax"
+	// 	cfPath := "testdata/Config/configInvaildCacheExpiredTime.yaml"
+	// 	cfg, err := sgtn.NewConfig(cfPath)
+	// 	So(err, ShouldNotBeNil)
+	// 	So(cfg, ShouldBeNil)
+	// 	fmt.Printf(err.Error())
 
-	})
+	// })
 
 	SkipConvey("default locale test", t, func() {
 		Convey("default locale is stringlist, can't create config", func() {
-			cfPath := "testdata/Config/configDefaultLocaleList.yaml"
-			cfg, err := sgtn.NewConfig(cfPath)
+			cfPath := "testdata/Config/configDefaultLocaleList.json"
+			cfg, err := sgtn.LoadConfig(cfPath)
 			So(err, ShouldNotBeNil)
 			So(cfg, ShouldBeNil)
 		})
 
 		Convey("default locale is empty, can create config", func() {
-			cfPath := "testdata/Config/configDefaultLocaleEmpty.yaml"
-			cfg, err := sgtn.NewConfig(cfPath)
+			cfPath := "testdata/Config/configDefaultLocaleEmpty.json"
+			cfg, err := sgtn.LoadConfig(cfPath)
 			So(err, ShouldBeNil)
 			So(cfg, ShouldNotBeNil)
 		})
@@ -87,65 +94,65 @@ func TestAvailableConfig(t *testing.T) {
 	})
 
 	SkipConvey("local bundle test", t, func() {
-		Convey("local bundle path with non-ASCII character, can create config", func() {
-			cfPath := "testdata/Config/configLocalBundlePathNonASCII.yaml"
-			cfg, err := sgtn.NewConfig(cfPath)
+		Convey("local bundle path with non-ASCII character, can't create config", func() {
+			cfPath := "testdata/Config/configLocalBundlePathNonASCII.json"
+			cfg, err := sgtn.LoadConfig(cfPath)
 			So(err, ShouldBeNil)
 			So(cfg, ShouldNotBeNil)
 		})
 
 		Convey("local bundle path is empty, can create config", func() {
-			cfPath := "testdata/Config/configLocalBundlePathEmpty.yaml"
-			cfg, err := sgtn.NewConfig(cfPath)
+			cfPath := "testdata/Config/configLocalBundlePathEmpty.json"
+			cfg, err := sgtn.LoadConfig(cfPath)
 			So(err, ShouldBeNil)
 			So(cfg, ShouldNotBeNil)
 		})
 
 		Convey("Server and local bundle path is empty, can create config", func() {
-			cfPath := "testdata/Config/configServerAndLocalBundlePathEmpty.yaml"
-			cfg, err := sgtn.NewConfig(cfPath)
+			cfPath := "testdata/Config/configServerAndLocalBundlePathEmpty.json"
+			cfg, err := sgtn.LoadConfig(cfPath)
 			So(err, ShouldBeNil)
 			So(cfg, ShouldNotBeNil)
 		})
 
 	})
 
-	SkipConvey("version with invail value([1.2]), config can't be created(P1)", t, func() {
+	// SkipConvey("version with invail value([1.2]), config can't be created(P1)", t, func() {
 
-		cfPath := "testdata/Config/configInvalidVersionValue.yaml"
-		cfg, err := sgtn.NewConfig(cfPath)
-		So(err, ShouldNotBeNil)
-		So(cfg, ShouldBeNil)
-		//fmt.Printf(err.Error())
+	// 	cfPath := "testdata/Config/configInvalidVersionValue.yaml"
+	// 	cfg, err := sgtn.NewConfig(cfPath)
+	// 	So(err, ShouldNotBeNil)
+	// 	So(cfg, ShouldBeNil)
+	// 	//fmt.Printf(err.Error())
 
-	})
+	// })
 
-	SkipConvey("product name is empty, config can be created(P1)", t, func() {
-		cfPath := "testdata/Config/configProductEmpty.yaml"
-		cfg, err := sgtn.NewConfig(cfPath)
-		So(err, ShouldBeNil)
-		So(cfg, ShouldNotBeNil)
-		//fmt.Printf(err.Error())
+	// SkipConvey("product name is empty, config can be created(P1)", t, func() {
+	// 	cfPath := "testdata/Config/configProductEmpty.yaml"
+	// 	cfg, err := sgtn.NewConfig(cfPath)
+	// 	So(err, ShouldBeNil)
+	// 	So(cfg, ShouldNotBeNil)
+	// 	//fmt.Printf(err.Error())
 
-	})
+	// })
 
-	SkipConvey("No yaml file, config can't be created(P1)", t, func() {
-		cfPath := "testdata/Config/NotExisted.yaml"
-		cfg, err := sgtn.NewConfig(cfPath)
+	SkipConvey("No json file, config can't be created(P1)", t, func() {
+		cfPath := "testdata/Config/NotExisted.json"
+		cfg, err := sgtn.LoadConfig(cfPath)
 		So(err, ShouldNotBeNil)
 		So(cfg, ShouldBeNil)
 		fmt.Printf(err.Error())
 
 	})
 
-	SkipConvey("No product property in yaml file, config can't be created(P1)", t, func() {
-		cfPath := "testdata/Config/configNoProductProperty.yaml"
-		cfg, err := sgtn.NewConfig(cfPath)
-		So(err, ShouldBeNil)
-		So(cfg, ShouldNotBeNil)
-		//fmt.Printf(err.Error())
+	// SkipConvey("No product property in yaml file, config can't be created(P1)", t, func() {
+	// 	cfPath := "testdata/Config/configNoProductProperty.yaml"
+	// 	cfg, err := sgtn.NewConfig(cfPath)
+	// 	So(err, ShouldBeNil)
+	// 	So(cfg, ShouldNotBeNil)
+	// 	//fmt.Printf(err.Error())
 
-	})
+	// })
 
 	//Convey("InAvailable config", t, func() {
 

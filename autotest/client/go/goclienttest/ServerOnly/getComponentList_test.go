@@ -17,15 +17,14 @@ import (
 func TestComponentList(t *testing.T) {
 	Convey("Get component list from service", t, func() {
 
-		cfPath := "configServerOnly.yaml"
-		cfg, _ := sgtn.NewConfig(cfPath)
-		inst, _ := sgtn.NewInst(*cfg)
-		fmt.Print(inst)
-		translation := inst.GetTranslation()
+		cfPath := "configServerOnly.json"
+		cfg, _ := sgtn.LoadConfig(cfPath)
+		sgtn.Initialize(cfg)
+		translation := sgtn.GetTranslation()
 
 		Convey("Get all components successfully(P0)", func() {
 
-			comlist, err := translation.GetComponentList()
+			comlist, err := translation.GetComponentList("GoClientTest", "1.0.0")
 			fmt.Print(comlist)
 			fmt.Print(err)
 
