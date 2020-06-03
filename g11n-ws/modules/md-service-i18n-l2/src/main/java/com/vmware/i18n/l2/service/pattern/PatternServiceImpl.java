@@ -240,10 +240,23 @@ public class PatternServiceImpl implements IPatternService {
 			return;
 		}
 
-		Arrays.asList(scopeFilter.split(ConstantsChar.COMMA)).stream().forEach(scopeNode -> {
-			List<String> scopeFilters = Arrays.asList(scopeNode.split(ConstantsChar.UNDERLINE));
-			removeData(patternMap, scopeFilters, 0);
-		});
+		// If scopeFilter starts with ^, it means deleting the data under the node
+		if (scopeFilter.startsWith(ConstantsChar.REVERSE)) {
+			scopeFilter = scopeFilter.substring(scopeFilter.indexOf(ConstantsChar.LEFT_PARENTHESIS) + 1, scopeFilter.indexOf(ConstantsChar.RIGHT_PARENTHESIS));
+			Arrays.asList(scopeFilter.split(ConstantsChar.COMMA)).stream().forEach(scopeNode -> {
+				List<String> scopeFilters = Arrays.asList(scopeNode.split(ConstantsChar.UNDERLINE));
+				removeData(patternMap, scopeFilters, 0);
+			});
+		} else {
+			Map<String, Object> newPatternMap = new HashMap<>();
+			for (String scopeNode : Arrays.asList(scopeFilter.split(ConstantsChar.COMMA))) {
+				List<String> scopeFilters = Arrays.asList(scopeNode.split(ConstantsChar.UNDERLINE));
+				Map<String, Object> tempPatternMap = getData(patternMap, scopeFilters, 0);
+				newPatternMap = mergePatternMap(newPatternMap, tempPatternMap, scopeFilters, 0);
+			}
+			patternMap.clear();
+			patternMap.putAll(newPatternMap);
+		}
 	}
 
 	private void removeData(Map<String, Object> patternMap, List<String> scopeFilters, Integer index) {
@@ -254,5 +267,49 @@ public class PatternServiceImpl implements IPatternService {
 			patternMap = (Map<String, Object>) patternMap.get(scopeFilter);
 			removeData(patternMap, scopeFilters, index + 1);
 		}
+	}
+
+	/**
+	 * Obtain the data of the corresponding node in the pattern according to scopeFilters
+	 * @param originPatternMap
+	 * @param scopeFilters
+	 * @param index
+	 * @return
+	 */
+	private Map<String, Object> getData(Map<String, Object> originPatternMap, List<String> scopeFilters, Integer index) {
+		String scopeFilter = scopeFilters.get(index);
+		Map<String, Object> patternMap = new HashMap<>();
+
+		if (index == scopeFilters.size() - 1) {
+			patternMap.put(scopeFilter, originPatternMap.get(scopeFilter));
+		} else if (!CommonUtil.isEmpty(originPatternMap.get(scopeFilter))) {
+			originPatternMap = (Map<String, Object>) originPatternMap.get(scopeFilter);
+			patternMap.put(scopeFilter, getData(originPatternMap, scopeFilters, index + 1));
+		}
+		return patternMap;
+	}
+
+	/**
+	 * Merging pattern data
+	 * @param originPatternMap
+	 * @param newPatternMap
+	 * @param scopeFilters
+	 * @param index
+	 * @return
+	 */
+	private Map<String, Object> mergePatternMap(Map<String, Object> originPatternMap, Map<String, Object> newPatternMap,
+												List<String> scopeFilters, Integer index) {
+		Map<String, Object> patternMap = new HashMap<>(originPatternMap);
+		String scopeFilter = scopeFilters.get(index);
+
+		if (!CommonUtil.isEmpty(originPatternMap.get(scopeFilter))) {
+			originPatternMap = (Map<String, Object>) originPatternMap.get(scopeFilter);
+			newPatternMap = (Map<String, Object>) newPatternMap.get(scopeFilter);
+			patternMap.put(scopeFilter, mergePatternMap(originPatternMap, newPatternMap, scopeFilters, index + 1));
+		} else {
+			patternMap.putAll(newPatternMap);
+		}
+
+		return patternMap;
 	}
 }

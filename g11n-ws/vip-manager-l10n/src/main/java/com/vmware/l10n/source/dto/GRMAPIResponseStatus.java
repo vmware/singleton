@@ -9,8 +9,8 @@ import com.vmware.vip.common.i18n.status.Response;
 /**
  * This class defines several response status of GRM API.
  */
-public class GRMAPIResponseStatus {
-	private GRMAPIResponseStatus() {}
+public interface GRMAPIResponseStatus {
+	
     public static final Response CREATED = new Response(201, "Created");
     public static final Response INVALID_REQUEST = new Response(400, "Invalid Request");
     public static final Response UNAUTHORIZED = new Response(401, "Unauthorized");

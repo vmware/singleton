@@ -2,7 +2,7 @@
  * Copyright 2019 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
-package com.vmware.l10n.expt;
+package com.vmware.vip.common.l10n.exception;
 
 import com.vmware.vip.common.exceptions.VIPAPIException;
 

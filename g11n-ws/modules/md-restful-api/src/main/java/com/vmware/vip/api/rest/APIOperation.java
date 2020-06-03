@@ -65,4 +65,7 @@ public class APIOperation {
 	
 	public static final String TRANSLATION_WITH_PATTERN_VALUE = "Get translations and patterns";
 	public static final String TRANSLATION_WITH_PATTERN_NOTES = "Get translations and patterns by customized type";
+	
+	public final static String KEY_SOURCE_POST_VALUE = "Post a key's source";
+	public final static String KEY_SOURCE_POST_NOTES = "Post a key's source under the component";
 }

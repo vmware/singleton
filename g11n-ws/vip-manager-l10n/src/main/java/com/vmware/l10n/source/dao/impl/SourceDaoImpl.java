@@ -30,7 +30,7 @@ import com.vmware.l10n.record.dao.SqlLiteDao;
 import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.l10n.source.dto.GRMAPIResponseStatus;
 import com.vmware.l10n.source.dto.GRMResponseDTO;
-import com.vmware.l10n.translation.dto.ComponentMessagesDTO;
+import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 import com.vmware.l10n.utils.MapUtil;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;

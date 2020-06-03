@@ -7,7 +7,7 @@ package com.vmware.test;
 import org.junit.Test;
 
 import com.vmware.l10n.expt.ExceptionHandle;
-import com.vmware.l10n.expt.L10nAPIException;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
 
 public class TestExceptions {
 
