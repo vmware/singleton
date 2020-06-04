@@ -23,12 +23,16 @@ public class MTConfigContent {
 	@Value("${mt.translatedCount:20}")
 	private String translatedCount;
 
+	@Value("${mt.region:}")
+	private String region;
+
 	@PostConstruct
 	public void initConfig() {
 		MTConfig.setMTSERVER(this.getMtServer());
 		MTConfig.setKEY(this.getKey());
 		MTConfig.setTRANSLATED_MAX(this.getTranslatedMax());
 		MTConfig.setTRANSLATECOUNT(this.getTranslatedCount());
+		MTConfig.setREGION(this.region);
 	}
 
 	public String getMtServer() {

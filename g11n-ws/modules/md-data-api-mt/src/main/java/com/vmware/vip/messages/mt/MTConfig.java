@@ -12,6 +12,7 @@ public class MTConfig {
 	public static String KEY;
 	public static String TRANSLATED_MAX;
 	public static String TRANSLATECOUNT;
+	public static String REGION;
 
 	private MTConfig() {}
 	
@@ -66,5 +67,9 @@ public class MTConfig {
 
 	public static boolean isTimeOut() {
 		return (System.currentTimeMillis() - getCurrentMills()) > hr24;
+	}
+
+	public static void setREGION(String rEGION) {
+		REGION = rEGION;
 	}
 }
