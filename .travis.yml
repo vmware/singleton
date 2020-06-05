@@ -53,4 +53,27 @@ jobs:
             cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-singleton-go-client-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
     - stage: Smoke Test
       script:
-        true
+        - export PATH=${PATH/:\/usr\/local\/lib\/jvm\/openjdk11\/bin:/:}
+        - sudo apt-get update
+        - sudo apt-get install -y openjdk-8-jdk
+        - export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+        - java -version
+        - git clone --branch=master https://github.com/vmware/singleton.git server
+        - git clone --branch=devops https://github.com/vmware/singleton.git devops
+        - cd $TRAVIS_BUILD_DIR/server/g11n-ws && ./gradlew build -x test
+        - cp $TRAVIS_BUILD_DIR/devops/deploy/i18n-service/Dockerfile $TRAVIS_BUILD_DIR/server/publish/
+        - cd $TRAVIS_BUILD_DIR/server/publish && mv singleton-[0~9]*.jar i18n-service.jar
+        - docker build -t singleton .
+        - docker run -d -p 8090:8090 -p 8091:8091 --name singleton singleton
+        - docker ps
+        - sleep 15s
+        - mkdir -p $TRAVIS_BUILD_DIR/l10n/bundles
+        - cp -r $TRAVIS_BUILD_DIR/devops/autotest/client/go/l10n/bundles $TRAVIS_BUILD_DIR/l10n/
+        - docker cp $TRAVIS_BUILD_DIR/l10n singleton:/
+        - curl -X GET 'http://localhost:8091/i18n/api/v2/formatting/patterns?language=en&region=TW&scope=dates'        
+        - cd $TRAVIS_BUILD_DIR/devops/autotest/client/go/goclienttest
+        - go get -u github.com/vmware/singleton@g11n-go-client && go get github.com/smartystreets/goconvey
+        - str=$(printf '=%.0s' {1..50})
+        - echo $str Smoke Test Start $str
+        - go test -v ./...
+        - echo $str Smoke Test End $str
