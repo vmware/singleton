@@ -23,11 +23,11 @@ func TestCacheNeverExpire(t *testing.T) {
 	info := getCacheInfo(item)
 
 	// assert Initial value isn't cacheNeverExpires(-1)
-	assert.NotEqual(t, int64(cacheNeverExpires), info.getAge())
+	assert.NotEqual(t, int64(cacheNeverExpires), info.age)
 	GetTranslation().GetComponentMessages(name, version, locale, component)
 
 	// assert value is cacheNeverExpires(-1) because only local bundles are available.
-	assert.Equal(t, int64(cacheNeverExpires), info.getAge())
+	assert.Equal(t, int64(cacheNeverExpires), info.age)
 }
 
 func TestCacheExpireWhenNeverExpire(t *testing.T) {
@@ -44,7 +44,7 @@ func TestCacheExpireWhenNeverExpire(t *testing.T) {
 	GetTranslation().GetComponentMessages(name, version, locale, component)
 
 	// value is cacheNeverExpires(-1) because only local bundles are available.
-	assert.Equal(t, int64(cacheNeverExpires), info.getAge())
+	assert.Equal(t, int64(cacheNeverExpires), info.age)
 
 	// Rename dir to make sure getting from cache
 	// bundleDir := GetTranslation().(*defaultTrans).ds.bundle.root

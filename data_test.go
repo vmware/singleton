@@ -55,7 +55,7 @@ func TestCC(t *testing.T) {
 
 		assert.NotNil(t, info)
 		assert.Equal(t, testData.etag, info.getETag())
-		assert.Equal(t, testData.maxage, info.getAge())
+		assert.Equal(t, testData.maxage, info.age)
 		assert.Equal(t, testData.msgLen, messages.(*defaultComponentMsgs).Size())
 
 		assert.True(t, gock.IsDone())
@@ -74,5 +74,5 @@ func TestFallbackToLocalBundles(t *testing.T) {
 	msgs, err := GetTranslation().GetComponentMessages(name, version, locale, component)
 	assert.Nil(t, err)
 	assert.Equal(t, 4, msgs.(*defaultComponentMsgs).Size())
-	assert.Equal(t, int64(cacheDefaultExpires), info.getAge()) //Set max age to cacheDefaultExpires when server is unavailable temporarily.
+	assert.Equal(t, int64(cacheDefaultExpires), info.age) //Set max age to cacheDefaultExpires when server is unavailable temporarily.
 }

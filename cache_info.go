@@ -33,21 +33,34 @@ type itemCacheInfo struct {
 	lastUpdate int64
 	age        int64
 	eTag       string
+	sync.RWMutex
 }
 
 func newSingleCacheInfo() *itemCacheInfo {
-	return &itemCacheInfo{0, 0, 0, ""}
+	return &itemCacheInfo{0, 0, 0, "", sync.RWMutex{}}
+}
+
+func (i *itemCacheInfo) setTime(t int64) {
+	i.Lock()
+	defer i.Unlock()
+	i.lastUpdate = t
+}
+
+func (i *itemCacheInfo) setAge(d int64) {
+	i.Lock()
+	defer i.Unlock()
+	i.age = d
 }
 
 func (i *itemCacheInfo) isExpired() bool {
-	age := i.getAge()
-	if age == cacheNeverExpires {
+	i.RLock()
+	defer i.RUnlock()
+
+	if i.age == cacheNeverExpires {
 		return false
 	}
-	return time.Now().Unix()-atomic.LoadInt64(&i.lastUpdate) >= age
-}
-func (i *itemCacheInfo) setTime(t int64) {
-	atomic.StoreInt64(&i.lastUpdate, t)
+
+	return time.Now().Unix()-i.lastUpdate >= i.age
 }
 
 func (i *itemCacheInfo) setUpdating() (b bool) {
@@ -56,7 +69,6 @@ func (i *itemCacheInfo) setUpdating() (b bool) {
 func (i *itemCacheInfo) setUpdated() {
 	atomic.StoreUint32(&i.status, idle)
 }
-
 func (i *itemCacheInfo) waitUpdate() {
 	for {
 		if idle == atomic.LoadUint32(&i.status) {
@@ -65,17 +77,12 @@ func (i *itemCacheInfo) waitUpdate() {
 		time.Sleep(time.Microsecond * 10)
 	}
 }
+
 func (i *itemCacheInfo) setETag(t string) {
 	i.eTag = t
 }
 func (i *itemCacheInfo) getETag() string {
 	return i.eTag
-}
-func (i *itemCacheInfo) setAge(d int64) {
-	atomic.StoreInt64(&i.age, d)
-}
-func (i *itemCacheInfo) getAge() int64 {
-	return atomic.LoadInt64(&i.age)
 }
 
 //!-itemCacheInfo
