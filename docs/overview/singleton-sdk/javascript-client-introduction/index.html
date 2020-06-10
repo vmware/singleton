@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-05-21T18:57:09 CST">
+<meta name="revised" content="2020-06-10T13:11:29 CST">
 <title>Javascript Client Introduction :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -488,7 +488,7 @@
 <p>Return value</p>
 <p>The language and region settings used by the browser</p>
 <p>Example</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">getBrowserCultureLang</span>  } <span style="color:#a6e22e">from</span> <span style="color:#960050;background-color:#1e0010">‘@</span><span style="color:#a6e22e">singleton</span><span style="color:#f92672">-</span><span style="color:#a6e22e">i18n</span><span style="color:#f92672">/</span><span style="color:#a6e22e">vip</span><span style="color:#f92672">-</span><span style="color:#a6e22e">core</span><span style="color:#f92672">-</span><span style="color:#a6e22e">sdk</span><span style="color:#960050;background-color:#1e0010">’</span>;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">getBrowserCultureLang</span>  } <span style="color:#a6e22e">from</span> <span style="color:#960050;background-color:#1e0010">‘@</span><span style="color:#a6e22e">singleton</span><span style="color:#f92672">-</span><span style="color:#a6e22e">i18n</span><span style="color:#f92672">/</span><span style="color:#a6e22e">js</span><span style="color:#f92672">-</span><span style="color:#a6e22e">core</span><span style="color:#f92672">-</span><span style="color:#a6e22e">sdk</span><span style="color:#960050;background-color:#1e0010">’</span>;
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">locale</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getBrowserCultureLang</span>(); <span style="color:#75715e">// eg: zh-CN
 </span></code></pre></div><p><strong>Get the languages and regions supported by the product from Singleton Service</strong></p>
 <ul>
@@ -556,11 +556,11 @@
 <p>Return value</p>
 <p>Promise of the data request.</p>
 <p>Example</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">vipClient</span>, <span style="color:#a6e22e">getBrowserCultureLang</span>, <span style="color:#a6e22e">PatternCategories</span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@singleton-i18n/vip-core-sdk&#39;</span>;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">i18nClient</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">jsClient</span>, <span style="color:#a6e22e">getBrowserCultureLang</span>, <span style="color:#a6e22e">PatternCategories</span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@singleton-i18n/js-core-sdk&#39;</span>;
 <span style="color:#960050;background-color:#1e0010">…</span>
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">i18nClient</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">vipClient</span>.<span style="color:#a6e22e">init</span>(
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">i18nClient</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">jsClient</span>.<span style="color:#a6e22e">init</span>(
 {
-       <span style="color:#a6e22e">productID</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;vipnodesample&#39;</span>,
+       <span style="color:#a6e22e">productID</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;nodesample&#39;</span>,
        <span style="color:#a6e22e">version</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;1.0.0&#39;</span>,
        <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;NodeJS&#39;</span>,
        <span style="color:#a6e22e">host</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;http://localhost:8091&#39;</span>,
