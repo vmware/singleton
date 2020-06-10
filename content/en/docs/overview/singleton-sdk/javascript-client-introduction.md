@@ -56,7 +56,7 @@ The language and region settings used by the browser
 Example
 
 ```javascript
-import { getBrowserCultureLang  } from ‘@singleton-i18n/vip-core-sdk’;
+import { getBrowserCultureLang  } from ‘@singleton-i18n/js-core-sdk’;
 const locale = getBrowserCultureLang(); // eg: zh-CN
 ```
 
@@ -164,11 +164,11 @@ Promise of the data request.
 Example
 
 ```js
-import { vipClient, getBrowserCultureLang, PatternCategories} from '@singleton-i18n/vip-core-sdk';
+import { i18nClient as jsClient, getBrowserCultureLang, PatternCategories} from '@singleton-i18n/js-core-sdk';
 …
-const i18nClient = vipClient.init(
+const i18nClient = jsClient.init(
 {
-       productID: 'vipnodesample',
+       productID: 'nodesample',
        version: '1.0.0',
        component: 'NodeJS',
        host: 'http://localhost:8091',
