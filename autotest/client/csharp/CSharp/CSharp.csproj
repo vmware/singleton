@@ -58,9 +58,8 @@
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.3.2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\CodeRepository\Git\g11n-csharp-client\singletonclient\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.6.8\lib\net45\NLog.dll</HintPath>
@@ -71,6 +70,9 @@
     <Reference Include="SingletonClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SingletonClient.dll</HintPath>
+    </Reference>
+    <Reference Include="SingletonIcu">
+      <HintPath>D:\g11n-csharp-client\singletonclient\Debug\SingletonIcu.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -98,17 +100,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IComponentMessagesTest\GetComponentFromCache.cs" />
-    <Compile Include="ILanguageMessagesTest\GetStringFromCache.cs" />
-    <Compile Include="ILanguageMessagesTest\GetComponentListFromCache.cs" />
-    <Compile Include="ISourceTest\SoureRelatedTest.cs" />
-    <Compile Include="ITranslationTest\GetStringAndFormat\AllFalse\GetStringPropertiesFile.cs" />
-    <Compile Include="ITranslationTest\GetStringAndFormat\AllFalse\GetStringResxFile.cs" />
-    <Compile Include="ITranslationTest\GetStringAndFormat\MTTrue\GetStringMT.cs" />
-    <Compile Include="ITranslationTest\GetStringAndFormat\PseudoTrue\GetStringPseudo.cs" />
-    <Compile Include="ITranslationTest\GetStringAndFormat\AllTrue\GetStringMT.cs" />
-    <Compile Include="ITranslationTest\LocaleRelated\GetAndSetLocale.cs" />
-    <Compile Include="ITranslationTest\SendSourceArrayList\SourceCollectionWithList.cs" />
+    <Compile Include="Function_test\Basic_method_test\GetComponentList.cs" />
+    <Compile Include="Function_test\Basic_method_test\GetSupportLanguageList.cs" />
+    <Compile Include="Function_test\Basic_method_test\InitialConfigTest.cs" />
+    <Compile Include="Function_test\Basic_method_test\SoureRelatedTest.cs" />
+    <Compile Include="Function_test\Cache_management\GetAllTranslationFromCache.cs" />
+    <Compile Include="Function_test\Cache_management\GetAndSetLocale.cs" />
+    <Compile Include="Function_test\Cache_management\GetComponentFromCache.cs" />
+    <Compile Include="Function_test\Cache_management\GetComponentListFromCache.cs" />
+    <Compile Include="Function_test\Cache_management\GetStringFromCache.cs" />
+    <Compile Include="Function_test\Cache_management\GettranslationwithExpiredTime.cs" />
+    <Compile Include="Function_test\Collect_source\SourceCollectionWithList.cs" />
+    <Compile Include="Function_test\Collect_source\SoureCollectionTest.cs" />
+    <Compile Include="Function_test\Fall_back_test\TranslationFallbackToPreVer.cs" />
+    <Compile Include="Function_test\I18n_tanslation\GetStringPropertiesFile.cs" />
+    <Compile Include="Function_test\I18n_tanslation\GetStringResxFile.cs" />
+    <Compile Include="Function_test\Machine_translation\GetStringMT.cs" />
+    <Compile Include="Function_test\Pseudo_translation\GetStringMT.cs" />
+    <Compile Include="Function_test\Pseudo_translation\GetStringPseudo.cs" />
+    <Compile Include="Function_test\tet_time_number_format\TestBase.cs" />
+    <Compile Include="Function_test\tet_time_number_format\TestDateTime.cs" />
+    <Compile Include="Function_test\tet_time_number_format\TestNumber.cs" />
+    <Compile Include="Function_test\tet_time_number_format\TestPlural.cs" />
+    <Compile Include="Function_test\tet_time_number_format\TestRelativeDateTime.cs" />
     <Compile Include="Resources\Resource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -125,20 +139,15 @@
       <DependentUpon>ResourceResx.resx</DependentUpon>
     </Compile>
     <Compile Include="TestDataConstant.cs" />
-    <Compile Include="IProductMessagesTest\GetAllTranslationFromCache.cs" />
-    <Compile Include="IProductMessagesTest\GetComponentList.cs" />
-    <Compile Include="IProductMessagesTest\GetSupportLanguageList.cs" />
-    <Compile Include="ITranslationTest\GetStringAndFormat\CollectTrue\SoureCollectionTest.cs" />
     <Compile Include="Common.cs" />
-    <Compile Include="TestTranslationFallbackToPreviousVersion\TranslationFallbackToPreVer.cs" />
     <Compile Include="UtilFallbackPreVer.cs" />
+    <Compile Include="UtilForCacheExpired.cs" />
     <Compile Include="UtilForCache.cs" />
     <Compile Include="UtilCollectTrue.cs" />
     <Compile Include="UtilMTTrue.cs" />
     <Compile Include="UtilPseudoTrue.cs" />
     <Compile Include="UtilAllTrue.cs" />
     <Compile Include="UtilAllFalse.cs" />
-    <Compile Include="IConfigTest\InitialConfigTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +159,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Resources\SingletonForcacheExpired.yml" />
     <None Include="Resources\SingletonFallbackPreVer.yml" />
     <None Include="Resources\SingletonForCache.yml" />
     <None Include="Resources\SingletonCollectTrue.yml" />
@@ -163,7 +173,9 @@
     <None Include="Resources\source\contact.properties" />
     <None Include="Resources\source\DefaultComponent.properties" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -178,6 +190,7 @@
       <LastGenOutput>ResourceResx.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

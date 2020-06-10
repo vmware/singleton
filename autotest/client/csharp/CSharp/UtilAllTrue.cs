@@ -4,6 +4,7 @@
  */
 
 using SingletonClient;
+using System;
 using System.Reflection;
 
 

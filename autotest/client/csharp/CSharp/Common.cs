@@ -41,6 +41,15 @@ namespace CSharp
             return api;
         }
 
+        public static string GetComponentApi1(string component, string locale)
+        {
+            string head = string.Format(VipPathHead, "CSharpClient", "2.0.0");
+            string path = string.Format(VipGetComponent, locale, component);
+            string para = string.Format(VipParameter);
+            string api = string.Format("{0}{1}{2}{3}", "http://localhost:8091", head, path, para);
+            return api;
+        }
+
         public static JObject ConvertToDict(string text)
         {
             JObject dict = JObject.Parse(text);
