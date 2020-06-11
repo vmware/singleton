@@ -125,7 +125,7 @@ namespace CSharp
             //    proc.StartInfo.FileName = "ModifyString.bat";
             //    proc.StartInfo.Arguments = string.Format("20");//this is argument
             //    proc.StartInfo.CreateNoWindow = true;
-            //    proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+            //    proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//Set the DOS window not to show here
             //    proc.Start();
             //    proc.WaitForExit();
             //}

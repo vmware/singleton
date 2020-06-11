@@ -75,7 +75,7 @@ namespace CSharp
                 proc.StartInfo.FileName = "ModifyString_es.bat";
                 //proc.StartInfo.Arguments = string.Format("3");//this is argument
                 proc.StartInfo.CreateNoWindow = true;
-                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//Set the DOS window not to show here
                 proc.Start();
                 proc.WaitForExit();
             }
@@ -115,7 +115,7 @@ namespace CSharp
                     proc1.StartInfo.FileName = "RevertString_es.bat";
                     // proc1.StartInfo.Arguments = string.Format("3");//this is argument
                     proc1.StartInfo.CreateNoWindow = true;
-                    proc1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                    proc1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//Set the DOS window not to show here
                     proc1.Start();
                     proc1.WaitForExit();
                 }
@@ -153,7 +153,7 @@ namespace CSharp
                 proc.StartInfo.FileName = "ModifyString_da.bat";
                 //proc.StartInfo.Arguments = string.Format("3");//this is argument
                 proc.StartInfo.CreateNoWindow = true;
-                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//Set the DOS window not to show here
                 proc.Start();
                 proc.WaitForExit();
             }
@@ -196,7 +196,7 @@ namespace CSharp
                     proc1.StartInfo.FileName = "RevertString_da.bat";
                     // proc1.StartInfo.Arguments = string.Format("3");//this is argument
                     proc1.StartInfo.CreateNoWindow = true;
-                    proc1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                    proc1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//Set the DOS window not to show here
                     proc1.Start();
                     proc1.WaitForExit();
                 }
@@ -234,7 +234,7 @@ namespace CSharp
                 proc.StartInfo.FileName = "ModifyString_pl.bat";
                 //proc.StartInfo.Arguments = string.Format("3");//this is argument
                 proc.StartInfo.CreateNoWindow = true;
-                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//Set the DOS window not to show here
                 proc.Start();
                 proc.WaitForExit();
             }
@@ -272,7 +272,7 @@ namespace CSharp
                     proc1.StartInfo.FileName = "RevertString_pl.bat";
                     // proc1.StartInfo.Arguments = string.Format("3");//this is argument
                     proc1.StartInfo.CreateNoWindow = true;
-                    proc1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                    proc1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//Set the DOS window not to show here
                     proc1.Start();
                     proc1.WaitForExit();
                 }
@@ -301,7 +301,7 @@ namespace CSharp
                 proc.StartInfo.FileName = "ModifyString_ja.bat";
                 proc.StartInfo.Arguments = string.Format("20");//this is argument
                 //proc.StartInfo.CreateNoWindow = true;
-                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//Set the DOS window not to show here
                 proc.Start();
                 proc.WaitForExit();
             }
@@ -333,7 +333,7 @@ namespace CSharp
                     proc1.StartInfo.FileName = "RevertString_ja.bat";
                     // proc1.StartInfo.Arguments = string.Format("3");//this is argument
                     proc1.StartInfo.CreateNoWindow = true;
-                    proc1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                    proc1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//Set the DOS window not to show here
                     proc1.Start();
                     proc1.WaitForExit();
                 }
@@ -364,7 +364,7 @@ namespace CSharp
                 proc.StartInfo.FileName = "ModifyString_zh-Hant.bat";
                 proc.StartInfo.Arguments = string.Format("20");//this is argument
                 //proc.StartInfo.CreateNoWindow = true;
-                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//Set the DOS window not to show here
                 proc.Start();
                 proc.WaitForExit();
             }
@@ -396,7 +396,7 @@ namespace CSharp
                     proc1.StartInfo.FileName = "RevertString_zh-Hant.bat";
                     // proc1.StartInfo.Arguments = string.Format("3");//this is argument
                     proc1.StartInfo.CreateNoWindow = true;
-                    proc1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                    proc1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//Set the DOS window not to show here
                     proc1.Start();
                     proc1.WaitForExit();
                 }
@@ -430,7 +430,7 @@ namespace CSharp
                 proc.StartInfo.FileName = "ModifyString_de.bat";
                 proc.StartInfo.Arguments = string.Format("20");//this is argument
                 proc.StartInfo.CreateNoWindow = true;
-                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//Set the DOS window not to show here
                 proc.Start();
                 proc.WaitForExit();
             }
@@ -468,7 +468,7 @@ namespace CSharp
                     proc1.StartInfo.FileName = "RevertString_de.bat";
                     // proc1.StartInfo.Arguments = string.Format("3");//this is argument
                     proc1.StartInfo.CreateNoWindow = true;
-                    proc1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                    proc1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//Set the DOS window not to show here
                     proc1.Start();
                     proc1.WaitForExit();
                 }
@@ -500,7 +500,7 @@ namespace CSharp
                 proc.StartInfo.FileName = "ModifyString_fr.bat";
                 proc.StartInfo.Arguments = string.Format("20");//this is argument
                 proc.StartInfo.CreateNoWindow = true;
-                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//Set the DOS window not to show here
                 proc.Start();
                 proc.WaitForExit();
             }
@@ -541,7 +541,7 @@ namespace CSharp
                     proc1.StartInfo.FileName = "RevertString_fr.bat";
                     // proc1.StartInfo.Arguments = string.Format("3");//this is argument
                     proc1.StartInfo.CreateNoWindow = true;
-                    proc1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                    proc1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//Set the DOS window not to show here
                     proc1.Start();
                     proc1.WaitForExit();
                 }
@@ -579,7 +579,7 @@ namespace CSharp
                 proc.StartInfo.FileName = "ModifyString_zh-Hans.bat";
                 //proc.StartInfo.Arguments = string.Format("3");//this is argument
                 proc.StartInfo.CreateNoWindow = true;
-                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//Set the DOS window not to show here
                 proc.Start();
                 proc.WaitForExit();
             }
@@ -617,7 +617,7 @@ namespace CSharp
                     proc1.StartInfo.FileName = "RevertString_zh-Hans.bat";
                     // proc1.StartInfo.Arguments = string.Format("3");//this is argument
                     proc1.StartInfo.CreateNoWindow = true;
-                    proc1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                    proc1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//Set the DOS window not to show here
                     proc1.Start();
                     proc1.WaitForExit();
                 }
@@ -656,7 +656,7 @@ namespace CSharp
                 proc.StartInfo.FileName = "ModifyString_tr.bat";
                 //proc.StartInfo.Arguments = string.Format("3");//this is argument
                 proc.StartInfo.CreateNoWindow = true;
-                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//Set the DOS window not to show here
                 proc.Start();
                 proc.WaitForExit();
             }
@@ -713,7 +713,7 @@ namespace CSharp
                 proc.StartInfo.FileName = "ModifyString_ko.bat";
                 //proc.StartInfo.Arguments = string.Format("3");//this is argument
                 proc.StartInfo.CreateNoWindow = true;
-                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//Set the DOS window not to show here
                 proc.Start();
                 proc.WaitForExit();
             }
@@ -751,7 +751,7 @@ namespace CSharp
                     proc1.StartInfo.FileName = "RevertString_ko.bat";
                     // proc1.StartInfo.Arguments = string.Format("3");//this is argument
                     proc1.StartInfo.CreateNoWindow = true;
-                    proc1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                    proc1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//Set the DOS window not to show here
                     proc1.Start();
                     proc1.WaitForExit();
                 }
