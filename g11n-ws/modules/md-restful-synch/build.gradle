@@ -1,3 +1,5 @@
+//Copyright 2019 VMware, Inc.
+//SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
@@ -18,16 +20,7 @@ buildscript {
 	dependencies {
 	  classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
 	}
-  }
-configurations {
-	bootJar
-    war
-    providedRuntime
-   // remove default logger
-   all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
 }
-
-
 
 
 tasks.withType(JavaCompile) {
@@ -51,7 +44,9 @@ dependencies {
     compile("io.springfox:springfox-swagger2:2.9.2")
     compile("org.springframework:spring-webmvc:$springWebVersion")
     compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.31')
-    compile ("org.springframework.boot:spring-boot-starter-log4j2")
+    compile ('org.springframework.boot:spring-boot-starter-log4j2'){
+              exclude group: "org.apache.logging.log4j"
+    }
 }
 
 jar {

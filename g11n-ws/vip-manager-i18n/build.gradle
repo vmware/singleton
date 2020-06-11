@@ -59,11 +59,16 @@ dependencies {
     compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.35')
     compile ('org.apache.tomcat:tomcat-annotations-api:9.0.35')
     compile("org.springframework:spring-webmvc:$springWebVersion")
-    compile ('org.springframework.boot:spring-boot-starter-log4j2')
+    compile ('org.springframework.boot:spring-boot-starter-log4j2'){
+              exclude group: "org.apache.logging.log4j"
+    }
+    compile("org.apache.logging.log4j:log4j-api:$log4j2Version")
+    compile("org.apache.logging.log4j:log4j-core:$log4j2Version")
+    compile("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
     compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final")
     compile("org.apache.commons:commons-lang3:$commonsLangVersion")
     compile("commons-io:commons-io:$commonsIoVersion")
-    compile('com.google.guava:guava:28.0-jre')
+    compile("com.google.guava:guava:$guavaVersion")
     compile("commons-codec:commons-codec:1.10")
     compile("io.jsonwebtoken:jjwt:0.9.0")
     compile ('org.xerial:sqlite-jdbc:3.31.1')
