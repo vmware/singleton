@@ -36,7 +36,13 @@ dependencies {
     }
     compile("org.apache.commons:commons-lang3:$commonsLangVersion")
     compile("commons-io:commons-io:$commonsIoVersion")
-    compile ('org.springframework.boot:spring-boot-starter-log4j2')
+      compile ('org.springframework.boot:spring-boot-starter-log4j2'){
+              exclude group: "org.apache.logging.log4j"
+    }
+    compile("org.apache.logging.log4j:log4j-api:$log4j2Version")
+    compile("org.apache.logging.log4j:log4j-core:$log4j2Version")
+    compile("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
+    
     compile("org.springframework.boot:spring-boot-starter-web"){
     exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
     }
@@ -49,6 +55,7 @@ dependencies {
     compile('org.yaml:snakeyaml:1.26') 
     compile("io.springfox:springfox-swagger-ui:2.9.2")
     compile("io.springfox:springfox-swagger2:2.9.2")
+    compile("com.google.guava:guava:$guavaVersion")
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 

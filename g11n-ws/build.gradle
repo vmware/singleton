@@ -19,7 +19,7 @@ apply plugin: "org.sonarqube"
 ext {
     javaLevel = 1.8
     projectVersion = '0.0.1-SNAPSHOT'
-    springBootVersion = '2.2.4.RELEASE'
+    springBootVersion = '2.2.7.RELEASE'
     springWebVersion='5.2.3.RELEASE'
     jacksonVersion = '2.10.0.pr1'
     commonsCollectionsVersion = '3.2.2'
@@ -31,6 +31,8 @@ ext {
     commonsLangVersion = '3.4'
     commonsIoVersion = '2.4'
     antVersion = '1.10.8'
+    guavaVersion="29.0-jre"
+    log4j2Version="2.13.3"
     buildRelease = 'beta'
     remoteServer = ""
     deployPath="$rootDir/../publish/"

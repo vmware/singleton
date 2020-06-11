@@ -67,7 +67,7 @@ dependencies {
        exclude group: 'io.swagger', module:'swagger-models'
        exclude group: 'io.springfox'
     }
-    compile('com.google.guava:guava:28.0-jre')
+    compile("com.google.guava:guava:$guavaVersion")
 	compile("commons-codec:commons-codec:1.10")
 
     compile group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.1.0'
@@ -78,7 +78,12 @@ dependencies {
     compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.35')
     compile ('org.apache.tomcat:tomcat-annotations-api:9.0.35')
     compile('org.springframework.boot:spring-boot-autoconfigure')
-    compile('org.springframework.boot:spring-boot-starter-log4j2')
+      compile ('org.springframework.boot:spring-boot-starter-log4j2'){
+              exclude group: "org.apache.logging.log4j"
+    }
+    compile("org.apache.logging.log4j:log4j-api:$log4j2Version")
+    compile("org.apache.logging.log4j:log4j-core:$log4j2Version")
+    compile("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.yaml:snakeyaml:1.26')  
     testCompile("org.springframework.boot:spring-boot-starter-test")
