@@ -1,0 +1,23 @@
+{
+	"moduleFileExtensions": [
+		"ts",
+		"tsx",
+		"js",
+		"jsx",
+		"json"
+	],
+	"testRegex": "/test/*.*\\.spec\\.ts$",
+	"transform": {
+		"^.+\\.tsx?$": "ts-jest"
+	},
+	"collectCoverage": true,
+	"collectCoverageFrom": [
+		"src/**/*.{ts,tsx}",
+		"!**/node_modules/**",
+		"!**/samples/**"
+	],
+	"coverageReporters": [
+		"lcovonly",
+		"html"
+	]
+}

@@ -17,15 +17,15 @@ How to build and use the common library
 ------------
  * Clone the repository using Git.
     ```
-    git clone git@github.com:vmware/singleton.git intl-js-sdk
+    git clone git@github.com:vmware/singleton.git g11n-js-sdk
     ```
  * Go to the project's root directory.
     ```
-    cd intl-js-sdk
+    cd g11n-js-sdk
     ```
  * Checkout the client library branch
     ```
-    git checkout intl-js-sdk
+    git checkout g11n-js-sdk
     ```
  * Download dependencies
    ```
@@ -40,7 +40,7 @@ How to build and use the common library
    cd <root-of-your-app>
 
    open package.json file and add the following entry to dependencies section.
-      "intl-js-sdk": "^0.0.1"
+      "@singleton-i18n/g11n-js-sdk": "^0.1.0"
 
    Then run the following command:
       npm install 
@@ -49,7 +49,7 @@ How to build and use the common library
  * Sample code:
    ```
 
-   import { I18n } from 'intl-js-sdk';
+   import { I18n } from '@singleton-i18n/g11n-js-sdk';
 
    ...
 
@@ -86,7 +86,6 @@ How to build and use the common library
       } else if (type === 'plural') {
 
          const option: I18n.NumberFormatOptions = {numberFormatType: type, currencyCode: ''};
-
          const numberFormat = I18n.NumberFormat.getInstance(locale,option);
 
          return numberFormat.format(value);
@@ -118,56 +117,7 @@ How to build and use the common library
    const pluralFormat = pluralDE.select(1)
 
    // For detailed code examples, please refer the unit test cases under test folder.
-
-   // Collator
-
-   const stringSort = (locale:string,options:I18n.CollatorOptions,strings:Array<string>):any => {
-
-        strings.sort(I18n.Collator.getInstance(locale,options).compare);
-
-        return strings;
-        
-    };
-
-    const stringSearch = (locale:string,options:I18n.CollatorOptions,strings:Array<string>,searchString:string):any => {
-
-        var collator = I18n.Collator.getInstance(locale,options);
-
-        var matches = strings.filter(val => collator.compare(val, searchString) === 0);
-
-        var searchedStrings = matches.join(' - ');
-
-        return searchedStrings;
-
-    };
-
-    const collatorOption:I18n.CollatorOptions={};
-
-    collatorOption.usage = 'sort' // sort, search; fallback:sort
-
-    collatorOption.localeMatcher = 'best fit' // lookup, best fit; fallback:best fit
-
-    collatorOption.numeric = true; // true, false; fallback:undefined
-
-    collatorOption.caseFirst = 'lower' // upper, lower, false; fallback:undefined
-
-    collatorOption.sensitivity = 'case' //« "base", "accent", "case", "variant" », undefined
-
-    collatorOption.ignorePunctuation = true; // true, false; fallback:undefined
-
-    var sortResultDEDict = stringSort('de-u-co-dict',collatorOption, ['Offenbach', 'Österreich', 'Odenwald','Öf','Of']);
-
-    var sortResultDEFB = stringSort('de-u-co-phonebk',collatorOption, ['Offenbach', 'Österreich', 'Odenwald','Öf','Of']);
-
-    var sortResultSV = stringSort('sv', collatorOption, ['aä','zä','ää']);
-
-    var sortResultCN = stringSort('zh',collatorOption,['ba','da','大','dang','当','妲','爸','把','八','拔','b12a','b3a']);
-
-    var searchBase = stringSearch('fr', { usage: 'search', sensitivity: 'base' }, ['Congrès', 'congres', 'Assemblée', 'poisson'],'congres');
-    
-    var searchAccent = stringSearch('fr', { usage: 'search', sensitivity: 'accent' }, ['Congrès', 'congres', 'Assemblée', 'poisson'],'congres');
-    
-
+   
    ```
  
 

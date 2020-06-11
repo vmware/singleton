@@ -1,0 +1,52 @@
+{
+    "name": "@singleton-i18n/g11n-js-sdk",
+    "version": "0.1.0",
+    "main": "./bundles/g11n-js-sdk.umd.js",
+    "description": "This is I18n level 2 common library for javascript based clients like g11n-angular-client,g11n-js-client",
+    "author": "Hong Zhang(hongzhang@vmware.com)",
+    "license": "EPL-2.0",
+    "module": "./dist/index.js",
+    "typings": "./dist/index.d.ts",
+    "scripts": {
+        "compile": "rimraf dist && tsc -p ./ --outDir dist/",
+        "build": "webpack",
+        "prepublish": "rimraf dist && tsc -p ./ --outDir dist/ && npm run build",
+        "jest": "jest -c jest.config.json",
+        "test": "npm run jest"
+    },
+    "keywords": [
+        "singleton",
+        "i18n",
+        "l10n",
+        "node"
+    ],
+    "dependencies": {
+        "decimal.js-light": "^2.4.1"
+    },
+    "devDependencies": {
+        "@types/jest": "^24.9.1",
+        "@types/node": "^10.11.7",
+        "awesome-typescript-loader": "^5.2.1",
+        "jest": "^24.9.0",
+        "ts-jest": "^24.3.0",
+        "ts-node": "^7.0.1",
+        "tslint": "^5.11.0",
+        "tslint-loader": "^3.5.4",
+        "typescript": "~3.4.5",
+        "typescript-loader": "^1.1.3",
+        "typings": "^2.1.1",
+        "webpack": "^4.20.2",
+        "webpack-cli": "^3.3.0"
+    },
+    "changelogHistory": [
+        {
+            "date": "02/22/2020",
+            "version": "0.1.0",
+            "notes": [
+                {
+                    "description": "This is the first version."
+                }
+            ]
+        }
+    ]
+}
