@@ -10,8 +10,8 @@
 
 namespace CSharp.Resources {
     using System;
-    
-    
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -31,7 +31,7 @@ namespace CSharp.Resources {
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resource() {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -45,7 +45,7 @@ namespace CSharp.Resources {
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
@@ -59,7 +59,7 @@ namespace CSharp.Resources {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -69,7 +69,7 @@ namespace CSharp.Resources {
                 return ((byte[])(obj));
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -79,7 +79,7 @@ namespace CSharp.Resources {
                 return ((byte[])(obj));
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -89,7 +89,7 @@ namespace CSharp.Resources {
                 return ((byte[])(obj));
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -99,7 +99,7 @@ namespace CSharp.Resources {
                 return ((byte[])(obj));
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -109,7 +109,7 @@ namespace CSharp.Resources {
                 return ((byte[])(obj));
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -119,7 +119,7 @@ namespace CSharp.Resources {
                 return ((byte[])(obj));
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -129,7 +129,7 @@ namespace CSharp.Resources {
                 return ((byte[])(obj));
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -139,7 +139,17 @@ namespace CSharp.Resources {
                 return ((byte[])(obj));
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] SingletonForcacheExpired {
+            get {
+                object obj = ResourceManager.GetObject("SingletonForcacheExpired", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -149,7 +159,7 @@ namespace CSharp.Resources {
                 return ((byte[])(obj));
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>

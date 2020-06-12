@@ -2,11 +2,12 @@
 productName: CSharpClient
 
 # product version
-version: 2.2
+version: 1.0.1
 
 singletonServer: http://localhost:8091
+
 pseudo: false
-machineTranslation: true
+machineTranslation: false
 collectSource: false
 
 cacheType: default
@@ -16,7 +17,7 @@ logger: default
 logType: Debug
 
 tryDelay: 10
-cacheExpiredTime: 60000
+cacheExpiredTime: 6
 
 components: 
   - component : DefaultComponent
