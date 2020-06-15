@@ -92,7 +92,7 @@ namespace CSharp
             //String result3 = Translation.GetString("RESX", TestDataConstant.keyURL, TestDataConstant.valueURL);
             //String result4 = Translation.GetString("DefaultComponent", TestDataConstant.keyURLP, TestDataConstant.valueURLP);
             Console.WriteLine("full param pseudo transaltion: {0}", result1);
-            Assert.AreEqual("연락처 페이지.", result1);
+            Assert.AreEqual("연락처 페이지입니다.", result1);
             Assert.AreEqual("개체에 {0} 추가합니다.", result2);
             //Assert.AreEqual(TestDataConstant.valueURLPseudo, result3);
             //Assert.AreEqual(TestDataConstant.valueURLPPseudo, result4);
@@ -131,7 +131,7 @@ namespace CSharp
             //String result3 = Translation.Format(Currentlocale1, SourceHTMLTag);
             //String result4 = Translation.Format(Currentlocale1, SourceHTMLTagWithSource);
             Console.WriteLine("ja format pseudo transaltion: {0}", result1);
-            Assert.AreEqual("연락처 페이지.", result1);
+            Assert.AreEqual("연락처 페이지입니다.", result1);
             Assert.AreEqual("개체에 1 추가합니다.", result2);
             //Assert.AreEqual(TestDataConstant.valueURLPseudo, result3);
             //Assert.AreEqual(TestDataConstant.valueURLPPseudo, result4);
