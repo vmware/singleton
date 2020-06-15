@@ -8,6 +8,7 @@ using SingletonClient.Implementation.Helpers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace SingletonClient.Implementation
 {
@@ -15,17 +16,19 @@ namespace SingletonClient.Implementation
     {
         IRelease GetRelease();
         void SetConfig(IConfig config);
+        ISingletonConfig GetSingletonConfig();
         ISingletonApi GetApi();
-        ICacheMessages GetProductMessages();
+        ICacheMessages GetReleaseMessages();
         IAccessService GetAccessService();
         void Log(LogType logType, string text);
     }
 
     public class SingletonRelease : ISingletonRelease, ISingletonAccessRemote, 
-        IRelease, IProductMessages, ITranslation
+        IRelease, IReleaseMessages, ITranslation
     {
-        private IConfig _config;
+        private ISingletonConfig _config;
         private ISingletonApi _api;
+        private ISingletonUpdate _update;
         private ICacheManager _cacheManager;
         private IAccessService _accessService;
 
@@ -33,12 +36,14 @@ namespace SingletonClient.Implementation
         private LogType _logLevel;
 
         private ICacheMessages _productCache;
-        private ILanguageMessages _sourceCache;
+        private ILocaleMessages _sourceCache;
 
         private List<string> _localeList = new List<string>();
         private List<string> _componentList = new List<string>();
 
-        private SingletonAccessRemoteTask _task;
+        private ISingletonAccessTask _task;
+
+        private bool _isLoadedOnStartup = false;
 
         // key: (string) locale
         // value: (Hashtable) components -> 
@@ -46,60 +51,18 @@ namespace SingletonClient.Implementation
         //     value: (ISingletonComponent) component object
         private Hashtable _localesTable = SingletonUtil.NewHashtable();
 
-        private void UpdateList(List<string> strList, JArray ja)
-        {
-            strList.Clear();
-            foreach (var one in ja)
-            {
-                strList.Add(one.ToString());
-            }
-        }
-
-        private void UpdateBriefinfo(
-            string url, string infoName, List<string> infoList)
-        {
-            Hashtable headers = SingletonUtil.NewHashtable();
-            JObject obj = SingletonUtil.HttpGetJson(_accessService, url, headers);
-
-            if (SingletonUtil.CheckResponseValid(obj, headers))
-            {
-                JObject result = obj.Value<JObject>(SingletonConst.KeyResult);
-                JObject data = result.Value<JObject>(SingletonConst.KeyData);
-                JArray ar = data.Value<JArray>(infoName);
-                UpdateList(infoList, ar);
-            }
-        }
-
         private bool InitRelease()
         {
             if (_productCache != null)
             {
                 return true;
             }
-            _productCache = _cacheManager.GetProductCache(
+            _productCache = _cacheManager.GetReleaseCache(
                 _config.GetProduct(), _config.GetVersion());
 
-            _sourceCache = _productCache.GetLanguageMessages(SingletonConst.LocaleSource);
-
-            List<string> componentList = _config.GetComponentList();
-            for (int i = 0; i < componentList.Count; i++)
+            if (_config.IsOfflineSupported())
             {
-                List<string> resList = _config.GetComponentSourceList(componentList[i]);
-                IComponentMessages componentCache = _sourceCache.GetComponentMessages(componentList[i]);
-                for (int k = 0; k < resList.Count; k++)
-                {
-                    string[] array = resList[k].Replace(" ", "").Split(',');
-                    string parserName = array.Length > 1 ? array[1] : ConfigConst.TypeDefault;
-                    ISourceParser parser = SingletonClientManager.GetInstance().GetSourceParser(parserName);
-                    if (parser != null)
-                    {
-                        Hashtable bundle = _config.ReadResourceMap(array[0], parser);
-                        foreach (string key in bundle.Keys)
-                        {
-                            componentCache.SetString(key, bundle[key].ToString());
-                        }
-                    }
-                }
+                _sourceCache = _update.LoadOfflineBundle(_config.GetSourceLocale(), true);
             }
 
             return true;
@@ -124,13 +87,34 @@ namespace SingletonClient.Implementation
             {
                 obj = new SingletonComponent(this, locale, component);
                 components[component] = obj;
+
+                if (_config.IsOfflineSupported())
+                {
+                    _update.LoadOfflineBundle(locale, true);
+                }
             }
             return obj;
         }
 
+        private bool CheckBundleRequest(string locale, string component)
+        {
+            if (string.IsNullOrEmpty(locale) || string.IsNullOrEmpty(component))
+            {
+                return false;
+            }
+            if (_config.IsOnlineSupported() && !_config.IsOfflineSupported())
+            {
+                if (!_localeList.Contains(locale) || !_componentList.Contains(component))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         private ISingletonComponent GetComponent(string locale, string component)
         {
-            if (!_localeList.Contains(locale) || !_componentList.Contains(component))
+            if (!CheckBundleRequest(locale, component))
             {
                 return null;
             }
@@ -138,25 +122,8 @@ namespace SingletonClient.Implementation
             Hashtable htComponents = GetLocaleComponents(locale, true);
             ISingletonComponent componentObj = GetComponent(
                 htComponents, locale, component, true);
-            componentObj.CheckStatus();
+            componentObj.GetAccessTask().CheckTimeSpan();
             return componentObj;
-        }
-
-        private bool SendSource(ISource src)
-        {
-            string collect = _config.GetStringValue(ConfigConst.KeyCollect);
-            if (collect == null)
-            {
-                return false;
-            }
-
-            string url = _api.GetSendSourceApi(src.GetComponent(), src.GetKey());
-            JObject obj = SingletonUtil.HttpPost(_accessService, url, src.GetSource(), null);
-            if (SingletonUtil.CheckResponseValid(obj, null))
-            {
-                return true;
-            }
-            return false;
         }
 
         /// <summary>
@@ -172,29 +139,36 @@ namespace SingletonClient.Implementation
         /// </summary>
         public void SetConfig(IConfig config)
         {
-            _config = config;
+            _config = new SingletonConfigWrapper(config);
             _api = new SingletonApi(this);
 
-            string cacheType = config.GetStringValue(ConfigConst.KeyCacheType);
-            SingletonClientManager client = SingletonClientManager.GetInstance();
+            string cacheType = _config.GetCacheType();
+            ISingletonClientManager client = SingletonClientManager.GetInstance();
             _cacheManager = client.GetCacheManager(cacheType);
 
-            string accessServiceType = config.GetStringValue(ConfigConst.KeyAccessServiceType);
+            string accessServiceType = _config.GetAccessServiceType();
             _accessService = client.GetAccessService(accessServiceType);
 
-            string loggerName = config.GetStringValue(ConfigConst.KeyLogger);
+            string loggerName = _config.GetLoggerName();
             _logger = client.GetLogger(loggerName);
 
-            string logType = config.GetStringValue(ConfigConst.KeyLogType);
+            string logType = _config.GetLogLevel();
             _logLevel = (LogType)Enum.Parse(typeof(LogType), logType);
 
-            int interval = config.GetIntValue(ConfigConst.KeyInterval);
-            int tryDelay = config.GetIntValue(ConfigConst.KeyTryDelay);
+            _update = new SingletonUpdate(this);
+
+            int interval = _config.GetInterval();
+            int tryDelay = _config.GetTryDelay();
             _task = new SingletonAccessRemoteTask(this, interval, tryDelay);
 
-            _task.CheckStatus();
-
             InitRelease();
+
+            _task.CheckTimeSpan();
+        }
+
+        public ISingletonConfig GetSingletonConfig()
+        {
+            return _config;
         }
 
         /// <summary>
@@ -208,7 +182,7 @@ namespace SingletonClient.Implementation
         /// <summary>
         /// ISingletonRelease
         /// </summary>
-        public ICacheMessages GetProductMessages()
+        public ICacheMessages GetReleaseMessages()
         {
             return _productCache;
         }
@@ -233,19 +207,45 @@ namespace SingletonClient.Implementation
             }
         }
 
+        private void CheckLoadOnStartup()
+        {
+            List<string> componentLocalList = _config.GetConfig().GetComponentList();
+
+            for (int i = 0; i < _localeList.Count; i++)
+            {
+                for (int k = 0; k < _componentList.Count; k++)
+                {
+                    string component = _componentList[k];
+                    if (componentLocalList == null || componentLocalList.Contains(component))
+                    {
+                        ISource sourceObject = this.CreateSource(component, "$", "$");
+                        this.GetStringFromMessages(_localeList[i], sourceObject);
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// ISingletonAccessRemote
         /// </summary>
         public void GetDataFromRemote()
         {
             string url = _api.GetLocaleListApi();
-            UpdateBriefinfo(url, SingletonConst.KeyLocales, _localeList);
+            _update.UpdateBriefinfo(url, SingletonConst.KeyLocales, _localeList);
 
             url = _api.GetComponentListApi();
-            UpdateBriefinfo(url, ConfigConst.KeyComponents, _componentList);
+            _update.UpdateBriefinfo(url, ConfigConst.KeyComponents, _componentList);
 
             Log(LogType.Info, "get locale list and component list from remote: " +
-                _api.GetConfig().GetProduct() + " / " + _api.GetConfig().GetVersion());
+                _config.GetProduct() + " / " + _config.GetVersion());
+
+            if (!_isLoadedOnStartup && _config.IsLoadOnStartup())
+            {
+                _isLoadedOnStartup = true;
+
+                Thread th = new Thread(this.CheckLoadOnStartup);
+                th.Start();
+            }
         }
 
         /// <summary>
@@ -261,13 +261,13 @@ namespace SingletonClient.Implementation
         /// </summary>
         public IConfig GetConfig()
         {
-            return _config;
+            return (_config == null) ? null : _config.GetConfig();
         }
 
         /// <summary>
         /// IRelease
         /// </summary>
-        public IProductMessages GetMessages()
+        public IReleaseMessages GetMessages()
         {
             return this;
         }
@@ -281,7 +281,7 @@ namespace SingletonClient.Implementation
         }
 
         /// <summary>
-        /// IRelease
+        /// ITranslation
         /// </summary>
         public ISource CreateSource(
             string component, string key, string source = null, string comment = null)
@@ -293,15 +293,14 @@ namespace SingletonClient.Implementation
 
             if (source == null)
             {
-                source = _sourceCache.GetString(component, key);
-
+                source = (_sourceCache == null) ? null : _sourceCache.GetString(component, key);
             }
             ISource src = new SingletonSource(component, key, source, comment);
             return src;
         }
 
         /// <summary>
-        /// IProductMessages
+        /// IReleaseMessages
         /// </summary>
         public List<string> GetLocaleList()
         {
@@ -309,7 +308,7 @@ namespace SingletonClient.Implementation
         }
 
         /// <summary>
-        /// IProductMessages
+        /// IReleaseMessages
         /// </summary>
         public List<string> GetComponentList()
         {
@@ -317,33 +316,34 @@ namespace SingletonClient.Implementation
         }
 
         /// <summary>
-        /// IProductMessages
+        /// IReleaseMessages
         /// </summary>
-        public ILanguageMessages GetAllSource()
+        public ILocaleMessages GetAllSource()
         {
             return _sourceCache;
         }
 
         /// <summary>
-        /// IProductMessages
+        /// IReleaseMessages
         /// </summary>
-        public ILanguageMessages GetTranslation(string locale)
+        public ILocaleMessages GetLocaleMessages(string locale)
         {
-            return GetProductMessages().GetLanguageMessages(locale);
+            ILocaleMessages languageMessages = GetReleaseMessages().GetLocaleMessages(locale);
+            return languageMessages;
         }
 
         /// <summary>
-        /// IProductMessages
+        /// IReleaseMessages
         /// </summary>
-        public Dictionary<string, ILanguageMessages> GetAllTranslation()
+        public Dictionary<string, ILocaleMessages> GetAllLocaleMessages()
         {
-            Dictionary<string, ILanguageMessages> langDataDict =
-                new Dictionary<string, ILanguageMessages>();
+            Dictionary<string, ILocaleMessages> langDataDict =
+                new Dictionary<string, ILocaleMessages>();
             List<string> localeList = GetLocaleList();
             for (int i = 0; i < localeList.Count; i++)
             {
                 string locale = localeList[i];
-                ILanguageMessages languageData = GetProductMessages().GetLanguageMessages(locale);
+                ILocaleMessages languageData = GetReleaseMessages().GetLocaleMessages(locale);
                 if (languageData != null)
                 {
                     langDataDict[locale] = languageData;
@@ -369,39 +369,68 @@ namespace SingletonClient.Implementation
             return text;
         }
 
-        /// <summary>
-        /// ITranslation
-        /// </summary>
-        public string GetString(string locale, ISource source)
+        private string GetBundleMessage(string locale, ISource source)
         {
-            locale = SingletonUtil.NearLocale(locale);
+            String nearLocale = SingletonUtil.NearLocale(locale);
 
-            _task.CheckStatus();
-            if (source == null)
+            ISingletonComponent componentData = GetComponent(nearLocale, source.GetComponent());
+            return (componentData != null) ? componentData.GetString(source.GetKey()) : null;
+        }
+
+        private string GetTranslationMessage(string locale, ISource source, string textSource)
+        {
+            string text = GetBundleMessage(locale, source);
+            if (text == null)
+            {
+                text = _config.IsSourceLocaleDefault() ? 
+                    textSource : GetBundleMessage(_config.GetDefaultLocale(), source);
+
+                if (text == null)
+                {
+                    text = source.GetSource();
+                }
+                if (text == null)
+                {
+                    text = source.GetKey();
+                }
+
+                if (!_config.IsProductMode())
+                {
+                    text = "@" + text;
+                }
+            }
+            return text;
+        }
+
+        private string GetStringFromMessages(string locale, ISource sourceObject)
+        {
+            if (sourceObject == null)
             {
                 return null;
             }
 
-            ISingletonComponent componentSource = GetComponent(SingletonConst.LocaleEnglish, source.GetComponent());
-            ISingletonComponent componentTranslation = GetComponent(locale, source.GetComponent());
-
-            string translation = source.GetSource();
-            if (_config.GetBoolValue(ConfigConst.KeyPseudo))
+            string textSource = GetBundleMessage(_config.GetSourceLocale(), sourceObject);
+            if (textSource == null)
             {
-                translation = "@@" + source.GetSource() + "@@";
-            }
-            if (componentSource != null && componentTranslation != null)
-            {
-                string strSource = componentSource.GetString(source.GetKey());
-                string strFound = componentTranslation.GetString(source.GetKey());
-                if (strSource == source.GetSource() && strFound != null)
-                {
-                    translation = strFound;
-                }
+                return GetTranslationMessage(locale, sourceObject, null);
             }
 
-            SendSource(source);
-            return translation;
+            string text = sourceObject.GetSource();
+            if (textSource.Equals(text) || text == null)
+            {
+                return GetTranslationMessage(locale, sourceObject, textSource);
+            }
+            return text;
+        }
+
+        /// <summary>
+        /// ITranslation
+        /// </summary>
+        public string GetString(string locale, ISource sourceObject)
+        {
+            _task.CheckTimeSpan();
+
+            return GetStringFromMessages(locale, sourceObject);
         }
 
         public string GetString(
@@ -432,18 +461,11 @@ namespace SingletonClient.Implementation
         /// <summary>
         /// ITranslation
         /// </summary>
-        public bool SendSource(List<ISource> sourceList)
+        public string GetLocaleSupported(string locale)
         {
-            bool status = true;
-            for (int i = 0; i < sourceList.Count; i++)
-            {
-                if (!SendSource(sourceList[i]))
-                {
-                    status = false;
-                }
-            }
-            return status;
+            return SingletonUtil.NearLocale(locale);
         }
+
     }
 }
 

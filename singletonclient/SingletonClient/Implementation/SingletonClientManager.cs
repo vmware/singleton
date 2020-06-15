@@ -3,7 +3,9 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
+using SingletonClient.Implementation.Helpers;
 using SingletonClient.Implementation.Support;
+using System;
 using System.Collections;
 using System.Reflection;
 using YamlDotNet.RepresentationModel;
@@ -17,7 +19,7 @@ namespace SingletonClient.Implementation
         IRelease GetRelease(IConfig config);
         ICacheManager GetCacheManager(string cacheManagerName);
         ILog GetLogger(string loggerName);
-        ISourceParser GetSourceParser(string parserName);
+        IResourceParser GetResourceParser(string parserName);
         IAccessService GetAccessService(string accessServiceName);
         void SetFallbackConfig(string configText);
         string GetFallbackLocale(string locale);
@@ -25,10 +27,6 @@ namespace SingletonClient.Implementation
 
     public class SingletonClientManager : ISingletonClientManager, IExtension
     {
-        protected const string Locale = "locale";
-        protected const string From = "from";
-        protected const string to = "to";
-
         private static SingletonClientManager _instance = new SingletonClientManager();
 
         public static SingletonClientManager GetInstance()
@@ -63,16 +61,19 @@ namespace SingletonClient.Implementation
         private SingletonClientManager()
         {
             ICacheManager cacheManager = new SingletonCacheManager();
-            SetCacheManager(cacheManager, ConfigConst.TypeDefault);
+            RegisterCacheManager(cacheManager, ConfigConst.DefaultType);
 
             ILog logger = new SingletonLogger();
-            SetLogger(logger, ConfigConst.TypeDefault);
+            RegisterLogger(logger, ConfigConst.DefaultType);
 
-            ISourceParser parser = new SingletonParserProperties();
-            SetSourceParser(parser, ConfigConst.TypeDefault);
+            IResourceParser parser = new SingletonParserProperties();
+            RegisterResourceParser(parser, ConfigConst.FormatProperties);
+
+            IResourceParser bundleParser = new SingletonParserBundle();
+            RegisterResourceParser(bundleParser, ConfigConst.FormatBundle);
 
             IAccessService accessService = new SingletonAccessService();
-            SetAccessService(accessService, ConfigConst.TypeDefault);
+            RegisterAccessService(accessService, ConfigConst.DefaultType);
 
             LoadFallbackDefine();
         }
@@ -101,9 +102,20 @@ namespace SingletonClient.Implementation
 
         public string GetFallbackLocale(string locale)
         {
-            locale = locale.Replace("_", "-");
+            locale = CultureHelper.GetCulture(locale).Name;
+
             string fallback = (string)_localeNameMap[locale];
-            return (fallback == null) ? locale : fallback;
+            if (fallback != null)
+            {
+                return fallback;
+            }
+            string[] parts = locale.Split('-');
+            if (parts.Length == 1)
+            {
+                return locale;
+            }
+
+            return parts[0];
         }
 
         private Hashtable GetProductVersions(string product, bool add)
@@ -140,8 +152,9 @@ namespace SingletonClient.Implementation
             string text = config.ReadResourceText(configResourceName);
             config.SetConfigData(text);
 
-            string product = config.GetProduct();
-            string version = config.GetVersion();
+            ISingletonConfig singletonConfig = new SingletonConfigWrapper(config);
+            string product = singletonConfig.GetProduct();
+            string version = singletonConfig.GetVersion();
 
             Hashtable versions = GetProductVersions(product, true);
             ISingletonRelease releaseObject = GetRelease(versions, version, true);
@@ -165,11 +178,12 @@ namespace SingletonClient.Implementation
                 return null;
             }
 
-            ISingletonRelease releaseObject = GetRelease(config.GetProduct(), config.GetVersion());
+            ISingletonConfig wrapper = new SingletonConfigWrapper(config);
+            ISingletonRelease releaseObject = GetRelease(wrapper.GetProduct(), wrapper.GetVersion());
             return releaseObject.GetRelease();
         }
 
-        public void SetLogger(ILog logger, string loggerName)
+        public void RegisterLogger(ILog logger, string loggerName)
         {
             _loggers[loggerName] = logger;
         }
@@ -179,7 +193,7 @@ namespace SingletonClient.Implementation
             object found = string.IsNullOrEmpty(name) ? null : table[name];
             if (found == null)
             {
-                found = table[ConfigConst.TypeDefault];
+                found = table[ConfigConst.DefaultType];
             }
             return found;
         }
@@ -194,9 +208,9 @@ namespace SingletonClient.Implementation
             return (ILog)GetItemFromTable(_loggers, loggerName);
         }
 
-        public ISourceParser GetSourceParser(string parserName)
+        public IResourceParser GetResourceParser(string parserName)
         {
-            return (ISourceParser)GetItemFromTable(_parsers, parserName);
+            return (IResourceParser)GetItemFromTable(_parsers, parserName);
         }
 
         public IAccessService GetAccessService(string accessServiceName)
@@ -215,17 +229,17 @@ namespace SingletonClient.Implementation
             return rel;
         }
 
-        public void SetCacheManager(ICacheManager cacheManager, string cacheManagerName)
+        public void RegisterCacheManager(ICacheManager cacheManager, string cacheManagerName)
         {
             _cacheManagers[cacheManagerName] = cacheManager;
         }
 
-        public void SetAccessService(IAccessService accessService, string accessrName)
+        public void RegisterAccessService(IAccessService accessService, string accessrName)
         {
             _accessServices[accessrName] = accessService;
         }
 
-        public void SetSourceParser(ISourceParser parser, string parserName)
+        public void RegisterResourceParser(IResourceParser parser, string parserName)
         {
             _parsers[parserName] = parser;
         }

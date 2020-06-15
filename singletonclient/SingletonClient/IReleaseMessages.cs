@@ -11,7 +11,7 @@ namespace SingletonClient
     /// <summary>
     /// Interface to access messages of a locale.
     /// </summary>
-    public interface ILanguageMessages
+    public interface ILocaleMessages
     {
         /// <summary>
         /// Get component name list.
@@ -77,12 +77,36 @@ namespace SingletonClient
         /// </summary>
         /// <returns></returns>
         string GetComponent();
+
+        /// <summary>
+        /// Set resource path of the messages.
+        /// </summary>
+        /// <returns></returns>
+        void SetResourcePath(string resourcePath);
+
+        /// <summary>
+        /// Get resource path of the messages.
+        /// </summary>
+        /// <returns></returns>
+        string GetResourcePath();
+
+        /// <summary>
+        /// Set resource type of the messages.
+        /// </summary>
+        /// <returns></returns>
+        void SetResourceType(string resourceType);
+
+        /// <summary>
+        /// Get resource type of the messages.
+        /// </summary>
+        /// <returns></returns>
+        string GetResourceType();
     }
 
     /// <summary>
     /// Interface to access product messages.
     /// </summary>
-    public interface IProductMessages
+    public interface IReleaseMessages
     {
         /// <summary>
         /// Get locale list.
@@ -97,23 +121,17 @@ namespace SingletonClient
         List<string> GetComponentList();
 
         /// <summary>
-        /// Get interface to access all source messages.
-        /// </summary>
-        /// <returns></returns>
-        ILanguageMessages GetAllSource();
-
-        /// <summary>
         /// Get interface to access messages of a locale.
         /// </summary>
         /// <param name="locale"></param>
         /// <returns></returns>
-        ILanguageMessages GetTranslation(string locale);
+        ILocaleMessages GetLocaleMessages(string locale);
 
         /// <summary>
         /// Get a group of translation messages of different locales. 
         /// </summary>
         /// <returns></returns>
-        Dictionary<string, ILanguageMessages> GetAllTranslation();
+        Dictionary<string, ILocaleMessages> GetAllLocaleMessages();
     }
 }
 

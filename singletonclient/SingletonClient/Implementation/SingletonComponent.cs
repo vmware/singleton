@@ -12,7 +12,10 @@ namespace SingletonClient.Implementation
     public interface ISingletonComponent
     {
         string GetString(string key);
-        bool CheckStatus();
+
+        ISingletonAccessTask GetAccessTask();
+
+        int GetDataCount();
     }
 
     public class SingletonComponent : ISingletonComponent, ISingletonAccessRemote
@@ -25,7 +28,7 @@ namespace SingletonClient.Implementation
 
         private string _etag;
 
-        private SingletonAccessRemoteTask _task;
+        private ISingletonAccessTask _task;
 
         public SingletonComponent(ISingletonRelease releaseObject, string locale, string component)
         {
@@ -33,15 +36,20 @@ namespace SingletonClient.Implementation
             _locale = locale;
             _component = component;
 
-            IConfig config = releaseObject.GetRelease().GetConfig();
-            int interval = config.GetIntValue(ConfigConst.KeyInterval);
-            int tryDelay = config.GetIntValue(ConfigConst.KeyTryDelay);
+            ISingletonConfig config = releaseObject.GetSingletonConfig();
+            int interval = config.GetInterval();
+            int tryDelay = config.GetTryDelay();
 
             _task = new SingletonAccessRemoteTask(this, interval, tryDelay);
 
-            ICacheMessages productCache = releaseObject.GetProductMessages();
-            ILanguageMessages langCache = productCache.GetLanguageMessages(locale);
+            ICacheMessages productCache = releaseObject.GetReleaseMessages();
+            ILocaleMessages langCache = productCache.GetLocaleMessages(locale);
             _componentCache = langCache.GetComponentMessages(component);
+        }
+
+        public ISingletonConfig GetSingletonConfig()
+        {
+            return _releaseObject.GetSingletonConfig();
         }
 
         public void GetDataFromRemote()
@@ -86,9 +94,9 @@ namespace SingletonClient.Implementation
             return _componentCache.GetCount();
         }
 
-        public bool CheckStatus()
+        public ISingletonAccessTask GetAccessTask()
         {
-            return _task.CheckStatus();
+            return _task;
         }
 
         public string GetString(string key)

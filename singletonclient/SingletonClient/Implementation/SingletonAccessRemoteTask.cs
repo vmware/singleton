@@ -9,25 +9,53 @@ using System.Threading;
 namespace SingletonClient.Implementation
 {
     /// <summary>
-    /// Interface to access data fetched from remote.
+    /// Interface to update data fetched from remote or local.
     /// </summary>
     public interface ISingletonAccessRemote
     {
+        /// <summary>
+        /// Get singleton configuration.
+        /// </summary>
+        /// <returns></returns>
+        ISingletonConfig GetSingletonConfig();
+
+        /// <summary>
+        /// Get data from remote service.
+        /// </summary>
         void GetDataFromRemote();
+
+        /// <summary>
+        /// Get data item count.
+        /// </summary>
+        /// <returns></returns>
         int GetDataCount();
+    }
+
+    public interface ISingletonAccessTask
+    {
+        /// <summary>
+        /// Set expire time.
+        /// </summary>
+        /// <param name="interval"></param>
+        void SetInterval(int interval);
+
+        /// <summary>
+        /// Check time span for updating.
+        /// </summary>
+        void CheckTimeSpan();
     }
 
     /// <summary>
     /// Class to manage remote access tasks.
     /// </summary>
-    public class SingletonAccessRemoteTask
+    public class SingletonAccessRemoteTask: ISingletonAccessTask
     {
         private static int _total = 0;
 
         private bool _querying = false;
         private bool _trying = false;
 
-        private ISingletonAccessRemote _access;
+        private ISingletonAccessRemote _update;
 
         private int _interval;
         private int _tryDelay;
@@ -36,9 +64,9 @@ namespace SingletonClient.Implementation
         private int _index;
 
         public SingletonAccessRemoteTask(
-            ISingletonAccessRemote access, int interval, int tryDelay)
+            ISingletonAccessRemote update, int interval, int tryDelay)
         {
-            _access = access;
+            _update = update;
             _interval = interval;
             _tryDelay = tryDelay;
 
@@ -55,10 +83,10 @@ namespace SingletonClient.Implementation
         {
             try
             {
-                _access.GetDataFromRemote();
+                _update.GetDataFromRemote();
                 _trying = false;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 _trying = true;
             }
@@ -71,7 +99,7 @@ namespace SingletonClient.Implementation
         {
             if (_querying)
             {
-                while (_access.GetDataCount() == 0 && _querying)
+                while (_update.GetDataCount() == 0 && _querying)
                 {
                     Thread.Sleep(100);
                 }
@@ -79,7 +107,7 @@ namespace SingletonClient.Implementation
             else
             {
                 _querying = true;
-                if (_access.GetDataCount() == 0)
+                if (_update.GetDataCount() == 0)
                 {
                     GetFromRemote();
                 }
@@ -92,14 +120,19 @@ namespace SingletonClient.Implementation
             return true;
         }
 
-        public void LaunchUpdateThread()
+        private void LaunchUpdateThread()
         {
             Thread th = new Thread(this.GetFromRemote);
             th.Start();
         }
 
-        public bool CheckStatus()
+        public void CheckTimeSpan()
         {
+            if (!_update.GetSingletonConfig().IsOnlineSupported())
+            {
+                return;
+            }
+
             if (_utcCurrent.Ticks == 0)
             {
                 TryAccessRemote();
@@ -123,8 +156,6 @@ namespace SingletonClient.Implementation
                     }
                 }
             }
-
-            return true;
         }
     }
 }

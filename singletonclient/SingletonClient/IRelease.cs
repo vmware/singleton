@@ -20,7 +20,7 @@ namespace SingletonClient
         /// Get interface to access product messages.
         /// </summary>
         /// <returns></returns>
-        IProductMessages GetMessages();
+        IReleaseMessages GetMessages();
 
         /// <summary>
         /// Get interface to access translations.

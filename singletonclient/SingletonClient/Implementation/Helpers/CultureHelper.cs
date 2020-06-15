@@ -16,17 +16,23 @@ namespace SingletonClient.Implementation.Helpers
 
         public static void SetCurrentCulture(string cultureName)
         {
-            if (string.IsNullOrEmpty(cultureName))
-                cultureName = GetDefaultCulture();
-            try
-            {
-                Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(cultureName);
-            }
-            catch (CultureNotFoundException)
-            {
-                Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(GetDefaultCulture());
-            }
+            Thread.CurrentThread.CurrentCulture = GetCulture(cultureName);
             Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
+        }
+
+        public static CultureInfo GetCulture(string cultureName)
+        {
+            if (!string.IsNullOrEmpty(cultureName))
+            {
+                try
+                {
+                    return new System.Globalization.CultureInfo(cultureName);
+                }
+                catch (CultureNotFoundException)
+                {
+                }
+            }
+            return new System.Globalization.CultureInfo(GetDefaultCulture());
         }
 
         public static string GetDefaultCulture()

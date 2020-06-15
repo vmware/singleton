@@ -1,0 +1,24 @@
+﻿
+online_service_url: http://127.0.0.1:8090/singleton/CSHARP/1.0.0/
+
+offline_resources_base_url: CSHARP/1.0.0
+default_resource_format: resx, internal
+internal_resources_root: SingletonRes
+
+cache_expire: 5
+try_delay: 2
+
+offline_resources_path:
+  - source.$COMPONENT
+
+locales:
+  - language_tag: en-US
+  - language_tag: de-DE
+  - language_tag: zh-Hans
+  - language_tag: my-MY
+
+components: 
+  - name: about
+  - name: index
+  - name: contact
+  - name: common

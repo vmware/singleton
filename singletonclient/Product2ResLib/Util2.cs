@@ -4,6 +4,7 @@
  */
 
 using SingletonClient;
+using System;
 using System.Reflection;
 
 namespace Product2ResLib
@@ -23,8 +24,44 @@ namespace Product2ResLib
 
         public static void Init()
         {
+            new TestUtil().DoSomething();
+
+            string[] configNames =
+            {
+                "sgtn_offline_disk",
+
+
+                "sgtn_offline_external",
+
+                "sgtn_offline_external_de",
+
+                "sgtn_offline_internal",
+
+                "sgtn_offline_internal_native",
+
+                "sgtn_offline_internal_properties",
+
+
+                "sgtn_online_only",
+
+                "sgtn_online_only_component",
+
+                "sgtn_online_with_internal",
+
+                "sgtn_online_with_external",
+
+                "sgtn_sample_comment",
+
+
+                "singleton_config"
+            };
+
+            int index = 9;
+            Console.WriteLine(index);
+            Console.WriteLine(configNames[index]);
+
             IConfig cfg = I18n.LoadConfig(
-                Values.BASE_RES_NAME, Values.assembly, "singleton_config");
+                Values.BASE_RES_NAME, Values.assembly, configNames[index]);
             rel = I18n.GetRelease(cfg);
         }
 
@@ -51,7 +88,7 @@ namespace Product2ResLib
             return rel;
         }
 
-        public static IProductMessages Messages()
+        public static IReleaseMessages Messages()
         {
             return rel.GetMessages();
         }

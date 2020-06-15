@@ -16,8 +16,6 @@ namespace Product1ResLib
 {
     class Values
     {
-        public const string DATA_ROOT = "D:\\temp\\singleton";
-
         private static string nameSpace =
             System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace;
         public static string BASE_RES_NAME = nameSpace + ".SingletonRes.Singleton";
@@ -64,7 +62,7 @@ namespace Product1ResLib
             return rel;
         }
 
-        public static IProductMessages Messages()
+        public static IReleaseMessages Messages()
         {
             return rel.GetMessages();
         }

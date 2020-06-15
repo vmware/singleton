@@ -4,6 +4,7 @@
  */
 
 using SingletonClient;
+using SingletonClient.Implementation;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,6 +19,8 @@ namespace Product1ResLib
         private string _localeName;
         private int _delaySeconds;
         private string _mode;  // M: main T: thread A: async
+
+        private string _component = "about";
 
         public Test(string localeName, int delaySeconds)
         {
@@ -69,9 +72,9 @@ namespace Product1ResLib
         {
             Thread.Sleep(1000 * _delaySeconds);
 
-            ILanguageMessages data = Util1.Messages().GetAllSource();
+            ILocaleMessages data = Util1.Messages().GetLocaleMessages(ConfigConst.DefaultLocale);
 
-            IComponentMessages cache = data.GetComponentMessages("JAVA");
+            IComponentMessages cache = data.GetComponentMessages("about");
             List<string> sl = data.GetComponentList();
 
             if (_localeName != null)
@@ -89,19 +92,26 @@ namespace Product1ResLib
             string strKey = "second_key";
             string strValue = cache.GetString(strKey);
 
-            string trans = Util1.Translation().GetString(_localeName, Util1.Source("JAVA", strKey));
+            string trans = Util1.Translation().GetString(_localeName, Util1.Source(_component, strKey));
             Log("--- trans without source --- " + trans);
 
-            trans = Util1.Translation().GetString(_localeName, Util1.Source("JAVA", strKey, strValue));
+            trans = Util1.Translation().GetString(_localeName, Util1.Source(_component, strKey, strValue));
             Log("--- trans with source    --- " + trans);
 
-            ILanguageMessages data2 = Util1.Messages().GetTranslation(_localeName);
-            string trans2 = data2.GetComponentMessages("JAVA").GetString(strKey);
+            ILocaleMessages data2 = Util1.Messages().GetLocaleMessages(_localeName);
+            string trans2 = data2.GetComponentMessages(_component).GetString(strKey);
+            if (string.IsNullOrEmpty(trans2))
+            {
+                data2 = Util1.Messages().GetLocaleMessages(Util1.Translation().GetLocaleSupported(_localeName));
+                trans2 = data2.GetComponentMessages(_component).GetString(strKey);
+            }
             Log("--- trans from messages  --- " + trans2);
 
             List<string> sa = Util1.Messages().GetComponentList();
 
-            List<string> resList = Util1.Config().GetComponentSourceList("JAVA");
+            IConfigItem configItem = Util1.Config().GetComponentAttribute(_component, ConfigConst.KeyLocales);
+            IConfigItem configLocaleItem = configItem.GetArrayItem(ConfigConst.KeyLanguage, ConfigConst.DefaultLocale);
+            List<string> resList = configLocaleItem.GetMapItem(ConfigConst.KeyOfflinePath).GetStringList();
 
             Util1.DecreaseCount();
         }
@@ -110,12 +120,12 @@ namespace Product1ResLib
         {
             Test1.DoTest1();
 
-            ISource src = Util1.Source("JAVA", "first_key");
+            ISource src = Util1.Source(_component, "first_key");
             string text = Util1.Translation().Format(_localeName, src, "-aa-", "-bb-");
             Log("--- Format --- " + text);
 
             string strKey = "first_key";
-            string trans = Util1.Translation().GetString(_localeName, Util1.Source("JAVA", strKey));
+            string trans = Util1.Translation().GetString(_localeName, Util1.Source(_component, strKey));
             Log("--- trans first_key --- " + trans);
 
             string currentLocale = Util1.Translation().GetCurrentLocale();
@@ -125,6 +135,8 @@ namespace Product1ResLib
 
     public class Function1
     {
+        private string _component = "about";
+
         public void Involve()
         {
             Util1.Init();
@@ -133,15 +145,15 @@ namespace Product1ResLib
         public void UseProduct()
         {
             new Test(null, 0).TestInDifferentThread();
-            new Test(null, 0).TestInAsyncMode();
+            //new Test(null, 0).TestInAsyncMode();
             Thread.Sleep(100);
 
             string localeName = "de";
             Util1.Translation().SetCurrentLocale(localeName);
             Console.WriteLine("--- set locale in main thread --- " + localeName + "-- -");
 
-            new Test(null, 0).TestInDifferentThread();
-            new Test(null, 0).TestInAsyncMode();
+            //new Test(null, 0).TestInDifferentThread();
+            //new Test(null, 0).TestInAsyncMode();
 
             new Test(localeName, 0).TestInSameThread();
 
@@ -160,7 +172,7 @@ namespace Product1ResLib
 
         private void FullParameterCall(ITranslation translate, string key)
         {
-            ISource src = translate.CreateSource("JAVA", key);
+            ISource src = translate.CreateSource(_component, key);
             string transaltionMessage = translate.GetString("de", src);
             Console.WriteLine(transaltionMessage);
         }
@@ -168,7 +180,7 @@ namespace Product1ResLib
         private void SimpleParameterCall(ITranslation translate, string key)
         {
             translate.SetCurrentLocale("de");
-            string transaltionMessage = translate.GetString("JAVA", key);
+            string transaltionMessage = translate.GetString(_component, key);
             Console.WriteLine(transaltionMessage);
         }
 

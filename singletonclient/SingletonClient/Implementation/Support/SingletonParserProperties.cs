@@ -7,13 +7,16 @@ using System.Collections;
 
 namespace SingletonClient.Implementation.Support
 {
-    public sealed class SingletonParserProperties : ISourceParser
+    public sealed class SingletonParserProperties : IResourceParser
     {
         private Hashtable kvTable = new Hashtable();
 
         public Hashtable Parse(string text)
         {
-            Load(new LineReader(text.ToCharArray()));
+            if (text != null)
+            {
+                Load(new LineReader(text.ToCharArray()));
+            }
             return kvTable;
         }
 
@@ -165,6 +168,11 @@ namespace SingletonClient.Implementation.Support
                 }
             }
             return new string(outText, 0, outLen);
+        }
+
+        public Hashtable ParseResource(string resourceName, string locale)
+        {
+            throw new System.NotImplementedException();
         }
     }
 

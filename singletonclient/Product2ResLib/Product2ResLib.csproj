@@ -42,11 +42,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestUtil.cs" />
     <Compile Include="Function2.cs" />
     <Compile Include="SingletonRes\source\about.Designer.cs">
       <DependentUpon>about.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SingletonRes\source\about.de.Designer.cs">
+      <DependentUpon>about.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SingletonRes\source\common.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>common.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SingletonRes\source\contact.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>contact.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SingletonRes\source\index.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>index.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SingletonRes\source\about_de.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>about_de.resx</DependentUpon>
     </Compile>
     <Compile Include="Util2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -58,7 +84,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="SingletonRes\sgtn_sample.yml" />
+    <None Include="SingletonRes\sgtn_offline_internal_properties.yml" />
+    <None Include="SingletonRes\sgtn_offline_internal_native.yml" />
+    <None Include="SingletonRes\sgtn_online_with_external.yml" />
+    <None Include="SingletonRes\sgtn_online_with_internal.yml" />
+    <None Include="SingletonRes\sgtn_online_only_component.yml" />
+    <None Include="SingletonRes\sgtn_sample_comment.yml" />
+    <None Include="SingletonRes\source\about_de.properties" />
     <None Include="SingletonRes\source\about.properties" />
     <None Include="SingletonRes\source\contact.properties" />
     <None Include="SingletonRes\source\index.properties" />
@@ -70,8 +102,30 @@
       <LastGenOutput>Singleton.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SingletonRes\source\about.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>about.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SingletonRes\source\about.de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>about.de.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SingletonRes\source\common.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>common.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SingletonRes\source\contact.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>contact.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SingletonRes\source\index.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>index.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SingletonRes\source\about_de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>about_de.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
@@ -80,6 +134,24 @@
       <Project>{3b6c416b-159e-4905-b7a9-592a455b0624}</Project>
       <Name>singletonclient</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SingletonRes\sgtn_sample.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SingletonRes\sgtn_offline_external.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SingletonRes\sgtn_online_only.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SingletonRes\sgtn_offline_internal.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SingletonRes\sgtn_offline_disk.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SingletonRes\sgtn_offline_external_de.yml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

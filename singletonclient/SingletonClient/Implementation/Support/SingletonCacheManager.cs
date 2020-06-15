@@ -12,7 +12,7 @@ namespace SingletonClient.Implementation.Support
     {
         private Hashtable _releases = SingletonUtil.NewHashtable();
 
-        public ICacheMessages GetProductCache(string product, string version)
+        public ICacheMessages GetReleaseCache(string product, string version)
         {
             Hashtable locales = (Hashtable)_releases[product];
             if (locales == null)
@@ -23,40 +23,40 @@ namespace SingletonClient.Implementation.Support
             ICacheMessages cache = (ICacheMessages)locales[version];
             if (cache == null)
             {
-                cache = new SingletonProductCache();
+                cache = new SingletonReleaseCache();
                 locales[version] = cache;
             }
             return cache;
         }
     }
 
-    public class SingletonProductCache : ICacheMessages
+    public class SingletonReleaseCache : ICacheMessages
     {
         private Hashtable _locales = SingletonUtil.NewHashtable();
 
-        public ILanguageMessages GetLanguageMessages(string locale)
+        public ILocaleMessages GetLocaleMessages(string locale)
         {
             if (locale == null)
             {
                 return null;
             }
 
-            ILanguageMessages cache = (ILanguageMessages)_locales[locale];
+            ILocaleMessages cache = (ILocaleMessages)_locales[locale];
             if (cache == null)
             {
-                cache = new SingletonLanguageCache(locale);
+                cache = new SingletonLocaleCache(locale);
                 _locales[locale] = cache;
             }
             return cache;
         }
     }
 
-    public class SingletonLanguageCache : ILanguageMessages
+    public class SingletonLocaleCache : ILocaleMessages
     {
         private string _locale;
         private Hashtable _components = SingletonUtil.NewHashtable();
 
-        public SingletonLanguageCache(string locale)
+        public SingletonLocaleCache(string locale)
         {
             _locale = locale;
         }
@@ -98,6 +98,8 @@ namespace SingletonClient.Implementation.Support
     {
         private string _locale;
         private string _component;
+        private string _resourcePath;
+        private string _resourceType;
         private Hashtable _messages = SingletonUtil.NewHashtable();
 
         public SingletonComponentCache(string locale, string component)
@@ -139,6 +141,26 @@ namespace SingletonClient.Implementation.Support
         public string GetComponent()
         {
             return _component;
+        }
+
+        public void SetResourcePath(string resourcePath)
+        {
+            _resourcePath = resourcePath;
+        }
+
+        public string GetResourcePath()
+        {
+            return _resourcePath;
+        }
+
+        public void SetResourceType(string resourceType)
+        {
+            _resourceType = resourceType;
+        }
+
+        public string GetResourceType()
+        {
+            return _resourceType;
         }
     }
 }

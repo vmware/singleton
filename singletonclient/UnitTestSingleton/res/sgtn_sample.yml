@@ -1,35 +1,52 @@
-﻿# product name
-productName: CSHARP
+﻿
+online_service_url: http://127.0.0.1:8090/singleton/CSHARP/
+offline_resources_base_url: file:///d:/l10n/CSHARP/
+l10n_version: 1.0.0
 
-# product version
-version: 1.0.0
+prod_mode: false
+default_locale: en-US
 
-singletonServer: http://127.0.0.1:8090
+internal_resources_root: res
+default_resource_format: properties, internal
 
-pseudo: false
-machineTranslation: false
-collectSource: true
+# optional, access service type
+access_service_type: test
 
-cacheType: default
-localCache: true
+# optional, cache type
+cache_type: default
+# optional, cache expire time
+cache_expire: 60
+# optional, delay of retry when connection fails
+try_delay: 10
 
-logger: default
-logType: Debug
+# optional, logger type
+logger_type: default
+# optional, log level
+log_level: Debug
 
-accessServiceType: test
-tryDelay: 10
-cacheExpiredTime: 60
 
 components: 
-  - component : about
-    resource: 
-      - name: (source.about)
-  - component : index
-    resource: 
-      - name: index
-  - component : contact
-    resource: 
-      - name: contact
-  - component : common
-    resource: 
-      - name: common
+  - name: about
+    locales:
+      - language_tag: en-US
+        offline_resources_path: 
+          - source.about, resx
+
+  - name: index
+    locales:
+      - language_tag: en-US
+        offline_resources_path: 
+          - index
+
+  - name: contact
+    locales:
+      - language_tag: en-US
+        offline_resources_path: 
+          - contact
+
+  - name: common
+    locales:
+      - language_tag: en-US
+        offline_resources_path: 
+          - common
+

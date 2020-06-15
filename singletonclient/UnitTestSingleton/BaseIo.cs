@@ -46,7 +46,7 @@ namespace UnitTestSingleton
             SingletonParserProperties p = new SingletonParserProperties();
             ht = p.Parse(text);
 
-            I18n.GetExtension().SetAccessService(this, "test");
+            I18n.GetExtension().RegisterAccessService(this, "test");
         }
 
         public string GetTestResource(string name)
