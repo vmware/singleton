@@ -50,6 +50,10 @@ public class Constants {
 	public static final String REGION_LANGUAGE_MAPPING_JSON = "regionLanguageMapping.json";
 	public static final String PATTERN_JSON = "pattern.json";
 	public static final String DATE_FIELDS_JSON = "dateFields.json";
+	public static final String CURRENCY_DATA = "currencyData.json";
+	public static final String CURRENCIES_DATA = "currencies.json";
+	public static final String NUMBERING_SYSTEMS_JSON = "numberingSystems.json";
+	public static final String NUMBERS_JSON = "numbers.json";
 
 	// key name
 	public static final String YEAR = "year";
@@ -102,5 +106,15 @@ public class Constants {
 	public static final String DECIMAL_FORMATS_LONG = "decimalFormats-long";
 	public static final String DECIMAL_FORMATS_SHORT = "decimalFormats-short";
 	public static final String CURRENCY_FORMATS_SHORT = "currencyFormats-short";
+
+	// currency supplemental data
+	public static final String SUPPLEMENTAL_CURRENCY_DATA = "supplemental.currencyData";
+	public static final String FRACTIONS = "fractions";
+	public static final String REGION = "region";
+	public static final String FROM = "_from";
+	public static final String TO = "_to";
+
+	public static final String SUPPLEMENTAL_NUMBERING_SYSTEMS = "supplemental.numberingSystems";
+	public static final String NUMBERING_SYSTEMS = "numberingSystems";
 
 }

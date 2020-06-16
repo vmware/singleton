@@ -83,4 +83,6 @@ public class CLDRConstants {
 	public static final String PERCENT_FORMATS_NUMBER_SYSTEM = "main.{0}.numbers.percentFormats-numberSystem-{1}.{2}";
 	public static final String CURRENCY_FORMATS_NUMBER_SYSTEM = "main.{0}.numbers.currencyFormats-numberSystem-{1}.{2}";
 	public static final String SCIENTIFIC_FORMATS_NUMBER_SYSTEM = "main.{0}.numbers.scientificFormats-numberSystem-{1}.{2}";
+
+	public static final String SUPPLEMENTAL_FILE_NAME = CLDR_CORE + CLDR_VERSION + "/supplemental/{0}";
 }
