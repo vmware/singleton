@@ -1,0 +1,2 @@
+java -cp "slf4j-api-1.8.0-beta4.jar;slf4j-simple-1.8.0-beta4.jar;wiremock-jre8-standalone-2.23.2.jar" com.github.tomakehurst.wiremock.standalone.WireMockServerRunner --verbose --print-all-network-traffic
+echo java -cp "slf4j-api-1.8.0-beta4.jar;slf4j-simple-1.8.0-beta4.jar;wiremock-jre8-standalone-2.23.2.jar" com.github.tomakehurst.wiremock.standalone.WireMockServerRunner  --proxy-all="https://dev-1:8090" --https-port=8443 --verbose --record-mappings --root-dir ./records/https --print-all-network-traffic
