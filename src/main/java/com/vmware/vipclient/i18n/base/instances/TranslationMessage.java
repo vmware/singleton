@@ -97,8 +97,6 @@ public class TranslationMessage implements Message {
     		if (source != null && !source.isEmpty()) {
     			return FormatUtils.format(source, LocaleUtility.getSourceLocale(), args);
     		}
-    		if (VIPCfg.getInstance().isProdMode())
-    			return key;
     		throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component, locale));
     	}
     	

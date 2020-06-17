@@ -66,7 +66,6 @@ public class VIPCfg {
     private String                     vipServer;
     private String                     i18nScope     = "numbers,dates,currencies,plurals,measurements";
     private String					   offlineResourcesBaseUrl;
-    private boolean				   	   prodMode = true;
     
     // define key for cache management
     public static final String         CACHE_L3      = "CACHE_L3";
@@ -186,8 +185,6 @@ public class VIPCfg {
         }
         if (prop.containsKey("sourceLocale"))
         	LocaleUtility.setSourceLocale(Locale.forLanguageTag(prop.getString("sourceLocale")));
-        if (prop.containsKey("prodMode"))
-        	this.prodMode = Boolean.parseBoolean(prop.getString("prodMode"));
 	}	
 
     /**
@@ -441,14 +438,6 @@ public class VIPCfg {
 
 	public void setMsgOriginsQueue(List<DataSourceEnum> msgOriginsQueue) {
 		this.msgOriginsQueue = msgOriginsQueue;
-	}
-
-	public boolean isProdMode() {
-		return prodMode;
-	}
-
-	public void setProdMode(boolean prodMode) {
-		this.prodMode = prodMode;
 	}
 	
 }

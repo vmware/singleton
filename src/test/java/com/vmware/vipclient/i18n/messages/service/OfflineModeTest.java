@@ -110,46 +110,15 @@ public class OfflineModeTest extends BaseTestClass {
         Locale newLocale = new Locale("en");
         dto.setLocale(newLocale.toLanguageTag());
     	
-    	String message = translation.getMessage(newLocale, component, key, args);
-    	// Return the key because message does not exist in any locale
-    	assertEquals(key, message);
-    	
-    	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
-    	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
-    }
-    
-    @Test
-    public void testGetMsgsFailedKeyNotFoundProdModeFalse() { 
-    	// Offline mode only; message key does not exist
-    	String key = "does.not.exist";
-    	String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
-    	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
-    	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
-    	cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
-    	boolean prodModeOrig = cfg.isProdMode();
-    	cfg.setProdMode(false);
-    	
-        Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
-        TranslationCacheManager.cleanCache(c);
-        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
-        TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
-
-        dto.setProductID(VIPCfg.getInstance().getProductName());
-        dto.setVersion(VIPCfg.getInstance().getVersion());
-        
-        // Bundle does not exist locally
-        Locale newLocale = new Locale("en");
-        dto.setLocale(newLocale.toLanguageTag());
-    	
         VIPJavaClientException e = assertThrows(VIPJavaClientException.class, () -> {
         	translation.getMessage(newLocale, component, key, args);
         });
         
-    	// Return the key because message does not exist in any locale
+    	// Throw an exception because message key does not exist anywhere
     	assertEquals(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component, newLocale), e.getMessage());
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
-    	cfg.setProdMode(prodModeOrig);
+    	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
     }
     
     @Test
@@ -184,44 +153,6 @@ public class OfflineModeTest extends BaseTestClass {
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
-    }
-    
-    @Test
-    public void testGetMsgsFailedNotProdMode() { 
-    	// Offline mode only; target locale bundle does not exist
-    	String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
-    	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
-    	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
-    	cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
-    	boolean prodModeOrig = cfg.isProdMode();
-    	cfg.setProdMode(false);
-    	
-        Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
-        TranslationCacheManager.cleanCache(c);
-        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
-        TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
-
-        dto.setProductID(VIPCfg.getInstance().getProductName());
-        dto.setVersion(VIPCfg.getInstance().getVersion());
-        
-        // Bundle does not exist locally
-        Locale newLocale = new Locale("es");
-        dto.setLocale(newLocale.toLanguageTag());
-        
-    	CacheService cs = new CacheService(dto);
-    	
-    	
-    	String message = translation.getMessage(newLocale, component, key, args);
-    	// Returns the source message
-    	assertEquals(FormatUtils.format(source, args), message);
-    	
-    	// There is no fallback locale for "es" in the cache 
-    	MessageCacheItem cacheItem = cs.getCacheOfComponent();   	
-    	assertNull(cacheItem);
-    	
-    	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
-    	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
-    	cfg.setProdMode(prodModeOrig);
     }
     
     @Test

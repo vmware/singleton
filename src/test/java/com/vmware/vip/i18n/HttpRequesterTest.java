@@ -59,8 +59,6 @@ public class HttpRequesterTest extends BaseTestClass {
         String value2 = "value-2";
         params.put(key1, value1);
         params.put(key2, value2);
-        VIPCfg cfg = VIPCfg.getInstance();
-        
         VIPCfg.getInstance().getVipService().setHeaderParams(params);
 
         WireMock.stubFor(WireMock.get(WireMock.urlMatching(url)).willReturn(WireMock.aResponse().withStatus(200)));
@@ -68,7 +66,11 @@ public class HttpRequesterTest extends BaseTestClass {
         TranslationMessage tm = (TranslationMessage) I18nFactory.getInstance()
                 .getMessageInstance(TranslationMessage.class);
         
-        tm.getMessage(new Locale("zh", "Hans"), "default", "table.host");
+        try {
+        	tm.getMessage(new Locale("zh", "Hans"), "default", "table.host");
+        } catch (Exception e) {
+        	// Exception is expected
+        }
         
         WireMock.verify(WireMock.getRequestedFor(WireMock.urlMatching(url)).withHeader(key1, WireMock.equalTo(value1))
                 .withHeader(key2, WireMock.equalTo(value2)));

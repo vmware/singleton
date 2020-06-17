@@ -36,21 +36,19 @@ public class StringService {
     	Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
     	MessageCacheItem cacheItem = new ComponentService(dto).getMessages();
     	
-    	if (VIPCfg.getInstance().isProdMode()) {
-	    	// While failed to get MessageCacheItem, use MessageCacheItem of the next fallback locale. 
-	    	while (cacheItem.getCachedData().isEmpty() && fallbackLocalesIter.hasNext()) {
-	    		Locale fallback = fallbackLocalesIter.next();
-				MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), 
-						key, dto.getSource(), fallback.toLanguageTag(), null);
-				cacheItem = new ComponentService(fallbackLocaleDTO).getMessages();
-				
-				// Cache a reference to the MessageCacheItem of the fallback locale 
-				if (!cacheItem.getCachedData().isEmpty()) {
-					CacheService cacheService = new CacheService(dto);
-					cacheService.addCacheOfComponent(cacheItem);
-				}
+    	// While failed to get MessageCacheItem, use MessageCacheItem of the next fallback locale. 
+    	while (cacheItem.getCachedData().isEmpty() && fallbackLocalesIter.hasNext()) {
+    		Locale fallback = fallbackLocalesIter.next();
+			MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), 
+					key, dto.getSource(), fallback.toLanguageTag(), null);
+			cacheItem = new ComponentService(fallbackLocaleDTO).getMessages();
+			
+			// Cache a reference to the MessageCacheItem of the fallback locale 
+			if (!cacheItem.getCachedData().isEmpty()) {
+				CacheService cacheService = new CacheService(dto);
+				cacheService.addCacheOfComponent(cacheItem);
 			}
-    	}
+		}
     	
     	Map<String, String> cachedData = cacheItem.getCachedData();
 		return cachedData.get(key) == null ? null : cachedData.get(key);
