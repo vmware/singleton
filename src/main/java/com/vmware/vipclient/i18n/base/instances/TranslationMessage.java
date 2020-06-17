@@ -307,7 +307,7 @@ public class TranslationMessage implements Message {
     }
     
      /**
-     * Retrieves the localized message from the cache
+     * Retrieves the set of localized messages from the cache. It applies locale fallback mechanism in case of failure.
      * 
      * @param component The Singleton component
      * @param locale The locale in which the messages are requested to be localized
