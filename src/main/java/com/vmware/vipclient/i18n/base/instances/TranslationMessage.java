@@ -75,13 +75,13 @@ public class TranslationMessage implements Message {
      * @param component The Singleton component in which the message belongs
      * @param key The key that represents the message
      * @param args Values to replace placeholders in the message with
-     * @return One of the items in the following priority-ordered list: 
+     * @return One of the items in the following priority-ordered list:. 
+     * @throws VIPJavaClientException If none from the list below is available 
      * <ul>
      * 		<li>The pseudo message, if isPseudo is true</li> 
      * 		<li>The message in the requested locale, if available</li>
      * 		<li>The message in the next available fallback locale, if any</li>
      * 		<li>The source message, if available</li>
-     * 		<li>The key</li>
      * </ul>
      */
     public String getMessage(final Locale locale, final String component, final String key, final Object... args) {
