@@ -17,6 +17,7 @@ public class PatternParseMain {
         LocaleDataUtils.localesExtract();
         MiscUtils.miscDataExtract();
         SupplementUtils.supplementalCurrencyExtract();
+        SupplementUtils.supplementalNumberingSystemsExtract();
         CLDRUtils.aliasesExtract();
         CLDRUtils.defaultContentExtract();
         CLDRUtils.regionDataExtract();
