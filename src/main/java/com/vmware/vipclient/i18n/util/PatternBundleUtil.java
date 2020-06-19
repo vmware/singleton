@@ -8,7 +8,7 @@ import org.json.simple.JSONObject;
 
 public class PatternBundleUtil {
 
-    private static final String JSON_MESSAGES = "level2/{0}/patterns.json";
+    private static final String JSON_MESSAGES = "level2/{0}/pattern.json";
 
     public static JSONObject readJSONFile(String locale) {
         JSONObject jsonObj = null;

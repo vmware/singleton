@@ -4,18 +4,15 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import java.util.Locale;
-
-import org.json.simple.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.messages.api.opt.local.LocalPatternOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.RemotePatternOpt;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
+import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The class represents date formatting
@@ -70,8 +67,8 @@ public class PatternService {
             patterns = new LocalPatternOpt()
                     .getPatternsByLocale(ConstantsKeys.EN);
         } else {
-            if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
-            	patterns = new RemotePatternOpt().getPatternsByLocale(locale);
+            if (VIPCfg.getInstance().getMsgOriginsQueue().get(0) == DataSourceEnum.VIP) {
+                patterns = new RemotePatternOpt().getPatternsByLocale(locale);
             } else {
                 patterns = new LocalPatternOpt().getPatternsByLocale(locale);
             }
@@ -81,8 +78,8 @@ public class PatternService {
 
     private JSONObject getPatternsFromBundle(String language, String region) {
         JSONObject patterns = null;
-        if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
-        	patterns = new RemotePatternOpt().getPatternsByLocale(language, region);
+        if (VIPCfg.getInstance().getMsgOriginsQueue().get(0) == DataSourceEnum.VIP) {
+            patterns = new RemotePatternOpt().getPatternsByLocale(language, region);
         } else {
             patterns = new LocalPatternOpt().getPatternsByLocale(ConstantsKeys.EN);
         }
