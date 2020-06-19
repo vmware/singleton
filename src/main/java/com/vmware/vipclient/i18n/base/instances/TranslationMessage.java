@@ -65,7 +65,7 @@ public class TranslationMessage implements Message {
      * 		<li>null</li>
      * </ul>
      */
-    private String getCachedMessage(String component, String key, Locale locale) {
+    private String getMessageFromCache(String component, String key, Locale locale) {
     	MessagesDTO dto = new MessagesDTO(component, key, null, locale.toLanguageTag(), this.cfg);
     	ComponentService cs = new ComponentService(dto);
     	return cs.getMessages().getCachedData().get(key);
@@ -89,8 +89,8 @@ public class TranslationMessage implements Message {
      */
     public String getMessage(final Locale locale, final String component, final String key, final Object... args) {
     	// Use source message if the message hasn't been collected/translated 
-    	String source = getCachedMessage(component, key, Locale.forLanguageTag(ConstantsKeys.SOURCE));
-    	String collectedSourceMsg = getCachedMessage(component, key, LocaleUtility.getSourceLocale());
+    	String source = getMessageFromCache(component, key, Locale.forLanguageTag(ConstantsKeys.SOURCE));
+    	String collectedSourceMsg = getMessageFromCache(component, key, LocaleUtility.getSourceLocale());
     	if (source!=null && !source.isEmpty() && !source.equals(collectedSourceMsg)) {
 			return FormatUtils.format(source, LocaleUtility.getSourceLocale(), args);
 		}
