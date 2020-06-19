@@ -18,25 +18,37 @@ namespace CSharp
     {
         
 
-        private IProductMessages PM;
-        private ILanguageMessages LM_source;
-        private ILanguageMessages LM_translation_en;
-        private ILanguageMessages LM_translation_cn;
+        private IReleaseMessages PM;
+        private ILocaleMessages LM_source;
+        private IExtension IE_source;
+        private ICacheManager EM;
+        private ICacheMessages IC_source;
+        private ILocaleMessages LM_translation_en;
+        private ILocaleMessages LM_translation_cn;
         private IComponentMessages CM_source;
         private IComponentMessages CM_translation_en;
         private IComponentMessages CM_translation_cn;
+        private ILocaleMessages LM_translation_la;
         private ICacheManager CManager;
+        private Dictionary<string, ILocaleMessages> AllTranslation;
 
 
 
         public GetComponentFromCache()
         {
-            UtilAllFalse.Init();         
+            UtilAllFalse.Init();
+            
             PM = UtilAllFalse.Messages();
-            LM_source = PM.GetAllSource();
-            CM_source = LM_source.GetComponentMessages("RESX");
-            LM_translation_en = PM.GetTranslation("en");
-            LM_translation_cn = PM.GetTranslation("zh-Hans");
+            // LM_source = PM.GetAllSource();
+            //AllTranslation = PM.GetLocaleMessages("de");
+            //CM_source = AllTranslation.GetComponentMessages("RESX");
+            //IE_source = UtilAllFalse.Extension();
+            // EM = IE_source.RegisterCacheManager();
+            //IC_source =
+            LM_translation_la = PM.GetLocaleMessages("latest");
+            CM_source = LM_translation_la.GetComponentMessages("RESX");
+            LM_translation_en = PM.GetLocaleMessages("en");
+            LM_translation_cn = PM.GetLocaleMessages("zh-Hans");
             CM_translation_en = LM_translation_en.GetComponentMessages("RESX");
             CM_translation_cn = LM_translation_cn.GetComponentMessages("RESX");
             //CManager = new SingletonCacheManager();
@@ -111,8 +123,8 @@ namespace CSharp
         [TestMethod]
         [Priority(0)]
         [TestCategory("")]
-        [Description("Add one string to cache from GetTranslation(), will get the language_en file content")]
-        public void ProductString_GetTranslationEN_addOneString()
+        [Description("Add one string to cache from GetLocaleMessages(), will get the language_en file content")]
+        public void ProductString_GetLocaleMessagesEN_addOneString()
         {
             int count = CM_translation_en.GetCount();
             Console.WriteLine(count);
@@ -142,8 +154,8 @@ namespace CSharp
         [TestMethod]
         [Priority(1)]
         [TestCategory("")]
-        [Description("Add multi string to cache from GetTranslation(), will get the language_en file content")]
-        public void ProductString_GetTranslationEN_addMultiString()
+        [Description("Add multi string to cache from GetLocaleMessages(), will get the language_en file content")]
+        public void ProductString_GetLocaleMessagesEN_addMultiString()
         {
             int count = CM_translation_en.GetCount();
             Console.WriteLine(count);
@@ -174,8 +186,8 @@ namespace CSharp
         [TestMethod]
         [Priority(0)]
         [TestCategory("")]
-        [Description("Add one string to cache from GetTranslation(), will get the language_cn file content")]
-        public void ProductString_GetTranslationCN_addOneString()
+        [Description("Add one string to cache from GetLocaleMessages(), will get the language_cn file content")]
+        public void ProductString_GetLocaleMessagesCN_addOneString()
         {
             int count = CM_translation_cn.GetCount();
             Console.WriteLine(count);
@@ -209,8 +221,8 @@ namespace CSharp
         [TestMethod]
         [Priority(1)]
         [TestCategory("")]
-        [Description("Add multi string to cache from GetTranslation(), will get the language_CN file content")]
-        public void ProductString_GetTranslationCN_addMultiString()
+        [Description("Add multi string to cache from GetLocaleMessages(), will get the language_CN file content")]
+        public void ProductString_GetLocaleMessagesCN_addMultiString()
         {
             int count = CM_translation_cn.GetCount();
             Console.WriteLine(count);

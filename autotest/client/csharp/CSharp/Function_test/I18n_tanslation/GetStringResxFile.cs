@@ -42,7 +42,7 @@ namespace CSharp
         [Priority(0)]
         [TestCategory("")]
         [Description("Get translation for existing language with 2 parameters")]
-        public void GetTranslation_ExistingLanguage_TwoParameters()
+        public void GetLocaleMessages2_ExistingLanguage_TwoParameters()
         {
             Translation.SetCurrentLocale("ja");
             String Currentlocale1 = Translation.GetCurrentLocale();
@@ -72,7 +72,7 @@ namespace CSharp
         [Priority(0)]
         [TestCategory("")]
         [Description("Get translation for existing language with Full parameters")]
-        public void GetTranslation_ExistingLanguage_FullParameters()
+        public void GetLocaleMessages2_ExistingLanguage_FullParameters()
         {
 
             Translation.SetCurrentLocale("ja");
@@ -101,7 +101,7 @@ namespace CSharp
         [Priority(0)]
         [TestCategory("")]
         [Description("Get translation for existing language with argument")]
-        public void GetTranslation_ExistingLanguage_Argument_Format()
+        public void GetLocaleMessages_ExistingLanguage_Argument_Format()
         {
 
             Translation.SetCurrentLocale("ja");
@@ -133,7 +133,7 @@ namespace CSharp
         //[Priority(1)]
         //[TestCategory("")]
         //[Description("Get translation for fallback language")]
-        //public void GetTranslationForFallbackLanguage_Bug_2280()
+        //public void GetLocaleMessagesForFallbackLanguage_Bug_2280()
         //{
         //    //Source = Translation.CreateSource("about", "about.message");
 
@@ -165,7 +165,7 @@ namespace CSharp
         [Priority(2)]
         [TestCategory("")]
         [Description("Get translation with nonexistent language")]
-        public void GetTranslation_nonexistentLanguage_da()
+        public void GetLocaleMessages_nonexistentLanguage_da()
         {
 
             String resultDA = Translation.GetString("da", SourceError);
@@ -184,7 +184,7 @@ namespace CSharp
         [Priority(2)]
         [TestCategory("")]
         [Description("Get translation with invalid language")]
-        public void GetTranslation_InvalidLanguage_abc()
+        public void GetLocaleMessages_InvalidLanguage_abc()
         {
 
             String resultABC = Translation.GetString("abc", SourceError);
@@ -204,7 +204,7 @@ namespace CSharp
         //[Priority(1)]
         //[TestCategory("")]
         //[Description("Get translation with upper case language")]
-        //public void GetTranslation_UpperCaseLanguage_FR_Bug_2287()
+        //public void GetLocaleMessages_UpperCaseLanguage_FR_Bug_2287()
         //{
 
         //    String resultFR = Translation.GetString("FR", SourceError);
@@ -224,7 +224,7 @@ namespace CSharp
         [Priority(2)]
         [TestCategory("")]
         [Description("Get translation with nonexistent component")]
-        public void GetTranslation_nonexistentComponent()
+        public void GetLocaleMessages_nonexistentComponent()
         {
 
             
@@ -240,7 +240,7 @@ namespace CSharp
         [Priority(2)]
         [TestCategory("")]
         [Description("Get translation for ISource without source param about specail string")]
-        public void GetTranslation_ExistingLanguage_SpecailString()
+        public void GetLocaleMessages_ExistingLanguage_SpecailString()
         {
 
             Translation.SetCurrentLocale("ja");

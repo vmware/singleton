@@ -14,7 +14,7 @@ namespace CSharp
     public class GetAndSetLocale
     {
 
-        private IProductMessages PM;
+        private IReleaseMessages PM;
         private ITranslation Translation;
         private IRelease Release;
         private ISource SourceError;

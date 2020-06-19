@@ -42,6 +42,16 @@ namespace CSharp
 
         }
 
+       // [TestMethod]
+       // [Priority(0)]
+       // [TestCategory("")]
+       // [Description("Source with required files: component and key")]
+       //public void Test_Supportlocal()
+       // {
+       //     string xxx=Translation.GetLocaleSupported("231231231");
+       //     Console.WriteLine(xxx);
+       // }
+
         [TestMethod]
         [Priority(1)]
         [TestCategory("")]
@@ -67,7 +77,7 @@ namespace CSharp
         }
 
         [TestMethod]
-        [Priority(1)]
+        [Priority(0)]
         [TestCategory("")]
         [Description("Source with required files: component,key,value,comment")]
         public void Source_component_key_comment()
@@ -81,11 +91,11 @@ namespace CSharp
             String key = SourceArgument.GetKey();
             Assert.AreEqual("RESX.ARGUMENT", key);
 
-            String source = SourceArgument.GetSource();
-            Assert.AreEqual(TestDataConstant.valueArg, source);
+            //String source = SourceArgument.GetSource();
+            //Assert.AreEqual(TestDataConstant.valueArg, source);
 
-            String comment = SourceArgument.GetComment();
-            Assert.AreEqual("argument verification", comment);
+            //String comment = SourceArgument.GetComment();
+            //Assert.AreEqual("argument verification", comment);
 
 
         }

@@ -5,7 +5,7 @@
 
 using System;
 using System.Threading;
-    using System.Diagnostics;
+using System.Diagnostics;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SingletonClient;
@@ -15,19 +15,23 @@ namespace CSharp
     [TestClass]
     public class GetStringFromCache
     {
-        
 
-        private IProductMessages PM;
-        private ILanguageMessages LM_source;
-        private ILanguageMessages LM_translation;
+
+        private IReleaseMessages PM;
+        private ILocaleMessages LM_source;
+        private ILocaleMessages LM_translation;
+        private ILocaleMessages LM_translation_la;
+        private IComponentMessages CM_source;
         private IExtension Ext;
         private ICacheManager CM;
 
         public GetStringFromCache()
         {
-            UtilForCache.Init();         
+            UtilForCache.Init();
             PM = UtilForCache.Messages();
-            LM_source = PM.GetAllSource();
+            LM_translation_la = PM.GetLocaleMessages("latest");
+
+            //LM_source = PM.GetAllSource();
 
             UtilForCache.Translation().GetString("zh-Hans", UtilForCache.Source("RESX", "RESX.ARGUMENT"));
 
@@ -35,18 +39,18 @@ namespace CSharp
 
 
         [TestMethod]
-        [Priority(0)]
+        [Priority(3)]
         [TestCategory("")]
         [Description("Get string from GetAllSource()")]
         public void ProductString_GetAllSource()
         {
-            
-            String result = LM_source.GetString("RESX", "RESX.ARGUMENT");
+
+            String result = LM_translation_la.GetString("RESX", "RESX.ARGUMENT");
             Console.WriteLine(result);
             Assert.AreEqual(TestDataConstant.valueArg, result);
 
 
-            
+
         }
 
         [TestMethod]
@@ -56,7 +60,7 @@ namespace CSharp
         public void ProductString_GetAllSource_nonexistent_component()
         {
 
-            String result = LM_source.GetString("abc", "RESX.ARGUMENT");
+            String result = LM_translation_la.GetString("abc", "RESX.ARGUMENT");
             Console.WriteLine(result);
             Assert.AreEqual(null, result);
 
@@ -71,7 +75,7 @@ namespace CSharp
         public void ProductString_GetAllSource_nonexistent_key()
         {
 
-            String result = LM_source.GetString("RESX", "abc");
+            String result = LM_translation_la.GetString("RESX", "abc");
             Console.WriteLine(result);
             Assert.AreEqual(null, result);
 
@@ -84,7 +88,7 @@ namespace CSharp
         public void ProductString_GetAllSource_NULL_bug_2295()
         {
 
-            String result = LM_source.GetString(null, null);
+            String result = LM_translation_la.GetString(null, null);
             Console.WriteLine(result);
             Assert.AreEqual(null, result);
 
@@ -97,7 +101,7 @@ namespace CSharp
         public void ProductString_GetAllSource_empty()
         {
 
-            String result = LM_source.GetString("", "");
+            String result = LM_translation_la.GetString("", "");
             Console.WriteLine(result);
             Assert.AreEqual(null, result);
 
@@ -110,9 +114,9 @@ namespace CSharp
         [Description("Get string1 in cache from GetTranslation() with existing locale")]
         public void ProductString1_InCache_GetTranslation_ExistingLocale()
         {
-           
-            
-            LM_translation = PM.GetTranslation("zh-Hans");
+
+
+            LM_translation = PM.GetLocaleMessages("zh-Hans");
             string result = LM_translation.GetString("RESX", "RESX.ARGUMENT");
             Console.WriteLine(result);
             Assert.AreEqual("将{0}添加到对象。", result);
@@ -150,7 +154,7 @@ namespace CSharp
         {
 
 
-            LM_translation = PM.GetTranslation("zh-Hans");
+            LM_translation = PM.GetLocaleMessages("zh-Hans");
             string result = LM_translation.GetString("RESX", "Resx-message.URL");
             Console.WriteLine(result);
             Assert.AreEqual(TestDataConstant.valueURLcn, result);
@@ -166,7 +170,7 @@ namespace CSharp
         {
 
 
-            LM_translation = PM.GetTranslation("ko");
+            LM_translation = PM.GetLocaleMessages("ko");
             string result = LM_translation.GetString("RESX", "RESX.ARGUMENT");
             Console.WriteLine(result);
             Assert.AreEqual(null, result);
@@ -180,7 +184,7 @@ namespace CSharp
         [Description("Get string in cache from GetTranslation() with nonexistent locale")]
         public void ProductString_GetTranslation_nonexistentLocale()
         {
-            LM_translation = PM.GetTranslation("da");
+            LM_translation = PM.GetLocaleMessages("da");
             string result = LM_translation.GetString("RESX", "RESX.ARGUMENT");
             Console.WriteLine(result);
             Assert.AreEqual(null, result);
@@ -194,7 +198,7 @@ namespace CSharp
         [Description("Get string in cache from GetTranslation() with empty locale")]
         public void ProductString_GetTranslation_EmptyLocale()
         {
-            LM_translation = PM.GetTranslation("");
+            LM_translation = PM.GetLocaleMessages("");
             string result = LM_translation.GetString("RESX", "RESX.ARGUMENT");
             Console.WriteLine(result);
             Assert.AreEqual(null, result);
@@ -208,14 +212,14 @@ namespace CSharp
         [Description("Get string in cache from GetTranslation() with null locale")]
         public void ProductString_GetTranslation_NullLocale_bug_2294()
         {
-            LM_translation = PM.GetTranslation(null);
+            LM_translation = PM.GetLocaleMessages(null);
             Assert.AreEqual(null, LM_translation);
 
             try
             {
                 string result = LM_translation.GetString("RESX", "RESX.ARGUMENT");
             }
-            catch(System.NullReferenceException e)
+            catch (System.NullReferenceException e)
             {
                 Console.WriteLine("Can't get string if LM translation is null.");
             }
@@ -224,7 +228,7 @@ namespace CSharp
             //Assert.AreEqual(null, result);
         }
 
-        
+
 
 
     }

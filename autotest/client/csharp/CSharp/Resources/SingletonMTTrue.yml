@@ -1,33 +1,10 @@
-﻿# product name
-productName: CSharpClient
+﻿online_service_url: http://localhost:8091/singleton/CSharpClient/2.2/
 
-# product version
-version: 2.2
+offline_resources_base_url: file:///d:/l10nfly/CSharpClient/2.2
 
-singletonServer: http://localhost:8091
-pseudo: false
-machineTranslation: true
-collectSource: false
+default_resource_format: bundle, external
 
-cacheType: default
-accessServiceType: default
+load_on_startup: true
 
-logger: default
-logType: Debug
-
-tryDelay: 10
-cacheExpiredTime: 60000
-
-components: 
-  - component : DefaultComponent
-    resource: 
-      - name: DefaultComponent      
-  - component : contact
-    resource: 
-      - name: contact
-  - component : about
-    resource: 
-      - name: about
-  - component : RESX
-    resource: 
-      - name: (source.ResourceResx)
+cache_expire: 5
+try_delay: 2

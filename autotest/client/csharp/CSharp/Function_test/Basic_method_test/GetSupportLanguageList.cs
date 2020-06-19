@@ -16,7 +16,7 @@ namespace CSharp
     {
         
 
-        private IProductMessages PM;
+        private IReleaseMessages PM;
 
         public GetSupportLanguageList()
         {

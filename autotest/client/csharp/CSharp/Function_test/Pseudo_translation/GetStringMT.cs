@@ -45,7 +45,7 @@ namespace CSharp
         }
 
         [TestMethod]
-        [Priority(0)]
+        [Priority(3)]
         [TestCategory("")]
         [Description("Get MT translation for language(en,fr) with 2 parameters")]
         public void Get_MT_ExistingLanguage_TwoParameters()
@@ -82,7 +82,7 @@ namespace CSharp
         }
 
         [TestMethod]
-        [Priority(1)]
+        [Priority(4)]
         [TestCategory("")]
         [Description("Get translation for language(ko,da) with Full parameters")]
         public void Get_MT_ExistingLanguage_FullParameters()
@@ -123,7 +123,7 @@ namespace CSharp
         //}
 
         [TestMethod]
-        [Priority(2)]
+        [Priority(4)]
         [TestCategory("")]
         [Description("Get translation for invalid language(abc) with Full parameters")]
         public void Get_MT_InvalidLanguage_FullParameters()
@@ -141,7 +141,7 @@ namespace CSharp
         }
 
         [TestMethod]
-        [Priority(2)]
+        [Priority(4)]
         [TestCategory("")]
         [Description("Get translation for nonexistent language(da) with Full parameters")]
         public void Get_MT_nonexistentLanguage_FullParameters()
@@ -159,7 +159,7 @@ namespace CSharp
         }
 
         [TestMethod]
-        [Priority(2)]
+        [Priority(4)]
         [TestCategory("")]
         [Description("Get translation for language(empty,null) with Full parameters")]
         public void Get_MT_nulloremptyLanguage_FullParameters()
@@ -185,7 +185,7 @@ namespace CSharp
         }
 
         [TestMethod]
-        [Priority(0)]
+        [Priority(3)]
         [TestCategory("")]
         [Description("Source Collection_One string_Full Parameters")]
         public void SourceCollection_2_OneString_GetString_FullParameters()
@@ -224,7 +224,7 @@ namespace CSharp
 
 
         [TestMethod]
-        [Priority(1)]
+        [Priority(4)]
         [TestCategory("")]
         [Description("Get translation for existing language with argument")]
         public void Get_MT_ExistingLanguage_Argument_Format()

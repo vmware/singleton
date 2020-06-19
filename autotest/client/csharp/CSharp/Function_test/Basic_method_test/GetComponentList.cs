@@ -15,7 +15,7 @@ namespace CSharp
     {
         
 
-        private IProductMessages PM;
+        private IReleaseMessages PM;
     
 
         public GetComponentList()
