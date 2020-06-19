@@ -11,24 +11,24 @@ using SingletonClient;
 namespace CSharp
 {
     [TestClass]
-    public class GetAllTranslationFromCache
+    public class GetAllLocaleMessagesFromCache
     {
         
 
-        private IProductMessages PM;
-        private ILanguageMessages LM_Source;
-        private ILanguageMessages LM_Translation;
-        private Dictionary<string, ILanguageMessages> AllTranslation;
+        private IReleaseMessages PM;
+        private ILocaleMessages LM_Source;
+        private ILocaleMessages LM_Translation;
+        private Dictionary<string, ILocaleMessages> AllTranslation;
 
-        public GetAllTranslationFromCache()
+        public GetAllLocaleMessagesFromCache()
         {
             //this method is get all translation from ILanguageMessageCache, if there is nothing in cache, nothing will be get.
             UtilAllFalse.Init();         
             PM = UtilAllFalse.Messages();
-            LM_Source = PM.GetAllSource();
+            //LM_Source = PM.GetAllSource();
 
             UtilAllFalse.Translation().GetString("de", UtilAllFalse.Source("about", "about.message"));
-            AllTranslation = PM.GetAllTranslation();
+            AllTranslation = PM.GetAllLocaleMessages();
 
         }
 
@@ -41,7 +41,7 @@ namespace CSharp
         {
 
             
-            Dictionary<string, ILanguageMessages>.KeyCollection keys = AllTranslation.Keys;
+            Dictionary<string, ILocaleMessages>.KeyCollection keys = AllTranslation.Keys;
             foreach (string key in keys)
             {
                 Console.WriteLine("Key: {0}", key);
@@ -61,7 +61,7 @@ namespace CSharp
         public void GetComponentInCache()
         {
 
-            //IProductMessage().GetAllTranslation()
+            //IProductMessage().GetAllLocaleMessages()
             String ComponentInCache = Common.ParseListStringContent(AllTranslation["de"].GetComponentList());
             Console.WriteLine("component list: {0} ", ComponentInCache);
             Assert.AreEqual("about", ComponentInCache);
@@ -74,7 +74,7 @@ namespace CSharp
         public void GetLocaleTranslationInCache()
         {
 
-            String translationInCache = PM.GetTranslation("de").GetString("about", "about.message");
+            String translationInCache = PM.GetLocaleMessages("de").GetString("about", "about.message");
             Console.WriteLine("DE translation for about.message : {0} ", translationInCache);
             Assert.AreEqual("Ihrer Bewerbungs Beschreibung Seite.", translationInCache);
 
@@ -87,7 +87,7 @@ namespace CSharp
         public void GetLocaleTranslationNotInCache()
         {
 
-            String translationNotInCache = PM.GetTranslation("fr").GetString("about", "about.message");
+            String translationNotInCache = PM.GetLocaleMessages("fr").GetString("about", "about.message");
             Console.WriteLine("FR translation for about.message : {0} ", translationNotInCache);
             Assert.AreEqual(null, translationNotInCache);
         }

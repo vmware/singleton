@@ -43,7 +43,7 @@ namespace CSharp
         }
 
         [TestMethod]
-        [Priority(0)]
+        [Priority(3)]
         [TestCategory("")]
         [Description("Get MT translation for language(en,es) with 2 parameters")]
         public void GetMT_ExistingLanguage_TwoParameters()
@@ -79,7 +79,7 @@ namespace CSharp
         }
 
         [TestMethod]
-        [Priority(0)]
+        [Priority(3)]
         [TestCategory("")]
         [Description("Get translation for language(ko,da) with Full parameters")]
         public void GetMT_ExistingLanguage_FullParameters()
@@ -118,7 +118,7 @@ namespace CSharp
 
 
         [TestMethod]
-        [Priority(0)]
+        [Priority(3)]
         [TestCategory("")]
         [Description("Get translation for existing language with argument")]
         public void GetMT_ExistingLanguage_Argument_Format()
@@ -140,7 +140,7 @@ namespace CSharp
         }
 
         [TestMethod]
-        [Priority(2)]
+        [Priority(4)]
         [TestCategory("")]
         [Description("Get translation for invalid language(abc) with Full parameters")]
         public void GetMT_InvalidLanguage_FullParameters()
@@ -160,7 +160,7 @@ namespace CSharp
 
 
         [TestMethod]
-        [Priority(2)]
+        [Priority(4)]
         [TestCategory("")]
         [Description("Get translation for nonexistent language(abc) with Full parameters")]
         public void GetMT_nonexistentLanguage_FullParameters()

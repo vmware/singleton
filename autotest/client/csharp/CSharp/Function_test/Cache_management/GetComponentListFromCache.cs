@@ -15,9 +15,9 @@ namespace CSharp
     {
         
 
-        private IProductMessages PM;
-        private ILanguageMessages LM_source;
-        private ILanguageMessages LM_translation;
+        private IReleaseMessages PM;
+        private ILocaleMessages LM_source;
+        private ILocaleMessages LM_translation;
         private IExtension Ext;
         private ICacheManager CM;
 
@@ -25,7 +25,7 @@ namespace CSharp
         {
             UtilAllFalse.Init();         
             PM = UtilAllFalse.Messages();
-            LM_source = PM.GetAllSource();
+            //LM_source = PM.GetAllSource();
 
             UtilAllFalse.Translation().GetString("zh-Hans", UtilAllFalse.Source("about", "about.message"));
 
@@ -33,7 +33,7 @@ namespace CSharp
 
 
         [TestMethod]
-        [Priority(0)]
+        [Priority(3)]
         [TestCategory("")]
         [Description("Get component list from GetAllSource()")]
         public void ProductComponentList_GetAllSource()
@@ -50,10 +50,10 @@ namespace CSharp
         [TestMethod]
         [Priority(0)]
         [TestCategory("")]
-        [Description("Get component list from GetTranslation() with existing locale")]
-        public void ProductComponentList_GetTranslation_ExistingLocale()
+        [Description("Get component list from GetLocaleMessages() with existing locale")]
+        public void ProductComponentList_GetLocaleMessages_ExistingLocale()
         {
-            LM_translation = PM.GetTranslation("zh-Hans");
+            LM_translation = PM.GetLocaleMessages("zh-Hans");
             List<string> ComponentList = LM_translation.GetComponentList();
             String result = Common.ParseListStringContent(ComponentList);
             Console.WriteLine(result);
@@ -66,10 +66,10 @@ namespace CSharp
         [TestMethod]
         [Priority(1)]
         [TestCategory("")]
-        [Description("Get component list from GetTranslation() with nonexistent locale")]
-        public void ProductComponentList_GetTranslation_nonexistentLocale()
+        [Description("Get component list from GetLocaleMessages() with nonexistent locale")]
+        public void ProductComponentList_GetLocaleMessages_nonexistentLocale()
         {
-            LM_translation = PM.GetTranslation("da");
+            LM_translation = PM.GetLocaleMessages("da");
             List<string> ComponentList = LM_translation.GetComponentList();
             String result = Common.ParseListStringContent(ComponentList);
             Console.WriteLine(result);
@@ -81,10 +81,10 @@ namespace CSharp
         [TestMethod]
         [Priority(1)]
         [TestCategory("")]
-        [Description("Get component list from GetTranslation() with empty locale")]
-        public void ProductComponentList_GetTranslation_EmptyLocale()
+        [Description("Get component list from GetLocaleMessages() with empty locale")]
+        public void ProductComponentList_GetLocaleMessages_EmptyLocale()
         {
-            LM_translation = PM.GetTranslation("");
+            LM_translation = PM.GetLocaleMessages("");
             List<string> ComponentList = LM_translation.GetComponentList();
             String result = Common.ParseListStringContent(ComponentList);
             Console.WriteLine(result);
@@ -96,10 +96,10 @@ namespace CSharp
         [TestMethod]
         [Priority(1)]
         [TestCategory("")]
-        [Description("Can't get component list from GetTranslation() with null locale")]
-        public void ProductComponentList_GetTranslation_NullLocale_bug_2294()
+        [Description("Can't get component list from GetLocaleMessages() with null locale")]
+        public void ProductComponentList_GetLocaleMessages_NullLocale_bug_2294()
         {
-            LM_translation = PM.GetTranslation(null);
+            LM_translation = PM.GetLocaleMessages(null);
             Assert.AreEqual(null, LM_translation);
             
 

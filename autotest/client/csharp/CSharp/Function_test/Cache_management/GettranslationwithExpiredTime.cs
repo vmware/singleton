@@ -14,10 +14,10 @@ using System.Diagnostics;
 namespace CSharp
 {
     [TestClass]
-    public class GettranslationfromcachewithExpiredTime
+    public class GetLocaleMessagesfromcachewithExpiredTime
     {
 
-        private IProductMessages PM;
+        private IReleaseMessages PM;
         private ITranslation Translation;
         private IRelease Release;
         private ISource SourceAbout;
@@ -28,7 +28,7 @@ namespace CSharp
         private String[] args;
 
 
-        public GettranslationfromcachewithExpiredTime()
+        public GetLocaleMessagesfromcachewithExpiredTime()
         {
 
             UtilForCacheExpired.Init();
@@ -287,7 +287,7 @@ namespace CSharp
         [Priority(1)]
         [TestCategory("")]
         [Description("new cache is downloaded when it is expired and service has updates")]
-        public void GetTranslation_ExistingLanguage_TwoParameters_cacheexpiration()
+        public void GetLocaleMessages_ExistingLanguage_TwoParameters_cacheexpiration()
         {
             String result1 = Translation.GetString("ja", SourceAbout);
             Console.WriteLine("ja transaltion1: {0}", result1);
@@ -350,7 +350,7 @@ namespace CSharp
         [Priority(1)]
         [TestCategory("")]
         [Description("cache is persisted when it isn't expired")]
-        public void GetTranslation_ExistingLanguage_TwoParameters_cachenotexpiration()
+        public void GetLocaleMessages_ExistingLanguage_TwoParameters_cachenotexpiration()
         {
             String result1 = Translation.GetString("zh-Hant", SourceAbout);
             Console.WriteLine("zh-Hant transaltion1: {0}", result1);
@@ -413,7 +413,7 @@ namespace CSharp
         [Priority(1)]
         [TestCategory("")]
         [Description("new cache is downloaded when it is expired and service has updates")]
-        public void GetTranslation_ExistingLanguage_FullParameters_cacheexpiration()
+        public void GetLocaleMessages_ExistingLanguage_FullParameters_cacheexpiration()
         {
 
             Translation.SetCurrentLocale("de");
@@ -484,7 +484,7 @@ namespace CSharp
         [Priority(1)]
         [TestCategory("")]
         [Description("cache is persisted when it isn't expired")]
-        public void GetTranslation_ExistingLanguage_FullParameters_cachenotexpiration()
+        public void GetLocaleMessages_ExistingLanguage_FullParameters_cachenotexpiration()
         {
 
             Translation.SetCurrentLocale("fr");
@@ -556,7 +556,7 @@ namespace CSharp
         [Priority(1)]
         [TestCategory("")]
         [Description("new cache is downloaded when it is expired and service has updates")]
-        public void GetTranslation_ExistingLanguage_Argument_Format_cacheexpiration()
+        public void GetLocaleMessages_ExistingLanguage_Argument_Format_cacheexpiration()
         {
 
             Translation.SetCurrentLocale("zh-Hans");
@@ -633,7 +633,7 @@ namespace CSharp
         [Priority(1)]
         [TestCategory("")]
         [Description("get translation with nonexistentlanguale and update whith expiration")]
-        public void GetTranslation_nonexistentLanguage_Argument_Format_cacheexpiration()
+        public void GetLocaleMessages_nonexistentLanguage_Argument_Format_cacheexpiration()
         {
 
             Translation.SetCurrentLocale("tr");
@@ -690,7 +690,7 @@ namespace CSharp
         [Priority(1)]
         [TestCategory("")]
         [Description("cache is persisted when it isn't expired")]
-        public void GetTranslation_ExistingLanguage_Argument_Format_cachenotexpiration()
+        public void GetLocaleMessages_ExistingLanguage_Argument_Format_cachenotexpiration()
         {
 
             Translation.SetCurrentLocale("ko");
@@ -767,7 +767,7 @@ namespace CSharp
         //[Priority(1)]
         //[TestCategory("")]
         //[Description("Get translation for fallback language")]
-        //public void GetTranslationForFallbackLanguage_Bug_2280()
+        //public void GetLocaleMessagesForFallbackLanguage_Bug_2280()
         //{
         //    //Source = Translation.CreateSource("about", "about.message");
 
@@ -799,7 +799,7 @@ namespace CSharp
         //[Priority(1)]
         //[TestCategory("")]
         //[Description("Get translation with upper case language")]
-        //public void GetTranslation_UpperCaseLanguage_FR_Bug_2287()
+        //public void GetLocaleMessages_UpperCaseLanguage_FR_Bug_2287()
         //{
 
         //    String resultFR = Translation.GetString("FR", SourceAbout);
@@ -824,7 +824,7 @@ namespace CSharp
         //[Priority(1)]
         //[TestCategory("")]
         //[Description("Get translation for null language")]
-        //public void GetTranslation_Null_Language()
+        //public void GetLocaleMessages_Null_Language()
         //{
 
 
@@ -845,7 +845,7 @@ namespace CSharp
         //[Priority(2)]
         //[TestCategory("")]
         //[Description("Get translation for ISource without source param about specail string")]
-        //public void GetTranslation_ExistingLanguage_SpecailString_Bug_2257()
+        //public void GetLocaleMessages_ExistingLanguage_SpecailString_Bug_2257()
         //{
 
         //    Translation.SetCurrentLocale("zh-Hans");

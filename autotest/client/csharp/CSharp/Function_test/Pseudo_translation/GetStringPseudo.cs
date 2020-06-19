@@ -47,7 +47,7 @@ namespace CSharp
         }
 
         [TestMethod]
-        [Priority(0)]
+        [Priority(3)]
         [TestCategory("")]
         [Description("Get pseudo translation for language(en,fr) with 2 parameters")]
         public void GetPseudo_ExistingLanguage_TwoParameters()
@@ -83,7 +83,7 @@ namespace CSharp
         }
 
         [TestMethod]
-        [Priority(0)]
+        [Priority(3)]
         [TestCategory("")]
         [Description("Get translation for language with Full parameters")]
         public void GetTranslation_ExistingLanguage_FullParameters()
@@ -115,7 +115,7 @@ namespace CSharp
         }
 
         [TestMethod]
-        [Priority(0)]
+        [Priority(3)]
         [TestCategory("")]
         [Description("Get translation for nonexistentlanguage with Full parameters")]
         public void GetTranslation_nonexistentLanguage_FullParameters()
@@ -136,7 +136,7 @@ namespace CSharp
         }
 
         [TestMethod]
-        [Priority(0)]
+        [Priority(3)]
         [TestCategory("")]
         [Description("Get translation for invaildlanguage with Full parameters")]
         public void GetTranslation_invaildLanguage_FullParameters()
@@ -158,7 +158,7 @@ namespace CSharp
 
 
         [TestMethod]
-        [Priority(1)]
+        [Priority(4)]
         [TestCategory("")]
         [Description("Get translation for existing language with argument")]
         public void GetTranslation_ExistingLanguage_Argument_Format()

@@ -47,7 +47,7 @@ namespace CSharp
             return rel;
         }
 
-        public static IProductMessages Messages()
+        public static IReleaseMessages Messages()
         {
             return rel.GetMessages();
         }

@@ -45,7 +45,7 @@ namespace CSharp
         [Priority(0)]
         [TestCategory("")]
         [Description("Get translation for existing language with 2 parameters")]
-        public void GetTranslation_ExistingLanguage_TwoParameters()
+        public void GetLocaleMessages_ExistingLanguage_TwoParameters()
         {
             Translation.SetCurrentLocale("zh-Hans");
             String Currentlocale1 = Translation.GetCurrentLocale();
@@ -77,7 +77,7 @@ namespace CSharp
         [Priority(0)]
         [TestCategory("")]
         [Description("Get translation for existing language with Full parameters")]
-        public void GetTranslation_ExistingLanguage_FullParameters()
+        public void GetLocaleMessages_ExistingLanguage_FullParameters()
         {
 
             Translation.SetCurrentLocale("zh-Hans");
@@ -106,7 +106,7 @@ namespace CSharp
         [Priority(1)]
         [TestCategory("")]
         [Description("Get translation for existing language with argument")]
-        public void GetTranslation_ExistingLanguage_Argument_Format()
+        public void GetLocaleMessages_ExistingLanguage_Argument_Format()
         {
 
             Translation.SetCurrentLocale("zh-Hans");
@@ -139,7 +139,7 @@ namespace CSharp
         [Priority(2)]
         [TestCategory("")]
         [Description("Get translation for existing language with argument object null")]
-        public void GetTranslation_ExistingLanguage_Argument_Format_objectnull()
+        public void GetLocaleMessages_ExistingLanguage_Argument_Format_objectnull()
         {
 
             //Translation.SetCurrentLocale("en");
@@ -188,7 +188,7 @@ namespace CSharp
         [Priority(1)]
         [TestCategory("")]
         [Description("1.get translation by Argument_Format with parameter object Index greater than parameter")]
-        public void GetTranslation_ExistingLanguage_Argument_Format_objectIndex_greater_parameter()
+        public void GetLocaleMessages_ExistingLanguage_Argument_Format_objectIndex_greater_parameter()
         {
 
             Translation.SetCurrentLocale("zh-Hans");
@@ -210,7 +210,7 @@ namespace CSharp
         //[Priority(1)]
         //[TestCategory("")]
         //[Description("Get translation for fallback language")]
-        //public void GetTranslationForFallbackLanguage_Bug_2280()
+        //public void GetLocaleMessagesForFallbackLanguage_Bug_2280()
         //{
         //    //Source = Translation.CreateSource("about", "about.message");
 
@@ -242,7 +242,7 @@ namespace CSharp
             //[Priority(1)]
             //[TestCategory("")]
             //[Description("Get translation with upper case language")]
-            //public void GetTranslation_UpperCaseLanguage_FR_Bug_2287()
+            //public void GetLocaleMessages_UpperCaseLanguage_FR_Bug_2287()
             //{
 
             //    String resultFR = Translation.GetString("FR", SourceAbout);
@@ -263,7 +263,7 @@ namespace CSharp
         [Priority(1)]
         [TestCategory("")]
         [Description("Get translation for nonexistent language")]
-        public void GetTranslation_nonexistent_Language()
+        public void GetLocaleMessages_nonexistent_Language()
         {
             
 
@@ -282,7 +282,7 @@ namespace CSharp
         [Priority(1)]
         [TestCategory("")]
         [Description("Get translation for invalid language")]
-        public void GetTranslation_Invaild_Language()
+        public void GetLocaleMessages_Invaild_Language()
         {
 
 
@@ -303,7 +303,7 @@ namespace CSharp
         [Priority(1)]
         [TestCategory("")]
         [Description("Get translation for empty language")]
-        public void GetTranslation_Empty_Language()
+        public void GetLocaleMessages_Empty_Language()
         {
 
 
@@ -322,7 +322,7 @@ namespace CSharp
         //[Priority(1)]
         //[TestCategory("")]
         //[Description("Get translation for null language")]
-        //public void GetTranslation_Null_Language()
+        //public void GetLocaleMessages_Null_Language()
         //{
 
 
@@ -341,7 +341,7 @@ namespace CSharp
         [Priority(1)]
         [TestCategory("")]
         [Description("Get translation for null key")]
-        public void GetTranslation_Null_key_bug_2307()
+        public void GetLocaleMessages_Null_key_bug_2307()
         {
 
 
@@ -360,7 +360,7 @@ namespace CSharp
         [Priority(1)]
         [TestCategory("")]
         [Description("Get translation for nonexistent source")]
-        public void GetTranslation_nonexistentsource()
+        public void GetLocaleMessages_nonexistentsource()
         {
 
 
@@ -380,7 +380,7 @@ namespace CSharp
         [Priority(1)]
         [TestCategory("")]
         [Description("Get translatio for nonexistent key and no value")]
-        public void GetTranslation_nonexistentkey()
+        public void GetLocaleMessages_nonexistentkey()
         {
 
 
@@ -403,7 +403,7 @@ namespace CSharp
         [Priority(2)]
         [TestCategory("")]
         [Description("Get translation for ISource without source param about specail string")]
-        public void GetTranslation_ExistingLanguage_SpecailString_Bug_2257()
+        public void GetLocaleMessages_ExistingLanguage_SpecailString_Bug_2257()
         {
 
             Translation.SetCurrentLocale("zh-Hans");

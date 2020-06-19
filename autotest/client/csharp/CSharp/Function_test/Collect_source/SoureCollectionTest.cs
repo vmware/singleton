@@ -31,7 +31,7 @@ namespace CSharp
         }
 
         [TestMethod]
-        [Priority(0)]
+        [Priority(3)]
         [TestCategory("")]
         [Description("Source Collection_One string_ISource")]
         public void SourceCollection_1_OneString_GetString_ISource()
@@ -75,7 +75,7 @@ namespace CSharp
         }
 
         [TestMethod]
-        [Priority(0)]
+        [Priority(3)]
         [TestCategory("")]
         [Description("Source Collection_One string_Full Parameters")]
         public void SourceCollection_2_OneString_GetString_FullParameters()
