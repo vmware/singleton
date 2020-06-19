@@ -85,7 +85,6 @@ public class CacheServiceTest extends BaseTestClass {
     @Test
     public void testNotExpired() {
     	long cacheExpiredTimeOrig = cfg.getCacheExpiredTime();
-    	cfg.setCacheExpiredTime(0l);
     	
     	cfg.initializeVIPService();
         

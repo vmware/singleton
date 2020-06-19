@@ -25,10 +25,9 @@ public class TranslationDemo {
 	
 		getMessage();
 		getMessageLocaleNotSupported();
-		getMessageLocaleNotSupported();
 		getMessageNewKeyInSource();
 		getMessageNewlyUpdatedSourceMsg();
-		getMessageKeyNotFoundProdModeFalse();
+		getMessageKeyNotFound();
 		
 	}
 	
@@ -64,20 +63,20 @@ public class TranslationDemo {
 	
 	/**
 	 * Demonstrates how getting a message in the default locale 
-	 * if the requested locale is not supported and prodMode = true  
+	 * if the requested locale is not supported  
 	 * Note: Service call must fail for the offline mode to kick in
 	 */
 	private static void getMessageLocaleNotSupported() {
-		System.out.println(">>>>>> TranslationDemo.getMessageLocaleNotSupportedProdMode start");
+		System.out.println(">>>>>> TranslationDemo.getMessageLocaleNotSupported start");
 		// Chinese is supported neither in online or offline mode. 
 		// See offline mode supported languages inside the offlineResourcesBaseUrl path 
 		// The offlineResourcesBaseUrl path is configured in sampleconfig.properties
-		String chMessage = t.getMessage(Locale.CHINESE, component, key);
+		String chMessage = t.getMessage(Locale.KOREAN, component, key);
 		
 		// Use default locale instead. The default locale is configured in sampleconfig.properties
 		assertEquals("Nom d'utilisateur", chMessage); 
 		
-		System.out.println(">>>>>> TranslationDemo.getMessageLocaleNotSupportedProdMode success");
+		System.out.println(">>>>>> TranslationDemo.getMessageLocaleNotSupported success");
 	}
 	
 	/**
@@ -109,7 +108,7 @@ public class TranslationDemo {
 		System.out.println(">>>>>> TranslationDemo.getMessageNewlyUpdatedSourceMsg success");
 	}
 	
-	private static void getMessageKeyNotFoundProdModeFalse() {
+	private static void getMessageKeyNotFound() {
 		System.out.println(">>>>>> TranslationDemo.getMessageKeyNotFound start");
 		
 		VIPJavaClientException e = null;
