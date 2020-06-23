@@ -18,6 +18,7 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.l2.text.MessageFormat;
+import com.vmware.vipclient.i18n.util.FormatUtils;
 
 public class MessageFormatTest extends BaseTestClass {
 
@@ -98,5 +99,18 @@ public class MessageFormatTest extends BaseTestClass {
                 msgFmt4.format(new Object[] { 101 }, new StringBuilder(), new FieldPosition(0)).toString());
         Assert.assertEquals("102 psa",
                 msgFmt4.format(new Object[] { 102 }, new StringBuilder(), new FieldPosition(0)).toString());
+    }
+
+    public void testNamedArguments() {
+        String msg = "{a} - {b} of {c} customers";
+
+        Map<String, Object> msgargs = new HashMap<>();
+        msgargs.put("a", 1);
+        msgargs.put("b", 5);
+        msgargs.put("c", 10);
+
+        String formatted = FormatUtils.formatMsg(msg, Locale.ENGLISH, msgargs);
+
+        Assert.assertEquals("1 - 5 of 10 customers", formatted);
     }
 }
