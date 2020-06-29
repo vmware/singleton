@@ -334,7 +334,7 @@ public class TranslationMessage implements Message {
                 CacheService cacheService = new CacheService(dto);
                 cacheService.addCacheOfComponent(cacheItem);
             }
-    	}
+        }
 
     	return cacheItem.getCachedData();
     }
