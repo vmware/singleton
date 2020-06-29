@@ -330,13 +330,13 @@ public class TranslationMessage implements Message {
     	    cacheItem = new ComponentService(fallbackLocaleDTO).getMessages();
 
     	    // Cache a reference to the MessageCacheItem of the fallback locale
-            // if (!cacheItem.getCachedData().isEmpty()) {
-				CacheService cacheService = new CacheService(dto);
-				cacheService.addCacheOfComponent(cacheItem);
-			}
-		}
-    	
-        return cacheItem.getCachedData();
+            if (!cacheItem.getCachedData().isEmpty()) {
+                CacheService cacheService = new CacheService(dto);
+                cacheService.addCacheOfComponent(cacheItem);
+            }
+    	}
+
+    	return cacheItem.getCachedData();
     }
 
     /**
