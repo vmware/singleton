@@ -322,14 +322,14 @@ public class TranslationMessage implements Message {
         MessagesDTO dto = new MessagesDTO(component, null, null, locale.toLanguageTag(), this.cfg);
         MessageCacheItem cacheItem = new ComponentService(dto).getMessages();
 
-    	// While failed to get MessageCacheItem, use MessageCacheItem of the next fallback locale. 
-    	Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
-    	while (cacheItem.getCachedData().isEmpty() && fallbackLocalesIter.hasNext()) {
-    	    Locale fallback = fallbackLocalesIter.next();
-    	    MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), dto.getKey(), dto.getSource(), fallback.toLanguageTag(), null);
-    	    cacheItem = new ComponentService(fallbackLocaleDTO).getMessages();
+        // While failed to get MessageCacheItem, use MessageCacheItem of the next fallback locale.
+        Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
+        while (cacheItem.getCachedData().isEmpty() && fallbackLocalesIter.hasNext()) {
+            Locale fallback = fallbackLocalesIter.next();
+            MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), dto.getKey(), dto.getSource(), fallback.toLanguageTag(), null);
+            cacheItem = new ComponentService(fallbackLocaleDTO).getMessages();
 
-    	    // Cache a reference to the MessageCacheItem of the fallback locale
+            // Cache a reference to the MessageCacheItem of the fallback locale
             if (!cacheItem.getCachedData().isEmpty()) {
                 CacheService cacheService = new CacheService(dto);
                 cacheService.addCacheOfComponent(cacheItem);
