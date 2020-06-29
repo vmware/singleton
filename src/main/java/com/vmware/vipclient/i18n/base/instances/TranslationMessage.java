@@ -336,7 +336,7 @@ public class TranslationMessage implements Message {
             }
         }
 
-    	return cacheItem.getCachedData();
+        return cacheItem.getCachedData();
     }
 
     /**
