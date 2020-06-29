@@ -220,7 +220,7 @@ public class TranslationMessageTest extends BaseTestClass {
         Assert.assertEquals(message_zh_CN, retMap5.get(key));
 
         Map<String, String> retMap6 = translation.getMessages(Locale.forLanguageTag("zh-Hant-TW"), component);
-        Assert.assertEquals(message_zh_TW, retMap6.get(key));  
+        Assert.assertEquals(message_zh_TW, retMap6.get(key));
     }
     
     @Test

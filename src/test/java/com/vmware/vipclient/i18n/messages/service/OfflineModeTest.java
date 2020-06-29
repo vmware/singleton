@@ -122,7 +122,7 @@ public class OfflineModeTest extends BaseTestClass {
     }
     
     @Test
-    public void testGetMsgsFailedProdModeUseDefault() { 
+    public void testGetMsgsFailedUseDefault() {
     	// Offline mode only; target locale bundle does not exist
     	String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
     	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
