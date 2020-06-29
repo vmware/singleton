@@ -320,7 +320,7 @@ public class TranslationMessage implements Message {
      */
     public Map<String, String> getMessages(final Locale locale, final String component) {
         MessagesDTO dto = new MessagesDTO(component, null, null, locale.toLanguageTag(), this.cfg);
-    	MessageCacheItem cacheItem = new ComponentService(dto).getMessages();
+        MessageCacheItem cacheItem = new ComponentService(dto).getMessages();
 
     	// While failed to get MessageCacheItem, use MessageCacheItem of the next fallback locale. 
     	Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
