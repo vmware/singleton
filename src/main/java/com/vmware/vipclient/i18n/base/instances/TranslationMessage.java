@@ -326,12 +326,11 @@ public class TranslationMessage implements Message {
     	Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
     	while (cacheItem.getCachedData().isEmpty() && fallbackLocalesIter.hasNext()) {
     	    Locale fallback = fallbackLocalesIter.next();
-    		MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), 
-					dto.getKey(), dto.getSource(), fallback.toLanguageTag(), null);
-			cacheItem = new ComponentService(fallbackLocaleDTO).getMessages();
-			
-			// Cache a reference to the MessageCacheItem of the fallback locale 
-			if (!cacheItem.getCachedData().isEmpty()) {
+    	    MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), dto.getKey(), dto.getSource(), fallback.toLanguageTag(), null);
+    	    cacheItem = new ComponentService(fallbackLocaleDTO).getMessages();
+
+    	    // Cache a reference to the MessageCacheItem of the fallback locale
+            // if (!cacheItem.getCachedData().isEmpty()) {
 				CacheService cacheService = new CacheService(dto);
 				cacheService.addCacheOfComponent(cacheItem);
 			}
