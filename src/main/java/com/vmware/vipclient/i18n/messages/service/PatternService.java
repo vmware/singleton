@@ -4,6 +4,7 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
+import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.messages.api.opt.local.LocalPatternOpt;
@@ -13,6 +14,9 @@ import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localeAliasesMap;
+import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePathMap;
 
 /**
  * The class represents date formatting
@@ -70,7 +74,8 @@ public class PatternService {
             if (VIPCfg.getInstance().getMsgOriginsQueue().get(0) == DataSourceEnum.VIP) {
                 patterns = new RemotePatternOpt().getPatternsByLocale(locale);
             } else {
-                patterns = new LocalPatternOpt().getPatternsByLocale(locale);
+                String newLocale = CommonUtil.getCLDRLocale(locale, localePathMap, localeAliasesMap);
+                patterns = new LocalPatternOpt().getPatternsByLocale(newLocale);
             }
         }
         return patterns;

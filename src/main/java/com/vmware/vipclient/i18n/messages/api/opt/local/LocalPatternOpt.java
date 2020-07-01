@@ -4,17 +4,25 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.local;
 
-import java.util.Map;
-
-import org.json.simple.JSONObject;
-
+import com.vmware.i18n.PatternUtil;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
-import com.vmware.vipclient.i18n.util.PatternBundleUtil;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.util.Map;
 
 public class LocalPatternOpt {
 
     public JSONObject getPatternsByLocale(String locale) {
-        Map<String, Object> patterns = PatternBundleUtil.readJSONFile(locale);
+        locale = locale.replace("_", "-");
+        String patternStr = PatternUtil.getPatternFromLib(locale, null);
+        Map<String, Object> patterns = null;
+        try {
+            patterns = (Map<String, Object>) new JSONParser().parse(patternStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         if (patterns == null) {
             return null;
         } else {
