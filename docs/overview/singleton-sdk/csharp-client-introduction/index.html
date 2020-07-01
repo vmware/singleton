@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-06-10T13:11:29 CST">
+<meta name="revised" content="2020-07-01T10:45:59 CST">
 <title>C# Client Introduction :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -458,7 +458,1793 @@
     
     
     
-    <p>Coming soon</p>
+    <h1 id="introduction">Introduction</h1>
+<p>C# Client is a class libary running on Windows .NET Framework. It enables applications that can use .NET Framework libraries to handle its globalization easily.</p>
+<h1 id="features-in-c-client">Features in C# Client</h1>
+<ul>
+<li>Getting the translation.</li>
+<li>Getting messages by cache interfaces.</li>
+<li>Getting configuration content.</li>
+<li>Enrich implementations by extends different extension interfaces.</li>
+</ul>
+<h1 id="apis-available">APIs Available</h1>
+<ul>
+<li><a href="#Factory-Class">Factory Class</a>
+<ul>
+<li><a href="#I18n">I18n</a></li>
+</ul>
+</li>
+<li><a href="#Interface-For-Configuration">Interface For Configuration</a>
+<ul>
+<li><a href="#IConfig">IConfig</a></li>
+<li><a href="#IConfigItem">IConfigItem</a></li>
+</ul>
+</li>
+<li><a href="#Interface-For-Release">Interface For Release</a>
+<ul>
+<li><a href="#IRelease">IRelease</a></li>
+</ul>
+</li>
+<li><a href="#Interface-For-Translation">Interface For Translation</a>
+<ul>
+<li><a href="#ITranslation">ITranslation</a></li>
+<li><a href="#ISource">ISource</a></li>
+</ul>
+</li>
+<li><a href="#Interface-For-Cache-Messages">Interface For Cache Messages</a>
+<ul>
+<li><a href="#IReleaseMessages">IReleaseMessages</a></li>
+<li><a href="#ILocaleMessages">ILocaleMessages</a></li>
+<li><a href="#IComponentMessages">IComponentMessages</a></li>
+</ul>
+</li>
+<li><a href="#Interface-For-Extension">Interface For Extension</a>
+<ul>
+<li><a href="#IExtension">IExtension</a></li>
+<li><a href="#ICacheManager">ICacheManager</a></li>
+<li><a href="#ICacheMessages">ICacheMessages</a></li>
+<li><a href="#ILog">ILog</a></li>
+<li><a href="#IResourceParser">IResourceParser</a></li>
+<li><a href="#IAccessService">IAccessService</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="factory-class">Factory Class</h2>
+<h3 id="i18n">I18n</h3>
+<ul>
+<li>It&rsquo;s the factory class that creates and initializes the configuration object and the release object.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">I18n</span>
+{
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IConfig LoadConfig(<span style="color:#66d9ef">string</span> resourceBaseName, Assembly assembly, <span style="color:#66d9ef">string</span> configResourceName);
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IConfig GetConfig(<span style="color:#66d9ef">string</span> product, <span style="color:#66d9ef">string</span> version);
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IRelease GetRelease(IConfig config);
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IExtension GetExtension();
+}
+</code></pre></div><h3 id="i18n--loadconfig">I18n / LoadConfig</h3>
+<ul>
+<li>Load a configuration json or yaml text from the resource defined by a resx file and initialize a correspondent release object.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>resourceBaseName</td>
+<td>string</td>
+<td>Resource base name</td>
+</tr>
+<tr>
+<td>assembly</td>
+<td><a href="https://docs.microsoft.com/en-us/dotnet/api/system.reflection.assembly?view=netcore-3.1">Assembly</a></td>
+<td>It owns the resource</td>
+</tr>
+<tr>
+<td>configResourceName</td>
+<td>string</td>
+<td>Configuration resource name after base name</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#IConfig">IConfig</a></td>
+<td>Configuration Object</td>
+</tr>
+</tbody>
+</table>
+<h3 id="i18n--getconfig">I18n / GetConfig</h3>
+<ul>
+<li>Get a loaded configuration object by product and version.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>product</td>
+<td>string</td>
+<td>Product name</td>
+</tr>
+<tr>
+<td>version</td>
+<td>string</td>
+<td>L10n version</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#IConfig">IConfig</a></td>
+<td>Configuration Object</td>
+</tr>
+</tbody>
+</table>
+<h3 id="i18n--getrelease">I18n / GetRelease</h3>
+<ul>
+<li>Get the release object initialized by a configuration object.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>config</td>
+<td><a href="#IConfig">IConfig</a></td>
+<td>Configuration object</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#IRelease">IRelease</a></td>
+<td>The release object</td>
+</tr>
+</tbody>
+</table>
+<h3 id="i18n--getextension">I18n / GetExtension</h3>
+<ul>
+<li>Get the extension interface to change ways of implementation.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#IExtension">IExtension</a></td>
+<td>Extension interface</td>
+</tr>
+</tbody>
+</table>
+<h2 id="interface-for-configuration">Interface For Configuration</h2>
+<h3 id="iconfig">IConfig</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IConfig
+{
+	IConfigItem GetItem(<span style="color:#66d9ef">string</span> key);
+	List&lt;<span style="color:#66d9ef">string</span>&gt; GetComponentList();
+	IConfigItem GetComponentAttribute(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> key);
+	List&lt;<span style="color:#66d9ef">string</span>&gt; GetLocaleList(<span style="color:#66d9ef">string</span> component);
+	IConfigItem GetLocaleAttribute(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> locale, <span style="color:#66d9ef">string</span> key);
+	<span style="color:#66d9ef">string</span> ReadResourceText(<span style="color:#66d9ef">string</span> resourceName);
+	Hashtable ReadResourceMap(<span style="color:#66d9ef">string</span> resourceName, <span style="color:#66d9ef">string</span> format, <span style="color:#66d9ef">string</span> locale);
+}
+</code></pre></div><h3 id="iconfig--getitem">IConfig / GetItem</h3>
+<ul>
+<li>Get the definition item by key.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>Key text</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#IConfigItem">IConfigItem</a></td>
+<td>The definition item object</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iconfig--getcomponentlist">IConfig / GetComponentList</h3>
+<ul>
+<li>Get the component list.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1">List</a>&lt;string&gt;</td>
+<td>The component list</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iconfig--getcomponentattribute">IConfig / GetComponentAttribute</h3>
+<ul>
+<li>Get the definition item of an attribute of the component.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>component</td>
+<td>string</td>
+<td>Component name</td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>Key text</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#IConfigItem">IConfigItem</a></td>
+<td>The definition item object</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iconfig--getlocalelist">IConfig / GetLocaleList</h3>
+<ul>
+<li>Get the defined locale list of a component.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>component</td>
+<td>string</td>
+<td>Component name</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1">List</a>&lt;string&gt;</td>
+<td>The locale list</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iconfig--getlocaleattribute">IConfig / GetLocaleAttribute</h3>
+<ul>
+<li>Get the definition item of an attribute of the locale information for a component.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>component</td>
+<td>string</td>
+<td>Component name</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale name</td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>Key text</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#IConfigItem">IConfigItem</a></td>
+<td>The definition item object</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iconfig--readresourcetext">IConfig / ReadResourceText</h3>
+<ul>
+<li>Read a text from the Assembly resource.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>resourceName</td>
+<td>string</td>
+<td>Resource name</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>Text</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iconfig--readresourcemap">IConfig / ReadResourceMap</h3>
+<ul>
+<li>Read a key-value map from a resx resource.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>resourceName</td>
+<td>string</td>
+<td>Resource name</td>
+</tr>
+<tr>
+<td>format</td>
+<td>string</td>
+<td>Format to select parser</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale name</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.hashtable">Hashtable</a></td>
+<td>Key-value table</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iconfigitem">IConfigItem</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IConfigItem
+{
+	<span style="color:#66d9ef">string</span> GetString();
+	List&lt;<span style="color:#66d9ef">string</span>&gt; GetStringList();
+	<span style="color:#66d9ef">bool</span> GetBool();
+	<span style="color:#66d9ef">int</span> GetInt();
+	IConfigItem GetMapItem(<span style="color:#66d9ef">string</span> key);
+	List&lt;<span style="color:#66d9ef">string</span>&gt; GetArrayItemList(<span style="color:#66d9ef">string</span> key);
+	IConfigItem GetArrayItem(<span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">value</span>);
+}
+</code></pre></div><h3 id="iconfigitem--getstring">IConfigItem / GetString</h3>
+<ul>
+<li>Get string value of the configuration item.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>Text</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iconfigitem--getstringlist">IConfigItem / GetStringList</h3>
+<ul>
+<li>Get string list of the configuration item.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1">List</a>&lt;string&gt;</td>
+<td>Defined string list</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iconfigitem--getbool">IConfigItem / GetBool</h3>
+<ul>
+<li>Get boolean value of the configuration item.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>Boolean value</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iconfigitem--getint">IConfigItem / GetInt</h3>
+<ul>
+<li>Get integer value of the configuration item.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>Integer value</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iconfigitem--getmapitem">IConfigItem / GetMapItem</h3>
+<ul>
+<li>Read the child configuration item by a key.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>Key</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#IConfigItem">IConfigItem</a></td>
+<td>The child configuration item</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iconfigitem--getarrayitemlist">IConfigItem / GetArrayItemList</h3>
+<ul>
+<li>Get a string list from the configuration child item array by a key.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>Key</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1">List</a>&lt;string&gt;</td>
+<td>An extracted string list from the configuration child item array</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iconfigitem--getarrayitem">IConfigItem / GetArrayItem</h3>
+<ul>
+<li>Read the child configuration item by a key and its correspondent value from a configuration item array.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>Key</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>Requested value</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#IConfigItem">IConfigItem</a></td>
+<td>The child configuration item</td>
+</tr>
+</tbody>
+</table>
+<h2 id="interface-for-release">Interface For Release</h2>
+<h3 id="irelease">IRelease</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IRelease
+{
+	IConfig GetConfig();
+	IReleaseMessages GetMessages();
+	ITranslation GetTranslation();
+}
+</code></pre></div><h3 id="irelease--getconfig">IRelease / GetConfig</h3>
+<ul>
+<li>Get the configuration object owned the release object.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#IConfig">IConfig</a></td>
+<td>The configuration object</td>
+</tr>
+</tbody>
+</table>
+<h3 id="irelease--getmessages">IRelease / GetMessages</h3>
+<ul>
+<li>Get the configuration object owned by the release object.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#IReleaseMessages">IReleaseMessages</a></td>
+<td>The interface to access messages</td>
+</tr>
+</tbody>
+</table>
+<h3 id="irelease--gettranslation">IRelease / GetTranslation</h3>
+<ul>
+<li>Get the interface to access translation.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#ITranslation">ITranslation</a></td>
+<td>The interface to access translation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="interface-for-translation">Interface For Translation</h2>
+<h3 id="itranslation">ITranslation</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> ITranslation
+{
+	ISource CreateSource(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">string</span> source = <span style="color:#66d9ef">null</span>, <span style="color:#66d9ef">string</span> comment = <span style="color:#66d9ef">null</span>);
+	<span style="color:#66d9ef">string</span> GetString(<span style="color:#66d9ef">string</span> locale, ISource source);
+	<span style="color:#66d9ef">string</span> GetString(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">string</span> source = <span style="color:#66d9ef">null</span>, <span style="color:#66d9ef">string</span> comment = <span style="color:#66d9ef">null</span>);
+	<span style="color:#66d9ef">string</span> Format(<span style="color:#66d9ef">string</span> locale, ISource source, <span style="color:#66d9ef">params</span> <span style="color:#66d9ef">object</span>[] objects);
+	<span style="color:#66d9ef">bool</span> SetCurrentLocale(<span style="color:#66d9ef">string</span> locale);
+	<span style="color:#66d9ef">string</span> GetCurrentLocale();
+	<span style="color:#66d9ef">string</span> GetLocaleSupported(<span style="color:#66d9ef">string</span> locale);
+}
+</code></pre></div><h3 id="itranslation--createsource">ITranslation / CreateSource</h3>
+<ul>
+<li>Create a source object for other methods.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>component</td>
+<td>string</td>
+<td>Component</td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>Key</td>
+</tr>
+<tr>
+<td>source</td>
+<td>string</td>
+<td>Source</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>string</td>
+<td>Comment</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#ISource">ISource</a></td>
+<td>The source object</td>
+</tr>
+</tbody>
+</table>
+<h3 id="itranslation--getstring">ITranslation / GetString</h3>
+<ul>
+<li>Get translation message.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale</td>
+</tr>
+<tr>
+<td><a href="#ISource">ISource</a></td>
+<td>The source object</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>The translation message</td>
+</tr>
+</tbody>
+</table>
+<h3 id="itranslation--getstring-1">ITranslation / GetString</h3>
+<ul>
+<li>Get translation message according to current locale.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>component</td>
+<td>string</td>
+<td>Component</td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>Key</td>
+</tr>
+<tr>
+<td>source</td>
+<td>string</td>
+<td>Source</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>string</td>
+<td>Comment</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>The translation message</td>
+</tr>
+</tbody>
+</table>
+<h3 id="itranslation--format">ITranslation / Format</h3>
+<ul>
+<li>Get translation message according to the format.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale</td>
+</tr>
+<tr>
+<td><a href="#ISource">ISource</a></td>
+<td>The source object</td>
+<td></td>
+</tr>
+<tr>
+<td>object[]</td>
+<td>objects to fill format</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>The translation message</td>
+</tr>
+</tbody>
+</table>
+<h3 id="itranslation--setcurrentlocale">ITranslation / SetCurrentLocale</h3>
+<ul>
+<li>Set current locale.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>Return true if successful</td>
+</tr>
+</tbody>
+</table>
+<h3 id="itranslation--getcurrentlocale">ITranslation / GetCurrentLocale</h3>
+<ul>
+<li>Get current locale.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>Locale</td>
+</tr>
+</tbody>
+</table>
+<h3 id="itranslation--getlocalesupported">ITranslation / GetLocaleSupported</h3>
+<ul>
+<li>Get supported or nearest locale of the locale.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>Supported or nearest locale</td>
+</tr>
+</tbody>
+</table>
+<h3 id="isource">ISource</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> ISource
+{
+	<span style="color:#66d9ef">string</span> GetComponent();
+	<span style="color:#66d9ef">string</span> GetKey();
+	<span style="color:#66d9ef">string</span> GetSource();
+	<span style="color:#66d9ef">string</span> GetComment();
+}
+</code></pre></div><h2 id="interface-for-cache-messages">Interface For Cache Messages</h2>
+<h3 id="ireleasemessages">IReleaseMessages</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IReleaseMessages
+{
+	List&lt;<span style="color:#66d9ef">string</span>&gt; GetLocaleList();
+	List&lt;<span style="color:#66d9ef">string</span>&gt; GetComponentList();
+	ILocaleMessages GetLocaleMessages(<span style="color:#66d9ef">string</span> locale);
+	Dictionary&lt;<span style="color:#66d9ef">string</span>, ILocaleMessages&gt; GetAllLocaleMessages();
+}
+</code></pre></div><h3 id="ireleasemessages--getlocalelist">IReleaseMessages / GetLocaleList</h3>
+<ul>
+<li>Get the locale list of release messages.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1">List</a>&lt;string&gt;</td>
+<td>The locale list</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ireleasemessages--getcomponentlist">IReleaseMessages / GetComponentList</h3>
+<ul>
+<li>Get the component list of release messages.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1">List</a>&lt;string&gt;</td>
+<td>The component list</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ireleasemessages--getlocalemessages">IReleaseMessages / GetLocaleMessages</h3>
+<ul>
+<li>Get the locale messagess from release messages by locale.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#ILocaleMessages">ILocaleMessages</a></td>
+<td>The interface to access locale messages</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ireleasemessages--getalllocalemessages">IReleaseMessages / GetAllLocaleMessages</h3>
+<ul>
+<li>Get all locale messagess of the release messages.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;string, <a href="#ILocaleMessages">ILocaleMessages</a>&gt;</td>
+<td>Map from locale to its locale messages</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ilocalemessages">ILocaleMessages</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> ILocaleMessages
+{
+	List&lt;<span style="color:#66d9ef">string</span>&gt; GetComponentList();
+	IComponentMessages GetComponentMessages(<span style="color:#66d9ef">string</span> component);
+	<span style="color:#66d9ef">string</span> GetString(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> key);
+}
+</code></pre></div><h3 id="ilocalemessages--getcomponentlist">ILocaleMessages / GetComponentList</h3>
+<ul>
+<li>Get the component list of locale messages.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1">List</a>&lt;string&gt;</td>
+<td>The component list</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ilocalemessages--getcomponentmessages">ILocaleMessages / GetComponentMessages</h3>
+<ul>
+<li>Get the component messagess from locale messages by component.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>component</td>
+<td>string</td>
+<td>Component name</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#IComponentMessages">IComponentMessages</a></td>
+<td>The interface to access component messages</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ilocalemessages--getstring">ILocaleMessages / GetString</h3>
+<ul>
+<li>Get the message from locale messages by component and key.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>component</td>
+<td>string</td>
+<td>Component name</td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>Key</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>Translation message</td>
+</tr>
+</tbody>
+</table>
+<h3 id="icomponentmessages">IComponentMessages</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IComponentMessages
+{
+	<span style="color:#66d9ef">void</span> SetString(<span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">string</span> message);
+	<span style="color:#66d9ef">string</span> GetString(<span style="color:#66d9ef">string</span> key);
+	ICollection GetKeys();
+	<span style="color:#66d9ef">int</span> GetCount();
+	<span style="color:#66d9ef">string</span> GetLocale();
+	<span style="color:#66d9ef">string</span> GetComponent();
+	<span style="color:#66d9ef">void</span> SetResourcePath(<span style="color:#66d9ef">string</span> resourcePath);
+	<span style="color:#66d9ef">string</span> GetResourcePath();
+	<span style="color:#66d9ef">void</span> SetResourceType(<span style="color:#66d9ef">string</span> resourceType);
+	<span style="color:#66d9ef">string</span> GetResourceType();
+}
+</code></pre></div><h3 id="icomponentmessages--setstring">IComponentMessages / SetString</h3>
+<ul>
+<li>Set message of the key.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>Key</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>Message text</td>
+</tr>
+</tbody>
+</table>
+<h3 id="icomponentmessages--getstring">IComponentMessages / GetString</h3>
+<ul>
+<li>Get the message from component messages by key.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>Key</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>Translation message</td>
+</tr>
+</tbody>
+</table>
+<h3 id="icomponentmessages--getkeys">IComponentMessages / GetKeys</h3>
+<ul>
+<li>Get all keys of component messages.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.icollection">ICollection</a></td>
+<td>Collection of keys</td>
+</tr>
+</tbody>
+</table>
+<h3 id="icomponentmessages--getcount">IComponentMessages / GetCount</h3>
+<ul>
+<li>Get count of messages.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>Count of messages</td>
+</tr>
+</tbody>
+</table>
+<h3 id="icomponentmessages--getlocale">IComponentMessages / GetLocale</h3>
+<ul>
+<li>Get locale of component messages.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>Locale</td>
+</tr>
+</tbody>
+</table>
+<h3 id="icomponentmessages--getcomponent">IComponentMessages / GetComponent</h3>
+<ul>
+<li>Get component name of component messages.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>Component name</td>
+</tr>
+</tbody>
+</table>
+<h3 id="icomponentmessages--setresourcepath">IComponentMessages / SetResourcePath</h3>
+<ul>
+<li>Set resource path where stores the component messages.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>resourcePath</td>
+<td>string</td>
+<td>The resource path or resource id</td>
+</tr>
+</tbody>
+</table>
+<h3 id="icomponentmessages--getresourcepath">IComponentMessages / GetResourcePath</h3>
+<ul>
+<li>Get resource path where stores the component messages.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>The resource path or resource id</td>
+</tr>
+</tbody>
+</table>
+<h3 id="icomponentmessages--setresourcetype">IComponentMessages / SetResourceType</h3>
+<ul>
+<li>Set resource type which is used to know how the resource is stored and what parser to select.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>resourceType</td>
+<td>string</td>
+<td>The resource type</td>
+</tr>
+</tbody>
+</table>
+<h3 id="icomponentmessages--getresourcetype">IComponentMessages / GetResourceType</h3>
+<ul>
+<li>Get resource type.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>The resource type</td>
+</tr>
+</tbody>
+</table>
+<h2 id="interface-for-extension">Interface For Extension</h2>
+<h3 id="iextension">IExtension</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IExtension
+{
+	<span style="color:#66d9ef">void</span> RegisterCacheManager(ICacheManager cacheManager, <span style="color:#66d9ef">string</span> cacheManagerName);
+	<span style="color:#66d9ef">void</span> RegistertLogger(ILog logger, <span style="color:#66d9ef">string</span> loggerName);
+	<span style="color:#66d9ef">void</span> RegisterResourceParser(IResourceParser parser, <span style="color:#66d9ef">string</span> parserName);
+	<span style="color:#66d9ef">void</span> RegisterAccessService(IAccessService accessService, <span style="color:#66d9ef">string</span> accessName);
+}
+</code></pre></div><h3 id="icomponentmessages--registercachemanager">IComponentMessages / RegisterCacheManager</h3>
+<ul>
+<li>Register cache manager object with its name.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cacheManager</td>
+<td><a href="#ICacheManager">ICacheManager</a></td>
+<td>Cache manager object</td>
+</tr>
+<tr>
+<td>cacheManagerName</td>
+<td>string</td>
+<td>Cache manager name</td>
+</tr>
+</tbody>
+</table>
+<h3 id="icomponentmessages--registertlogger">IComponentMessages / RegistertLogger</h3>
+<ul>
+<li>Register a logger with its name.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>logger</td>
+<td><a href="#ILog">ILog</a></td>
+<td>Logger object</td>
+</tr>
+<tr>
+<td>loggerName</td>
+<td>string</td>
+<td>Logger name</td>
+</tr>
+</tbody>
+</table>
+<h3 id="icomponentmessages--registerresourceparser">IComponentMessages / RegisterResourceParser</h3>
+<ul>
+<li>Register a resource parser with its name.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>parser</td>
+<td><a href="#IResourceParser">IResourceParser</a></td>
+<td>Parser object</td>
+</tr>
+<tr>
+<td>parserName</td>
+<td>string</td>
+<td>Parser name</td>
+</tr>
+</tbody>
+</table>
+<h3 id="icomponentmessages--registeraccessservice">IComponentMessages / RegisterAccessService</h3>
+<ul>
+<li>Register an accessing service object with its name.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>accessService</td>
+<td><a href="#IAccessService">IAccessService</a></td>
+<td>Accessing service object</td>
+</tr>
+<tr>
+<td>accessName</td>
+<td>string</td>
+<td>Access name</td>
+</tr>
+</tbody>
+</table>
+<h3 id="icachemanager">ICacheManager</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> ICacheManager
+{
+	ICacheMessages GetReleaseCache(<span style="color:#66d9ef">string</span> product, <span style="color:#66d9ef">string</span> version);
+}
+</code></pre></div><h3 id="icachemanager--getreleasecache">ICacheManager / GetReleaseCache</h3>
+<ul>
+<li>Get the release cache by product and version.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>product</td>
+<td>string</td>
+<td>Product</td>
+</tr>
+<tr>
+<td>version</td>
+<td>string</td>
+<td>L10n version</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#ICacheMessages">ICacheMessages</a></td>
+<td>The cache object for a release</td>
+</tr>
+</tbody>
+</table>
+<h3 id="icachemessages">ICacheMessages</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> ICacheMessages
+{
+	ILocaleMessages GetLocaleMessages(<span style="color:#66d9ef">string</span> locale);
+}
+</code></pre></div><h3 id="icachemessages--getlocalemessages">ICacheMessages / GetLocaleMessages</h3>
+<ul>
+<li>Get the locale messages from the release cache.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#ILocaleMessages">ILocaleMessages</a></td>
+<td>The locale messages</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ilog">ILog</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> ILog
+{
+	<span style="color:#66d9ef">void</span> Log(LogType logType, <span style="color:#66d9ef">string</span> text);
+}
+</code></pre></div><h3 id="ilog--log">ILog / Log</h3>
+<ul>
+<li>Log a string with a type.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>logType</td>
+<td><a href="#LogType">LogType</a></td>
+<td>Log type</td>
+</tr>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>Log text</td>
+</tr>
+</tbody>
+</table>
+<h3 id="logtype">LogType</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">enum</span> LogType
+{
+	Debug,
+	Info,
+	Warning,
+	Error,
+	None
+}
+</code></pre></div><h3 id="iresourceparser">IResourceParser</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IResourceParser
+{
+	Hashtable Parse(<span style="color:#66d9ef">string</span> text);
+}
+</code></pre></div><h3 id="iresourceparser--parse">IResourceParser / Parse</h3>
+<ul>
+<li>Parse a text into a key-value map.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.hashtable">Hashtable</a></td>
+<td>The key-value map</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iaccessservice">IAccessService</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IAccessService
+{
+	<span style="color:#66d9ef">string</span> HttpGet(<span style="color:#66d9ef">string</span> url, Hashtable headers);
+	<span style="color:#66d9ef">string</span> HttpPost(<span style="color:#66d9ef">string</span> url, <span style="color:#66d9ef">string</span> text, Hashtable headers);
+}
+</code></pre></div><h3 id="iaccessservice--httpget">IAccessService / HttpGet</h3>
+<ul>
+<li>Get data from http service.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>Remote location</td>
+</tr>
+<tr>
+<td>headers</td>
+<td><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.hashtable">Hashtable</a></td>
+<td>Headers map</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>Text data from remote</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iaccessservice--httppost">IAccessService / HttpPost</h3>
+<ul>
+<li>Send data to http service.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>Remote location</td>
+</tr>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>Text data to be sent</td>
+</tr>
+<tr>
+<td>headers</td>
+<td><a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.hashtable">Hashtable</a></td>
+<td>Headers map</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>Response text data</td>
+</tr>
+</tbody>
+</table>
 
 
     
@@ -481,7 +2267,7 @@
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 24/09/2019
+        <i class='fa fa-calendar'></i> Last update on 15/03/2020
     </div>
     
 
