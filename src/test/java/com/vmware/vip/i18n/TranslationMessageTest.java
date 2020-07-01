@@ -184,6 +184,15 @@ public class TranslationMessageTest extends BaseTestClass {
     }
 
     @Test
+    public void testGetComponentMessagesLocaleNotSupported() {
+    	String component = "JAVA";
+    	String message_en_US = "User name";
+    	String key = "global_text_username";
+    	// When requested locale is not supported, the default locale messages will be returned.
+        Map<String, String> localeNotSupported = translation.getMessages(Locale.forLanguageTag("fil-PH"), component);
+        Assert.assertEquals(message_en_US, localeNotSupported.get(key));
+    }
+    @Test
     public void testGetComponentMessages() {
         vipCfg.setPseudo(false);
 

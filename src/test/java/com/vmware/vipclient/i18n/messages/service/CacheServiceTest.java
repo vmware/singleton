@@ -22,6 +22,7 @@ import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
+import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 
 public class CacheServiceTest extends BaseTestClass {
@@ -71,7 +72,11 @@ public class CacheServiceTest extends BaseTestClass {
     	assertNull(cacheItem);
     	
         // This triggers the first http call
-    	translation.getMessage(locale, emptyComponent, key, args);
+    	try {
+    		translation.getMessage(locale, emptyComponent, key, args);
+    	} catch (VIPJavaClientException e) {
+    		// Expected exception
+    	}
     	
     	cacheItem = cs.getCacheOfComponent();
     	assertNull(cacheItem);
@@ -80,7 +85,6 @@ public class CacheServiceTest extends BaseTestClass {
     @Test
     public void testNotExpired() {
     	long cacheExpiredTimeOrig = cfg.getCacheExpiredTime();
-    	cfg.setCacheExpiredTime(0l);
     	
     	cfg.initializeVIPService();
         

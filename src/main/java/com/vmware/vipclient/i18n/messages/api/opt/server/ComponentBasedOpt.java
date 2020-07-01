@@ -53,7 +53,8 @@ public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
         if (responseCode != null && (responseCode.equals(HttpURLConnection.HTTP_OK) || 
         		responseCode.equals(HttpURLConnection.HTTP_NOT_MODIFIED))) {
         	
-        	if (response.get(URLUtils.RESPONSE_TIMESTAMP) != null)
+        	// If already in cache (timestamp > 0), always extend the timestamp.
+        	if (cacheItem.getTimestamp() != 0 && response.get(URLUtils.RESPONSE_TIMESTAMP) != null)
 	        	cacheItem.setTimestamp((long) response.get(URLUtils.RESPONSE_TIMESTAMP) );
         	if (response.get(URLUtils.HEADERS) != null)
 	        	cacheItem.setEtag(URLUtils.createEtagString((Map<String, List<String>>) response.get(URLUtils.HEADERS)));
@@ -63,7 +64,11 @@ public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
 	        if (responseCode.equals(HttpURLConnection.HTTP_OK)) {
 		        JSONObject respObj = (JSONObject) JSONValue.parse((String) response.get(URLUtils.BODY));
 		        try {
-	        		if (getResponseCode(respObj) == 200){    	
+	        		if (getResponseCode(respObj) == 200){ 
+	        			// If not yet in cache (timestamp = 0), store the timestamp only when successful (business code 200).
+	        			if (cacheItem.getTimestamp() == 0 && response.get(URLUtils.RESPONSE_TIMESTAMP) != null) {
+	        				cacheItem.setTimestamp((long) response.get(URLUtils.RESPONSE_TIMESTAMP) );
+	        			}
 				        Map<String,String> messages = this.getMsgsJson(response);
 				        if (messages != null) {
 				        	cacheItem.addCachedData(messages);

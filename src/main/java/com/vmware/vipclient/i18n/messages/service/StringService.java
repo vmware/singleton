@@ -26,17 +26,19 @@ import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.JSONUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 
+@Deprecated
 public class StringService {
     Logger              logger = LoggerFactory.getLogger(StringService.class);
     
     @SuppressWarnings("unchecked")
+    @Deprecated
     public String getString(MessagesDTO dto) {
     	String key = dto.getKey();
     	
-    	Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
     	MessageCacheItem cacheItem = new ComponentService(dto).getMessages();
     	
     	// While failed to get MessageCacheItem, use MessageCacheItem of the next fallback locale. 
+    	Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
     	while (cacheItem.getCachedData().isEmpty() && fallbackLocalesIter.hasNext()) {
     		Locale fallback = fallbackLocalesIter.next();
 			MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), 
@@ -51,7 +53,7 @@ public class StringService {
 		}
     	
     	Map<String, String> cachedData = cacheItem.getCachedData();
-		return cachedData.get(key) == null ? null : cachedData.get(key);
+		return cachedData.get(key);
     }
 
     public String postString(MessagesDTO dto) {

@@ -14,9 +14,9 @@ import org.junit.Test;
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
-import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
@@ -26,7 +26,7 @@ public class SharedComponentTest extends BaseTestClass {
     TranslationMessage subTranslation;
     String             mainProductName = "JavaclientTest";
     String             subProductName  = "JavaclientTest1";
-
+    
     @Before
     public void init() {
         VIPCfg mainCfg = VIPCfg.getInstance();
@@ -35,6 +35,7 @@ public class SharedComponentTest extends BaseTestClass {
         } catch (VIPClientInitException e) {
             logger.error(e.getMessage());
         }
+
         mainCfg.initializeVIPService();
         if (mainCfg.getCacheManager() != null)
             mainCfg.getCacheManager().clearCache();
