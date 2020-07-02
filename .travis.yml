@@ -19,6 +19,7 @@ before_install:
     choco install -y nuget.commandline
     choco install -y sonarqube-scanner.portable
     choco install -y msbuild-sonarqube-runner
+    choco install -y cygwin
 
 install:
   - cd $PROJECT_NAME
@@ -32,8 +33,8 @@ jobs:
     - stage: check header
       script:
         - git clone --branch=devops https://github.com/vmware/singleton.git devops
-        - cp $TRAVIS_BUILD_DIR/devops/check_headers.py . && chmod +x check_headers.py
-        - python3 ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
+        - cygpath -dm "`cp $TRAVIS_BUILD_DIR/devops/check_headers.py .`"
+        - cygpath -dm "`python3 ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"`"
     - stage: Unit Test
       script:
         - dir
