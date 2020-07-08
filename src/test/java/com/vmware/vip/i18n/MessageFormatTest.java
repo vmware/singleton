@@ -101,14 +101,13 @@ public class MessageFormatTest extends BaseTestClass {
                 msgFmt4.format(new Object[] { 102 }, new StringBuilder(), new FieldPosition(0)).toString());
     }
 
-    @Test
     public void testNamedArguments() {
-        String msg = "{a} - {b} of {abc} customers";
+        String msg = "{a} - {b} of {c} customers";
 
         Map<String, Object> msgargs = new HashMap<>();
         msgargs.put("a", 1);
         msgargs.put("b", 5);
-        msgargs.put("abc", 10);
+        msgargs.put("c", 10);
 
         String formatted = FormatUtils.formatMsg(msg, Locale.ENGLISH, msgargs);
 
