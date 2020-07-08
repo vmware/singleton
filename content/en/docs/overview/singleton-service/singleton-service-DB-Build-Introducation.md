@@ -72,7 +72,6 @@ create table vip_msg(id bigint not null, product character varying(100) not null
 ```
 FROM postgres:10.3
  
-MAINTAINER Shi Hu <shihu@wmware.com>
  
  
  
@@ -395,7 +394,7 @@ http://localhost:8091/i18n/api/doc/swagger-ui.html
 
 
 ## 4.2 Add the test data
-
+ The following is the way with curl tool to add test data. You need to install the curl tool successfully before use below command.
 ```
 curl -X PUT "https://localhost:8090/i18n/api/v2/translation/products/Testing/versions/1.0.0" -H "accept: application/json;charset=UTF-8" -H "Content-Type: application/json" -d "{ \"data\": { \"creation\": { \"operationid\": \"test12345\" }, \"dataOrigin\": \"string\", \"machineTranslation\": true, \"productName\": \"Testing\", \"pseudo\": false, \"translation\": [ { \"component\" : \"component1\", \"messages\": { \"sample.apple\" : \"apple\", \"sample.banana\" : \"banana\", \"sample.cat\" : \"cat\", \"sample.dog\" : \"dog\", \"sample.egg\" : \"egg\", \"sample.fly\" : \"fly\", \"sample.giant\" : \"giant\" }, \"locale\" : \"en\"},{ \"component\" : \"component1\", \"messages\" : { \"sample.apple\" : \"manzana\", \"sample.banana\" : \"plátano\", \"sample.cat\" : \"gato\", \"sample.dog\" : \"perro\", \"sample.egg\" : \"huevo\", \"sample.fly\" : \"volar\", \"sample.giant\" : \"gigante\" }, \"locale\" : \"es\"} ], \"version\": \"1.0.0\" }, \"requester\": \"ManulTest\"}"
 ```
