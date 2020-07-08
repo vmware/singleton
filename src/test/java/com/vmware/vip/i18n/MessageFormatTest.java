@@ -42,7 +42,7 @@ public class MessageFormatTest extends BaseTestClass {
                 + "=1{There is one file on disk \"{disk_name}\".}"
                 + "other{There are # files on disk \"{disk_name}\".}}";
         MessageFormat msgFmt1 = new MessageFormat(message1, Locale.ENGLISH);
-        Map<String, Object> args = new HashMap<String, Object>();
+        Map<String, Object> args = new HashMap<>();
         args.put("num_files", 0);//
         args.put("disk_name", "MyDisk");
         Assert.assertEquals("There are no files on disk \"MyDisk\".",

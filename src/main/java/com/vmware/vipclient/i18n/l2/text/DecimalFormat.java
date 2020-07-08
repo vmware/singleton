@@ -21,8 +21,8 @@ public class DecimalFormat extends NumberFormat {
     Logger             logger = LoggerFactory.getLogger(DecimalFormat.class);
 
     private JSONObject numberSymbols;
-    private String     pattern;
-    private int        style;
+    private final String     pattern;
+    private final int        style;
     private JSONObject fractionData;
 
     /*
@@ -31,7 +31,7 @@ public class DecimalFormat extends NumberFormat {
      * this.numberSymbols = numberSymbols;
      * this.style = style;
      * }
-     * 
+     *
      * public DecimalFormat(String pattern, JSONObject numberSymbols, JSONObject fractionData, int style) {
      * this.pattern = pattern;
      * this.numberSymbols = numberSymbols;
@@ -43,16 +43,16 @@ public class DecimalFormat extends NumberFormat {
     public DecimalFormat(JSONObject formatData, int style) {
         JSONObject numberFormats;
         if (style == NumberFormat.CURRENCYSTYLE) {
-            this.numberSymbols = (JSONObject) ((HashMap) formatData.get(PatternCategory.NUMBERS.toString()))
+            numberSymbols = (JSONObject) ((HashMap) formatData.get(PatternCategory.NUMBERS.toString()))
                     .get(PatternKeys.NUMBERSYMBOLS);
             numberFormats = (JSONObject) ((HashMap) formatData.get(PatternCategory.NUMBERS.toString()))
                     .get(PatternKeys.NUMBERFORMATS);
-            this.fractionData = (JSONObject) formatData.get(PatternKeys.FRACTION);
+            fractionData = (JSONObject) formatData.get(PatternKeys.FRACTION);
         } else {
-            this.numberSymbols = (JSONObject) formatData.get(PatternKeys.NUMBERSYMBOLS);
+            numberSymbols = (JSONObject) formatData.get(PatternKeys.NUMBERSYMBOLS);
             numberFormats = (JSONObject) formatData.get(PatternKeys.NUMBERFORMATS);
         }
-        this.pattern = getPattern(numberFormats, style);
+        pattern = getPattern(numberFormats, style);
         this.style = style;
     }
 
@@ -110,7 +110,7 @@ public class DecimalFormat extends NumberFormat {
             positiveParts[0] = positivePattern.substring(0, positivePattern.indexOf(ConstantChars.PATTERN_EXPONENT));
             positiveParts[1] = positivePattern.substring(positivePattern.indexOf(ConstantChars.PATTERN_EXPONENT));
         } else {// There may be symbol after number pattern, e.g. percent format '#,##0%' and currency
-                // format'¤#,##0.00'.
+            // format'¤#,##0.00'.
             positiveParts[0] = positivePattern.substring(0,
                     positivePattern.lastIndexOf(ConstantChars.ZEROCHAR) + 1);
             positiveParts[1] = positivePattern.substring(positivePattern.lastIndexOf(ConstantChars.ZEROCHAR) + 1);
@@ -219,7 +219,7 @@ public class DecimalFormat extends NumberFormat {
         NumberPatternInfo patternInfo = null;
         try {
             patternInfo = parsePattern(pattern);
-            if (this.style == CURRENCYSTYLE) {
+            if (style == CURRENCYSTYLE) {
                 adjustFraction4Currency(patternInfo);
             }
         } catch (Exception e) {
@@ -244,7 +244,7 @@ public class DecimalFormat extends NumberFormat {
         BigDecimal b = new BigDecimal(numStr);
         /*
          * if(BigDecimal.b.){
-         * 
+         *
          * }
          */
         boolean isNegative = isNegative(b.doubleValue());
@@ -255,13 +255,13 @@ public class DecimalFormat extends NumberFormat {
         }
         b = b.abs();
         numStr = b.toString();
-        if (this.style == PERCENTSTYLE) {
+        if (style == PERCENTSTYLE) {
             numStr = b.multiply(new BigDecimal(100)).setScale(fractionLength, BigDecimal.ROUND_HALF_UP)//
                     .toString();
         } else {
             // numStr=MessageFormat.format(pattern, arguments);
             numStr = b.setScale(fractionLength, BigDecimal.ROUND_HALF_EVEN)// BigDecimal.ROUND_HALF_UP
-                                                                           // patternInfo.getRound()
+                    // patternInfo.getRound()
                     .toString();
         }
         String[] numArray = numStr.toString().split("\\" + ConstantChars.DECIMAL_SEP);
@@ -282,13 +282,13 @@ public class DecimalFormat extends NumberFormat {
 
     private void adjustFraction4Currency(NumberPatternInfo patternInfo) {
         if (fractionData != null) {
-            int round = Integer.parseInt((String) this.fractionData.get(PatternKeys._ROUNDING));
+            int round = Integer.parseInt((String) fractionData.get(PatternKeys._ROUNDING));
             /*
              * if(round != 0){
              * patternInfo.setRound();
              * }
              */
-            int digits = Integer.parseInt((String) this.fractionData.get(PatternKeys._DIGITS));
+            int digits = Integer.parseInt((String) fractionData.get(PatternKeys._DIGITS));
             int oldMinDigits = patternInfo.getMinimumFractionDigits();
             if (oldMinDigits == patternInfo.getMaximumFractionDigits()) {
                 patternInfo.setMinimumFractionDigits(digits);
@@ -305,10 +305,9 @@ public class DecimalFormat extends NumberFormat {
         // -0.0. This is a double which has a zero mantissa (and exponent), but a negative
         // sign bit. It is semantically distinct from a zero with a positive sign bit, and
         // this distinction is important to certain kinds of computations. However, it's a
-        // little tricky to detect, since (-0.0 == 0.0) and !(-0.0 < 0.0). How then, you
-        // may ask, does it behave distinctly from +0.0? Well, 1/(-0.0) ==
-        // -Infinity. Proper detection of -0.0 is needed to deal with the issues raised by
-        // bugs 4106658, 4106667, and 4147706. Liu 7/6/98.
-        return (number < 0.0) || (number == 0.0 && 1 / number < 0.0);
+        // little tricky to detect, since (-0.0 == 0.0) and !(-0.0 < 0.0). Use the Double.equals test
+        // where if d1 represents +0.0 while d2 represents -0.0, or vice versa,
+        // it will return false, even though +0.0==-0.0 has the value true.
+        return (number < 0.0) || (number == 0.0 && Double.valueOf(number).equals(-0.0));
     }
 }
