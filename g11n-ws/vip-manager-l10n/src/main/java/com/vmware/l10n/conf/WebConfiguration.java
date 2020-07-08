@@ -64,7 +64,8 @@ public class WebConfiguration implements WebMvcConfigurer {
 		// CSP authentication
 		if (cspAuthFlag.equalsIgnoreCase("true")) {
 			logger.info("add enable CSP authentication interceptor");
-			registry.addInterceptor(new CspAuthInterceptor(tokenService)).addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/**");
+			registry.addInterceptor(new CspAuthInterceptor(tokenService))
+			.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/**");
 		}
 	}
 	
