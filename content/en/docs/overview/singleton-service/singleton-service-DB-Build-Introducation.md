@@ -71,21 +71,12 @@ create table vip_msg(id bigint not null, product character varying(100) not null
 
 ```
 FROM postgres:10.3
- 
- 
- 
- 
+
 ENV INITDB_PATH /usr/local/initdb
- 
- 
- 
+
 ENV AUTO_RUN_DIR /docker-entrypoint-initdb.d
- 
- 
- 
+
 RUN mkdir -p $INITDB_PATH
- 
- 
  
 COPY ./vipinitdb.sql $INITDB_PATH/
  
@@ -93,11 +84,7 @@ COPY ./vipinitdatatab.sql $INITDB_PATH/
  
 COPY ./vipinitconfigtab.sql $INITDB_PATH/
  
- 
- 
 COPY ./vipinstalldb.sh $AUTO_RUN_DIR/
- 
- 
  
 RUN chmod a+x $AUTO_RUN_DIR/vipinstalldb.sh
 ```
@@ -108,19 +95,13 @@ RUN chmod a+x $AUTO_RUN_DIR/vipinstalldb.sh
 ### 2.4 prepare the execute shell vipinstalldb.sh
    
 ```
-psql -U postgres  -d postgres -f $INITDB_PATH/vipinitdb.sql
- 
- 
+ psql -U postgres  -d postgres -f $INITDB_PATH/vipinitdb.sql
  
  psql -U pgvipconfig -d vipconfig -f $INITDB_PATH/vipinitconfigtab.sql
  
- 
- 
  psql -U pgvipdata -d vipdata0 -f $INITDB_PATH/vipinitdatatab.sql
  
- 
- 
-  psql -U pgvipdata -d vipdata1 -f $INITDB_PATH/vipinitdatatab.sql
+ psql -U pgvipdata -d vipdata1 -f $INITDB_PATH/vipinitdatatab.sql
 ```
 
 
