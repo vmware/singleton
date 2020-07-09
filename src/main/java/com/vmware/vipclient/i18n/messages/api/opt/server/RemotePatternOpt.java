@@ -4,20 +4,19 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
-import java.util.Map;
-
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.HttpRequester;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+import org.json.simple.parser.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.Map;
 
 public class RemotePatternOpt {
     Logger logger = LoggerFactory.getLogger(RemotePatternOpt.class);
@@ -69,9 +68,9 @@ public class RemotePatternOpt {
         try {
             JSONObject responseObj = (JSONObject) JSONValue.parseWithException(responseStr);
             if (responseObj != null) {
-                JSONObject dataObj = (JSONObject) responseObj.get(ConstantsKeys.DATA);
-                if (dataObj != null) {
-                    msgObject = dataObj.get(node);
+                Object dataObj = responseObj.get(ConstantsKeys.DATA);
+                if (dataObj != null && dataObj instanceof JSONObject) {
+                    msgObject = ((JSONObject) dataObj).get(node);
                 }
             }
         } catch (ParseException e) {
