@@ -217,6 +217,7 @@ public class PatternServiceImpl implements IPatternService {
 
 		if (categoryList.contains(ConstantsKeys.CURRENCIES) && !categoryList.contains(ConstantsKeys.NUMBERS)) {
 			categoryList.add(ConstantsKeys.NUMBERS);
+			suppMap.put(ConstantsKeys.NUMBERS, supplementMap.get(ConstantsKeys.NUMBERS));
 		}
 
 		for (String cat : categoryList) {
