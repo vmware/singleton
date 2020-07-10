@@ -132,21 +132,21 @@ public class PatternServiceImpl implements IPatternService {
 		IPatternDao dao = new PatternDaoImpl();
 		String[] cateList = categories.split(",");
 
-		String jsonPath = CLDRConstants.RESOURCES_PATH;
+		String resourcePath = CLDRConstants.RESOURCES_PATH;
 		if (CLDRConstants.JSON_PATH.lastIndexOf(".jar") > 0) {
-			jsonPath = CLDRConstants.JSON_PATH;
+			resourcePath = CLDRConstants.JSON_PATH;
 		}
 
 		for (String cat : cateList) {
 			String filePath = MessageFormat.format(CLDRConstants.SUPPLEMENTAL_PATH, cat);
-			String suppleData = dao.getPattern(jsonPath, filePath);
+			String suppleData = dao.getPattern(resourcePath, filePath);
 			if (!CommonUtil.isEmpty(suppleData)) {
 				suppleMap.put(cat, JSONUtil.string2SortMap(suppleData));
 			}
 		}
 
 		//get pattern data
-		String patternJson = dao.getPattern(jsonPath, MessageFormat.format(CLDRConstants.PATTERN_JSON_PATH, locale));
+		String patternJson = dao.getPattern(resourcePath, MessageFormat.format(CLDRConstants.PATTERN_JSON_PATH, locale));
 		Map<String, Object> categMap = (Map<String, Object>) JSONUtil.getMapFromJson(patternJson).get(Constants.CATEGORIES);
 		List<String> cates = new ArrayList(Arrays.asList(cateList));
 		if (cates.contains(Constants.CURRENCIES) && !cates.contains(Constants.NUMBERS)) {
@@ -155,7 +155,7 @@ public class PatternServiceImpl implements IPatternService {
 
 		if (cates.contains(Constants.DATE_FIELDS)) {
 			//get pattern data
-			String dateFieldsJson = dao.getPattern(jsonPath, MessageFormat.format(CLDRConstants.DATE_FIELDS_JSON_PATH, locale));
+			String dateFieldsJson = dao.getPattern(resourcePath, MessageFormat.format(CLDRConstants.DATE_FIELDS_JSON_PATH, locale));
 			categMap.put(Constants.DATE_FIELDS, JSONUtil.getMapFromJson(dateFieldsJson).get(Constants.DATE_FIELDS));
 		}
 		Map<String, Object> tmpMap = new LinkedHashMap<>();
