@@ -15,8 +15,8 @@ Besides Localization, singleton client also provides I18n support for Datetime f
 
 #### **Features**
 
-- Level-2 Dates, Times, Numbers and Currencies formatting support. For more details refer to  [i18n Level-2](https://confluence.eng.vmware.com/display/GQ/I18n+Level-2).
-- Level-3 support. For more details refer to [i18n Level-3](https://confluence.eng.vmware.com/display/GQ/I18n+Level-3).
+- Internationalization. Such as Dates, Times, Numbers and Currencies formatting support.
+- Localization support.
 
 
 #### **Version**
