@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-07-01T10:45:59 CST">
+<meta name="revised" content="2020-07-13T13:58:18 CST">
 <title>Singleton Service :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -107,6 +107,13 @@
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+      <li data-nav-id="/docs/overview/singleton-service/singleton-service-db-build-introducation/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">
+            DB builder for User guideline
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
       <li data-nav-id="/docs/overview/singleton-service/singleton-service-script/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">
@@ -415,6 +422,7 @@
     <option value="/docs/overview/singleton-service/"  selected>
   -- 
    Singleton Service</option> 
+      <option value="/docs/overview/singleton-service/singleton-service-db-build-introducation/" >--- DB builder for User guideline</option>
       <option value="/docs/overview/singleton-service/singleton-service-script/" >--- Singleton Service Script</option>
     <option value="/docs/overview/singleton-service/configurations/" >
   --- 
@@ -470,6 +478,23 @@
 
    <article class="post docs">
     <header class="post-header">
+        <h2 class="post-title"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">DB builder for User guideline</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p>1. Prerequisites  Java 8 (Java 9+ are not supported, will get compiler issue) Git Docker  2. Create Singleton Database docker image 2.1 Required  Linux 64-bit Operation System and install docker successfully  2.2 Prepare the init db scripts 2.2.1 prepare the create users and databases sql scripts vipinitdb.sql CREATE USER pgvipconfig WITH PASSWORD 'vipconfig';CREATE USER pgvipdata WITH PASSWORD 'vipdata';CREATE DATABASE vipconfig OWNER pgvipconfig;CREATE DATABASE vipdata0 OWNER pgvipdata;CREATE DATABASE vipdata1 OWNER pgvipdata;2. <a class="read-more" href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/">&raquo;</a></p>
+    </section>
+    <footer class=" footline" >
+         
+        
+
+        
+        
+
+    </footer>
+</article>
+
+   <article class="post docs">
+    <header class="post-header">
         <h2 class="post-title"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/">Singleton Service Script</a></h2>
     </header>
     <section class="post-excerpt">
@@ -522,7 +547,7 @@ How to generate Singleton Script The steps:
         <div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/" title="Overview"> <i class="fa fa-chevron-left"></i><label>Overview</label></a>
-    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-script/" title="Singleton Service Script" style="margin-right: 0px;"><label>Singleton Service Script</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/" title="DB builder for User guideline" style="margin-right: 0px;"><label>DB builder for User guideline</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
