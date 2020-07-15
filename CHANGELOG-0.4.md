@@ -1,20 +1,57 @@
-- [v0.4.1](#v041)
-  - [Downloads for v0.4.1](#downloads-for-v041)
+- [v0.4.2](#v042)
+  - [Downloads for v0.4.2](#downloads-for-v042)
     - [Service Binaries](#service-binaries)
     - [Client Binaries](#client-binaries)
-  - [Changelog since v0.4.0](#changelog-since-v040)
+  - [Changelog since v0.4.1](#changelog-since-v041)
       - [Main Changes](#main-changes)
-- [v0.4.0](#v040)
-  - [Downloads for v0.4.0](#downloads-for-v040)
+- [v0.4.1](#v041)
+  - [Downloads for v0.4.1](#downloads-for-v041)
     - [Service Binaries](#service-binaries-1)
     - [Client Binaries](#client-binaries-1)
+  - [Changelog since v0.4.0](#changelog-since-v040)
+      - [Main Changes](#main-changes-1)
+- [v0.4.0](#v040)
+  - [Downloads for v0.4.0](#downloads-for-v040)
+    - [Service Binaries](#service-binaries-2)
+    - [Client Binaries](#client-binaries-2)
   - [Changelog since v0.3.0](#changelog-since-v030)
-    - [Main Changes](#main-changes-1)
+    - [Main Changes](#main-changes-2)
       - [Service](#service)
       - [SDK](#sdk-1)
     - [Known Iusses](#known-issues)
     - [Improvement](#improvement)
     - [Action Required](#action-required)
+    
+v0.4.2
+-------
+[Documentation](https://vmware.github.io/singleton/)
+
+## Downloads for v0.4.2
+
+### Service Binaries
+
+filename | sha1 hash | branch/tag
+-------- | --- | ------
+[singleton-manager-i18n-s3.jar](https://repo1.maven.org/maven2/com/vmware/singleton/singleton-manager-i18n-s3/0.4.0/) | - | No update
+[singleton-manager-i18n.jar](https://repo1.maven.org/maven2/com/vmware/singleton/singleton-manager-i18n/0.4.0) | - | No update
+[singleton-manager-l10n.jar](https://repo1.maven.org/maven2/com/vmware/singleton/singleton-manager-l10n/0.4.0) | - | No update
+
+### Client Binaries
+filename | sha1 hash | branch/tag
+-------- | --- | ------
+[singleton-client-java-0.4.2.jar](https://repo1.maven.org/maven2/com/vmware/singleton/singleton-client-java/0.4.2/singleton-client-java-0.4.2.jar) | `59cc02a7720bcc8d35e2074a2ab6a2d35a1ac8cb` | g11n-javaclient/[v0.4.2-Singleton-Javaclient](https://github.com/vmware/singleton/releases/tag/v0.4.2-Singleton-Java-Client)
+[@singleton-i18n/js-client](https://www.npmjs.com/package/@singleton-i18n/js-core-sdk/v/0.4.1) | - | No update
+[@singleton-i18n/nodejs-client](https://www.npmjs.com/package/@singleton-i18n/js-core-sdk-server/v/0.4.1) | - | No update
+[@singleton-i18n/angular-client](https://www.npmjs.com/package/@singleton-i18n/angular-client/v/0.2.0) | - | No update
+[singleton-go-client](https://github.com/vmware/singleton/tree/g11n-go-client) | - | No update
+
+## Changelog since v0.4.1
+
+### Main Changes
+#### SDK
+#### Java Client
+- Support for replacing placeholders/arguments using MAP (placeholder key, replacing value) in the message ([#618](https://github.com/vmware/singleton/issues/618))
+
 
 v0.4.1
 -------

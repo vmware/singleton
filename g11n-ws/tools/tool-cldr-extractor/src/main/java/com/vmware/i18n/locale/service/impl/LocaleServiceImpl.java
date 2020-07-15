@@ -26,8 +26,8 @@ public class LocaleServiceImpl implements ILocaleService {
 			result = LocalJSONReader.readJarJsonFile(CLDRConstants.JSON_PATH, CLDRConstants.PARSE_DATA);
 			defaultContent = LocalJSONReader.readJarJsonFile(CLDRConstants.JSON_PATH, CLDRConstants.DEFAULT_CONTENT_PATH);
 		} else {
-			result = LocalJSONReader.readLocalJSONFile(CLDRConstants.JSON_PATH + CLDRConstants.PARSE_DATA);
-			defaultContent = LocalJSONReader.readLocalJSONFile(CLDRConstants.JSON_PATH + CLDRConstants.DEFAULT_CONTENT_PATH);
+			result = LocalJSONReader.readLocalJSONFile(CLDRConstants.RESOURCES_PATH + CLDRConstants.PARSE_DATA);
+			defaultContent = LocalJSONReader.readLocalJSONFile(CLDRConstants.RESOURCES_PATH + CLDRConstants.DEFAULT_CONTENT_PATH);
 		}
 		localePathMap = (Map<String, String>) JSONUtil.getMapFromJson(result).get(Constants.LOCALE_PATH);
 		defaultContentMap = (Map<String, String>) JSONUtil.getMapFromJson(defaultContent).get(Constants.DEFAULT_CONTENT);
