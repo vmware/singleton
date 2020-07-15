@@ -4,18 +4,10 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThrows;
-
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
-
-import org.junit.Before;
-import org.junit.Test;
 
 import com.vmware.vip.i18n.BaseTestClass;
 import com.vmware.vipclient.i18n.I18nFactory;
@@ -32,6 +24,9 @@ import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class OfflineModeTest extends BaseTestClass {
 
@@ -69,7 +64,7 @@ public class OfflineModeTest extends BaseTestClass {
     	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
     	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
     	cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
-    	
+
         Cache c = cfg.createTranslationCache(MessageCache.class);
         TranslationCacheManager.cleanCache(c);
         I18nFactory i18n = I18nFactory.getInstance(cfg);
@@ -87,6 +82,23 @@ public class OfflineModeTest extends BaseTestClass {
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+    }
+
+    @Test
+    public void testGetMsgsOfflineModeCacheInitialized() {
+        String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
+        cfg.setOfflineResourcesBaseUrl("offlineBundles/");
+        List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
+        cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
+        boolean initializeCacheOrig = cfg.isInitializeCache();
+        cfg.setInitializeCache(true);
+
+        Cache c = cfg.createTranslationCache(MessageCache.class);
+        assertTrue(c.size() > 0);
+
+        cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
+        cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+        cfg.setInitializeCache(initializeCacheOrig);
     }
     
     @Test
