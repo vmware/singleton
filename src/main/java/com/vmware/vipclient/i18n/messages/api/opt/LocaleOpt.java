@@ -7,5 +7,5 @@ package com.vmware.vipclient.i18n.messages.api.opt;
 import java.util.Map;
 
 public interface LocaleOpt {
-	public Map<String, String> getLanguages(String displayLanguage);
+	public Map<String, String> getSupportedLanguages(String displayLanguage);
 }

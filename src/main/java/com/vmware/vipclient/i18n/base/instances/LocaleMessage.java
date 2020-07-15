@@ -4,13 +4,12 @@
  */
 package com.vmware.vipclient.i18n.base.instances;
 
+import com.vmware.vipclient.i18n.messages.service.LocaleService;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-
-import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.messages.service.LocaleService;
 
 /**
  * This class is a utility class to provide APIs related locale of specific product supported
@@ -46,8 +45,7 @@ public class LocaleMessage implements Message {
      *         determined by the displanLanguage parameter
      */
     public Map<String, String> getDisplayLanguagesList(String displayLanguage) {
-        return new LocaleService().getDisplayNamesFromCLDR(displayLanguage, 
-        		VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
+        return new LocaleService().getDisplayNamesFromCLDR(displayLanguage);
     }
 
     /**
@@ -57,8 +55,7 @@ public class LocaleMessage implements Message {
      */
     public List<String> getSupportedLanguageTagList() {
         Map<String, String> languageTagMap = new LocaleService()
-                .getDisplayNamesFromCLDR(java.util.Locale.ENGLISH.toLanguageTag(), 
-                		VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
+                .getDisplayNamesFromCLDR(java.util.Locale.ENGLISH.toLanguageTag());
         Collection<String> keyCollection = languageTagMap.keySet();
         List<String> languageTagList = new ArrayList<String>(keyCollection);
         return languageTagList;
@@ -72,8 +69,7 @@ public class LocaleMessage implements Message {
      * @return a list contains the display names
      */
     public List<String> getSupportedDisplayNameList(String displayLanguage) {
-        Map<String, String> dispNameMap = new LocaleService().getDisplayNamesFromCLDR(displayLanguage, 
-        		VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
+        Map<String, String> dispNameMap = new LocaleService().getDisplayNamesFromCLDR(displayLanguage);
         Collection<String> valueCollection = dispNameMap.values();
         List<String> dispNameList = new ArrayList<String>(valueCollection);
         return dispNameList;

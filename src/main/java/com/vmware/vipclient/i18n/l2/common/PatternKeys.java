@@ -5,7 +5,9 @@
 package com.vmware.vipclient.i18n.l2.common;
 
 public class PatternKeys {
-    public static final String REGION                = "region";
+    public static final String LANGUAGES             = "languages";
+    public static final String TERRITORIES           = "territories";
+
     public static final String CATEGORIES            = "categories";
     // public static final String SUPPLEMENTAL = "supplemental";
     public static final String CURRENCIES            = "currencies";

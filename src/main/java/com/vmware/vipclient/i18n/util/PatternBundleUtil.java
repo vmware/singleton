@@ -8,13 +8,11 @@ import org.json.simple.JSONObject;
 
 public class PatternBundleUtil {
 
-    private static final String JSON_MESSAGES = "level2/{0}/pattern.json";
-
-    public static JSONObject readJSONFile(String locale) {
+    public static JSONObject readJSONFile(String filePath, String locale) {
         JSONObject jsonObj = null;
         String basePath = PatternBundleUtil.class.getProtectionDomain()
                 .getCodeSource().getLocation().getPath();
-        String filePath = FormatUtils.format(JSON_MESSAGES, locale);
+        filePath = FormatUtils.format(filePath, locale);
         if (basePath.lastIndexOf(".jar") > 0) {
             jsonObj = FileUtil.readJarJsonFile(basePath, filePath);
         } else {

@@ -25,6 +25,7 @@ import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePath
  */
 public class PatternService {
     Logger logger = LoggerFactory.getLogger(PatternService.class);
+    private static final String PATTERNS_PREFIX = "patterns_";
 
     public JSONObject getPatternsByCategory(String locale, String category) {
         JSONObject patterns = getPatterns(locale);
@@ -32,17 +33,23 @@ public class PatternService {
     }
 
     public JSONObject getPatterns(String locale) {
+        if(locale == null || locale.isEmpty()) {
+            logger.warn("Locale is empty!");
+            return null;
+        }
+        locale = locale.replace("_", "-").toLowerCase();
         JSONObject patterns = null;
         logger.debug("Look for pattern from cache for locale [{}]!", locale);
-        patterns = new PatternCacheService().lookForPatternsFromCache(locale);// key
+        String cacheKey = PATTERNS_PREFIX + locale;
+        patterns = new PatternCacheService().lookForPatternsFromCache(cacheKey);// key
         if (patterns != null) {
             logger.debug("Find pattern from cache for locale [{}]!", locale);
             return patterns;
         }
-        patterns = getPatternsFromBundle(locale);
+        patterns = getPatternsFromDS(locale);
         if (patterns != null) {
             logger.debug("Find the pattern for locale [{}].\n", locale);// [datetime] and
-            new PatternCacheService().addPatterns(locale, patterns);
+            new PatternCacheService().addPatterns(cacheKey, patterns);
             logger.debug("Pattern is cached for locale [{}]!\n\n", locale);
             return patterns;
         }
@@ -54,15 +61,21 @@ public class PatternService {
     }
 
     public JSONObject getPatterns(String language, String region) {
+        if((language == null || language.isEmpty()) && (region == null || region.isEmpty())) {
+            logger.warn("Both language and region are empty!");
+            return null;
+        }
+        language = language.replace("_", "-").toLowerCase();
+        region = region.toLowerCase();
         JSONObject patterns = null;
-        String key = language + "-" + region;
+        String key = PATTERNS_PREFIX + language + "-" + region;
         logger.debug("Look for pattern from cache for language [{}], region [{}]!", language, region);
         patterns = new PatternCacheService().lookForPatternsFromCache(key);// key
         if (patterns != null) {
             logger.debug("Find pattern from cache for language [{}], region [{}]!", language, region);
             return patterns;
         }
-        patterns = getPatternsFromBundle(language, region);
+        patterns = getPatternsFromDS(language, region);
         if (patterns != null) {
             logger.debug("Find the pattern for language [{}], region [{}].\n", language, region);// [datetime]
             // and
@@ -77,12 +90,11 @@ public class PatternService {
         return patterns;
     }
 
-    private JSONObject getPatternsFromBundle(String locale) {
+    private JSONObject getPatternsFromDS(String locale) {
         JSONObject patterns = null;
         if (LocaleUtility.isDefaultLocale(locale)) {
             logger.debug("Look for pattern from local bundle for locale [{}]!", locale);
-            patterns = new LocalPatternOpt()
-                    .getEnPatterns(ConstantsKeys.EN);
+            patterns = new LocalPatternOpt().getEnPatterns(ConstantsKeys.EN);
         } else {
             if (VIPCfg.getInstance().getMsgOriginsQueue().get(0) == DataSourceEnum.VIP) {
                 logger.debug("Look for pattern from Singleton Service for locale [{}]!", locale);
@@ -97,7 +109,7 @@ public class PatternService {
         return patterns;
     }
 
-    private JSONObject getPatternsFromBundle(String language, String region) {
+    private JSONObject getPatternsFromDS(String language, String region) {
         JSONObject patterns = null;
         Locale locale = new Locale(language, region);
         if (LocaleUtility.isDefaultLocale(locale)) {
@@ -110,7 +122,6 @@ public class PatternService {
                 patterns = new RemotePatternOpt().getPatternsByLocale(language, region);
             } else {
                 logger.debug("Look for pattern from local bundle for language [{}], region [{}]!", language, region);
-                language = language.replace("_", "-");
                 LocaleDataDTO resultData = CommonUtil.getLocale(language, region);
                 String localeStr = resultData.getLocale();
                 logger.debug("Normalized locale for language [{}], region [{}] is [{}]", language, region, localeStr);

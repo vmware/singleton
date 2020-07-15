@@ -14,9 +14,10 @@ import org.json.simple.parser.ParseException;
 import java.util.Map;
 
 public class LocalPatternOpt {
+    private static final String JSON_PATTERNS = "level2/pattern/{0}/pattern.json";
 
     public JSONObject getEnPatterns(String locale) {
-        Map<String, Object> patterns = PatternBundleUtil.readJSONFile(locale);
+        Map<String, Object> patterns = PatternBundleUtil.readJSONFile(JSON_PATTERNS, locale);
         if (patterns == null) {
             return null;
         } else {
@@ -25,7 +26,8 @@ public class LocalPatternOpt {
     }
 
     public JSONObject getPatternsByLocale(String locale) {
-        locale = locale.replace("_", "-");
+        if(locale == null || "".equalsIgnoreCase(locale))
+            return null;
         String patternStr = PatternUtil.getPatternFromLib(locale, null);
         Map<String, Object> patterns = null;
         try {
