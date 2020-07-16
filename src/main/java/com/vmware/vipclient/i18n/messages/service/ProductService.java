@@ -8,16 +8,21 @@ import java.util.*;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
+import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.messages.api.opt.ComponentOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.LocaleOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ProductBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
+import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.json.simple.JSONArray;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ProductService {
     private MessagesDTO dto = null;
+    Logger logger = LoggerFactory.getLogger(ProductService.class);
 
     public ProductService(MessagesDTO dto) {
         this.dto = dto;
@@ -58,6 +63,8 @@ public class ProductService {
                 for (Object component : components) {
                     dto.setComponent(((String) component).trim());
                     dto.setLocale(LocaleUtility.fmtToMappedLocale(Locale.forLanguageTag(languageTag)).toString().trim());
+                    dto.setProductID(VIPCfg.getInstance().getProductName());
+                    dto.setVersion(VIPCfg.getInstance().getVersion());
                     Map<String, String> retMap = new ComponentService(dto).getMessages().getCachedData();
                     if (retMap != null) {
                         list.add(retMap);
@@ -74,7 +81,18 @@ public class ProductService {
 
         DataSourceEnum dataSource = msgSourceQueueIter.next();
         LocaleOpt opt = dataSource.createLocaleOpt();
-        return opt.getLanguages(LocaleUtility.getDefaultLocale().toLanguageTag());
+        Map<String, String> languages =  opt.getLanguages(LocaleUtility.getDefaultLocale().toLanguageTag());
+        // If failed to get languages from the data source
+        if (languages == null) {
+            // Try the next dataSource in the queue
+            if (msgSourceQueueIter.hasNext()) {
+                languages = getLanguages(msgSourceQueueIter);
+                // If no more data source in queue, log the error. This means that neither online nor offline fetch succeeded.
+            } else {
+                logger.error(FormatUtils.format(ConstantsMsg.GET_LANGUAGES_FAILED, dataSource.toString()));
+            }
+        }
+        return languages;
     }
 
     private List<String> getComponents (Iterator<DataSourceEnum> msgSourceQueueIter) {
@@ -83,7 +101,18 @@ public class ProductService {
 
         DataSourceEnum dataSource = msgSourceQueueIter.next();
         ComponentOpt opt = dataSource.createComponentOpt(dto);
-        return opt.getComponents();
+        List<String> components = opt.getComponents();
+        // If failed to get components from the data source
+        if (components.isEmpty()) {
+            // Try the next dataSource in the queue
+            if (msgSourceQueueIter.hasNext()) {
+                components = getComponents(msgSourceQueueIter);
+                // If no more data source in queue, log the error. This means that neither online nor offline fetch succeeded.
+            } else {
+                logger.error(FormatUtils.format(ConstantsMsg.GET_COMPONENTS_FAILED, dataSource.toString()));
+            }
+        }
+        return components;
     }
 
 }

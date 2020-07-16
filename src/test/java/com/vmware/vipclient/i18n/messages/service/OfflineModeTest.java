@@ -4,10 +4,7 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 import com.vmware.vip.i18n.BaseTestClass;
 import com.vmware.vipclient.i18n.I18nFactory;
@@ -24,6 +21,7 @@ import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -57,7 +55,21 @@ public class OfflineModeTest extends BaseTestClass {
         }
        
     }
-    
+
+    @Test
+    public void testGetAllComponentTranslationOfflineMode() {
+        String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
+        cfg.setOfflineResourcesBaseUrl("offlineBundles/");
+        List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
+        cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
+
+        List<Map> list = new ProductService(dto).getAllComponentTranslation();
+        Assert.assertTrue(list.size() > 0);
+
+        cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
+        cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+    }
+
     @Test
     public void testGetMsgsOfflineMode() {
     	String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
