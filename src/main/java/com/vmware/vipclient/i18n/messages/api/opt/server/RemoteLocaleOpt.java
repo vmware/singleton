@@ -26,7 +26,8 @@ public class RemoteLocaleOpt implements LocaleOpt{
     public RemoteLocaleOpt() {
     }
 
-    public Map<String, String> getTerritoriesFromCLDR(String language) {
+    public Map<String, String> getRegions(String language) {
+        logger.debug("Look for regions from Singleton Service for locale [{}]!", language);
     	Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(
                 V2URL.getRegionListURL(language, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.GET, null);
@@ -49,6 +50,8 @@ public class RemoteLocaleOpt implements LocaleOpt{
 
     @Override
     public Map<String, String> getSupportedLanguages(String language) {
+        logger.debug("Look for supported languages from Singleton Service for product [{}], version [{}], locale [{}]!",
+                VIPCfg.getInstance().getProductName(), VIPCfg.getInstance().getVersion(), language);
     	Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester()
                 .request(
                         V2URL.getSupportedLanguageListURL(language,

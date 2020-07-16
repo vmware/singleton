@@ -4,21 +4,15 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import com.vmware.i18n.dto.LocaleDataDTO;
-import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
-import com.vmware.vipclient.i18n.messages.api.opt.local.LocalPatternOpt;
-import com.vmware.vipclient.i18n.messages.api.opt.server.RemotePatternOpt;
-import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.util.Locale;
 
-import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localeAliasesMap;
-import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePathMap;
+import java.util.ListIterator;
+import java.util.Locale;
 
 /**
  * The class represents date formatting
@@ -46,7 +40,7 @@ public class PatternService {
             logger.debug("Find pattern from cache for locale [{}]!", locale);
             return patterns;
         }
-        patterns = getPatternsFromDS(locale);
+        patterns = getPatternsFromDS(locale, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
         if (patterns != null) {
             logger.debug("Find the pattern for locale [{}].\n", locale);// [datetime] and
             new PatternCacheService().addPatterns(cacheKey, patterns);
@@ -55,7 +49,7 @@ public class PatternService {
         }
         if (!LocaleUtility.isDefaultLocale(locale)) {
             logger.info("Can't find pattern for locale [{}], look for English pattern as fallback!", locale);
-            patterns = getPatterns(ConstantsKeys.EN);
+            patterns = getPatterns(LocaleUtility.getDefaultLocale().toLanguageTag());
         }
         return patterns;
     }
@@ -75,7 +69,7 @@ public class PatternService {
             logger.debug("Find pattern from cache for language [{}], region [{}]!", language, region);
             return patterns;
         }
-        patterns = getPatternsFromDS(language, region);
+        patterns = getPatternsFromDS(language, region, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
         if (patterns != null) {
             logger.debug("Find the pattern for language [{}], region [{}].\n", language, region);// [datetime]
             // and
@@ -85,48 +79,31 @@ public class PatternService {
         }
         if (!LocaleUtility.isDefaultLocale(new Locale(language, region))) {
             logger.info("Can't find pattern for language [{}] region [{}], look for English pattern as fallback!", language, region);
-            patterns = getPatterns(ConstantsKeys.EN);
+            patterns = getPatterns(LocaleUtility.getDefaultLocale().toLanguageTag());
         }
         return patterns;
     }
 
-    private JSONObject getPatternsFromDS(String locale) {
+    private JSONObject getPatternsFromDS(String locale, ListIterator<DataSourceEnum> msgSourceQueueIter) {
         JSONObject patterns = null;
-        if (LocaleUtility.isDefaultLocale(locale)) {
-            logger.debug("Look for pattern from local bundle for locale [{}]!", locale);
-            patterns = new LocalPatternOpt().getEnPatterns(ConstantsKeys.EN);
-        } else {
-            if (VIPCfg.getInstance().getMsgOriginsQueue().get(0) == DataSourceEnum.VIP) {
-                logger.debug("Look for pattern from Singleton Service for locale [{}]!", locale);
-                patterns = new RemotePatternOpt().getPatternsByLocale(locale);
-            } else {
-                logger.debug("Look for pattern from local bundle for locale [{}]!", locale);
-                String normalizedLocale = CommonUtil.getCLDRLocale(locale, localePathMap, localeAliasesMap);
-                logger.debug("Normalized locale for locale [{}] is [{}]", locale, normalizedLocale);
-                patterns = new LocalPatternOpt().getPatternsByLocale(normalizedLocale);
-            }
+        if (!msgSourceQueueIter.hasNext())
+            return patterns;
+        DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
+        patterns = dataSource.createPatternOpt().getPatterns(locale);
+        if (patterns == null || patterns.isEmpty()) {
+            patterns = getPatternsFromDS(locale, msgSourceQueueIter);
         }
         return patterns;
     }
 
-    private JSONObject getPatternsFromDS(String language, String region) {
+    private JSONObject getPatternsFromDS(String language, String region, ListIterator<DataSourceEnum> msgSourceQueueIter) {
         JSONObject patterns = null;
-        Locale locale = new Locale(language, region);
-        if (LocaleUtility.isDefaultLocale(locale)) {
-            logger.debug("Look for pattern from local bundle for language [{}], region [{}]!", language, region);
-            patterns = new LocalPatternOpt()
-                    .getEnPatterns(ConstantsKeys.EN);
-        } else {
-            if (VIPCfg.getInstance().getMsgOriginsQueue().get(0) == DataSourceEnum.VIP) {
-                logger.debug("Look for pattern from Singleton Service for language [{}], region [{}]!", language, region);
-                patterns = new RemotePatternOpt().getPatternsByLocale(language, region);
-            } else {
-                logger.debug("Look for pattern from local bundle for language [{}], region [{}]!", language, region);
-                LocaleDataDTO resultData = CommonUtil.getLocale(language, region);
-                String localeStr = resultData.getLocale();
-                logger.debug("Normalized locale for language [{}], region [{}] is [{}]", language, region, localeStr);
-                patterns = new LocalPatternOpt().getPatternsByLocale(localeStr);
-            }
+        if (!msgSourceQueueIter.hasNext())
+            return patterns;
+        DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
+        patterns = dataSource.createPatternOpt().getPatterns(language, region);
+        if (patterns == null || patterns.isEmpty()) {
+            patterns = getPatternsFromDS(language, region, msgSourceQueueIter);
         }
         return patterns;
     }

@@ -8,4 +8,5 @@ import java.util.Map;
 
 public interface LocaleOpt {
 	public Map<String, String> getSupportedLanguages(String displayLanguage);
+	public Map<String, String> getRegions(String displayLanguage);
 }

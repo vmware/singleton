@@ -4,31 +4,45 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.local;
 
+import com.vmware.i18n.dto.LocaleDataDTO;
+import com.vmware.i18n.utils.CommonUtil;
+import com.vmware.vipclient.i18n.messages.api.opt.PatternOpt;
 import com.vmware.i18n.PatternUtil;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
-import com.vmware.vipclient.i18n.util.PatternBundleUtil;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
-public class LocalPatternOpt {
-    private static final String JSON_PATTERNS = "level2/pattern/{0}/pattern.json";
+import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localeAliasesMap;
+import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePathMap;
 
-    public JSONObject getEnPatterns(String locale) {
-        Map<String, Object> patterns = PatternBundleUtil.readJSONFile(JSON_PATTERNS, locale);
-        if (patterns == null) {
-            return null;
-        } else {
-            return (JSONObject) patterns.get(PatternKeys.CATEGORIES);
-        }
+public class LocalPatternOpt implements PatternOpt{
+    Logger logger = LoggerFactory.getLogger(LocalPatternOpt.class);
+
+    public JSONObject getPatterns(String locale) {
+        logger.debug("Look for pattern from local bundle for locale [{}]!", locale);
+        String normalizedLocale = CommonUtil.getCLDRLocale(locale, localePathMap, localeAliasesMap);
+        logger.debug("Normalized locale for locale [{}] is [{}]", locale, normalizedLocale);
+        return getPatternsByLocale(normalizedLocale);
     }
 
-    public JSONObject getPatternsByLocale(String locale) {
-        if(locale == null || "".equalsIgnoreCase(locale))
+    @Override
+    public JSONObject getPatterns(String language, String region) {
+        logger.debug("Look for pattern from local bundle for language [{}], region [{}]!", language, region);
+        LocaleDataDTO resultData = CommonUtil.getLocale(language, region);
+        String normalizedLocale = resultData.getLocale();
+        logger.debug("Normalized locale for language [{}], region [{}] is [{}]", language, region, normalizedLocale);
+        return getPatternsByLocale(normalizedLocale);
+    }
+
+    public JSONObject getPatternsByLocale(String normalizedLocale) {
+        if(normalizedLocale == null || "".equalsIgnoreCase(normalizedLocale))
             return null;
-        String patternStr = PatternUtil.getPatternFromLib(locale, null);
+        String patternStr = PatternUtil.getPatternFromLib(normalizedLocale, null);
         Map<String, Object> patterns = null;
         try {
             patterns = (Map<String, Object>) new JSONParser().parse(patternStr);

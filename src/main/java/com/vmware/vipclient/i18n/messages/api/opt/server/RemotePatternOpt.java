@@ -4,6 +4,7 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
+import com.vmware.vipclient.i18n.messages.api.opt.PatternOpt;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.HttpRequester;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
@@ -18,10 +19,11 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
-public class RemotePatternOpt {
+public class RemotePatternOpt implements PatternOpt{
     Logger logger = LoggerFactory.getLogger(RemotePatternOpt.class);
 
-    public JSONObject getPatternsByLocale(String locale) {
+    public JSONObject getPatterns(String locale) {
+        logger.debug("Look for pattern from Singleton Service for locale [{}]!", locale);
         String responseStr = "";
         String i18nScope = VIPCfg.getInstance().getI18nScope();
         HttpRequester httpRequester = VIPCfg.getInstance().getVipService().getHttpRequester();
@@ -42,7 +44,8 @@ public class RemotePatternOpt {
         }
     }
 
-    public JSONObject getPatternsByLocale(String language, String region) {
+    public JSONObject getPatterns(String language, String region) {
+        logger.debug("Look for pattern from Singleton Service for language [{}], region [{}]!", language, region);
         String responseStr = "";
         String i18nScope = VIPCfg.getInstance().getI18nScope();
         HttpRequester httpRequester = VIPCfg.getInstance().getVipService().getHttpRequester();

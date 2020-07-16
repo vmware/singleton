@@ -12,7 +12,6 @@ import com.vmware.vipclient.i18n.messages.api.opt.LocaleOpt;
 import com.vmware.vipclient.i18n.messages.service.PatternCacheService;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
-import com.vmware.vipclient.i18n.util.PatternBundleUtil;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -109,34 +108,14 @@ public class LocalLocaleOpt implements LocaleOpt{
 		}
 		if (!LocaleUtility.isDefaultLocale(displayLanguage)) {
 			logger.info("Can't find languages for locale [{}], look for English languages as fallback!", displayLanguage);
-			languagesNames = getLanguagesNames(ConstantsKeys.EN);
+			languagesNames = getLanguagesNames(LocaleUtility.getDefaultLocale().toLanguageTag());
 		}
 		return languagesNames;
 
 	}
 
 	private JSONObject getLanguagesNamesFromBundle(String displayLanguage) {
-		JSONObject languagesNames = null;
-		if (LocaleUtility.isDefaultLocale(displayLanguage)) {
-			logger.debug("Look for languages from local en bundle for locale [{}]!", displayLanguage);
-			languagesNames = getEnLanguagesNames(ConstantsKeys.EN);
-		} else {
-			logger.debug("Look for languages from local package bundle for locale [{}]!", displayLanguage);
-			languagesNames = getOtherLanguagesNames(displayLanguage);
-		}
-		return languagesNames;
-	}
-
-	private JSONObject getEnLanguagesNames(String displayLanguage) {
-		Map<String, Object> languagesData = PatternBundleUtil.readJSONFile(JSON_LANGUAGES, displayLanguage);
-		if (languagesData == null) {
-			return null;
-		} else {
-			return (JSONObject) languagesData.get(PatternKeys.LANGUAGES);
-		}
-	}
-
-	private JSONObject getOtherLanguagesNames(String displayLanguage) {
+		logger.debug("Look for languages from local package bundle for locale [{}]!", displayLanguage);
 		String normalizedLocale = CommonUtil.getCLDRLocale(displayLanguage, localePathMap, localeAliasesMap);
 		logger.info("Normalized locale for locale [{}] is [{}]", displayLanguage, normalizedLocale);
 		if(normalizedLocale == null || "".equalsIgnoreCase(normalizedLocale))
@@ -154,16 +133,8 @@ public class LocalLocaleOpt implements LocaleOpt{
 		return (JSONObject) languagesData.get(PatternKeys.LANGUAGES);
 	}
 
-	public JSONObject getEnRegions(String displayLanguage) {
-		Map<String, Object> regionsData = PatternBundleUtil.readJSONFile(JSON_TERRITORIES, displayLanguage);
-		if (regionsData == null) {
-			return null;
-		} else {
-			return (JSONObject) regionsData.get(PatternKeys.TERRITORIES);
-		}
-	}
-
-	public JSONObject getOtherRegions(String displayLanguage) {
+	public JSONObject getRegions(String displayLanguage) {
+		logger.debug("Look for regions from local bundle for locale [{}]!", displayLanguage);
 		JSONObject regionsData = null;
 		String normalizedLocale = CommonUtil.getCLDRLocale(displayLanguage, localePathMap, localeAliasesMap);
 		logger.info("Normalized locale for locale [{}] is [{}]", displayLanguage, normalizedLocale);

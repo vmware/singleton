@@ -8,8 +8,6 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.FormatCacheItem;
-import com.vmware.vipclient.i18n.messages.api.opt.local.LocalLocaleOpt;
-import com.vmware.vipclient.i18n.messages.api.opt.server.RemoteLocaleOpt;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.JSONUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
@@ -57,7 +55,7 @@ public class LocaleService {
             logger.debug("Find regions from cache for locale [{}]!", language);
             return regionMap;
         }
-        Map<String, String> tmpMap = getRegionsFromDS(language);
+        Map<String, String> tmpMap = getRegionsFromDS(language, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
         if (c != null && tmpMap != null) {
             logger.debug("Find the regions for locale [{}].\n", language);
             regionMap = JSONUtils.map2SortMap(tmpMap);
@@ -68,24 +66,19 @@ public class LocaleService {
         }
         if (!LocaleUtility.isDefaultLocale(language)) {
             logger.info("Can't find regions for locale [{}], look for English regions as fallback!", language);
-            regionMap = getTerritoriesFromCLDR(ConstantsKeys.EN);
+            regionMap = getTerritoriesFromCLDR(LocaleUtility.getDefaultLocale().toLanguageTag());
         }
         return regionMap;
     }
 
-    private Map<String, String> getRegionsFromDS(String locale) {
+    private Map<String, String> getRegionsFromDS(String language, ListIterator<DataSourceEnum> msgSourceQueueIter) {
         Map<String, String> regions = null;
-        if (LocaleUtility.isDefaultLocale(locale)) {
-            logger.debug("Look for regions from local bundle for locale [{}]!", locale);
-            regions = new LocalLocaleOpt().getEnRegions(ConstantsKeys.EN);
-        } else {
-            if (VIPCfg.getInstance().getMsgOriginsQueue().get(0) == DataSourceEnum.VIP) {
-                logger.debug("Look for regions from Singleton Service for locale [{}]!", locale);
-                regions = new RemoteLocaleOpt().getTerritoriesFromCLDR(locale);
-            } else {
-                logger.debug("Look for regions from local bundle for locale [{}]!", locale);
-                regions = new LocalLocaleOpt().getOtherRegions(locale);
-            }
+        if (!msgSourceQueueIter.hasNext())
+            return regions;
+        DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
+        regions = dataSource.createLocaleOpt().getRegions(language);
+        if (regions == null || regions.isEmpty()) {
+            regions = getRegionsFromDS(language, msgSourceQueueIter);
         }
         return regions;
     }
