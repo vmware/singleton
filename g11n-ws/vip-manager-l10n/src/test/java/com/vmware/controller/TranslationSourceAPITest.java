@@ -62,7 +62,7 @@ public class TranslationSourceAPITest {
 			MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(
 					webApplicationContext).build();
 			String API = L10nI18nAPI.TRANSLATION_SOURCE_APIV2
-					.replace("{" + APIParamName.PRODUCT_NAME + "}", "devCenter")
+					.replace("{" + APIParamName.PRODUCT_NAME + "}", "devTest")
 					.replace("{" + APIParamName.VERSION + "}", "2.2.0")
 					.replace("{" + APIParamName.COMPONENT + "}", "test")
 					.replace("{" + APIParamName.LOCALE + "}", "en");

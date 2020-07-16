@@ -81,7 +81,7 @@ public class TranslationCollectKeyAPITest {
 			MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(
 					webApplicationContext).build();
 			String API = L10nI18nAPI.TRANSLATION_PRODUCT_COMOPONENT_KEY_APIV1
-					.replace("{" + APIParamName.PRODUCT_NAME + "}", "devCenter")
+					.replace("{" + APIParamName.PRODUCT_NAME + "}", "devTest")
 					.replace("{" + APIParamName.COMPONENT + "}", "default")
 					.replace("{" +APIParamName.KEY+ "}", "dc.myhome.open3");
 			MvcResult mvcRS =mockMvc.perform(
@@ -195,7 +195,7 @@ public class TranslationCollectKeyAPITest {
 			MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(
 					webApplicationContext).build();
 			String API = L10nI18nAPI.KEYS_TRANSLATION_APIV2
-					.replace("{" + APIParamName.PRODUCT_NAME + "}", "devtest")
+					.replace("{" + APIParamName.PRODUCT_NAME + "}", "devTest")
 					.replace("{" + APIParamName.VERSION + "}", "2.1.0")
 					.replace("{" + APIParamName.COMPONENT + "}", "testmult")
 					.replace("{" + APIParamName.LOCALE + "}", "en");
