@@ -246,8 +246,11 @@ namespace SingletonClient.Implementation
 
         private IConfigItem GetLocalesItem(string component)
         {
-            IConfigItem localesItem = GetComponentAttribute(component, ConfigConst.KeyLocales);
-            if (localesItem == null)
+            IConfigItem componentItem = GetComponentArrayItem(component);
+            IConfigItem localesItem = (componentItem == null) ?
+                null : componentItem.GetMapItem(ConfigConst.KeyLocales);
+
+            if (componentItem != null && localesItem == null)
             {
                 localesItem = GetItem(ConfigConst.KeyLocales);
             }

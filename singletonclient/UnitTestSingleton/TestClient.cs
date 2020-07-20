@@ -79,6 +79,13 @@ namespace UnitTestSingleton
         [TestMethod]
         public void TestRelease()
         {
+            config = I18n.GetConfig("CSHARP", "1.0.0");
+            List<string> localeList = config.GetLocaleList(null);
+            Assert.AreEqual(localeList.Count, 0);
+            localeList = config.GetLocaleList("");
+            Assert.AreEqual(localeList.Count, 0);
+            localeList = config.GetLocaleList("NONE");
+            Assert.AreEqual(localeList.Count, 0);
         }
 
         [TestMethod]
