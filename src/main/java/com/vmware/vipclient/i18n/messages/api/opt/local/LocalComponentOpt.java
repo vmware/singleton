@@ -55,6 +55,5 @@ public class LocalComponentOpt implements ComponentOpt {
         try (Stream<Path> listOfFiles = Files.list(path).filter(p -> !p.toFile().isFile())) {
             listOfFiles.forEach(s -> components.add(s.getFileName().toString()));
         }
-        }
     }
 }

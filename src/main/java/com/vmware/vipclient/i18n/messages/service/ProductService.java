@@ -63,8 +63,6 @@ public class ProductService {
                 for (Object component : components) {
                     dto.setComponent(((String) component).trim());
                     dto.setLocale(LocaleUtility.fmtToMappedLocale(Locale.forLanguageTag(languageTag)).toString().trim());
-                    dto.setProductID(VIPCfg.getInstance().getProductName());
-                    dto.setVersion(VIPCfg.getInstance().getVersion());
                     Map<String, String> retMap = new ComponentService(dto).getMessages().getCachedData();
                     if (retMap != null) {
                         list.add(retMap);

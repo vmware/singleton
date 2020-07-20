@@ -62,6 +62,9 @@ public class OfflineModeTest extends BaseTestClass {
         cfg.setOfflineResourcesBaseUrl("offlineBundles/");
         List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
         cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
+        
+        dto.setProductID(cfg.getProductName());
+        dto.setVersion(cfg.getVersion());
 
         List<Map> list = new ProductService(dto).getAllComponentTranslation();
         Assert.assertTrue(list.size() > 0);
