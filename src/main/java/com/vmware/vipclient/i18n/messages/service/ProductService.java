@@ -76,23 +76,20 @@ public class ProductService {
     }
 
     private Map<String, String> getLanguages(Iterator<DataSourceEnum> msgSourceQueueIter) {
-        if (!msgSourceQueueIter.hasNext())
+        if (!msgSourceQueueIter.hasNext()) {
             return null;
-
+        }
+        
         DataSourceEnum dataSource = msgSourceQueueIter.next();
         LocaleOpt opt = dataSource.createLocaleOpt();
         Map<String, String> languages =  opt.getLanguages(LocaleUtility.getDefaultLocale().toLanguageTag());
         // If failed to get languages from the data source
-        if (languages == null) {
-            // Try the next dataSource in the queue
-            if (msgSourceQueueIter.hasNext()) {
-                languages = getLanguages(msgSourceQueueIter);
-                // If no more data source in queue, log the error. This means that neither online nor offline fetch succeeded.
-            } else {
-                logger.error(FormatUtils.format(ConstantsMsg.GET_LANGUAGES_FAILED, dataSource.toString()));
-            }
+        if (languages == null) {                
+        logger.error(FormatUtils.format(ConstantsMsg.GET_LANGUAGES_FAILED, dataSource.toString()));
+    languages = getLanguages(msgSourceQueueIter);
         }
-        return languages;
+        
+            return languages;
     }
 
     private List<String> getComponents (Iterator<DataSourceEnum> msgSourceQueueIter) {
