@@ -83,13 +83,17 @@ public class ProductService {
         DataSourceEnum dataSource = msgSourceQueueIter.next();
         LocaleOpt opt = dataSource.createLocaleOpt();
         Map<String, String> languages =  opt.getLanguages(LocaleUtility.getDefaultLocale().toLanguageTag());
-        // If failed to get languages from the data source
-        if (languages == null) {                
-        logger.error(FormatUtils.format(ConstantsMsg.GET_LANGUAGES_FAILED, dataSource.toString()));
-    languages = getLanguages(msgSourceQueueIter);
+        if (languages == null) {
+            // If failed to get languages from the data source
+            logger.debug(FormatUtils.format(ConstantsMsg.GET_LANGUAGES_FAILED, dataSource.toString()));
+            if (msgSourceQueueIter.hasNext()) {
+                languages = getLanguages(msgSourceQueueIter);
+            } else {
+                // If failed to get languages from any data source
+                logger.error(FormatUtils.format(ConstantsMsg.GET_LANGUAGES_FAILED_ALL));
+            }
         }
-        
-            return languages;
+        return languages;
     }
 
     private List<String> getComponents (Iterator<DataSourceEnum> msgSourceQueueIter) {
