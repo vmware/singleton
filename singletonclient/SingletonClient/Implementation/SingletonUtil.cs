@@ -65,13 +65,16 @@ namespace SingletonClient.Implementation
             try
             {
                 ResourceSet resourceSet = resourceManager.GetResourceSet(cultureInfo, true, tryParents);
-                IDictionaryEnumerator enumerator = resourceSet.GetEnumerator();
-
-                while (enumerator.MoveNext())
+                if (resourceSet != null)
                 {
-                    table[enumerator.Key] = enumerator.Value;
+                    IDictionaryEnumerator enumerator = resourceSet.GetEnumerator();
+
+                    while (enumerator.MoveNext())
+                    {
+                        table[enumerator.Key] = enumerator.Value;
+                    }
+                    resourceSet.Close();
                 }
-                resourceSet.Close();
             }
             catch (Exception e)
             {

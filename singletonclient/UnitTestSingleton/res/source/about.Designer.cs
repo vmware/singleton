@@ -79,7 +79,7 @@ namespace UnitTestSingleton.res.source {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About.
+        ///   Looks up a localized string similar to About Version {1} of Product {0}.
         /// </summary>
         internal static string about_title {
             get {

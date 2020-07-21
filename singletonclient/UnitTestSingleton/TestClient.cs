@@ -123,6 +123,14 @@ namespace UnitTestSingleton
             Util.Translation().SetCurrentLocale("zh-Hans");
             locale = Util.Translation().GetCurrentLocale();
             Assert.AreEqual(locale, "zh-Hans");
+
+            src = Util.Source("about", "about.title", null, null);
+            translation = Util.Translation().GetString("zh-CN", src);
+            Assert.AreEqual(translation, "关于 Version {1} of Product {0}");
+            translation = Util.Translation().Format("zh-CN", src, "CSHARP", "1.0.0");
+            Assert.AreEqual(translation, "关于 Version 1.0.0 of Product CSHARP");
+            translation = Util.Translation().Format("zh-CN", src, "CSHARP");
+            Assert.AreEqual(translation, "关于 Version {1} of Product CSHARP");
         }
 
         [TestMethod]
