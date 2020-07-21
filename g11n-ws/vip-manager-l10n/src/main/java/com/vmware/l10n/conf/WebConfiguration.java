@@ -20,6 +20,7 @@ import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.util.UrlPathHelper;
 
+import com.vmware.l10n.utils.WhiteListUtils;
 import com.vmware.vip.api.rest.l10n.L10nI18nAPI;
 import com.vmware.vip.common.constants.ConstantsChar;
 
@@ -39,6 +40,9 @@ public class WebConfiguration implements WebMvcConfigurer {
 	
 	@Autowired
 	private TokenService tokenService;
+	
+	@Value("${white.list.location:bundle.json}")
+	private String whiteListLocation;
 	
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
@@ -60,7 +64,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		logger.info("add collect source validation interceptor");
-		registry.addInterceptor(new CollectSourceValidationInterceptor(parseLocales(this.collectLocales))).addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/**");
+		registry.addInterceptor(new CollectSourceValidationInterceptor(parseLocales(this.collectLocales), WhiteListUtils.getWhiteList(whiteListLocation))).addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/**");
 		// CSP authentication
 		if (cspAuthFlag.equalsIgnoreCase("true")) {
 			logger.info("add enable CSP authentication interceptor");
