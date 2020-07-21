@@ -169,7 +169,7 @@ public class LocaleService implements ILocaleService {
 	}
 
 	@Override
-	public List<TerritoryDTO> getTerritoriesFromCLDR(String languageList) throws Exception {
+	public List<TerritoryDTO> getTerritoriesFromCLDR(String languageList, String displayCity) throws Exception {
 		TerritoriesFileParser territoriesParser = new TerritoriesFileParser();
 		List<TerritoryDTO> territoryList = new ArrayList<TerritoryDTO>();
 		TerritoryDTO territory = null;
@@ -181,7 +181,7 @@ public class LocaleService implements ILocaleService {
 			territory = TranslationCache3.getCachedObject(CacheName.REGION, lang, TerritoryDTO.class);
 			if (territory == null) {
 				logger.info("cache is null, get data from file");
-				territory = territoriesParser.getTerritoriesByLanguage(lang);
+				territory = territoriesParser.getTerritoriesByLanguage(lang, displayCity);
 				if (territory.getTerritories() != null) {
 					TranslationCache3.addCachedObject(CacheName.REGION, lang, TerritoryDTO.class, territory);
 				}

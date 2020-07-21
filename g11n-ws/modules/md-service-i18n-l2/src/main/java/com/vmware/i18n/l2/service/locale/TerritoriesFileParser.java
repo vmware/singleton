@@ -15,7 +15,7 @@ import com.vmware.vip.common.utils.JSONUtils;
 public class TerritoriesFileParser {
 
 	@SuppressWarnings("unchecked")
-	public TerritoryDTO getTerritoriesByLanguage(String language) {
+	public TerritoryDTO getTerritoriesByLanguage(String language, String displayCity) {
 		TerritoryDTO dto = new TerritoryDTO();
 		dto.setLanguage(language);
 		String regionJson = PatternUtil.getRegionFromLib(language.replace("_", "-"));
@@ -28,6 +28,14 @@ public class TerritoriesFileParser {
 		Object defaultRegionCode = JSONUtils.getMapFromJson(regionJson).get(ConstantsKeys.DEFAULT_REGION_CODE);
 		dto.setTerritories(terrMap);
 		dto.setDefaultRegionCode(defaultRegionCode.toString());
+
+		if (Boolean.parseBoolean(displayCity)) {
+			String citiesJson = PatternUtil.getCitiesFromLib(language.replace("_", "-"));
+			if (!StringUtils.isEmpty(citiesJson)) {
+				Map<String, Object> citiesMap = (Map<String, Object>)JSONUtils.getMapFromJson(citiesJson).get(ConstantsKeys.CITIES);
+				dto.setCities(citiesMap);
+			}
+		}
 		return dto;
 	}
 

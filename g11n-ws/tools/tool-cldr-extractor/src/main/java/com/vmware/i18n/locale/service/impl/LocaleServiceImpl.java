@@ -34,18 +34,10 @@ public class LocaleServiceImpl implements ILocaleService {
 	}
 
 	@Override
-	public String getRegion(String language) {
+	public String getLocaleData(String language, String filePath) {
 		if (localePathMap.get(language) == null)
 			return "";
-		String filePath = MessageFormat.format(CLDRConstants.LOCALE_TERRITORIES_PATH, localePathMap.get(language));
-		return new LocaleDaoImpl().getLocaleData(CLDRConstants.JSON_PATH, filePath);
-	}
-
-	@Override
-	public String getLanguage(String displayLanguage) {
-		if (localePathMap.get(displayLanguage) == null)
-			return "";
-		String filePath = MessageFormat.format(CLDRConstants.LOCALE_LANGUAGES_PATH, localePathMap.get(displayLanguage));
+		filePath = MessageFormat.format(filePath, localePathMap.get(language));
 		return new LocaleDaoImpl().getLocaleData(CLDRConstants.JSON_PATH, filePath);
 	}
 

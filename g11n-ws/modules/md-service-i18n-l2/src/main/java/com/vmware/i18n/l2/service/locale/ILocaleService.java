@@ -10,5 +10,5 @@ public interface ILocaleService {
 
 	public List<DisplayLanguageDTO> getDisplayNamesFromCLDR(String productName, String version, String displayLanguage) throws Exception;
 
-	public List<TerritoryDTO> getTerritoriesFromCLDR(String languageList) throws Exception;
+	public List<TerritoryDTO> getTerritoriesFromCLDR(String languageList, String displayCity) throws Exception;
 }
