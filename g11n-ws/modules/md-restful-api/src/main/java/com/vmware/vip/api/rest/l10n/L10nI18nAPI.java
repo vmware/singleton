@@ -12,13 +12,13 @@ public interface L10nI18nAPI {
 	//Translation Source API
 	public static String TRANSLATION_SOURCE_APIV1 = BASE_COLLECT_SOURCE_PATH + "/api/v1/translation/product/{productName}/component/{component}/sources";
     //Translation Product Component Key API
-	public static String  TRANSLATION_PRODUCT_COMOPONENT_KEY_APIV1 = BASE_COLLECT_SOURCE_PATH + "/api/v1/translation/product/{productName}/component/{component}/key/{key}";
-	public static String  TRANSLATION_PRODUCT_NOCOMOPONENT_KEY_APIV1 = BASE_COLLECT_SOURCE_PATH + "/api/v1/translation/product/{productName}/key/{key}";
+	public static String  TRANSLATION_PRODUCT_COMOPONENT_KEY_APIV1 = BASE_COLLECT_SOURCE_PATH + "/api/v1/translation/product/{productName}/component/{component}/key/{key:.+}";
+	public static String  TRANSLATION_PRODUCT_NOCOMOPONENT_KEY_APIV1 = BASE_COLLECT_SOURCE_PATH + "/api/v1/translation/product/{productName}/key/{key:.+}";
 	
 	//v2
 	//Translation Source API
 	public static String TRANSLATION_SOURCE_APIV2 = BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}";
 	//Translation Product Component Key API 
 	public static String  KEYS_TRANSLATION_APIV2 = BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys";
-	public static String  KEY_TRANSLATION_APIV2 = BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}";
+	public static String  KEY_TRANSLATION_APIV2 = BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key:.+}";
 }
