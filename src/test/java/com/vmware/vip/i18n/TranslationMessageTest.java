@@ -5,6 +5,7 @@
 package com.vmware.vip.i18n;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -67,7 +68,15 @@ public class TranslationMessageTest extends BaseTestClass {
                 args);
         Assert.assertEquals("[a] Test alert", message1);
 
-        this.init();
+        Map<String, Object> msgargs = new HashMap<>();
+        msgargs.put("a", 1);
+        msgargs.put("b", 5);
+        msgargs.put("c", 10);
+        String message_namedArgs = translation.getString(locale1, component, "NamedArgs",
+                "{a} - {b} of {c} customers", "", msgargs);
+        Assert.assertEquals("1 - 5 of 10 customers", message_namedArgs);
+
+        init();
         vipCfg.setPseudo(false);
         Locale locale2 = new Locale("de");
         String message2 = translation.getString2(component, bundle, locale2, key,
@@ -80,7 +89,7 @@ public class TranslationMessageTest extends BaseTestClass {
                 args);
         Assert.assertEquals("[a] Testwarnung", message2);
 
-        this.init();
+        init();
         vipCfg.setPseudo(false);
         Locale locale3 = Locale.forLanguageTag("zh-Hans");
         String message3 = translation.getString2(component, bundle, locale3, key,
@@ -106,7 +115,7 @@ public class TranslationMessageTest extends BaseTestClass {
 
     // @Test
     public void testGetPatternMessageWithBundle() {
-        this.init();
+        init();
         String component = "JAVA", bundle = "messages";
         Locale locale1 = new Locale("en", "US");
 
