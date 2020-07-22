@@ -63,7 +63,8 @@ public class ProductService {
                 for (Object component : components) {
                     dto.setComponent(((String) component).trim());
                     dto.setLocale(LocaleUtility.fmtToMappedLocale(Locale.forLanguageTag(languageTag)).toString().trim());
-                    Map<String, String> retMap = new ComponentService(dto).getMessages().getCachedData();
+                    Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
+                    Map<String, String> retMap = new ComponentService(dto).getMessages(fallbackLocalesIter).getCachedData();
                     if (retMap != null) {
                         list.add(retMap);
                     }

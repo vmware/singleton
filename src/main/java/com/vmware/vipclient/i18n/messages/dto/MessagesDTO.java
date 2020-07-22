@@ -32,7 +32,14 @@ public class MessagesDTO extends BaseDTO {
         super.setProductID(VIPCfg.getInstance().getProductName());
         super.setVersion(VIPCfg.getInstance().getVersion());
     }
-    
+
+    public MessagesDTO(String component, String localeLanguageTag, String productName, String version) {
+        this.setComponent(component);
+        this.setLocale(localeLanguageTag);
+        this.setProductID(productName);
+        this.setVersion(version);
+    }
+
     public MessagesDTO(String component, String key, String source, String localeLanguageTag, VIPCfg cfg) {
     	this.setComponent(component);
     	

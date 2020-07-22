@@ -33,27 +33,10 @@ public class StringService {
     @SuppressWarnings("unchecked")
     @Deprecated
     public String getString(MessagesDTO dto) {
-    	String key = dto.getKey();
-    	
-    	MessageCacheItem cacheItem = new ComponentService(dto).getMessages();
-    	
-    	// While failed to get MessageCacheItem, use MessageCacheItem of the next fallback locale. 
     	Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
-    	while (cacheItem.getCachedData().isEmpty() && fallbackLocalesIter.hasNext()) {
-    		Locale fallback = fallbackLocalesIter.next();
-			MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), 
-					key, dto.getSource(), fallback.toLanguageTag(), null);
-			cacheItem = new ComponentService(fallbackLocaleDTO).getMessages();
-			
-			// Cache a reference to the MessageCacheItem of the fallback locale 
-			if (!cacheItem.getCachedData().isEmpty()) {
-				CacheService cacheService = new CacheService(dto);
-				cacheService.addCacheOfComponent(cacheItem);
-			}
-		}
-    	
+    	MessageCacheItem cacheItem = new ComponentService(dto).getMessages(fallbackLocalesIter);    	
     	Map<String, String> cachedData = cacheItem.getCachedData();
-		return cachedData.get(key);
+		return cachedData.get(dto.getKey());
     }
 
     public String postString(MessagesDTO dto) {
