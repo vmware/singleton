@@ -67,4 +67,8 @@ public class ConstantsKeys {
     public static final String      DISPLAY_NAME                       = "displayName";
     public static final String      JSON_KEYSET                        = "jsonkeyset";
     public static final String      TRANSLATION_STATUS                 = "translationStatus";
+    public static final String      PATTERNS_PREFIX                       = "patterns_";
+    public static final String      LANGUAGES_PREFIX = "languages_";
+    public static final String      REGIONS_PREFIX = "regions_";
+    public static final String      DISPNS_PREFIX  = "dispns_";
 }

@@ -4,19 +4,18 @@
  */
 package com.vmware.vipclient.i18n.l2.service;
 
-import java.util.HashMap;
-import java.util.Locale;
-
-import org.json.simple.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.base.instances.PatternMessage;
 import com.vmware.vipclient.i18n.l2.common.ConstantChars;
 import com.vmware.vipclient.i18n.l2.common.PatternCategory;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.l2.text.NumberFormat;
+import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.HashMap;
+import java.util.Locale;
 
 public class NumberFormatService {
     Logger logger = LoggerFactory.getLogger(NumberFormatService.class);
@@ -55,8 +54,7 @@ public class NumberFormatService {
             JSONObject formatData = p.getPatternMessage(language, region);
             if (style == NumberFormat.CURRENCYSTYLE) {
                 validateCurrencyCode(currencyCode);
-                JSONObject enFormatData = (JSONObject) p.getPatternMessage(Locale.ENGLISH);
-                formatData = getCurrencyRelatedData(formatData, enFormatData, currencyCode);
+                formatData = getCurrencyRelatedData(formatData, currencyCode);
             } else {
                 formatData = (JSONObject) formatData.get(PatternCategory.NUMBERS.toString());
             }
@@ -105,8 +103,7 @@ public class NumberFormatService {
         JSONObject formatData = (JSONObject) p.getPatternMessage(locale);
         if (style == NumberFormat.CURRENCYSTYLE) {
             validateCurrencyCode(currencyCode);
-            JSONObject enFormatData = (JSONObject) p.getPatternMessage(Locale.ENGLISH);
-            formatData = getCurrencyRelatedData(formatData, enFormatData, currencyCode);
+            formatData = getCurrencyRelatedData(formatData, currencyCode);
         } else {
             formatData = (JSONObject) formatData.get(PatternCategory.NUMBERS.toString());
         }
@@ -132,8 +129,7 @@ public class NumberFormatService {
         return formatNumber;
     }
 
-    private JSONObject getCurrencyRelatedData(JSONObject allCategoriesData, JSONObject enAllCategoriesData,
-            String currencyCode) {
+    private JSONObject getCurrencyRelatedData(JSONObject allCategoriesData, String currencyCode) {
         JSONObject currencyFormatData = new JSONObject();
         JSONObject numberFormatData = (JSONObject) allCategoriesData.get(PatternCategory.NUMBERS.toString());
         JSONObject currencyData = (JSONObject) ((HashMap) allCategoriesData.get(PatternKeys.CURRENCIES))
@@ -141,7 +137,7 @@ public class NumberFormatService {
         if (currencyData == null) {
             throw new IllegalArgumentException("Unsupported currency code " + currencyCode + ".");
         }
-        JSONObject currencySupplementalData = (JSONObject) ((HashMap) enAllCategoriesData
+        JSONObject currencySupplementalData = (JSONObject) ((HashMap) allCategoriesData
                 .get(PatternCategory.SUPPLEMENTAL.toString())).get(PatternKeys.CURRENCIES);
         JSONObject fractionData = (JSONObject) ((HashMap) currencySupplementalData.get(PatternKeys.FRACTIONS))
                 .get(currencyCode);

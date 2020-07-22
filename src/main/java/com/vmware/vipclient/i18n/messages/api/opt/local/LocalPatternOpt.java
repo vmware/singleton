@@ -39,8 +39,8 @@ public class LocalPatternOpt implements PatternOpt{
         return getPatternsByLocale(normalizedLocale);
     }
 
-    public JSONObject getPatternsByLocale(String normalizedLocale) {
-        if(normalizedLocale == null || "".equalsIgnoreCase(normalizedLocale))
+    private JSONObject getPatternsByLocale(String normalizedLocale) {
+        if(normalizedLocale == null || normalizedLocale.isEmpty())
             return null;
         String patternStr = PatternUtil.getPatternFromLib(normalizedLocale, null);
         Map<String, Object> patterns = null;
@@ -48,11 +48,8 @@ public class LocalPatternOpt implements PatternOpt{
             patterns = (Map<String, Object>) new JSONParser().parse(patternStr);
         } catch (ParseException e) {
             e.printStackTrace();
+            logger.error(e.getMessage());
         }
-        if (patterns == null) {
-            return null;
-        } else {
-            return (JSONObject) patterns.get(PatternKeys.CATEGORIES);
-        }
+        return patterns == null? null : (JSONObject) patterns.get(PatternKeys.CATEGORIES);
     }
 }

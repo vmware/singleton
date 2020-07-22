@@ -4,19 +4,19 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
-import java.util.Map;
-
-import org.json.simple.JSONArray;
-
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
-import com.vmware.vipclient.i18n.messages.api.opt.Opt;
+import com.vmware.vipclient.i18n.messages.api.opt.ProductOpt;
 import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+import org.json.simple.JSONArray;
 
-public class ProductBasedOpt extends BaseOpt implements Opt {
+import java.util.List;
+import java.util.Map;
+
+public class ProductBasedOpt extends BaseOpt implements ProductOpt {
     private BaseDTO dto = null;
 
     public ProductBasedOpt(BaseDTO dto) {
@@ -28,7 +28,7 @@ public class ProductBasedOpt extends BaseOpt implements Opt {
      * 
      * @see com.vmware.vipclient.i18n.messages.dao.IComponentDao#getComponents()
      */
-    public JSONArray getComponentsFromRemoteVIP() {
+    public List<String> getComponents() {
         JSONArray msgObject = new JSONArray();
         String responseStr = "";
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(
@@ -50,7 +50,7 @@ public class ProductBasedOpt extends BaseOpt implements Opt {
      * 
      * @see com.vmware.vipclient.i18n.messages.dao.ILocaleDao#getSupportedLocales()
      */
-    public JSONArray getSupportedLocalesFromRemoteVIP() {
+    public List<String> getSupportedLocales() {
         JSONArray msgObject = new JSONArray();
         String responseStr = "";
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL.getSupportedLocaleListURL(

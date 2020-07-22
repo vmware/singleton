@@ -6,20 +6,17 @@ package com.vmware.vipclient.i18n.messages.service;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
-import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ListIterator;
-import java.util.Locale;
 
 /**
  * The class represents date formatting
  */
 public class PatternService {
     Logger logger = LoggerFactory.getLogger(PatternService.class);
-    private static final String PATTERNS_PREFIX = "patterns_";
 
     public JSONObject getPatternsByCategory(String locale, String category) {
         JSONObject patterns = getPatterns(locale);
@@ -34,8 +31,8 @@ public class PatternService {
         locale = locale.replace("_", "-").toLowerCase();
         JSONObject patterns = null;
         logger.debug("Look for pattern from cache for locale [{}]!", locale);
-        String cacheKey = PATTERNS_PREFIX + locale;
-        patterns = new PatternCacheService().lookForPatternsFromCache(cacheKey);// key
+        FormattingCacheService formattingCacheService = new FormattingCacheService();
+        patterns = (JSONObject) formattingCacheService.getPatterns(locale);// key
         if (patterns != null) {
             logger.debug("Find pattern from cache for locale [{}]!", locale);
             return patterns;
@@ -43,15 +40,11 @@ public class PatternService {
         patterns = getPatternsFromDS(locale, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
         if (patterns != null) {
             logger.debug("Find the pattern for locale [{}].\n", locale);// [datetime] and
-            new PatternCacheService().addPatterns(cacheKey, patterns);
+            formattingCacheService.addPatterns(locale, patterns);
             logger.debug("Pattern is cached for locale [{}]!\n\n", locale);
             return patterns;
         }
-        if (!LocaleUtility.isDefaultLocale(locale)) {
-            logger.info("Can't find pattern for locale [{}], look for English pattern as fallback!", locale);
-            patterns = getPatterns(LocaleUtility.getDefaultLocale().toLanguageTag());
-        }
-        return patterns;
+        return null;
     }
 
     public JSONObject getPatterns(String language, String region) {
@@ -62,9 +55,9 @@ public class PatternService {
         language = language.replace("_", "-").toLowerCase();
         region = region.toLowerCase();
         JSONObject patterns = null;
-        String key = PATTERNS_PREFIX + language + "-" + region;
         logger.debug("Look for pattern from cache for language [{}], region [{}]!", language, region);
-        patterns = new PatternCacheService().lookForPatternsFromCache(key);// key
+        FormattingCacheService formattingCacheService = new FormattingCacheService();
+        patterns = (JSONObject) formattingCacheService.getPatterns(language, region);// key
         if (patterns != null) {
             logger.debug("Find pattern from cache for language [{}], region [{}]!", language, region);
             return patterns;
@@ -73,15 +66,11 @@ public class PatternService {
         if (patterns != null) {
             logger.debug("Find the pattern for language [{}], region [{}].\n", language, region);// [datetime]
             // and
-            new PatternCacheService().addPatterns(key, patterns);
+            formattingCacheService.addPatterns(language, region, patterns);
             logger.debug("Pattern is cached for language [{}], region [{}]!\n\n", language, region);
             return patterns;
         }
-        if (!LocaleUtility.isDefaultLocale(new Locale(language, region))) {
-            logger.info("Can't find pattern for language [{}] region [{}], look for English pattern as fallback!", language, region);
-            patterns = getPatterns(LocaleUtility.getDefaultLocale().toLanguageTag());
-        }
-        return patterns;
+        return null;
     }
 
     private JSONObject getPatternsFromDS(String locale, ListIterator<DataSourceEnum> msgSourceQueueIter) {

@@ -76,10 +76,10 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
     }
     
     private List<Locale> getSupportedLocales() {
-    	Map<String, String> supportedLanguages = DataSourceEnum.Bundle.createLocaleOpt()
-    			.getSupportedLanguages(dto.getLocale());
+		List<String> supportedLanguages = DataSourceEnum.Bundle.createProductOpt(dto)
+    			.getSupportedLocales();
     	List<Locale> supportedLocales = new LinkedList<Locale>();
-    	for (String languageTag : supportedLanguages.keySet()) {
+    	for (String languageTag : supportedLanguages) {
     		supportedLocales.add(Locale.forLanguageTag(languageTag));
     	}
     	return supportedLocales;

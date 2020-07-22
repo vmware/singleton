@@ -4,18 +4,16 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import org.json.simple.JSONArray;
-
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ProductBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class ProductService {
     private MessagesDTO dto = null;
@@ -25,21 +23,21 @@ public class ProductService {
     }
 
     // get supported components defined in vip service
-    public JSONArray getComponentsFromRemoteVIP() {
+    public List<String> getComponents() {
         BaseDTO baseDTO = new BaseDTO();
         baseDTO.setProductID(dto.getProductID());
         baseDTO.setVersion(dto.getVersion());
         ProductBasedOpt dao = new ProductBasedOpt(baseDTO);
-        return dao.getComponentsFromRemoteVIP();
+        return dao.getComponents();
     }
 
     // get supported locales defined in vip service
-    public JSONArray getSupportedLocalesFromRemoteVIP() {
+    public List<String> getSupportedLocales() {
         BaseDTO baseDTO = new BaseDTO();
         baseDTO.setProductID(dto.getProductID());
         baseDTO.setVersion(dto.getVersion());
         ProductBasedOpt dao = new ProductBasedOpt(baseDTO);
-        return dao.getSupportedLocalesFromRemoteVIP();
+        return dao.getSupportedLocales();
     }
 
     public List<Map> getAllComponentTranslation() {
@@ -47,8 +45,8 @@ public class ProductService {
         Object[] locales = {};
         Object[] components = {};
         if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.VIP) {
-            locales = this.getSupportedLocalesFromRemoteVIP().toArray();
-            components = this.getComponentsFromRemoteVIP()
+            locales = this.getSupportedLocales().toArray();
+            components = this.getComponents()
                     .toArray();
         }
         for (Object locale : locales) {

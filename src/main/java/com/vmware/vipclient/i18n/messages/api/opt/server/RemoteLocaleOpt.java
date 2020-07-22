@@ -26,13 +26,13 @@ public class RemoteLocaleOpt implements LocaleOpt{
     public RemoteLocaleOpt() {
     }
 
-    public Map<String, String> getRegions(String language) {
-        logger.debug("Look for regions from Singleton Service for locale [{}]!", language);
+    public Map<String, String> getRegions(String locale) {
+        logger.debug("Look for regions from Singleton Service for locale [{}]!", locale);
     	Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(
-                V2URL.getRegionListURL(language, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
+                V2URL.getRegionListURL(locale, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.GET, null);
     	String responseData = (String) response.get(URLUtils.BODY);
-        if(responseData == null || "".equalsIgnoreCase(responseData))
+        if(responseData == null || responseData.isEmpty())
             return null;
         Map<String, String> respMap = null;
         try {
@@ -49,15 +49,17 @@ public class RemoteLocaleOpt implements LocaleOpt{
     }
 
     @Override
-    public Map<String, String> getSupportedLanguages(String language) {
+    public Map<String, String> getSupportedLanguages(String locale) {
         logger.debug("Look for supported languages from Singleton Service for product [{}], version [{}], locale [{}]!",
-                VIPCfg.getInstance().getProductName(), VIPCfg.getInstance().getVersion(), language);
+                VIPCfg.getInstance().getProductName(), VIPCfg.getInstance().getVersion(), locale);
     	Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester()
                 .request(
-                        V2URL.getSupportedLanguageListURL(language,
+                        V2URL.getSupportedLanguageListURL(locale,
                                 VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                         ConstantsKeys.GET, null);
     	String responseData = (String) response.get(URLUtils.BODY);
+        if(responseData == null || responseData.isEmpty())
+            return null;
         Map<String, String> dispMap = null;
         try {
             JSONObject jsonObject = (JSONObject) JSONValue.parseWithException(responseData);

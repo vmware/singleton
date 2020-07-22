@@ -6,136 +6,85 @@ package com.vmware.vipclient.i18n.messages.service;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
-import com.vmware.vipclient.i18n.base.cache.Cache;
-import com.vmware.vipclient.i18n.base.cache.FormatCacheItem;
-import com.vmware.vipclient.i18n.util.ConstantsKeys;
-import com.vmware.vipclient.i18n.util.JSONUtils;
-import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.ListIterator;
-import java.util.Locale;
 import java.util.Map;
 
 public class LocaleService {
 
     Logger                      logger        = LoggerFactory.getLogger(LocaleService.class.getName());
-    private static final String REGION_PREFIX = "region_";
     public static final String DISPN_PREFIX  = "dispn_";
 
     public LocaleService() {
     }
 
-    public Map<String, Map<String, String>> getTerritoriesFromCLDR(
-            List<String> languages) {
-        Map<String, Map<String, String>> respMap = new HashMap<String, Map<String, String>>();
-        for (String language : languages) {
-            if(language != null && !language.isEmpty()) {
-                Map<String, String> regionMap = getTerritoriesFromCLDR(language);
-                respMap.put(language, regionMap);
-            }
-        }
-        return respMap;
-    }
-
-    public Map<String, String> getTerritoriesFromCLDR(String language){
-        language = language.replace("_", "-").toLowerCase();
+    public Map<String, String> getRegionsFromCLDR(String locale){
+        locale = locale.replace("_", "-").toLowerCase();
         Map<String, String> regionMap = null;
-        logger.trace("Look for region list of '" + language + "' from cache");
-        Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L2);
-        if (c != null) {
-            FormatCacheItem cacheItem = (FormatCacheItem) c.get(REGION_PREFIX
-                    + language);
-            regionMap = cacheItem == null ? null : cacheItem.getCachedData();
-        }
+        logger.debug("Look for region list from cache for locale [{}]", locale);
+        FormattingCacheService formattingCacheService = new FormattingCacheService();
+        regionMap = formattingCacheService.getRegions(locale);
         if (regionMap != null) {
-            logger.debug("Find regions from cache for locale [{}]!", language);
+            logger.debug("Find regions from cache for locale [{}]!", locale);
             return regionMap;
         }
-        Map<String, String> tmpMap = getRegionsFromDS(language, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-        if (c != null && tmpMap != null) {
-            logger.debug("Find the regions for locale [{}].\n", language);
-            regionMap = JSONUtils.map2SortMap(tmpMap);
-            FormatCacheItem cacheItem = new FormatCacheItem(regionMap);
-            c.put(REGION_PREFIX + language, cacheItem);
-            logger.debug("Regions is cached for locale [{}]!\n\n", language);
+        regionMap = getRegionsFromDS(locale, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
+        if (regionMap != null) {
+            logger.debug("Find the regions for locale [{}].\n", locale);
+            formattingCacheService.addRegions(locale, regionMap);
+            logger.debug("Regions is cached for locale [{}]!\n\n", locale);
             return regionMap;
-        }
-        if (!LocaleUtility.isDefaultLocale(language)) {
-            logger.info("Can't find regions for locale [{}], look for English regions as fallback!", language);
-            regionMap = getTerritoriesFromCLDR(LocaleUtility.getDefaultLocale().toLanguageTag());
         }
         return regionMap;
     }
 
-    private Map<String, String> getRegionsFromDS(String language, ListIterator<DataSourceEnum> msgSourceQueueIter) {
+    private Map<String, String> getRegionsFromDS(String locale, ListIterator<DataSourceEnum> msgSourceQueueIter) {
         Map<String, String> regions = null;
         if (!msgSourceQueueIter.hasNext())
             return regions;
         DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
-        regions = dataSource.createLocaleOpt().getRegions(language);
+        regions = dataSource.createLocaleOpt().getRegions(locale);
         if (regions == null || regions.isEmpty()) {
-            regions = getRegionsFromDS(language, msgSourceQueueIter);
+            regions = getRegionsFromDS(locale, msgSourceQueueIter);
         }
         return regions;
     }
 
-    public Map<String, String> getDisplayNamesFromCLDR(String language) {
+    public Map<String, String> getSupportedDisplayNames(String locale) {
+        locale = locale.replace("_", "-").toLowerCase();
         Map<String, String> dispMap = new HashMap<String, String>();
-        if(language == null || language.isEmpty()) {
-            logger.warn("Locale is empty!");
+        logger.debug("Look for displayNames from cache for locale [{}]", locale);
+        String productName = VIPCfg.getInstance().getProductName();
+        String version = VIPCfg.getInstance().getVersion();
+        FormattingCacheService formattingCacheService = new FormattingCacheService();
+        dispMap = formattingCacheService.getSupportedLanguages(locale);
+        if (dispMap != null) {
+            logger.debug("Find displayNames from cache for product [{}], version [{}], locale [{}]!", productName, version, locale);
             return dispMap;
         }
-        dispMap = getSupportedDisplayNames(language);
-        if ((dispMap == null || dispMap.isEmpty()) && !LocaleUtility.isDefaultLocale(language)) {
-            logger.info("Can't find regions for locale [{}], look for English regions as fallback!", language);
-            Locale fallbackLocale = LocaleUtility.getDefaultLocale();
-            dispMap = getSupportedDisplayNames(fallbackLocale.toLanguageTag());
+        //cacheItem = new FormatCacheItem();
+        dispMap = getSupportedLanguagesFromDS(locale, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
+        if (dispMap != null && dispMap.size() > 0) {
+            logger.debug("Find the displayNames for product [{}], version [{}], locale [{}].\n", productName, version, locale);
+            formattingCacheService.addSupportedLanguages(locale, dispMap);
+            logger.debug("DisplayNames is cached for product [{}], version [{}], locale [{}]!\n\n", productName, version, locale);
+            return dispMap;
         }
         return dispMap;
     }
 
-    private Map<String, String> getSupportedDisplayNames(String language) {
-        language = language.replace("_", "-").toLowerCase();
-        Map<String, String> dispMap = new HashMap<String, String>();
-        logger.trace("Look for displayNames from cache");
-        Cache c = VIPCfg.getInstance().getCacheManager()
-                .getCache(VIPCfg.CACHE_L2);
-        String productName = VIPCfg.getInstance().getProductName();
-        String version = VIPCfg.getInstance().getVersion();
-        String cacheKey = productName + ConstantsKeys.UNDERLINE + version + ConstantsKeys.UNDERLINE + DISPN_PREFIX + language;
-        if (c != null) {
-            FormatCacheItem cacheItem = (FormatCacheItem) c.get(cacheKey);
-            dispMap = cacheItem == null ? null : cacheItem.getCachedData();
-        }
-        if (dispMap != null) {
-            logger.debug("Find displayNames from cache for product [{}], version [{}], locale [{}]!", productName, version, language);
-            return dispMap;
-        }
-        //cacheItem = new FormatCacheItem();
-        dispMap = getSupportedLanguagesFromDS(language, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-        if (dispMap != null && dispMap.size() > 0) {
-            logger.debug("Find the displayNames for product [{}], version [{}], locale [{}].\n", productName, version, language);
-            dispMap = JSONUtils.map2SortMap(dispMap);
-            c.put(cacheKey, new FormatCacheItem(dispMap));
-            logger.debug("DisplayNames is cached for product [{}], version [{}], locale [{}]!\n\n", productName, version, language);
-            return dispMap;
-        }
-        return null;
-    }
 
-
-    private Map<String, String> getSupportedLanguagesFromDS(String language, ListIterator<DataSourceEnum> msgSourceQueueIter) {
+    private Map<String, String> getSupportedLanguagesFromDS(String locale, ListIterator<DataSourceEnum> msgSourceQueueIter) {
         Map<String, String> dispMap = new HashMap<String, String>();
         if (!msgSourceQueueIter.hasNext())
             return dispMap;
         DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
-        dispMap = dataSource.createLocaleOpt().getSupportedLanguages(language);
+        dispMap = dataSource.createLocaleOpt().getSupportedLanguages(locale);
         if (dispMap == null || dispMap.isEmpty()) {
-            dispMap = getSupportedLanguagesFromDS(language, msgSourceQueueIter);
+            dispMap = getSupportedLanguagesFromDS(locale, msgSourceQueueIter);
         }
         return dispMap;
     }
