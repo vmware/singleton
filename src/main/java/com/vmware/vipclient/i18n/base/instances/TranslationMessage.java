@@ -95,13 +95,15 @@ public class TranslationMessage implements Message {
      * @return string
      */
     public String getString(final Locale locale, final String component,
-            final String key, final String source, final String comment, final Map<String, Object> args) {
+            final String key, final String source, final String comment,
+            final Map<String, Object> args) {
         return getStringWithArgs(locale, component, key, source, comment, args);
     }
 
-    private String getStringWithArgs(final Locale locale, final String component,
-            final String key, final String source, final String comment, final Object args) {
-        logger.trace("Start to execute TranslationMessage.getString");
+    private String getStringWithArgs(final Locale locale,
+            final String component, final String key, final String source,
+            final String comment, final Object args) {
+        logger.trace("Start to execute TranslationMessage.getStringWithArgs");
         if (key == null || key.equalsIgnoreCase(""))
             return "";
         MessagesDTO dto = new MessagesDTO();
@@ -147,8 +149,8 @@ public class TranslationMessage implements Message {
             }
         }
 
-        if (!VIPCfg.getInstance().isMachineTranslation() && VIPCfg.getInstance().isPseudo() &&
-                null != translation && translation.equals(source)) {
+        if (!VIPCfg.getInstance().isMachineTranslation() && VIPCfg.getInstance().isPseudo()
+                && null != translation && translation.equals(source)) {
             // if source isn't collected by server, add PSEUDOCHAR2
             translation = ConstantsKeys.PSEUDOCHAR2 + translation + ConstantsKeys.PSEUDOCHAR2;
         }
@@ -162,8 +164,8 @@ public class TranslationMessage implements Message {
                 }
             } else if (args instanceof Map<?, ?> && ((Map) args).size() > 0) {
                 if ((null != translation && translation.equals(source)) || VIPCfg.getInstance().isPseudo()) {
-                    translation = FormatUtils.formatMsg(translation, LocaleUtility.defaultLocale,
-                            (Map<String, Object>) args);
+                    translation = FormatUtils.formatMsg(translation,
+                            LocaleUtility.defaultLocale, (Map<String, Object>) args);
                 } else {
                     translation = FormatUtils.formatMsg(translation, locale, (Map) args);
                 }
@@ -172,6 +174,7 @@ public class TranslationMessage implements Message {
 
         return translation;
     }
+
     /**
      * post a set of sources to remote VIP server which is configured
      *
@@ -345,24 +348,9 @@ public class TranslationMessage implements Message {
      *         VIP service, it will return the value defined in the bundle
      *         searching by the key
      */
-    public String getString2(final String component,
-            final String bundle, final Locale locale, final String key, final Object... args) {
-        logger.trace("Start to execute TranslationMessage.getString2");
-        if (key == null || key.equalsIgnoreCase(""))
-            return "";
-        String message = "";
-        String source;
-        try {
-            ResourceBundle rb = ResourceBundle.getBundle(bundle,
-                    LocaleUtility.defaultLocale);
-            source = rb.getString(key);
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-            source = key;
-        }
-        // get translation from VIP service
-        message = getString(locale, component, key, source, "", args);
-        return message;
+    public String getString2(final String component, final String bundle, final Locale locale, final String key,
+            final Object... args) {
+        return getString2WithArgs(component, bundle, locale, key, args);
     }
 
     /**
@@ -385,12 +373,16 @@ public class TranslationMessage implements Message {
      *         VIP service, it will return the value defined in the bundle
      *         searching by the key
      */
-    public String getString2(final String component, final String bundle, final Locale locale, final String key,
-            final Map<String, Object> arguments) {
-        logger.trace("Start to execute TranslationMessage.getStringWithNamedArgs");
+    public String getString2(final String component, final String bundle,
+            final Locale locale, final String key, final Map<String, Object> args) {
+        return getString2WithArgs(component, bundle, locale, key, args);
+    }
+
+    private String getString2WithArgs(final String component, final String bundle,
+            final Locale locale, final String key, Object args) {
+        logger.trace("Start to execute TranslationMessage.getString2WithArgs");
         if (key == null || key.equalsIgnoreCase(""))
             return "";
-        String message = "";
         String source;
         try {
             ResourceBundle rb = ResourceBundle.getBundle(bundle, LocaleUtility.defaultLocale);
@@ -400,8 +392,7 @@ public class TranslationMessage implements Message {
             source = key;
         }
         // get translation from VIP service
-        message = getString(locale, component, key, source, "", arguments);
-        return message;
+        return getStringWithArgs(locale, component, key, source, "", args);
     }
 
     /**
