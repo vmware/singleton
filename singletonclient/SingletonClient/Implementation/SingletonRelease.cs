@@ -8,6 +8,7 @@ using SingletonClient.Implementation.Helpers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading;
 
 namespace SingletonClient.Implementation
@@ -362,9 +363,42 @@ namespace SingletonClient.Implementation
                 return null;
             }
             string text = this.GetString(locale, source);
-            if (objects.Length > 0)
+            if (text != null && objects.Length > 0)
             {
-                text = string.Format(text, objects);
+                try
+                {
+                    text = string.Format(text, objects);
+                }
+                catch (FormatException e)
+                {
+                    string[] strs = Regex.Split(text, "{([0-9]+)}");
+                    int maxPlaceHolderIndex = -1;
+                    for (int i=1; i<strs.Length; i += 2)
+                    {
+                        int temp = Convert.ToInt32(strs[i]);
+                        if (temp > maxPlaceHolderIndex)
+                        {
+                            maxPlaceHolderIndex = temp;
+                        }
+                    }
+                    if (maxPlaceHolderIndex >= 0)
+                    {
+                        object[] objectsExt = new object[maxPlaceHolderIndex + 1];
+
+                        for (int i = 0; i < maxPlaceHolderIndex + 1; i++)
+                        {
+                            if (i < objects.Length)
+                            {
+                                objectsExt[i] = objects[i];
+                            }
+                            else
+                            {
+                                objectsExt[i] = "{" + i + "}";
+                            }
+                        }
+                        text = string.Format(text, objectsExt);
+                    }
+                }
             }
             return text;
         }
