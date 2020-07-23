@@ -57,7 +57,6 @@ public class TranslationProductComponentKeyAPI extends TranslationProductCompone
 	 * Provide translation based on String
 	 *
 	 */
-	@ApiIgnore
 	@ApiOperation(value = APIOperation.KEY_TRANSLATION_GET_VALUE, notes = APIOperation.KEY_TRANSLATION_GET_NOTES)
 	@RequestMapping(value = APIV2.KEY_TRANSLATION_GET, method = RequestMethod.GET, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
