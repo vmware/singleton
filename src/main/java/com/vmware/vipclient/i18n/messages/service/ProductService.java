@@ -10,7 +10,6 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.messages.api.opt.ComponentOpt;
-import com.vmware.vipclient.i18n.messages.api.opt.LocaleOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ProductBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
@@ -30,7 +29,8 @@ public class ProductService {
 
     /**
      * get supported components defined in vip service
-     * @deprecated Replaced by {@link #getComponents(Iterator<DataSourceEnum>)}
+     * @return JSONArray
+     * @deprecated Replaced by {@link #getComponents(Iterator<>)}
      */
     @Deprecated
     public JSONArray getComponentsFromRemoteVIP() {
@@ -43,7 +43,7 @@ public class ProductService {
 
     /**
      * get supported locales defined in vip service
-     * @deprecated Replaced by {@link #getLanguages(Iterator<DataSourceEnum>)}
+     * @deprecated Replaced by {@link com.vmware.vipclient.i18n.messages.service.LocaleService#getSupportedLanguages(Iterator<>)}
      */
     @Deprecated
     public JSONArray getSupportedLocalesFromRemoteVIP() {
@@ -54,9 +54,14 @@ public class ProductService {
         return dao.getSupportedLocalesFromRemoteVIP();
     }
 
+    /**
+     * Retrieves translated messages of all components of a product in the requested locale (See the dto object).
+     *
+     * @return translated messages of all components of a product locale specified in the dto object
+     */
     public List<Map> getAllComponentTranslation() {
         List<Map> list = new ArrayList<Map>();
-        Map<String, String> locales = this.getLanguages(VIPCfg.getInstance().getMsgOriginsQueue().iterator());
+        Map<String, String> locales = new LocaleService().getSupportedLanguages(VIPCfg.getInstance().getMsgOriginsQueue().iterator());
         List<String> components = this.getComponents(VIPCfg.getInstance().getMsgOriginsQueue().iterator());
         if (locales != null) {
             for (String languageTag : locales.keySet()) {
@@ -74,28 +79,13 @@ public class ProductService {
         return list;
     }
 
-    private Map<String, String> getLanguages(Iterator<DataSourceEnum> msgSourceQueueIter) {
-        if (!msgSourceQueueIter.hasNext()) {
-            return null;
-        }
-        
-        DataSourceEnum dataSource = msgSourceQueueIter.next();
-        LocaleOpt opt = dataSource.createLocaleOpt();
-        Map<String, String> languages =  opt.getLanguages(LocaleUtility.getDefaultLocale().toLanguageTag());
-        if (languages == null) {
-            // If failed to get languages from the data source
-            logger.debug(FormatUtils.format(ConstantsMsg.GET_LANGUAGES_FAILED, dataSource.toString()));
-            if (msgSourceQueueIter.hasNext()) {
-                languages = getLanguages(msgSourceQueueIter);
-            } else {
-                // If failed to get languages from any data source
-                logger.error(FormatUtils.format(ConstantsMsg.GET_LANGUAGES_FAILED_ALL));
-            }
-        }
-        return languages;
-    }
-
-    private List<String> getComponents (Iterator<DataSourceEnum> msgSourceQueueIter) {
+    /**
+     * Retrieves the list of components of a product. It recursively applies data source fallback mechanism in case of failure.
+     *
+     * @param msgSourceQueueIter Iterator of DataSourceEnum sources
+     * @return list of components of the product specified in the dto object
+     */
+    public List<String> getComponents (Iterator<DataSourceEnum> msgSourceQueueIter) {
         if (!msgSourceQueueIter.hasNext())
             return null;
 

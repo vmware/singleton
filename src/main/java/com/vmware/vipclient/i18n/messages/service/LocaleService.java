@@ -4,20 +4,20 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.*;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.FormatCacheItem;
+import com.vmware.vipclient.i18n.common.ConstantsMsg;
+import com.vmware.vipclient.i18n.messages.api.opt.LocaleOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.RemoteLocaleOpt;
+import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.JSONUtils;
+import com.vmware.vipclient.i18n.util.LocaleUtility;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class LocaleService {
 
@@ -28,6 +28,26 @@ public class LocaleService {
     public LocaleService() {
     }
 
+    public Map<String, String> getSupportedLanguages(Iterator<DataSourceEnum> msgSourceQueueIter) {
+        if (!msgSourceQueueIter.hasNext()) {
+            return null;
+        }
+
+        DataSourceEnum dataSource = msgSourceQueueIter.next();
+        LocaleOpt opt = dataSource.createLocaleOpt();
+        Map<String, String> languages =  opt.getLanguages(LocaleUtility.getDefaultLocale().toLanguageTag());
+        if (languages == null) {
+            // If failed to get languages from the data source
+            logger.debug(FormatUtils.format(ConstantsMsg.GET_LANGUAGES_FAILED, dataSource.toString()));
+            if (msgSourceQueueIter.hasNext()) {
+                languages = getSupportedLanguages(msgSourceQueueIter);
+            } else {
+                // If failed to get languages from any data source
+                logger.error(FormatUtils.format(ConstantsMsg.GET_LANGUAGES_FAILED_ALL));
+            }
+        }
+        return languages;
+    }
     public Map<String, Map<String, String>> getTerritoriesFromCLDR(
             List<String> languages) {
         
