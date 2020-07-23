@@ -8,6 +8,7 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.messages.api.opt.LocaleOpt;
 import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
+import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.JSONUtils;
 import org.json.simple.JSONArray;
@@ -23,7 +24,10 @@ public class RemoteLocaleOpt implements LocaleOpt{
 
     private Logger logger = LoggerFactory.getLogger(RemoteLocaleOpt.class.getName());
 
-    public RemoteLocaleOpt() {
+    private BaseDTO dto = null;
+
+    public RemoteLocaleOpt(BaseDTO dto) {
+        this.dto = dto;
     }
 
     public Map<String, String> getRegions(String locale) {
@@ -51,11 +55,11 @@ public class RemoteLocaleOpt implements LocaleOpt{
     @Override
     public Map<String, String> getSupportedLanguages(String locale) {
         logger.debug("Look for supported languages from Singleton Service for product [{}], version [{}], locale [{}]!",
-                VIPCfg.getInstance().getProductName(), VIPCfg.getInstance().getVersion(), locale);
+                dto.getProductID(), dto.getVersion(), locale);
     	Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester()
                 .request(
-                        V2URL.getSupportedLanguageListURL(locale,
-                                VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
+                        V2URL.getSupportedLanguageListURL(
+                                VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL(), dto, locale),
                         ConstantsKeys.GET, null);
     	String responseData = (String) response.get(URLUtils.BODY);
         if(responseData == null || responseData.isEmpty())

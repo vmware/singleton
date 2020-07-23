@@ -5,6 +5,7 @@
 package com.vmware.vipclient.i18n.base.instances;
 
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.messages.service.FormattingCacheService;
 import com.vmware.vipclient.i18n.messages.service.LocaleService;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
@@ -25,6 +26,8 @@ import java.util.Map;
  */
 public class LocaleMessage implements Message {
     Logger logger = LoggerFactory.getLogger(LocaleMessage.class);
+
+    private VIPCfg cfg;
 
     public LocaleMessage() {
         super();
@@ -91,7 +94,7 @@ public class LocaleMessage implements Message {
 
     private Map<String, String> getRegionsFromCLDR(String locale){
         Map<String, String> regionMap = null;
-        LocaleService localeService = new LocaleService();
+        LocaleService localeService = new LocaleService(null);
         regionMap = localeService.getRegionsFromCLDR(locale);
         if (regionMap != null) {
             return regionMap;
@@ -113,7 +116,15 @@ public class LocaleMessage implements Message {
             logger.warn("Locale is empty!");
             return dispMap;
         }
-        LocaleService localeService = new LocaleService();
+        BaseDTO dto = new BaseDTO();
+        if(cfg != null) {
+            dto.setProductID(cfg.getProductName());
+            dto.setVersion(cfg.getVersion());
+        }else{
+            dto.setProductID(VIPCfg.getInstance().getProductName());
+            dto.setVersion(VIPCfg.getInstance().getVersion());
+        }
+        LocaleService localeService = new LocaleService(dto);
         dispMap = localeService.getSupportedDisplayNames(locale);
         if(dispMap != null && !dispMap.isEmpty()){
             return dispMap;
@@ -123,11 +134,19 @@ public class LocaleMessage implements Message {
             Locale fallbackLocale = LocaleUtility.getDefaultLocale();
             dispMap = localeService.getSupportedDisplayNames(fallbackLocale.toLanguageTag());
             if (dispMap != null && dispMap.size() > 0) {
-                new FormattingCacheService().addSupportedLanguages(locale, dispMap);
+                new FormattingCacheService().addSupportedLanguages(dto, locale, dispMap);
                 logger.debug("Default locale's displayNames is cached for product [{}], version [{}], locale [{}]!\n\n",
-                        VIPCfg.getInstance().getProductName(), VIPCfg.getInstance().getVersion(), locale);
+                        dto.getProductID(), dto.getVersion(), locale);
             }
         }
         return dispMap;
+    }
+
+    public VIPCfg getCfg() {
+        return this.cfg;
+    }
+
+    public void setCfg(final VIPCfg cfg) {
+        this.cfg = cfg;
     }
 }

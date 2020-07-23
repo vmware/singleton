@@ -37,8 +37,8 @@ public enum DataSourceEnum {
         }
 
 		@Override
-		public LocaleOpt createLocaleOpt() {
-			return new LocalLocaleOpt();
+		public LocaleOpt createLocaleOpt(BaseDTO dto) {
+			return new LocalLocaleOpt(dto);
 		}
     }, 
     VIP {
@@ -58,12 +58,12 @@ public enum DataSourceEnum {
         }
 
 		@Override
-		public LocaleOpt createLocaleOpt() {
-			return new RemoteLocaleOpt();
+		public LocaleOpt createLocaleOpt(BaseDTO dto) {
+			return new RemoteLocaleOpt(dto);
 		}
     };
     public abstract ProductOpt createProductOpt(BaseDTO dto);
     public abstract MessageOpt createMessageOpt(MessagesDTO dto);
     public abstract PatternOpt createPatternOpt();
-    public abstract LocaleOpt createLocaleOpt();
+    public abstract LocaleOpt createLocaleOpt(BaseDTO dto);
 }

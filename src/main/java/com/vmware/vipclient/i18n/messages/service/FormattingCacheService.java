@@ -7,6 +7,7 @@ package com.vmware.vipclient.i18n.messages.service;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.FormatCacheItem;
+import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.JSONUtils;
 import org.json.simple.JSONObject;
@@ -16,6 +17,7 @@ import java.util.Map;
 public class FormattingCacheService {
 
     public FormattingCacheService() {
+
     }
 
     public void addPatterns(String locale, JSONObject o) {
@@ -28,9 +30,9 @@ public class FormattingCacheService {
         addFormattings(cacheKey, o);
     }
 
-    public void addSupportedLanguages(String locale, Map<String, String> o) {
+    public void addSupportedLanguages(BaseDTO dto, String locale, Map<String, String> o) {
         o = JSONUtils.map2SortMap(o);
-        String cacheKey = getSupportedLanguagesCacheKey(locale);
+        String cacheKey = getSupportedLanguagesCacheKey(dto, locale);
         addFormattings(cacheKey, o);
     }
 
@@ -55,8 +57,8 @@ public class FormattingCacheService {
         return getFormattingPatterns(cacheKey);
     }
 
-    public Map<String, String> getSupportedLanguages(String locale) {
-        String cacheKey = getSupportedLanguagesCacheKey(locale);
+    public Map<String, String> getSupportedLanguages(BaseDTO dto, String locale) {
+        String cacheKey = getSupportedLanguagesCacheKey(dto, locale);
         return getFormattings(cacheKey);
     }
 
@@ -78,10 +80,8 @@ public class FormattingCacheService {
         return ConstantsKeys.PATTERNS_PREFIX + language + "-" + region;
     }
 
-    private String getSupportedLanguagesCacheKey(String locale){
-        String productName = VIPCfg.getInstance().getProductName();
-        String version = VIPCfg.getInstance().getVersion();
-        return ConstantsKeys.DISPNS_PREFIX + productName + ConstantsKeys.UNDERLINE + version + ConstantsKeys.UNDERLINE + locale;
+    private String getSupportedLanguagesCacheKey(BaseDTO dto, String locale){
+        return ConstantsKeys.DISPNS_PREFIX + dto.getProductID() + ConstantsKeys.UNDERLINE + dto.getVersion() + ConstantsKeys.UNDERLINE + locale;
     }
 
     private String getLanguagesNamesCacheKey(String locale){

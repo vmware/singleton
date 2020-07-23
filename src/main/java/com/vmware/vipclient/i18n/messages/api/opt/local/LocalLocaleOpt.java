@@ -6,7 +6,6 @@ package com.vmware.vipclient.i18n.messages.api.opt.local;
 
 import com.vmware.i18n.PatternUtil;
 import com.vmware.i18n.utils.CommonUtil;
-import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.messages.api.opt.LocaleOpt;
@@ -30,14 +29,17 @@ public class LocalLocaleOpt implements LocaleOpt{
     private Logger logger = LoggerFactory.getLogger(LocalLocaleOpt.class);
     private static final String BUNDLE_PREFIX = "messages_";
 	private static final String BUNDLE_SUFFIX = ".json";
-    
-    @Override
+
+	private BaseDTO dto = null;
+
+	public LocalLocaleOpt(BaseDTO dto) {
+		this.dto = dto;
+	}
+
+	@Override
     public Map<String, String> getSupportedLanguages(String locale) {
 		Map<String, String> supportedLanguageNames = new HashMap<String, String>();
-		BaseDTO baseDTO = new BaseDTO();
-		baseDTO.setProductID(VIPCfg.getInstance().getProductName());
-		baseDTO.setVersion(VIPCfg.getInstance().getVersion());
-		List<String> supportedLanguages = DataSourceEnum.Bundle.createProductOpt(baseDTO)
+		List<String> supportedLanguages = DataSourceEnum.Bundle.createProductOpt(dto)
 				.getSupportedLocales();
 		if(supportedLanguages != null && !supportedLanguages.isEmpty()) {
 			Map<String, String> languagesNames = getLanguagesNamesFromCLDR(locale);

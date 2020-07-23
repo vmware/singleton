@@ -6,6 +6,7 @@ package com.vmware.vipclient.i18n.messages.service;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
+import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,8 +18,10 @@ public class LocaleService {
 
     Logger                      logger        = LoggerFactory.getLogger(LocaleService.class.getName());
     public static final String DISPN_PREFIX  = "dispn_";
+    private BaseDTO dto = null;
 
-    public LocaleService() {
+    public LocaleService(BaseDTO dto) {
+        this.dto = dto;
     }
 
     public Map<String, String> getRegionsFromCLDR(String locale){
@@ -46,7 +49,7 @@ public class LocaleService {
         if (!msgSourceQueueIter.hasNext())
             return regions;
         DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
-        regions = dataSource.createLocaleOpt().getRegions(locale);
+        regions = dataSource.createLocaleOpt(dto).getRegions(locale);
         if (regions == null || regions.isEmpty()) {
             regions = getRegionsFromDS(locale, msgSourceQueueIter);
         }
@@ -57,10 +60,10 @@ public class LocaleService {
         locale = locale.replace("_", "-").toLowerCase();
         Map<String, String> dispMap = new HashMap<String, String>();
         logger.debug("Look for displayNames from cache for locale [{}]", locale);
-        String productName = VIPCfg.getInstance().getProductName();
-        String version = VIPCfg.getInstance().getVersion();
+        String productName = dto.getProductID();
+        String version = dto.getVersion();
         FormattingCacheService formattingCacheService = new FormattingCacheService();
-        dispMap = formattingCacheService.getSupportedLanguages(locale);
+        dispMap = formattingCacheService.getSupportedLanguages(dto, locale);
         if (dispMap != null) {
             logger.debug("Find displayNames from cache for product [{}], version [{}], locale [{}]!", productName, version, locale);
             return dispMap;
@@ -69,7 +72,7 @@ public class LocaleService {
         dispMap = getSupportedLanguagesFromDS(locale, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
         if (dispMap != null && dispMap.size() > 0) {
             logger.debug("Find the displayNames for product [{}], version [{}], locale [{}].\n", productName, version, locale);
-            formattingCacheService.addSupportedLanguages(locale, dispMap);
+            formattingCacheService.addSupportedLanguages(dto, locale, dispMap);
             logger.debug("DisplayNames is cached for product [{}], version [{}], locale [{}]!\n\n", productName, version, locale);
             return dispMap;
         }
@@ -82,7 +85,7 @@ public class LocaleService {
         if (!msgSourceQueueIter.hasNext())
             return dispMap;
         DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
-        dispMap = dataSource.createLocaleOpt().getSupportedLanguages(locale);
+        dispMap = dataSource.createLocaleOpt(dto).getSupportedLanguages(locale);
         if (dispMap == null || dispMap.isEmpty()) {
             dispMap = getSupportedLanguagesFromDS(locale, msgSourceQueueIter);
         }
