@@ -31,4 +31,5 @@ public class APIParamValue {
 	public final static String COMBINE        = "an integer which represents combine type number 1 or 2";
 	public final static String SCOPE_FILTER   = "a String for filtering the pattern data, separated by comma and underline. e.g. 'dates_eras,dates_dayPeriodsFormat'";
 	public final static String DISPLAY_CITY   = "a flag for displaying all the cities, e.g. true, false";
+	public final static String REGIONS    	  = "a string which represents regions, separated by commas. e.g. US, PT, CN";
 }

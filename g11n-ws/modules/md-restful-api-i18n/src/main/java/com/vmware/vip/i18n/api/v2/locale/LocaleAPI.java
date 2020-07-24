@@ -98,10 +98,11 @@ public class LocaleAPI extends BaseAction {
 	@ResponseStatus(HttpStatus.OK)
 	public APIResponseDTO getRegionList(
 			@ApiParam(name = APIParamName.SUPPORTED_LANGUAGE_LIST, required = true, value = APIParamValue.SUPPORTED_LANGUAGES) @RequestParam(value = APIParamName.SUPPORTED_LANGUAGE_LIST, required = true) String supportedLanguageList,
-			@ApiParam(name = APIParamName.DISPLAY_CITY, required = false, value = APIParamValue.DISPLAY_CITY) @RequestParam(value = APIParamName.DISPLAY_CITY, required = false) String displayCity)
+			@ApiParam(name = APIParamName.DISPLAY_CITY, required = false, value = APIParamValue.DISPLAY_CITY) @RequestParam(value = APIParamName.DISPLAY_CITY, required = false) String displayCity,
+			@ApiParam(name = APIParamName.REGIONS, required = false, value = APIParamValue.REGIONS) @RequestParam(value = APIParamName.REGIONS, required = false) String regions)
 			throws Exception {
 		return super.handleResponse(APIResponseStatus.OK,
-				this.localeService.getTerritoriesFromCLDR(supportedLanguageList.toLowerCase(), displayCity));
+				this.localeService.getTerritoriesFromCLDR(supportedLanguageList.toLowerCase(), displayCity, regions));
 	}
 
 	/**
