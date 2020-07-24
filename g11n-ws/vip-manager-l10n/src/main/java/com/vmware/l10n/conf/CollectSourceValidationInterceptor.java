@@ -209,9 +209,9 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 			return;
 		}
 		if (!RegExpValidatorUtils.IsTrueOrFalse(collectsource)) {
-			throw new VIPAPIException(ValidationMsg.COLLECTSOURCE_NOT_VALIDE);
+			throw new VIPAPIException(ValidationMsg.COLLECTSOURCE_NOT_VALIDE_L10N);
 		}else if(collectsource.toLowerCase().equals("false")){
-			throw new VIPAPIException(ValidationMsg.COLLECTSOURCE_NOT_VALIDE);
+			throw new VIPAPIException(ValidationMsg.COLLECTSOURCE_NOT_VALIDE_L10N);
 		}
 	}
 
