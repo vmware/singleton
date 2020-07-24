@@ -53,7 +53,8 @@ public class LocaleService {
                 return dispMap;
             }
         }
-
+        displayLanguageTag = displayLanguageTag.replace("_", "-").toLowerCase();
+        
         //TODO This will be implemented in Huihui's PR
         /*
         logger.debug("Look for supported languages from cache for locale [{}]", displayLanguageTag);
