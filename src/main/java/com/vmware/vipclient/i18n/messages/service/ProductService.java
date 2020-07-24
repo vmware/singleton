@@ -63,7 +63,7 @@ public class ProductService {
     public List<Map> getAllComponentTranslation() {
         List<Map> list = new ArrayList<Map>();
         LocaleDTO localeDTO = new LocaleDTO(dto.getProductID(), dto.getVersion());
-        Map<String, String> locales = new LocaleService(localeDTO).getSupportedLanguages(LocaleUtility.getFallbackLocales().iterator());
+        Map<String, String> locales = new LocaleService(localeDTO).getSupportedLanguages();
         List<String> components = this.getComponents(VIPCfg.getInstance().getMsgOriginsQueue().iterator());
         if (locales != null) {
             for (String languageTag : locales.keySet()) {
