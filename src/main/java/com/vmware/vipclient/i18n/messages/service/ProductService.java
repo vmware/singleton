@@ -12,6 +12,7 @@ import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.messages.api.opt.ComponentOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ProductBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
+import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
@@ -20,10 +21,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ProductService {
-    private MessagesDTO dto = null;
+    private BaseDTO dto = null;
     Logger logger = LoggerFactory.getLogger(ProductService.class);
 
-    public ProductService(MessagesDTO dto) {
+    public ProductService(BaseDTO dto) {
         this.dto = dto;
     }
 
@@ -61,15 +62,16 @@ public class ProductService {
      */
     public List<Map> getAllComponentTranslation() {
         List<Map> list = new ArrayList<Map>();
-        Map<String, String> locales = new LocaleService().getSupportedLanguages(VIPCfg.getInstance().getMsgOriginsQueue().iterator());
+        LocaleDTO localeDTO = new LocaleDTO(dto.getProductID(), dto.getVersion());
+        Map<String, String> locales = new LocaleService(localeDTO).getSupportedLanguages(LocaleUtility.getFallbackLocales().iterator());
         List<String> components = this.getComponents(VIPCfg.getInstance().getMsgOriginsQueue().iterator());
         if (locales != null) {
             for (String languageTag : locales.keySet()) {
                 for (Object component : components) {
-                    dto.setComponent(((String) component).trim());
-                    dto.setLocale(LocaleUtility.fmtToMappedLocale(Locale.forLanguageTag(languageTag)).toString().trim());
+                    MessagesDTO msgDTO = new MessagesDTO(((String) component).trim(), LocaleUtility.fmtToMappedLocale(Locale.forLanguageTag(languageTag)).toString().trim(),
+                            dto.getProductID(), dto.getVersion());
                     Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
-                    Map<String, String> retMap = new ComponentService(dto).getMessages(fallbackLocalesIter).getCachedData();
+                    Map<String, String> retMap = new ComponentService(msgDTO).getMessages(fallbackLocalesIter).getCachedData();
                     if (retMap != null) {
                         list.add(retMap);
                     }

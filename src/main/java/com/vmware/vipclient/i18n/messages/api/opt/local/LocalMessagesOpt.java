@@ -6,7 +6,6 @@ package com.vmware.vipclient.i18n.messages.api.opt.local;
 
 import java.net.URI;
 import java.nio.file.FileSystem;
-import java.nio.file.FileSystemAlreadyExistsException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -27,7 +26,6 @@ import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.MessageOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
-import com.vmware.vipclient.i18n.util.FileUtil;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.JSONBundleUtil;
 
@@ -80,7 +78,7 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
     
     private List<Locale> getSupportedLocales() {
     	Map<String, String> supportedLanguages = DataSourceEnum.Bundle.createLocaleOpt()
-    			.getLanguages(dto.getLocale());
+    			.getSupportedLanguages(dto.getLocale());
     	List<Locale> supportedLocales = new LinkedList<Locale>();
     	for (String languageTag : supportedLanguages.keySet()) {
     		supportedLocales.add(Locale.forLanguageTag(languageTag));

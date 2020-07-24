@@ -29,7 +29,7 @@ public class LocalLocaleOpt implements LocaleOpt{
     private static final String BUNDLE_PREFIX = "messages_";
     
     @Override
-    public Map<String, String> getLanguages(String displayLanguage) {
+    public Map<String, String> getSupportedLanguages(String displayLanguage) {
    
     	Map<String, String> supportedLocales = new HashMap<String, String>();
 		try {

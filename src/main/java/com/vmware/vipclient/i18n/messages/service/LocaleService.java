@@ -11,43 +11,77 @@ import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.FormatCacheItem;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
-import com.vmware.vipclient.i18n.messages.api.opt.LocaleOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.RemoteLocaleOpt;
+import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.JSONUtils;
-import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class LocaleService {
-
-    Logger                      logger        = LoggerFactory.getLogger(LocaleService.class.getName());
+    Logger logger = LoggerFactory.getLogger(LocaleService.class.getName());
     private static final String REGION_PREFIX = "region_";
     public static final String DISPN_PREFIX  = "dispn_";
+    private LocaleDTO dto;
 
     public LocaleService() {
+
+    }
+    public LocaleService(LocaleDTO dto) {
+        this.dto = dto;
     }
 
-    public Map<String, String> getSupportedLanguages(Iterator<DataSourceEnum> msgSourceQueueIter) {
-        if (!msgSourceQueueIter.hasNext()) {
-            return null;
-        }
+    public Map<String, String> getSupportedLanguages(Iterator<Locale> fallbackLocalesIter) {
+        Map<String, String> dispMap = new HashMap<String, String>();
 
-        DataSourceEnum dataSource = msgSourceQueueIter.next();
-        LocaleOpt opt = dataSource.createLocaleOpt();
-        Map<String, String> languages =  opt.getLanguages(LocaleUtility.getDefaultLocale().toLanguageTag());
-        if (languages == null) {
-            // If failed to get languages from the data source
-            logger.debug(FormatUtils.format(ConstantsMsg.GET_LANGUAGES_FAILED, dataSource.toString()));
-            if (msgSourceQueueIter.hasNext()) {
-                languages = getSupportedLanguages(msgSourceQueueIter);
+        // if display language is not set in the dto, just proceed to the next available fallback locale
+        if (dto.getDisplayLanguage() == null) {
+            if (fallbackLocalesIter.hasNext()) {
+                dto.setDisplayLanguage(fallbackLocalesIter.next().toLanguageTag());
             } else {
-                // If failed to get languages from any data source
-                logger.error(FormatUtils.format(ConstantsMsg.GET_LANGUAGES_FAILED_ALL));
+                return dispMap;
             }
         }
-        return languages;
+
+        // TODO: Huihui has implemented this in another PR
+        /*logger.debug("Look for supported languages from cache for locale [{}]", locale);
+        String productName = dto.getProductID();
+        String version = dto.getVersion();
+        FormattingCacheService formattingCacheService = new FormattingCacheService();
+        //dispMap = formattingCacheService.getSupportedLanguages(dto, locale);
+        if (dispMap != null) {
+            logger.debug("Found displayNames from cache for product [{}], version [{}], locale [{}]!", productName, version, locale);
+            return dispMap;
+        }*/
+
+        dispMap = getSupportedLanguagesFromDS(VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
+        if ((dispMap == null || dispMap.isEmpty()) && fallbackLocalesIter.hasNext()) {
+            LocaleDTO fallbackLocaleDTO = new LocaleDTO(dto.getProductID(), dto.getVersion(), fallbackLocalesIter.next().toLanguageTag());
+            dispMap = new LocaleService(fallbackLocaleDTO).getSupportedLanguages(fallbackLocalesIter);
+            if (dispMap != null && !dispMap.isEmpty()) {
+                // TODO: Huihui has implemented this in another PR
+                /*formattingCacheService.addSupportedLanguages(dto, locale, dispMap);
+                logger.debug("List of supported languages added to cache for product [{}], version [{}], locale [{}]!\n\n", productName, version, locale);*/
+            }
+        }
+        return dispMap;
     }
+
+    private Map<String, String> getSupportedLanguagesFromDS(ListIterator<DataSourceEnum> msgSourceQueueIter) {
+        Map<String, String> dispMap = new HashMap<String, String>();
+        if (!msgSourceQueueIter.hasNext()) {
+            logger.error(FormatUtils.format(ConstantsMsg.GET_LANGUAGES_FAILED_ALL));
+            return dispMap;
+        }
+        DataSourceEnum dataSource = msgSourceQueueIter.next();
+        dispMap = dataSource.createLocaleOpt().getSupportedLanguages(dto.getDisplayLanguage());
+        if (dispMap == null || dispMap.isEmpty()) {
+            logger.debug(FormatUtils.format(ConstantsMsg.GET_LANGUAGES_FAILED, dataSource.toString()));
+            dispMap = getSupportedLanguagesFromDS(msgSourceQueueIter);
+        }
+        return dispMap;
+    }
+
     public Map<String, Map<String, String>> getTerritoriesFromCLDR(
             List<String> languages) {
         
@@ -98,7 +132,7 @@ public class LocaleService {
             dispMap = cacheItem.getCachedData();
             if (dispMap.isEmpty()) {
             	DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
-            	Map<String, String> tmpMap = dataSource.createLocaleOpt().getLanguages(language);
+            	Map<String, String> tmpMap = dataSource.createLocaleOpt().getSupportedLanguages(language);
                 dispMap = JSONUtils.map2SortMap(tmpMap);
                 if (dispMap != null && dispMap.size() > 0) {
                     c.put(DISPN_PREFIX + language, new FormatCacheItem(dispMap));

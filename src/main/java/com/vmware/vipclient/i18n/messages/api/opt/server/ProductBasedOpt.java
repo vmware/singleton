@@ -50,7 +50,7 @@ public class ProductBasedOpt extends BaseOpt implements Opt {
      * get supported locales from vip(non-Javadoc)
      * 
      * @see com.vmware.vipclient.i18n.messages.dao.ILocaleDao#getSupportedLocales()
-     * @deprecated Replaced by {@link com.vmware.vipclient.i18n.messages.api.opt.server.RemoteLocaleOpt#getLanguages(String)()}
+     * @deprecated Replaced by {@link com.vmware.vipclient.i18n.messages.api.opt.server.RemoteLocaleOpt#getSupportedLanguages(String)()}
      */
     @Deprecated public JSONArray getSupportedLocalesFromRemoteVIP() {
         JSONArray msgObject = new JSONArray();
