@@ -8,7 +8,7 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.messages.api.opt.LocaleOpt;
 import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
-import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
+import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.JSONUtils;
 import org.json.simple.JSONArray;
@@ -24,9 +24,9 @@ public class RemoteLocaleOpt implements LocaleOpt{
 
     private Logger logger = LoggerFactory.getLogger(RemoteLocaleOpt.class.getName());
 
-    private BaseDTO dto = null;
+    private LocaleDTO dto = null;
 
-    public RemoteLocaleOpt(BaseDTO dto) {
+    public RemoteLocaleOpt(LocaleDTO dto) {
         this.dto = dto;
     }
 

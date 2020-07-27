@@ -15,6 +15,7 @@ import com.vmware.vipclient.i18n.messages.api.opt.local.LocalProductOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ProductBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
+import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.api.opt.server.RemoteLocaleOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.RemotePatternOpt;
@@ -37,7 +38,7 @@ public enum DataSourceEnum {
         }
 
 		@Override
-		public LocaleOpt createLocaleOpt(BaseDTO dto) {
+		public LocaleOpt createLocaleOpt(LocaleDTO dto) {
 			return new LocalLocaleOpt(dto);
 		}
     }, 
@@ -58,12 +59,12 @@ public enum DataSourceEnum {
         }
 
 		@Override
-		public LocaleOpt createLocaleOpt(BaseDTO dto) {
+		public LocaleOpt createLocaleOpt(LocaleDTO dto) {
 			return new RemoteLocaleOpt(dto);
 		}
     };
     public abstract ProductOpt createProductOpt(BaseDTO dto);
     public abstract MessageOpt createMessageOpt(MessagesDTO dto);
     public abstract PatternOpt createPatternOpt();
-    public abstract LocaleOpt createLocaleOpt(BaseDTO dto);
+    public abstract LocaleOpt createLocaleOpt(LocaleDTO dto);
 }

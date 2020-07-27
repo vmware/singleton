@@ -6,7 +6,7 @@ package com.vmware.vipclient.i18n.messages.service;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
-import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
+import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +20,9 @@ public class LocaleService {
 
     Logger                      logger        = LoggerFactory.getLogger(LocaleService.class.getName());
     public static final String DISPN_PREFIX  = "dispn_";
-    private BaseDTO dto = null;
+    private LocaleDTO dto = null;
 
-    public LocaleService(BaseDTO dto) {
+    public LocaleService(LocaleDTO dto) {
         this.dto = dto;
     }
 

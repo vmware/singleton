@@ -5,7 +5,7 @@
 package com.vmware.vipclient.i18n.base.instances;
 
 import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
+import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
 import com.vmware.vipclient.i18n.messages.service.LocaleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -95,7 +95,7 @@ public class LocaleMessage implements Message {
             logger.warn("Locale is empty!");
             return null;
         }
-        BaseDTO dto = new BaseDTO();
+        LocaleDTO dto = new LocaleDTO();
         if(cfg != null) {
             dto.setProductID(cfg.getProductName());
             dto.setVersion(cfg.getVersion());

@@ -9,7 +9,7 @@ import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.messages.api.opt.LocaleOpt;
-import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
+import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
 import com.vmware.vipclient.i18n.messages.service.FormattingCacheService;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -30,9 +30,9 @@ public class LocalLocaleOpt implements LocaleOpt{
     private static final String BUNDLE_PREFIX = "messages_";
 	private static final String BUNDLE_SUFFIX = ".json";
 
-	private BaseDTO dto = null;
+	private LocaleDTO dto = null;
 
-	public LocalLocaleOpt(BaseDTO dto) {
+	public LocalLocaleOpt(LocaleDTO dto) {
 		this.dto = dto;
 	}
 
