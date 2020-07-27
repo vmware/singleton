@@ -6,11 +6,13 @@ package com.vmware.vipclient.i18n.messages.service;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
+import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ListIterator;
+import java.util.Locale;
 
 /**
  * The class represents date formatting
@@ -19,11 +21,28 @@ public class PatternService {
     Logger logger = LoggerFactory.getLogger(PatternService.class);
 
     public JSONObject getPatternsByCategory(String locale, String category) {
-        JSONObject patterns = getPatterns(locale);
+        JSONObject patterns = getPatternsByLocale(locale);
         return (JSONObject) patterns.get(category);
     }
 
     public JSONObject getPatterns(String locale) {
+        JSONObject patterns = getPatternsByLocale(locale);
+        if (patterns != null) {
+            return patterns;
+        }
+        if (!LocaleUtility.isDefaultLocale(locale)) {
+            logger.info("Can't find pattern for locale [{}], look for default locale's pattern as fallback!", locale);
+            patterns = getPatternsByLocale(LocaleUtility.getDefaultLocale().toLanguageTag());
+            if (patterns != null) {
+                new FormattingCacheService().addPatterns(locale, patterns);
+                logger.debug("Default locale's pattern is cached for locale [{}]!\n\n", locale);
+                return patterns;
+            }
+        }
+        return null;
+    }
+
+    public JSONObject getPatternsByLocale(String locale) {
         if(locale == null || locale.isEmpty()) {
             logger.warn("Locale is empty!");
             return null;
@@ -48,6 +67,23 @@ public class PatternService {
     }
 
     public JSONObject getPatterns(String language, String region) {
+        JSONObject patterns = getPatternsByLanguageRegion(language, region);
+        if (patterns != null) {
+            return patterns;
+        }
+        if (!LocaleUtility.isDefaultLocale(new Locale(language, region))) {
+            logger.info("Can't find pattern for language [{}] region [{}], look for default locale's pattern as fallback!", language, region);
+            patterns = getPatternsByLocale(LocaleUtility.getDefaultLocale().toLanguageTag());
+            if (patterns != null) {
+                new FormattingCacheService().addPatterns(language, region, patterns);
+                logger.debug("Default locale's pattern is cached for language [{}], region [{}]!\n\n", language, region);
+                return patterns;
+            }
+        }
+        return null;
+    }
+
+    public JSONObject getPatternsByLanguageRegion(String language, String region) {
         if((language == null || language.isEmpty()) && (region == null || region.isEmpty())) {
             logger.warn("Both language and region are empty!");
             return null;

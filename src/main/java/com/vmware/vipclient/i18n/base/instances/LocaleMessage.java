@@ -6,9 +6,7 @@ package com.vmware.vipclient.i18n.base.instances;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
-import com.vmware.vipclient.i18n.messages.service.FormattingCacheService;
 import com.vmware.vipclient.i18n.messages.service.LocaleService;
-import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -45,9 +42,10 @@ public class LocaleMessage implements Message {
      */
     public Map<String, Map<String, String>> getRegionList(List<String> localeList) {
         Map<String, Map<String, String>> respMap = new HashMap<String, Map<String, String>>();
+        LocaleService localeService = new LocaleService(null);
         for (String locale : localeList) {
             if(locale != null && !locale.isEmpty()) {
-                Map<String, String> regionMap = getRegionsFromCLDR(locale);
+                Map<String, String> regionMap = localeService.getRegions(locale);
                 respMap.put(locale, regionMap);
             }
         }
@@ -92,29 +90,10 @@ public class LocaleMessage implements Message {
         return dispNameList;
     }
 
-    private Map<String, String> getRegionsFromCLDR(String locale){
-        Map<String, String> regionMap = null;
-        LocaleService localeService = new LocaleService(null);
-        regionMap = localeService.getRegionsFromCLDR(locale);
-        if (regionMap != null) {
-            return regionMap;
-        }
-        if (!LocaleUtility.isDefaultLocale(locale)) {
-            logger.info("Can't find regions for locale [{}], look for English regions as fallback!", locale);
-            regionMap = localeService.getRegionsFromCLDR(LocaleUtility.getDefaultLocale().toLanguageTag());
-            if (regionMap != null) {
-                new FormattingCacheService().addRegions(locale, regionMap);
-                logger.debug("Default locale's regions is cached for locale [{}]!\n\n", locale);
-            }
-        }
-        return regionMap;
-    }
-
     private Map<String, String> getDisplayNamesFromCLDR(String locale) {
-        Map<String, String> dispMap = new HashMap<String, String>();
         if(locale == null || locale.isEmpty()) {
             logger.warn("Locale is empty!");
-            return dispMap;
+            return null;
         }
         BaseDTO dto = new BaseDTO();
         if(cfg != null) {
@@ -125,21 +104,7 @@ public class LocaleMessage implements Message {
             dto.setVersion(VIPCfg.getInstance().getVersion());
         }
         LocaleService localeService = new LocaleService(dto);
-        dispMap = localeService.getSupportedDisplayNames(locale);
-        if(dispMap != null && !dispMap.isEmpty()){
-            return dispMap;
-        }
-        if (!LocaleUtility.isDefaultLocale(locale)) {
-            logger.info("Can't find supported languages for locale [{}], look for English languages as fallback!", locale);
-            Locale fallbackLocale = LocaleUtility.getDefaultLocale();
-            dispMap = localeService.getSupportedDisplayNames(fallbackLocale.toLanguageTag());
-            if (dispMap != null && dispMap.size() > 0) {
-                new FormattingCacheService().addSupportedLanguages(dto, locale, dispMap);
-                logger.debug("Default locale's displayNames is cached for product [{}], version [{}], locale [{}]!\n\n",
-                        dto.getProductID(), dto.getVersion(), locale);
-            }
-        }
-        return dispMap;
+        return localeService.getDisplayNames(locale);
     }
 
     public VIPCfg getCfg() {

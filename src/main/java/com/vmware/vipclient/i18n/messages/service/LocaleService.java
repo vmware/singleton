@@ -7,11 +7,13 @@ package com.vmware.vipclient.i18n.messages.service;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
+import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.ListIterator;
+import java.util.Locale;
 import java.util.Map;
 
 public class LocaleService {
@@ -24,7 +26,23 @@ public class LocaleService {
         this.dto = dto;
     }
 
-    public Map<String, String> getRegionsFromCLDR(String locale){
+    public Map<String, String> getRegions(String locale){
+        Map<String, String> regionMap = getRegionsByLocale(locale);
+        if (regionMap != null) {
+            return regionMap;
+        }
+        if (!LocaleUtility.isDefaultLocale(locale)) {
+            logger.info("Can't find regions for locale [{}], look for default locale's regions as fallback!", locale);
+            regionMap = getRegionsByLocale(LocaleUtility.getDefaultLocale().toLanguageTag());
+            if (regionMap != null) {
+                new FormattingCacheService().addRegions(locale, regionMap);
+                logger.debug("Default locale's regions is cached for locale [{}]!\n\n", locale);
+            }
+        }
+        return regionMap;
+    }
+
+    public Map<String, String> getRegionsByLocale(String locale){
         locale = locale.replace("_", "-").toLowerCase();
         Map<String, String> regionMap = null;
         logger.debug("Look for region list from cache for locale [{}]", locale);
@@ -56,24 +74,41 @@ public class LocaleService {
         return regions;
     }
 
-    public Map<String, String> getSupportedDisplayNames(String locale) {
+    public Map<String, String> getDisplayNames(String locale) {
+        Map<String, String> dispMap = new HashMap<String, String>();
+        dispMap = getSupportedDisplayNamesByLocale(locale);
+        if(dispMap != null && !dispMap.isEmpty()){
+            return dispMap;
+        }
+        if (!LocaleUtility.isDefaultLocale(locale)) {
+            logger.info("Can't find supported languages for locale [{}], look for default locale's languages as fallback!", locale);
+            Locale fallbackLocale = LocaleUtility.getDefaultLocale();
+            dispMap = getSupportedDisplayNamesByLocale(fallbackLocale.toLanguageTag());
+            if (dispMap != null && dispMap.size() > 0) {
+                new FormattingCacheService().addSupportedLanguages(dto, locale, dispMap);
+                logger.debug("Default locale's displayNames is cached for product [{}], version [{}], locale [{}]!\n\n",
+                        dto.getProductID(), dto.getVersion(), locale);
+            }
+        }
+        return dispMap;
+    }
+
+    public Map<String, String> getSupportedDisplayNamesByLocale(String locale) {
         locale = locale.replace("_", "-").toLowerCase();
         Map<String, String> dispMap = new HashMap<String, String>();
         logger.debug("Look for displayNames from cache for locale [{}]", locale);
-        String productName = dto.getProductID();
-        String version = dto.getVersion();
         FormattingCacheService formattingCacheService = new FormattingCacheService();
         dispMap = formattingCacheService.getSupportedLanguages(dto, locale);
         if (dispMap != null) {
-            logger.debug("Find displayNames from cache for product [{}], version [{}], locale [{}]!", productName, version, locale);
+            logger.debug("Find displayNames from cache for product [{}], version [{}], locale [{}]!", dto.getProductID(), dto.getVersion(), locale);
             return dispMap;
         }
         //cacheItem = new FormatCacheItem();
         dispMap = getSupportedLanguagesFromDS(locale, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
         if (dispMap != null && dispMap.size() > 0) {
-            logger.debug("Find the displayNames for product [{}], version [{}], locale [{}].\n", productName, version, locale);
+            logger.debug("Find the displayNames for product [{}], version [{}], locale [{}].\n", dto.getProductID(), dto.getVersion(), locale);
             formattingCacheService.addSupportedLanguages(dto, locale, dispMap);
-            logger.debug("DisplayNames is cached for product [{}], version [{}], locale [{}]!\n\n", productName, version, locale);
+            logger.debug("DisplayNames is cached for product [{}], version [{}], locale [{}]!\n\n", dto.getProductID(), dto.getVersion(), locale);
             return dispMap;
         }
         return dispMap;
