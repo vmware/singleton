@@ -4,6 +4,7 @@
  */
 package com.vmware.i18n;
 
+import com.vmware.i18n.pattern.action.PatternAction;
 import com.vmware.i18n.utils.JSONUtil;
 import org.junit.Assert;
 import org.junit.Test;
@@ -25,4 +26,19 @@ public class PatternUtilTest {
         String locale = PatternUtil.getMatchingLocaleFromLib("en_US");
         Assert.assertEquals("en", locale);
     }
+    
+    @SuppressWarnings("unchecked")
+	@Test
+	public void testGetPatternAPI() {
+    	String locale = "fr";
+		String cateStr= "dates,numbers,plurals";
+		PatternAction pa = PatternAction.getInstance();
+		String json = pa.getPattern(locale, cateStr);
+		Map<String, Object> patternMap = (Map<String, Object>) JSONUtil.getMapFromJson(json);
+		Map<String, Object> catesMap = (Map<String, Object>) patternMap.get("categories");
+		String[] catesArr = cateStr.split(",");
+		for (String cate : catesArr) {
+			Assert.assertNotNull(catesMap.get(cate));
+		}
+	}
 }

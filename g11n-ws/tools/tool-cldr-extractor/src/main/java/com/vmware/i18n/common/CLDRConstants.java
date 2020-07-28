@@ -61,14 +61,17 @@ public class CLDRConstants {
 	public static final String PLURALS_PATH = "cldr/plurals/plurals.json";
 	public static final String LANGUAGE_DATA_PATH = "cldr/supplement/languageData.json";
 	public static final String DATE_FIELDS_JSON_PATH = "cldr/pattern/common/{0}/dateFields.json";
+	public static final String DATE_TIMEZONENAME_JSON_PATH = "cldr/pattern/timezone/{0}/timeZoneName.json";
 
 	public static final String CLDR_CORE_LANGUAGE_DATA = CLDRConstants.CLDR_CORE + CLDR_VERSION + "/supplemental/languageData.json";
 	public static final String CLDR_CORE_PLURALS = CLDRConstants.CLDR_CORE + CLDR_VERSION + "/supplemental/plurals.json";
 	public static final String CLDR_CORE_ALIASES = CLDRConstants.CLDR_CORE + CLDR_VERSION + "/supplemental/aliases.json";
+	public static final String CLDR_CORE_METAZONE = CLDRConstants.CLDR_CORE + CLDR_VERSION + "/supplemental/metaZones.json";
 	public static final String CLDR_DATES_FULL_DATE_FIELDS = CLDR_DATES_FULL + "{0}/main/{1}/dateFields.json";
 	public static final String CLDR_DATES_FULL_CA_GREGORIAN = CLDR_DATES_FULL + "{0}/main/{1}/ca-gregorian.json";
 	public static final String CLDR_NUMBERS_FULL_NUMBERS = CLDR_NUMBERS_FULL + "{0}/main/{1}/numbers.json";
-
+	public static final String CLDR_DATES_FULL_DATE_TIMEZONENAME = CLDR_DATES_FULL + "{0}/main/{1}/timeZoneNames.json";
+	
 	public static final String LANGUAGE_DATA_KEY_PATH = "supplemental.languageData";
 	public static final String PLURALS_KEY_PATH = "supplemental.plurals-type-cardinal";
 	public static final String ALIAS_KEY_PATH = "supplemental.metadata.alias.languageAlias";

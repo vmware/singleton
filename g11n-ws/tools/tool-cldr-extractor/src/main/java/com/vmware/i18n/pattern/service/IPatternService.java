@@ -4,6 +4,8 @@
  */
 package com.vmware.i18n.pattern.service;
 
+import com.vmware.i18n.utils.timezone.TimeZoneName;
+
 public interface IPatternService {
 
     /**
@@ -14,4 +16,6 @@ public interface IPatternService {
      * @return pattern
      */
     public String getPattern(String locale, String categories);
+
+	public TimeZoneName getTimeZoneName(String locale, boolean defaultTerritory);
 }

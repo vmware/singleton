@@ -23,6 +23,7 @@ public class PatternParseMain {
         CLDRUtils.regionDataExtract();
         CLDRUtils.pluralsExtract();
         CLDRUtils.languageDataExtract();
+        CLDRUtils.patternTimeZoneNameExtract();
     }
 
 }
