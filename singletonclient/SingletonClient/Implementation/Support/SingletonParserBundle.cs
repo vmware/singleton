@@ -10,10 +10,10 @@ namespace SingletonClient.Implementation.Support
 {
     public sealed class SingletonParserBundle : IResourceParser
     {
-        private Hashtable kvTable = new Hashtable();
-
         public Hashtable Parse(string text)
         {
+            Hashtable kvTable = new Hashtable();
+
             JObject data = SingletonUtil.ConvertToDict(text);
             if (data != null)
             {
