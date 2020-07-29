@@ -36,10 +36,12 @@ class TestClient(unittest.TestCase):
         self.assertIn('sgtn_client.yml', file_list)
 
     def test_net_util(self):
+        NetUtil.simulate_data = FileUtil.read_json_file('./simulate.json')
+
         dt = FileUtil.read_datatree('./sgtn_client.yml')
         online_url = dt['online_service_url']
         parts = online_url.split('/')[:3]
-        parts.append('/i18n/api/v2/translation/products/PYTHON/versions/1.0.0/localelist')
+        parts.append('i18n/api/v2/translation/products/PYTHON/versions/1.0.0/localelist')
         url = '/'.join(parts)
         
         text = NetUtil.http_get_text(url)

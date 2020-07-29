@@ -146,8 +146,12 @@ class NetUtil:
                     'text': text, 'headers': headers}
             return text, headers
         else:
-            kept = cls.simulate_data['%s<<headers>>%s' % (url, request_headers)]
+            key = '%s<<headers>>%s' % (url, request_headers)
+            kept = cls.simulate_data[key]
             if kept:
+                if 'code' in kept:
+                    if kept['code'] == 304:
+                        raise Exception('Error 304:')
                 return kept['text'], kept['headers']
         return None, None
     
