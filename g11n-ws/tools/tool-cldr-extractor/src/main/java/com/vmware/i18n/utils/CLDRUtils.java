@@ -1141,7 +1141,7 @@ public class CLDRUtils {
             if (!f.exists()) {
                 f.createNewFile();
             }
-            System.out.println(f.getAbsolutePath());
+            logger.info(f.getAbsolutePath());
             outputStream = new FileOutputStream(f);
             write = new OutputStreamWriter(outputStream, Constants.UTF8);
             writer = new BufferedWriter(write);
