@@ -16,6 +16,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vmware.i18n.utils.JSONUtil;
 
 public class CldrTimeZoneUtils {
     
@@ -124,26 +125,11 @@ public class CldrTimeZoneUtils {
      * @return the node value
      */
     private static Object select(JSONObject jsonObj, String keyPath) {
-        if (null == jsonObj || null == keyPath) {
-            return null;
-        }
         try {
-            String[] patharr = keyPath.split("\\.");
-            JSONObject current = jsonObj;
-            Object retvalue = null;
-            for (int i = 0; i < patharr.length; i++) {
-                String key = patharr[i];
-                retvalue = current.get(key);
-                if (i < (patharr.length - 1)) {
-                    current = (JSONObject) retvalue;
-                }
-            }
-            return retvalue;
-
+        	return JSONUtil.select(jsonObj, keyPath);
         } catch (Exception e) {
             return null;
         }
     }
-
 
 }

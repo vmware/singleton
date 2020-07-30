@@ -1148,7 +1148,7 @@ public class CLDRUtils {
             writer.write(jsonStr);
             writer.flush();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
         } finally {
             IOUtil.closeWriter(writer);
             IOUtil.closeWriter(write);
@@ -1160,26 +1160,25 @@ public class CLDRUtils {
      * Extract timeZoneNames.json
      */
 	public static void patternTimeZoneNameExtract() {
-		System.out.println("Start to extract timezonename pattern data ... ");
+		logger.info("Start to extract timezonename pattern data ... ");
 		Map<String, String> allLocales = getAllCldrLocales();
-		System.out.println("allLocales size is : " + allLocales.size());
+		logger.info("allLocales size is : " + allLocales.size());
 		String coreZipPath = CLDRConstants.CORE_ZIP_FILE_PATH;
 		String metaZonefileName = CLDRConstants.CLDR_CORE_METAZONE;
-		System.out.println(metaZonefileName);
+		logger.info(metaZonefileName);
 		String metaZonejson = CLDRUtils.readZip(metaZonefileName, coreZipPath);
-	    System.out.println(metaZonejson);
+		logger.info(metaZonejson);
 		JSONObject metaZoneObj = JSONUtil.string2JSON(metaZonejson);
 		for (String locale : allLocales.values()) {
-			System.out.println("locale is:" + locale);
+			logger.info("locale is:" + locale);
 			String zipPath = CLDRConstants.DATE_ZIP_FILE_PATH;
 			String timeZoneNameFileName = MessageFormat.format(CLDRConstants.CLDR_DATES_FULL_DATE_TIMEZONENAME,
 					CLDR_VERSION, locale);
 			String timeZoneNameJson = CLDRUtils.readZip(timeZoneNameFileName, zipPath);
-			System.out.println(timeZoneNameJson);
+			logger.info(timeZoneNameJson);
 			JSONObject timeZoneNameObj = JSONUtil.string2JSON(timeZoneNameJson);
 			String jsonStr = CldrTimeZoneUtils.createTimeZoneNameJson(metaZoneObj, timeZoneNameObj, locale);
 			String filePath = GEN_CLDR_PATTERN_TIMEZONE_DIR + locale + File.separator + Constants.DATE_TIMEZONENAME;
-			// System.out.println(jsonStr);
 			writeJsonStr2File(filePath, jsonStr);
 		}
 	}
