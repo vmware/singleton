@@ -6,7 +6,7 @@ package com.vmware.vipclient.i18n.messages.service;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
-import com.vmware.vipclient.i18n.messages.api.opt.server.ProductBasedOpt;
+import com.vmware.vipclient.i18n.messages.api.opt.server.RemoteProductOpt;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
@@ -27,7 +27,7 @@ public class ProductService {
         BaseDTO baseDTO = new BaseDTO();
         baseDTO.setProductID(dto.getProductID());
         baseDTO.setVersion(dto.getVersion());
-        ProductBasedOpt dao = new ProductBasedOpt(baseDTO);
+        RemoteProductOpt dao = new RemoteProductOpt(baseDTO);
         return dao.getComponents();
     }
 
@@ -36,7 +36,7 @@ public class ProductService {
         BaseDTO baseDTO = new BaseDTO();
         baseDTO.setProductID(dto.getProductID());
         baseDTO.setVersion(dto.getVersion());
-        ProductBasedOpt dao = new ProductBasedOpt(baseDTO);
+        RemoteProductOpt dao = new RemoteProductOpt(baseDTO);
         return dao.getSupportedLocales();
     }
 

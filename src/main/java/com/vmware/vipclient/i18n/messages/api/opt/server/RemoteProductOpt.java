@@ -16,10 +16,10 @@ import org.json.simple.JSONArray;
 import java.util.List;
 import java.util.Map;
 
-public class ProductBasedOpt extends BaseOpt implements ProductOpt {
+public class RemoteProductOpt extends BaseOpt implements ProductOpt {
     private BaseDTO dto = null;
 
-    public ProductBasedOpt(BaseDTO dto) {
+    public RemoteProductOpt(BaseDTO dto) {
         this.dto = dto;
     }
 

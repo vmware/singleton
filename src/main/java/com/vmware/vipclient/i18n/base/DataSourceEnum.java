@@ -13,7 +13,7 @@ import com.vmware.vipclient.i18n.messages.api.opt.local.LocalPatternOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.local.LocalMessagesOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.local.LocalProductOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
-import com.vmware.vipclient.i18n.messages.api.opt.server.ProductBasedOpt;
+import com.vmware.vipclient.i18n.messages.api.opt.server.RemoteProductOpt;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
@@ -45,7 +45,7 @@ public enum DataSourceEnum {
     VIP {
         @Override
         public ProductOpt createProductOpt(BaseDTO dto) {
-            return new ProductBasedOpt(dto);
+            return new RemoteProductOpt(dto);
         }
 
     	@Override

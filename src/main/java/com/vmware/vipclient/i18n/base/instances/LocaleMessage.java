@@ -7,6 +7,7 @@ package com.vmware.vipclient.i18n.base.instances;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
 import com.vmware.vipclient.i18n.messages.service.LocaleService;
+import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -70,10 +71,9 @@ public class LocaleMessage implements Message {
      * @return a list contains the supported language tags
      */
     public List<String> getSupportedLanguageTagList() {
-        Map<String, String> languageTagMap = getDisplayNamesFromCLDR(java.util.Locale.ENGLISH.toLanguageTag());
+        Map<String, String> languageTagMap = getDisplayNamesFromCLDR(LocaleUtility.getDefaultLocale().toLanguageTag());
         Collection<String> keyCollection = languageTagMap.keySet();
-        List<String> languageTagList = new ArrayList<String>(keyCollection);
-        return languageTagList;
+        return new ArrayList<String>(keyCollection);
     }
 
     /**
@@ -86,8 +86,7 @@ public class LocaleMessage implements Message {
     public List<String> getSupportedDisplayNameList(String displayLocale) {
         Map<String, String> dispNameMap = getDisplayNamesFromCLDR(displayLocale);
         Collection<String> valueCollection = dispNameMap.values();
-        List<String> dispNameList = new ArrayList<String>(valueCollection);
-        return dispNameList;
+        return new ArrayList<String>(valueCollection);
     }
 
     private Map<String, String> getDisplayNamesFromCLDR(String locale) {
