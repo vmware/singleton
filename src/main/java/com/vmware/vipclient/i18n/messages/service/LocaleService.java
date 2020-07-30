@@ -6,6 +6,7 @@ package com.vmware.vipclient.i18n.messages.service;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
+import com.vmware.vipclient.i18n.base.cache.LocaleCacheItem;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
@@ -17,6 +18,8 @@ import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.concurrent.FutureTask;
 
 public class LocaleService {
 
@@ -31,9 +34,9 @@ public class LocaleService {
     }
 
     public Map<String, String> getRegions(String locale){
-        Map<String, String> regionMap = getRegionsByLocale(locale);
-        if (regionMap != null) {
-            return regionMap;
+        LocaleCacheItem cacheItem = getRegionsByLocale(locale);
+        if (!cacheItem.getCachedData().isEmpty()) {
+            return cacheItem.getCachedData();
         }
         Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
         while (fallbackLocalesIter.hasNext()) {
@@ -41,57 +44,64 @@ public class LocaleService {
             if(fallbackLocale.equalsIgnoreCase(locale))
                 continue;
             logger.info("Can't find regions for locale [{}], look for fallback locale [{}] regions as fallback!", locale, fallbackLocale);
-            regionMap = getRegionsByLocale(fallbackLocale);
-            if (regionMap != null) {
-                new FormattingCacheService().addRegions(locale, regionMap);
+            cacheItem = getRegionsByLocale(fallbackLocale);
+            if (!cacheItem.getCachedData().isEmpty()) {
+                new FormattingCacheService().addRegions(locale, cacheItem);
                 logger.debug("Fallback locale [{}] regions is cached for locale [{}]!\n\n", fallbackLocale, locale);
                 break;
             }
         }
-        return regionMap;
+        return cacheItem.getCachedData();
     }
 
-    public Map<String, String> getRegionsByLocale(String locale){
+    public LocaleCacheItem getRegionsByLocale(String locale){
         if(locale != null && !locale.isEmpty())
             locale = locale.replace("_", "-").toLowerCase();
-        Map<String, String> regionMap = null;
+        LocaleCacheItem cacheItem = null;
         logger.debug("Look for region list from cache for locale [{}]", locale);
         FormattingCacheService formattingCacheService = new FormattingCacheService();
-        regionMap = formattingCacheService.getRegions(locale);
-        if (regionMap != null) {
+        cacheItem = formattingCacheService.getRegions(locale);
+        if (cacheItem != null) {
+            if (cacheItem.isExpired()) { // cacheItem has expired
+                // Update the cache in a separate thread
+                populateRegionsCache(locale, cacheItem);
+            }
             logger.debug("Find regions from cache for locale [{}]!", locale);
-            return regionMap;
+            return cacheItem;
         }
-        regionMap = getRegionsFromDS(locale, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-        if (regionMap != null) {
+        cacheItem = new LocaleCacheItem();
+        getRegionsFromDS(locale, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
+        if (!cacheItem.getCachedData().isEmpty()) {
             logger.debug("Find the regions for locale [{}].\n", locale);
-            formattingCacheService.addRegions(locale, regionMap);
+            formattingCacheService.addRegions(locale, cacheItem);
             logger.debug("Regions is cached for locale [{}]!\n\n", locale);
-            return regionMap;
         }
-        return regionMap;
+        return cacheItem;
     }
 
-    private Map<String, String> getRegionsFromDS(String locale, ListIterator<DataSourceEnum> msgSourceQueueIter) {
-        Map<String, String> regions = null;
+    private void getRegionsFromDS(String locale, LocaleCacheItem cacheItem, ListIterator<DataSourceEnum> msgSourceQueueIter) {
         if (!msgSourceQueueIter.hasNext()) {
-            logger.error(ConstantsMsg.GET_REGIONS_FAILED_ALL);
-            return regions;
+            logger.error(ConstantsMsg.GET_REGIONS_FAILED_ALL, locale);
+            return;
         }
+        long timestampOld = cacheItem.getTimestamp();
         DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
-        regions = dataSource.createLocaleOpt(dto).getRegions(locale);
-        if (regions == null || regions.isEmpty()) {
-            logger.debug(ConstantsMsg.GET_REGIONS_FAILED, dataSource.toString());
-            regions = getRegionsFromDS(locale, msgSourceQueueIter);
+        dataSource.createLocaleOpt(dto).getRegions(locale, cacheItem);
+        long timestampNew = cacheItem.getTimestamp();
+        if (timestampNew == timestampOld) {
+            logger.debug(ConstantsMsg.GET_REGIONS_FAILED, locale, dataSource.toString());
         }
-        return regions;
+        // Skip this block if timestamp is not 0 (which means cacheItem is in the cache) regardless if cacheItem is expired or not.
+        // Otherwise, try the next dataSource in the queue.
+        if (timestampNew == 0) {
+            getRegionsFromDS(locale, cacheItem, msgSourceQueueIter);
+        }
     }
 
     public Map<String, String> getDisplayNames(String locale) {
-        Map<String, String> dispMap = new HashMap<String, String>();
-        dispMap = getSupportedDisplayNamesByLocale(locale);
-        if(dispMap != null && !dispMap.isEmpty()){
-            return dispMap;
+        LocaleCacheItem cacheItem = getSupportedDisplayNamesByLocale(locale);
+        if(!cacheItem.getCachedData().isEmpty()){
+            return cacheItem.getCachedData();
         }
         Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
         while (fallbackLocalesIter.hasNext()) {
@@ -99,51 +109,102 @@ public class LocaleService {
             if(fallbackLocale.equalsIgnoreCase(locale))
                 continue;
             logger.info("Can't find supported languages for locale [{}], look for fallback locale [{}] languages as fallback!", locale, fallbackLocale);
-            dispMap = getSupportedDisplayNamesByLocale(fallbackLocale);
-            if (dispMap != null && dispMap.size() > 0) {
-                new FormattingCacheService().addSupportedLanguages(dto, locale, dispMap);
+            cacheItem = getSupportedDisplayNamesByLocale(fallbackLocale);
+            if (!cacheItem.getCachedData().isEmpty()) {
+                new FormattingCacheService().addSupportedLanguages(dto, locale, cacheItem);
                 logger.debug("Fallback locale [{}] displayNames is cached for product [{}], version [{}], locale [{}]!\n\n",
                         fallbackLocale, dto.getProductID(), dto.getVersion(), locale);
                 break;
             }
         }
-        return dispMap;
+        return cacheItem.getCachedData();
     }
 
-    public Map<String, String> getSupportedDisplayNamesByLocale(String locale) {
+    public LocaleCacheItem getSupportedDisplayNamesByLocale(String locale) {
         if(locale != null && !locale.isEmpty())
             locale = locale.replace("_", "-").toLowerCase();
-        Map<String, String> dispMap = new HashMap<String, String>();
+        LocaleCacheItem cacheItem = null;
         logger.debug("Look for displayNames from cache for locale [{}]", locale);
         FormattingCacheService formattingCacheService = new FormattingCacheService();
-        dispMap = formattingCacheService.getSupportedLanguages(dto, locale);
-        if (dispMap != null) {
+        cacheItem = formattingCacheService.getSupportedLanguages(dto, locale);
+        if (cacheItem != null) {
+            if (cacheItem.isExpired()) { // cacheItem has expired
+                // Update the cache in a separate thread
+                populateSupportedLanguagesCache(locale, cacheItem);
+            }
             logger.debug("Find displayNames from cache for product [{}], version [{}], locale [{}]!", dto.getProductID(), dto.getVersion(), locale);
-            return dispMap;
+            return cacheItem;
         }
-        dispMap = getSupportedLanguagesFromDS(locale, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-        if (dispMap != null && dispMap.size() > 0) {
+        cacheItem = new LocaleCacheItem();
+        getSupportedLanguagesFromDS(locale, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
+        if (!cacheItem.getCachedData().isEmpty()) {
             logger.debug("Find the displayNames for product [{}], version [{}], locale [{}].\n", dto.getProductID(), dto.getVersion(), locale);
-            formattingCacheService.addSupportedLanguages(dto, locale, dispMap);
+            formattingCacheService.addSupportedLanguages(dto, locale, cacheItem);
             logger.debug("DisplayNames is cached for product [{}], version [{}], locale [{}]!\n\n", dto.getProductID(), dto.getVersion(), locale);
-            return dispMap;
         }
-        return dispMap;
+        return cacheItem;
     }
 
 
-    private Map<String, String> getSupportedLanguagesFromDS(String locale, ListIterator<DataSourceEnum> msgSourceQueueIter) {
+    private void getSupportedLanguagesFromDS(String locale, LocaleCacheItem cacheItem, ListIterator<DataSourceEnum> msgSourceQueueIter) {
         Map<String, String> dispMap = new HashMap<String, String>();
         if (!msgSourceQueueIter.hasNext()) {
-            logger.error(ConstantsMsg.GET_LANGUAGES_FAILED_ALL);
-            return dispMap;
+            logger.error(ConstantsMsg.GET_LANGUAGES_FAILED_ALL, locale);
+            return;
         }
+        long timestampOld = cacheItem.getTimestamp();
         DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
-        dispMap = dataSource.createLocaleOpt(dto).getSupportedLanguages(locale);
-        if (dispMap == null || dispMap.isEmpty()) {
-            logger.debug(ConstantsMsg.GET_LANGUAGES_FAILED, dataSource.toString());
-            dispMap = getSupportedLanguagesFromDS(locale, msgSourceQueueIter);
+        dataSource.createLocaleOpt(dto).getSupportedLanguages(locale, cacheItem);
+        long timestampNew = cacheItem.getTimestamp();
+        if (timestampNew == timestampOld) {
+            logger.debug(ConstantsMsg.GET_LANGUAGES_FAILED, locale, dataSource.toString());
         }
-        return dispMap;
+        // Skip this block if timestamp is not 0 (which means cacheItem is in the cache) regardless if cacheItem is expired or not.
+        // Otherwise, try the next dataSource in the queue.
+        if (timestampNew == 0) {
+            getSupportedLanguagesFromDS(locale, cacheItem, msgSourceQueueIter);
+        }
+    }
+
+    private void populateRegionsCache(String locale, LocaleCacheItem cacheItem) {
+        Callable<LocaleCacheItem> callable = () -> {
+            try {
+
+                // Pass cacheItem to getMessages so that:
+                // 1. A previously stored etag, if any, can be used for the next HTTP request.
+                // 2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed
+                // 	 with new properties from the next HTTP response.
+                getRegionsFromDS(locale, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
+                return cacheItem;
+            } catch (Exception e) {
+                // To make sure that the thread will close
+                // even when an exception is thrown
+                return null;
+            }
+        };
+        FutureTask<LocaleCacheItem> task = new FutureTask<LocaleCacheItem>(callable);
+        Thread thread = new Thread(task);
+        thread.start();
+    }
+
+    private void populateSupportedLanguagesCache(String locale, LocaleCacheItem cacheItem) {
+        Callable<LocaleCacheItem> callable = () -> {
+            try {
+
+                // Pass cacheItem to getMessages so that:
+                // 1. A previously stored etag, if any, can be used for the next HTTP request.
+                // 2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed
+                // 	 with new properties from the next HTTP response.
+                getSupportedLanguagesFromDS(locale, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
+                return cacheItem;
+            } catch (Exception e) {
+                // To make sure that the thread will close
+                // even when an exception is thrown
+                return null;
+            }
+        };
+        FutureTask<LocaleCacheItem> task = new FutureTask<LocaleCacheItem>(callable);
+        Thread thread = new Thread(task);
+        thread.start();
     }
 }

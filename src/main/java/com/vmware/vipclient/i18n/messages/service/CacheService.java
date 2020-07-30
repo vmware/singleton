@@ -6,7 +6,7 @@ package com.vmware.vipclient.i18n.messages.service;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
-import com.vmware.vipclient.i18n.base.cache.FormatCacheItem;
+import com.vmware.vipclient.i18n.base.cache.LocaleCacheItem;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
@@ -109,10 +109,10 @@ public class CacheService {
             return locales;
         }
         Set<String> keySet = c.keySet();
-       
+
         for (String key : keySet) {
         	if (key.startsWith(ConstantsKeys.DISPNS_PREFIX)) {
-        		FormatCacheItem cacheItem = (FormatCacheItem) c.get(key);
+                LocaleCacheItem cacheItem = (LocaleCacheItem) c.get(key);
         		Map<String, String> langTagToDisplayNameMap = cacheItem.getCachedData();
         		for (String languageTag : langTagToDisplayNameMap.keySet()) {
         			locales.add(Locale.forLanguageTag(languageTag));

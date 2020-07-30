@@ -4,9 +4,9 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt;
 
-import java.util.Map;
+import com.vmware.vipclient.i18n.base.cache.LocaleCacheItem;
 
 public interface LocaleOpt {
-	public Map<String, String> getSupportedLanguages(String locale);
-	public Map<String, String> getRegions(String locale);
+	public void getSupportedLanguages(String locale, LocaleCacheItem cacheItem);
+	public void getRegions(String locale, LocaleCacheItem cacheItem);
 }
