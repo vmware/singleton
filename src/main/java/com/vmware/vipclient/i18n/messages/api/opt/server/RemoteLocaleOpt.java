@@ -48,10 +48,10 @@ public class RemoteLocaleOpt implements LocaleOpt{
     }
 
     @Override
-    public Map<String, String> getLanguages(String language) {
+    public Map<String, String> getSupportedLanguages(String displayLanguage) {
     	Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester()
                 .request(
-                        V2URL.getSupportedLanguageListURL(language,
+                        V2URL.getSupportedLanguageListURL(displayLanguage,
                                 VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
                         ConstantsKeys.GET, null);
     	String responseData = (String) response.get(URLUtils.BODY);

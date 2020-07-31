@@ -5,16 +5,8 @@
 package com.vmware.vipclient.i18n.messages.service;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
@@ -24,7 +16,11 @@ import com.vmware.vipclient.i18n.messages.api.opt.server.StringBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.JSONUtils;
-import com.vmware.vipclient.i18n.util.LocaleUtility;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+import org.json.simple.parser.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Deprecated
 public class StringService {
@@ -33,27 +29,9 @@ public class StringService {
     @SuppressWarnings("unchecked")
     @Deprecated
     public String getString(MessagesDTO dto) {
-    	String key = dto.getKey();
-    	
     	MessageCacheItem cacheItem = new ComponentService(dto).getMessages();
-    	
-    	// While failed to get MessageCacheItem, use MessageCacheItem of the next fallback locale. 
-    	Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
-    	while (cacheItem.getCachedData().isEmpty() && fallbackLocalesIter.hasNext()) {
-    		Locale fallback = fallbackLocalesIter.next();
-			MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), 
-					key, dto.getSource(), fallback.toLanguageTag(), null);
-			cacheItem = new ComponentService(fallbackLocaleDTO).getMessages();
-			
-			// Cache a reference to the MessageCacheItem of the fallback locale 
-			if (!cacheItem.getCachedData().isEmpty()) {
-				CacheService cacheService = new CacheService(dto);
-				cacheService.addCacheOfComponent(cacheItem);
-			}
-		}
-    	
     	Map<String, String> cachedData = cacheItem.getCachedData();
-		return cachedData.get(key);
+		return cachedData.get(dto.getKey());
     }
 
     public String postString(MessagesDTO dto) {

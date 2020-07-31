@@ -6,8 +6,6 @@ package com.vmware.vipclient.i18n.messages.api.opt.server;
 
 import java.util.Map;
 
-import org.json.simple.JSONArray;
-
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
@@ -15,7 +13,9 @@ import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+import org.json.simple.JSONArray;
 
+@Deprecated
 public class ProductBasedOpt extends BaseOpt implements Opt {
     private BaseDTO dto = null;
 
@@ -23,12 +23,13 @@ public class ProductBasedOpt extends BaseOpt implements Opt {
         this.dto = dto;
     }
 
-    /*
+    /**
      * get supported components from vip(non-Javadoc)
      * 
      * @see com.vmware.vipclient.i18n.messages.dao.IComponentDao#getComponents()
+     * @Deprecated Replaced by {@link com.vmware.vipclient.i18n.messages.api.opt.server.RemoteComponentOpt#getComponents()}
      */
-    public JSONArray getComponentsFromRemoteVIP() {
+    @Deprecated public JSONArray getComponentsFromRemoteVIP() {
         JSONArray msgObject = new JSONArray();
         String responseStr = "";
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(
@@ -45,12 +46,13 @@ public class ProductBasedOpt extends BaseOpt implements Opt {
         return msgObject;
     }
 
-    /*
+    /**
      * get supported locales from vip(non-Javadoc)
      * 
      * @see com.vmware.vipclient.i18n.messages.dao.ILocaleDao#getSupportedLocales()
+     * @deprecated Replaced by {@link com.vmware.vipclient.i18n.messages.api.opt.server.RemoteLocaleOpt#getSupportedLanguages(String)()}
      */
-    public JSONArray getSupportedLocalesFromRemoteVIP() {
+    @Deprecated public JSONArray getSupportedLocalesFromRemoteVIP() {
         JSONArray msgObject = new JSONArray();
         String responseStr = "";
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL.getSupportedLocaleListURL(
