@@ -5,16 +5,8 @@
 package com.vmware.vipclient.i18n.messages.service;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
@@ -24,7 +16,11 @@ import com.vmware.vipclient.i18n.messages.api.opt.server.StringBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.JSONUtils;
-import com.vmware.vipclient.i18n.util.LocaleUtility;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+import org.json.simple.parser.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Deprecated
 public class StringService {
@@ -33,8 +29,7 @@ public class StringService {
     @SuppressWarnings("unchecked")
     @Deprecated
     public String getString(MessagesDTO dto) {
-    	Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
-    	MessageCacheItem cacheItem = new ComponentService(dto).getMessages(fallbackLocalesIter);    	
+    	MessageCacheItem cacheItem = new ComponentService(dto).getMessages();
     	Map<String, String> cachedData = cacheItem.getCachedData();
 		return cachedData.get(dto.getKey());
     }

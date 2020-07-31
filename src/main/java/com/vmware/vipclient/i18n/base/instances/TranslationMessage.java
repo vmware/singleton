@@ -275,8 +275,7 @@ public class TranslationMessage implements Message {
             dto.setVersion(this.cfg.getVersion());
         }
         ComponentService cs = new ComponentService(dto);
-        Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
-        return cs.getMessages(fallbackLocalesIter).getCachedData();
+        return cs.getMessages().getCachedData();
     }
     
      /**
@@ -293,8 +292,7 @@ public class TranslationMessage implements Message {
      */
     public Map<String, String> getMessages(final Locale locale, final String component) {
         MessagesDTO dto = new MessagesDTO(component, null, null, locale.toLanguageTag(), this.cfg);
-        Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
-        MessageCacheItem cacheItem = new ComponentService(dto).getMessages(fallbackLocalesIter);
+        MessageCacheItem cacheItem = new ComponentService(dto).getMessages();
         return cacheItem.getCachedData();
     }
 

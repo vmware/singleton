@@ -237,8 +237,8 @@ public class OfflineModeTest extends BaseTestClass {
     	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
     	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
     	cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(
-    			Arrays.asList(DataSourceEnum.Bundle, DataSourceEnum.VIP)));
-    	
+    			Arrays.asList(DataSourceEnum.VIP, DataSourceEnum.Bundle)));
+    	cfg.initializeVIPService();
         Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
         TranslationCacheManager.cleanCache(c);
         I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
@@ -265,7 +265,7 @@ public class OfflineModeTest extends BaseTestClass {
     	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
     	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
     	cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(
-    			Arrays.asList(DataSourceEnum.Bundle, DataSourceEnum.VIP)));
+    			Arrays.asList(DataSourceEnum.VIP, DataSourceEnum.Bundle)));
     	
     	cfg.initializeVIPService();
     	
@@ -299,7 +299,7 @@ public class OfflineModeTest extends BaseTestClass {
     	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
     	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
     	cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(
-    			Arrays.asList(DataSourceEnum.Bundle, DataSourceEnum.VIP)));
+    			Arrays.asList(DataSourceEnum.VIP, DataSourceEnum.Bundle)));
     	cfg.initializeVIPService();
     	
         Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);

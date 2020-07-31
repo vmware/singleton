@@ -18,6 +18,7 @@ import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.JSONUtils;
+import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
@@ -62,10 +63,37 @@ public class ComponentService {
     		}
     	}
     }
-    
-    /**
-     * Get messages from cache
-     */
+
+	/**
+	 * Get MessageCacheItem from cache.
+	 * The cache is refreshed if MessageCacheItem is expired or not found.
+	 * Pre-configured locale fallback queue is used on failure.
+	 *
+	 * @return A MessageCacheItem whose message map is one of the items in the following priority-ordered list:
+	 * <ul>
+	 * 		<li>The messages in the requested locale</li>
+	 * 		<li>The messages in a default locale</li>
+	 * 		<li>The source messages</li>
+	 * 		<li>An empty map</li>
+	 * </ul>
+	 */
+	public MessageCacheItem getMessages() {
+		Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
+		return this.getMessages(fallbackLocalesIter);
+	}
+
+	/**
+	 * Get MessageCacheItem from cache.
+	 * The cache is refreshed if MessageCacheItem is expired or not found.
+	 *
+	 * @param fallbackLocalesIter The locale fallback queue to be used on failure. If null, there will be no fallback mechanism on failure so the message map will be empty.
+	 *
+	 * @return A MessageCacheItem whose data map is one of the following:
+	 * <ul>
+	 * 		<li>The messages in the requested locale</li>
+	 * 	 	<li>An empty map if the messages are not available in the requested locale</li>
+	 * </ul>
+	 */
     public MessageCacheItem getMessages(Iterator<Locale> fallbackLocalesIter) {
     	CacheService cacheService = new CacheService(dto);
     	MessageCacheItem cacheItem = null;
@@ -79,14 +107,13 @@ public class ComponentService {
     		// Create a new cacheItem object to be stored in cache
     		cacheItem = new MessageCacheItem();
     		fetchMessages(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().iterator());
-    		long timestamp = cacheItem.getTimestamp();
-    		
-    		if(!dto.getLocale().equals(ConstantsKeys.SOURCE)) {
+
+			if (!cacheItem.getCachedData().isEmpty()) {
+				cacheService.addCacheOfComponent(cacheItem);
+			} else if (!dto.getLocale().equals(ConstantsKeys.SOURCE) && fallbackLocalesIter!=null && fallbackLocalesIter.hasNext()) {
     			// If failed to fetch message, use MessageCacheItem of the next fallback locale.
-    			if (timestamp == 0 && fallbackLocalesIter.hasNext()) {
-    				MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), fallbackLocalesIter.next().toLanguageTag(), dto.getProductID(), dto.getVersion());
-    				cacheItem = new ComponentService(fallbackLocaleDTO).getMessages(fallbackLocalesIter);
-    			}
+				MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), fallbackLocalesIter.next().toLanguageTag(), dto.getProductID(), dto.getVersion());
+				cacheItem = new ComponentService(fallbackLocaleDTO).getMessages(fallbackLocalesIter);
 				if (!cacheItem.getCachedData().isEmpty()) {
 					cacheService.addCacheOfComponent(cacheItem);
 				}

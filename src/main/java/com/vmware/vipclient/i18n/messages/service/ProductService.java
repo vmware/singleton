@@ -70,8 +70,7 @@ public class ProductService {
                 for (Object component : components) {
                     MessagesDTO msgDTO = new MessagesDTO(((String) component).trim(), LocaleUtility.fmtToMappedLocale(Locale.forLanguageTag(languageTag)).toString().trim(),
                             dto.getProductID(), dto.getVersion());
-                    Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
-                    Map<String, String> retMap = new ComponentService(msgDTO).getMessages(fallbackLocalesIter).getCachedData();
+                    Map<String, String> retMap = new ComponentService(msgDTO).getMessages(null).getCachedData();
                     if (retMap != null) {
                         list.add(retMap);
                     }
