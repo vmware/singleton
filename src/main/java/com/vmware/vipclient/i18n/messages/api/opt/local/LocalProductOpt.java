@@ -7,7 +7,6 @@ package com.vmware.vipclient.i18n.messages.api.opt.local;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.messages.api.opt.ProductOpt;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
-import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -93,7 +92,7 @@ public class LocalProductOpt implements ProductOpt {
                 }
                 return "";
             }).forEach(language -> {
-                if(language != null && !language.isEmpty() && !ConstantsKeys.SOURCE.equalsIgnoreCase(language)) {
+                if(language != null && !language.isEmpty()) {
                     supportedLocales.add(language);
                 }
             });

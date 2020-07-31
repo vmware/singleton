@@ -47,7 +47,7 @@ public class PatternService {
             logger.warn("Locale is empty!");
             return null;
         }
-        locale = locale.replace("_", "-").toLowerCase();
+        locale = locale.replace("_", "-");
         JSONObject patterns = null;
         logger.debug("Look for pattern from cache for locale [{}]!", locale);
         FormattingCacheService formattingCacheService = new FormattingCacheService();
@@ -88,8 +88,8 @@ public class PatternService {
             logger.warn("Both language and region are empty!");
             return null;
         }
-        language = language.replace("_", "-").toLowerCase();
-        region = region.toLowerCase();
+        language = language.replace("_", "-");
+        region = region;
         JSONObject patterns = null;
         logger.debug("Look for pattern from cache for language [{}], region [{}]!", language, region);
         FormattingCacheService formattingCacheService = new FormattingCacheService();

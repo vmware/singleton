@@ -19,7 +19,6 @@ import java.util.Map;
 public class LocaleService {
 
     Logger                      logger        = LoggerFactory.getLogger(LocaleService.class.getName());
-    public static final String DISPN_PREFIX  = "dispn_";
     private LocaleDTO dto = null;
 
     public LocaleService(LocaleDTO dto) {

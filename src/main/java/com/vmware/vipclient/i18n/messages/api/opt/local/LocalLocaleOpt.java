@@ -7,6 +7,7 @@ package com.vmware.vipclient.i18n.messages.api.opt.local;
 import com.vmware.i18n.PatternUtil;
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
+import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.messages.api.opt.LocaleOpt;
 import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
@@ -46,7 +47,8 @@ public class LocalLocaleOpt implements LocaleOpt{
 			if (languagesNames == null || languagesNames.isEmpty())
 				return supportedLanguageNames;
 			for(String language : supportedLanguages){
-				supportedLanguageNames.put(language, (String) languagesNames.get(language));
+				if(!ConstantsKeys.SOURCE.equalsIgnoreCase(language))
+					supportedLanguageNames.put(language, (String) languagesNames.get(language));
 			}
 		}
 		return supportedLanguageNames;
