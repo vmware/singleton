@@ -94,7 +94,7 @@ public class CacheService {
         String cacheKey = dto.getTransStatusAsCacheKey();
         Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
         if (c != null) {
-            c.put(cacheKey, new MessageCacheItem(dataMap, null, System.currentTimeMillis(), null));
+            c.put(cacheKey, new MessageCacheItem(dataMap));
         }
     }
 
