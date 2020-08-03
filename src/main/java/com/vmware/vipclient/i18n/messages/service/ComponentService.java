@@ -114,9 +114,6 @@ public class ComponentService {
     			// If failed to fetch message, use MessageCacheItem of the next fallback locale.
 				MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), fallbackLocalesIter.next().toLanguageTag(), dto.getProductID(), dto.getVersion());
 				cacheItem = new ComponentService(fallbackLocaleDTO).getMessages(fallbackLocalesIter);
-				if (!cacheItem.getCachedData().isEmpty()) {
-					cacheService.addCacheOfComponent(cacheItem);
-				}
 			}
     	}
     	return cacheItem;

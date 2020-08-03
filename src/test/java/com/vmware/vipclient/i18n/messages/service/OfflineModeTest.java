@@ -174,9 +174,9 @@ public class OfflineModeTest extends BaseTestClass {
     	// Returns the message in the default locale
     	assertEquals(FormatUtils.format(source, args), message);
     	
-    	// Cache for "es" locale is now pointing to the cache for the default locale
+    	// Cache for "es" locale is null
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();   	
-    	assertEquals(source, cacheItem.getCachedData().get(key));
+    	assertNull(cacheItem);
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
@@ -316,18 +316,18 @@ public class OfflineModeTest extends BaseTestClass {
         
     	CacheService cs = new CacheService(dto);
 
-    	translation.getMessage(newLocale, component, key, args);
+    	String message = translation.getMessage(newLocale, component, key, args);
     	
     	MessageCacheItem cacheItem = cs.getCacheOfComponent();
-    	assertNotNull(cacheItem);
+    	assertNull(cacheItem);
     	
     	MessagesDTO defaultLocaleDTO = new MessagesDTO(dto.getComponent(), 
 				dto.getKey(), dto.getSource(), LocaleUtility.getDefaultLocale().toLanguageTag(), null);
     	CacheService csDefault = new CacheService(defaultLocaleDTO);
     	MessageCacheItem cacheItemDefaultLocale = csDefault.getCacheOfComponent();
     	
-    	// Cache of default locale and cache of Locale.ITALIAN refer to the same object
-    	assertEquals(cacheItemDefaultLocale, cacheItem);
+    	// Cache of default locale was returned
+    	assertEquals(message, FormatUtils.format(cacheItemDefaultLocale.getCachedData().get(key), args));
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);

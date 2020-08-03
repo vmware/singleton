@@ -4,12 +4,7 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
@@ -99,7 +94,7 @@ public class CacheService {
         String cacheKey = dto.getTransStatusAsCacheKey();
         Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
         if (c != null) {
-            c.put(cacheKey, new MessageCacheItem(dataMap));
+            c.put(cacheKey, new MessageCacheItem(dataMap, null, System.currentTimeMillis(), null));
         }
     }
 
