@@ -109,3 +109,20 @@ func TestTimeout2(t *testing.T) {
 	assert.Nil(t, err)
 	assert.Equal(t, serverNormal, sgtnServer.status)
 }
+
+func TestVersionFallback(t *testing.T) {
+	defer gock.Off()
+
+	EnableMockDataWithTimes("componentMessages-versionfallback", 1)
+
+	newCfg := testCfg
+	newCfg.LocalBundles = ""
+	resetInst(&newCfg)
+
+	messages, err := inst.trans.GetComponentMessages(name, "1.0.1", "en", "sunglow")
+	assert.Nil(t, err)
+	assert.NotNil(t, messages)
+	assert.Equal(t, 7, messages.(*defaultComponentMsgs).Size())
+
+	assert.True(t, gock.IsDone())
+}

@@ -261,6 +261,21 @@
         "status": 200,
         "bodyFileName": "componentMessages-zh-Hans-sunglow-decodeerror.json"
       }
+    },
+    {
+      "id": "componentMessages-versionfallback",
+      "request": {
+        "url": "/i18n/api/v2/translation/products/SgtnTest/versions/1.0.1",
+        "method": "GET",
+        "params": {
+          "components": "sunglow",
+          "locales": "en"
+        }
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "componentMessages-versionfallback.json"
+      }
     }
   ]
 }

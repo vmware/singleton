@@ -101,12 +101,12 @@ func (s *cacheService) refresh(item *dataItem, exist bool) error {
 					return nil
 				}
 			}
-		}
 
-		if e, ok := err.(stackTracer); ok {
-			logger.Error(fmt.Sprintf(originFail+": %#v", e))
-		} else {
-			logger.Error(fmt.Sprintf(originFail+": %s", err.Error()))
+			if e, ok := err.(stackTracer); ok {
+				logger.Error(fmt.Sprintf(originFail+": %#v", e))
+			} else {
+				logger.Error(fmt.Sprintf(originFail+": %s", err.Error()))
+			}
 		}
 
 		return err
