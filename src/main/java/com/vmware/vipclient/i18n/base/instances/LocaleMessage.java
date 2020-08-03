@@ -72,8 +72,11 @@ public class LocaleMessage implements Message {
      */
     public List<String> getSupportedLanguageTagList() {
         Map<String, String> languageTagMap = getDisplayNamesFromCLDR(LocaleUtility.getDefaultLocale().toLanguageTag());
-        Collection<String> keyCollection = languageTagMap.keySet();
-        return new ArrayList<String>(keyCollection);
+        if(languageTagMap != null) {
+            Collection<String> keyCollection = languageTagMap.keySet();
+            return new ArrayList<String>(keyCollection);
+        }
+        return new ArrayList();
     }
 
     /**
@@ -85,8 +88,11 @@ public class LocaleMessage implements Message {
      */
     public List<String> getSupportedDisplayNameList(String displayLocale) {
         Map<String, String> dispNameMap = getDisplayNamesFromCLDR(displayLocale);
-        Collection<String> valueCollection = dispNameMap.values();
-        return new ArrayList<String>(valueCollection);
+        if(dispNameMap != null) {
+            Collection<String> valueCollection = dispNameMap.values();
+            return new ArrayList<String>(valueCollection);
+        }
+        return new ArrayList();
     }
 
     private Map<String, String> getDisplayNamesFromCLDR(String locale) {

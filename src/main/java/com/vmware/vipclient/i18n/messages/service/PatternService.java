@@ -43,10 +43,6 @@ public class PatternService {
     }
 
     public JSONObject getPatternsByLocale(String locale) {
-        if(locale == null || locale.isEmpty()) {
-            logger.warn("Locale is empty!");
-            return null;
-        }
         locale = locale.replace("_", "-");
         JSONObject patterns = null;
         logger.debug("Look for pattern from cache for locale [{}]!", locale);
@@ -84,12 +80,7 @@ public class PatternService {
     }
 
     public JSONObject getPatternsByLanguageRegion(String language, String region) {
-        if((language == null || language.isEmpty()) && (region == null || region.isEmpty())) {
-            logger.warn("Both language and region are empty!");
-            return null;
-        }
         language = language.replace("_", "-");
-        region = region;
         JSONObject patterns = null;
         logger.debug("Look for pattern from cache for language [{}], region [{}]!", language, region);
         FormattingCacheService formattingCacheService = new FormattingCacheService();
