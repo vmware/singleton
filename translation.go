@@ -17,7 +17,7 @@ type transInst struct {
 	msgOrigin messageOrigin
 }
 
-func (t *transInst) GetStringMessage(name, version, locale, component, key string, args ...string) ( string,  error) {
+func (t *transInst) GetStringMessage(name, version, locale, component, key string, args ...string) (string, error) {
 	if name == "" || version == "" || locale == "" || component == "" || key == "" {
 		return key, errors.New(wrongPara)
 	}
@@ -35,7 +35,6 @@ func (t *transInst) GetStringMessage(name, version, locale, component, key strin
 	} else {
 		return "", fmt.Errorf("fail to get message for locale: %s, component: %s, key: %s", locale, component, key)
 	}
-
 }
 
 func (t *transInst) GetLocaleList(name, version string) (data []string, err error) {

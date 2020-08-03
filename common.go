@@ -36,7 +36,6 @@ type stackTracer interface {
 }
 
 //!+ error definition
-
 type serverError struct {
 	code         int
 	businessCode int

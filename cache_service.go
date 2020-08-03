@@ -102,13 +102,14 @@ func (s *cacheService) refresh(item *dataItem, exist bool) error {
 				}
 			}
 		}
+
 		if e, ok := err.(stackTracer); ok {
 			logger.Error(fmt.Sprintf(originFail+": %#v", e))
 		} else {
 			logger.Error(fmt.Sprintf(originFail+": %s", err.Error()))
 		}
-		return err
 
+		return err
 	} else if !exist {
 		status.waitUpdate()
 	}
