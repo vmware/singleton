@@ -68,6 +68,16 @@ type dataItem struct {
 
 //!- dataItem
 
+//!+ messageOrigin
+type messageOrigin interface {
+	Get(item *dataItem) error
+	IsExpired(item *dataItem) bool
+}
+
+type messageOriginList []messageOrigin
+
+//!- messageOrigin
+
 func indexIgnoreCase(slices []string, item string) int {
 	for i, s := range slices {
 		if strings.EqualFold(s, item) {
