@@ -37,6 +37,7 @@ public class VIPTomcatConnectionCustomizer implements TomcatConnectorCustomizer 
 			connector.setAllowTrace(serverProperties.isAllowTrace());
 			Http11NioProtocol protocol = (Http11NioProtocol) connector.getProtocolHandler();
 			protocol.setMaxHttpHeaderSize(serverProperties.getMaxHttpHeaderSize());
+			protocol.setCompression("on");
 
 		} else if(serverProperties.getServerScheme().equalsIgnoreCase(ConstantsTomcat.HTTP)){
 			logger.info("the tomcat only support http protocol");
@@ -46,6 +47,7 @@ public class VIPTomcatConnectionCustomizer implements TomcatConnectorCustomizer 
 			connector.setAllowTrace(serverProperties.isAllowTrace());
 			Http11NioProtocol protocol = (Http11NioProtocol) connector.getProtocolHandler();
 			protocol.setMaxHttpHeaderSize(serverProperties.getMaxHttpHeaderSize());
+			protocol.setCompression("on");
 		}else{
 			logger.info("the tomcat only support https protocol");
 			connector.setScheme(ConstantsTomcat.HTTPS);
@@ -61,7 +63,7 @@ public class VIPTomcatConnectionCustomizer implements TomcatConnectorCustomizer 
 			protocol.setMaxHttpHeaderSize(serverProperties.getMaxHttpHeaderSize());
 			connector.setRedirectPort(ConstantsTomcat.REDIRECT_PORT);
 			connector.setAllowTrace(serverProperties.isAllowTrace());
-
+			protocol.setCompression("on");
 		}
 
 	}

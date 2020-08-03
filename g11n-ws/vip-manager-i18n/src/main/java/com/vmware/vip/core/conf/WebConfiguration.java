@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.vmware.vip.core.Interceptor.*;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,10 +30,6 @@ import org.springframework.web.util.UrlPathHelper;
 import com.vmware.vip.api.rest.API;
 import com.vmware.vip.api.rest.APIV1;
 import com.vmware.vip.api.rest.APIV2;
-import com.vmware.vip.core.Interceptor.APICacheControlInterceptor;
-import com.vmware.vip.core.Interceptor.APICrossDomainInterceptor;
-import com.vmware.vip.core.Interceptor.APISourceInterceptor;
-import com.vmware.vip.core.Interceptor.APIValidationInterceptor;
 import com.vmware.vip.core.auth.interceptor.AuthInterceptor;
 import com.vmware.vip.core.auth.interceptor.VipAPIAuthInterceptor;
 import com.vmware.vip.core.csp.service.TokenService;
@@ -103,8 +100,8 @@ public class WebConfiguration implements WebMvcConfigurer {
 	 * Add ETag into response header for data cache
 	 */
 	@Bean
-	public ShallowEtagHeaderFilter shallowETagHeaderFilter() {
-		return new ShallowEtagHeaderFilter();
+	public EtagHeaderFilter shallowETagHeaderFilter() {
+		return new EtagHeaderFilter();
 	}
 
 	/**

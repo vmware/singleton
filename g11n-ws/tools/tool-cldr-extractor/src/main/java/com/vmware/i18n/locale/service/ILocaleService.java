@@ -6,9 +6,7 @@ package com.vmware.i18n.locale.service;
 
 public interface ILocaleService {
 
-	public String getRegion(String language);
-
-	public String getLanguage(String displayLanguage);
+	public String getLocaleData(String language, String filePath);
 
 	String getLocaleWithDefaultRegion(String locale);
 

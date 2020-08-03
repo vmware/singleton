@@ -4,13 +4,11 @@
  */
 package com.vmware.i18n.l2.service.locale;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import com.vmware.i18n.utils.CommonUtil;
+import org.apache.commons.lang3.SerializationUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -169,23 +167,40 @@ public class LocaleService implements ILocaleService {
 	}
 
 	@Override
-	public List<TerritoryDTO> getTerritoriesFromCLDR(String languageList) throws Exception {
+	public List<TerritoryDTO> getTerritoriesFromCLDR(String languageList, String displayCity, String regions) throws Exception {
 		TerritoriesFileParser territoriesParser = new TerritoriesFileParser();
 		List<TerritoryDTO> territoryList = new ArrayList<TerritoryDTO>();
-		TerritoryDTO territory = null;
 		String[] langArr = languageList.split(",");
 		for (String lang : langArr) {
 			String locale = lang.replace("_", "-");
 			lang = CommonUtil.getCLDRLocale(locale, localePathMap, localeAliasesMap).toLowerCase();
 			logger.info("get data from cache");
-			territory = TranslationCache3.getCachedObject(CacheName.REGION, lang, TerritoryDTO.class);
-			if (territory == null) {
+			TerritoryDTO cacheTerritory = TranslationCache3.getCachedObject(CacheName.REGION, lang, TerritoryDTO.class);
+			if (cacheTerritory == null) {
 				logger.info("cache is null, get data from file");
-				territory = territoriesParser.getTerritoriesByLanguage(lang);
-				if (territory.getTerritories() != null) {
-					TranslationCache3.addCachedObject(CacheName.REGION, lang, TerritoryDTO.class, territory);
+				cacheTerritory = territoriesParser.getTerritoriesByLanguage(lang);
+				if (cacheTerritory.getTerritories() != null) {
+					TranslationCache3.addCachedObject(CacheName.REGION, lang, TerritoryDTO.class, cacheTerritory);
 				}
 			}
+
+			TerritoryDTO territory = SerializationUtils.clone(cacheTerritory);
+			if (!StringUtils.isEmpty(territory.getCities()) && Boolean.parseBoolean(displayCity)) {
+				if (!StringUtils.isEmpty(regions)) {
+					Map<String, Object> cityMap = new HashMap<>();
+					Map<String, Object> originCityMap = territory.getCities();
+					Arrays.stream(regions.split(",")).forEach(regionName -> {
+						regionName = regionName.toUpperCase();
+						if (originCityMap.containsKey(regionName)) {
+							cityMap.put(regionName, originCityMap.get(regionName));
+						}
+					});
+					territory.setCities(cityMap);
+				}
+			} else {
+				territory.setCities(null);
+			}
+
 			territoryList.add(territory);
 		}
 		return territoryList;
