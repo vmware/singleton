@@ -272,7 +272,7 @@ public class DateFormatUtilTest extends BaseTestClass {
 
         //Test invalid locale fallback to en
         language = "aa";
-        region = "";
+        region = "US";
         Assert.assertEquals(fullDateForEn, dateFormatI18n.formatDate(date,
                 "fullDate", timeZone, language, region));
         Assert.assertEquals(longDateForEn, dateFormatI18n.formatDate(date,
