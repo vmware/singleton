@@ -55,7 +55,7 @@ func TestCC(t *testing.T) {
 
 		assert.NotNil(t, info)
 		assert.Equal(t, testData.etag, info.getETag())
-		// assert.Equal(t, testData.maxage, info.age)
+		assert.Equal(t, testData.maxage, info.age)
 		assert.Equal(t, testData.msgLen, messages.(*defaultComponentMsgs).Size())
 
 		assert.True(t, gock.IsDone())
