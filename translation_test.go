@@ -317,7 +317,7 @@ func TestGetStringAbnormal(t *testing.T) {
 	assert.True(t, gock.IsDone())
 }
 
-// jsoniter.ToVal() doesn't return any error, so comment this case out.
+// json.ToVal() doesn't return any error, so comment this case out.
 // func TestDecodeError(t *testing.T) {
 //
 

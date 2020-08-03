@@ -14,7 +14,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	jsoniter "github.com/json-iterator/go"
+	json "github.com/json-iterator/go"
 	"github.com/pkg/errors"
 )
 
@@ -190,9 +190,9 @@ var getDataFromServer = func(u *url.URL, header map[string]string, data interfac
 		ServerTime string `json:"serverTime"`
 	}
 	bodyObj := &struct {
-		Result    respResult   `json:"response"`
-		Signature string       `json:"signature"`
-		Data      jsoniter.Any `json:"data"`
+		Result    respResult `json:"response"`
+		Signature string     `json:"signature"`
+		Data      json.Any   `json:"data"`
 	}{}
 
 	var bodyBytes []byte
@@ -207,7 +207,7 @@ var getDataFromServer = func(u *url.URL, header map[string]string, data interfac
 		return resp, &serverError{resp.StatusCode, bodyObj.Result.Code, resp.Status, bodyObj.Result.Message}
 	}
 
-	err = jsoniter.Unmarshal(bodyBytes, bodyObj)
+	err = json.Unmarshal(bodyBytes, bodyObj)
 	if err != nil {
 		return resp, errors.WithStack(err)
 	}

@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	jsoniter "github.com/json-iterator/go"
+	json "github.com/json-iterator/go"
 )
 
 // Config Singleton configuration
@@ -27,7 +27,7 @@ func LoadConfig(path string) (*Config, error) {
 	}
 
 	var cfg Config
-	if err := jsoniter.Unmarshal(contents, &cfg); err != nil {
+	if err := json.Unmarshal(contents, &cfg); err != nil {
 		return nil, err
 	}
 

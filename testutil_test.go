@@ -22,7 +22,7 @@ import (
 	"testing"
 	"time"
 
-	jsoniter "github.com/json-iterator/go"
+	json "github.com/json-iterator/go"
 	"github.com/pkg/errors"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
@@ -172,7 +172,7 @@ func ReadMockJSONs(rootpath string) map[string]MockMapping {
 		}
 
 		result := MockMappings{}
-		err = jsoniter.Unmarshal(bs, &result)
+		err = json.Unmarshal(bs, &result)
 		if err != nil {
 			return errors.Errorf("Error when reading %s. Error: %s", info.Name(), err.Error())
 		}
