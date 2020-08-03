@@ -15,7 +15,6 @@ import (
 )
 
 func TestNewRequest(t *testing.T) {
-	defer Trace(curFunName())()
 
 	saved := newHTTPRequest
 	defer func() { newHTTPRequest = saved }()

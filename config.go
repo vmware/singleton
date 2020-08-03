@@ -6,18 +6,17 @@
 package sgtn
 
 import (
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
+
+	jsoniter "github.com/json-iterator/go"
 )
 
 // Config Singleton configuration
 type Config struct {
-	ServerURL string `json:"online_service_url"`
-
+	ServerURL     string `json:"online_service_url"`
+	LocalBundles  string `json:"offline_resources_base_url"`
 	DefaultLocale string `json:"default_locale"`
-
-	LocalBundles string `json:"offline_resources_base_url"`
 }
 
 // LoadConfig Create a new Singleton configuration instance
@@ -28,7 +27,7 @@ func LoadConfig(path string) (*Config, error) {
 	}
 
 	var cfg Config
-	if err := json.Unmarshal(contents, &cfg); err != nil {
+	if err := jsoniter.Unmarshal(contents, &cfg); err != nil {
 		return nil, err
 	}
 

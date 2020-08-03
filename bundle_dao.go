@@ -6,25 +6,31 @@
 package sgtn
 
 import (
-	"encoding/json"
 	"io/ioutil"
 	"path/filepath"
 	"strings"
 
+	jsoniter "github.com/json-iterator/go"
 	"github.com/pkg/errors"
 )
 
 const (
-	bundlePreffix = "messages_"
-	bundleSuffix  = ".json"
+	bundlePrefix = "messages_"
+	bundleSuffix = ".json"
 )
+
+type bundleFile struct {
+	Component string            `json:"component"`
+	Messages  map[string]string `json:"messages"`
+	Locale    string            `json:"locale"`
+}
 
 //!+bundleDAO
 type bundleDAO struct {
 	root string
 }
 
-func (d *bundleDAO) get(item *dataItem) (err error) {
+func (d *bundleDAO) Get(item *dataItem) (err error) {
 	id := item.id
 	switch id.iType {
 	case itemComponent:
@@ -38,6 +44,10 @@ func (d *bundleDAO) get(item *dataItem) (err error) {
 	}
 
 	return
+}
+
+func (d *bundleDAO) IsExpired(*dataItem) bool {
+	return false
 }
 
 func (d *bundleDAO) GetComponentList(name, version string) ([]string, error) {
@@ -78,7 +88,7 @@ func (d *bundleDAO) GetLocaleList(name, version string) ([]string, error) {
 
 	lSlice := make([]string, 0, len(locales))
 	for k := range locales {
-		lSlice = append(lSlice, strings.TrimSuffix(strings.TrimPrefix(k, bundlePreffix), bundleSuffix))
+		lSlice = append(lSlice, strings.TrimSuffix(strings.TrimPrefix(k, bundlePrefix), bundleSuffix))
 	}
 
 	return lSlice, nil
@@ -91,7 +101,7 @@ func (d *bundleDAO) GetComponentMessages(name, version, locale, component string
 		return nil, err
 	}
 
-	filename := bundlePreffix + locale + bundleSuffix
+	filename := bundlePrefix + locale + bundleSuffix
 	for _, f := range files {
 		if !f.IsDir() && strings.ToLower(filename) == strings.ToLower(f.Name()) {
 			filename = f.Name()
@@ -105,7 +115,7 @@ func (d *bundleDAO) GetComponentMessages(name, version, locale, component string
 	}
 
 	b := new(bundleFile)
-	err = json.Unmarshal(contents, b)
+	err = jsoniter.Unmarshal(contents, b)
 	if err != nil {
 		return nil, err
 	}
@@ -114,12 +124,6 @@ func (d *bundleDAO) GetComponentMessages(name, version, locale, component string
 	}
 
 	return &defaultComponentMsgs{b.Messages}, nil
-}
-
-type bundleFile struct {
-	Component string            `json:"component"`
-	Messages  map[string]string `json:"messages"`
-	Locale    string            `json:"locale"`
 }
 
 //!-bundleDAO

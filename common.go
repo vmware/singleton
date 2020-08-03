@@ -5,7 +5,12 @@
 
 package sgtn
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+
+	"github.com/pkg/errors"
+)
 
 // ComponentMsgs The interface of a component's messages
 type ComponentMsgs interface {
@@ -24,6 +29,10 @@ type Logger interface {
 type dataItemID struct {
 	iType                            itemType
 	Name, Version, Locale, Component string
+}
+
+type stackTracer interface {
+	StackTrace() errors.StackTrace
 }
 
 //!+ error definition
@@ -58,3 +67,13 @@ type dataItem struct {
 }
 
 //!- dataItem
+
+func indexIgnoreCase(slices []string, item string) int {
+	for i, s := range slices {
+		if strings.EqualFold(s, item) {
+			return i
+		}
+	}
+
+	return -1
+}

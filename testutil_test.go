@@ -7,7 +7,6 @@ package sgtn
 
 import (
 	"bytes"
-	"encoding/json"
 	"flag"
 	"fmt"
 	"io"
@@ -23,6 +22,7 @@ import (
 	"testing"
 	"time"
 
+	jsoniter "github.com/json-iterator/go"
 	"github.com/pkg/errors"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
@@ -172,7 +172,7 @@ func ReadMockJSONs(rootpath string) map[string]MockMapping {
 		}
 
 		result := MockMappings{}
-		err = json.Unmarshal(bs, &result)
+		err = jsoniter.Unmarshal(bs, &result)
 		if err != nil {
 			return errors.Errorf("Error when reading %s. Error: %s", info.Name(), err.Error())
 		}

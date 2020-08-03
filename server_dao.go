@@ -6,7 +6,6 @@
 package sgtn
 
 import (
-	"encoding/json"
 	"net"
 	"net/http"
 	"net/url"
@@ -15,11 +14,11 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/mitchellh/mapstructure"
+	jsoniter "github.com/json-iterator/go"
 	"github.com/pkg/errors"
 )
 
-const serverRetryInterval = 2 //second
+const serverRetryInterval = 2 // second
 const (
 	serverNormal uint32 = iota
 	serverTimeout
@@ -38,7 +37,7 @@ func newServer(serverURL string) (*serverDAO, error) {
 }
 
 //!+ serverDAO
-// serverDAO serverDAO definition
+
 type serverDAO struct {
 	svrURL          *url.URL
 	status          uint32
@@ -46,7 +45,7 @@ type serverDAO struct {
 	headers         atomic.Value
 }
 
-func (s *serverDAO) get(item *dataItem) (err error) {
+func (s *serverDAO) Get(item *dataItem) (err error) {
 	var data interface{}
 	info := item.attrs.(*itemCacheInfo)
 
@@ -99,8 +98,13 @@ func (s *serverDAO) get(item *dataItem) (err error) {
 	return nil
 }
 
+func (s *serverDAO) IsExpired(item *dataItem) bool {
+	info := getCacheInfo(item)
+	return info.isExpired()
+}
+
 func (s *serverDAO) prepareURL(item *dataItem) *url.URL {
-	urlToQuery := url.URL(*s.svrURL)
+	urlToQuery := *s.svrURL
 	var myURL string
 
 	id := item.id
@@ -186,9 +190,9 @@ var getDataFromServer = func(u *url.URL, header map[string]string, data interfac
 		ServerTime string `json:"serverTime"`
 	}
 	bodyObj := &struct {
-		Result    respResult  `json:"response"`
-		Signature string      `json:"signature"`
-		Data      interface{} `json:"data"`
+		Result    respResult   `json:"response"`
+		Signature string       `json:"signature"`
+		Data      jsoniter.Any `json:"data"`
 	}{}
 
 	var bodyBytes []byte
@@ -197,14 +201,13 @@ var getDataFromServer = func(u *url.URL, header map[string]string, data interfac
 		return resp, err
 	}
 
-	//logger.Debug(fmt.Sprintf("resp is: %#v", resp))
+	// logger.Debug(fmt.Sprintf("resp is: %#v", resp))
 
-	// Todo: change the order of check code in order to get http status code and business code
 	if !isHTTPSuccess(resp.StatusCode) {
 		return resp, &serverError{resp.StatusCode, bodyObj.Result.Code, resp.Status, bodyObj.Result.Message}
 	}
 
-	err = json.Unmarshal(bodyBytes, bodyObj)
+	err = jsoniter.Unmarshal(bodyBytes, bodyObj)
 	if err != nil {
 		return resp, errors.WithStack(err)
 	}
@@ -213,9 +216,10 @@ var getDataFromServer = func(u *url.URL, header map[string]string, data interfac
 		return resp, &serverError{resp.StatusCode, bodyObj.Result.Code, resp.Status, bodyObj.Result.Message}
 	}
 
-	if err = mapstructure.Decode(bodyObj.Data, &data); err != nil {
-		return resp, errors.WithStack(err)
-	}
+	// newData := bodyObj.Data.MustBeValid()
+	// bodyObj.Data.ToVal(newData)
+
+	bodyObj.Data.ToVal(data)
 
 	//logger.Debug(fmt.Sprintf("decoded data is: %#v", data))
 

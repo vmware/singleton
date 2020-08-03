@@ -27,9 +27,8 @@ func (suite *ConfigTestSuite) SetupSuite() {
 }
 
 func (suite *ConfigTestSuite) TestNewConfigNoFile() {
-	defer Trace(curFunName())()
 
-	cfPath := "C:/doesn't exist"
+	cfPath := "doesn't exist"
 	cfg, err := LoadConfig(cfPath)
 
 	assert.Nil(suite.T(), cfg)

@@ -21,10 +21,11 @@ var (
 
 // instance Singleton instance
 type instance struct {
-	cfg           Config
-	trans         *defaultTrans
-	components    []struct{ Name, Version string }
-	initializOnce sync.Once
+	cfg            Config
+	trans          Translation
+	server         *serverDAO
+	bundle         *bundleDAO
+	initializeOnce sync.Once
 }
 
 func init() {
@@ -32,7 +33,7 @@ func init() {
 	httpclient = &http.Client{Timeout: time.Second * servertimeout}
 }
 
-//Initialize initialize the client
+// Initialize initialize the client
 func Initialize(cfg *Config) {
 	if err := checkConfig(cfg); err != nil {
 		panic(err)
@@ -40,25 +41,31 @@ func Initialize(cfg *Config) {
 
 	inst = &instance{}
 	inst.cfg = *cfg
-	inst.initializOnce.Do(inst.doInitialize)
+	inst.initializeOnce.Do(inst.doInitialize)
 }
 
 func (i *instance) doInitialize() {
 	logger.Debug("Initializing Singleton client.")
 
-	dService := new(dataService)
+	var originList messageOriginList
 	if len(i.cfg.ServerURL) != 0 {
-		var err error
-		dService.server, err = newServer(i.cfg.ServerURL)
+		server, err := newServer(i.cfg.ServerURL)
 		if err != nil {
 			panic(err)
 		}
+		i.server = server
+		originList = append(originList, server)
 	}
 	if strings.TrimSpace(i.cfg.LocalBundles) != "" {
-		dService.bundle = &bundleDAO{i.cfg.LocalBundles}
+		i.bundle = &bundleDAO{i.cfg.LocalBundles}
+		originList = append(originList, i.bundle)
 	}
+	cacheService := newCacheService(originList)
 
-	i.trans = &defaultTrans{dService, i.cfg.DefaultLocale}
+	transImpl := transInst{cacheService}
+	var fallbackChains []string
+	fallbackChains = append(fallbackChains, i.cfg.DefaultLocale)
+	i.trans = newTransMgr(&transImpl, fallbackChains)
 
 	initCacheInfoMap()
 	if cache == nil {
@@ -69,9 +76,9 @@ func (i *instance) doInitialize() {
 func checkConfig(cfg *Config) error {
 	switch {
 	case cfg.LocalBundles == "" && cfg.ServerURL == "":
-		return errors.New("Neither Server URL nor Local Bundles is provided")
+		return errors.New(originNotProvided)
 	case cfg.DefaultLocale == "":
-		return errors.New("default_locale isn't provided")
+		return errors.New(defaultLocaleNotProvided)
 	default:
 		return nil
 	}
@@ -80,22 +87,24 @@ func checkConfig(cfg *Config) error {
 // GetTranslation Get translation instance
 func GetTranslation() Translation {
 	if inst == nil {
-		panic(errors.New(uninitialzed))
+		panic(errors.New(uninitialized))
 	}
 
 	return inst.trans
 }
 
 // SetHTTPHeaders Set customized HTTP headers
-func SetHTTPHeaders(h map[string]string) {
+func SetHTTPHeaders(h map[string]string) error {
 	if inst == nil {
-		panic(errors.New(uninitialzed))
+		return errors.New(uninitialized)
 	}
 
-	server := inst.trans.ds.server
+	server := inst.server
 	if server != nil {
 		server.setHTTPHeaders(h)
 	}
+
+	return nil
 }
 
 // RegisterCache Register cache implementation. There is a default implementation

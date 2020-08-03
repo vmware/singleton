@@ -7,7 +7,6 @@ package sgtn
 
 import (
 	"sync"
-	"sync/atomic"
 	"time"
 )
 
@@ -23,13 +22,8 @@ func getCacheInfo(item *dataItem) *itemCacheInfo {
 }
 
 //!+itemCacheInfo
-const (
-	idle uint32 = iota
-	updating
-)
 
 type itemCacheInfo struct {
-	status     uint32
 	lastUpdate int64
 	age        int64
 	eTag       string
@@ -37,7 +31,7 @@ type itemCacheInfo struct {
 }
 
 func newSingleCacheInfo() *itemCacheInfo {
-	return &itemCacheInfo{0, 0, 0, "", sync.RWMutex{}}
+	return &itemCacheInfo{0, cacheDefaultExpires, "", sync.RWMutex{}}
 }
 
 func (i *itemCacheInfo) setTime(t int64) {
@@ -56,26 +50,7 @@ func (i *itemCacheInfo) isExpired() bool {
 	i.RLock()
 	defer i.RUnlock()
 
-	if i.age == cacheNeverExpires {
-		return false
-	}
-
 	return time.Now().Unix()-i.lastUpdate >= i.age
-}
-
-func (i *itemCacheInfo) setUpdating() (b bool) {
-	return atomic.CompareAndSwapUint32(&i.status, idle, updating)
-}
-func (i *itemCacheInfo) setUpdated() {
-	atomic.StoreUint32(&i.status, idle)
-}
-func (i *itemCacheInfo) waitUpdate() {
-	for {
-		if idle == atomic.LoadUint32(&i.status) {
-			return
-		}
-		time.Sleep(time.Microsecond * 10)
-	}
 }
 
 func (i *itemCacheInfo) setETag(t string) {
