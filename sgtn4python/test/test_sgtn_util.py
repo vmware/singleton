@@ -19,6 +19,9 @@ from sgtn_util import FileUtil, NetUtil, SysUtil
 class TestClient(unittest.TestCase):
 
     def test_file_util(self):
+        print('\n--- unittest --- %s --- python %s\n' % (
+            sys._getframe().f_code.co_name, sys.version_info.major))
+
         text = FileUtil.read_text_file('./data.txt')
         self.assertIn('cc=AA{x}BB{y}CC', text)
         
@@ -36,6 +39,9 @@ class TestClient(unittest.TestCase):
         self.assertIn('sgtn_client.yml', file_list)
 
     def test_net_util(self):
+        print('\n--- unittest --- %s --- python %s\n' % (
+            sys._getframe().f_code.co_name, sys.version_info.major))
+
         NetUtil.simulate_data = FileUtil.read_json_file('./simulate.json')
 
         dt = FileUtil.read_datatree('./sgtn_client.yml')
@@ -57,6 +63,9 @@ class TestClient(unittest.TestCase):
         self.assertEqual(code, 304)
 
     def test_sys_util(self):
+        print('\n--- unittest --- %s --- python %s\n' % (
+            sys._getframe().f_code.co_name, sys.version_info.major))
+
         locale = SysUtil.get_fallback_locale('ZH_cn')
         print('--- locale --- %s ---' % locale)
         self.assertEqual(locale, 'zh-Hans')
@@ -67,5 +76,4 @@ class TestClient(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    print('--- start --- Python %s ---' % sys.version_info.major)
     unittest.main()
