@@ -28,6 +28,12 @@ public class TerritoriesFileParser {
 		Object defaultRegionCode = JSONUtils.getMapFromJson(regionJson).get(ConstantsKeys.DEFAULT_REGION_CODE);
 		dto.setTerritories(terrMap);
 		dto.setDefaultRegionCode(defaultRegionCode.toString());
+
+		String citiesJson = PatternUtil.getCitiesFromLib(language.replace("_", "-"));
+		if (!StringUtils.isEmpty(citiesJson)) {
+			Map<String, Object> citiesMap = (Map<String, Object>)JSONUtils.getMapFromJson(citiesJson).get(ConstantsKeys.CITIES);
+			dto.setCities(citiesMap);
+		}
 		return dto;
 	}
 

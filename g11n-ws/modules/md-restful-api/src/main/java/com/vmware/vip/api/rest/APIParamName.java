@@ -35,4 +35,6 @@ public class APIParamName {
 	public final static String COMBINE = "combine";
 	public final static String SCOPE_FILTER = "scopeFilter";
 	public final static String DEFAULT_TERRITORY = "defaultTerritory";
+	public final static String DISPLAY_CITY = "displayCity";
+	public final static String REGIONS = "regions";
 }

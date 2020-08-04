@@ -34,7 +34,6 @@ public class Constants {
 	public static final String PLURAL_INFO = "pluralInfo";
 	public static final String LANGUAGE_DATA = "languageData";
 	public static final String PLURAL_RULES = "pluralRules";
-
 	public static final String LANGUAGE_POPULATION = "languagePopulation";
 	public static final String OFFICIAL_STATUS = "_officialStatus";
 	public static final String POPULATION_PERCENT = "_populationPercent";
