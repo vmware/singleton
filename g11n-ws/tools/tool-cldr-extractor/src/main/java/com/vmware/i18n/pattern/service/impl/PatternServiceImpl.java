@@ -25,6 +25,8 @@ import com.vmware.i18n.pattern.service.IPatternService;
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.i18n.utils.JSONUtil;
 import com.vmware.i18n.utils.LocalJSONReader;
+import com.vmware.i18n.utils.timezone.CldrMetaZone;
+import com.vmware.i18n.utils.timezone.TimeZoneName;
 
 @SuppressWarnings("unchecked")
 public class PatternServiceImpl implements IPatternService {
@@ -36,7 +38,7 @@ public class PatternServiceImpl implements IPatternService {
 	public static Map<String, Object> localeAliasesMap = null;
 	public static Map<String, Object> pluralsMap = null;
 	public static Map<String, Object> languageDataMap = null;
-
+	IPatternDao dao = new PatternDaoImpl();
 	static {
 		String result = "";
 		String regionResult = "";
@@ -167,4 +169,45 @@ public class PatternServiceImpl implements IPatternService {
 		tmpMap.put(Constants.SUPPLEMENTAL, suppleMap);
 		return tmpMap;
 	}
+	
+	 /*
+     * (non-Javadoc) * @see
+     * com.vmware.i18n.pattern.service.IPatternService#getTimeZoneName(java.lang.String)
+     */
+    @Override
+    public TimeZoneName getTimeZoneName(String locale, boolean defaultTerritory) {
+        // TODO Auto-generated method stub
+        if (CommonUtil.isEmpty(locale)) {
+            return null;
+        }
+        String tmpLocale = locale.replace("_", "-");
+
+        String pathLocale = CommonUtil.getPathLocale(tmpLocale, localePathMap, likelySubtagMap);
+        if (CommonUtil.isEmpty(pathLocale))
+            return null;
+        String patternStr = dao.getPattern(CLDRConstants.JSON_PATH,
+                MessageFormat.format(CLDRConstants.DATE_TIMEZONENAME_JSON_PATH, pathLocale));
+        TimeZoneName timeZoneObj = null;
+        try {
+            timeZoneObj = new ObjectMapper().readValue(patternStr, TimeZoneName.class);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+        }
+        if (defaultTerritory) {
+            List<CldrMetaZone> metaZones = new ArrayList<>();
+            for (CldrMetaZone metaZone : timeZoneObj.getMetaZones()) {
+                if (metaZone.getTerritory().equals("001")) {
+                    metaZones.add(metaZone);
+                }
+            }
+            timeZoneObj.setMetaZones(metaZones);
+            return timeZoneObj;
+
+        } else {
+            return timeZoneObj;
+        }
+
+    }
 }

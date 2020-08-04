@@ -54,7 +54,8 @@ public class Constants {
 	public static final String CURRENCIES_DATA = "currencies.json";
 	public static final String NUMBERING_SYSTEMS_JSON = "numberingSystems.json";
 	public static final String NUMBERS_JSON = "numbers.json";
-
+	public static final String DATE_TIMEZONENAME = "timeZoneName.json";
+	
 	// key name
 	public static final String YEAR = "year";
 	public static final String MONTH = "month";
@@ -113,7 +114,6 @@ public class Constants {
 	public static final String REGION = "region";
 	public static final String FROM = "_from";
 	public static final String TO = "_to";
-
 	public static final String SUPPLEMENTAL_NUMBERING_SYSTEMS = "supplemental.numberingSystems";
 	public static final String NUMBERING_SYSTEMS = "numberingSystems";
 
