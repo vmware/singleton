@@ -32,7 +32,16 @@ public class PatternUtil {
 	 */
 	public static String getRegionFromLib(String language) {
 		LocaleAction la = LocaleAction.getInstance();
-		return la.getRegion(language);
+		return la.getLocaleData(language, CLDRConstants.LOCALE_TERRITORIES_PATH);
+	}
+
+	/**
+	 * @param language
+	 * @return cities json string
+	 */
+	public static String getCitiesFromLib(String language) {
+		LocaleAction la = LocaleAction.getInstance();
+		return la.getLocaleData(language, CLDRConstants.LOCALE_CITIES_PATH);
 	}
 
 	/**
@@ -41,7 +50,7 @@ public class PatternUtil {
 	 */
 	public static String getLanguageFromLib(String displayLanguage) {
 		LocaleAction la = LocaleAction.getInstance();
-		return la.getLanguage(displayLanguage);
+		return la.getLocaleData(displayLanguage, CLDRConstants.LOCALE_LANGUAGES_PATH);
 	}
 
 	/**
