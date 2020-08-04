@@ -4,15 +4,11 @@
  */
 package com.vmware.vip.i18n;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.proxyAllTo;
-import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.util.Random;
-
+import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
+import com.github.tomakehurst.wiremock.junit.WireMockClassRule;
+import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.base.cache.Cache;
+import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.rules.TestRule;
@@ -22,15 +18,22 @@ import org.junit.runners.model.Statement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
-import com.github.tomakehurst.wiremock.junit.WireMockClassRule;
-import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.base.cache.Cache;
-import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.Random;
+
+import static com.github.tomakehurst.wiremock.client.WireMock.proxyAllTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 
 public class BaseTestClass {
     protected Logger                logger;
     VIPCfg                          vipCfg            = VIPCfg.getInstance();
+
+    public BaseTestClass() {
+        clearDataSource();
+    }
 
     @Rule
     public final TestRule           watchman          = new TestWatcher() {
@@ -123,6 +126,10 @@ public class BaseTestClass {
 
     protected void clearTranslationCache() {
         clearCache(VIPCfg.CACHE_L3);
+    }
+
+    protected void clearDataSource(){
+        vipCfg.getMsgOriginsQueue().clear();
     }
 
 }
