@@ -30,4 +30,5 @@ public class APIParamValue {
 	public final static String REGION         = "a string which represents region, e.g. US, PT, CN";
 	public final static String COMBINE        = "an integer which represents combine type number 1 or 2";
 	public final static String SCOPE_FILTER   = "a String for filtering the pattern data, separated by comma and underline. e.g. 'dates_eras,dates_dayPeriodsFormat'";
+	public final static String DEFAULT_TERRITORY = "a boolean which represents get the default territory timezone name or not. (default is true)";
 }
