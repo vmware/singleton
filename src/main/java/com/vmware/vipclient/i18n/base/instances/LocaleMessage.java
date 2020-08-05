@@ -43,7 +43,7 @@ public class LocaleMessage implements Message {
      */
     public Map<String, Map<String, String>> getRegionList(List<String> localeList) {
         Map<String, Map<String, String>> respMap = new HashMap<String, Map<String, String>>();
-        LocaleService localeService = new LocaleService(null);
+        LocaleService localeService = new LocaleService();
         for (String locale : localeList) {
             if(locale != null && !locale.isEmpty()) {
                 Map<String, String> regionMap = localeService.getRegions(locale);
@@ -96,10 +96,6 @@ public class LocaleMessage implements Message {
     }
 
     private Map<String, String> getDisplayNamesFromCLDR(String locale) {
-        if(locale == null || locale.isEmpty()) {
-            logger.warn("Locale is empty!");
-            return null;
-        }
         LocaleDTO dto = new LocaleDTO();
         if(cfg != null) {
             dto.setProductID(cfg.getProductName());
