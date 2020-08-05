@@ -7,7 +7,7 @@ weight: 10
 
 
 # Introduction
-Several python files are provided as the python client to support accessing to Singleton service, making Singleton users to handle its globalization easily.
+Several python files are provided as the python client to support accessing Singleton service, making Singleton users to handle its globalization easily.
 
 
 # Features in Python Client
