@@ -17,7 +17,6 @@ import (
 )
 
 func TestGetCompMessages(t *testing.T) {
-	defer Trace(curFunName())()
 
 	var tests = []struct {
 		desc      string
@@ -58,7 +57,6 @@ func TestGetCompMessages(t *testing.T) {
 }
 
 func TestGetStringMessage(t *testing.T) {
-	defer Trace(curFunName())()
 
 	var tests = []struct {
 		desc      string
@@ -96,7 +94,6 @@ func TestGetStringMessage(t *testing.T) {
 }
 
 func TestRefreshCache(t *testing.T) {
-	defer Trace(curFunName())()
 
 	var tests = []struct {
 		desc      string
@@ -119,6 +116,7 @@ func TestRefreshCache(t *testing.T) {
 		EnableMockData(testData.mocks[0])
 		item := &dataItem{dataItemID{itemComponent, name, version, testData.locale, testData.component}, nil, nil}
 		info := getCacheInfo(item)
+		status := trans.(*transMgr).Translation.(*transInst).msgOrigin.(*cacheService).getStatus(item)
 		info.setAge(100)
 
 		// Get component messages first to populate cache
@@ -127,7 +125,7 @@ func TestRefreshCache(t *testing.T) {
 			t.Errorf("%s = %d, want %d", testData.desc, messages.(*defaultComponentMsgs).Size(), testData.expected)
 		}
 
-		// Make sure mock data is comsumed
+		// Make sure mock data is consumed
 		assert.True(t, gock.IsDone())
 		gock.Clean()
 
@@ -151,10 +149,10 @@ func TestRefreshCache(t *testing.T) {
 		assert.Nil(t, err)
 		assert.Equal(t, testData.expected, messages.(*defaultComponentMsgs).Size())
 
-		// Start the go routine of refresing cache, and wait for finish. Data entry number changes to 7.
+		// Start the go routine of refreshing cache, and wait for finish. Data entry number changes to 7.
 		time.Sleep(10 * time.Millisecond)
-		info.waitUpdate()
-		// Make sure mock data is comsumed
+		status.waitUpdate()
+		// Make sure mock data is consumed
 		assert.True(t, gock.IsDone())
 
 		// Check the data in cache
@@ -168,7 +166,6 @@ func TestRefreshCache(t *testing.T) {
 
 // Refresh simultaneously. Hard to test. This is only for improve coverage
 func TestRefreshCache2(t *testing.T) {
-	defer Trace(curFunName())()
 
 	var tests = []struct {
 		desc      string
@@ -214,7 +211,6 @@ func TestRefreshCache2(t *testing.T) {
 
 // Test locale fallback when querying a message of a string
 func TestGetStringFallback(t *testing.T) {
-	defer Trace(curFunName())()
 
 	test := struct {
 		desc  string
@@ -251,7 +247,6 @@ func TestGetStringFallback(t *testing.T) {
 }
 
 func TestGetStringAbnormal(t *testing.T) {
-	defer Trace(curFunName())()
 
 	test := struct {
 		desc  string
@@ -261,6 +256,7 @@ func TestGetStringAbnormal(t *testing.T) {
 		[]string{
 			"componentMessages-fr-users",
 			"componentMessages-zh-Hans-sunglow",
+			"componentMessages-fr-sunglow",
 			"componentMessages-zh-Hans-comp-notexist",
 		},
 	}
@@ -285,10 +281,10 @@ func TestGetStringAbnormal(t *testing.T) {
 	// original locale has component, but doesn't have Key
 	keyNonexistent := "nonexistent"
 	message2, err2 := trans.GetStringMessage(name, version, localeZhhans, compSunglow, keyNonexistent, arg)
-	assert.Contains(t, err2.Error(), localeZhhans)
+	assert.Contains(t, err2.Error(), defaultLocaleFr)
 	assert.Contains(t, err2.Error(), compSunglow)
-	assert.Contains(t, err2.Error(), "No key in")
-	assert.Equal(t, keyNonexistent, message2)
+	assert.Contains(t, err2.Error(), "fail to get message")
+	assert.Equal(t, "", message2)
 
 	// original locale doesn't have component.
 	// default locale has component, but doesn't have Key
@@ -296,65 +292,66 @@ func TestGetStringAbnormal(t *testing.T) {
 	message3, err3 := trans.GetStringMessage(name, version, localeZhhans, compUsers, keyNonexistent, arg)
 	assert.Contains(t, err3.Error(), defaultLocaleFr)
 	assert.Contains(t, err3.Error(), compUsers)
-	assert.Contains(t, err3.Error(), "No key in")
-	assert.Equal(t, keyNonexistent, message3)
+	assert.Contains(t, err3.Error(), "fail to get message")
+	assert.Equal(t, "", message3)
 
 	// Both locales doesn't have the component
 	compNonexistent := "comp-notexist"
 	message4, err4 := trans.GetStringMessage(name, version, localeZhhans, compNonexistent, key, arg)
 	assert.NotNil(t, err4)
-	assert.NotContains(t, err4.Error(), "No key in")
-	assert.Equal(t, key, message4)
+	assert.NotContains(t, err4.Error(), "fail to get message")
+	assert.Equal(t, "", message4)
 
 	// Get default locale directly. Default locale doesn't have the component
 	message5, err5 := trans.GetStringMessage(name, version, defaultLocaleFr, compNonexistent, key, arg)
 	assert.NotNil(t, err5)
-	assert.NotContains(t, err5.Error(), "No key in")
-	assert.Equal(t, key, message5)
+	assert.NotContains(t, err5.Error(), "fail to get message")
+	assert.Equal(t, "", message5)
 
 	// Get default locale directly. Default locale doesn't have the key
 	message6, err6 := trans.GetStringMessage(name, version, defaultLocaleFr, compUsers, keyNonexistent, arg)
 	assert.NotNil(t, err6)
-	assert.Contains(t, err6.Error(), "No key in")
-	assert.Equal(t, keyNonexistent, message6)
+	assert.Contains(t, err6.Error(), "fail to get message")
+	assert.Equal(t, "", message6)
 
 	assert.True(t, gock.IsDone())
 }
 
-func TestDecodeError(t *testing.T) {
-	defer Trace(curFunName())()
+// json.ToVal() doesn't return any error, so comment this case out.
+// func TestDecodeError(t *testing.T) {
+//
 
-	var tests = []struct {
-		desc      string
-		mocks     []string
-		locale    string
-		component string
-		err       string
-	}{
-		{"DecodeError", []string{"componentMessages-zh-Hans-sunglow-decodeerror"}, "zh-Hans", "sunglow", "unconvertible type 'string'"},
-	}
-	defer gock.Off()
+// 	var tests = []struct {
+// 		desc      string
+// 		mocks     []string
+// 		locale    string
+// 		component string
+// 		err       string
+// 	}{
+// 		{"DecodeError", []string{"componentMessages-zh-Hans-sunglow-decodeerror"}, "zh-Hans", "sunglow", "Wrong data from server"},
+// 	}
+// 	defer gock.Off()
 
-	newCfg := testCfg
-	newCfg.LocalBundles = ""
-	resetInst(&newCfg)
-	trans := GetTranslation()
-	for _, testData := range tests {
-		for _, m := range testData.mocks {
-			EnableMockData(m)
-		}
+// 	newCfg := testCfg
+// 	newCfg.LocalBundles = ""
+// 	resetInst(&newCfg)
+// 	trans := GetTranslation()
+// 	for _, testData := range tests {
+// 		for _, m := range testData.mocks {
+// 			EnableMockData(m)
+// 		}
 
-		messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
-		assert.Nil(t, messages)
-		assert.Contains(t, err.Error(), testData.err)
-	}
+// 		messages, err := trans.GetComponentMessages(name, version, testData.locale, testData.component)
+// 		assert.NotNil(t, err)
+// 		assert.Nil(t, messages)
+// 		assert.Contains(t, err.Error(), testData.err)
+// 	}
 
-	assert.True(t, gock.IsDone())
+// 	assert.True(t, gock.IsDone())
 
-}
+// }
 
 func TestGetCompMessagesAbnormal(t *testing.T) {
-	defer Trace(curFunName())()
 
 	var tests = []struct {
 		desc      string
@@ -391,14 +388,13 @@ func TestGetCompMessagesAbnormal(t *testing.T) {
 }
 
 func TestGetCompMessagesWrongServer(t *testing.T) {
-	defer Trace(curFunName())()
 
 	newCfg := testCfg
 	newCfg.LocalBundles = ""
 	resetInst(&newCfg)
 	wrongServer, err := url.Parse("wrongserver")
 	assert.Nil(t, err)
-	inst.trans.ds.server.svrURL = wrongServer
+	inst.server.svrURL = wrongServer
 
 	var tests = []struct {
 		desc      string
@@ -431,7 +427,6 @@ func TestGetCompMessagesWrongServer(t *testing.T) {
 }
 
 func TestGetCompMessagesWrongResponseContent(t *testing.T) {
-	defer Trace(curFunName())()
 
 	var tests = []struct {
 		desc      string
@@ -441,7 +436,7 @@ func TestGetCompMessagesWrongResponseContent(t *testing.T) {
 		expected  int
 		err       string
 	}{
-		{"Wrong Reponse content", []string{"componentMessages-zh-Hans-sunglow-WrongResponseContent"}, "zh-Hans", "WrongResponseContent", 0, "invalid character"},
+		{"Wrong Response content", []string{"componentMessages-zh-Hans-sunglow-WrongResponseContent"}, "zh-Hans", "WrongResponseContent", 0, "ReadObjectCB: object not ended with"},
 	}
 
 	defer gock.Off()
@@ -464,7 +459,6 @@ func TestGetCompMessagesWrongResponseContent(t *testing.T) {
 }
 
 func TestGetCompMessagesResponsePartial(t *testing.T) {
-	defer Trace(curFunName())()
 
 	var tests = []struct {
 		desc      string
@@ -474,7 +468,7 @@ func TestGetCompMessagesResponsePartial(t *testing.T) {
 		expected  int
 		err       string
 	}{
-		{"Reponse contains partial data", []string{"componentMessages-zh-Hans-sunglow-ResponsePartial"}, "zh-Hans", "ResponsePartial", 0, ""},
+		{"Response contains partial data", []string{"componentMessages-zh-Hans-sunglow-ResponsePartial"}, "zh-Hans", "ResponsePartial", 0, ""},
 	}
 
 	defer gock.Off()
@@ -497,7 +491,6 @@ func TestGetCompMessagesResponsePartial(t *testing.T) {
 }
 
 func TestAddHTTPHeader(t *testing.T) {
-	defer Trace(curFunName())()
 
 	var tests = []struct {
 		desc      string
@@ -537,7 +530,6 @@ func TestAddHTTPHeader(t *testing.T) {
 }
 
 func TestGetComponentList(t *testing.T) {
-	defer Trace(curFunName())()
 
 	var tests = []struct {
 		desc     string
@@ -555,8 +547,8 @@ func TestGetComponentList(t *testing.T) {
 	resetInst(&newCfg)
 	trans := GetTranslation()
 	item := &dataItem{dataItemID{itemComponents, name, version, "", ""}, nil, nil}
-	ui := getCacheInfo(item)
-	ui.setAge(100)
+	info := getCacheInfo(item)
+	info.setAge(100)
 	for _, testData := range tests {
 
 		EnableMockData(testData.mocks[0])
@@ -579,7 +571,7 @@ func TestGetComponentList(t *testing.T) {
 
 		// Expire cache and get again
 		EnableMockData(testData.mocks[1])
-		expireCache(ui, ui.age)
+		expireCache(info, info.age)
 		components, err = trans.GetComponentList(name, version)
 		time.Sleep(time.Millisecond * 10)
 		if err != nil {
@@ -602,7 +594,6 @@ func TestGetComponentList(t *testing.T) {
 }
 
 func TestGetLocaleList(t *testing.T) {
-	defer Trace(curFunName())()
 
 	var tests = []struct {
 		desc     string
@@ -623,8 +614,8 @@ func TestGetLocaleList(t *testing.T) {
 		EnableMockData(testData.mocks[0])
 
 		item := &dataItem{dataItemID{itemLocales, name, version, "", ""}, nil, nil}
-		ui := getCacheInfo(item)
-		ui.setAge(100)
+		info := getCacheInfo(item)
+		info.setAge(100)
 
 		locales, err := trans.GetLocaleList(name, version)
 		if err != nil {
@@ -645,7 +636,7 @@ func TestGetLocaleList(t *testing.T) {
 
 		// Expire cache and get again
 		EnableMockData(testData.mocks[1])
-		expireCache(ui, ui.age)
+		expireCache(info, info.age)
 		locales, err = trans.GetLocaleList(name, version)
 		time.Sleep(time.Millisecond * 10)
 		if err != nil {
@@ -668,7 +659,6 @@ func TestGetLocaleList(t *testing.T) {
 }
 
 func TestHTTP404(t *testing.T) {
-	defer Trace(curFunName())()
 
 	var testData = struct {
 		desc      string

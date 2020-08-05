@@ -7,13 +7,13 @@ package sgtn
 
 import (
 	"fmt"
+	"os"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
 
 func TestBundleGetComponentList(t *testing.T) {
-	defer Trace(curFunName())()
 
 	newCfg := testCfg
 	newCfg.ServerURL = ""
@@ -26,7 +26,6 @@ func TestBundleGetComponentList(t *testing.T) {
 }
 
 func TestBundleGetLocaleList(t *testing.T) {
-	defer Trace(curFunName())()
 
 	newCfg := testCfg
 	newCfg.ServerURL = ""
@@ -39,7 +38,6 @@ func TestBundleGetLocaleList(t *testing.T) {
 }
 
 func TestBundleGetCompMessages(t *testing.T) {
-	defer Trace(curFunName())()
 
 	newCfg := testCfg
 	newCfg.ServerURL = ""
@@ -50,4 +48,14 @@ func TestBundleGetCompMessages(t *testing.T) {
 	msgs, err := inst.trans.GetComponentMessages(name, version, locale, component)
 	assert.Nil(t, err)
 	assert.Equal(t, 4, msgs.(*defaultComponentMsgs).Size())
+}
+
+func TestBundleDirNonexistent(t *testing.T) {
+	newCfg := testCfg
+	newCfg.LocalBundles = "Path Not Exist"
+	resetInst(&newCfg)
+
+	_, err := inst.trans.GetComponentList(name, version)
+	_, ok := err.(*os.PathError)
+	assert.True(t, ok, "error isn't an PATH error: %s", err)
 }

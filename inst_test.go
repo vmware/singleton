@@ -12,33 +12,51 @@ import (
 )
 
 func TestGetInst(t *testing.T) {
-	defer Trace(curFunName())()
 
 	resetInst(&testCfg)
-	assert.Equal(t, testCfg.LocalBundles, inst.trans.ds.bundle.root)
+	assert.Equal(t, testCfg.LocalBundles, inst.bundle.root)
 	// TODO: Test bundle
 
 	if len(testCfg.ServerURL) != 0 {
-		assert.NotNil(t, inst.trans.ds.server)
+		assert.NotNil(t, inst.server)
 	}
 
 	// Verify translation manager
 	assert.NotNil(t, inst.trans)
 
-	// Verify data service
-	dataService := inst.trans.ds
-	assert.NotNil(t, dataService)
+	s := inst.trans.(*transMgr).Translation.(*transInst).msgOrigin
+	assert.NotNil(t, s)
 	assert.NotNil(t, cache)
 	assert.NotNil(t, cacheInfoMap)
 }
 
 func TestCheckConfig(t *testing.T) {
-	defer Trace(curFunName())()
 
 	newCfg := testCfg
 	newCfg.ServerURL, newCfg.LocalBundles = "", ""
 
-	errString := "Neither Server URL nor Local Bundles is provided"
+	errString := originNotProvided
 	err := checkConfig(&newCfg)
 	assert.Equal(t, errString, err.Error())
+
+	newCfg2 := testCfg
+	newCfg2.DefaultLocale = ""
+	errString2 := defaultLocaleNotProvided
+	err2 := checkConfig(&newCfg2)
+	assert.Equal(t, errString2, err2.Error())
+
+	assert.PanicsWithError(t, originNotProvided, func() { Initialize(&newCfg) })
+}
+
+func TestGetTranslation(t *testing.T) {
+	inst = nil
+
+	assert.PanicsWithError(t, uninitialized, func() { GetTranslation() })
+}
+
+func TestSetHttpHeaders(t *testing.T) {
+	inst = nil
+
+	err := SetHTTPHeaders(nil)
+	assert.Error(t, err)
 }

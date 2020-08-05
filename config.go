@@ -6,18 +6,17 @@
 package sgtn
 
 import (
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
+
+	json "github.com/json-iterator/go"
 )
 
 // Config Singleton configuration
 type Config struct {
-	ServerURL string `json:"online_service_url"`
-
+	ServerURL     string `json:"online_service_url"`
+	LocalBundles  string `json:"offline_resources_base_url"`
 	DefaultLocale string `json:"default_locale"`
-
-	LocalBundles string `json:"offline_resources_base_url"`
 }
 
 // LoadConfig Create a new Singleton configuration instance

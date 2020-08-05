@@ -5,8 +5,6 @@
 
 package sgtn
 
-var cache Cache
-
 type (
 	defaultComponentMsgs struct {
 		messages map[string]string
@@ -17,6 +15,7 @@ func (d *defaultComponentMsgs) Get(key string) (value string, found bool) {
 	value, found = d.messages[key]
 	return
 }
+
 func (d *defaultComponentMsgs) Size() int {
 	return len(d.messages)
 }

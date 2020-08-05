@@ -5,7 +5,12 @@
 
 package sgtn
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+
+	"github.com/pkg/errors"
+)
 
 // ComponentMsgs The interface of a component's messages
 type ComponentMsgs interface {
@@ -26,8 +31,11 @@ type dataItemID struct {
 	Name, Version, Locale, Component string
 }
 
-//!+ error definition
+type stackTracer interface {
+	StackTrace() errors.StackTrace
+}
 
+//!+ error definition
 type serverError struct {
 	code         int
 	businessCode int
@@ -58,3 +66,23 @@ type dataItem struct {
 }
 
 //!- dataItem
+
+//!+ messageOrigin
+type messageOrigin interface {
+	Get(item *dataItem) error
+	IsExpired(item *dataItem) bool
+}
+
+type messageOriginList []messageOrigin
+
+//!- messageOrigin
+
+func indexIgnoreCase(slices []string, item string) int {
+	for i, s := range slices {
+		if strings.EqualFold(s, item) {
+			return i
+		}
+	}
+
+	return -1
+}
