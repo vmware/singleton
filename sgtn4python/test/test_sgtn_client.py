@@ -42,6 +42,8 @@ class TestClient(unittest.TestCase):
 
 
     def test_api(self):
+        print('\n--- unittest --- %s --- python %s\n' % (
+            sys._getframe().f_code.co_name, sys.version_info.major))
         
         NetUtil.simulate_data = FileUtil.read_json_file('./simulate.json')
         #NetUtil.record_data = {}
@@ -111,5 +113,4 @@ class TestClient(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    print('--- start --- Python %s ---' % sys.version_info.major)
     unittest.main()

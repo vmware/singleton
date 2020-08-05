@@ -19,6 +19,9 @@ from sgtn_properties import Properties
 class TestClient(unittest.TestCase):
 
     def test_properties_parser(self):
+        print('\n--- unittest --- %s --- python %s\n' % (
+            sys._getframe().f_code.co_name, sys.version_info.major))
+
         text = u'qq1=qqq\n#the middle one\nbb2:bbb #tail\ncc3 abc好abc好'
         print(text)
         
@@ -34,5 +37,4 @@ class TestClient(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    print('--- start --- Python %s ---' % sys.version_info.major)
     unittest.main()
