@@ -20,22 +20,24 @@ public class MessageCacheItem implements CacheItem {
 			this.cachedData.putAll(dataMap);
 	}
 	
-	public MessageCacheItem (Map<String, String> dataMap, String etag, long timestamp, Long maxAgeMillis) {
-		this.setCacheItem(dataMap, etag, timestamp, maxAgeMillis);
+	public MessageCacheItem (String locale, Map<String, String> dataMap, String etag, long timestamp, Long maxAgeMillis) {
+		this.setCacheItem(locale, dataMap, etag, timestamp, maxAgeMillis);
 	}
-	
+
+	private String locale;
 	private String etag;
 	private long timestamp;
 	private Long maxAgeMillis = 86400000l;
 	
 	private final Map<String, String> cachedData = new HashMap<>();
 
-	public synchronized void setCacheItem(Map<String, String> cachedData, String etag, long timestamp, Long maxAgeMillis) {
+	public synchronized void setCacheItem(String locale, Map<String, String> cachedData, String etag, long timestamp, Long maxAgeMillis) {
 		if (cachedData != null)
 			this.cachedData.putAll(cachedData);
-		this.setCacheItem(etag, timestamp, maxAgeMillis);
+		this.setCacheItem(locale, etag, timestamp, maxAgeMillis);
 	}
-	public synchronized void setCacheItem(String etag, long timestamp, Long maxAgeMillis) {
+	public synchronized void setCacheItem(String locale, String etag, long timestamp, Long maxAgeMillis) {
+		this.locale = locale;
 		if (etag != null && !etag.isEmpty())
 			this.etag = etag;
 		this.timestamp = timestamp;
@@ -44,7 +46,7 @@ public class MessageCacheItem implements CacheItem {
 	}
 
 	public synchronized void setCacheItem (MessageCacheItem cacheItem) {
-		this.setCacheItem(cacheItem.getCachedData(), cacheItem.getEtag(), cacheItem.getTimestamp(), cacheItem.getMaxAgeMillis());
+		this.setCacheItem(cacheItem.getLocale(), cacheItem.getCachedData(), cacheItem.getEtag(), cacheItem.getTimestamp(), cacheItem.getMaxAgeMillis());
 	}
 		
 	public String getEtag() {
@@ -62,6 +64,8 @@ public class MessageCacheItem implements CacheItem {
 	public Long getMaxAgeMillis() {
 		return maxAgeMillis;
 	}
+
+	public String getLocale() { return locale; }
 
 	public boolean isExpired() {
 		// If offline mode only, cache never expires.

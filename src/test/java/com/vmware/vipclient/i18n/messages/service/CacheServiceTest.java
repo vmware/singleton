@@ -148,7 +148,7 @@ public class CacheServiceTest extends BaseTestClass {
         Long responseTime = (Long) cacheItem.getTimestamp();
         
         // Set max age to 0 to explicitly expire the cache for testing purposes.
-        cacheItem.setCacheItem(cacheItem.getEtag(), cacheItem.getTimestamp(), 0l);
+        cacheItem.setCacheItem(null, cacheItem.getEtag(), cacheItem.getTimestamp(), 0l);
         
         // Second request for the same message triggers an HTTP request because cacheItem has expired.
         // The http request includes an If-None-Match header that is set to the previously received eTag value.

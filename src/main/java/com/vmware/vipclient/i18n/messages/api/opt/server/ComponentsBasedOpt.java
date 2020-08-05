@@ -51,7 +51,7 @@ public class ComponentsBasedOpt extends BaseOpt implements Opt {
         String etag = URLUtils.createEtagString((Map<String, List<String>>) response.get(URLUtils.HEADERS));
         long timestamp = (long) response.get(URLUtils.RESPONSE_TIMESTAMP);
         Long maxAgeMillis = (Long) response.get(URLUtils.MAX_AGE_MILLIS);
-        cacheItem.setCacheItem(etag, timestamp, maxAgeMillis);
+        cacheItem.setCacheItem(null, etag, timestamp, maxAgeMillis);
         if (StringUtil.isEmpty(this.responseStr))
             throw new VIPJavaClientException(ConstantsMsg.SERVER_RETURN_EMPTY);
 

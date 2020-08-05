@@ -114,6 +114,9 @@ public class ComponentService {
     			// If failed to fetch message, use MessageCacheItem of the next fallback locale.
 				MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), fallbackLocalesIter.next().toLanguageTag(), dto.getProductID(), dto.getVersion());
 				cacheItem = new ComponentService(fallbackLocaleDTO).getMessages(fallbackLocalesIter);
+				if (!cacheItem.getCachedData().isEmpty()) {
+					cacheService.addCacheOfComponent(cacheItem);
+				}
 			}
     	}
     	return cacheItem;
@@ -122,12 +125,19 @@ public class ComponentService {
 	private void populateCacheTask(MessageCacheItem cacheItem) {
 		Callable<MessageCacheItem> callable = () -> {
     		try {
-    			// Pass cacheItem to getMessages so that:
-				// 1. A previously stored etag, if any, can be used for the next HTTP request.
-				// 2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed 
-				// 	 with new properties from the next HTTP response.
-				fetchMessages(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-    			return cacheItem;
+    			/* Pass cacheItem to fetchMessages so that:
+					1. A previously stored etag, if any, can be used for the next HTTP request.
+					2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed
+						with new values from the next HTTP response.
+				*/
+				String cacheItemLocale = cacheItem.getLocale();
+    			if (cacheItemLocale.equals(this.dto.getLocale())) {
+					fetchMessages(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
+				} else {  //If cacheItem's locale is not the requested locale, it means it is for a fallback locale. Hence, refresh the appropriate fallback locale's cache
+					MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), cacheItemLocale, dto.getProductID(), dto.getVersion());
+					new ComponentService(fallbackLocaleDTO).fetchMessages(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
+				}
+				return cacheItem;
     		} catch (Exception e) { 
     			// To make sure that the thread will close 
     			// even when an exception is thrown

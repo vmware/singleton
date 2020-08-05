@@ -67,7 +67,7 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 				path = Paths.get(uri);
 				messages = JSONBundleUtil.getMessages(path);
 			}
-			cacheItem.setCacheItem(messages, null, System.currentTimeMillis(), null);
+			cacheItem.setCacheItem(dto.getLocale(), messages, null, System.currentTimeMillis(), null);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
 			// Do not update cacheItem

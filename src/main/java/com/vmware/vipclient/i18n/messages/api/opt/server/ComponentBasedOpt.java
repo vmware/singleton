@@ -67,14 +67,14 @@ public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
 	        		if (getResponseCode(respObj) == 200) {
 				        Map<String,String> messages = this.getMsgsJson(response);
 				        if (messages != null) {
-				        	cacheItem.setCacheItem(messages, etag, timestamp, maxAgeMillis);
+				        	cacheItem.setCacheItem(this.dto.getLocale(), messages, etag, timestamp, maxAgeMillis);
 				        }
         			}
 	        	} catch (Exception e) {
 	        		logger.error("Failed to get messages");
 	        	}
 	        } else {
-                cacheItem.setCacheItem(etag, timestamp, maxAgeMillis);
+                cacheItem.setCacheItem(this.dto.getLocale(), etag, timestamp, maxAgeMillis);
             }
         } 
     }
