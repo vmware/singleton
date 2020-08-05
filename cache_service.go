@@ -70,6 +70,9 @@ func (s *cacheService) refresh(item *dataItem, exist bool) error {
 	if status.setUpdating() {
 		defer status.setUpdated()
 		logger.Debug(fmt.Sprintf("Start fetching ID: %+v", item.id))
+
+		info := getCacheInfo(item)
+		startTime := time.Now().Unix()
 		for _, dao := range s.origins {
 			if exist && !dao.IsExpired(item) {
 				return nil
@@ -77,8 +80,6 @@ func (s *cacheService) refresh(item *dataItem, exist bool) error {
 
 			switch dao.(type) {
 			case *serverDAO:
-				startTime := time.Now().Unix()
-				info := getCacheInfo(item)
 				item.attrs = info
 				err = dao.Get(item)
 				if isSuccess(err) {
@@ -97,6 +98,7 @@ func (s *cacheService) refresh(item *dataItem, exist bool) error {
 			case *bundleDAO:
 				err = dao.Get(item)
 				if err == nil {
+					info.setTime(startTime)
 					cache.Set(item.id, item.data)
 					return nil
 				}
