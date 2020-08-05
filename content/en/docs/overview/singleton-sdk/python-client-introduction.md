@@ -60,7 +60,7 @@ class I18n():
 
 ### I18n / add_config_file
 
-* Load a configuration json or yaml file and initialize a correspondent release object.
+* Load a configuration json or yaml file and initialize a corresponding release object.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
