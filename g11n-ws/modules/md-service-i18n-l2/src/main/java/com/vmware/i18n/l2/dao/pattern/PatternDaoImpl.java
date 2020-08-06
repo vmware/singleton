@@ -21,8 +21,8 @@ public class PatternDaoImpl implements IPatternDao {
 	
 	/**
 	 * @param locale
-	 * @param default territory
-	 * @return matching locale TimeZoneName
+	 * @param boolean value representing default territory
+	 * @return timezone name of the locale
 	 */
 	public TimeZoneName getTimeZoneName(String locale, boolean defaultTerritory) {
 		locale = locale.replace("_", "-");

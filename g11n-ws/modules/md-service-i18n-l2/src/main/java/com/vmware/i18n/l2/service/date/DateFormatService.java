@@ -16,13 +16,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ibm.icu.text.SimpleDateFormat;
 import com.ibm.icu.util.ULocale;
 import com.vmware.i18n.l2.dao.pattern.IPatternDao;
-import com.vmware.i18n.l2.service.pattern.PatternServiceImpl;
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.i18n.utils.timezone.TimeZoneName;
 import com.vmware.vip.common.cache.CacheName;
@@ -67,36 +64,35 @@ public class DateFormatService implements IDateFormatService{
 	
 	/**
    	 * @param locale
-   	 * @param default territory
+   	 * @param boolean value is default territory or not
    	 * @return matching locale TimeZoneName
    	 */
 	@Override
-	public TimeZoneName getTimeZoneName(String oldLocale, boolean defaultTerritory) throws L2APIException {
+	public TimeZoneName getTimeZoneName(String locale, boolean defaultTerritory) throws L2APIException {
 		// TODO Auto-generated method stub
-		String locale = oldLocale.replace("_", "-");
-		String newLocale = CommonUtil.getCLDRLocale(locale, localePathMap, localeAliasesMap);
+		String newLocale = locale.replace("_", "-");
+		newLocale = CommonUtil.getCLDRLocale(newLocale, localePathMap, localeAliasesMap);
 		if (CommonUtil.isEmpty(newLocale)){
 			logger.info("Invalid locale!");
-			throw new L2APIException(String.format(ValidationMsg.LOCALENAME_NOT_SUPPORTED, oldLocale));
+			throw new L2APIException(String.format(ValidationMsg.LOCALENAME_NOT_SUPPORTED, locale));
 		}
-		locale = newLocale;
 		String timezoneNameJson = null;
 		try {
-			timezoneNameJson = TranslationCache3.getCachedObject(CacheName.PATTERN, getTimeZoneNameKey(locale, defaultTerritory), String.class);
+			timezoneNameJson = TranslationCache3.getCachedObject(CacheName.PATTERN, getTimeZoneNameKey(newLocale, defaultTerritory), String.class);
 		} catch (VIPCacheException e) {
 			timezoneNameJson = null;
 		}
 		TimeZoneName timeZoneName = null;
 		if (StringUtils.isEmpty(timezoneNameJson)) {
 			logger.info("get timezoneNameJson data from file");
-			timeZoneName = patternDao.getTimeZoneName(locale, defaultTerritory);
+			timeZoneName = patternDao.getTimeZoneName(newLocale, defaultTerritory);
 			if (StringUtils.isEmpty(timeZoneName)) {
 				logger.info("file data don't exist");
 				return null;
 			}
 			try {
 				timezoneNameJson = new ObjectMapper().writeValueAsString(timeZoneName);
-				TranslationCache3.addCachedObject(CacheName.PATTERN, getTimeZoneNameKey(locale, defaultTerritory),
+				TranslationCache3.addCachedObject(CacheName.PATTERN, getTimeZoneNameKey(newLocale, defaultTerritory),
 						String.class, timezoneNameJson);
 			} catch (Exception e) {
 				throw new L2APIException(e.getMessage());
