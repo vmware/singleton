@@ -30,7 +30,7 @@ func (t *transMgr) GetStringMessage(name, version, locale, component, key string
 		logger.Warn(fmt.Sprintf("fall back to locale '%s'", t.fallbackChain[m]))
 		message, err = t.Translation.GetStringMessage(name, version, t.fallbackChain[m], component, key, args...)
 		if err == nil {
-			break
+			return message, nil
 		}
 	}
 	if err != nil {

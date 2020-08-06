@@ -23,7 +23,7 @@ func (t *transInst) GetStringMessage(name, version, locale, component, key strin
 	}
 	bundleData, err := t.GetComponentMessages(name, version, locale, component)
 	if err != nil {
-		return key, err
+		return "", err
 	}
 
 	if msg, ok := bundleData.Get(key); ok {
@@ -33,7 +33,7 @@ func (t *transInst) GetStringMessage(name, version, locale, component, key strin
 		}
 		return msg, nil
 	} else {
-		return key, fmt.Errorf("fail to get message for locale: %s, component: %s, key: %s", locale, component, key)
+		return "", fmt.Errorf("fail to get message for locale: %s, component: %s, key: %s", locale, component, key)
 	}
 }
 
