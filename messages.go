@@ -7,7 +7,7 @@ package sgtn
 
 const (
 	invalidItemType          = "Invalid item type: %d"
-	originFail               = "Fail to get"
+	originQueryFailure       = "Fail to get"
 	uninitialized            = "Client isn't initialized"
 	originNotProvided        = "Neither Server URL nor Local Bundles is provided"
 	defaultLocaleNotProvided = "default_locale isn't provided"
