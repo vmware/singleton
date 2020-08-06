@@ -7,14 +7,13 @@ package com.vmware.vipclient.i18n.messages.api.opt.local;
 import com.vmware.i18n.PatternUtil;
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
-import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.messages.api.opt.LocaleOpt;
 import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
 import com.vmware.vipclient.i18n.messages.service.FormattingCacheService;
+import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -96,37 +95,33 @@ public class LocalLocaleOpt implements LocaleOpt{
 		logger.info("Normalized locale for locale [{}] is [{}]", locale, normalizedLocale);
 		if(normalizedLocale == null || normalizedLocale.isEmpty())
 			return null;
-		String languagesJsonStr = PatternUtil.getLanguageFromLib(normalizedLocale);
-		JSONObject languagesData = null;
-		try {
-			languagesData = (JSONObject) new JSONParser().parse(languagesJsonStr);
-		} catch (ParseException e) {
+        try {
+            JSONObject languagesData = null;
+            String languagesJsonStr = PatternUtil.getLanguageFromLib(normalizedLocale);
+            languagesData = (JSONObject) new JSONParser().parse(languagesJsonStr);
+            return (JSONObject) languagesData.get(PatternKeys.LANGUAGES);
+		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
-		if (languagesData == null) {
-			return null;
-		}
-		return (JSONObject) languagesData.get(PatternKeys.LANGUAGES);
+        return null;
 	}
 
 	public JSONObject getRegions(String locale) {
 		logger.debug("Look for regions from local bundle for locale [{}]!", locale);
-		JSONObject regionsData = null;
 		String normalizedLocale = CommonUtil.getCLDRLocale(locale, localePathMap, localeAliasesMap);
 		logger.info("Normalized locale for locale [{}] is [{}]", locale, normalizedLocale);
 		if(normalizedLocale == null || normalizedLocale.isEmpty())
 			return null;
-		String regionsJsonStr = PatternUtil.getRegionFromLib(normalizedLocale);
-		try {
+        try {
+            JSONObject regionsData = null;
+		    String regionsJsonStr = PatternUtil.getRegionFromLib(normalizedLocale);
 			regionsData = (JSONObject) new JSONParser().parse(regionsJsonStr);
-		} catch (ParseException e) {
+            return (JSONObject) regionsData.get(PatternKeys.TERRITORIES);
+		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
-		if (regionsData == null) {
-			return null;
-		}
-		return (JSONObject) regionsData.get(PatternKeys.TERRITORIES);
+		return null;
 	}
 }

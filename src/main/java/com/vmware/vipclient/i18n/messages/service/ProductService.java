@@ -36,9 +36,9 @@ public class ProductService {
      */
     public List<Map> getAllComponentTranslation() {
         List<Map> list = new ArrayList<Map>();
-        List<String> locales = this.getSupportedLocales(VIPCfg.getInstance().getMsgOriginsQueue().iterator());
-        List<String> components = this.getComponents(VIPCfg.getInstance().getMsgOriginsQueue().iterator());
-        if (locales != null) {
+        List<String> locales = this.getSupportedLocales();
+        List<String> components = this.getComponents();
+        if (locales != null && components != null) {
             for (String languageTag : locales) {
                 for (Object component : components) {
                     MessagesDTO msgDTO = new MessagesDTO(((String) component).trim(), LocaleUtility.fmtToMappedLocale(Locale.forLanguageTag(languageTag)).toString().trim(),
@@ -56,23 +56,17 @@ public class ProductService {
     /**
      * Retrieves the list of components of a product. It recursively applies data source fallback mechanism in case of failure.
      *
-     * @param msgSourceQueueIter Iterator of DataSourceEnum sources
      * @return list of components of the product specified in the dto object
      */
-    public List<String> getComponents (Iterator<DataSourceEnum> msgSourceQueueIter) {
-        if (!msgSourceQueueIter.hasNext())
-            return null;
-
-        DataSourceEnum dataSource = msgSourceQueueIter.next();
-        ProductOpt opt = dataSource.createProductOpt(dto);
-        List<String> components = opt.getComponents();
-        // If failed to get components from the data source
-        if (components.isEmpty()) {
-            // Try the next dataSource in the queue
-            if (msgSourceQueueIter.hasNext()) {
-                components = getComponents(msgSourceQueueIter);
-                // If no more data source in queue, log the error. This means that neither online nor offline fetch succeeded.
-            } else {
+    public List<String> getComponents(){
+        List<String> components = null;
+        Iterator<DataSourceEnum> msgSourceQueueIter = VIPCfg.getInstance().getMsgOriginsQueue().iterator();
+        while((components == null || components.isEmpty()) && msgSourceQueueIter.hasNext()){
+            DataSourceEnum dataSource = msgSourceQueueIter.next();
+            ProductOpt opt = dataSource.createProductOpt(dto);
+            components = opt.getComponents();
+            // If failed to get components from the data source, log the error.
+            if (components.isEmpty()) {
                 logger.error(FormatUtils.format(ConstantsMsg.GET_COMPONENTS_FAILED, dataSource.toString()));
             }
         }
@@ -82,22 +76,17 @@ public class ProductService {
     /**
      * Retrieves the list of locales of a product. It recursively applies data source fallback mechanism in case of failure.
      *
-     * @param msgSourceQueueIter Iterator of DataSourceEnum sources
      * @return list of locales of the product specified in the dto object
      */
-    public List<String> getSupportedLocales(Iterator<DataSourceEnum> msgSourceQueueIter) {
-        if (!msgSourceQueueIter.hasNext()) { return null; }
-
-        DataSourceEnum dataSource = msgSourceQueueIter.next();
-        ProductOpt opt = dataSource.createProductOpt(dto);
-        List<String> locales = opt.getSupportedLocales();
-        // If failed to get locales from the data source
-        if (locales.isEmpty()) {
-            // Try the next dataSource in the queue
-            if (msgSourceQueueIter.hasNext()) {
-                locales = getSupportedLocales(msgSourceQueueIter);
-                // If no more data source in queue, log the error. This means that neither online nor offline fetch succeeded.
-            } else {
+    public List<String> getSupportedLocales(){
+        List<String> locales = null;
+        Iterator<DataSourceEnum> msgSourceQueueIter = VIPCfg.getInstance().getMsgOriginsQueue().iterator();
+        while((locales == null || locales.isEmpty()) && msgSourceQueueIter.hasNext()){
+            DataSourceEnum dataSource = msgSourceQueueIter.next();
+            ProductOpt opt = dataSource.createProductOpt(dto);
+            locales = opt.getSupportedLocales();
+            // If failed to get locales from the data source, log the error.
+            if (locales.isEmpty()) {
                 logger.error(FormatUtils.format(ConstantsMsg.GET_LOCALES_FAILED, dataSource.toString()));
             }
         }

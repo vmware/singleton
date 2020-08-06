@@ -26,8 +26,7 @@ public class RemoteProductOpt extends BaseOpt implements ProductOpt {
 
     /**
      * get supported components from vip(non-Javadoc)
-     * 
-     * @see com.vmware.vipclient.i18n.messages.dao.IComponentDao#getComponents()
+     *
      */
     public List<String> getComponents() {
         JSONArray msgObject = new JSONArray();
@@ -48,8 +47,7 @@ public class RemoteProductOpt extends BaseOpt implements ProductOpt {
 
     /**
      * get supported locales from vip(non-Javadoc)
-     * 
-     * @see com.vmware.vipclient.i18n.messages.dao.ILocaleDao#getSupportedLocales()
+     *
      */
     public List<String> getSupportedLocales() {
         JSONArray msgObject = new JSONArray();

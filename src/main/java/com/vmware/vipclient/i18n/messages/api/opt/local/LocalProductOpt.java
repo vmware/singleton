@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class LocalProductOpt implements ProductOpt {
-    private Logger logger = LoggerFactory.getLogger(LocalLocaleOpt.class);
+    private Logger logger = LoggerFactory.getLogger(LocalProductOpt.class);
     private static final String BUNDLE_PREFIX = "messages_";
     private static final String BUNDLE_SUFFIX = ".json";
 

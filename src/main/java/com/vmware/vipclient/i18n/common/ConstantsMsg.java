@@ -19,6 +19,7 @@ public class ConstantsMsg {
     public static final String GET_LANGUAGES_FAILED_ALL   = "Failed to get supported languages from any data source";
     public static final String GET_REGIONS_FAILED   = "Failed to get regions from {0} data source";
     public static final String GET_REGIONS_FAILED_ALL   = "Failed to get regions from any data source";
+    public static final String GET_LOCALES_FAILED   = "Failed to get list of locales from {0} data source";
     public static final String GET_COMPONENTS_FAILED   = "Failed to get list of components from {0} data source";
     public static final String GET_LOCALES_FAILED   = "Failed to get list of locales from {0} data source";
 }

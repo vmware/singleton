@@ -4,14 +4,13 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.local;
 
+import com.vmware.i18n.PatternUtil;
 import com.vmware.i18n.dto.LocaleDataDTO;
 import com.vmware.i18n.utils.CommonUtil;
-import com.vmware.vipclient.i18n.messages.api.opt.PatternOpt;
-import com.vmware.i18n.PatternUtil;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
+import com.vmware.vipclient.i18n.messages.api.opt.PatternOpt;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,14 +41,15 @@ public class LocalPatternOpt implements PatternOpt{
     private JSONObject getPatternsByLocale(String normalizedLocale) {
         if(normalizedLocale == null || normalizedLocale.isEmpty())
             return null;
-        String patternStr = PatternUtil.getPatternFromLib(normalizedLocale, null);
-        Map<String, Object> patterns = null;
         try {
+            Map<String, Object> patterns = null;
+            String patternStr = PatternUtil.getPatternFromLib(normalizedLocale, null);
             patterns = (Map<String, Object>) new JSONParser().parse(patternStr);
-        } catch (ParseException e) {
+            return (JSONObject) patterns.get(PatternKeys.CATEGORIES);
+        } catch (Exception e) {
             e.printStackTrace();
             logger.error(e.getMessage());
         }
-        return patterns == null? null : (JSONObject) patterns.get(PatternKeys.CATEGORIES);
+        return null;
     }
 }

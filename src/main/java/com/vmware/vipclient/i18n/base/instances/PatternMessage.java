@@ -43,7 +43,7 @@ public class PatternMessage implements Message {
      */
     public JSONObject getPatternMessage(String language, String region) {
         if((language == null || language.isEmpty()) || (region == null || region.isEmpty())) {
-            logger.warn("Either language or region are empty!");
+            logger.warn("Either language or region is empty!");
             return null;
         }
         return new PatternService().getPatterns(language, region);
