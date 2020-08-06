@@ -165,7 +165,7 @@ class Translation:
 
 ### Translation / get_string
 
-* Get the trnalsation message of a component and a key.
+* Get the translation message of a component and a key.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
