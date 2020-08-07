@@ -31,7 +31,7 @@ func LoadConfig(path string) (*Config, error) {
 		return nil, err
 	}
 
-	logger.Debug(fmt.Sprintf("Created a new config: %#v", cfg))
+	logger.Info(fmt.Sprintf("Created a new config: %#v", cfg))
 
 	return &cfg, nil
 }
