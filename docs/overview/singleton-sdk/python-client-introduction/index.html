@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-07-14T09:16:11 CST">
+<meta name="revised" content="2020-08-07T16:37:18 CST">
 <title>Python Client Introduction :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -179,6 +179,13 @@
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+      <li data-nav-id="/docs/overview/singleton-sdk/python-client-introduction/" class="dd-item active">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/python-client-introduction/">
+            Python Client Introduction
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
       <li data-nav-id="/docs/overview/singleton-sdk/java-client-introduction/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/">
@@ -327,13 +334,6 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/python-client-introduction/" class="dd-item active">
-        <div>
-          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/python-client-introduction/">
-            Python Client Introduction
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
       <li data-nav-id="/docs/overview/singleton-sdk/go-client-introduction/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/go-client-introduction/">
@@ -425,13 +425,13 @@
     <option value="/docs/overview/singleton-sdk/" >
   -- 
    Singleton SDK</option> 
+      <option value="/docs/overview/singleton-sdk/python-client-introduction/"  selected>--- Python Client Introduction</option>
       <option value="/docs/overview/singleton-sdk/java-client-introduction/" >--- Java Client Introduction</option>
       <option value="/docs/overview/singleton-sdk/javascript-client-introduction/" >--- Javascript Client Introduction</option>
     <option value="/docs/overview/singleton-sdk/angular-client-introduction/" >
   --- 
    Angular Client Introduction</option>
       <option value="/docs/overview/singleton-sdk/csharp-client-introduction/" >--- C# Client Introduction</option>
-      <option value="/docs/overview/singleton-sdk/python-client-introduction/"  selected>--- Python Client Introduction</option>
       <option value="/docs/overview/singleton-sdk/go-client-introduction/" >--- Go Client Introduction</option>
   
   
@@ -465,15 +465,386 @@
     
     
     
-    <p>Coming soon</p>
+    <h1 id="introduction">Introduction</h1>
+<p>Several python files are provided as the python client to support accessing Singleton service, making Singleton users to handle its globalization easily.</p>
+<h1 id="features-in-python-client">Features in Python Client</h1>
+<ul>
+<li>Getting configuration content.</li>
+<li>Getting the translation.</li>
+<li>Getting messages of a locale.</li>
+</ul>
+<h1 id="prerequisites">Prerequisites</h1>
+<p>Python 2.x</p>
+<p>Python 3.x</p>
+<p>It&rsquo;s better to install <a href="https://pypi.org/project/PyYAML/">PyYAML</a> module of python.</p>
+<h1 id="how-to-get-the-client-code">How to get the client code</h1>
+<pre><code>git clone -b g11n-python-client https://github.com/vmware/singleton.git
+</code></pre><p>The client code is <a href="https://github.com/vmware/singleton/blob/g11n-python-client/sgtn4python/sgtn_client.py">sgtn_client.py</a>, <a href="https://github.com/vmware/singleton/blob/g11n-python-client/sgtn4python/sgtn_properties.py">sgtn_properties.py</a> and <a href="https://github.com/vmware/singleton/blob/g11n-python-client/sgtn4python/sgtn_util.py">sgtn_util.py</a>.
+It needs a configuration file, like the <a href="https://github.com/vmware/singleton/blob/g11n-python-client/sgtn4python/sample/sample_online_offline.yml">sample configuration file</a>.</p>
+<h1 id="apis-available">APIs Available</h1>
+<ul>
+<li><a href="#Factory-Class">Factory Class</a>
+<ul>
+<li><a href="#I18n">I18n</a></li>
+</ul>
+</li>
+<li><a href="#Interface-For-Release">Interface For Release</a>
+<ul>
+<li><a href="#Release">Release</a></li>
+</ul>
+</li>
+<li><a href="#Interface-For-Configuration">Interface For Configuration</a>
+<ul>
+<li><a href="#Config">Config</a></li>
+</ul>
+</li>
+<li><a href="#Interface-For-Translation">Interface For Translation</a>
+<ul>
+<li><a href="#Translation">Translation</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="factory-class">Factory Class</h2>
+<h3 id="i18n">I18n</h3>
+<ul>
+<li>It&rsquo;s the factory class that creates and initializes the configuration object and the release object.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">I18n</span>():
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_config_file</span>(cls, config_file)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_config</span>(cls, base_path, config_data)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set_current_locale</span>(cls, locale)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_current_locale</span>(cls)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_release</span>(cls, product, version)
+</code></pre></div><h3 id="i18n--add_config_file">I18n / add_config_file</h3>
+<ul>
+<li>Load a configuration json or yaml file and initialize a corresponding release object.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>config_file</td>
+<td>string</td>
+<td>Configuration file</td>
+</tr>
+</tbody>
+</table>
+<h3 id="i18n--add_config">I18n / add_config</h3>
+<ul>
+<li>Load a configuration json or yaml text with a base directory and initialize a correspondent release object.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>base_path</td>
+<td>string</td>
+<td>Base directory</td>
+</tr>
+<tr>
+<td>config_data</td>
+<td>string</td>
+<td>Configuration text in json or yaml</td>
+</tr>
+</tbody>
+</table>
+<h3 id="i18n--set_current_locale">I18n / set_current_locale</h3>
+<ul>
+<li>Set locale of current thread.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale name</td>
+</tr>
+</tbody>
+</table>
+<h3 id="i18n--get_current_locale">I18n / get_current_locale</h3>
+<ul>
+<li>Get locale of current thread.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>Locale name</td>
+</tr>
+</tbody>
+</table>
+<h3 id="i18n--get_release">I18n / get_release</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>product</td>
+<td>string</td>
+<td>Product name</td>
+</tr>
+<tr>
+<td>version</td>
+<td>string</td>
+<td>Version</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Get release object.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#Release">Release</a></td>
+<td>Release object</td>
+</tr>
+</tbody>
+</table>
+<h2 id="interface-for-release">Interface For Release</h2>
+<h3 id="release">Release</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Release</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_config</span>(self)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_translation</span>(self)
+</code></pre></div><h3 id="release--get_config">Release / get_config</h3>
+<ul>
+<li>Get the configuration object owned by the release object.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#Config">Config</a></td>
+<td>The configuration object</td>
+</tr>
+</tbody>
+</table>
+<h3 id="release--get_translation">Release / get_translation</h3>
+<ul>
+<li>Get the translation object owned by the release object.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#Translation">Translation</a></td>
+<td>The translation object</td>
+</tr>
+</tbody>
+</table>
+<h2 id="interface-for-configuration">Interface For Configuration</h2>
+<h3 id="config">Config</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Config</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_config_data</span>(self)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_info</span>(self)
+</code></pre></div><h3 id="config--get_config_data">Config / get_config_data</h3>
+<ul>
+<li>Get configuration data.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>object</td>
+<td>Configuration data</td>
+</tr>
+</tbody>
+</table>
+<h3 id="config--get_info">Config / get_info</h3>
+<ul>
+<li>Get brief information of configuration.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>object</td>
+<td>Brief information data</td>
+</tr>
+</tbody>
+</table>
+<h2 id="interface-for-translation">Interface For Translation</h2>
+<h3 id="translation">Translation</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Translation</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_string</span>(self, component, key, <span style="color:#f92672">**</span>kwargs)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_locale_strings</span>(self, locale)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_locale_supported</span>(self, locale)
+</code></pre></div><h3 id="translation--get_string">Translation / get_string</h3>
+<ul>
+<li>Get the translation message of a component and a key.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>component</td>
+<td>string</td>
+<td>Component</td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>Key</td>
+</tr>
+<tr>
+<td>kwargs</td>
+<td>object</td>
+<td>Parameters like &lsquo;source&rsquo;, &lsquo;locale&rsquo; and &lsquo;format_items&rsquo;</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>The translation message</td>
+</tr>
+</tbody>
+</table>
+<h3 id="translation--get_locale_strings">Translation / get_locale_strings</h3>
+<ul>
+<li>Get translation messages of a locale.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>object</td>
+<td>All translation messages of a locale</td>
+</tr>
+</tbody>
+</table>
+<h3 id="translation--get_locale_supported">Translation / get_locale_supported</h3>
+<ul>
+<li>Get supported locale name of the input locale.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>Supported locale name</td>
+</tr>
+</tbody>
+</table>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/csharp-client-introduction/" title="C# Client Introduction"> <i class="fa fa-chevron-left"></i><label>C# Client Introduction</label></a>
-    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/go-client-introduction/" title="Go Client Introduction" style="margin-right: 0px;"><label>Go Client Introduction</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/" title="Singleton SDK"> <i class="fa fa-chevron-left"></i><label>Singleton SDK</label></a>
+    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/" title="Java Client Introduction" style="margin-right: 0px;"><label>Java Client Introduction</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -488,7 +859,7 @@
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 24/09/2019
+        <i class='fa fa-calendar'></i> Last update on 30/07/2020
     </div>
     
 
