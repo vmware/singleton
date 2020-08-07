@@ -10,7 +10,6 @@ import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.messages.api.opt.ProductOpt;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
-import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -66,8 +65,8 @@ public class ProductService {
             ProductOpt opt = dataSource.createProductOpt(dto);
             components = opt.getComponents();
             // If failed to get components from the data source, log the error.
-            if (components.isEmpty()) {
-                logger.error(FormatUtils.format(ConstantsMsg.GET_COMPONENTS_FAILED, dataSource.toString()));
+            if (components == null || components.isEmpty()) {
+                logger.error(ConstantsMsg.GET_COMPONENTS_FAILED, dataSource.toString());
             }
         }
         return components;
@@ -86,8 +85,8 @@ public class ProductService {
             ProductOpt opt = dataSource.createProductOpt(dto);
             locales = opt.getSupportedLocales();
             // If failed to get locales from the data source, log the error.
-            if (locales.isEmpty()) {
-                logger.error(FormatUtils.format(ConstantsMsg.GET_LOCALES_FAILED, dataSource.toString()));
+            if (locales == null || locales.isEmpty()) {
+                logger.error(ConstantsMsg.GET_LOCALES_FAILED, dataSource.toString());
             }
         }
         return locales;

@@ -42,9 +42,8 @@ public class LocalPatternOpt implements PatternOpt{
         if(normalizedLocale == null || normalizedLocale.isEmpty())
             return null;
         try {
-            Map<String, Object> patterns = null;
             String patternStr = PatternUtil.getPatternFromLib(normalizedLocale, null);
-            patterns = (Map<String, Object>) new JSONParser().parse(patternStr);
+            Map<String, Object> patterns = (Map<String, Object>) new JSONParser().parse(patternStr);
             return (JSONObject) patterns.get(PatternKeys.CATEGORIES);
         } catch (Exception e) {
             e.printStackTrace();

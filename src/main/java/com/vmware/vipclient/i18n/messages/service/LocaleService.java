@@ -8,7 +8,6 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
-import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -69,13 +68,13 @@ public class LocaleService {
     private Map<String, String> getRegionsFromDS(String locale, ListIterator<DataSourceEnum> msgSourceQueueIter) {
         Map<String, String> regions = null;
         if (!msgSourceQueueIter.hasNext()) {
-            logger.error(FormatUtils.format(ConstantsMsg.GET_REGIONS_FAILED_ALL));
+            logger.error(ConstantsMsg.GET_REGIONS_FAILED_ALL);
             return regions;
         }
         DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
         regions = dataSource.createLocaleOpt(dto).getRegions(locale);
         if (regions == null || regions.isEmpty()) {
-            logger.debug(FormatUtils.format(ConstantsMsg.GET_REGIONS_FAILED, dataSource.toString()));
+            logger.debug(ConstantsMsg.GET_REGIONS_FAILED, dataSource.toString());
             regions = getRegionsFromDS(locale, msgSourceQueueIter);
         }
         return regions;
@@ -125,13 +124,13 @@ public class LocaleService {
     private Map<String, String> getSupportedLanguagesFromDS(String locale, ListIterator<DataSourceEnum> msgSourceQueueIter) {
         Map<String, String> dispMap = new HashMap<String, String>();
         if (!msgSourceQueueIter.hasNext()) {
-            logger.error(FormatUtils.format(ConstantsMsg.GET_LANGUAGES_FAILED_ALL));
+            logger.error(ConstantsMsg.GET_LANGUAGES_FAILED_ALL);
             return dispMap;
         }
         DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
         dispMap = dataSource.createLocaleOpt(dto).getSupportedLanguages(locale);
         if (dispMap == null || dispMap.isEmpty()) {
-            logger.debug(FormatUtils.format(ConstantsMsg.GET_LANGUAGES_FAILED, dataSource.toString()));
+            logger.debug(ConstantsMsg.GET_LANGUAGES_FAILED, dataSource.toString());
             dispMap = getSupportedLanguagesFromDS(locale, msgSourceQueueIter);
         }
         return dispMap;

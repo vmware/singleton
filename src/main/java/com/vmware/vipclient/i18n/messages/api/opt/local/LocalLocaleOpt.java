@@ -96,9 +96,8 @@ public class LocalLocaleOpt implements LocaleOpt{
 		if(normalizedLocale == null || normalizedLocale.isEmpty())
 			return null;
         try {
-            JSONObject languagesData = null;
             String languagesJsonStr = PatternUtil.getLanguageFromLib(normalizedLocale);
-            languagesData = (JSONObject) new JSONParser().parse(languagesJsonStr);
+			JSONObject languagesData = (JSONObject) new JSONParser().parse(languagesJsonStr);
             return (JSONObject) languagesData.get(PatternKeys.LANGUAGES);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -114,9 +113,8 @@ public class LocalLocaleOpt implements LocaleOpt{
 		if(normalizedLocale == null || normalizedLocale.isEmpty())
 			return null;
         try {
-            JSONObject regionsData = null;
 		    String regionsJsonStr = PatternUtil.getRegionFromLib(normalizedLocale);
-			regionsData = (JSONObject) new JSONParser().parse(regionsJsonStr);
+			JSONObject regionsData = (JSONObject) new JSONParser().parse(regionsJsonStr);
             return (JSONObject) regionsData.get(PatternKeys.TERRITORIES);
 		} catch (Exception e) {
 			e.printStackTrace();
