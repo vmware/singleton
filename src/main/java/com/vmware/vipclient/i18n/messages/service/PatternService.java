@@ -11,6 +11,7 @@ import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.Locale;
 
@@ -30,12 +31,16 @@ public class PatternService {
         if (patterns != null) {
             return patterns;
         }
-        if (!LocaleUtility.isDefaultLocale(locale)) {
-            logger.info("Can't find pattern for locale [{}], look for default locale's pattern as fallback!", locale);
-            patterns = getPatternsByLocale(LocaleUtility.getDefaultLocale().toLanguageTag());
+        Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
+        while (fallbackLocalesIter.hasNext()) {
+            String fallbackLocale = fallbackLocalesIter.next().toLanguageTag();
+            if(fallbackLocale.equalsIgnoreCase(locale))
+                continue;
+            logger.info("Can't find pattern for locale [{}], look for fallback locale [{}] pattern as fallback!", locale, fallbackLocale);
+            patterns = getPatternsByLocale(fallbackLocale);
             if (patterns != null) {
                 new FormattingCacheService().addPatterns(locale, patterns);
-                logger.debug("Default locale's pattern is cached for locale [{}]!\n\n", locale);
+                logger.debug("Fallback locale [{}] pattern is cached for locale [{}]!\n\n", fallbackLocale, locale);
                 return patterns;
             }
         }
@@ -43,7 +48,8 @@ public class PatternService {
     }
 
     public JSONObject getPatternsByLocale(String locale) {
-        locale = locale.replace("_", "-");
+        if(locale != null && !locale.isEmpty())
+            locale = locale.replace("_", "-");
         JSONObject patterns = null;
         logger.debug("Look for pattern from cache for locale [{}]!", locale);
         FormattingCacheService formattingCacheService = new FormattingCacheService();
@@ -67,12 +73,16 @@ public class PatternService {
         if (patterns != null) {
             return patterns;
         }
-        if (!LocaleUtility.isDefaultLocale(new Locale(language, region))) {
-            logger.info("Can't find pattern for language [{}] region [{}], look for default locale's pattern as fallback!", language, region);
-            patterns = getPatternsByLocale(LocaleUtility.getDefaultLocale().toLanguageTag());
+        Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
+        while (fallbackLocalesIter.hasNext()) {
+            String fallbackLocale = fallbackLocalesIter.next().toLanguageTag();
+            if(fallbackLocale.equalsIgnoreCase(new Locale(language, region).toLanguageTag()))
+                continue;
+            logger.info("Can't find pattern for language [{}] region [{}], look for fallback locale [{}] pattern as fallback!", language, region, fallbackLocale);
+            patterns = getPatternsByLocale(fallbackLocale);
             if (patterns != null) {
                 new FormattingCacheService().addPatterns(language, region, patterns);
-                logger.debug("Default locale's pattern is cached for language [{}], region [{}]!\n\n", language, region);
+                logger.debug("Fallback locale [{}] pattern is cached for language [{}], region [{}]!\n\n", fallbackLocale, language, region);
                 return patterns;
             }
         }

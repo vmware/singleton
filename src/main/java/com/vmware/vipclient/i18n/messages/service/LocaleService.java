@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.Locale;
 import java.util.Map;
@@ -34,19 +35,25 @@ public class LocaleService {
         if (regionMap != null) {
             return regionMap;
         }
-        if (!LocaleUtility.isDefaultLocale(locale)) {
-            logger.info("Can't find regions for locale [{}], look for default locale's regions as fallback!", locale);
-            regionMap = getRegionsByLocale(LocaleUtility.getDefaultLocale().toLanguageTag());
+        Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
+        while (fallbackLocalesIter.hasNext()) {
+            String fallbackLocale = fallbackLocalesIter.next().toLanguageTag();
+            if(fallbackLocale.equalsIgnoreCase(locale))
+                continue;
+            logger.info("Can't find regions for locale [{}], look for fallback locale [{}] regions as fallback!", locale, fallbackLocale);
+            regionMap = getRegionsByLocale(fallbackLocale);
             if (regionMap != null) {
                 new FormattingCacheService().addRegions(locale, regionMap);
-                logger.debug("Default locale's regions is cached for locale [{}]!\n\n", locale);
+                logger.debug("Fallback locale [{}] regions is cached for locale [{}]!\n\n", fallbackLocale, locale);
+                break;
             }
         }
         return regionMap;
     }
 
     public Map<String, String> getRegionsByLocale(String locale){
-        locale = locale.replace("_", "-").toLowerCase();
+        if(locale != null && !locale.isEmpty())
+            locale = locale.replace("_", "-").toLowerCase();
         Map<String, String> regionMap = null;
         logger.debug("Look for region list from cache for locale [{}]", locale);
         FormattingCacheService formattingCacheService = new FormattingCacheService();
@@ -86,21 +93,26 @@ public class LocaleService {
         if(dispMap != null && !dispMap.isEmpty()){
             return dispMap;
         }
-        if (locale != null && !locale.isEmpty() && !LocaleUtility.isDefaultLocale(locale)) {
-            logger.info("Can't find supported languages for locale [{}], look for default locale's languages as fallback!", locale);
-            Locale fallbackLocale = LocaleUtility.getDefaultLocale();
-            dispMap = getSupportedDisplayNamesByLocale(fallbackLocale.toLanguageTag());
+        Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
+        while (fallbackLocalesIter.hasNext()) {
+            String fallbackLocale = fallbackLocalesIter.next().toLanguageTag();
+            if(fallbackLocale.equalsIgnoreCase(locale))
+                continue;
+            logger.info("Can't find supported languages for locale [{}], look for fallback locale [{}] languages as fallback!", locale, fallbackLocale);
+            dispMap = getSupportedDisplayNamesByLocale(fallbackLocale);
             if (dispMap != null && dispMap.size() > 0) {
                 new FormattingCacheService().addSupportedLanguages(dto, locale, dispMap);
-                logger.debug("Default locale's displayNames is cached for product [{}], version [{}], locale [{}]!\n\n",
-                        dto.getProductID(), dto.getVersion(), locale);
+                logger.debug("Fallback locale [{}] displayNames is cached for product [{}], version [{}], locale [{}]!\n\n",
+                        fallbackLocale, dto.getProductID(), dto.getVersion(), locale);
+                break;
             }
         }
         return dispMap;
     }
 
     public Map<String, String> getSupportedDisplayNamesByLocale(String locale) {
-        locale = locale.replace("_", "-").toLowerCase();
+        if(locale != null && !locale.isEmpty())
+            locale = locale.replace("_", "-").toLowerCase();
         Map<String, String> dispMap = new HashMap<String, String>();
         logger.debug("Look for displayNames from cache for locale [{}]", locale);
         FormattingCacheService formattingCacheService = new FormattingCacheService();
@@ -109,7 +121,6 @@ public class LocaleService {
             logger.debug("Find displayNames from cache for product [{}], version [{}], locale [{}]!", dto.getProductID(), dto.getVersion(), locale);
             return dispMap;
         }
-        //cacheItem = new FormatCacheItem();
         dispMap = getSupportedLanguagesFromDS(locale, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
         if (dispMap != null && dispMap.size() > 0) {
             logger.debug("Find the displayNames for product [{}], version [{}], locale [{}].\n", dto.getProductID(), dto.getVersion(), locale);
