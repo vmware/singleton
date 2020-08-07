@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.vmware.i18n.l2.service.date.DateDTO;
 import com.vmware.i18n.l2.service.date.IDateFormatService;
+import com.vmware.i18n.utils.timezone.TimeZoneName;
 import com.vmware.vip.api.rest.API;
 import com.vmware.vip.api.rest.APIOperation;
 import com.vmware.vip.api.rest.APIParamName;
@@ -23,6 +24,7 @@ import com.vmware.vip.api.rest.APIParamValue;
 import com.vmware.vip.api.rest.APIV2;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
+import com.vmware.vip.core.messages.exception.L2APIException;
 import com.vmware.vip.i18n.api.base.BaseAction;
 
 import io.swagger.annotations.ApiOperation;
@@ -73,5 +75,15 @@ public class FormattingDateAPI extends BaseAction{
         dateDTO.setLocale(locale);
         dateDTO.setPattern(pattern);
         return super.handleResponse(APIResponseStatus.OK, dateDTO);
+    }
+    
+    @RequestMapping(value = APIV2.LOCALIZED_TIMEZONE_NAME, method = RequestMethod.GET, produces = { API.API_CHARSET })
+   	@ResponseStatus(HttpStatus.OK)
+    public APIResponseDTO getDisplayTimezoneNameList(
+            @ApiParam(name = APIParamName.DISPLAY_LANGUAGE, required = true, value = APIParamValue.DISPLAY_LANGUAGE) @RequestParam(value = APIParamName.DISPLAY_LANGUAGE, required = true) String displayLanguage,
+            @ApiParam(name = APIParamName.DEFAULT_TERRITORY, required = false, value = APIParamValue.DEFAULT_TERRITORY) @RequestParam(value = APIParamName.DEFAULT_TERRITORY, required = false, defaultValue = "true") String defaultTerritory
+    ) throws L2APIException{
+    	TimeZoneName jsonObj = dateFormatService.getTimeZoneName(displayLanguage, Boolean.parseBoolean(defaultTerritory));
+        return super.handleResponse(APIResponseStatus.OK, jsonObj);
     }
 }
