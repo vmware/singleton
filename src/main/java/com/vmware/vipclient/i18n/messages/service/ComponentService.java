@@ -99,7 +99,8 @@ public class ComponentService {
     	MessageCacheItem cacheItem = null;
     	if (cacheService.isContainComponent()) { // Item is in cache
     		cacheItem = cacheService.getCacheOfComponent();
-    		if (cacheItem.isExpired()) { // cacheItem has expired
+			// If the cacheItem is either expired or for a fallback locale
+    		if (cacheItem.isExpired() || !cacheItem.getLocale().equals(this.dto.getLocale())) {
     			// Update the cache in a separate thread
     			populateCacheTask(cacheItem);
     		}

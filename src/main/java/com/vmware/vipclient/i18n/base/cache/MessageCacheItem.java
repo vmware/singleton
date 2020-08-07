@@ -31,9 +31,9 @@ public class MessageCacheItem implements CacheItem {
 	
 	private final Map<String, String> cachedData = new HashMap<>();
 
-	public synchronized void setCacheItem(String locale, Map<String, String> cachedData, String etag, long timestamp, Long maxAgeMillis) {
-		if (cachedData != null)
-			this.cachedData.putAll(cachedData);
+	public synchronized void setCacheItem(String locale, Map<String, String> dataToCache, String etag, long timestamp, Long maxAgeMillis) {
+		if (dataToCache != null)
+			this.cachedData.putAll(dataToCache);
 		this.setCacheItem(locale, etag, timestamp, maxAgeMillis);
 	}
 	public synchronized void setCacheItem(String locale, String etag, long timestamp, Long maxAgeMillis) {
@@ -67,7 +67,7 @@ public class MessageCacheItem implements CacheItem {
 
 	public String getLocale() { return locale; }
 
-	public boolean isExpired() {
+	public synchronized boolean isExpired() {
 		// If offline mode only, cache never expires.
 		if (VIPCfg.getInstance().getVipServer() == null) {
 			return false;
