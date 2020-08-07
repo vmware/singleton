@@ -4,7 +4,6 @@
  */
 package com.vmware.l10n.conf;
 
-import java.io.PrintWriter;
 import java.time.LocalDateTime;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,17 +30,16 @@ public class CspAuthInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(final HttpServletRequest request, final HttpServletResponse response, final Object handler)
 			throws Exception {
-		PrintWriter writer = response.getWriter();
 		String token = request.getHeader(CSP_AUTH_TOKEN);
 		if(token == null) {
 			response.setStatus(HttpStatus.FORBIDDEN.value());
-			writer.write(this.buildRespBody(HttpStatus.FORBIDDEN.value(), ConstantsKeys.TOKEN_NOT_FOUND_ERROR));
+			response.getWriter().write(this.buildRespBody(HttpStatus.FORBIDDEN.value(), ConstantsKeys.TOKEN_NOT_FOUND_ERROR));
 			return false;
 		}
 		if (!tokenService.isTokenValid(token)) {
 			// The user is not authenticated.
 			response.setStatus(HttpStatus.UNAUTHORIZED.value());
-			writer.write(this.buildRespBody(HttpStatus.UNAUTHORIZED.value(), ConstantsKeys.TOKEN_VALIDATION_ERROR));
+			response.getWriter().write(this.buildRespBody(HttpStatus.UNAUTHORIZED.value(), ConstantsKeys.TOKEN_VALIDATION_ERROR));
 			return false;
 		}
 		return true;

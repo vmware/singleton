@@ -92,6 +92,7 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 		if (request == null) { 
 			return;
 		}
+		validateWhiteList(request, whiteList);
 		validateProductname(request);
 		validateVersion(request);
 		validateComponent(request);
@@ -100,8 +101,6 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 		validateSourceformat(request);
 		validateCollectsource(request);
 		validatePseudo(request);
-		validateWhiteList(request, whiteList);
-	
 	}
 
 	@SuppressWarnings("unchecked")
