@@ -69,7 +69,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 			registry.addInterceptor(new CspAuthInterceptor(tokenService))
 			.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/**");
 		}
-		logger.info("add collect source validation interceptor");
+		logger.info("add source collection validation interceptor");
 		registry.addInterceptor(new CollectSourceValidationInterceptor(parseLocales(this.collectLocales), WhiteListUtils.getWhiteList(whiteListLocation))).addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/**");
 	}
 	

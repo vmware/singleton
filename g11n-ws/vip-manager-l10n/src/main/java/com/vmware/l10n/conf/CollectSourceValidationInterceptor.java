@@ -31,13 +31,13 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 	
 	private static Logger LOGGER = LoggerFactory.getLogger(CollectSourceValidationInterceptor.class);
 	
-	public CollectSourceValidationInterceptor(List<String> sourceLocales, Map<String, List<String>> whiteListMap) {
+	public CollectSourceValidationInterceptor(List<String> sourceLocales, Map<String, List<String>> allowListMap) {
 		this.sourceLocales = sourceLocales;
-		this.whiteList = whiteListMap;
+		this.allowList = allowListMap;
 	}
 	
 	private List<String> sourceLocales;
-	private Map<String, List<String>> whiteList;
+	private Map<String, List<String>> allowList;
 	
 	/**
 	 * Collect new source and send to l10n server
@@ -59,7 +59,7 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 		LOGGER.debug(logOfUrl);
 		LOGGER.debug(logOfQueryStr);
 		try {
-			validate(request, this.sourceLocales, this.whiteList); 
+			validate(request, this.sourceLocales, this.allowList); 
 		} catch (VIPAPIException e) {
 			LOGGER.warn(e.getMessage());
 			Response r = new Response();
@@ -92,7 +92,7 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 		if (request == null) { 
 			return;
 		}
-		validateWhiteList(request, whiteList);
+		validateAllowList(request, whiteList);
 		validateProductname(request);
 		validateVersion(request);
 		validateComponent(request);
@@ -227,7 +227,7 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 	}
 	
 	@SuppressWarnings("unchecked")
-	private static void validateWhiteList(HttpServletRequest request, Map<String, List<String>> whiteList) 
+	private static void validateAllowList(HttpServletRequest request, Map<String, List<String>> allowList) 
 			throws VIPAPIException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
@@ -239,8 +239,8 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 		if (StringUtils.isEmpty(productName) || StringUtils.isEmpty(version)) {
 			return;
 		}
-		if(!whiteList.isEmpty() && whiteList.containsKey(productName)
-				&& whiteList.get(productName).contains(version)) {
+		if(!allowList.isEmpty() && allowList.containsKey(productName)
+				&& allowList.get(productName).contains(version)) {
 			return;
 		}else {
 			throw new VIPAPIException(String.format(ValidationMsg.PRODUCTNAME_NOT_SUPPORTED, productName));
