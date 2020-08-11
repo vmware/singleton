@@ -30,7 +30,7 @@ public class SourceUtils {
 	public static SourceAPIResponseDTO handleSourceResponse(boolean isSourceCached){
 		SourceAPIResponseDTO sourceAPIResponseDTO = new SourceAPIResponseDTO();
 		if (isSourceCached) {
-			sourceAPIResponseDTO.setStatus(APIResponseStatus.TRANSLATION_COLLECT_SUCCESS);
+			sourceAPIResponseDTO.setStatus(APIResponseStatus.TRANSLATION_COLLECT_REQUEST_SUCCESS);
 		} else {
 			sourceAPIResponseDTO.setStatus(APIResponseStatus.TRANSLATION_COLLECT_FAILURE);
 		}

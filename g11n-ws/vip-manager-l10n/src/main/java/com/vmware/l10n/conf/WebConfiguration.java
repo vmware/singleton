@@ -63,14 +63,14 @@ public class WebConfiguration implements WebMvcConfigurer {
     
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		logger.info("add collect source validation interceptor");
-		registry.addInterceptor(new CollectSourceValidationInterceptor(parseLocales(this.collectLocales), WhiteListUtils.getWhiteList(whiteListLocation))).addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/**");
 		// CSP authentication
 		if (cspAuthFlag.equalsIgnoreCase("true")) {
 			logger.info("add enable CSP authentication interceptor");
 			registry.addInterceptor(new CspAuthInterceptor(tokenService))
 			.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/**");
 		}
+		logger.info("add source collection validation interceptor");
+		registry.addInterceptor(new CollectSourceValidationInterceptor(parseLocales(this.collectLocales), WhiteListUtils.getWhiteList(whiteListLocation))).addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/**");
 	}
 	
 	private List<String> parseLocales(String localesString){
