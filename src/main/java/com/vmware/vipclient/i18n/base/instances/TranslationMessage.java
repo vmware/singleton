@@ -122,7 +122,7 @@ public class TranslationMessage implements Message {
             translation = s.getString();
             // if the source is not equal to remote's source version, return the
             // source as latest, not return the old translation
-            if (source != null && !"".equals(source) && !VIPCfg.getInstance().isPseudo()) {
+            if (source != null && !"".equals(source) && !source.equals(key) && !VIPCfg.getInstance().isPseudo()) {
                 dto.setLocale(LocaleUtility.defaultLocale.toLanguageTag());
                 String remoteEnMsg = s.getString();
                 if (!source.equals(remoteEnMsg)) {
