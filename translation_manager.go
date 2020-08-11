@@ -15,7 +15,7 @@ type transMgr struct {
 }
 
 func newTransMgr(t Translation, fblocales []string) *transMgr {
-	return &transMgr{Translation: t, fallbackChain : fblocales}
+	return &transMgr{Translation: t, fallbackChain: fblocales}
 }
 
 // GetStringMessage Get a message with optional arguments
@@ -30,11 +30,11 @@ func (t *transMgr) GetStringMessage(name, version, locale, component, key string
 		logger.Warn(fmt.Sprintf("fall back to locale '%s'", t.fallbackChain[m]))
 		message, err = t.Translation.GetStringMessage(name, version, t.fallbackChain[m], component, key, args...)
 		if err == nil {
-			break
+			return message, nil
 		}
 	}
 	if err != nil {
-		return "", err
+		return key, err
 	}
 
 	return message, nil

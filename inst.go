@@ -45,7 +45,7 @@ func Initialize(cfg *Config) {
 }
 
 func (i *instance) doInitialize() {
-	logger.Debug("Initializing Singleton client.")
+	logger.Info("Initializing Singleton client")
 
 	var originList messageOriginList
 	if len(i.cfg.ServerURL) != 0 {

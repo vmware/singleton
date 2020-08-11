@@ -231,7 +231,7 @@ func isHTTPSuccess(code int) bool {
 }
 
 func isBusinessSuccess(code int) bool {
-	return code >= 200 && code < 300
+	return (code >= 200 && code < 300) || (code >= 600 && code < 700)
 }
 
 //!- common functions

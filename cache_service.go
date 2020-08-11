@@ -24,7 +24,7 @@ const (
 	updating
 )
 
-//!+cacheService
+// !+cacheService
 type cacheService struct {
 	origins         messageOriginList
 	updateStatusMap sync.Map
@@ -69,7 +69,10 @@ func (s *cacheService) refresh(item *dataItem, exist bool) error {
 	status := s.getStatus(item)
 	if status.setUpdating() {
 		defer status.setUpdated()
-		logger.Debug(fmt.Sprintf("Start fetching ID: %+v", item.id))
+		logger.Info(fmt.Sprintf("Start fetching ID: %+v", item.id))
+
+		info := getCacheInfo(item)
+		startTime := time.Now().Unix()
 		for _, dao := range s.origins {
 			if exist && !dao.IsExpired(item) {
 				return nil
@@ -77,8 +80,6 @@ func (s *cacheService) refresh(item *dataItem, exist bool) error {
 
 			switch dao.(type) {
 			case *serverDAO:
-				startTime := time.Now().Unix()
-				info := getCacheInfo(item)
 				item.attrs = info
 				err = dao.Get(item)
 				if isSuccess(err) {
@@ -97,16 +98,18 @@ func (s *cacheService) refresh(item *dataItem, exist bool) error {
 			case *bundleDAO:
 				err = dao.Get(item)
 				if err == nil {
+					info.setTime(startTime)
 					cache.Set(item.id, item.data)
 					return nil
 				}
 			}
-		}
 
-		if e, ok := err.(stackTracer); ok {
-			logger.Error(fmt.Sprintf(originFail+": %#v", e))
-		} else {
-			logger.Error(fmt.Sprintf(originFail+": %s", err.Error()))
+			if err != nil {
+				logger.Error(fmt.Sprintf(originQueryFailure, dao, err.Error()))
+				if e, ok := err.(stackTracer); ok {
+					logger.Error(fmt.Sprintf("%+v", e.StackTrace()))
+				}
+			}
 		}
 
 		return err
@@ -127,9 +130,9 @@ func (s *cacheService) getStatus(item *dataItem) *itemUpdateStatus {
 	}
 }
 
-//!-cacheService
+// !-cacheService
 
-//!+itemUpdateStatus
+// !+itemUpdateStatus
 type itemUpdateStatus struct {
 	status uint32
 }
@@ -149,7 +152,7 @@ func (i *itemUpdateStatus) waitUpdate() {
 	}
 }
 
-//!-itemUpdateStatus
+// !-itemUpdateStatus
 
 var cacheControlRE = regexp.MustCompile(`(?i)\bmax-age\b\s*=\s*\b(\d+)\b`)
 
@@ -169,7 +172,7 @@ func updateCacheControl(headers http.Header, info *itemCacheInfo) {
 	}
 
 	info.setAge(cacheDefaultExpires)
-	logger.Error("Wrong cache control: " + cc)
+	logger.Warn("Wrong cache control: " + cc)
 }
 
 func isSuccess(err error) bool {
