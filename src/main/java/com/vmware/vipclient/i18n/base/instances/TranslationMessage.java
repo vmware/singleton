@@ -119,9 +119,9 @@ public class TranslationMessage implements Message {
 
         if (args != null) {
             if (args instanceof Object[] && ((Object[]) args).length > 0) {
-                    translation = FormatUtils.format(translation, locale, (Object[]) args);
+                translation = FormatUtils.format(translation, locale, (Object[]) args);
             } else if (args instanceof Map<?, ?> && ((Map) args).size() > 0) {
-                    translation = FormatUtils.formatMsg(translation, locale, (Map<String, Object>) args);
+                translation = FormatUtils.formatMsg(translation, locale, (Map<String, Object>) args);
             }
         }
 
@@ -427,6 +427,8 @@ public class TranslationMessage implements Message {
 
         // get translation from VIP service
         String msg = getStringWithArgs(locale, component, key, source, "", args);
+
+        // return translation -> source -> key
         if (StringUtil.isEmpty(msg))
             msg = StringUtil.isEmpty(source) ? key : source;
 
