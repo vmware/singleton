@@ -33,95 +33,6 @@ public class ComponentService {
     }
 
 	/**
-	 * Get MessageCacheItem from cache.
-	 * The cache is refreshed if MessageCacheItem is expired or not found.
-	 * Pre-configured locale fallback queue is used on failure.
-	 *
-	 * @return A MessageCacheItem whose message map is one of the items in the following priority-ordered list:
-	 * <ul>
-	 * 		<li>The messages in the requested locale</li>
-	 * 		<li>The messages in a default locale</li>
-	 * 		<li>The source messages</li>
-	 * 		<li>An empty map</li>
-	 * </ul>
-	 */
-	public MessageCacheItem getMessages() {
-		Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
-		return this.getMessages(fallbackLocalesIter);
-	}
-
-	/**
-	 * Get MessageCacheItem from cache.
-	 * The cache is refreshed if MessageCacheItem is expired or not found.
-	 *
-	 * @param fallbackLocalesIter The locale fallback queue to be used on failure. If null, there will be no fallback mechanism on failure so the message map will be empty.
-	 *
-	 * @return A MessageCacheItem whose data map is one of the following:
-	 * <ul>
-	 * 		<li>The messages in the requested locale</li>
-	 * 	 	<li>An empty map if the messages are not available in the requested locale</li>
-	 * </ul>
-	 */
-    public MessageCacheItem getMessages(Iterator<Locale> fallbackLocalesIter) {
-    	CacheService cacheService = new CacheService(dto);
-    	MessageCacheItem cacheItem = null;
-    	if (cacheService.isContainComponent()) { // Item is in cache
-    		cacheItem = cacheService.getCacheOfComponent();
-			// If the cacheItem is either expired or for a fallback locale
-    		if (cacheItem.isExpired()) {
-    			// Refresh the cacheItem in a separate thread
-    			refreshCacheItemTask(cacheItem);
-    		}
-    		if (!LocaleUtility.isSameLocale(cacheService.getCacheOfComponent().getLocale(), this.dto.getLocale())) {
-				this.storeCacheItemTask(fallbackLocalesIter);
-			}
-    	} else { // Item is not in cache
-    		cacheItem = storeCacheItem(fallbackLocalesIter);
-    	}
-    	return cacheItem;
-    }
-
-	/**
-	 * Fetches a new MessageCacheItem for the DTO and stores it in cache.
-	 *
-	 * @param fallbackLocalesIter The fallback locale queue to use in case of failure.
-	 *
-	 */
-    private MessageCacheItem storeCacheItem(Iterator<Locale> fallbackLocalesIter) {
-		CacheService cacheService = new CacheService(dto);
-		// Create a new cacheItem object to be stored in cache
-		MessageCacheItem cacheItem = new MessageCacheItem();
-		refreshCacheItem(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().iterator());
-
-		if (!cacheItem.getCachedData().isEmpty()) {
-			cacheService.addCacheOfComponent(cacheItem);
-		} else if (!dto.getLocale().equals(ConstantsKeys.SOURCE) && fallbackLocalesIter!=null && fallbackLocalesIter.hasNext()) {
-			// If failed to fetch message, use MessageCacheItem of the next fallback locale.
-			MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), fallbackLocalesIter.next().toLanguageTag(), dto.getProductID(), dto.getVersion());
-			cacheItem = new ComponentService(fallbackLocaleDTO).getMessages(fallbackLocalesIter);
-			if (!cacheItem.getCachedData().isEmpty()) {
-				cacheService.addCacheOfComponent(cacheItem);
-			}
-		}
-		return cacheItem;
-	}
-
-	private void storeCacheItemTask(Iterator<Locale> fallbackLocalesIter) {
-		Callable<MessageCacheItem> callable = () -> {
-			try {
-				return this.storeCacheItem(fallbackLocalesIter);
-			} catch (Exception e) {
-				// To make sure that the thread will close
-				// even when an exception is thrown
-				return null;
-			}
-		};
-		FutureTask<MessageCacheItem> task = new FutureTask<>(callable);
-		Thread thread = new Thread(task);
-		thread.start();
-	}
-
-	/**
 	 * Fetches data and populates the MessageCacheItem
 	 *
 	 * @param cacheItem The MessageCacheItem to populate/refresh data in. The following properties of cacheItem will be populated/refreshed:
@@ -157,6 +68,95 @@ public class ComponentService {
 				logger.debug(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED_ALL, dto.getComponent(), dto.getLocale()));
 			}
 		}
+	}
+
+	/**
+	 * Get MessageCacheItem from cache.
+	 * The cache is refreshed if MessageCacheItem is expired or not found.
+	 * Pre-configured locale fallback queue is used on failure.
+	 *
+	 * @return A MessageCacheItem whose message map is one of the items in the following priority-ordered list:
+	 * <ul>
+	 * 		<li>The messages in the requested locale</li>
+	 * 		<li>The messages in a default locale</li>
+	 * 		<li>The source messages</li>
+	 * 		<li>An empty map</li>
+	 * </ul>
+	 */
+	public MessageCacheItem getMessages() {
+		Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
+		return this.getMessages(fallbackLocalesIter);
+	}
+
+	/**
+	 * Get MessageCacheItem from cache.
+	 * The cache is refreshed if MessageCacheItem is expired or not found.
+	 *
+	 * @param fallbackLocalesIter The locale fallback queue to be used on failure. If null, there will be no fallback mechanism on failure so the message map will be empty.
+	 *
+	 * @return A MessageCacheItem whose data map is one of the following:
+	 * <ul>
+	 * 		<li>The messages in the requested locale</li>
+	 * 	 	<li>An empty map if the messages are not available in the requested locale</li>
+	 * </ul>
+	 */
+    public MessageCacheItem getMessages(Iterator<Locale> fallbackLocalesIter) {
+    	CacheService cacheService = new CacheService(dto);
+    	MessageCacheItem cacheItem = null;
+    	if (cacheService.isContainComponent()) { // Item is in cache
+    		cacheItem = cacheService.getCacheOfComponent();
+    		if (cacheItem.isExpired()) { // cacheItem has expired
+    			// Refresh the cacheItem in a separate thread
+    			refreshCacheItemTask(cacheItem);
+    		}
+			// If the cacheItem is for a fallback locale, create and store cacheItem for the requested locale in a separate thread.
+    		if (!LocaleUtility.isSameLocale(cacheItem.getLocale(), this.dto.getLocale())) {
+				this.storeCacheItemTask(fallbackLocalesIter);
+			}
+    	} else { // Item is not in cache. Create and store cacheItem for the requested locale
+    		cacheItem = storeCacheItem(fallbackLocalesIter);
+    	}
+    	return cacheItem;
+    }
+
+	/**
+	 * Creates a new MessageCacheItem for the DTO and stores it in cache.
+	 *
+	 * @param fallbackLocalesIter The fallback locale queue to use in case of failure.
+	 *
+	 */
+    private MessageCacheItem storeCacheItem(Iterator<Locale> fallbackLocalesIter) {
+		CacheService cacheService = new CacheService(dto);
+		// Create a new cacheItem object to be stored in cache
+		MessageCacheItem cacheItem = new MessageCacheItem();
+		refreshCacheItem(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().iterator());
+
+		if (!cacheItem.getCachedData().isEmpty()) {
+			cacheService.addCacheOfComponent(cacheItem);
+		} else if (!dto.getLocale().equals(ConstantsKeys.SOURCE) && fallbackLocalesIter!=null && fallbackLocalesIter.hasNext()) {
+			// If failed to fetch message for the requetsed DTO, use MessageCacheItem of the next fallback locale.
+			MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), fallbackLocalesIter.next().toLanguageTag(), dto.getProductID(), dto.getVersion());
+			cacheItem = new ComponentService(fallbackLocaleDTO).getMessages(fallbackLocalesIter);
+			if (!cacheItem.getCachedData().isEmpty()) {
+				cacheService.addCacheOfComponent(cacheItem);
+			}
+		}
+		return cacheItem;
+	}
+
+	private void storeCacheItemTask(Iterator<Locale> fallbackLocalesIter) {
+		Callable<MessageCacheItem> callable = () -> {
+			try {
+				return this.storeCacheItem(fallbackLocalesIter);
+			} catch (Exception e) {
+				// To make sure that the thread will close
+				// even when an exception is thrown
+				return null;
+			}
+		};
+		FutureTask<MessageCacheItem> task = new FutureTask<>(callable);
+		Thread thread = new Thread(task);
+		thread.start();
 	}
 
 	private void refreshCacheItemTask(MessageCacheItem cacheItem) {
