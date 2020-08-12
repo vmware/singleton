@@ -100,7 +100,7 @@ public class NumberFormatService {
         PatternMessage p = (PatternMessage) factory.getMessageInstance(PatternMessage.class);
         JSONObject localeFormatData = (JSONObject) p.getPatternMessage(locale);
         if(localeFormatData == null) {
-            throw new RuntimeException("No format pattern data found for locale " + value + " !");
+            throw new RuntimeException("No format pattern data found for locale " + locale + " !");
         }
         if (style == NumberFormat.CURRENCYSTYLE) {
             validateCurrencyCode(currencyCode);
