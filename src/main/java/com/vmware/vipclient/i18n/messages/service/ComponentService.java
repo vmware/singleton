@@ -102,7 +102,7 @@ public class ComponentService {
 			// If the cacheItem is either expired or for a fallback locale
     		if (cacheItem.isExpired()) {
     			// Update the cache in a separate thread
-    			populateCacheTask(cacheItem);
+    			refreshCacheItemTask(cacheItem);
     		}
     	}
     	// Item is not in cache OR item in cache is for a fallback locale
@@ -126,21 +126,28 @@ public class ComponentService {
     	return cacheItem;
     }
 
-	private void populateCacheTask(MessageCacheItem cacheItem) {
+	/**
+	 * Refreshes the properties of a MessageCacheItem.
+	 *
+	 * @param cacheItem The MessageCacheItem that was found in cache. The following properties of cacheItem will be refreshed:
+	 * <ul>
+	 * 		<li>The cachedData map which holds the localized messages</li>
+	 * 		<li>The timestamp of when the messages were fetched</li>
+	 * 		<li>The maxAgeMillis which tells how long before the cacheData map is considered to be expired.</li>
+	 * 	    <li>The eTag, if any, which will be used in the succeeding cache refresh.</li>
+	 * </ul>
+	 */
+	private void refreshCacheItemTask(MessageCacheItem cacheItem) {
 		Callable<MessageCacheItem> callable = () -> {
     		try {
-    			/* Pass cacheItem to fetchMessages so that:
-					1. A previously stored etag, if any, can be used for the next HTTP request.
-					2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed
-						with new values from the next HTTP response.
-				*/
+    			// Get the locale of the cacheItem object. It may not be the same as the requested DTO's locale (e.g. the cacheItem is for a fallback locale).
 				String cacheItemLocale = cacheItem.getLocale();
-    			if (LocaleUtility.isSameLocale(cacheItemLocale, this.dto.getLocale())) {
-					fetchMessages(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-				} else {  //If cacheItem's locale is not the requested locale, it means it is for a fallback locale. Hence, refresh the appropriate fallback locale's cache
-					MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), cacheItemLocale, dto.getProductID(), dto.getVersion());
-					new ComponentService(fallbackLocaleDTO).fetchMessages(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-				}
+
+				// Refresh the properties of the cacheItem accordingly by passing a DTO with the correct locale
+				// to ComponentService, so that it will fetch messages for the correct locale to refresh the cacheItem.
+				MessagesDTO cacheItemDTO = new MessagesDTO(dto.getComponent(), cacheItemLocale, dto.getProductID(), dto.getVersion());
+				new ComponentService(cacheItemDTO).fetchMessages(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
+
 				return cacheItem;
     		} catch (Exception e) { 
     			// To make sure that the thread will close 
