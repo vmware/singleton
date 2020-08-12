@@ -149,7 +149,6 @@ public class TranslationMessage implements Message {
             dto.setProductID(cfg.getProductName());
             dto.setVersion(cfg.getVersion());
         }
-
         StringService s = new StringService(dto);
         String translation = "";
         if (!LocaleUtility.isDefaultLocale(locale)) {
@@ -201,7 +200,7 @@ public class TranslationMessage implements Message {
                     translation = FormatUtils.formatMsg(translation,
                             LocaleUtility.defaultLocale, (Map<String, Object>) args);
                 } else {
-                    translation = FormatUtils.formatMsg(translation, locale, (Map<String, Object>) args);
+                    translation = FormatUtils.formatMsg(translation, locale, (Map) args);
                 }
             }
         }
@@ -418,7 +417,7 @@ public class TranslationMessage implements Message {
         if (key == null || key.equalsIgnoreCase(""))
             return "";
 
-        String source = "";
+        String source = null;
         try {
             ResourceBundle rb = ResourceBundle.getBundle(bundle, LocaleUtility.defaultLocale);
             source = rb.getString(key);
@@ -429,7 +428,7 @@ public class TranslationMessage implements Message {
         // get translation from VIP service
         String msg = getStringWithArgs(locale, component, key, source, "", args);
         if (StringUtil.isEmpty(msg))
-            msg = "".equals(source) ? key : source;
+            msg = StringUtil.isEmpty(source) ? key : source;
 
         return msg;
     }
