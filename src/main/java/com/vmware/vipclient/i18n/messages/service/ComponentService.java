@@ -111,10 +111,10 @@ public class ComponentService {
     		}
 			// If the cacheItem is for a fallback locale, create and store cacheItem for the requested locale in a separate thread.
     		if (!LocaleUtility.isSameLocale(cacheItem.getLocale(), this.dto.getLocale())) {
-				this.storeCacheItemTask(fallbackLocalesIter);
+				this.createCacheItemTask(fallbackLocalesIter);
 			}
     	} else { // Item is not in cache. Create and store cacheItem for the requested locale
-    		cacheItem = storeCacheItem(fallbackLocalesIter);
+    		cacheItem = createCacheItem(fallbackLocalesIter);
     	}
     	return cacheItem;
     }
@@ -125,7 +125,7 @@ public class ComponentService {
 	 * @param fallbackLocalesIter The fallback locale queue to use in case of failure.
 	 *
 	 */
-    private MessageCacheItem storeCacheItem(Iterator<Locale> fallbackLocalesIter) {
+    private MessageCacheItem createCacheItem(Iterator<Locale> fallbackLocalesIter) {
 		CacheService cacheService = new CacheService(dto);
 		// Create a new cacheItem object to be stored in cache
 		MessageCacheItem cacheItem = new MessageCacheItem();
@@ -144,10 +144,10 @@ public class ComponentService {
 		return cacheItem;
 	}
 
-	private void storeCacheItemTask(Iterator<Locale> fallbackLocalesIter) {
+	private void createCacheItemTask(Iterator<Locale> fallbackLocalesIter) {
 		Callable<MessageCacheItem> callable = () -> {
 			try {
-				return this.storeCacheItem(fallbackLocalesIter);
+				return this.createCacheItem(fallbackLocalesIter);
 			} catch (Exception e) {
 				// To make sure that the thread will close
 				// even when an exception is thrown
