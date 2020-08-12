@@ -127,6 +127,7 @@ public class TranslationMessage implements Message {
     }
 
     private String getStringWithoutSource(MessagesDTO dto, final Object args) {
+        Locale locale = Locale.forLanguageTag(dto.getLocale());
         String translation = new StringService(dto).getString();
         if (StringUtil.isEmpty(translation)) {
             return "";
