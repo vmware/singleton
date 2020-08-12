@@ -100,11 +100,14 @@ public class ComponentService {
     	if (cacheService.isContainComponent()) { // Item is in cache
     		cacheItem = cacheService.getCacheOfComponent();
 			// If the cacheItem is either expired or for a fallback locale
-    		if (cacheItem.isExpired() || !cacheItem.getLocale().equals(this.dto.getLocale())) {
+    		if (cacheItem.isExpired()) {
     			// Update the cache in a separate thread
     			populateCacheTask(cacheItem);
     		}
-    	} else { // Item is not in cache
+    	}
+    	// Item is not in cache OR item in cache is for a fallback locale
+    	if (!cacheService.isContainComponent() ||
+				(cacheService.isContainComponent() && !LocaleUtility.isSameLocale(cacheService.getCacheOfComponent().getLocale(), this.dto.getLocale()))) {
     		// Create a new cacheItem object to be stored in cache
     		cacheItem = new MessageCacheItem();
     		fetchMessages(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().iterator());
@@ -122,7 +125,7 @@ public class ComponentService {
     	}
     	return cacheItem;
     }
-    
+
 	private void populateCacheTask(MessageCacheItem cacheItem) {
 		Callable<MessageCacheItem> callable = () -> {
     		try {
@@ -132,7 +135,7 @@ public class ComponentService {
 						with new values from the next HTTP response.
 				*/
 				String cacheItemLocale = cacheItem.getLocale();
-    			if (cacheItemLocale.equals(this.dto.getLocale())) {
+    			if (LocaleUtility.isSameLocale(cacheItemLocale, this.dto.getLocale())) {
 					fetchMessages(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
 				} else {  //If cacheItem's locale is not the requested locale, it means it is for a fallback locale. Hence, refresh the appropriate fallback locale's cache
 					MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), cacheItemLocale, dto.getProductID(), dto.getVersion());
