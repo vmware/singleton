@@ -101,23 +101,6 @@ public class TranslationMessage implements Message {
         return getStringWithArgs(locale, component, key, source, comment, args);
     }
 
-    private String getStringWithoutSource(MessagesDTO dto, final Object args) {
-        String translation = new StringService(dto).getString();
-        if (StringUtil.isEmpty(translation)) {
-            return "";
-        }
-
-        if (args != null) {
-            if (args instanceof Object[] && ((Object[]) args).length > 0) {
-                translation = FormatUtils.format(translation, locale, (Object[]) args);
-            } else if (args instanceof Map<?, ?> && ((Map) args).size() > 0) {
-                translation = FormatUtils.formatMsg(translation, locale, (Map<String, Object>) args);
-            }
-        }
-
-        return translation;
-    }
-
     private String getStringWithArgs(final Locale locale,
             final String component, final String key, final String source,
             final String comment, final Object args) {
@@ -143,13 +126,23 @@ public class TranslationMessage implements Message {
         return getStringWithSource(dto, args);
     }
 
-    /**
-     * @param locale
-     * @param source
-     * @param args
-     * @param dto
-     * @return
-     */
+    private String getStringWithoutSource(MessagesDTO dto, final Object args) {
+        String translation = new StringService(dto).getString();
+        if (StringUtil.isEmpty(translation)) {
+            return "";
+        }
+
+        if (args != null) {
+            if (args instanceof Object[] && ((Object[]) args).length > 0) {
+                translation = FormatUtils.format(translation, locale, (Object[]) args);
+            } else if (args instanceof Map<?, ?> && ((Map) args).size() > 0) {
+                translation = FormatUtils.formatMsg(translation, locale, (Map<String, Object>) args);
+            }
+        }
+
+        return translation;
+    }
+
     private String getStringWithSource(MessagesDTO dto, final Object args) {
         Locale locale = Locale.forLanguageTag(dto.getLocale());
         String source = dto.getSource();
