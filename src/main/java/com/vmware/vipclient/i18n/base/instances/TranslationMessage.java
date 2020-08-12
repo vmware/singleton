@@ -105,43 +105,23 @@ public class TranslationMessage implements Message {
             final Object args) {
         MessagesDTO dto = new MessagesDTO();
         dto.setComponent(component);
+        dto.setLocale(locale.toLanguageTag());
         dto.setKey(key);
         if (cfg != null) {
             dto.setProductID(cfg.getProductName());
             dto.setVersion(cfg.getVersion());
         }
 
-        String translation = "";
-        if (VIPCfg.getInstance().isPseudo()) {
-            dto.setLocale(LocaleUtility.defaultLocale.toLanguageTag());
-            translation = new StringService(dto).getString();
-            if (!StringUtil.isEmpty(translation)) {
-                // if source isn't collected by server, add PSEUDOCHAR2
-                translation = ConstantsKeys.PSEUDOCHAR2 + translation + ConstantsKeys.PSEUDOCHAR2;
-            }
-        } else {
-            dto.setLocale(locale.toLanguageTag());
-            translation = new StringService(dto).getString();
-        }
-
+        String translation = new StringService(dto).getString();
         if (StringUtil.isEmpty(translation)) {
             return "";
         }
 
         if (args != null) {
             if (args instanceof Object[] && ((Object[]) args).length > 0) {
-                if (VIPCfg.getInstance().isPseudo()) {
-                    translation = FormatUtils.format(translation, LocaleUtility.defaultLocale, (Object[]) args);
-                } else {
                     translation = FormatUtils.format(translation, locale, (Object[]) args);
-                }
             } else if (args instanceof Map<?, ?> && ((Map) args).size() > 0) {
-                if (VIPCfg.getInstance().isPseudo()) {
-                    translation = FormatUtils.formatMsg(translation,
-                            LocaleUtility.defaultLocale, (Map<String, Object>) args);
-                } else {
                     translation = FormatUtils.formatMsg(translation, locale, (Map<String, Object>) args);
-                }
             }
         }
 
