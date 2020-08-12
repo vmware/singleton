@@ -126,24 +126,6 @@ public class TranslationMessage implements Message {
         return getStringWithSource(dto, args);
     }
 
-    private String getStringWithoutSource(MessagesDTO dto, final Object args) {
-        Locale locale = Locale.forLanguageTag(dto.getLocale());
-        String translation = new StringService(dto).getString();
-        if (StringUtil.isEmpty(translation)) {
-            return "";
-        }
-
-        if (args != null) {
-            if (args instanceof Object[] && ((Object[]) args).length > 0) {
-                translation = FormatUtils.format(translation, locale, (Object[]) args);
-            } else if (args instanceof Map<?, ?> && ((Map) args).size() > 0) {
-                translation = FormatUtils.formatMsg(translation, locale, (Map<String, Object>) args);
-            }
-        }
-
-        return translation;
-    }
-
     private String getStringWithSource(MessagesDTO dto, final Object args) {
         Locale locale = Locale.forLanguageTag(dto.getLocale());
         String source = dto.getSource();
@@ -192,7 +174,7 @@ public class TranslationMessage implements Message {
                 if ((null != translation && translation.equals(source)) || VIPCfg.getInstance().isPseudo()) {
                     translation = FormatUtils.format(translation, LocaleUtility.defaultLocale, (Object[]) args);
                 } else {
-                    translation = FormatUtils.format(translation, locale, args);
+                    translation = FormatUtils.format(translation, locale, (Object[]) args);
                 }
             } else if (args instanceof Map<?, ?> && ((Map) args).size() > 0) {
                 if ((null != translation && translation.equals(source)) || VIPCfg.getInstance().isPseudo()) {
@@ -201,6 +183,24 @@ public class TranslationMessage implements Message {
                 } else {
                     translation = FormatUtils.formatMsg(translation, locale, (Map) args);
                 }
+            }
+        }
+
+        return translation;
+    }
+
+    private String getStringWithoutSource(MessagesDTO dto, final Object args) {
+        Locale locale = Locale.forLanguageTag(dto.getLocale());
+        String translation = new StringService(dto).getString();
+        if (StringUtil.isEmpty(translation)) {
+            return "";
+        }
+
+        if (args != null) {
+            if (args instanceof Object[] && ((Object[]) args).length > 0) {
+                translation = FormatUtils.format(translation, locale, (Object[]) args);
+            } else if (args instanceof Map<?, ?> && ((Map) args).size() > 0) {
+                translation = FormatUtils.formatMsg(translation, locale, (Map<String, Object>) args);
             }
         }
 
