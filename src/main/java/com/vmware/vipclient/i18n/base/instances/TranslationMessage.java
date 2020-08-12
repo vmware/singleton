@@ -101,17 +101,7 @@ public class TranslationMessage implements Message {
         return getStringWithArgs(locale, component, key, source, comment, args);
     }
 
-    private String getStringWithoutSource(final Locale locale, final String component, final String key,
-            final Object args) {
-        MessagesDTO dto = new MessagesDTO();
-        dto.setComponent(component);
-        dto.setLocale(locale.toLanguageTag());
-        dto.setKey(key);
-        if (cfg != null) {
-            dto.setProductID(cfg.getProductName());
-            dto.setVersion(cfg.getVersion());
-        }
-
+    private String getStringWithoutSource(MessagesDTO dto, final Object args) {
         String translation = new StringService(dto).getString();
         if (StringUtil.isEmpty(translation)) {
             return "";
@@ -135,10 +125,6 @@ public class TranslationMessage implements Message {
         if (key == null || key.equalsIgnoreCase(""))
             return "";
 
-        if (StringUtil.isEmpty(source)) {
-            return getStringWithoutSource(locale, component, key, args);
-        }
-
         MessagesDTO dto = new MessagesDTO();
         dto.setComponent(component);
         dto.setComment(comment);
@@ -149,7 +135,26 @@ public class TranslationMessage implements Message {
             dto.setProductID(cfg.getProductName());
             dto.setVersion(cfg.getVersion());
         }
+
+        if (StringUtil.isEmpty(source)) {
+            return getStringWithoutSource(dto, args);
+        }
+
+        return getStringWithSource(dto, args);
+    }
+
+    /**
+     * @param locale
+     * @param source
+     * @param args
+     * @param dto
+     * @return
+     */
+    private String getStringWithSource(MessagesDTO dto, final Object args) {
+        Locale locale = Locale.forLanguageTag(dto.getLocale());
+        String source = dto.getSource();
         StringService s = new StringService(dto);
+
         String translation = "";
         if (!LocaleUtility.isDefaultLocale(locale)) {
             translation = s.getString();
@@ -193,7 +198,7 @@ public class TranslationMessage implements Message {
                 if ((null != translation && translation.equals(source)) || VIPCfg.getInstance().isPseudo()) {
                     translation = FormatUtils.format(translation, LocaleUtility.defaultLocale, (Object[]) args);
                 } else {
-                    translation = FormatUtils.format(translation, locale, (Object[]) args);
+                    translation = FormatUtils.format(translation, locale, args);
                 }
             } else if (args instanceof Map<?, ?> && ((Map) args).size() > 0) {
                 if ((null != translation && translation.equals(source)) || VIPCfg.getInstance().isPseudo()) {
