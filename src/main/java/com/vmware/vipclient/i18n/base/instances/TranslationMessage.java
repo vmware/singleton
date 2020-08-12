@@ -26,6 +26,7 @@ import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.JSONUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
+import com.vmware.vipclient.i18n.util.StringUtil;
 
 /**
  * This class provide some APIs to get translation from VIP service in
@@ -106,6 +107,7 @@ public class TranslationMessage implements Message {
         logger.trace("Start to execute TranslationMessage.getStringWithArgs");
         if (key == null || key.equalsIgnoreCase(""))
             return "";
+
         MessagesDTO dto = new MessagesDTO();
         dto.setComponent(component);
         dto.setComment(comment);
@@ -116,13 +118,25 @@ public class TranslationMessage implements Message {
             dto.setProductID(cfg.getProductName());
             dto.setVersion(cfg.getVersion());
         }
+
+        if (StringUtil.isEmpty(source)) {
+            return getStringWithoutSource(dto, args);
+        }
+
+        return getStringWithSource(dto, args);
+    }
+
+    private String getStringWithSource(MessagesDTO dto, final Object args) {
+        Locale locale = Locale.forLanguageTag(dto.getLocale());
+        String source = dto.getSource();
         StringService s = new StringService(dto);
+
         String translation = "";
         if (!LocaleUtility.isDefaultLocale(locale)) {
             translation = s.getString();
             // if the source is not equal to remote's source version, return the
             // source as latest, not return the old translation
-            if (source != null && !"".equals(source) && !source.equals(key) && !VIPCfg.getInstance().isPseudo()) {
+            if (source != null && !"".equals(source) && !VIPCfg.getInstance().isPseudo()) {
                 dto.setLocale(LocaleUtility.defaultLocale.toLanguageTag());
                 String remoteEnMsg = s.getString();
                 if (!source.equals(remoteEnMsg)) {
@@ -169,6 +183,24 @@ public class TranslationMessage implements Message {
                 } else {
                     translation = FormatUtils.formatMsg(translation, locale, (Map) args);
                 }
+            }
+        }
+
+        return translation;
+    }
+
+    private String getStringWithoutSource(MessagesDTO dto, final Object args) {
+        Locale locale = Locale.forLanguageTag(dto.getLocale());
+        String translation = new StringService(dto).getString();
+        if (StringUtil.isEmpty(translation)) {
+            return "";
+        }
+
+        if (args != null) {
+            if (args instanceof Object[] && ((Object[]) args).length > 0) {
+                translation = FormatUtils.format(translation, locale, (Object[]) args);
+            } else if (args instanceof Map<?, ?> && ((Map) args).size() > 0) {
+                translation = FormatUtils.formatMsg(translation, locale, (Map<String, Object>) args);
             }
         }
 
@@ -383,16 +415,23 @@ public class TranslationMessage implements Message {
         logger.trace("Start to execute TranslationMessage.getString2WithArgs");
         if (key == null || key.equalsIgnoreCase(""))
             return "";
-        String source;
+
+        String source = null;
         try {
             ResourceBundle rb = ResourceBundle.getBundle(bundle, LocaleUtility.defaultLocale);
             source = rb.getString(key);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            source = key;
         }
+
         // get translation from VIP service
-        return getStringWithArgs(locale, component, key, source, "", args);
+        String msg = getStringWithArgs(locale, component, key, source, "", args);
+
+        // return translation -> source -> key
+        if (StringUtil.isEmpty(msg))
+            msg = StringUtil.isEmpty(source) ? key : source;
+
+        return msg;
     }
 
     /**
