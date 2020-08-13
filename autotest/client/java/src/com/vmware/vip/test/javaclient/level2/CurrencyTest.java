@@ -98,6 +98,9 @@ public class CurrencyTest extends TestBase {
 	//				amount, amountDataType, currencyCode, locale), actual, expected);
 	//	}
 
+	/*
+	case is invalid for new mode, online/offline/mix mode
+	
 	@Test(enabled=true, priority=1, dataProvider="fallback")
 	@TestCase(id = "007", name = "CurrencyTest_DisconnectFallback", priority = Priority.P1,
 	description = "Disconnect VIP server, cannot get locale pattern, so get en pattern from local.")
@@ -118,6 +121,7 @@ public class CurrencyTest extends TestBase {
 			vipCfg.getVipService().getHttpRequester().setBaseURL("https://"+vipCfg.getVipServer());
 		}
 	}
+	*/
 
 	@Test(enabled=true, priority=1, groups= {TestGroups.NEGATIVE, TestGroups.DYNAMIC_PROPERTY})
 	@TestCase(id = "008", name = "CurrencyTest_InvalidPatternScope", priority = Priority.P1,
