@@ -84,7 +84,7 @@ public class LocalProductOpt implements ProductOpt {
     }
 
     private void getSupportedLocales(Path path, List<String> supportedLocales) throws IOException {
-        try (Stream<Path> listOfFiles = Files.walk(path).filter(p -> p.toFile().isFile())) {
+        try (Stream<Path> listOfFiles = Files.walk(path).filter(p -> Files.isRegularFile(p))) {
             listOfFiles.map(file -> {
                 String fileName = file.getFileName().toString();
                 if(fileName.startsWith(BUNDLE_PREFIX) && fileName.endsWith(BUNDLE_SUFFIX)) {
