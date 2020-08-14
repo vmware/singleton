@@ -9,11 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
@@ -23,7 +18,10 @@ import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
-import com.vmware.vipclient.i18n.util.LocaleUtility;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
     private final Logger      logger = LoggerFactory.getLogger(ComponentBasedOpt.class.getName());
@@ -52,33 +50,32 @@ public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
         
         if (responseCode != null && (responseCode.equals(HttpURLConnection.HTTP_OK) || 
         		responseCode.equals(HttpURLConnection.HTTP_NOT_MODIFIED))) {
-        	
-        	// If already in cache (timestamp > 0), always extend the timestamp.
-        	if (cacheItem.getTimestamp() != 0 && response.get(URLUtils.RESPONSE_TIMESTAMP) != null)
-	        	cacheItem.setTimestamp((long) response.get(URLUtils.RESPONSE_TIMESTAMP) );
+        	long timestamp = 0;
+        	String etag = null;
+        	Long maxAgeMillis = null;
+
+        	if (response.get(URLUtils.RESPONSE_TIMESTAMP) != null)
+        	    timestamp = (long) response.get(URLUtils.RESPONSE_TIMESTAMP);
         	if (response.get(URLUtils.HEADERS) != null)
-	        	cacheItem.setEtag(URLUtils.createEtagString((Map<String, List<String>>) response.get(URLUtils.HEADERS)));
+        	    etag = URLUtils.createEtagString((Map<String, List<String>>) response.get(URLUtils.HEADERS));
 	        if (response.get(URLUtils.MAX_AGE_MILLIS) != null)
-	        	cacheItem.setMaxAgeMillis((Long) response.get(URLUtils.MAX_AGE_MILLIS));
-			      
+                maxAgeMillis = (Long) response.get(URLUtils.MAX_AGE_MILLIS);
+
 	        if (responseCode.equals(HttpURLConnection.HTTP_OK)) {
 		        JSONObject respObj = (JSONObject) JSONValue.parse((String) response.get(URLUtils.BODY));
 		        try {
-	        		if (getResponseCode(respObj) == 200){ 
-	        			// If not yet in cache (timestamp = 0), store the timestamp only when successful (business code 200).
-	        			if (cacheItem.getTimestamp() == 0 && response.get(URLUtils.RESPONSE_TIMESTAMP) != null) {
-	        				cacheItem.setTimestamp((long) response.get(URLUtils.RESPONSE_TIMESTAMP) );
-	        			}
+	        		if (getResponseCode(respObj) == 200) {
 				        Map<String,String> messages = this.getMsgsJson(response);
 				        if (messages != null) {
-				        	cacheItem.addCachedData(messages);
+				        	cacheItem.setCacheItem(this.dto.getLocale(), messages, etag, timestamp, maxAgeMillis);
 				        }
         			}
 	        	} catch (Exception e) {
 	        		logger.error("Failed to get messages");
 	        	}
-	        }
-
+	        } else {
+                cacheItem.setCacheItem(this.dto.getLocale(), etag, timestamp, maxAgeMillis);
+            }
         } 
     }
 

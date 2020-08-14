@@ -32,37 +32,43 @@ public class ComponentService {
         this.dto = dto;
     }
 
-    /**
-     * Fetch messages from either remote vip service or local bundle
-     * 
-     * @param cacheItem MessageCacheItem object to store the messages
-     * @param msgSourceQueueIter Iterator of the msgSourceQueue (e.g. [DataSourceEnum.VIP, DataSourceEnum.Bundle])
-     */
-    @SuppressWarnings("unchecked")
-    private void fetchMessages(final MessageCacheItem cacheItem, Iterator<DataSourceEnum> msgSourceQueueIter) {
-    	if (!msgSourceQueueIter.hasNext()) 
-    		return;
-    	
-    	long timestampOld = cacheItem.getTimestamp();
-    	DataSourceEnum dataSource = msgSourceQueueIter.next();
-    	dataSource.createMessageOpt(dto).getComponentMessages(cacheItem);
-    	long timestamp = cacheItem.getTimestamp();
-    	if (timestampOld == timestamp) {
-    		logger.debug(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED, dto.getComponent(), dto.getLocale(), dataSource.toString()));
-    	}
-    	
-    	// Skip this block if timestamp is not 0 (which means cacheItem is in the cache) regardless if cacheItem is expired or not.
-    	// Otherwise, try the next dataSource in the queue.
-    	if (timestamp == 0) {
-    		// Try the next dataSource in the queue
-    		if (msgSourceQueueIter.hasNext()) {
-    			fetchMessages(cacheItem, msgSourceQueueIter);
-    		// If no more data source in queue, log the error. This means that neither online nor offline fetch succeeded.
-    		} else {
-    			logger.debug(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED_ALL, dto.getComponent(), dto.getLocale()));
-    		}
-    	}
-    }
+	/**
+	 * Fetches data and populates the MessageCacheItem
+	 *
+	 * @param cacheItem The MessageCacheItem to populate/refresh data in. The following properties of cacheItem will be populated/refreshed:
+	 * <ul>
+	 * 		<li>The cachedData map which holds the localized messages</li>
+	 * 		<li>The timestamp of when the messages were fetched</li>
+	 * 		<li>The maxAgeMillis which tells how long before the cacheData map is considered to be expired.</li>
+	 * 	    <li>The eTag, if any, which will be used in the succeeding cache refresh.</li>
+	 * </ul>
+	 *  @param msgSourceQueueIter Iterator of the message source queue (e.g. [DataSourceEnum.VIP, DataSourceEnum.Bundle])
+	 */
+	@SuppressWarnings("unchecked")
+	private void refreshCacheItem(final MessageCacheItem cacheItem, Iterator<DataSourceEnum> msgSourceQueueIter) {
+		if (!msgSourceQueueIter.hasNext())
+			return;
+
+		long timestampOld = cacheItem.getTimestamp();
+		DataSourceEnum dataSource = msgSourceQueueIter.next();
+		dataSource.createMessageOpt(dto).getComponentMessages(cacheItem);
+		long timestamp = cacheItem.getTimestamp();
+		if (timestampOld == timestamp) {
+			logger.debug(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED, dto.getComponent(), dto.getLocale(), dataSource.toString()));
+		}
+
+		// Skip this block if timestamp is not 0 (which means cacheItem is in the cache) regardless if cacheItem is expired or not.
+		// Otherwise, try the next dataSource in the queue.
+		if (timestamp == 0) {
+			// Try the next dataSource in the queue
+			if (msgSourceQueueIter.hasNext()) {
+				refreshCacheItem(cacheItem, msgSourceQueueIter);
+				// If no more data source in queue, log the error. This means that neither online nor offline fetch succeeded.
+			} else {
+				logger.debug(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED_ALL, dto.getComponent(), dto.getLocale()));
+			}
+		}
+	}
 
 	/**
 	 * Get MessageCacheItem from cache.
@@ -100,44 +106,78 @@ public class ComponentService {
     	if (cacheService.isContainComponent()) { // Item is in cache
     		cacheItem = cacheService.getCacheOfComponent();
     		if (cacheItem.isExpired()) { // cacheItem has expired
-    			// Update the cache in a separate thread
-    			populateCacheTask(cacheItem);
+    			// Refresh the cacheItem in a separate thread
+    			refreshCacheItemTask(cacheItem);
     		}
-    	} else { // Item is not in cache
-    		// Create a new cacheItem object to be stored in cache
-    		cacheItem = new MessageCacheItem();
-    		fetchMessages(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().iterator());
-
-			if (!cacheItem.getCachedData().isEmpty()) {
-				cacheService.addCacheOfComponent(cacheItem);
-			} else if (!dto.getLocale().equals(ConstantsKeys.SOURCE) && fallbackLocalesIter!=null && fallbackLocalesIter.hasNext()) {
-    			// If failed to fetch message, use MessageCacheItem of the next fallback locale.
-				MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), fallbackLocalesIter.next().toLanguageTag(), dto.getProductID(), dto.getVersion());
-				cacheItem = new ComponentService(fallbackLocaleDTO).getMessages(fallbackLocalesIter);
-				if (!cacheItem.getCachedData().isEmpty()) {
-					cacheService.addCacheOfComponent(cacheItem);
-				}
+			// If the cacheItem is for a fallback locale, create and store cacheItem for the requested locale in a separate thread.
+    		if (!LocaleUtility.isSameLocale(cacheItem.getLocale(), this.dto.getLocale())) {
+				this.createCacheItemTask(fallbackLocalesIter);
 			}
+    	} else { // Item is not in cache. Create and store cacheItem for the requested locale
+    		cacheItem = createCacheItem(fallbackLocalesIter);
     	}
     	return cacheItem;
     }
-    
-	private void populateCacheTask(MessageCacheItem cacheItem) {
+
+	/**
+	 * Creates a new MessageCacheItem for the DTO and stores it in cache.
+	 *
+	 * @param fallbackLocalesIter The fallback locale queue to use in case of failure.
+	 *
+	 */
+    private MessageCacheItem createCacheItem(Iterator<Locale> fallbackLocalesIter) {
+		CacheService cacheService = new CacheService(dto);
+		// Create a new cacheItem object to be stored in cache
+		MessageCacheItem cacheItem = new MessageCacheItem();
+		refreshCacheItem(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().iterator());
+
+		if (!cacheItem.getCachedData().isEmpty()) {
+			cacheService.addCacheOfComponent(cacheItem);
+		} else if (!dto.getLocale().equals(ConstantsKeys.SOURCE) && fallbackLocalesIter!=null && fallbackLocalesIter.hasNext()) {
+			// If failed to fetch message for the requetsed DTO, use MessageCacheItem of the next fallback locale.
+			MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), fallbackLocalesIter.next().toLanguageTag(), dto.getProductID(), dto.getVersion());
+			cacheItem = new ComponentService(fallbackLocaleDTO).getMessages(fallbackLocalesIter);
+			if (!cacheItem.getCachedData().isEmpty()) {
+				cacheService.addCacheOfComponent(cacheItem);
+			}
+		}
+		return cacheItem;
+	}
+
+	private void createCacheItemTask(Iterator<Locale> fallbackLocalesIter) {
+		Callable<MessageCacheItem> callable = () -> {
+			try {
+				return this.createCacheItem(fallbackLocalesIter);
+			} catch (Exception e) {
+				// To make sure that the thread will close
+				// even when an exception is thrown
+				return null;
+			}
+		};
+		FutureTask<MessageCacheItem> task = new FutureTask<>(callable);
+		Thread thread = new Thread(task);
+		thread.start();
+	}
+
+	private void refreshCacheItemTask(MessageCacheItem cacheItem) {
 		Callable<MessageCacheItem> callable = () -> {
     		try {
-    			// Pass cacheItem to getMessages so that:
-				// 1. A previously stored etag, if any, can be used for the next HTTP request.
-				// 2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed 
-				// 	 with new properties from the next HTTP response.
-				fetchMessages(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-    			return cacheItem;
+    			// Get the locale of the cacheItem object. It may not be the same as the requested DTO's locale (e.g. the cacheItem is for a fallback locale).
+				String cacheItemLocale = cacheItem.getLocale();
+
+				// Refresh the properties of the cacheItem accordingly by passing a DTO with the correct locale
+				// to ComponentService, so that it will fetch messages for the correct locale to refresh the cacheItem.
+				MessagesDTO cacheItemDTO = new MessagesDTO(dto.getComponent(), cacheItemLocale, dto.getProductID(), dto.getVersion());
+				new ComponentService(cacheItemDTO).refreshCacheItem(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
+
+				return cacheItem;
     		} catch (Exception e) { 
     			// To make sure that the thread will close 
     			// even when an exception is thrown
     			return null;
 		    }
 		};
-		FutureTask<MessageCacheItem> task = new FutureTask<MessageCacheItem>(callable); 
+		FutureTask<MessageCacheItem> task = new FutureTask<>(callable);
 		Thread thread = new Thread(task);
 		thread.start();	
 	}

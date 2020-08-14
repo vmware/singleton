@@ -4,14 +4,7 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
 import java.util.Locale;
-
-import org.junit.Before;
-import org.junit.Test;
 
 import com.vmware.vip.i18n.BaseTestClass;
 import com.vmware.vipclient.i18n.I18nFactory;
@@ -24,6 +17,9 @@ import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class CacheServiceTest extends BaseTestClass {
 
@@ -152,7 +148,7 @@ public class CacheServiceTest extends BaseTestClass {
         Long responseTime = (Long) cacheItem.getTimestamp();
         
         // Set max age to 0 to explicitly expire the cache for testing purposes.
-        cacheItem.setMaxAgeMillis(0l);
+        cacheItem.setCacheItem(cacheItem.getLocale(), cacheItem.getEtag(), cacheItem.getTimestamp(), 0l);
         
         // Second request for the same message triggers an HTTP request because cacheItem has expired.
         // The http request includes an If-None-Match header that is set to the previously received eTag value.
@@ -228,5 +224,5 @@ public class CacheServiceTest extends BaseTestClass {
         cacheItem = cs.getCacheOfComponent();
         responseTime2 = cacheItem.getTimestamp();
         assertTrue(responseTime2 > responseTime); 
-    }  
+    }
 }

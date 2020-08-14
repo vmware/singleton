@@ -14,77 +14,60 @@ public class MessageCacheItem implements CacheItem {
 	public MessageCacheItem() {
 		
 	}
-	
-	public MessageCacheItem (Map<String, String> dataMap, String etag, long timestamp, Long maxAgeMillis) {
-		super();
-		this.addCachedData(dataMap);
-		this.etag = etag;
-		this.timestamp = timestamp;
-		this.maxAgeMillis = maxAgeMillis;
-	}
-	
-	public MessageCacheItem (Map<String, String> dataMap) {
-		super();
+
+	public MessageCacheItem(Map<String, String> dataMap) {
 		if (dataMap != null)
-			this.addCachedData(dataMap);
+			this.cachedData.putAll(dataMap);
 	}
 	
-	
+	public MessageCacheItem (String locale, Map<String, String> dataMap, String etag, long timestamp, Long maxAgeMillis) {
+		this.setCacheItem(locale, dataMap, etag, timestamp, maxAgeMillis);
+	}
+
+	private String locale;
 	private String etag;
 	private long timestamp;
 	private Long maxAgeMillis = 86400000l;
 	
-	private final Map<String, String> cachedData = new HashMap<String, String>();
-	
-	public void addCacheData(String key, String value) {
-		this.cachedData.put(key, value);
+	private final Map<String, String> cachedData = new HashMap<>();
+
+	public synchronized void setCacheItem(String locale, Map<String, String> dataToCache, String etag, long timestamp, Long maxAgeMillis) {
+		if (dataToCache != null)
+			this.cachedData.putAll(dataToCache);
+		this.setCacheItem(locale, etag, timestamp, maxAgeMillis);
 	}
-	
-	public synchronized void addCachedData(Map<String, String> cachedData) {
-		if (cachedData != null) 
-			this.cachedData.putAll(cachedData);
+	public synchronized void setCacheItem(String locale, String etag, long timestamp, Long maxAgeMillis) {
+		this.locale = locale;
+		if (etag != null && !etag.isEmpty())
+			this.etag = etag;
+		this.timestamp = timestamp;
+		if (maxAgeMillis != null)
+			this.maxAgeMillis = maxAgeMillis;
 	}
-	
+
 	public synchronized void setCacheItem (MessageCacheItem cacheItem) {
-		// Do not update cacheItem if timestamp is earlier than current. 
-		// An older timestamp comes from an old thread that was blocked.
-		if (cacheItem.getTimestamp() < this.timestamp) 
-			return;
-		this.addCachedData(cacheItem.getCachedData());
-		this.etag = cacheItem.etag;
-		this.timestamp = cacheItem.timestamp;
-		this.maxAgeMillis = cacheItem.maxAgeMillis;
+		this.setCacheItem(cacheItem.getLocale(), cacheItem.getCachedData(), cacheItem.getEtag(), cacheItem.getTimestamp(), cacheItem.getMaxAgeMillis());
 	}
 		
-	public synchronized String getEtag() {
+	public String getEtag() {
 		return etag;
 	}
 
-	public synchronized void setEtag(String etag) {
-		this.etag = etag;
-	}
-
-	public synchronized long getTimestamp() {
+	public long getTimestamp() {
 		return timestamp;
-	}
-
-	public synchronized void setTimestamp(long timestamp) {
-		this.timestamp = timestamp;
 	}
     
     public Map<String, String> getCachedData() {
 		return cachedData;
 	}
 
-	public synchronized Long getMaxAgeMillis() {
+	public Long getMaxAgeMillis() {
 		return maxAgeMillis;
 	}
 
-	public synchronized void setMaxAgeMillis(Long maxAgeMillis) {
-		this.maxAgeMillis = maxAgeMillis;
-	}
+	public String getLocale() { return locale; }
 
-	public boolean isExpired() {
+	public synchronized boolean isExpired() {
 		// If offline mode only, cache never expires.
 		if (VIPCfg.getInstance().getVipServer() == null) {
 			return false;
