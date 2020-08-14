@@ -21,6 +21,9 @@ jobs:
       script:
         - python -V
         - pip -V
+        - pip3 -V
+        - which pip
+        - which pip3
         - pip install pyyaml
         - cd sgtn4python/test
         - str=$(printf '=%.0s' {1..50})
