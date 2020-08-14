@@ -27,8 +27,6 @@ jobs:
         - echo $str Unit Test End $str
     - python: 2.7
       script:
-        - python -V
-        - pip -V
         - pip install pyyaml
         - cd sgtn4python/test
         - str=$(printf '=%.0s' {1..50})
