@@ -150,8 +150,8 @@ if __name__ == "__main__":
         print("Files miss license or copyright headers:\n    {}".format("\n    ".join(errs)))
         print("========================================= Fail =========================================\n" +
               "    Missing headers in {} files, see file list above.\n".format(len(errs)) +
-              "    Header pattern '{}'".format(headers_pattern) +
-              "    Refer to contributing guide to see how to add license and copyright headers.\n" +
+              "    Header check pattern '{}'\n".format(headers_pattern) +
+              "    Details refer to contributing guide to see how to add license and copyright headers.\n" +
               "========================================================================================")
         sys.exit(1)
     print("============== PASS ==============")
