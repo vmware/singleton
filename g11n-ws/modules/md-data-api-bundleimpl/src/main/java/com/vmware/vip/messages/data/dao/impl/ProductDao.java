@@ -163,7 +163,7 @@ public class ProductDao implements IProductDao {
      */
     @Override
     public String getAllowProductListContent() throws DataException {
-        String contentFilePath = bundleConfig.getBasePathWithSeparator() + ConstantsFile.L10N_BUNDLES_PATH +ConstantsFile.WHITE_LIST_FILE;
+        String contentFilePath = bundleConfig.getBasePathWithSeparator() + ConstantsFile.L10N_BUNDLES_PATH +ConstantsFile.ALLOW_PRODUCT_LIST_FILE;
         if (new File(contentFilePath).exists()) {
          return new LocalJSONReader().readLocalJSONFile(contentFilePath);
         }else {
