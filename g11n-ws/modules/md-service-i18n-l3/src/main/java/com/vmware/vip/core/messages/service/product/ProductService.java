@@ -344,10 +344,10 @@ public class ProductService implements IProductService {
      * get the white list
      */
     @Override
-    public Map<String, Object> getWhiteList(){
+    public Map<String, Object> getAllowPrductList(){
         String content;
         try {
-            content = productdao.getWhiteListContent();
+            content = productdao.getAllowProductListContent();
         } catch (DataException e1) {
             logger.warn(e1.getMessage());
             content =null;

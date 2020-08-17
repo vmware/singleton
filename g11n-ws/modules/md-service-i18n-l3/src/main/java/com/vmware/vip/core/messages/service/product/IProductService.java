@@ -71,5 +71,5 @@ public interface IProductService {
     /**
      * get the whiteList
      */
-    public Map<String, Object> getWhiteList();
+    public Map<String, Object> getAllowPrductList();
 }

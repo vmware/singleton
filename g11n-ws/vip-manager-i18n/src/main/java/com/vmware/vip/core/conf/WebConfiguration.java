@@ -120,7 +120,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 		 */
 
 		// Request Validation
-		InterceptorRegistration apival = registry.addInterceptor(new APIValidationInterceptor(productService.getWhiteList())).addPathPatterns("/**").excludePathPatterns(API.I18N_API_ROOT+"doc/**");
+		InterceptorRegistration apival = registry.addInterceptor(new APIValidationInterceptor(productService.getAllowPrductList())).addPathPatterns("/**").excludePathPatterns(API.I18N_API_ROOT+"doc/**");
 
 		// authentication
 

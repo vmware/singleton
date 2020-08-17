@@ -24,5 +24,5 @@ public interface IProductDao {
 
 	public List<String> getVersionList(String productName) throws DataException;
 	
-	public String getWhiteListContent() throws DataException;
+	public String getAllowProductListContent() throws DataException;
 }
