@@ -30,6 +30,6 @@ public class ConstantsFile {
 
     public static final String VERSION_FILE = "version.json";
     
-    public static final String ALLOW_PRODUCT_LIST_FILE = "bundle.json";
+    public static final String WHITE_LIST_FILE = "bundle.json";
 
 }
