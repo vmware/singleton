@@ -28,6 +28,11 @@ class TestClient(unittest.TestCase):
         dt = FileUtil.read_json_file('./data.json')
         self.assertEqual(dt['aa'], 'aaa')
         print('--- json --- %s ---' % dt)
+
+        dt['add'] = 'über'
+        FileUtil.save_json_file('./log/data2.json', dt)
+        dtLoad = FileUtil.read_json_file('./log/data2.json')
+        self.assertEqual(dtLoad['add'], 'über')
         
         dt = FileUtil.read_datatree('./sgtn_client.yml')
         self.assertEqual(dt['log_path'], './log/')
