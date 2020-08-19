@@ -154,13 +154,13 @@ class SingletonConfig(Config):
             parts = self.local_url.split('/')
             self.local_type = parts[0][:-1]
             if self.local_type == LOCAL_TYPE_FILE:
-                self.local_url = os.path.sep.join(parts[2:-1])
+                self.local_url = '/'.join(parts[2:-1])
             else:
-                self.local_url = os.path.sep.join(parts[:-1])
+                self.local_url = '/'.join(parts[:-1])
 
         if self.remote_url:
             parts = self.remote_url.split('/')
-            self.remote_url = os.path.sep.join(parts[:-4])
+            self.remote_url = '/'.join(parts[:-4])
 
         _local_paths = self.config_data.get(KEY_LOCAL_PATH)
         _locales = self.extract_list(KEY_LOCALES, KEY_LANG_TAG, KEY_LOCAL_PATH, _local_paths)

@@ -97,7 +97,10 @@ class FileUtil:
         dir = os.path.dirname(file_name)
         if not os.path.exists(dir):
             os.makedirs(dir)
-        f = open(file_name, 'w')
+        if PY_VER == 2:
+            f = open(file_name, 'w')
+        else:
+            f = open(file_name, 'w', encoding='utf-8')
         text = json.dumps(dict, ensure_ascii = False, indent = 2)
         f.write(text)
         f.close()
