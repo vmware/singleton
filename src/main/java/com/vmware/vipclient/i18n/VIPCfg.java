@@ -67,7 +67,6 @@ public class VIPCfg {
     private String                     i18nScope     = "numbers,dates,currencies,plurals,measurements";
     private String					   offlineResourcesBaseUrl;
     
-    
     // define key for cache management
     public static final String         CACHE_L3      = "CACHE_L3";
     public static final String         CACHE_L2      = "CACHE_L2";

@@ -22,5 +22,4 @@ public class LocaleDTO extends BaseDTO{
             super.setVersion(VIPCfg.getInstance().getVersion());
         }
     }
-
 }

@@ -4,20 +4,12 @@
  */
 package com.vmware.vipclient.i18n.base.instances;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.Set;
-
-import org.json.simple.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.*;
 
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
+import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ComponentService;
 import com.vmware.vipclient.i18n.messages.service.ComponentsService;
@@ -26,6 +18,9 @@ import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.JSONUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
+import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class provide some APIs to get translation from VIP service in
@@ -49,54 +44,32 @@ public class TranslationMessage implements Message {
     }
     
     /**
-     * Retrieves the localized message from the cache
-     * 
-     * @param component The Singleton component in which the message belongs
-     * @param key The key that represents the message
-     * @param locale The locale in which the message is requested to be localized
-     * @return One of the items in the following priority-ordered list: 
-     * <ul>
-     * 		<li>The message in the requested locale</li> 
-     * 		<li>The message in the default locale</li>
-     * 		<li>null</li>
-     * </ul>
-     */
-    private String getCachedMessage(String component, String key, Locale locale) {
-    	MessagesDTO dto = new MessagesDTO(component, key, null, locale.toLanguageTag(), this.cfg);
-    	StringService s = new StringService();
-    	return s.getString(dto);
-    }
-    
-    /**
      * Retrieves the localized message
      * 
      * @param locale The locale in which the message is requested to be localized
      * @param component The Singleton component in which the message belongs
      * @param key The key that represents the message
      * @param args Values to replace placeholders in the message with
-     * @return One of the items in the following priority-ordered list: 
+     * @return One of the items in the following priority-ordered list:. 
+     * @throws VIPJavaClientException If none from the list below is available 
      * <ul>
-     * 		<li>The pseudo message, if isPseudo is true</li> 
-     * 		<li>The message in the requested locale, if available</li>
-     * 		<li>The message in the next available fallback locale, if any</li>
-     * 		<li>The source message, if available</li>
-     * 		<li>The key</li>
+     * 		<li>The source message, if source message hasn't been collected and translated</li>
+     * 		<li>The message in the requested locale</li>
+     * 		<li>The message in the next available fallback locale</li>
+     * 		<li>The source message</li>
      * </ul>
      */
     public String getMessage(final Locale locale, final String component, final String key, final Object... args) {
-    	// Use source message if the message hasn't been collected/translated 
-    	String source = getCachedMessage(component, key, Locale.forLanguageTag(ConstantsKeys.SOURCE));
-    	String collectedSourceMsg = getCachedMessage(component, key, LocaleUtility.getSourceLocale());
+    	// Use source message if the message hasn't been collected/translated
+    	String source = getMessages(Locale.forLanguageTag(ConstantsKeys.SOURCE), component).get(key);
+    	String collectedSourceMsg = getMessages(LocaleUtility.getSourceLocale(), component).get(key);
     	if (source!=null && !source.isEmpty() && !source.equals(collectedSourceMsg)) {
 			return FormatUtils.format(source, LocaleUtility.getSourceLocale(), args);
 		}
     	
-    	String message = FormatUtils.format(getCachedMessage(component, key, locale), locale, args);
+    	String message = FormatUtils.format(getMessages(locale, component).get(key), locale, args);
     	if (message == null || message.isEmpty()) {
-    		if (source != null && !source.isEmpty()) {
-    			return FormatUtils.format(source, LocaleUtility.getSourceLocale(), args);
-    		}
-    		return key;
+    		throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component, locale));
     	}
     	
     	return message;
@@ -305,17 +278,22 @@ public class TranslationMessage implements Message {
         return cs.getMessages().getCachedData();
     }
     
-    /**
-     * Retrieves localized messages
-     *
-     * @param locale The locale in which the message is requested to be localized
-     * @param component The Singleton component 
-     * @return Message keys, each one mapped to the localized message
+     /**
+     * Retrieves the set of localized messages from the cache. It applies locale fallback mechanism in case of failure.
+     * 
+     * @param component The Singleton component
+     * @param locale The locale in which the messages are requested to be localized
+     * @return One of the items in the following priority-ordered list: 
+     * <ul>
+     * 		<li>The messages in the requested locale</li> 
+     * 		<li>The messages in the default locale</li>
+     * 		<li>The source messages</li>
+     * </ul>
      */
     public Map<String, String> getMessages(final Locale locale, final String component) {
         MessagesDTO dto = new MessagesDTO(component, null, null, locale.toLanguageTag(), this.cfg);
-        ComponentService cs = new ComponentService(dto);
-        return cs.getMessages().getCachedData();
+        MessageCacheItem cacheItem = new ComponentService(dto).getMessages();
+        return cacheItem.getCachedData();
     }
 
     /**

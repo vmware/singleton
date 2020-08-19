@@ -4,29 +4,31 @@
  */
 package com.vmware.vip.i18n;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import org.json.simple.JSONObject;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
 import com.google.common.collect.Sets;
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ProductService;
+import org.json.simple.JSONObject;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class TranslationMessageTest extends BaseTestClass {
     TranslationMessage translation;
@@ -184,6 +186,15 @@ public class TranslationMessageTest extends BaseTestClass {
     }
 
     @Test
+    public void testGetComponentMessagesLocaleNotSupported() {
+    	String component = "JAVA";
+    	String message_en_US = "User name";
+    	String key = "global_text_username";
+    	// When requested locale is not supported, the default locale messages will be returned.
+        Map<String, String> localeNotSupported = translation.getMessages(Locale.forLanguageTag("fil-PH"), component);
+        Assert.assertEquals(message_en_US, localeNotSupported.get(key));
+    }
+    @Test
     public void testGetComponentMessages() {
         vipCfg.setPseudo(false);
 
@@ -250,6 +261,23 @@ public class TranslationMessageTest extends BaseTestClass {
     public void testGetAllComponentTranslation() {
         List<Map> list = new ProductService(dto).getAllComponentTranslation();
         Assert.assertTrue(list.size() > 0);
+    }
+
+    @Test
+    public void testGetAllComponentTranslationMixedMode() {
+        String offlineResourcesBaseUrlOrig = vipCfg.getOfflineResourcesBaseUrl();
+        vipCfg.setOfflineResourcesBaseUrl("offlineBundles/");
+        List<DataSourceEnum> msgOriginsQueueOrig = vipCfg.getMsgOriginsQueue();
+        vipCfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.VIP, DataSourceEnum.Bundle)));
+        String vipServerOrig = vipCfg.getVipServer();
+        vipCfg.setVipServer("http://1.1.1.1:80");
+
+        List<Map> list = new ProductService(dto).getAllComponentTranslation();
+        Assert.assertTrue(list.size() > 0);
+
+        vipCfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
+        vipCfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+        vipCfg.setVipServer(vipServerOrig);
     }
 
     @Test

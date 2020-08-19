@@ -4,16 +4,7 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
-
-import org.junit.Before;
-import org.junit.Test;
+import java.util.*;
 
 import com.vmware.vip.i18n.BaseTestClass;
 import com.vmware.vipclient.i18n.I18nFactory;
@@ -24,10 +15,16 @@ import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
+import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
+import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class OfflineModeTest extends BaseTestClass {
 
@@ -58,14 +55,31 @@ public class OfflineModeTest extends BaseTestClass {
         }
        
     }
-    
+
+    @Test
+    public void testGetAllComponentTranslationOfflineMode() {
+        String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
+        cfg.setOfflineResourcesBaseUrl("offlineBundles/");
+        List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
+        cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
+        
+        dto.setProductID(cfg.getProductName());
+        dto.setVersion(cfg.getVersion());
+
+        List<Map> list = new ProductService(dto).getAllComponentTranslation();
+        Assert.assertTrue(list.size() > 0);
+
+        cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
+        cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+    }
+
     @Test
     public void testGetMsgsOfflineMode() {
     	String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
     	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
     	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
     	cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
-    	
+
         Cache c = cfg.createTranslationCache(MessageCache.class);
         TranslationCacheManager.cleanCache(c);
         I18nFactory i18n = I18nFactory.getInstance(cfg);
@@ -83,6 +97,23 @@ public class OfflineModeTest extends BaseTestClass {
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+    }
+
+    @Test
+    public void testGetMsgsOfflineModeCacheInitialized() {
+        String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
+        cfg.setOfflineResourcesBaseUrl("offlineBundles/");
+        List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
+        cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
+        boolean initializeCacheOrig = cfg.isInitializeCache();
+        cfg.setInitializeCache(true);
+
+        Cache c = cfg.createTranslationCache(MessageCache.class);
+        assertTrue(c.size() > 0);
+
+        cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
+        cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+        cfg.setInitializeCache(initializeCacheOrig);
     }
     
     @Test
@@ -106,16 +137,19 @@ public class OfflineModeTest extends BaseTestClass {
         Locale newLocale = new Locale("en");
         dto.setLocale(newLocale.toLanguageTag());
     	
-    	String message = translation.getMessage(newLocale, component, key, args);
-    	// Return the key because message does not exist in any locale
-    	assertEquals(key, message);
+        VIPJavaClientException e = assertThrows(VIPJavaClientException.class, () -> {
+        	translation.getMessage(newLocale, component, key, args);
+        });
+        
+    	// Throw an exception because message key does not exist anywhere
+    	assertEquals(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component, newLocale), e.getMessage());
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
     }
     
     @Test
-    public void testGetMsgsFailedUseDefault() { 
+    public void testGetMsgsFailedUseDefault() {
     	// Offline mode only; target locale bundle does not exist
     	String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
     	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
@@ -203,8 +237,8 @@ public class OfflineModeTest extends BaseTestClass {
     	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
     	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
     	cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(
-    			Arrays.asList(DataSourceEnum.Bundle, DataSourceEnum.VIP)));
-    	
+    			Arrays.asList(DataSourceEnum.VIP, DataSourceEnum.Bundle)));
+    	cfg.initializeVIPService();
         Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
         TranslationCacheManager.cleanCache(c);
         I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
@@ -231,7 +265,7 @@ public class OfflineModeTest extends BaseTestClass {
     	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
     	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
     	cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(
-    			Arrays.asList(DataSourceEnum.Bundle, DataSourceEnum.VIP)));
+    			Arrays.asList(DataSourceEnum.VIP, DataSourceEnum.Bundle)));
     	
     	cfg.initializeVIPService();
     	
@@ -265,8 +299,7 @@ public class OfflineModeTest extends BaseTestClass {
     	cfg.setOfflineResourcesBaseUrl("offlineBundles/");
     	List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
     	cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(
-    			Arrays.asList(DataSourceEnum.Bundle, DataSourceEnum.VIP)));
-    	
+    			Arrays.asList(DataSourceEnum.VIP, DataSourceEnum.Bundle)));
     	cfg.initializeVIPService();
     	
         Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);

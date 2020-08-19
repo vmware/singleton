@@ -96,7 +96,7 @@ public class ComponentsService {
             final MessagesDTO dto = new MessagesDTO();
             dto.setComponent(comp);
             dto.setLocale(locale);
-            new CacheService(dto).addCacheOfComponent(new MessageCacheItem(messages, cacheItem.getEtag(), 
+            new CacheService(dto).addCacheOfComponent(new MessageCacheItem(locale, messages, null,
             		cacheItem.getTimestamp(), cacheItem.getMaxAgeMillis()));
 
             // update map to return.

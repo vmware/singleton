@@ -48,9 +48,10 @@ public class ComponentsBasedOpt extends BaseOpt implements Opt {
         Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(url, ConstantsKeys.GET,
                 requestData);
         this.responseStr = (String) response.get(URLUtils.BODY);
-        cacheItem.setEtag(URLUtils.createEtagString((Map<String, List<String>>) response.get(URLUtils.HEADERS)));
-        cacheItem.setTimestamp((long) response.get(URLUtils.RESPONSE_TIMESTAMP));
-        cacheItem.setMaxAgeMillis((Long) response.get(URLUtils.MAX_AGE_MILLIS));
+        String etag = URLUtils.createEtagString((Map<String, List<String>>) response.get(URLUtils.HEADERS));
+        long timestamp = (long) response.get(URLUtils.RESPONSE_TIMESTAMP);
+        Long maxAgeMillis = (Long) response.get(URLUtils.MAX_AGE_MILLIS);
+        cacheItem.setCacheItem(null, etag, timestamp, maxAgeMillis);
         if (StringUtil.isEmpty(this.responseStr))
             throw new VIPJavaClientException(ConstantsMsg.SERVER_RETURN_EMPTY);
 

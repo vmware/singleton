@@ -17,13 +17,14 @@ import java.util.List;
 import java.util.Map;
 
 public class RemoteProductOpt extends BaseOpt implements ProductOpt {
+
     private BaseDTO dto = null;
 
     public RemoteProductOpt(BaseDTO dto) {
         this.dto = dto;
     }
 
-    /*
+    /**
      * get supported components from vip(non-Javadoc)
      * 
      * @see com.vmware.vipclient.i18n.messages.dao.IComponentDao#getComponents()
@@ -45,7 +46,7 @@ public class RemoteProductOpt extends BaseOpt implements ProductOpt {
         return msgObject;
     }
 
-    /*
+    /**
      * get supported locales from vip(non-Javadoc)
      * 
      * @see com.vmware.vipclient.i18n.messages.dao.ILocaleDao#getSupportedLocales()
