@@ -52,7 +52,7 @@ public class LocalComponentOpt implements ComponentOpt {
     }
 
     private void getComponents(Path path, List<String> components) throws IOException {
-        try (Stream<Path> listOfFiles = Files.list(path).filter(p -> !p.toFile().isFile())) {
+        try (Stream<Path> listOfFiles = Files.list(path).filter(p -> !Files.isRegularFile(p))) {
             listOfFiles.forEach(s -> components.add(s.getFileName().toString()));
         }
     }
