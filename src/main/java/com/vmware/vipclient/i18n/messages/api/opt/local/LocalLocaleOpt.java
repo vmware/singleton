@@ -53,23 +53,6 @@ public class LocalLocaleOpt implements LocaleOpt{
 		return supportedLanguageNames;
     }
 
-	/*private Map<String, String> getLanguagesNames(String locale){
-		Map<String, String> languagesNames = null;
-		languagesNames = getLanguagesNamesFromCLDR(locale);
-		if (languagesNames != null) {
-			return languagesNames;
-		}
-		if (!LocaleUtility.isDefaultLocale(locale)) {
-			logger.info("Can't find languages' names for locale [{}], look for English regions as fallback!", locale);
-			languagesNames = getLanguagesNamesFromCLDR(LocaleUtility.getDefaultLocale().toLanguageTag());
-			if (languagesNames != null) {
-				new FormattingCacheService().addLanguagesNames(locale, languagesNames);
-				logger.debug("Default locale's languages' names is cached for locale [{}]!\n\n", locale);
-			}
-		}
-		return languagesNames;
-	}*/
-
     private Map<String, String> getLanguagesNamesFromCLDR(String locale){
 		Map<String, String> languagesNames = null;
 		logger.debug("Look for languages' names from cache for locale [{}]!", locale);

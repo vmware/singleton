@@ -100,13 +100,9 @@ public class LocalProductOpt implements ProductOpt {
     }
 
     private void getComponents(Path path, List<String> components) throws IOException {
-        try (Stream<Path> listOfFiles = Files.walk(path).filter(p -> p.toFile().isDirectory())) {
-            listOfFiles.map(file -> {
-                return file.getFileName().toString();
-            }).forEach(component -> {
-                if(component != null && !component.isEmpty()) {
-                    components.add(component);
-                }
+        try (Stream<Path> listOfFiles = Files.walk(path).filter(p -> !Files.isRegularFile(p))) {
+            listOfFiles.forEach(s -> {
+                    components.add(s.getFileName().toString());
             });
         }
     }
