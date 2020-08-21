@@ -1,0 +1,34 @@
+apply plugin: 'eclipse'
+apply plugin: 'java'
+project.group = 'com.vmware.sample'
+project.archivesBaseName = 'sample-with-shared-lib'
+
+sourceCompatibility = 1.8
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Sample App with Shared Library',
+                   'Implementation-Version': version,
+                   'Main-Class': 'com.vmware.vipclient.sample.Main'
+    }
+    
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.26'
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+
+    compile fileTree(dir: 'lib', include: ['*.jar'])
+}
+
+
