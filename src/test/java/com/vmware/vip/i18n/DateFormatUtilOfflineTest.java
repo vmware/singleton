@@ -16,7 +16,7 @@ import org.junit.Test;
 import java.util.Date;
 import java.util.Locale;
 
-public class DateFormatUtilTest extends BaseTestClass {
+public class DateFormatUtilOfflineTest extends BaseTestClass {
 
     final String fullDateForEn = "Monday, November 20, 2017";
     final String longDateForEn = "November 20, 2017";
@@ -67,7 +67,7 @@ public class DateFormatUtilTest extends BaseTestClass {
     public void init() {
         VIPCfg gc = VIPCfg.getInstance();
         try {
-            gc.initialize("vipconfig");
+            gc.initialize("vipconfig-offline");
         } catch (VIPClientInitException e) {
             logger.error(e.getMessage());
         }

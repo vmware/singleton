@@ -6,6 +6,7 @@ package com.vmware.vipclient.i18n.messages.api.opt;
 
 import java.util.List;
 
-public interface ComponentOpt {
-    public List<String> getComponents();
+public interface ProductOpt {
+	public List<String> getSupportedLocales();
+	public List<String> getComponents();
 }

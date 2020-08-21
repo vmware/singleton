@@ -4,21 +4,21 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import java.util.*;
-
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
-import com.vmware.vipclient.i18n.messages.api.opt.ComponentOpt;
-import com.vmware.vipclient.i18n.messages.api.opt.server.ProductBasedOpt;
+import com.vmware.vipclient.i18n.messages.api.opt.ProductOpt;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
-import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
-import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
-import org.json.simple.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 public class ProductService {
     private BaseDTO dto = null;
@@ -29,44 +29,16 @@ public class ProductService {
     }
 
     /**
-     * get supported components defined in vip service
-     * @return JSONArray
-     * @deprecated Replaced by {@link #getComponents(Iterator<>)}
-     */
-    @Deprecated
-    public JSONArray getComponentsFromRemoteVIP() {
-        BaseDTO baseDTO = new BaseDTO();
-        baseDTO.setProductID(dto.getProductID());
-        baseDTO.setVersion(dto.getVersion());
-        ProductBasedOpt dao = new ProductBasedOpt(baseDTO);
-        return dao.getComponentsFromRemoteVIP();
-    }
-
-    /**
-     * get supported locales defined in vip service
-     * @deprecated Replaced by {@link com.vmware.vipclient.i18n.messages.service.LocaleService#getSupportedLanguages(Iterator<>)}
-     */
-    @Deprecated
-    public JSONArray getSupportedLocalesFromRemoteVIP() {
-        BaseDTO baseDTO = new BaseDTO();
-        baseDTO.setProductID(dto.getProductID());
-        baseDTO.setVersion(dto.getVersion());
-        ProductBasedOpt dao = new ProductBasedOpt(baseDTO);
-        return dao.getSupportedLocalesFromRemoteVIP();
-    }
-
-    /**
      * Retrieves translated messages of all components of a product in the requested locale (See the dto object).
      *
      * @return translated messages of all components of a product locale specified in the dto object
      */
     public List<Map> getAllComponentTranslation() {
         List<Map> list = new ArrayList<Map>();
-        LocaleDTO localeDTO = new LocaleDTO(dto.getProductID(), dto.getVersion());
-        Map<String, String> locales = new LocaleService(localeDTO).getSupportedLanguages();
-        List<String> components = this.getComponents(VIPCfg.getInstance().getMsgOriginsQueue().iterator());
-        if (locales != null) {
-            for (String languageTag : locales.keySet()) {
+        List<String> locales = this.getSupportedLocales();
+        List<String> components = this.getComponents();
+        if (locales != null && components != null) {
+            for (String languageTag : locales) {
                 for (Object component : components) {
                     MessagesDTO msgDTO = new MessagesDTO(((String) component).trim(), LocaleUtility.fmtToMappedLocale(Locale.forLanguageTag(languageTag)).toString().trim(),
                             dto.getProductID(), dto.getVersion());
@@ -83,27 +55,40 @@ public class ProductService {
     /**
      * Retrieves the list of components of a product. It recursively applies data source fallback mechanism in case of failure.
      *
-     * @param msgSourceQueueIter Iterator of DataSourceEnum sources
      * @return list of components of the product specified in the dto object
      */
-    public List<String> getComponents (Iterator<DataSourceEnum> msgSourceQueueIter) {
-        if (!msgSourceQueueIter.hasNext())
-            return null;
-
-        DataSourceEnum dataSource = msgSourceQueueIter.next();
-        ComponentOpt opt = dataSource.createComponentOpt(dto);
-        List<String> components = opt.getComponents();
-        // If failed to get components from the data source
-        if (components.isEmpty()) {
-            // Try the next dataSource in the queue
-            if (msgSourceQueueIter.hasNext()) {
-                components = getComponents(msgSourceQueueIter);
-                // If no more data source in queue, log the error. This means that neither online nor offline fetch succeeded.
-            } else {
-                logger.error(FormatUtils.format(ConstantsMsg.GET_COMPONENTS_FAILED, dataSource.toString()));
+    public List<String> getComponents(){
+        List<String> components = null;
+        Iterator<DataSourceEnum> msgSourceQueueIter = VIPCfg.getInstance().getMsgOriginsQueue().iterator();
+        while((components == null || components.isEmpty()) && msgSourceQueueIter.hasNext()){
+            DataSourceEnum dataSource = msgSourceQueueIter.next();
+            ProductOpt opt = dataSource.createProductOpt(dto);
+            components = opt.getComponents();
+            // If failed to get components from the data source, log the error.
+            if (components == null || components.isEmpty()) {
+                logger.error(ConstantsMsg.GET_COMPONENTS_FAILED, dataSource.toString());
             }
         }
         return components;
     }
 
+    /**
+     * Retrieves the list of locales of a product. It recursively applies data source fallback mechanism in case of failure.
+     *
+     * @return list of locales of the product specified in the dto object
+     */
+    public List<String> getSupportedLocales(){
+        List<String> locales = null;
+        Iterator<DataSourceEnum> msgSourceQueueIter = VIPCfg.getInstance().getMsgOriginsQueue().iterator();
+        while((locales == null || locales.isEmpty()) && msgSourceQueueIter.hasNext()){
+            DataSourceEnum dataSource = msgSourceQueueIter.next();
+            ProductOpt opt = dataSource.createProductOpt(dto);
+            locales = opt.getSupportedLocales();
+            // If failed to get locales from the data source, log the error.
+            if (locales == null || locales.isEmpty()) {
+                logger.error(ConstantsMsg.GET_LOCALES_FAILED, dataSource.toString());
+            }
+        }
+        return locales;
+    }
 }
