@@ -1,8 +1,6 @@
 /*******************************************************************************
- * /*
- *  * Copyright 2019-2020 VMware, Inc.
- *  * SPDX-License-Identifier: EPL-2.0
- *  */
+ * Copyright 2019-2020 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
  ******************************************************************************/
 package com.vmware.vip.test.javaclient;
 
@@ -56,7 +54,7 @@ public class OfflineBundleHelper {
 		return languageTags.get(index);
 	}
 	private static boolean isNoneEnglish(String languageTag) {
-		if (languageTag == "en" || languageTag.startsWith("en-") || languageTag == "source") {
+		if (languageTag.equals("en") || languageTag.startsWith("en-") || languageTag.equals("source")) {
 			return false;
 		} else {
 			return true;

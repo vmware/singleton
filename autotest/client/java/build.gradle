@@ -29,7 +29,18 @@ dependencies {
     compile group: 'com.github.tomakehurst', name: 'wiremock', version:'2.24.1'
 }
 
-task copyJar(type:Copy) {
+processResources {
+    exclude { "**/*.*" }
+}
+
+task copyResources(type:Copy) {
+    from('src/main/resources') {
+	    include '**/*.*'
+	}
+	into 'target'
+}
+
+task copyJar(type:Copy, dependsOn: [copyResources]) {
     from('build/libs') {
 	    include '*.jar'
 	}
