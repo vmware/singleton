@@ -4,12 +4,11 @@
  */
 package com.vmware.vipclient.i18n.base.instances;
 
-import java.util.Locale;
-
-import org.json.simple.JSONObject;
-
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.l2.common.PatternCategory;
+import org.json.simple.JSONObject;
+
+import java.util.Locale;
 
 /**
  * Provide some functions to get formatted date/time string.
@@ -71,17 +70,20 @@ public class DateFormatting implements Formatting {
         if (null == timeZone) {
             timeZone = "";// TimeZone.getDefault();
         }
+        JSONObject dateFormatData = null;
         I18nFactory factory = I18nFactory.getInstance();
-        JSONObject formatData = null;
-        if (factory != null) {
-            PatternMessage p = (PatternMessage) factory.getMessageInstance(PatternMessage.class);
-            formatData = (JSONObject) p.getPatternMessage(locale).get(PatternCategory.DATES.toString());
+        if (factory == null) {
+            throw new RuntimeException("I18nFactory is null, please create it first!");
         }
-        if (formatData == null) {
+        PatternMessage p = (PatternMessage) factory.getMessageInstance(PatternMessage.class);
+        JSONObject localeFormatData = p.getPatternMessage(locale);
+        if(localeFormatData != null)
+            dateFormatData = (JSONObject) localeFormatData.get(PatternCategory.DATES.toString());
+        if (dateFormatData == null) {
             throw new RuntimeException("Can't format " + obj + " without pattern data!");
         }
         com.vmware.vipclient.i18n.l2.text.DateFormat dateFormat = com.vmware.vipclient.i18n.l2.text.DateFormat
-                .getInstance(formatData, pattern, locale.toLanguageTag());
+                .getInstance(dateFormatData, pattern, locale.toLanguageTag());
         return dateFormat.format(obj, timeZone);
     }
 
@@ -96,18 +98,20 @@ public class DateFormatting implements Formatting {
         if (null == timeZone) {
             timeZone = "";// TimeZone.getDefault();
         }
+        JSONObject dateFormatData = null;
         I18nFactory factory = I18nFactory.getInstance();
-        JSONObject formatData = null;
-        if (factory != null) {
-            PatternMessage p = (PatternMessage) factory.getMessageInstance(PatternMessage.class);
-
-            formatData = (JSONObject) p.getPatternMessage(language, region).get(PatternCategory.DATES.toString());
+        if (factory == null) {
+            throw new RuntimeException("I18nFactory is null, please create it first!");
         }
-        if (formatData == null) {
+        PatternMessage p = (PatternMessage) factory.getMessageInstance(PatternMessage.class);
+        JSONObject localeFormatData = p.getPatternMessage(language, region);
+        if(localeFormatData != null)
+            dateFormatData = (JSONObject) localeFormatData.get(PatternCategory.DATES.toString());
+        if (dateFormatData == null) {
             throw new RuntimeException("Can't format " + obj + " without pattern data!");
         }
         com.vmware.vipclient.i18n.l2.text.DateFormat dateFormat = com.vmware.vipclient.i18n.l2.text.DateFormat
-                .getInstance(formatData, pattern, language, region);
+                .getInstance(dateFormatData, pattern, language, region);
         return dateFormat.format(obj, timeZone);
     }
 

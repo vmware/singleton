@@ -4,15 +4,15 @@
  */
 package com.vmware.vipclient.i18n;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.vmware.vipclient.i18n.base.instances.Formatting;
+import com.vmware.vipclient.i18n.base.instances.Message;
+import com.vmware.vipclient.i18n.base.instances.LocaleMessage;
+import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.vmware.vipclient.i18n.base.instances.Formatting;
-import com.vmware.vipclient.i18n.base.instances.Message;
-import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * provide a factory to create all kind of I18n instances
@@ -90,7 +90,7 @@ public class I18nFactory {
         if (null == cfg) {
             key = c.getCanonicalName();
         } else {
-            key = cfg.getProductName();
+            key = c.getCanonicalName() + "." + cfg.getProductName();
         }
         if (messages.containsKey(key)) {
             return messages.get(key);
@@ -108,6 +108,9 @@ public class I18nFactory {
 
         if (i instanceof TranslationMessage) {
             ((TranslationMessage) i).setCfg(cfg);
+        }
+        if (i instanceof LocaleMessage) {
+            ((LocaleMessage) i).setCfg(cfg);
         }
         return i;
     }

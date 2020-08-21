@@ -4,6 +4,11 @@
  */
 package com.vmware.vipclient.i18n.util;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -13,11 +18,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
-
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class FileUtil {
     static Logger logger = LoggerFactory.getLogger(FileUtil.class);
@@ -69,10 +69,10 @@ public class FileUtil {
     
     @Deprecated
     public static JSONObject readLocalJsonFile(String filePath) {
-        String basePath = FileUtil.class.getClassLoader()
-                .getResource("").getFile();
+        String path = FileUtil.class.getClassLoader()
+                .getResource(filePath).getFile();
         JSONObject jsonObj = null;
-        File file = new File(basePath + filePath);
+        File file = new File(path);
         if (file.exists()) {
             try (InputStream fis = new FileInputStream(file);
                     Reader reader = new InputStreamReader(fis, "UTF-8");) {

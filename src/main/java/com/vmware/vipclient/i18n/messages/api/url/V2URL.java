@@ -4,12 +4,6 @@
  */
 package com.vmware.vipclient.i18n.messages.api.url;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.APIV2;
 import com.vmware.vipclient.i18n.VIPCfg;
@@ -17,6 +11,11 @@ import com.vmware.vipclient.i18n.l2.common.PatternCategory;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 /**
  *
@@ -259,11 +258,11 @@ public class V2URL {
      * @param baseUrl
      * @return
      */
-    public static String getSupportedLanguageListURL(final String displayLanguage, final String baseUrl) {
+    public static String getSupportedLanguageListURL( final String baseUrl, BaseDTO dto, final String displayLanguage) {
         StringBuilder url = new StringBuilder(baseUrl);
         url.append(APIV2.SUPPORTED_LANGUAGE_LIST);
-        URLUtils.appendParamToURL(url, ConstantsKeys.PRODUCT_NAME, VIPCfg.getInstance().getProductName());
-        URLUtils.appendParamToURL(url, ConstantsKeys.PRODUCT_VERSION, VIPCfg.getInstance().getVersion());
+        URLUtils.appendParamToURL(url, ConstantsKeys.PRODUCT_NAME, dto.getProductID());
+        URLUtils.appendParamToURL(url, ConstantsKeys.PRODUCT_VERSION, dto.getVersion());
         return URLUtils.appendParamToURL(url, ConstantsKeys.DISPLAY_LANGUAGE, displayLanguage);
     }
 }

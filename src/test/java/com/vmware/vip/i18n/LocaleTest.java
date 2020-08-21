@@ -4,21 +4,6 @@
  */
 package com.vmware.vip.i18n;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
-import org.json.simple.parser.ParseException;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
@@ -28,6 +13,20 @@ import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.CacheService;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
+import org.json.simple.parser.ParseException;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class LocaleTest extends BaseTestClass {
     LocaleMessage localeI18n;
@@ -96,9 +95,11 @@ public class LocaleTest extends BaseTestClass {
     @Test
     public void testGetRegionList() throws ParseException {
         List<String> list = new ArrayList<String>();
-        list.add("zh_Hant");
-        list.add("ja");
-        list.add("de");
+        list.add("en-US");
+        list.add("zh_CN");
+        //list.add("ja");
+        list.add("de-DE");
+        list.add("aa");
         Map<String, Map<String, String>> result = localeI18n.getRegionList(list);
         Assert.assertNotNull(result);
         localeI18n.getRegionList(list);// get data from cache
@@ -106,9 +107,14 @@ public class LocaleTest extends BaseTestClass {
 
     @Test
     public void testGetDisplayNamesByLanguage() throws ParseException {
-        Map<String, String> resp = localeI18n.getDisplayLanguagesList("zh_Hans");
-        Assert.assertNotNull(resp);
+        Map<String, String> enResp = localeI18n.getDisplayLanguagesList("en");
+        Assert.assertNotNull(enResp);
+        Map<String, String> zhResp = localeI18n.getDisplayLanguagesList("zh_Hans");
+        Assert.assertNotNull(zhResp);
         localeI18n.getDisplayLanguagesList("zh_Hans");// get data from cache
+        //test invalid locale, fallback to default locale
+        Map<String, String> aaResp = localeI18n.getDisplayLanguagesList("aa");
+        Assert.assertNotNull(aaResp);
     }
     
     @Test
