@@ -16,6 +16,7 @@ import org.testng.annotations.Test;
 
 import com.vmware.vip.test.common.Utils;
 import com.vmware.vip.test.common.annotation.TestCase;
+import com.vmware.vip.test.common.annotation.TestCase.Priority;
 import com.vmware.vip.test.javaclient.Constants;
 import com.vmware.vip.test.javaclient.TestBase;
 import com.vmware.vipclient.i18n.I18nFactory;
@@ -43,8 +44,8 @@ public class TranslationMessageTest extends TestBase {
 		translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
 	}
 
-	@Test(enabled=true, dataProvider="TranslationData")
-	@TestCase(id = "001", name = "TranslationMessageTest", description = "test desc")
+	@Test(enabled=true, dataProvider="TranslationData", priority=0)
+	@TestCase(id = "001", name = "TranslationMessageTest", description = "test desc", priority=Priority.P0)
 	public void testNumberFormat(String component, String bundle,
 			Locale locale, String key, Object[] args, String expected) {
 		String message = translation.getString2(component, bundle, locale, key, args);
