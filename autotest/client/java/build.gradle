@@ -1,12 +1,8 @@
+/*
+ * Copyright 2019-2020 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 apply plugin: 'java'
-
-sourceSets {
-    main {
-        java {
-            srcDir 'src'
-        }
-    }
-}
 
 jar {
     baseName = 'singleton-java-client-test'
@@ -17,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    compile fileTree(dir: 'lib', include: '*.jar')
+    compile fileTree(dir: 'lib', include: ['vip4java-0.1.0.jar','glogger.jar'])
     compile group: 'org.testng', name: 'testng', version:'6.14.3'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version:'2.11.0'
     compile group: 'org.json', name: 'json', version:'20180130'
@@ -33,19 +29,14 @@ dependencies {
     compile group: 'com.github.tomakehurst', name: 'wiremock', version:'2.24.1'
 }
 
-task copyExtLibs(type:Copy) {
+task copyJar(type:Copy) {
     from('build/libs') {
 	    include '*.jar'
 	}
 	into 'target'
 }
 
-task copyResource(type:Copy, dependsOn: [copyExtLibs]) {
-    from('resource')
-	into 'target'
-}
-
-task copyDependencies(type: Copy, dependsOn: [copyResource]) {
+task copyDependencies(type: Copy, dependsOn: [copyJar]) {
     from configurations.compile
     into 'target'
 }
