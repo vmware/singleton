@@ -16,8 +16,8 @@ cd $base_dir/sample-client-app && mkdir lib
 cp $client_jar $base_dir/sample-client-app/lib
 gradle build
 java -jar build/libs/*.jar zh-Hans
-if [ ! -d "$base_dir/sample-client-app/sample-shared-library" ]; then
-    echo "sample shared library not find, skip test."
+if [ ! -d "$base_dir/sample-client-app/sample-app-with-shared-lib" ]; then
+    echo "sample-app-with-shared-lib not found, skip test."
     exit 0
 fi
 echo "test sample-app-with-shared-lib"
