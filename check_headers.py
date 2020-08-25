@@ -33,11 +33,13 @@ import os
 import re
 import sys
 import argparse
+import datetime
+
 
 SOURCE_CODE_EXTENSIONS = [".java", ".go", ".ts", ".js", ".asp", ".aspx", ".jsp", ".html", ".css", ".php",
 ".sh", ".py", ".rb", ".cpp", ".c", ".cs", ".h", ".hpp", ".swift", ".sql", ".vb", ".ps1", ".m", ".mm", ".gradle", ".bat", ".xml"]
 REQUIRED_PATTERN_LIST = ["makefile", "dockerfile"] #name list of file must to be checked even extension name is not in the list or has no extension name, case not sensitive
-SINGLETON_PATTERN = ".*Copyright [1-9][0-9]{3}(-[1-9][0-9]{3})? VMware, Inc\.\s+\n.*SPDX-License-Identifier: EPL-2.0\s+$"
+SINGLETON_PATTERN = ".*Copyright ([1-9][0-9]{3}-)?"+str(datetime.datetime.now().year)+" VMware, Inc\.\s+\n.*SPDX-License-Identifier: EPL-2.0\s+$"
 NOT_REQUIRED_PATTERN_LIST = ["__init__.py", ".*.designer.cs"]
 PATH_SEPARATOR = ":"
 EXTENSION_SEPARATOR = ":"
@@ -148,7 +150,8 @@ if __name__ == "__main__":
         print("Files miss license or copyright headers:\n    {}".format("\n    ".join(errs)))
         print("========================================= Fail =========================================\n" +
               "    Missing headers in {} files, see file list above.\n".format(len(errs)) +
-              "    Refer to contributing guide to see how to add license and copyright headers.\n" +
+              "    Header check pattern '{}'\n".format(headers_pattern) +
+              "    Details refer to contributing guide to see how to add license and copyright headers.\n" +
               "========================================================================================")
         sys.exit(1)
     print("============== PASS ==============")
