@@ -53,5 +53,6 @@ jobs:
         - str=$(printf '=%.0s' {1..50})
         - echo $str Smoke Test Start $str
         - cd target && java -cp '.:./*' org.testng.TestNG -d test-output testng.xml
-        - cd $TRAVIS_BUILD_DIR/devops/autotest/client/java_client_sample_app && ./sample_app_sanity_test.sh $TRAVIS_BUILD_DIR
+        - cat offlineBundles/JAVA/messages_fr.json
+        #- cd $TRAVIS_BUILD_DIR/devops/autotest/client/java_client_sample_app && ./sample_app_sanity_test.sh $TRAVIS_BUILD_DIR
         - echo $str Smoke Test End $str
