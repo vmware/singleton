@@ -1,12 +1,8 @@
+/*
+ * Copyright 2019-2020 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 apply plugin: 'java'
-
-sourceSets {
-    main {
-        java {
-            srcDir 'src'
-        }
-    }
-}
 
 jar {
     baseName = 'singleton-java-client-test'
@@ -33,19 +29,25 @@ dependencies {
     compile group: 'com.github.tomakehurst', name: 'wiremock', version:'2.24.1'
 }
 
-task copyExtLibs(type:Copy) {
+processResources {
+    exclude { "**/*.*" }
+}
+
+task copyResources(type:Copy) {
+    from('src/main/resources') {
+	    include '**/*.*'
+	}
+	into 'target'
+}
+
+task copyJar(type:Copy, dependsOn: [copyResources]) {
     from('build/libs') {
 	    include '*.jar'
 	}
 	into 'target'
 }
 
-task copyResource(type:Copy, dependsOn: [copyExtLibs]) {
-    from('resource')
-	into 'target'
-}
-
-task copyDependencies(type: Copy, dependsOn: [copyResource]) {
+task copyDependencies(type: Copy, dependsOn: [copyJar]) {
     from configurations.compile
     into 'target'
 }
