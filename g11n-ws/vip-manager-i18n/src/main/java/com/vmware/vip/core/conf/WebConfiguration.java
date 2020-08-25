@@ -100,8 +100,10 @@ public class WebConfiguration implements WebMvcConfigurer {
 	 * Add ETag into response header for data cache
 	 */
 	@Bean
-	public EtagHeaderFilter shallowETagHeaderFilter() {
-		return new EtagHeaderFilter();
+	public ShallowEtagHeaderFilter shallowETagHeaderFilter() {
+		ShallowEtagHeaderFilter shallowEtagHeaderFilter = new ShallowEtagHeaderFilter();
+		shallowEtagHeaderFilter.setWriteWeakETag(true);
+		return shallowEtagHeaderFilter;
 	}
 
 	/**

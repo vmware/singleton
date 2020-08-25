@@ -50,6 +50,7 @@ public class TomcatConfig {
 		connector.setRedirectPort(ConstantsTomcat.REDIRECT_PORT);
 		connector.setAllowTrace(serverProperties.isAllowTrace());
 		protocol.setCompression("on");
+		protocol.setCompressionMinSize(1);
 		return connector;
 	}
 
