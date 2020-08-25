@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.service;
@@ -139,7 +139,7 @@ public class ComponentService {
 		if (!cacheItem.getCachedData().isEmpty()) {
 			cacheService.addCacheOfComponent(cacheItem);
 		} else if (!dto.getLocale().equals(ConstantsKeys.SOURCE) && fallbackLocalesIter!=null && fallbackLocalesIter.hasNext()) {
-			// If failed to fetch message for the requetsed DTO, use MessageCacheItem of the next fallback locale.
+			// If failed to fetch message for the requested DTO, use MessageCacheItem of the next fallback locale.
 			MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), fallbackLocalesIter.next().toLanguageTag(), dto.getProductID(), dto.getVersion());
 			cacheItem = new ComponentService(fallbackLocaleDTO).getMessages(fallbackLocalesIter);
 			if (!cacheItem.getCachedData().isEmpty()) {
