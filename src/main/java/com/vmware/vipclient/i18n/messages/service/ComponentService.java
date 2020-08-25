@@ -105,14 +105,19 @@ public class ComponentService {
     	MessageCacheItem cacheItem = null;
     	if (cacheService.isContainComponent()) { // Item is in cache
     		cacheItem = cacheService.getCacheOfComponent();
-    		if (cacheItem.isExpired()) { // cacheItem has expired
+    		if (cacheItem.getCachedData().isEmpty()) { // This means that the data to be used is from a fallback locale.
+				// If expired, try to first create and store cacheItem for the requested locale in a separate thread.
+				if (cacheItem.isExpired())
+					this.createCacheItemTask(fallbackLocalesIter);
+
+    			// Use cached data of cacheItem.getLocale() --> fallback locale
+				MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), cacheItem.getLocale(), dto.getProductID(), dto.getVersion());
+				cacheItem = new ComponentService(fallbackLocaleDTO).getMessages(null);
+			}
+			if (cacheItem.isExpired()) {
     			// Refresh the cacheItem in a separate thread
     			refreshCacheItemTask(cacheItem);
     		}
-			// If the cacheItem is for a fallback locale, create and store cacheItem for the requested locale in a separate thread.
-    		if (!LocaleUtility.isSameLocale(cacheItem.getLocale(), this.dto.getLocale())) {
-				this.createCacheItemTask(fallbackLocalesIter);
-			}
     	} else { // Item is not in cache. Create and store cacheItem for the requested locale
     		cacheItem = createCacheItem(fallbackLocalesIter);
     	}
@@ -138,7 +143,9 @@ public class ComponentService {
 			MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), fallbackLocalesIter.next().toLanguageTag(), dto.getProductID(), dto.getVersion());
 			cacheItem = new ComponentService(fallbackLocaleDTO).getMessages(fallbackLocalesIter);
 			if (!cacheItem.getCachedData().isEmpty()) {
-				cacheService.addCacheOfComponent(cacheItem);
+				// Cache a copy of the fallback locale's cacheItem, but with only the locale and maxAgeMillis. Use current timestamp.
+				MessageCacheItem cacheItemCopy = new MessageCacheItem(cacheItem.getLocale(), null, null, System.currentTimeMillis(), cacheItem.getMaxAgeMillis());
+				cacheService.addCacheOfComponent(cacheItemCopy);
 			}
 		}
 		return cacheItem;
