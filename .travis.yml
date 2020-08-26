@@ -52,6 +52,6 @@ jobs:
         - docker cp l10n singleton:/
         - str=$(printf '=%.0s' {1..50})
         - echo $str Smoke Test Start $str
-        - java -cp './target/*' org.testng.TestNG -d test-output ./target/testng.xml
+        - cd target && java -cp '.:./*' org.testng.TestNG -d test-output testng.xml
         - cd $TRAVIS_BUILD_DIR/devops/autotest/client/java_client_sample_app && ./sample_app_sanity_test.sh $TRAVIS_BUILD_DIR
         - echo $str Smoke Test End $str
