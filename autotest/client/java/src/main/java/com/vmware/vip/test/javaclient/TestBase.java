@@ -20,11 +20,13 @@ import com.vmware.g11n.log.GLogger;
 import com.vmware.g11n.log.TestSetConfig;
 //import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.test.common.Config;
+import com.vmware.vipclient.i18n.I18nFactory;
 //import com.vmware.vip.test.common.RequestType;
 //import com.vmware.vip.test.javaclient.mock.MockAgent;
 //import com.vmware.vipclient.i18n.base.PatternCacheManager;
 //import com.vmware.vipclient.i18n.base.TranslationCacheManager;
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 
 public class TestBase {
 	public final static ResourceBundle prop = ResourceBundle.getBundle("vipconfig");
@@ -139,5 +141,10 @@ public class TestBase {
 			return 8090;
 		}
 		return Integer.parseInt(list[list.length-1].trim());
+	}
+
+	public TranslationMessage getTranslationMessage(VIPCfg vipCfg) {
+		I18nFactory i18n = I18nFactory.getInstance(vipCfg);
+    	return (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
 	}
 }

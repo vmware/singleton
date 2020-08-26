@@ -4,7 +4,10 @@
  ******************************************************************************/
 package com.vmware.vip.test.javaclient.cache;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -18,12 +21,8 @@ import com.vmware.vip.test.javaclient.Constants;
 import com.vmware.vip.test.javaclient.OfflineBundleHelper;
 import com.vmware.vip.test.javaclient.TestBase;
 import com.vmware.vip.test.javaclient.TestData;
-import com.vmware.vipclient.i18n.I18nFactory;
-import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.base.cache.Cache;
-import com.vmware.vipclient.i18n.base.cache.MessageCache;
-import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
-import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
+
+import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 
 public class InitCacheTest extends TestBase{
@@ -38,25 +37,27 @@ public class InitCacheTest extends TestBase{
 		boolean isConfigReady = ClientConfigHelper.makeConfig(
 				TestData.CLIENT_CONFIG_TEMPLATE_OFFLINE, configName, properties);
         if (isConfigReady) {
-    		log.debug(String.format("Test config '%s' is generated.", configName));
+    		log.info(String.format("Initialize with test config '%s'.", configName));
+    		vipCfg.initialize(ClientConfigHelper.formatConfigName(configName));
+            ClientConfigHelper.removeConfig(configName);
+            List<DataSourceEnum> msgOriginsQueueOrig = vipCfg.getMsgOriginsQueue();
+            vipCfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
+
+            try {
+            	String component = TestData.OFFLIN_BUNDLES_COMPONENT;
+            	String key = TestData.OFFLIN_BUNDLES_KEY1;
+            	String languageTag = OfflineBundleHelper.getRandomLocalizedLanguageTag(component);
+            	
+            	TranslationMessage translation = getTranslationMessage(vipCfg);
+            	String msg = translation.getMessage(Locale.forLanguageTag(languageTag), component, key);
+            	log.verifyEqual("Get translation from locale bundles", msg,
+            			OfflineBundleHelper.getTranslation(component, languageTag, key));
+            } catch (Exception e) {
+            	log.verifyNull("Verify no exception", e, e.toString());
+            }
+            vipCfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+        } else {
+        	log.error("Failed to make offline mode configuration file. Skip all test steps.");
         }
-		log.debug("Initialize with test config.");
-		vipCfg.initialize(ClientConfigHelper.formatConfigName(configName));
-        try {
-        	log.info("Create translation cache.");
-        	Cache translationCache = vipCfg.createTranslationCache(MessageCache.class);
-        	log.verifyTrue("Verify cache is not empty", translationCache.size()>0);
-        	I18nFactory i18n = I18nFactory.getInstance(vipCfg);
-        	TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
-        	String component = TestData.OFFLIN_BUNDLES_COMPONENT;
-        	String key = TestData.OFFLIN_BUNDLES_KEY1;
-        	String languageTag = OfflineBundleHelper.getRandomLocalizedLanguageTag(component);
-        	String msg = translation.getMessage(Locale.forLanguageTag(languageTag), component, key);
-        	log.verifyEqual("Get translation from locale bundles", msg,
-        			OfflineBundleHelper.getTranslation(component, languageTag, key));
-        } catch (Exception e) {
-        	log.verifyNull("Verify no exception", e, e.toString());
-        }
-        ClientConfigHelper.removeConfig(configName);
 	}
 }
