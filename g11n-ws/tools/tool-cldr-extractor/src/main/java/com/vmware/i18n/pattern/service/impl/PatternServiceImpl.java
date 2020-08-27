@@ -25,6 +25,8 @@ import com.vmware.i18n.pattern.service.IPatternService;
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.i18n.utils.JSONUtil;
 import com.vmware.i18n.utils.LocalJSONReader;
+import com.vmware.i18n.utils.timezone.CldrMetaZone;
+import com.vmware.i18n.utils.timezone.TimeZoneName;
 
 @SuppressWarnings("unchecked")
 public class PatternServiceImpl implements IPatternService {
@@ -36,7 +38,7 @@ public class PatternServiceImpl implements IPatternService {
 	public static Map<String, Object> localeAliasesMap = null;
 	public static Map<String, Object> pluralsMap = null;
 	public static Map<String, Object> languageDataMap = null;
-
+	IPatternDao dao = new PatternDaoImpl();
 	static {
 		String result = "";
 		String regionResult = "";
@@ -50,11 +52,11 @@ public class PatternServiceImpl implements IPatternService {
 			plurals = LocalJSONReader.readJarJsonFile(CLDRConstants.JSON_PATH, CLDRConstants.PLURALS_PATH);
 			languageData = LocalJSONReader.readJarJsonFile(CLDRConstants.JSON_PATH, CLDRConstants.LANGUAGE_DATA_PATH);
 		} else {
-			result = LocalJSONReader.readLocalJSONFile(CLDRConstants.JSON_PATH + CLDRConstants.PARSE_DATA);// local
-			regionResult = LocalJSONReader.readLocalJSONFile(CLDRConstants.JSON_PATH + CLDRConstants.REGION_LANGUAGES_PATH);
-			localeAliases = LocalJSONReader.readLocalJSONFile(CLDRConstants.JSON_PATH + CLDRConstants.LOCALE_ALIASES_PATH);
-			plurals = LocalJSONReader.readLocalJSONFile(CLDRConstants.JSON_PATH + CLDRConstants.PLURALS_PATH);
-			languageData = LocalJSONReader.readLocalJSONFile(CLDRConstants.JSON_PATH + CLDRConstants.LANGUAGE_DATA_PATH);
+			result = LocalJSONReader.readLocalJSONFile(CLDRConstants.RESOURCES_PATH + CLDRConstants.PARSE_DATA);// local
+			regionResult = LocalJSONReader.readLocalJSONFile(CLDRConstants.RESOURCES_PATH + CLDRConstants.REGION_LANGUAGES_PATH);
+			localeAliases = LocalJSONReader.readLocalJSONFile(CLDRConstants.RESOURCES_PATH + CLDRConstants.LOCALE_ALIASES_PATH);
+			plurals = LocalJSONReader.readLocalJSONFile(CLDRConstants.RESOURCES_PATH + CLDRConstants.PLURALS_PATH);
+			languageData = LocalJSONReader.readLocalJSONFile(CLDRConstants.RESOURCES_PATH + CLDRConstants.LANGUAGE_DATA_PATH);
 		}
 		likelySubtagMap = (Map<String, Object>) JSONUtil.getMapFromJson(result).get(Constants.LIKELY_SUBTAG);
 		localePathMap = (Map<String, String>) JSONUtil.getMapFromJson(result).get(Constants.LOCALE_PATH);
@@ -131,16 +133,22 @@ public class PatternServiceImpl implements IPatternService {
 		Map<String, Object> suppleMap = new HashMap<>();
 		IPatternDao dao = new PatternDaoImpl();
 		String[] cateList = categories.split(",");
+
+		String resourcePath = CLDRConstants.RESOURCES_PATH;
+		if (CLDRConstants.JSON_PATH.lastIndexOf(".jar") > 0) {
+			resourcePath = CLDRConstants.JSON_PATH;
+		}
+
 		for (String cat : cateList) {
 			String filePath = MessageFormat.format(CLDRConstants.SUPPLEMENTAL_PATH, cat);
-			String suppleData = dao.getPattern(CLDRConstants.JSON_PATH, filePath);
+			String suppleData = dao.getPattern(resourcePath, filePath);
 			if (!CommonUtil.isEmpty(suppleData)) {
 				suppleMap.put(cat, JSONUtil.string2SortMap(suppleData));
 			}
 		}
 
 		//get pattern data
-		String patternJson = dao.getPattern(CLDRConstants.JSON_PATH, MessageFormat.format(CLDRConstants.PATTERN_JSON_PATH, locale));
+		String patternJson = dao.getPattern(resourcePath, MessageFormat.format(CLDRConstants.PATTERN_JSON_PATH, locale));
 		Map<String, Object> categMap = (Map<String, Object>) JSONUtil.getMapFromJson(patternJson).get(Constants.CATEGORIES);
 		List<String> cates = new ArrayList(Arrays.asList(cateList));
 		if (cates.contains(Constants.CURRENCIES) && !cates.contains(Constants.NUMBERS)) {
@@ -149,7 +157,7 @@ public class PatternServiceImpl implements IPatternService {
 
 		if (cates.contains(Constants.DATE_FIELDS)) {
 			//get pattern data
-			String dateFieldsJson = dao.getPattern(CLDRConstants.JSON_PATH, MessageFormat.format(CLDRConstants.DATE_FIELDS_JSON_PATH, locale));
+			String dateFieldsJson = dao.getPattern(resourcePath, MessageFormat.format(CLDRConstants.DATE_FIELDS_JSON_PATH, locale));
 			categMap.put(Constants.DATE_FIELDS, JSONUtil.getMapFromJson(dateFieldsJson).get(Constants.DATE_FIELDS));
 		}
 		Map<String, Object> tmpMap = new LinkedHashMap<>();
@@ -161,4 +169,45 @@ public class PatternServiceImpl implements IPatternService {
 		tmpMap.put(Constants.SUPPLEMENTAL, suppleMap);
 		return tmpMap;
 	}
+	
+	 /*
+     * (non-Javadoc) * @see
+     * com.vmware.i18n.pattern.service.IPatternService#getTimeZoneName(java.lang.String)
+     */
+    @Override
+    public TimeZoneName getTimeZoneName(String locale, boolean defaultTerritory) {
+        // TODO Auto-generated method stub
+        if (CommonUtil.isEmpty(locale)) {
+            return null;
+        }
+        String tmpLocale = locale.replace("_", "-");
+
+        String pathLocale = CommonUtil.getPathLocale(tmpLocale, localePathMap, likelySubtagMap);
+        if (CommonUtil.isEmpty(pathLocale))
+            return null;
+        String patternStr = dao.getPattern(CLDRConstants.JSON_PATH,
+                MessageFormat.format(CLDRConstants.DATE_TIMEZONENAME_JSON_PATH, pathLocale));
+        TimeZoneName timeZoneObj = null;
+        try {
+            timeZoneObj = new ObjectMapper().readValue(patternStr, TimeZoneName.class);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+        }
+        if (defaultTerritory) {
+            List<CldrMetaZone> metaZones = new ArrayList<>();
+            for (CldrMetaZone metaZone : timeZoneObj.getMetaZones()) {
+                if (metaZone.getTerritory().equals("001")) {
+                    metaZones.add(metaZone);
+                }
+            }
+            timeZoneObj.setMetaZones(metaZones);
+            return timeZoneObj;
+
+        } else {
+            return timeZoneObj;
+        }
+
+    }
 }

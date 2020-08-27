@@ -53,22 +53,6 @@ public class I18nUtilTest {
 
 	@SuppressWarnings("unchecked")
 	@Test
-	public void testGetPatternAPI() {
-		String cateStr= "dates,numbers,plurals";
-		PatternAction pa = PatternAction.getInstance();
-		String json = pa.getPattern(LOCALE, cateStr);
-		Map<String, Object> patternMap = (Map<String, Object>) JSONUtil.getMapFromJson(json);
-		Map<String, Object> catesMap = (Map<String, Object>) patternMap.get("categories");
-		String[] catesArr = cateStr.split(",");
-		for (String cate : catesArr) {
-			Assert.assertNotNull(catesMap.get(cate));
-		}
-	}
-	
-	
-
-	@SuppressWarnings("unchecked")
-	@Test
 	public void testLocalesExtract() {
 		
 		String languages="zh,en,zh-Hant,zh-Hans-HK";

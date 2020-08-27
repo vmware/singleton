@@ -7,6 +7,9 @@ package com.vmware.l10n.conf;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
@@ -17,6 +20,7 @@ import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.util.UrlPathHelper;
 
+import com.vmware.l10n.utils.WhiteListUtils;
 import com.vmware.vip.api.rest.l10n.L10nI18nAPI;
 import com.vmware.vip.common.constants.ConstantsChar;
 
@@ -26,9 +30,20 @@ import com.vmware.vip.common.constants.ConstantsChar;
 @Configuration
 @EnableWebMvc
 public class WebConfiguration implements WebMvcConfigurer {
-
+	private static Logger logger = LoggerFactory.getLogger(WebConfiguration.class);
+	
 	@Value("${source.collect.locales:en}")
 	private String collectLocales;
+	
+	@Value("${csp.api.auth.enable:false}")
+	private String cspAuthFlag;
+	
+	@Autowired
+	private TokenService tokenService;
+	
+	@Value("${white.list.location:bundle.json}")
+	private String whiteListLocation;
+	
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
         UrlPathHelper urlPathHelper = new UrlPathHelper();
@@ -48,7 +63,14 @@ public class WebConfiguration implements WebMvcConfigurer {
     
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new CollectSourceValidationInterceptor(parseLocales(this.collectLocales))).addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/**");
+		// CSP authentication
+		if (cspAuthFlag.equalsIgnoreCase("true")) {
+			logger.info("add enable CSP authentication interceptor");
+			registry.addInterceptor(new CspAuthInterceptor(tokenService))
+			.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/**");
+		}
+		logger.info("add source collection validation interceptor");
+		registry.addInterceptor(new CollectSourceValidationInterceptor(parseLocales(this.collectLocales), WhiteListUtils.getWhiteList(whiteListLocation))).addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/**");
 	}
 	
 	private List<String> parseLocales(String localesString){

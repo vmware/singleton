@@ -162,7 +162,7 @@ public class ProductDao implements IProductDao {
      * Get the content of the White List by whiteList file name
      */
     @Override
-    public String getWhiteListContent() throws DataException {
+    public String getAllowProductListContent() throws DataException {
         String contentFilePath = bundleConfig.getBasePathWithSeparator() + ConstantsFile.L10N_BUNDLES_PATH +ConstantsFile.WHITE_LIST_FILE;
         if (new File(contentFilePath).exists()) {
          return new LocalJSONReader().readLocalJSONFile(contentFilePath);

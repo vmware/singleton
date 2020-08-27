@@ -26,6 +26,7 @@ public class APIV2 {
 	public static final String COMPONENT_TRANSLATION_GET  = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}/locales/{"+APIParamName.LOCALE+"}/components/{"+APIParamName.COMPONENT+"}";
 	// L2
 	public static final String LOCALIZED_DATE             = API_FORMATTING  + "/date/localizedDate";
+	public static final String LOCALIZED_TIMEZONE_NAME    = API_FORMATTING  + "/date/timezoneNameList";
 	public static final String LOCALIZED_NUMBER           = API_FORMATTING  + "/number/localizedNumber";
 	public static final String FORMAT_PATTERN_GET         = API_FORMATTING  + "/patterns/locales/{"+APIParamName.LOCALE+"}";
 	public static final String BROWSER_LOCALE             = API.I18N_API_ROOT + V + "/locale/browserLocale";

@@ -32,4 +32,5 @@ public class APIResponseStatus {
     public static final Response INTERNAL_NO_RESOURCE_ERROR = new Response(404,
             "Not Found");
     public static final Response UNKNOWN_ERROR = new Response(520, "Unknown Error");
+    public static final Response TRANSLATION_COLLECT_REQUEST_SUCCESS = new Response(200, "Source collection request have received");
 }

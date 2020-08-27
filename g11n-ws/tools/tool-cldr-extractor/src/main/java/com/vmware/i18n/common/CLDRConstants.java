@@ -47,12 +47,14 @@ public class CLDRConstants {
 	// cldr
 	public static final String JSON_PATH = CLDRConstants.class.getProtectionDomain().getCodeSource().getLocation()
 			.getPath();
+	public static final String RESOURCES_PATH = CLDRConstants.class.getResource("/cldr").getPath() + "/../";
 	public static final String PARSE_DATA = "cldr/pattern/common/parse.json";
 	public static final String PATTERN_JSON_PATH = "cldr/pattern/common/{0}/pattern.json";
 	public static final String SUPPLEMENTAL_PATH = "cldr/supplement/{0}.json";
 	public static final String ALL_CATEGORIES = "dates,numbers,plurals,measurements,currencies,dateFields";
 	public static final String LOCALE_TERRITORIES_PATH = "cldr/localedata/{0}/territories.json";
 	public static final String LOCALE_LANGUAGES_PATH = "cldr/localedata/{0}/languages.json";
+	public static final String LOCALE_CITIES_PATH = "cldr/localedata/{0}/cities.json";
 	public static final String CONTEXT_TRANSFORM_PATH = "cldr/misc/{0}/contextTransforms.json";
 	public static final String DEFAULT_CONTENT_PATH = "cldr/defaultContent/defaultContent.json";
 	public static final String REGION_LANGUAGES_PATH = "cldr/regionLanguage/regionLanguageMapping.json";
@@ -60,14 +62,17 @@ public class CLDRConstants {
 	public static final String PLURALS_PATH = "cldr/plurals/plurals.json";
 	public static final String LANGUAGE_DATA_PATH = "cldr/supplement/languageData.json";
 	public static final String DATE_FIELDS_JSON_PATH = "cldr/pattern/common/{0}/dateFields.json";
+	public static final String DATE_TIMEZONENAME_JSON_PATH = "cldr/pattern/timezone/{0}/timeZoneName.json";
 
 	public static final String CLDR_CORE_LANGUAGE_DATA = CLDRConstants.CLDR_CORE + CLDR_VERSION + "/supplemental/languageData.json";
 	public static final String CLDR_CORE_PLURALS = CLDRConstants.CLDR_CORE + CLDR_VERSION + "/supplemental/plurals.json";
 	public static final String CLDR_CORE_ALIASES = CLDRConstants.CLDR_CORE + CLDR_VERSION + "/supplemental/aliases.json";
+	public static final String CLDR_CORE_METAZONE = CLDRConstants.CLDR_CORE + CLDR_VERSION + "/supplemental/metaZones.json";
 	public static final String CLDR_DATES_FULL_DATE_FIELDS = CLDR_DATES_FULL + "{0}/main/{1}/dateFields.json";
 	public static final String CLDR_DATES_FULL_CA_GREGORIAN = CLDR_DATES_FULL + "{0}/main/{1}/ca-gregorian.json";
 	public static final String CLDR_NUMBERS_FULL_NUMBERS = CLDR_NUMBERS_FULL + "{0}/main/{1}/numbers.json";
-
+	public static final String CLDR_DATES_FULL_DATE_TIMEZONENAME = CLDR_DATES_FULL + "{0}/main/{1}/timeZoneNames.json";
+	
 	public static final String LANGUAGE_DATA_KEY_PATH = "supplemental.languageData";
 	public static final String PLURALS_KEY_PATH = "supplemental.plurals-type-cardinal";
 	public static final String ALIAS_KEY_PATH = "supplemental.metadata.alias.languageAlias";
@@ -83,4 +88,6 @@ public class CLDRConstants {
 	public static final String PERCENT_FORMATS_NUMBER_SYSTEM = "main.{0}.numbers.percentFormats-numberSystem-{1}.{2}";
 	public static final String CURRENCY_FORMATS_NUMBER_SYSTEM = "main.{0}.numbers.currencyFormats-numberSystem-{1}.{2}";
 	public static final String SCIENTIFIC_FORMATS_NUMBER_SYSTEM = "main.{0}.numbers.scientificFormats-numberSystem-{1}.{2}";
+
+	public static final String SUPPLEMENTAL_FILE_NAME = CLDR_CORE + CLDR_VERSION + "/supplemental/{0}";
 }

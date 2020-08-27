@@ -4,6 +4,8 @@
  */
 package com.vmware.i18n.l2.dao.pattern;
 
+import com.vmware.i18n.utils.timezone.TimeZoneName;
+
 public interface IPatternDao {
 
     /**
@@ -14,4 +16,10 @@ public interface IPatternDao {
      */
     public String getPattern(String locale, String categories);
 
+    /**
+	 * @param locale
+	 * @param boolean value representing default territory
+	 * @return timezone name of the locale 
+	 */
+    public TimeZoneName getTimeZoneName(String locale, boolean defaultTerritory);
 }

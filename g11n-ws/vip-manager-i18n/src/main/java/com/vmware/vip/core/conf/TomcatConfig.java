@@ -49,6 +49,7 @@ public class TomcatConfig {
 		protocol.setMaxHttpHeaderSize(serverProperties.getMaxHttpHeaderSize());
 		connector.setRedirectPort(ConstantsTomcat.REDIRECT_PORT);
 		connector.setAllowTrace(serverProperties.isAllowTrace());
+		protocol.setCompression("on");
 		return connector;
 	}
 

@@ -81,9 +81,9 @@ public class TranslationCollectKeyAPITest {
 			MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(
 					webApplicationContext).build();
 			String API = L10nI18nAPI.TRANSLATION_PRODUCT_COMOPONENT_KEY_APIV1
-					.replace("{" + APIParamName.PRODUCT_NAME + "}", "devCenter")
+					.replace("{" + APIParamName.PRODUCT_NAME + "}", "devTest")
 					.replace("{" + APIParamName.COMPONENT + "}", "default")
-					.replace("{" +APIParamName.KEY+ "}", "dc.myhome.open3");
+					.replace("{" +APIParamName.KEY2+ "}", "dc.myhome.open3");
 			MvcResult mvcRS =mockMvc.perform(
 					MockMvcRequestBuilders.post(API)
 					        .param(Constants.VERSION, "1.1.0")
@@ -118,7 +118,7 @@ public class TranslationCollectKeyAPITest {
 			String API = L10nI18nAPI.TRANSLATION_PRODUCT_NOCOMOPONENT_KEY_APIV1
 					.replace("{" + APIParamName.PRODUCT_NAME + "}", "NOComponent")
 					//.replace("{" + APIParamName.COMPONENT + "}", "default")
-					.replace("{" +APIParamName.KEY+ "}", "dc.myhome.open3");
+					.replace("{" +APIParamName.KEY2+ "}", "dc.myhome.open3");
 			MvcResult mvcRS =mockMvc.perform(
 					MockMvcRequestBuilders.post(API)
 					        .param(Constants.VERSION, "1.1.0")
@@ -158,7 +158,7 @@ public class TranslationCollectKeyAPITest {
 					.replace("{" + APIParamName.VERSION + "}", "2.0.0")
 					.replace("{" + APIParamName.COMPONENT + "}", "testing")
 					.replace("{" + APIParamName.LOCALE + "}", "en")
-					.replace("{" +APIParamName.KEY+ "}", "testkey");
+					.replace("{" +APIParamName.KEY2+ "}", "testkey");
 			 logger.info(API);
 			MvcResult mvcRS =mockMvc.perform(
 					MockMvcRequestBuilders.post(API)
@@ -195,7 +195,7 @@ public class TranslationCollectKeyAPITest {
 			MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(
 					webApplicationContext).build();
 			String API = L10nI18nAPI.KEYS_TRANSLATION_APIV2
-					.replace("{" + APIParamName.PRODUCT_NAME + "}", "devtest")
+					.replace("{" + APIParamName.PRODUCT_NAME + "}", "devTest")
 					.replace("{" + APIParamName.VERSION + "}", "2.1.0")
 					.replace("{" + APIParamName.COMPONENT + "}", "testmult")
 					.replace("{" + APIParamName.LOCALE + "}", "en");

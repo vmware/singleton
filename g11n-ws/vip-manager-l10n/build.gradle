@@ -46,8 +46,8 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web"){
     exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
     }
-    compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.35')
-    compile ('org.apache.tomcat:tomcat-annotations-api:9.0.35')
+    compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.37')
+    compile ('org.apache.tomcat:tomcat-annotations-api:9.0.37')
     compile ('org.xerial:sqlite-jdbc:3.31.1')
     compile ('com.fasterxml.jackson.core:jackson-databind:2.10.0.pr1')
     compile ('com.fasterxml.jackson.core:jackson-core:2.10.0.pr1')
@@ -56,6 +56,7 @@ dependencies {
     compile("io.springfox:springfox-swagger-ui:2.9.2")
     compile("io.springfox:springfox-swagger2:2.9.2")
     compile("com.google.guava:guava:$guavaVersion")
+    compile("io.jsonwebtoken:jjwt:0.9.0")
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 
