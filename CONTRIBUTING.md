@@ -119,7 +119,7 @@ Please sync your fork repo with upstream repo before you create a PR, refer to h
 
 #### Copyright and License Information
 
-Please add copyright and license information at the beginning of your source code or anyother files regarding Singleton business. And CI pipeline will check your copyright and license information.
+Please add copyright and license information at the beginning of your source code or any other files regarding Singleton business. And CI pipeline will check your copyright and license information.
 
     Copyright <copyright start year>-<current year> VMware, Inc.
 
