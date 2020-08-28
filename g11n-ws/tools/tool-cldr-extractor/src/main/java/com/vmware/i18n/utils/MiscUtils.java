@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.utils;
@@ -70,5 +70,4 @@ public class MiscUtils {
 		contextTransformsMap.putAll(JSONUtil.string2SortMap(contextTransformsDataJson));
 		return contextTransformsMap;
 	}
-
 }
