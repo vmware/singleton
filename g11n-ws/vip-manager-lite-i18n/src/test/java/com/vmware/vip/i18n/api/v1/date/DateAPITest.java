@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v1.date;
@@ -38,5 +38,4 @@ public class DateAPITest {
     public void testLocalizedDateAPI() throws Exception {
         RequestUtil.sendRequest(webApplicationContext,ConstantsForTest.GET, ConstantsForTest.DateAPIURI);
     }
-
 }

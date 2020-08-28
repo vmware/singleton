@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.conf;
@@ -64,5 +64,5 @@ public class VIPTomcatConnectionCustomizer implements TomcatConnectorCustomizer 
 		}
 
 	}
-
 }
+

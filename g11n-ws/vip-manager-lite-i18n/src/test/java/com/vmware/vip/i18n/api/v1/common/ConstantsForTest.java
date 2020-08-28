@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v1.common;
@@ -70,5 +70,5 @@ public class ConstantsForTest {
     public static final String VERSION = "2.0.0";
     public static final String GRM = "GRM";
     public static final String CIM = "cim";
-
 }
+
