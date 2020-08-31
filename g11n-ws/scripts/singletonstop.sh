@@ -1,4 +1,4 @@
-#Copyright 2019 VMware, Inc.
+#Copyright 2019-2020 VMware, Inc.
 #SPDX-License-Identifier: EPL-2.0
 #!/bin/bash
 basepath=$(cd `dirname $0`; pwd)
