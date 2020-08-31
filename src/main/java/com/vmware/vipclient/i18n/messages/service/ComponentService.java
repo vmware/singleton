@@ -108,13 +108,12 @@ public class ComponentService {
     		if (cacheItem.getCachedData().isEmpty()) { // This means that the data to be used is from a fallback locale.
 				// If expired, try to first create and store cacheItem for the requested locale in a separate thread.
 				if (cacheItem.isExpired())
-					this.createCacheItemTask(fallbackLocalesIter);
+					this.createCacheItemTask(null); // Pass null so that locale fallback will not be applied.
 
     			// Use cached data of cacheItem.getLocale() --> fallback locale
 				MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), cacheItem.getLocale(), dto.getProductID(), dto.getVersion());
 				cacheItem = new ComponentService(fallbackLocaleDTO).getMessages(null);
-			}
-			if (cacheItem.isExpired()) {
+			} else if (cacheItem.isExpired()) {
     			// Refresh the cacheItem in a separate thread
     			refreshCacheItemTask(cacheItem);
     		}
@@ -127,7 +126,7 @@ public class ComponentService {
 	/**
 	 * Creates a new MessageCacheItem for the DTO and stores it in cache.
 	 *
-	 * @param fallbackLocalesIter The fallback locale queue to use in case of failure.
+	 * @param fallbackLocalesIter The fallback locale queue to use in case of failure. If null, no locale fallback will be applied.
 	 *
 	 */
     private MessageCacheItem createCacheItem(Iterator<Locale> fallbackLocalesIter) {
