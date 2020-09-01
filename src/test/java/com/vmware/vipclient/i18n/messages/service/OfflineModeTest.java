@@ -25,6 +25,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class OfflineModeTest extends BaseTestClass {
 
@@ -174,9 +176,10 @@ public class OfflineModeTest extends BaseTestClass {
     	// Returns the message in the default locale
     	assertEquals(FormatUtils.format(source, args), message);
     	
-    	// Cache for "es" locale is now pointing to the cache for the default locale
-    	MessageCacheItem cacheItem = cs.getCacheOfComponent();   	
-    	assertEquals(source, cacheItem.getCachedData().get(key));
+    	// cacheItem for "es" locale has an empty data map. It's locale is the fallback locale.
+    	MessageCacheItem cacheItem = cs.getCacheOfComponent();
+        assertEquals("en", cacheItem.getLocale());
+    	assertTrue(cacheItem.getCachedData().isEmpty());
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
@@ -326,8 +329,9 @@ public class OfflineModeTest extends BaseTestClass {
     	CacheService csDefault = new CacheService(defaultLocaleDTO);
     	MessageCacheItem cacheItemDefaultLocale = csDefault.getCacheOfComponent();
     	
-    	// Cache of default locale and cache of Locale.ITALIAN refer to the same object
-    	assertEquals(cacheItemDefaultLocale, cacheItem);
+    	// cacheItem of Locale.ITALIAN's data map is empty. Its locale is the fallback locale
+    	assertTrue(cacheItem.getCachedData().isEmpty());
+        assertEquals("en", cacheItem.getLocale());
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
