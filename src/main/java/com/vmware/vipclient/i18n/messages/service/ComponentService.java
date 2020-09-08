@@ -46,8 +46,10 @@ public class ComponentService {
 	 */
 	@SuppressWarnings("unchecked")
 	private void refreshCacheItem(final MessageCacheItem cacheItem, Iterator<DataSourceEnum> msgSourceQueueIter) {
-		if (!msgSourceQueueIter.hasNext())
+		if (!msgSourceQueueIter.hasNext()) {
+			logger.debug(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED_ALL, dto.getComponent(), dto.getLocale()));
 			return;
+		}
 
 		long timestampOld = cacheItem.getTimestamp();
 		DataSourceEnum dataSource = msgSourceQueueIter.next();
@@ -57,16 +59,11 @@ public class ComponentService {
 			logger.debug(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED, dto.getComponent(), dto.getLocale(), dataSource.toString()));
 		}
 
-		// Skip this block if timestamp is not 0 (which means cacheItem is in the cache) regardless if cacheItem is expired or not.
+		// If timestamp is not 0, it means that cacheItem is in the cache already.
 		// Otherwise, try the next dataSource in the queue.
 		if (timestamp == 0) {
 			// Try the next dataSource in the queue
-			if (msgSourceQueueIter.hasNext()) {
-				refreshCacheItem(cacheItem, msgSourceQueueIter);
-				// If no more data source in queue, log the error. This means that neither online nor offline fetch succeeded.
-			} else {
-				logger.debug(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED_ALL, dto.getComponent(), dto.getLocale()));
-			}
+			refreshCacheItem(cacheItem, msgSourceQueueIter);
 		}
 	}
 
