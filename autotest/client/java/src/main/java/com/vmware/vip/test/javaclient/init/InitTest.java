@@ -4,8 +4,6 @@
  ******************************************************************************/
 package com.vmware.vip.test.javaclient.init;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.Properties;
 
 import org.testng.annotations.Test;

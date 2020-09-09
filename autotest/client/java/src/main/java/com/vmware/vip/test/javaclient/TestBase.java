@@ -4,28 +4,18 @@
  ******************************************************************************/
 package com.vmware.vip.test.javaclient;
 
-//import java.util.ArrayList;
 import java.util.HashMap;
-//import java.util.List;
-//import java.util.Locale;
 import java.util.ResourceBundle;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
-//import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
 import com.vmware.g11n.log.GLogger;
 import com.vmware.g11n.log.TestSetConfig;
-//import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.test.common.Config;
 import com.vmware.vipclient.i18n.I18nFactory;
-//import com.vmware.vip.test.common.RequestType;
-//import com.vmware.vip.test.javaclient.mock.MockAgent;
-//import com.vmware.vipclient.i18n.base.PatternCacheManager;
-//import com.vmware.vipclient.i18n.base.TranslationCacheManager;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 
