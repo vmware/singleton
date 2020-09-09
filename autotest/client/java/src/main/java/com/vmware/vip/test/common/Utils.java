@@ -10,7 +10,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 import java.util.Properties;
+import java.util.Random;
 
 import org.json.JSONObject;
 
@@ -65,5 +67,11 @@ public class Utils {
 	public static String getFileName(String filePath) {
 		String fileSeparater = System.getProperty("file.separator");
 		return filePath.substring(filePath.lastIndexOf(fileSeparater)+1, filePath.length());
+	}
+
+	public static <T> T getRandomItem(List<T> list) {
+		Random random = new Random();
+		int index = random.nextInt(list.size()-1);
+		return list.get(index);
 	}
 }

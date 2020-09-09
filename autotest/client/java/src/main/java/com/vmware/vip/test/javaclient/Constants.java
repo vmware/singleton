@@ -100,6 +100,8 @@ public class Constants {
 	public static final String CONF_KEY_TEST_RESULT_FOLDER  = "test.result.folder";
 	public static final String CONF_KEY_API_INFO_FILES = "api.info.files";
 	public static final String CONF_KEY_MOCK_PORT = "mock.port";
+	public static final String CONF_KEY_ONLINE_BUNDLE_ROOT_DIR = "online.bundle.root.dir";
+	public static final String CONF_KEY_OFFLINE_BUNDLE_ROOT_DIR = "offline.bundle.root.dir";
 	
 	public static final String VIP_CONF_KEY_PRODUCT = "productName";
 	public static final String VIP_CONF_KEY_VERSION = "version";
@@ -131,5 +133,5 @@ public class Constants {
 	
 	//vip properties key
 	public static final String VIP_PROPERTY_KEY_PATTERN_SCOPE = "i18nScope";
-	
+	public static final String BUNDLE_FILE_MESSAGES_KEY = "messages";
 }
