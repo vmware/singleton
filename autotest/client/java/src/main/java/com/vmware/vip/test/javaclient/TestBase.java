@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 //import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
@@ -39,6 +40,8 @@ public class TestBase {
 //	protected static MockAgent mockAgent = MockAgent.getInstance();
 	protected static HashMap<String, String> defaultResponseHeaders = new HashMap<String, String>();
 	protected VIPCfg vipCfg = VIPCfg.getInstance();
+	protected OfflineBundle offlineBundle = OfflineBundle.getInstance();
+	protected OnlineBundle onlineBundle = OnlineBundle.getInstance();
 	private static Config cfg = Config.getInstance();
 
 //	protected final String MOCK_COMPONENT = "mock_component";
@@ -68,6 +71,8 @@ public class TestBase {
 		log.setConfig(bu, product, branch, buildid, buildType,
 				branch, "Regression", "en_US", "win2k8r2", "x64", "none", "none",
 				"none", "none", user, logOnRacetrack, null, customTestResultFolder);
+        offlineBundle.initialize(cfg.get(Constants.CONF_KEY_OFFLINE_BUNDLE_ROOT_DIR), ClientConfigHelper.CONFIG_TEMPLATE_ONLIN);
+        onlineBundle.initialize(cfg.get(Constants.CONF_KEY_ONLINE_BUNDLE_ROOT_DIR), ClientConfigHelper.CONFIG_TEMPLATE_ONLIN);
 	}
 
 	@BeforeTest(alwaysRun=true)
@@ -146,5 +151,13 @@ public class TestBase {
 	public TranslationMessage getTranslationMessage(VIPCfg vipCfg) {
 		I18nFactory i18n = I18nFactory.getInstance(vipCfg);
     	return (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
+	}
+
+	public String getVIPServiceURL() {
+		return vipCfg.getVipService().getHttpRequester().getBaseURL();
+	}
+
+	public void setVIPServiceURL(String url) {
+		vipCfg.getVipService().getHttpRequester().setBaseURL(url);
 	}
 }

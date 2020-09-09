@@ -18,6 +18,9 @@ import com.vmware.vip.test.common.Utils;
 
 public class ClientConfigHelper {
 	private static GLogger log = GLogger.getInstance(TestBase.class.getName());
+	public static final String CONFIG_TEMPLATE_ONLIN = "vipconfig.properties";
+	public static final String CONFIG_TEMPLATE_OFFLINE = "vipconfig-offline.properties";
+	public static final String CONFIG_TEMPLATE_MIX = "vipconfig-mix.properties";
 
 	/*
 	 * make a new client configuration file with specific properties based on a template

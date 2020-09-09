@@ -10,8 +10,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Properties;
+import java.util.Random;
 
+import org.apache.commons.collections.KeyValue;
+//import org.apache.commons.collections.KeyValue;
 import org.json.JSONObject;
 
 public class Utils {
@@ -65,5 +71,11 @@ public class Utils {
 	public static String getFileName(String filePath) {
 		String fileSeparater = System.getProperty("file.separator");
 		return filePath.substring(filePath.lastIndexOf(fileSeparater)+1, filePath.length());
+	}
+
+	public static <T> T getRandomItem(List<T> list) {
+		Random random = new Random();
+		int index = random.nextInt(list.size()-1);
+		return list.get(index);
 	}
 }
