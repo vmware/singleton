@@ -85,7 +85,9 @@ public class LiteWebConfiguration implements WebMvcConfigurer {
 	 */
 	@Bean
 	public ShallowEtagHeaderFilter shallowETagHeaderFilter() {
-		return new ShallowEtagHeaderFilter();
+		ShallowEtagHeaderFilter shallowEtagHeaderFilter = new ShallowEtagHeaderFilter();
+		shallowEtagHeaderFilter.setWriteWeakETag(true);
+		return shallowEtagHeaderFilter;
 	}
 
 	/**
