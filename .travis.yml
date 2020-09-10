@@ -47,7 +47,7 @@ script: >
     cd $TRAVIS_BUILD_DIR/g11n-ws && ./gradlew jacocoTestReport sonarqube --stacktrace -Dsonar.login=$SONAR_TOKEN -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.projectKey=$SONAR_ORG-singleton-service-$TRAVIS_BRANCH -Dsonar.projectName=$SONAR_ORG-singleton-service-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.coverage.exclusions=modules/**,tools/tool-trans-fetcher/src/**,vip-common/src/main/java/com/vmware/vip/common/**,vip-manager-l10n-agent/src/** --info
     echo $str Code Scan End $str
     git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.travis\.yml$' || {
-      echo "Only docs were updated, stopping build process."
+      echo "No need to check sonar quality gate for only travis configuration updates."
       exit
     }
     cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-singleton-service-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
