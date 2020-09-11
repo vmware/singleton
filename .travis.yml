@@ -1,59 +1,66 @@
 language: python
-
 python: 3.5
-
 before_install:
 - |
     git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.md$' || {
       echo "Only docs were updated, stopping build process."
       exit
     }
-
 jobs:
-  fast_finish: true
   include:
-    - stage: Check header
-      script:
-        - git clone --branch=devops https://github.com/vmware/singleton.git devops && cp $TRAVIS_BUILD_DIR/devops/check_headers.py . && chmod +x check_headers.py
-        - python ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
-    - stage: Unit Test
-      python: 3.5
-      script:
-        - pip install pyyaml
-        - cd sgtn4python/test
-        - str=$(printf '=%.0s' {1..50})
-        - echo $str Unit Test Start $str
-        - python -m unittest
-        - echo $str Unit Test End $str
-    - python: 2.7
-      script:
-        - pip install pyyaml
-        - cd sgtn4python/test
-        - str=$(printf '=%.0s' {1..50})
-        - echo $str Unit Test Start $str
-        - python -m unittest discover
-        - echo $str Unit Test End $str
-    - stage: Code Scan
-      script:
-        - pip install requests coverage pyyaml
-        - git clone --branch=devops https://github.com/vmware/singleton.git devops
-        - SONARSCANNER='sonar-scanner-cli-4.0.0.1744-linux'
-        - SONARSCANNERINNER='sonar-scanner-4.0.0.1744-linux'
-        - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/$SONARSCANNER.zip
-        - unzip $SONARSCANNER.zip
-        - rm -f $SONARSCANNER.zip
-        - cd sgtn4python/test
-        - coverage run --source='.' -m unittest
-        - coverage report -m
-        - coverage xml -i
-        - str=$(printf '=%.0s' {1..50})
-        - echo $str Code scan Start $str
-        - cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG-singleton-python-client-$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG-singleton-python-client-$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=python-client-gate -QualityGateConditions="./quality_gates/python-client.json" -SonarToken=$SONAR_TOKEN
-        - cd $TRAVIS_BUILD_DIR/sgtn4python/test && ls -la && $TRAVIS_BUILD_DIR/$SONARSCANNERINNER/bin/sonar-scanner -Dsonar.projectKey=$SONAR_ORG-singleton-python-client-$TRAVIS_BRANCH -Dsonar.projectName=$SONAR_ORG-singleton-python-client-$TRAVIS_BRANCH -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN -Dsonar.branch.name=master -Dsonar.organization=$SONAR_ORG -Dsonar.python.coverage.reportPaths="*coverage*.xml"
-        - echo $str Code scan End $str
-        - |
-            git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.travis\.yml$' || {
-              echo "No need to check sonar quality gate for only travis configuration updates"
-              exit
-            }
-            cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-singleton-python-client-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
+  - name: "Check Header"
+    env: TEST=check_header
+  - name: "Unit Test"
+    env: TEST=unit_test PYTHON=3.5
+    python: 3.5
+  - name: "Unit Test"
+    env: TEST=unit_test PYTHON=2.7
+    python: 2.7
+  - name: "Code Scan"
+    env: TEST=code_scan
+script: >
+  if [ x${TEST} = xcheck_header ]; then
+    git clone --branch=devops https://github.com/vmware/singleton.git devops
+    cp $TRAVIS_BUILD_DIR/devops/check_headers.py .
+    chmod +x check_headers.py
+    python ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
+  fi &&
+  if [ x${TEST} = xunit_test ] && [ x${PYTHON} = x3.5]; then
+    pip install pyyaml
+    cd sgtn4python/test
+    str=$(printf '=%.0s' {1..50})
+    echo $str Unit Test Start $str
+    python -m unittest
+    echo $str Unit Test End $str
+  fi &&
+  if [ x${TEST} = xunit_test ] && [ x${PYTHON} = x2.7]; then
+    pip install pyyaml
+    cd sgtn4python/test
+    str=$(printf '=%.0s' {1..50})
+    echo $str Unit Test Start $str
+    python -m unittest discover
+    echo $str Unit Test End $str
+  fi &&
+  if [ x${TEST} = xcode_scan ]; then
+    pip install requests coverage pyyaml
+    git clone --branch=devops https://github.com/vmware/singleton.git devops
+    SONARSCANNER='sonar-scanner-cli-4.0.0.1744-linux'
+    SONARSCANNERINNER='sonar-scanner-4.0.0.1744-linux'
+    wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/$SONARSCANNER.zip
+    unzip $SONARSCANNER.zip
+    rm -f $SONARSCANNER.zip
+    cd sgtn4python/test
+    coverage run --source='.' -m unittest
+    coverage report -m
+    coverage xml -i
+    str=$(printf '=%.0s' {1..50})
+    echo $str Code scan Start $str
+    cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG-singleton-python-client-$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG-singleton-python-client-$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=python-client-gate -QualityGateConditions="./quality_gates/python-client.json" -SonarToken=$SONAR_TOKEN
+    cd $TRAVIS_BUILD_DIR/sgtn4python/test && ls -la && $TRAVIS_BUILD_DIR/$SONARSCANNERINNER/bin/sonar-scanner -Dsonar.projectKey=$SONAR_ORG-singleton-python-client-$TRAVIS_BRANCH -Dsonar.projectName=$SONAR_ORG-singleton-python-client-$TRAVIS_BRANCH -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN -Dsonar.branch.name=master -Dsonar.organization=$SONAR_ORG -Dsonar.python.coverage.reportPaths="*coverage*.xml"
+    echo $str Code scan End $str
+    git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.travis\.yml$' || {
+      echo "No need to check sonar quality gate for only travis configuration updates"
+      exit
+    }
+    cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-singleton-python-client-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
+  fi
