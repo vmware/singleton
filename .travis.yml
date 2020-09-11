@@ -10,10 +10,10 @@ jobs:
   include:
   - name: "Check Header"
     env: TEST=check_header
-  - name: "Unit Test"
+  - name: "Unit Test for Python 3.5"
     env: TEST=unit_test PYTHON=3.5
     python: 3.5
-  - name: "Unit Test"
+  - name: "Unit Test for Python 2.7"
     env: TEST=unit_test PYTHON=2.7
     python: 2.7
   - name: "Code Scan"
