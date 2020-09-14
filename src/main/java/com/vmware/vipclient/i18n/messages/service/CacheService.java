@@ -103,22 +103,14 @@ public class CacheService {
     }
 
     public List<Locale> getSupportedLocalesFromCache() {
-        List<Locale> locales = new ArrayList<Locale>();
-        Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L2);
+        List<Locale> locales = new ArrayList<>();
+        Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
         if (c == null) {
             return locales;
         }
-        Set<String> keySet = c.keySet();
-       
-        for (String key : keySet) {
-        	if (key.startsWith(ConstantsKeys.DISPNS_PREFIX)) {
-        		FormatCacheItem cacheItem = (FormatCacheItem) c.get(key);
-        		Map<String, String> langTagToDisplayNameMap = cacheItem.getCachedData();
-        		for (String languageTag : langTagToDisplayNameMap.keySet()) {
-        			locales.add(Locale.forLanguageTag(languageTag));
-        		}
-        		break;
-        	}
+        Set<String> cacheKeys = c.keySet();
+        for (String key: cacheKeys) {
+            locales.add(getLocaleByCachedKey(key));
         }
         return locales;
     }

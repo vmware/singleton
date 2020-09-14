@@ -4,11 +4,15 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
 
 import com.vmware.vip.i18n.BaseTestClass;
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
@@ -224,5 +228,27 @@ public class CacheServiceTest extends BaseTestClass {
         cacheItem = cs.getCacheOfComponent();
         responseTime2 = cacheItem.getTimestamp();
         assertTrue(responseTime2 > responseTime); 
+    }
+
+    @Test
+    public void testGetSupportedLocalesOfflineBundles() {
+        //Enable offline mode
+        String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
+        cfg.setOfflineResourcesBaseUrl("offlineBundles/");
+        List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
+        cfg.setMsgOriginsQueue(new LinkedList<>(Arrays.asList(DataSourceEnum.Bundle)));
+
+        cfg.createTranslationCache(MessageCache.class);
+        cfg.initializeMessageCache();
+
+        CacheService cs = new CacheService(new MessagesDTO());
+        List<Locale> supportedLocales = cs.getSupportedLocalesFromCache();
+        assertTrue(supportedLocales.contains(Locale.forLanguageTag("fil")));
+        assertEquals("Filipino", supportedLocales.get(
+                supportedLocales.indexOf(Locale.forLanguageTag("fil"))).getDisplayName());
+
+        // Disable offline mode off for next tests.
+        cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
+        cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
     }
 }
