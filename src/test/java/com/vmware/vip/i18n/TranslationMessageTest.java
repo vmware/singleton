@@ -258,9 +258,9 @@ public class TranslationMessageTest extends BaseTestClass {
     }
 
     @Test
-    public void testGetAllComponentTranslation() {
+    public void testGetAllComponentTranslationOnlineModeOnly() {
         List<Map> list = new ProductService(dto).getAllComponentTranslation();
-        Assert.assertTrue(list.size() > 0);
+        Assert.assertTrue(list.size() == 24); // 8 locales
     }
 
     @Test
@@ -268,16 +268,13 @@ public class TranslationMessageTest extends BaseTestClass {
         String offlineResourcesBaseUrlOrig = vipCfg.getOfflineResourcesBaseUrl();
         vipCfg.setOfflineResourcesBaseUrl("offlineBundles/");
         List<DataSourceEnum> msgOriginsQueueOrig = vipCfg.getMsgOriginsQueue();
-        vipCfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.VIP, DataSourceEnum.Bundle)));
-        String vipServerOrig = vipCfg.getVipServer();
-        vipCfg.setVipServer("http://1.1.1.1:80");
+        vipCfg.setMsgOriginsQueue(new LinkedList<>(Arrays.asList(DataSourceEnum.VIP, DataSourceEnum.Bundle)));
 
         List<Map> list = new ProductService(dto).getAllComponentTranslation();
-        Assert.assertTrue(list.size() > 0);
+        Assert.assertTrue(list.size() == 30); // 10 locales, 3 components
 
         vipCfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
         vipCfg.setMsgOriginsQueue(msgOriginsQueueOrig);
-        vipCfg.setVipServer(vipServerOrig);
     }
 
     @Test
