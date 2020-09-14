@@ -35,7 +35,7 @@ public class CldrTimeZoneUtils {
                 "timeZoneNames.regionFormat-type-daylight");
         String regionFormatTypeStandard = (String) select(dates,
                 "timeZoneNames.regionFormat-type-standard");
-        String fallbackFormat = (String) select(dates, "timeZoneNames.hourFormat");
+        String fallbackFormat = (String) select(dates, "timeZoneNames.fallbackFormat");
         Iterator<JSONObject> iterator = arry.iterator();
         List<CldrMetaZone> metaZones = new ArrayList<>();
         while (iterator.hasNext()) {
