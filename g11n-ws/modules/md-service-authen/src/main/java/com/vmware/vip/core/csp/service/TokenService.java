@@ -84,7 +84,9 @@ public class TokenService {
      */
     private void populatePublicKeyDetails() {
         final PublicKeyResponse response = restTemplate.getForObject(config.getCspAuthUrl(), PublicKeyResponse.class);
-        publicKeyIssuer = response.getIssuer();
+        if (response != null) {
+        	publicKeyIssuer = response.getIssuer();
+        }
         final String rawPublicKey = response.getValue();
         String pem = rawPublicKey.replaceAll("-----BEGIN (.*)-----", "")
                 .replaceAll("-----END (.*)----", "")

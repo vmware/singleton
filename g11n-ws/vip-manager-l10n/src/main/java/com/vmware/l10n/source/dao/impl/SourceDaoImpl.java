@@ -146,7 +146,7 @@ public class SourceDaoImpl implements SourceDao {
 			ResponseEntity<GRMResponseDTO> responseEntity = restTemplate
 					.postForEntity(url, formEntity, GRMResponseDTO.class);
 			GRMResponseDTO gRMResponseDTO = responseEntity.getBody();
-			if (gRMResponseDTO.getStatus() == GRMAPIResponseStatus.CREATED
+			if (gRMResponseDTO != null && gRMResponseDTO.getStatus() == GRMAPIResponseStatus.CREATED
 					.getCode()) {
 				result = true;
 				LOGGER.info("The request has successed, the result: {} {}", gRMResponseDTO.getStatus(),  gRMResponseDTO.getResult());
