@@ -82,15 +82,13 @@ public class TokenService {
      * Get the public key details (value and issuer) for CSP API
      */
     private void populatePublicKeyDetails() {
-        final PublicKeyResponse response = restTemplate.getForObject(cspAuthUrl, PublicKeyResponse.class);
-        if (response != null) {
-        	publicKeyIssuer = response.getIssuer();
-        }
-        final String rawPublicKey = response.getValue();
-        String pem = rawPublicKey.replaceAll("-----BEGIN (.*)-----", "")
-                .replaceAll("-----END (.*)----", "")
-                .replaceAll("\n", "");
         try {
+	        final PublicKeyResponse response = restTemplate.getForObject(cspAuthUrl, PublicKeyResponse.class);
+	        publicKeyIssuer = response.getIssuer();
+	        final String rawPublicKey = response.getValue();
+	        String pem = rawPublicKey.replaceAll("-----BEGIN (.*)-----", "")
+	                .replaceAll("-----END (.*)----", "")
+	                .replaceAll("\n", "");
             publicKey = KeyFactory.getInstance(KEYS_ALGORITHM)
                     .generatePublic(new X509EncodedKeySpec(Base64.getDecoder()
                             .decode(pem)));
