@@ -14,11 +14,7 @@ import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 public class ProductService {
     private BaseDTO dto = null;
@@ -35,7 +31,7 @@ public class ProductService {
      */
     public List<Map> getAllComponentTranslation() {
         List<Map> list = new ArrayList<Map>();
-        List<String> locales = this.getSupportedLocales();
+        Set<String> locales = this.getSupportedLocales();
         List<String> components = this.getComponents();
         if (locales != null && components != null) {
             for (String languageTag : locales) {
@@ -77,13 +73,13 @@ public class ProductService {
      *
      * @return list of locales of the product specified in the dto object
      */
-    public List<String> getSupportedLocales(){
-        List<String> locales = null;
+    public Set<String> getSupportedLocales(){
+        Set<String> locales = new HashSet<>();
         Iterator<DataSourceEnum> msgSourceQueueIter = VIPCfg.getInstance().getMsgOriginsQueue().iterator();
-        while((locales == null || locales.isEmpty()) && msgSourceQueueIter.hasNext()){
+        while(msgSourceQueueIter.hasNext()){
             DataSourceEnum dataSource = msgSourceQueueIter.next();
             ProductOpt opt = dataSource.createProductOpt(dto);
-            locales = opt.getSupportedLocales();
+            locales.addAll(opt.getSupportedLocales());
             // If failed to get locales from the data source, log the error.
             if (locales == null || locales.isEmpty()) {
                 logger.error(ConstantsMsg.GET_LOCALES_FAILED, dataSource.toString());
