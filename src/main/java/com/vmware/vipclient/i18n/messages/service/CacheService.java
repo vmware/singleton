@@ -6,7 +6,6 @@ package com.vmware.vipclient.i18n.messages.service;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
-import com.vmware.vipclient.i18n.base.cache.FormatCacheItem;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
@@ -28,7 +27,7 @@ public class CacheService {
     public MessageCacheItem getCacheOfComponent() {
         String cacheKey = dto.getCompositStrAsCacheKey();
         Locale matchedLocale = LocaleUtility.pickupLocaleFromList(
-                this.getSupportedLocalesFromCache(),
+                this.getCachedLocales(),
                 this.getLocaleByCachedKey(cacheKey));
         cacheKey = cacheKey.substring(0,
                 cacheKey.indexOf(ConstantsKeys.UNDERLINE_POUND) + 2)
@@ -102,7 +101,7 @@ public class CacheService {
         }
     }
 
-    public List<Locale> getSupportedLocalesFromCache() {
+    public List<Locale> getCachedLocales() {
         List<Locale> locales = new ArrayList<>();
         Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
         if (c == null) {

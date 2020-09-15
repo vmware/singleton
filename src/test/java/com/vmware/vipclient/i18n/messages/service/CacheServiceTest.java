@@ -242,7 +242,7 @@ public class CacheServiceTest extends BaseTestClass {
         cfg.initializeMessageCache();
 
         CacheService cs = new CacheService(new MessagesDTO());
-        List<Locale> supportedLocales = cs.getSupportedLocalesFromCache();
+        List<Locale> supportedLocales = cs.getCachedLocales();
         assertTrue(supportedLocales.contains(Locale.forLanguageTag("fil")));
         assertEquals("Filipino", supportedLocales.get(
                 supportedLocales.indexOf(Locale.forLanguageTag("fil"))).getDisplayName());
