@@ -5,6 +5,7 @@
 package com.vmware.i18n.utils.timezone;
 
 import java.io.Serializable;
+import java.util.Map;
 
 
 public class CldrMetaZone implements Serializable {
@@ -14,19 +15,19 @@ public class CldrMetaZone implements Serializable {
 
     public CldrMetaZone() {}
     public CldrMetaZone(String zoneKey, String exemplarCity, String metazoneKey, String timeZone,
-            TimeZoneDisplayName metazoneValue, String territory) {
+    		Map<String, TimeZoneDisplayName> metazoneValue, String territory) {
         this.zoneKey = zoneKey;
         this.exemplarCity = exemplarCity;
         this.metazoneKey = metazoneKey;
         this.timeZone = timeZone;
-        this.metazoneValue = metazoneValue;
+        this.setMetazoneValue(metazoneValue);
         this.territory = territory;
     }
     private String zoneKey;
     private String exemplarCity;
     private String metazoneKey;
     private String timeZone;
-    private TimeZoneDisplayName metazoneValue;
+    private Map<String, TimeZoneDisplayName> metazoneValue;
     private String  territory;
     
     public String getZoneKey() {
@@ -60,11 +61,11 @@ public class CldrMetaZone implements Serializable {
     public void setTimeZone(String timeZone) {
         this.timeZone = timeZone;
     }
-    public TimeZoneDisplayName getMetazoneValue() {
-        return metazoneValue;
-    }
-    public void setMetazoneValue(TimeZoneDisplayName metazoneValue) {
-        this.metazoneValue = metazoneValue;
-    }
+	public Map<String, TimeZoneDisplayName> getMetazoneValue() {
+		return metazoneValue;
+	}
+	public void setMetazoneValue(Map<String, TimeZoneDisplayName> metazoneValue) {
+		this.metazoneValue = metazoneValue;
+	}
    
 }
