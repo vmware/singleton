@@ -238,17 +238,19 @@ public class CacheServiceTest extends BaseTestClass {
         List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
         cfg.setMsgOriginsQueue(new LinkedList<>(Arrays.asList(DataSourceEnum.Bundle)));
 
-        cfg.createTranslationCache(MessageCache.class);
-        cfg.initializeMessageCache();
+        try {
+            cfg.createTranslationCache(MessageCache.class);
+            cfg.initializeMessageCache();
 
-        CacheService cs = new CacheService(new MessagesDTO());
-        List<Locale> supportedLocales = cs.getCachedLocales();
-        assertTrue(supportedLocales.contains(Locale.forLanguageTag("fil")));
-        assertEquals("Filipino", supportedLocales.get(
-                supportedLocales.indexOf(Locale.forLanguageTag("fil"))).getDisplayName());
-
-        // Disable offline mode off for next tests.
-        cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
-        cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+            CacheService cs = new CacheService(new MessagesDTO());
+            List<Locale> supportedLocales = cs.getCachedLocales();
+            assertTrue(supportedLocales.contains(Locale.forLanguageTag("fil")));
+            assertEquals("Filipino", supportedLocales.get(
+                    supportedLocales.indexOf(Locale.forLanguageTag("fil"))).getDisplayName());
+        } catch (Exception e) {
+            // Disable offline mode for next tests.
+            cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
+            cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+        }
     }
 }
