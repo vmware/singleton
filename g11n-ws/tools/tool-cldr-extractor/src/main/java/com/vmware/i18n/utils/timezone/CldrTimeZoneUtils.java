@@ -64,8 +64,8 @@ public class CldrTimeZoneUtils {
            
             if (metazoneValue == null) {
                 TimeZoneDisplayName longPerp = new TimeZoneDisplayName();
-                String stard = MessageFormat.format(regionFormatTypeStandard, exemplarCity);
-                longPerp.setStandard(stard);
+                String standard = MessageFormat.format(regionFormatTypeStandard, exemplarCity);
+                longPerp.setStandard(standard);
                 metaZonePerperties.put(Constants.LONG, longPerp);
             } else {
                 String longStandard = (String) select(metazoneValue, "long.standard");
