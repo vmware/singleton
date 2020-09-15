@@ -82,16 +82,20 @@ public class TokenService {
      * Get the public key details (value and issuer) for CSP API
      */
     private void populatePublicKeyDetails() {
-        final PublicKeyResponse response = restTemplate.getForObject(cspAuthUrl, PublicKeyResponse.class);
-        publicKeyIssuer = response.getIssuer();
-        final String rawPublicKey = response.getValue();
-        String pem = rawPublicKey.replaceAll("-----BEGIN (.*)-----", "")
-                .replaceAll("-----END (.*)----", "")
-                .replaceAll("\n", "");
         try {
-            publicKey = KeyFactory.getInstance(KEYS_ALGORITHM)
-                    .generatePublic(new X509EncodedKeySpec(Base64.getDecoder()
-                            .decode(pem)));
+	        final PublicKeyResponse response = restTemplate.getForObject(cspAuthUrl, PublicKeyResponse.class);
+	        if (null != response) {
+	        	publicKeyIssuer = response.getIssuer();
+		        final String rawPublicKey = response.getValue();
+		        String pem = rawPublicKey.replaceAll("-----BEGIN (.*)-----", "")
+		                .replaceAll("-----END (.*)----", "")
+		                .replaceAll("\n", "");
+	            publicKey = KeyFactory.getInstance(KEYS_ALGORITHM)
+	                    .generatePublic(new X509EncodedKeySpec(Base64.getDecoder()
+	                            .decode(pem)));
+	        } else {
+	        	LOGGER.error("Failed to generate public key");
+	        }
         } catch (Exception e) {
             LOGGER.error("Failed to generate public key");
         }
