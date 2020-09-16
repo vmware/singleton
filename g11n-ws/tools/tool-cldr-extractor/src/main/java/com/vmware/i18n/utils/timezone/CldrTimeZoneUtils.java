@@ -10,12 +10,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.TimeZone;
+import java.util.TreeMap;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vmware.i18n.common.Constants;
 import com.vmware.i18n.utils.JSONUtil;
 
 public class CldrTimeZoneUtils {
@@ -57,10 +60,13 @@ public class CldrTimeZoneUtils {
                 e.printStackTrace();
             }
 
-            TimeZoneDisplayName name = new TimeZoneDisplayName();
+            Map<String, TimeZoneDisplayName> metaZonePerperties = new TreeMap<String, TimeZoneDisplayName>();
+           
             if (metazoneValue == null) {
-                String stard = MessageFormat.format(regionFormatTypeStandard, exemplarCity);
-                name.setLongStandard(stard);
+                TimeZoneDisplayName longPerp = new TimeZoneDisplayName();
+                String standard = MessageFormat.format(regionFormatTypeStandard, exemplarCity);
+                longPerp.setStandard(standard);
+                metaZonePerperties.put(Constants.LONG, longPerp);
             } else {
                 String longStandard = (String) select(metazoneValue, "long.standard");
                 String longDaylight = (String) select(metazoneValue, "long.daylight");
@@ -68,14 +74,23 @@ public class CldrTimeZoneUtils {
                 String shortStandard = (String) select(metazoneValue, "short.standard");
                 String shortDaylight = (String) select(metazoneValue, "short.daylight");
                 String shortGeneric = (String) select(metazoneValue, "short.generic");
-                name.setLongStandard(longStandard);
-                name.setLongDaylight(longDaylight);
-                name.setLongGeneric(longGeneric);
-                name.setShortStandard(shortStandard);
-                name.setShortDaylight(shortDaylight);
-                name.setShortGeneric(shortGeneric);
+                if(longStandard != null || longDaylight != null || longGeneric != null) {
+                	TimeZoneDisplayName longPerp = new TimeZoneDisplayName();
+                	longPerp.setDaylight(longDaylight);
+                	longPerp.setGeneric(longGeneric);
+                	longPerp.setStandard(longStandard);
+                	metaZonePerperties.put(Constants.LONG, longPerp);
+                }
+                if(shortStandard != null || shortDaylight != null || shortGeneric != null) {
+                	TimeZoneDisplayName shortPerp = new TimeZoneDisplayName();
+                	shortPerp.setDaylight(shortDaylight);
+                	shortPerp.setGeneric(shortGeneric);
+                	shortPerp.setStandard(shortStandard);
+                	metaZonePerperties.put(Constants.SHORT, shortPerp);
+                }
+               
             }
-            metaZones.add(new CldrMetaZone(zoneKey, exemplarCity, metazoneKey, timeZone, name,
+            metaZones.add(new CldrMetaZone(zoneKey, exemplarCity, metazoneKey, timeZone, metaZonePerperties,
                     territory));
         }
 
