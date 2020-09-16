@@ -56,7 +56,7 @@ namespace UnitTestSingleton
             string type = obj.GetType().ToString();
             if (type.Equals("System.Byte[]"))
             {
-                str = System.Text.Encoding.Default.GetString((System.Byte[])obj);
+                str = System.Text.Encoding.UTF8.GetString((System.Byte[])obj);
             } else
             {
                 str = (string)obj;
