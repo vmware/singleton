@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.l2.service.pattern;
@@ -217,6 +217,7 @@ public class PatternServiceImpl implements IPatternService {
 
 		if (categoryList.contains(ConstantsKeys.CURRENCIES) && !categoryList.contains(ConstantsKeys.NUMBERS)) {
 			categoryList.add(ConstantsKeys.NUMBERS);
+			suppMap.put(ConstantsKeys.NUMBERS, supplementMap.get(ConstantsKeys.NUMBERS));
 		}
 
 		for (String cat : categoryList) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.conf;
@@ -31,11 +31,13 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 	
 	private static Logger LOGGER = LoggerFactory.getLogger(CollectSourceValidationInterceptor.class);
 	
-	public CollectSourceValidationInterceptor(List<String> sourceLocales) {
+	public CollectSourceValidationInterceptor(List<String> sourceLocales, Map<String, List<String>> allowListMap) {
 		this.sourceLocales = sourceLocales;
+		this.allowList = allowListMap;
 	}
 	
 	private List<String> sourceLocales;
+	private Map<String, List<String>> allowList;
 	
 	/**
 	 * Collect new source and send to l10n server
@@ -57,7 +59,7 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 		LOGGER.debug(logOfUrl);
 		LOGGER.debug(logOfQueryStr);
 		try {
-			validate(request, this.sourceLocales); 
+			validate(request, this.sourceLocales, this.allowList); 
 		} catch (VIPAPIException e) {
 			LOGGER.warn(e.getMessage());
 			Response r = new Response();
@@ -86,10 +88,11 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 	 * @param language types that can collect source 
 	 * @throws VIPAPIException
 	 */
-	private static void validate(HttpServletRequest request, List<String> sourceLocales) throws VIPAPIException {
+	private static void validate(HttpServletRequest request, List<String> sourceLocales, Map<String, List<String>> whiteList) throws VIPAPIException {
 		if (request == null) { 
 			return;
 		}
+		validateAllowList(request, whiteList);
 		validateProductname(request);
 		validateVersion(request);
 		validateComponent(request);
@@ -98,7 +101,6 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 		validateSourceformat(request);
 		validateCollectsource(request);
 		validatePseudo(request);
-	
 	}
 
 	@SuppressWarnings("unchecked")
@@ -206,9 +208,9 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 			return;
 		}
 		if (!RegExpValidatorUtils.IsTrueOrFalse(collectsource)) {
-			throw new VIPAPIException(ValidationMsg.COLLECTSOURCE_NOT_VALIDE);
+			throw new VIPAPIException(ValidationMsg.COLLECTSOURCE_NOT_VALIDE_L10N);
 		}else if(collectsource.toLowerCase().equals("false")){
-			throw new VIPAPIException(ValidationMsg.COLLECTSOURCE_NOT_VALIDE);
+			throw new VIPAPIException(ValidationMsg.COLLECTSOURCE_NOT_VALIDE_L10N);
 		}
 	}
 
@@ -221,6 +223,27 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 		}
 		if (!RegExpValidatorUtils.IsTrueOrFalse(pseudo)) {
 			throw new VIPAPIException(ValidationMsg.PSEUDO_NOT_VALIDE);
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	private static void validateAllowList(HttpServletRequest request, Map<String, List<String>> allowList) 
+			throws VIPAPIException {
+		Map<String, String> pathVariables = (Map<String, String>) request
+				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
+		String productName = pathVariables.get(APIParamName.PRODUCT_NAME) == null
+				? request.getParameter(APIParamName.PRODUCT_NAME)
+				: pathVariables.get(APIParamName.PRODUCT_NAME);
+		String version = pathVariables.get(APIParamName.VERSION) == null ? request.getParameter(APIParamName.VERSION)
+				: pathVariables.get(APIParamName.VERSION);
+		if (StringUtils.isEmpty(productName) || StringUtils.isEmpty(version)) {
+			return;
+		}
+		if(!allowList.isEmpty() && allowList.containsKey(productName)
+				&& allowList.get(productName).contains(version)) {
+			return;
+		}else {
+			throw new VIPAPIException(String.format(ValidationMsg.PRODUCTNAME_NOT_SUPPORTED, productName));
 		}
 	}
 

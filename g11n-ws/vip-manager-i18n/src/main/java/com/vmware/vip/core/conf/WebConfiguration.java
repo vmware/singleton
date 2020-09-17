@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.conf;
@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.vmware.vip.core.Interceptor.*;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,10 +30,6 @@ import org.springframework.web.util.UrlPathHelper;
 import com.vmware.vip.api.rest.API;
 import com.vmware.vip.api.rest.APIV1;
 import com.vmware.vip.api.rest.APIV2;
-import com.vmware.vip.core.Interceptor.APICacheControlInterceptor;
-import com.vmware.vip.core.Interceptor.APICrossDomainInterceptor;
-import com.vmware.vip.core.Interceptor.APISourceInterceptor;
-import com.vmware.vip.core.Interceptor.APIValidationInterceptor;
 import com.vmware.vip.core.auth.interceptor.AuthInterceptor;
 import com.vmware.vip.core.auth.interceptor.VipAPIAuthInterceptor;
 import com.vmware.vip.core.csp.service.TokenService;
@@ -104,7 +101,9 @@ public class WebConfiguration implements WebMvcConfigurer {
 	 */
 	@Bean
 	public ShallowEtagHeaderFilter shallowETagHeaderFilter() {
-		return new ShallowEtagHeaderFilter();
+		ShallowEtagHeaderFilter shallowEtagHeaderFilter = new ShallowEtagHeaderFilter();
+		shallowEtagHeaderFilter.setWriteWeakETag(true);
+		return shallowEtagHeaderFilter;
 	}
 
 	/**
@@ -123,7 +122,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 		 */
 
 		// Request Validation
-		InterceptorRegistration apival = registry.addInterceptor(new APIValidationInterceptor(productService.getWhiteList())).addPathPatterns("/**").excludePathPatterns(API.I18N_API_ROOT+"doc/**");
+		InterceptorRegistration apival = registry.addInterceptor(new APIValidationInterceptor(productService.getAllowPrductList())).addPathPatterns("/**").excludePathPatterns(API.I18N_API_ROOT+"doc/**");
 
 		// authentication
 

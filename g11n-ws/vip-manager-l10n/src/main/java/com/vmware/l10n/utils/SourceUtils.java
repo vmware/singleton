@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.utils;
@@ -30,7 +30,7 @@ public class SourceUtils {
 	public static SourceAPIResponseDTO handleSourceResponse(boolean isSourceCached){
 		SourceAPIResponseDTO sourceAPIResponseDTO = new SourceAPIResponseDTO();
 		if (isSourceCached) {
-			sourceAPIResponseDTO.setStatus(APIResponseStatus.TRANSLATION_COLLECT_SUCCESS);
+			sourceAPIResponseDTO.setStatus(APIResponseStatus.TRANSLATION_COLLECT_REQUEST_SUCCESS);
 		} else {
 			sourceAPIResponseDTO.setStatus(APIResponseStatus.TRANSLATION_COLLECT_FAILURE);
 		}

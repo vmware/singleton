@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.messages.data.dao.pgimpl;
@@ -101,7 +101,7 @@ public class PgProductApiImpl implements IProductDao {
     * get the white list content from pg db
     */
     @Override
-    public String getWhiteListContent() throws DataException {
+    public String getAllowProductListContent() throws DataException {
         return null;
     }
 

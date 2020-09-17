@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.i18n.status;
@@ -32,4 +32,5 @@ public class APIResponseStatus {
     public static final Response INTERNAL_NO_RESOURCE_ERROR = new Response(404,
             "Not Found");
     public static final Response UNKNOWN_ERROR = new Response(520, "Unknown Error");
+    public static final Response TRANSLATION_COLLECT_REQUEST_SUCCESS = new Response(200, "Source collection request have received");
 }

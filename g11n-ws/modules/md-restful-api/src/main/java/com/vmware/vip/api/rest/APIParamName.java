@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.api.rest;
@@ -34,4 +34,7 @@ public class APIParamName {
 	public final static String REGION= "region";
 	public final static String COMBINE = "combine";
 	public final static String SCOPE_FILTER = "scopeFilter";
+	public final static String DEFAULT_TERRITORY = "defaultTerritory";
+	public final static String DISPLAY_CITY = "displayCity";
+	public final static String REGIONS = "regions";
 }

@@ -1,10 +1,11 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.l2.service.locale;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 public class TerritoryDTO implements Serializable {
@@ -16,6 +17,8 @@ public class TerritoryDTO implements Serializable {
 	private String defaultRegionCode;
 
 	private Map<String, String> territories;
+
+	private Map<String, Object> cities;
 
 	public String getLanguage() {
 		return language;
@@ -41,4 +44,11 @@ public class TerritoryDTO implements Serializable {
 		this.territories = territories;
 	}
 
+	public Map<String, Object> getCities() {
+		return cities;
+	}
+
+	public void setCities(Map<String, Object> cities) {
+		this.cities = cities;
+	}
 }

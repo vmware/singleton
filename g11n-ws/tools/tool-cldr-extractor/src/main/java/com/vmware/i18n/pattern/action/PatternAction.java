@@ -1,11 +1,12 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.pattern.action;
 
 import com.vmware.i18n.pattern.service.IPatternService;
 import com.vmware.i18n.pattern.service.impl.PatternServiceImpl;
+import com.vmware.i18n.utils.timezone.TimeZoneName;
 
 public class PatternAction {
 
@@ -29,5 +30,9 @@ public class PatternAction {
 
     public String getPattern(String locale, String categories) {
         return service.getPattern(locale, categories);
+    }
+    
+    public TimeZoneName getTimeZoneName(String locale, boolean defaultTerritory) {
+        return service.getTimeZoneName(locale, defaultTerritory);
     }
 }

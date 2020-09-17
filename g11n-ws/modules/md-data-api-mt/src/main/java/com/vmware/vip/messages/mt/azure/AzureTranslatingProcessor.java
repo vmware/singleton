@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.messages.mt.azure;
@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,7 +55,10 @@ public class AzureTranslatingProcessor implements IMTProcessor {
 			logger.info(MTConfig.MTSERVER);
 			Map<String, String> headers = new HashMap<String, String>();
 			headers.put("Ocp-Apim-Subscription-Key", MTConfig.KEY);
-			String response = HTTPRequester.postData(requestJson, urlStr,
+			if(StringUtils.isNotBlank(MTConfig.REGION)) {
+                headers.put("Ocp-Apim-Subscription-Region", MTConfig.REGION);
+            }
+            String response = HTTPRequester.postData(requestJson, urlStr,
 					"application/json", "POST", headers);
 			if(response == null || response.equalsIgnoreCase("")) {
 				throw new MTException("Request failed: respond empty from MT server!");

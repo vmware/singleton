@@ -1,3 +1,5 @@
+//Copyright 2019-2020 VMware, Inc.
+//SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
@@ -41,9 +43,12 @@ dependencies {
     compile project(":vip-common")
     compile project(":md-restful-api")
     compile("org.springframework:spring-webmvc:$springWebVersion")
-    compile ('org.springframework.boot:spring-boot-starter-log4j2')
-    compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.31')
-    compile ('org.xerial:sqlite-jdbc:3.28.0')
+    compile ('org.springframework.boot:spring-boot-starter-log4j2'){
+              exclude group: "org.apache.logging.log4j"
+    }
+    compile("org.apache.logging.log4j:log4j-api:$log4j2Version")
+    compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.37')
+    compile ('org.xerial:sqlite-jdbc:3.31.1')
 	compile("io.jsonwebtoken:jjwt:0.9.0")
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
 	compile("commons-codec:commons-codec:1.10")

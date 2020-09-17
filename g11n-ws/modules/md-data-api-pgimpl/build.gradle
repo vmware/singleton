@@ -1,3 +1,5 @@
+//Copyright 2019-2020 VMware, Inc.
+//SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
@@ -43,10 +45,13 @@ dependencies {
     compile project(":md-data-api")
     //compile project(":vip-common")
     compile("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
-    compile ('org.springframework.boot:spring-boot-starter-log4j2')
+    compile ("org.springframework.boot:spring-boot-starter-log4j2"){
+              exclude group: 'org.apache.logging.log4j'
+    }
+    compile("org.apache.logging.log4j:log4j-api:$log4j2Version")
     compile ("org.springframework.boot:spring-boot-starter-jdbc"){
               exclude module: "tomcat-jdbc"
-            }
+    }
      compile "org.postgresql:postgresql:42.1.4"
      compile "com.alibaba:druid:1.1.8" 
      compile "commons-collections:commons-collections:$commonsCollectionsVersion"

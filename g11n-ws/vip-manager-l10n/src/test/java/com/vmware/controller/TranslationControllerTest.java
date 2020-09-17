@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.controller;
@@ -64,7 +64,7 @@ public class TranslationControllerTest {
 		MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(
 				webApplicationContext).build();
 		String API = L10NAPIV1.CREATE_SOURCE_GET
-				.replace("{" + APIParamName.PRODUCT_NAME + "}", "devCenter")
+				.replace("{" + APIParamName.PRODUCT_NAME + "}", "devTest")
 				.replace("{" + APIParamName.COMPONENT + "}", "default")
 				.replace("{" +APIParamName.KEY2+ "}", "dc.myhome.open3");
 		MvcResult mvcRS =mockMvc.perform(
@@ -87,7 +87,7 @@ public class TranslationControllerTest {
 		MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(
 				webApplicationContext).build();
 		String API = L10NAPIV1.CREATE_SOURCE_POST
-				.replace("{" + APIParamName.PRODUCT_NAME + "}", "devCenter")
+				.replace("{" + APIParamName.PRODUCT_NAME + "}", "devTest")
 				.replace("{" + APIParamName.COMPONENT + "}", "default")
 				.replace("{" +APIParamName.KEY2+ "}", "dc.myhome.open3");
 		MvcResult mvcRS =mockMvc.perform(
@@ -109,7 +109,7 @@ public class TranslationControllerTest {
 		MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(
 				webApplicationContext).build();
 		String API = L10NAPIV1.CREATE_SOURCE_POST
-				.replace("{" + APIParamName.PRODUCT_NAME + "}", "devCenter")
+				.replace("{" + APIParamName.PRODUCT_NAME + "}", "devTest")
 				.replace("{" + APIParamName.COMPONENT + "}", "default")
 				.replace("{" +APIParamName.KEY2+ "}", "jsonkeyset");
 		MvcResult mvcRS =mockMvc.perform(

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.translation.dao.impl;
@@ -133,5 +133,5 @@ public class SingleComponentDaoImpl implements SingleComponentDao {
 			return true;
 		}
 	}
-
 }
+

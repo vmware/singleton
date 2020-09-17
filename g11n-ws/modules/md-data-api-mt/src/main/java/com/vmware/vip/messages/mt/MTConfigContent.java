@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.messages.mt;
@@ -23,12 +23,16 @@ public class MTConfigContent {
 	@Value("${mt.translatedCount:20}")
 	private String translatedCount;
 
+	@Value("${mt.region:}")
+	private String region;
+
 	@PostConstruct
 	public void initConfig() {
 		MTConfig.setMTSERVER(this.getMtServer());
 		MTConfig.setKEY(this.getKey());
 		MTConfig.setTRANSLATED_MAX(this.getTranslatedMax());
 		MTConfig.setTRANSLATECOUNT(this.getTranslatedCount());
+		MTConfig.setREGION(this.region);
 	}
 
 	public String getMtServer() {

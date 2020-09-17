@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.locale.action;
@@ -29,18 +29,11 @@ public class LocaleAction {
 		return instance;
 	}
 
-	public String getRegion(String language) {
+	public String getLocaleData(String language, String filePath) {
 		if (CommonUtil.isEmpty(language))
 			return "";
 		language = CommonUtil.normalizeToLanguageTag(language).toLowerCase();
-		return service.getRegion(language);
-	}
-
-	public String getLanguage(String displayLanguage) {
-		if (CommonUtil.isEmpty(displayLanguage))
-			return "";
-		displayLanguage = CommonUtil.normalizeToLanguageTag(displayLanguage).toLowerCase();
-		return service.getLanguage(displayLanguage);
+		return service.getLocaleData(language, filePath);
 	}
 
 	public String getLocaleWithDefaultRegion(String locale) {

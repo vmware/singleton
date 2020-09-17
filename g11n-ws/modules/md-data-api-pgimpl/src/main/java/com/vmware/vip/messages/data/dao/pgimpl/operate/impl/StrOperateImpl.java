@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
  package com.vmware.vip.messages.data.dao.pgimpl.operate.impl;
@@ -55,7 +55,9 @@ public class StrOperateImpl implements IStrOperate {
 
 
 		String sql = sqlhead + updateStr + sqltail;
-		logger.debug(((DruidDataSource)(jdbcTemplate.getDataSource())).getName());
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource)(jdbcTemplate.getDataSource())).getName());
+		}
 		logger.debug(sql);
 		int result = jdbcTemplate.update(sql, n18Str.getProduct(), n18Str.getVersion(), n18Str.getComponent(),n18Str.getLocale());
 		return result;
@@ -82,7 +84,9 @@ public class StrOperateImpl implements IStrOperate {
 
 
 		String sql = sqlhead + updateStr + sqltail;
-		logger.debug(((DruidDataSource)(jdbcTemplate.getDataSource())).getName());
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource)(jdbcTemplate.getDataSource())).getName());
+		}
 		logger.debug(sql);
 		logger.debug(String.join(", ", productName, version, component, locale));
 		int result = jdbcTemplate.update(sql, productName, version, component,locale);
@@ -117,7 +121,9 @@ public class StrOperateImpl implements IStrOperate {
 	public  Map<String, String> findAllStr(I18nString strs, JdbcTemplate jdbcTemplate) {
 		// TODO Auto-generated method stub
 		String queryByKeySql=" select v.messages from vip_msg v where v.product = ? and v.version = ? and v.component= ? and v.locale = ?";
-		logger.debug(((DruidDataSource)(jdbcTemplate.getDataSource())).getName());
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource)(jdbcTemplate.getDataSource())).getName());
+		}
 		logger.debug(queryByKeySql);
 		String[] params = {strs.getProduct(), strs.getVersion(),  strs.getComponent(), strs.getLocale()};
 		logger.debug(String.join(", ", params));
@@ -166,7 +172,9 @@ public class StrOperateImpl implements IStrOperate {
 			Map<String, String> messages, JdbcTemplate jdbcTemplate) {
 		// TODO Auto-generated method stub
 		String queryByKeySql=" select v.messages from vip_msg v where v.product = ? and v.version = ? and v.component= ? and v.locale = ?";
-		logger.debug(((DruidDataSource)(jdbcTemplate.getDataSource())).getName());
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource)(jdbcTemplate.getDataSource())).getName());
+		}
 		logger.debug(queryByKeySql);
 		String[] params = {productName, version,  component, locale};
 		logger.debug(String.join(", ", params));
@@ -218,7 +226,9 @@ public class StrOperateImpl implements IStrOperate {
 	@Override
 	public int delStrBykey(I18nString n18Str, JdbcTemplate jdbcTemplate) {
 		// TODO Auto-generated method stub
-		logger.debug(((DruidDataSource)(jdbcTemplate.getDataSource())).getName());
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource)(jdbcTemplate.getDataSource())).getName());
+		}
 		String sql=  "update vip_msg  set messages = messages #- '{"+n18Str.getKeys().get(0)+"}'::text[] where product = ? and version = ? and component= ? and locale = ?";   
 		logger.debug(sql);
 		logger.debug(String.join(", ",  n18Str.getProduct(), n18Str.getVersion(), n18Str.getComponent(),
@@ -232,7 +242,9 @@ public class StrOperateImpl implements IStrOperate {
 			JdbcTemplate jdbcTemplate) {
 		// TODO Auto-generated method stub
 		
-		logger.debug(((DruidDataSource)(jdbcTemplate.getDataSource())).getName());
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource)(jdbcTemplate.getDataSource())).getName());
+		}
 		
 		String sql=  String.format("update vip_msg  set messages = messages #- '{%s}'::text[] where product = ? and version = ? and component= ? and locale = ?",key);   
 		logger.debug(sql);
@@ -250,7 +262,9 @@ public class StrOperateImpl implements IStrOperate {
 	public Map<String, String> findByStrKey(I18nString strs, JdbcTemplate jdbcTemplate) {
 		// TODO Auto-generated method stub
 		String queryByKeySql=" select (v.messages->>'"+strs.getKeys().get(0)+"') as messages from vip_msg v where v.product = ? and v.version = ? and v.component= ? and v.locale = ?";
-		logger.debug(((DruidDataSource)(jdbcTemplate.getDataSource())).getName());
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource)(jdbcTemplate.getDataSource())).getName());
+		}
 		logger.debug(queryByKeySql);
 		
 		String[] params ={strs.getProduct(), strs.getVersion(),  strs.getComponent(), strs.getLocale()};
@@ -289,7 +303,9 @@ public class StrOperateImpl implements IStrOperate {
 	
 		String queryByKeySql=String.format(" select (v.messages->>'%s') as messages from vip_msg v where v.product = ? and v.version = ? and v.component= ? and v.locale = ?",key); 
 		
-		logger.debug(((DruidDataSource)(jdbcTemplate.getDataSource())).getName());
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource)(jdbcTemplate.getDataSource())).getName());
+		}
 		logger.debug(queryByKeySql);
 		
 		String[] params ={productName, version,  component, locale};
@@ -324,7 +340,9 @@ public class StrOperateImpl implements IStrOperate {
 		 
 		 for(String key: keys) {
 		String queryByKeySql=" select (v.messages->>'"+key+"') as messages from vip_msg v where v.product = ? and v.version = ? and v.component= ? and v.locale = ?";
-		logger.debug(((DruidDataSource)(jdbcTemplate.getDataSource())).getName());
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource)(jdbcTemplate.getDataSource())).getName());
+		}
 		logger.debug(queryByKeySql);
 		
 		String[] params ={productName, version,  component, locale};
@@ -358,7 +376,9 @@ public class StrOperateImpl implements IStrOperate {
 		// TODO Auto-generated method stub
 		String sql = "select count(v.id) from vip_msg v where v.product = ? and v.version = ? and v.component= ? and v.locale = ?";
 
-		logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		}
 		logger.debug(sql);
 		String[] params = { productName, version, component, locale };
 		logger.debug(String.join(", ", params));

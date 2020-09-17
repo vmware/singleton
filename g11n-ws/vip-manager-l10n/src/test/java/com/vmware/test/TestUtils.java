@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.test;
@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.vmware.l10n.source.dto.GRMAPIResponseStatus;
 import com.vmware.l10n.utils.SourceUtils;
+import com.vmware.l10n.utils.WhiteListUtils;
 
 public class TestUtils {
 	@Test
@@ -25,4 +26,8 @@ public class TestUtils {
 		System.out.println(GRMAPIResponseStatus.UNAUTHORIZED.getMessage());
 	}
 
+	@Test
+	public void testWhiteList() {
+		WhiteListUtils.getWhiteList("bundle.json");
+	}
 }

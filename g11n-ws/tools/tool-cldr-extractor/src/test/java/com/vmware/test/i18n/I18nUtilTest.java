@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.test.i18n;
@@ -50,22 +50,6 @@ public class I18nUtilTest {
 			Assert.assertNotNull(catesMap.get(key));
 		}
 	}
-
-	@SuppressWarnings("unchecked")
-	@Test
-	public void testGetPatternAPI() {
-		String cateStr= "dates,numbers,plurals";
-		PatternAction pa = PatternAction.getInstance();
-		String json = pa.getPattern(LOCALE, cateStr);
-		Map<String, Object> patternMap = (Map<String, Object>) JSONUtil.getMapFromJson(json);
-		Map<String, Object> catesMap = (Map<String, Object>) patternMap.get("categories");
-		String[] catesArr = cateStr.split(",");
-		for (String cate : catesArr) {
-			Assert.assertNotNull(catesMap.get(cate));
-		}
-	}
-	
-	
 
 	@SuppressWarnings("unchecked")
 	@Test

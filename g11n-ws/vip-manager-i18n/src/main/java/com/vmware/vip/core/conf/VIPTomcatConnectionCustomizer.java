@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.conf;
@@ -21,8 +21,14 @@ public class VIPTomcatConnectionCustomizer implements TomcatConnectorCustomizer 
 	private static Logger logger = LoggerFactory.getLogger(VIPTomcatConnectionCustomizer.class);
 	private ServerProperties serverProperties;
 
-	public VIPTomcatConnectionCustomizer(ServerProperties prop) {
+	private String compression;
+
+	private int compressionMinSize;
+
+	public VIPTomcatConnectionCustomizer(ServerProperties prop, String compression, int compressionMinSize) {
 		this.serverProperties = prop;
+		this.compression = compression;
+		this.compressionMinSize = compressionMinSize;
 	}
 
 	@Override
@@ -35,6 +41,10 @@ public class VIPTomcatConnectionCustomizer implements TomcatConnectorCustomizer 
 			connector.setAttribute("protocol", ConstantsTomcat.HTTP);
 			connector.setAttribute("redirectPort", ConstantsTomcat.REDIRECT_PORT);
 			connector.setAllowTrace(serverProperties.isAllowTrace());
+			Http11NioProtocol protocol = (Http11NioProtocol) connector.getProtocolHandler();
+			protocol.setMaxHttpHeaderSize(serverProperties.getMaxHttpHeaderSize());
+			protocol.setCompression(compression);
+			protocol.setCompressionMinSize(compressionMinSize);
 
 		} else if(serverProperties.getServerScheme().equalsIgnoreCase(ConstantsTomcat.HTTP)){
 			logger.info("the tomcat only support http protocol");
@@ -42,6 +52,10 @@ public class VIPTomcatConnectionCustomizer implements TomcatConnectorCustomizer 
 			connector.setAttribute("protocol", ConstantsTomcat.HTTP);
 			connector.setAttribute("redirectPort", ConstantsTomcat.REDIRECT_PORT);
 			connector.setAllowTrace(serverProperties.isAllowTrace());
+			Http11NioProtocol protocol = (Http11NioProtocol) connector.getProtocolHandler();
+			protocol.setMaxHttpHeaderSize(serverProperties.getMaxHttpHeaderSize());
+			protocol.setCompression(compression);
+			protocol.setCompressionMinSize(compressionMinSize);
 		}else{
 			logger.info("the tomcat only support https protocol");
 			connector.setScheme(ConstantsTomcat.HTTPS);
@@ -54,11 +68,13 @@ public class VIPTomcatConnectionCustomizer implements TomcatConnectorCustomizer 
 			protocol.setKeystoreType(serverProperties.getHttpsKeyStoreType());
 			protocol.setKeyPass(serverProperties.getHttpsKeyPassword());
 			protocol.setKeyAlias(serverProperties.getHttpsKeyAlias());
+			protocol.setMaxHttpHeaderSize(serverProperties.getMaxHttpHeaderSize());
 			connector.setRedirectPort(ConstantsTomcat.REDIRECT_PORT);
 			connector.setAllowTrace(serverProperties.isAllowTrace());
-
+			protocol.setCompression(compression);
+			protocol.setCompressionMinSize(compressionMinSize);
 		}
 
 	}
-
 }
+

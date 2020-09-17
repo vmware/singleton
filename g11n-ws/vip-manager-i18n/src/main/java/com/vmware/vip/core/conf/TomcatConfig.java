@@ -1,11 +1,12 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.conf;
 
 import org.apache.catalina.connector.Connector;
 import org.apache.coyote.http11.Http11NioProtocol;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
@@ -20,10 +21,16 @@ import com.vmware.vip.common.constants.ConstantsTomcat;
 @Configuration
 public class TomcatConfig {
 
+	@Value("${config.gzip.enable}")
+	private String compression;
+
+	@Value("${config.gzip.minsize}")
+	private int compressionMinSize;
+
 	@Bean
 	public ServletWebServerFactory servletContainer(ServerProperties serverProperties) {
 		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
-		tomcat.addConnectorCustomizers(new VIPTomcatConnectionCustomizer(serverProperties));
+		tomcat.addConnectorCustomizers(new VIPTomcatConnectionCustomizer(serverProperties, compression, compressionMinSize));
 		if (serverProperties.getServerScheme().equalsIgnoreCase(ConstantsTomcat.HTTP_HTTPS) ||
 				serverProperties.getServerScheme().equalsIgnoreCase(ConstantsTomcat.HTTPS_HTTP)) {
 			tomcat.addAdditionalTomcatConnectors(initiateHttpsConnector(serverProperties));
@@ -46,8 +53,11 @@ public class TomcatConfig {
 		protocol.setKeystoreType(serverProperties.getHttpsKeyStoreType());
 		protocol.setKeyPass(serverProperties.getHttpsKeyPassword());
 		protocol.setKeyAlias(serverProperties.getHttpsKeyAlias());
+		protocol.setMaxHttpHeaderSize(serverProperties.getMaxHttpHeaderSize());
 		connector.setRedirectPort(ConstantsTomcat.REDIRECT_PORT);
 		connector.setAllowTrace(serverProperties.isAllowTrace());
+		protocol.setCompression(compression);
+		protocol.setCompressionMinSize(compressionMinSize);
 		return connector;
 	}
 

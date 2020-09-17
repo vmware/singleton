@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.utils;
@@ -26,6 +26,8 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 import com.vmware.i18n.common.OfficialStatusEnum;
+import com.vmware.i18n.utils.timezone.CldrTimeZoneUtils;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
@@ -51,7 +53,8 @@ public class CLDRUtils {
             + File.separator + "cldr" + File.separator + "pattern" + File.separator + "common" + File.separator;
     public static final String GEN_CLDR_LOCALEDATA_DIR = "src" + File.separator + "main" + File.separator + "resources"
             + File.separator + "cldr" + File.separator + "localedata" + File.separator;
-
+    public static final String GEN_CLDR_PATTERN_TIMEZONE_DIR = "src" + File.separator + "main" + File.separator + "resources"
+            + File.separator + "cldr" + File.separator + "pattern" + File.separator + "timezone" + File.separator;
     /**
      * Download CLDR data
      *
@@ -1125,8 +1128,62 @@ public class CLDRUtils {
         logger.info("Extract languageData.json data complete!");
     }
 
+    
+    public static void writeJsonStr2File(String filePath, String jsonStr) {
+        OutputStreamWriter write = null;
+        BufferedWriter writer = null;
+        FileOutputStream outputStream = null;
+        try {
+            File f = new File(filePath);
+            if (!f.getParentFile().exists()) {
+                f.getParentFile().mkdirs();
+            }
+            if (!f.exists()) {
+                f.createNewFile();
+            }
+            logger.info(f.getAbsolutePath());
+            outputStream = new FileOutputStream(f);
+            write = new OutputStreamWriter(outputStream, Constants.UTF8);
+            writer = new BufferedWriter(write);
+            writer.write(jsonStr);
+            writer.flush();
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        } finally {
+            IOUtil.closeWriter(writer);
+            IOUtil.closeWriter(write);
+            IOUtil.closeOutputStream(outputStream);
+        }
+    }
+    
+    /**
+     * Extract timeZoneNames.json
+     */
+	public static void patternTimeZoneNameExtract() {
+		logger.info("Start to extract timezonename pattern data ... ");
+		Map<String, String> allLocales = getAllCldrLocales();
+		logger.info("allLocales size is : " + allLocales.size());
+		String coreZipPath = CLDRConstants.CORE_ZIP_FILE_PATH;
+		String metaZonefileName = CLDRConstants.CLDR_CORE_METAZONE;
+		logger.info(metaZonefileName);
+		String metaZonejson = CLDRUtils.readZip(metaZonefileName, coreZipPath);
+		logger.info(metaZonejson);
+		JSONObject metaZoneObj = JSONUtil.string2JSON(metaZonejson);
+		for (String locale : allLocales.values()) {
+			logger.info("locale is:" + locale);
+			String zipPath = CLDRConstants.DATE_ZIP_FILE_PATH;
+			String timeZoneNameFileName = MessageFormat.format(CLDRConstants.CLDR_DATES_FULL_DATE_TIMEZONENAME,
+					CLDR_VERSION, locale);
+			String timeZoneNameJson = CLDRUtils.readZip(timeZoneNameFileName, zipPath);
+			logger.info(timeZoneNameJson);
+			JSONObject timeZoneNameObj = JSONUtil.string2JSON(timeZoneNameJson);
+			String jsonStr = CldrTimeZoneUtils.createTimeZoneNameJson(metaZoneObj, timeZoneNameObj, locale);
+			String filePath = GEN_CLDR_PATTERN_TIMEZONE_DIR + locale + File.separator + Constants.DATE_TIMEZONENAME;
+			writeJsonStr2File(filePath, jsonStr);
+		}
+	}
     public static void main(String[] args) {
-        patternDataExtract();
+    	patternTimeZoneNameExtract();
     }
 
 }

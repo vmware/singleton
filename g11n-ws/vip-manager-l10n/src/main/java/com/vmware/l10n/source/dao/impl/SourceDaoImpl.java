@@ -1,12 +1,11 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.source.dao.impl;
 
 import java.io.File;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
@@ -30,7 +29,6 @@ import com.vmware.l10n.record.dao.SqlLiteDao;
 import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.l10n.source.dto.GRMAPIResponseStatus;
 import com.vmware.l10n.source.dto.GRMResponseDTO;
-import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 import com.vmware.l10n.utils.MapUtil;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;
@@ -39,8 +37,9 @@ import com.vmware.vip.common.exceptions.VIPResourceOperationException;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.i18n.resourcefile.LocalJSONReader;
 import com.vmware.vip.common.i18n.resourcefile.ResourceFilePathGetter;
-import com.vmware.vip.common.utils.SortJSONUtils;
+import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
+import com.vmware.vip.common.utils.SortJSONUtils;
 
 @Repository
 public class SourceDaoImpl implements SourceDao {
@@ -146,8 +145,10 @@ public class SourceDaoImpl implements SourceDao {
 			ResponseEntity<GRMResponseDTO> responseEntity = restTemplate
 					.postForEntity(url, formEntity, GRMResponseDTO.class);
 			GRMResponseDTO gRMResponseDTO = responseEntity.getBody();
-			if (gRMResponseDTO.getStatus() == GRMAPIResponseStatus.CREATED
-					.getCode()) {
+			if (gRMResponseDTO == null) {
+				return false;
+			}
+			if (gRMResponseDTO.getStatus() == GRMAPIResponseStatus.CREATED.getCode()) {
 				result = true;
 				LOGGER.info("The request has successed, the result: {} {}", gRMResponseDTO.getStatus(),  gRMResponseDTO.getResult());
 			} else {
@@ -171,7 +172,7 @@ public class SourceDaoImpl implements SourceDao {
 		if (!StringUtils.isEmpty(componentJSON)) {
 			JSONParser parser = new JSONParser();
 			ContainerFactory containerFactory = MapUtil.getContainerFactory();
-			Map<String, Object> messages = new LinkedHashMap<String, Object>();
+			Map<String, Object> messages;
 			Map<String, Object> bundle = null;
 			try {
 				bundle = (Map<String, Object>) parser.parse(componentJSON,
@@ -206,5 +207,5 @@ public class SourceDaoImpl implements SourceDao {
 		}
 		return componentMessagesDTO;
 	}
-
 }
+

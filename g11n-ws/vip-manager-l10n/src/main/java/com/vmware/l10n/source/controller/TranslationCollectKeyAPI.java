@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.source.controller;
@@ -169,11 +169,8 @@ public class TranslationCollectKeyAPI {
 			@ApiParam(value = APIParamValue.SOURCE, required = false) @RequestBody String source,
 			@ApiParam(name = APIParamName.COMMENT_SOURCE, value = APIParamValue.COMMENT_SOURCE) @RequestParam(value = APIParamName.COMMENT_SOURCE, required = false) String commentForSource,
 			@ApiParam(name = APIParamName.SOURCE_FORMAT, value = APIParamValue.SOURCE_FORMAT) @RequestParam(value = APIParamName.SOURCE_FORMAT, required = false) String sourceFormat,
-			@ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = true, defaultValue = "true") String collectSource,
-		//@ApiParam(name = APIParamName.PSEUDO, value = APIParamValue.PSEUDO) @RequestParam(value = APIParamName.PSEUDO, required = false, defaultValue = "false") String pseudo,
-        // @ApiParam(name = APIParamName.MT, value = APIParamValue.MT) @RequestParam(value = APIParamName.MT, required=false, defaultValue="false") String machineTranslation,
-        // @RequestParam(value = APIParamName.CHECK_TRANS_STATUS, required=false, defaultValue="false") String checkTranslationStatus,
-            HttpServletRequest request)
+			@ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = true, defaultValue = "true") String collectSource
+      )
 			throws L10nAPIException {
 		String newKey = StringUtils.isEmpty(sourceFormat) ? key
 				: (key + ConstantsChar.DOT + ConstantsChar.POUND + sourceFormat.toUpperCase());

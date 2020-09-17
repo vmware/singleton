@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.messages.data.dao.api;
@@ -24,5 +24,5 @@ public interface IProductDao {
 
 	public List<String> getVersionList(String productName) throws DataException;
 	
-	public String getWhiteListContent() throws DataException;
+	public String getAllowProductListContent() throws DataException;
 }

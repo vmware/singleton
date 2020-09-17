@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.csp.service;
@@ -83,16 +83,20 @@ public class TokenService {
      * Get the public key details (value and issuer) for CSP API
      */
     private void populatePublicKeyDetails() {
-        final PublicKeyResponse response = restTemplate.getForObject(config.getCspAuthUrl(), PublicKeyResponse.class);
-        publicKeyIssuer = response.getIssuer();
-        final String rawPublicKey = response.getValue();
-        String pem = rawPublicKey.replaceAll("-----BEGIN (.*)-----", "")
-                .replaceAll("-----END (.*)----", "")
-                .replaceAll("\n", "");
         try {
-            publicKey = KeyFactory.getInstance(KEYS_ALGORITHM)
-                    .generatePublic(new X509EncodedKeySpec(Base64.getDecoder()
-                            .decode(pem)));
+	        final PublicKeyResponse response = restTemplate.getForObject(config.getCspAuthUrl(), PublicKeyResponse.class);
+	        if (null != response) {
+		       	publicKeyIssuer = response.getIssuer();
+		        final String rawPublicKey = response.getValue();
+		        String pem = rawPublicKey.replaceAll("-----BEGIN (.*)-----", "")
+		                .replaceAll("-----END (.*)----", "")
+		                .replaceAll("\n", "");
+	            publicKey = KeyFactory.getInstance(KEYS_ALGORITHM)
+	                    .generatePublic(new X509EncodedKeySpec(Base64.getDecoder()
+	                            .decode(pem)));
+	        } else {
+	        	LOGGER.error("Failed to generate public key");
+	        }
         } catch (Exception e) {
             LOGGER.error("Failed to generate public key");
         }

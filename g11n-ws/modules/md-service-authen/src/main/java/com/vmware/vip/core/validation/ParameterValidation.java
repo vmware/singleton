@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.validation;
@@ -19,7 +19,7 @@ import com.vmware.vip.common.utils.RegExpValidatorUtils;
 
 public class ParameterValidation implements IVlidation {
 	HttpServletRequest request = null;
-	public final static String TAG_WHITE_LIST_MAP = "whiteListMap";
+	public final static String TAG_ALLOW_PRODUCT_LIST_MAP = "allowedProuductListMap";
 	public ParameterValidation(HttpServletRequest request) {
 		this.request = request;
 	}
@@ -58,11 +58,11 @@ public class ParameterValidation implements IVlidation {
 		if (StringUtils.isEmpty(productName)) {
 			return;
 		}
+		if ("get".equalsIgnoreCase(request.getMethod())) {
+			validateProductByWhiteList(productName, (Map<String, Object>)request.getAttribute(ParameterValidation.TAG_ALLOW_PRODUCT_LIST_MAP));
+		}
 		if (!RegExpValidatorUtils.IsLetterOrNumber(productName)) {
 			throw new ValidationException(ValidationMsg.PRODUCTNAME_NOT_VALIDE);
-		}
-		if ("get".equalsIgnoreCase(request.getMethod())) {
-			validateProductByWhiteList(productName, (Map<String, Object>)request.getAttribute(ParameterValidation.TAG_WHITE_LIST_MAP));
 		}
 	}
 

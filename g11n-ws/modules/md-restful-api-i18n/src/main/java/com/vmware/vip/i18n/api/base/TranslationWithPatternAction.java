@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.base;
@@ -310,6 +310,6 @@ public class TranslationWithPatternAction extends BaseAction {
 	      c = singleComponentService.getComponentTranslation(c);
 	      return c;
 	   }
+}
 
 
-	}

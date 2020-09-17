@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.messages.service.product;
@@ -34,6 +34,7 @@ import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.common.i18n.dto.DropVersionDTO;
 import com.vmware.vip.common.i18n.dto.DropVersionDTO.ComponentVersionDTO;
 import com.vmware.vip.common.i18n.dto.DropVersionDTO.ComponentVersionDTO.VersionDTO;
+import com.vmware.vip.common.i18n.dto.MultiComponentsDTO;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO.TranslationDTO;
 import com.vmware.vip.common.utils.JSONUtils;
@@ -166,7 +167,30 @@ public class ProductService implements IProductService {
 						+ componentMessagesDTO.getVersion(), e);
 			}
 		}
+		updateMultComponentCache(componentMessagesDTOList.get(0).getProductName(), componentMessagesDTOList.get(0).getVersion());
 		return translationDTOList;
+	}
+	
+	/**
+	 * update the MultComponent Cache project when update translations
+	 * 
+	 * @param productName
+	 * @param version
+	 * @throws L3APIException
+	 */
+	private void updateMultComponentCache(String productName, String version) throws L3APIException {
+		com.vmware.vip.core.messages.service.multcomponent.TranslationDTO multComp = new com.vmware.vip.core.messages.service.multcomponent.TranslationDTO();
+		multComp.setProductName(productName);
+		multComp.setVersion(version);
+		multComp.setLocales(getSupportedLocaleList(productName, version));
+		multComp.setComponents(getComponentNameList(productName, version));
+		String multKey = CachedKeyGetter.getMultiComponentsCachedKey(multComp);
+		try {
+			TranslationCache3.deleteCachedObject(CacheName.MULTCOMPONENT, multKey,
+					com.vmware.vip.core.messages.service.multcomponent.TranslationDTO.class);
+		} catch (VIPCacheException e) {
+			throw new L3APIException("MULTCOMPONENT cache occurs error when update translation.", e);
+		}
 	}
 
 	/**
@@ -320,10 +344,10 @@ public class ProductService implements IProductService {
      * get the white list
      */
     @Override
-    public Map<String, Object> getWhiteList(){
+    public Map<String, Object> getAllowPrductList(){
         String content;
         try {
-            content = productdao.getWhiteListContent();
+            content = productdao.getAllowProductListContent();
         } catch (DataException e1) {
             logger.warn(e1.getMessage());
             content =null;

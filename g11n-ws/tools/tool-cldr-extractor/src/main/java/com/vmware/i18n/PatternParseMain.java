@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n;
@@ -17,11 +17,13 @@ public class PatternParseMain {
         LocaleDataUtils.localesExtract();
         MiscUtils.miscDataExtract();
         SupplementUtils.supplementalCurrencyExtract();
+        SupplementUtils.supplementalNumberingSystemsExtract();
         CLDRUtils.aliasesExtract();
         CLDRUtils.defaultContentExtract();
         CLDRUtils.regionDataExtract();
         CLDRUtils.pluralsExtract();
         CLDRUtils.languageDataExtract();
+        CLDRUtils.patternTimeZoneNameExtract();
     }
 
 }

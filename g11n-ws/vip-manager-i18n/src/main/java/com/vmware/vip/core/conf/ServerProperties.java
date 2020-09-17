@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.conf;
@@ -44,6 +44,9 @@ public class ServerProperties implements Serializable {
 	@Value("${server.https.key-alias}")
 	private String httpsKeyAlias;
 	
+	@Value("${server.max-http-header-size:8192}")
+	private Integer maxHttpHeaderSize;
+	
 	
 	@Value("${server.trace.enable}")
    private Boolean allowTrace;
@@ -87,6 +90,14 @@ public class ServerProperties implements Serializable {
    public Boolean isAllowTrace() {
       return allowTrace;
    }
+
+public Integer getMaxHttpHeaderSize() {
+	return maxHttpHeaderSize;
+}
+
+public void setMaxHttpHeaderSize(Integer maxHttpHeaderSize) {
+	this.maxHttpHeaderSize = maxHttpHeaderSize;
+}
 
 
 

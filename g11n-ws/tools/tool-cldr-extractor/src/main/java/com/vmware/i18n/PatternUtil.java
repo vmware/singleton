@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n;
@@ -8,6 +8,7 @@ import com.vmware.i18n.common.CLDRConstants;
 import com.vmware.i18n.locale.action.LocaleAction;
 import com.vmware.i18n.pattern.action.PatternAction;
 import com.vmware.i18n.utils.CommonUtil;
+import com.vmware.i18n.utils.timezone.TimeZoneName;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -31,7 +32,16 @@ public class PatternUtil {
 	 */
 	public static String getRegionFromLib(String language) {
 		LocaleAction la = LocaleAction.getInstance();
-		return la.getRegion(language);
+		return la.getLocaleData(language, CLDRConstants.LOCALE_TERRITORIES_PATH);
+	}
+
+	/**
+	 * @param language
+	 * @return cities json string
+	 */
+	public static String getCitiesFromLib(String language) {
+		LocaleAction la = LocaleAction.getInstance();
+		return la.getLocaleData(language, CLDRConstants.LOCALE_CITIES_PATH);
 	}
 
 	/**
@@ -40,7 +50,7 @@ public class PatternUtil {
 	 */
 	public static String getLanguageFromLib(String displayLanguage) {
 		LocaleAction la = LocaleAction.getInstance();
-		return la.getLanguage(displayLanguage);
+		return la.getLocaleData(displayLanguage, CLDRConstants.LOCALE_LANGUAGES_PATH);
 	}
 
 	/**
@@ -59,5 +69,15 @@ public class PatternUtil {
 	public static String getMatchingLocaleFromLib(String locale) {
 		LocaleAction la = LocaleAction.getInstance();
 		return la.getLocaleWithDefaultRegion(locale);
+	}
+	
+	/**
+	 * @param locale
+	 * @param default territory
+	 * @return matching locale TimeZoneName
+	 */
+	public static TimeZoneName getTimeZoneName(String locale, boolean defaultTerritory) {
+	    PatternAction pa = PatternAction.getInstance();
+        return pa.getTimeZoneName(locale, defaultTerritory);
 	}
 }

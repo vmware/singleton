@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n.api.v2.locale;
@@ -97,10 +97,12 @@ public class LocaleAPI extends BaseAction {
 	@RequestMapping(value = APIV2.REGION_LIST, method = RequestMethod.GET, produces = { API.API_CHARSET })
 	@ResponseStatus(HttpStatus.OK)
 	public APIResponseDTO getRegionList(
-			@ApiParam(name = APIParamName.SUPPORTED_LANGUAGE_LIST, required = true, value = APIParamValue.SUPPORTED_LANGUAGES) @RequestParam(value = APIParamName.SUPPORTED_LANGUAGE_LIST, required = true) String supportedLanguageList)
+			@ApiParam(name = APIParamName.SUPPORTED_LANGUAGE_LIST, required = true, value = APIParamValue.SUPPORTED_LANGUAGES) @RequestParam(value = APIParamName.SUPPORTED_LANGUAGE_LIST, required = true) String supportedLanguageList,
+			@ApiParam(name = APIParamName.DISPLAY_CITY, required = false, value = APIParamValue.DISPLAY_CITY) @RequestParam(value = APIParamName.DISPLAY_CITY, required = false) String displayCity,
+			@ApiParam(name = APIParamName.REGIONS, required = false, value = APIParamValue.REGIONS) @RequestParam(value = APIParamName.REGIONS, required = false) String regions)
 			throws Exception {
 		return super.handleResponse(APIResponseStatus.OK,
-				this.localeService.getTerritoriesFromCLDR(supportedLanguageList.toLowerCase()));
+				this.localeService.getTerritoriesFromCLDR(supportedLanguageList.toLowerCase(), displayCity, regions));
 	}
 
 	/**

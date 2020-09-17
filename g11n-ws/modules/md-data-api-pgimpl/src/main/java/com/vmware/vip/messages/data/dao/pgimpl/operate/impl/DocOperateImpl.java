@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.messages.data.dao.pgimpl.operate.impl;
@@ -40,10 +40,11 @@ public class DocOperateImpl implements IDocOperate {
 
 	@Override
 	public I18nDocument findByDocId(I18nDocument doc, JdbcTemplate jdbcTemplate) {
-		// TODO Auto-generated method stub
 		String sql = "select v.messages::text from vip_msg v where v.product = ? and v.version = ? and v.component= ? and v.locale = ?";
 
-		logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		}
 		logger.debug(sql);
 		String[] params = { doc.getProduct(), doc.getVersion(), doc.getComponent(), doc.getLocale() };
 		logger.debug(String.join(", ", params));
@@ -53,7 +54,7 @@ public class DocOperateImpl implements IDocOperate {
 			resultjson = jdbcTemplate.queryForObject(sql, params, String.class);
 
 		} catch (EmptyResultDataAccessException empty) {
-			
+
 			logger.error(empty.getMessage(), empty);
 		}
 
@@ -69,15 +70,15 @@ public class DocOperateImpl implements IDocOperate {
 				});
 			} catch (JsonParseException e) {
 				// TODO Auto-generated catch block
-				
+
 				logger.error(e.getMessage(), e);
 			} catch (JsonMappingException e) {
 				// TODO Auto-generated catch block
-				
+
 				logger.error(e.getMessage(), e);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				
+
 				logger.error(e.getMessage(), e);
 			}
 
@@ -95,7 +96,9 @@ public class DocOperateImpl implements IDocOperate {
 		// TODO Auto-generated method stub
 		String sql = "select v.messages::text from vip_msg v where v.product = ? and v.version = ? and v.component= ? and v.locale = ?";
 
-		logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		}
 		logger.debug(sql);
 		String[] params = { productName, version, component, locale };
 		logger.debug(String.join(", ", params));
@@ -105,7 +108,7 @@ public class DocOperateImpl implements IDocOperate {
 			resultjson = jdbcTemplate.queryForObject(sql, params, String.class);
 
 		} catch (EmptyResultDataAccessException empty) {
-			
+
 			logger.error(empty.getMessage(), empty);
 		}
 
@@ -119,9 +122,11 @@ public class DocOperateImpl implements IDocOperate {
 	@Override
 	public int saveDoc(I18nDocument content, JdbcTemplate jdbcTemplate) {
 		// TODO Auto-generated method stub
-		String tableName = "vip_msg_"+content.getProduct().toLowerCase();
-		String saveSql = "insert into "+tableName+" (product, version, component, locale, messages, crt_time) values (? ,? ,? ,? ,?::jsonb, CURRENT_TIMESTAMP)";
-		logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		String tableName = "vip_msg_" + content.getProduct().toLowerCase();
+		String saveSql = "insert into " + tableName + " (product, version, component, locale, messages, crt_time) values (? ,? ,? ,? ,?::jsonb, CURRENT_TIMESTAMP)";
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		}
 		logger.debug(saveSql);
 		logger.debug(String.join(", ", content.getProduct(), content.getVersion(), content.getComponent(),
 				content.getLocale()));
@@ -131,7 +136,7 @@ public class DocOperateImpl implements IDocOperate {
 			msg = objectMapper.writeValueAsString(content.getMessages());
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
-			
+
 			logger.error(e.getMessage(), e);
 		}
 		return jdbcTemplate.update(saveSql, content.getProduct(), content.getVersion(), content.getComponent(),
@@ -143,9 +148,11 @@ public class DocOperateImpl implements IDocOperate {
 	public int saveDoc(String productName, String version, String component, String locale,
 			Map<String, String> messages, JdbcTemplate jdbcTemplate) {
 		// TODO Auto-generated method stub
-		String tableName = "vip_msg_"+productName.toLowerCase();
-		String saveSql = "insert into "+tableName+" (product, version, component, locale, messages, crt_time) values (? ,? ,? ,? ,?::jsonb, CURRENT_TIMESTAMP)";
-		logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		String tableName = "vip_msg_" + productName.toLowerCase();
+		String saveSql = "insert into " + tableName + " (product, version, component, locale, messages, crt_time) values (? ,? ,? ,? ,?::jsonb, CURRENT_TIMESTAMP)";
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		}
 		logger.debug(saveSql);
 
 		logger.debug(String.join(", ", productName, version, component, locale));
@@ -155,7 +162,7 @@ public class DocOperateImpl implements IDocOperate {
 			msg = objectMapper.writeValueAsString(messages);
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
-			
+
 			logger.error(e.getMessage(), e);
 		}
 		return jdbcTemplate.update(saveSql, productName, version, component, locale, msg);
@@ -165,7 +172,9 @@ public class DocOperateImpl implements IDocOperate {
 	public int removeDoc(I18nDocument doc, JdbcTemplate jdbcTemplate) {
 		// TODO Auto-generated method stub
 		String delSql = "delete from vip_msg v where v.product = ? and v.version = ? and v.component= ? and v.locale = ?";
-		logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		}
 		logger.debug(delSql);
 		logger.debug(String.join(", ", doc.getProduct(), doc.getVersion(), doc.getComponent(), doc.getLocale()));
 		return jdbcTemplate.update(delSql, doc.getProduct(), doc.getVersion(), doc.getComponent(), doc.getLocale());
@@ -177,7 +186,9 @@ public class DocOperateImpl implements IDocOperate {
 			JdbcTemplate jdbcTemplate) {
 		// TODO Auto-generated method stub
 		String delSql = "delete from vip_msg v where v.product = ? and v.version = ? and v.component= ? and v.locale = ?";
-		logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		}
 		logger.debug(delSql);
 		logger.debug(String.join(", ", productName, version, component, locale));
 		return jdbcTemplate.update(delSql, productName, version, component, locale);
@@ -189,7 +200,9 @@ public class DocOperateImpl implements IDocOperate {
 		// TODO Auto-generated method stub
 		String sql = "select v.messages::text from vip_msg v where v.product = ? and v.version = ? and v.component= ? and v.locale = ?";
 
-		logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		}
 		logger.debug(sql);
 		String[] params = { productName, version, component, locale };
 		logger.debug(String.join(", ", params));
@@ -199,17 +212,16 @@ public class DocOperateImpl implements IDocOperate {
 			resultjson = jdbcTemplate.queryForObject(sql, params, String.class);
 
 		} catch (EmptyResultDataAccessException empty) {
-			
+
 			logger.error(empty.getMessage());
 		}
 
-		
-		logger.debug("db json:"+resultjson);
-		
-		if(resultjson == null) {
-		  return null;
+		logger.debug("db json:" + resultjson);
+
+		if (resultjson == null) {
+			return null;
 		}
-		
+
 		ObjectMapper objectMapper = new ObjectMapper();
 		Map<String, String> map = null;
 
@@ -218,15 +230,15 @@ public class DocOperateImpl implements IDocOperate {
 			});
 		} catch (JsonParseException e) {
 			// TODO Auto-generated catch block
-			
+
 			logger.error(e.getMessage(), e);
 		} catch (JsonMappingException e) {
 			// TODO Auto-generated catch block
-			
+
 			logger.error(e.getMessage(), e);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			
+
 			logger.error(e.getMessage(), e);
 		}
 
@@ -237,34 +249,36 @@ public class DocOperateImpl implements IDocOperate {
 	public int updateDoc(String productName, String version, String component, String locale,
 			Map<String, String> messages, JdbcTemplate jdbcTemplate) {
 
-		int result =0;
+		int result = 0;
 		Map<String, String> map = findByDoc2Map(productName, version, component, locale, jdbcTemplate);
-     
+
 		if (map != null) {
-			if(messages !=null) {
-				for(Entry<String, String> entry : messages.entrySet() ) {
+			if (messages != null) {
+				for (Entry<String, String> entry : messages.entrySet()) {
 					map.put(entry.getKey(), entry.getValue());
 				}
 				result = updateCompDoc(productName, version, component, locale, map, jdbcTemplate);
 			}
-			
+
 		} else {
 
-		  	result = updateCompDoc(productName, version, component, locale, messages, jdbcTemplate);
-			
+			result = updateCompDoc(productName, version, component, locale, messages, jdbcTemplate);
+
 		}
 
 		return result;
 
 	}
 
-	private  int updateCompDoc(String productName, String version, String component, String locale,
+	private int updateCompDoc(String productName, String version, String component, String locale,
 			Map<String, String> messages, JdbcTemplate jdbcTemplate) { // TODO Auto-generated method stub
 		String updateSql = "update vip_msg  set messages = ? ::jsonb  where product = ? and version = ? and component= ? and locale = ?";
-		logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		}
 		logger.debug(updateSql);
 		logger.debug(String.join(", ", productName, version, component, locale));
-		
+
 		String msg = null;
 		try {
 			ObjectMapper objectMapper = new ObjectMapper();
@@ -273,7 +287,7 @@ public class DocOperateImpl implements IDocOperate {
 			logger.warn(e.getMessage(), e);
 			return 0;
 		}
-		logger.debug ("update json---"+msg);
+		logger.debug("update json---" + msg);
 		return jdbcTemplate.update(updateSql, msg, productName, version, component, locale);
 	}
 
@@ -285,7 +299,9 @@ public class DocOperateImpl implements IDocOperate {
 
 		String[] params = { productName, version };
 
-		logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		}
 		logger.debug(compSql);
 		logger.debug(String.join(", ", params));
 		List<String> result = jdbcTemplate.queryForList(compSql, params, String.class);
@@ -299,7 +315,9 @@ public class DocOperateImpl implements IDocOperate {
 		String localeSql = "select v.locale from vip_msg v where v.product = ? and v.version = ? group by v.locale";
 		String[] params = { productName, version };
 
-		logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		}
 		logger.debug(localeSql);
 		logger.debug(String.join(", ", params));
 		List<String> result = jdbcTemplate.queryForList(localeSql, params, String.class);
@@ -308,16 +326,18 @@ public class DocOperateImpl implements IDocOperate {
 	}
 
     /* (non-Javadoc) * @see com.vmware.vip.messages.data.dao.pgimpl.operate.IDocOperate#getVersionList(java.lang.String, org.springframework.jdbc.core.JdbcTemplate) */
-    @Override
-    public List<String> getVersionList(String productName, JdbcTemplate jdbcTemplate) {
-        // TODO Auto-generated method stub
-        String localeSql = "select v.version from vip_msg v where v.product = ? group by v.version";
-        String[] params = { productName };
-        logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
-        logger.debug(localeSql);
-        logger.debug(String.join(", ", params));
-        List<String> result = jdbcTemplate.queryForList(localeSql, params, String.class);
-        return result;
-    }
+	@Override
+	public List<String> getVersionList(String productName, JdbcTemplate jdbcTemplate) {
+		// TODO Auto-generated method stub
+		String localeSql = "select v.version from vip_msg v where v.product = ? group by v.version";
+		String[] params = { productName };
+		if (jdbcTemplate.getDataSource() != null) {
+			logger.debug(((DruidDataSource) (jdbcTemplate.getDataSource())).getName());
+		}
+		logger.debug(localeSql);
+		logger.debug(String.join(", ", params));
+		List<String> result = jdbcTemplate.queryForList(localeSql, params, String.class);
+		return result;
+	}
 
 }

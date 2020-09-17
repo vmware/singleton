@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.common.constants;
@@ -52,6 +52,7 @@ public class ConstantsKeys {
    public static final String REGION = "region";
    public static final String COMBINE = "combine";
    public static final String SCOPE = "scope";
+   public static final String CITIES = "cities";
    // millisecond
    public static final Integer DELAY_TIME = 10000;
    public static final String VALIDATE_TOKEN_RESULT = "validateTokenResult";
@@ -82,11 +83,13 @@ public class ConstantsKeys {
    public static final String CURRENCIES = "currencies";
    public static final String SUPPLEMENT = "supplemental";
    public static final String DATE_FIELDS = "dateFields";
+   public static final String TIMEZONE_NAME = "TimeZoneName";
    public static final String[] ALL_CATEGORY =
          { DATES, NUMBERS, PLURALS, MEASUREMENTS, CURRENCIES };
    // fatal error message id
    public static final String FATA_ERROR = "[FATAL ERROR]";
    public static final String TOKEN_VALIDATION_ERROR = "Token validation failed";
+   public static final String TOKEN_NOT_FOUND_ERROR = "Token not found";
    public static final String SOURCE_COLLECTION_ERROR = "Source collection forbidden";
 
    public static final String JSON_KEYSET = "jsonkeyset";
