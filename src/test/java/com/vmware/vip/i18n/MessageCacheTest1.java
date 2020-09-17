@@ -15,6 +15,7 @@ import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.CacheService;
+import com.vmware.vipclient.i18n.messages.service.ProductService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -71,13 +72,13 @@ public class MessageCacheTest1 extends BaseTestClass {
         msgObj4.put("book9", "@zh_CN@book9");
         cacheService.addCacheOfComponent(new MessageCacheItem(msgObj4));
         Map<String, String> messageMap = (Map<String, String>) cacheService
-                .getCacheOfComponent().getCachedData();
+                .getCacheOfComponent(new ProductService(cacheDTO).getSupportedLocales()).getCachedData();
         Assert.assertTrue(messageMap.size() == 4);
         c.clear();
         Assert.assertTrue(c.size() == 0);
         VIPCfg.getInstance().getCacheManager().clearCache();
         Map<String, Object> messageMap3 = (Map<String, Object>) cacheService
-                .getCacheOfComponent();
+                .getCacheOfComponent(new ProductService(cacheDTO).getSupportedLocales());
         Assert.assertNull(messageMap3);
     }
 
@@ -87,10 +88,10 @@ public class MessageCacheTest1 extends BaseTestClass {
         Map<String, String> msgObj = new HashMap<String, String>();
         msgObj.put("book", "@zh_CN@book");
         cacheService.addCacheOfComponent(new MessageCacheItem(msgObj));
-        Map<String, String> mp = (Map<String, String>) cacheService.getCacheOfComponent().getCachedData();
+        Map<String, String> mp = (Map<String, String>) cacheService.getCacheOfComponent(new ProductService(cacheDTO).getSupportedLocales()).getCachedData();
         Assert.assertEquals("@zh_CN@book", mp.get("book"));
         VIPCfg.getInstance().getCacheManager().clearCache();
-        Assert.assertNull(cacheService.getCacheOfComponent());
+        Assert.assertNull(cacheService.getCacheOfComponent(new ProductService(cacheDTO).getSupportedLocales()));
     }
 
     @SuppressWarnings({ "static-access", "rawtypes", "unchecked" })

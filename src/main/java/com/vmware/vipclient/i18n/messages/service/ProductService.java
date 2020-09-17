@@ -31,7 +31,7 @@ public class ProductService {
      */
     public List<Map> getAllComponentTranslation() {
         List<Map> list = new ArrayList<Map>();
-        Set<String> locales = this.getSupportedLocales();
+        Set<String> locales = this.getSupportedLanguageTags();
         List<String> components = this.getComponents();
         if (locales != null && components != null) {
             for (String languageTag : locales) {
@@ -68,12 +68,21 @@ public class ProductService {
         return components;
     }
 
+    public List<Locale> getSupportedLocales() {
+        List<Locale> result = new LinkedList<>();
+        Set<String> supportedLocales = this.getSupportedLanguageTags();
+        for (String supportedLocale : supportedLocales) {
+            result.add(Locale.forLanguageTag(supportedLocale));
+        }
+        return result;
+    }
+
     /**
-     * Retrieves the list of locales of a product. It recursively applies data source fallback mechanism in case of failure.
+     * Retrieves the list of language tags of a product. It recursively applies data source fallback mechanism in case of failure.
      *
-     * @return list of locales of the product specified in the dto object
+     * @return list of language tags of the product specified in the dto object
      */
-    public Set<String> getSupportedLocales(){
+    public Set<String> getSupportedLanguageTags(){
         FormattingCacheService cacheService = new FormattingCacheService();
         Map<String, String> supportedLanguages = cacheService.getSupportedLanguages(dto);
         if (supportedLanguages != null && !supportedLanguages.isEmpty())

@@ -7,6 +7,7 @@ package com.vmware.vip.i18n;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.vmware.vipclient.i18n.messages.service.ProductService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -63,7 +64,7 @@ public class MessageCache2Test1 extends BaseTestClass {
         msgObj3.put("book3", "@zh_CN@book3");
         cacheService.addCacheOfComponent(new MessageCacheItem(msgObj3));
         Map<String, String> messageMap = (Map<String, String>) cacheService
-                .getCacheOfComponent().getCachedData();
+                .getCacheOfComponent(new ProductService(cacheDTO).getSupportedLocales()).getCachedData();
         Assert.assertTrue(messageMap.size() == 3);
         VIPCfg.getInstance().getCacheManager().clearCache();
     }
@@ -75,7 +76,7 @@ public class MessageCache2Test1 extends BaseTestClass {
         msgObj.put("book", "@zh_CN@book");
         cacheService.addCacheOfComponent(new MessageCacheItem(msgObj));
         Map<String, String> result = (Map<String, String>) cacheService
-                .getCacheOfComponent().getCachedData();
+                .getCacheOfComponent(new ProductService(cacheDTO).getSupportedLocales()).getCachedData();
         Assert.assertTrue(result.size() > 0);
         VIPCfg.getInstance().getCacheManager().clearCache();
     }
@@ -94,10 +95,10 @@ public class MessageCache2Test1 extends BaseTestClass {
         Map<String, String> msgObj4 = new HashMap<String, String>();
         msgObj4.put("book4", "@zh_CN@book4");
         cacheService.addCacheOfComponent(new MessageCacheItem(msgObj4));
-        Map<String, String> messages = (Map<String, String>) cacheService.getCacheOfComponent().getCachedData();
+        Map<String, String> messages = (Map<String, String>) cacheService.getCacheOfComponent(new ProductService(cacheDTO).getSupportedLocales()).getCachedData();
         Assert.assertEquals("@zh_CN@book", messages.get("book"));
         VIPCfg.getInstance().getCacheManager().clearCache();
-        Assert.assertNull(cacheService.getCacheOfComponent());
+        Assert.assertNull(cacheService.getCacheOfComponent(new ProductService(cacheDTO).getSupportedLocales()));
     }
 
     @SuppressWarnings({ "static-access", "rawtypes", "unchecked" })

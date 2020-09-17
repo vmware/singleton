@@ -5,6 +5,7 @@
 package com.vmware.vipclient.i18n.messages.service;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
@@ -100,8 +101,9 @@ public class ComponentService {
     public MessageCacheItem getMessages(Iterator<Locale> fallbackLocalesIter) {
     	CacheService cacheService = new CacheService(dto);
     	MessageCacheItem cacheItem = null;
-    	if (cacheService.isContainComponent()) { // Item is in cache
-    		cacheItem = cacheService.getCacheOfComponent();
+		List<Locale> supportedLocales = new ProductService(dto).getSupportedLocales();
+    	if (cacheService.isContainComponent(supportedLocales)) { // Item is in cache
+    		cacheItem = cacheService.getCacheOfComponent(supportedLocales);
     		if (cacheItem.getCachedData().isEmpty()) { // This means that the data to be used is from a fallback locale.
 				// If expired, try to first create and store cacheItem for the requested locale in a separate thread.
 				if (cacheItem.isExpired())

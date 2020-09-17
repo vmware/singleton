@@ -6,6 +6,7 @@ package com.vmware.vipclient.i18n.messages.service;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
+import com.vmware.vipclient.i18n.base.cache.CacheItem;
 import com.vmware.vipclient.i18n.base.cache.FormatCacheItem;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
@@ -21,7 +22,7 @@ public class CacheService {
         this.dto = dto;
     }
     
-    public MessageCacheItem getCacheOfComponent() {
+    public MessageCacheItem getCacheOfComponent(List<Locale> supportedLocales) {
         Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
         if (c == null)
             return null;
@@ -29,8 +30,7 @@ public class CacheService {
         MessageCacheItem cacheItem = (MessageCacheItem) c.get(cacheKey);
         if (cacheItem != null)
             return cacheItem;
-        Locale matchedLocale = LocaleUtility.pickupLocaleFromList(
-                this.getSupportedLocalesFromCache(),
+        Locale matchedLocale = LocaleUtility.pickupLocaleFromList(supportedLocales,
                 this.getLocaleByCachedKey(cacheKey));
         cacheKey = cacheKey.substring(0,
                 cacheKey.indexOf(ConstantsKeys.UNDERLINE_POUND) + 2)
@@ -59,14 +59,20 @@ public class CacheService {
         }
     }
 
-    public boolean isContainComponent() {
-        boolean f = false;
+    public boolean isContainComponent(List<Locale> supportedLocales) {
         String cacheKey = dto.getCompositStrAsCacheKey();
         Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
-        if (c != null) {
-            f = c.get(cacheKey) != null;
-        }
-        return f;
+        if (c == null)
+            return false;
+
+        if (c.get(cacheKey) != null)
+            return true;
+        Locale matchedLocale = LocaleUtility.pickupLocaleFromList(supportedLocales,
+                this.getLocaleByCachedKey(cacheKey));
+        cacheKey = cacheKey.substring(0,
+                cacheKey.indexOf(ConstantsKeys.UNDERLINE_POUND) + 2)
+                + matchedLocale.toLanguageTag();
+        return c.get(cacheKey) != null;
     }
 
     public boolean isContainStatus() {
@@ -97,16 +103,6 @@ public class CacheService {
         if (c != null) {
             c.put(cacheKey, new MessageCacheItem(dataMap));
         }
-    }
-
-    public List<Locale> getSupportedLocalesFromCache() {
-        List<Locale> result = new LinkedList<>();
-        ProductService ps = new ProductService(dto);
-        Set<String> supportedLocales = ps.getSupportedLocales();
-        for (String supportedLocale : supportedLocales) {
-            result.add(Locale.forLanguageTag(supportedLocale));
-        }
-        return result;
     }
 
     private Locale getLocaleByCachedKey(String key) {

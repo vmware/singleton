@@ -10,8 +10,8 @@ import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.instances.LocaleMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
-import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
-import com.vmware.vipclient.i18n.messages.service.CacheService;
+import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
+import com.vmware.vipclient.i18n.messages.service.ProductService;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.json.simple.parser.ParseException;
 import org.junit.Assert;
@@ -129,9 +129,11 @@ public class LocaleTest extends BaseTestClass {
     	// List of supported locales shall be dertermined from available offline bundle files.
         Map<String, String> resp = localeI18n.getDisplayLanguagesList("fil");
         Assert.assertTrue(resp.containsKey("fil"));
-        
-        CacheService cs = new CacheService(new MessagesDTO());
-    	List<Locale> supportedLocales = cs.getSupportedLocalesFromCache();
+
+        BaseDTO dto = new BaseDTO();
+        dto.setProductID(vipCfg.getProductName());
+        dto.setVersion(vipCfg.getVersion());
+    	List<Locale> supportedLocales = new ProductService(dto).getSupportedLocales();
         Assert.assertNotNull(supportedLocales);
         Assert.assertTrue(supportedLocales.contains(Locale.forLanguageTag("fil")));
         Assert.assertEquals("Filipino", supportedLocales.get(
