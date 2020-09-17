@@ -12,8 +12,7 @@ public class CustomErrorController implements ErrorController {
     public String error() {
         return "{\n" +
                 "    \"code\": 400,\n" +
-                "    \"message\": \"\",\n" +
-                "    \"serverTime\": \"\"\n" +
+                "    \"message\": \"Bad request!\"\n" +
                 "  }";
     }
 
