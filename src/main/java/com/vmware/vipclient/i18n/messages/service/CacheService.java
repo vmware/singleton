@@ -8,7 +8,6 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.CacheItem;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
-import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
@@ -22,25 +21,8 @@ public class CacheService {
         this.dto = dto;
     }
 
-    private List<Locale> getLocalesOfCachedMsgs() {
-        List<Locale> locales = new LinkedList<>();
-        Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
-        if (c != null) {
-            Set<String> cacheKeys = c.keySet();
-            for (String key : cacheKeys) {
-                Locale locale = getLocaleByCachedKey(key);
-                if (locale != null)
-                    locales.add(locale);
-            }
-        }
-        return locales;
-    }
-
     public MessageCacheItem getCacheOfComponent() {
         String cacheKey = dto.getCompositStrAsCacheKey();
-        MessageCacheItem cacheItem = (MessageCacheItem) this.getCacheItem(cacheKey);
-        if (cacheItem != null)
-            return cacheItem;
         Locale matchedLocale = LocaleUtility.pickupLocaleFromList(this.getLocalesOfCachedMsgs(),
                 this.getLocaleByCachedKey(cacheKey));
         cacheKey = cacheKey.substring(0,
@@ -95,26 +77,26 @@ public class CacheService {
         addCacheItem(cacheKey, new MessageCacheItem(dataMap));
     }
 
+    public List<Locale> getLocalesOfCachedMsgs() {
+        List<Locale> locales = new LinkedList<>();
+        Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
+        if (c != null) {
+            Set<String> cacheKeys = c.keySet();
+            for (String key : cacheKeys) {
+                Locale locale = getLocaleByCachedKey(key);
+                if (locale != null)
+                    locales.add(locale);
+            }
+        }
+        return locales;
+    }
+
     private Locale getLocaleByCachedKey(String key) {
         if (key.startsWith(ConstantsKeys.DISPNS_PREFIX))
             return null;
         String locale = key.substring(
                 key.indexOf(ConstantsKeys.UNDERLINE_POUND) + 2, key.length());
         return Locale.forLanguageTag(locale.replace("_", "-"));
-    }
-
-    public void addSupportedLanguages(BaseDTO dto, MessageCacheItem cacheItem) {
-        String cacheKey = getSupportedLanguagesCacheKey(dto);
-        addCacheItem(cacheKey, cacheItem);
-    }
-
-    public MessageCacheItem getSupportedLanguages(BaseDTO dto) {
-        String cacheKey = getSupportedLanguagesCacheKey(dto);
-        return (MessageCacheItem) getCacheItem(cacheKey);
-    }
-
-    private String getSupportedLanguagesCacheKey(BaseDTO dto){
-        return ConstantsKeys.DISPNS_PREFIX + dto.getProductID() + ConstantsKeys.UNDERLINE + dto.getVersion();
     }
 
     private void addCacheItem(String key, CacheItem cacheItem) {

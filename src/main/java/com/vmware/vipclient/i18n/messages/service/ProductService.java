@@ -6,7 +6,6 @@ package com.vmware.vipclient.i18n.messages.service;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
-import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.messages.api.opt.ProductOpt;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
@@ -15,7 +14,11 @@ import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 public class ProductService {
     private BaseDTO dto = null;
@@ -32,7 +35,7 @@ public class ProductService {
      */
     public List<Map> getAllComponentTranslation() {
         List<Map> list = new ArrayList<Map>();
-        Set<String> locales = this.getSupportedLanguageTags();
+        List<String> locales = this.getSupportedLocales();
         List<String> components = this.getComponents();
         if (locales != null && components != null) {
             for (String languageTag : locales) {
@@ -69,48 +72,23 @@ public class ProductService {
         return components;
     }
 
-    public List<Locale> getSupportedLocales() {
-        List<Locale> result = new LinkedList<>();
-        Set<String> supportedLocales = this.getSupportedLanguageTags();
-        for (String supportedLocale : supportedLocales) {
-            result.add(Locale.forLanguageTag(supportedLocale));
-        }
-        return result;
-    }
-
     /**
-     * Retrieves the list of language tags of a product. It recursively applies data source fallback mechanism in case of failure.
+     * Retrieves the list of locales of a product. It recursively applies data source fallback mechanism in case of failure.
      *
-     * @return list of language tags of the product specified in the dto object
+     * @return list of locales of the product specified in the dto object
      */
-    public Set<String> getSupportedLanguageTags(){
-        MessagesDTO msgsDTO = new MessagesDTO();
-        msgsDTO.setProductID(dto.getProductID());
-        msgsDTO.setVersion(dto.getVersion());
-        CacheService cacheService = new CacheService(msgsDTO);
-        MessageCacheItem supportedLanguages = cacheService.getSupportedLanguages(dto);
-        if (supportedLanguages != null)
-            return supportedLanguages.getCachedData().keySet();
-
-        Set<String> locales = new HashSet<>();
+    public List<String> getSupportedLocales(){
+        List<String> locales = null;
         Iterator<DataSourceEnum> msgSourceQueueIter = VIPCfg.getInstance().getMsgOriginsQueue().iterator();
-        while(locales.isEmpty() && msgSourceQueueIter.hasNext()){
+        while((locales == null || locales.isEmpty()) && msgSourceQueueIter.hasNext()){
             DataSourceEnum dataSource = msgSourceQueueIter.next();
             ProductOpt opt = dataSource.createProductOpt(dto);
-            locales.addAll(opt.getSupportedLocales());
+            locales = opt.getSupportedLocales();
             // If failed to get locales from the data source, log the error.
-            if (locales.isEmpty()) {
+            if (locales == null || locales.isEmpty()) {
                 logger.error(ConstantsMsg.GET_LOCALES_FAILED, dataSource.toString());
             }
         }
-
-        // Add list of supported locales to cache
-        Map<String, String> cacheMap = new HashMap<>();
-        for (String locale : locales) {
-            cacheMap.put(locale, "");
-        }
-        MessageCacheItem cacheItem = new MessageCacheItem(null, cacheMap, null, System.currentTimeMillis(), null);
-        cacheService.addSupportedLanguages(dto, cacheItem);
         return locales;
     }
 }

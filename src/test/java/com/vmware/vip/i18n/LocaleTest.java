@@ -8,10 +8,11 @@ import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
+import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.instances.LocaleMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
-import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
-import com.vmware.vipclient.i18n.messages.service.ProductService;
+import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
+import com.vmware.vipclient.i18n.messages.service.CacheService;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.json.simple.parser.ParseException;
 import org.junit.Assert;
@@ -116,7 +117,7 @@ public class LocaleTest extends BaseTestClass {
         Map<String, String> aaResp = localeI18n.getDisplayLanguagesList("aa");
         Assert.assertNotNull(aaResp);
     }
-
+    
     @Test
     public void testGetSupportedLocalesOfflineBundles() throws ParseException {
     	//Enable offline mode
@@ -124,16 +125,19 @@ public class LocaleTest extends BaseTestClass {
     	gc.setOfflineResourcesBaseUrl("offlineBundles/");
     	List<DataSourceEnum> msgOriginsQueueOrig = gc.getMsgOriginsQueue();
     	gc.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
-    	
+    	boolean initializeCacheOrig = gc.isInitializeCache();
+    	gc.setInitializeCache(true);
+
     	// There is no service response mock for "fil" display language, so service request will fail.
     	// List of supported locales shall be dertermined from available offline bundle files.
         Map<String, String> resp = localeI18n.getDisplayLanguagesList("fil");
         Assert.assertTrue(resp.containsKey("fil"));
 
-        BaseDTO dto = new BaseDTO();
-        dto.setProductID(vipCfg.getProductName());
-        dto.setVersion(vipCfg.getVersion());
-    	List<Locale> supportedLocales = new ProductService(dto).getSupportedLocales();
+        gc.createTranslationCache(MessageCache.class);
+        gc.initializeMessageCache();
+
+        CacheService cs = new CacheService(new MessagesDTO());
+    	List<Locale> supportedLocales = cs.getLocalesOfCachedMsgs();
         Assert.assertNotNull(supportedLocales);
         Assert.assertTrue(supportedLocales.contains(Locale.forLanguageTag("fil")));
         Assert.assertEquals("Filipino", supportedLocales.get(
@@ -143,6 +147,7 @@ public class LocaleTest extends BaseTestClass {
         // Disable offline mode off for next tests.
         gc.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	gc.setMsgOriginsQueue(msgOriginsQueueOrig);
+    	gc.setInitializeCache(initializeCacheOrig);
     }
 
     @Test
