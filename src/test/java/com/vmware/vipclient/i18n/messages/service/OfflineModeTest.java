@@ -10,14 +10,12 @@ import com.vmware.vip.i18n.BaseTestClass;
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
-import com.vmware.vipclient.i18n.base.cache.Cache;
-import com.vmware.vipclient.i18n.base.cache.MessageCache;
-import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
-import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
+import com.vmware.vipclient.i18n.base.cache.*;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
+import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
@@ -102,6 +100,30 @@ public class OfflineModeTest extends BaseTestClass {
     }
 
     @Test
+    public void testGetMsgsOfflineModeCacheNotInitialized() {
+        String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
+        cfg.setOfflineResourcesBaseUrl("offlineBundles/");
+        List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
+        cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
+        boolean initializeCacheOrig = cfg.isInitializeCache();
+        cfg.setInitializeCache(true);
+
+        Cache c = cfg.createTranslationCache(MessageCache.class);
+        assertTrue(c.size() > 0);
+
+        cfg.createFormattingCache(FormattingCache.class);
+        FormattingCacheService fs = new FormattingCacheService();
+        BaseDTO baseDTO = new BaseDTO();
+        baseDTO.setProductID(cfg.getProductName());
+        baseDTO.setVersion(cfg.getVersion());
+        assertNull(fs.getSupportedLanguages(baseDTO));
+
+        cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
+        cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+        cfg.setInitializeCache(initializeCacheOrig);
+    }
+
+    @Test
     public void testGetMsgsOfflineModeCacheInitialized() {
         String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
         cfg.setOfflineResourcesBaseUrl("offlineBundles/");
@@ -112,6 +134,13 @@ public class OfflineModeTest extends BaseTestClass {
 
         Cache c = cfg.createTranslationCache(MessageCache.class);
         assertTrue(c.size() > 0);
+
+        cfg.createFormattingCache(FormattingCache.class);
+        FormattingCacheService fs = new FormattingCacheService();
+        BaseDTO baseDTO = new BaseDTO();
+        baseDTO.setProductID(cfg.getProductName());
+        baseDTO.setVersion(cfg.getVersion());
+        assertFalse(fs.getSupportedLanguages(baseDTO).isEmpty());
 
         cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
         cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
