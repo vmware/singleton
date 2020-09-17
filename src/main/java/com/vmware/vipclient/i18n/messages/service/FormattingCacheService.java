@@ -36,12 +36,6 @@ public class FormattingCacheService {
         addFormattings(cacheKey, o);
     }
 
-    public void addSupportedLanguages(BaseDTO dto, Map<String, String> o) {
-        o = JSONUtils.map2SortMap(o);
-        String cacheKey = getSupportedLanguagesCacheKey(dto);
-        addFormattings(cacheKey, o);
-    }
-
     public void addLanguagesNames(String locale, Map<String, String> o) {
         String cacheKey = getLanguagesNamesCacheKey(locale);
         addFormattings(cacheKey, o);
@@ -68,11 +62,6 @@ public class FormattingCacheService {
         return getFormattings(cacheKey);
     }
 
-    public Map<String, String> getSupportedLanguages(BaseDTO dto) {
-        String cacheKey = getSupportedLanguagesCacheKey(dto);
-        return getFormattings(cacheKey);
-    }
-
     public Map<String, String> getLanguagesNames(String locale) {
         String cacheKey = getLanguagesNamesCacheKey(locale);
         return getFormattings(cacheKey);
@@ -93,10 +82,6 @@ public class FormattingCacheService {
 
     private String getSupportedLanguagesCacheKey(BaseDTO dto, String locale){
         return ConstantsKeys.DISPNS_PREFIX + dto.getProductID() + ConstantsKeys.UNDERLINE + dto.getVersion() + ConstantsKeys.UNDERLINE + locale;
-    }
-
-    private String getSupportedLanguagesCacheKey(BaseDTO dto){
-        return ConstantsKeys.DISPNS_PREFIX + dto.getProductID() + ConstantsKeys.UNDERLINE + dto.getVersion();
     }
 
     private String getLanguagesNamesCacheKey(String locale){

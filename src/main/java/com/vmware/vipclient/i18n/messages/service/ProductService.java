@@ -6,6 +6,7 @@ package com.vmware.vipclient.i18n.messages.service;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.messages.api.opt.ProductOpt;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
@@ -83,10 +84,13 @@ public class ProductService {
      * @return list of language tags of the product specified in the dto object
      */
     public Set<String> getSupportedLanguageTags(){
-        FormattingCacheService cacheService = new FormattingCacheService();
-        Map<String, String> supportedLanguages = cacheService.getSupportedLanguages(dto);
-        if (supportedLanguages != null && !supportedLanguages.isEmpty())
-            return supportedLanguages.keySet();
+        MessagesDTO msgsDTO = new MessagesDTO();
+        msgsDTO.setProductID(dto.getProductID());
+        msgsDTO.setVersion(dto.getVersion());
+        CacheService cacheService = new CacheService(msgsDTO);
+        MessageCacheItem supportedLanguages = cacheService.getSupportedLanguages(dto);
+        if (supportedLanguages != null)
+            return supportedLanguages.getCachedData().keySet();
 
         Set<String> locales = new HashSet<>();
         Iterator<DataSourceEnum> msgSourceQueueIter = VIPCfg.getInstance().getMsgOriginsQueue().iterator();
@@ -105,8 +109,8 @@ public class ProductService {
         for (String locale : locales) {
             cacheMap.put(locale, "");
         }
-        cacheService.addSupportedLanguages(dto, cacheMap);
-
+        MessageCacheItem cacheItem = new MessageCacheItem(null, cacheMap, null, System.currentTimeMillis(), null);
+        cacheService.addSupportedLanguages(dto, cacheItem);
         return locales;
     }
 }
