@@ -51,7 +51,6 @@ public class HttpRequesterTest extends BaseTestClass {
     @Test
     public void addHeaderParamsTest_() {
         String url = "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0/locales/[^/]*?/components/default\\?pseudo=false";
-        String localeListUrl = "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0/localelist";
 
         HashMap<String, String> params = new HashMap<>();
         String key1 = "key-1";
@@ -63,7 +62,6 @@ public class HttpRequesterTest extends BaseTestClass {
         VIPCfg.getInstance().getVipService().setHeaderParams(params);
 
         WireMock.stubFor(WireMock.get(WireMock.urlMatching(url)).willReturn(WireMock.aResponse().withStatus(200)));
-        WireMock.stubFor(WireMock.get(WireMock.urlMatching(localeListUrl)).willReturn(WireMock.aResponse().withStatus(200)));
 
         TranslationMessage tm = (TranslationMessage) I18nFactory.getInstance()
                 .getMessageInstance(TranslationMessage.class);
@@ -82,7 +80,6 @@ public class HttpRequesterTest extends BaseTestClass {
     @Deprecated
     public void addHeaderParamsTest() {
         String url = "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0/locales/[^/]*?/components/default\\?pseudo=false";
-        String localeListUrl = "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0/localelist";
 
         HashMap<String, String> params = new HashMap<>();
         String key1 = "key-1";
@@ -94,7 +91,6 @@ public class HttpRequesterTest extends BaseTestClass {
         VIPCfg.getInstance().getVipService().setHeaderParams(params);
 
         WireMock.stubFor(WireMock.get(WireMock.urlMatching(url)).willReturn(WireMock.aResponse().withStatus(200)));
-        WireMock.stubFor(WireMock.get(WireMock.urlMatching(localeListUrl)).willReturn(WireMock.aResponse().withStatus(200)));
 
         TranslationMessage tm = (TranslationMessage) I18nFactory.getInstance()
                 .getMessageInstance(TranslationMessage.class);

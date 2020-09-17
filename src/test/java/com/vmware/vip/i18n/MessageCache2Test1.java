@@ -7,7 +7,6 @@ package com.vmware.vip.i18n;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.vmware.vipclient.i18n.messages.service.ProductService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

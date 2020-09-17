@@ -15,7 +15,6 @@ import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.CacheService;
-import com.vmware.vipclient.i18n.messages.service.ProductService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
