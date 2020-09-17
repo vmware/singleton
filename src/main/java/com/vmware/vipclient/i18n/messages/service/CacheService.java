@@ -6,16 +6,13 @@ package com.vmware.vipclient.i18n.messages.service;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
+import com.vmware.vipclient.i18n.base.cache.FormatCacheItem;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class CacheService {
     private MessagesDTO dto;
@@ -25,19 +22,20 @@ public class CacheService {
     }
     
     public MessageCacheItem getCacheOfComponent() {
+        Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
+        if (c == null)
+            return null;
         String cacheKey = dto.getCompositStrAsCacheKey();
+        MessageCacheItem cacheItem = (MessageCacheItem) c.get(cacheKey);
+        if (cacheItem != null)
+            return cacheItem;
         Locale matchedLocale = LocaleUtility.pickupLocaleFromList(
-                this.getCachedLocales(),
+                this.getSupportedLocalesFromCache(),
                 this.getLocaleByCachedKey(cacheKey));
         cacheKey = cacheKey.substring(0,
                 cacheKey.indexOf(ConstantsKeys.UNDERLINE_POUND) + 2)
                 + matchedLocale.toLanguageTag();
-        Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
-        if (c == null) {
-            return null;
-        } else {
-            return (MessageCacheItem) c.get(cacheKey);
-        }
+        return (MessageCacheItem) c.get(cacheKey);
     }
 
     public void addCacheOfComponent(MessageCacheItem itemToCache) {
@@ -101,17 +99,14 @@ public class CacheService {
         }
     }
 
-    public List<Locale> getCachedLocales() {
-        List<Locale> locales = new ArrayList<>();
-        Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
-        if (c == null) {
-            return locales;
+    public List<Locale> getSupportedLocalesFromCache() {
+        List<Locale> result = new LinkedList<>();
+        ProductService ps = new ProductService(dto);
+        Set<String> supportedLocales = ps.getSupportedLocales();
+        for (String supportedLocale : supportedLocales) {
+            result.add(Locale.forLanguageTag(supportedLocale));
         }
-        Set<String> cacheKeys = c.keySet();
-        for (String key: cacheKeys) {
-            locales.add(getLocaleByCachedKey(key));
-        }
-        return locales;
+        return result;
     }
 
     private Locale getLocaleByCachedKey(String key) {
