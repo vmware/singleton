@@ -64,7 +64,7 @@ public class CacheServiceTest extends BaseTestClass {
     	dto.setComponent(emptyComponent);
     	CacheService cs = new CacheService(dto);
 
-    	MessageCacheItem cacheItem = cs.getCacheOfComponent(new ProductService(dto).getSupportedLocales());
+    	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertNull(cacheItem);
 
         // This triggers the first http call
@@ -74,7 +74,7 @@ public class CacheServiceTest extends BaseTestClass {
     		// Expected exception
     	}
 
-    	cacheItem = cs.getCacheOfComponent(new ProductService(dto).getSupportedLocales());
+    	cacheItem = cs.getCacheOfComponent();
     	assertNull(cacheItem);
     }
 
@@ -94,13 +94,13 @@ public class CacheServiceTest extends BaseTestClass {
         CacheService cs = new CacheService(dto);
 
         // CacheItem does not exist yet
-        MessageCacheItem cacheItem = cs.getCacheOfComponent(new ProductService(dto).getSupportedLocales());
+        MessageCacheItem cacheItem = cs.getCacheOfComponent();
         assertNull(cacheItem);
 
         // This triggers the first http call
     	translation.getMessage(locale, component, key, args);
 
-    	cacheItem = cs.getCacheOfComponent(new ProductService(dto).getSupportedLocales());
+    	cacheItem = cs.getCacheOfComponent();
         Long responseTime = (Long) cacheItem.getTimestamp();
         assertTrue(!cacheItem.isExpired());
 
@@ -114,7 +114,7 @@ public class CacheServiceTest extends BaseTestClass {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        cacheItem = cs.getCacheOfComponent(new ProductService(dto).getSupportedLocales());
+        cacheItem = cs.getCacheOfComponent();
         Long responseTime2 = cacheItem.getTimestamp();
         assertEquals(responseTime2,responseTime);
 
@@ -138,13 +138,13 @@ public class CacheServiceTest extends BaseTestClass {
         CacheService cs = new CacheService(dto);
 
         // CacheItem does not exist yet
-        MessageCacheItem cacheItem = cs.getCacheOfComponent(new ProductService(dto).getSupportedLocales());
+        MessageCacheItem cacheItem = cs.getCacheOfComponent();
         assertNull(cacheItem);
 
         // This triggers the first http call
     	translation.getMessage(locale, component, key, args);
 
-    	cacheItem = cs.getCacheOfComponent(new ProductService(dto).getSupportedLocales());
+    	cacheItem = cs.getCacheOfComponent();
         Long responseTime = (Long) cacheItem.getTimestamp();
 
         // Set max age to 0 to explicitly expire the cache for testing purposes.
@@ -189,13 +189,13 @@ public class CacheServiceTest extends BaseTestClass {
         CacheService cs = new CacheService(dto);
 
         // CacheItem does not exist yet
-        MessageCacheItem cacheItem = cs.getCacheOfComponent(new ProductService(dto).getSupportedLocales());
+        MessageCacheItem cacheItem = cs.getCacheOfComponent();
         assertNull(cacheItem);
 
         // This triggers the first http call
     	translation.getMessage(locale, component, key, args);
 
-    	cacheItem = cs.getCacheOfComponent(new ProductService(dto).getSupportedLocales());
+    	cacheItem = cs.getCacheOfComponent();
     	Long responseTime = cacheItem.getTimestamp();
 
     	//Explicitly expire the cache
@@ -221,7 +221,7 @@ public class CacheServiceTest extends BaseTestClass {
         translation.getMessage(locale, component, key, args);
 
         // Timestamp has been updated by the separate thread.
-        cacheItem = cs.getCacheOfComponent(new ProductService(dto).getSupportedLocales());
+        cacheItem = cs.getCacheOfComponent();
         responseTime2 = cacheItem.getTimestamp();
         assertTrue(responseTime2 > responseTime);
     }

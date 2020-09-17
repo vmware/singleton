@@ -94,7 +94,7 @@ public class OfflineModeTest extends BaseTestClass {
     	String message = translation.getMessage(locale, component, key, args);
     	assertEquals(FormatUtils.format(messageFil, locale, args), message);
     	
-    	MessageCacheItem cacheItem = cs.getCacheOfComponent(new ProductService(dto).getSupportedLocales());
+    	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertEquals(messageFil, cacheItem.getCachedData().get(key));	
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
@@ -177,7 +177,7 @@ public class OfflineModeTest extends BaseTestClass {
     	assertEquals(FormatUtils.format(source, args), message);
     	
     	// cacheItem for "es" locale has an empty data map. It's locale is the fallback locale.
-    	MessageCacheItem cacheItem = cs.getCacheOfComponent(new ProductService(dto).getSupportedLocales());
+    	MessageCacheItem cacheItem = cs.getCacheOfComponent();
         assertEquals("en", cacheItem.getLocale());
     	assertTrue(cacheItem.getCachedData().isEmpty());
     	
@@ -255,7 +255,7 @@ public class OfflineModeTest extends BaseTestClass {
     	String message = translation.getMessage(locale, component, key, args);
     	assertEquals(FormatUtils.format(messageFil, locale, args), message);
     	
-    	MessageCacheItem cacheItem = cs.getCacheOfComponent(new ProductService(dto).getSupportedLocales());
+    	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertEquals(messageFil, cacheItem.getCachedData().get(key));
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
@@ -289,7 +289,7 @@ public class OfflineModeTest extends BaseTestClass {
     	String message = translation.getMessage(newLocale, component, key, args);
     	assertEquals(FormatUtils.format(messageFr, newLocale, args), message);
     	
-    	MessageCacheItem cacheItem = cs.getCacheOfComponent(new ProductService(dto).getSupportedLocales());
+    	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertEquals(messageFr, cacheItem.getCachedData().get(key));
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
@@ -321,13 +321,13 @@ public class OfflineModeTest extends BaseTestClass {
 
     	translation.getMessage(newLocale, component, key, args);
     	
-    	MessageCacheItem cacheItem = cs.getCacheOfComponent(new ProductService(dto).getSupportedLocales());
+    	MessageCacheItem cacheItem = cs.getCacheOfComponent();
     	assertNotNull(cacheItem);
     	
     	MessagesDTO defaultLocaleDTO = new MessagesDTO(dto.getComponent(), 
 				dto.getKey(), dto.getSource(), LocaleUtility.getDefaultLocale().toLanguageTag(), null);
     	CacheService csDefault = new CacheService(defaultLocaleDTO);
-    	csDefault.getCacheOfComponent(new ProductService(dto).getSupportedLocales());
+    	csDefault.getCacheOfComponent();
     	
     	// cacheItem of Locale.ITALIAN's data map is empty. Its locale is the fallback locale
     	assertTrue(cacheItem.getCachedData().isEmpty());

@@ -72,13 +72,13 @@ public class MessageCacheTest1 extends BaseTestClass {
         msgObj4.put("book9", "@zh_CN@book9");
         cacheService.addCacheOfComponent(new MessageCacheItem(msgObj4));
         Map<String, String> messageMap = (Map<String, String>) cacheService
-                .getCacheOfComponent(new ProductService(cacheDTO).getSupportedLocales()).getCachedData();
+                .getCacheOfComponent().getCachedData();
         Assert.assertTrue(messageMap.size() == 4);
         c.clear();
         Assert.assertTrue(c.size() == 0);
         VIPCfg.getInstance().getCacheManager().clearCache();
         Map<String, Object> messageMap3 = (Map<String, Object>) cacheService
-                .getCacheOfComponent(new ProductService(cacheDTO).getSupportedLocales());
+                .getCacheOfComponent();
         Assert.assertNull(messageMap3);
     }
 
@@ -88,10 +88,10 @@ public class MessageCacheTest1 extends BaseTestClass {
         Map<String, String> msgObj = new HashMap<String, String>();
         msgObj.put("book", "@zh_CN@book");
         cacheService.addCacheOfComponent(new MessageCacheItem(msgObj));
-        Map<String, String> mp = (Map<String, String>) cacheService.getCacheOfComponent(new ProductService(cacheDTO).getSupportedLocales()).getCachedData();
+        Map<String, String> mp = (Map<String, String>) cacheService.getCacheOfComponent().getCachedData();
         Assert.assertEquals("@zh_CN@book", mp.get("book"));
         VIPCfg.getInstance().getCacheManager().clearCache();
-        Assert.assertNull(cacheService.getCacheOfComponent(new ProductService(cacheDTO).getSupportedLocales()));
+        Assert.assertNull(cacheService.getCacheOfComponent());
     }
 
     @SuppressWarnings({ "static-access", "rawtypes", "unchecked" })

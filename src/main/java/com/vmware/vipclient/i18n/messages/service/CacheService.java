@@ -11,7 +11,6 @@ import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
-import com.vmware.vipclient.i18n.util.JSONUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 import java.util.*;
@@ -22,13 +21,27 @@ public class CacheService {
     public CacheService(MessagesDTO dto) {
         this.dto = dto;
     }
-    
-    public MessageCacheItem getCacheOfComponent(List<Locale> supportedLocales) {
+
+    private List<Locale> getLocalesOfCachedMsgs() {
+        List<Locale> locales = new LinkedList<>();
+        Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
+        if (c != null) {
+            Set<String> cacheKeys = c.keySet();
+            for (String key : cacheKeys) {
+                Locale locale = getLocaleByCachedKey(key);
+                if (locale != null)
+                    locales.add(locale);
+            }
+        }
+        return locales;
+    }
+
+    public MessageCacheItem getCacheOfComponent() {
         String cacheKey = dto.getCompositStrAsCacheKey();
         MessageCacheItem cacheItem = (MessageCacheItem) this.getCacheItem(cacheKey);
         if (cacheItem != null)
             return cacheItem;
-        Locale matchedLocale = LocaleUtility.pickupLocaleFromList(supportedLocales,
+        Locale matchedLocale = LocaleUtility.pickupLocaleFromList(this.getLocalesOfCachedMsgs(),
                 this.getLocaleByCachedKey(cacheKey));
         cacheKey = cacheKey.substring(0,
                 cacheKey.indexOf(ConstantsKeys.UNDERLINE_POUND) + 2)
@@ -51,11 +64,11 @@ public class CacheService {
         cacheItem.setCacheItem(itemToCache);
     }
 
-    public boolean isContainComponent(List<Locale> supportedLocales) {
+    public boolean isContainComponent() {
         String cacheKey = dto.getCompositStrAsCacheKey();
         if (this.getCacheItem(cacheKey) != null)
             return true;
-        Locale matchedLocale = LocaleUtility.pickupLocaleFromList(supportedLocales,
+        Locale matchedLocale = LocaleUtility.pickupLocaleFromList(this.getLocalesOfCachedMsgs(),
                 this.getLocaleByCachedKey(cacheKey));
         cacheKey = cacheKey.substring(0,
                 cacheKey.indexOf(ConstantsKeys.UNDERLINE_POUND) + 2)
@@ -83,6 +96,8 @@ public class CacheService {
     }
 
     private Locale getLocaleByCachedKey(String key) {
+        if (key.startsWith(ConstantsKeys.DISPNS_PREFIX))
+            return null;
         String locale = key.substring(
                 key.indexOf(ConstantsKeys.UNDERLINE_POUND) + 2, key.length());
         return Locale.forLanguageTag(locale.replace("_", "-"));

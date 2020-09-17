@@ -60,9 +60,8 @@ public class ComponentsService {
                 dto.setComponent(component);
 
                 final CacheService cs = new CacheService(dto);
-                List<Locale> supportedLocales = new ProductService(dto).getSupportedLocales();
-                if (cs.isContainComponent(supportedLocales)) { // Get data from cache.
-                	MessageCacheItem cacheItem = cs.getCacheOfComponent(supportedLocales);
+                if (cs.isContainComponent()) { // Get data from cache.
+                	MessageCacheItem cacheItem = cs.getCacheOfComponent();
                 	localeMap.put(component, cacheItem.getCachedData());
                 } else { // Data is not in cache.
                 	componentsToQuery.add(component);
