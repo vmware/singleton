@@ -14,11 +14,7 @@ import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 public class ProductService {
     private BaseDTO dto = null;
@@ -35,7 +31,7 @@ public class ProductService {
      */
     public List<Map> getAllComponentTranslation() {
         List<Map> list = new ArrayList<Map>();
-        List<String> locales = this.getSupportedLocales();
+        List<String> locales = this.getSupportedLanguageTags();
         List<String> components = this.getComponents();
         if (locales != null && components != null) {
             for (String languageTag : locales) {
@@ -77,7 +73,7 @@ public class ProductService {
      *
      * @return list of locales of the product specified in the dto object
      */
-    public List<String> getSupportedLocales(){
+    public List<String> getSupportedLanguageTags(){
         List<String> locales = null;
         Iterator<DataSourceEnum> msgSourceQueueIter = VIPCfg.getInstance().getMsgOriginsQueue().iterator();
         while((locales == null || locales.isEmpty()) && msgSourceQueueIter.hasNext()){
@@ -91,4 +87,18 @@ public class ProductService {
         }
         return locales;
     }
+
+    public Set<Locale> getSupportedLocales() {
+        Set<Locale> locales = new HashSet<>();
+        for (String s : getSupportedLanguageTags()) {
+            locales.add(Locale.forLanguageTag(s));
+        }
+        return locales;
+    }
+
+    public boolean isSupportedLocale(Locale locale) {
+        return getSupportedLocales().contains(LocaleUtility.fmtToMappedLocale(locale));
+    }
+
+
 }

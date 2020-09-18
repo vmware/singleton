@@ -46,6 +46,16 @@ public class CacheService {
         cacheItem.setCacheItem(itemToCache);
     }
 
+    public boolean isContainComponent() {
+        boolean f = false;
+        String cacheKey = dto.getCompositStrAsCacheKey();
+        Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
+        if (c != null) {
+            f = c.get(cacheKey) != null;
+        }
+        return f;
+    }
+
     public boolean isContainStatus() {
         String cacheKey = dto.getTransStatusAsCacheKey();
         return this.getCacheItem(cacheKey) != null;
