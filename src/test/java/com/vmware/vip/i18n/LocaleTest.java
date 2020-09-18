@@ -9,10 +9,13 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.base.instances.LocaleMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
+import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.CacheService;
+import com.vmware.vipclient.i18n.messages.service.ProductService;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.json.simple.parser.ParseException;
 import org.junit.Assert;
@@ -134,14 +137,30 @@ public class LocaleTest extends BaseTestClass {
         Assert.assertTrue(resp.containsKey("fil"));
 
         gc.createTranslationCache(MessageCache.class);
-        gc.initializeMessageCache();
+        BaseDTO dto = new BaseDTO();
+        dto.setVersion(gc.getVersion());
+        dto.setProductID(gc.getProductName());
+        ProductService ps = new ProductService(dto);
+        ps.getAllComponentTranslation();
 
-        CacheService cs = new CacheService(new MessagesDTO());
-    	List<Locale> supportedLocales = cs.getLocalesOfCachedMsgs();
-        Assert.assertNotNull(supportedLocales);
-        Assert.assertTrue(supportedLocales.contains(Locale.forLanguageTag("fil")));
-        Assert.assertEquals("Filipino", supportedLocales.get(
-        		supportedLocales.indexOf(Locale.forLanguageTag("fil"))).getDisplayName());
+        MessagesDTO msgsDTO = new MessagesDTO("JAVA", "fil-PH", vipCfg.getProductName(), vipCfg.getVersion());
+        CacheService cs = new CacheService(msgsDTO);
+
+    	List<Locale> localesOfCachedMessages = cs.getLocalesOfCachedMsgs();
+        Assert.assertNotNull(localesOfCachedMessages);
+
+        // Locale "fil" MessageCacheItem does exist in cache
+        Assert.assertTrue(localesOfCachedMessages.contains(Locale.forLanguageTag("fil")));
+
+        // Locale "fil-PH" MessageCacheItem does exist in cache
+        Assert.assertFalse(localesOfCachedMessages.contains(Locale.forLanguageTag("fil-PH")));
+
+        // cs.getCacheOfComponent() for fil-PH returns MessageCacheItem of fil
+        MessageCacheItem filPHCacheItem = cs.getCacheOfComponent();
+        Assert.assertTrue(filPHCacheItem.getLocale().equals("fil"));
+
+        Assert.assertEquals("Filipino", localesOfCachedMessages.get(
+        		localesOfCachedMessages.indexOf(Locale.forLanguageTag("fil"))).getDisplayName());
         localeI18n.getDisplayLanguagesList("invalid_locale");// get data from cache
         
         // Disable offline mode off for next tests.
