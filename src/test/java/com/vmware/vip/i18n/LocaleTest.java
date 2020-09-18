@@ -7,9 +7,7 @@ package com.vmware.vip.i18n;
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
-import com.vmware.vipclient.i18n.base.cache.FormattingCache;
-import com.vmware.vipclient.i18n.base.cache.MessageCache;
-import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
+import com.vmware.vipclient.i18n.base.cache.*;
 import com.vmware.vipclient.i18n.base.instances.LocaleMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
@@ -137,8 +135,10 @@ public class LocaleTest extends BaseTestClass {
         MessagesDTO msgsDTO = new MessagesDTO("JAVA", "fil-PH", vipCfg.getProductName(), vipCfg.getVersion());
         CacheService cs = new CacheService(msgsDTO);
 
+        Cache c = gc.createTranslationCache(MessageCache.class);
+        TranslationCacheManager.cleanCache(c);
         gc.createTranslationCache(MessageCache.class);
-        Assert.assertTrue(cs.getLocalesOfCachedMsgs().isEmpty());
+
 
         BaseDTO dto = new BaseDTO();
         dto.setVersion(gc.getVersion());
@@ -146,12 +146,8 @@ public class LocaleTest extends BaseTestClass {
         ProductService ps = new ProductService(dto);
         ps.getAllComponentTranslation();
 
-        Assert.assertTrue(cs.getLocalesOfCachedMsgs().size() == 3);
-
-    	List<Locale> localesOfCachedMessages = cs.getLocalesOfCachedMsgs();
-        Assert.assertNotNull(localesOfCachedMessages);
-
         // Locale "fil" MessageCacheItem exists in cache
+    	List<Locale> localesOfCachedMessages = cs.getLocalesOfCachedMsgs();
         Assert.assertTrue(localesOfCachedMessages.contains(Locale.forLanguageTag("fil")));
 
         // Locale "fil-PH" MessageCacheItem exists in cache
