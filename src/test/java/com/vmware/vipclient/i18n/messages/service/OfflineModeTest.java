@@ -95,9 +95,10 @@ public class OfflineModeTest extends BaseTestClass {
     	CacheService cs = new CacheService(dto);
     	String message = translation.getMessage(locale, component, key, args);
     	assertEquals(FormatUtils.format(messageFil, locale, args), message);
-    	
-    	MessageCacheItem cacheItem = cs.getCacheOfComponent();
-    	assertEquals(messageFil, cacheItem.getCachedData().get(key));	
+
+        // cs.getCacheOfComponent() for fil-PH returns MessageCacheItem of fil
+        MessageCacheItem filPHCacheItem = cs.getCacheOfComponent();
+        Assert.assertTrue(filPHCacheItem.getLocale().equals("fil"));
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
@@ -320,18 +321,13 @@ public class OfflineModeTest extends BaseTestClass {
         ProductService ps = new ProductService(dto);
         ps.getAllComponentTranslation();
 
-        // Locale "fil" MessageCacheItem exists in cache
-        List<Locale> localesOfCachedMessages = cs.getLocalesOfCachedMsgs();
-        System.out.println("TEST$$$: " + localesOfCachedMessages);
-        Assert.assertTrue(localesOfCachedMessages.contains(Locale.forLanguageTag("fil")));
-
-        // Locale "fil-PH" MessageCacheItem exists in cache
-        Assert.assertFalse(localesOfCachedMessages.contains(Locale.forLanguageTag("fil-PH")));
+        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
+        TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
+        translation.getMessage(locale, component, key, args);
 
         // cs.getCacheOfComponent() for fil-PH returns MessageCacheItem of fil
         MessageCacheItem filPHCacheItem = cs.getCacheOfComponent();
         Assert.assertTrue(filPHCacheItem.getLocale().equals("fil"));
-
 
         // Disable offline mode off for next tests.
         cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);

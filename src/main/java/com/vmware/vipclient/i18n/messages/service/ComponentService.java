@@ -4,7 +4,6 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Locale;
@@ -117,18 +116,7 @@ public class ComponentService {
     			refreshCacheItemTask(cacheItem);
     		}
     	} else { // Item is not in cache. Create and store cacheItem for the requested locale
-			ProductService ps = new ProductService(dto);
-			if (ps.isSupportedLocale(Locale.forLanguageTag(dto.getLocale()))) {
-				cacheItem = createCacheItem(fallbackLocalesIter);
-			} else {
-				Locale matchedLocale = LocaleUtility.pickupLocaleFromList(new LinkedList<>(ps.getSupportedLocales()), Locale.forLanguageTag(dto.getLocale()));
-				if (ps.isSupportedLocale(matchedLocale)) {
-					MessagesDTO matchedLocaleDTO = new MessagesDTO(dto.getComponent(), matchedLocale.toLanguageTag(), dto.getProductID(), dto.getVersion());
-					cacheItem = new ComponentService(matchedLocaleDTO).getMessages(null);
-				} else {
-					cacheItem = createCacheItem(fallbackLocalesIter);
-				}
-			}
+			cacheItem = createCacheItem(fallbackLocalesIter);
     	}
     	return cacheItem;
     }
@@ -143,11 +131,23 @@ public class ComponentService {
 		CacheService cacheService = new CacheService(dto);
 		// Create a new cacheItem object to be stored in cache
 		MessageCacheItem cacheItem = new MessageCacheItem();
-		refreshCacheItem(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().iterator());
 
+		ProductService ps = new ProductService(dto);
+		if (!ps.isSupportedLocale(Locale.forLanguageTag(dto.getLocale()))) {
+			Locale matchedLocale = LocaleUtility.pickupLocaleFromList(new LinkedList<>(ps.getSupportedLocales()), Locale.forLanguageTag(dto.getLocale()));
+			if (ps.isSupportedLocale(matchedLocale)) {
+				MessagesDTO matchedLocaleDTO = new MessagesDTO(dto.getComponent(), matchedLocale.toLanguageTag(), dto.getProductID(), dto.getVersion());
+				cacheItem = new ComponentService(matchedLocaleDTO).getMessages(null);
+				MessageCacheItem cacheItemCopy = new MessageCacheItem(matchedLocale.toLanguageTag(), null, null, System.currentTimeMillis(), cacheItem.getMaxAgeMillis());
+				cacheService.addCacheOfComponent(cacheItemCopy);
+				return cacheItem;
+			}
+		}
+
+		refreshCacheItem(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().iterator());
 		if (!cacheItem.getCachedData().isEmpty()) {
 			cacheService.addCacheOfComponent(cacheItem);
-		} else if (!dto.getLocale().equals(ConstantsKeys.SOURCE) && fallbackLocalesIter!=null && fallbackLocalesIter.hasNext()) {
+		} else if (!dto.getLocale().equals(ConstantsKeys.SOURCE) && fallbackLocalesIter != null && fallbackLocalesIter.hasNext()) {
 			// If failed to fetch message for the requested DTO, use MessageCacheItem of the next fallback locale.
 			MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), fallbackLocalesIter.next().toLanguageTag(), dto.getProductID(), dto.getVersion());
 			cacheItem = new ComponentService(fallbackLocaleDTO).getMessages(fallbackLocalesIter);
@@ -157,6 +157,7 @@ public class ComponentService {
 				cacheService.addCacheOfComponent(cacheItemCopy);
 			}
 		}
+
 		return cacheItem;
 	}
 
