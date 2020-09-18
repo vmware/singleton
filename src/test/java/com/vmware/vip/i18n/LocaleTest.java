@@ -127,18 +127,16 @@ public class LocaleTest extends BaseTestClass {
     	List<DataSourceEnum> msgOriginsQueueOrig = gc.getMsgOriginsQueue();
     	gc.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
 
-    	// There is no service response mock for "fil" display language, so service request will fail.
     	// List of supported locales shall be determined from available offline bundle files.
         Map<String, String> resp = localeI18n.getDisplayLanguagesList("fil");
         Assert.assertTrue(resp.containsKey("fil"));
 
-        MessagesDTO msgsDTO = new MessagesDTO("JAVA", "fil-PH", vipCfg.getProductName(), vipCfg.getVersion());
+        MessagesDTO msgsDTO = new MessagesDTO("JAVA", "fil-PH", gc.getProductName(), gc.getVersion());
         CacheService cs = new CacheService(msgsDTO);
 
         Cache c = gc.createTranslationCache(MessageCache.class);
         TranslationCacheManager.cleanCache(c);
         gc.createTranslationCache(MessageCache.class);
-
 
         BaseDTO dto = new BaseDTO();
         dto.setVersion(gc.getVersion());
