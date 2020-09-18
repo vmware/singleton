@@ -7,35 +7,36 @@ package com.vmware.vipclient.i18n.base.cache;
 import com.vmware.vipclient.i18n.VIPCfg;
 
 public class FormatCacheItem implements CacheItem {
-	public FormatCacheItem() {
-		
-	}
 
 	private String etag;
 	private long timestamp;
 	private Long maxAgeMillis = 86400000l;
 
-	public synchronized String getEtag() {
+	public FormatCacheItem() {
+
+	}
+
+	public String getEtag() {
 		return etag;
 	}
 
-	public synchronized void setEtag(String etag) {
+	protected void setEtag(String etag) {
 		this.etag = etag;
 	}
 
-	public synchronized long getTimestamp() {
+	public long getTimestamp() {
 		return timestamp;
 	}
 
-	public synchronized void setTimestamp(long timestamp) {
+	protected void setTimestamp(long timestamp) {
 		this.timestamp = timestamp;
 	}
 
-	public synchronized Long getMaxAgeMillis() {
+	public Long getMaxAgeMillis() {
 		return maxAgeMillis;
 	}
 
-	public synchronized void setMaxAgeMillis(Long maxAgeMillis) {
+	protected void setMaxAgeMillis(Long maxAgeMillis) {
 		this.maxAgeMillis = maxAgeMillis;
 	}
 
@@ -50,16 +51,11 @@ public class FormatCacheItem implements CacheItem {
 			return false;
 		}
 
-		Long responseTimeStamp = this.getTimestamp();
-		if (responseTimeStamp == null) {
-			return true;
-		}
-
 		Long maxAgeResponse = this.getMaxAgeMillis();
 		if (maxAgeResponse != null) {
 			maxAgeMillis = maxAgeResponse;
 		}
 
-		return System.currentTimeMillis() - responseTimeStamp > maxAgeMillis;
+		return System.currentTimeMillis() - this.getTimestamp() >= maxAgeMillis;
 	}
 }

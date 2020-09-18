@@ -11,7 +11,7 @@ import com.vmware.vipclient.i18n.base.cache.LocaleCacheItem;
 import com.vmware.vipclient.i18n.base.cache.PatternCacheItem;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
-import com.vmware.vipclient.i18n.util.JSONUtils;
+
 import java.util.Map;
 
 public class FormattingCacheService {
@@ -31,8 +31,6 @@ public class FormattingCacheService {
     }
 
     public void addSupportedLanguages(BaseDTO dto, String locale, LocaleCacheItem o) {
-        Map<String, String> map = JSONUtils.map2SortMap(o.getCachedData());
-        o.addCachedData(map);
         String cacheKey = getSupportedLanguagesCacheKey(dto, locale);
         addFormattings(cacheKey, o);
     }
@@ -43,8 +41,6 @@ public class FormattingCacheService {
     }
 
     public void addRegions(String locale, LocaleCacheItem o) {
-        Map<String, String> map = JSONUtils.map2SortMap(o.getCachedData());
-        o.addCachedData(map);
         String cacheKey = getRegionsCacheKey(locale);
         addFormattings(cacheKey, o);
     }

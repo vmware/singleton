@@ -9,24 +9,39 @@ import java.util.Map;
 
 public class LocaleCacheItem extends FormatCacheItem implements CacheItem {
 
+    private final Map<String, String> cachedData = new HashMap<String, String>();
+
     public LocaleCacheItem() {
 
     }
 
-    public LocaleCacheItem (Map<String, String> dataMap) {
-        super();
-        this.addCachedData(dataMap);
+    public LocaleCacheItem (Map<String, String> dataMap, String etag, long timestamp, Long maxAgeMillis) {
+        this.set(dataMap, etag, timestamp, maxAgeMillis);
     }
 
-    public final Map<String, String> cachedData = new HashMap<String, String>();
+    public synchronized void set(Map<String, String> dataMap, long timestamp) {
+        this.set(dataMap, null, timestamp, null);
+    }
 
-    public void addCachedData(Map<String, String> cachedData) {
-        if (cachedData != null)
-            this.cachedData.putAll(cachedData);
+    public synchronized void set(Map<String, String> dataToCache, String etag, long timestamp, Long maxAgeMillis) {
+        if (dataToCache != null)
+            this.cachedData.putAll(dataToCache);
+        this.set(etag, timestamp, maxAgeMillis);
+    }
+
+    public synchronized void set(String etag, long timestamp, Long maxAgeMillis) {
+        if (etag != null && !etag.isEmpty())
+            setEtag(etag);
+        setTimestamp(timestamp);
+        if (maxAgeMillis != null)
+            setMaxAgeMillis(maxAgeMillis);
+    }
+
+    public synchronized void set(LocaleCacheItem cacheItem) {
+        this.set(cacheItem.getCachedData(), cacheItem.getEtag(), cacheItem.getTimestamp(), cacheItem.getMaxAgeMillis());
     }
 
     public Map<String, String> getCachedData() {
         return cachedData;
     }
-
 }

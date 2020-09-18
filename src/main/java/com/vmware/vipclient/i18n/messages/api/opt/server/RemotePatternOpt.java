@@ -9,12 +9,15 @@ import com.vmware.vipclient.i18n.base.HttpRequester;
 import com.vmware.vipclient.i18n.base.cache.PatternCacheItem;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.messages.api.opt.PatternOpt;
+import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.HttpURLConnection;
+import java.util.List;
 import java.util.Map;
 
 public class RemotePatternOpt extends L2RemoteBaseOpt implements PatternOpt{
@@ -35,17 +38,43 @@ public class RemotePatternOpt extends L2RemoteBaseOpt implements PatternOpt{
     }
 
     private void getPatternsFromRemote(String url, String method, Object requestData, PatternCacheItem cacheItem) {
-        Map<String, Object> data = (Map<String, Object>) getDataFromResponse(url, method, requestData, cacheItem);
-        if (null != data && !data.isEmpty()) {
-            Map<String, Object> categoriesData = this.getCategoriesFromData(data);
-            if (categoriesData != null) {
-                cacheItem.addCachedData(categoriesData);
+
+        Map<String, Object> response = (Map<String, Object>) getResponse(url, method, requestData, cacheItem);
+
+        Integer responseCode = (Integer) response.get(URLUtils.RESPONSE_CODE);
+
+        if (responseCode != null && (responseCode.equals(HttpURLConnection.HTTP_OK) ||
+                responseCode.equals(HttpURLConnection.HTTP_NOT_MODIFIED))) {
+            long timestamp = 0;
+            String etag = null;
+            Long maxAgeMillis = null;
+
+            if (response.get(URLUtils.RESPONSE_TIMESTAMP) != null)
+                timestamp = (long) response.get(URLUtils.RESPONSE_TIMESTAMP);
+            if (response.get(URLUtils.HEADERS) != null)
+                etag = URLUtils.createEtagString((Map<String, List<String>>) response.get(URLUtils.HEADERS));
+            if (response.get(URLUtils.MAX_AGE_MILLIS) != null)
+                maxAgeMillis = (Long) response.get(URLUtils.MAX_AGE_MILLIS);
+
+            if (responseCode.equals(HttpURLConnection.HTTP_OK)) {
+                try {
+                    String responseBody = (String) response.get(URLUtils.BODY);
+                    Map<String, Object> patterns = getPatternsFromResponse(responseBody);
+                    if (patterns != null) {
+                        cacheItem.set(patterns, etag, timestamp, maxAgeMillis);
+                    }
+                } catch (Exception e) {
+                    logger.error("Failed to get pattern data from remote!");
+                }
+            }else{
+                cacheItem.set(etag, timestamp, maxAgeMillis);
             }
         }
     }
 
-    private Map<String, Object> getCategoriesFromData(Map<String, Object> dataObj) {
+    private Map<String, Object> getPatternsFromResponse(String responseBody) {
         Map<String, Object> categoriesObj = null;
+        Map<String, Object> dataObj = (Map<String, Object>) getDataFromResponse(responseBody);
         if (dataObj != null && dataObj instanceof JSONObject) {
             Object obj = ((JSONObject) dataObj).get(PatternKeys.CATEGORIES);
             if (obj != null && obj instanceof JSONObject) {

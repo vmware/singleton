@@ -13,6 +13,7 @@ import com.vmware.vipclient.i18n.messages.api.opt.LocaleOpt;
 import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
 import com.vmware.vipclient.i18n.messages.service.FormattingCacheService;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
+import com.vmware.vipclient.i18n.util.JSONUtils;
 import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,8 +54,8 @@ public class LocalLocaleOpt implements LocaleOpt{
 			}
 		}
 		if (!supportedLanguageNames.isEmpty()) {
-			cacheItem.addCachedData(supportedLanguageNames);
-			cacheItem.setTimestamp(System.currentTimeMillis());
+			supportedLanguageNames = JSONUtils.map2SortMap(supportedLanguageNames);
+			cacheItem.set(supportedLanguageNames, System.currentTimeMillis());
 		}
     }
 
@@ -91,8 +92,7 @@ public class LocalLocaleOpt implements LocaleOpt{
 			String languagesJsonStr = PatternUtil.getLanguageFromLib(normalizedLocale);
 			Map<String, Object> languagesData = (Map<String, Object>) new JSONParser().parse(languagesJsonStr);
 			if (languagesData != null) {
-				cacheItem.addCachedData((Map<String, String>) languagesData.get(PatternKeys.LANGUAGES));
-				cacheItem.setTimestamp(System.currentTimeMillis());
+				cacheItem.set((Map<String, String>) languagesData.get(PatternKeys.LANGUAGES), System.currentTimeMillis());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -110,8 +110,11 @@ public class LocalLocaleOpt implements LocaleOpt{
 			String regionsJsonStr = PatternUtil.getRegionFromLib(normalizedLocale);
 			Map<String, Object> regionsData = (Map<String, Object>) new JSONParser().parse(regionsJsonStr);
 			if (regionsData != null) {
-				cacheItem.addCachedData((Map<String, String>) regionsData.get(PatternKeys.TERRITORIES));
-				cacheItem.setTimestamp(System.currentTimeMillis());
+				Map<String, String> territories = (Map<String, String>) regionsData.get(PatternKeys.TERRITORIES);
+				if(territories != null) {
+					territories = JSONUtils.map2SortMap(territories);
+					cacheItem.set(territories, System.currentTimeMillis());
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

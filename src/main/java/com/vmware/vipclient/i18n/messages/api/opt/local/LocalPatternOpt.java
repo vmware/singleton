@@ -45,8 +45,7 @@ public class LocalPatternOpt implements PatternOpt{
             String patternStr = PatternUtil.getPatternFromLib(normalizedLocale, null);
             Map<String, Object> patterns = (Map<String, Object>) new JSONParser().parse(patternStr);
             if(patterns != null) {
-                cacheItem.addCachedData((Map<String, Object>) patterns.get(PatternKeys.CATEGORIES));
-                cacheItem.setTimestamp(System.currentTimeMillis());
+                cacheItem.set((Map<String, Object>) patterns.get(PatternKeys.CATEGORIES), System.currentTimeMillis());
             }
         } catch (Exception e) {
             e.printStackTrace();

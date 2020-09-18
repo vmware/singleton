@@ -8,24 +8,40 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PatternCacheItem extends FormatCacheItem implements CacheItem {
-	public PatternCacheItem() {
+
+    private final Map<String, Object> cachedData = new HashMap<String, Object>();
+
+    public PatternCacheItem() {
 
 	}
 
-	public PatternCacheItem(Map<String, Object> dataMap) {
-		super();
-		this.addCachedData(dataMap);
+	public PatternCacheItem(Map<String, Object> dataMap, String etag, long timestamp, Long maxAgeMillis) {
+		this.set(dataMap, etag, timestamp, maxAgeMillis);
 	}
-	
-	public final Map<String, Object> cachedData = new HashMap<String, Object>();
-	
-	public void addCachedData(Map<String, Object> cachedData) {
-		if (cachedData != null)
-			this.cachedData.putAll(cachedData);
-	}
-		
+
+    public synchronized void set(Map<String, Object> dataMap, long timestamp) {
+        this.set(dataMap, null, timestamp, null);
+    }
+
+    public synchronized void set(Map<String, Object> dataToCache, String etag, long timestamp, Long maxAgeMillis) {
+        if (dataToCache != null)
+            this.cachedData.putAll(dataToCache);
+        this.set(etag, timestamp, maxAgeMillis);
+    }
+
+    public synchronized void set(String etag, long timestamp, Long maxAgeMillis) {
+        if (etag != null && !etag.isEmpty())
+            setEtag(etag);
+        setTimestamp(timestamp);
+        if (maxAgeMillis != null)
+            setMaxAgeMillis(maxAgeMillis);
+    }
+
+    public synchronized void set(PatternCacheItem cacheItem) {
+        this.set(cacheItem.getCachedData(), cacheItem.getEtag(), cacheItem.getTimestamp(), cacheItem.getMaxAgeMillis());
+    }
+
     public Map<String, Object> getCachedData() {
 		return cachedData;
 	}
-	
 }
