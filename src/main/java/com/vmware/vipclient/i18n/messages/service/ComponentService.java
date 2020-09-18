@@ -100,9 +100,8 @@ public class ComponentService {
 	 */
     public MessageCacheItem getMessages(Iterator<Locale> fallbackLocalesIter) {
     	CacheService cacheService = new CacheService(dto);
-    	MessageCacheItem cacheItem = null;
-    	if (cacheService.isContainComponent()) { // Item is in cache
-    		cacheItem = cacheService.getCacheOfComponent();
+    	MessageCacheItem cacheItem = cacheService.getCacheOfComponent();
+    	if (cacheItem != null) { // Item is in cache
     		if (cacheItem.getCachedData().isEmpty()) { // This means that the data to be used is from a fallback locale.
 				// If expired, try to first create and store cacheItem for the requested locale in a separate thread.
 				if (cacheItem.isExpired())

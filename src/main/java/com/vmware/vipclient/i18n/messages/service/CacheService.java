@@ -46,18 +46,6 @@ public class CacheService {
         cacheItem.setCacheItem(itemToCache);
     }
 
-    public boolean isContainComponent() {
-        String cacheKey = dto.getCompositStrAsCacheKey();
-        if (this.getCacheItem(cacheKey) != null)
-            return true;
-        Locale matchedLocale = LocaleUtility.pickupLocaleFromList(this.getLocalesOfCachedMsgs(),
-                this.getLocaleByCachedKey(cacheKey));
-        cacheKey = cacheKey.substring(0,
-                cacheKey.indexOf(ConstantsKeys.UNDERLINE_POUND) + 2)
-                + matchedLocale.toLanguageTag();
-        return this.getCacheItem(cacheKey) != null;
-    }
-
     public boolean isContainStatus() {
         String cacheKey = dto.getTransStatusAsCacheKey();
         return this.getCacheItem(cacheKey) != null;
