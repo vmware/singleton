@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CustomErrorController implements ErrorController {
 
-    private static final String PATH = "/error";
+    private static final String ERROR_PATH = "/error";
 
-    @RequestMapping(value = PATH)
+    @RequestMapping(value = ERROR_PATH)
     public String error() {
         return "{\n" +
                 "    \"code\": 404,\n" +
@@ -22,6 +22,6 @@ public class CustomErrorController implements ErrorController {
 
     @Override
     public String getErrorPath() {
-        return PATH;
+        return ERROR_PATH;
     }
 }
