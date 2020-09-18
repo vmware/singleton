@@ -59,7 +59,7 @@ public class ComponentsService {
                 dto.setLocale(locale);
                 dto.setComponent(component);
 
-                final CacheService cs = new CacheService(dto);
+                final CacheService cs = new CacheService(dto);                
                 if (cs.isContainComponent()) { // Get data from cache.
                 	MessageCacheItem cacheItem = cs.getCacheOfComponent();
                 	localeMap.put(component, cacheItem.getCachedData());
