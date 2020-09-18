@@ -128,45 +128,44 @@ public class LocaleTest extends BaseTestClass {
     	gc.setOfflineResourcesBaseUrl("offlineBundles/");
     	List<DataSourceEnum> msgOriginsQueueOrig = gc.getMsgOriginsQueue();
     	gc.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
-    	boolean initializeCacheOrig = gc.isInitializeCache();
-    	gc.setInitializeCache(true);
 
     	// There is no service response mock for "fil" display language, so service request will fail.
-    	// List of supported locales shall be dertermined from available offline bundle files.
+    	// List of supported locales shall be determined from available offline bundle files.
         Map<String, String> resp = localeI18n.getDisplayLanguagesList("fil");
         Assert.assertTrue(resp.containsKey("fil"));
 
+        MessagesDTO msgsDTO = new MessagesDTO("JAVA", "fil-PH", vipCfg.getProductName(), vipCfg.getVersion());
+        CacheService cs = new CacheService(msgsDTO);
+
         gc.createTranslationCache(MessageCache.class);
+        Assert.assertTrue(cs.getLocalesOfCachedMsgs().isEmpty());
+
         BaseDTO dto = new BaseDTO();
         dto.setVersion(gc.getVersion());
         dto.setProductID(gc.getProductName());
         ProductService ps = new ProductService(dto);
         ps.getAllComponentTranslation();
 
-        MessagesDTO msgsDTO = new MessagesDTO("JAVA", "fil-PH", vipCfg.getProductName(), vipCfg.getVersion());
-        CacheService cs = new CacheService(msgsDTO);
+        Assert.assertTrue(cs.getLocalesOfCachedMsgs().size() == 3);
 
     	List<Locale> localesOfCachedMessages = cs.getLocalesOfCachedMsgs();
         Assert.assertNotNull(localesOfCachedMessages);
 
-        // Locale "fil" MessageCacheItem does exist in cache
+        // Locale "fil" MessageCacheItem exists in cache
         Assert.assertTrue(localesOfCachedMessages.contains(Locale.forLanguageTag("fil")));
 
-        // Locale "fil-PH" MessageCacheItem does exist in cache
+        // Locale "fil-PH" MessageCacheItem exists in cache
         Assert.assertFalse(localesOfCachedMessages.contains(Locale.forLanguageTag("fil-PH")));
 
         // cs.getCacheOfComponent() for fil-PH returns MessageCacheItem of fil
         MessageCacheItem filPHCacheItem = cs.getCacheOfComponent();
         Assert.assertTrue(filPHCacheItem.getLocale().equals("fil"));
 
-        Assert.assertEquals("Filipino", localesOfCachedMessages.get(
-        		localesOfCachedMessages.indexOf(Locale.forLanguageTag("fil"))).getDisplayName());
         localeI18n.getDisplayLanguagesList("invalid_locale");// get data from cache
         
         // Disable offline mode off for next tests.
         gc.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	gc.setMsgOriginsQueue(msgOriginsQueueOrig);
-    	gc.setInitializeCache(initializeCacheOrig);
     }
 
     @Test
