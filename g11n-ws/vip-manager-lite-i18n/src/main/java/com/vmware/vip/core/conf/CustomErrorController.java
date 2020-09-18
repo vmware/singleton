@@ -15,8 +15,8 @@ public class CustomErrorController implements ErrorController {
     @RequestMapping(value = PATH)
     public String error() {
         return "{\n" +
-                "    \"code\": 400,\n" +
-                "    \"message\": \"Bad request!\"\n" +
+                "    \"code\": 404,\n" +
+                "    \"message\": \"Not Found\"\n" +
                 "  }";
     }
 
