@@ -18,9 +18,11 @@ import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
+import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
+import org.json.simple.parser.ParseException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -295,7 +297,47 @@ public class OfflineModeTest extends BaseTestClass {
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
     }
-    
+
+    @Test
+    public void testGetSupportedLocalesOfflineBundles() throws ParseException {
+        //Enable offline mode
+        String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
+        cfg.setOfflineResourcesBaseUrl("offlineBundles/");
+        List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
+        cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
+
+
+        MessagesDTO msgsDTO = new MessagesDTO(component, "fil-PH", cfg.getProductName(), cfg.getVersion());
+        CacheService cs = new CacheService(msgsDTO);
+
+        Cache c = cfg.createTranslationCache(MessageCache.class);
+        TranslationCacheManager.cleanCache(c);
+        cfg.createTranslationCache(MessageCache.class);
+
+        BaseDTO dto = new BaseDTO();
+        dto.setVersion(cfg.getVersion());
+        dto.setProductID(cfg.getProductName());
+        ProductService ps = new ProductService(dto);
+        ps.getAllComponentTranslation();
+
+        // Locale "fil" MessageCacheItem exists in cache
+        List<Locale> localesOfCachedMessages = cs.getLocalesOfCachedMsgs();
+        System.out.println("TEST$$$: " + localesOfCachedMessages);
+        Assert.assertTrue(localesOfCachedMessages.contains(Locale.forLanguageTag("fil")));
+
+        // Locale "fil-PH" MessageCacheItem exists in cache
+        Assert.assertFalse(localesOfCachedMessages.contains(Locale.forLanguageTag("fil-PH")));
+
+        // cs.getCacheOfComponent() for fil-PH returns MessageCacheItem of fil
+        MessageCacheItem filPHCacheItem = cs.getCacheOfComponent();
+        Assert.assertTrue(filPHCacheItem.getLocale().equals("fil"));
+
+
+        // Disable offline mode off for next tests.
+        cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
+        cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+    }
+
     @Test
     public void testGetMsgsBothOfflineAndOnlineFailed() {
     	String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
