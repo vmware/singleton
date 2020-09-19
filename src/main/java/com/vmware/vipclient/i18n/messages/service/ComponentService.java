@@ -95,7 +95,7 @@ public class ComponentService {
 	 * @return A MessageCacheItem whose data map is one of the following:
 	 * <ul>
 	 * 		<li>The messages in the requested locale</li>
-	 * 	 	<li>An empty map if the messages are not available in the requested locale</li>
+	 * 	 	<li>The messages in a fallback locale</li>
 	 * </ul>
 	 */
     public MessageCacheItem getMessages(Iterator<Locale> fallbackLocalesIter) {
@@ -132,6 +132,8 @@ public class ComponentService {
 		// Create a new cacheItem object to be stored in cache
 		MessageCacheItem cacheItem = new MessageCacheItem();
 
+		// If the requested locale is not supported, but matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr"),
+		// return the messages of the supported locale that best matches the requested locale.
 		ProductService ps = new ProductService(dto);
 		if (!ps.isSupportedLocale(Locale.forLanguageTag(dto.getLocale()))) {
 			Locale matchedLocale = LocaleUtility.pickupLocaleFromList(new LinkedList<>(ps.getSupportedLocales()), Locale.forLanguageTag(dto.getLocale()));
@@ -144,6 +146,9 @@ public class ComponentService {
 			}
 		}
 
+		// Will proceed with the following code if
+		// a. requested locale is supported OR
+		// b. requested locale is not supported and does not match any supported locale
 		refreshCacheItem(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().iterator());
 		if (!cacheItem.getCachedData().isEmpty()) {
 			cacheService.addCacheOfComponent(cacheItem);
