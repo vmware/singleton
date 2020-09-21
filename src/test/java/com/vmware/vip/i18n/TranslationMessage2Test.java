@@ -68,7 +68,7 @@ public class TranslationMessage2Test extends BaseTestClass {
         try {
             Thread.sleep(4000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+        	Thread.currentThread().interrupt();
         }
         Cache c2 = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
         Assert.assertTrue(c2.keySet().size() == 0);
