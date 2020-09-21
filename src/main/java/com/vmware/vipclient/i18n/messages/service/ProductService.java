@@ -31,12 +31,12 @@ public class ProductService {
      */
     public List<Map> getAllComponentTranslation() {
         List<Map> list = new ArrayList<Map>();
-        List<String> locales = this.getSupportedLanguageTags();
+        Set<Locale> locales = this.getSupportedLocales();
         List<String> components = this.getComponents();
         if (locales != null && components != null) {
-            for (String languageTag : locales) {
+            for (Locale locale : locales) {
                 for (Object component : components) {
-                    MessagesDTO msgDTO = new MessagesDTO(((String) component).trim(), LocaleUtility.fmtToMappedLocale(Locale.forLanguageTag(languageTag)).toString().trim(),
+                    MessagesDTO msgDTO = new MessagesDTO(((String) component).trim(), LocaleUtility.fmtToMappedLocale(locale).toString().trim(),
                             dto.getProductID(), dto.getVersion());
                     Map<String, String> retMap = new ComponentService(msgDTO).getMessages(null).getCachedData();
                     if (retMap != null) {
@@ -73,25 +73,19 @@ public class ProductService {
      *
      * @return list of locales of the product specified in the dto object
      */
-    public List<String> getSupportedLanguageTags(){
-        List<String> locales = null;
+    public Set<Locale> getSupportedLocales() {
+        Set<Locale> locales = new HashSet<>();
         Iterator<DataSourceEnum> msgSourceQueueIter = VIPCfg.getInstance().getMsgOriginsQueue().iterator();
         while((locales == null || locales.isEmpty()) && msgSourceQueueIter.hasNext()){
             DataSourceEnum dataSource = msgSourceQueueIter.next();
             ProductOpt opt = dataSource.createProductOpt(dto);
-            locales = opt.getSupportedLocales();
+            for (String languageTag : opt.getSupportedLocales()) {
+                locales.add(Locale.forLanguageTag(languageTag));
+            }
             // If failed to get locales from the data source, log the error.
             if (locales == null || locales.isEmpty()) {
                 logger.error(ConstantsMsg.GET_LOCALES_FAILED, dataSource.toString());
             }
-        }
-        return locales;
-    }
-
-    public Set<Locale> getSupportedLocales() {
-        Set<Locale> locales = new HashSet<>();
-        for (String s : getSupportedLanguageTags()) {
-            locales.add(Locale.forLanguageTag(s));
         }
         return locales;
     }
