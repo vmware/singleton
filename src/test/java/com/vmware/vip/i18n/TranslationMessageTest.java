@@ -436,7 +436,7 @@ public class TranslationMessageTest extends BaseTestClass {
         Assert.assertEquals(expected2, message2);
 
         // source1 changed
-        Thread.sleep(4 * 1000l);
+        Thread.sleep(4 * 1000L);
         String source1_1 = source1 + "-new";
         String message1_1 = translation.getString(locale1, component, key1, source1_1, "");
         String expected1_1 = "@@" + source1_1 + "@@";
