@@ -81,7 +81,6 @@ public class CacheService {
         Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
         if (c == null)
             return null;
-        CacheItem cacheItem = c.get(key);
-        return cacheItem;
+        return c.get(key);
     }
 }
