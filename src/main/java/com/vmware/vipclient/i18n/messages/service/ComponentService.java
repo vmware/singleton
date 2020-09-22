@@ -5,6 +5,7 @@
 package com.vmware.vipclient.i18n.messages.service;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Locale;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
@@ -94,14 +95,13 @@ public class ComponentService {
 	 * @return A MessageCacheItem whose data map is one of the following:
 	 * <ul>
 	 * 		<li>The messages in the requested locale</li>
-	 * 	 	<li>An empty map if the messages are not available in the requested locale</li>
+	 * 	 	<li>The messages in a fallback locale</li>
 	 * </ul>
 	 */
     public MessageCacheItem getMessages(Iterator<Locale> fallbackLocalesIter) {
     	CacheService cacheService = new CacheService(dto);
-    	MessageCacheItem cacheItem = null;
-    	if (cacheService.isContainComponent()) { // Item is in cache
-    		cacheItem = cacheService.getCacheOfComponent();
+    	MessageCacheItem cacheItem = cacheService.getCacheOfComponent();
+    	if (cacheItem != null) { // Item is in cache
     		if (cacheItem.getCachedData().isEmpty()) { // This means that the data to be used is from a fallback locale.
 				// If expired, try to first create and store cacheItem for the requested locale in a separate thread.
 				if (cacheItem.isExpired())
@@ -115,7 +115,7 @@ public class ComponentService {
     			refreshCacheItemTask(cacheItem);
     		}
     	} else { // Item is not in cache. Create and store cacheItem for the requested locale
-    		cacheItem = createCacheItem(fallbackLocalesIter);
+			cacheItem = createCacheItem(fallbackLocalesIter);
     	}
     	return cacheItem;
     }
@@ -130,11 +130,28 @@ public class ComponentService {
 		CacheService cacheService = new CacheService(dto);
 		// Create a new cacheItem object to be stored in cache
 		MessageCacheItem cacheItem = new MessageCacheItem();
-		refreshCacheItem(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().iterator());
 
+		// If the requested locale is not supported, but matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr"),
+		// return the messages of the supported locale that best matches the requested locale.
+		ProductService ps = new ProductService(dto);
+		if (!ps.isSupportedLocale(Locale.forLanguageTag(dto.getLocale()))) {
+			Locale matchedLocale = LocaleUtility.pickupLocaleFromList(new LinkedList<>(ps.getSupportedLocales()), Locale.forLanguageTag(dto.getLocale()));
+			if (ps.isSupportedLocale(matchedLocale)) {
+				MessagesDTO matchedLocaleDTO = new MessagesDTO(dto.getComponent(), matchedLocale.toLanguageTag(), dto.getProductID(), dto.getVersion());
+				cacheItem = new ComponentService(matchedLocaleDTO).getMessages(null);
+				MessageCacheItem cacheItemCopy = new MessageCacheItem(matchedLocale.toLanguageTag(), null, null, System.currentTimeMillis(), cacheItem.getMaxAgeMillis());
+				cacheService.addCacheOfComponent(cacheItemCopy);
+				return cacheItem;
+			}
+		}
+
+		// Will proceed with the following code if
+		// a. requested locale is supported OR
+		// b. requested locale is not supported and does not match any supported locale
+		refreshCacheItem(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().iterator());
 		if (!cacheItem.getCachedData().isEmpty()) {
 			cacheService.addCacheOfComponent(cacheItem);
-		} else if (!dto.getLocale().equals(ConstantsKeys.SOURCE) && fallbackLocalesIter!=null && fallbackLocalesIter.hasNext()) {
+		} else if (!dto.getLocale().equals(ConstantsKeys.SOURCE) && fallbackLocalesIter != null && fallbackLocalesIter.hasNext()) {
 			// If failed to fetch message for the requested DTO, use MessageCacheItem of the next fallback locale.
 			MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), fallbackLocalesIter.next().toLanguageTag(), dto.getProductID(), dto.getVersion());
 			cacheItem = new ComponentService(fallbackLocaleDTO).getMessages(fallbackLocalesIter);
@@ -144,6 +161,7 @@ public class ComponentService {
 				cacheService.addCacheOfComponent(cacheItemCopy);
 			}
 		}
+
 		return cacheItem;
 	}
 
