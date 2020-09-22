@@ -1,7 +1,9 @@
 language: java
 jdk:
   - openjdk8
-service:
+python:
+  - 3.4
+services:
   - docker
 before_install:
 - |
@@ -11,36 +13,80 @@ before_install:
     }
 jobs:
   include:
-    - stage: unit test
-      script:
-        - cd $TRAVIS_BUILD_DIR && ./gradlew build
-        - cat $TRAVIS_BUILD_DIR/build/reports/tests/test/index.html
-    - stage: code scan
-      script:
-        - git clone --branch=devops https://github.com/vmware/singleton.git devops
-        - cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG-java-client-$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG-java-client-$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=java-client-gate -QualityGateConditions="./quality_gates/java-client.json" -SonarToken=$SONAR_TOKEN
-        - cd $TRAVIS_BUILD_DIR && ./gradlew jacocoTestReport sonarqube --stacktrace -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN -Dsonar.projectKey=$SONAR_ORG-java-client-$TRAVIS_BRANCH -Dsonar.projectName=$SONAR_ORG-java-client-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.host.url=https://sonarcloud.io --info
-        - |
-            git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.travis\.yml$' || {
-              echo "No need to check sonar quality gate for only travis configuration updates"
-              exit
-            }
-            cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-java-client-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
-    - stage: smoke test
-      script:
-        - mkdir -p ./l10n/bundles
-        - git clone --branch=master https://github.com/vmware/singleton.git server
-        - git clone --branch=devops https://github.com/vmware/singleton.git devops
-        - cd $TRAVIS_BUILD_DIR/server/g11n-ws && ./gradlew build -x test
-        - cp $TRAVIS_BUILD_DIR/devops/deploy/i18n-service/Dockerfile $TRAVIS_BUILD_DIR/server/publish/
-        - cd $TRAVIS_BUILD_DIR/server/publish && mv singleton-[0~9]*.jar i18n-service.jar
-        - docker build -t singleton .
-        - docker run -d -p 8090:8090 --name singleton singleton
-        - docker ps
-        - cp -r $TRAVIS_BUILD_DIR/src/test/resources/JavaclientTest $TRAVIS_BUILD_DIR/l10n/bundles/
-        - docker cp $TRAVIS_BUILD_DIR/l10n singleton:/
-        - cd $TRAVIS_BUILD_DIR && ./gradlew clean build -x test && cp ./build/libs/*.jar $TRAVIS_BUILD_DIR/devops/autotest/client/java/lib/
-        - cd $TRAVIS_BUILD_DIR/devops/autotest/client/java && ./gradlew build
-        - docker cp l10n singleton:/
-        - java -cp './target/*' org.testng.TestNG -d test-output ./target/testng.xml
-        - cd $TRAVIS_BUILD_DIR/devops/autotest/client/java_client_sample_app && ./sample_app_sanity_test.sh $TRAVIS_BUILD_DIR
+  - name: "Check Header"
+    env: TEST=check_header
+  - name: "Unit Test"
+    env: TEST=unit_test
+  - name: "Code Scan"
+    env: TEST=code_scan
+  - name: "Smoke Test"
+    env: TEST=smoke_test
+script: >
+  if [ x${TEST} = xcheck_header ]; then
+      git clone --branch=devops https://github.com/vmware/singleton.git devops
+      cp $TRAVIS_BUILD_DIR/devops/check_headers.py .
+      chmod +x check_headers.py
+      python3 ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
+  fi &&
+  if [ x${TEST} = xunit_test ]; then cd $TRAVIS_BUILD_DIR && ./gradlew test; fi &&
+  if [ x${TEST} = xcode_scan ]; then
+    git clone --branch=devops https://github.com/vmware/singleton.git devops
+    SONARSCANNER='sonar-scanner-cli-4.0.0.1744-linux'
+    SONARSCANNERINNER='sonar-scanner-4.0.0.1744-linux'
+    wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/$SONARSCANNER.zip
+    unzip $SONARSCANNER.zip
+    rm -f $SONARSCANNER.zip
+    str=$(printf '=%.0s' {1..50})
+    echo $str Code Scan Start $str
+    cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=java-client-gate -QualityGateConditions="./quality_gates/java-client.json" -SonarToken=$SONAR_TOKEN
+    cd $TRAVIS_BUILD_DIR && ./gradlew test jacocoTestReport
+    java -version
+        
+    cd $TRAVIS_BUILD_DIR && ls -la
+    wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
+    sudo chmod +x install-jdk.sh
+    export JAVA_HOME=$HOME/openjdk11
+    export PATH="$JAVA_HOME/bin:$PATH"
+    $TRAVIS_BUILD_DIR/install-jdk.sh --target "/home/travis/openjdk11" --workspace "/home/travis/.cache/install-jdk" --feature "11" --license "GPL" --cacerts
+    java -version
+        
+    cd $TRAVIS_BUILD_DIR && $TRAVIS_BUILD_DIR/$SONARSCANNERINNER/bin/sonar-scanner \
+       -Dsonar.projectKey=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH \
+       -Dsonar.projectName=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH \
+       -Dsonar.sources=. \
+       -Dsonar.language=java \
+       -Dsonar.sourceEncoding=UTF-8 \
+       -Dsonar.host.url=https://sonarcloud.io \
+       -Dsonar.login=$SONAR_TOKEN \
+       -Dsonar.branch.name=master \
+       -Dsonar.organization=$SONAR_ORG \
+       -Dsonar.exclusions=sample-client-app/**,**/*.py,**/*.xml,**/*.css,**/*.js,**/*.html \
+       -Dsonar.java.binaries=build/classes/java \
+       -Dsonar.java.test.binaries=build/classes/test \
+       -Dsonar.coverage.jacoco.xmlReportPaths=build/reports/jacoco.xml \
+       -Dsonar.coverage.exclusions=build/**,src/test/**
+    echo $str Code Scan End $str
+    git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.travis\.yml$' || {
+      echo "No need to check sonar quality gate for only travis configuration updates."
+      exit
+    }
+    cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
+  fi &&
+  if [ x${TEST} = xsmoke_test ]; then
+    git clone --branch=master https://github.com/vmware/singleton.git server
+    git clone --branch=devops https://github.com/vmware/singleton.git devops
+    cd $TRAVIS_BUILD_DIR/server/g11n-ws && ./gradlew build -x test
+    cp $TRAVIS_BUILD_DIR/devops/deploy/i18n-service/Dockerfile $TRAVIS_BUILD_DIR/server/publish/
+    cd $TRAVIS_BUILD_DIR/server/publish && mv singleton-[0~9]*.jar i18n-service.jar
+    docker build -t singleton .
+    docker run -d -p 8090:8090 --name singleton singleton
+    docker ps
+    cd $TRAVIS_BUILD_DIR && ./gradlew clean build -x test && cp ./build/libs/*.jar $TRAVIS_BUILD_DIR/devops/autotest/client/java/lib/
+    cd $TRAVIS_BUILD_DIR/devops/autotest/client/java && ./gradlew build
+    docker cp src/main/resources/l10n singleton:/
+    str=$(printf '=%.0s' {1..50})
+    echo $str Smoke Test Start $str
+    cd target && java -cp '.:./*' org.testng.TestNG -d test-output testng.xml
+    cd $TRAVIS_BUILD_DIR/devops/autotest/client/java_client_sample_app && ./sample_app_sanity_test.sh $TRAVIS_BUILD_DIR
+    echo $str Smoke Test End $str
+  fi
