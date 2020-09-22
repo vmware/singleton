@@ -136,7 +136,7 @@ public class ComponentService {
 		ProductService ps = new ProductService(dto);
 		if (!ps.isSupportedLocale(Locale.forLanguageTag(dto.getLocale()))) {
 			Locale matchedLocale = LocaleUtility.pickupLocaleFromList(new LinkedList<>(ps.getSupportedLocales()), Locale.forLanguageTag(dto.getLocale()));
-			if (!matchedLocale.equals(Locale.forLanguageTag(dto.getLocale()))) {
+			if (ps.isSupportedLocale(matchedLocale)) {
 				MessagesDTO matchedLocaleDTO = new MessagesDTO(dto.getComponent(), matchedLocale.toLanguageTag(), dto.getProductID(), dto.getVersion());
 				cacheItem = new ComponentService(matchedLocaleDTO).getMessages(null);
 				MessageCacheItem cacheItemCopy = new MessageCacheItem(matchedLocale.toLanguageTag(), null, null, System.currentTimeMillis(), cacheItem.getMaxAgeMillis());
