@@ -43,12 +43,7 @@ String^ SingletonUtility::GetString(UChar* uchars)
 	{
 		return nullptr;
 	}
-	char ar[1024];
-	DWORD dBufSize = WideCharToMultiByte(
-		CP_OEMCP, 0, (wchar_t*)uchars, -1, ar, 1024, NULL, FALSE);
-	std::cout << "--- string --- " << ar << std::endl;
-
-	String^ text = Marshal::PtrToStringAnsi((IntPtr)ar);
+	String^ text = Marshal::PtrToStringUni((IntPtr)uchars);
 	return text;
 }
 

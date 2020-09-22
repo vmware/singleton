@@ -54,8 +54,6 @@ namespace UnitTestSingleton
             IConfigItem textItem = configWrapper.GetConfig().GetItem("_none");
             Assert.AreEqual(textItem, null);
 
-            theConfig.SetConfigData("another");
-
             Assert.AreEqual(SingletonUtil.CheckResponseValid(null, null), false);
 
             byte[] bytes = { 0xef, 0xbb, 0xbf, 0x31 };
