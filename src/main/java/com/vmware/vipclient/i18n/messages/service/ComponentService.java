@@ -100,9 +100,8 @@ public class ComponentService {
 	 */
     public MessageCacheItem getMessages(Iterator<Locale> fallbackLocalesIter) {
     	CacheService cacheService = new CacheService(dto);
-    	MessageCacheItem cacheItem = null;
-    	if (cacheService.isContainComponent()) { // Item is in cache
-    		cacheItem = cacheService.getCacheOfComponent();
+    	MessageCacheItem cacheItem = cacheService.getCacheOfComponent();
+    	if (cacheItem != null) { // Item is in cache
     		if (cacheItem.getCachedData().isEmpty()) { // This means that the data to be used is from a fallback locale.
 				// If expired, try to first create and store cacheItem for the requested locale in a separate thread.
 				if (cacheItem.isExpired())
@@ -137,7 +136,7 @@ public class ComponentService {
 		ProductService ps = new ProductService(dto);
 		if (!ps.isSupportedLocale(Locale.forLanguageTag(dto.getLocale()))) {
 			Locale matchedLocale = LocaleUtility.pickupLocaleFromList(new LinkedList<>(ps.getSupportedLocales()), Locale.forLanguageTag(dto.getLocale()));
-			if (ps.isSupportedLocale(matchedLocale)) {
+			if (!matchedLocale.equals(Locale.forLanguageTag(dto.getLocale()))) {
 				MessagesDTO matchedLocaleDTO = new MessagesDTO(dto.getComponent(), matchedLocale.toLanguageTag(), dto.getProductID(), dto.getVersion());
 				cacheItem = new ComponentService(matchedLocaleDTO).getMessages(null);
 				MessageCacheItem cacheItemCopy = new MessageCacheItem(matchedLocale.toLanguageTag(), null, null, System.currentTimeMillis(), cacheItem.getMaxAgeMillis());
