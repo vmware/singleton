@@ -6,6 +6,8 @@ package com.vmware.i18n;
 
 import com.vmware.i18n.pattern.action.PatternAction;
 import com.vmware.i18n.utils.JSONUtil;
+import com.vmware.i18n.utils.timezone.TimeZoneName;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -41,4 +43,12 @@ public class PatternUtilTest {
 			Assert.assertNotNull(catesMap.get(cate));
 		}
 	}
+    
+    @SuppressWarnings("unchecked")
+	@Test
+	public void testtimezoneListAPI() {
+    	String locale = "fr";
+    	PatternAction pa = PatternAction.getInstance();
+    	TimeZoneName json = pa.getTimeZoneName(locale, true);
+    }
 }
