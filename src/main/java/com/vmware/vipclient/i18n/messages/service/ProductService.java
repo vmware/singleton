@@ -17,6 +17,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.FutureTask;
 
 public class ProductService {
     private BaseDTO dto = null;
@@ -92,13 +94,15 @@ public class ProductService {
         CacheService cs = new CacheService(new MessagesDTO(dto));
         MessageCacheItem cacheItem = cs.getCacheOfLocales(dataSource);
         if (cacheItem != null) {
-            refreshCacheItem(cacheItem, dataSource);
+            if (cacheItem.isExpired())
+                refreshCacheItemTask(cacheItem, dataSource);
+            return cacheItem.getCachedData().keySet();
         } else {
             cacheItem = createCacheItem(dataSource);
+            if (cacheItem == null)
+                return new HashSet<>();
+            return cacheItem.getCachedData().keySet();
         }
-        if (cacheItem == null)
-            return new HashSet<>();
-        return cacheItem.getCachedData().keySet();
     }
 
     public boolean isSupportedLocale(Locale locale) {
@@ -112,6 +116,20 @@ public class ProductService {
         if (timestampOld == timestamp) {
             logger.debug(FormatUtils.format(ConstantsMsg.GET_LOCALES_FAILED, dataSource.toString()));
         }
+    }
+
+    private void refreshCacheItemTask(MessageCacheItem cacheItem, DataSourceEnum dataSource) {
+        Callable<MessageCacheItem> callable = () -> {
+            try {
+                refreshCacheItem(cacheItem, dataSource);
+                return cacheItem;
+            } catch (Exception e) {
+                return null;
+            }
+        };
+        FutureTask<MessageCacheItem> task = new FutureTask<>(callable);
+        Thread thread = new Thread(task);
+        thread.start();
     }
 
     private MessageCacheItem createCacheItem (DataSourceEnum dataSource) {
