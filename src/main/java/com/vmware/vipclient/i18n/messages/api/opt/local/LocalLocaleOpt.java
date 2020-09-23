@@ -6,12 +6,11 @@ package com.vmware.vipclient.i18n.messages.api.opt.local;
 
 import com.vmware.i18n.PatternUtil;
 import com.vmware.i18n.utils.CommonUtil;
-import com.vmware.vipclient.i18n.base.DataSourceEnum;
-import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.messages.api.opt.LocaleOpt;
 import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
 import com.vmware.vipclient.i18n.messages.service.FormattingCacheService;
+import com.vmware.vipclient.i18n.messages.service.ProductService;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -39,10 +38,11 @@ public class LocalLocaleOpt implements LocaleOpt{
 
 	@Override
     public Map<String, String> getSupportedLanguages(String locale) {
+		ProductService ps = new ProductService(dto);
+		Set<String> supportedLanguages = ps.getSupportedLanguageTags();
 		Map<String, String> supportedLanguageNames = new HashMap<String, String>();
-		MessageCacheItem cacheItem = new MessageCacheItem();
-        DataSourceEnum.Bundle.createProductOpt(dto).getSupportedLocales(cacheItem);
-        Set<String> supportedLanguages = cacheItem.getCachedData().keySet();
+
+
 		if(supportedLanguages != null && !supportedLanguages.isEmpty()) {
 			Map<String, String> languagesNames = getLanguagesNamesFromCLDR(locale);
 			if (languagesNames == null || languagesNames.isEmpty())

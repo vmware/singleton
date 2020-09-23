@@ -76,6 +76,10 @@ public class ProductService {
      * @return list of locales of the product specified in the dto object, or an empty list in case of failure to retrieve from any data source.
      */
     public Set<Locale> getSupportedLocales() {
+        return langTagtoLocaleSet(getSupportedLanguageTags());
+    }
+
+    public Set<String> getSupportedLanguageTags() {
         Iterator<DataSourceEnum> msgSourceQueueIter = VIPCfg.getInstance().getMsgOriginsQueue().iterator();
         CacheService cs = new CacheService(new MessagesDTO(dto));
         MessageCacheItem cacheItem = cs.getCacheOfLocales();
@@ -86,7 +90,7 @@ public class ProductService {
         }
         if (cacheItem == null)
             return new HashSet<>();
-        return langTagtoLocaleSet(cacheItem.getCachedData().keySet());
+        return cacheItem.getCachedData().keySet();
     }
 
     public boolean isSupportedLocale(Locale locale) {
