@@ -71,7 +71,7 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
     
     private List<Locale> getSupportedLocales() {
 		ProductService ps = new ProductService(dto);
-		Set<String> supportedLanguages = ps.getSupportedLanguageTags();
+		Set<String> supportedLanguages = ps.getSupportedLanguageTags(DataSourceEnum.Bundle);
         logger.debug("supported languages: [{}]", supportedLanguages.toString());
     	List<Locale> supportedLocales = new LinkedList<Locale>();
     	for (String languageTag : supportedLanguages) {

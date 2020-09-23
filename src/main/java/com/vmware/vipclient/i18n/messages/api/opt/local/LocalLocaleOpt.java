@@ -6,6 +6,7 @@ package com.vmware.vipclient.i18n.messages.api.opt.local;
 
 import com.vmware.i18n.PatternUtil;
 import com.vmware.i18n.utils.CommonUtil;
+import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.messages.api.opt.LocaleOpt;
 import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
@@ -39,7 +40,7 @@ public class LocalLocaleOpt implements LocaleOpt{
 	@Override
     public Map<String, String> getSupportedLanguages(String locale) {
 		ProductService ps = new ProductService(dto);
-		Set<String> supportedLanguages = ps.getSupportedLanguageTags();
+		Set<String> supportedLanguages = ps.getSupportedLanguageTags(DataSourceEnum.Bundle);
 		Map<String, String> supportedLanguageNames = new HashMap<String, String>();
 
 

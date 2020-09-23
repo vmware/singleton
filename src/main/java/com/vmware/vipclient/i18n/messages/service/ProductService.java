@@ -81,12 +81,20 @@ public class ProductService {
 
     public Set<String> getSupportedLanguageTags() {
         Iterator<DataSourceEnum> msgSourceQueueIter = VIPCfg.getInstance().getMsgOriginsQueue().iterator();
+        Set<String> supportedLangTags = new HashSet<>();
+        while(msgSourceQueueIter.hasNext() && supportedLangTags.isEmpty()) {
+            supportedLangTags = getSupportedLanguageTags(msgSourceQueueIter.next());
+        }
+        return supportedLangTags;
+    }
+
+    public Set<String> getSupportedLanguageTags(DataSourceEnum dataSource) {
         CacheService cs = new CacheService(new MessagesDTO(dto));
-        MessageCacheItem cacheItem = cs.getCacheOfLocales();
+        MessageCacheItem cacheItem = cs.getCacheOfLocales(dataSource);
         if (cacheItem != null) {
-            refreshCacheItem(cacheItem, msgSourceQueueIter);
+            refreshCacheItem(cacheItem, dataSource);
         } else {
-            cacheItem = createCacheItem(msgSourceQueueIter);
+            cacheItem = createCacheItem(dataSource);
         }
         if (cacheItem == null)
             return new HashSet<>();
@@ -97,29 +105,21 @@ public class ProductService {
         return getSupportedLocales().contains(LocaleUtility.fmtToMappedLocale(locale));
     }
 
-    private void refreshCacheItem(final MessageCacheItem cacheItem, Iterator<DataSourceEnum> msgSourceQueueIter) {
-        if (!msgSourceQueueIter.hasNext())
-            return;
-
+    private void refreshCacheItem(final MessageCacheItem cacheItem, DataSourceEnum dataSource) {
         long timestampOld = cacheItem.getTimestamp();
-        DataSourceEnum dataSource = msgSourceQueueIter.next();
         dataSource.createProductOpt(dto).getSupportedLocales(cacheItem);
         long timestamp = cacheItem.getTimestamp();
         if (timestampOld == timestamp) {
             logger.debug(FormatUtils.format(ConstantsMsg.GET_LOCALES_FAILED, dataSource.toString()));
         }
-
-        if (timestamp == 0) {
-            refreshCacheItem(cacheItem, msgSourceQueueIter);
-        }
     }
 
-    private MessageCacheItem createCacheItem (Iterator<DataSourceEnum> msgSourceQueueIter) {
+    private MessageCacheItem createCacheItem (DataSourceEnum dataSource) {
         CacheService cs = new CacheService(new MessagesDTO(dto));
         MessageCacheItem cacheItem = new MessageCacheItem();
-        refreshCacheItem(cacheItem, msgSourceQueueIter);
+        refreshCacheItem(cacheItem, dataSource);
         if (!cacheItem.getCachedData().isEmpty()) {
-            cs.addCacheOfLocales(cacheItem);
+            cs.addCacheOfLocales(cacheItem, dataSource);
             return cacheItem;
         }
         return null;
