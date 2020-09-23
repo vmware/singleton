@@ -63,16 +63,13 @@ public class RemoteProductOpt extends BaseOpt implements ProductOpt {
         Integer responseCode = (Integer) response.get(URLUtils.RESPONSE_CODE);
         if (responseCode != null && (responseCode.equals(HttpURLConnection.HTTP_OK) ||
                 responseCode.equals(HttpURLConnection.HTTP_NOT_MODIFIED))) {
-            long timestamp = 0;
-            String etag = null;
-            Long maxAgeMillis = null;
 
-            if (response.get(URLUtils.RESPONSE_TIMESTAMP) != null)
-                timestamp = (long) response.get(URLUtils.RESPONSE_TIMESTAMP);
-            if (response.get(URLUtils.HEADERS) != null)
-                etag = URLUtils.createEtagString((Map<String, List<String>>) response.get(URLUtils.HEADERS));
-            if (response.get(URLUtils.MAX_AGE_MILLIS) != null)
-                maxAgeMillis = (Long) response.get(URLUtils.MAX_AGE_MILLIS);
+            long timestamp = response.get(URLUtils.RESPONSE_TIMESTAMP) == null ?
+                    System.currentTimeMillis() : (long) response.get(URLUtils.RESPONSE_TIMESTAMP);
+
+            String etag = URLUtils.createEtagString((Map<String, List<String>>) response.get(URLUtils.HEADERS));
+
+            Long maxAgeMillis = response.get(URLUtils.MAX_AGE_MILLIS) == null ? null : (Long) response.get(URLUtils.MAX_AGE_MILLIS);
 
             if (responseCode.equals(HttpURLConnection.HTTP_OK)) {
                 String responseStr = (String) response.get(URLUtils.BODY);
