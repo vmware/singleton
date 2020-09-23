@@ -67,7 +67,10 @@ public class RequestUtil {
                 mockResponse =sendPut(mockMvc,uriWithParam,requestJsons[0]);
             }
         }
-        int status = mockResponse.getStatus();
+        int status = 400;
+        if(mockResponse != null) {
+           status =  mockResponse.getStatus();
+        }
         String uri = "";
         if (uriWithParam.indexOf(ConstantsForTest.QuestionMark) > 0) {
             uri = uriWithParam.substring(0, uriWithParam.indexOf(ConstantsForTest.QuestionMark));

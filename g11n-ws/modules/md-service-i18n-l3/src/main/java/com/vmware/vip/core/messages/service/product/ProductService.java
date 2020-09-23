@@ -260,10 +260,11 @@ public class ProductService implements IProductService {
 			result = this.getLinkedTranslation(paramComponentMessagesDTO);
 		} catch (DataException e1) {
 			logger.error(e1.getMessage(), e1);
+			result = null;
 		} catch (ParseException e2) {
 			logger.error(e2.getMessage(), e2);
+			result = null;
 		}
-
 		if (result != null) {
 			Object messageObj = result.getMessages();
 			if (!StringUtils.isEmpty(messageObj)) {

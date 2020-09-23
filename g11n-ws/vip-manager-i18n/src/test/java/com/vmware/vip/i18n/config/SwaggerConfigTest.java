@@ -14,8 +14,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.vmware.vip.BootApplication;
+import com.vmware.vip.core.conf.ServerProperties;
 import com.vmware.vip.core.conf.SwaggerConfig;
-
+import com.vmware.vip.core.conf.VIPTomcatConnectionCustomizer;
+import org.apache.catalina.connector.Connector;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
 public class SwaggerConfigTest {
@@ -40,5 +42,25 @@ public class SwaggerConfigTest {
 		conf.createRestApi2();
 		logger.info("createRestApi1");
 		logger.info("createRestApi2");
+	}
+	
+	@Test
+	public void test002ServerProperties() {
+		ServerProperties sp  = webApplicationContext.getBean(ServerProperties.class);
+		sp.setMaxHttpHeaderSize(8192);
+		sp.getHttpPort();
+		sp.getHttpsKeyAlias();
+		sp.getHttpsKeyStore();
+		sp.getHttpsKeyStorePassword();
+		sp.getHttpsKeyStoreType();
+		sp.getServerPort();
+		sp.getServerScheme();
+	}
+	@Test
+	//VIPTomcatConnectionCustomizer
+	public void test003VIPTomcatConnectionCustomizer(){
+		 ServerProperties sp  = webApplicationContext.getBean(ServerProperties.class);
+		VIPTomcatConnectionCustomizer vcs = new VIPTomcatConnectionCustomizer(sp, "on", 2048);
+		vcs.customize(new Connector());
 	}
 }

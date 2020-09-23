@@ -44,7 +44,7 @@ public class LocaleAPITest {
 	public void testRegionListAPI() throws Exception {
 		String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, REGION_LIST_API_URI);
 		List<TerritoryDTO> list = (List<TerritoryDTO>) JSONUtils.getMapFromJson(json).get("data");
-		for (int i = 0; i > list.size(); i++) {
+		for (int i = 0; i < list.size(); i++) {
 			Assert.assertNotNull(list.get(i).getLanguage());
 			Assert.assertNotNull(list.get(i).getTerritories());
 		}

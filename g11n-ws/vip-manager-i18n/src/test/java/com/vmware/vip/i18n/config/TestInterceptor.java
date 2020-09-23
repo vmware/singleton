@@ -7,6 +7,7 @@ package com.vmware.vip.i18n.config;
 import org.junit.Test;
 
 import com.vmware.vip.core.Interceptor.APISecurityInterceptor;
+import com.vmware.vip.core.conf.ServerProperties;
 
 public class TestInterceptor {
 
@@ -23,5 +24,5 @@ public class TestInterceptor {
 		}
 
 	}
-
+	
 }

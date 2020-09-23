@@ -85,6 +85,7 @@ public class SourceSendingCronTest {
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Thread.currentThread().interrupt();
 		}
 		sourceSend.setSyncEnabled(true);
 		sourceSend.syncSourceToRemoteAndLocal();
