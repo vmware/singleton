@@ -78,9 +78,4 @@ public class SwaggerConfigTest {
 		 tc.servletContainer(sp);
 	}
 	
-	@Test
-	public void test006CustomErrorController() throws Exception {
-		String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, "/error");
-		Assert.assertNotNull(json);
-	}
 }

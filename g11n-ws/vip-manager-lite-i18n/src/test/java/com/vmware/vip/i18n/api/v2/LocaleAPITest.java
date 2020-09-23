@@ -50,5 +50,11 @@ public class LocaleAPITest {
 			Assert.assertNotNull(list.get(i).get("territories"));
 		}
 	}
+	
+	@Test
+	public void test006CustomErrorController() throws Exception {
+		String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, "/error");
+		Assert.assertNotNull(json);
+	}
 
 }

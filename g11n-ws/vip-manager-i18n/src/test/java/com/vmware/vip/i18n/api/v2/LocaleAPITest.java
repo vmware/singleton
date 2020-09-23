@@ -61,4 +61,12 @@ public class LocaleAPITest {
 //		List<DisplayLanguageDTO> list = (List<DisplayLanguageDTO>) dataMap.get("languages");
 //		Assert.assertNotNull(list);
 	}
+	
+	
+	@Test
+	public void test006CustomErrorController() throws Exception {
+		
+		String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, "/error");
+		Assert.assertNotNull(json);
+	}
 }
