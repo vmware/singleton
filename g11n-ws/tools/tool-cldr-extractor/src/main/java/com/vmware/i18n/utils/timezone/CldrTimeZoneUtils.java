@@ -108,7 +108,6 @@ public class CldrTimeZoneUtils {
 		String regionFormatTypeDaylight = (String) select(dates, "timeZoneNames.regionFormat-type-daylight");
 		String regionFormatTypeStandard = (String) select(dates, "timeZoneNames.regionFormat-type-standard");
 		String fallbackFormat = (String) select(dates, "timeZoneNames.fallbackFormat");
-		//List<CldrMetaZone> metaZones = new ArrayList<>();
 		List<LinkedHashMap<String,Object>> metaZones = new ArrayList<LinkedHashMap<String,Object>>(); 
 		Map<String, JSONArray> timezoneKeysProps = findTimezoneKeys(metaZonesJson);
 		Iterator<JSONObject> iterator = arry.iterator();
@@ -187,7 +186,6 @@ public class CldrTimeZoneUtils {
 			objMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 			result = objMapper.writerWithDefaultPrettyPrinter().writeValueAsString(zone);
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return result;
