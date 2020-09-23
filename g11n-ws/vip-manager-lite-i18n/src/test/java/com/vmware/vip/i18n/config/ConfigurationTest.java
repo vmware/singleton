@@ -5,6 +5,7 @@
 package com.vmware.vip.i18n.config;
 
 import org.apache.catalina.connector.Connector;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ import com.vmware.vip.core.Interceptor.APICacheControlInterceptor;
 import com.vmware.vip.core.conf.ServerProperties;
 import com.vmware.vip.core.conf.TomcatConfig;
 import com.vmware.vip.core.conf.VIPTomcatConnectionCustomizer;
+import com.vmware.vip.i18n.api.v1.common.ConstantsForTest;
+import com.vmware.vip.i18n.api.v1.common.RequestUtil;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = LiteBootApplication.class)
@@ -59,18 +62,22 @@ public class ConfigurationTest {
     }
 
 	@Test
+	//VIPTomcatConnectionCustomizer
 	public void test003VIPTomcatConnectionCustomizer(){
 		 ServerProperties sp  = webApplicationContext.getBean(ServerProperties.class);
-		VIPTomcatConnectionCustomizer vcs = new VIPTomcatConnectionCustomizer(sp, "on", 123);
-		vcs.customize(new Connector());
+		VIPTomcatConnectionCustomizer vcs = new VIPTomcatConnectionCustomizer(sp, "on", 2048);
+		Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
+		vcs.customize(connector);
 	}
 	
+	
 	@Test
-	public void test004VIPTomcatConfig(){
-		TomcatConfig tc  = webApplicationContext.getBean(TomcatConfig.class);
-		ServerProperties sp = webApplicationContext.getBean(ServerProperties.class);
-		tc.servletContainer(sp);
+	public void test004TomcatConfig(){
+		 ServerProperties sp  = webApplicationContext.getBean(ServerProperties.class);
+		 TomcatConfig tc = webApplicationContext.getBean(TomcatConfig.class);
+		 tc.servletContainer(sp);
 	}
+	
    //APICacheControlInterceptor
 	@Test
 	public void test005APICacheControlInterceptor(){
@@ -79,5 +86,11 @@ public class ConfigurationTest {
 			aci.afterCompletion(null, null, null, null);
 		} catch (Exception e) {
 		}
+	}
+	
+	@Test
+	public void test006CustomErrorController() throws Exception {
+		String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, "/error");
+		Assert.assertNotNull(json);
 	}
 }

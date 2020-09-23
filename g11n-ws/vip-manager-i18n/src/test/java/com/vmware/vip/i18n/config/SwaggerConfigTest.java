@@ -4,6 +4,7 @@
  */
 package com.vmware.vip.i18n.config;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -16,7 +17,11 @@ import org.springframework.web.context.WebApplicationContext;
 import com.vmware.vip.BootApplication;
 import com.vmware.vip.core.conf.ServerProperties;
 import com.vmware.vip.core.conf.SwaggerConfig;
+import com.vmware.vip.core.conf.TomcatConfig;
 import com.vmware.vip.core.conf.VIPTomcatConnectionCustomizer;
+import com.vmware.vip.i18n.api.v1.common.ConstantsForTest;
+import com.vmware.vip.i18n.api.v1.common.RequestUtil;
+
 import org.apache.catalina.connector.Connector;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
@@ -61,6 +66,21 @@ public class SwaggerConfigTest {
 	public void test003VIPTomcatConnectionCustomizer(){
 		 ServerProperties sp  = webApplicationContext.getBean(ServerProperties.class);
 		VIPTomcatConnectionCustomizer vcs = new VIPTomcatConnectionCustomizer(sp, "on", 2048);
-		vcs.customize(new Connector());
+		Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
+		vcs.customize(connector);
+	}
+	
+	
+	@Test
+	public void test004TomcatConfig(){
+		 ServerProperties sp  = webApplicationContext.getBean(ServerProperties.class);
+		 TomcatConfig tc = webApplicationContext.getBean(TomcatConfig.class);
+		 tc.servletContainer(sp);
+	}
+	
+	@Test
+	public void test006CustomErrorController() throws Exception {
+		String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, "/error");
+		Assert.assertNotNull(json);
 	}
 }

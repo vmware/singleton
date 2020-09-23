@@ -81,7 +81,10 @@ public class RequestUtil {
             LOGGER.error(MessageUtil.getFailureString(uri, status));
             throw new RuntimeException(MessageUtil.getFailureString(uri, status));
         }
-        String res = mockResponse.getContentAsString();
+        String res = null;
+        if(mockResponse != null) {
+            res = mockResponse.getContentAsString();
+        }
         System.out.println(MessageUtil.getSuccessString(uri, res));
         LOGGER.info(MessageUtil.getSuccessString(uri, res));
         return res;
