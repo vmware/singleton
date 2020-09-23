@@ -21,7 +21,6 @@ public class MessageCacheItem implements CacheItem {
 	}
 	
 	public MessageCacheItem (String locale, Map<String, String> dataMap, String etag, long timestamp, Long maxAgeMillis) {
-		this.maxAgeMillis = maxAgeMillis == null ? this.maxAgeMillis : maxAgeMillis;
 		this.setCacheItem(locale, dataMap, etag, timestamp, maxAgeMillis);
 	}
 
@@ -35,6 +34,7 @@ public class MessageCacheItem implements CacheItem {
 	public synchronized void setCacheItem(String locale, Map<String, String> dataToCache, String etag, long timestamp, Long maxAgeMillis) {
 		if (dataToCache != null)
 			this.cachedData.putAll(dataToCache);
+		maxAgeMillis = maxAgeMillis == null ? this.maxAgeMillis : maxAgeMillis;
 		this.setCacheItem(locale, etag, timestamp, maxAgeMillis);
 	}
 	public synchronized void setCacheItem(String locale, String etag, long timestamp, Long maxAgeMillis) {

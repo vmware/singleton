@@ -33,6 +33,11 @@ public class MessagesDTO extends BaseDTO {
         super.setVersion(VIPCfg.getInstance().getVersion());
     }
 
+    public MessagesDTO(BaseDTO dto) {
+        super.setProductID(dto.getProductID());
+        super.setVersion(dto.getVersion());
+    }
+
     public MessagesDTO(String component, String localeLanguageTag, String productName, String version) {
         this.setComponent(component);
         this.setLocale(localeLanguageTag);
@@ -114,6 +119,15 @@ public class MessagesDTO extends BaseDTO {
         key.append(locale == null ? ConstantsKeys.EN
                 : LocaleUtility
                         .fmtToMappedLocale(locale).toLanguageTag());
+        return key.toString();
+    }
+
+    public String getLocalesCacheKey() {
+        StringBuilder key = new StringBuilder(super.getProductID());
+        key.append(ConstantsKeys.UNDERLINE);
+        key.append(super.getVersion());
+        key.append(ConstantsKeys.UNDERLINE);
+        key.append(ConstantsKeys.LOCALES);
         return key.toString();
     }
 

@@ -7,6 +7,7 @@ package com.vmware.vipclient.i18n.messages.api.opt.local;
 import com.vmware.i18n.PatternUtil;
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.messages.api.opt.LocaleOpt;
 import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
@@ -18,8 +19,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localeAliasesMap;
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePathMap;
@@ -39,8 +40,9 @@ public class LocalLocaleOpt implements LocaleOpt{
 	@Override
     public Map<String, String> getSupportedLanguages(String locale) {
 		Map<String, String> supportedLanguageNames = new HashMap<String, String>();
-		List<String> supportedLanguages = DataSourceEnum.Bundle.createProductOpt(dto)
-				.getSupportedLocales();
+		MessageCacheItem cacheItem = new MessageCacheItem();
+        DataSourceEnum.Bundle.createProductOpt(dto).getSupportedLocales(cacheItem);
+        Set<String> supportedLanguages = cacheItem.getCachedData().keySet();
 		if(supportedLanguages != null && !supportedLanguages.isEmpty()) {
 			Map<String, String> languagesNames = getLanguagesNamesFromCLDR(locale);
 			if (languagesNames == null || languagesNames.isEmpty())

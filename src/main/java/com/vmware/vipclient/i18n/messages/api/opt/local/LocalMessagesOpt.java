@@ -21,12 +21,7 @@ import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 public class LocalMessagesOpt implements Opt, MessageOpt {
 	
@@ -74,8 +69,9 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
     }
     
     private List<Locale> getSupportedLocales() {
-		List<String> supportedLanguages = DataSourceEnum.Bundle.createProductOpt(dto)
-    			.getSupportedLocales();
+    	MessageCacheItem cacheItem = new MessageCacheItem();
+		DataSourceEnum.Bundle.createProductOpt(dto).getSupportedLocales(cacheItem);
+		Set<String> supportedLanguages = cacheItem.getCachedData().keySet();
         logger.debug("supported languages: [{}]", supportedLanguages.toString());
     	List<Locale> supportedLocales = new LinkedList<Locale>();
     	for (String languageTag : supportedLanguages) {

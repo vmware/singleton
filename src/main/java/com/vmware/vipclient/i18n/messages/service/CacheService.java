@@ -59,6 +59,15 @@ public class CacheService {
         addCacheItem(cacheKey, new MessageCacheItem(dataMap));
     }
 
+    public MessageCacheItem getCacheOfLocales() {
+        String cacheKey = dto.getLocalesCacheKey();
+        return (MessageCacheItem) this.getCacheItem(cacheKey);
+    }
+    public void addCacheOfLocales(MessageCacheItem itemToCache) {
+        String cacheKey = dto.getLocalesCacheKey();
+        addCacheItem(cacheKey, itemToCache);
+    }
+
     private void addCacheItem(String key, CacheItem cacheItem) {
         if (key != null && cacheItem != null) {
             Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);

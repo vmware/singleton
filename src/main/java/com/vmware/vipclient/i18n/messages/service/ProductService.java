@@ -6,10 +6,12 @@ package com.vmware.vipclient.i18n.messages.service;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.messages.api.opt.ProductOpt;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
+import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,28 +73,61 @@ public class ProductService {
     /**
      * Retrieves the list of locales of a product. It recursively applies data source fallback mechanism in case of failure.
      *
-     * @return list of locales of the product specified in the dto object
+     * @return list of locales of the product specified in the dto object, or an empty list in case of failure to retrieve from any data source.
      */
     public Set<Locale> getSupportedLocales() {
-        Set<Locale> locales = new HashSet<>();
         Iterator<DataSourceEnum> msgSourceQueueIter = VIPCfg.getInstance().getMsgOriginsQueue().iterator();
-        while((locales == null || locales.isEmpty()) && msgSourceQueueIter.hasNext()){
-            DataSourceEnum dataSource = msgSourceQueueIter.next();
-            ProductOpt opt = dataSource.createProductOpt(dto);
-            for (String languageTag : opt.getSupportedLocales()) {
-                locales.add(Locale.forLanguageTag(languageTag));
-            }
-            // If failed to get locales from the data source, log the error.
-            if (locales == null || locales.isEmpty()) {
-                logger.error(ConstantsMsg.GET_LOCALES_FAILED, dataSource.toString());
-            }
+        CacheService cs = new CacheService(new MessagesDTO(dto));
+        MessageCacheItem cacheItem = cs.getCacheOfLocales();
+        if (cacheItem != null) {
+            refreshCacheItem(cacheItem, msgSourceQueueIter);
+        } else {
+            cacheItem = createCacheItem(msgSourceQueueIter);
         }
-        return locales;
+        if (cacheItem == null)
+            return new HashSet<>();
+        return langTagtoLocaleSet(cacheItem.getCachedData().keySet());
     }
 
     public boolean isSupportedLocale(Locale locale) {
         return getSupportedLocales().contains(LocaleUtility.fmtToMappedLocale(locale));
     }
 
+    private void refreshCacheItem(final MessageCacheItem cacheItem, Iterator<DataSourceEnum> msgSourceQueueIter) {
+        if (!msgSourceQueueIter.hasNext())
+            return;
 
+        long timestampOld = cacheItem.getTimestamp();
+        DataSourceEnum dataSource = msgSourceQueueIter.next();
+        dataSource.createProductOpt(dto).getSupportedLocales(cacheItem);
+        long timestamp = cacheItem.getTimestamp();
+        if (timestampOld == timestamp) {
+            logger.debug(FormatUtils.format(ConstantsMsg.GET_LOCALES_FAILED, dataSource.toString()));
+        }
+
+        if (timestamp == 0) {
+            refreshCacheItem(cacheItem, msgSourceQueueIter);
+        }
+    }
+
+    private MessageCacheItem createCacheItem (Iterator<DataSourceEnum> msgSourceQueueIter) {
+        CacheService cs = new CacheService(new MessagesDTO(dto));
+        MessageCacheItem cacheItem = new MessageCacheItem();
+        refreshCacheItem(cacheItem, msgSourceQueueIter);
+        if (!cacheItem.getCachedData().isEmpty()) {
+            cs.addCacheOfLocales(cacheItem);
+            return cacheItem;
+        }
+        return null;
+    }
+
+    private Set<Locale> langTagtoLocaleSet (Set<String> languageTags) {
+        Set<Locale> locales = new HashSet<>();
+        if (languageTags != null) {
+            for (String languageTag : languageTags) {
+                locales.add(Locale.forLanguageTag(languageTag));
+            }
+        }
+        return locales;
+    }
 }
