@@ -41,6 +41,10 @@ public class LocaleCacheItem extends FormatCacheItem implements CacheItem {
         this.set(cacheItem.getCachedData(), cacheItem.getEtag(), cacheItem.getTimestamp(), cacheItem.getMaxAgeMillis());
     }
 
+    public synchronized void set(long timestamp) {
+        setTimestamp(timestamp);
+    }
+
     public Map<String, String> getCachedData() {
         return cachedData;
     }

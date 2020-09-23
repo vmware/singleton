@@ -45,8 +45,6 @@ public class PatternService {
             logger.info("Can't find pattern for locale [{}], look for fallback locale [{}] pattern as fallback!", locale, fallbackLocale);
             cacheItem = getPatternsByLocale(fallbackLocale);
             if (!cacheItem.getCachedData().isEmpty()) {
-                new FormattingCacheService().addPatterns(locale, cacheItem);
-                logger.debug("Fallback locale [{}] pattern is cached for locale [{}]!\n\n", fallbackLocale, locale);
                 return new JSONObject(cacheItem.getCachedData());
             }
         }
@@ -69,11 +67,8 @@ public class PatternService {
         }
         cacheItem = new PatternCacheItem();
         getPatternsFromDS(locale, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-        if (cacheItem.getCachedData() != null && !cacheItem.getCachedData().isEmpty()) {
-            logger.debug("Find the pattern for locale [{}].\n", locale);// [datetime] and
-            formattingCacheService.addPatterns(locale, cacheItem);
-            logger.debug("Pattern is cached for locale [{}]!\n\n", locale);
-        }
+        formattingCacheService.addPatterns(locale, cacheItem);
+        logger.debug("Pattern is cached for locale [{}]!\n\n", locale);
         return cacheItem;
     }
 
@@ -90,8 +85,6 @@ public class PatternService {
             logger.info("Can't find pattern for language [{}] region [{}], look for fallback locale [{}] pattern as fallback!", language, region, fallbackLocale);
             cacheItem = getPatternsByLocale(fallbackLocale);
             if (!cacheItem.getCachedData().isEmpty()) {
-                new FormattingCacheService().addPatterns(language, region, cacheItem);
-                logger.debug("Fallback locale [{}] pattern is cached for language [{}], region [{}]!\n\n", fallbackLocale, language, region);
                 return new JSONObject(cacheItem.getCachedData());
             }
         }
@@ -114,12 +107,8 @@ public class PatternService {
         }
         cacheItem = new PatternCacheItem();
         getPatternsFromDS(language, region, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-        if (!cacheItem.getCachedData().isEmpty()) {
-            logger.debug("Find the pattern for language [{}], region [{}].\n", language, region);// [datetime]
-            // and
-            formattingCacheService.addPatterns(language, region, cacheItem);
-            logger.debug("Pattern is cached for language [{}], region [{}]!\n\n", language, region);
-        }
+        formattingCacheService.addPatterns(language, region, cacheItem);
+        logger.debug("Pattern is cached for language [{}], region [{}]!\n\n", language, region);
         return cacheItem;
     }
 

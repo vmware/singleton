@@ -46,8 +46,6 @@ public class LocaleService {
             logger.info("Can't find regions for locale [{}], look for fallback locale [{}] regions as fallback!", locale, fallbackLocale);
             cacheItem = getRegionsByLocale(fallbackLocale);
             if (!cacheItem.getCachedData().isEmpty()) {
-                new FormattingCacheService().addRegions(locale, cacheItem);
-                logger.debug("Fallback locale [{}] regions is cached for locale [{}]!\n\n", fallbackLocale, locale);
                 break;
             }
         }
@@ -71,11 +69,8 @@ public class LocaleService {
         }
         cacheItem = new LocaleCacheItem();
         getRegionsFromDS(locale, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-        if (!cacheItem.getCachedData().isEmpty()) {
-            logger.debug("Find the regions for locale [{}].\n", locale);
-            formattingCacheService.addRegions(locale, cacheItem);
-            logger.debug("Regions is cached for locale [{}]!\n\n", locale);
-        }
+        formattingCacheService.addRegions(locale, cacheItem);
+        logger.debug("Regions is cached for locale [{}]!\n\n", locale);
         return cacheItem;
     }
 
@@ -111,9 +106,6 @@ public class LocaleService {
             logger.info("Can't find supported languages for locale [{}], look for fallback locale [{}] languages as fallback!", locale, fallbackLocale);
             cacheItem = getSupportedDisplayNamesByLocale(fallbackLocale);
             if (!cacheItem.getCachedData().isEmpty()) {
-                new FormattingCacheService().addSupportedLanguages(dto, locale, cacheItem);
-                logger.debug("Fallback locale [{}] displayNames is cached for product [{}], version [{}], locale [{}]!\n\n",
-                        fallbackLocale, dto.getProductID(), dto.getVersion(), locale);
                 break;
             }
         }
@@ -137,11 +129,8 @@ public class LocaleService {
         }
         cacheItem = new LocaleCacheItem();
         getSupportedLanguagesFromDS(locale, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-        if (!cacheItem.getCachedData().isEmpty()) {
-            logger.debug("Find the displayNames for product [{}], version [{}], locale [{}].\n", dto.getProductID(), dto.getVersion(), locale);
-            formattingCacheService.addSupportedLanguages(dto, locale, cacheItem);
-            logger.debug("DisplayNames is cached for product [{}], version [{}], locale [{}]!\n\n", dto.getProductID(), dto.getVersion(), locale);
-        }
+        formattingCacheService.addSupportedLanguages(dto, locale, cacheItem);
+        logger.debug("DisplayNames is cached for product [{}], version [{}], locale [{}]!\n\n", dto.getProductID(), dto.getVersion(), locale);
         return cacheItem;
     }
 

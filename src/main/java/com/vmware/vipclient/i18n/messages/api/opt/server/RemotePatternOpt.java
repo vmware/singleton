@@ -26,20 +26,20 @@ public class RemotePatternOpt extends L2RemoteBaseOpt implements PatternOpt{
     public void getPatterns(String locale, PatternCacheItem cacheItem) {
         logger.debug("Look for pattern from Singleton Service for locale [{}]!", locale);
         HttpRequester httpRequester = VIPCfg.getInstance().getVipService().getHttpRequester();
-        getPatternsFromRemote(V2URL.getPatternURL(locale,
+        getPatternsFromRemote(locale, V2URL.getPatternURL(locale,
                     httpRequester.getBaseURL()), ConstantsKeys.GET, null, cacheItem);
     }
 
     public void getPatterns(String language, String region, PatternCacheItem cacheItem) {
         logger.debug("Look for pattern from Singleton Service for language [{}], region [{}]!", language, region);
         HttpRequester httpRequester = VIPCfg.getInstance().getVipService().getHttpRequester();
-        getPatternsFromRemote(V2URL.getPatternURL(language, region,
+        getPatternsFromRemote(language+"-"+region, V2URL.getPatternURL(language, region,
                     httpRequester.getBaseURL()), ConstantsKeys.GET, null, cacheItem);
     }
 
-    private void getPatternsFromRemote(String url, String method, Object requestData, PatternCacheItem cacheItem) {
+    private void getPatternsFromRemote(String locale, String url, String method, Object requestData, PatternCacheItem cacheItem) {
 
-        Map<String, Object> response = (Map<String, Object>) getResponse(url, method, requestData, cacheItem);
+        Map<String, Object> response = getResponse(url, method, requestData, cacheItem);
 
         Integer responseCode = (Integer) response.get(URLUtils.RESPONSE_CODE);
 
@@ -61,12 +61,17 @@ public class RemotePatternOpt extends L2RemoteBaseOpt implements PatternOpt{
                     String responseBody = (String) response.get(URLUtils.BODY);
                     Map<String, Object> patterns = getPatternsFromResponse(responseBody);
                     if (patterns != null) {
+                        logger.debug("Find the pattern from Singleton Service for locale [{}].\n", locale);
                         cacheItem.set(patterns, etag, timestamp, maxAgeMillis);
+                    }else{
+                        logger.debug("Doesn't find the pattern from Singleton Service for locale [{}].\n", locale);
+                        cacheItem.set(etag, timestamp, maxAgeMillis);
                     }
                 } catch (Exception e) {
                     logger.error("Failed to get pattern data from remote!");
                 }
             }else{
+                logger.debug("There is no update on Singleton Service for the pattern of locale [{}].\n", locale);
                 cacheItem.set(etag, timestamp, maxAgeMillis);
             }
         }
@@ -76,7 +81,7 @@ public class RemotePatternOpt extends L2RemoteBaseOpt implements PatternOpt{
         Map<String, Object> categoriesObj = null;
         Map<String, Object> dataObj = (Map<String, Object>) getDataFromResponse(responseBody);
         if (dataObj != null && dataObj instanceof JSONObject) {
-            Object obj = ((JSONObject) dataObj).get(PatternKeys.CATEGORIES);
+            Object obj = dataObj.get(PatternKeys.CATEGORIES);
             if (obj != null && obj instanceof JSONObject) {
                 categoriesObj = (Map<String, Object>) obj;
             }

@@ -54,8 +54,12 @@ public class LocalLocaleOpt implements LocaleOpt{
 			}
 		}
 		if (!supportedLanguageNames.isEmpty()) {
+			logger.debug("Find the supported languages from local bundle for product [{}], version [{}], locale [{}].\n", dto.getProductID(), dto.getVersion(), locale);
 			supportedLanguageNames = JSONUtils.map2SortMap(supportedLanguageNames);
 			cacheItem.set(supportedLanguageNames, System.currentTimeMillis());
+		}else{
+			logger.debug("Doesn't find the supported languages from local bundle for product [{}], version [{}], locale [{}].\n", dto.getProductID(), dto.getVersion(), locale);
+			cacheItem.set(System.currentTimeMillis());
 		}
     }
 
@@ -74,11 +78,8 @@ public class LocalLocaleOpt implements LocaleOpt{
 		}
 		languagesNames = new LocaleCacheItem();
 		getLanguagesNamesFromBundle(locale, languagesNames);
-		if (!languagesNames.getCachedData().isEmpty()) {
-			logger.debug("Find the languages' names from local bundle for locale [{}].\n", locale);// [datetime] and
-			formattingCacheService.addLanguagesNames(locale, languagesNames);
-			logger.debug("Languages' names are cached for locale [{}]!\n\n", locale);
-		}
+		formattingCacheService.addLanguagesNames(locale, languagesNames);
+		logger.debug("Languages' names are cached for locale [{}]!\n\n", locale);
 		return languagesNames.getCachedData();
 	}
 
@@ -92,7 +93,11 @@ public class LocalLocaleOpt implements LocaleOpt{
 			String languagesJsonStr = PatternUtil.getLanguageFromLib(normalizedLocale);
 			Map<String, Object> languagesData = (Map<String, Object>) new JSONParser().parse(languagesJsonStr);
 			if (languagesData != null) {
+				logger.debug("Find the languages' names from local bundle for locale [{}].\n", locale);
 				cacheItem.set((Map<String, String>) languagesData.get(PatternKeys.LANGUAGES), System.currentTimeMillis());
+			}else{
+				logger.debug("Doesn't find the languages' names from local bundle for locale [{}].\n", locale);
+				cacheItem.set(System.currentTimeMillis());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -112,8 +117,12 @@ public class LocalLocaleOpt implements LocaleOpt{
 			if (regionsData != null) {
 				Map<String, String> territories = (Map<String, String>) regionsData.get(PatternKeys.TERRITORIES);
 				if(territories != null) {
+					logger.debug("Find the regions from local bundle for locale [{}].\n", locale);
 					territories = JSONUtils.map2SortMap(territories);
 					cacheItem.set(territories, System.currentTimeMillis());
+				}else{
+					logger.debug("Doesn't find the regions from local bundle for locale [{}].\n", locale);
+					cacheItem.set(System.currentTimeMillis());
 				}
 			}
 		} catch (Exception e) {
