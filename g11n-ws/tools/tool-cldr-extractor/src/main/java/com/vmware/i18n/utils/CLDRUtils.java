@@ -25,6 +25,7 @@ import java.util.TreeMap;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import com.sun.tools.javac.util.StringUtils;
 import com.vmware.i18n.common.OfficialStatusEnum;
 import com.vmware.i18n.utils.timezone.CldrTimeZoneUtils;
 
@@ -46,6 +47,7 @@ public class CLDRUtils {
     public static final Properties PROP = PropertiesFileUtil.loadFromFile(CONFIG_PATH);
     public static final String CLDR_VERSION = PROP.getProperty("cldr.version");
     public static final String CLDR_URLS = PROP.getProperty("cldr.urls");
+    public static final String CLDR_ADDITIONAL_CONFIG = PROP.getProperty("cldr.additional.config");
     public static final String FILE_NAME = CLDR_VERSION + ".zip";
     public static final String CLDR_DOWNLOAD_DIR = "src" + File.separator + "main" + File.separator + "resources"
             + File.separator + "cldr" + File.separator + "data" + File.separator + CLDR_VERSION + File.separator;
@@ -595,9 +597,18 @@ public class CLDRUtils {
         dateTimeMap.put("medium", dateTimeMedium);
         dateTimeMap.put("long", dateTimeLong);
         dateTimeMap.put("full", dateTimeFull);
-        dateTimeMap.put("availableFormats", JSONUtil.string2SortMap(availableFormats));
         dateTimeMap.put("appendItems", JSONUtil.string2SortMap(appendItems));
         dateTimeMap.put("intervalFormats", JSONUtil.string2SortMap(intervalFormats));
+
+        Map<String, Object> timeFormatMap = timeFormatExtract(locale, content);
+        Map<String, Object> availableFormatsMap = JSONUtil.string2SortMap(availableFormats);
+        List<String> configs = Arrays.asList(CLDRUtils.CLDR_ADDITIONAL_CONFIG.split(","));
+
+        if (!configs.isEmpty() && configs.contains("availableFormats") && timeFormatMap.containsKey("full")) {
+            String regEx = "(\\.ss|:ss| ss 's'|ss秒| s초| ss ວິນາທີ| ss วินาที)";
+            availableFormatsMap.put("hmz", timeFormatMap.get("full").toString().replaceAll(regEx, ""));
+        }
+        dateTimeMap.put("availableFormats", availableFormatsMap);
         return dateTimeMap;
     }
 
