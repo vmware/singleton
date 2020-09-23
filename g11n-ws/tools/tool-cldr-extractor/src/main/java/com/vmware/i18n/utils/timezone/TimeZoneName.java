@@ -5,7 +5,12 @@
 package com.vmware.i18n.utils.timezone;
 
 import java.io.Serializable;
+import java.util.LinkedHashMap;
 import java.util.List;
+
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vmware.i18n.common.Constants;
 
 
 public class TimeZoneName implements Serializable {
@@ -13,55 +18,6 @@ public class TimeZoneName implements Serializable {
    
     private static final long serialVersionUID = 9060484294234938026L;
     
-    
-    public String getGmtZeroFormat() {
-        return gmtZeroFormat;
-    }
-    public void setGmtZeroFormat(String gmtZeroFormat) {
-        this.gmtZeroFormat = gmtZeroFormat;
-    }
-    public String getGmtFormat() {
-        return gmtFormat;
-    }
-    public void setGmtFormat(String gmtFormat) {
-        this.gmtFormat = gmtFormat;
-    }
-    public String getHourFormat() {
-        return hourFormat;
-    }
-    public void setHourFormat(String hourFormat) {
-        this.hourFormat = hourFormat;
-    }
-    public String getRegionFormat() {
-        return regionFormat;
-    }
-    public void setRegionFormat(String regionFormat) {
-        this.regionFormat = regionFormat;
-    }
-    public String getRegionFormatTypeDaylight() {
-        return regionFormatTypeDaylight;
-    }
-    public void setRegionFormatTypeDaylight(String regionFormatTypeDaylight) {
-        this.regionFormatTypeDaylight = regionFormatTypeDaylight;
-    }
-    public String getRegionFormatTypeStandard() {
-        return regionFormatTypeStandard;
-    }
-    public void setRegionFormatTypeStandard(String regionFormatTypeStandard) {
-        this.regionFormatTypeStandard = regionFormatTypeStandard;
-    }
-    public String getFallbackFormat() {
-        return fallbackFormat;
-    }
-    public void setFallbackFormat(String fallbackFormat) {
-        this.fallbackFormat = fallbackFormat;
-    }
-    public List<CldrMetaZone> getMetaZones() {
-        return metaZones;
-    }
-    public void setMetaZones(List<CldrMetaZone> metaZones) {
-        this.metaZones = metaZones;
-    }
     /** * @param gmtZeroFormat
     /** * @param gmtFormat
     /** * @param hourFormat
@@ -72,31 +28,45 @@ public class TimeZoneName implements Serializable {
     /** * @param metaZones */
     public TimeZoneName(String language, String gmtZeroFormat, String gmtFormat, String hourFormat,
             String regionFormat, String regionFormatTypeDaylight, String regionFormatTypeStandard,
-            String fallbackFormat, List<CldrMetaZone> metaZones) {
+            String fallbackFormat, List<LinkedHashMap<String,Object>> metaZones) {
         this.language = language;
-        this.gmtZeroFormat = gmtZeroFormat;
-        this.gmtFormat = gmtFormat;
-        this.hourFormat = hourFormat;
-        this.regionFormat = regionFormat;
-        this.regionFormatTypeDaylight = regionFormatTypeDaylight;
-        this.regionFormatTypeStandard = regionFormatTypeStandard;
-        this.fallbackFormat = fallbackFormat;
-        this.metaZones = metaZones;
+        this.timeZoneNames = new LinkedHashMap<String,Object>();
+        this.timeZoneNames.put(Constants.TIMEZONENAME_HOUR_FORMAT, hourFormat);
+        this.timeZoneNames.put(Constants.TIMEZONENAME_GMT_FORMAT, gmtFormat);
+        this.timeZoneNames.put(Constants.TIMEZONENAME_GMT_ZERO_FORMAT,gmtZeroFormat);
+        this.timeZoneNames.put(Constants.TIMEZONENAME_REGION_FORMAT,regionFormat);
+        this.timeZoneNames.put(Constants.TIMEZONENAME_REGION_FORMAT_TYPE_DAYLIGHT,regionFormatTypeDaylight);
+        this.timeZoneNames.put(Constants.TIMEZONENAME_REGION_FORMAT_TYPE_STANDARD,regionFormatTypeStandard);
+        this.timeZoneNames.put(Constants.TIMEZONENAME_FALLBACK_FORMAT,fallbackFormat);
+        this.timeZoneNames.put(Constants.TIMEZONENAME_METAZONES,metaZones);
     }
     public TimeZoneName() {}
+   
+    private String language;
+    private LinkedHashMap <String, Object> timeZoneNames;
+    
     public String getLanguage() {
         return language;
     }
+    
     public void setLanguage(String language) {
         this.language = language;
     }
-    private String language;
-    private String gmtZeroFormat;
-    private String gmtFormat;
-    private String hourFormat;
-    private String regionFormat;
-    private String regionFormatTypeDaylight;
-    private String regionFormatTypeStandard;
-    private String fallbackFormat;
-    private List<CldrMetaZone> metaZones;
+   
+	public LinkedHashMap<String, Object> getTimeZoneNames() {
+		return timeZoneNames;
+	}
+	
+	public void setTimeZoneNames(LinkedHashMap<String, Object> timeZoneNames) {
+		this.timeZoneNames = timeZoneNames;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public  List<LinkedHashMap<String,Object>> queryMetaZones() {
+		return (List<LinkedHashMap<String,Object>>) this.timeZoneNames.get(Constants.TIMEZONENAME_METAZONES);
+	}
+	
+	public void resetMetaZones(List<LinkedHashMap<String,Object>> metaZones) {
+		this.timeZoneNames.put(Constants.TIMEZONENAME_METAZONES,metaZones);
+	}
 }
