@@ -4,6 +4,7 @@
  */
 package com.vmware.vip.i18n.api.v2;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.junit.Assert;
@@ -43,10 +44,10 @@ public class LocaleAPITest {
 	@Test
 	public void testRegionListAPI() throws Exception {
 		String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, REGION_LIST_API_URI);
-		List<TerritoryDTO> list = (List<TerritoryDTO>) JSONUtils.getMapFromJson(json).get("data");
+		List<LinkedHashMap<String, Object>> list = (List<LinkedHashMap<String, Object>>) JSONUtils.getMapFromJson(json).get("data");
 		for (int i = 0; i < list.size(); i++) {
-			Assert.assertNotNull(list.get(i).getLanguage());
-			Assert.assertNotNull(list.get(i).getTerritories());
+			Assert.assertNotNull(list.get(i).get("language"));
+			Assert.assertNotNull(list.get(i).get("territories"));
 		}
 	}
 
