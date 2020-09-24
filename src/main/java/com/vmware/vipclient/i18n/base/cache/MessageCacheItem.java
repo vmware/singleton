@@ -1,6 +1,6 @@
 /*
 
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.base.cache;
@@ -21,6 +21,7 @@ public class MessageCacheItem implements CacheItem {
 	}
 	
 	public MessageCacheItem (String locale, Map<String, String> dataMap, String etag, long timestamp, Long maxAgeMillis) {
+		this.maxAgeMillis = maxAgeMillis == null ? this.maxAgeMillis : maxAgeMillis;
 		this.setCacheItem(locale, dataMap, etag, timestamp, maxAgeMillis);
 	}
 

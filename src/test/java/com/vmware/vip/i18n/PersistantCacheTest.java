@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n;
@@ -72,8 +72,7 @@ public class PersistantCacheTest extends BaseTestClass {
         try {
             Thread.sleep(1000000);
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        	Thread.currentThread().interrupt();
         }
     }
 }

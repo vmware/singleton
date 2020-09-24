@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n;
@@ -149,8 +149,9 @@ public class VIPCfg {
         if (prop.containsKey("version"))
             this.version = prop.getString("version");
         
-        // Remote VIP resources takes priority over offline resources
+        // Remote VIP resources take priority over offline resources
         // so add DataSourceEnum.VIP first to msgOriginsQueue
+        this.setMsgOriginsQueue(new LinkedList<DataSourceEnum>());
         if (prop.containsKey("vipServer")) {
             this.vipServer = prop.getString("vipServer");
             this.addMsgOriginsQueue(DataSourceEnum.VIP);

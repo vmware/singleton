@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n;
@@ -396,7 +396,7 @@ public class TranslationMessageTest extends BaseTestClass {
         Assert.assertEquals(expected2, message2);
 
         // source1 changed
-        Thread.sleep(4 * 1000);
+        Thread.sleep(4 * 1000L);
         String source1_1 = source1 + "-new";
         String message1_1 = translation.getString(locale1, component1, key1, source1_1, "");
         String expected1_1 = "@@" + source1_1 + "@@";
@@ -436,7 +436,7 @@ public class TranslationMessageTest extends BaseTestClass {
         Assert.assertEquals(expected2, message2);
 
         // source1 changed
-        Thread.sleep(4 * 1000);
+        Thread.sleep(4 * 1000L);
         String source1_1 = source1 + "-new";
         String message1_1 = translation.getString(locale1, component, key1, source1_1, "");
         String expected1_1 = "@@" + source1_1 + "@@";

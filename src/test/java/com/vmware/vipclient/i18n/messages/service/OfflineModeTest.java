@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.service;
@@ -18,13 +18,17 @@ import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
+import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
+import org.json.simple.parser.ParseException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class OfflineModeTest extends BaseTestClass {
 
@@ -91,9 +95,10 @@ public class OfflineModeTest extends BaseTestClass {
     	CacheService cs = new CacheService(dto);
     	String message = translation.getMessage(locale, component, key, args);
     	assertEquals(FormatUtils.format(messageFil, locale, args), message);
-    	
-    	MessageCacheItem cacheItem = cs.getCacheOfComponent();
-    	assertEquals(messageFil, cacheItem.getCachedData().get(key));	
+
+        // cs.getCacheOfComponent() for fil-PH returns MessageCacheItem of fil
+        MessageCacheItem filPHCacheItem = cs.getCacheOfComponent();
+        Assert.assertTrue(filPHCacheItem.getLocale().equals("fil"));
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
@@ -174,9 +179,10 @@ public class OfflineModeTest extends BaseTestClass {
     	// Returns the message in the default locale
     	assertEquals(FormatUtils.format(source, args), message);
     	
-    	// Cache for "es" locale is now pointing to the cache for the default locale
-    	MessageCacheItem cacheItem = cs.getCacheOfComponent();   	
-    	assertEquals(source, cacheItem.getCachedData().get(key));
+    	// cacheItem for "es" locale has an empty data map. It's locale is the fallback locale.
+    	MessageCacheItem cacheItem = cs.getCacheOfComponent();
+        assertEquals("en", cacheItem.getLocale());
+    	assertTrue(cacheItem.getCachedData().isEmpty());
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
@@ -292,7 +298,42 @@ public class OfflineModeTest extends BaseTestClass {
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
     }
-    
+
+    @Test
+    public void testGetSupportedLocalesOfflineBundles() throws ParseException {
+        //Enable offline mode
+        String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
+        cfg.setOfflineResourcesBaseUrl("offlineBundles/");
+        List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
+        cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(Arrays.asList(DataSourceEnum.Bundle)));
+
+
+        MessagesDTO msgsDTO = new MessagesDTO(component, "fil-PH", cfg.getProductName(), cfg.getVersion());
+        CacheService cs = new CacheService(msgsDTO);
+
+        Cache c = cfg.createTranslationCache(MessageCache.class);
+        TranslationCacheManager.cleanCache(c);
+        cfg.createTranslationCache(MessageCache.class);
+
+        BaseDTO dto = new BaseDTO();
+        dto.setVersion(cfg.getVersion());
+        dto.setProductID(cfg.getProductName());
+        ProductService ps = new ProductService(dto);
+        ps.getAllComponentTranslation();
+
+        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
+        TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
+        translation.getMessage(locale, component, key, args);
+
+        // cs.getCacheOfComponent() for fil-PH returns MessageCacheItem of fil
+        MessageCacheItem filPHCacheItem = cs.getCacheOfComponent();
+        Assert.assertTrue(filPHCacheItem.getLocale().equals("fil"));
+
+        // Disable offline mode off for next tests.
+        cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
+        cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+    }
+
     @Test
     public void testGetMsgsBothOfflineAndOnlineFailed() {
     	String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
@@ -326,8 +367,9 @@ public class OfflineModeTest extends BaseTestClass {
     	CacheService csDefault = new CacheService(defaultLocaleDTO);
     	MessageCacheItem cacheItemDefaultLocale = csDefault.getCacheOfComponent();
     	
-    	// Cache of default locale and cache of Locale.ITALIAN refer to the same object
-    	assertEquals(cacheItemDefaultLocale, cacheItem);
+    	// cacheItem of Locale.ITALIAN's data map is empty. Its locale is the fallback locale
+    	assertTrue(cacheItem.getCachedData().isEmpty());
+        assertEquals("en", cacheItem.getLocale());
     	
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);

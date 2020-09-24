@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n;
@@ -68,7 +68,7 @@ public class TranslationMessage2Test extends BaseTestClass {
         try {
             Thread.sleep(4000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+        	Thread.currentThread().interrupt();
         }
         Cache c2 = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
         Assert.assertTrue(c2.keySet().size() == 0);

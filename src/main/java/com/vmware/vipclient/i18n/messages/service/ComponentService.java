@@ -1,10 +1,11 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.service;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Locale;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
@@ -46,8 +47,10 @@ public class ComponentService {
 	 */
 	@SuppressWarnings("unchecked")
 	private void refreshCacheItem(final MessageCacheItem cacheItem, Iterator<DataSourceEnum> msgSourceQueueIter) {
-		if (!msgSourceQueueIter.hasNext())
+		if (!msgSourceQueueIter.hasNext()) {
+			logger.debug(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED_ALL, dto.getComponent(), dto.getLocale()));
 			return;
+		}
 
 		long timestampOld = cacheItem.getTimestamp();
 		DataSourceEnum dataSource = msgSourceQueueIter.next();
@@ -57,16 +60,11 @@ public class ComponentService {
 			logger.debug(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED, dto.getComponent(), dto.getLocale(), dataSource.toString()));
 		}
 
-		// Skip this block if timestamp is not 0 (which means cacheItem is in the cache) regardless if cacheItem is expired or not.
+		// If timestamp is not 0, it means that cacheItem is in the cache already.
 		// Otherwise, try the next dataSource in the queue.
 		if (timestamp == 0) {
 			// Try the next dataSource in the queue
-			if (msgSourceQueueIter.hasNext()) {
-				refreshCacheItem(cacheItem, msgSourceQueueIter);
-				// If no more data source in queue, log the error. This means that neither online nor offline fetch succeeded.
-			} else {
-				logger.debug(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED_ALL, dto.getComponent(), dto.getLocale()));
-			}
+			refreshCacheItem(cacheItem, msgSourceQueueIter);
 		}
 	}
 
@@ -97,24 +95,27 @@ public class ComponentService {
 	 * @return A MessageCacheItem whose data map is one of the following:
 	 * <ul>
 	 * 		<li>The messages in the requested locale</li>
-	 * 	 	<li>An empty map if the messages are not available in the requested locale</li>
+	 * 	 	<li>The messages in a fallback locale</li>
 	 * </ul>
 	 */
     public MessageCacheItem getMessages(Iterator<Locale> fallbackLocalesIter) {
     	CacheService cacheService = new CacheService(dto);
-    	MessageCacheItem cacheItem = null;
-    	if (cacheService.isContainComponent()) { // Item is in cache
-    		cacheItem = cacheService.getCacheOfComponent();
-    		if (cacheItem.isExpired()) { // cacheItem has expired
+    	MessageCacheItem cacheItem = cacheService.getCacheOfComponent();
+    	if (cacheItem != null) { // Item is in cache
+    		if (cacheItem.getCachedData().isEmpty()) { // This means that the data to be used is from a fallback locale.
+				// If expired, try to first create and store cacheItem for the requested locale in a separate thread.
+				if (cacheItem.isExpired())
+					this.createCacheItemTask(null); // Pass null so that locale fallback will not be applied.
+
+    			// Use cached data of cacheItem.getLocale() --> fallback locale
+				MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), cacheItem.getLocale(), dto.getProductID(), dto.getVersion());
+				cacheItem = new ComponentService(fallbackLocaleDTO).getMessages(null);
+			} else if (cacheItem.isExpired()) {
     			// Refresh the cacheItem in a separate thread
     			refreshCacheItemTask(cacheItem);
     		}
-			// If the cacheItem is for a fallback locale, create and store cacheItem for the requested locale in a separate thread.
-    		if (!LocaleUtility.isSameLocale(cacheItem.getLocale(), this.dto.getLocale())) {
-				this.createCacheItemTask(fallbackLocalesIter);
-			}
     	} else { // Item is not in cache. Create and store cacheItem for the requested locale
-    		cacheItem = createCacheItem(fallbackLocalesIter);
+			cacheItem = createCacheItem(fallbackLocalesIter);
     	}
     	return cacheItem;
     }
@@ -122,25 +123,45 @@ public class ComponentService {
 	/**
 	 * Creates a new MessageCacheItem for the DTO and stores it in cache.
 	 *
-	 * @param fallbackLocalesIter The fallback locale queue to use in case of failure.
+	 * @param fallbackLocalesIter The fallback locale queue to use in case of failure. If null, no locale fallback will be applied.
 	 *
 	 */
     private MessageCacheItem createCacheItem(Iterator<Locale> fallbackLocalesIter) {
 		CacheService cacheService = new CacheService(dto);
 		// Create a new cacheItem object to be stored in cache
 		MessageCacheItem cacheItem = new MessageCacheItem();
-		refreshCacheItem(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().iterator());
 
+		// If the requested locale is not supported, but matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr"),
+		// return the messages of the supported locale that best matches the requested locale.
+		ProductService ps = new ProductService(dto);
+		if (!ps.isSupportedLocale(Locale.forLanguageTag(dto.getLocale()))) {
+			Locale matchedLocale = LocaleUtility.pickupLocaleFromList(new LinkedList<>(ps.getSupportedLocales()), Locale.forLanguageTag(dto.getLocale()));
+			if (ps.isSupportedLocale(matchedLocale)) {
+				MessagesDTO matchedLocaleDTO = new MessagesDTO(dto.getComponent(), matchedLocale.toLanguageTag(), dto.getProductID(), dto.getVersion());
+				cacheItem = new ComponentService(matchedLocaleDTO).getMessages(null);
+				MessageCacheItem cacheItemCopy = new MessageCacheItem(matchedLocale.toLanguageTag(), null, null, System.currentTimeMillis(), cacheItem.getMaxAgeMillis());
+				cacheService.addCacheOfComponent(cacheItemCopy);
+				return cacheItem;
+			}
+		}
+
+		// Will proceed with the following code if
+		// a. requested locale is supported OR
+		// b. requested locale is not supported and does not match any supported locale
+		refreshCacheItem(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().iterator());
 		if (!cacheItem.getCachedData().isEmpty()) {
 			cacheService.addCacheOfComponent(cacheItem);
-		} else if (!dto.getLocale().equals(ConstantsKeys.SOURCE) && fallbackLocalesIter!=null && fallbackLocalesIter.hasNext()) {
-			// If failed to fetch message for the requetsed DTO, use MessageCacheItem of the next fallback locale.
+		} else if (!dto.getLocale().equals(ConstantsKeys.SOURCE) && fallbackLocalesIter != null && fallbackLocalesIter.hasNext()) {
+			// If failed to fetch message for the requested DTO, use MessageCacheItem of the next fallback locale.
 			MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), fallbackLocalesIter.next().toLanguageTag(), dto.getProductID(), dto.getVersion());
 			cacheItem = new ComponentService(fallbackLocaleDTO).getMessages(fallbackLocalesIter);
 			if (!cacheItem.getCachedData().isEmpty()) {
-				cacheService.addCacheOfComponent(cacheItem);
+				// Cache a copy of the fallback locale's cacheItem, but with only the locale and maxAgeMillis. Use current timestamp.
+				MessageCacheItem cacheItemCopy = new MessageCacheItem(cacheItem.getLocale(), null, null, System.currentTimeMillis(), cacheItem.getMaxAgeMillis());
+				cacheService.addCacheOfComponent(cacheItemCopy);
 			}
 		}
+
 		return cacheItem;
 	}
 

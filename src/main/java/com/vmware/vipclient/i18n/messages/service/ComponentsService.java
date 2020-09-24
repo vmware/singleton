@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.service;
@@ -59,9 +59,9 @@ public class ComponentsService {
                 dto.setLocale(locale);
                 dto.setComponent(component);
 
-                final CacheService cs = new CacheService(dto);                
-                if (cs.isContainComponent()) { // Get data from cache.
-                	MessageCacheItem cacheItem = cs.getCacheOfComponent();
+                final CacheService cs = new CacheService(dto);
+                MessageCacheItem cacheItem = cs.getCacheOfComponent();
+                if (cacheItem != null) { // Get data from cache.
                 	localeMap.put(component, cacheItem.getCachedData());
                 } else { // Data is not in cache.
                 	componentsToQuery.add(component);

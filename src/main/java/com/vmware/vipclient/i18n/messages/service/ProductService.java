@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.service;
@@ -14,11 +14,7 @@ import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 public class ProductService {
     private BaseDTO dto = null;
@@ -35,12 +31,12 @@ public class ProductService {
      */
     public List<Map> getAllComponentTranslation() {
         List<Map> list = new ArrayList<Map>();
-        List<String> locales = this.getSupportedLocales();
+        Set<Locale> locales = this.getSupportedLocales();
         List<String> components = this.getComponents();
         if (locales != null && components != null) {
-            for (String languageTag : locales) {
+            for (Locale locale : locales) {
                 for (Object component : components) {
-                    MessagesDTO msgDTO = new MessagesDTO(((String) component).trim(), LocaleUtility.fmtToMappedLocale(Locale.forLanguageTag(languageTag)).toString().trim(),
+                    MessagesDTO msgDTO = new MessagesDTO(((String) component).trim(), LocaleUtility.fmtToMappedLocale(locale).toString().trim(),
                             dto.getProductID(), dto.getVersion());
                     Map<String, String> retMap = new ComponentService(msgDTO).getMessages(null).getCachedData();
                     if (retMap != null) {
@@ -77,13 +73,15 @@ public class ProductService {
      *
      * @return list of locales of the product specified in the dto object
      */
-    public List<String> getSupportedLocales(){
-        List<String> locales = null;
+    public Set<Locale> getSupportedLocales() {
+        Set<Locale> locales = new HashSet<>();
         Iterator<DataSourceEnum> msgSourceQueueIter = VIPCfg.getInstance().getMsgOriginsQueue().iterator();
         while((locales == null || locales.isEmpty()) && msgSourceQueueIter.hasNext()){
             DataSourceEnum dataSource = msgSourceQueueIter.next();
             ProductOpt opt = dataSource.createProductOpt(dto);
-            locales = opt.getSupportedLocales();
+            for (String languageTag : opt.getSupportedLocales()) {
+                locales.add(Locale.forLanguageTag(languageTag));
+            }
             // If failed to get locales from the data source, log the error.
             if (locales == null || locales.isEmpty()) {
                 logger.error(ConstantsMsg.GET_LOCALES_FAILED, dataSource.toString());
@@ -91,4 +89,10 @@ public class ProductService {
         }
         return locales;
     }
+
+    public boolean isSupportedLocale(Locale locale) {
+        return getSupportedLocales().contains(LocaleUtility.fmtToMappedLocale(locale));
+    }
+
+
 }

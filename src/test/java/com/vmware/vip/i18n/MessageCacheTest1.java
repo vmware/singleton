@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.i18n;
@@ -120,8 +120,7 @@ public class MessageCacheTest1 extends BaseTestClass {
         try {
 			Thread.sleep(10);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Thread.currentThread().interrupt();
 		}
         
         cacheItem = (MessageCacheItem) TranslationCacheManager.getCache(VIPCfg.CACHE_L3).get(cachedKey);
