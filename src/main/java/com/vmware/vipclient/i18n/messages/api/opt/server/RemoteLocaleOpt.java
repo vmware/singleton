@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RemoteLocaleOpt extends L2RemoteBaseOpt implements LocaleOpt{
+public class RemoteLocaleOpt extends RemoteL2BaseOpt implements LocaleOpt{
 
     private Logger logger = LoggerFactory.getLogger(RemoteLocaleOpt.class.getName());
 

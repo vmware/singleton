@@ -30,8 +30,6 @@ import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePath
 public class LocalLocaleOpt implements LocaleOpt{
 
     private Logger logger = LoggerFactory.getLogger(LocalLocaleOpt.class);
-    private static final String BUNDLE_PREFIX = "messages_";
-	private static final String BUNDLE_SUFFIX = ".json";
 
 	private LocaleDTO dto = null;
 
@@ -50,7 +48,7 @@ public class LocalLocaleOpt implements LocaleOpt{
 				return;
 			for(String language : supportedLanguages){
 				if(!ConstantsKeys.SOURCE.equalsIgnoreCase(language))
-					supportedLanguageNames.put(language, (String) languagesNames.get(language));
+					supportedLanguageNames.put(language, languagesNames.get(language));
 			}
 		}
 		if (!supportedLanguageNames.isEmpty()) {

@@ -17,11 +17,11 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.Map;
 
-public class L2RemoteBaseOpt extends BaseOpt{
-    private final Logger      logger = LoggerFactory.getLogger(L2RemoteBaseOpt.class.getName());
+public class RemoteL2BaseOpt extends BaseOpt{
+    private final Logger      logger = LoggerFactory.getLogger(RemoteL2BaseOpt.class.getName());
 
 
-    public L2RemoteBaseOpt() {
+    public RemoteL2BaseOpt() {
 
     }
 

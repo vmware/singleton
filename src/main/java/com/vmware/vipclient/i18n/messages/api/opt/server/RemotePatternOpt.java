@@ -20,7 +20,7 @@ import java.net.HttpURLConnection;
 import java.util.List;
 import java.util.Map;
 
-public class RemotePatternOpt extends L2RemoteBaseOpt implements PatternOpt{
+public class RemotePatternOpt extends RemoteL2BaseOpt implements PatternOpt{
     Logger logger = LoggerFactory.getLogger(RemotePatternOpt.class);
 
     public void getPatterns(String locale, PatternCacheItem cacheItem) {
