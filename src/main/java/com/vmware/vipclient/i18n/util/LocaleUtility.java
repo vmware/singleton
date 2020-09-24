@@ -19,7 +19,8 @@ public class LocaleUtility {
     
     // A locale fallback priority queue. For now, it only contains the default locale and the source messages (from "messages_source.json").
     private static List<Locale> fallbackLocales = new LinkedList<Locale>(Arrays.asList(getDefaultLocale(), Locale.forLanguageTag(ConstantsKeys.SOURCE)));
-    
+    private static List<Locale> l2FallbackLocales = new LinkedList<Locale>(Arrays.asList(getDefaultLocale(), getSourceLocale()));
+
     // Use ThreadLocal to combine the locale with local thread so that the
     // locale can be used by any code places.
     private static InheritableThreadLocal<Map<String, Locale>> threadLocal    = new InheritableThreadLocal<Map<String, Locale>>() {
@@ -252,5 +253,12 @@ public class LocaleUtility {
 	public static void setFallbackLocales(List<Locale> fallbackLocales) {
 		LocaleUtility.fallbackLocales = fallbackLocales;
 	}
-    
+
+    public static List<Locale> getL2FallbackLocales() {
+        return l2FallbackLocales;
+    }
+
+    public static void setL2FallbackLocales(List<Locale> l2fallbackLocales) {
+        LocaleUtility.l2FallbackLocales = l2fallbackLocales;
+    }
 }

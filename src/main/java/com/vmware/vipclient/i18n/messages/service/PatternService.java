@@ -31,7 +31,7 @@ public class PatternService {
         if (patterns != null) {
             return patterns;
         }
-        Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
+        Iterator<Locale> fallbackLocalesIter = LocaleUtility.getL2FallbackLocales().iterator();
         while (fallbackLocalesIter.hasNext()) {
             String fallbackLocale = fallbackLocalesIter.next().toLanguageTag();
             if(fallbackLocale.equalsIgnoreCase(locale))
@@ -73,7 +73,7 @@ public class PatternService {
         if (patterns != null) {
             return patterns;
         }
-        Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
+        Iterator<Locale> fallbackLocalesIter = LocaleUtility.getL2FallbackLocales().iterator();
         while (fallbackLocalesIter.hasNext()) {
             String fallbackLocale = fallbackLocalesIter.next().toLanguageTag();
             if(fallbackLocale.equalsIgnoreCase(new Locale(language, region).toLanguageTag()))

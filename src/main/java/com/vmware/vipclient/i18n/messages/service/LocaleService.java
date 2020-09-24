@@ -35,7 +35,7 @@ public class LocaleService {
         if (regionMap != null) {
             return regionMap;
         }
-        Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
+        Iterator<Locale> fallbackLocalesIter = LocaleUtility.getL2FallbackLocales().iterator();
         while (fallbackLocalesIter.hasNext()) {
             String fallbackLocale = fallbackLocalesIter.next().toLanguageTag();
             if(fallbackLocale.equalsIgnoreCase(locale))
@@ -93,7 +93,7 @@ public class LocaleService {
         if(dispMap != null && !dispMap.isEmpty()){
             return dispMap;
         }
-        Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
+        Iterator<Locale> fallbackLocalesIter = LocaleUtility.getL2FallbackLocales().iterator();
         while (fallbackLocalesIter.hasNext()) {
             String fallbackLocale = fallbackLocalesIter.next().toLanguageTag();
             if(fallbackLocale.equalsIgnoreCase(locale))
