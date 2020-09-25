@@ -111,9 +111,9 @@ public class MessageCacheTest1 extends BaseTestClass {
             Thread.sleep(expired + 10000);
             Map cachedData2 = TranslationCacheManager.getCache(VIPCfg.CACHE_L3).get(cachedKey);
             Assert.assertNull(cachedData2);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+		} catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+		}
     }
 
 }

@@ -1,3 +1,8 @@
+/*
+ * Copyright 2019-2020 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
@@ -119,6 +124,6 @@ jacocoTestReport {
         xml.enabled true
         csv.enabled false
         html.enabled false
-	xml.destination file("${buildDir}/reports/jacoco.xml")
+        xml.destination file("${buildDir}/reports/jacoco.xml")
     }
 }

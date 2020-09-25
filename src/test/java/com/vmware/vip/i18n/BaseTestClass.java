@@ -31,6 +31,7 @@ import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 public class BaseTestClass {
     protected Logger                logger;
     VIPCfg                          vipCfg            = VIPCfg.getInstance();
+    protected static Random rnd = new Random();
 
     @Rule
     public final TestRule           watchman          = new TestWatcher() {
@@ -70,7 +71,7 @@ public class BaseTestClass {
     protected String getSaltString() {
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder salt = new StringBuilder();
-        Random rnd = new Random();
+        
         while (salt.length() < 10) { // length of the random string.
             int index = (int) (rnd.nextFloat() * SALTCHARS.length());
             salt.append(SALTCHARS.charAt(index));
