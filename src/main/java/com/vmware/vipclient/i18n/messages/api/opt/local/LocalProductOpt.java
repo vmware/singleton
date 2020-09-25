@@ -5,6 +5,7 @@
 package com.vmware.vipclient.i18n.messages.api.opt.local;
 
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.ProductOpt;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import org.slf4j.Logger;
@@ -17,9 +18,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class LocalProductOpt implements ProductOpt {
@@ -33,7 +32,7 @@ public class LocalProductOpt implements ProductOpt {
         this.dto = dto;
     }
 
-    public List<String> getSupportedLocales() {
+    public void getSupportedLocales(MessageCacheItem cacheItem) {
         List<String> supportedLocales = new ArrayList<String>();
         try {
 
@@ -55,7 +54,11 @@ public class LocalProductOpt implements ProductOpt {
         } catch (Exception e) {
             logger.debug(e.getMessage());
         }
-        return supportedLocales;
+        Map<String, String> languageTagMap = new HashMap<>();
+        for (String languageTag: supportedLocales) {
+            languageTagMap.put(languageTag, languageTag);
+        }
+        cacheItem.setCacheItem(null, languageTagMap, null, System.currentTimeMillis(), null);
     }
 
     public List<String> getComponents() {

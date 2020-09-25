@@ -10,6 +10,7 @@ import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.MessageOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
+import com.vmware.vipclient.i18n.messages.service.ProductService;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.JSONBundleUtil;
 import org.json.simple.JSONObject;
@@ -21,12 +22,7 @@ import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 public class LocalMessagesOpt implements Opt, MessageOpt {
 	
@@ -74,8 +70,8 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
     }
     
     private List<Locale> getSupportedLocales() {
-		List<String> supportedLanguages = DataSourceEnum.Bundle.createProductOpt(dto)
-    			.getSupportedLocales();
+		ProductService ps = new ProductService(dto);
+		Set<String> supportedLanguages = ps.getSupportedLanguageTags(DataSourceEnum.Bundle);
         logger.debug("supported languages: [{}]", supportedLanguages.toString());
     	List<Locale> supportedLocales = new LinkedList<Locale>();
     	for (String languageTag : supportedLanguages) {
