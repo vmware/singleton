@@ -7,6 +7,7 @@ package com.vmware.vipclient.i18n.messages.dto;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,6 +32,11 @@ public class MessagesDTO extends BaseDTO {
     public MessagesDTO() {
         super.setProductID(VIPCfg.getInstance().getProductName());
         super.setVersion(VIPCfg.getInstance().getVersion());
+    }
+
+    public MessagesDTO(BaseDTO dto) {
+        super.setProductID(dto.getProductID());
+        super.setVersion(dto.getVersion());
     }
 
     public MessagesDTO(String component, String localeLanguageTag, String productName, String version) {
@@ -114,6 +120,17 @@ public class MessagesDTO extends BaseDTO {
         key.append(locale == null ? ConstantsKeys.EN
                 : LocaleUtility
                         .fmtToMappedLocale(locale).toLanguageTag());
+        return key.toString();
+    }
+
+    public String getLocalesCacheKey(DataSourceEnum dataSource) {
+        StringBuilder key = new StringBuilder(super.getProductID());
+        key.append(ConstantsKeys.UNDERLINE);
+        key.append(super.getVersion());
+        key.append(ConstantsKeys.UNDERLINE);
+        key.append(ConstantsKeys.LOCALES);
+        key.append(ConstantsKeys.UNDERLINE);
+        key.append(dataSource.name());
         return key.toString();
     }
 
