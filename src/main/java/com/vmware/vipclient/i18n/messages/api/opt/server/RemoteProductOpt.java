@@ -52,7 +52,7 @@ public class RemoteProductOpt extends BaseOpt implements ProductOpt {
      * get supported locales from vip(non-Javadoc)
      *
      */
-    public MessageCacheItem getSupportedLocales(MessageCacheItem cacheItem) {
+    public void getSupportedLocales(MessageCacheItem cacheItem) {
         Map<String, String> headers = new HashMap<String, String>();
         if (cacheItem.getEtag() != null)
             headers.put(URLUtils.IF_NONE_MATCH_HEADER, cacheItem.getEtag());
@@ -90,6 +90,5 @@ public class RemoteProductOpt extends BaseOpt implements ProductOpt {
                 cacheItem.setCacheItem(null, etag, timestamp, maxAgeMillis);
             }
         }
-        return cacheItem;
     }
 }

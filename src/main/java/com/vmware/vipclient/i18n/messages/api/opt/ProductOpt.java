@@ -9,6 +9,6 @@ import java.util.List;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 
 public interface ProductOpt {
-	public MessageCacheItem getSupportedLocales(MessageCacheItem cacheItem);
-	public List<String> getComponents();
+	void getSupportedLocales(MessageCacheItem cacheItem);
+	List<String> getComponents();
 }

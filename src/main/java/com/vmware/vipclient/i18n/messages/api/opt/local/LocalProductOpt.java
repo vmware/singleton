@@ -32,7 +32,7 @@ public class LocalProductOpt implements ProductOpt {
         this.dto = dto;
     }
 
-    public MessageCacheItem getSupportedLocales(MessageCacheItem cacheItem) {
+    public void getSupportedLocales(MessageCacheItem cacheItem) {
         List<String> supportedLocales = new ArrayList<String>();
         try {
 
@@ -59,7 +59,6 @@ public class LocalProductOpt implements ProductOpt {
             languageTagMap.put(languageTag, languageTag);
         }
         cacheItem.setCacheItem(null, languageTagMap, null, System.currentTimeMillis(), null);
-        return cacheItem;
     }
 
     public List<String> getComponents() {
