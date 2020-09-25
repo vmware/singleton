@@ -39,6 +39,7 @@ public class OfflineModeTest extends BaseTestClass {
     String comment = "comment";
     String messageFil = "[{0}] Alerto sa pagsusuri";
     String messageFr ="[{0}] Alerte de test";
+    String messageEn ="[{0}] Test alert";
     Object[] args = { "a" };
 
     MessagesDTO dto = new MessagesDTO();
@@ -178,9 +179,10 @@ public class OfflineModeTest extends BaseTestClass {
     	String message = translation.getMessage(newLocale, component, key, args);
     	// Returns the message in the default locale
     	assertEquals(FormatUtils.format(source, args), message);
-    	
-    	// There is no cacheItem  for "es" locale.
-        assertNull(cs.getCacheOfComponent());
+
+    	MessageCacheItem cacheItem = cs.getCacheOfComponent();
+        assertNull(cacheItem);
+    	assertEquals(FormatUtils.format(messageEn, args), message);
 
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
@@ -322,6 +324,7 @@ public class OfflineModeTest extends BaseTestClass {
 
         I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
         TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
+
         String messageFilPh = translation.getMessage(locale, component, key, args);
 
         // fil-PH cacheItem does not exist
