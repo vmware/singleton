@@ -17,15 +17,15 @@ import com.vmware.vip.common.constants.ConstantsTomcat;
  * this is custom tomcat Connector
  *
  */
-public class VIPTomcatConnectionCustomizer implements TomcatConnectorCustomizer {
-	private static Logger logger = LoggerFactory.getLogger(VIPTomcatConnectionCustomizer.class);
-	private ServerProperties serverProperties;
+public class LiteTomcatConnectionCustomizer implements TomcatConnectorCustomizer {
+	private static Logger logger = LoggerFactory.getLogger(LiteTomcatConnectionCustomizer.class);
+	private LiteServerProperties serverProperties;
 
 	private String compression;
 
 	private int compressionMinSize;
 
-	public VIPTomcatConnectionCustomizer(ServerProperties prop, String compression, int compressionMinSize) {
+	public LiteTomcatConnectionCustomizer(LiteServerProperties prop, String compression, int compressionMinSize) {
 		this.serverProperties = prop;
 		this.compression = compression;
 		this.compressionMinSize = compressionMinSize;

@@ -32,7 +32,7 @@ import org.springframework.web.util.UrlPathHelper;
 import com.vmware.vip.api.rest.API;
 import com.vmware.vip.api.rest.APIV1;
 import com.vmware.vip.api.rest.APIV2;
-import com.vmware.vip.core.Interceptor.APICacheControlInterceptor;
+import com.vmware.vip.core.Interceptor.LiteAPICacheControlInterceptor;
 import com.vmware.vip.core.Interceptor.LiteAPICrossDomainInterceptor;
 
 /**
@@ -144,7 +144,7 @@ public class LiteWebConfiguration implements WebMvcConfigurer {
 		
 		//cacheControl
 		if (StringUtils.isNotEmpty(this.cacheControlValue)) {
-		    registry.addInterceptor(new APICacheControlInterceptor(this.cacheControlValue)).addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**");
+		    registry.addInterceptor(new LiteAPICacheControlInterceptor(this.cacheControlValue)).addPathPatterns(API.I18N_API_ROOT + APIV2.V + "/**");
 		}
 	}
 

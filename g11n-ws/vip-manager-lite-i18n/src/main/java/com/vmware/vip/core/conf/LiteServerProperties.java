@@ -16,7 +16,7 @@ import com.vmware.vip.common.constants.ConstantsTomcat;
  *
  */
 @Configuration
-public class ServerProperties implements Serializable {
+public class LiteServerProperties implements Serializable {
 
    private static final long serialVersionUID = 9008828985564148771L;
 

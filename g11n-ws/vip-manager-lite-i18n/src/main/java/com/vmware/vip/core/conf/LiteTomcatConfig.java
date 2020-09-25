@@ -19,7 +19,7 @@ import com.vmware.vip.common.constants.ConstantsTomcat;
  *
  */
 @Configuration
-public class TomcatConfig {
+public class LiteTomcatConfig {
 
 	@Value("${config.gzip.enable}")
 	private String compression;
@@ -28,9 +28,9 @@ public class TomcatConfig {
 	private int compressionMinSize;
 
 	@Bean
-	public ServletWebServerFactory servletContainer(ServerProperties serverProperties) {
+	public ServletWebServerFactory servletContainer(LiteServerProperties serverProperties) {
 		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
-		tomcat.addConnectorCustomizers(new VIPTomcatConnectionCustomizer(serverProperties, compression, compressionMinSize));
+		tomcat.addConnectorCustomizers(new LiteTomcatConnectionCustomizer(serverProperties, compression, compressionMinSize));
 		if (serverProperties.getServerScheme().equalsIgnoreCase(ConstantsTomcat.HTTP_HTTPS) ||
 				serverProperties.getServerScheme().equalsIgnoreCase(ConstantsTomcat.HTTPS_HTTP)) {
 			tomcat.addAdditionalTomcatConnectors(initiateHttpsConnector(serverProperties));
@@ -41,7 +41,7 @@ public class TomcatConfig {
 	/**
 	 * create the https additional connection for tomcat
 	 */
-	private Connector initiateHttpsConnector(ServerProperties serverProperties) {
+	private Connector initiateHttpsConnector(LiteServerProperties serverProperties) {
 		Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
 		connector.setScheme(ConstantsTomcat.HTTPS);
 		connector.setPort(serverProperties.getServerPort());

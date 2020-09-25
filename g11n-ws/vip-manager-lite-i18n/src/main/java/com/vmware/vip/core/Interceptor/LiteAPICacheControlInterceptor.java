@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class APICacheControlInterceptor extends HandlerInterceptorAdapter {
+public class LiteAPICacheControlInterceptor extends HandlerInterceptorAdapter {
 
 	private String cacheControlValue;
 
-	public APICacheControlInterceptor(String cacheControlValue) {
+	public LiteAPICacheControlInterceptor(String cacheControlValue) {
 		this.cacheControlValue = cacheControlValue;
 	}
 
