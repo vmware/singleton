@@ -78,7 +78,7 @@ public class RemoteProductOpt extends BaseOpt implements ProductOpt {
                     if (dataObj != null) {
                         List<String> supportedLocales = (JSONArray) dataObj;
                         Map<String, String> languageTags = new HashMap<>();
-                        if (supportedLocales != null && !supportedLocales.isEmpty()) {
+                        if (!supportedLocales.isEmpty()) {
                             for (String languageTag : supportedLocales) {
                                 languageTags.put(languageTag, languageTag);
                             }
