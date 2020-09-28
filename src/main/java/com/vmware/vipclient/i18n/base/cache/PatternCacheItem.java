@@ -37,14 +37,6 @@ public class PatternCacheItem extends FormatCacheItem implements CacheItem {
             setMaxAgeMillis(maxAgeMillis);
     }
 
-    public synchronized void set(PatternCacheItem cacheItem) {
-        this.set(cacheItem.getCachedData(), cacheItem.getEtag(), cacheItem.getTimestamp(), cacheItem.getMaxAgeMillis());
-    }
-
-    public synchronized void set(long timestamp) {
-        setTimestamp(timestamp);
-    }
-
     public Map<String, Object> getCachedData() {
 		return cachedData;
 	}

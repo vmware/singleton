@@ -49,7 +49,7 @@ public class LocalPatternOpt implements PatternOpt{
                 cacheItem.set((Map<String, Object>) patterns.get(PatternKeys.CATEGORIES), System.currentTimeMillis());
             }else{
                 logger.debug("Doesn't find the pattern from local bundle for locale [{}].\n", normalizedLocale);
-                cacheItem.set(System.currentTimeMillis());
+                cacheItem.set(null, System.currentTimeMillis());
             }
         } catch (Exception e) {
             e.printStackTrace();

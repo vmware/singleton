@@ -51,11 +51,12 @@ public class FormatCacheItem implements CacheItem {
 			return false;
 		}
 
-		Long maxAgeResponse = this.getMaxAgeMillis();
-		if (maxAgeResponse != null) {
-			maxAgeMillis = maxAgeResponse;
+		if (maxAgeMillis == null) {
+			return false;
 		}
 
-		return System.currentTimeMillis() - this.getTimestamp() >= maxAgeMillis;
+		synchronized (this) {
+			return System.currentTimeMillis() - this.getTimestamp() >= maxAgeMillis;
+		}
 	}
 }
