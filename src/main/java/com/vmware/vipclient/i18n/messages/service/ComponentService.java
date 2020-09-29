@@ -112,7 +112,7 @@ public class ComponentService {
 				Locale matchedLocale = LocaleUtility.pickupLocaleFromList(new LinkedList<>(ps.getSupportedLocales()), Locale.forLanguageTag(dto.getLocale()));
 				if (ps.isSupportedLocale(matchedLocale)) { // Requested locale matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr")
 					MessagesDTO matchedLocaleDTO = new MessagesDTO(dto.getComponent(), matchedLocale.toLanguageTag(), dto.getProductID(), dto.getVersion());
-					return new ComponentService(matchedLocaleDTO).getMessages(null);
+					return new ComponentService(matchedLocaleDTO).getMessages();
 				}
 			}
 
