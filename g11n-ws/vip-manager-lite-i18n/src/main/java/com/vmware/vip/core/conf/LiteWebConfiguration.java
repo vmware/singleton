@@ -34,6 +34,7 @@ import com.vmware.vip.api.rest.APIV1;
 import com.vmware.vip.api.rest.APIV2;
 import com.vmware.vip.core.Interceptor.LiteAPICacheControlInterceptor;
 import com.vmware.vip.core.Interceptor.LiteAPICrossDomainInterceptor;
+import com.vmware.vip.core.Interceptor.LiteAPIValidationInterceptor;
 
 /**
  * Web Configuration
@@ -80,6 +81,9 @@ public class LiteWebConfiguration implements WebMvcConfigurer {
 	@Value("${cache-control.value:}")
 	private String cacheControlValue;
 	
+	@Value("${config.client.requestIds:}")
+	private String requestIdsStr; 
+	
 	/**
 	 * Add ETag into response header for data cache
 	 */
@@ -106,7 +110,7 @@ public class LiteWebConfiguration implements WebMvcConfigurer {
 		 */
 
 		// Request Validation
-		//InterceptorRegistration apival = registry.addInterceptor(new APIValidationInterceptor()).addPathPatterns("/**").excludePathPatterns(API.I18N_API_ROOT+"doc/**");
+	     registry.addInterceptor(new LiteAPIValidationInterceptor(this.requestIdsStr)).addPathPatterns("/**").excludePathPatterns(API.I18N_API_ROOT+"doc/**");
 
 		// authentication
 
