@@ -146,7 +146,7 @@ public class ComponentService {
 	}
 
 	private void refreshCacheItemTask(MessageCacheItem cacheItem) {
-		Callable<MessageCacheItem> callable = () -> {
+		Runnable runnable = () -> {
     		try {
     			refreshCacheItem(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
 				return cacheItem;
