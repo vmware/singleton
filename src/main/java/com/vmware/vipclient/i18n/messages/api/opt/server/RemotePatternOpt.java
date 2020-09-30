@@ -45,16 +45,10 @@ public class RemotePatternOpt extends RemoteL2BaseOpt implements PatternOpt{
 
         if (responseCode != null && (responseCode.equals(HttpURLConnection.HTTP_OK) ||
                 responseCode.equals(HttpURLConnection.HTTP_NOT_MODIFIED))) {
-            long timestamp = 0;
-            String etag = null;
-            Long maxAgeMillis = null;
 
-            if (response.get(URLUtils.RESPONSE_TIMESTAMP) != null)
-                timestamp = (long) response.get(URLUtils.RESPONSE_TIMESTAMP);
-            if (response.get(URLUtils.HEADERS) != null)
-                etag = URLUtils.createEtagString((Map<String, List<String>>) response.get(URLUtils.HEADERS));
-            if (response.get(URLUtils.MAX_AGE_MILLIS) != null)
-                maxAgeMillis = (Long) response.get(URLUtils.MAX_AGE_MILLIS);
+            long timestamp = response.get(URLUtils.RESPONSE_TIMESTAMP) != null ? (long) response.get(URLUtils.RESPONSE_TIMESTAMP) : System.currentTimeMillis();
+            String etag = URLUtils.createEtagString((Map<String, List<String>>) response.get(URLUtils.HEADERS));
+            Long maxAgeMillis = response.get(URLUtils.MAX_AGE_MILLIS) != null ? (Long) response.get(URLUtils.MAX_AGE_MILLIS) : null;
 
             if (responseCode.equals(HttpURLConnection.HTTP_OK)) {
                 try {
