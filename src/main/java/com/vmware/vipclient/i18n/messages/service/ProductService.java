@@ -106,7 +106,7 @@ public class ProductService {
     }
 
     public boolean isSupportedLocale(Locale locale) {
-        return getSupportedLocales().contains(LocaleUtility.fmtToMappedLocale(locale));
+        return getSupportedLanguageTags().contains(LocaleUtility.fmtToMappedLocale(locale).toLanguageTag());
     }
 
 

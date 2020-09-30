@@ -112,7 +112,7 @@ public class ComponentService {
 				Locale matchedLocale = LocaleUtility.pickupLocaleFromList(new LinkedList<>(ps.getSupportedLocales()), Locale.forLanguageTag(dto.getLocale()));
 				if (ps.isSupportedLocale(matchedLocale)) { // Requested locale matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr")
 					MessagesDTO matchedLocaleDTO = new MessagesDTO(dto.getComponent(), matchedLocale.toLanguageTag(), dto.getProductID(), dto.getVersion());
-					return new ComponentService(matchedLocaleDTO).getMessages(null);
+					return new ComponentService(matchedLocaleDTO).getMessages();
 				}
 			}
 
@@ -146,19 +146,13 @@ public class ComponentService {
 	}
 
 	private void refreshCacheItemTask(MessageCacheItem cacheItem) {
-		Callable<MessageCacheItem> callable = () -> {
+		Runnable runnable = () -> {
     		try {
     			refreshCacheItem(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-				return cacheItem;
     		} catch (Exception e) {
-    			// To make sure that the thread will close
-    			// even when an exception is thrown
-    			return null;
 		    }
 		};
-		FutureTask<MessageCacheItem> task = new FutureTask<>(callable);
-		Thread thread = new Thread(task);
-		thread.start();	
+		new Thread(runnable).start();
 	}
 
     public boolean isComponentAvailable() {
