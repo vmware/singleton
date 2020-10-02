@@ -54,18 +54,24 @@ public class ComponentService {
 
 		long timestampOld = cacheItem.getTimestamp();
 		DataSourceEnum dataSource = msgSourceQueueIter.next();
+		String localeOrig = dto.getLocale();
+		if (dataSource.equals(DataSourceEnum.VIP) && dto.getLocale().equals("source")) {
+			dto.setLocale("latest");
+		}
 		dataSource.createMessageOpt(dto).getComponentMessages(cacheItem);
 		long timestamp = cacheItem.getTimestamp();
 		if (timestampOld == timestamp) {
 			logger.debug(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED, dto.getComponent(), dto.getLocale(), dataSource.toString()));
 		}
+		dto.setLocale(localeOrig);
 
-		// If timestamp is not 0, it means that cacheItem is in the cache already.
-		// Otherwise, try the next dataSource in the queue.
-		if (timestamp == 0) {
+		// If timestamp is 0, it means that cacheItem not yet in cache. So try the next data source.
+		// If locale is "source", use messages from DatasourceEnum.Bundle data store if it exists.
+		if (timestamp == 0 || dto.getLocale().equals("source")) {
 			// Try the next dataSource in the queue
 			refreshCacheItem(cacheItem, msgSourceQueueIter);
 		}
+
 	}
 
 	/**
