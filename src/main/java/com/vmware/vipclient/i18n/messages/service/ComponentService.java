@@ -66,8 +66,7 @@ public class ComponentService {
 		dto.setLocale(localeOrig);
 
 		// If timestamp is 0, it means that cacheItem not yet in cache. So try the next data source.
-		// If locale is "source", use messages from DatasourceEnum.Bundle data store if it exists.
-		if (timestamp == 0 || dto.getLocale().equals(ConstantsKeys.SOURCE)) {
+		if (timestamp == 0)) {
 			// Try the next dataSource in the queue
 			refreshCacheItem(cacheItem, msgSourceQueueIter);
 		}
