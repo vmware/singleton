@@ -66,7 +66,7 @@ public class ComponentService {
 		dto.setLocale(localeOrig);
 
 		// If timestamp is 0, it means that cacheItem not yet in cache. So try the next data source.
-		if (timestamp == 0)) {
+		if (timestamp == 0) {
 			// Try the next dataSource in the queue
 			refreshCacheItem(cacheItem, msgSourceQueueIter);
 		}
