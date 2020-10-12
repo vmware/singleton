@@ -6,6 +6,7 @@ package com.vmware.vipclient.i18n.util;
 
 import java.text.FieldPosition;
 import java.util.Locale;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +32,18 @@ public class FormatUtils {
     public static String format(String pattern, Object... arguments) {
         String escaped = pattern.replaceAll("'", "''");
         return java.text.MessageFormat.format(escaped, arguments);
+    }
+     public static String formatWithArrayArgs(String pattern, Locale locale, Object... arguments) {
+        MessageFormat messageFormat = new MessageFormat(pattern, locale);
+        return messageFormat.format(arguments, new StringBuilder(), new FieldPosition(0)).toString();
+    }
+   
+    public static String formatWithNamedArgs(String pattern, Locale locale, Map<String, Object> arguments) {
+        if (pattern != null && !pattern.isEmpty() && arguments != null && arguments.size() > 0) {
+            MessageFormat messageFormat = new MessageFormat(pattern, locale);
+            return messageFormat.format(arguments, new StringBuilder(), new FieldPosition(0)).toString();
+        }
+        return pattern;
     }
 
     @Deprecated

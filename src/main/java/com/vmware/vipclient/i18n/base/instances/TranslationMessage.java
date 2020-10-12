@@ -179,7 +179,7 @@ public class TranslationMessage implements Message {
                 }
             }
 
-            if ("".equals(translation)) {
+            if (StringUtil.isEmpty(translation)) {
                 translation = source;
             }
         } else {
@@ -207,16 +207,16 @@ public class TranslationMessage implements Message {
         if (args != null) {
             if (args instanceof Object[] && ((Object[]) args).length > 0) {
                 if ((null != translation && translation.equals(source)) || VIPCfg.getInstance().isPseudo()) {
-                    translation = FormatUtils.format(translation, LocaleUtility.getDefaultLocale(), (Object[]) args);
+                    translation = FormatUtils.formatWithArrayArgs(translation, LocaleUtility.getDefaultLocale(), (Object[]) args);
                 } else {
-                    translation = FormatUtils.format(translation, locale, (Object[]) args);
+                    translation = FormatUtils.formatWithArrayArgs(translation, locale, (Object[]) args);
                 }
-            } else if (args instanceof Map<?, ?> && ((Map) args).size() > 0) {
+            } else if (args instanceof Map<?, ?> && ((Map<?, ?>) args).size() > 0) {
                 if ((null != translation && translation.equals(source)) || VIPCfg.getInstance().isPseudo()) {
-                    translation = FormatUtils.formatMsg(translation,
+                    translation = FormatUtils.formatWithNamedArgs(translation,
                             LocaleUtility.getDefaultLocale(), (Map<String, Object>) args);
                 } else {
-                    translation = FormatUtils.formatMsg(translation, locale, (Map) args);
+                    translation = FormatUtils.formatWithNamedArgs(translation, locale, (Map) args);
                 }
             }
         }
