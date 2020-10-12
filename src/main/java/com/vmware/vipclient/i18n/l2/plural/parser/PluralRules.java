@@ -1247,7 +1247,6 @@ public class PluralRules implements Serializable {
             JSONObject pluralPattern = new PatternService().getPatternsByCategory(locale.toLanguageTag(),
                     PatternCategory.PLURALS.toString());
             pluralRules = (JSONObject) pluralPattern.get(PatternKeys.PLURALRULES);
-            pluralPattern.get(type);
         } catch (NullPointerException e) {
             logger.info("Lack plural pattern!");
         }
