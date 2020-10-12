@@ -30,7 +30,6 @@ script: >
   fi &&
   if [ x${TEST} = xunit_test ]; then cd $TRAVIS_BUILD_DIR && ./gradlew test; fi &&
   if [ x${TEST} = xcode_scan ]; then
-    java -version
     git clone --branch=devops https://github.com/vmware/singleton.git devops
     SONARSCANNER='sonar-scanner-cli-4.0.0.1744-linux'
     SONARSCANNERINNER='sonar-scanner-4.0.0.1744-linux'
