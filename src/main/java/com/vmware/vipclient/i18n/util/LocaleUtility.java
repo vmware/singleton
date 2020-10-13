@@ -55,6 +55,8 @@ public class LocaleUtility {
 
     /**
      * get the locale from ThreadLocal
+     *
+     * @param locale
      */
     public static Locale getLocale() {
         Map<String, Locale> localeMap = threadLocal.get();
@@ -80,6 +82,7 @@ public class LocaleUtility {
     /**
      * get the locale from ThreadLocal
      *
+     * @param locale
      */
     public static Locale getL2Locale() {
         Map<String, Locale> localeMap = threadLocal.get();
@@ -133,6 +136,12 @@ public class LocaleUtility {
             return Locale.forLanguageTag("zh-HANT");
         }
         return zhLocale;
+    }
+
+    public static boolean isSameLocale(String locale1, String locale2) {
+        String loc1 = fmtToMappedLocale(locale1).toLanguageTag();
+        String loc2 = fmtToMappedLocale(locale2).toLanguageTag();
+        return loc1.equals(loc2);
     }
 
     /*
