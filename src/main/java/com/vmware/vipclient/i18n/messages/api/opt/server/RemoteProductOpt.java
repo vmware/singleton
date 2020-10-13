@@ -82,7 +82,7 @@ public class RemoteProductOpt extends BaseOpt implements ProductOpt {
                             for (String languageTag : supportedLocales) {
                                 languageTags.put(languageTag, languageTag);
                             }
-                            cacheItem.setCacheItem(null, languageTags, etag, timestamp, maxAgeMillis);
+                            cacheItem.setCacheItem(languageTags, etag, timestamp, maxAgeMillis);
                         }
                     }
                 }

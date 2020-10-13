@@ -106,8 +106,9 @@ public class ProductService {
     }
 
     public boolean isSupportedLocale(Locale locale) {
-        return getSupportedLocales().contains(LocaleUtility.fmtToMappedLocale(locale));
+        return getSupportedLanguageTags().contains(LocaleUtility.fmtToMappedLocale(locale).toLanguageTag());
     }
+
 
     private void refreshCacheItem(final MessageCacheItem cacheItem, DataSourceEnum dataSource) {
         long timestampOld = cacheItem.getTimestamp();
@@ -142,7 +143,6 @@ public class ProductService {
         }
         return null;
     }
-
     private Set<Locale> langTagtoLocaleSet (Set<String> languageTags) {
         Set<Locale> locales = new HashSet<>();
         if (languageTags != null) {
