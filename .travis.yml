@@ -31,10 +31,40 @@ script: >
   if [ x${TEST} = xunit_test ]; then cd $TRAVIS_BUILD_DIR && ./gradlew test; fi &&
   if [ x${TEST} = xcode_scan ]; then
     git clone --branch=devops https://github.com/vmware/singleton.git devops
+    SONARSCANNER='sonar-scanner-cli-4.0.0.1744-linux'
+    SONARSCANNERINNER='sonar-scanner-4.0.0.1744-linux'
+    wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/$SONARSCANNER.zip
+    unzip $SONARSCANNER.zip
+    rm -f $SONARSCANNER.zip
     str=$(printf '=%.0s' {1..50})
     echo $str Code Scan Start $str
     cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=java-client-gate -QualityGateConditions="./quality_gates/java-client.json" -SonarToken=$SONAR_TOKEN
-    cd $TRAVIS_BUILD_DIR && ./gradlew jacocoTestReport sonarqube --stacktrace -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN -Dsonar.projectKey=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH -Dsonar.projectName=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.host.url=https://sonarcloud.io --warn
+    cd $TRAVIS_BUILD_DIR && ./gradlew test jacocoTestReport
+    java -version
+        
+    cd $TRAVIS_BUILD_DIR && ls -la
+    wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
+    sudo chmod +x install-jdk.sh
+    export JAVA_HOME=$HOME/openjdk11
+    export PATH="$JAVA_HOME/bin:$PATH"
+    $TRAVIS_BUILD_DIR/install-jdk.sh --target "/home/travis/openjdk11" --workspace "/home/travis/.cache/install-jdk" --feature "11" --license "GPL" --cacerts
+    java -version
+        
+    cd $TRAVIS_BUILD_DIR && $TRAVIS_BUILD_DIR/$SONARSCANNERINNER/bin/sonar-scanner \
+       -Dsonar.projectKey=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH \
+       -Dsonar.projectName=$SONAR_ORG-singleton-java-client-$TRAVIS_BRANCH \
+       -Dsonar.sources=. \
+       -Dsonar.language=java \
+       -Dsonar.sourceEncoding=UTF-8 \
+       -Dsonar.host.url=https://sonarcloud.io \
+       -Dsonar.login=$SONAR_TOKEN \
+       -Dsonar.branch.name=master \
+       -Dsonar.organization=$SONAR_ORG \
+       -Dsonar.exclusions=sample-client-app/**,**/*.py,**/*.xml,**/*.css,**/*.js,**/*.html \
+       -Dsonar.java.binaries=build/classes/java \
+       -Dsonar.java.test.binaries=build/classes/test \
+       -Dsonar.coverage.jacoco.xmlReportPaths=build/reports/jacoco.xml \
+       -Dsonar.coverage.exclusions=build/**,src/test/**
     echo $str Code Scan End $str
     git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.travis\.yml$' || {
       echo "No need to check sonar quality gate for only travis configuration updates"
