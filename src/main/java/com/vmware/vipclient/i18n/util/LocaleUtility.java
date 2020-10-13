@@ -4,12 +4,7 @@
  */
 package com.vmware.vipclient.i18n.util;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class LocaleUtility {
@@ -147,43 +142,15 @@ public class LocaleUtility {
     /*
      * pick up the matched locale from a locale list
      */
-    public static Locale pickupLocaleFromList(List<Locale> locales,
-            Locale preferredLocale) {
-        Locale langLocale = null;
-        preferredLocale = fmtToMappedLocale(preferredLocale);
+    public static Locale pickupLocaleFromList(Set<Locale> locales,
+                                              Locale preferredLocale) {
+        Locale bestMatch = Locale.lookup(Arrays.asList(new Locale.LanguageRange(fmtToMappedLocale(preferredLocale).toLanguageTag())), locales);
 
-        // Use the first locale from the browser's list of preferred languages
-        // for the matching, so that it can keep the same way of getting locale
-        // with other VMware products, like vSphere Web Client, etc.
-        for (Locale configuredLocale : locales) {
-            // Language is matched
-            configuredLocale = fmtToMappedLocale(configuredLocale);
-            if (configuredLocale.getLanguage().equals(
-                    preferredLocale.getLanguage())) {
-                String configuredScript = configuredLocale.getScript();
-                String preferredScript = preferredLocale.getScript();
-                // Country is matched
-                if (((preferredScript.equalsIgnoreCase("")) && (configuredScript
-                        .equalsIgnoreCase("")))
-                        || ((!preferredScript.equalsIgnoreCase("")) && (preferredScript
-                                .equalsIgnoreCase(configuredScript)))) {
-                    return configuredLocale;
-                }
-                langLocale = langLocale == null ? configuredLocale : langLocale;
-            }
+        // For any Chinese locale (zh-*) that is not supported, use the fallback locale even if "zh" is supported.
+        if (bestMatch != null && bestMatch.toLanguageTag().equals("zh") && !preferredLocale.toLanguageTag().equals("zh")) {
+            return null;
         }
-
-        // With Chinese locale which is not configured/supported in web.xml, it
-        // will return 'en_US' as default to meet the usage custom of Chinese,
-        // e.g. for 'zh-HK' from client(browser) which is not
-        // configured/supported yet, it will return 'en_US';
-        // Other locale, like 'de-DE' 'ja-JP' etc.,
-        // it will return 'de' 'ja'(main/parent language).
-        if (langLocale != null
-                && (!langLocale.getLanguage().equalsIgnoreCase("zh"))) {
-            return new Locale(langLocale.getLanguage());
-        }
-        return preferredLocale;
+        return bestMatch;
     }
 
     /**
