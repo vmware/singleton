@@ -5,7 +5,6 @@
 package com.vmware.vipclient.i18n.messages.service;
 
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.Locale;
 
 import com.vmware.vipclient.i18n.VIPCfg;
@@ -110,14 +109,14 @@ public class ComponentService {
 			if (ps.isSupportedLocale(locale) || VIPCfg.getInstance().isPseudo()) {
 				cacheItem = createCacheItem(); // Fetch for the requested locale from data store, create cacheItem and store in cache
 				if (cacheItem.getCachedData().isEmpty())  // Failed to fetch messages for the requested locale
-					cacheItem = getMessagesFallbackLocale(fallbackLocalesIter);
+					cacheItem = getFallbackLocaleMessages(fallbackLocalesIter);
 			} else { // Requested locale is not supported
 				Locale matchedLocale = LocaleUtility.pickupLocaleFromList(ps.getSupportedLocales(), locale);
 				if (matchedLocale != null) { // Requested locale matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr")
 					MessagesDTO matchedLocaleDTO = new MessagesDTO(dto.getComponent(), matchedLocale.toLanguageTag(), dto.getProductID(), dto.getVersion());
 					cacheItem = new ComponentService(matchedLocaleDTO).getMessages();
 				} else  // Requested locale is not supported and does not match any supported locales
-					cacheItem = getMessagesFallbackLocale(fallbackLocalesIter);
+					cacheItem = getFallbackLocaleMessages(fallbackLocalesIter);
 			}
     	}
     	return cacheItem;
@@ -128,7 +127,7 @@ public class ComponentService {
 	 * and then invoking {@link #getMessages(Iterator)}.
 	 * @param fallbackLocalesIter The fallback locale queue to use in case of failure. If null, no locale fallback will be applied.
      */
-    private MessageCacheItem getMessagesFallbackLocale(Iterator<Locale> fallbackLocalesIter) {
+    private MessageCacheItem getFallbackLocaleMessages(Iterator<Locale> fallbackLocalesIter) {
 		if (!dto.getLocale().equals(ConstantsKeys.SOURCE) && fallbackLocalesIter != null && fallbackLocalesIter.hasNext()) {
 			// Use MessageCacheItem of the next fallback locale.
 			MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), fallbackLocalesIter.next().toLanguageTag(), dto.getProductID(), dto.getVersion());

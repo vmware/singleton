@@ -146,9 +146,12 @@ public class LocaleUtility {
                                               Locale preferredLocale) {
         Locale bestMatch = Locale.lookup(Arrays.asList(new Locale.LanguageRange(fmtToMappedLocale(preferredLocale).toLanguageTag())), locales);
 
-        // For any Chinese locale (zh-*) that is not supported, use the fallback locale even if "zh" is supported.
-        if (bestMatch != null && bestMatch.toLanguageTag().equals("zh") && !preferredLocale.toLanguageTag().equals("zh")) {
-            return null;
+        // For any Chinese locale (zh-*) that is not supported (except for zh-Hans and zh-Hant), use the fallback locale even if "zh" is supported.
+        if (preferredLocale.getLanguage().equals("zh")) {
+            Locale zhLocale = fmtToMappedLocale(preferredLocale);
+            if (!locales.contains(zhLocale) && !zhLocale.toLanguageTag().equals("zh-Hans") && !zhLocale.toLanguageTag().equals("zh-Hant")) {
+                return null;
+            }
         }
         return bestMatch;
     }
