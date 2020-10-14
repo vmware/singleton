@@ -74,7 +74,7 @@ public class HttpRequesterTest extends BaseTestClass {
         	// Exception is expected
         }
         
-        WireMock.verify(WireMock.getRequestedFor(WireMock.urlMatching(url)).withHeader(key1, WireMock.equalTo(value1))
+        WireMock.verify(WireMock.getRequestedFor(WireMock.urlMatching(url2+"|"+url)).withHeader(key1, WireMock.equalTo(value1))
                 .withHeader(key2, WireMock.equalTo(value2)));
     }
     
@@ -100,7 +100,7 @@ public class HttpRequesterTest extends BaseTestClass {
                 .getMessageInstance(TranslationMessage.class);
         tm.getString2("default", "messages", new Locale("zh", "Hans"), "table.host");
 
-        WireMock.verify(WireMock.getRequestedFor(WireMock.urlMatching(url)).withHeader(key1, WireMock.equalTo(value1))
+        WireMock.verify(WireMock.getRequestedFor(WireMock.urlMatching(url2+"|"+url)).withHeader(key1, WireMock.equalTo(value1))
                 .withHeader(key2, WireMock.equalTo(value2)));
     }
 
