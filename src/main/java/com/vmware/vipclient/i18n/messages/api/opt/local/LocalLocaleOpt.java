@@ -43,7 +43,7 @@ public class LocalLocaleOpt implements LocaleOpt{
 		List<String> supportedLanguages = DataSourceEnum.Bundle.createProductOpt(dto)
 				.getSupportedLocales();
 		if(supportedLanguages != null && !supportedLanguages.isEmpty()) {
-			Map<String, String> languagesNames = getLanguagesNamesFromCLDR(locale);
+			Map<String, String> languagesNames = getLanguagesNames(locale);
 			if (languagesNames == null || languagesNames.isEmpty())
 				return;
 			for(String language : supportedLanguages){
@@ -61,7 +61,7 @@ public class LocalLocaleOpt implements LocaleOpt{
 		}
     }
 
-    private Map<String, String> getLanguagesNamesFromCLDR(String locale){
+    private Map<String, String> getLanguagesNames(String locale){
 		LocaleCacheItem languagesNames = null;
 		logger.debug("Look for languages' names from cache for locale [{}]!", locale);
 		FormattingCacheService formattingCacheService = new FormattingCacheService();
@@ -84,9 +84,11 @@ public class LocalLocaleOpt implements LocaleOpt{
 	private void getLanguagesNamesFromBundle(String locale, LocaleCacheItem cacheItem) {
 		logger.debug("Look for languages' names from local package bundle for locale [{}]!", locale);
 		String normalizedLocale = CommonUtil.getCLDRLocale(locale, localePathMap, localeAliasesMap);
-		logger.info("Normalized locale for locale [{}] is [{}]", locale, normalizedLocale);
-		if(normalizedLocale == null || normalizedLocale.isEmpty())
+		logger.debug("Normalized locale for locale [{}] is [{}]", locale, normalizedLocale);
+		if(normalizedLocale == null || normalizedLocale.isEmpty()) {
+			logger.error("Normalized locale is empty for locale [{}]", locale);
 			return;
+		}
 		try {
 			String languagesJsonStr = PatternUtil.getLanguageFromLib(normalizedLocale);
 			Map<String, Object> languagesData = (Map<String, Object>) new JSONParser().parse(languagesJsonStr);
