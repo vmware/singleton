@@ -18,8 +18,6 @@ import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.Locale;
 import java.util.Map;
-import java.util.concurrent.Callable;
-import java.util.concurrent.FutureTask;
 
 public class LocaleService {
 
@@ -156,44 +154,38 @@ public class LocaleService {
     }
 
     private void populateRegionsCache(String locale, LocaleCacheItem cacheItem) {
-        Callable<LocaleCacheItem> callable = () -> {
+        Runnable runnable = () -> {
             try {
-
-                // Pass cacheItem to getMessages so that:
+                // Pass cacheItem to getRegionsFromDS so that:
                 // 1. A previously stored etag, if any, can be used for the next HTTP request.
                 // 2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed
                 // 	 with new properties from the next HTTP response.
                 getRegionsFromDS(locale, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-                return cacheItem;
             } catch (Exception e) {
                 // To make sure that the thread will close
                 // even when an exception is thrown
-                return null;
+                logger.error(e.getMessage());
             }
         };
-        FutureTask<LocaleCacheItem> task = new FutureTask<LocaleCacheItem>(callable);
-        Thread thread = new Thread(task);
+        Thread thread = new Thread(runnable);
         thread.start();
     }
 
     private void populateSupportedLanguagesCache(String locale, LocaleCacheItem cacheItem) {
-        Callable<LocaleCacheItem> callable = () -> {
+        Runnable runnable = () -> {
             try {
-
-                // Pass cacheItem to getMessages so that:
+                // Pass cacheItem to getSupportedLanguagesFromDS so that:
                 // 1. A previously stored etag, if any, can be used for the next HTTP request.
                 // 2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed
                 // 	 with new properties from the next HTTP response.
                 getSupportedLanguagesFromDS(locale, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-                return cacheItem;
             } catch (Exception e) {
                 // To make sure that the thread will close
                 // even when an exception is thrown
-                return null;
+                logger.error(e.getMessage());
             }
         };
-        FutureTask<LocaleCacheItem> task = new FutureTask<LocaleCacheItem>(callable);
-        Thread thread = new Thread(task);
+        Thread thread = new Thread(runnable);
         thread.start();
     }
 }

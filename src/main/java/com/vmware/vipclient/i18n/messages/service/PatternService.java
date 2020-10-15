@@ -17,8 +17,6 @@ import org.slf4j.LoggerFactory;
 import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.Locale;
-import java.util.concurrent.Callable;
-import java.util.concurrent.FutureTask;
 
 /**
  * The class represents date formatting
@@ -155,44 +153,38 @@ public class PatternService {
     }
 
     private void populateCacheTask(String locale, PatternCacheItem cacheItem) {
-        Callable<PatternCacheItem> callable = () -> {
+        Runnable runnable = () -> {
             try {
-
-                // Pass cacheItem to getMessages so that:
+                // Pass cacheItem to getPatternsFromDS so that:
                 // 1. A previously stored etag, if any, can be used for the next HTTP request.
                 // 2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed
                 // 	 with new properties from the next HTTP response.
                 getPatternsFromDS(locale, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-                return cacheItem;
             } catch (Exception e) {
                 // To make sure that the thread will close
                 // even when an exception is thrown
-                return null;
+                logger.error(e.getMessage());
             }
         };
-        FutureTask<PatternCacheItem> task = new FutureTask<PatternCacheItem>(callable);
-        Thread thread = new Thread(task);
+        Thread thread = new Thread(runnable);
         thread.start();
     }
 
     private void populateCacheTask(String language, String region, PatternCacheItem cacheItem) {
-        Callable<PatternCacheItem> callable = () -> {
+        Runnable runnable = () -> {
             try {
-
-                // Pass cacheItem to getMessages so that:
+                // Pass cacheItem to getPatternsFromDS so that:
                 // 1. A previously stored etag, if any, can be used for the next HTTP request.
                 // 2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed
                 // 	 with new properties from the next HTTP response.
                 getPatternsFromDS(language, region, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-                return cacheItem;
             } catch (Exception e) {
                 // To make sure that the thread will close
                 // even when an exception is thrown
-                return null;
+                logger.error(e.getMessage());
             }
         };
-        FutureTask<PatternCacheItem> task = new FutureTask<PatternCacheItem>(callable);
-        Thread thread = new Thread(task);
+        Thread thread = new Thread(runnable);
         thread.start();
     }
 }

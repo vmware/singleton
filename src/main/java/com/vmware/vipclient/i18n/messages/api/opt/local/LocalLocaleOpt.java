@@ -21,8 +21,6 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.Callable;
-import java.util.concurrent.FutureTask;
 
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localeAliasesMap;
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePathMap;
@@ -132,23 +130,21 @@ public class LocalLocaleOpt implements LocaleOpt{
 	}
 
 	private void populateLanguagesCache(String locale, LocaleCacheItem cacheItem) {
-		Callable<LocaleCacheItem> callable = () -> {
+		Runnable runnable = () -> {
 			try {
 
-				// Pass cacheItem to getMessages so that:
+				// Pass cacheItem to getLanguagesNamesFromBundle so that:
 				// 1. A previously stored etag, if any, can be used for the next HTTP request.
 				// 2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed
 				// 	 with new properties from the next HTTP response.
 				getLanguagesNamesFromBundle(locale, cacheItem);
-				return cacheItem;
 			} catch (Exception e) {
 				// To make sure that the thread will close
 				// even when an exception is thrown
-				return null;
+				logger.error(e.getMessage());
 			}
 		};
-		FutureTask<LocaleCacheItem> task = new FutureTask<LocaleCacheItem>(callable);
-		Thread thread = new Thread(task);
+		Thread thread = new Thread(runnable);
 		thread.start();
 	}
 }
