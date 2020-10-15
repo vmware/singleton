@@ -96,8 +96,10 @@ class ClientUtil:
     def check_response_valid(cls, dict):
         if dict and KEY_RESULT in dict:
             status = dict[KEY_RESULT].get(KEY_RESPONSE)
-            if status and status[KEY_CODE] == 200:
-                return True
+            if status and KEY_CODE in status:
+                code = status[KEY_CODE]
+                if code == 200 or code == 604:
+                    return True
         return False
 
     @classmethod
