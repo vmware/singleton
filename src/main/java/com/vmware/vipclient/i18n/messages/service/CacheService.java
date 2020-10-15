@@ -5,6 +5,7 @@
 package com.vmware.vipclient.i18n.messages.service;
 
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.CacheItem;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
@@ -57,6 +58,15 @@ public class CacheService {
     public void addCacheOfStatus(Map<String, String> dataMap) {
         String cacheKey = dto.getTransStatusAsCacheKey();
         addCacheItem(cacheKey, new MessageCacheItem(dataMap));
+    }
+
+    public MessageCacheItem getCacheOfLocales(DataSourceEnum dataSource) {
+        String cacheKey = dto.getLocalesCacheKey(dataSource);
+        return (MessageCacheItem) this.getCacheItem(cacheKey);
+    }
+    public void addCacheOfLocales(MessageCacheItem itemToCache, DataSourceEnum dataSource) {
+        String cacheKey = dto.getLocalesCacheKey(dataSource);
+        addCacheItem(cacheKey, itemToCache);
     }
 
     private void addCacheItem(String key, CacheItem cacheItem) {

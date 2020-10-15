@@ -102,7 +102,7 @@ public class MessageCacheTest1 extends BaseTestClass {
         String v = "It's a test";
         data.put(k, v);
         String cachedKey = "key";
-        MessageCacheItem cacheItem = new MessageCacheItem(null, data, null, System.currentTimeMillis(), null);
+        MessageCacheItem cacheItem = new MessageCacheItem(data, null, System.currentTimeMillis(), null);
         c.put(cachedKey, cacheItem);
         long expired = 20000;
         c.setExpiredTime(expired);

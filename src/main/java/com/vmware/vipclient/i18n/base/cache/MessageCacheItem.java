@@ -19,26 +19,23 @@ public class MessageCacheItem implements CacheItem {
 		if (dataMap != null)
 			this.cachedData.putAll(dataMap);
 	}
-	
-	public MessageCacheItem (String locale, Map<String, String> dataMap, String etag, long timestamp, Long maxAgeMillis) {
-		this.maxAgeMillis = maxAgeMillis == null ? this.maxAgeMillis : maxAgeMillis;
-		this.setCacheItem(locale, dataMap, etag, timestamp, maxAgeMillis);
+
+	public MessageCacheItem (Map<String, String> dataMap, String etag, long timestamp, Long maxAgeMillis) {
+		this.setCacheItem(dataMap, etag, timestamp, maxAgeMillis);
 	}
 
-	private String locale;
 	private String etag;
 	private long timestamp;
 	private Long maxAgeMillis = 86400000l;
 	
 	private final Map<String, String> cachedData = new HashMap<>();
 
-	public synchronized void setCacheItem(String locale, Map<String, String> dataToCache, String etag, long timestamp, Long maxAgeMillis) {
+	public synchronized void setCacheItem(Map<String, String> dataToCache, String etag, long timestamp, Long maxAgeMillis) {
 		if (dataToCache != null)
 			this.cachedData.putAll(dataToCache);
-		this.setCacheItem(locale, etag, timestamp, maxAgeMillis);
+		this.setCacheItem(etag, timestamp, maxAgeMillis);
 	}
-	public synchronized void setCacheItem(String locale, String etag, long timestamp, Long maxAgeMillis) {
-		this.locale = locale;
+	public synchronized void setCacheItem(String etag, long timestamp, Long maxAgeMillis) {
 		if (etag != null && !etag.isEmpty())
 			this.etag = etag;
 		this.timestamp = timestamp;
@@ -47,7 +44,7 @@ public class MessageCacheItem implements CacheItem {
 	}
 
 	public synchronized void setCacheItem (MessageCacheItem cacheItem) {
-		this.setCacheItem(cacheItem.getLocale(), cacheItem.getCachedData(), cacheItem.getEtag(), cacheItem.getTimestamp(), cacheItem.getMaxAgeMillis());
+		this.setCacheItem(cacheItem.getCachedData(), cacheItem.getEtag(), cacheItem.getTimestamp(), cacheItem.getMaxAgeMillis());
 	}
 		
 	public String getEtag() {
@@ -65,8 +62,6 @@ public class MessageCacheItem implements CacheItem {
 	public Long getMaxAgeMillis() {
 		return maxAgeMillis;
 	}
-
-	public String getLocale() { return locale; }
 
 	public synchronized boolean isExpired() {
 		// If offline mode only, cache never expires.
