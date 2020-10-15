@@ -135,9 +135,12 @@ namespace SingletonClient.Implementation
             }
             JObject result = token.Value<JObject>(SingletonConst.KeyResult);
             JObject status = result.Value<JObject>(SingletonConst.KeyResponse);
-            if (status != null && status.Value<int>(SingletonConst.KeyCode) == 200)
+            if (status != null)
             {
-                return true;
+                int code = status.Value<int>(SingletonConst.KeyCode);
+                if (code == 200 || code == 604) {
+                    return true;
+                }
             }
             return false;
         }
