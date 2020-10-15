@@ -51,11 +51,11 @@ public class RemoteLocaleOpt extends RemoteL2BaseOpt implements LocaleOpt{
                         String responseBody = (String) response.get(URLUtils.BODY);
                         Map<String, String> territories = getTerritoriesFromResponse(responseBody);
                         if (territories != null) {
-                            logger.debug("Find the regions from Singleton Service for locale [{}].\n", locale);
+                            logger.debug("Found the regions from Singleton Service for locale [{}].\n", locale);
                             territories = JSONUtils.map2SortMap(territories);
                             cacheItem.set(territories, etag, timestamp, maxAgeMillis);
                         } else {
-                            logger.debug("Doesn't find the regions from Singleton Service for locale [{}].\n", locale);
+                            logger.debug("Didn't find the regions from Singleton Service for locale [{}].\n", locale);
                             cacheItem.set(etag, timestamp, maxAgeMillis);
                         }
                     } catch (Exception e) {
@@ -95,11 +95,11 @@ public class RemoteLocaleOpt extends RemoteL2BaseOpt implements LocaleOpt{
                         String responseBody = (String) response.get(URLUtils.BODY);
                         Map<String, String> languages = getLanguagesFromResponse(responseBody);
                         if (languages != null) {
-                            logger.debug("Find the supported languages from Singleton Service for product [{}], version [{}], locale [{}].\n", dto.getProductID(), dto.getVersion(), locale);
+                            logger.debug("Found the supported languages from Singleton Service for product [{}], version [{}], locale [{}].\n", dto.getProductID(), dto.getVersion(), locale);
                             languages = JSONUtils.map2SortMap(languages);
                             cacheItem.set(languages, etag, timestamp, maxAgeMillis);
                         }else{
-                            logger.debug("Doesn't find the supported languages from Singleton Service for product [{}], version [{}], locale [{}].\n", dto.getProductID(), dto.getVersion(), locale);
+                            logger.debug("Didn't find the supported languages from Singleton Service for product [{}], version [{}], locale [{}].\n", dto.getProductID(), dto.getVersion(), locale);
                             cacheItem.set(etag, timestamp, maxAgeMillis);
                         }
                     } catch (Exception e) {

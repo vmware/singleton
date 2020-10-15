@@ -55,10 +55,10 @@ public class RemotePatternOpt extends RemoteL2BaseOpt implements PatternOpt{
                     String responseBody = (String) response.get(URLUtils.BODY);
                     Map<String, Object> patterns = getPatternsFromResponse(responseBody);
                     if (patterns != null) {
-                        logger.debug("Find the pattern from Singleton Service for locale [{}].\n", locale);
+                        logger.debug("Found the pattern from Singleton Service for locale [{}].\n", locale);
                         cacheItem.set(patterns, etag, timestamp, maxAgeMillis);
                     }else{
-                        logger.debug("Doesn't find the pattern from Singleton Service for locale [{}].\n", locale);
+                        logger.debug("Didn't find the pattern from Singleton Service for locale [{}].\n", locale);
                         cacheItem.set(etag, timestamp, maxAgeMillis);
                     }
                 } catch (Exception e) {

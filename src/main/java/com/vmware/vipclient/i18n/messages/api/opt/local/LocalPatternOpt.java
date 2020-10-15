@@ -45,10 +45,10 @@ public class LocalPatternOpt implements PatternOpt{
             String patternStr = PatternUtil.getPatternFromLib(normalizedLocale, null);
             Map<String, Object> patterns = (Map<String, Object>) new JSONParser().parse(patternStr);
             if(patterns != null) {
-                logger.debug("Find the pattern from local bundle for locale [{}].\n", normalizedLocale);
+                logger.debug("Found the pattern from local bundle for locale [{}].\n", normalizedLocale);
                 cacheItem.set((Map<String, Object>) patterns.get(PatternKeys.CATEGORIES), System.currentTimeMillis());
             }else{
-                logger.debug("Doesn't find the pattern from local bundle for locale [{}].\n", normalizedLocale);
+                logger.debug("Didn't find the pattern from local bundle for locale [{}].\n", normalizedLocale);
                 cacheItem.set(null, System.currentTimeMillis());
             }
         } catch (Exception e) {
