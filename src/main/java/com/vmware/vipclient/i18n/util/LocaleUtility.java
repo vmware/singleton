@@ -151,9 +151,10 @@ public class LocaleUtility {
             Locale zhLocale = fmtToMappedLocale(preferredLocale);
             if (!locales.contains(zhLocale)) {
                 String langTag = zhLocale.toLanguageTag();
-                if (langTag.equals("zh-Hans") || langTag.equals("zh-Hant"))
+                if (!langTag.equals("zh-Hans") && !langTag.equals("zh-Hant"))
                     return null;
             }
+
         }
         return bestMatch;
     }
