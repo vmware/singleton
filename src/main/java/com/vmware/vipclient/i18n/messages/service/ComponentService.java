@@ -128,9 +128,13 @@ public class ComponentService {
 	 * @param fallbackLocalesIter The fallback locale queue to use in case of failure. If null, no locale fallback will be applied.
      */
     private MessageCacheItem getFallbackLocaleMessages(Iterator<Locale> fallbackLocalesIter) {
-		if (!dto.getLocale().equals(ConstantsKeys.SOURCE) && fallbackLocalesIter != null && fallbackLocalesIter.hasNext()) {
+		if (fallbackLocalesIter != null && fallbackLocalesIter.hasNext()) {
+			Locale fallbackLocale = fallbackLocalesIter.next();
+			if (fallbackLocale.toLanguageTag().equals(dto.getLocale())) {
+				return getFallbackLocaleMessages(fallbackLocalesIter);
+			}
 			// Use MessageCacheItem of the next fallback locale.
-			MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), fallbackLocalesIter.next().toLanguageTag(), dto.getProductID(), dto.getVersion());
+			MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), fallbackLocale.toLanguageTag(), dto.getProductID(), dto.getVersion());
 			return new ComponentService(fallbackLocaleDTO).getMessages(fallbackLocalesIter);
 		}
 		return new MessageCacheItem();
