@@ -149,8 +149,10 @@ public class LocaleUtility {
         // For any Chinese locale (zh-*) that is not supported (except for zh-Hans and zh-Hant), use the fallback locale even if "zh" is supported.
         if (preferredLocale.getLanguage().equals("zh")) {
             Locale zhLocale = fmtToMappedLocale(preferredLocale);
-            if (!locales.contains(zhLocale) && !zhLocale.toLanguageTag().equals("zh-Hans") && !zhLocale.toLanguageTag().equals("zh-Hant")) {
-                return null;
+            if (!locales.contains(zhLocale)) {
+                String langTag = zhLocale.toLanguageTag();
+                if (langTag.equals("zh-Hans") || langTag.equals("zh-Hant"))
+                    return null;
             }
         }
         return bestMatch;
