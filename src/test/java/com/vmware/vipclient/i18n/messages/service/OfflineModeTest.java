@@ -174,9 +174,8 @@ public class OfflineModeTest extends BaseTestClass {
         // Bundle does not exist locally
         Locale newLocale = new Locale("es");
         dto.setLocale(newLocale.toLanguageTag());
-        
-    	CacheService cs = new CacheService(dto);
 
+    	CacheService cs = new CacheService(dto);
     	String message = translation.getMessage(newLocale, component, key, args);
     	// Returns the message in the default locale
     	assertEquals(FormatUtils.format(source, args), message);
