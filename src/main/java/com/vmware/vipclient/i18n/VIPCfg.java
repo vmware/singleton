@@ -108,12 +108,7 @@ public class VIPCfg {
             cfg.isSubInstance = true;
             VIPCfg.moduleCfgs.put(productName, cfg);
         }
-
-        if (VIPCfg.moduleCfgs.containsKey(productName) && VIPCfg.moduleCfgs.get(productName) != null) {
-            return VIPCfg.moduleCfgs.get(productName);
-        } else {
-            return gcInstance;
-        }
+        return VIPCfg.moduleCfgs.get(productName);
     }
 
     /**
