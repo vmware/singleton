@@ -22,7 +22,6 @@ import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
-import org.checkerframework.checker.formatter.FormatUtil;
 import org.json.simple.parser.ParseException;
 import org.junit.Assert;
 import org.junit.Before;
@@ -174,8 +173,9 @@ public class OfflineModeTest extends BaseTestClass {
         // Bundle does not exist locally
         Locale newLocale = new Locale("es");
         dto.setLocale(newLocale.toLanguageTag());
-
+        
     	CacheService cs = new CacheService(dto);
+    	
     	String message = translation.getMessage(newLocale, component, key, args);
     	// Returns the message in the default locale
     	assertEquals(FormatUtils.format(source, args), message);
