@@ -139,23 +139,32 @@ public class LocaleUtility {
         return loc1.equals(loc2);
     }
 
-    /*
-     * pick up the matched locale from a locale list
+    /**
+     * Iterates over the set of locales to find a locale that best matches the preferredLocale.
+     *
+     * <p> </p>A "best match" is defined to be the locale that has the longest common language tag with the preferredLocale.
+     * For example, the supported locale 'de' will be returned for a non-supported preferredLocale 'de-DE'. </p>
+     *
+     * <p> To meet the custom usage of Chinese language, locale "zh" is not considered as a "match" for any non-supported Chinese locale (zh-*).
+     * That is, even if "zh" locale is supported, <code>null</code> will be returned for Chinese locale 'zh-HK' that is not supported. </p>
+     *
+     * @param locales the set of locales to find the best match from.
+     * @param preferredLocale the locale being matched.
+     * @return the best match, if any; <code>null</code> otherwise.
      */
     public static Locale pickupLocaleFromList(Set<Locale> locales,
                                               Locale preferredLocale) {
-        Locale bestMatch = Locale.lookup(Arrays.asList(new Locale.LanguageRange(fmtToMappedLocale(preferredLocale).toLanguageTag())), locales);
+		Locale localeObject = fmtToMappedLocale(preferredLocale);
+		Locale bestMatch = Locale.lookup(Arrays.asList(new Locale.LanguageRange(localeObject.toLanguageTag())),
+				locales);
 
-        // For any Chinese locale (zh-*) that is not supported (except for zh-Hans and zh-Hant), use the fallback locale even if "zh" is supported.
-        if (preferredLocale.getLanguage().equals("zh")) {
-            Locale zhLocale = fmtToMappedLocale(preferredLocale);
-            if (!locales.contains(zhLocale)) {
-                String langTag = zhLocale.toLanguageTag();
-                if (!langTag.equals("zh-Hans") && !langTag.equals("zh-Hant"))
-                    return null;
+        // handle Chinese locale matching
+        if (bestMatch != null && bestMatch.getLanguage().equals("zh")) {
+            if (!locales.contains(localeObject)) {
+                return null;
             }
-
         }
+
         return bestMatch;
     }
 

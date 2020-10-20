@@ -87,43 +87,16 @@ public class LocaleTest extends BaseTestClass {
         Assert.assertNull(LocaleUtility.pickupLocaleFromList(new HashSet<>(Arrays.asList(supportedLocales)), Locale.forLanguageTag("fil")));
     }
 
-    @Test
-    public void testPickupLocaleFromListZh() {
-        Locale[] supportedLocales = {
-                Locale.forLanguageTag("zh")
-        };
-        Locale[] testLocales = {
-                Locale.forLanguageTag("zh"),
-                Locale.forLanguageTag("zh-CN"),
-                Locale.forLanguageTag("zh-TW"),
-                Locale.forLanguageTag("zh-HANS-CN"),
-                Locale.forLanguageTag("zh-HANT-TW"),
-                Locale.forLanguageTag("zh-HANS"),
-                Locale.forLanguageTag("zh-HANT") };
-
-        String[] expectedLocales = {"zh" ,"zh", "zh", "zh", "zh", "zh", "zh"};
-
-        for (int i = 0; i < testLocales.length; i++) {
-            String matchedLanguageTag = LocaleUtility.pickupLocaleFromList(
-                    new HashSet<>(Arrays.asList(supportedLocales)), testLocales[i])
-                    .toLanguageTag();
-
-            logger.debug(matchedLanguageTag + "-----" + expectedLocales[i]);
-            Assert.assertEquals(expectedLocales[i], matchedLanguageTag);
-        }
-    }
-
     /**
      *  For any Chinese locale (zh-*) that is not supported,
      *  return null so that fallback locale will be used even if "zh" is supported.
      *  For any non-Chinese locale, return the best match (e.g. 'de' if 'de-DE' is not supported).
      */
     @Test
-    public void testPickupLocaleFromList_special_case_zh_HK() {
+    public void testPickupLocaleFromListZh() {
         Locale[] supportedLocales = {
                 Locale.forLanguageTag("zh"),
-                Locale.forLanguageTag("zh-Hans"),
-                Locale.forLanguageTag("zh-Hant")
+                Locale.forLanguageTag("zh-Hans")
 
         };
         Assert.assertNull(LocaleUtility.pickupLocaleFromList(new HashSet<>(Arrays.asList(supportedLocales)), Locale.forLanguageTag("zh-HK")));
@@ -131,8 +104,8 @@ public class LocaleTest extends BaseTestClass {
                 Locale.forLanguageTag("zh")).toLanguageTag());
         Assert.assertEquals("zh-Hans", LocaleUtility.pickupLocaleFromList(new HashSet<>(Arrays.asList(supportedLocales)),
                 Locale.forLanguageTag("zh-CN")).toLanguageTag());
-        Assert.assertEquals("zh-Hant", LocaleUtility.pickupLocaleFromList(new HashSet<>(Arrays.asList(supportedLocales)),
-                Locale.forLanguageTag("zh-TW")).toLanguageTag());
+        Assert.assertNull(LocaleUtility.pickupLocaleFromList(new HashSet<>(Arrays.asList(supportedLocales)),
+                Locale.forLanguageTag("zh-TW")));
     }
 
     @Test
