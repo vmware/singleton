@@ -68,10 +68,6 @@ public class LocalLocaleOpt implements LocaleOpt{
 		FormattingCacheService formattingCacheService = new FormattingCacheService();
 		languagesNames = formattingCacheService.getLanguagesNames(locale);// key
 		if (languagesNames != null) {
-			if (languagesNames.isExpired()) { // cacheItem has expired
-				// Update the cache in a separate thread
-				populateLanguagesCache(locale, languagesNames);
-			}
 			logger.debug("Found languages' names from cache for locale [{}]!", locale);
 			return languagesNames.getCachedData();
 		}
@@ -130,24 +126,5 @@ public class LocalLocaleOpt implements LocaleOpt{
 			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
-	}
-
-	private void populateLanguagesCache(String locale, LocaleCacheItem cacheItem) {
-		Runnable runnable = () -> {
-			try {
-
-				// Pass cacheItem to getLanguagesNamesFromBundle so that:
-				// 1. A previously stored etag, if any, can be used for the next HTTP request.
-				// 2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed
-				// 	 with new properties from the next HTTP response.
-				getLanguagesNamesFromBundle(locale, cacheItem);
-			} catch (Exception e) {
-				// To make sure that the thread will close
-				// even when an exception is thrown
-				logger.error(e.getMessage());
-			}
-		};
-		Thread thread = new Thread(runnable);
-		thread.start();
 	}
 }
