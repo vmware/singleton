@@ -134,6 +134,10 @@ namespace SingletonClient.Implementation
                 return false;
             }
             JObject result = token.Value<JObject>(SingletonConst.KeyResult);
+            if (result == null)
+            {
+                return false;
+            }
             JObject status = result.Value<JObject>(SingletonConst.KeyResponse);
             if (status != null)
             {
