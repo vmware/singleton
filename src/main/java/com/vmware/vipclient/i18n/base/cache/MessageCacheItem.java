@@ -74,7 +74,7 @@ public class MessageCacheItem implements CacheItem {
     		return false;
     	}
 
-    	return System.currentTimeMillis() - this.getTimestamp() > this.getMaxAgeMillis();
+    	return System.currentTimeMillis() - this.getTimestamp() >= this.getMaxAgeMillis();
     }
 
 }
