@@ -69,9 +69,9 @@ public class APIValidationInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		LOGGER.debug(request.getSession().getId());
-		String SingletonRequestID = getRequestId(request, this.clientRequestIds);
-		String logOfUrl = SingletonRequestID+"The request url is: " + request.getRequestURL();
-		String logOfQueryStr = SingletonRequestID+"The request query string is: " + request.getQueryString();
+		String singletonRequestID = getRequestId(request, this.clientRequestIds);
+		String logOfUrl = singletonRequestID + "The request url is: " + request.getRequestURL();
+		String logOfQueryStr = singletonRequestID + "The request query string is: " + request.getQueryString();
 		LOGGER.debug(logOfUrl);
 		LOGGER.debug(logOfQueryStr);
 		IVlidation u = VIPValidation.getInstance(URLValidation.class, request);
@@ -96,7 +96,7 @@ public class APIValidationInterceptor extends HandlerInterceptorAdapter {
 				return false;
 			}
 		}
-		String startHandle = SingletonRequestID+"[thread-" + Thread.currentThread().getId() + "] Start to handle request...";
+		String startHandle = singletonRequestID + "[thread-" + Thread.currentThread().getId() + "] Start to handle request...";
 		LOGGER.info(startHandle);
 		LOGGER.info(logOfUrl);
 		LOGGER.info(logOfQueryStr);
@@ -125,13 +125,16 @@ public class APIValidationInterceptor extends HandlerInterceptorAdapter {
 	}
 	
 	
+	/**
+	 * Use to get client request ID content from HTTP headers
+	 */
 	private String getRequestId(HttpServletRequest request, List<String> headerNames) {
 		String singletonReqId = "";
 		if(headerNames != null) {
 			for(String headerName: headerNames) {
 				String reqIdStr = request.getHeader(headerName);
 				if(!StringUtils.isEmpty(reqIdStr)) {
-					singletonReqId = "[clientRequestID-"+headerName+": "+reqIdStr+"]";
+					singletonReqId = "[clientRequestID-" + headerName + ": " + reqIdStr + "]";
 					break;
 				}
 			}
