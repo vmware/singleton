@@ -144,7 +144,9 @@ public class LocaleUtility {
      */
     public static Locale pickupLocaleFromList(Set<Locale> locales,
                                               Locale preferredLocale) {
-        Locale bestMatch = Locale.lookup(Arrays.asList(new Locale.LanguageRange(fmtToMappedLocale(preferredLocale).toLanguageTag())), locales);
+		Locale localeObject = fmtToMappedLocale(preferredLocale);
+		Locale bestMatch = Locale.lookup(Arrays.asList(new Locale.LanguageRange(localeObject.toLanguageTag())),
+				locales);
 
         // For any Chinese locale (zh-*) that is not supported (except for zh-Hans and zh-Hant), use the fallback locale even if "zh" is supported.
         if (preferredLocale.getLanguage().equals("zh")) {
