@@ -155,6 +155,7 @@ public class VIPCfg {
         if (prop.containsKey("vipServer")) {
             this.vipServer = prop.getString("vipServer");
             this.addMsgOriginsQueue(DataSourceEnum.VIP);
+            this.initializeVIPService();
         }
         if (prop.containsKey("offlineResourcesBaseUrl")) {
         	this.offlineResourcesBaseUrl = prop.getString("offlineResourcesBaseUrl");
@@ -192,10 +193,8 @@ public class VIPCfg {
      * initialize VIPService instances to provide HTTP requester
      */
     public void initializeVIPService() {
-        this.vipService = VIPService.getVIPServiceInstance();
         try {
-            this.vipService.initializeVIPService(this.productName, this.version,
-                    this.vipServer);
+            this.vipService = new VIPService(this.getVipServer());
         } catch (MalformedURLException e) {
             logger.error("'vipServer' " + this.vipServer + " in configuration isn't a valid URL!");
         }

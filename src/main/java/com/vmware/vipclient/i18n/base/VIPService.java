@@ -15,46 +15,23 @@ import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
  *
  */
 public class VIPService {
-    private static VIPService vIPServiceInstance;
     private HttpRequester     httpRequester;
-    private String            productID;
-    private String            version;
 
-    private VIPService() {
+    public VIPService(String vipServer)throws MalformedURLException {
+        createHttpRequester(vipServer);
     }
 
     /**
-     * get the instance of the VIPService.
+     * Initializes VIP service.
      *
-     * @return The object of the VIPService.
-     */
-    public static VIPService getVIPServiceInstance() {
-        if (vIPServiceInstance == null) {
-            vIPServiceInstance = new VIPService();
-        }
-        return vIPServiceInstance;
-    }
-
-    /**
-     * Initialize vIP Service with productID, version and vIPHostName.
-     *
-     * @param productID
-     *            The name of product.
-     * @param version
-     *            The release version of product.
-     * @param vIPHostName
-     *            The info of vIP Server(ip:port).
+     * @param vipServer
+     *            The VIP server host (ip:port).
      * @throws MalformedURLException
+     * @Deprecated use the constructor instead
      */
-    public void initializeVIPService(String productID, String version,
-            String vIPServer) throws MalformedURLException {
-        if (vIPServiceInstance == null) {
-            throw new VIPJavaClientException(
-                    "Please create VIPServiceInstance first!");
-        }
-        this.productID = productID;
-        this.version = version;
-        createHttpRequester(vIPServer);
+    @Deprecated
+    public void initializeVIPService(String vipServer) throws MalformedURLException {
+        createHttpRequester(vipServer);
     }
 
     private void createHttpRequester(String vIPServer) throws MalformedURLException {
@@ -69,14 +46,6 @@ public class VIPService {
                     "Please create HttpRequester, call createHttpRequest API first! ");
         }
         return httpRequester;
-    }
-
-    public String getProductID() {
-        return productID;
-    }
-
-    public String getVersion() {
-        return version;
     }
 
     public void setHeaderParams(Map<String, String> params) {
