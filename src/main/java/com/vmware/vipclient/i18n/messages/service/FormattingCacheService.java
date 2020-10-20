@@ -35,11 +35,6 @@ public class FormattingCacheService {
         addFormattings(cacheKey, o);
     }
 
-    public void addLanguagesNames(String locale, LocaleCacheItem o) {
-        String cacheKey = getLanguagesNamesCacheKey(locale);
-        addFormattings(cacheKey, o);
-    }
-
     public void addRegions(String locale, LocaleCacheItem o) {
         String cacheKey = getRegionsCacheKey(locale);
         addFormattings(cacheKey, o);
@@ -60,11 +55,6 @@ public class FormattingCacheService {
         return (LocaleCacheItem) getFormattings(cacheKey);
     }
 
-    public LocaleCacheItem getLanguagesNames(String locale) {
-        String cacheKey = getLanguagesNamesCacheKey(locale);
-        return (LocaleCacheItem) getFormattings(cacheKey);
-    }
-
     public LocaleCacheItem getRegions(String locale) {
         String cacheKey = getRegionsCacheKey(locale);
         return (LocaleCacheItem) getFormattings(cacheKey);
@@ -80,10 +70,6 @@ public class FormattingCacheService {
 
     private String getSupportedLanguagesCacheKey(BaseDTO dto, String locale){
         return ConstantsKeys.DISPNS_PREFIX + dto.getProductID() + ConstantsKeys.UNDERLINE + dto.getVersion() + ConstantsKeys.UNDERLINE + locale;
-    }
-
-    private String getLanguagesNamesCacheKey(String locale){
-        return ConstantsKeys.LANGUAGES_PREFIX + locale;
     }
 
     private String getRegionsCacheKey(String locale){

@@ -11,7 +11,6 @@ import com.vmware.vipclient.i18n.base.cache.LocaleCacheItem;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
 import com.vmware.vipclient.i18n.messages.api.opt.LocaleOpt;
 import com.vmware.vipclient.i18n.messages.dto.LocaleDTO;
-import com.vmware.vipclient.i18n.messages.service.FormattingCacheService;
 import com.vmware.vipclient.i18n.messages.service.ProductService;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.JSONUtils;
@@ -44,7 +43,7 @@ public class LocalLocaleOpt implements LocaleOpt{
 		Set<String> supportedLanguages = ps.getSupportedLanguageTags(DataSourceEnum.Bundle);
 
 		if(supportedLanguages != null && !supportedLanguages.isEmpty()) {
-			Map<String, String> languagesNames = getLanguagesNames(locale);
+			Map<String, String> languagesNames = getLanguagesNamesFromBundle(locale);
 			if (languagesNames == null || languagesNames.isEmpty())
 				return;
 			for(String language : supportedLanguages){
@@ -62,44 +61,28 @@ public class LocalLocaleOpt implements LocaleOpt{
 		}
     }
 
-    private Map<String, String> getLanguagesNames(String locale){
-		LocaleCacheItem languagesNames = null;
-		logger.debug("Look for languages' names from cache for locale [{}]!", locale);
-		FormattingCacheService formattingCacheService = new FormattingCacheService();
-		languagesNames = formattingCacheService.getLanguagesNames(locale);// key
-		if (languagesNames != null) {
-			logger.debug("Found languages' names from cache for locale [{}]!", locale);
-			return languagesNames.getCachedData();
-		}
-		languagesNames = new LocaleCacheItem();
-		getLanguagesNamesFromBundle(locale, languagesNames);
-		formattingCacheService.addLanguagesNames(locale, languagesNames);
-		logger.debug("Languages' names are cached for locale [{}]!\n\n", locale);
-		return languagesNames.getCachedData();
-	}
-
-	private void getLanguagesNamesFromBundle(String locale, LocaleCacheItem cacheItem) {
+	private Map<String, String> getLanguagesNamesFromBundle(String locale) {
 		logger.debug("Look for languages' names from local package bundle for locale [{}]!", locale);
 		String normalizedLocale = CommonUtil.getCLDRLocale(locale, localePathMap, localeAliasesMap);
 		logger.debug("Normalized locale for locale [{}] is [{}]", locale, normalizedLocale);
 		if(normalizedLocale == null || normalizedLocale.isEmpty()) {
 			logger.error("Normalized locale is empty for locale [{}]", locale);
-			return;
+			return null;
 		}
 		try {
 			String languagesJsonStr = PatternUtil.getLanguageFromLib(normalizedLocale);
 			Map<String, Object> languagesData = (Map<String, Object>) new JSONParser().parse(languagesJsonStr);
 			if (languagesData != null) {
 				logger.debug("Found the languages' names from local bundle for locale [{}].\n", locale);
-				cacheItem.set((Map<String, String>) languagesData.get(PatternKeys.LANGUAGES), System.currentTimeMillis());
+				return (Map<String, String>) languagesData.get(PatternKeys.LANGUAGES);
 			}else{
 				logger.debug("Didn't find the languages' names from local bundle for locale [{}].\n", locale);
-				cacheItem.set(null, System.currentTimeMillis());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
+		return null;
 	}
 
 	public void getRegions(String locale, LocaleCacheItem cacheItem) {
