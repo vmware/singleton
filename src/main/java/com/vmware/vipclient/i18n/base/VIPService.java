@@ -22,16 +22,10 @@ public class VIPService {
     }
 
     /**
-     * Initializes VIP service.
-     *
-     * @param vipServer
-     *            The VIP server host (ip:port).
-     * @throws MalformedURLException
-     * @Deprecated use the constructor instead
+     * @Deprecated Constructor is used instead
      */
     @Deprecated
     public void initializeVIPService(String vipServer) throws MalformedURLException {
-        createHttpRequester(vipServer);
     }
 
     private void createHttpRequester(String vIPServer) throws MalformedURLException {

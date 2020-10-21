@@ -192,6 +192,7 @@ public class VIPCfg {
     /**
      * initialize VIPService instances to provide HTTP requester
      */
+    @Deprecated
     public void initializeVIPService() {
         try {
             this.vipService = new VIPService(this.getVipServer());
