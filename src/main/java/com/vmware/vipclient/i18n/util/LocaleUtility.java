@@ -130,12 +130,6 @@ public class LocaleUtility {
         return zhLocale;
     }
 
-    public static boolean isSameLocale(String locale1, String locale2) {
-        String loc1 = fmtToMappedLocale(locale1).toLanguageTag();
-        String loc2 = fmtToMappedLocale(locale2).toLanguageTag();
-        return loc1.equals(loc2);
-    }
-
     /**
      * Iterates over the set of locales to find a locale that best matches the preferredLocale.
      *
