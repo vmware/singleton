@@ -52,6 +52,7 @@ public class HttpRequesterTest extends BaseTestClass {
     public void addHeaderParamsTest_() {
         String url = "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0/locales/[^/]*?/components/default\\?pseudo=false";
         String url2 = "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0/localelist";
+        String url3 = "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0/locales/latest/components/default\\?pseudo=true";
 
         HashMap<String, String> params = new HashMap<>();
         String key1 = "key-1";
@@ -64,6 +65,7 @@ public class HttpRequesterTest extends BaseTestClass {
 
         WireMock.stubFor(WireMock.get(WireMock.urlMatching(url)).willReturn(WireMock.aResponse().withStatus(200)));
         WireMock.stubFor(WireMock.get(WireMock.urlMatching(url2)).willReturn(WireMock.aResponse().withStatus(200)));
+        WireMock.stubFor(WireMock.get(WireMock.urlMatching(url3)).willReturn(WireMock.aResponse().withStatus(200)));
 
         TranslationMessage tm = (TranslationMessage) I18nFactory.getInstance()
                 .getMessageInstance(TranslationMessage.class);
@@ -83,6 +85,7 @@ public class HttpRequesterTest extends BaseTestClass {
     public void addHeaderParamsTest() {
         String url = "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0/locales/[^/]*?/components/default\\?pseudo=false";
         String url2 = "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0/localelist";
+        String url3 = "/i18n/api/v2/translation/products/JavaclientTest/versions/1.0.0/locales/latest/components/default\\?pseudo=true";
 
         HashMap<String, String> params = new HashMap<>();
         String key1 = "key-1";
@@ -95,6 +98,7 @@ public class HttpRequesterTest extends BaseTestClass {
 
         WireMock.stubFor(WireMock.get(WireMock.urlMatching(url)).willReturn(WireMock.aResponse().withStatus(200)));
         WireMock.stubFor(WireMock.get(WireMock.urlMatching(url2)).willReturn(WireMock.aResponse().withStatus(200)));
+        WireMock.stubFor(WireMock.get(WireMock.urlMatching(url3)).willReturn(WireMock.aResponse().withStatus(200)));
 
         TranslationMessage tm = (TranslationMessage) I18nFactory.getInstance()
                 .getMessageInstance(TranslationMessage.class);

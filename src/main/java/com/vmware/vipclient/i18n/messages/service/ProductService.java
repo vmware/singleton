@@ -95,10 +95,10 @@ public class ProductService {
         MessageCacheItem cacheItem = cs.getCacheOfLocales(dataSource);
         if (cacheItem != null) {
             if (cacheItem.isExpired())
-                refreshCacheItemTask(cacheItem, dataSource);
+                refreshLocalesCacheItemTask(cacheItem, dataSource);
             return cacheItem.getCachedData().keySet();
         } else {
-            cacheItem = createCacheItem(dataSource);
+            cacheItem = createLocalesCacheItem(dataSource);
             if (cacheItem == null)
                 return new HashSet<>();
             return cacheItem.getCachedData().keySet();
@@ -110,7 +110,7 @@ public class ProductService {
     }
 
 
-    private void refreshCacheItem(final MessageCacheItem cacheItem, DataSourceEnum dataSource) {
+    private void refreshLocalesCacheItem(final MessageCacheItem cacheItem, DataSourceEnum dataSource) {
         long timestampOld = cacheItem.getTimestamp();
         dataSource.createProductOpt(dto).getSupportedLocales(cacheItem);
         long timestamp = cacheItem.getTimestamp();
@@ -119,10 +119,10 @@ public class ProductService {
         }
     }
 
-    private void refreshCacheItemTask(MessageCacheItem cacheItem, DataSourceEnum dataSource) {
+    private void refreshLocalesCacheItemTask(MessageCacheItem cacheItem, DataSourceEnum dataSource) {
         Callable<MessageCacheItem> callable = () -> {
             try {
-                refreshCacheItem(cacheItem, dataSource);
+                refreshLocalesCacheItem(cacheItem, dataSource);
                 return cacheItem;
             } catch (Exception e) {
                 return null;
@@ -133,10 +133,10 @@ public class ProductService {
         thread.start();
     }
 
-    private MessageCacheItem createCacheItem (DataSourceEnum dataSource) {
+    private MessageCacheItem createLocalesCacheItem(DataSourceEnum dataSource) {
         CacheService cs = new CacheService(new MessagesDTO(dto));
         MessageCacheItem cacheItem = new MessageCacheItem();
-        refreshCacheItem(cacheItem, dataSource);
+        refreshLocalesCacheItem(cacheItem, dataSource);
         if (!cacheItem.getCachedData().isEmpty()) {
             cs.addCacheOfLocales(cacheItem, dataSource);
             return cacheItem;

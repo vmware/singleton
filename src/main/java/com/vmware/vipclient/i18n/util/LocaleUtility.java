@@ -50,8 +50,6 @@ public class LocaleUtility {
 
     /**
      * get the locale from ThreadLocal
-     *
-     * @param locale
      */
     public static Locale getLocale() {
         Map<String, Locale> localeMap = threadLocal.get();
@@ -77,7 +75,6 @@ public class LocaleUtility {
     /**
      * get the locale from ThreadLocal
      *
-     * @param locale
      */
     public static Locale getL2Locale() {
         Map<String, Locale> localeMap = threadLocal.get();
