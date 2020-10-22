@@ -4,7 +4,17 @@
  */
 package com.vmware.vipclient.i18n.base.instances;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.ResourceBundle;
+import java.util.Set;
+
+import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
@@ -18,9 +28,7 @@ import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.JSONUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
-import org.json.simple.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.vmware.vipclient.i18n.util.StringUtil;
 
 /**
  * This class provide some APIs to get translation from VIP service in
@@ -96,33 +104,82 @@ public class TranslationMessage implements Message {
      *            used to format the message with placeholder, it's not required
      *            if the message doesn't contain any placeholder
      * @return string
-     * @deprecated Replaced by {@link #getMessage(Locale, String, String, Object...)} 
-     * 		which fetches source messages from messages_source.json of the component.
-     * 		This method only supports English as both the default and the source locale.
-     */ 
-     public String getString(final Locale locale, final String component,
+     */
+    public String getString(final Locale locale, final String component,
             final String key, final String source, final String comment, final Object... args) {
-        this.logger.trace("Start to execute TranslationMessage.getString");
+        return getStringWithArgs(locale, component, key, source, comment, args);
+    }
+
+    /**
+     * get a translation under the component of the configured product
+     *
+     * @param locale
+     *            an object used to get the source's translation
+     * @param component
+     *            defined on VIP service, it will be created automatically if
+     *            not exist
+     * @param key
+     *            identify the source
+     * @param source
+     *            it's English source which will be return if no translation
+     *            available
+     * @param comment
+     *            used to describe the source to help understand the source for
+     *            the translators.
+     * @param args
+     *            named arguments used to format the message with placeholder
+     * @return string
+     */
+    public String getString(final Locale locale, final String component,
+            final String key, final String source, final String comment,
+            final Map<String, Object> args) {
+        return getStringWithArgs(locale, component, key, source, comment, args);
+    }
+
+    private String getStringWithArgs(final Locale locale,
+            final String component, final String key, final String source,
+            final String comment, final Object args) {
+        logger.trace("Start to execute TranslationMessage.getStringWithArgs");
         if (key == null || key.equalsIgnoreCase(""))
-            return ""; 
-        String translation = "";
+            return "";
+
+        MessagesDTO dto = new MessagesDTO();
+        dto.setComponent(component);
+        dto.setComment(comment);
+        dto.setKey(key);
+        dto.setSource(source);
+        dto.setLocale(locale.toLanguageTag());
+        if (cfg != null) {
+            dto.setProductID(cfg.getProductName());
+            dto.setVersion(cfg.getVersion());
+        }
+
+        if (StringUtil.isEmpty(source)) {
+            return getStringWithoutSource(dto, args);
+        }
+
+        return getStringWithSource(dto, args);
+    }
+
+    private String getStringWithSource(MessagesDTO dto, final Object args) {
+        Locale locale = Locale.forLanguageTag(dto.getLocale());
+        String source = dto.getSource();
         StringService s = new StringService();
-        
-        if (!LocaleUtility.isDefaultLocale(locale)) {  
-        	MessagesDTO dto = new MessagesDTO(component, key, source, locale.toLanguageTag(), this.cfg);
+
+        String translation = "";
+        if (!LocaleUtility.isDefaultLocale(locale)) {
             translation = s.getString(dto);
             // if the source is not equal to remote's source version, return the
             // source as latest, not return the old translation
             if (source != null && !"".equals(source) && !VIPCfg.getInstance().isPseudo()) {
-                MessagesDTO remoteEnDTO = new MessagesDTO(component, key, source, 
-                		LocaleUtility.getDefaultLocale().toLanguageTag(), this.cfg);
-                String remoteEnMsg = s.getString(remoteEnDTO);
+                dto.setLocale(LocaleUtility.getDefaultLocale().toLanguageTag());
+                String remoteEnMsg = s.getString(dto);
                 if (!source.equals(remoteEnMsg)) {
                     translation = source;
                 }
             }
 
-            if (translation == null || translation.isEmpty()) {
+            if (StringUtil.isEmpty(translation)) {
                 translation = source;
             }
         } else {
@@ -130,33 +187,46 @@ public class TranslationMessage implements Message {
         }
 
         if (VIPCfg.getInstance().isCollectSource() || VIPCfg.getInstance().isMachineTranslation()) {
-        	MessagesDTO latestSourceDTO = new MessagesDTO(component, key, source, 
-        			ConstantsKeys.LATEST, this.cfg);
-            String latestStr = s.getString(latestSourceDTO);
+            dto.setLocale(ConstantsKeys.LATEST);
+            String latestStr = s.getString(dto);
             if (source != null && !source.equals(latestStr)) {
-            	MessagesDTO dto2 = new MessagesDTO(component, key, source, 
-            			locale.toLanguageTag(), this.cfg);
-                String mt = s.postString(dto2);
+                dto.setLocale(locale.toLanguageTag());
+                String mt = s.postString(dto);
                 if (VIPCfg.getInstance().isMachineTranslation() && !"".equalsIgnoreCase(mt)) {
                     translation = mt;
                 }
             }
         }
 
-        if (!VIPCfg.getInstance().isMachineTranslation() && VIPCfg.getInstance().isPseudo() &&
-                null != translation && translation.equals(source)) {
+        if (!VIPCfg.getInstance().isMachineTranslation() && VIPCfg.getInstance().isPseudo()
+                && source != null && source.equals(translation)) {
             // if source isn't collected by server, add PSEUDOCHAR2
             translation = ConstantsKeys.PSEUDOCHAR2 + translation + ConstantsKeys.PSEUDOCHAR2;
         }
 
-        if (args != null && args.length > 0) {
-            if ((null != translation && translation.equals(source)) || VIPCfg.getInstance().isPseudo()) {
-                translation = FormatUtils.formatMsg(translation,
-                        LocaleUtility.getDefaultLocale(), args);
-            } else {
-                translation = FormatUtils.formatMsg(translation, locale, args);
-            }
+        if (args != null) {
+        	Locale formatLocale = locale;
+        	if (source != null && source.equals(translation) || VIPCfg.getInstance().isPseudo()) {
+        		formatLocale = LocaleUtility.getSourceLocale();
+        	}
+
+            translation = FormatUtils.formatMsg(translation, formatLocale, args);
         }
+
+        return translation;
+    }
+
+    private String getStringWithoutSource(MessagesDTO dto, final Object args) {
+        String translation = new StringService().getString(dto);
+        if (StringUtil.isEmpty(translation)) {
+            return "";
+        }
+
+        if (args != null) {
+            Locale locale = Locale.forLanguageTag(dto.getLocale());
+            translation = FormatUtils.formatMsg(translation, locale, args);
+        }
+
         return translation;
     }
 
@@ -335,7 +405,6 @@ public class TranslationMessage implements Message {
     /**
      * get one translation of the configured product from VIP, if message not
      * found will get the English message from specified bundle.
-     * get a translation under the component of the configured product
      *
      * @param component
      *            defined on VIP service, it will be created automatically if
@@ -353,28 +422,59 @@ public class TranslationMessage implements Message {
      * @return a message of translation, if the translation is not found from
      *         VIP service, it will return the value defined in the bundle
      *         searching by the key
-     * @deprecated Replaced by {@link #getMessage(Locale, String, String, Object...)} 
-     * 		which fetches source messages from messages_source.json of the component.
-     * 		This method only supports English as both the default and the source locale.
      */
-     public String getString2(final String component,
-            final String bundle, final Locale locale, final String key, final Object... args) {
-        this.logger.trace("Start to execute TranslationMessage.getString2");
+    public String getString2(final String component, final String bundle, final Locale locale, final String key,
+            final Object... args) {
+        return getString2WithArgs(component, bundle, locale, key, args);
+    }
+
+    /**
+     * get one translation of the configured product from VIP, if message not
+     * found will get the English message from specified bundle.
+     *
+     * @param component
+     *            defined on VIP service, it will be created automatically if
+     *            not exist
+     * @param bundle
+     *            properties file name, normally it should be put under the root
+     *            'src' path
+     * @param locale
+     *            an object used to get the source's translation
+     * @param key
+     *            identify the source
+     * @param args
+     *            named arguments used to format the message with placeholder
+     * @return a message of translation, if the translation is not found from
+     *         VIP service, it will return the value defined in the bundle
+     *         searching by the key
+     */
+    public String getString2(final String component, final String bundle,
+            final Locale locale, final String key, final Map<String, Object> args) {
+        return getString2WithArgs(component, bundle, locale, key, args);
+    }
+
+    private String getString2WithArgs(final String component, final String bundle,
+            final Locale locale, final String key, Object args) {
+        logger.trace("Start to execute TranslationMessage.getString2WithArgs");
         if (key == null || key.equalsIgnoreCase(""))
             return "";
-        String message = "";
-        String source;
+
+        String source = null;
         try {
-            ResourceBundle rb = ResourceBundle.getBundle(bundle,
-                    LocaleUtility.getDefaultLocale());
+            ResourceBundle rb = ResourceBundle.getBundle(bundle, LocaleUtility.getDefaultLocale());
             source = rb.getString(key);
         } catch (Exception e) {
-            this.logger.error(e.getMessage());
-            source = key;
+            logger.error(e.getMessage());
         }
+
         // get translation from VIP service
-        message = this.getString(locale, component, key, source, "", args);
-        return message;
+        String msg = getStringWithArgs(locale, component, key, source, "", args);
+
+        // return translation -> source -> key
+        if (StringUtil.isEmpty(msg))
+            msg = StringUtil.isEmpty(source) ? key : source;
+
+        return msg;
     }
 
     /**

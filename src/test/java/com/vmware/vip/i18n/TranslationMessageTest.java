@@ -4,6 +4,23 @@
  */
 package com.vmware.vip.i18n;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.json.simple.JSONObject;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
 import com.google.common.collect.Sets;
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
@@ -14,21 +31,6 @@ import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ProductService;
-import org.json.simple.JSONObject;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class TranslationMessageTest extends BaseTestClass {
     TranslationMessage translation;
@@ -108,7 +110,16 @@ public class TranslationMessageTest extends BaseTestClass {
                 args);
         Assert.assertEquals("[a] Test alert", message1);
 */
-        this.init();
+        
+        Map<String, Object> msgargs = new HashMap<>();
+        msgargs.put("a", 1);
+        msgargs.put("b", 5);
+        msgargs.put("c", 10);
+        String message_namedArgs = translation.getString(locale1, component, "NamedArgs",
+                "{a} - {b} of {c} customers", "", msgargs);
+        Assert.assertEquals("1 - 5 of 10 customers", message_namedArgs);
+
+        init();
         vipCfg.setPseudo(false);
         Locale locale2 = new Locale("de");
         String message2 = translation.getString2(component, bundle, locale2, key,
