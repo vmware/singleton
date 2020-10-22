@@ -89,6 +89,7 @@ public class ConstantsKeys {
    // fatal error message id
    public static final String FATA_ERROR = "[FATAL ERROR]";
    public static final String TOKEN_VALIDATION_ERROR = "Token validation failed";
+   public static final String TOKEN_INVALIDATION_ERROR = "Invalid token";
    public static final String TOKEN_NOT_FOUND_ERROR = "Token not found";
    public static final String SOURCE_COLLECTION_ERROR = "Source collection forbidden";
 
