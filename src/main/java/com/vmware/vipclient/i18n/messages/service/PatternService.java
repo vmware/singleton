@@ -111,44 +111,28 @@ public class PatternService {
     }
 
     private void getPatternsFromDS(String locale, PatternCacheItem cacheItem, ListIterator<DataSourceEnum> msgSourceQueueIter) {
-        if (!msgSourceQueueIter.hasNext())
+        if (!msgSourceQueueIter.hasNext()) {
+            logger.error(FormatUtils.format(ConstantsMsg.GET_PATTERNS_FAILED_ALL, locale));
             return;
-        long timestampOld = cacheItem.getTimestamp();
+        }
         DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
         dataSource.createPatternOpt().getPatterns(locale, cacheItem);
-        long timestampNew = cacheItem.getTimestamp();
-        if (timestampNew == timestampOld) {
-            logger.debug(FormatUtils.format(ConstantsMsg.GET_PATTERNS_FAILED, locale, dataSource.toString()));
-        }
-        // Skip this block if timestamp is not 0 (which means cacheItem is in the cache) regardless if cacheItem is expired or not.
-        // Otherwise, try the next dataSource in the queue.
-        if (timestampNew == 0) {
-            if (msgSourceQueueIter.hasNext()) {
-                getPatternsFromDS(locale, cacheItem, msgSourceQueueIter);
-            }else{
-                logger.debug(FormatUtils.format(ConstantsMsg.GET_PATTERNS_FAILED_ALL, locale));
-            }
+        if (cacheItem.getCachedData().isEmpty()) {
+            logger.warn(FormatUtils.format(ConstantsMsg.GET_PATTERNS_FAILED, locale, dataSource.toString()));
+            getPatternsFromDS(locale, cacheItem, msgSourceQueueIter);
         }
     }
 
     private void getPatternsFromDS(String language, String region, PatternCacheItem cacheItem, ListIterator<DataSourceEnum> msgSourceQueueIter) {
-        if (!msgSourceQueueIter.hasNext())
+        if (!msgSourceQueueIter.hasNext()) {
+            logger.error(FormatUtils.format(ConstantsMsg.GET_PATTERNS_FAILED_ALL_1, language, region));
             return;
-        long timestampOld = cacheItem.getTimestamp();
+        }
         DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
         dataSource.createPatternOpt().getPatterns(language, region, cacheItem);
-        long timestampNew = cacheItem.getTimestamp();
-        if (timestampNew == timestampOld) {
-            logger.debug(FormatUtils.format(ConstantsMsg.GET_PATTERNS_FAILED_1, language, region, dataSource.toString()));
-        }
-        // Skip this block if timestamp is not 0 (which means cacheItem is in the cache) regardless if cacheItem is expired or not.
-        // Otherwise, try the next dataSource in the queue.
-        if (timestampNew == 0) {
-            if (msgSourceQueueIter.hasNext()) {
-                getPatternsFromDS(language, region, cacheItem, msgSourceQueueIter);
-            }else{
-                logger.debug(FormatUtils.format(ConstantsMsg.GET_PATTERNS_FAILED_ALL_1, language, region));
-            }
+        if (cacheItem.getCachedData().isEmpty()) {
+            logger.warn(FormatUtils.format(ConstantsMsg.GET_PATTERNS_FAILED_1, language, region, dataSource.toString()));
+            getPatternsFromDS(language, region, cacheItem, msgSourceQueueIter);
         }
     }
 

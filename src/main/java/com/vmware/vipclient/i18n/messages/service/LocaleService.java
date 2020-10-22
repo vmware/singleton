@@ -77,16 +77,10 @@ public class LocaleService {
             logger.error(ConstantsMsg.GET_REGIONS_FAILED_ALL, locale);
             return;
         }
-        long timestampOld = cacheItem.getTimestamp();
         DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
         dataSource.createLocaleOpt(dto).getRegions(locale, cacheItem);
-        long timestampNew = cacheItem.getTimestamp();
-        if (timestampNew == timestampOld) {
-            logger.debug(ConstantsMsg.GET_REGIONS_FAILED, locale, dataSource.toString());
-        }
-        // Skip this block if timestamp is not 0 (which means cacheItem is in the cache) regardless if cacheItem is expired or not.
-        // Otherwise, try the next dataSource in the queue.
-        if (timestampNew == 0) {
+        if (cacheItem.getCachedData().isEmpty()) {
+            logger.warn(ConstantsMsg.GET_REGIONS_FAILED, locale, dataSource.toString());
             getRegionsFromDS(locale, cacheItem, msgSourceQueueIter);
         }
     }
@@ -139,16 +133,10 @@ public class LocaleService {
             logger.error(ConstantsMsg.GET_LANGUAGES_FAILED_ALL, locale);
             return;
         }
-        long timestampOld = cacheItem.getTimestamp();
         DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
         dataSource.createLocaleOpt(dto).getSupportedLanguages(locale, cacheItem);
-        long timestampNew = cacheItem.getTimestamp();
-        if (timestampNew == timestampOld) {
-            logger.debug(ConstantsMsg.GET_LANGUAGES_FAILED, locale, dataSource.toString());
-        }
-        // Skip this block if timestamp is not 0 (which means cacheItem is in the cache) regardless if cacheItem is expired or not.
-        // Otherwise, try the next dataSource in the queue.
-        if (timestampNew == 0) {
+        if (cacheItem.getCachedData().isEmpty()) {
+            logger.warn(ConstantsMsg.GET_LANGUAGES_FAILED, locale, dataSource.toString());
             getSupportedLanguagesFromDS(locale, cacheItem, msgSourceQueueIter);
         }
     }
