@@ -199,44 +199,32 @@ public class TranslationMessage implements Message {
         }
 
         if (!VIPCfg.getInstance().isMachineTranslation() && VIPCfg.getInstance().isPseudo()
-                && null != translation && translation.equals(source)) {
+                && source.equals(translation)) {
             // if source isn't collected by server, add PSEUDOCHAR2
             translation = ConstantsKeys.PSEUDOCHAR2 + translation + ConstantsKeys.PSEUDOCHAR2;
         }
 
         if (args != null) {
-            if (args instanceof Object[] && ((Object[]) args).length > 0) {
-                if ((null != translation && translation.equals(source)) || VIPCfg.getInstance().isPseudo()) {
-                    translation = FormatUtils.formatWithArrayArgs(translation, LocaleUtility.getDefaultLocale(), (Object[]) args);
-                } else {
-                    translation = FormatUtils.formatWithArrayArgs(translation, locale, (Object[]) args);
-                }
-            } else if (args instanceof Map<?, ?> && ((Map<?, ?>) args).size() > 0) {
-                if ((null != translation && translation.equals(source)) || VIPCfg.getInstance().isPseudo()) {
-                    translation = FormatUtils.formatWithNamedArgs(translation,
-                            LocaleUtility.getDefaultLocale(), (Map<String, Object>) args);
-                } else {
-                    translation = FormatUtils.formatWithNamedArgs(translation, locale, (Map) args);
-                }
-            }
+        	Locale formatLocale = locale;
+        	if (source.equals(translation) || VIPCfg.getInstance().isPseudo()) {
+        		formatLocale = LocaleUtility.getSourceLocale();
+        	}
+
+            translation = FormatUtils.formatMsg(translation, formatLocale, args);
         }
 
         return translation;
     }
 
     private String getStringWithoutSource(MessagesDTO dto, final Object args) {
-        Locale locale = Locale.forLanguageTag(dto.getLocale());
         String translation = new StringService().getString(dto);
         if (StringUtil.isEmpty(translation)) {
             return "";
         }
 
         if (args != null) {
-            if (args instanceof Object[] && ((Object[]) args).length > 0) {
-                translation = FormatUtils.format(translation, locale, (Object[]) args);
-            } else if (args instanceof Map<?, ?> && ((Map) args).size() > 0) {
-                translation = FormatUtils.formatMsg(translation, locale, (Map<String, Object>) args);
-            }
+            Locale locale = Locale.forLanguageTag(dto.getLocale());
+            translation = FormatUtils.formatMsg(translation, locale, args);
         }
 
         return translation;
