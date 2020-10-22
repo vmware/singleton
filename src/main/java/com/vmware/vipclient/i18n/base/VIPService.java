@@ -7,6 +7,7 @@ package com.vmware.vipclient.i18n.base;
 import java.net.MalformedURLException;
 import java.util.Map;
 
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 
 /**
@@ -15,9 +16,11 @@ import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
  *
  */
 public class VIPService {
-    private HttpRequester     httpRequester;
+    private HttpRequester httpRequester;
+    private String vipServer;
 
-    public VIPService(String vipServer)throws MalformedURLException {
+    public VIPService(String vipServer) throws Exception {
+        this.vipServer = vipServer;
         createHttpRequester(vipServer);
     }
 
@@ -28,17 +31,15 @@ public class VIPService {
     public void initializeVIPService(String vipServer) throws MalformedURLException {
     }
 
-    private void createHttpRequester(String vIPServer) throws MalformedURLException {
-        if (httpRequester == null) {
-            httpRequester = new HttpRequester(vIPServer);
-        }
+    public String getVipServer() {
+        return vipServer;
+    }
+
+    private void createHttpRequester(String vIPServer) throws Exception {
+        httpRequester = new HttpRequester(vIPServer);
     }
 
     public HttpRequester getHttpRequester() {
-        if (httpRequester == null) {
-            throw new VIPJavaClientException(
-                    "Please create HttpRequester, call createHttpRequest API first! ");
-        }
         return httpRequester;
     }
 
