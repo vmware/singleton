@@ -199,14 +199,14 @@ public class TranslationMessage implements Message {
         }
 
         if (!VIPCfg.getInstance().isMachineTranslation() && VIPCfg.getInstance().isPseudo()
-                && source.equals(translation)) {
+                && source != null && source.equals(translation)) {
             // if source isn't collected by server, add PSEUDOCHAR2
             translation = ConstantsKeys.PSEUDOCHAR2 + translation + ConstantsKeys.PSEUDOCHAR2;
         }
 
         if (args != null) {
         	Locale formatLocale = locale;
-        	if (source.equals(translation) || VIPCfg.getInstance().isPseudo()) {
+        	if (source != null && source.equals(translation) || VIPCfg.getInstance().isPseudo()) {
         		formatLocale = LocaleUtility.getSourceLocale();
         	}
 
