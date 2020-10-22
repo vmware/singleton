@@ -405,9 +405,15 @@ namespace SingletonClient.Implementation
 
         private string GetBundleMessage(string locale, ISource source)
         {
-            String nearLocale = SingletonUtil.NearLocale(locale);
-
-            ISingletonComponent componentData = GetComponent(nearLocale, source.GetComponent());
+            ISingletonComponent componentData = GetComponent(locale, source.GetComponent());
+            if (componentData == null)
+            {
+                String nearLocale = SingletonUtil.NearLocale(locale);
+                if (nearLocale != locale)
+                {
+                    componentData = GetComponent(nearLocale, source.GetComponent());
+                }
+            }
             return (componentData != null) ? componentData.GetString(source.GetKey()) : null;
         }
 

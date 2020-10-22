@@ -313,8 +313,7 @@ namespace SingletonClient.Implementation
                 locale = ConfigConst.DefaultLocale;
             }
 
-            string baseName = _resourceBaseName;
-            string[] parts = _resourceBaseName.Split(new char[] { '.' });
+            string[] parts = _resourceAssembly.FullName.Split(new char[] { ',' });
             resourceName = parts[0] + "." + resourceName;
 
             if (ConfigConst.FormatResx.Equals(format))
