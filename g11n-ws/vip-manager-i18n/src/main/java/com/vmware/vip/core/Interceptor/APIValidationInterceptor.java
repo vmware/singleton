@@ -5,6 +5,8 @@
 package com.vmware.vip.core.Interceptor;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,10 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.base.Strings;
+import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.common.i18n.status.Response;
 import com.vmware.vip.core.auth.AuthenException;
@@ -35,9 +40,18 @@ public class APIValidationInterceptor extends HandlerInterceptorAdapter {
 	private static Logger LOGGER = LoggerFactory.getLogger(APIValidationInterceptor.class);
 
 	private Map<String, Object> allowedListMap;
-	public APIValidationInterceptor(Map<String, Object> allowedListMap) {
+	private String clientRequestIdsStr;
+	private List<String> clientRequestIds;
+	public APIValidationInterceptor(Map<String, Object> allowedListMap, String clientReqIdsStr) {
 		super();
 		this.allowedListMap = allowedListMap;
+		this.clientRequestIdsStr = clientReqIdsStr;
+		try {
+			this.clientRequestIds = Arrays.asList(this.clientRequestIdsStr.split(ConstantsChar.COMMA));
+		}catch(Exception e) {
+			this.clientRequestIds = null;
+		}
+		
 	}
 	/**
 	 * Collect new source and send to l10n server
@@ -55,8 +69,9 @@ public class APIValidationInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		LOGGER.debug(request.getSession().getId());
-		String logOfUrl = "The request url is: " + request.getRequestURL();
-		String logOfQueryStr = "The request query string is: " + request.getQueryString();
+		String singletonRequestID = getRequestId(request, this.clientRequestIds);
+		String logOfUrl = singletonRequestID + "The request url is: " + request.getRequestURL();
+		String logOfQueryStr = singletonRequestID + "The request query string is: " + request.getQueryString();
 		LOGGER.debug(logOfUrl);
 		LOGGER.debug(logOfQueryStr);
 		IVlidation u = VIPValidation.getInstance(URLValidation.class, request);
@@ -81,7 +96,7 @@ public class APIValidationInterceptor extends HandlerInterceptorAdapter {
 				return false;
 			}
 		}
-		String startHandle = "[thread-" + Thread.currentThread().getId() + "] Start to handle request...";
+		String startHandle = singletonRequestID + "[thread-" + Thread.currentThread().getId() + "] Start to handle request...";
 		LOGGER.info(startHandle);
 		LOGGER.info(logOfUrl);
 		LOGGER.info(logOfQueryStr);
@@ -107,6 +122,24 @@ public class APIValidationInterceptor extends HandlerInterceptorAdapter {
 			HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
 		 // Do nothing because of not need to afterCompletion business
+	}
+	
+	
+	/**
+	 * Use to get client request ID content from HTTP headers
+	 */
+	private String getRequestId(HttpServletRequest request, List<String> headerNames) {
+		String singletonReqId = "";
+		if(headerNames != null) {
+			for(String headerName: headerNames) {
+				String reqIdStr = request.getHeader(headerName);
+				if(!StringUtils.isEmpty(reqIdStr)) {
+					singletonReqId = "[clientRequestID-" + headerName + ": " + reqIdStr + "]";
+					break;
+				}
+			}
+		}
+		return singletonReqId;
 	}
 
 }
