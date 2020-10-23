@@ -73,18 +73,8 @@ public class MessageCacheItem implements CacheItem {
     	if (VIPCfg.getInstance().getCacheExpiredTime() != 0) {
     		return false;
     	}
-    	
-    	Long responseTimeStamp = this.getTimestamp();
-    	if (responseTimeStamp == null) {
-    		return true;
-    	}
-    	
-    	Long maxAgeResponse = this.getMaxAgeMillis();
-    	if (maxAgeResponse != null) {
-    		maxAgeMillis = maxAgeResponse;
-    	}
-    		  	
-    	return System.currentTimeMillis() - responseTimeStamp > maxAgeMillis;
+
+    	return System.currentTimeMillis() - this.getTimestamp() >= this.getMaxAgeMillis();
     }
 
 }
