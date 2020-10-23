@@ -58,7 +58,7 @@ public class LocalProductOpt implements ProductOpt {
         for (String languageTag: supportedLocales) {
             languageTagMap.put(languageTag, languageTag);
         }
-        cacheItem.setCacheItem(null, languageTagMap, null, System.currentTimeMillis(), null);
+        cacheItem.setCacheItem(languageTagMap, null, System.currentTimeMillis(), null);
     }
 
     public List<String> getComponents() {
