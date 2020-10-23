@@ -100,32 +100,32 @@ public class ComponentService {
 	 * 	 	<li>The messages in a fallback locale</li>
 	 * </ul>
 	 */
-    public MessageCacheItem getMessages(Iterator<Locale> fallbackLocalesIter) {
-    	CacheService cacheService = new CacheService(dto);
-    	MessageCacheItem cacheItem = cacheService.getCacheOfComponent();
-    	if (cacheItem != null) { // Item is in cache
-    		if (cacheItem.isExpired()) {
-    			// Refresh the cacheItem in a separate thread
-    			refreshCacheItemTask(cacheItem);
-    		}
-    	} else { // Item is not in cache.
+	public MessageCacheItem getMessages(Iterator<Locale> fallbackLocalesIter) {
+		this.doLocaleMatching();
+
+		CacheService cacheService = new CacheService(dto);
+		MessageCacheItem cacheItem = cacheService.getCacheOfComponent();
+		if (cacheItem != null) { // Item is in cache
+			if (cacheItem.isExpired())
+				refreshCacheItemTask(cacheItem); // Refresh the cacheItem in a separate thread
+		} else { // Item is not in cache.
 			ProductService ps = new ProductService(dto);
 			Locale locale = Locale.forLanguageTag(dto.getLocale());
 			if (ps.isSupportedLocale(locale) || VIPCfg.getInstance().isPseudo()) {
 				cacheItem = createCacheItem(); // Fetch for the requested locale from data store, create cacheItem and store in cache
 				if (cacheItem.getCachedData().isEmpty())  // Failed to fetch messages for the requested locale
 					cacheItem = getFallbackLocaleMessages(fallbackLocalesIter);
-			} else { // Requested locale is not supported
-				Locale matchedLocale = LocaleUtility.pickupLocaleFromList(ps.getSupportedLocales(), locale);
-				if (matchedLocale != null) { // Requested locale matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr")
-					MessagesDTO matchedLocaleDTO = new MessagesDTO(dto.getComponent(), matchedLocale.toLanguageTag(), dto.getProductID(), dto.getVersion());
-					cacheItem = new ComponentService(matchedLocaleDTO).getMessages();
-				} else  // Requested locale is not supported and does not match any supported locales
-					cacheItem = getFallbackLocaleMessages(fallbackLocalesIter);
-			}
-    	}
-    	return cacheItem;
-    }
+			} else   // Requested locale is not supported and does not match any supported locales
+				cacheItem = getFallbackLocaleMessages(fallbackLocalesIter);
+		}
+		return cacheItem;
+	}
+
+	private void doLocaleMatching() {
+		Locale matchedLocale = LocaleUtility.pickupLocaleFromList(new ProductService(dto).getSupportedLocales(), Locale.forLanguageTag(dto.getLocale()));
+		if (matchedLocale != null) // Requested locale matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr")
+			dto.setLocale(matchedLocale.toLanguageTag());
+	}
 
     /**
      * Gets the messages in the next fallback locale by passing the next fallback locale DTO to a new instance of ComponentService
