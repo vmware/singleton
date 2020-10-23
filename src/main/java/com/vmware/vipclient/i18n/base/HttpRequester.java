@@ -31,6 +31,7 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -72,7 +73,7 @@ public class HttpRequester {
      *            The host address of the vIP Server
      * @throws MalformedURLException
      */
-    protected HttpRequester(String vIPServer) throws MalformedURLException {
+    protected HttpRequester(String vIPServer) throws Exception {
         if (null != vIPServer && vIPServer.length() > 0) {
             if (!vIPServer.trim().startsWith(ConstantsKeys.HTTP_PROTOCOL_PREFIX)
                     && !vIPServer.trim().startsWith(ConstantsKeys.HTTPS_PROTOCOL_PREFIX)) {
@@ -82,7 +83,8 @@ public class HttpRequester {
             URL url = new URL(vIPServer);
             this.baseURL = url.toString();
             this.vipHostName = url.getHost();
-        }
+        } else
+            throw new VIPClientInitException("Failed to create an HttpRequester for vipServer: " + vIPServer);
     }
 
     /**

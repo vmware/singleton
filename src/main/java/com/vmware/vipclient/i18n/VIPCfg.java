@@ -4,7 +4,6 @@
  */
 package com.vmware.vipclient.i18n;
 
-import java.net.MalformedURLException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -63,7 +62,6 @@ public class VIPCfg {
     private int                        interalCleanCache;
     private String                     productName;
     private String                     version;
-    private String                     vipServer;
     private String                     i18nScope     = "numbers,dates,currencies,plurals,measurements";
     private String					   offlineResourcesBaseUrl;
     
@@ -126,7 +124,7 @@ public class VIPCfg {
     public void initialize(String vipServer, String productName, String version) {
         this.productName = productName;
         this.version = version;
-        this.vipServer = vipServer;
+        this.setVipServer(vipServer);
     }
     
     /**
@@ -153,7 +151,7 @@ public class VIPCfg {
         // so add DataSourceEnum.VIP first to msgOriginsQueue
         this.setMsgOriginsQueue(new LinkedList<DataSourceEnum>());
         if (prop.containsKey("vipServer")) {
-            this.vipServer = prop.getString("vipServer");
+            this.setVipServer(prop.getString("vipServer"));
             this.addMsgOriginsQueue(DataSourceEnum.VIP);
         }
         if (prop.containsKey("offlineResourcesBaseUrl")) {
@@ -191,14 +189,8 @@ public class VIPCfg {
     /**
      * initialize VIPService instances to provide HTTP requester
      */
+    @Deprecated
     public void initializeVIPService() {
-        this.vipService = VIPService.getVIPServiceInstance();
-        try {
-            this.vipService.initializeVIPService(this.productName, this.version,
-                    this.vipServer);
-        } catch (MalformedURLException e) {
-            logger.error("'vipServer' " + this.vipServer + " in configuration isn't a valid URL!");
-        }
     }
 
     /**
@@ -314,11 +306,17 @@ public class VIPCfg {
     }
 
     public String getVipServer() {
-        return vipServer;
+        if (this.getVipService() == null)
+            return null;
+        return this.getVipService().getVipServer();
     }
 
     public void setVipServer(String vipServer) {
-        this.vipServer = vipServer;
+        try {
+            this.vipService = new VIPService(vipServer);
+        } catch (Exception e) {
+            logger.error("'vipServer' " + this.getVipServer() + " in configuration isn't a valid URL!");
+        }
     }
 
     public boolean isPseudo() {
@@ -440,5 +438,5 @@ public class VIPCfg {
 	public void setMsgOriginsQueue(List<DataSourceEnum> msgOriginsQueue) {
 		this.msgOriginsQueue = msgOriginsQueue;
 	}
-	
+
 }
