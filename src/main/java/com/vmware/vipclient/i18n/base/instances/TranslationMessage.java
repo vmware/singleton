@@ -70,9 +70,9 @@ public class TranslationMessage implements Message {
     public String getMessage(final Locale locale, final String component, final String key, final Object... args) {
     	// Use source message if the message hasn't been collected/translated
     	String source = getMessages(Locale.forLanguageTag(ConstantsKeys.SOURCE), component).get(key);
-    	String collectedSourceMsg = getMessages(LocaleUtility.getSourceLocale(), component).get(key);
+    	String collectedSourceMsg = getMessages(LocaleUtility.getDefaultLocale(), component).get(key);
     	if (source!=null && !source.isEmpty() && !source.equals(collectedSourceMsg)) {
-			return FormatUtils.format(source, LocaleUtility.getSourceLocale(), args);
+			return FormatUtils.format(source, LocaleUtility.getDefaultLocale(), args);
 		}
     	
     	String message = FormatUtils.format(getMessages(locale, component).get(key), locale, args);
@@ -207,7 +207,7 @@ public class TranslationMessage implements Message {
         if (args != null) {
         	Locale formatLocale = locale;
         	if (source != null && source.equals(translation) || VIPCfg.getInstance().isPseudo()) {
-        		formatLocale = LocaleUtility.getSourceLocale();
+        		formatLocale = LocaleUtility.getDefaultLocale();
         	}
 
             translation = FormatUtils.formatMsg(translation, formatLocale, args);
