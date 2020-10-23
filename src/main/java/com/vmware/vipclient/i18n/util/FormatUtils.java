@@ -6,6 +6,7 @@ package com.vmware.vipclient.i18n.util;
 
 import java.text.FieldPosition;
 import java.util.Locale;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,15 +33,37 @@ public class FormatUtils {
         String escaped = pattern.replaceAll("'", "''");
         return java.text.MessageFormat.format(escaped, arguments);
     }
-
-    @Deprecated
-    public static String formatMsg(String pattern, Locale locale, Object... arguments) {
-    	if (pattern != null && !pattern.isEmpty() && arguments != null && arguments.length > 0) {
+    
+    private static String formatWithArrayArgs(String pattern, Locale locale, Object[] arguments) {
+		if (arguments.length > 0) {
 	        MessageFormat messageFormat = new MessageFormat(pattern, locale);
 	        return messageFormat.format(arguments, new StringBuilder(), new FieldPosition(0)).toString();
-    	}
-    	return pattern;
+		}
+		return pattern;
     }
+   
+    private static String formatWithNamedArgs(String pattern, Locale locale, Map<String, Object> arguments) {
+		if (arguments.size() > 0) {
+	    	MessageFormat messageFormat = new MessageFormat(pattern, locale);
+	        return messageFormat.format(arguments, new StringBuilder(), new FieldPosition(0)).toString();
+		}
+		return pattern;
+    }
+
+    public static String formatMsg(String pattern, Locale locale, Object argument) {
+    	if (pattern == null || pattern.isEmpty() || argument == null) {
+    	   	return pattern;
+        }
+    	
+		if (argument instanceof Map<?, ?>) {
+			return formatWithNamedArgs(pattern, locale, (Map<String, Object>) argument);
+        } else if (argument instanceof Object[]) {
+        	return formatWithArrayArgs(pattern, locale, (Object[])argument);
+        } 
+
+		return pattern;
+    }
+ 
     
     public static String format(String pattern, Locale locale, Object... arguments) {
     	try {
