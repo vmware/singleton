@@ -43,7 +43,7 @@ public class VIPCfg {
     // data origin
     @Deprecated
     private DataSourceEnum             messageOrigin = DataSourceEnum.VIP;
-    private List<DataSourceEnum>	   msgOriginsQueue = new LinkedList<DataSourceEnum>();
+    private List<DataSourceEnum>	   msgOriginsQueue = new LinkedList<>();
     
     // cache mode
     private CacheMode                  cacheMode     = CacheMode.MEMORY;
@@ -106,12 +106,7 @@ public class VIPCfg {
             cfg.isSubInstance = true;
             VIPCfg.moduleCfgs.put(productName, cfg);
         }
-
-        if (VIPCfg.moduleCfgs.containsKey(productName) && VIPCfg.moduleCfgs.get(productName) != null) {
-            return VIPCfg.moduleCfgs.get(productName);
-        } else {
-            return gcInstance;
-        }
+        return VIPCfg.moduleCfgs.get(productName);
     }
 
     /**
@@ -122,8 +117,8 @@ public class VIPCfg {
      * @param version
      */
     public void initialize(String vipServer, String productName, String version) {
-        this.productName = productName;
-        this.version = version;
+        this.setProductName(productName);
+        this.setVersion(version);
         this.setVipServer(vipServer);
     }
     
@@ -139,48 +134,46 @@ public class VIPCfg {
     	}
 
         if (prop.containsKey("productName"))
-            this.productName = prop.getString("productName");
+            this.setProductName(prop.getString("productName"));
         if (this.isSubInstance() && !VIPCfg.moduleCfgs.containsKey(this.productName)) {
             throw new VIPClientInitException(
                     "Can't not initialize sub VIPCfg instance, the product name is not defined in config file.");
         }
         if (prop.containsKey("version"))
-            this.version = prop.getString("version");
+            this.setVersion(prop.getString("version"));
         
         // Remote VIP resources take priority over offline resources
-        // so add DataSourceEnum.VIP first to msgOriginsQueue
-        this.setMsgOriginsQueue(new LinkedList<DataSourceEnum>());
+        // so set vipServer before offlineResourcesBaseUrl
+        this.setMsgOriginsQueue(new LinkedList<>());
         if (prop.containsKey("vipServer")) {
             this.setVipServer(prop.getString("vipServer"));
-            this.addMsgOriginsQueue(DataSourceEnum.VIP);
         }
         if (prop.containsKey("offlineResourcesBaseUrl")) {
-        	this.offlineResourcesBaseUrl = prop.getString("offlineResourcesBaseUrl");
-        	this.addMsgOriginsQueue(DataSourceEnum.Bundle);
+        	this.setOfflineResourcesBaseUrl(prop.getString("offlineResourcesBaseUrl"));
         }
         
         if (prop.containsKey("pseudo"))
-            this.pseudo = Boolean.parseBoolean(prop.getString("pseudo"));
+            this.setPseudo(Boolean.parseBoolean(prop.getString("pseudo")));
         if (prop.containsKey("collectSource"))
-            this.collectSource = Boolean.parseBoolean(prop
-                    .getString("collectSource"));
+            this.setCollectSource(Boolean.parseBoolean(prop
+                    .getString("collectSource")));
         if (prop.containsKey("initializeCache"))
-            this.initializeCache = Boolean.parseBoolean(prop
-                    .getString("initializeCache"));
+            this.setInitializeCache( Boolean.parseBoolean(prop
+                    .getString("initializeCache")));
         if (prop.containsKey("cleanCache"))
-            this.cleanCache = Boolean.parseBoolean(prop
-                    .getString("cleanCache"));
+            this.setCleanCache(Boolean.parseBoolean(prop
+                    .getString("cleanCache")));
         if (prop.containsKey("machineTranslation"))
-            this.machineTranslation = Boolean.parseBoolean(prop
-                    .getString("machineTranslation"));
+            this.setMachineTranslation(Boolean.parseBoolean(prop
+                    .getString("machineTranslation")));
         if (prop.containsKey("i18nScope"))
-            this.i18nScope = prop.getString("i18nScope");
+            this.setI18nScope(prop.getString("i18nScope"));
         if (prop.containsKey("cacheExpiredTime"))
-            this.cacheExpiredTime = Long.parseLong(prop
-                    .getString("cacheExpiredTime"));
+            this.setCacheExpiredTime(Long.parseLong(prop
+                    .getString("cacheExpiredTime")));
         if (prop.containsKey("defaultLocale")) {
         	LocaleUtility.setDefaultLocale(Locale.forLanguageTag(prop.getString("defaultLocale")));
-        	LocaleUtility.setFallbackLocales(new LinkedList<Locale>(Arrays.asList(LocaleUtility.getDefaultLocale(), Locale.forLanguageTag(ConstantsKeys.SOURCE))));
+        	LocaleUtility.setFallbackLocales(new LinkedList<>(Arrays.asList(LocaleUtility.getDefaultLocale(), Locale.forLanguageTag(ConstantsKeys.SOURCE))));
         }
         if (prop.containsKey("sourceLocale"))
         	LocaleUtility.setSourceLocale(Locale.forLanguageTag(prop.getString("sourceLocale")));
@@ -314,6 +307,7 @@ public class VIPCfg {
     public void setVipServer(String vipServer) {
         try {
             this.vipService = new VIPService(vipServer);
+            this.addMsgOriginsQueue(DataSourceEnum.VIP);
         } catch (Exception e) {
             logger.error("'vipServer' " + this.getVipServer() + " in configuration isn't a valid URL!");
         }
@@ -425,6 +419,7 @@ public class VIPCfg {
 
 	public void setOfflineResourcesBaseUrl(String offlineResourcesBaseUrl) {
 		this.offlineResourcesBaseUrl = offlineResourcesBaseUrl;
+		this.addMsgOriginsQueue(DataSourceEnum.Bundle);
 	}
 
 	public List<DataSourceEnum> getMsgOriginsQueue() {
