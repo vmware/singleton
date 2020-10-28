@@ -4,12 +4,7 @@
  */
 package com.vmware.vipclient.i18n.util;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class LocaleUtility {
@@ -135,46 +130,33 @@ public class LocaleUtility {
         return zhLocale;
     }
 
-    /*
-     * pick up the matched locale from a locale list
+    /**
+     * Iterates over the set of locales to find a locale that best matches the preferredLocale.
+     *
+     * <p> </p>A "best match" is defined to be the locale that has the longest common language tag with the preferredLocale.
+     * For example, the supported locale 'de' will be returned for a non-supported preferredLocale 'de-DE'. </p>
+     *
+     * <p> To meet the custom usage of Chinese language, locale "zh" is not considered as a "match" for any non-supported Chinese locale (zh-*).
+     * That is, even if "zh" locale is supported, <code>null</code> will be returned for Chinese locale 'zh-HK' that is not supported. </p>
+     *
+     * @param locales the set of locales to find the best match from.
+     * @param preferredLocale the locale being matched.
+     * @return the best match, if any; <code>null</code> otherwise.
      */
-    public static Locale pickupLocaleFromList(List<Locale> locales,
-            Locale preferredLocale) {
-        Locale langLocale = null;
-        preferredLocale = fmtToMappedLocale(preferredLocale);
+    public static Locale pickupLocaleFromList(Set<Locale> locales,
+                                              Locale preferredLocale) {
+		Locale localeObject = fmtToMappedLocale(preferredLocale);
+		Locale bestMatch = Locale.lookup(Arrays.asList(new Locale.LanguageRange(localeObject.toLanguageTag())),
+				locales);
 
-        // Use the first locale from the browser's list of preferred languages
-        // for the matching, so that it can keep the same way of getting locale
-        // with other VMware products, like vSphere Web Client, etc.
-        for (Locale configuredLocale : locales) {
-            // Language is matched
-            configuredLocale = fmtToMappedLocale(configuredLocale);
-            if (configuredLocale.getLanguage().equals(
-                    preferredLocale.getLanguage())) {
-                String configuredScript = configuredLocale.getScript();
-                String preferredScript = preferredLocale.getScript();
-                // Country is matched
-                if (((preferredScript.equalsIgnoreCase("")) && (configuredScript
-                        .equalsIgnoreCase("")))
-                        || ((!preferredScript.equalsIgnoreCase("")) && (preferredScript
-                                .equalsIgnoreCase(configuredScript)))) {
-                    return configuredLocale;
-                }
-                langLocale = langLocale == null ? configuredLocale : langLocale;
+        // handle Chinese locale matching
+        if (bestMatch != null && bestMatch.getLanguage().equals("zh")) {
+            if (!locales.contains(localeObject)) {
+                return null;
             }
         }
 
-        // With Chinese locale which is not configured/supported in web.xml, it
-        // will return 'en_US' as default to meet the usage custom of Chinese,
-        // e.g. for 'zh-HK' from client(browser) which is not
-        // configured/supported yet, it will return 'en_US';
-        // Other locale, like 'de-DE' 'ja-JP' etc.,
-        // it will return 'de' 'ja'(main/parent language).
-        if (langLocale != null
-                && (!langLocale.getLanguage().equalsIgnoreCase("zh"))) {
-            return new Locale(langLocale.getLanguage());
-        }
-        return preferredLocale;
+        return bestMatch;
     }
 
     /**

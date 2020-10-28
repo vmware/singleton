@@ -84,8 +84,8 @@ public class ProductService {
     public Set<String> getSupportedLanguageTags() {
         Iterator<DataSourceEnum> msgSourceQueueIter = VIPCfg.getInstance().getMsgOriginsQueue().iterator();
         Set<String> supportedLangTags = new HashSet<>();
-        while(msgSourceQueueIter.hasNext() && supportedLangTags.isEmpty()) {
-            supportedLangTags = getSupportedLanguageTags(msgSourceQueueIter.next());
+        while(msgSourceQueueIter.hasNext()) {
+            supportedLangTags.addAll(getSupportedLanguageTags(msgSourceQueueIter.next()));
         }
         return supportedLangTags;
     }

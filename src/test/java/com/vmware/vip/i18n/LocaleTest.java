@@ -15,11 +15,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -46,32 +42,70 @@ public class LocaleTest extends BaseTestClass {
     public void testPickupLocaleFromList() {
         Locale[] supportedLocales = { Locale.forLanguageTag("de"),
                 Locale.forLanguageTag("es"), Locale.forLanguageTag("fr"),
+                Locale.forLanguageTag("fr-CA"),
                 Locale.forLanguageTag("ja"), Locale.forLanguageTag("ko"),
+                Locale.forLanguageTag("zh"),
                 Locale.forLanguageTag("zh-Hans"),
                 Locale.forLanguageTag("zh-Hant")
 
         };
         Locale[] testLocales = { Locale.forLanguageTag("de"),
                 Locale.forLanguageTag("es"), Locale.forLanguageTag("fr"),
+                Locale.forLanguageTag("fr-CA"), Locale.forLanguageTag("fr-FR"),
                 Locale.forLanguageTag("ja"), Locale.forLanguageTag("ko"),
-                Locale.forLanguageTag("zh"), Locale.forLanguageTag("zh-CN"),
+                Locale.forLanguageTag("zh"),
+                Locale.forLanguageTag("zh-CN"),
                 Locale.forLanguageTag("zh-TW"),
                 Locale.forLanguageTag("zh-HANS-CN"),
                 Locale.forLanguageTag("zh-HANT-TW"),
                 Locale.forLanguageTag("zh-HANS"),
                 Locale.forLanguageTag("zh-HANT") };
 
-        String[] expectedLocales = { "de", "es", "fr", "ja", "ko", "zh",
+        String[] expectedLocales = { "de", "es", "fr", "fr-CA", "fr", "ja", "ko", "zh",
                 "zh-Hans", "zh-Hant", "zh-Hans", "zh-Hant", "zh-Hans", "zh-Hant" };
 
         for (int i = 0; i < testLocales.length; i++) {
             String matchedLanguageTag = LocaleUtility.pickupLocaleFromList(
-                    Arrays.asList(supportedLocales), testLocales[i])
+                    new HashSet<>(Arrays.asList(supportedLocales)), testLocales[i])
                     .toLanguageTag();
 
             logger.debug(matchedLanguageTag + "-----" + expectedLocales[i]);
             Assert.assertEquals(expectedLocales[i], matchedLanguageTag);
         }
+    }
+
+    @Test
+    public void testPickupLocaleFromListNotFound() {
+        Locale[] supportedLocales = { Locale.forLanguageTag("de"),
+                Locale.forLanguageTag("es"), Locale.forLanguageTag("fr"),
+                Locale.forLanguageTag("fr-CA"),
+                Locale.forLanguageTag("ja"), Locale.forLanguageTag("ko"),
+                Locale.forLanguageTag("zh-Hans"),
+                Locale.forLanguageTag("zh-Hant")
+
+        };
+        Assert.assertNull(LocaleUtility.pickupLocaleFromList(new HashSet<>(Arrays.asList(supportedLocales)), Locale.forLanguageTag("fil")));
+    }
+
+    /**
+     *  For any Chinese locale (zh-*) that is not supported,
+     *  return null so that fallback locale will be used even if "zh" is supported.
+     *  For any non-Chinese locale, return the best match (e.g. 'de' if 'de-DE' is not supported).
+     */
+    @Test
+    public void testPickupLocaleFromListZh() {
+        Locale[] supportedLocales = {
+                Locale.forLanguageTag("zh"),
+                Locale.forLanguageTag("zh-Hans")
+
+        };
+        Assert.assertNull(LocaleUtility.pickupLocaleFromList(new HashSet<>(Arrays.asList(supportedLocales)), Locale.forLanguageTag("zh-HK")));
+        Assert.assertEquals("zh", LocaleUtility.pickupLocaleFromList(new HashSet<>(Arrays.asList(supportedLocales)),
+                Locale.forLanguageTag("zh")).toLanguageTag());
+        Assert.assertEquals("zh-Hans", LocaleUtility.pickupLocaleFromList(new HashSet<>(Arrays.asList(supportedLocales)),
+                Locale.forLanguageTag("zh-CN")).toLanguageTag());
+        Assert.assertNull(LocaleUtility.pickupLocaleFromList(new HashSet<>(Arrays.asList(supportedLocales)),
+                Locale.forLanguageTag("zh-TW")));
     }
 
     @Test
