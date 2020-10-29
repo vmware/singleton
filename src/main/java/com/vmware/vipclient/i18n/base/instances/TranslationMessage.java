@@ -70,9 +70,9 @@ public class TranslationMessage implements Message {
     public String getMessage(final Locale locale, final String component, final String key, final Object... args) {
     	// Use source message if the message hasn't been collected/translated
     	String source = getMessages(Locale.forLanguageTag(ConstantsKeys.SOURCE), component).get(key);
-    	String collectedSourceMsg = getMessages(LocaleUtility.getDefaultLocale(), component).get(key);
+    	String collectedSourceMsg = getMessages(LocaleUtility.getSourceLocale(), component).get(key);
     	if (source!=null && !source.isEmpty() && !source.equals(collectedSourceMsg)) {
-			return FormatUtils.format(source, LocaleUtility.getDefaultLocale(), args);
+			return FormatUtils.format(source, LocaleUtility.getSourceLocale(), args);
 		}
     	
     	String message = FormatUtils.format(getMessages(locale, component).get(key), locale, args);
@@ -104,6 +104,9 @@ public class TranslationMessage implements Message {
      *            used to format the message with placeholder, it's not required
      *            if the message doesn't contain any placeholder
      * @return string
+     * @deprecated Replaced by {@link #getMessage(Locale, String, String, Object...)} 
+     * 		which fetches source messages from messages_source.json of the component.
+     * 		This method only supports English as both the default and the source locale.
      */
     public String getString(final Locale locale, final String component,
             final String key, final String source, final String comment, final Object... args) {
@@ -422,6 +425,9 @@ public class TranslationMessage implements Message {
      * @return a message of translation, if the translation is not found from
      *         VIP service, it will return the value defined in the bundle
      *         searching by the key
+     * @deprecated Replaced by {@link #getMessage(Locale, String, String, Object...)} 
+     * 		which fetches source messages from messages_source.json of the component.
+     * 		This method only supports English as both the default and the source locale.
      */
     public String getString2(final String component, final String bundle, final Locale locale, final String key,
             final Object... args) {
