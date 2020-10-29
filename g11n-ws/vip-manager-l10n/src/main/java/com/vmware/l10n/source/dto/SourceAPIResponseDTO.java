@@ -16,13 +16,13 @@ public class SourceAPIResponseDTO implements Serializable {
     private static final long serialVersionUID = -6587672782896132155L;
 
     /** the base response content, includes response code and message **/
-    private Response status;
+    private Response response;
 
-    public Response getStatus() {
-        return status;
+    public Response getResponse() {
+        return response;
     }
 
-    public void setStatus(Response status) {
-        this.status = status;
+    public void setResponse(Response status) {
+        this.response = status;
     }
 }
