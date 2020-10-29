@@ -7,6 +7,7 @@ package com.vmware.vipclient.i18n.messages.service;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.FormatCacheItem;
+import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.JSONUtils;
@@ -102,7 +103,7 @@ public class FormattingCacheService {
 
     private void addFormattings(String key, Map<String, String> o) {
         if (null != key && null != o) {
-            Cache c = VIPCfg.getInstance().getCacheManager()
+            Cache c = TranslationCacheManager.getTranslationCacheManager()
                     .getCache(VIPCfg.CACHE_L2);
             if (c != null) {
                 c.put(key, new FormatCacheItem(o));
@@ -112,7 +113,7 @@ public class FormattingCacheService {
 
     private Map<String, String> getFormattings(String key) {
         Map<String, String> o = null;
-        Cache c = VIPCfg.getInstance().getCacheManager()
+        Cache c = TranslationCacheManager.getTranslationCacheManager()
                 .getCache(VIPCfg.CACHE_L2);
         if (c != null) {
         	FormatCacheItem cacheItem = (FormatCacheItem) c.get(key);

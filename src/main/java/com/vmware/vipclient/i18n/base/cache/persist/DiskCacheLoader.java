@@ -14,17 +14,16 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Map;
 
+import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.vmware.vipclient.i18n.VIPCfg;
 
 public class DiskCacheLoader implements Loader {
     Logger logger = LoggerFactory.getLogger(DiskCacheLoader.class);
 
     public Map<String, String> load(String key) {
-        CacheSnapshot c = VIPCfg.getInstance().getCacheManager()
+        CacheSnapshot c = TranslationCacheManager.getTranslationCacheManager()
                 .getCacheSnapshot();
         String rootpath = c.getCacheRootPath();
         File file = new File(rootpath + File.separator + key);
@@ -64,7 +63,7 @@ public class DiskCacheLoader implements Loader {
     }
 
     public boolean updateOrInsert(String key, String content) {
-        CacheSnapshot c = VIPCfg.getInstance().getCacheManager()
+        CacheSnapshot c = TranslationCacheManager.getTranslationCacheManager()
                 .getCacheSnapshot();
         String rootpath = c.getCacheRootPath();
         FileWriter writer = null;
@@ -88,7 +87,7 @@ public class DiskCacheLoader implements Loader {
     }
 
     public boolean delete(String key) {
-        CacheSnapshot c = VIPCfg.getInstance().getCacheManager()
+        CacheSnapshot c = TranslationCacheManager.getTranslationCacheManager()
                 .getCacheSnapshot();
         String rootpath = c.getCacheRootPath();
         boolean f = false;
@@ -99,7 +98,7 @@ public class DiskCacheLoader implements Loader {
     }
 
     public boolean isExisting(String key) {
-        CacheSnapshot c = VIPCfg.getInstance().getCacheManager()
+        CacheSnapshot c = TranslationCacheManager.getTranslationCacheManager()
                 .getCacheSnapshot();
         String rootpath = c.getCacheRootPath();
         return new File(rootpath + File.separator + key).exists();

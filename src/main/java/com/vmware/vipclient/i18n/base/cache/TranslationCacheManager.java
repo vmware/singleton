@@ -28,7 +28,7 @@ public class TranslationCacheManager {
     private TranslationCacheManager() {
     }
 
-    public static synchronized TranslationCacheManager createTranslationCacheManager() {
+    public static synchronized TranslationCacheManager getTranslationCacheManager() {
         if (translationCacheManager == null) {
             translationCacheManager = new TranslationCacheManager();
         }
@@ -134,7 +134,7 @@ public class TranslationCacheManager {
             cacheSnapshot.setProductName(cfg.getProductName());
             cacheSnapshot.setVersion(cfg.getVersion());
             cacheSnapshot.setVipServer(cfg.getVipServer());
-            Cache cache = cfg.getCacheManager().getCache(VIPCfg.CACHE_L3);
+            Cache cache = this.getCache(VIPCfg.CACHE_L3);
             if (null != cache) {
                 cacheSnapshot.setLastClean(cache.getLastClean());
                 cacheSnapshot.setExpiredTime(cache.getExpiredTime());

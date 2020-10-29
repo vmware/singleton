@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 
 public class CacheSyncThreadPool implements Runnable {
     private int maxThreads     = 30;
@@ -17,12 +17,12 @@ public class CacheSyncThreadPool implements Runnable {
     private int defaultThreads = 5;
 
     public CacheSnapshot getCacheSnapshot() {
-        return VIPCfg.getInstance().getCacheManager().getCacheSnapshot();
+        return TranslationCacheManager.getTranslationCacheManager().getCacheSnapshot();
     }
 
     @Override
     public void run() {
-        CacheSnapshot cs = VIPCfg.getInstance().getCacheManager()
+        CacheSnapshot cs = TranslationCacheManager.getTranslationCacheManager()
                 .getCacheSnapshot();
         Set<String> s = cs.getComponents();
         List<CacheSyncThread> list = new ArrayList<CacheSyncThread>();
@@ -32,7 +32,7 @@ public class CacheSyncThreadPool implements Runnable {
         } else if (s.size() > 100) {
             curentThreads = minThreads;
         }
-        Loader loader = VIPCfg.getInstance().getCacheManager()
+        Loader loader = TranslationCacheManager.getTranslationCacheManager()
                 .getLoaderInstance(DiskCacheLoader.class);
         for (String key : s) {
             int c = 0;

@@ -38,7 +38,6 @@ public class VIPCfg {
     private static VIPCfg              gcInstance;
     private static Map<String, VIPCfg> moduleCfgs    = new HashMap<String, VIPCfg>();
     private VIPService                 vipService;
-    private TranslationCacheManager    translationCacheManager;
 
     // data origin
     @Deprecated
@@ -192,10 +191,10 @@ public class VIPCfg {
      * @param c
      */
     public void setTranslationCache(Cache c) {
-        this.translationCacheManager = TranslationCacheManager
-                .createTranslationCacheManager();
-        if (this.translationCacheManager != null) {
-            this.translationCacheManager.registerCache(VIPCfg.CACHE_L3, c);
+        TranslationCacheManager translationCacheManager = TranslationCacheManager
+                .getTranslationCacheManager();
+        if (translationCacheManager != null) {
+            translationCacheManager.registerCache(VIPCfg.CACHE_L3, c);
             logger.info("Translation Cache created.");
         }
         if (this.isInitializeCache()) {
@@ -220,11 +219,11 @@ public class VIPCfg {
      * @return
      */
     public synchronized Cache createTranslationCache(Class cacheClass) {
-        this.translationCacheManager = TranslationCacheManager
-                .createTranslationCacheManager();
-        if (this.translationCacheManager != null) {
+        TranslationCacheManager translationCacheManager = TranslationCacheManager
+                .getTranslationCacheManager();
+        if (translationCacheManager != null) {
             if (TranslationCacheManager.getCache(VIPCfg.CACHE_L3) == null) {
-                this.translationCacheManager.registerCache(VIPCfg.CACHE_L3,
+                translationCacheManager.registerCache(VIPCfg.CACHE_L3,
                         cacheClass);
                 logger.info("Translation Cache created.");
                 if (this.isInitializeCache()) {
@@ -254,10 +253,10 @@ public class VIPCfg {
      * @param cacheClass
      */
     public Cache createFormattingCache(Class cacheClass) {
-        this.translationCacheManager = TranslationCacheManager
-                .createTranslationCacheManager();
-        if (this.translationCacheManager != null) {
-            this.translationCacheManager.registerCache(VIPCfg.CACHE_L2,
+        TranslationCacheManager translationCacheManager = TranslationCacheManager
+                .getTranslationCacheManager();
+        if (translationCacheManager != null) {
+            translationCacheManager.registerCache(VIPCfg.CACHE_L2,
                     cacheClass);
             logger.info("Formatting cache created.");
         }
@@ -276,9 +275,9 @@ public class VIPCfg {
         dto.setProductID(this.getProductName());
         dto.setVersion(this.getVersion());
         new ProductService(dto).getAllComponentTranslation();
-        if (this.translationCacheManager != null) {
+        if (TranslationCacheManager.getTranslationCacheManager() != null) {
             logger.info("Translation data is loaded to cache, size is "
-                    + this.translationCacheManager.size() + ".");
+                    + TranslationCacheManager.getTranslationCacheManager().size() + ".");
         }
     }
 
@@ -341,8 +340,13 @@ public class VIPCfg {
         return vipService;
     }
 
+    /**
+     *
+     * @deprecated Use {@link com.vmware.vipclient.i18n.base.cache.TranslationCacheManager#getTranslationCacheManager
+     * TranslationCacheManager.getTranslationCacheManager}  instead
+     */
     public TranslationCacheManager getCacheManager() {
-        return translationCacheManager;
+        return TranslationCacheManager.getTranslationCacheManager();
     }
 
     public int getInteralCleanCache() {
