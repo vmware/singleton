@@ -23,7 +23,7 @@ public class DiskCacheLoader implements Loader {
     Logger logger = LoggerFactory.getLogger(DiskCacheLoader.class);
 
     public Map<String, String> load(String key) {
-        CacheSnapshot c = TranslationCacheManager.getTranslationCacheManager()
+        CacheSnapshot c = TranslationCacheManager.getInstance()
                 .getCacheSnapshot();
         String rootpath = c.getCacheRootPath();
         File file = new File(rootpath + File.separator + key);
@@ -63,7 +63,7 @@ public class DiskCacheLoader implements Loader {
     }
 
     public boolean updateOrInsert(String key, String content) {
-        CacheSnapshot c = TranslationCacheManager.getTranslationCacheManager()
+        CacheSnapshot c = TranslationCacheManager.getInstance()
                 .getCacheSnapshot();
         String rootpath = c.getCacheRootPath();
         FileWriter writer = null;
@@ -87,7 +87,7 @@ public class DiskCacheLoader implements Loader {
     }
 
     public boolean delete(String key) {
-        CacheSnapshot c = TranslationCacheManager.getTranslationCacheManager()
+        CacheSnapshot c = TranslationCacheManager.getInstance()
                 .getCacheSnapshot();
         String rootpath = c.getCacheRootPath();
         boolean f = false;
@@ -98,7 +98,7 @@ public class DiskCacheLoader implements Loader {
     }
 
     public boolean isExisting(String key) {
-        CacheSnapshot c = TranslationCacheManager.getTranslationCacheManager()
+        CacheSnapshot c = TranslationCacheManager.getInstance()
                 .getCacheSnapshot();
         String rootpath = c.getCacheRootPath();
         return new File(rootpath + File.separator + key).exists();

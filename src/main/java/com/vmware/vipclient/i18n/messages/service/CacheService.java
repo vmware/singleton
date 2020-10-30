@@ -72,7 +72,7 @@ public class CacheService {
 
     private void addCacheItem(String key, CacheItem cacheItem) {
         if (key != null && cacheItem != null) {
-            Cache c = TranslationCacheManager.getTranslationCacheManager().getCache(VIPCfg.CACHE_L3);
+            Cache c = TranslationCacheManager.getInstance().getCache(VIPCfg.CACHE_L3);
             if (c != null) {
                 c.put(key, cacheItem);
             }
@@ -80,7 +80,7 @@ public class CacheService {
     }
 
     private CacheItem getCacheItem(String key) {
-        Cache c = TranslationCacheManager.getTranslationCacheManager().getCache(VIPCfg.CACHE_L3);
+        Cache c = TranslationCacheManager.getInstance().getCache(VIPCfg.CACHE_L3);
         if (c == null)
             return null;
         return c.get(key);

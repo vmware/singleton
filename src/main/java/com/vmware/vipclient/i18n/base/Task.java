@@ -43,7 +43,7 @@ public class Task {
         TimerTask cleanCacheTask = new TimerTask() {
             @Override
             public void run() {
-                Cache translationCache = TranslationCacheManager.getTranslationCacheManager().getCache(VIPCfg.CACHE_L3);
+                Cache translationCache = TranslationCacheManager.getInstance().getCache(VIPCfg.CACHE_L3);
                 if (translationCache == null) {
                     return;
                 }

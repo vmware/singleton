@@ -26,7 +26,7 @@ public class CacheSyncThread extends Thread {
 
     @Override
     public void run() {
-        CacheSnapshot cs = TranslationCacheManager.getTranslationCacheManager()
+        CacheSnapshot cs = TranslationCacheManager.getInstance()
                 .getCacheSnapshot();
         for (String component : components) {
             for (String locale : locales) {

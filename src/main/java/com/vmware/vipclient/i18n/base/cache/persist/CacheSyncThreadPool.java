@@ -17,12 +17,12 @@ public class CacheSyncThreadPool implements Runnable {
     private int defaultThreads = 5;
 
     public CacheSnapshot getCacheSnapshot() {
-        return TranslationCacheManager.getTranslationCacheManager().getCacheSnapshot();
+        return TranslationCacheManager.getInstance().getCacheSnapshot();
     }
 
     @Override
     public void run() {
-        CacheSnapshot cs = TranslationCacheManager.getTranslationCacheManager()
+        CacheSnapshot cs = TranslationCacheManager.getInstance()
                 .getCacheSnapshot();
         Set<String> s = cs.getComponents();
         List<CacheSyncThread> list = new ArrayList<CacheSyncThread>();
@@ -32,7 +32,7 @@ public class CacheSyncThreadPool implements Runnable {
         } else if (s.size() > 100) {
             curentThreads = minThreads;
         }
-        Loader loader = TranslationCacheManager.getTranslationCacheManager()
+        Loader loader = TranslationCacheManager.getInstance()
                 .getLoaderInstance(DiskCacheLoader.class);
         for (String key : s) {
             int c = 0;

@@ -192,7 +192,7 @@ public class VIPCfg {
      */
     public void setTranslationCache(Cache c) {
         TranslationCacheManager translationCacheManager = TranslationCacheManager
-                .getTranslationCacheManager();
+                .getInstance();
         translationCacheManager.registerCache(VIPCfg.CACHE_L3, c);
         logger.info("Translation Cache created.");
         if (this.isInitializeCache()) {
@@ -218,7 +218,7 @@ public class VIPCfg {
      */
     public synchronized Cache createTranslationCache(Class cacheClass) {
         TranslationCacheManager translationCacheManager = TranslationCacheManager
-                .getTranslationCacheManager();
+                .getInstance();
         if (TranslationCacheManager.getCache(VIPCfg.CACHE_L3) == null) {
             translationCacheManager.registerCache(VIPCfg.CACHE_L3,
                     cacheClass);
@@ -246,7 +246,7 @@ public class VIPCfg {
      */
     public Cache createFormattingCache(Class cacheClass) {
         TranslationCacheManager translationCacheManager = TranslationCacheManager
-                .getTranslationCacheManager();
+                .getInstance();
         translationCacheManager.registerCache(VIPCfg.CACHE_L2,
                 cacheClass);
         logger.info("Formatting cache created.");
@@ -266,7 +266,7 @@ public class VIPCfg {
         dto.setVersion(this.getVersion());
         new ProductService(dto).getAllComponentTranslation();
         logger.info("Translation data is loaded to cache, size is "
-                + TranslationCacheManager.getTranslationCacheManager().size() + ".");
+                + TranslationCacheManager.getInstance().size() + ".");
     }
 
     public String getProductName() {
@@ -330,11 +330,11 @@ public class VIPCfg {
 
     /**
      *
-     * @deprecated Use {@link com.vmware.vipclient.i18n.base.cache.TranslationCacheManager#getTranslationCacheManager
-     * TranslationCacheManager.getTranslationCacheManager}  instead
+     * @deprecated Use {@link com.vmware.vipclient.i18n.base.cache.TranslationCacheManager#getInstance
+     * TranslationCacheManager.getInstance}  instead
      */
     public TranslationCacheManager getCacheManager() {
-        return TranslationCacheManager.getTranslationCacheManager();
+        return TranslationCacheManager.getInstance();
     }
 
     public int getInteralCleanCache() {

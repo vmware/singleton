@@ -28,7 +28,7 @@ public class TranslationCacheManager {
     private TranslationCacheManager() {
     }
 
-    public static synchronized TranslationCacheManager getTranslationCacheManager() {
+    public static synchronized TranslationCacheManager getInstance() {
         if (translationCacheManager == null) {
             translationCacheManager = new TranslationCacheManager();
         }

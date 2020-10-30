@@ -103,7 +103,7 @@ public class FormattingCacheService {
 
     private void addFormattings(String key, Map<String, String> o) {
         if (null != key && null != o) {
-            Cache c = TranslationCacheManager.getTranslationCacheManager()
+            Cache c = TranslationCacheManager.getInstance()
                     .getCache(VIPCfg.CACHE_L2);
             if (c != null) {
                 c.put(key, new FormatCacheItem(o));
@@ -113,7 +113,7 @@ public class FormattingCacheService {
 
     private Map<String, String> getFormattings(String key) {
         Map<String, String> o = null;
-        Cache c = TranslationCacheManager.getTranslationCacheManager()
+        Cache c = TranslationCacheManager.getInstance()
                 .getCache(VIPCfg.CACHE_L2);
         if (c != null) {
         	FormatCacheItem cacheItem = (FormatCacheItem) c.get(key);
