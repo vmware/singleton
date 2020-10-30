@@ -193,10 +193,8 @@ public class VIPCfg {
     public void setTranslationCache(Cache c) {
         TranslationCacheManager translationCacheManager = TranslationCacheManager
                 .getTranslationCacheManager();
-        if (translationCacheManager != null) {
-            translationCacheManager.registerCache(VIPCfg.CACHE_L3, c);
-            logger.info("Translation Cache created.");
-        }
+        translationCacheManager.registerCache(VIPCfg.CACHE_L3, c);
+        logger.info("Translation Cache created.");
         if (this.isInitializeCache()) {
             logger.info("Initializing Cache.");
             this.initializeMessageCache();
@@ -221,30 +219,24 @@ public class VIPCfg {
     public synchronized Cache createTranslationCache(Class cacheClass) {
         TranslationCacheManager translationCacheManager = TranslationCacheManager
                 .getTranslationCacheManager();
-        if (translationCacheManager != null) {
-            if (TranslationCacheManager.getCache(VIPCfg.CACHE_L3) == null) {
-                translationCacheManager.registerCache(VIPCfg.CACHE_L3,
-                        cacheClass);
-                logger.info("Translation Cache created.");
-                if (this.isInitializeCache()) {
-                    logger.info("InitializeCache.");
-                    this.initializeMessageCache();
-                }
-                if (this.isCleanCache()) {
-                    logger.info("startTaskOfCacheClean.");
-                    Task.startTaskOfCacheClean(VIPCfg.getInstance(), interalCleanCache);
-                }
-                Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
-                if (c != null && this.getCacheExpiredTime() != 0) {
-                    c.setExpiredTime(this.getCacheExpiredTime());
-                }
+        if (TranslationCacheManager.getCache(VIPCfg.CACHE_L3) == null) {
+            translationCacheManager.registerCache(VIPCfg.CACHE_L3,
+                    cacheClass);
+            logger.info("Translation Cache created.");
+            if (this.isInitializeCache()) {
+                logger.info("InitializeCache.");
+                this.initializeMessageCache();
             }
-
-            return TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
-        } else {
-            return null;
+            if (this.isCleanCache()) {
+                logger.info("startTaskOfCacheClean.");
+                Task.startTaskOfCacheClean(VIPCfg.getInstance(), interalCleanCache);
+            }
+            Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
+            if (c != null && this.getCacheExpiredTime() != 0) {
+                c.setExpiredTime(this.getCacheExpiredTime());
+            }
         }
-
+        return TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
     }
 
     /**
@@ -255,11 +247,9 @@ public class VIPCfg {
     public Cache createFormattingCache(Class cacheClass) {
         TranslationCacheManager translationCacheManager = TranslationCacheManager
                 .getTranslationCacheManager();
-        if (translationCacheManager != null) {
-            translationCacheManager.registerCache(VIPCfg.CACHE_L2,
-                    cacheClass);
-            logger.info("Formatting cache created.");
-        }
+        translationCacheManager.registerCache(VIPCfg.CACHE_L2,
+                cacheClass);
+        logger.info("Formatting cache created.");
         if (this.isCleanCache()) {
             logger.error("clean cache.");
             Task.startTaskOfCacheClean(VIPCfg.getInstance(), interalCleanCache);
