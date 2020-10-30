@@ -107,7 +107,10 @@ public class I18nFactory {
         }
 
         if (i instanceof TranslationMessage) {
-            ((TranslationMessage) i).setCfg(cfg);
+            if (cfg != null)
+                ((TranslationMessage) i).setCfg(cfg);
+            else
+                ((TranslationMessage) i).setCfg(this.getCfg());
         }
         if (i instanceof LocaleMessage) {
             ((LocaleMessage) i).setCfg(cfg);
