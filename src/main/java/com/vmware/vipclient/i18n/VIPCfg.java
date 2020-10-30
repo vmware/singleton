@@ -265,10 +265,8 @@ public class VIPCfg {
         dto.setProductID(this.getProductName());
         dto.setVersion(this.getVersion());
         new ProductService(dto).getAllComponentTranslation();
-        if (TranslationCacheManager.getTranslationCacheManager() != null) {
-            logger.info("Translation data is loaded to cache, size is "
-                    + TranslationCacheManager.getTranslationCacheManager().size() + ".");
-        }
+        logger.info("Translation data is loaded to cache, size is "
+                + TranslationCacheManager.getTranslationCacheManager().size() + ".");
     }
 
     public String getProductName() {
