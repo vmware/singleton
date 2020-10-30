@@ -4,82 +4,82 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.server;
 
-import com.vmware.vipclient.i18n.messages.api.opt.PatternOpt;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.HttpRequester;
+import com.vmware.vipclient.i18n.base.cache.PatternCacheItem;
 import com.vmware.vipclient.i18n.l2.common.PatternKeys;
+import com.vmware.vipclient.i18n.messages.api.opt.PatternOpt;
 import com.vmware.vipclient.i18n.messages.api.url.URLUtils;
 import com.vmware.vipclient.i18n.messages.api.url.V2URL;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.HttpURLConnection;
+import java.util.List;
 import java.util.Map;
 
-public class RemotePatternOpt implements PatternOpt{
+public class RemotePatternOpt extends RemoteL2BaseOpt implements PatternOpt{
     Logger logger = LoggerFactory.getLogger(RemotePatternOpt.class);
 
-    public JSONObject getPatterns(String locale) {
+    public void getPatterns(String locale, PatternCacheItem cacheItem) {
         logger.debug("Look for pattern from Singleton Service for locale [{}]!", locale);
-        String responseStr = "";
-        String i18nScope = VIPCfg.getInstance().getI18nScope();
         HttpRequester httpRequester = VIPCfg.getInstance().getVipService().getHttpRequester();
-        if (i18nScope != null && !"".equalsIgnoreCase(i18nScope)) {
-        	Map<String, Object> response = httpRequester.request(V2URL.getPatternURL(locale,
-                    httpRequester.getBaseURL()), ConstantsKeys.GET, null);
-        	responseStr = (String) response.get(URLUtils.BODY);
-        }
-        if (null == responseStr || responseStr.equals("")) {
-            return null;
-        } else {
-            Object dataObj = this.getCategoriesFromResponse(responseStr, PatternKeys.CATEGORIES);
-            JSONObject msgObject = null;
-            if (dataObj != null) {
-                msgObject = (JSONObject) dataObj;
-            }
-            return msgObject;
-        }
+        getPatternsFromRemote(locale, V2URL.getPatternURL(locale,
+                    httpRequester.getBaseURL()), ConstantsKeys.GET, null, cacheItem);
     }
 
-    public JSONObject getPatterns(String language, String region) {
+    public void getPatterns(String language, String region, PatternCacheItem cacheItem) {
         logger.debug("Look for pattern from Singleton Service for language [{}], region [{}]!", language, region);
-        String responseStr = "";
-        String i18nScope = VIPCfg.getInstance().getI18nScope();
         HttpRequester httpRequester = VIPCfg.getInstance().getVipService().getHttpRequester();
-        if (i18nScope != null && !"".equalsIgnoreCase(i18nScope)) {
-        	Map<String, Object> response = httpRequester.request(V2URL.getPatternURL(language, region,
-                    httpRequester.getBaseURL()), ConstantsKeys.GET, null);
-        	responseStr = (String) response.get(URLUtils.BODY);
-        }
-        if (null == responseStr || responseStr.equals("")) {
-            return null;
-        } else {
-            Object dataObj = this.getCategoriesFromResponse(responseStr, PatternKeys.CATEGORIES);
-            JSONObject msgObject = null;
-            if (dataObj != null) {
-                msgObject = (JSONObject) dataObj;
+        getPatternsFromRemote(language+"-"+region, V2URL.getPatternURL(language, region,
+                    httpRequester.getBaseURL()), ConstantsKeys.GET, null, cacheItem);
+    }
+
+    private void getPatternsFromRemote(String locale, String url, String method, Object requestData, PatternCacheItem cacheItem) {
+
+        Map<String, Object> response = getResponse(url, method, requestData, cacheItem);
+
+        Integer responseCode = (Integer) response.get(URLUtils.RESPONSE_CODE);
+
+        if (responseCode != null && (responseCode.equals(HttpURLConnection.HTTP_OK) ||
+                responseCode.equals(HttpURLConnection.HTTP_NOT_MODIFIED))) {
+
+            long timestamp = response.get(URLUtils.RESPONSE_TIMESTAMP) != null ? (long) response.get(URLUtils.RESPONSE_TIMESTAMP) : System.currentTimeMillis();
+            String etag = URLUtils.createEtagString((Map<String, List<String>>) response.get(URLUtils.HEADERS));
+            Long maxAgeMillis = response.get(URLUtils.MAX_AGE_MILLIS) != null ? (Long) response.get(URLUtils.MAX_AGE_MILLIS) : null;
+
+            if (responseCode.equals(HttpURLConnection.HTTP_OK)) {
+                try {
+                    String responseBody = (String) response.get(URLUtils.BODY);
+                    Map<String, Object> patterns = getPatternsFromResponse(responseBody);
+                    if (patterns != null) {
+                        logger.debug("Found the pattern from Singleton Service for locale [{}].\n", locale);
+                        cacheItem.set(patterns, etag, timestamp, maxAgeMillis);
+                    }else{
+                        logger.debug("Didn't find the pattern from Singleton Service for locale [{}].\n", locale);
+                        cacheItem.set(etag, timestamp, maxAgeMillis);
+                    }
+                } catch (Exception e) {
+                    logger.error("Failed to get pattern data from remote!");
+                }
+            }else{
+                logger.debug("There is no update on Singleton Service for the pattern of locale [{}].\n", locale);
+                cacheItem.set(etag, timestamp, maxAgeMillis);
             }
-            return msgObject;
         }
     }
 
-    private Object getCategoriesFromResponse(String responseStr, String node) {
-        Object msgObject = null;
-        try {
-            JSONObject responseObj = (JSONObject) JSONValue.parseWithException(responseStr);
-            if (responseObj != null) {
-                Object dataObj = responseObj.get(ConstantsKeys.DATA);
-                if (dataObj != null && dataObj instanceof JSONObject) {
-                    msgObject = ((JSONObject) dataObj).get(node);
-                }
+    private Map<String, Object> getPatternsFromResponse(String responseBody) {
+        Map<String, Object> categoriesObj = null;
+        Map<String, Object> dataObj = (Map<String, Object>) getDataFromResponse(responseBody);
+        if (dataObj != null && dataObj instanceof JSONObject) {
+            Object obj = dataObj.get(PatternKeys.CATEGORIES);
+            if (obj != null && obj instanceof JSONObject) {
+                categoriesObj = (Map<String, Object>) obj;
             }
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            logger.error(e.getMessage());
         }
-        return msgObject;
+        return categoriesObj;
     }
 }
