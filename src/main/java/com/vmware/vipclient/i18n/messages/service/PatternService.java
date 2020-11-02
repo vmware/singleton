@@ -6,6 +6,9 @@ package com.vmware.vipclient.i18n.messages.service;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
+import com.vmware.vipclient.i18n.base.cache.PatternCacheItem;
+import com.vmware.vipclient.i18n.common.ConstantsMsg;
+import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
@@ -22,14 +25,15 @@ public class PatternService {
     Logger logger = LoggerFactory.getLogger(PatternService.class);
 
     public JSONObject getPatternsByCategory(String locale, String category) {
-        JSONObject patterns = getPatternsByLocale(locale);
+        PatternCacheItem cacheItem = getPatternsByLocale(locale);
+        JSONObject patterns = new JSONObject(cacheItem.getCachedData());
         return (JSONObject) patterns.get(category);
     }
 
     public JSONObject getPatterns(String locale) {
-        JSONObject patterns = getPatternsByLocale(locale);
-        if (patterns != null) {
-            return patterns;
+        PatternCacheItem cacheItem = getPatternsByLocale(locale);
+        if (!cacheItem.getCachedData().isEmpty()) {
+            return new JSONObject(cacheItem.getCachedData());
         }
         Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
         while (fallbackLocalesIter.hasNext()) {
@@ -37,41 +41,39 @@ public class PatternService {
             if(fallbackLocale.equalsIgnoreCase(locale))
                 continue;
             logger.info("Can't find pattern for locale [{}], look for fallback locale [{}] pattern as fallback!", locale, fallbackLocale);
-            patterns = getPatternsByLocale(fallbackLocale);
-            if (patterns != null) {
-                new FormattingCacheService().addPatterns(locale, patterns);
-                logger.debug("Fallback locale [{}] pattern is cached for locale [{}]!\n\n", fallbackLocale, locale);
-                return patterns;
+            cacheItem = getPatternsByLocale(fallbackLocale);
+            if (!cacheItem.getCachedData().isEmpty()) {
+                return new JSONObject(cacheItem.getCachedData());
             }
         }
         return null;
     }
 
-    public JSONObject getPatternsByLocale(String locale) {
-        if(locale != null && !locale.isEmpty())
-            locale = locale.replace("_", "-");
-        JSONObject patterns = null;
+    public PatternCacheItem getPatternsByLocale(String locale) {
+        locale = locale.replace("_", "-");
+        PatternCacheItem cacheItem = null;
         logger.debug("Look for pattern from cache for locale [{}]!", locale);
         FormattingCacheService formattingCacheService = new FormattingCacheService();
-        patterns = (JSONObject) formattingCacheService.getPatterns(locale);// key
-        if (patterns != null) {
+        cacheItem = formattingCacheService.getPatterns(locale);// key
+        if (cacheItem != null) {
+            if (cacheItem.isExpired()) { // cacheItem has expired
+                // Update the cache in a separate thread
+                populateCacheTask(locale, cacheItem);
+            }
             logger.debug("Find pattern from cache for locale [{}]!", locale);
-            return patterns;
+            return cacheItem;
         }
-        patterns = getPatternsFromDS(locale, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-        if (patterns != null) {
-            logger.debug("Find the pattern for locale [{}].\n", locale);// [datetime] and
-            formattingCacheService.addPatterns(locale, patterns);
-            logger.debug("Pattern is cached for locale [{}]!\n\n", locale);
-            return patterns;
-        }
-        return null;
+        cacheItem = new PatternCacheItem();
+        getPatternsFromDS(locale, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
+        formattingCacheService.addPatterns(locale, cacheItem);
+        logger.debug("Pattern is cached for locale [{}]!\n\n", locale);
+        return cacheItem;
     }
 
     public JSONObject getPatterns(String language, String region) {
-        JSONObject patterns = getPatternsByLanguageRegion(language, region);
-        if (patterns != null) {
-            return patterns;
+        PatternCacheItem cacheItem = getPatternsByLanguageRegion(language, region);
+        if (!cacheItem.getCachedData().isEmpty()) {
+            return new JSONObject(cacheItem.getCachedData());
         }
         Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
         while (fallbackLocalesIter.hasNext()) {
@@ -79,58 +81,94 @@ public class PatternService {
             if(fallbackLocale.equalsIgnoreCase(new Locale(language, region).toLanguageTag()))
                 continue;
             logger.info("Can't find pattern for language [{}] region [{}], look for fallback locale [{}] pattern as fallback!", language, region, fallbackLocale);
-            patterns = getPatternsByLocale(fallbackLocale);
-            if (patterns != null) {
-                new FormattingCacheService().addPatterns(language, region, patterns);
-                logger.debug("Fallback locale [{}] pattern is cached for language [{}], region [{}]!\n\n", fallbackLocale, language, region);
-                return patterns;
+            cacheItem = getPatternsByLocale(fallbackLocale);
+            if (!cacheItem.getCachedData().isEmpty()) {
+                return new JSONObject(cacheItem.getCachedData());
             }
         }
         return null;
     }
 
-    public JSONObject getPatternsByLanguageRegion(String language, String region) {
+    public PatternCacheItem getPatternsByLanguageRegion(String language, String region) {
         language = language.replace("_", "-");
-        JSONObject patterns = null;
+        PatternCacheItem cacheItem = null;
         logger.debug("Look for pattern from cache for language [{}], region [{}]!", language, region);
         FormattingCacheService formattingCacheService = new FormattingCacheService();
-        patterns = (JSONObject) formattingCacheService.getPatterns(language, region);// key
-        if (patterns != null) {
+        cacheItem = formattingCacheService.getPatterns(language, region);// key
+        if (cacheItem != null) {
+            if (cacheItem.isExpired()) { // cacheItem has expired
+                // Update the cache in a separate thread
+                populateCacheTask(language, region, cacheItem);
+            }
             logger.debug("Find pattern from cache for language [{}], region [{}]!", language, region);
-            return patterns;
+            return cacheItem;
         }
-        patterns = getPatternsFromDS(language, region, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-        if (patterns != null) {
-            logger.debug("Find the pattern for language [{}], region [{}].\n", language, region);// [datetime]
-            // and
-            formattingCacheService.addPatterns(language, region, patterns);
-            logger.debug("Pattern is cached for language [{}], region [{}]!\n\n", language, region);
-            return patterns;
-        }
-        return null;
+        cacheItem = new PatternCacheItem();
+        getPatternsFromDS(language, region, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
+        formattingCacheService.addPatterns(language, region, cacheItem);
+        logger.debug("Pattern is cached for language [{}], region [{}]!\n\n", language, region);
+        return cacheItem;
     }
 
-    private JSONObject getPatternsFromDS(String locale, ListIterator<DataSourceEnum> msgSourceQueueIter) {
-        JSONObject patterns = null;
-        if (!msgSourceQueueIter.hasNext())
-            return patterns;
-        DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
-        patterns = dataSource.createPatternOpt().getPatterns(locale);
-        if (patterns == null || patterns.isEmpty()) {
-            patterns = getPatternsFromDS(locale, msgSourceQueueIter);
+    private void getPatternsFromDS(String locale, PatternCacheItem cacheItem, ListIterator<DataSourceEnum> msgSourceQueueIter) {
+        if (!msgSourceQueueIter.hasNext()) {
+            logger.error(FormatUtils.format(ConstantsMsg.GET_PATTERNS_FAILED_ALL, locale));
+            return;
         }
-        return patterns;
+        DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
+        dataSource.createPatternOpt().getPatterns(locale, cacheItem);
+        if (cacheItem.getCachedData().isEmpty()) {
+            logger.warn(FormatUtils.format(ConstantsMsg.GET_PATTERNS_FAILED, locale, dataSource.toString()));
+            getPatternsFromDS(locale, cacheItem, msgSourceQueueIter);
+        }
     }
 
-    private JSONObject getPatternsFromDS(String language, String region, ListIterator<DataSourceEnum> msgSourceQueueIter) {
-        JSONObject patterns = null;
-        if (!msgSourceQueueIter.hasNext())
-            return patterns;
-        DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
-        patterns = dataSource.createPatternOpt().getPatterns(language, region);
-        if (patterns == null || patterns.isEmpty()) {
-            patterns = getPatternsFromDS(language, region, msgSourceQueueIter);
+    private void getPatternsFromDS(String language, String region, PatternCacheItem cacheItem, ListIterator<DataSourceEnum> msgSourceQueueIter) {
+        if (!msgSourceQueueIter.hasNext()) {
+            logger.error(FormatUtils.format(ConstantsMsg.GET_PATTERNS_FAILED_ALL_1, language, region));
+            return;
         }
-        return patterns;
+        DataSourceEnum dataSource = (DataSourceEnum) msgSourceQueueIter.next();
+        dataSource.createPatternOpt().getPatterns(language, region, cacheItem);
+        if (cacheItem.getCachedData().isEmpty()) {
+            logger.warn(FormatUtils.format(ConstantsMsg.GET_PATTERNS_FAILED_1, language, region, dataSource.toString()));
+            getPatternsFromDS(language, region, cacheItem, msgSourceQueueIter);
+        }
+    }
+
+    private void populateCacheTask(String locale, PatternCacheItem cacheItem) {
+        Runnable runnable = () -> {
+            try {
+                // Pass cacheItem to getPatternsFromDS so that:
+                // 1. A previously stored etag, if any, can be used for the next HTTP request.
+                // 2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed
+                // 	 with new properties from the next HTTP response.
+                getPatternsFromDS(locale, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
+            } catch (Exception e) {
+                // To make sure that the thread will close
+                // even when an exception is thrown
+                logger.error(e.getMessage());
+            }
+        };
+        Thread thread = new Thread(runnable);
+        thread.start();
+    }
+
+    private void populateCacheTask(String language, String region, PatternCacheItem cacheItem) {
+        Runnable runnable = () -> {
+            try {
+                // Pass cacheItem to getPatternsFromDS so that:
+                // 1. A previously stored etag, if any, can be used for the next HTTP request.
+                // 2. CacheItem properties such as etag, timestamp and maxAgeMillis can be refreshed
+                // 	 with new properties from the next HTTP response.
+                getPatternsFromDS(language, region, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
+            } catch (Exception e) {
+                // To make sure that the thread will close
+                // even when an exception is thrown
+                logger.error(e.getMessage());
+            }
+        };
+        Thread thread = new Thread(runnable);
+        thread.start();
     }
 }

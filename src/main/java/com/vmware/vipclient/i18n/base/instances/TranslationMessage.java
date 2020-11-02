@@ -152,9 +152,9 @@ public class TranslationMessage implements Message {
         dto.setKey(key);
         dto.setSource(source);
         dto.setLocale(locale.toLanguageTag());
-        if (cfg != null) {
-            dto.setProductID(cfg.getProductName());
-            dto.setVersion(cfg.getVersion());
+        if (this.getCfg() != null) {
+            dto.setProductID(getCfg().getProductName());
+            dto.setVersion(getCfg().getVersion());
         }
 
         if (StringUtil.isEmpty(source)) {
@@ -174,7 +174,7 @@ public class TranslationMessage implements Message {
             translation = s.getString(dto);
             // if the source is not equal to remote's source version, return the
             // source as latest, not return the old translation
-            if (source != null && !"".equals(source) && !VIPCfg.getInstance().isPseudo()) {
+            if (source != null && !"".equals(source) && !this.getCfg().isPseudo()) {
                 dto.setLocale(LocaleUtility.getDefaultLocale().toLanguageTag());
                 String remoteEnMsg = s.getString(dto);
                 if (!source.equals(remoteEnMsg)) {
@@ -189,19 +189,19 @@ public class TranslationMessage implements Message {
             translation = source;
         }
 
-        if (VIPCfg.getInstance().isCollectSource() || VIPCfg.getInstance().isMachineTranslation()) {
+        if (this.getCfg().isCollectSource() || this.getCfg().isMachineTranslation()) {
             dto.setLocale(ConstantsKeys.LATEST);
             String latestStr = s.getString(dto);
             if (source != null && !source.equals(latestStr)) {
                 dto.setLocale(locale.toLanguageTag());
                 String mt = s.postString(dto);
-                if (VIPCfg.getInstance().isMachineTranslation() && !"".equalsIgnoreCase(mt)) {
+                if (this.getCfg().isMachineTranslation() && !"".equalsIgnoreCase(mt)) {
                     translation = mt;
                 }
             }
         }
 
-        if (!VIPCfg.getInstance().isMachineTranslation() && VIPCfg.getInstance().isPseudo()
+        if (!this.getCfg().isMachineTranslation() && this.getCfg().isPseudo()
                 && source != null && source.equals(translation)) {
             // if source isn't collected by server, add PSEUDOCHAR2
             translation = ConstantsKeys.PSEUDOCHAR2 + translation + ConstantsKeys.PSEUDOCHAR2;
@@ -209,7 +209,7 @@ public class TranslationMessage implements Message {
 
         if (args != null) {
         	Locale formatLocale = locale;
-        	if (source != null && source.equals(translation) || VIPCfg.getInstance().isPseudo()) {
+        	if (source != null && source.equals(translation) || this.getCfg().isPseudo()) {
         		formatLocale = LocaleUtility.getDefaultLocale();
         	}
 
@@ -256,9 +256,9 @@ public class TranslationMessage implements Message {
         MessagesDTO dto = new MessagesDTO();
         dto.setLocale(locale.toLanguageTag());
         dto.setComponent(component);
-        if (this.cfg != null) {
-            dto.setProductID(this.cfg.getProductName());
-            dto.setVersion(this.cfg.getVersion());
+        if (this.getCfg() != null) {
+            dto.setProductID(this.getCfg().getProductName());
+            dto.setVersion(this.getCfg().getVersion());
         }
         List<JSONObject> sourcesList = new ArrayList<>();
         sourcesList.addAll(sources);
@@ -312,9 +312,9 @@ public class TranslationMessage implements Message {
         dto.setSource(source);
         StringService s = new StringService();
         dto.setLocale(ConstantsKeys.LATEST);
-        if (this.cfg != null) {
-            dto.setProductID(this.cfg.getProductName());
-            dto.setVersion(this.cfg.getVersion());
+        if (this.getCfg() != null) {
+            dto.setProductID(this.getCfg().getProductName());
+            dto.setVersion(this.getCfg().getVersion());
         }
         String enStr = s.getString(dto);
         if (source != null && !"".equalsIgnoreCase(source) && !source.equals(enStr)) {
@@ -343,9 +343,9 @@ public class TranslationMessage implements Message {
         MessagesDTO dto = new MessagesDTO();
         dto.setLocale(locale.toLanguageTag());
         dto.setComponent(component);
-        if (this.cfg != null) {
-            dto.setProductID(this.cfg.getProductName());
-            dto.setVersion(this.cfg.getVersion());
+        if (this.getCfg() != null) {
+            dto.setProductID(this.getCfg().getProductName());
+            dto.setVersion(this.getCfg().getVersion());
         }
         ComponentService cs = new ComponentService(dto);
         return cs.getMessages().getCachedData();
@@ -364,7 +364,7 @@ public class TranslationMessage implements Message {
      * </ul>
      */
     public Map<String, String> getMessages(final Locale locale, final String component) {
-        MessagesDTO dto = new MessagesDTO(component, null, null, locale.toLanguageTag(), this.cfg);
+        MessagesDTO dto = new MessagesDTO(component, null, null, locale.toLanguageTag(), this.getCfg());
         MessageCacheItem cacheItem = new ComponentService(dto).getMessages();
         return cacheItem.getCachedData();
     }
@@ -392,11 +392,7 @@ public class TranslationMessage implements Message {
         }
 
         try {
-            VIPCfg config = this.cfg;
-            if (null == config) {
-                config = VIPCfg.getInstance();
-            }
-            final ComponentsService cs = new ComponentsService(config);
+            final ComponentsService cs = new ComponentsService(this.getCfg());
             retMap = cs.getTranslation(components, locales);
         } catch (final Exception e) {
             this.logger.error(ConstantsMsg.EXCEPTION_OCCUR, e);
@@ -497,9 +493,9 @@ public class TranslationMessage implements Message {
             MessagesDTO dto = new MessagesDTO();
             dto.setComponent(component);
             dto.setLocale(locale.toLanguageTag());
-            if (this.cfg != null) {
-                dto.setProductID(this.cfg.getProductName());
-                dto.setVersion(this.cfg.getVersion());
+            if (this.getCfg() != null) {
+                dto.setProductID(this.getCfg().getProductName());
+                dto.setVersion(this.getCfg().getVersion());
             }
             ComponentService cs = new ComponentService(dto);
             available = cs.isComponentAvailable();
@@ -522,9 +518,9 @@ public class TranslationMessage implements Message {
             dto.setComponent(component);
             dto.setKey(key);
             dto.setLocale(locale.toLanguageTag());
-            if (this.cfg != null) {
-                dto.setProductID(this.cfg.getProductName());
-                dto.setVersion(this.cfg.getVersion());
+            if (this.getCfg() != null) {
+                dto.setProductID(this.getCfg().getProductName());
+                dto.setVersion(this.getCfg().getVersion());
             }
             available = new StringService().isStringAvailable(dto);
         }
