@@ -9,25 +9,25 @@ namespace SingletonClient.Implementation.Support
 {
     public sealed class SingletonParserProperties : IResourceParser
     {
-        private Hashtable kvTable = new Hashtable();
-
         public Hashtable Parse(string text)
         {
+            Hashtable kvTable = new Hashtable();
+
             if (text != null)
             {
-                Load(new LineReader(text.ToCharArray()));
+                Load(new LineReader(text.ToCharArray()), kvTable);
             }
             return kvTable;
         }
 
-        private string Put(string key, string message)
+        private string Put(string key, string message, Hashtable kvTable)
         {
             string oldMessage = (string)kvTable[key];
             kvTable[key] = message;
             return oldMessage;
         }
 
-        private void Load(LineReader lr)
+        private void Load(LineReader lr, Hashtable kvTable)
         {
             char[] convtBuf = new char[1024];
             int limit;
@@ -88,7 +88,7 @@ namespace SingletonClient.Implementation.Support
                 }
                 string key = LoadConvert(lr.lineBuf, 0, keyLen, convtBuf);
                 string value = LoadConvert(lr.lineBuf, valueStart, limit - valueStart, convtBuf);
-                Put(key, value);
+                Put(key, value, kvTable);
             }
         }
 
