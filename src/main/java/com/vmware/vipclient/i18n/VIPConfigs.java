@@ -19,6 +19,11 @@ public class VIPConfigs {
     }
 
     public static VIPCfg getCfg(String productName) {
+        if (!contains(productName)) {
+            VIPCfg cfg = new VIPCfg();
+            cfg.setSubInstance(true);
+            cfg.setProductName(productName);
+        }
         return configs.get(productName);
     }
 
