@@ -7,6 +7,7 @@ package com.vmware.vip.i18n;
 import java.util.Locale;
 import java.util.Map;
 
+import com.vmware.vipclient.i18n.VIPConfigs;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -44,7 +45,7 @@ public class SharedComponentTest extends BaseTestClass {
         I18nFactory i18n = I18nFactory.getInstance(mainCfg);
         mainTranslation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
 
-        VIPCfg subCfg = VIPCfg.getSubInstance(subProductName);
+        VIPCfg subCfg = VIPConfigs.getCfg(subProductName);
         try {
             subCfg.initialize("vipconfig-child");
         } catch (VIPClientInitException e) {
