@@ -5,11 +5,9 @@
 package com.vmware.vipclient.i18n;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 import org.slf4j.Logger;
@@ -85,7 +83,7 @@ public class VIPCfg {
      * @deprecated Use the {@link com.vmware.vipclient.i18n.VIPConfigs#getMainCfg() getMainCfg} method.
      */
     public static VIPCfg getInstance() {
-        return VIPConfigs.getMainCfgInstance();
+        return VIPConfigs.getMainCfg();
     }
 
     /**
@@ -94,7 +92,7 @@ public class VIPCfg {
     public static synchronized VIPCfg getSubInstance(String productName) {
         if (!VIPConfigs.contains(productName)) {
             VIPCfg cfg = new VIPCfg();
-            cfg.isSubInstance = true;
+            cfg.setSubInstance(true);
             cfg.setProductName(productName);
             VIPConfigs.addCfg(cfg);
         }

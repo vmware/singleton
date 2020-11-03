@@ -7,15 +7,11 @@ public class VIPConfigs {
     private static final Map<String, VIPCfg> configs = new HashMap<>();
     private static VIPCfg mainCfg;
 
-    public static VIPCfg getMainCfg() {
-        return mainCfg;
-    }
-
-    public static synchronized VIPCfg getMainCfgInstance() {
-        if (getMainCfg() == null) {
+    public static synchronized VIPCfg getMainCfg() {
+        if (mainCfg == null) {
             mainCfg = new VIPCfg();
         }
-        return VIPConfigs.getMainCfg();
+        return mainCfg;
     }
 
     public static VIPCfg getCfg(String productName) {
