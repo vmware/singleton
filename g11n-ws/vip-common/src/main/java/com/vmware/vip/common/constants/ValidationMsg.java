@@ -26,5 +26,4 @@ public final class ValidationMsg {
 	public final static String PATTERN_NOT_VALIDE = "Incorrect pattern(only allows letter)";
 	public final static String PRODUCTNAME_NOT_SUPPORTED = "The product '%s' is NOT supported yet!";
 	public final static String LOCALENAME_NOT_SUPPORTED = "The locale '%s' is NOT supported yet!";
-	public final static String LOCALENAME_ONLY_SUPPORTED = "The locale only support( '%s' )!";
 }
