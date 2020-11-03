@@ -27,7 +27,7 @@ public class VIPConfigs {
         return configs.get(productName);
     }
 
-    public static void addCfg(VIPCfg cfg) {
+    protected static void addCfg(VIPCfg cfg) {
         configs.put(cfg.getProductName(), cfg);
     }
 
