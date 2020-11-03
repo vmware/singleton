@@ -32,9 +32,6 @@ import com.vmware.vip.common.constants.ConstantsChar;
 public class WebConfiguration implements WebMvcConfigurer {
 	private static Logger logger = LoggerFactory.getLogger(WebConfiguration.class);
 	
-	@Value("${source.collect.locales:en}")
-	private String collectLocales;
-	
 	@Value("${csp.api.auth.enable:false}")
 	private String cspAuthFlag;
 	
@@ -70,7 +67,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 			.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/**");
 		}
 		logger.info("add source collection validation interceptor");
-		registry.addInterceptor(new CollectSourceValidationInterceptor(parseLocales(this.collectLocales), WhiteListUtils.getWhiteList(whiteListLocation))).addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/**");
+		registry.addInterceptor(new CollectSourceValidationInterceptor(WhiteListUtils.getWhiteList(whiteListLocation))).addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/**");
 	}
 	
 	private List<String> parseLocales(String localesString){
