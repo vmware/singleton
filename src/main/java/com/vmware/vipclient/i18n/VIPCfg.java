@@ -90,11 +90,6 @@ public class VIPCfg {
      * @deprecated Use the {@link com.vmware.vipclient.i18n.VIPConfigs#getCfg(String) getCfg} method.
      */
     public static synchronized VIPCfg getSubInstance(String productName) {
-        if (!VIPConfigs.contains(productName)) {
-            VIPCfg cfg = new VIPCfg();
-            cfg.setSubInstance(true);
-            cfg.setProductName(productName);
-        }
         return VIPConfigs.getCfg(productName);
     }
 
