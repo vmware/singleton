@@ -28,7 +28,7 @@ import com.vmware.vipclient.i18n.util.LocaleUtility;
 /**
  * a class uses to define the global environment setting for I18nFactory
  */
-public class VIPCfg {
+public class VIPCfg extends VIPConfigs {
 
     Logger                             logger        = LoggerFactory.getLogger(VIPCfg.class);
 
