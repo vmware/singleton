@@ -7,7 +7,7 @@ package com.vmware.vipclient.i18n.base.cache;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PatternCacheItem extends FormatCacheItem implements CacheItem {
+public class PatternCacheItem extends FormatCacheItem {
 
     private final Map<String, Object> cachedData = new HashMap<String, Object>();
 
