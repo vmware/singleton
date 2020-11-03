@@ -189,6 +189,9 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 	}
 
 	private static String getSourceSupportLocales(List<String> sourceLocaleList) {
+		if(sourceLocaleList == null || sourceLocaleList.size() == 0) {
+			return "";
+		}
 		StringBuilder sb = new StringBuilder();
 		sb.append(sourceLocaleList.get(0).trim());
 		for(int i = 1; i < sourceLocaleList.size(); i++) {
