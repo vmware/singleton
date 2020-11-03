@@ -81,10 +81,6 @@ public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
 			if (null == responseStr || responseStr.equals(""))
 				return null;
 			else {
-				if (ConstantsKeys.LATEST.equals(this.dto.getLocale())) {
-					responseStr = responseStr.replace(ConstantsKeys.PSEUDOCHAR, "");
-				}
-	
 				JSONObject msgObject = (JSONObject) this.getMessagesFromResponse(responseStr,
 	                ConstantsKeys.MESSAGES);
 	
