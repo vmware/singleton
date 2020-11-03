@@ -35,8 +35,6 @@ public class VIPCfg {
     Logger                             logger        = LoggerFactory.getLogger(VIPCfg.class);
 
     // define global instance
-    private static VIPCfg              gcInstance;
-    private static Map<String, VIPCfg> moduleCfgs    = new HashMap<String, VIPCfg>();
     private VIPService                 vipService;
     private TranslationCacheManager    translationCacheManager;
 
@@ -79,34 +77,28 @@ public class VIPCfg {
 
     private boolean isSubInstance = false;
 
-    private VIPCfg() {
+    public VIPCfg() {
 
     }
 
     /**
-     * create a default instance of VIPCfg
-     * 
-     * @return
+     * @deprecated Use the {@link com.vmware.vipclient.i18n.VIPConfigs#getMainCfg() getMainCfg} method.
      */
-    public static synchronized VIPCfg getInstance() {
-        if (gcInstance == null) {
-            gcInstance = new VIPCfg();
-        }
-        return gcInstance;
+    public static VIPCfg getInstance() {
+        return VIPConfigs.getMainCfgInstance();
     }
 
     /**
-     * create a default instance of VIPCfg
-     *
-     * @return
+     * @deprecated Use the {@link com.vmware.vipclient.i18n.VIPConfigs#getCfg(String) getCfg} method.
      */
     public static synchronized VIPCfg getSubInstance(String productName) {
-        if (!VIPCfg.moduleCfgs.containsKey(productName)) {
+        if (!VIPConfigs.contains(productName)) {
             VIPCfg cfg = new VIPCfg();
             cfg.isSubInstance = true;
-            VIPCfg.moduleCfgs.put(productName, cfg);
+            cfg.setProductName(productName);
+            VIPConfigs.addCfg(cfg);
         }
-        return VIPCfg.moduleCfgs.get(productName);
+        return VIPConfigs.getCfg(productName);
     }
 
     /**
@@ -135,7 +127,7 @@ public class VIPCfg {
 
         if (prop.containsKey("productName"))
             this.setProductName(prop.getString("productName"));
-        if (this.isSubInstance() && !VIPCfg.moduleCfgs.containsKey(this.productName)) {
+        if (this.isSubInstance() && !VIPConfigs.contains(this.productName)) {
             throw new VIPClientInitException(
                     "Can't not initialize sub VIPCfg instance, the product name is not defined in config file.");
         }
