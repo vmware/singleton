@@ -94,7 +94,6 @@ public class VIPCfg {
             VIPCfg cfg = new VIPCfg();
             cfg.setSubInstance(true);
             cfg.setProductName(productName);
-            VIPConfigs.addCfg(cfg);
         }
         return VIPConfigs.getCfg(productName);
     }
@@ -278,6 +277,7 @@ public class VIPCfg {
 
     public void setProductName(String productName) {
         this.productName = productName;
+        VIPConfigs.addCfg(this);
     }
 
     public String getVersion() {
