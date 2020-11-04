@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,7 +43,7 @@ public class Task {
         TimerTask cleanCacheTask = new TimerTask() {
             @Override
             public void run() {
-                Cache translationCache = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
+                Cache translationCache = TranslationCacheManager.getInstance().getCache(VIPCfg.CACHE_L3);
                 if (translationCache == null) {
                     return;
                 }
