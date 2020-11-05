@@ -229,6 +229,7 @@ public class OfflineModeTest extends BaseTestClass {
         dto.setProductID(VIPCfg.getInstance().getProductName());
         dto.setVersion(VIPCfg.getInstance().getVersion());
 
+        String component = "JAVA2";
         String message = translation.getMessage(locale, component, "props.key.1", args);
         // Returns the source message from props file
         assertEquals("props.value.1", message);

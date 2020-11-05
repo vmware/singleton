@@ -43,16 +43,16 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
     
     @Override
     public void getComponentMessages(MessageCacheItem cacheItem) {
-        Locale bestMatch = Locale.lookup(Arrays.asList(new Locale.LanguageRange((dto.getLocale()))),
-        		getSupportedLocales());
+		Map<String, String> messages = null;
 		try {
+			Locale bestMatch = Locale.lookup(Arrays.asList(new Locale.LanguageRange((dto.getLocale()))),
+					getSupportedLocales());
 			String filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), bestMatch.toLanguageTag());
 			Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl(), filePath);
 			
 			URI uri = Thread.currentThread().getContextClassLoader().
 					getResource(path.toString()).toURI();
-			
-			Map<String, String> messages = null;
+
 	    	if (uri.getScheme().equals("jar")) {
 				try(FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
 					path = fileSystem.getPath(path.toString());
@@ -62,15 +62,14 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 				path = Paths.get(uri);
 				messages = JSONBundleUtil.getMessages(path);
 			}
-
-			if (messages!=null && !messages.isEmpty())
-				cacheItem.setCacheItem(messages, null, System.currentTimeMillis(), null);
-			else
-				new LocalSrcMessagesPropsOpt(this.dto).getComponentMessages(cacheItem);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
 			// Do not update cacheItem
 		}
+		if (messages!=null && !messages.isEmpty())
+			cacheItem.setCacheItem(messages, null, System.currentTimeMillis(), null);
+		else
+			new LocalSrcMessagesPropsOpt(this.dto).getComponentMessages(cacheItem);
     }
     
     private List<Locale> getSupportedLocales() {
