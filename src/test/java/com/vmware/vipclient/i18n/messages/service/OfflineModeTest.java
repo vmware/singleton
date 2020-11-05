@@ -235,8 +235,11 @@ public class OfflineModeTest extends BaseTestClass {
         assertEquals("props.value.1", message);
 
         message = translation.getMessage(locale, component, "props.key.3", args);
-        // Returns the source message from anohter props file
+        // Returns the source message from another props file
         assertEquals("props.value.3", message);
+
+        message = translation.getMessage(locale, component, key, args);
+        assertEquals(FormatUtils.format(messageFil, args), message);
 
         cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
         cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
