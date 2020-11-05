@@ -17,6 +17,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import com.vmware.vipclient.i18n.VIPCfgFactory;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,12 +52,12 @@ public class VIPComponentFilter implements Filter {
         OutputStream os = response.getOutputStream();
         response.setContentType("text/javascript;charset=UTF-8");
         os.write(("var translation = {" + "\"messages\" : " + messages + ", "
-                + "\"productName\" : \"" + gc.getInstance().getProductName()
-                + "\", " + "\"version\" : \"" + gc.getInstance().getVersion()
+                + "\"productName\" : \"" + VIPCfgFactory.getCfg().getProductName()
+                + "\", " + "\"version\" : \"" + VIPCfgFactory.getCfg().getVersion()
                 + "\", " + "\"vipServer\" : \""
-                + gc.getInstance().getVipServer() + "\", " + "\"pseudo\" : \""
-                + gc.getInstance().isPseudo() + "\", "
-                + "\"collectSource\" : \"" + gc.getInstance().isCollectSource() + "\"};")
+                + VIPCfgFactory.getCfg().getVipServer() + "\", " + "\"pseudo\" : \""
+                + VIPCfgFactory.getCfg().isPseudo() + "\", "
+                + "\"collectSource\" : \"" + VIPCfgFactory.getCfg().isCollectSource() + "\"};")
                         .getBytes("UTF-8"));
     }
 
@@ -101,7 +102,7 @@ public class VIPComponentFilter implements Filter {
     }
 
     private TranslationMessage translation;
-    private VIPCfg             gc = VIPCfg.getInstance();
+    private VIPCfg gc = new VIPCfg();
 
     public void init(FilterConfig filterConfig) throws ServletException {
         if (gc.getVipService() == null) {

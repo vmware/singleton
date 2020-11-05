@@ -28,7 +28,7 @@ import com.vmware.vipclient.i18n.util.LocaleUtility;
 /**
  * a class uses to define the global environment setting for I18nFactory
  */
-public class VIPCfg extends VIPConfigs {
+public class VIPCfg extends VIPCfgFactory {
 
     Logger                             logger        = LoggerFactory.getLogger(VIPCfg.class);
 
@@ -64,32 +64,19 @@ public class VIPCfg extends VIPConfigs {
     public static final String         CACHE_L3      = "CACHE_L3";
     public static final String         CACHE_L2      = "CACHE_L2";
 
-    public boolean isSubInstance() {
-        return isSubInstance;
-    }
-    
-    public void setSubInstance(boolean subInstance) {
-        isSubInstance = subInstance;
-    }
-
-    private boolean isSubInstance = false;
-
-    public VIPCfg() {
-
-    }
-
     /**
-     * @deprecated Use the {@link com.vmware.vipclient.i18n.VIPConfigs#getMainCfg() getMainCfg} method.
+     * @deprecated Use the {@link VIPCfgFactory#getCfg() getCfg} method.
      */
     public static VIPCfg getInstance() {
-        return VIPConfigs.getMainCfg();
+        return VIPCfgFactory.getCfg();
     }
 
     /**
-     * @deprecated Use the {@link com.vmware.vipclient.i18n.VIPConfigs#getCfg(String) getCfg} method.
+     * @deprecated Use the {@link VIPCfgFactory#getCfg(String) getCfg} method.
      */
     public static synchronized VIPCfg getSubInstance(String productName) {
-        return VIPConfigs.getCfg(productName);
+         VIPCfg cfg = VIPCfgFactory.getCfg(productName);
+         return cfg;
     }
 
     /**
@@ -118,10 +105,6 @@ public class VIPCfg extends VIPConfigs {
 
         if (prop.containsKey("productName"))
             this.setProductName(prop.getString("productName"));
-        if (this.isSubInstance() && !VIPConfigs.contains(this.productName)) {
-            throw new VIPClientInitException(
-                    "Can't not initialize sub VIPCfg instance, the product name is not defined in config file.");
-        }
         if (prop.containsKey("version"))
             this.setVersion(prop.getString("version"));
         
@@ -185,7 +168,7 @@ public class VIPCfg extends VIPConfigs {
         }
         if (this.isCleanCache()) {
             logger.info("startTaskOfCacheClean.");
-            Task.startTaskOfCacheClean(VIPConfigs.getMainCfg(), interalCleanCache);
+            Task.startTaskOfCacheClean(VIPCfgFactory.getCfg(), interalCleanCache);
         }
         Cache createdCache = TranslationCacheManager
                 .getCache(VIPCfg.CACHE_L3);
@@ -213,7 +196,7 @@ public class VIPCfg extends VIPConfigs {
             }
             if (this.isCleanCache()) {
                 logger.info("startTaskOfCacheClean.");
-                Task.startTaskOfCacheClean(VIPCfg.getInstance(), interalCleanCache);
+                Task.startTaskOfCacheClean(VIPCfgFactory.getCfg(), interalCleanCache);
             }
             Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
             if (c != null && this.getCacheExpiredTime() != 0) {
@@ -236,7 +219,7 @@ public class VIPCfg extends VIPConfigs {
         logger.info("Formatting cache created.");
         if (this.isCleanCache()) {
             logger.error("clean cache.");
-            Task.startTaskOfCacheClean(VIPConfigs.getMainCfg(), interalCleanCache);
+            Task.startTaskOfCacheClean(VIPCfgFactory.getCfg(), interalCleanCache);
         }
         return TranslationCacheManager.getCache(VIPCfg.CACHE_L2);
     }
@@ -259,7 +242,7 @@ public class VIPCfg extends VIPConfigs {
 
     public void setProductName(String productName) {
         this.productName = productName;
-        VIPConfigs.addCfg(this);
+        VIPCfgFactory.addCfg(this);
     }
 
     public String getVersion() {
