@@ -100,11 +100,13 @@ public class VIPCfg extends VIPCfgFactory {
     public void initialize(String cfg) throws VIPClientInitException {
     	ResourceBundle prop = ResourceBundle.getBundle(cfg);
     	if (prop == null) {
-    		throw new VIPClientInitException("Can't not initialize VIPCfg, resource bundle is null.");
-    	}
+    		throw new VIPClientInitException("Can't initialize VIPCfg. Config file is null.");
+    	} else if (!prop.containsKey("productName")) {
+            throw new VIPClientInitException("Can't initialize VIPCfg. Product name is not defined.");
+        }
 
-        if (prop.containsKey("productName"))
-            this.setProductName(prop.getString("productName"));
+        this.setProductName(prop.getString("productName"));
+
         if (prop.containsKey("version"))
             this.setVersion(prop.getString("version"));
         
