@@ -252,9 +252,6 @@ public class TranslationMessageTest extends BaseTestClass {
 
         message = translation.getMessage(new Locale("en", "US"), component, keyUncollected);
         Assert.assertEquals(valueUncollected, message);
-
-        //Map<String, String> retMap2 = translation.getMessages(new Locale("de", ""), component);
-        //Assert.assertEquals(message_de, retMap2.get(key));
     }
     
     @Test
