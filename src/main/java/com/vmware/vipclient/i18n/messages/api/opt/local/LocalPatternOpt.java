@@ -47,9 +47,6 @@ public class LocalPatternOpt implements PatternOpt{
             if(patterns != null) {
                 logger.debug("Found the pattern from local bundle for locale [{}].\n", normalizedLocale);
                 cacheItem.set((Map<String, Object>) patterns.get(PatternKeys.CATEGORIES), System.currentTimeMillis());
-            }else{
-                logger.debug("Didn't find the pattern from local bundle for locale [{}].\n", normalizedLocale);
-                cacheItem.set(null, System.currentTimeMillis());
             }
         } catch (Exception e) {
             e.printStackTrace();

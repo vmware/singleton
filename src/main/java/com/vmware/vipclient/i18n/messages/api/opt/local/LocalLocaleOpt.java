@@ -55,9 +55,6 @@ public class LocalLocaleOpt implements LocaleOpt{
 			logger.debug("Found the supported languages from local bundle for product [{}], version [{}], locale [{}].\n", dto.getProductID(), dto.getVersion(), locale);
 			supportedLanguageNames = JSONUtils.map2SortMap(supportedLanguageNames);
 			cacheItem.set(supportedLanguageNames, System.currentTimeMillis());
-		}else{
-			logger.debug("Didn't find the supported languages from local bundle for product [{}], version [{}], locale [{}].\n", dto.getProductID(), dto.getVersion(), locale);
-			cacheItem.set(null, System.currentTimeMillis());
 		}
     }
 
@@ -76,7 +73,7 @@ public class LocalLocaleOpt implements LocaleOpt{
 				logger.debug("Found the languages' names from local bundle for locale [{}].\n", locale);
 				return (Map<String, String>) languagesData.get(PatternKeys.LANGUAGES);
 			}else{
-				logger.debug("Didn't find the languages' names from local bundle for locale [{}].\n", locale);
+				logger.warn("Didn't find the languages' names from local bundle for locale [{}].\n", locale);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -100,9 +97,6 @@ public class LocalLocaleOpt implements LocaleOpt{
 					logger.debug("Found the regions from local bundle for locale [{}].\n", locale);
 					territories = JSONUtils.map2SortMap(territories);
 					cacheItem.set(territories, System.currentTimeMillis());
-				}else{
-					logger.debug("Didn't find the regions from local bundle for locale [{}].\n", locale);
-					cacheItem.set(null, System.currentTimeMillis());
 				}
 			}
 		} catch (Exception e) {
