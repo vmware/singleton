@@ -73,7 +73,6 @@ public class TranslationMessage implements Message {
     	
     }
 
-
     /**
      * get a translation under the component of the configured product
      *
