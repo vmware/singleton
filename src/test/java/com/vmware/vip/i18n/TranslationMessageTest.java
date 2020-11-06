@@ -235,6 +235,27 @@ public class TranslationMessageTest extends BaseTestClass {
         Map<String, String> retMap6 = translation.getMessages(Locale.forLanguageTag("zh-Hant-TW"), component);
         Assert.assertEquals(message_zh_TW, retMap6.get(key));
     }
+
+    @Test
+    public void testGetMessageNoLocalSource() {
+        vipCfg.setPseudo(false);
+
+        String component = "nolocalsource";
+        String key = "global_text_username";
+        String message_en_US = "User name";
+
+        String keyUncollected = "uncollected";
+        String valueUncollected = "uncollected";
+
+        String message = translation.getMessage(new Locale("en", "US"), component, key);
+        Assert.assertEquals(message_en_US, message);
+
+        message = translation.getMessage(new Locale("en", "US"), component, keyUncollected);
+        Assert.assertEquals(valueUncollected, message);
+
+        //Map<String, String> retMap2 = translation.getMessages(new Locale("de", ""), component);
+        //Assert.assertEquals(message_de, retMap2.get(key));
+    }
     
     @Test
     @Deprecated
