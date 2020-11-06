@@ -4,12 +4,10 @@
  */
 package com.vmware.vipclient.i18n.base.cache.persist;
 
-import java.util.Map;
 import java.util.Set;
 
-import org.json.simple.JSONObject;
+import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 
-import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
@@ -28,7 +26,7 @@ public class CacheSyncThread extends Thread {
 
     @Override
     public void run() {
-        CacheSnapshot cs = VIPCfg.getInstance().getCacheManager()
+        CacheSnapshot cs = TranslationCacheManager.getInstance()
                 .getCacheSnapshot();
         for (String component : components) {
             for (String locale : locales) {

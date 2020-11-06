@@ -7,8 +7,10 @@ package com.vmware.vipclient.i18n.messages.service;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.FormatCacheItem;
+import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.base.cache.LocaleCacheItem;
 import com.vmware.vipclient.i18n.base.cache.PatternCacheItem;
+
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
 import com.vmware.vipclient.i18n.util.ConstantsKeys;
 
@@ -78,7 +80,7 @@ public class FormattingCacheService {
 
     private void addFormattings(String key, FormatCacheItem o) {
         if (null != key && null != o) {
-            Cache c = VIPCfg.getInstance().getCacheManager()
+            Cache c = TranslationCacheManager.getInstance()
                     .getCache(VIPCfg.CACHE_L2);
             if (c != null) {
                 c.put(key, o);
@@ -88,7 +90,7 @@ public class FormattingCacheService {
 
     private FormatCacheItem getFormattings(String key) {
         Map<String, String> o = null;
-        Cache c = VIPCfg.getInstance().getCacheManager()
+        Cache c = TranslationCacheManager.getInstance()
                 .getCache(VIPCfg.CACHE_L2);
         if (c != null) {
             return (FormatCacheItem) c.get(key);

@@ -35,9 +35,6 @@ public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
     public void getComponentMessages(MessageCacheItem cacheItem) {
         String url = V2URL.getComponentTranslationURL(this.dto,
                 VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
-        if (ConstantsKeys.LATEST.equals(this.dto.getLocale())) {
-            url = url.replace("pseudo=false", "pseudo=true");
-        }
         
         Map<String, String> headers = new HashMap<String, String>();
         if (cacheItem.getEtag() != null)
@@ -81,10 +78,6 @@ public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
 			if (null == responseStr || responseStr.equals(""))
 				return null;
 			else {
-				if (ConstantsKeys.LATEST.equals(this.dto.getLocale())) {
-					responseStr = responseStr.replace(ConstantsKeys.PSEUDOCHAR, "");
-				}
-	
 				JSONObject msgObject = (JSONObject) this.getMessagesFromResponse(responseStr,
 	                ConstantsKeys.MESSAGES);
 	

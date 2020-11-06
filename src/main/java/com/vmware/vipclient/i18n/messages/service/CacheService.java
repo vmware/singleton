@@ -9,6 +9,7 @@ import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.Cache;
 import com.vmware.vipclient.i18n.base.cache.CacheItem;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
+import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 
 import java.util.*;
@@ -71,7 +72,7 @@ public class CacheService {
 
     private void addCacheItem(String key, CacheItem cacheItem) {
         if (key != null && cacheItem != null) {
-            Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
+            Cache c = TranslationCacheManager.getInstance().getCache(VIPCfg.CACHE_L3);
             if (c != null) {
                 c.put(key, cacheItem);
             }
@@ -79,7 +80,7 @@ public class CacheService {
     }
 
     private CacheItem getCacheItem(String key) {
-        Cache c = VIPCfg.getInstance().getCacheManager().getCache(VIPCfg.CACHE_L3);
+        Cache c = TranslationCacheManager.getInstance().getCache(VIPCfg.CACHE_L3);
         if (c == null)
             return null;
         return c.get(key);
