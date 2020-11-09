@@ -63,8 +63,10 @@ public class FormatUtils {
 
 		return pattern;
     }
- 
-    
+
+	/**
+	 * @deprecated Use {@link #formatMsg(String, Locale, Object)}.
+	 */
     public static String format(String pattern, Locale locale, Object... arguments) {
     	try {
 	        MessageFormat messageFormat = new MessageFormat(pattern, locale);
