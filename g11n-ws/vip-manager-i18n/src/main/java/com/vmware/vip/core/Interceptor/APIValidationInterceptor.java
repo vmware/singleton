@@ -129,17 +129,17 @@ public class APIValidationInterceptor extends HandlerInterceptorAdapter {
 	 * Use to get client request ID content from HTTP headers
 	 */
 	private String getRequestId(HttpServletRequest request, List<String> headerNames) {
-		String singletonReqId = "";
+		StringBuilder singletonReqIds = new StringBuilder("");
 		if(headerNames != null) {
 			for(String headerName: headerNames) {
 				String reqIdStr = request.getHeader(headerName);
 				if(!StringUtils.isEmpty(reqIdStr)) {
-					singletonReqId = "[clientRequestID-" + headerName + ": " + reqIdStr + "]";
-					break;
+					singletonReqIds.append("[clientRequestHeader- ").append(headerName).append(": ")
+					.append(reqIdStr).append( "] ");
 				}
 			}
 		}
-		return singletonReqId;
+		return singletonReqIds.toString();
 	}
 
 }
