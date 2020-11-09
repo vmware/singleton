@@ -542,22 +542,20 @@ public class TranslationMessage implements Message {
         String message = null;
         Locale localeInUse = locale;
         Map<String, String> messages = getMessages(locale, component, false);
-        if (messages == null || messages.isEmpty()) {
+        if (messages.isEmpty()) {
             Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
             while (fallbackLocalesIter.hasNext()) {
                 localeInUse = fallbackLocalesIter.next();
                 if (!localeInUse.equals(locale)) {
                     messages = getMessages(localeInUse, component, false);
-                    if (messages != null && !messages.isEmpty()) {
+                    if (!messages.isEmpty()) {
                         break;
                     }
                 }
             }
         }
 
-        if (messages!=null) {
-            message = messages.get(key);
-        }
+        message = messages.get(key);
         if (message == null || message.isEmpty()) {
             throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component, locale));
         }
