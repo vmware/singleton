@@ -58,8 +58,8 @@ public class TranslationMessage implements Message {
      */
     public String getMessage(final Locale locale, final String component, final String key, final Object... args) {
     	// Use source message if the message hasn't been collected/translated
-    	String source = getMessages(Locale.forLanguageTag(ConstantsKeys.SOURCE), component).get(key);
-    	String collectedSourceMsg = getMessages(LocaleUtility.getSourceLocale(), component).get(key);
+    	String source = getMessages(Locale.forLanguageTag(ConstantsKeys.SOURCE), component, false).get(key);
+    	String collectedSourceMsg = getMessages(LocaleUtility.getSourceLocale(), component, false).get(key);
     	if (source!=null && !source.isEmpty() && !source.equals(collectedSourceMsg)) {
 			return FormatUtils.format(source, LocaleUtility.getSourceLocale(), args);
 		}
@@ -70,7 +70,6 @@ public class TranslationMessage implements Message {
     	}
     	
     	return message;
-    	
     }
 
     /**
@@ -353,9 +352,15 @@ public class TranslationMessage implements Message {
      * </ul>
      */
     public Map<String, String> getMessages(final Locale locale, final String component) {
-        MessagesDTO dto = new MessagesDTO(component, null, null, locale.toLanguageTag(), this.getCfg());
-        MessageCacheItem cacheItem = new ComponentService(dto).getMessages();
-        return cacheItem.getCachedData();
+        return getMessages(locale, component, true);
+    }
+
+    private Map<String, String> getMessages(Locale locale, String component, boolean useLocaleFallback) {
+        MessagesDTO dto = new MessagesDTO(component, null, null, locale.toLanguageTag(), this.cfg);
+        if (useLocaleFallback)
+            return new ComponentService(dto).getMessages().getCachedData();
+        else
+            return new ComponentService(dto).getMessages(null).getCachedData();
     }
 
     /**
