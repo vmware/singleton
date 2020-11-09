@@ -343,7 +343,7 @@ public class TranslationMessage implements Message {
         return getMessages(locale, component, true);
     }
 
-    private Map<String, String> getMessages(Locale locale, String component, boolean useLocaleFallback) {
+    private Map<String, String> getMessages(final Locale locale, final String component, boolean useLocaleFallback) {
         MessagesDTO dto = new MessagesDTO(component, null, null, locale.toLanguageTag(), this.cfg);
         if (useLocaleFallback)
             return new ComponentService(dto).getMessages().getCachedData();
@@ -539,27 +539,39 @@ public class TranslationMessage implements Message {
             }
         }
 
-        String message = null;
-        Locale localeInUse = locale;
-        Map<String, String> messages = getMessages(locale, component, false);
-        if (messages.isEmpty()) {
-            Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
-            while (fallbackLocalesIter.hasNext()) {
-                localeInUse = fallbackLocalesIter.next();
-                if (!localeInUse.equals(locale)) {
-                    messages = getMessages(localeInUse, component, false);
-                    if (!messages.isEmpty()) {
-                        break;
-                    }
-                }
-            }
-        }
-
-        message = messages.get(key);
+        LocaleMessages localeMessages = getLocaleMessages(locale, component);
+        String message = localeMessages.messages.get(key);
         if (message == null || message.isEmpty()) {
             throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component, locale));
         }
 
-        return FormatUtils.formatMsg(message, localeInUse, args);
+        return FormatUtils.formatMsg(message, localeMessages.locale, args);
+    }
+
+    private class LocaleMessages {
+    	Locale locale;
+    	Map<String, String> messages;
+    	
+    	LocaleMessages(Locale locale, Map<String, String> messages) {
+    		this.locale = locale;
+    		this.messages = messages;
+    	}
+    }
+    private LocaleMessages getLocaleMessages(final Locale locale, final String component) {
+        Map<String, String> messages = getMessages(locale, component, false);
+        if (messages.isEmpty()) {
+            Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
+            while (fallbackLocalesIter.hasNext()) {
+                Locale curLocale = fallbackLocalesIter.next();
+                if (!curLocale.equals(locale)) {
+                    messages = getMessages(curLocale, component, false);
+                    if (!messages.isEmpty()) {
+                    	return new LocaleMessages(curLocale, messages);
+                    }
+                }
+            }
+        }
+        
+        return new LocaleMessages(locale, messages);
     }
 }
