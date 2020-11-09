@@ -57,19 +57,7 @@ public class TranslationMessage implements Message {
      * </ul>
      */
     public String getMessage(final Locale locale, final String component, final String key, final Object... args) {
-    	// Use source message if the message hasn't been collected/translated
-    	String source = getMessages(Locale.forLanguageTag(ConstantsKeys.SOURCE), component, false).get(key);
-    	String collectedSourceMsg = getMessages(LocaleUtility.getSourceLocale(), component, false).get(key);
-    	if (source!=null && !source.isEmpty() && !source.equals(collectedSourceMsg)) {
-			return FormatUtils.format(source, LocaleUtility.getSourceLocale(), args);
-		}
-    	
-    	String message = FormatUtils.format(getMessages(locale, component).get(key), locale, args);
-    	if (message == null || message.isEmpty()) {
-    		throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component, locale));
-    	}
-    	
-    	return message;
+    	return getMessageWithArgs(locale, component, key, args);
     }
 
     /**
@@ -538,10 +526,14 @@ public class TranslationMessage implements Message {
      * </ul>
      */
     public String getMessage(final Locale locale, final String component, final String key, final Map<String, Object> args) {
+    	return getMessageWithArgs(locale, component, key, args);
+    }
+    
+    private String getMessageWithArgs(final Locale locale, final String component, final String key, final Object args) {
         // Use source message if the message hasn't been collected/translated
-        String source = getLocaleMessages(Locale.forLanguageTag(ConstantsKeys.SOURCE), component).get(key);
+        String source = getMessages(Locale.forLanguageTag(ConstantsKeys.SOURCE), component, false).get(key);
         if (source!=null && !source.isEmpty()) {
-            String collectedSource = getLocaleMessages(LocaleUtility.getSourceLocale(), component).get(key);
+            String collectedSource = getMessages(LocaleUtility.getSourceLocale(), component, false).get(key);
             if (!source.equals(collectedSource)) {
                 return FormatUtils.formatMsg(source, LocaleUtility.getSourceLocale(), args);
             }
@@ -549,13 +541,13 @@ public class TranslationMessage implements Message {
 
         String message = null;
         Locale localeInUse = locale;
-        Map<String, String> messages = getLocaleMessages(locale, component);
+        Map<String, String> messages = getMessages(locale, component, false);
         if (messages == null || messages.isEmpty()) {
             Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
             while (fallbackLocalesIter.hasNext()) {
                 localeInUse = fallbackLocalesIter.next();
                 if (!localeInUse.equals(locale)) {
-                    messages = getLocaleMessages(localeInUse, component);
+                    messages = getMessages(localeInUse, component, false);
                     if (messages != null && !messages.isEmpty()) {
                         break;
                     }
@@ -571,11 +563,5 @@ public class TranslationMessage implements Message {
         }
 
         return FormatUtils.formatMsg(message, localeInUse, args);
-    }
-
-    private Map<String, String> getLocaleMessages(final Locale locale, final String component) {
-        MessagesDTO dto = new MessagesDTO(component, null, null, locale.toLanguageTag(), this.getCfg());
-        MessageCacheItem cacheItem = new ComponentService(dto).getMessages(null);
-        return cacheItem.getCachedData();
     }
 }
