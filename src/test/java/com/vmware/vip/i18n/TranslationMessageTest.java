@@ -555,7 +555,7 @@ public class TranslationMessageTest extends BaseTestClass {
     }
 
     @Test
-    public void TestNamedArgs() {
+    public void testNamedArgs() {
         String component = "JAVA";
         String key = "NamedArgs";
         Locale locale_en = new Locale("en", "US");
