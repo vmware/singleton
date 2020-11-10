@@ -55,6 +55,8 @@ public class LocalLocaleOpt implements LocaleOpt{
 			logger.debug("Found the supported languages from local bundle for product [{}], version [{}], locale [{}].\n", dto.getProductID(), dto.getVersion(), locale);
 			supportedLanguageNames = JSONUtils.map2SortMap(supportedLanguageNames);
 			cacheItem.set(supportedLanguageNames, System.currentTimeMillis());
+		}else{
+			logger.warn("Didn't find the supported languages from local bundle for product [{}], version [{}], locale [{}].\n", dto.getProductID(), dto.getVersion(), locale);
 		}
     }
 
@@ -97,6 +99,8 @@ public class LocalLocaleOpt implements LocaleOpt{
 					logger.debug("Found the regions from local bundle for locale [{}].\n", locale);
 					territories = JSONUtils.map2SortMap(territories);
 					cacheItem.set(territories, System.currentTimeMillis());
+				}else{
+					logger.warn("Didn't find the regions from local bundle for locale [{}].\n", locale);
 				}
 			}
 		} catch (Exception e) {

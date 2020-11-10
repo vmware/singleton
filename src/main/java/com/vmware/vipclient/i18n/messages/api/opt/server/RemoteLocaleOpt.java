@@ -54,6 +54,8 @@ public class RemoteLocaleOpt extends RemoteL2BaseOpt implements LocaleOpt{
                             logger.debug("Found the regions from Singleton Service for locale [{}].\n", locale);
                             territories = JSONUtils.map2SortMap(territories);
                             cacheItem.set(territories, etag, timestamp, maxAgeMillis);
+                        } else {
+                            logger.warn("Didn't find the regions from Singleton Service for locale [{}].\n", locale);
                         }
                     } catch (Exception e) {
                         logger.error("Failed to get region data from Singleton Service!");
@@ -95,6 +97,8 @@ public class RemoteLocaleOpt extends RemoteL2BaseOpt implements LocaleOpt{
                             logger.debug("Found the supported languages from Singleton Service for product [{}], version [{}], locale [{}].\n", dto.getProductID(), dto.getVersion(), locale);
                             languages = JSONUtils.map2SortMap(languages);
                             cacheItem.set(languages, etag, timestamp, maxAgeMillis);
+                        }else{
+                            logger.warn("Didn't find the supported languages from Singleton Service for product [{}], version [{}], locale [{}].\n", dto.getProductID(), dto.getVersion(), locale);
                         }
                     } catch (Exception e) {
                         logger.error("Failed to get language data from remote!");
