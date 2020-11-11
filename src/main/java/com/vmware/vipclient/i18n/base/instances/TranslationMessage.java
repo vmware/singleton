@@ -61,6 +61,72 @@ public class TranslationMessage implements Message {
     }
 
     /**
+     * Retrieves the localized message
+     *
+     * @param locale The locale in which the message is requested to be localized
+     * @param component The Singleton component in which the message belongs
+     * @param key The key that represents the message
+     * @param args named arguments to replace placeholders in the message with
+     * @return One of the items in the following priority-ordered list:
+     * @throws VIPJavaClientException If none from the list below is available
+     * <ul>
+     * 		<li>The source message, if source message hasn't been collected and translated</li>
+     * 		<li>The message in the requested locale</li>
+     * 		<li>The message in the next available fallback locale</li>
+     * 		<li>The source message</li>
+     * </ul>
+     */
+    public String getMessage(final Locale locale, final String component, final String key, final Map<String, Object> args) {
+    	return getMessageWithArgs(locale, component, key, args);
+    }
+    
+    private String getMessageWithArgs(final Locale locale, final String component, final String key, final Object args) {
+        // Use source message if the message hasn't been collected/translated
+        String source = getMessages(Locale.forLanguageTag(ConstantsKeys.SOURCE), component, false).get(key);
+        if (source!=null && !source.isEmpty()) {
+            String collectedSource = getMessages(LocaleUtility.getSourceLocale(), component, false).get(key);
+            if (!source.equals(collectedSource)) {
+                return FormatUtils.formatMsg(source, LocaleUtility.getSourceLocale(), args);
+            }
+        }
+
+        LocaleMessages localeMessages = getLocaleMessages(locale, component);
+        String message = localeMessages.messages.get(key);
+        if (message == null || message.isEmpty()) {
+            throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component, locale));
+        }
+
+        return FormatUtils.formatMsg(message, localeMessages.locale, args);
+    }
+
+    private class LocaleMessages {
+    	Locale locale;
+    	Map<String, String> messages;
+    	
+    	LocaleMessages(Locale locale, Map<String, String> messages) {
+    		this.locale = locale;
+    		this.messages = messages;
+    	}
+    }
+    private LocaleMessages getLocaleMessages(final Locale locale, final String component) {
+        Map<String, String> messages = getMessages(locale, component, false);
+        if (messages.isEmpty()) {
+            Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
+            while (fallbackLocalesIter.hasNext()) {
+                Locale curLocale = fallbackLocalesIter.next();
+                if (!curLocale.equals(locale)) {
+                    messages = getMessages(curLocale, component, false);
+                    if (!messages.isEmpty()) {
+                    	return new LocaleMessages(curLocale, messages);
+                    }
+                }
+            }
+        }
+        
+        return new LocaleMessages(locale, messages);
+    }
+    
+    /**
      * get a translation under the component of the configured product
      *
      * @param locale
@@ -507,71 +573,5 @@ public class TranslationMessage implements Message {
             available = new StringService().isStringAvailable(dto);
         }
         return available;
-    }
-
-    /**
-     * Retrieves the localized message
-     *
-     * @param locale The locale in which the message is requested to be localized
-     * @param component The Singleton component in which the message belongs
-     * @param key The key that represents the message
-     * @param args named arguments to replace placeholders in the message
-     * @return One of the items in the following priority-ordered list:.
-     * @throws VIPJavaClientException If none from the list below is available
-     * <ul>
-     * 		<li>The source message, if source message hasn't been collected and translated</li>
-     * 		<li>The message in the requested locale</li>
-     * 		<li>The message in the next available fallback locale</li>
-     * 		<li>The source message</li>
-     * </ul>
-     */
-    public String getMessage(final Locale locale, final String component, final String key, final Map<String, Object> args) {
-    	return getMessageWithArgs(locale, component, key, args);
-    }
-    
-    private String getMessageWithArgs(final Locale locale, final String component, final String key, final Object args) {
-        // Use source message if the message hasn't been collected/translated
-        String source = getMessages(Locale.forLanguageTag(ConstantsKeys.SOURCE), component, false).get(key);
-        if (source!=null && !source.isEmpty()) {
-            String collectedSource = getMessages(LocaleUtility.getSourceLocale(), component, false).get(key);
-            if (!source.equals(collectedSource)) {
-                return FormatUtils.formatMsg(source, LocaleUtility.getSourceLocale(), args);
-            }
-        }
-
-        LocaleMessages localeMessages = getLocaleMessages(locale, component);
-        String message = localeMessages.messages.get(key);
-        if (message == null || message.isEmpty()) {
-            throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component, locale));
-        }
-
-        return FormatUtils.formatMsg(message, localeMessages.locale, args);
-    }
-
-    private class LocaleMessages {
-    	Locale locale;
-    	Map<String, String> messages;
-    	
-    	LocaleMessages(Locale locale, Map<String, String> messages) {
-    		this.locale = locale;
-    		this.messages = messages;
-    	}
-    }
-    private LocaleMessages getLocaleMessages(final Locale locale, final String component) {
-        Map<String, String> messages = getMessages(locale, component, false);
-        if (messages.isEmpty()) {
-            Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
-            while (fallbackLocalesIter.hasNext()) {
-                Locale curLocale = fallbackLocalesIter.next();
-                if (!curLocale.equals(locale)) {
-                    messages = getMessages(curLocale, component, false);
-                    if (!messages.isEmpty()) {
-                    	return new LocaleMessages(curLocale, messages);
-                    }
-                }
-            }
-        }
-        
-        return new LocaleMessages(locale, messages);
     }
 }
