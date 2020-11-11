@@ -11,6 +11,7 @@ import com.vmware.vipclient.i18n.messages.api.opt.MessageOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ProductService;
+import com.vmware.vipclient.i18n.util.FileUtil;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.JSONBundleUtil;
 import org.json.simple.JSONObject;
@@ -48,19 +49,19 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 		try {
 			String filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), bestMatch.toLanguageTag());
 			Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl(), filePath);
-			
-			URI uri = Thread.currentThread().getContextClassLoader().
-					getResource(path.toString()).toURI();
-			
+
+			List<URI> uris = FileUtil.findUris(path);
 			Map<String, String> messages = null;
-	    	if (uri.getScheme().equals("jar")) {
-				try(FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
-					path = fileSystem.getPath(path.toString());
+			for (URI uri : uris) {
+				if (uri.getScheme().equals("jar")) {
+					try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.emptyMap())) {
+						path = fileSystem.getPath(Paths.get(uri).toString());
+						messages = JSONBundleUtil.getMessages(path);
+					}
+				} else {
+					path = Paths.get(uri);
 					messages = JSONBundleUtil.getMessages(path);
 				}
-			} else {
-				path = Paths.get(uri);
-				messages = JSONBundleUtil.getMessages(path);
 			}
 			cacheItem.setCacheItem(messages, null, System.currentTimeMillis(), null);
 		} catch (Exception e) {

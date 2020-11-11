@@ -8,6 +8,7 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.ProductOpt;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
+import com.vmware.vipclient.i18n.util.FileUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,22 +34,20 @@ public class LocalProductOpt implements ProductOpt {
     }
 
     public void getSupportedLocales(MessageCacheItem cacheItem) {
-        List<String> supportedLocales = new ArrayList<String>();
+        List<String> supportedLocales = new ArrayList<>();
         try {
-
             Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl());
-
-            URI uri = Thread.currentThread().getContextClassLoader().
-                    getResource(path.toString()).toURI();
-
-            if (uri.getScheme().equals("jar")) {
-                try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
-                    path = fileSystem.getPath(path.toString());
+            List<URI> uris = FileUtil.findUris(path);
+            for (URI uri : uris) {
+                if (uri.getScheme().equals("jar")) {
+                    try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
+                        path = fileSystem.getPath(Paths.get(uri).toString());
+                        getSupportedLocales(path, supportedLocales);
+                    }
+                } else {
+                    path = Paths.get(uri);
                     getSupportedLocales(path, supportedLocales);
                 }
-            } else {
-                path = Paths.get(uri);
-                getSupportedLocales(path, supportedLocales);
             }
 
         } catch (Exception e) {
@@ -64,20 +63,18 @@ public class LocalProductOpt implements ProductOpt {
     public List<String> getComponents() {
         List<String> components = new ArrayList<String>();
         try {
-
             Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl());
-
-            URI uri = Thread.currentThread().getContextClassLoader().
-                    getResource(path.toString()).toURI();
-
-            if (uri.getScheme().equals("jar")) {
-                try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
-                    path = fileSystem.getPath(path.toString());
+            List<URI> uris = FileUtil.findUris(path);
+            for (URI uri : uris) {
+                if (uri.getScheme().equals("jar")) {
+                    try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
+                        path = fileSystem.getPath(Paths.get(uri).toString());
+                        getComponents(path, components);
+                    }
+                } else {
+                    path = Paths.get(uri);
                     getComponents(path, components);
                 }
-            } else {
-                path = Paths.get(uri);
-                getComponents(path, components);
             }
 
         } catch (Exception e) {
