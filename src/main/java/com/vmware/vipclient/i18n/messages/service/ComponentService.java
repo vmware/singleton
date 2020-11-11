@@ -112,7 +112,7 @@ public class ComponentService {
 		} else { // Item is not in cache.
 			ProductService ps = new ProductService(dto);
 			Locale locale = Locale.forLanguageTag(dto.getLocale());
-			if (ps.isSupportedLocale(locale) || VIPCfg.getInstance().isPseudo()) {
+			if (ps.isSupportedLocale(locale) || VIPCfg.getInstance().isPseudo() || dto.getLocale().equals(ConstantsKeys.SOURCE)) {
 				cacheItem = createCacheItem(); // Fetch for the requested locale from data store, create cacheItem and store in cache
 				if (cacheItem.getCachedData().isEmpty())  // Failed to fetch messages for the requested locale
 					cacheItem = getFallbackLocaleMessages(fallbackLocalesIter);
