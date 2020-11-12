@@ -74,7 +74,7 @@ public class VIPCfg extends VIPCfgFactory {
     /**
      * @deprecated Use the {@link VIPCfgFactory#getCfg(String) getCfg} method.
      */
-    public static synchronized VIPCfg getSubInstance(String productName) {
+    public static VIPCfg getSubInstance(String productName) {
          VIPCfg cfg = VIPCfgFactory.getCfg(productName);
          return cfg;
     }
