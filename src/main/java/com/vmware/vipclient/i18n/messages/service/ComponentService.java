@@ -84,8 +84,7 @@ public class ComponentService {
 	 * @deprecated Use {@link #getTranslations(Iterator)}.
 	 */
 	public MessageCacheItem getMessages(Iterator<Locale> fallbackLocalesIter) {
-		return this.getMessageCacheItem(fallbackLocalesIter);
-
+		return new MessageCacheItem(this.getMessageCacheItem(fallbackLocalesIter).getMessages());
 	}
 
 	/**
@@ -119,10 +118,10 @@ public class ComponentService {
 	 * </ul>
 	 */
 	public TranslationsDTO getTranslations(Iterator<Locale> fallbackLocalesIter) {
-		return new TranslationsDTO(Locale.forLanguageTag(this.dto.getLocale()), this.getMessageCacheItem(fallbackLocalesIter));
+		return this.getMessageCacheItem(fallbackLocalesIter);
 	}
 
-	private MessageCacheItem getMessageCacheItem(Iterator<Locale> fallbackLocalesIter) {
+	private TranslationsDTO getMessageCacheItem(Iterator<Locale> fallbackLocalesIter) {
 		this.doLocaleMatching();
 
 		CacheService cacheService = new CacheService(dto);
@@ -136,12 +135,11 @@ public class ComponentService {
 			if (ps.isSupportedLocale(locale) || VIPCfg.getInstance().isPseudo()) {
 				cacheItem = createCacheItem(); // Fetch for the requested locale from data store, create cacheItem and store in cache
 				if (cacheItem.getCachedData().isEmpty())  // Failed to fetch messages for the requested locale
-					cacheItem = getFallbackLocaleMessages(fallbackLocalesIter);
+					return getFallbackLocaleMessages(fallbackLocalesIter);
 			} else   // Requested locale is not supported and does not match any supported locales
-				cacheItem = getFallbackLocaleMessages(fallbackLocalesIter);
+				return getFallbackLocaleMessages(fallbackLocalesIter);
 		}
-
-		return cacheItem;
+		return new TranslationsDTO(dto.getLocale(), cacheItem);
 	}
 
 	private void doLocaleMatching() {
@@ -155,17 +153,17 @@ public class ComponentService {
 	 * and then invoking {@link #getMessages(Iterator)}.
 	 * @param fallbackLocalesIter The fallback locale queue to use in case of failure. If null, no locale fallback will be applied.
      */
-    private MessageCacheItem getFallbackLocaleMessages(Iterator<Locale> fallbackLocalesIter) {
+    private TranslationsDTO getFallbackLocaleMessages(Iterator<Locale> fallbackLocalesIter) {
 		if (fallbackLocalesIter != null && fallbackLocalesIter.hasNext()) {
 			Locale fallbackLocale = fallbackLocalesIter.next();
 			if (fallbackLocale.toLanguageTag().equals(dto.getLocale())) {
 				return getFallbackLocaleMessages(fallbackLocalesIter);
 			}
 			// Use MessageCacheItem of the next fallback locale.
-			com.vmware.vipclient.i18n.messages.dto.MessagesDTO fallbackLocaleDTO = new com.vmware.vipclient.i18n.messages.dto.MessagesDTO(dto.getComponent(), fallbackLocale.toLanguageTag(), dto.getProductID(), dto.getVersion());
-			return new ComponentService(fallbackLocaleDTO).getMessages(fallbackLocalesIter);
+			MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), fallbackLocale.toLanguageTag(), dto.getProductID(), dto.getVersion());
+			return new ComponentService(fallbackLocaleDTO).getMessageCacheItem(fallbackLocalesIter);
 		}
-		return new MessageCacheItem();
+		return new TranslationsDTO(dto.getLocale(), new MessageCacheItem());
 	}
 
 	/**
@@ -216,16 +214,16 @@ public class ComponentService {
 	 * A Data Transfer Object (DTO) for localized messages retrieved from cache.
 	 */
 	public class TranslationsDTO {
-		Locale locale;
+		String locale;
 		Map<String, String> messages;
 
-		TranslationsDTO(Locale locale, MessageCacheItem messageCacheItem) {
+		TranslationsDTO(String locale, MessageCacheItem messageCacheItem) {
 			this.locale = locale;
 			this.messages = new HashMap<>();
 			this.messages.putAll(messageCacheItem.getCachedData());
 		}
 
-		public Locale getLocale() {
+		public String getLocale() {
 			return locale;
 		}
 

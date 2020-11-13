@@ -95,7 +95,7 @@ public class TranslationMessage implements Message {
             throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component, locale));
         }
 
-        return FormatUtils.formatMsg(message, msgsItemDTO.getLocale(), args);
+        return FormatUtils.formatMsg(message, Locale.forLanguageTag(msgsItemDTO.getLocale()), args);
     }
 
     /**
