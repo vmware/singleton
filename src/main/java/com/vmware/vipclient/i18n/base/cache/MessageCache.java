@@ -190,8 +190,10 @@ public class MessageCache implements Cache {
         }
         return f;
     }
-    
-    @Deprecated
+
+    /**
+     * @deprecated Use the {@link com.vmware.vipclient.i18n.base.cache.CacheItem#isExpired() isExpired} method.
+     */
     public boolean isExpired() {
         boolean f = false;
         long expired = this.getExpiredTime();

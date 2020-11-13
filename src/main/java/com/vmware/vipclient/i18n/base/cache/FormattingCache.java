@@ -82,6 +82,9 @@ public class FormattingCache implements Cache {
         return this.capacityX;
     }
 
+    /**
+     * @deprecated Use the {@link com.vmware.vipclient.i18n.base.cache.CacheItem#isExpired() isExpired} method.
+     */
     public boolean isExpired() {
         boolean f = false;
         long expired = this.getExpiredTime();
