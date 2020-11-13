@@ -64,11 +64,7 @@ public class VIPCfg {
     public static final String         CACHE_L3      = "CACHE_L3";
     public static final String         CACHE_L2      = "CACHE_L2";
 
-    /**
-     * @deprecated Access type of this constructor will eventually be changed to "default".
-     * Use the {@link VIPCfgFactory#getCfg(String) getCfg} method to create a VIPCfg instance.
-     */
-    public VIPCfg() {
+    VIPCfg() {
 
     }
 
