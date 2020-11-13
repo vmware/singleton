@@ -13,7 +13,6 @@ import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
-import com.vmware.vipclient.i18n.util.LocaleUtility;
 
 public class Main {
 	
@@ -38,9 +37,9 @@ public class Main {
 
 		TranslationMessage tm = (TranslationMessage) I18nFactory.getInstance(cfg).getMessageInstance(TranslationMessage.class);
 		String rootMsg = tm.getMessage(Locale.forLanguageTag("fr"), "default", "global_text_username");
-		System.out.println("Root application's message; fetch is triggered from the root application:  " + rootMsg);
+		System.out.println("Root application's message  " + rootMsg);
 
-		SharedLibDemo.demoSharedLib(sharedLibLocale);
+		SharedLibDemo.demoSharedLib(sharedLibLocale, tm);
 
 	}
 }
