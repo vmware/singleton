@@ -4,10 +4,8 @@
  */
 package com.vmware.vipclient.i18n;
 
-import java.util.HashMap;
 import java.util.Map;
-
-import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class VIPCfgFactory {
     /**
@@ -25,7 +23,7 @@ public class VIPCfgFactory {
      * A lazy-loaded singleton Map<String, VIPCfg> configs using the "initialization-on-demand holder" design pattern
      */
     private static class ConfigsHolder {
-        static final Map<String, VIPCfg> configs = new HashMap<>();
+        static final Map<String, VIPCfg> configs = new ConcurrentHashMap<>();
     }
 
     public static VIPCfg getCfg(String productName) {
