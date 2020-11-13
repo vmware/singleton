@@ -51,13 +51,14 @@ public class VIPComponentFilter implements Filter {
         }
         OutputStream os = response.getOutputStream();
         response.setContentType("text/javascript;charset=UTF-8");
+        VIPCfg globalCfg = VIPCfgFactory.getGlobalCfg();
         os.write(("var translation = {" + "\"messages\" : " + messages + ", "
-                + "\"productName\" : \"" + VIPCfgFactory.getCfg().getProductName()
-                + "\", " + "\"version\" : \"" + VIPCfgFactory.getCfg().getVersion()
+                + "\"productName\" : \"" + globalCfg.getProductName()
+                + "\", " + "\"version\" : \"" + globalCfg.getVersion()
                 + "\", " + "\"vipServer\" : \""
-                + VIPCfgFactory.getCfg().getVipServer() + "\", " + "\"pseudo\" : \""
-                + VIPCfgFactory.getCfg().isPseudo() + "\", "
-                + "\"collectSource\" : \"" + VIPCfgFactory.getCfg().isCollectSource() + "\"};")
+                + globalCfg.getVipServer() + "\", " + "\"pseudo\" : \""
+                + globalCfg.isPseudo() + "\", "
+                + "\"collectSource\" : \"" + globalCfg.isCollectSource() + "\"};")
                         .getBytes("UTF-8"));
     }
 
@@ -102,7 +103,7 @@ public class VIPComponentFilter implements Filter {
     }
 
     private TranslationMessage translation;
-    private VIPCfg gc = new VIPCfg();
+    private VIPCfg gc = VIPCfgFactory.getGlobalCfg();
 
     public void init(FilterConfig filterConfig) throws ServletException {
         if (gc.getVipService() == null) {

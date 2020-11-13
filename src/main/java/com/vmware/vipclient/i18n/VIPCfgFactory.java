@@ -8,15 +8,16 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class VIPCfgFactory {
+
     /**
      * A lazy-loaded singleton VIPCfg using the "initialization-on-demand holder" design pattern
      */
-    private static class VIPCfgHolder {
-        static final VIPCfg mainCfg = new VIPCfg();
+    private static class GlobalCfgHolder {
+        static final VIPCfg globalCfg = new VIPCfg();
     }
 
-    public static VIPCfg getCfg() {
-        return VIPCfgHolder.mainCfg;
+    public static VIPCfg getGlobalCfg() {
+        return GlobalCfgHolder.globalCfg;
     }
 
     /**
@@ -38,7 +39,7 @@ public class VIPCfgFactory {
         return ConfigsHolder.configs.get(productName);
     }
 
-    protected static void addCfg(VIPCfg cfg) {
+    static void addCfg(VIPCfg cfg) {
         ConfigsHolder.configs.put(cfg.getProductName(), cfg);
     }
 

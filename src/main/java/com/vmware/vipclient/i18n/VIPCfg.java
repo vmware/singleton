@@ -28,7 +28,7 @@ import com.vmware.vipclient.i18n.util.LocaleUtility;
 /**
  * a class uses to define the global environment setting for I18nFactory
  */
-public class VIPCfg extends VIPCfgFactory {
+public class VIPCfg {
 
     Logger                             logger        = LoggerFactory.getLogger(VIPCfg.class);
 
@@ -65,18 +65,25 @@ public class VIPCfg extends VIPCfgFactory {
     public static final String         CACHE_L2      = "CACHE_L2";
 
     /**
-     * @deprecated Use the {@link VIPCfgFactory#getCfg() getCfg} method.
+     * @deprecated Access type of this constructor will eventually be changed to "default".
+     * Use the {@link VIPCfgFactory#getCfg(String) getCfg} method to create a VIPCfg instance.
+     */
+    public VIPCfg() {
+
+    }
+
+    /**
+     * @deprecated Use the {@link VIPCfgFactory#getGlobalCfg() getGlobalCfg} method.
      */
     public static VIPCfg getInstance() {
-        return VIPCfgFactory.getCfg();
+        return VIPCfgFactory.getGlobalCfg();
     }
 
     /**
      * @deprecated Use the {@link VIPCfgFactory#getCfg(String) getCfg} method.
      */
     public static VIPCfg getSubInstance(String productName) {
-         VIPCfg cfg = VIPCfgFactory.getCfg(productName);
-         return cfg;
+         return VIPCfgFactory.getCfg(productName);
     }
 
     /**
@@ -170,7 +177,7 @@ public class VIPCfg extends VIPCfgFactory {
         }
         if (this.isCleanCache()) {
             logger.info("startTaskOfCacheClean.");
-            Task.startTaskOfCacheClean(VIPCfgFactory.getCfg(), interalCleanCache);
+            Task.startTaskOfCacheClean(VIPCfgFactory.getGlobalCfg(), interalCleanCache);
         }
         Cache createdCache = TranslationCacheManager
                 .getCache(VIPCfg.CACHE_L3);
@@ -198,7 +205,7 @@ public class VIPCfg extends VIPCfgFactory {
             }
             if (this.isCleanCache()) {
                 logger.info("startTaskOfCacheClean.");
-                Task.startTaskOfCacheClean(VIPCfgFactory.getCfg(), interalCleanCache);
+                Task.startTaskOfCacheClean(VIPCfgFactory.getGlobalCfg(), interalCleanCache);
             }
             Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
             if (c != null && this.getCacheExpiredTime() != 0) {
@@ -221,7 +228,7 @@ public class VIPCfg extends VIPCfgFactory {
         logger.info("Formatting cache created.");
         if (this.isCleanCache()) {
             logger.error("clean cache.");
-            Task.startTaskOfCacheClean(VIPCfgFactory.getCfg(), interalCleanCache);
+            Task.startTaskOfCacheClean(VIPCfgFactory.getGlobalCfg(), interalCleanCache);
         }
         return TranslationCacheManager.getCache(VIPCfg.CACHE_L2);
     }
