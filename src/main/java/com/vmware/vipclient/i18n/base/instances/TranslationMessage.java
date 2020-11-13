@@ -65,7 +65,7 @@ public class TranslationMessage implements Message {
      * @param locale The locale in which the message is requested to be localized
      * @param component The Singleton component in which the message belongs
      * @param key The key that represents the message
-     * @param args Named arguments to replace placeholders in the message
+     * @param args Named arguments to replace placeholders in the message with
      * @return One of the items in the following priority-ordered list:
      * @throws VIPJavaClientException If none from the list below is available
      * <ul>
@@ -546,5 +546,4 @@ public class TranslationMessage implements Message {
         }
         return available;
     }
-
 }
