@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import com.vmware.vipclient.i18n.util.VIPConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,7 +56,10 @@ public class VIPCfg {
     private boolean                    machineTranslation;
     private boolean                    initializeCache;
     private int                        interalCleanCache;
+
+    @Deprecated
     private String                     productName;
+
     private String                     version;
     private String                     i18nScope     = "numbers,dates,currencies,plurals,measurements";
     private String					   offlineResourcesBaseUrl;
@@ -64,7 +68,10 @@ public class VIPCfg {
     public static final String         CACHE_L3      = "CACHE_L3";
     public static final String         CACHE_L2      = "CACHE_L2";
 
-    VIPCfg() {
+    /**
+     * @deprecated This constructor will eventually be 'protected'. Use the {@link VIPCfgFactory#getCfg(String) getCfg} method instead.
+     */
+    public VIPCfg() {
 
     }
 
@@ -72,14 +79,14 @@ public class VIPCfg {
      * @deprecated Use the {@link VIPCfgFactory#getGlobalCfg() getGlobalCfg} method.
      */
     public static VIPCfg getInstance() {
-        return VIPCfgFactory.getGlobalCfg();
+        return VIPCfgFactory.getGlobalCfg().getVipCfg();
     }
 
     /**
      * @deprecated Use the {@link VIPCfgFactory#getCfg(String) getCfg} method.
      */
     public static VIPCfg getSubInstance(String productName) {
-         return VIPCfgFactory.getCfg(productName);
+         return VIPCfgFactory.getCfg(productName).getVipCfg();
     }
 
     /**
@@ -173,7 +180,7 @@ public class VIPCfg {
         }
         if (this.isCleanCache()) {
             logger.info("startTaskOfCacheClean.");
-            Task.startTaskOfCacheClean(VIPCfgFactory.getGlobalCfg(), interalCleanCache);
+            Task.startTaskOfCacheClean(VIPCfgFactory.getGlobalCfg().getVipCfg(), interalCleanCache);
         }
         Cache createdCache = TranslationCacheManager
                 .getCache(VIPCfg.CACHE_L3);
@@ -201,7 +208,7 @@ public class VIPCfg {
             }
             if (this.isCleanCache()) {
                 logger.info("startTaskOfCacheClean.");
-                Task.startTaskOfCacheClean(VIPCfgFactory.getGlobalCfg(), interalCleanCache);
+                Task.startTaskOfCacheClean(VIPCfgFactory.getGlobalCfg().getVipCfg(), interalCleanCache);
             }
             Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
             if (c != null && this.getCacheExpiredTime() != 0) {
@@ -224,7 +231,7 @@ public class VIPCfg {
         logger.info("Formatting cache created.");
         if (this.isCleanCache()) {
             logger.error("clean cache.");
-            Task.startTaskOfCacheClean(VIPCfgFactory.getGlobalCfg(), interalCleanCache);
+            Task.startTaskOfCacheClean(VIPCfgFactory.getGlobalCfg().getVipCfg(), interalCleanCache);
         }
         return TranslationCacheManager.getCache(VIPCfg.CACHE_L2);
     }
@@ -241,13 +248,19 @@ public class VIPCfg {
                 + TranslationCacheManager.getInstance().size() + ".");
     }
 
+    /**
+     * @deprecated Use {@link VIPConfig#getProductName() VIPConfig.getProductName} instead.
+     */
     public String getProductName() {
         return productName;
     }
 
+    /**
+     * @deprecated Use {@link VIPCfgFactory#getCfg(String) to create the VIPCfg instance and set the product name at the same time.
+     */
     public void setProductName(String productName) {
         this.productName = productName;
-        VIPCfgFactory.addCfg(this);
+        VIPCfgFactory.addCfg(productName, this);
     }
 
     public String getVersion() {

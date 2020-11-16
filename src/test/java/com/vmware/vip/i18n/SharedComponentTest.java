@@ -45,7 +45,7 @@ public class SharedComponentTest extends BaseTestClass {
         I18nFactory i18n = I18nFactory.getInstance(mainCfg);
         mainTranslation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
 
-        VIPCfg subCfg = VIPCfgFactory.getCfg(subProductName);
+        VIPCfg subCfg = VIPCfgFactory.getCfg(subProductName).getVipCfg();
         try {
             subCfg.initialize("vipconfig-child");
         } catch (VIPClientInitException e) {
