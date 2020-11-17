@@ -75,7 +75,7 @@ public class VIPCfg {
     }
 
     /**
-     * @deprecated Use the {@link VIPCfgFactory#getGlobalCfg() getGlobalCfg} method.
+     * @deprecated Use the {@link VIPCfgFactory#getCfg(String, boolean) getGlobalCfg} method, with isGlobalCfg=true.
      */
     public static VIPCfg getInstance() {
         return VIPCfgFactory.getCfg().getVipCfg();
