@@ -68,13 +68,6 @@ public class VIPCfg {
     public static final String         CACHE_L2      = "CACHE_L2";
 
     /**
-     * @deprecated This constructor will eventually be 'protected'. Use the {@link VIPCfgFactory#getCfg(String) getCfg} method instead.
-     */
-    public VIPCfg() {
-
-    }
-
-    /**
      * @deprecated Use either {@link VIPCfgFactory#getCfg(String, boolean) getCfg} method
      * or {@link VIPCfgFactory#initialize(String, boolean)} method, with isGlobalCfg=true to initialize VIPCfg.
      * Use {@link VIPCfgFactory#getGlobalCfg() getGlobalCfg} method to get the global instance.
