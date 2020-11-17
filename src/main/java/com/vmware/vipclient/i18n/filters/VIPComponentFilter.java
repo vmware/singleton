@@ -107,14 +107,13 @@ public class VIPComponentFilter implements Filter {
 
     public void init(FilterConfig filterConfig) throws ServletException {
         VIPCfg gc = null;
-        if (gc.getVipService() == null) {
-            try {
-                gc = VIPCfgFactory.initialize("vipconfig", true).getVipCfg();
-            } catch (VIPClientInitException e) {
-                logger.error(e.getMessage());
-            }
+        try {
+            gc = VIPCfgFactory.initialize("vipconfig", true).getVipCfg();
+            gc.createTranslationCache(MessageCache.class);
+        } catch (VIPClientInitException e) {
+            logger.error(e.getMessage());
         }
-        gc.createTranslationCache(MessageCache.class);
+
         I18nFactory i18n = I18nFactory.getInstance(gc);
         translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
     }
