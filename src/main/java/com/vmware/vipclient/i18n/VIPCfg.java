@@ -263,7 +263,6 @@ public class VIPCfg {
      */
     public void setProductName(String productName) {
         this.productName = productName;
-        VIPCfgFactory.addCfg(productName, this);
     }
 
     public String getVersion() {

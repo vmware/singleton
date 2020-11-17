@@ -79,22 +79,6 @@ public class VIPCfgFactory {
         return getCfg(productName, false);
     }
 
-    /**
-     * @deprecated Use {@link #getCfg(String) getCfg} instead.
-     * This method was added for backwards compatibility with deprecated {@link VIPCfg#getInstance()} and {@link VIPCfg#setProductName(String)} methods.
-     */
-    static void addCfg(String productName, VIPCfg cfg) {
-        if (!contains(productName)) {
-            synchronized (ConfigsHolder.configs) {
-                if (!contains(productName)) {
-                    VIPCfgWrapper cfgWrapper = new VIPCfgWrapper(cfg);
-                    cfgWrapper.setProductName(productName);
-                    addCfg(cfgWrapper);
-                }
-            }
-        }
-    }
-
     private static void addCfg(VIPCfgWrapper vipCfgWrapper) {
         ConfigsHolder.configs.put(vipCfgWrapper.getProductName(), vipCfgWrapper);
     }
