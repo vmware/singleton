@@ -67,6 +67,10 @@ public class VIPCfg {
     public static final String         CACHE_L3      = "CACHE_L3";
     public static final String         CACHE_L2      = "CACHE_L2";
 
+    protected VIPCfg() {
+
+    }
+
     /**
      * @deprecated Use either {@link VIPCfgFactory#getCfg(String, boolean) getCfg} method
      * or {@link VIPCfgFactory#initialize(String, boolean)} method, with isGlobalCfg=true to initialize VIPCfg.
