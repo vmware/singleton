@@ -75,14 +75,16 @@ public class VIPCfg {
     }
 
     /**
-     * @deprecated Use the {@link VIPCfgFactory#getCfg(String, boolean) getGlobalCfg} method, with isGlobalCfg=true.
+     * @deprecated Use either {@link VIPCfgFactory#getCfg(String, boolean) getGlobalCfg} method
+     * or {@link }VIPCfgFactory#initialize(String, boolean) method, with isGlobalCfg=true.
      */
     public static VIPCfg getInstance() {
         return VIPCfgFactory.getCfg().getVipCfg();
     }
 
     /**
-     * @deprecated Use the {@link VIPCfgFactory#getCfg(String) getCfg} method.
+     * @deprecated Use either {@link VIPCfgFactory#getCfg(String) getGlobalCfg} method
+     * or {@link }VIPCfgFactory#initialize(String) method.
      */
     public static VIPCfg getSubInstance(String productName) {
          return VIPCfgFactory.getCfg(productName).getVipCfg();

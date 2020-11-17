@@ -45,7 +45,6 @@ public class VIPCfgFactory {
         static final Map<String, VIPCfgWrapper> configs = new ConcurrentHashMap<>();
     }
 
-
     public static VIPCfgWrapper initialize(String cfgFile, boolean isGlobalCfg) throws VIPClientInitException {
         ResourceBundle prop = ResourceBundle.getBundle(cfgFile);
         if (prop == null) {
@@ -57,6 +56,10 @@ public class VIPCfgFactory {
         VIPCfgWrapper cfgWrapper = getCfg(productName, isGlobalCfg);
         cfgWrapper.getVipCfg().initialize(cfgFile);
         return cfgWrapper;
+    }
+
+    public static VIPCfgWrapper initialize(String cfgFile) throws VIPClientInitException {
+        return initialize(cfgFile, false);
     }
 
     public static VIPCfgWrapper getCfg(String productName, boolean isGlobalCfg) {
