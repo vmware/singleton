@@ -5,23 +5,17 @@
 package com.vmware.vipclient.i18n.messages.api.opt.local;
 
 import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.MessageOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
-import com.vmware.vipclient.i18n.messages.service.ProductService;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.JSONBundleUtil;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.net.URI;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.*;
 
 public class LocalMessagesOpt implements Opt, MessageOpt {
@@ -43,10 +37,8 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
     
     @Override
     public void getComponentMessages(MessageCacheItem cacheItem) {
-        Locale bestMatch = Locale.lookup(Arrays.asList(new Locale.LanguageRange((dto.getLocale()))),
-        		getSupportedLocales());
 		try {
-			String filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), bestMatch.toLanguageTag());
+			String filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), dto.getLocale());
 			Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl(), filePath);
 			
 			URI uri = Thread.currentThread().getContextClassLoader().
@@ -67,16 +59,5 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 			logger.debug(e.getMessage());
 			// Do not update cacheItem
 		}
-    }
-    
-    private List<Locale> getSupportedLocales() {
-		ProductService ps = new ProductService(dto);
-		Set<String> supportedLanguages = ps.getSupportedLanguageTags(DataSourceEnum.Bundle);
-        logger.debug("supported languages: [{}]", supportedLanguages.toString());
-    	List<Locale> supportedLocales = new LinkedList<Locale>();
-    	for (String languageTag : supportedLanguages) {
-    		supportedLocales.add(Locale.forLanguageTag(languageTag));
-    	}
-    	return supportedLocales;
     }
 }

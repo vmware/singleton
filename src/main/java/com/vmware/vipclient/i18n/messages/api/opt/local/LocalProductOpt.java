@@ -35,7 +35,6 @@ public class LocalProductOpt implements ProductOpt {
     public void getSupportedLocales(MessageCacheItem cacheItem) {
         List<String> supportedLocales = new ArrayList<String>();
         try {
-
             Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl());
 
             URI uri = Thread.currentThread().getContextClassLoader().
@@ -50,12 +49,12 @@ public class LocalProductOpt implements ProductOpt {
                 path = Paths.get(uri);
                 getSupportedLocales(path, supportedLocales);
             }
-
         } catch (Exception e) {
-            logger.debug(e.getMessage());
+            logger.debug("Fetching the list of supported locales failed: " +  e.getMessage());
+            return;
         }
         Map<String, String> languageTagMap = new HashMap<>();
-        for (String languageTag: supportedLocales) {
+        for (String languageTag : supportedLocales) {
             languageTagMap.put(languageTag, languageTag);
         }
         cacheItem.setCacheItem(languageTagMap, null, System.currentTimeMillis(), null);

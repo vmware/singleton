@@ -6,6 +6,7 @@ package com.vmware.vipclient.i18n.messages.service;
 
 import java.util.Iterator;
 import java.util.Locale;
+import java.util.Set;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
@@ -49,8 +50,11 @@ public class ComponentService {
 			return;
 		}
 
-		long timestampOld = cacheItem.getTimestamp();
 		DataSourceEnum dataSource = msgSourceQueueIter.next();
+		if (!proceed(dataSource))
+			refreshCacheItem(cacheItem, msgSourceQueueIter); // Try the next dataSource in the queue
+
+		long timestampOld = cacheItem.getTimestamp();
 		String localeOrig = dto.getLocale();
 		if (dataSource.equals(DataSourceEnum.VIP) && dto.getLocale().equals(ConstantsKeys.SOURCE)) {
 			dto.setLocale(ConstantsKeys.LATEST);
@@ -67,7 +71,22 @@ public class ComponentService {
 			// Try the next dataSource in the queue
 			refreshCacheItem(cacheItem, msgSourceQueueIter);
 		}
+	}
 
+	/**
+	 * @return 'true' if either of the following cases. Otherwise, false.
+	 * <ul>
+	 * 	<li>the dataSource's set of supported locales is not in cache. If the list is not in cache, it should not block refreshCacheItem</li>
+	 * 	<li>the requested locale is found in the data source's cached set of supported locales.</li>
+	 * </ul>
+	 */
+	private boolean proceed(DataSourceEnum dataSource) {
+		ProductService ps = new ProductService(dto);
+		Set<Locale> supportedLocales = ps.getSupportedLocales(false, DataSourceEnum.VIP);
+		logger.debug("supported languages: [{}]", supportedLocales.toString());
+
+		return (supportedLocales.isEmpty() ||
+				ps.isSupportedLocale(false, dataSource, Locale.forLanguageTag(dto.getLocale())));
 	}
 
 	/**
@@ -111,7 +130,12 @@ public class ComponentService {
 		} else { // Item is not in cache.
 			ProductService ps = new ProductService(dto);
 			Locale locale = Locale.forLanguageTag(dto.getLocale());
-			if (ps.isSupportedLocale(locale) || VIPCfg.getInstance().isPseudo()) {
+
+			/*
+			 * Do not block createCacheItem if set of supported locales is not in cache (i.e. ps.getSupportedLocales(false).isEmpty()).
+			 * This happens either when cache is not initialized, OR previous attempts to fetch the set had failed.
+			 */
+			if (ps.getSupportedLocales(false).isEmpty() || ps.isSupportedLocale(false, locale) || VIPCfg.getInstance().isPseudo()) {
 				cacheItem = createCacheItem(); // Fetch for the requested locale from data store, create cacheItem and store in cache
 				if (cacheItem.getCachedData().isEmpty())  // Failed to fetch messages for the requested locale
 					cacheItem = getFallbackLocaleMessages(fallbackLocalesIter);
@@ -122,9 +146,26 @@ public class ComponentService {
 	}
 
 	private void doLocaleMatching() {
-		Locale matchedLocale = LocaleUtility.pickupLocaleFromList(new ProductService(dto).getSupportedLocales(), Locale.forLanguageTag(dto.getLocale()));
-		if (matchedLocale != null) // Requested locale matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr")
-			dto.setLocale(matchedLocale.toLanguageTag());
+		ProductService ps = new ProductService(dto);
+		Set<Locale> supportedLocalesFromCache = ps.getSupportedLocales(false);
+		if (supportedLocalesFromCache.isEmpty()) {
+			refreshSupportedLocalesTask(); // Refresh cache of supported locales in a separate thread (non-blocking).
+		} else {
+			Locale matchedLocale = LocaleUtility.pickupLocaleFromList(supportedLocalesFromCache, Locale.forLanguageTag(dto.getLocale()));
+			if (matchedLocale != null) // Requested locale matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr")
+				dto.setLocale(matchedLocale.toLanguageTag());
+		}
+	}
+
+	private void refreshSupportedLocalesTask() {
+		ProductService ps = new ProductService(dto);
+		Runnable runnable = () -> {
+			try {
+				ps.getSupportedLocales();
+			} catch (Exception e) {
+			}
+		};
+		new Thread(runnable).start();
 	}
 
     /**
