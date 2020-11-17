@@ -4,7 +4,6 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.local;
 
-import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.VIPCfgFactory;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;

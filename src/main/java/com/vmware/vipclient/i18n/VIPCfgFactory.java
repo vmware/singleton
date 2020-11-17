@@ -4,10 +4,13 @@
  */
 package com.vmware.vipclient.i18n;
 
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.util.VIPConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class VIPCfgFactory {
     /**
@@ -17,17 +20,21 @@ public class VIPCfgFactory {
         static final VIPCfgWrapper globalCfg = new VIPCfgWrapper(new VIPCfg());
     }
 
+    private static Logger logger = LoggerFactory.getLogger(VIPCfgFactory.class);
+
     public static VIPCfgWrapper getGlobalCfg() {
+        if (GlobalCfgHolder.globalCfg.getProductName() == null) {
+            logger.error("Global config hasn't been initialized.");
+            return null;
+        }
         return GlobalCfgHolder.globalCfg;
     }
 
     /**
      * @deprecated This method was added for backwards compatibility with deprecated {@link VIPCfg#getInstance() getInstance}.
-     * Use the {@link #getGlobalCfg() getGlobalCfg} method.
+     * Use the {@link #getGlobalCfg() getGlobalCfg} method instead.
      */
     public static VIPCfgWrapper getCfg() {
-        VIPCfgWrapper vipCfgWrapper = GlobalCfgHolder.globalCfg;
-
         return GlobalCfgHolder.globalCfg;
     }
 
@@ -38,17 +45,35 @@ public class VIPCfgFactory {
         static final Map<String, VIPCfgWrapper> configs = new ConcurrentHashMap<>();
     }
 
-    public static VIPCfgWrapper getCfg(String productName) {
+
+    public static VIPCfgWrapper initialize(String cfgFile, boolean isGlobalCfg) throws VIPClientInitException {
+        ResourceBundle prop = ResourceBundle.getBundle(cfgFile);
+        if (prop == null) {
+            throw new VIPClientInitException("Can't initialize VIPCfg. Config file is null.");
+        } else if (!prop.containsKey("productName")) {
+            throw new VIPClientInitException("Can't initialize VIPCfg. Product name is not defined.");
+        }
+        String productName = prop.getString("productName");
+        VIPCfgWrapper cfgWrapper = getCfg(productName, isGlobalCfg);
+        cfgWrapper.getVipCfg().initialize(cfgFile);
+        return cfgWrapper;
+    }
+
+    public static VIPCfgWrapper getCfg(String productName, boolean isGlobalCfg) {
         if (!contains(productName)) {
             synchronized (ConfigsHolder.configs) {
                 if (!contains(productName)) {
-                    VIPCfgWrapper cfgWrapper = new VIPCfgWrapper(new VIPCfg());
+                    VIPCfgWrapper cfgWrapper = isGlobalCfg ? GlobalCfgHolder.globalCfg : new VIPCfgWrapper(new VIPCfg());
                     cfgWrapper.setProductName(productName);
                     addCfg(cfgWrapper);
                 }
             }
         }
         return ConfigsHolder.configs.get(productName);
+    }
+
+    public static VIPCfgWrapper getCfg(String productName) {
+        return getCfg(productName, false);
     }
 
     /**

@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import com.vmware.vipclient.i18n.util.VIPConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -79,7 +78,7 @@ public class VIPCfg {
      * @deprecated Use the {@link VIPCfgFactory#getGlobalCfg() getGlobalCfg} method.
      */
     public static VIPCfg getInstance() {
-        return VIPCfgFactory.getGlobalCfg().getVipCfg();
+        return VIPCfgFactory.getCfg().getVipCfg();
     }
 
     /**
@@ -249,7 +248,8 @@ public class VIPCfg {
     }
 
     /**
-     * @deprecated Use {@link VIPConfig#getProductName() VIPConfig.getProductName} instead.
+     * @deprecated Get VIPConfig instance using {@Link VIPCfgFactory#getCfg(String} or {@Link VIPCfgFactory#getGlobalCfg(}.
+     * Use {@link VIPConfig#getProductName() VIPConfig.getProductName} to get the product name.
      */
     public String getProductName() {
         return productName;

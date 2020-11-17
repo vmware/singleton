@@ -52,6 +52,7 @@ public class VIPComponentFilter implements Filter {
         OutputStream os = response.getOutputStream();
         response.setContentType("text/javascript;charset=UTF-8");
         VIPCfg globalCfg = VIPCfgFactory.getGlobalCfg().getVipCfg();
+
         os.write(("var translation = {" + "\"messages\" : " + messages + ", "
                 + "\"productName\" : \"" + globalCfg.getProductName()
                 + "\", " + "\"version\" : \"" + globalCfg.getVersion()
@@ -103,16 +104,15 @@ public class VIPComponentFilter implements Filter {
     }
 
     private TranslationMessage translation;
-    private VIPCfg gc = VIPCfgFactory.getGlobalCfg().getVipCfg();
 
     public void init(FilterConfig filterConfig) throws ServletException {
+        VIPCfg gc = null;
         if (gc.getVipService() == null) {
             try {
-                gc.initialize("vipconfig");
+                gc = VIPCfgFactory.initialize("vipconfig", true).getVipCfg();
             } catch (VIPClientInitException e) {
                 logger.error(e.getMessage());
             }
-            gc.initializeVIPService();
         }
         gc.createTranslationCache(MessageCache.class);
         I18nFactory i18n = I18nFactory.getInstance(gc);

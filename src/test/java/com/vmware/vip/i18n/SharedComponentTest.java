@@ -30,9 +30,9 @@ public class SharedComponentTest extends BaseTestClass {
     
     @Before
     public void init() {
-        VIPCfg mainCfg = VIPCfg.getInstance();
+        VIPCfg mainCfg = null;
         try {
-            mainCfg.initialize("vipconfig");
+            mainCfg = VIPCfgFactory.initialize("vipconfig", true).getVipCfg();
         } catch (VIPClientInitException e) {
             logger.error(e.getMessage());
         }
