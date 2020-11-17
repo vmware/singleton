@@ -142,19 +142,17 @@ public class ComponentService {
 			} else   // Requested locale is not supported and does not match any supported locales
 				cacheItem = getFallbackLocaleMessages(fallbackLocalesIter);
 		}
+
+		// If supported locales list is not in cache, refresh the cache in a separate thread
+		if (new ProductService(dto).getSupportedLocales(false).isEmpty())
+			refreshSupportedLocalesTask(); // Refresh cache of supported locales in a separate thread (non-blocking).
 		return cacheItem;
 	}
 
 	private void doLocaleMatching() {
-		ProductService ps = new ProductService(dto);
-		Set<Locale> supportedLocalesFromCache = ps.getSupportedLocales(false);
-		if (supportedLocalesFromCache.isEmpty()) {
-			refreshSupportedLocalesTask(); // Refresh cache of supported locales in a separate thread (non-blocking).
-		} else {
-			Locale matchedLocale = LocaleUtility.pickupLocaleFromList(supportedLocalesFromCache, Locale.forLanguageTag(dto.getLocale()));
-			if (matchedLocale != null) // Requested locale matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr")
-				dto.setLocale(matchedLocale.toLanguageTag());
-		}
+		Locale matchedLocale = LocaleUtility.pickupLocaleFromList(new ProductService(dto).getSupportedLocales(false), Locale.forLanguageTag(dto.getLocale()));
+		if (matchedLocale != null) // Requested locale matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr")
+			dto.setLocale(matchedLocale.toLanguageTag());
 	}
 
 	private void refreshSupportedLocalesTask() {
