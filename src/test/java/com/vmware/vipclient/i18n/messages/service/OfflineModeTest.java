@@ -23,7 +23,6 @@ import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.json.simple.parser.ParseException;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,8 +44,7 @@ public class OfflineModeTest extends BaseTestClass {
 
     MessagesDTO dto = new MessagesDTO();
     VIPCfg cfg;
-    boolean initializeCacheOrig;
-
+    
     @Before
     public void init() {
         dto.setComponent(component);
@@ -54,16 +52,13 @@ public class OfflineModeTest extends BaseTestClass {
         dto.setSource(source);
         dto.setLocale(locale.toLanguageTag());
         cfg = VIPCfg.getInstance();
-
+  	  
         try {
             cfg.initialize("vipconfig");
         } catch (VIPClientInitException e) {
             logger.error(e.getMessage());
         }
-
-        cfg.setInitializeCache(true);
-        initializeCacheOrig = cfg.isInitializeCache();
-
+       
     }
 
     @Test
@@ -378,9 +373,5 @@ public class OfflineModeTest extends BaseTestClass {
 
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
-    }
-    @After
-    public void cleanup () {
-        cfg.setInitializeCache(initializeCacheOrig);
     }
 }
