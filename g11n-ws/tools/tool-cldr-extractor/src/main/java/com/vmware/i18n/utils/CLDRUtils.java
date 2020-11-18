@@ -171,6 +171,8 @@ public class CLDRUtils {
         Map<String, Object> supplementalWeekData = getSupplementalWeekData();
         //first day of week
         String firstDayOfWeek = firstDayExtract(locale, (Map<String, String>) supplementalWeekData.get("firstDay"));
+        //weekend range
+        List<String> weekendRange = weekendRangeExtract(locale, supplementalWeekData);
 
         // dateFormats
         Map<String, Object> dateFormatMap = dateFormatExtract(locale, dateContents);
@@ -190,7 +192,7 @@ public class CLDRUtils {
         dateMap.put(Constants.MONTHS_STANDALONE, monthsStandaloneMap);
         dateMap.put(Constants.ERAS, erasMap);
         dateMap.put(Constants.FIRST_DAY_OF_WEEK, firstDayOfWeek);
-        dateMap.put(Constants.WEEKEND_RANGE, Arrays.asList(6, 0));
+        dateMap.put(Constants.WEEKEND_RANGE, weekendRange);
         dateMap.put(Constants.DATE_FORMATS, dateFormatMap);
         dateMap.put(Constants.TIME_FORMATS, timeFormatMap);
         dateMap.put(Constants.DATE_TIME_FORMATS, dateTimeMap);
@@ -576,11 +578,31 @@ public class CLDRUtils {
      * @return
      */
     private static String firstDayExtract(String localeStr, Map<String, String> firstDayData){
-        String firstDay = firstDayData.get("001");
+        String firstDay = firstDayData.get(Constants.TERRITORY_001);
         String territory = Locale.forLanguageTag(localeStr).getCountry();
         if(firstDayData.get(territory) != null)
             firstDay = firstDayData.get(territory);
         return firstDay;
+    }
+
+    /**
+     * Get the weekend range of one Country, the implementation is according to https://www.unicode.org/reports/tr35/tr35-49/tr35-dates.html#Week_Data
+     *
+     * @param localeStr
+     * @param supplementalWeekData
+     * @return
+     */
+    private static List<String> weekendRangeExtract(String localeStr, Map<String, Object> supplementalWeekData){
+        Map<String, String> weekendStartData = (Map<String, String>) supplementalWeekData.get("weekendStart");
+        Map<String, String> weekendEndData = (Map<String, String>) supplementalWeekData.get("weekendEnd");
+        String weekendStart = weekendStartData.get(Constants.TERRITORY_001);
+        String weekendEnd = weekendEndData.get(Constants.TERRITORY_001);
+        String territory = Locale.forLanguageTag(localeStr).getCountry();
+        if(weekendStartData.get(territory) != null)
+            weekendStart = weekendStartData.get(territory);
+        if(weekendEndData.get(territory) != null)
+            weekendEnd = weekendEndData.get(territory);
+        return Arrays.asList(weekendStart, weekendEnd);
     }
 
     private static Map<String, Object> dateFormatExtract(String locale, JSONObject content) {
