@@ -25,6 +25,8 @@ import java.util.Scanner;
 import java.util.TreeMap;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
+
+import com.vmware.i18n.common.DayEnum;
 import com.vmware.i18n.common.OfficialStatusEnum;
 import com.vmware.i18n.utils.timezone.CldrTimeZoneUtils;
 
@@ -170,9 +172,9 @@ public class CLDRUtils {
 
         Map<String, Object> supplementalWeekData = getSupplementalWeekData();
         //first day of week
-        String firstDayOfWeek = firstDayExtract(locale, (Map<String, String>) supplementalWeekData.get("firstDay"));
+        Integer firstDayOfWeek = firstDayExtract(locale, (Map<String, String>) supplementalWeekData.get("firstDay"));
         //weekend range
-        List<String> weekendRange = weekendRangeExtract(locale, supplementalWeekData);
+        List<Integer> weekendRange = weekendRangeExtract(locale, supplementalWeekData);
 
         // dateFormats
         Map<String, Object> dateFormatMap = dateFormatExtract(locale, dateContents);
@@ -577,12 +579,12 @@ public class CLDRUtils {
      * @param firstDayData
      * @return
      */
-    private static String firstDayExtract(String localeStr, Map<String, String> firstDayData){
+    private static Integer firstDayExtract(String localeStr, Map<String, String> firstDayData){
         String firstDay = firstDayData.get(Constants.TERRITORY_001);
         String territory = Locale.forLanguageTag(localeStr).getCountry();
         if(firstDayData.get(territory) != null)
             firstDay = firstDayData.get(territory);
-        return firstDay;
+        return DayEnum.getIndexByDay(firstDay);
     }
 
     /**
@@ -592,7 +594,7 @@ public class CLDRUtils {
      * @param supplementalWeekData
      * @return
      */
-    private static List<String> weekendRangeExtract(String localeStr, Map<String, Object> supplementalWeekData){
+    private static List<Integer> weekendRangeExtract(String localeStr, Map<String, Object> supplementalWeekData){
         Map<String, String> weekendStartData = (Map<String, String>) supplementalWeekData.get("weekendStart");
         Map<String, String> weekendEndData = (Map<String, String>) supplementalWeekData.get("weekendEnd");
         String weekendStart = weekendStartData.get(Constants.TERRITORY_001);
@@ -602,7 +604,7 @@ public class CLDRUtils {
             weekendStart = weekendStartData.get(territory);
         if(weekendEndData.get(territory) != null)
             weekendEnd = weekendEndData.get(territory);
-        return Arrays.asList(weekendStart, weekendEnd);
+        return Arrays.asList(DayEnum.getIndexByDay(weekendStart), DayEnum.getIndexByDay(weekendEnd));
     }
 
     private static Map<String, Object> dateFormatExtract(String locale, JSONObject content) {
