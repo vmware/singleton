@@ -82,7 +82,7 @@ public class ComponentService {
 	 */
 	private boolean proceed(DataSourceEnum dataSource) {
 		ProductService ps = new ProductService(dto);
-		Set<Locale> supportedLocales = ps.getSupportedLocales(false, DataSourceEnum.VIP);
+		Set<Locale> supportedLocales = ps.getSupportedLocales(false, dataSource);
 		logger.debug("supported languages: [{}]", supportedLocales.toString());
 
 		return (supportedLocales.isEmpty() ||

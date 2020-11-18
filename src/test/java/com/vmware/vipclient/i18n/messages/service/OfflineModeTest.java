@@ -54,15 +54,16 @@ public class OfflineModeTest extends BaseTestClass {
         dto.setSource(source);
         dto.setLocale(locale.toLanguageTag());
         cfg = VIPCfg.getInstance();
-        initializeCacheOrig = cfg.isInitializeCache();
-        cfg.setInitializeCache(true);
-  	  
+
         try {
             cfg.initialize("vipconfig");
         } catch (VIPClientInitException e) {
             logger.error(e.getMessage());
         }
-       
+
+        cfg.setInitializeCache(true);
+        initializeCacheOrig = cfg.isInitializeCache();
+
     }
 
     @Test
@@ -380,6 +381,6 @@ public class OfflineModeTest extends BaseTestClass {
     }
     @After
     public void cleanup () {
-        cfg.setInitializeCache(false);
+        cfg.setInitializeCache(initializeCacheOrig);
     }
 }
