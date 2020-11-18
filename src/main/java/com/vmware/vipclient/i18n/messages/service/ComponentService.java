@@ -121,9 +121,6 @@ public class ComponentService {
 	 */
 	public MessageCacheItem getMessages(Iterator<Locale> fallbackLocalesIter) {
 		this.doLocaleMatching();
-		if (new ProductService(dto).getSupportedLocales(false).isEmpty())
-			// TODO For performance improvement, refresh the cache of supported locales in a separate thread (non-blocking).
-			new ProductService(dto).getSupportedLocales();
 
 		CacheService cacheService = new CacheService(dto);
 		MessageCacheItem cacheItem = cacheService.getCacheOfComponent();
@@ -149,10 +146,28 @@ public class ComponentService {
 		return cacheItem;
 	}
 
+	private void refreshSupportedLocalesTask() {
+		ProductService ps = new ProductService(dto);
+		Runnable runnable = () -> {
+			try {
+				ps.getSupportedLocales();
+			} catch (Exception e) {
+			}
+		};
+		new Thread(runnable).start();
+	}
+
 	private void doLocaleMatching() {
-		Locale matchedLocale = LocaleUtility.pickupLocaleFromList(new ProductService(dto).getSupportedLocales(false), Locale.forLanguageTag(dto.getLocale()));
-		if (matchedLocale != null) // Requested locale matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr")
+		ProductService ps = new ProductService(dto);
+		if (ps.getSupportedLocales(false).isEmpty())
+			//Refresh the cache of supported locales in a separate thread (non-blocking).
+			refreshSupportedLocalesTask();
+
+		// Use withCacheRefresh=false to get the list of supported locales that is already in cache
+		Locale matchedLocale = LocaleUtility.pickupLocaleFromList(ps.getSupportedLocales(false), Locale.forLanguageTag(dto.getLocale()));
+		if (matchedLocale != null) { // Requested locale matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr")
 			dto.setLocale(matchedLocale.toLanguageTag());
+		}
 	}
 
     /**

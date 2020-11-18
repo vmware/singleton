@@ -41,9 +41,11 @@ public class LocalProductOpt implements ProductOpt {
                     getResource(path.toString()).toURI();
 
             if (uri.getScheme().equals("jar")) {
-                try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
-                    path = fileSystem.getPath(path.toString());
-                    getSupportedLocales(path, supportedLocales);
+                synchronized (LocalFileSystem.getInstance()) {
+                    try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
+                        path = fileSystem.getPath(path.toString());
+                        getSupportedLocales(path, supportedLocales);
+                    }
                 }
             } else {
                 path = Paths.get(uri);
@@ -70,9 +72,11 @@ public class LocalProductOpt implements ProductOpt {
                     getResource(path.toString()).toURI();
 
             if (uri.getScheme().equals("jar")) {
-                try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
-                    path = fileSystem.getPath(path.toString());
-                    getComponents(path, components);
+                synchronized (LocalFileSystem.getInstance()) {
+                    try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
+                        path = fileSystem.getPath(path.toString());
+                        getComponents(path, components);
+                    }
                 }
             } else {
                 path = Paths.get(uri);
