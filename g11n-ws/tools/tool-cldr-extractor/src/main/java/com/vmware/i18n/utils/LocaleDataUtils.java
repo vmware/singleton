@@ -159,6 +159,38 @@ public class LocaleDataUtils {
 		return defaultRegionMap;
 	}
 
+	/**
+	 * Get territory of a locale
+	 *
+	 * @param localeStr
+	 * @return
+	 */
+	public String getTerritory(String localeStr){
+		Locale locale = Locale.forLanguageTag(localeStr);
+		String territory = locale.getCountry();
+		if(territory == null || territory.isEmpty())//this is for supplement default region for locales like en, zh-Hans..
+			territory = getLanguageDefaultRegionMappings().get(localeStr);
+		return territory;
+	}
+
+	/**
+	 * Get the language-defaultRegion mappings of locales in defaultContent.json
+	 *
+	 * @return
+	 */
+	public Map<String, String> getLanguageDefaultRegionMappings() {
+		Map<String, String> languageDefaultRegionMap = new HashMap<>();
+		JSONArray localeArray = getDefaultContentLocaleArray();
+		for (Object locale : localeArray) {
+			String localeStr = locale.toString();
+			int separatorIndex = localeStr.lastIndexOf("-");
+			String language = localeStr.substring(0, separatorIndex);
+			String defaultRegion = localeStr.substring(separatorIndex+1);
+			languageDefaultRegionMap.put(language, defaultRegion);
+		}
+		return languageDefaultRegionMap;
+	}
+
 	private JSONArray getDefaultContentLocaleArray(){
 		String fileName = "cldr-core-" + CLDRUtils.CLDR_VERSION + "/defaultContent.json";
 		String json = CLDRUtils.readZip(fileName, CLDRConstants.CORE_ZIP_FILE_PATH);

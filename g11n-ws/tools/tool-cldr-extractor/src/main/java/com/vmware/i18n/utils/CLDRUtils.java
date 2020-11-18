@@ -581,8 +581,8 @@ public class CLDRUtils {
      */
     private static Integer firstDayExtract(String localeStr, Map<String, String> firstDayData){
         String firstDay = firstDayData.get(Constants.TERRITORY_001);
-        String territory = Locale.forLanguageTag(localeStr).getCountry();
-        if(firstDayData.get(territory) != null)
+        String territory = LocaleDataUtils.getInstance().getTerritory(localeStr);
+        if(territory != null && firstDayData.get(territory) != null)
             firstDay = firstDayData.get(territory);
         return DayEnum.getIndexByDay(firstDay);
     }
@@ -599,11 +599,13 @@ public class CLDRUtils {
         Map<String, String> weekendEndData = (Map<String, String>) supplementalWeekData.get("weekendEnd");
         String weekendStart = weekendStartData.get(Constants.TERRITORY_001);
         String weekendEnd = weekendEndData.get(Constants.TERRITORY_001);
-        String territory = Locale.forLanguageTag(localeStr).getCountry();
-        if(weekendStartData.get(territory) != null)
-            weekendStart = weekendStartData.get(territory);
-        if(weekendEndData.get(territory) != null)
-            weekendEnd = weekendEndData.get(territory);
+        String territory = LocaleDataUtils.getInstance().getTerritory(localeStr);
+        if(territory != null) {
+            if (weekendStartData.get(territory) != null)
+                weekendStart = weekendStartData.get(territory);
+            if (weekendEndData.get(territory) != null)
+                weekendEnd = weekendEndData.get(territory);
+        }
         return Arrays.asList(DayEnum.getIndexByDay(weekendStart), DayEnum.getIndexByDay(weekendEnd));
     }
 
