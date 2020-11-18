@@ -58,19 +58,20 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 			logger.debug(e.getMessage());
 		}
     }
+
+	/**
+	  * If url is not found, it could be one of the following cases:
+	  * a. the matching resource bundle had been corrupted or removed from the file system since last check.
+	  * b. the requested locale hasn't been matched against the list of supported locales. This happens if
+	  * supported locales cache hasn't been initialized or if previous attempts to populate the cache had failed.
+	  *
+	  * @return The best matching resource bundle in the file system.
+	  */
 	private URL getURL() {
 		String filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), dto.getLocale());
 		Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl(), filePath);
 		URL url = Thread.currentThread().getContextClassLoader().getResource(path.toString());
 
-		/*
-		 * If url is not found, it could be one of the following cases:
-		 * a. the matching resource bundle had been corrupted or removed from the file system since last check.
-		 * b. the requested locale hasn't been matched against the list of supported locales. This happens if
-		 * supported locales cache hasn't been initialized or if previous attempts to populate the cache had failed.
-		 *
-		 * For any of the above cases, the following will locate the best matching resource bundle.
-		 */
 		if (url == null) {
 			String locale = LocaleUtility.fmtToMappedLocale(dto.getLocale()).toLanguageTag();
 			while (url == null) {
