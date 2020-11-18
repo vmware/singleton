@@ -74,23 +74,15 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 		if (url == null) {
 			String locale = LocaleUtility.fmtToMappedLocale(dto.getLocale()).toLanguageTag();
 			while (url == null) {
-				locale = getNextBestMatch(locale);
-				if (locale == null)
+				int index = locale.lastIndexOf("-");
+				if (index <= 0)
 					break;
+				locale = locale.substring(0, index);
 				filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), locale);
 				path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl(), filePath);
 				url = Thread.currentThread().getContextClassLoader().getResource(path.toString());
 			}
 		}
 		return url;
-	}
-
-    private String getNextBestMatch (String locale) {
-    	if (locale == null)
-    		return null;
-		int index = locale.lastIndexOf("-");
-		if (index > 0)
-			return locale.substring(0, index);
-		return null;
 	}
 }
