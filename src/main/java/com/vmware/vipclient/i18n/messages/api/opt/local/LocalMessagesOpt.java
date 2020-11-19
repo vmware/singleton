@@ -16,6 +16,7 @@ import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.*;
 import java.util.*;
@@ -40,8 +41,7 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
     @Override
     public void getComponentMessages(MessageCacheItem cacheItem) {
 		try {
-			URI uri = getURL().toURI();
-
+			URI uri = getURI();
 			Map<String, String> messages = null;
 	    	if (uri.getScheme().equals("jar")) {
 				synchronized (LocalFileSystem.getInstance()) {
@@ -67,23 +67,22 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 	  *
 	  * @return The best matching resource bundle in the file system.
 	  */
-	private URL getURL() {
+	private URI getURI() throws URISyntaxException {
 		String filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), dto.getLocale());
 		Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl(), filePath);
 		URL url = Thread.currentThread().getContextClassLoader().getResource(path.toString());
 
-		if (url == null) {
-			String locale = LocaleUtility.fmtToMappedLocale(dto.getLocale()).toLanguageTag();
-			while (url == null) {
-				int index = locale.lastIndexOf("-");
-				if (index <= 0)
-					break;
-				locale = locale.substring(0, index);
-				filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), locale);
-				path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl(), filePath);
-				url = Thread.currentThread().getContextClassLoader().getResource(path.toString());
-			}
+		String locale = LocaleUtility.fmtToMappedLocale(dto.getLocale()).toLanguageTag();
+		while (url == null) {
+			int index = locale.lastIndexOf("-");
+			if (index <= 0)
+				break;
+			locale = locale.substring(0, index);
+			filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), locale);
+			path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl(), filePath);
+			url = Thread.currentThread().getContextClassLoader().getResource(path.toString());
 		}
-		return url;
+
+		return url.toURI();
 	}
 }
