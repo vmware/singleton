@@ -172,9 +172,9 @@ public class CLDRUtils {
 
         Map<String, Object> supplementalWeekData = getSupplementalWeekData();
         //first day of week
-        Integer firstDayOfWeek = firstDayExtract(locale, (Map<String, String>) supplementalWeekData.get("firstDay"));
+        Integer firstDayOfWeek = extractFirstDay(locale, (Map<String, String>) supplementalWeekData.get("firstDay"));
         //weekend range
-        List<Integer> weekendRange = weekendRangeExtract(locale, supplementalWeekData);
+        List<Integer> weekendRange = extractWeekendRange(locale, supplementalWeekData);
 
         // dateFormats
         Map<String, Object> dateFormatMap = dateFormatExtract(locale, dateContents);
@@ -579,7 +579,7 @@ public class CLDRUtils {
      * @param firstDayData
      * @return
      */
-    private static Integer firstDayExtract(String localeStr, Map<String, String> firstDayData){
+    private static Integer extractFirstDay(String localeStr, Map<String, String> firstDayData){
         String firstDay = firstDayData.get(Constants.TERRITORY_001);
         String territory = LocaleDataUtils.getInstance().getTerritory(localeStr);
         if(territory != null && firstDayData.get(territory) != null)
@@ -594,7 +594,7 @@ public class CLDRUtils {
      * @param supplementalWeekData
      * @return
      */
-    private static List<Integer> weekendRangeExtract(String localeStr, Map<String, Object> supplementalWeekData){
+    private static List<Integer> extractWeekendRange(String localeStr, Map<String, Object> supplementalWeekData){
         Map<String, String> weekendStartData = (Map<String, String>) supplementalWeekData.get("weekendStart");
         Map<String, String> weekendEndData = (Map<String, String>) supplementalWeekData.get("weekendEnd");
         String weekendStart = weekendStartData.get(Constants.TERRITORY_001);
