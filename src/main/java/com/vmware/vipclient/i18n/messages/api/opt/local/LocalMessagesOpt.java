@@ -6,6 +6,7 @@ package com.vmware.vipclient.i18n.messages.api.opt.local;
 
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
+import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.api.opt.MessageOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
@@ -66,13 +67,16 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 			String filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), locale);
 			Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl(), filePath);
 			url = Thread.currentThread().getContextClassLoader().getResource(path.toString());
-			if (url != null)
-				break;
+			try {
+				return url.toURI();
+			} catch (Exception e) {
+				logger.debug("Failed to get resource bundle URI for filePath: " + filePath);
+			}
 
 			/*
-			 * If url is not found, it could be one of the following cases:
+			 * If valid URI is not found, it could be one of the following cases:
 			 * a. the matching resource bundle had been corrupted or removed from the file system since last check.
-			 * b. the requested locale hasn't been matched against the list of supported locales. This happens if
+			 * b. the requested locale hadn't been matched against the list of supported locales. This happens if
 			 * supported locales cache hasn't been initialized or if previous attempts to populate the cache had failed.
 			 *
 			 * In any of the cases above, find the next best matching locale available in the file system.
@@ -82,7 +86,6 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 				break;
 			locale = locale.substring(0, index);
 		}
-
-		return url.toURI();
+		throw new VIPJavaClientException("Failed to get resource bundle for locale: " + locale);
 	}
 }
