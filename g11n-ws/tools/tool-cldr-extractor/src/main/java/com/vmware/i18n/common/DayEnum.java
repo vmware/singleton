@@ -1,3 +1,7 @@
+/*
+ * Copyright 2019-2020 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 package com.vmware.i18n.common;
 
 public enum DayEnum {
