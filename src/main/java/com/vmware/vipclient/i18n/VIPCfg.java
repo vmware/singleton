@@ -56,7 +56,6 @@ public class VIPCfg {
     private boolean                    initializeCache;
     private int                        interalCleanCache;
 
-    @Deprecated
     private String                     productName;
 
     private String                     version;
@@ -72,28 +71,21 @@ public class VIPCfg {
     }
 
     /**
-     * @deprecated Use either {@link VIPCfgFactory#getCfg(String, boolean) getCfg} method
-     * or {@link VIPCfgFactory#initialize(String, boolean)} method, with isGlobalCfg=true to initialize VIPCfg.
-     * Use {@link VIPCfgFactory#getGlobalCfg() getGlobalCfg} method to get the global instance.
+     * @deprecated Use {@link VIPCfgFactory#globalCfg}  getGLobalCfg} to get the global instance.
      */
     public static VIPCfg getInstance() {
-        return VIPCfgFactory.getCfg().getVipCfg();
+        return VIPCfgFactory.globalCfg;
     }
 
     /**
-     * @deprecated Use either {@link VIPCfgFactory#getCfg(String) getCfg} method
-     * or {@link VIPCfgFactory#initialize(String)} method to instantiate and/or get the VIPCfg instance.
+     * @deprecated Use the {@link VIPCfgFactory#getCfg(String, boolean[]) getCfg(productName)} method instead.
      */
     public static VIPCfg getSubInstance(String productName) {
-         return VIPCfgFactory.getCfg(productName).getVipCfg();
+         return VIPCfgFactory.getCfg(productName);
     }
 
     /**
-     * initialize the instance by parameter
-     * 
-     * @param vipServer
-     * @param productName
-     * @param version
+     @deprecated Use {@link VIPCfgFactory#initialize(String, boolean[]) initialize(productName, true)} method to initialize VIPCfg properties.
      */
     public void initialize(String vipServer, String productName, String version) {
         this.setProductName(productName);
@@ -102,23 +94,30 @@ public class VIPCfg {
     }
     
     /**
-     * Initialize VIPCfg instance using a configuration file
-     * 
-     * @param cfg The configuration file
+     * @deprecated
      */
     public void initialize(String cfg) throws VIPClientInitException {
-    	ResourceBundle prop = ResourceBundle.getBundle(cfg);
-    	if (prop == null) {
-    		throw new VIPClientInitException("Can't initialize VIPCfg. Config file is null.");
-    	} else if (!prop.containsKey("productName")) {
+        ResourceBundle prop = ResourceBundle.getBundle(cfg);
+        if (prop == null) {
+            throw new VIPClientInitException("Can't initialize VIPCfg. Config file is null.");
+        } else if (!prop.containsKey("productName")) {
             throw new VIPClientInitException("Can't initialize VIPCfg. Product name is not defined.");
         }
 
         this.setProductName(prop.getString("productName"));
+    	init(cfg);
+
+	}
+
+    protected void init(String cfg) throws VIPClientInitException {
+        ResourceBundle prop = ResourceBundle.getBundle(cfg);
+        if (prop == null) {
+            throw new VIPClientInitException("Can't initialize VIPCfg. Config file is null.");
+        }
 
         if (prop.containsKey("version"))
             this.setVersion(prop.getString("version"));
-        
+
         // Remote VIP resources take priority over offline resources
         // so set vipServer before offlineResourcesBaseUrl
         this.setMsgOriginsQueue(new LinkedList<>());
@@ -126,9 +125,9 @@ public class VIPCfg {
             this.setVipServer(prop.getString("vipServer"));
         }
         if (prop.containsKey("offlineResourcesBaseUrl")) {
-        	this.setOfflineResourcesBaseUrl(prop.getString("offlineResourcesBaseUrl"));
+            this.setOfflineResourcesBaseUrl(prop.getString("offlineResourcesBaseUrl"));
         }
-        
+
         if (prop.containsKey("pseudo"))
             this.setPseudo(Boolean.parseBoolean(prop.getString("pseudo")));
         if (prop.containsKey("collectSource"))
@@ -149,13 +148,12 @@ public class VIPCfg {
             this.setCacheExpiredTime(Long.parseLong(prop
                     .getString("cacheExpiredTime")));
         if (prop.containsKey("defaultLocale")) {
-        	LocaleUtility.setDefaultLocale(Locale.forLanguageTag(prop.getString("defaultLocale")));
-        	LocaleUtility.setFallbackLocales(new LinkedList<>(Arrays.asList(LocaleUtility.getDefaultLocale(), Locale.forLanguageTag(ConstantsKeys.SOURCE))));
+            LocaleUtility.setDefaultLocale(Locale.forLanguageTag(prop.getString("defaultLocale")));
+            LocaleUtility.setFallbackLocales(new LinkedList<>(Arrays.asList(LocaleUtility.getDefaultLocale(), Locale.forLanguageTag(ConstantsKeys.SOURCE))));
         }
         if (prop.containsKey("sourceLocale"))
-        	LocaleUtility.setSourceLocale(Locale.forLanguageTag(prop.getString("sourceLocale")));
-	}	
-
+            LocaleUtility.setSourceLocale(Locale.forLanguageTag(prop.getString("sourceLocale")));
+    }
     /**
      * initialize VIPService instances to provide HTTP requester
      */
@@ -179,7 +177,7 @@ public class VIPCfg {
         }
         if (this.isCleanCache()) {
             logger.info("startTaskOfCacheClean.");
-            Task.startTaskOfCacheClean(VIPCfgFactory.getGlobalCfg().getVipCfg(), interalCleanCache);
+            Task.startTaskOfCacheClean(VIPCfgFactory.globalCfg, interalCleanCache);
         }
         Cache createdCache = TranslationCacheManager
                 .getCache(VIPCfg.CACHE_L3);
@@ -207,7 +205,7 @@ public class VIPCfg {
             }
             if (this.isCleanCache()) {
                 logger.info("startTaskOfCacheClean.");
-                Task.startTaskOfCacheClean(VIPCfgFactory.getGlobalCfg().getVipCfg(), interalCleanCache);
+                Task.startTaskOfCacheClean(VIPCfgFactory.globalCfg, interalCleanCache);
             }
             Cache c = TranslationCacheManager.getCache(VIPCfg.CACHE_L3);
             if (c != null && this.getCacheExpiredTime() != 0) {
@@ -230,7 +228,7 @@ public class VIPCfg {
         logger.info("Formatting cache created.");
         if (this.isCleanCache()) {
             logger.error("clean cache.");
-            Task.startTaskOfCacheClean(VIPCfgFactory.getGlobalCfg().getVipCfg(), interalCleanCache);
+            Task.startTaskOfCacheClean(VIPCfgFactory.globalCfg, interalCleanCache);
         }
         return TranslationCacheManager.getCache(VIPCfg.CACHE_L2);
     }
@@ -247,19 +245,18 @@ public class VIPCfg {
                 + TranslationCacheManager.getInstance().size() + ".");
     }
 
-    /**
-     * @deprecated Get VIPConfig instance using {@Link VIPCfgFactory#getCfg(String} or {@Link VIPCfgFactory#getGlobalCfg(}.
-     * Use {@link VIPConfig#getProductName() VIPConfig.getProductName} to get the product name.
-     */
     public String getProductName() {
         return productName;
     }
 
     /**
-     * @deprecated Use {@link VIPCfgFactory#getCfg(String) to create the VIPCfg instance and set the product name at the same time.
+     * @deprecated This will eventually be "protected".
+     * Use {@link VIPCfgFactory#getCfg(String, boolean[]) to create the VIPCfg instance and set the product name at the same time.
      */
     public void setProductName(String productName) {
+        String oldName = this.getProductName();
         this.productName = productName;
+        VIPCfgFactory.changeProductName(this, oldName);
     }
 
     public String getVersion() {

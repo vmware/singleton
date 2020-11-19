@@ -47,7 +47,7 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
         		getSupportedLocales());
 		try {
 			String filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), bestMatch.toLanguageTag());
-			Path path = Paths.get(VIPCfgFactory.getCfg(this.dto.getProductID()).getVipCfg().getOfflineResourcesBaseUrl(), filePath);
+			Path path = Paths.get(VIPCfgFactory.getCfg(this.dto.getProductID()).getOfflineResourcesBaseUrl(), filePath);
 			
 			URI uri = Thread.currentThread().getContextClassLoader().
 					getResource(path.toString()).toURI();

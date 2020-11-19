@@ -7,7 +7,6 @@ package com.vmware.vip.i18n;
 import java.util.Locale;
 import java.util.Map;
 
-import com.vmware.vipclient.i18n.VIPCfgFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,22 +29,22 @@ public class SharedComponentTest extends BaseTestClass {
     
     @Before
     public void init() {
-        VIPCfg mainCfg = null;
+        VIPCfg mainCfg = VIPCfg.getInstance();
         try {
-            mainCfg = VIPCfgFactory.initialize("vipconfig", true).getVipCfg();
-            mainCfg.initializeVIPService();
-            if (mainCfg.getCacheManager() != null)
-                mainCfg.getCacheManager().clearCache();
-            mainCfg.createTranslationCache(MessageCache.class);
-            mainCfg.createFormattingCache(FormattingCache.class);
+            mainCfg.initialize("vipconfig");
         } catch (VIPClientInitException e) {
             logger.error(e.getMessage());
         }
 
+        mainCfg.initializeVIPService();
+        if (mainCfg.getCacheManager() != null)
+            mainCfg.getCacheManager().clearCache();
+        mainCfg.createTranslationCache(MessageCache.class);
+        mainCfg.createFormattingCache(FormattingCache.class);
         I18nFactory i18n = I18nFactory.getInstance(mainCfg);
         mainTranslation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
 
-        VIPCfg subCfg = VIPCfgFactory.getCfg(subProductName).getVipCfg();
+        VIPCfg subCfg = VIPCfg.getSubInstance(subProductName);
         try {
             subCfg.initialize("vipconfig-child");
         } catch (VIPClientInitException e) {

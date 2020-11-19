@@ -29,7 +29,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 
 public class BaseTestClass {
     protected Logger                logger;
-    VIPCfg                          vipCfg            = VIPCfg.getInstance();
+    protected VIPCfg                          vipCfg            = VIPCfg.getInstance();
     protected static Random rnd = new Random();
 
     public BaseTestClass() {
