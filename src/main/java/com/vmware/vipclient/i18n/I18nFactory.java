@@ -16,7 +16,6 @@ import java.util.Map;
 
 /**
  * provide a factory to create all kind of I18n instances
- * @deprecated
  */
 public class I18nFactory {
 
