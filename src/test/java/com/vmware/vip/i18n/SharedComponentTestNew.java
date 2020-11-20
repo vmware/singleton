@@ -32,16 +32,15 @@ public class SharedComponentTestNew extends BaseTestClassNew {
         VIPCfg mainCfg = null;
         try {
             mainCfg = VIPCfgFactory.initialize("vipconfig", true);
+            if (TranslationCacheManager.getInstance() != null)
+                TranslationCacheManager.getInstance().clearCache();
+            mainCfg.createTranslationCache(MessageCache.class);
+            mainCfg.createFormattingCache(FormattingCache.class);
+            mainTranslation = new TranslationMessage();
+            mainTranslation.setCfg(mainCfg);
         } catch (VIPClientInitException e) {
             logger.error(e.getMessage());
         }
-
-        if (TranslationCacheManager.getInstance() != null)
-            TranslationCacheManager.getInstance().clearCache();
-        mainCfg.createTranslationCache(MessageCache.class);
-        mainCfg.createFormattingCache(FormattingCache.class);
-        mainTranslation = new TranslationMessage();
-        mainTranslation.setCfg(mainCfg);
 
         VIPCfg subCfg = null;
         try {
