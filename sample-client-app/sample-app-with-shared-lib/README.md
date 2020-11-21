@@ -51,11 +51,11 @@ How to build and run this sample application as a Spring Boot executable jar
    ```
    cp ../sample-shared-library/build/libs/sample-shared-library-1.0.jar ./lib/
    ```
- * Build this sample application.
+ * Build and run this sample application using either of the following:
    ```
    gradle -b build-spring-boot.gradle build
-   ```
- * Run this sample application.
-   ```
    java -jar ./build/libs/sample-spring-boot-with-shared-lib-1.0.jar
+   ```
+   ```
+   gradle -b build-spring-boot.gradle bootRun 
    ```
