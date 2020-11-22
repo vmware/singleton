@@ -60,7 +60,7 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 		}
     }
 
-	private URI getURI() throws URISyntaxException {
+	private URI getURI() {
 		String locale = LocaleUtility.fmtToMappedLocale(dto.getLocale()).toLanguageTag();
 		URL url = null;
 		while (url == null) {
@@ -74,12 +74,11 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 			}
 
 			/*
-			 * If valid URI is not found, it could be one of the following cases:
+			 * If valid URI is not found, find the next best matching locale available in the file system
+			 * Ths could happen if:
 			 * a. the matching resource bundle had been corrupted or removed from the file system since last check.
 			 * b. the requested locale hadn't been matched against the list of supported locales. This happens if
 			 * supported locales cache hasn't been initialized or if previous attempts to populate the cache had failed.
-			 *
-			 * In any of the cases above, find the next best matching locale available in the file system.
 			 */
 			int index = locale.lastIndexOf("-");
 			if (index <= 0)
