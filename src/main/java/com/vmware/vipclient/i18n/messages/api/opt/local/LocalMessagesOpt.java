@@ -25,35 +25,35 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class LocalMessagesOpt implements Opt, MessageOpt {
-
+	
 	private Logger logger = LoggerFactory.getLogger(LocalMessagesOpt.class.getName());
 
 	private static final String OFFLINE_RESOURCE_PATH = "{0}/messages_{1}.json";
-	private MessagesDTO dto;
+    private MessagesDTO dto;
 
-	public LocalMessagesOpt(MessagesDTO dto) {
-		this.dto = dto;
-	}
+    public LocalMessagesOpt(MessagesDTO dto) {
+        this.dto = dto;
+    }
 
-	@Deprecated
-	public JSONObject getComponentMessages() {
-		return JSONBundleUtil.getMessages(dto.getLocale(), dto.getProductID(),
-				dto.getVersion(), dto.getComponent());
-	}
-
-	@Override
-	public void getComponentMessages(MessageCacheItem cacheItem) {
-		Locale bestMatch = Locale.lookup(Arrays.asList(new Locale.LanguageRange((dto.getLocale()))),
-				getSupportedLocales());
+    @Deprecated
+    public JSONObject getComponentMessages() {
+        return JSONBundleUtil.getMessages(dto.getLocale(), dto.getProductID(),
+                dto.getVersion(), dto.getComponent());
+    }
+    
+    @Override
+    public void getComponentMessages(MessageCacheItem cacheItem) {
+        Locale bestMatch = Locale.lookup(Arrays.asList(new Locale.LanguageRange((dto.getLocale()))),
+        		getSupportedLocales());
 		try {
 			String filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), bestMatch.toLanguageTag());
 			Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl(), filePath);
-
+			
 			URI uri = Thread.currentThread().getContextClassLoader().
 					getResource(path.toString()).toURI();
-
+			
 			Map<String, String> messages = null;
-			if (uri.getScheme().equals("jar")) {
+	    	if (uri.getScheme().equals("jar")) {
 				try(FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
 					path = fileSystem.getPath(path.toString());
 					messages = JSONBundleUtil.getMessages(path);
@@ -62,21 +62,21 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 				path = Paths.get(uri);
 				messages = JSONBundleUtil.getMessages(path);
 			}
-			cacheItem.setCacheItem(messages, null, System.currentTimeMillis(), null);
+			cacheItem.setCacheItem(dto.getLocale(), messages, null, System.currentTimeMillis(), null);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
 			// Do not update cacheItem
 		}
-	}
-
-	private List<Locale> getSupportedLocales() {
+    }
+    
+    private List<Locale> getSupportedLocales() {
 		ProductService ps = new ProductService(dto);
 		Set<String> supportedLanguages = ps.getSupportedLanguageTags(DataSourceEnum.Bundle);
-		logger.debug("supported languages: [{}]", supportedLanguages.toString());
-		List<Locale> supportedLocales = new LinkedList<Locale>();
-		for (String languageTag : supportedLanguages) {
-			supportedLocales.add(Locale.forLanguageTag(languageTag));
-		}
-		return supportedLocales;
-	}
+        logger.debug("supported languages: [{}]", supportedLanguages.toString());
+    	List<Locale> supportedLocales = new LinkedList<Locale>();
+    	for (String languageTag : supportedLanguages) {
+    		supportedLocales.add(Locale.forLanguageTag(languageTag));
+    	}
+    	return supportedLocales;
+    }
 }
