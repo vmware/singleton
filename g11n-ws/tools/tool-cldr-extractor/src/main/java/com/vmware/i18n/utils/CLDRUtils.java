@@ -581,7 +581,7 @@ public class CLDRUtils {
      */
     private static Integer extractFirstDay(String localeStr, Map<String, String> firstDayData){
         String firstDay = firstDayData.get(Constants.TERRITORY_001);
-        String territory = LocaleDataUtils.getInstance().getTerritory(localeStr);
+        String territory = LocaleDataUtils.getInstance().getDefaultRegionCode(localeStr, LocaleDataUtils.getInstance().getRegionsData(localeStr));
         if(territory != null && firstDayData.get(territory) != null)
             firstDay = firstDayData.get(territory);
         return DayEnum.getIndexByDay(firstDay);
@@ -599,7 +599,7 @@ public class CLDRUtils {
         Map<String, String> weekendEndData = (Map<String, String>) supplementalWeekData.get("weekendEnd");
         String weekendStart = weekendStartData.get(Constants.TERRITORY_001);
         String weekendEnd = weekendEndData.get(Constants.TERRITORY_001);
-        String territory = LocaleDataUtils.getInstance().getTerritory(localeStr);
+        String territory = LocaleDataUtils.getInstance().getDefaultRegionCode(localeStr, LocaleDataUtils.getInstance().getRegionsData(localeStr));
         if(territory != null) {
             if (weekendStartData.get(territory) != null)
                 weekendStart = weekendStartData.get(territory);
