@@ -32,9 +32,9 @@ import java.util.Set;
 @Repository
 public class S3ProductDaoImpl implements IProductDao {
 
-    private static Logger logger = LoggerFactory.getLogger(S3ProductDaoImpl.class);
+   private static Logger logger = LoggerFactory.getLogger(S3ProductDaoImpl.class);
 
-    @Autowired
+   @Autowired
    private S3Client s3Client;
 
    @Autowired
