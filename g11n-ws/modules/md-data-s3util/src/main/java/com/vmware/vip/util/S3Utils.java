@@ -80,12 +80,12 @@ public class S3Utils {
 		}
 	}
 
-	public static String getBundleFilePath(String basePath, SingleComponentDTO singleComponentDTO) {
-		if (StringUtils.isEmpty(singleComponentDTO.getComponent())) {
-			singleComponentDTO.setComponent(ConstantsFile.DEFAULT_COMPONENT);
+	public static String getBundleFilePath(String basePath, SingleComponentDTO dto) {
+		if (StringUtils.isEmpty(dto.getComponent())) {
+			dto.setComponent(ConstantsFile.DEFAULT_COMPONENT);
 		}
-		return S3Utils.genProductVersionS3Path(basePath, singleComponentDTO.getProductName(), singleComponentDTO.getVersion())
-				+ singleComponentDTO.getComponent() + ConstantsChar.BACKSLASH
-				+ ResourceFilePathGetter.getLocalizedJSONFileName(ConstantsKeys.LATEST);
+		return S3Utils.genProductVersionS3Path(basePath, dto.getProductName(), dto.getVersion())
+				+ dto.getComponent() + ConstantsChar.BACKSLASH
+				+ ResourceFilePathGetter.getLocalizedJSONFileName(dto.getLocale());
 	}
 }

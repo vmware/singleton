@@ -42,7 +42,8 @@ public class S3SourceDaoImpl implements SourceDao {
 
 	@Override
 	public boolean updateToBundle(ComponentMessagesDTO compDTO) {
-		logger.info("[Save sources to storage]");
+		logger.info("[Save sources to storage]: {}/{}/{}/{}", compDTO.getProductName(), compDTO.getVersion(),
+				compDTO.getComponent(), compDTO.getLocale());
 
 		boolean bExist = false;
 		try {

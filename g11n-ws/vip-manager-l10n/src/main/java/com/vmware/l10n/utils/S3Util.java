@@ -46,7 +46,8 @@ public class S3Util {
 
 	private Random random = new Random(System.currentTimeMillis());
 
-	private static long retryInterval = 500;
+	private static long retryInterval = 500; // 500 milliseconds
+	private static long deadlockInterval = 10 * 60 * 1000; // 10 minutes
 
 	@PostConstruct
 	private void init() {
@@ -115,7 +116,7 @@ public class S3Util {
 						// Get file creation time to detect deadlock
 						S3ObjectSummary lockfileObject = objects.get(0);
 						Date lastModified = lockfileObject.getLastModified();
-						if (new Date().getTime() - lastModified.getTime() > 10 * 60 * 1000) {// longer than 10min
+						if (new Date().getTime() - lastModified.getTime() > deadlockInterval) {// longer than 10min
 							s3.deleteObject(bucketName, lockfilePath);
 							logger.info("deleted dead lock file");
 							break;
