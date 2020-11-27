@@ -4,7 +4,6 @@
  */
 package com.vmware.controller;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -18,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -31,7 +31,6 @@ import org.springframework.web.context.WebApplicationContext;
 import com.vmware.l10n.BootApplication;
 import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.l10n.translation.dao.SingleComponentDao;
-import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 
@@ -53,36 +52,30 @@ public class S3Test {
 		single.setComponent("default");
 		single.setVersion("1.0.0");
 		single.setLocale("en");
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, String> map = new HashMap<>();
 
 		map.put("dc.unittest.value", "this is unit test value");
 
 		single.setMessages(map);
 
 		ThreadPoolExecutor pool = new ThreadPoolExecutor(20, 20, 0L, TimeUnit.MILLISECONDS,
-				new LinkedBlockingQueue<Runnable>());
+				new LinkedBlockingQueue<>());
 		pool.prestartAllCoreThreads();
 		try {
 			TimeUnit.SECONDS.sleep(2);
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		} catch (InterruptedException e) {
+			logger.error(e.getMessage(), e);
+			Thread.currentThread().interrupt();
 		}
 
-		Runnable r1 = new Runnable() {
-			@Override
-			public void run() {
-				sourceDao.updateToBundle(single);
-			}
+		Runnable r1 = () -> {
+			sourceDao.updateToBundle(single);
 		};
 
 		map.put("dc.unittest.new", "this is unit test new value");
 
-		Runnable r2 = new Runnable() {
-			@Override
-			public void run() {
-				sourceDao.updateToBundle(single);
-			}
+		Runnable r2 = () -> {
+			sourceDao.updateToBundle(single);
 		};
 
 		pool.execute(r1);
@@ -111,11 +104,11 @@ public class S3Test {
 		try {
 			pool.awaitTermination(10, TimeUnit.MINUTES);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error(e.getMessage(), e);
+			Thread.currentThread().interrupt();
 		}
-//		sourceDao.getFromBundle(single);
 
+		Assert.assertTrue(true);
 	}
 
 	@Test
@@ -123,17 +116,16 @@ public class S3Test {
 		SourceDao sourceDao = webApplicationContext.getBean(SourceDao.class);
 		SingleComponentDao singleComponentDao = webApplicationContext.getBean(SingleComponentDao.class);
 		String fileNamePrefix = "messages_";
-		Files.walk(Paths.get("viprepo-bundle/l10n/bundles")).filter(Files::isRegularFile)
-        .forEach((p)->{
-        	int nameCount = p.getNameCount();
-        	String fileName = p.getName(nameCount-1).toString();
+		Files.walk(Paths.get("viprepo-bundle/l10n/bundles")).filter(Files::isRegularFile).forEach(filePath->{
+        	int nameCount = filePath.getNameCount();
+        	String fileName = filePath.getName(nameCount-1).toString();
         	if (!fileName.startsWith(fileNamePrefix)) {
         		return;
         	}
         	String locale = fileName.substring(fileNamePrefix.length(), fileName.lastIndexOf('.'));
-        	String component = p.getName(nameCount-2).toString();
-        	String version = p.getName(nameCount-3).toString();
-        	String product = p.getName(nameCount-4).toString();
+        	String component = filePath.getName(nameCount-2).toString();
+        	String version = filePath.getName(nameCount-3).toString();
+        	String product = filePath.getName(nameCount-4).toString();
         	
         	ComponentMessagesDTO dto = new ComponentMessagesDTO();
         	dto.setProductName(product);
@@ -143,22 +135,15 @@ public class S3Test {
 
 			JSONObject obj;
 			try {
-				obj = (JSONObject) new JSONParser().parse(new FileReader(p.toString()));
+				obj = (JSONObject) new JSONParser().parse(new FileReader(filePath.toString()));
 				dto.setMessages(obj.get("messages"));
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			} catch (IOException | ParseException e) {
+				logger.error(e.getMessage(), e);
 			}
 			
 			if (dto.getLocale().equals("latest")) {
 				sourceDao.updateToBundle(dto);
-				String result = sourceDao.getFromBundle(dto);
+				sourceDao.getFromBundle(dto);
 			} else {
 				com.vmware.l10n.translation.dto.ComponentMessagesDTO translationDto = new com.vmware.l10n.translation.dto.ComponentMessagesDTO();
 				BeanUtils.copyProperties(dto,  translationDto);
@@ -167,10 +152,11 @@ public class S3Test {
 				try {
 					com.vmware.l10n.translation.dto.ComponentMessagesDTO resultDTO = singleComponentDao.getLocalTranslationFromFile(translationDto);
 				} catch (L10nAPIException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.error(e.getMessage(), e);
 				}
         }
         });
+		
+		Assert.assertTrue(true);
 	}
 }

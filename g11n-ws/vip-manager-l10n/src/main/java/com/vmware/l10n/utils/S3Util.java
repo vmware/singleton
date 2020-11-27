@@ -47,7 +47,7 @@ public class S3Util {
 	private Random random = new Random(System.currentTimeMillis());
 
 	private static long retryInterval = 500; // 500 milliseconds
-	private static long deadlockInterval = 10 * 60 * 1000; // 10 minutes
+	private static long deadlockInterval = 10 * 60 * 1000L; // 10 minutes
 
 	@PostConstruct
 	private void init() {
