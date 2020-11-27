@@ -47,14 +47,14 @@ public void  test001() {
 	map.put("dc.unittest.value", "this is unit test value");
 	
 	single.setMessages(map);
-	sourceDao.updateToBundle(single, sourceSend.getBasePath());
+	sourceDao.updateToBundle(single);
 	
 	
 	map.put("dc.unittest.new", "this is unit test new value");
 	
-	sourceDao.updateToBundle(single, sourceSend.getBasePath());
+	sourceDao.updateToBundle(single);
 	
-	sourceDao.getFromBundle(single, sourceSend.getBasePath());
+	sourceDao.getFromBundle(single);
 	
 }
 	

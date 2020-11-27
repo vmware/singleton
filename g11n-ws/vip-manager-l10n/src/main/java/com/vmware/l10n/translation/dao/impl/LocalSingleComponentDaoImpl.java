@@ -32,13 +32,13 @@ import com.vmware.vip.common.utils.SortJSONUtils;
  * This java class is used to handle translation bundle file or translation cache for single component
  */
 @Repository
-public class SingleComponentDaoImpl implements SingleComponentDao {
+public class LocalSingleComponentDaoImpl implements SingleComponentDao {
 
 
 	@Value("${translation.bundle.file.basepath}")
 	private String basePath;
 
-    private static Logger LOGGER = LoggerFactory.getLogger(SingleComponentDaoImpl.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(LocalSingleComponentDaoImpl.class);
 
 
 
