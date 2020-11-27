@@ -36,23 +36,22 @@ public class S3SingleComponentDaoImpl implements SingleComponentDao {
 			throws L10nAPIException {
 		logger.info("[get Translation from S3]");
 
-		ComponentMessagesDTO tempDTO = new ComponentMessagesDTO();
-		BeanUtils.copyProperties(componentMessagesDTO, tempDTO);
+		
 		String bunldeString;
 		try {
-			if (s3util.isBundleExist(basePath, tempDTO)) {
-				tempDTO.setStatus("Translation" + TranslationQueryStatusType.FileFound.toString());
+			if (s3util.isBundleExist(basePath, componentMessagesDTO)) {
+				componentMessagesDTO.setStatus("Translation" + TranslationQueryStatusType.FileFound.toString());
 				bunldeString = s3util.readBundle(basePath, componentMessagesDTO);
 			} else {
-				tempDTO.setStatus("Translation" + TranslationQueryStatusType.FileNotFound.toString());
+				componentMessagesDTO.setStatus("Translation" + TranslationQueryStatusType.FileNotFound.toString());
+				ComponentMessagesDTO tempDTO = new ComponentMessagesDTO();
+				BeanUtils.copyProperties(componentMessagesDTO, tempDTO);
 				tempDTO.setLocale(ConstantsUnicode.EN);
 				bunldeString = s3util.readBundle(basePath, tempDTO);
-				tempDTO.setLocale(componentMessagesDTO.getLocale());
 			}
 			if (StringUtils.isEmpty(bunldeString)) {
-				tempDTO.setMessages(bunldeString);
-				tempDTO.setStatus(TranslationQueryStatusType.ComponentNotFound.toString());
-				return tempDTO;
+				componentMessagesDTO.setStatus(TranslationQueryStatusType.ComponentNotFound.toString());
+				return componentMessagesDTO;
 			}
 		} catch (SdkClientException e) {
 			throw new L10nAPIException("Connecting S3 failed.", e);
@@ -61,9 +60,9 @@ public class S3SingleComponentDaoImpl implements SingleComponentDao {
 		SingleComponentDTO caseComponentMessagesDTO;
 		try {
 			caseComponentMessagesDTO = SingleComponentDTO.getSingleComponentDTOWithLinkedMessages(bunldeString);
-			caseComponentMessagesDTO.setProductName(tempDTO.getProductName());
-			caseComponentMessagesDTO.setVersion(tempDTO.getVersion());
-			caseComponentMessagesDTO.setStatus(tempDTO.getStatus());
+			caseComponentMessagesDTO.setProductName(componentMessagesDTO.getProductName());
+			caseComponentMessagesDTO.setVersion(componentMessagesDTO.getVersion());
+			caseComponentMessagesDTO.setStatus(componentMessagesDTO.getStatus());
 		} catch (ParseException e) {
 			throw new L10nAPIException("Parse json failed.", e);
 		}

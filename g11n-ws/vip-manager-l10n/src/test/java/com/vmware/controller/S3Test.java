@@ -116,19 +116,19 @@ public class S3Test {
 		SourceDao sourceDao = webApplicationContext.getBean(SourceDao.class);
 		SingleComponentDao singleComponentDao = webApplicationContext.getBean(SingleComponentDao.class);
 		String fileNamePrefix = "messages_";
-		Files.walk(Paths.get("viprepo-bundle/l10n/bundles")).filter(Files::isRegularFile).forEach(filePath->{
-        	int nameCount = filePath.getNameCount();
-        	String fileName = filePath.getName(nameCount-1).toString();
-        	if (!fileName.startsWith(fileNamePrefix)) {
-        		return;
-        	}
-        	String locale = fileName.substring(fileNamePrefix.length(), fileName.lastIndexOf('.'));
-        	String component = filePath.getName(nameCount-2).toString();
-        	String version = filePath.getName(nameCount-3).toString();
-        	String product = filePath.getName(nameCount-4).toString();
-        	
-        	ComponentMessagesDTO dto = new ComponentMessagesDTO();
-        	dto.setProductName(product);
+		Files.walk(Paths.get("viprepo-bundle/l10n/bundles")).filter(Files::isRegularFile).forEach(filePath -> {
+			int nameCount = filePath.getNameCount();
+			String fileName = filePath.getName(nameCount - 1).toString();
+			if (!fileName.startsWith(fileNamePrefix)) {
+				return;
+			}
+			String locale = fileName.substring(fileNamePrefix.length(), fileName.lastIndexOf('.'));
+			String component = filePath.getName(nameCount - 2).toString();
+			String version = filePath.getName(nameCount - 3).toString();
+			String product = filePath.getName(nameCount - 4).toString();
+
+			ComponentMessagesDTO dto = new ComponentMessagesDTO();
+			dto.setProductName(product);
 			dto.setVersion(version);
 			dto.setComponent(component);
 			dto.setLocale(locale);
@@ -140,23 +140,23 @@ public class S3Test {
 			} catch (IOException | ParseException e) {
 				logger.error(e.getMessage(), e);
 			}
-			
+
 			if (dto.getLocale().equals("latest")) {
 				sourceDao.updateToBundle(dto);
 				sourceDao.getFromBundle(dto);
 			} else {
 				com.vmware.l10n.translation.dto.ComponentMessagesDTO translationDto = new com.vmware.l10n.translation.dto.ComponentMessagesDTO();
-				BeanUtils.copyProperties(dto,  translationDto);
+				BeanUtils.copyProperties(dto, translationDto);
 				singleComponentDao.writeLocalTranslationToFile(translationDto);
-				
+
 				try {
-					com.vmware.l10n.translation.dto.ComponentMessagesDTO resultDTO = singleComponentDao.getLocalTranslationFromFile(translationDto);
+					singleComponentDao.getLocalTranslationFromFile(translationDto);
 				} catch (L10nAPIException e) {
 					logger.error(e.getMessage(), e);
 				}
-        }
-        });
-		
+			}
+		});
+
 		Assert.assertTrue(true);
 	}
 }
