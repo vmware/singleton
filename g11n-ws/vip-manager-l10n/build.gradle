@@ -101,6 +101,13 @@ sourceSets {
             }
         }
     }
+    test {
+        java {
+            if(project.hasProperty('datatype') && project.getProperty('datatype') == 'bundle'){
+                exclude '**/S3*.java'
+            }
+        }
+    }
 }
 
 bootJar.doFirst {
@@ -124,10 +131,6 @@ task profile {
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
-}
-
-if (project.hasProperty('datatype') || (project.getProperty('datatype') == 's3') ) {
-	check.dependsOn.remove(test)
 }
 
 assemble.dependsOn.add copyCommonJars
