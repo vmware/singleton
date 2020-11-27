@@ -31,6 +31,7 @@ import org.springframework.web.context.WebApplicationContext;
 import com.vmware.l10n.BootApplication;
 import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.l10n.translation.dao.SingleComponentDao;
+import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 
@@ -121,12 +122,15 @@ public class S3Test {
 	public void test002() throws IOException {
 		SourceDao sourceDao = webApplicationContext.getBean(SourceDao.class);
 		SingleComponentDao singleComponentDao = webApplicationContext.getBean(SingleComponentDao.class);
-		
+		String fileNamePrefix = "messages_";
 		Files.walk(Paths.get("viprepo-bundle/l10n/bundles")).filter(Files::isRegularFile)
         .forEach((p)->{
         	int nameCount = p.getNameCount();
         	String fileName = p.getName(nameCount-1).toString();
-        	String locale = fileName.substring("messages_".length(), fileName.lastIndexOf('.'));
+        	if (!fileName.startsWith(fileNamePrefix)) {
+        		return;
+        	}
+        	String locale = fileName.substring(fileNamePrefix.length(), fileName.lastIndexOf('.'));
         	String component = p.getName(nameCount-2).toString();
         	String version = p.getName(nameCount-3).toString();
         	String product = p.getName(nameCount-4).toString();
