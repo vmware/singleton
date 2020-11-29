@@ -23,7 +23,7 @@ import com.vmware.vip.common.l10n.exception.L10nAPIException;
 
 
 @Repository
-@Profile(value="s3")
+@Profile("s3")
 public class S3SingleComponentDaoImpl implements SingleComponentDao {
 	private static Logger logger = LoggerFactory.getLogger(S3SingleComponentDaoImpl.class);
 

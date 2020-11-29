@@ -7,6 +7,7 @@ package com.vmware.l10n.source.dao.impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.l10n.record.dao.SqlLiteDao;
 import com.vmware.l10n.source.dao.SourceDao;
+import com.vmware.l10n.utils.SourceUtils;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.constants.ConstantsKeys;
@@ -92,8 +93,11 @@ public class LocalSourceDaoImpl implements SourceDao {
 		if (targetFile.exists()) {
 			LOGGER.info("The bunlde file path {}{} is found, update the bundle file.", basepath, filepath);
 			try {
+				String existingBundle =  new LocalJSONReader().readLocalJSONFile(basepath
+						+ filepath);
+				SingleComponentDTO latestDTO = SourceUtils.mergeCacheWithBundle(componentMessagesDTO, existingBundle);
 				SortJSONUtils.writeJSONObjectToJSONFile(basepath
-						+ filepath, componentMessagesDTO);
+						+ filepath, latestDTO);
 				sqlLite.updateModifySourceRecord(componentMessagesDTO);
 				return true;
 			} catch (VIPResourceOperationException e) {
