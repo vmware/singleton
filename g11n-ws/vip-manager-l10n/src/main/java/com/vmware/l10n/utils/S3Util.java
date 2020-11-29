@@ -14,6 +14,7 @@ import javax.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.amazonaws.SdkClientException;
@@ -35,14 +36,12 @@ public class S3Util {
 	private static Logger logger = LoggerFactory.getLogger(S3Util.class);
 
 	@Autowired
-	private S3Config config;
-
-	@Autowired
 	private S3Client s3Client;
 
 	private static AmazonS3 s3;
 
-	private static String bucketName;
+	@Value("${s3.bucketName}")
+	private String bucketName;
 
 	private Random random = new Random(System.currentTimeMillis());
 
@@ -52,7 +51,6 @@ public class S3Util {
 	@PostConstruct
 	private void init() {
 		s3 = s3Client.getS3Client();
-		bucketName = config.getBucketName();
 	}
 
 	public String readBundle(String basePath, SingleComponentDTO compDTO) {

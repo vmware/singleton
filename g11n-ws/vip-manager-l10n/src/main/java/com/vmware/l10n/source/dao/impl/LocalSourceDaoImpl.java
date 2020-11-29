@@ -21,6 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -29,6 +30,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 
 @Repository
+@Profile(value="bundle")
 public class LocalSourceDaoImpl implements SourceDao {
     private static Logger LOGGER = LoggerFactory.getLogger(LocalSourceDaoImpl.class);
 

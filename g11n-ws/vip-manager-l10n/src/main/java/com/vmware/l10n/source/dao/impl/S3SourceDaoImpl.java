@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import com.vmware.l10n.record.dao.SqlLiteDao;
@@ -16,6 +17,7 @@ import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 
 @Repository
+@Profile(value="s3")
 public class S3SourceDaoImpl implements SourceDao {
 
 	private static Logger logger = LoggerFactory.getLogger(S3SourceDaoImpl.class);

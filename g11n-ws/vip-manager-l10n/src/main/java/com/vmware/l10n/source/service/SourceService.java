@@ -5,6 +5,7 @@
 package com.vmware.l10n.source.service;
 
 import com.vmware.vip.common.l10n.exception.L10nAPIException;
+import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
 
 /**
@@ -18,4 +19,6 @@ public interface SourceService {
      * @return cache result, true represents success and false represents failed.
      */
     public boolean cacheSource(StringSourceDTO stringSourceDTO)  throws L10nAPIException;
+
+	public boolean updateToBundle(ComponentMessagesDTO sdto);
 }

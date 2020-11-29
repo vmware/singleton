@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -22,6 +23,7 @@ import com.vmware.vip.common.l10n.exception.L10nAPIException;
 
 
 @Repository
+@Profile(value="s3")
 public class S3SingleComponentDaoImpl implements SingleComponentDao {
 	private static Logger logger = LoggerFactory.getLogger(S3SingleComponentDaoImpl.class);
 

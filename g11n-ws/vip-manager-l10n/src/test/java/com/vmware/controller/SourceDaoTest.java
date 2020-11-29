@@ -23,8 +23,8 @@ import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
-public class SourceDaoSource {
-	 private static Logger logger = LoggerFactory.getLogger(SourceDaoSource.class);
+public class SourceDaoTest {
+	 private static Logger logger = LoggerFactory.getLogger(SourceDaoTest.class);
 	
 	@Autowired
 	private WebApplicationContext webApplicationContext;

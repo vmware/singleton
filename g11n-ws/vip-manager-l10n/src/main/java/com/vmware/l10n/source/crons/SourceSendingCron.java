@@ -6,7 +6,6 @@ package com.vmware.l10n.source.crons;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -16,9 +15,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 import javax.annotation.PostConstruct;
 
 import org.ehcache.Cache;
-import org.json.simple.parser.ContainerFactory;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -29,12 +25,10 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.vmware.l10n.source.dao.SourceDao;
-import com.vmware.l10n.source.service.RemoteSyncService;
 import com.vmware.l10n.source.service.SourceService;
+import com.vmware.l10n.source.service.RemoteSyncService;
 import com.vmware.l10n.source.service.impl.SourceServiceImpl;
 import com.vmware.l10n.utils.DiskQueueUtils;
-import com.vmware.l10n.utils.MapUtil;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.APIV2;
 import com.vmware.vip.common.cache.CacheName;
@@ -43,7 +37,6 @@ import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.common.exceptions.VIPHttpException;
 import com.vmware.vip.common.http.HTTPRequester;
-import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
@@ -55,7 +48,7 @@ import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
 @Service
 @PropertySource("classpath:application.properties")
 public class SourceSendingCron {
-	private static Logger LOGGER = LoggerFactory.getLogger(SourceService.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(SourceSendingCron.class);
 	private final static String LOCAL_STR = "local";
 	private final static BlockingQueue<String> instruments = new LinkedBlockingQueue<String>();
 
@@ -79,7 +72,7 @@ public class SourceSendingCron {
 	private String remoteVIPURL;
 
 	@Autowired
-	private SourceDao sourceDao;
+	private SourceService sourceService;
 
 	@Autowired
 	private RemoteSyncService remoteSyncService;
@@ -190,7 +183,7 @@ public class SourceSendingCron {
 							BeanUtils.copyProperties(cachedComDTO, sdto);
 							boolean updateFlag = false;
 							// update the source to bundle.
-							updateFlag = sourceDao.updateToBundle(sdto);
+							updateFlag = sourceService.updateToBundle(sdto);
 							if (updateFlag) {
 								if (connected) {
 									// push the source to GRM.

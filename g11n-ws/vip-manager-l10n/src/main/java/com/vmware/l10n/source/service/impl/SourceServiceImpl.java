@@ -11,6 +11,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -19,16 +21,15 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.vmware.vip.common.l10n.exception.L10nAPIException;
+import com.vmware.l10n.source.dao.SourceDao;
+import com.vmware.l10n.source.dao.impl.S3SourceDaoImpl;
 import com.vmware.l10n.source.service.SourceService;
 import com.vmware.l10n.utils.DiskQueueUtils;
 import com.vmware.l10n.utils.MapUtil;
-import com.vmware.l10n.utils.SourceCacheUtils;
-import com.vmware.vip.common.cache.CacheName;
-import com.vmware.vip.common.cache.TranslationCache3;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
-import com.vmware.vip.common.exceptions.VIPCacheException;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
+import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
 import com.vmware.vip.common.l10n.source.dto.StringSourceDTO;
 import com.vmware.vip.common.l10n.source.util.PathUtil;
@@ -47,6 +48,12 @@ public class SourceServiceImpl implements SourceService {
 	private final static BlockingQueue<StringSourceDTO> stringSources = new LinkedBlockingQueue<StringSourceDTO>();
 	
 	private final static ConcurrentMap<String, ComponentSourceDTO> prepareMap = new  ConcurrentHashMap<String, ComponentSourceDTO>();
+	
+	@Value("${datatype}")
+	private String datatype;
+	
+	@Resource(name="name", type=S3SourceDaoImpl.class)
+	private SourceDao sourceDao;
 	
 	public boolean cacheSource(StringSourceDTO stringSourceDTO) throws L10nAPIException {
 		if (StringUtils.isEmpty(stringSourceDTO) || StringUtils.isEmpty(stringSourceDTO.getKey())) {
@@ -203,90 +210,90 @@ public class SourceServiceImpl implements SourceService {
 	
 	
 	
-	@SuppressWarnings("unchecked")
-	public static void updateKeyValue( ComponentSourceDTO cacheComSourceDTO,  Map<String, Object> messages,  Map<String, Object> comments, String ehcacheKey) throws VIPCacheException {
-		for(Entry<String, Object> entry: messages.entrySet()) {
-			String key = entry.getKey();
-			Object source= entry.getValue();
-			Object comment = comments.get(key);
-			
-			MapUtil.updateKeyValue(cacheComSourceDTO.getMessages(), key, source);
-			if (!StringUtils.isEmpty(comment)) {
-				
-				MapUtil.updateKeyValue(cacheComSourceDTO.getComments(), key, comment);
-			}
-			
-		}
-		
-		SourceCacheUtils.updateSourceCache(ehcacheKey, cacheComSourceDTO);
-		LOGGER.info("Update cache: {}", ehcacheKey);
-		
-	}
+//	@SuppressWarnings("unchecked")
+//	public static void updateKeyValue( ComponentSourceDTO cacheComSourceDTO,  Map<String, Object> messages,  Map<String, Object> comments, String ehcacheKey) throws VIPCacheException {
+//		for(Entry<String, Object> entry: messages.entrySet()) {
+//			String key = entry.getKey();
+//			Object source= entry.getValue();
+//			Object comment = comments.get(key);
+//			
+//			MapUtil.updateKeyValue(cacheComSourceDTO.getMessages(), key, source);
+//			if (!StringUtils.isEmpty(comment)) {
+//				
+//				MapUtil.updateKeyValue(cacheComSourceDTO.getComments(), key, comment);
+//			}
+//			
+//		}
+//		
+//		SourceCacheUtils.updateSourceCache(ehcacheKey, cacheComSourceDTO);
+//		LOGGER.info("Update cache: {}", ehcacheKey);
+//		
+//	}
+	
+//	
+//	@SuppressWarnings("unchecked")
+//	private static boolean catcheStrDTO(StringSourceDTO stringSourceDTO) throws L10nAPIException {
+//
+//		stringSourceDTO.setLocale(ConstantsKeys.LATEST);
+//		String key = getKey(stringSourceDTO);
+//		String source = stringSourceDTO.getSource();
+//		String comment = stringSourceDTO.getComment();
+//		String ehcacheKey = PathUtil.generateCacheKey(stringSourceDTO);
+//		ComponentSourceDTO cacheComSourceDTO = null;
+//		try {
+//			cacheComSourceDTO = TranslationCache3.getCachedObject(CacheName.SOURCE, ehcacheKey);
+//
+//			if (StringUtils.isEmpty(cacheComSourceDTO)) {
+//				cacheComSourceDTO = new ComponentSourceDTO();
+//				BeanUtils.copyProperties(stringSourceDTO, cacheComSourceDTO);
+//				cacheComSourceDTO.setMessages(key, source);
+//				if (!StringUtils.isEmpty(comment)) {
+//					cacheComSourceDTO.setComments(key, comment);
+//				}
+//
+//				TranslationCache3.addCachedObject(CacheName.SOURCE, ehcacheKey, cacheComSourceDTO);
+//
+//			} else {
+//				MapUtil.updateKeyValue(cacheComSourceDTO.getMessages(), key, source);
+//				
+//				cacheComSourceDTO.setMessages(key, source);
+//
+//				if (!StringUtils.isEmpty(comment)) {
+//
+//					MapUtil.updateKeyValue(cacheComSourceDTO.getComments(), key, comment);
+//
+//					cacheComSourceDTO.setComments(key, comment);
+//				}
+//				TranslationCache3.updateCachedObject(CacheName.SOURCE, ehcacheKey, cacheComSourceDTO);
+//				LOGGER.info("Update cache: {}", ehcacheKey);
+//			}
+//		} catch (VIPCacheException e) {
+//			LOGGER.error(e.getMessage(), e);
+//			throw new L10nAPIException("Error occurs in cache when perform cacheSource function.", e);
+//		}
+//		return true;
+//	}
+//	
 	
 	
-	@SuppressWarnings("unchecked")
-	private static boolean catcheStrDTO(StringSourceDTO stringSourceDTO) throws L10nAPIException {
-
-		stringSourceDTO.setLocale(ConstantsKeys.LATEST);
-		String key = getKey(stringSourceDTO);
-		String source = stringSourceDTO.getSource();
-		String comment = stringSourceDTO.getComment();
-		String ehcacheKey = PathUtil.generateCacheKey(stringSourceDTO);
-		ComponentSourceDTO cacheComSourceDTO = null;
-		try {
-			cacheComSourceDTO = TranslationCache3.getCachedObject(CacheName.SOURCE, ehcacheKey);
-
-			if (StringUtils.isEmpty(cacheComSourceDTO)) {
-				cacheComSourceDTO = new ComponentSourceDTO();
-				BeanUtils.copyProperties(stringSourceDTO, cacheComSourceDTO);
-				cacheComSourceDTO.setMessages(key, source);
-				if (!StringUtils.isEmpty(comment)) {
-					cacheComSourceDTO.setComments(key, comment);
-				}
-
-				TranslationCache3.addCachedObject(CacheName.SOURCE, ehcacheKey, cacheComSourceDTO);
-
-			} else {
-				MapUtil.updateKeyValue(cacheComSourceDTO.getMessages(), key, source);
-				
-				cacheComSourceDTO.setMessages(key, source);
-
-				if (!StringUtils.isEmpty(comment)) {
-
-					MapUtil.updateKeyValue(cacheComSourceDTO.getComments(), key, comment);
-
-					cacheComSourceDTO.setComments(key, comment);
-				}
-				TranslationCache3.updateCachedObject(CacheName.SOURCE, ehcacheKey, cacheComSourceDTO);
-				LOGGER.info("Update cache: {}", ehcacheKey);
-			}
-		} catch (VIPCacheException e) {
-			LOGGER.error(e.getMessage(), e);
-			throw new L10nAPIException("Error occurs in cache when perform cacheSource function.", e);
-		}
-		return true;
-	}
-	
-	
-	
 	
 
 
-	public static void delTempQueue() {
-		while (!stringSources.isEmpty()) {
-			StringSourceDTO sourceDTO = stringSources.poll();
-			if (sourceDTO != null) {
-				try {
-					catcheStrDTO(sourceDTO);
-				} catch (L10nAPIException e) {
-					// TODO Auto-generated catch block
-					LOGGER.error(e.getMessage(), e);
-				}
-			}
-
-		}
-
-	}
+//	public static void delTempQueue() {
+//		while (!stringSources.isEmpty()) {
+//			StringSourceDTO sourceDTO = stringSources.poll();
+//			if (sourceDTO != null) {
+//				try {
+//					catcheStrDTO(sourceDTO);
+//				} catch (L10nAPIException e) {
+//					// TODO Auto-generated catch block
+//					LOGGER.error(e.getMessage(), e);
+//				}
+//			}
+//
+//		}
+//
+//	}
 
 	/*
 	 * get the key from StringSourceDTO, if there's source format(e.g. HTML), will
@@ -298,6 +305,13 @@ public class SourceServiceImpl implements SourceService {
 			key = key + ConstantsChar.DOT + ConstantsChar.POUND + stringSourceDTO.getSourceFormat().toUpperCase();
 
 		return key;
+	}
+
+
+	@Override
+	public boolean updateToBundle(ComponentMessagesDTO sdto) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 

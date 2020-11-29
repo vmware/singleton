@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -32,6 +33,7 @@ import com.vmware.vip.common.utils.SortJSONUtils;
  * This java class is used to handle translation bundle file or translation cache for single component
  */
 @Repository
+@Profile(value="bundle")
 public class LocalSingleComponentDaoImpl implements SingleComponentDao {
 
 
