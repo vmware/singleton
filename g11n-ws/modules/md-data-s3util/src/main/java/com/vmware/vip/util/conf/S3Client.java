@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
@@ -21,6 +22,7 @@ import com.amazonaws.services.s3.model.GetBucketLocationRequest;
  * the class uses S3 configurations to initialize S3 client environment
  */
 @Configuration
+@Profile("s3")
 public class S3Client {
     private static Logger logger = LoggerFactory.getLogger(S3Client.class);
 

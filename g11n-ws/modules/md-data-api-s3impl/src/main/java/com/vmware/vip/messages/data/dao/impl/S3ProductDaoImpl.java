@@ -4,6 +4,18 @@
  */
 package com.vmware.vip.messages.data.dao.impl;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Repository;
+
 import com.amazonaws.services.s3.model.ListObjectsV2Result;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
@@ -15,21 +27,11 @@ import com.vmware.vip.util.S3Utils;
 import com.vmware.vip.util.conf.S3Client;
 import com.vmware.vip.util.conf.S3Config;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 /**
  * this class use to get the properties of a version bundle files
  */
 @Repository
+@Profile("s3")
 public class S3ProductDaoImpl implements IProductDao {
 
    private static Logger logger = LoggerFactory.getLogger(S3ProductDaoImpl.class);

@@ -6,11 +6,13 @@ package com.vmware.vip.util.conf;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 /**
  * the configuration of S3 client
  */
 @Configuration
+@Profile("s3")
 public class S3Config {
 
     public String getAccessKey() {

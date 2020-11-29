@@ -4,6 +4,17 @@
  */
 package com.vmware.vip.messages.data.dao.impl;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
+
 import com.amazonaws.services.s3.model.PutObjectResult;
 import com.amazonaws.services.s3.model.S3Object;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -19,20 +30,11 @@ import com.vmware.vip.util.S3Utils;
 import com.vmware.vip.util.conf.S3Client;
 import com.vmware.vip.util.conf.S3Config;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import org.springframework.util.StringUtils;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * This java class is used to handle translation bundle file or translation
  */
 @Repository
+@Profile("s3")
 public class S3OneComponentDaoImpl implements IOneComponentDao {
 
    public static final String S3_L10N_BUNDLES_PATH =
