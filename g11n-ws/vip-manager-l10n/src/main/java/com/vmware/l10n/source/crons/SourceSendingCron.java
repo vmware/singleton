@@ -25,7 +25,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.vmware.l10n.source.service.SourceService;
+import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.l10n.source.service.RemoteSyncService;
 import com.vmware.l10n.source.service.impl.SourceServiceImpl;
 import com.vmware.l10n.utils.DiskQueueUtils;
@@ -72,7 +72,7 @@ public class SourceSendingCron {
 	private String remoteVIPURL;
 
 	@Autowired
-	private SourceService sourceService;
+	private SourceDao sourceDao;
 
 	@Autowired
 	private RemoteSyncService remoteSyncService;
@@ -183,7 +183,7 @@ public class SourceSendingCron {
 							BeanUtils.copyProperties(cachedComDTO, sdto);
 							boolean updateFlag = false;
 							// update the source to bundle.
-							updateFlag = sourceService.updateToBundle(sdto);
+							updateFlag = sourceDao.updateToBundle(sdto);
 							if (updateFlag) {
 								if (connected) {
 									// push the source to GRM.

@@ -11,18 +11,16 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.vmware.l10n.source.dao.SourceDao;
-import com.vmware.l10n.source.dao.impl.S3SourceDaoImpl;
 import com.vmware.l10n.source.service.SourceService;
 import com.vmware.l10n.utils.DiskQueueUtils;
 import com.vmware.l10n.utils.MapUtil;
@@ -48,12 +46,6 @@ public class SourceServiceImpl implements SourceService {
 	private final static BlockingQueue<StringSourceDTO> stringSources = new LinkedBlockingQueue<StringSourceDTO>();
 	
 	private final static ConcurrentMap<String, ComponentSourceDTO> prepareMap = new  ConcurrentHashMap<String, ComponentSourceDTO>();
-	
-	@Value("${datatype}")
-	private String datatype;
-	
-	@Resource(name="name", type=S3SourceDaoImpl.class)
-	private SourceDao sourceDao;
 	
 	public boolean cacheSource(StringSourceDTO stringSourceDTO) throws L10nAPIException {
 		if (StringUtils.isEmpty(stringSourceDTO) || StringUtils.isEmpty(stringSourceDTO.getKey())) {
@@ -305,13 +297,6 @@ public class SourceServiceImpl implements SourceService {
 			key = key + ConstantsChar.DOT + ConstantsChar.POUND + stringSourceDTO.getSourceFormat().toUpperCase();
 
 		return key;
-	}
-
-
-	@Override
-	public boolean updateToBundle(ComponentMessagesDTO sdto) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 
