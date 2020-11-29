@@ -17,7 +17,7 @@ import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 
 @Repository
-@Profile(value="s3")
+@Profile("s3")
 public class S3SourceDaoImpl implements SourceDao {
 
 	private static Logger logger = LoggerFactory.getLogger(S3SourceDaoImpl.class);
