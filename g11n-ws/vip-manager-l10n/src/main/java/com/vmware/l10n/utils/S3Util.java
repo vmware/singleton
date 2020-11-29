@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import com.amazonaws.SdkClientException;
@@ -29,9 +30,9 @@ import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.util.S3Utils;
 import com.vmware.vip.util.conf.S3Client;
-import com.vmware.vip.util.conf.S3Config;
 
 @Component("S3Util")
+@Profile("s3")
 public class S3Util {
 	private static Logger logger = LoggerFactory.getLogger(S3Util.class);
 
