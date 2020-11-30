@@ -30,6 +30,7 @@ import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.amazonaws.services.s3.model.S3VersionSummary;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vmware.l10n.conf.RsaCryptUtils;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.constants.ConstantsKeys;
@@ -44,52 +45,63 @@ public class S3Util {
 	private AmazonS3 s3Inst;
 
 	/**
-     * the s3 access Key
-     */
-    @Value("${s3.accessKey}")
-    private String accessKey;
+	 * the s3 password is encryption or not
+	 */
+	@Value("${s3.password.encryption:false}")
+	private boolean encryption;
 
-    /**
-     * the s3 secret key
-     */
-    @Value("${s3.secretkey}")
-    private String secretkey;
+	/**
+	 * the s3 password public key used to decrypt data
+	 */
+	@Value("${s3.password.publicKey}")
+	private String publicKey;
 
-    /**
-     * the s3 region name
-     */
-    @Value("${s3.region}")
-    private String s3Region;
+	/**
+	 * the s3 access Key
+	 */
+	@Value("${s3.password.accessKey}")
+	private String accessKey;
 
-    /**
-     * the s3 bucket Name
-     */
-    @Value("${s3.bucketName}")
-    private String bucketName;
+	/**
+	 * the s3 secret key
+	 */
+	@Value("${s3.password.secretkey}")
+	private String secretkey;
+
+	/**
+	 * the s3 region name
+	 */
+	@Value("${s3.region}")
+	private String s3Region;
+
+	/**
+	 * the s3 bucket Name
+	 */
+	@Value("${s3.bucketName}")
+	private String bucketName;
 
 	private Random random = new Random(System.currentTimeMillis());
 
 	private static long retryInterval = 500; // 500 milliseconds
 	private static long deadlockInterval = 10 * 60 * 1000L; // 10 minutes
 
-    /**
-     * initialize the the S3 client environment
-     */
-    @PostConstruct
-    private void init() {
-        s3Inst = AmazonS3ClientBuilder.standard()
-                .withCredentials(new AWSStaticCredentialsProvider(
-                        new BasicAWSCredentials(accessKey, secretkey)))
-                .withRegion(s3Region).enablePathStyleAccess().build();
-        if (!s3Inst.doesBucketExistV2(bucketName)) {
-            s3Inst.createBucket(bucketName);
-            // Verify that the bucket was created by retrieving it and checking its location.
-            String bucketLocation =
-                    s3Inst.getBucketLocation(new GetBucketLocationRequest(bucketName));
-            logger.info("Bucket location: {}", bucketLocation);
-        }
-    }
-    
+	/**
+	 * initialize the the S3 client environment
+	 */
+	@PostConstruct
+	private void init() {
+		s3Inst = AmazonS3ClientBuilder.standard()
+				.withCredentials(new AWSStaticCredentialsProvider(
+						new BasicAWSCredentials(this.getAccessKey(), this.getSecretkey())))
+				.withRegion(s3Region).enablePathStyleAccess().build();
+		if (!s3Inst.doesBucketExistV2(bucketName)) {
+			s3Inst.createBucket(bucketName);
+			// Verify that the bucket was created by retrieving it and checking its
+			// location.
+			String bucketLocation = s3Inst.getBucketLocation(new GetBucketLocationRequest(bucketName));
+			logger.info("Bucket location: {}", bucketLocation);
+		}
+	}
 
 	public String readBundle(String basePath, SingleComponentDTO compDTO) {
 		logger.info("read bundle file: {}/{}/{}/{}", compDTO.getProductName(), compDTO.getVersion(),
@@ -204,7 +216,7 @@ public class S3Util {
 				}
 				objects = s3Inst.listObjectsV2(bucketName, lockfilePath).getObjectSummaries();
 			}
-			
+
 			return true;
 		} catch (AmazonS3Exception e) {
 			logger.error(e.getMessage(), e);
@@ -219,16 +231,15 @@ public class S3Util {
 			Thread.currentThread().interrupt();
 		}
 	}
-	
+
 	private static String getBundleFilePath(String basePath, SingleComponentDTO dto) {
 		if (StringUtils.isEmpty(dto.getComponent())) {
 			dto.setComponent(ConstantsFile.DEFAULT_COMPONENT);
 		}
-		return genProductVersionS3Path(basePath, dto.getProductName(), dto.getVersion())
-				+ dto.getComponent() + ConstantsChar.BACKSLASH
-				+ ResourceFilePathGetter.getLocalizedJSONFileName(dto.getLocale());
+		return genProductVersionS3Path(basePath, dto.getProductName(), dto.getVersion()) + dto.getComponent()
+				+ ConstantsChar.BACKSLASH + ResourceFilePathGetter.getLocalizedJSONFileName(dto.getLocale());
 	}
-	
+
 	/**
 	 * generate the product version path
 	 */
@@ -244,5 +255,31 @@ public class S3Util {
 		path.append(ConstantsChar.BACKSLASH);
 		return path.toString();
 
+	}
+
+	public String getAccessKey() {
+		if (this.encryption) {
+			try {
+				return RsaCryptUtils.decryptData(this.getAccessKey(), this.publicKey);
+			} catch (Exception e) {
+				logger.error(e.getMessage(), e);
+				return null;
+			}
+		} else {
+			return this.accessKey;
+		}
+	}
+
+	public String getSecretkey() {
+		if (this.encryption) {
+			try {
+				return RsaCryptUtils.decryptData(this.secretkey, this.publicKey);
+			} catch (Exception e) {
+				logger.error(e.getMessage(), e);
+				return null;
+			}
+		} else {
+			return this.secretkey;
+		}
 	}
 }
