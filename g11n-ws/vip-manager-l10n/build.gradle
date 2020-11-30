@@ -75,17 +75,6 @@ task copyCommonJars(type: Copy, dependsOn: bootJar) {
     include "**/*.jar", "**/*.war"
 }
 
-processResources {
-    excludes =[]
-    if(project.hasProperty('datatype') && project.getProperty('datatype') == 'bundle'){
-        println "begin to exclude bundle builder configuration file"
-        excludes=['**/application-s3.properties']
-    }else if(project.hasProperty('datatype') && project.getProperty('datatype') == 's3'){
-       println "begin to exclude S3 builder configuration file"
-       excludes=['**/application-bundle.properties', '/l10n']
-    }
-}
-
 bootJar.doFirst {
     def propPath = "${buildDir}/resources/main/application.properties"
     println propPath
