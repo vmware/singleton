@@ -3,11 +3,13 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
+using SingletonClient.Implementation.Support;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Text;
 using System.Text.RegularExpressions;
 using YamlDotNet.RepresentationModel;
 
@@ -41,6 +43,8 @@ namespace SingletonClient.Implementation
 
         string GetCacheType();
 
+        string GetCacheComponentType();
+
         string GetAccessServiceType();
 
         string GetLoggerName();
@@ -66,7 +70,7 @@ namespace SingletonClient.Implementation
 
     public class SingletonConfigItem : IConfigItem
     {
-        private YamlNode _node;
+        private readonly YamlNode _node;
 
         public SingletonConfigItem(object node)
         {
@@ -88,7 +92,7 @@ namespace SingletonClient.Implementation
         {
             if (_node == null)
             {
-                return null;
+                return SingletonUtil.GetEmptyStringList();
             }
             List<string> itemList = new List<string>();
 
@@ -105,7 +109,11 @@ namespace SingletonClient.Implementation
         public bool GetBool()
         {
             string text = GetString();
-            return (text == null) ? false : "true".Equals(text);
+            if (text == null)
+            {
+                return false;
+            }
+            return "true".Equals(text);
         }
 
         public int GetInt()
@@ -180,11 +188,10 @@ namespace SingletonClient.Implementation
 
     public class SingletonConfig : IConfig
     {
-        private string _configText;
         private IConfigItem _root;
 
-        private string _resourceBaseName;
-        private Assembly _resourceAssembly;
+        private readonly string _resourceBaseName;
+        private readonly Assembly _resourceAssembly;
 
         public SingletonConfig(string resourceBaseName, Assembly resourceAssembly)
         {
@@ -206,13 +213,13 @@ namespace SingletonClient.Implementation
             // To get rid of comments.
             var strs = Regex.Split(text, "(#.*)");
 
-            _configText = "";
+            StringBuilder stringBuilder = new StringBuilder("");
             for (int i = 0; i < strs.Length; i+=2)
             {
-                _configText += strs[i];
+                stringBuilder.Append(strs[i]);
             }
 
-            ReadConfig(_configText);
+            ReadConfig(stringBuilder.ToString());
         }
 
         public IConfigItem GetItem(string key)
@@ -225,7 +232,7 @@ namespace SingletonClient.Implementation
             IConfigItem configItem = GetItem(ConfigConst.KeyComponents);
             if (configItem == null)
             {
-                return null;
+                return SingletonUtil.GetEmptyStringList();
             }
             return configItem.GetArrayItemList(ConfigConst.KeyName);
         }
@@ -306,7 +313,7 @@ namespace SingletonClient.Implementation
         {
             if (string.IsNullOrEmpty(resourceName) || string.IsNullOrEmpty(format))
             {
-                return null;
+                return SingletonUtil.NewHashtable(true);
             }
             if (locale == null)
             {
@@ -321,17 +328,16 @@ namespace SingletonClient.Implementation
                 return SingletonUtil.ReadResourceMap(resourceName, locale, _resourceAssembly);
             }
 
-            return null;
+            return SingletonUtil.NewHashtable(true);
         }
     }
 
     public class SingletonConfigWrapper: ISingletonConfig
     {
-        private IConfig _config;
+        private readonly IConfig _config;
 
-        private string _onlineUrl;
-        private string _offlineUrl;
-        private string _serviceUrl;
+        private readonly string _offlineUrl;
+        private readonly string _serviceUrl;
 
         private string _product;
         private string _version;
@@ -339,17 +345,17 @@ namespace SingletonClient.Implementation
         private string _bundleRoot;
         private List<string> _externalComponentList;
 
-        private bool _isProductMode;
-        private bool _isOnlineSupported;
-        private bool _isOfflineSupported;
-        private bool _isSourceDefault;
-        private bool _isLoadOnStartup;
+        private readonly bool _isProductMode;
+        private readonly bool _isOnlineSupported;
+        private readonly bool _isOfflineSupported;
+        private readonly bool _isSourceDefault;
+        private readonly bool _isLoadOnStartup;
 
         public SingletonConfigWrapper(IConfig config)
         {
             _config = config;
 
-            _onlineUrl = GetTextWithDefault(ConfigConst.KeyOnlineUrl, null);
+            string _onlineUrl = GetTextWithDefault(ConfigConst.KeyOnlineUrl, null);
             _offlineUrl = GetTextWithDefault(ConfigConst.KeyOfflineUrl, null);
 
             if (_onlineUrl != null)
@@ -370,16 +376,25 @@ namespace SingletonClient.Implementation
             }
 
             IConfigItem configItem = _config.GetItem(ConfigConst.KeyProductMode);
-            _isProductMode = (configItem == null) ? true : configItem.GetBool();
+            _isProductMode = true;
+            if (configItem != null)
+            {
+                _isProductMode = configItem.GetBool();
+            }
 
             _isOnlineSupported = !string.IsNullOrEmpty(GetServiceUrl());
             _isOfflineSupported = !string.IsNullOrEmpty(_offlineUrl);
 
-            _isSourceDefault = SingletonUtil.NearLocale(GetDefaultLocale()).Equals(
-                SingletonUtil.NearLocale(GetSourceLocale()));
+            ISingletonLocale defaultLocale = SingletonUtil.GetSingletonLocale(GetDefaultLocale());
+            ISingletonLocale sourceLocale = SingletonUtil.GetSingletonLocale(GetSourceLocale());
+            _isSourceDefault = defaultLocale.Compare(sourceLocale);
 
             configItem = _config.GetItem(ConfigConst.KeyLoadOnStartup);
-            _isLoadOnStartup = (configItem == null) ? false : configItem.GetBool();
+            _isLoadOnStartup = false;
+            if (configItem != null)
+            {
+                _isLoadOnStartup = configItem.GetBool();
+            }
         }
 
         private void BuildExternalComponentList()
@@ -402,6 +417,7 @@ namespace SingletonClient.Implementation
             }
             catch(Exception e)
             {
+                SingletonUtil.HandleException(e);
             }
         }
 
@@ -495,10 +511,11 @@ namespace SingletonClient.Implementation
                 return locale;
             }
 
-            string nearLocale = SingletonUtil.NearLocale(locale);
+            ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
             for (int i=0; i<localeNames.Count; i++)
             {
-                if (nearLocale.Equals(SingletonUtil.NearLocale(localeNames[i])))
+                ISingletonLocale oneLocale = SingletonUtil.GetSingletonLocale(localeNames[i]);
+                if (oneLocale.Compare(singletonLocale))
                 {
                     return localeNames[i];
                 }
@@ -519,6 +536,11 @@ namespace SingletonClient.Implementation
         public string GetCacheType()
         {
             return GetTextWithDefault(ConfigConst.KeyCacheType, ConfigConst.DefaultType);
+        }
+
+        public string GetCacheComponentType()
+        {
+            return GetTextWithDefault(ConfigConst.KeyCacheComponentType, ConfigConst.DefaultType);
         }
 
         public string GetAccessServiceType()
@@ -589,7 +611,7 @@ namespace SingletonClient.Implementation
         {
             if (this._externalComponentList == null)
             {
-                return null;
+                return SingletonUtil.GetEmptyStringList();
             }
 
             DirectoryInfo dir = new DirectoryInfo(_bundleRoot + component);

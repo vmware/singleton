@@ -42,7 +42,7 @@ namespace UnitTestSingleton
             text = BaseIo.obj().HttpPost("11.22.33", "44.55", null);
             Assert.AreEqual(text, null);
 
-            config = I18n.GetConfig("CSHARP", "1.0.0");
+            config = I18N.GetConfig("CSHARP", "1.0.0");
             ISingletonConfig configWrapper = new SingletonConfigWrapper(config);
             string productName = configWrapper.GetProduct();
             Assert.AreEqual(productName, "CSHARP");
@@ -63,11 +63,11 @@ namespace UnitTestSingleton
             text = SingletonUtil.ConvertToText(bytes2);
 
             JObject obj = SingletonUtil.HttpPost(BaseIo.obj(), "__url", "body", null);
-            Assert.AreEqual(obj, null);
+            Assert.AreEqual(obj.Count, 0);
 
-            Assert.AreEqual(I18n.GetConfig("CSHARP", null), null);
+            Assert.AreEqual(I18N.GetConfig("CSHARP", null), null);
 
-            SingletonClientManager mgr = (SingletonClientManager)I18n.GetExtension();
+            SingletonClientManager mgr = (SingletonClientManager)I18N.GetExtension();
             Assert.AreEqual(mgr.GetRelease(null), null);
 
             ICacheManager tempCache = mgr.GetCacheManager("try");
@@ -77,7 +77,7 @@ namespace UnitTestSingleton
         [TestMethod]
         public void TestRelease()
         {
-            config = I18n.GetConfig("CSHARP", "1.0.0");
+            config = I18N.GetConfig("CSHARP", "1.0.0");
             List<string> localeList = config.GetLocaleList(null);
             Assert.AreEqual(localeList.Count, 0);
             localeList = config.GetLocaleList("");

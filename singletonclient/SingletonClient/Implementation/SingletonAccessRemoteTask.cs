@@ -50,18 +50,15 @@ namespace SingletonClient.Implementation
     /// </summary>
     public class SingletonAccessRemoteTask: ISingletonAccessTask
     {
-        private static int _total = 0;
-
         private bool _querying = false;
         private bool _trying = false;
 
-        private ISingletonAccessRemote _update;
+        private readonly ISingletonAccessRemote _update;
 
         private int _interval;
-        private int _tryDelay;
+        private readonly int _tryDelay;
 
         private DateTime _utcCurrent;
-        private int _index;
 
         public SingletonAccessRemoteTask(
             ISingletonAccessRemote update, int interval, int tryDelay)
@@ -69,9 +66,6 @@ namespace SingletonClient.Implementation
             _update = update;
             _interval = interval;
             _tryDelay = tryDelay;
-
-            _index = _total;
-            _total++;
         }
 
         public void SetInterval(int interval)
@@ -86,7 +80,7 @@ namespace SingletonClient.Implementation
                 _update.GetDataFromRemote();
                 _trying = false;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 _trying = true;
             }

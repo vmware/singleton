@@ -5,10 +5,8 @@
 
 using SingletonClient.Implementation.Helpers;
 using SingletonClient.Implementation.Support;
-using System;
 using System.Collections;
 using System.Reflection;
-using YamlDotNet.RepresentationModel;
 
 namespace SingletonClient.Implementation
 {
@@ -18,11 +16,10 @@ namespace SingletonClient.Implementation
         IConfig GetConfig(string product, string version);
         IRelease GetRelease(IConfig config);
         ICacheManager GetCacheManager(string cacheManagerName);
+        ICacheComponentManager GetCacheComponentManager(string cacheComponentManagerName);
         ILog GetLogger(string loggerName);
         IResourceParser GetResourceParser(string parserName);
         IAccessService GetAccessService(string accessServiceName);
-        void SetFallbackConfig(string configText);
-        string GetFallbackLocale(string locale);
     }
 
     public class SingletonClientManager : ISingletonClientManager, IExtension
@@ -38,30 +35,35 @@ namespace SingletonClient.Implementation
         // value: (Hashtable) versions -> 
         //     key: (string) version
         //     value: (ISingletonRelease) release object
-        private Hashtable _products = SingletonUtil.NewHashtable();
+        private readonly Hashtable _products = SingletonUtil.NewHashtable(true);
 
         // key: (string) type name of cache manager
         // value: (ICacheManager) cache manager object
-        private Hashtable _cacheManagers = SingletonUtil.NewHashtable();
+        private readonly Hashtable _cacheManagers = SingletonUtil.NewHashtable(true);
+
+        // key: (string) type name of component cache manager
+        // value: (ICacheComponentManager) component cache manager object
+        private readonly Hashtable _cacheComponentManagers = SingletonUtil.NewHashtable(true);
 
         // key: (string) type name of logger
         // value: (ILog) logger object
-        private Hashtable _loggers = SingletonUtil.NewHashtable();
+        private readonly Hashtable _loggers = SingletonUtil.NewHashtable(true);
 
         // key: (string) type name of parser
         // value: (ISourceParser) parser object
-        private Hashtable _parsers = SingletonUtil.NewHashtable();
+        private readonly Hashtable _parsers = SingletonUtil.NewHashtable(true);
 
         // key: (string) type name of accessing service
         // value: (IAccessService) accessing service object
-        private Hashtable _accessServices = SingletonUtil.NewHashtable();
-
-        private Hashtable _localeNameMap = SingletonUtil.NewHashtable();
+        private readonly Hashtable _accessServices = SingletonUtil.NewHashtable(true);
 
         private SingletonClientManager()
         {
             ICacheManager cacheManager = new SingletonCacheManager();
             RegisterCacheManager(cacheManager, ConfigConst.DefaultType);
+
+            ICacheComponentManager cacheComponentManager = new SingletonCacheComponentManager();
+            RegisterCacheComponentManager(cacheComponentManager, ConfigConst.DefaultType);
 
             ILog logger = new SingletonLogger();
             RegisterLogger(logger, ConfigConst.DefaultType);
@@ -87,35 +89,7 @@ namespace SingletonClient.Implementation
             byte[] bytes = SingletonUtil.ReadResource(resName, assembly, "fallback");
             string configText = SingletonUtil.ConvertToText(bytes);
 
-            SetFallbackConfig(configText);
-        }
-
-        public void SetFallbackConfig(string configText)
-        {
-            YamlMappingNode configRoot = SingletonUtil.GetYamlRoot(configText);
-            var valuesMapping = (YamlMappingNode)configRoot.Children[new YamlScalarNode("locale")];
-            foreach (var tuple in valuesMapping.Children)
-            {
-                _localeNameMap.Add(tuple.Key.ToString(), tuple.Value.ToString());
-            }
-        }
-
-        public string GetFallbackLocale(string locale)
-        {
-            locale = CultureHelper.GetCulture(locale).Name;
-
-            string fallback = (string)_localeNameMap[locale];
-            if (fallback != null)
-            {
-                return fallback;
-            }
-            string[] parts = locale.Split('-');
-            if (parts.Length == 1)
-            {
-                return locale;
-            }
-
-            return parts[0];
+            CultureHelper.SetFallbackConfig(configText);
         }
 
         private Hashtable GetProductVersions(string product, bool add)
@@ -123,7 +97,7 @@ namespace SingletonClient.Implementation
             Hashtable versions = (Hashtable)_products[product];
             if (versions == null && add)
             {
-                _products[product] = SingletonUtil.NewHashtable();
+                _products[product] = SingletonUtil.NewHashtable(true);
                 versions = (Hashtable)_products[product];
             }
             return versions;
@@ -143,6 +117,17 @@ namespace SingletonClient.Implementation
                 versions[version] = releaseObject;
             }
             return releaseObject;
+        }
+
+        private ISingletonRelease GetRelease(string product, string version)
+        {
+            Hashtable versions = GetProductVersions(product, false);
+            if (versions == null)
+            {
+                return null;
+            }
+            ISingletonRelease rel = GetRelease(versions, version, false);
+            return rel;
         }
 
         public IConfig LoadConfig(
@@ -203,6 +188,11 @@ namespace SingletonClient.Implementation
             return (ICacheManager)GetItemFromTable(_cacheManagers, cacheManagerName);
         }
 
+        public ICacheComponentManager GetCacheComponentManager(string cacheComponentManagerName)
+        {
+            return (ICacheComponentManager)GetItemFromTable(_cacheComponentManagers, cacheComponentManagerName);
+        }
+
         public ILog GetLogger(string loggerName)
         {
             return (ILog)GetItemFromTable(_loggers, loggerName);
@@ -218,20 +208,15 @@ namespace SingletonClient.Implementation
             return (IAccessService)GetItemFromTable(_accessServices, accessServiceName);
         }
 
-        private ISingletonRelease GetRelease(string product, string version)
-        {
-            Hashtable versions = GetProductVersions(product, false);
-            if (versions == null)
-            {
-                return null;
-            }
-            ISingletonRelease rel = GetRelease(versions, version, false);
-            return rel;
-        }
-
         public void RegisterCacheManager(ICacheManager cacheManager, string cacheManagerName)
         {
             _cacheManagers[cacheManagerName] = cacheManager;
+        }
+
+        public void RegisterCacheComponentManager(ICacheComponentManager cacheComponentManager,
+            string cacheComponentManagerName)
+        {
+            _cacheComponentManagers[cacheComponentManagerName] = cacheComponentManager;
         }
 
         public void RegisterAccessService(IAccessService accessService, string accessrName)

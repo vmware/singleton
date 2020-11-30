@@ -4,8 +4,11 @@
  */
 
 using Newtonsoft.Json.Linq;
+using SingletonClient.Implementation.Helpers;
+using SingletonClient.Implementation.Support;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
@@ -15,15 +18,28 @@ using YamlDotNet.RepresentationModel;
 
 namespace SingletonClient.Implementation
 {
-    public class SingletonUtil
+    public static class SingletonUtil
     {
         /// <summary>
         /// New a Hashtable object and make it thread safe.
         /// </summary>
         /// <returns></returns>
-        public static Hashtable NewHashtable()
+        public static Hashtable NewHashtable(bool ignoreCase)
         {
+            if (ignoreCase)
+            {
+                return Hashtable.Synchronized(new Hashtable(StringComparer.OrdinalIgnoreCase));
+            }
             return Hashtable.Synchronized(new Hashtable());
+        }
+
+        /// <summary>
+        /// Get empty string list.
+        /// </summary>
+        /// <returns></returns>
+        public static List<string> GetEmptyStringList()
+        {
+            return new List<string>();
         }
 
         /// <summary>
@@ -53,13 +69,15 @@ namespace SingletonClient.Implementation
 
             ResourceManager resourceManager = new ResourceManager(resourceBaseName, assembly);
             string localeInUse = locale;
-            if (resourceBaseName.EndsWith("_" + locale) || resourceBaseName.EndsWith("_" + NearLocale(locale)))
+            ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(localeInUse);
+            if (singletonLocale.IsLocaleAtStringEnd(resourceBaseName))
             {
                 localeInUse = ConfigConst.DefaultLocale;
+                singletonLocale = SingletonUtil.GetSingletonLocale(localeInUse);
             }
 
-            bool tryParents = SingletonUtil.NearLocale(ConfigConst.DefaultLocale).Equals(
-                SingletonUtil.NearLocale(localeInUse));
+            ISingletonLocale defaultLocale = SingletonUtil.GetSingletonLocale(ConfigConst.DefaultLocale);
+            bool tryParents = defaultLocale.Compare(singletonLocale);
 
             CultureInfo cultureInfo = new System.Globalization.CultureInfo(localeInUse);
             try
@@ -78,6 +96,7 @@ namespace SingletonClient.Implementation
             }
             catch (Exception e)
             {
+                SingletonUtil.HandleException(e);
             }
             return table;
         }
@@ -106,25 +125,30 @@ namespace SingletonClient.Implementation
 
         public static JObject ConvertToDict(string text)
         {
+            JObject dict = new JObject();
             if (text == null)
             {
-                return null;
+                return dict;
             }
+
             try
             {
-                JObject dict = JObject.Parse(text);
-                return dict;
-            } catch (Exception e)
-            {
+                dict = JObject.Parse(text);
             }
-            return null;
+            catch (Exception e)
+            {
+                SingletonUtil.HandleException(e);
+            }
+
+            return dict;
         }
 
         public static bool CheckResponseValid(JToken token, Hashtable headers)
         {
             if (headers != null)
             {
-                if (SingletonConst.StatusNotModified.Equals(headers[SingletonConst.HeaderResponseCode]))
+                string responseCode = (string)headers[SingletonConst.HeaderResponseCode];
+                if (SingletonConst.StatusNotModified.Equals(responseCode))
                 {
                     return false;
                 }
@@ -163,14 +187,14 @@ namespace SingletonClient.Implementation
 
         public static JObject HttpPost(IAccessService accessService, string url, string text, Hashtable headers)
         {
+            JObject obj = new JObject();
+
             string responseData = accessService.HttpPost(url, text, headers);
-            if (responseData == null)
+            if (responseData != null)
             {
-                return null;
+                obj.Add(SingletonConst.KeyResult, ConvertToDict(responseData));
             }
 
-            JObject obj = new JObject();
-            obj.Add(SingletonConst.KeyResult, ConvertToDict(responseData));
             return obj;
         }
 
@@ -192,16 +216,25 @@ namespace SingletonClient.Implementation
             }
             catch (Exception e)
             {
+                SingletonUtil.HandleException(e);
             }
 
-            return null;
+            return new YamlMappingNode();
         }
 
-        public static string NearLocale(string locale)
+        /// <summary>
+        /// Get ISingletonLocale object by locale.
+        /// </summary>
+        /// <returns></returns>
+        public static ISingletonLocale GetSingletonLocale(string locale)
         {
-            return SingletonClientManager.GetInstance().GetFallbackLocale(locale);
+            return CultureHelper.GetFallbackLocaleList(locale);
         }
 
+        /// <summary>
+        /// Read text from a file.
+        /// </summary>
+        /// <returns></returns>
         public static string ReadTextFile(string path)
         {
             try
@@ -210,8 +243,19 @@ namespace SingletonClient.Implementation
                 return text;
             } catch (Exception e)
             {
+                HandleException(e);
             }
             return null;
+        }
+
+        /// <summary>
+        /// Handle exception.
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        public static void HandleException(Exception e)
+        {
+            // Method intentionally left empty.
         }
     }
 }

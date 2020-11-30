@@ -9,6 +9,19 @@ using System.Collections.Generic;
 namespace SingletonClient
 {
     /// <summary>
+    /// Interface for product data in a cache.
+    /// </summary>
+    public interface ICacheMessages
+    {
+        /// <summary>
+        /// Get interface to access locale data in a cache.
+        /// </summary>
+        /// <param name="locale"></param>
+        /// <returns></returns>
+        ILocaleMessages GetLocaleMessages(string locale);
+    }
+
+    /// <summary>
     /// Interface to access messages of a locale.
     /// </summary>
     public interface ILocaleMessages

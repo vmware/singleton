@@ -18,7 +18,7 @@ namespace UnitTestSingleton
         public void TestAccessService()
         {
             SingletonAccessService service = new SingletonAccessService();
-            Hashtable headers = SingletonUtil.NewHashtable();
+            Hashtable headers = SingletonUtil.NewHashtable(false);
             String text = service.HttpGet("https://github.com", headers);
             Assert.AreEqual(text.Contains("GitHub"), true);
 

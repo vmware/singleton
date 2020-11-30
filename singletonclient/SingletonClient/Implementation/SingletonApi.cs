@@ -20,11 +20,11 @@ namespace SingletonClient.Implementation
         private const string VipGetComponent = "locales/{0}/components/{1}?";
         private const string VipSendSource = "locales/en-US/components/{0}/keys/{1}?collectSource={2}&";
 
-        private string _product;
-        private string _version;
-        private string _urlService;
+        private readonly string _product;
+        private readonly string _version;
+        private readonly string _urlService;
 
-        private ISingletonRelease _releaseObject;
+        private readonly ISingletonRelease _releaseObject;
 
         public SingletonApi(ISingletonRelease releaseObject)
         {
