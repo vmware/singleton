@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
@@ -24,9 +25,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.AmazonS3Exception;
 import com.amazonaws.services.s3.model.GetBucketLocationRequest;
-import com.amazonaws.services.s3.model.PutObjectResult;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
-import com.amazonaws.services.s3.model.S3VersionSummary;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.l10n.conf.RsaCryptUtil;
@@ -78,6 +77,8 @@ public class S3Util {
 	 */
 	@Value("${s3.bucketName}")
 	private String bucketName;
+
+	private Random random = new Random(System.currentTimeMillis());
 
 	private static long retryInterval = 500; // milliseconds
 	private static long deadlockInterval = 10 * 60 * 1000L; // 10 minutes
@@ -150,6 +151,7 @@ public class S3Util {
 	public boolean lockBundleFile(String basePath, SingleComponentDTO compDTO, long waittime) {
 		long endTime = System.currentTimeMillis() + waittime;
 		String lockfilePath = getLockFile(getBundleFilePath(basePath, compDTO));
+		String content = Double.toString(random.nextDouble());
 
 		do {
 			if (!waitLockfileDisappeared(lockfilePath, endTime)) {
@@ -157,13 +159,12 @@ public class S3Util {
 			}
 
 			// Write the lock file
-			PutObjectResult putResult = s3Inst.putObject(bucketName, lockfilePath, "");
+			s3Inst.putObject(bucketName, lockfilePath, content);
 			sleep(waitS3Operation);
 			
 			// Check file content is correct
 			try {
-				List<S3VersionSummary> versions = s3Inst.listVersions(bucketName, lockfilePath).getVersionSummaries();
-				if (versions.size() > 1 && putResult.getVersionId().equals(versions.get(0).getVersionId())) {
+				if(content.equals(s3Inst.getObjectAsString(bucketName, lockfilePath))) {
 					return true;
 				}
 			} catch (AmazonS3Exception e) {
