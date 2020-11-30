@@ -60,7 +60,7 @@ public class S3Test {
 
 		single.setMessages(map);
 
-		ThreadPoolExecutor pool = new ThreadPoolExecutor(20, 20, 0L, TimeUnit.MILLISECONDS,
+		ThreadPoolExecutor pool = new ThreadPoolExecutor(10, 10, 1000L, TimeUnit.MILLISECONDS,
 				new LinkedBlockingQueue<>());
 		pool.prestartAllCoreThreads();
 		try {
@@ -159,4 +159,30 @@ public class S3Test {
 
 		Assert.assertTrue(true);
 	}
+	
+	@Test
+	public void test003() {
+		SourceDao sourceDao = webApplicationContext.getBean(SourceDao.class);
+
+		ComponentMessagesDTO single = new ComponentMessagesDTO();
+
+		single.setProductName("unitTest");
+		single.setComponent("default");
+		single.setVersion("1.0.0");
+		single.setLocale("en");
+		Map<String, String> map = new HashMap<>();
+
+		map.put("dc.unittest.value", "this is unit test value");
+
+		single.setMessages(map);
+
+		
+
+		for (int i=0; i< 30; i++) {
+			sourceDao.updateToBundle(single);
+		}
+
+
+		Assert.assertTrue(true);
+	}	
 }

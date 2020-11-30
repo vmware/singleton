@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
@@ -80,11 +79,10 @@ public class S3Util {
 	@Value("${s3.bucketName}")
 	private String bucketName;
 
-	private Random random = new Random(System.currentTimeMillis());
-
-	private static long retryInterval = 500; // 500 milliseconds
+	private static long retryInterval = 500; // milliseconds
 	private static long deadlockInterval = 10 * 60 * 1000L; // 10 minutes
-
+	private static long waitS3Operation = 100; // milliseconds
+	
 	/**
 	 * initialize the the S3 client environment
 	 */
@@ -152,7 +150,6 @@ public class S3Util {
 	public boolean lockBundleFile(String basePath, SingleComponentDTO compDTO, long waittime) {
 		long endTime = System.currentTimeMillis() + waittime;
 		String lockfilePath = getLockFile(getBundleFilePath(basePath, compDTO));
-		String content = Double.toString(random.nextDouble());
 
 		do {
 			if (!waitLockfileDisappeared(lockfilePath, endTime)) {
@@ -160,13 +157,13 @@ public class S3Util {
 			}
 
 			// Write the lock file
-			PutObjectResult putResult = s3Inst.putObject(bucketName, lockfilePath, content);
-
+			PutObjectResult putResult = s3Inst.putObject(bucketName, lockfilePath, "");
+			sleep(waitS3Operation);
+			
 			// Check file content is correct
 			try {
 				List<S3VersionSummary> versions = s3Inst.listVersions(bucketName, lockfilePath).getVersionSummaries();
-				if (versions.size() > 1 && putResult.getVersionId().equals(versions.get(0).getVersionId())
-						&& content.equals(s3Inst.getObjectAsString(bucketName, lockfilePath))) {
+				if (versions.size() > 1 && putResult.getVersionId().equals(versions.get(0).getVersionId())) {
 					return true;
 				}
 			} catch (AmazonS3Exception e) {
@@ -211,7 +208,7 @@ public class S3Util {
 				}
 				sleep(retryInterval);
 				if (System.currentTimeMillis() >= endTime) {
-					logger.info("time out to lock");
+					logger.info("failed to wait for lockfile disappered");
 					return false;
 				}
 				objects = s3Inst.listObjectsV2(bucketName, lockfilePath).getObjectSummaries();
