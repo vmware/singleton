@@ -35,7 +35,7 @@ repositories {
 
 dependencies {
     compile project(":md-data-api")
-    compile project(":vip-common")
+	compile project(":vip-common")
     compile group: 'org.springframework.boot', name: 'spring-boot'
     compile group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.11.550'
 }
