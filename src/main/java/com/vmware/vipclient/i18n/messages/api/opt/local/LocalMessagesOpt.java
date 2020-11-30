@@ -14,10 +14,12 @@ import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.JSONBundleUtil;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.net.URI;
-import java.net.URISyntaxException;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.file.*;
 import java.util.*;
@@ -42,33 +44,24 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
     @Override
     public void getComponentMessages(MessageCacheItem cacheItem) {
 		try {
-			URI uri = getURI();
-			Map<String, String> messages = null;
-	    	if (uri.getScheme().equals("jar")) {
-				synchronized (LocalFileSystem.getInstance()) {
-					try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.emptyMap())) {
-						Path path = fileSystem.getPath(Paths.get(uri).toString());
-						messages = JSONBundleUtil.getMessages(path);
-					}
-				}
-			} else {
-				messages = JSONBundleUtil.getMessages(Paths.get(uri));
-			}
+			InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(getPath());
+			JSONParser jsonParser = new JSONParser();
+			JSONObject jsonObject = (JSONObject) jsonParser.parse(new InputStreamReader(is, "UTF-8"));
+			Map<String, String> messages = (JSONObject) jsonObject.get("messages");
 			cacheItem.setCacheItem(messages, null, System.currentTimeMillis(), null);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
 		}
     }
 
-	private URI getURI() {
+	private String getPath() {
 		String locale = LocaleUtility.fmtToMappedLocale(dto.getLocale()).toLanguageTag();
 		URL url = null;
 		while (url == null) {
 			String filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), locale);
 			Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl(), filePath);
-			url = Thread.currentThread().getContextClassLoader().getResource(path.toString());
 			try {
-				return url.toURI();
+				return path.toString();
 			} catch (Exception e) {
 				logger.debug("Failed to get resource bundle URI for filePath: " + filePath);
 			}
