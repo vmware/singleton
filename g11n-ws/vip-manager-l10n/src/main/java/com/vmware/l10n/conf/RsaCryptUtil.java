@@ -23,8 +23,8 @@ import javax.crypto.NoSuchPaddingException;
  * it use to decode the access key and Secret key
  *
  */
-public class RsaCryptUtils {
-	private RsaCryptUtils() {}
+public class RsaCryptUtil {
+	private RsaCryptUtil() {}
     private static final Base64.Decoder decoder64 = Base64.getDecoder();
  
     /**

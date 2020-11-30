@@ -30,7 +30,7 @@ import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.amazonaws.services.s3.model.S3VersionSummary;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vmware.l10n.conf.RsaCryptUtils;
+import com.vmware.l10n.conf.RsaCryptUtil;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.constants.ConstantsKeys;
@@ -260,7 +260,7 @@ public class S3Util {
 	public String getAccessKey() {
 		if (this.encryption) {
 			try {
-				return RsaCryptUtils.decryptData(this.getAccessKey(), this.publicKey);
+				return RsaCryptUtil.decryptData(this.getAccessKey(), this.publicKey);
 			} catch (Exception e) {
 				logger.error(e.getMessage(), e);
 				return null;
@@ -273,7 +273,7 @@ public class S3Util {
 	public String getSecretkey() {
 		if (this.encryption) {
 			try {
-				return RsaCryptUtils.decryptData(this.secretkey, this.publicKey);
+				return RsaCryptUtil.decryptData(this.secretkey, this.publicKey);
 			} catch (Exception e) {
 				logger.error(e.getMessage(), e);
 				return null;
