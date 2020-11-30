@@ -212,7 +212,39 @@ public class OfflineModeTest extends BaseTestClass {
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
     }
-    
+
+    @Test
+    public void testGetMessageCombineRemoteAndLocalSource() {
+        String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
+        cfg.setOfflineResourcesBaseUrl("offlineBundles/");
+        List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
+        cfg.setMsgOriginsQueue(new LinkedList<DataSourceEnum>(
+                Arrays.asList(DataSourceEnum.VIP, DataSourceEnum.Bundle)));
+
+        Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
+        TranslationCacheManager.cleanCache(c);
+        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
+        TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
+
+        String newRemoteSourceKey = "new.remote.source.key";
+        String newRemoteSourceValue = "new remote source value";
+
+        String newLocalSourceKey = "new.key";
+        String newLocalSourceValue = "Not yet collected";
+
+        String message = translation.getMessage(new Locale("en", "US"), component, key, args);
+        Assert.assertEquals(FormatUtils.format(messageEn, args), message);
+
+        message = translation.getMessage(new Locale("en", "US"), component, newRemoteSourceKey);
+        Assert.assertEquals(newRemoteSourceValue, message);
+
+        message = translation.getMessage(new Locale("en", "US"), component, newLocalSourceKey);
+        Assert.assertEquals(newLocalSourceValue, message);
+
+        cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
+        cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+    }
+
     @Test
     public void testGetMsgsFailedUpdatedSource() { 
     	// Offline mode only; Message has been updated but hasn't been collected
