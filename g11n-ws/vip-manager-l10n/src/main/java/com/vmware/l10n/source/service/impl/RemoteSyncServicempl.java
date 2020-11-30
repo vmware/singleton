@@ -40,7 +40,7 @@ import java.util.Map;
 @Service
 public class RemoteSyncServicempl implements RemoteSyncService {
 
-	private static Logger logger = LoggerFactory.getLogger(SourceService.class);
+	private static Logger logger = LoggerFactory.getLogger(RemoteSyncServicempl.class);
 
 	@Autowired
 	private SourceDao sourceDao;
