@@ -103,33 +103,11 @@ public class S3Util {
 	public boolean lockBundleFile(String basePath, SingleComponentDTO compDTO, long waittime) {
 		long endTime = System.currentTimeMillis() + waittime;
 		String lockfilePath = getLockFile(S3Utils.getBundleFilePath(basePath, compDTO));
-		boolean bDeadlockTested = false;
 		String content = Double.toString(random.nextDouble());
 
 		do {
-			List<S3ObjectSummary> objects = s3.listObjectsV2(bucketName, lockfilePath).getObjectSummaries();
-			while (!objects.isEmpty()) {
-				try {
-					if (!bDeadlockTested) {
-						bDeadlockTested = true;
-						// Get file creation time to detect deadlock
-						S3ObjectSummary lockfileObject = objects.get(0);
-						Date lastModified = lockfileObject.getLastModified();
-						if (new Date().getTime() - lastModified.getTime() > deadlockInterval) {// longer than 10min
-							s3.deleteObject(bucketName, lockfilePath);
-							logger.info("deleted dead lock file");
-							break;
-						}
-					}
-					sleep(retryInterval);
-					if (System.currentTimeMillis() >= endTime) {
-						logger.info("time out to lock");
-						return false;
-					}
-					objects = s3.listObjectsV2(bucketName, lockfilePath).getObjectSummaries();
-				} catch (AmazonS3Exception e) {
-					logger.error(e.getMessage(), e);
-				}
+			if (!waitLockfileDisappeared(lockfilePath, endTime)) {
+				return false;
 			}
 
 			// Write the lock file
@@ -164,6 +142,37 @@ public class S3Util {
 
 	private String getLockFile(String bundlePath) {
 		return bundlePath.substring(0, bundlePath.lastIndexOf('.')) + ".lock";
+	}
+
+	private boolean waitLockfileDisappeared(String lockfilePath, long endTime) {
+		boolean bDeadlockTested = false;
+		try {
+			List<S3ObjectSummary> objects = s3.listObjectsV2(bucketName, lockfilePath).getObjectSummaries();
+			while (!objects.isEmpty()) {
+				if (!bDeadlockTested) {
+					bDeadlockTested = true;
+					// Get file creation time to detect deadlock
+					S3ObjectSummary lockfileObject = objects.get(0);
+					Date lastModified = lockfileObject.getLastModified();
+					if (new Date().getTime() - lastModified.getTime() > deadlockInterval) {// longer than 10min
+						s3.deleteObject(bucketName, lockfilePath);
+						logger.info("deleted dead lock file");
+						return true;
+					}
+				}
+				sleep(retryInterval);
+				if (System.currentTimeMillis() >= endTime) {
+					logger.info("time out to lock");
+					return false;
+				}
+				objects = s3.listObjectsV2(bucketName, lockfilePath).getObjectSummaries();
+			}
+			
+			return true;
+		} catch (AmazonS3Exception e) {
+			logger.error(e.getMessage(), e);
+			return false;
+		}
 	}
 
 	private void sleep(long millisecond) {

@@ -7,12 +7,14 @@ package com.vmware.controller;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Stream;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -68,15 +70,11 @@ public class S3Test {
 			Thread.currentThread().interrupt();
 		}
 
-		Runnable r1 = () -> {
-			sourceDao.updateToBundle(single);
-		};
+		Runnable r1 = () -> sourceDao.updateToBundle(single);
 
 		map.put("dc.unittest.new", "this is unit test new value");
 
-		Runnable r2 = () -> {
-			sourceDao.updateToBundle(single);
-		};
+		Runnable r2 = () -> sourceDao.updateToBundle(single);
 
 		pool.execute(r1);
 		pool.execute(r2);
@@ -116,46 +114,48 @@ public class S3Test {
 		SourceDao sourceDao = webApplicationContext.getBean(SourceDao.class);
 		SingleComponentDao singleComponentDao = webApplicationContext.getBean(SingleComponentDao.class);
 		String fileNamePrefix = "messages_";
-		Files.walk(Paths.get("viprepo-bundle/l10n/bundles")).filter(Files::isRegularFile).forEach(filePath -> {
-			int nameCount = filePath.getNameCount();
-			String fileName = filePath.getName(nameCount - 1).toString();
-			if (!fileName.startsWith(fileNamePrefix)) {
-				return;
-			}
-			String locale = fileName.substring(fileNamePrefix.length(), fileName.lastIndexOf('.'));
-			String component = filePath.getName(nameCount - 2).toString();
-			String version = filePath.getName(nameCount - 3).toString();
-			String product = filePath.getName(nameCount - 4).toString();
-
-			ComponentMessagesDTO dto = new ComponentMessagesDTO();
-			dto.setProductName(product);
-			dto.setVersion(version);
-			dto.setComponent(component);
-			dto.setLocale(locale);
-
-			JSONObject obj;
-			try {
-				obj = (JSONObject) new JSONParser().parse(new FileReader(filePath.toString()));
-				dto.setMessages(obj.get("messages"));
-			} catch (IOException | ParseException e) {
-				logger.error(e.getMessage(), e);
-			}
-
-			if (dto.getLocale().equals("latest")) {
-				sourceDao.updateToBundle(dto);
-				sourceDao.getFromBundle(dto);
-			} else {
-				com.vmware.l10n.translation.dto.ComponentMessagesDTO translationDto = new com.vmware.l10n.translation.dto.ComponentMessagesDTO();
-				BeanUtils.copyProperties(dto, translationDto);
-				singleComponentDao.writeLocalTranslationToFile(translationDto);
-
+		try (Stream<Path> input = Files.walk(Paths.get("viprepo-bundle/l10n/bundles")).filter(Files::isRegularFile)) {
+			input.forEach(filePath -> {
+				int nameCount = filePath.getNameCount();
+				String fileName = filePath.getName(nameCount - 1).toString();
+				if (!fileName.startsWith(fileNamePrefix)) {
+					return;
+				}
+				String locale = fileName.substring(fileNamePrefix.length(), fileName.lastIndexOf('.'));
+				String component = filePath.getName(nameCount - 2).toString();
+				String version = filePath.getName(nameCount - 3).toString();
+				String product = filePath.getName(nameCount - 4).toString();
+	
+				ComponentMessagesDTO dto = new ComponentMessagesDTO();
+				dto.setProductName(product);
+				dto.setVersion(version);
+				dto.setComponent(component);
+				dto.setLocale(locale);
+	
+				JSONObject obj;
 				try {
-					singleComponentDao.getLocalTranslationFromFile(translationDto);
-				} catch (L10nAPIException e) {
+					obj = (JSONObject) new JSONParser().parse(new FileReader(filePath.toString()));
+					dto.setMessages(obj.get("messages"));
+				} catch (IOException | ParseException e) {
 					logger.error(e.getMessage(), e);
 				}
-			}
-		});
+	
+				if (dto.getLocale().equals("latest")) {
+					sourceDao.updateToBundle(dto);
+					sourceDao.getFromBundle(dto);
+				} else {
+					com.vmware.l10n.translation.dto.ComponentMessagesDTO translationDto = new com.vmware.l10n.translation.dto.ComponentMessagesDTO();
+					BeanUtils.copyProperties(dto, translationDto);
+					singleComponentDao.writeLocalTranslationToFile(translationDto);
+	
+					try {
+						singleComponentDao.getLocalTranslationFromFile(translationDto);
+					} catch (L10nAPIException e) {
+						logger.error(e.getMessage(), e);
+					}
+				}
+			});
+		}
 
 		Assert.assertTrue(true);
 	}
