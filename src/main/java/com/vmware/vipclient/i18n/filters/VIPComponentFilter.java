@@ -17,6 +17,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import com.vmware.vipclient.i18n.VIPCfgFactory;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,13 +51,15 @@ public class VIPComponentFilter implements Filter {
         }
         OutputStream os = response.getOutputStream();
         response.setContentType("text/javascript;charset=UTF-8");
+        VIPCfg globalCfg = VIPCfgFactory.globalCfg;
+
         os.write(("var translation = {" + "\"messages\" : " + messages + ", "
-                + "\"productName\" : \"" + gc.getInstance().getProductName()
-                + "\", " + "\"version\" : \"" + gc.getInstance().getVersion()
+                + "\"productName\" : \"" + globalCfg.getProductName()
+                + "\", " + "\"version\" : \"" + globalCfg.getVersion()
                 + "\", " + "\"vipServer\" : \""
-                + gc.getInstance().getVipServer() + "\", " + "\"pseudo\" : \""
-                + gc.getInstance().isPseudo() + "\", "
-                + "\"collectSource\" : \"" + gc.getInstance().isCollectSource() + "\"};")
+                + globalCfg.getVipServer() + "\", " + "\"pseudo\" : \""
+                + globalCfg.isPseudo() + "\", "
+                + "\"collectSource\" : \"" + globalCfg.isCollectSource() + "\"};")
                         .getBytes("UTF-8"));
     }
 
@@ -101,18 +104,16 @@ public class VIPComponentFilter implements Filter {
     }
 
     private TranslationMessage translation;
-    private VIPCfg             gc = VIPCfg.getInstance();
 
     public void init(FilterConfig filterConfig) throws ServletException {
-        if (gc.getVipService() == null) {
-            try {
-                gc.initialize("vipconfig");
-            } catch (VIPClientInitException e) {
-                logger.error(e.getMessage());
-            }
-            gc.initializeVIPService();
+        VIPCfg gc = null;
+        try {
+            gc = VIPCfgFactory.initialize("vipconfig", true);
+            gc.createTranslationCache(MessageCache.class);
+        } catch (VIPClientInitException e) {
+            logger.error(e.getMessage());
         }
-        gc.createTranslationCache(MessageCache.class);
+
         I18nFactory i18n = I18nFactory.getInstance(gc);
         translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
     }

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.VIPCfgFactory;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.BaseOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.MessageOpt;
@@ -34,17 +35,17 @@ public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
     @Override
     public void getComponentMessages(MessageCacheItem cacheItem) {
         String url = V2URL.getComponentTranslationURL(this.dto,
-                VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL());
+                VIPCfgFactory.getCfg(dto.getProductID()).getVipService().getHttpRequester().getBaseURL());
         
         Map<String, String> headers = new HashMap<String, String>();
         if (cacheItem.getEtag() != null)
         	headers.put(URLUtils.IF_NONE_MATCH_HEADER, cacheItem.getEtag());
         
-        Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester()
+        Map<String, Object> response = VIPCfgFactory.getCfg(dto.getProductID()).getVipService().getHttpRequester()
         		.request(url, ConstantsKeys.GET,null, headers);
         
         Integer responseCode = (Integer) response.get(URLUtils.RESPONSE_CODE);
-        
+
         if (responseCode != null && (responseCode.equals(HttpURLConnection.HTTP_OK) || 
         		responseCode.equals(HttpURLConnection.HTTP_NOT_MODIFIED))) {
 
@@ -88,8 +89,8 @@ public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
     }
 
     public String postString() {
-    	Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL
-                .getKeyTranslationURL(this.dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
+    	Map<String, Object> response = VIPCfgFactory.getCfg(dto.getProductID()).getVipService().getHttpRequester().request(V2URL
+                .getKeyTranslationURL(this.dto, VIPCfgFactory.getCfg(dto.getProductID()).getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.POST, this.dto.getSource());
     	String responseStr = (String) response.get(URLUtils.BODY);
         Object o = this.getMessagesFromResponse(responseStr,
@@ -116,8 +117,8 @@ public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
         String status = "";
         if (sourceSet == null || "".equalsIgnoreCase(sourceSet))
             return status;
-        Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(
-                V2URL.getPostKeys(this.dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
+        Map<String, Object> response = VIPCfgFactory.getCfg(dto.getProductID()).getVipService().getHttpRequester().request(
+                V2URL.getPostKeys(this.dto, VIPCfgFactory.getCfg(dto.getProductID()).getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.POST, sourceSet);
         String responseStr = (String) response.get(URLUtils.BODY);
         Object o = this.getStatusFromResponse(responseStr, ConstantsKeys.CODE);
@@ -131,8 +132,8 @@ public class ComponentBasedOpt extends BaseOpt implements Opt, MessageOpt {
         String status = "";
         Map<String, String> params = new HashMap<>();
         params.put("checkTranslationStatus", "true");
-        Map<String, Object> response = VIPCfg.getInstance().getVipService().getHttpRequester().request(V2URL
-                .getComponentTranslationURL(this.dto, VIPCfg.getInstance().getVipService().getHttpRequester().getBaseURL()),
+        Map<String, Object> response = VIPCfgFactory.getCfg(dto.getProductID()).getVipService().getHttpRequester().request(V2URL
+                .getComponentTranslationURL(this.dto, VIPCfgFactory.getCfg(dto.getProductID()).getVipService().getHttpRequester().getBaseURL()),
                 ConstantsKeys.GET, params);
         String responseStr = (String) response.get(URLUtils.BODY);
         if (null == responseStr || responseStr.equals(""))

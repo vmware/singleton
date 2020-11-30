@@ -4,6 +4,12 @@
  */
 package com.vmware.vip.i18n;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.Random;
+
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 import com.github.tomakehurst.wiremock.junit.WireMockClassRule;
 import com.vmware.vipclient.i18n.VIPCfg;
@@ -17,23 +23,14 @@ import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.util.Random;
-
 import static com.github.tomakehurst.wiremock.client.WireMock.proxyAllTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 
-public class BaseTestClass {
+public class BaseTestClassNew {
     protected Logger                logger;
-    protected VIPCfg                          vipCfg            = VIPCfg.getInstance();
     protected static Random rnd = new Random();
 
-    public BaseTestClass() {
-        clearDataSource();
+    public BaseTestClassNew() {
     }
 
     @Rule
@@ -128,9 +125,4 @@ public class BaseTestClass {
     protected void clearTranslationCache() {
         clearCache(VIPCfg.CACHE_L3);
     }
-
-    protected void clearDataSource(){
-        vipCfg.getMsgOriginsQueue().clear();
-    }
-
 }

@@ -4,7 +4,7 @@
  */
 package com.vmware.vipclient.i18n.messages.api.opt.local;
 
-import com.vmware.vipclient.i18n.VIPCfg;
+import com.vmware.vipclient.i18n.VIPCfgFactory;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.MessageOpt;
@@ -47,7 +47,7 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
         		getSupportedLocales());
 		try {
 			String filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), bestMatch.toLanguageTag());
-			Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl(), filePath);
+			Path path = Paths.get(VIPCfgFactory.getCfg(this.dto.getProductID()).getOfflineResourcesBaseUrl(), filePath);
 			
 			URI uri = Thread.currentThread().getContextClassLoader().
 					getResource(path.toString()).toURI();
