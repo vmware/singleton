@@ -1,10 +1,13 @@
-﻿using Newtonsoft.Json.Linq;
+﻿/*
+ * Copyright 2020 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
+
+using Newtonsoft.Json.Linq;
+using SingletonClient.Implementation.Support;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SingletonClient.Implementation
 {
@@ -49,7 +52,7 @@ namespace SingletonClient.Implementation
         protected ISingletonRelease _release;
         protected ISingletonConfig _config;
 
-        private List<string> _usedOfflineLocales = new List<string>();
+        private readonly List<string> _usedOfflineLocales = new List<string>();
 
         public SingletonUpdate(ISingletonRelease release)
         {
@@ -68,7 +71,7 @@ namespace SingletonClient.Implementation
 
         public void UpdateBriefinfo(string url, string infoName, List<string> infoList)
         {
-            Hashtable headers = SingletonUtil.NewHashtable();
+            Hashtable headers = SingletonUtil.NewHashtable(false);
             JObject obj = SingletonUtil.HttpGetJson(_release.GetAccessService(), url, headers);
 
             if (SingletonUtil.CheckResponseValid(obj, headers))
@@ -190,10 +193,19 @@ namespace SingletonClient.Implementation
             ILocaleMessages languageMessages = LoadOfflineLocaleBundle(locale, locale);
             if (languageMessages == null && useNearLocale)
             {
-                string nearLocale = SingletonUtil.NearLocale(locale);
-                if (!locale.Equals(nearLocale))
+                ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
+                for(int i=0; i<singletonLocale.GetCount(); i++)
                 {
+                    string nearLocale = singletonLocale.GetNearLocale(i);
+                    if (nearLocale.Equals(locale))
+                    {
+                        continue;
+                    }
                     languageMessages = LoadOfflineLocaleBundle(locale, nearLocale);
+                    if (languageMessages != null)
+                    {
+                        break;
+                    }
                 }
             }
             return languageMessages;

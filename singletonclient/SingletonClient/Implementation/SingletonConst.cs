@@ -5,7 +5,7 @@
 
 namespace SingletonClient.Implementation
 {
-    public class SingletonConst
+    public static class SingletonConst
     {
         public const string KeyResult = "result";
         public const string KeyResponse = "response";

@@ -115,7 +115,7 @@ namespace SingletonClient
         Hashtable ReadResourceMap(string resourceName, string format, string locale);
     }
 
-    public class ConfigConst
+    public static class ConfigConst
     {
         // Standard keys
         public const string KeyOnlineUrl = "online_service_url";
@@ -140,6 +140,7 @@ namespace SingletonClient
 
         // Keys for extension
         public const string KeyCacheType = "cache_type";
+        public const string KeyCacheComponentType = "cache_component_type";
         public const string KeyCacheExpire = "cache_expire";
         public const string KeyTryDelay = "try_delay";
         public const string KeyLoggerType = "logger_type";

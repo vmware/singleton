@@ -22,9 +22,9 @@ namespace UnitTestSingleton
 
         public static void Init()
         {
-            IConfig cfg = I18n.LoadConfig(
+            IConfig cfg = I18N.LoadConfig(
                 Values.BASE_RES_NAME, Values.assembly, "singleton_config");
-            rel = I18n.GetRelease(cfg);
+            rel = I18N.GetRelease(cfg);
         }
 
         public static IConfig Config()

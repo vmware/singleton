@@ -69,7 +69,7 @@ namespace SingletonClient
         /// </summary>
         /// <param name="locale"></param>
         /// <returns></returns>
-        string GetLocaleSupported(string locale);
+        List<string> GetLocaleSupported(string locale);
     }
 }
 

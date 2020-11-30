@@ -32,15 +32,15 @@ namespace Product1ResLib
         private async Task AsyncTask()
         {
             await Task.Run(() =>
-             {
-                 DoTest();
-             });
+            {
+                DoTest();
+            });
         }
 
-        public void TestInAsyncMode()
+        public async void TestInAsyncMode()
         {
             _mode = "A";
-            AsyncTask();
+            await AsyncTask();
         }
 
         public void TestInDifferentThread()
@@ -102,7 +102,8 @@ namespace Product1ResLib
             string trans2 = data2.GetComponentMessages(_component).GetString(strKey);
             if (string.IsNullOrEmpty(trans2))
             {
-                data2 = Util1.Messages().GetLocaleMessages(Util1.Translation().GetLocaleSupported(_localeName));
+                List<string> nearLocalList = Util1.Translation().GetLocaleSupported(_localeName);
+                data2 = Util1.Messages().GetLocaleMessages(nearLocalList[0]);
                 trans2 = data2.GetComponentMessages(_component).GetString(strKey);
             }
             Log("--- trans from messages  --- " + trans2);
@@ -163,10 +164,10 @@ namespace Product1ResLib
         private ITranslation InitLevel3()
         {
             Assembly assembly = typeof(Values).Assembly;
-            IConfig config = I18n.LoadConfig(
+            IConfig config = I18N.LoadConfig(
                 "Product1ResLib.SingletonRes.Singleton", assembly, "singleton_config");
 
-            IRelease release = I18n.GetRelease(config);
+            IRelease release = I18N.GetRelease(config);
             return release.GetTranslation();
         }
 
