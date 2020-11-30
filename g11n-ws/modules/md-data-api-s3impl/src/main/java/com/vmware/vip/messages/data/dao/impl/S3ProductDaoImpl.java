@@ -6,6 +6,7 @@ package com.vmware.vip.messages.data.dao.impl;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -13,7 +14,6 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import com.amazonaws.services.s3.model.ListObjectsV2Result;
@@ -21,23 +21,22 @@ import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;
+import com.vmware.vip.messages.data.conf.S3Cient;
+import com.vmware.vip.messages.data.conf.S3Config;
 import com.vmware.vip.messages.data.dao.api.IProductDao;
 import com.vmware.vip.messages.data.dao.exception.DataException;
-import com.vmware.vip.util.S3Utils;
-import com.vmware.vip.util.conf.S3Client;
-import com.vmware.vip.util.conf.S3Config;
+import com.vmware.vip.messages.data.util.S3Utils;
 
 /**
  * this class use to get the properties of a version bundle files
  */
 @Repository
-@Profile("s3")
 public class S3ProductDaoImpl implements IProductDao {
 
    private static Logger logger = LoggerFactory.getLogger(S3ProductDaoImpl.class);
 
    @Autowired
-   private S3Client s3Client;
+   private S3Cient s3Client;
 
    @Autowired
    private S3Config config;
@@ -48,7 +47,7 @@ public class S3ProductDaoImpl implements IProductDao {
    @Override
    public List<String> getComponentList(String productName, String version) throws DataException {
       List<String> componentList = new ArrayList<String>();
-      String filePathPrefix = S3Utils.genProductVersionS3Path(S3OneComponentDaoImpl.S3_L10N_BUNDLES_PATH, productName, version);
+      String filePathPrefix = S3Utils.genProductVersionS3Path(productName, version);
       ListObjectsV2Result result =
             s3Client.getS3Client().listObjectsV2(config.getBucketName(), filePathPrefix);
       if (result == null) {
@@ -74,9 +73,9 @@ public class S3ProductDaoImpl implements IProductDao {
    @Override
    public List<String> getLocaleList(String productName, String version) throws DataException {
       List<String> localeList = new ArrayList<String>();
-      String filePathPrefix = S3Utils.genProductVersionS3Path(S3OneComponentDaoImpl.S3_L10N_BUNDLES_PATH, productName, version);
+      String filePathPrefix = S3Utils.genProductVersionS3Path(productName, version);
       ListObjectsV2Result result =
-            s3Client.getS3Client().listObjectsV2(config.getBucketName(), S3OneComponentDaoImpl.S3_L10N_BUNDLES_PATH);
+            s3Client.getS3Client().listObjectsV2(config.getBucketName(), S3Utils.S3_L10N_BUNDLES_PATH);
       if (result == null) {
          throw new DataException("Can't find S3 resource from " + productName + "\\" + version);
       }
@@ -106,7 +105,7 @@ public class S3ProductDaoImpl implements IProductDao {
    @Override
    public String getVersionInfo(String productName, String version) throws DataException {
       String filePath =
-            S3Utils.genProductVersionS3Path(S3OneComponentDaoImpl.S3_L10N_BUNDLES_PATH, productName, version) + ConstantsFile.VERSION_FILE;
+            S3Utils.genProductVersionS3Path(productName, version) + ConstantsFile.VERSION_FILE;
       S3Object o = s3Client.getS3Client().getObject(config.getBucketName(), filePath);
       String result = null;
       if (o != null) {
@@ -130,7 +129,7 @@ public class S3ProductDaoImpl implements IProductDao {
   */
 @Override
 public List<String> getVersionList(String productName) throws DataException {
-    String basePath = S3OneComponentDaoImpl.S3_L10N_BUNDLES_PATH+productName +  ConstantsChar.BACKSLASH;
+    String basePath = S3Utils.S3_L10N_BUNDLES_PATH+productName +  ConstantsChar.BACKSLASH;
     ListObjectsV2Result versionListResult = s3Client.getS3Client().listObjectsV2(config.getBucketName(),basePath);
     
     if(versionListResult != null) {
@@ -155,7 +154,7 @@ public List<String> getVersionList(String productName) throws DataException {
  */
 @Override
 public String getAllowProductListContent() throws DataException {
-  String s3Path = S3OneComponentDaoImpl.S3_L10N_BUNDLES_PATH+ConstantsFile.WHITE_LIST_FILE;
+  String s3Path = S3Utils.S3_L10N_BUNDLES_PATH+ConstantsFile.WHITE_LIST_FILE;
   if (s3Client.getS3Client().doesObjectExist(config.getBucketName(), s3Path)) {
       S3Object o = s3Client.getS3Client().getObject(config.getBucketName(), s3Path);
       if (o != null) {

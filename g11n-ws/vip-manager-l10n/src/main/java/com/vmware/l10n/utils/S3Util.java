@@ -13,55 +13,93 @@ import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import com.amazonaws.SdkClientException;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.AmazonS3Exception;
+import com.amazonaws.services.s3.model.GetBucketLocationRequest;
 import com.amazonaws.services.s3.model.PutObjectResult;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.amazonaws.services.s3.model.S3VersionSummary;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vmware.vip.common.constants.ConstantsChar;
+import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
+import com.vmware.vip.common.i18n.resourcefile.ResourceFilePathGetter;
 import com.vmware.vip.util.S3Utils;
-import com.vmware.vip.util.conf.S3Client;
 
 @Component("S3Util")
 @Profile("s3")
 public class S3Util {
 	private static Logger logger = LoggerFactory.getLogger(S3Util.class);
 
-	@Autowired
-	private S3Client s3Client;
+	private AmazonS3 s3Inst;
 
-	private static AmazonS3 s3;
+	/**
+     * the s3 access Key
+     */
+    @Value("${s3.accessKey}")
+    private String accessKey;
 
-	@Value("${s3.bucketName}")
-	private String bucketName;
+    /**
+     * the s3 secret key
+     */
+    @Value("${s3.secretkey}")
+    private String secretkey;
+
+    /**
+     * the s3 region name
+     */
+    @Value("${s3.region}")
+    private String s3Region;
+
+    /**
+     * the s3 bucket Name
+     */
+    @Value("${s3.bucketName}")
+    private String bucketName;
 
 	private Random random = new Random(System.currentTimeMillis());
 
 	private static long retryInterval = 500; // 500 milliseconds
 	private static long deadlockInterval = 10 * 60 * 1000L; // 10 minutes
 
-	@PostConstruct
-	private void init() {
-		s3 = s3Client.getS3Client();
-	}
+    /**
+     * initialize the the S3 client environment
+     */
+    @PostConstruct
+    private void init() {
+        s3Inst = AmazonS3ClientBuilder.standard()
+                .withCredentials(new AWSStaticCredentialsProvider(
+                        new BasicAWSCredentials(accessKey, secretkey)))
+                .withRegion(s3Region).enablePathStyleAccess().build();
+        if (!s3Inst.doesBucketExistV2(bucketName)) {
+            s3Inst.createBucket(bucketName);
+            // Verify that the bucket was created by retrieving it and checking its location.
+            String bucketLocation =
+                    s3Inst.getBucketLocation(new GetBucketLocationRequest(bucketName));
+            logger.info("Bucket location: {}", bucketLocation);
+        }
+    }
+    
 
 	public String readBundle(String basePath, SingleComponentDTO compDTO) {
 		logger.info("read bundle file: {}/{}/{}/{}", compDTO.getProductName(), compDTO.getVersion(),
 				compDTO.getComponent(), compDTO.getLocale());
 
-		String bundlePath = S3Utils.getBundleFilePath(basePath, compDTO);
+		String bundlePath = getBundleFilePath(basePath, compDTO);
 		String result = null;
 		try {
-			result = s3.getObjectAsString(bucketName, bundlePath);
+			result = s3Inst.getObjectAsString(bucketName, bundlePath);
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
@@ -75,8 +113,8 @@ public class S3Util {
 				compDTO.getComponent(), compDTO.getLocale());
 
 		try {
-			String bundlePath = S3Utils.getBundleFilePath(basePath, compDTO);
-			s3.putObject(bucketName, bundlePath, convertComponentToString(compDTO));
+			String bundlePath = getBundleFilePath(basePath, compDTO);
+			s3Inst.putObject(bucketName, bundlePath, convertComponentToString(compDTO));
 			return true;
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
@@ -87,8 +125,8 @@ public class S3Util {
 	}
 
 	public boolean isBundleExist(String basePath, SingleComponentDTO singleComponentDTO) {
-		String bundlePath = S3Utils.getBundleFilePath(basePath, singleComponentDTO);
-		return s3.doesObjectExist(bucketName, bundlePath);
+		String bundlePath = getBundleFilePath(basePath, singleComponentDTO);
+		return s3Inst.doesObjectExist(bucketName, bundlePath);
 	}
 
 	public String convertComponentToString(SingleComponentDTO compDTO) throws JsonProcessingException {
@@ -102,7 +140,7 @@ public class S3Util {
 
 	public boolean lockBundleFile(String basePath, SingleComponentDTO compDTO, long waittime) {
 		long endTime = System.currentTimeMillis() + waittime;
-		String lockfilePath = getLockFile(S3Utils.getBundleFilePath(basePath, compDTO));
+		String lockfilePath = getLockFile(getBundleFilePath(basePath, compDTO));
 		String content = Double.toString(random.nextDouble());
 
 		do {
@@ -111,13 +149,13 @@ public class S3Util {
 			}
 
 			// Write the lock file
-			PutObjectResult putResult = s3.putObject(bucketName, lockfilePath, content);
+			PutObjectResult putResult = s3Inst.putObject(bucketName, lockfilePath, content);
 
 			// Check file content is correct
 			try {
-				List<S3VersionSummary> versions = s3.listVersions(bucketName, lockfilePath).getVersionSummaries();
+				List<S3VersionSummary> versions = s3Inst.listVersions(bucketName, lockfilePath).getVersionSummaries();
 				if (versions.size() > 1 && putResult.getVersionId().equals(versions.get(0).getVersionId())
-						&& content.equals(s3.getObjectAsString(bucketName, lockfilePath))) {
+						&& content.equals(s3Inst.getObjectAsString(bucketName, lockfilePath))) {
 					return true;
 				}
 			} catch (AmazonS3Exception e) {
@@ -131,10 +169,10 @@ public class S3Util {
 	}
 
 	public void unlockBundleFile(String basePath, SingleComponentDTO compDTO) {
-		String bundlePath = S3Utils.getBundleFilePath(basePath, compDTO);
+		String bundlePath = getBundleFilePath(basePath, compDTO);
 		String lockFilePath = getLockFile(bundlePath);
 		try {
-			s3.deleteObject(bucketName, lockFilePath);
+			s3Inst.deleteObject(bucketName, lockFilePath);
 		} catch (SdkClientException e) {
 			logger.error(e.getMessage(), e);
 		}
@@ -147,7 +185,7 @@ public class S3Util {
 	private boolean waitLockfileDisappeared(String lockfilePath, long endTime) {
 		boolean bDeadlockTested = false;
 		try {
-			List<S3ObjectSummary> objects = s3.listObjectsV2(bucketName, lockfilePath).getObjectSummaries();
+			List<S3ObjectSummary> objects = s3Inst.listObjectsV2(bucketName, lockfilePath).getObjectSummaries();
 			while (!objects.isEmpty()) {
 				if (!bDeadlockTested) {
 					bDeadlockTested = true;
@@ -155,7 +193,7 @@ public class S3Util {
 					S3ObjectSummary lockfileObject = objects.get(0);
 					Date lastModified = lockfileObject.getLastModified();
 					if (new Date().getTime() - lastModified.getTime() > deadlockInterval) {// longer than 10min
-						s3.deleteObject(bucketName, lockfilePath);
+						s3Inst.deleteObject(bucketName, lockfilePath);
 						logger.info("deleted dead lock file");
 						return true;
 					}
@@ -165,7 +203,7 @@ public class S3Util {
 					logger.info("time out to lock");
 					return false;
 				}
-				objects = s3.listObjectsV2(bucketName, lockfilePath).getObjectSummaries();
+				objects = s3Inst.listObjectsV2(bucketName, lockfilePath).getObjectSummaries();
 			}
 			
 			return true;
@@ -181,5 +219,31 @@ public class S3Util {
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 		}
+	}
+	
+	private static String getBundleFilePath(String basePath, SingleComponentDTO dto) {
+		if (StringUtils.isEmpty(dto.getComponent())) {
+			dto.setComponent(ConstantsFile.DEFAULT_COMPONENT);
+		}
+		return genProductVersionS3Path(basePath, dto.getProductName(), dto.getVersion())
+				+ dto.getComponent() + ConstantsChar.BACKSLASH
+				+ ResourceFilePathGetter.getLocalizedJSONFileName(dto.getLocale());
+	}
+	
+	/**
+	 * generate the product version path
+	 */
+	private static String genProductVersionS3Path(String basePath, String productName, String version) {
+		StringBuilder path = new StringBuilder();
+		path.append(basePath);
+		if (!basePath.endsWith(ConstantsChar.BACKSLASH)) {
+			path.append(ConstantsChar.BACKSLASH);
+		}
+		path.append(productName);
+		path.append(ConstantsChar.BACKSLASH);
+		path.append(version);
+		path.append(ConstantsChar.BACKSLASH);
+		return path.toString();
+
 	}
 }
