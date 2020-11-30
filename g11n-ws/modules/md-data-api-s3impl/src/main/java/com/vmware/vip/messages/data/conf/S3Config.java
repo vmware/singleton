@@ -18,8 +18,6 @@ public class S3Config {
 			try {
 				return RsaCryptUtils.decryptData(this.accessKey, this.publicKey);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 				return null;
 			}
 		} else {
@@ -36,8 +34,6 @@ public class S3Config {
 			try {
 				return RsaCryptUtils.decryptData(this.secretkey, this.publicKey);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 				return null;
 			}
 		} else {
@@ -84,26 +80,26 @@ public class S3Config {
 	/**
 	 * the s3 password is encryption or not
 	 */
-	@Value("${s3.password.encryption:false}")
+	@Value("${s3.keysEncryptEnable:false}")
 	private Boolean encryption;
 	
 
 	/**
 	 * the s3 password public key use to decrypt data
 	 */
-	@Value("${s3.password.publicKey}")
+	@Value("${s3.publicKey}")
 	private String publicKey;
 
 	/**
 	 * the s3 access Key
 	 */
-	@Value("${s3.password.accessKey}")
+	@Value("${s3.accessKey}")
 	private String accessKey;
 
 	/**
 	 * the s3 secret key
 	 */
-	@Value("${s3.password.secretkey}")
+	@Value("${s3.secretkey}")
 	private String secretkey;
 
 	/**
