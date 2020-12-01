@@ -44,7 +44,7 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
     @Override
     public void getComponentMessages(MessageCacheItem cacheItem) {
 		try {
-			InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(getPath());
+			InputStream is = getInputStream();
 			JSONParser jsonParser = new JSONParser();
 			JSONObject jsonObject = (JSONObject) jsonParser.parse(new InputStreamReader(is, "UTF-8"));
 			Map<String, String> messages = (JSONObject) jsonObject.get("messages");
@@ -54,18 +54,14 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 		}
     }
 
-	private String getPath() {
+	private InputStream getInputStream() {
 		String locale = LocaleUtility.fmtToMappedLocale(dto.getLocale()).toLanguageTag();
-		URL url = null;
-		while (url == null) {
+		while (true) {
 			String filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), locale);
 			Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl(), filePath);
-			try {
-				return path.toString();
-			} catch (Exception e) {
-				logger.debug("Failed to get resource bundle URI for filePath: " + filePath);
-			}
-
+			InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(path.toString());
+			if (is != null)
+				return is;
 			/*
 			 * If valid URI is not found, find the next best matching locale available in the file system
 			 * Ths could happen if:
