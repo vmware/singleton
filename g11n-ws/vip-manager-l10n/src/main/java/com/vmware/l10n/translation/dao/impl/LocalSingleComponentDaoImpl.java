@@ -51,7 +51,7 @@ public class LocalSingleComponentDaoImpl implements SingleComponentDao {
      * @see com.vmware.vip.core.translation.dao.BaseComponentDao#getLocalTranslationFromFile(java.lang.Object)
      */
     @Override
-    public ComponentMessagesDTO getLocalTranslationFromFile(ComponentMessagesDTO componentMessagesDTO) throws L10nAPIException{
+    public ComponentMessagesDTO getTranslationFromFile(ComponentMessagesDTO componentMessagesDTO) throws L10nAPIException{
         LOGGER.info("[getLocalTranslation]");
         String result = "";
         String component = componentMessagesDTO.getComponent();
@@ -104,7 +104,7 @@ public class LocalSingleComponentDaoImpl implements SingleComponentDao {
      */
 	
 	@Override
-	public boolean writeLocalTranslationToFile(ComponentMessagesDTO componentMessagesDTO) {
+	public boolean writeTranslationToFile(ComponentMessagesDTO componentMessagesDTO) {
 		String component = componentMessagesDTO.getComponent();
 		if (StringUtils.isEmpty(component)) {
 			component = ConstantsFile.DEFAULT_COMPONENT;

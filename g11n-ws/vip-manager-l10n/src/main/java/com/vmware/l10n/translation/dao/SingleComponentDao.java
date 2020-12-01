@@ -13,18 +13,18 @@ import com.vmware.l10n.translation.dto.ComponentMessagesDTO;
 public interface SingleComponentDao{
 
     /**
-     * Write the translation to local bundle
+     * Write the translation to bundle
      *
      * @param componentMessagesDTO Translation object,this object content will be written into file
      * @return if success return true, otherwise false
      */
-    public boolean writeLocalTranslationToFile(ComponentMessagesDTO componentMessagesDTO);
+    public boolean writeTranslationToFile(ComponentMessagesDTO componentMessagesDTO);
 
     /**
-     * Get translation data from local file
+     * Get translation data from file
      *
      * @param t The generic object
      * @return T
      */
-    public ComponentMessagesDTO getLocalTranslationFromFile(ComponentMessagesDTO componentMessagesDTO) throws L10nAPIException;
+    public ComponentMessagesDTO getTranslationFromFile(ComponentMessagesDTO componentMessagesDTO) throws L10nAPIException;
 }

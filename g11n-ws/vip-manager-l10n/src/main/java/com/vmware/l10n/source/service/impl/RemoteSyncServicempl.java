@@ -121,7 +121,7 @@ public class RemoteSyncServicempl implements RemoteSyncService {
 				logger.info("The request has succeeded, the result: {} {}", gRMResponseDTO.getStatus(),
 						gRMResponseDTO.getResult());
 			} else {
-				logger.info("The request has failed, the response code: {} reason: {}", +gRMResponseDTO.getStatus(),
+				logger.error("The request has failed, the response code: {} reason: {}", +gRMResponseDTO.getStatus(),
 						gRMResponseDTO.getErrorMessage());
 			}
 		} catch (Exception e) {

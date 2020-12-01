@@ -52,7 +52,7 @@ public class TranslationSyncServerServiceImpl implements TranslationSyncServerSe
 		componentMessagesDTO = mergeComponentMessagesDTOWithFile(componentMessagesDTO);
 		//update the local bundle file
 		LOGGER.info("Update the local bundle file");
-		boolean flag = singleComponentDao.writeLocalTranslationToFile(componentMessagesDTO);
+		boolean flag = singleComponentDao.writeTranslationToFile(componentMessagesDTO);
 		LOGGER.info("End of Update transaltion");
 		return flag;
 	}
@@ -92,7 +92,7 @@ public class TranslationSyncServerServiceImpl implements TranslationSyncServerSe
 	private ComponentMessagesDTO mergeComponentMessagesDTOWithFile(ComponentMessagesDTO componentMessagesDTO) throws L10nAPIException {
 		ComponentMessagesDTO paramComponentMessagesDTO = new ComponentMessagesDTO();
 		BeanUtils.copyProperties(componentMessagesDTO, paramComponentMessagesDTO);
-		ComponentMessagesDTO result = singleComponentDao.getLocalTranslationFromFile(paramComponentMessagesDTO);
+		ComponentMessagesDTO result = singleComponentDao.getTranslationFromFile(paramComponentMessagesDTO);
 		if(!StringUtils.isEmpty(result) && !StringUtils.isEmpty(result.getStatus()) && result.getStatus().equals("Translation"+TranslationQueryStatusType.FileFound)){
 			Object messageObj = result.getMessages();
 			if (!StringUtils.isEmpty(messageObj)) {

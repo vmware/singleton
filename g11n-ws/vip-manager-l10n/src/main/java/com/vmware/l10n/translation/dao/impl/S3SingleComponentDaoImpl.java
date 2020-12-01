@@ -34,13 +34,13 @@ public class S3SingleComponentDaoImpl implements SingleComponentDao {
 	private S3Util s3util;
 
     /**
-     * Get translation data from local file
+     * Get translation data from file
      *
      * @param componentMessagesDTO Specify the bundle file to get.
      * @return componentMessagesDTO
      */
 	@Override
-	public ComponentMessagesDTO getLocalTranslationFromFile(ComponentMessagesDTO componentMessagesDTO)
+	public ComponentMessagesDTO getTranslationFromFile(ComponentMessagesDTO componentMessagesDTO)
 			throws L10nAPIException {
 		logger.info("[get Translation from S3]");
 
@@ -82,7 +82,7 @@ public class S3SingleComponentDaoImpl implements SingleComponentDao {
 	}
 
 	@Override
-	public boolean writeLocalTranslationToFile(ComponentMessagesDTO componentMessagesDTO) {
+	public boolean writeTranslationToFile(ComponentMessagesDTO componentMessagesDTO) {
 		try {
 			if (s3util.isBundleExist(basePath, componentMessagesDTO)) {
 				logger.info("The bunlde file is found, update the bundle file.");

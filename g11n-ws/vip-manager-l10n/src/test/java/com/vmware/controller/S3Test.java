@@ -146,10 +146,10 @@ public class S3Test {
 				} else {
 					com.vmware.l10n.translation.dto.ComponentMessagesDTO translationDto = new com.vmware.l10n.translation.dto.ComponentMessagesDTO();
 					BeanUtils.copyProperties(dto, translationDto);
-					singleComponentDao.writeLocalTranslationToFile(translationDto);
+					singleComponentDao.writeTranslationToFile(translationDto);
 	
 					try {
-						singleComponentDao.getLocalTranslationFromFile(translationDto);
+						singleComponentDao.getTranslationFromFile(translationDto);
 					} catch (L10nAPIException e) {
 						logger.error(e.getMessage(), e);
 					}
