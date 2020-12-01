@@ -33,6 +33,12 @@ public class S3SingleComponentDaoImpl implements SingleComponentDao {
 	@Autowired
 	private S3Util s3util;
 
+    /**
+     * Get translation data from local file
+     *
+     * @param componentMessagesDTO Specify the bundle file to get.
+     * @return componentMessagesDTO
+     */
 	@Override
 	public ComponentMessagesDTO getLocalTranslationFromFile(ComponentMessagesDTO componentMessagesDTO)
 			throws L10nAPIException {
@@ -66,7 +72,7 @@ public class S3SingleComponentDaoImpl implements SingleComponentDao {
 			caseComponentMessagesDTO.setVersion(componentMessagesDTO.getVersion());
 			caseComponentMessagesDTO.setStatus(componentMessagesDTO.getStatus());
 		} catch (ParseException e) {
-			throw new L10nAPIException("Parse json failed.", e);
+			throw new L10nAPIException("Parsing json failed.", e);
 		}
 
 		ComponentMessagesDTO msgDTO = new ComponentMessagesDTO();

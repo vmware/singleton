@@ -59,7 +59,7 @@ public class SourceUtils {
 	 */
 	@SuppressWarnings("unchecked")
 	public static SingleComponentDTO mergeCacheWithBundle(
-			SingleComponentDTO cachedComponentSourceDTO, String componentJSON) {
+			final SingleComponentDTO cachedComponentSourceDTO, final String componentJSON) {
 		ComponentMessagesDTO componentMessagesDTO = new ComponentMessagesDTO();
 		BeanUtils.copyProperties(cachedComponentSourceDTO, componentMessagesDTO);
 		if (!StringUtils.isEmpty(componentJSON)) {
@@ -74,9 +74,8 @@ public class SourceUtils {
 				logger.error(e.getMessage(), e);
 				
 			}
-			if ( (bundle != null) && !StringUtils.isEmpty(bundle)) {
-				messages = (Map<String, Object>) bundle
-						.get(ConstantsKeys.MESSAGES);
+			if (bundle != null && !bundle.isEmpty()) {
+				messages = (Map<String, Object>) bundle.get(ConstantsKeys.MESSAGES);
 				Iterator<Map.Entry<String, Object>> it = ((Map<String, Object>)cachedComponentSourceDTO
 						.getMessages()).entrySet().iterator();
 				boolean isChanged = false ;

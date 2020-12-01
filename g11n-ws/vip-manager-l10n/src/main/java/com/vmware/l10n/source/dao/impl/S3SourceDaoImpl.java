@@ -56,7 +56,7 @@ public class S3SourceDaoImpl implements SourceDao {
 		}
 
 		if (!s3util.lockBundleFile(basePath, compDTO, 10000)) {
-			logger.info("failed to lock bundle file, return.");
+			logger.warn("failed to lock bundle file, return.");
 			return false;
 		}
 		

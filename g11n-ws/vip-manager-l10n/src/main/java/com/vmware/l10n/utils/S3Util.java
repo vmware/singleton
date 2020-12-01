@@ -45,25 +45,25 @@ public class S3Util {
 	/**
 	 * the s3 password is encryption or not
 	 */
-	@Value("${s3.password.encryption:false}")
+	@Value("${s3.keysEncryptEnable:false}")
 	private boolean encryption;
 
 	/**
 	 * the s3 password public key used to decrypt data
 	 */
-	@Value("${s3.password.publicKey}")
+	@Value("${s3.publicKey}")
 	private String publicKey;
 
 	/**
 	 * the s3 access Key
 	 */
-	@Value("${s3.password.accessKey}")
+	@Value("${s3.accessKey}")
 	private String accessKey;
 
 	/**
 	 * the s3 secret key
 	 */
-	@Value("${s3.password.secretkey}")
+	@Value("${s3.secretkey}")
 	private String secretkey;
 
 	/**
@@ -103,23 +103,18 @@ public class S3Util {
 	}
 
 	public String readBundle(String basePath, SingleComponentDTO compDTO) {
-		logger.info("read bundle file: {}/{}/{}/{}", compDTO.getProductName(), compDTO.getVersion(),
+		logger.debug("read bundle file: {}/{}/{}/{}", compDTO.getProductName(), compDTO.getVersion(),
 				compDTO.getComponent(), compDTO.getLocale());
 
 		String bundlePath = getBundleFilePath(basePath, compDTO);
-		String result = null;
-		try {
-			result = s3Inst.getObjectAsString(bucketName, bundlePath);
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
-		}
+		String result = s3Inst.getObjectAsString(bucketName, bundlePath);
 
-		logger.info("end reading bundle file");
+		logger.debug("end reading bundle file");
 		return result;
 	}
 
 	public boolean writeBundle(String basePath, SingleComponentDTO compDTO) {
-		logger.info("write bundle file: {}/{}/{}/{}", compDTO.getProductName(), compDTO.getVersion(),
+		logger.debug("write bundle file: {}/{}/{}/{}", compDTO.getProductName(), compDTO.getVersion(),
 				compDTO.getComponent(), compDTO.getLocale());
 
 		try {
@@ -130,7 +125,7 @@ public class S3Util {
 			logger.error(e.getMessage(), e);
 			return false;
 		} finally {
-			logger.info("end writing bundle file");
+			logger.debug("end writing bundle file");
 		}
 	}
 
@@ -160,7 +155,7 @@ public class S3Util {
 
 			// Write the lock file
 			s3Inst.putObject(bucketName, lockfilePath, content);
-			sleep(waitS3Operation);
+			sleep(waitS3Operation); // Wait for a while to let S3 finish writing.
 			
 			// Check file content is correct
 			try {
@@ -203,15 +198,17 @@ public class S3Util {
 					Date lastModified = lockfileObject.getLastModified();
 					if (new Date().getTime() - lastModified.getTime() > deadlockInterval) {// longer than 10min
 						s3Inst.deleteObject(bucketName, lockfilePath);
-						logger.info("deleted dead lock file");
+						logger.warn("deleted dead lock file");
 						return true;
 					}
 				}
+				
 				sleep(retryInterval);
 				if (System.currentTimeMillis() >= endTime) {
-					logger.info("failed to wait for lockfile disappered");
+					logger.warn("failed to wait for lockfile disappeared");
 					return false;
 				}
+				
 				objects = s3Inst.listObjectsV2(bucketName, lockfilePath).getObjectSummaries();
 			}
 
