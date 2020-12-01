@@ -30,6 +30,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vmware.l10n.BootApplication;
 import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.l10n.translation.dao.SingleComponentDao;
@@ -70,11 +71,23 @@ public class S3Test {
 			Thread.currentThread().interrupt();
 		}
 
-		Runnable r1 = () -> sourceDao.updateToBundle(single);
+		Runnable r1 = () -> {
+			try {
+				sourceDao.updateToBundle(single);
+			} catch (JsonProcessingException e) {
+				logger.error(e.getMessage(), e);
+			}
+		};
 
 		map.put("dc.unittest.new", "this is unit test new value");
 
-		Runnable r2 = () -> sourceDao.updateToBundle(single);
+		Runnable r2 = () -> {
+			try {
+				sourceDao.updateToBundle(single);
+			} catch (JsonProcessingException e) {
+				logger.error(e.getMessage(), e);
+			}
+		};
 
 		pool.execute(r1);
 		pool.execute(r2);
@@ -141,12 +154,20 @@ public class S3Test {
 				}
 	
 				if (dto.getLocale().equals("latest")) {
-					sourceDao.updateToBundle(dto);
+					try {
+						sourceDao.updateToBundle(dto);
+					} catch (JsonProcessingException e) {
+						logger.error(e.getMessage(), e);
+					}
 					sourceDao.getFromBundle(dto);
 				} else {
 					com.vmware.l10n.translation.dto.ComponentMessagesDTO translationDto = new com.vmware.l10n.translation.dto.ComponentMessagesDTO();
 					BeanUtils.copyProperties(dto, translationDto);
-					singleComponentDao.writeTranslationToFile(translationDto);
+					try {
+						singleComponentDao.writeTranslationToFile(translationDto);
+					} catch (JsonProcessingException e) {
+						logger.error(e.getMessage(), e);
+					}
 	
 					try {
 						singleComponentDao.getTranslationFromFile(translationDto);
@@ -161,7 +182,7 @@ public class S3Test {
 	}
 	
 	@Test
-	public void test003() {
+	public void test003() throws JsonProcessingException {
 		SourceDao sourceDao = webApplicationContext.getBean(SourceDao.class);
 
 		ComponentMessagesDTO single = new ComponentMessagesDTO();

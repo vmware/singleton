@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vmware.l10n.BootApplication;
 import com.vmware.l10n.source.crons.SourceSendingCron;
 import com.vmware.l10n.source.dao.SourceDao;
@@ -32,7 +33,7 @@ public class SourceDaoTest {
 
 	
 @Test
-public void  test001() {
+public void  test001() throws JsonProcessingException {
 	SourceDao sourceDao = webApplicationContext.getBean(SourceDao.class);
 	SourceSendingCron sourceSend =  webApplicationContext.getBean(SourceSendingCron.class);
 	
