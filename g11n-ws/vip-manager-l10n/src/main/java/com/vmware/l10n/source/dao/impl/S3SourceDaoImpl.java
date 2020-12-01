@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vmware.l10n.record.dao.SqlLiteDao;
 import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.l10n.utils.S3Util;
@@ -37,24 +38,18 @@ public class S3SourceDaoImpl implements SourceDao {
 
 	@Override
 	public String getFromBundle(SingleComponentDTO componentMessagesDTO) {
-		logger.info("Read content from file: {}/{}", componentMessagesDTO.getLocale(),
+		logger.debug("Read content from file: {}/{}", componentMessagesDTO.getLocale(),
 				componentMessagesDTO.getComponent());
 
 		return s3util.readBundle(basePath, componentMessagesDTO);
 	}
 
 	@Override
-	public boolean updateToBundle(ComponentMessagesDTO compDTO) {
-		logger.info("[Save sources to storage]: {}/{}/{}/{}", compDTO.getProductName(), compDTO.getVersion(),
+	public boolean updateToBundle(ComponentMessagesDTO compDTO) throws JsonProcessingException {
+		logger.debug("[Save sources to storage]: {}/{}/{}/{}", compDTO.getProductName(), compDTO.getVersion(),
 				compDTO.getComponent(), compDTO.getLocale());
 
-		boolean bExist = false;
-		try {
-			bExist = s3util.isBundleExist(basePath, compDTO);
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
-			return false;
-		}
+		boolean bExist = s3util.isBundleExist(basePath, compDTO);
 
 		Locker locker = s3util.new Locker(basePath, compDTO);
 		if (!locker.lockFile()) {
@@ -69,17 +64,15 @@ public class S3SourceDaoImpl implements SourceDao {
 			bSuccess = s3util.writeBundle(basePath, latestDTO);
 			if (bSuccess) {
 				if (bExist) {
-					logger.info("The bundle file {}/{} is found, update the bundle file.", compDTO.getLocale(),
+					logger.debug("The bundle file {}/{} is found, update the bundle file.", compDTO.getLocale(),
 							compDTO.getComponent());
 					sqlLite.updateModifySourceRecord(compDTO);
 				} else {
-					logger.info("The bundle file {}/{} is not found, cascade create the dir, add new bundle file ",
+					logger.debug("The bundle file {}/{} is not found, cascade create the dir, add new bundle file ",
 							compDTO.getLocale(), compDTO.getComponent());
 					sqlLite.createSourceRecord(compDTO);
 				}
 			}
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
 		} finally {
 			locker.unlockFile();
 		}

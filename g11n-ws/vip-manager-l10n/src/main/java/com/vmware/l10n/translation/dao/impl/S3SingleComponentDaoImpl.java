@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
-import com.amazonaws.SdkClientException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vmware.l10n.translation.dao.SingleComponentDao;
 import com.vmware.l10n.translation.dto.ComponentMessagesDTO;
 import com.vmware.l10n.utils.S3Util;
@@ -42,27 +42,22 @@ public class S3SingleComponentDaoImpl implements SingleComponentDao {
 	@Override
 	public ComponentMessagesDTO getTranslationFromFile(ComponentMessagesDTO componentMessagesDTO)
 			throws L10nAPIException {
-		logger.info("[get Translation from S3]");
+		logger.debug("[get Translation from S3]");
 
-		
 		String bunldeString;
-		try {
-			if (s3util.isBundleExist(basePath, componentMessagesDTO)) {
-				componentMessagesDTO.setStatus("Translation" + TranslationQueryStatusType.FileFound.toString());
-				bunldeString = s3util.readBundle(basePath, componentMessagesDTO);
-			} else {
-				componentMessagesDTO.setStatus("Translation" + TranslationQueryStatusType.FileNotFound.toString());
-				ComponentMessagesDTO tempDTO = new ComponentMessagesDTO();
-				BeanUtils.copyProperties(componentMessagesDTO, tempDTO);
-				tempDTO.setLocale(ConstantsUnicode.EN);
-				bunldeString = s3util.readBundle(basePath, tempDTO);
-			}
-			if (StringUtils.isEmpty(bunldeString)) {
-				componentMessagesDTO.setStatus(TranslationQueryStatusType.ComponentNotFound.toString());
-				return componentMessagesDTO;
-			}
-		} catch (SdkClientException e) {
-			throw new L10nAPIException("Connecting S3 failed.", e);
+		if (s3util.isBundleExist(basePath, componentMessagesDTO)) {
+			componentMessagesDTO.setStatus("Translation" + TranslationQueryStatusType.FileFound.toString());
+			bunldeString = s3util.readBundle(basePath, componentMessagesDTO);
+		} else {
+			componentMessagesDTO.setStatus("Translation" + TranslationQueryStatusType.FileNotFound.toString());
+			ComponentMessagesDTO tempDTO = new ComponentMessagesDTO();
+			BeanUtils.copyProperties(componentMessagesDTO, tempDTO);
+			tempDTO.setLocale(ConstantsUnicode.EN);
+			bunldeString = s3util.readBundle(basePath, tempDTO);
+		}
+		if (StringUtils.isEmpty(bunldeString)) {
+			componentMessagesDTO.setStatus(TranslationQueryStatusType.ComponentNotFound.toString());
+			return componentMessagesDTO;
 		}
 
 		SingleComponentDTO caseComponentMessagesDTO;
@@ -78,19 +73,14 @@ public class S3SingleComponentDaoImpl implements SingleComponentDao {
 		ComponentMessagesDTO msgDTO = new ComponentMessagesDTO();
 		BeanUtils.copyProperties(caseComponentMessagesDTO, msgDTO);
 		return msgDTO;
-
 	}
 
 	@Override
-	public boolean writeTranslationToFile(ComponentMessagesDTO componentMessagesDTO) {
-		try {
-			if (s3util.isBundleExist(basePath, componentMessagesDTO)) {
-				logger.info("The bunlde file is found, update the bundle file.");
-			} else {
-				logger.info("The bunlde file is not found, cascade create the dir,add new bundle file ");
-			}
-		} catch (SdkClientException e) {
-			logger.error(e.getMessage(),e);
+	public boolean writeTranslationToFile(ComponentMessagesDTO componentMessagesDTO) throws JsonProcessingException {
+		if (s3util.isBundleExist(basePath, componentMessagesDTO)) {
+			logger.debug("The bunlde file is found, update the bundle file.");
+		} else {
+			logger.debug("The bunlde file is not found, cascade create the dir,add new bundle file ");
 		}
 		
 		return s3util.writeBundle(basePath, componentMessagesDTO);

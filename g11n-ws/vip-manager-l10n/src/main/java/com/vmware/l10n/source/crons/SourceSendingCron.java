@@ -219,7 +219,6 @@ public class SourceSendingCron {
 			} catch (VIPCacheException e) {
 				LOGGER.error(e.getMessage(), e);
 			} catch (L10nAPIException e) {
-
 				setConnected(false);
 				try {
 					flushCacheToDisk(TranslationCache3.getCache(CacheName.SOURCEBACKUP, ComponentSourceDTO.class));
@@ -229,10 +228,10 @@ public class SourceSendingCron {
 				}
 				LOGGER.info("Fail to push source to remote.");
 			} catch (VIPHttpException e) {
-
 				LOGGER.error("Http request error occurs.", e);
+			} catch (Exception e) {
+				LOGGER.error(e.getMessage(), e);
 			}
-
 		}
 	}
 

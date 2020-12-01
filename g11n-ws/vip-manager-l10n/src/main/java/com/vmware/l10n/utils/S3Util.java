@@ -20,6 +20,7 @@ import com.amazonaws.SdkClientException;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.AmazonS3Exception;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vmware.l10n.conf.S3Client;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;
@@ -59,15 +60,10 @@ public class S3Util {
 		return s3Inst.getObjectAsString(bucketName, bundlePath);
 	}
 
-	public boolean writeBundle(String basePath, SingleComponentDTO compDTO) {
-		try {
-			String bundlePath = getBundleFilePath(basePath, compDTO);
-			s3Inst.putObject(bucketName, bundlePath, compDTO.toPrettyString());
-			return true;
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
-			return false;
-		}
+	public boolean writeBundle(String basePath, SingleComponentDTO compDTO) throws JsonProcessingException {
+		String bundlePath = getBundleFilePath(basePath, compDTO);
+		s3Inst.putObject(bucketName, bundlePath, compDTO.toPrettyString());
+		return true;
 	}
 
 	public boolean isBundleExist(String basePath, SingleComponentDTO singleComponentDTO) {
@@ -146,35 +142,30 @@ public class S3Util {
 
 		private boolean waitLockfileDisappeared(long endTime) {
 			boolean bDeadlockTested = false;
-			try {
-				List<S3ObjectSummary> objects = s3Inst.listObjectsV2(bucketName, this.key).getObjectSummaries();
-				while (!objects.isEmpty()) {
-					if (!bDeadlockTested) {
-						bDeadlockTested = true;
-						// Get file creation time to detect deadlock
-						S3ObjectSummary lockfileObject = objects.get(0);
-						Date lastModified = lockfileObject.getLastModified();
-						if (new Date().getTime() - lastModified.getTime() > deadlockInterval) {// longer than 10min
-							s3Inst.deleteObject(bucketName, this.key);
-							logger.warn("deleted dead lock file");
-							return true;
-						}
+			List<S3ObjectSummary> objects = s3Inst.listObjectsV2(bucketName, this.key).getObjectSummaries();
+			while (!objects.isEmpty()) {
+				if (!bDeadlockTested) {
+					bDeadlockTested = true;
+					// Get file creation time to detect deadlock
+					S3ObjectSummary lockfileObject = objects.get(0);
+					Date lastModified = lockfileObject.getLastModified();
+					if (new Date().getTime() - lastModified.getTime() > deadlockInterval) {// longer than 10min
+						s3Inst.deleteObject(bucketName, this.key);
+						logger.warn("deleted dead lock file");
+						return true;
 					}
-
-					TimeUtils.sleep(retryInterval);
-					if (System.currentTimeMillis() >= endTime) {
-						logger.warn("failed to wait for lockfile disappeared");
-						return false;
-					}
-
-					objects = s3Inst.listObjectsV2(bucketName, this.key).getObjectSummaries();
 				}
 
-				return true;
-			} catch (AmazonS3Exception e) {
-				logger.error(e.getMessage(), e);
-				return false;
+				TimeUtils.sleep(retryInterval);
+				if (System.currentTimeMillis() >= endTime) {
+					logger.warn("failed to wait for lockfile disappeared");
+					return false;
+				}
+
+				objects = s3Inst.listObjectsV2(bucketName, this.key).getObjectSummaries();
 			}
+
+			return true;
 		}
 	}
 }

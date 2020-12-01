@@ -4,6 +4,7 @@
  */
 package com.vmware.l10n.source.dao;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 
@@ -34,6 +35,7 @@ public interface SourceDao {
 	 *            the location where the resource file is placed, can be
 	 *            configed in spring config file
 	 * @return update result, true represents success, false represents failure.
+	 * @throws JsonProcessingException 
 	 */
-	public boolean updateToBundle(ComponentMessagesDTO componentMessagesDTO);
+	public boolean updateToBundle(ComponentMessagesDTO componentMessagesDTO) throws JsonProcessingException;
 }
