@@ -1,0 +1,4377 @@
+{
+  "localeID" : "ast",
+  "categories" : {
+    "dates" : {
+      "dayPeriodsFormat" : {
+        "narrow" : [ "a", "p" ],
+        "abbreviated" : [ "AM", "PM" ],
+        "wide" : [ "de la mañana", "de la tarde" ]
+      },
+      "dayPeriodsStandalone" : {
+        "narrow" : [ "a", "p" ],
+        "abbreviated" : [ "AM", "PM" ],
+        "wide" : [ "mañana", "tarde" ]
+      },
+      "daysFormat" : {
+        "narrow" : [ "D", "L", "M", "M", "X", "V", "S" ],
+        "abbreviated" : [ "dom", "llu", "mar", "mié", "xue", "vie", "sáb" ],
+        "wide" : [ "domingu", "llunes", "martes", "miércoles", "xueves", "vienres", "sábadu" ],
+        "short" : [ "do", "ll", "ma", "mi", "xu", "vi", "sá" ]
+      },
+      "daysStandalone" : {
+        "narrow" : [ "D", "L", "M", "M", "X", "V", "S" ],
+        "abbreviated" : [ "dom", "llu", "mar", "mié", "xue", "vie", "sáb" ],
+        "wide" : [ "domingu", "llunes", "martes", "miércoles", "xueves", "vienres", "sábadu" ],
+        "short" : [ "do", "ll", "ma", "mi", "xu", "vi", "sá" ]
+      },
+      "monthsFormat" : {
+        "narrow" : [ "X", "F", "M", "A", "M", "X", "X", "A", "S", "O", "P", "A" ],
+        "abbreviated" : [ "xin", "feb", "mar", "abr", "may", "xun", "xnt", "ago", "set", "och", "pay", "avi" ],
+        "wide" : [ "de xineru", "de febreru", "de marzu", "d’abril", "de mayu", "de xunu", "de xunetu", "d’agostu", "de setiembre", "d’ochobre", "de payares", "d’avientu" ]
+      },
+      "monthsStandalone" : {
+        "narrow" : [ "X", "F", "M", "A", "M", "X", "X", "A", "S", "O", "P", "A" ],
+        "abbreviated" : [ "Xin", "Feb", "Mar", "Abr", "May", "Xun", "Xnt", "Ago", "Set", "Och", "Pay", "Avi" ],
+        "wide" : [ "xineru", "febreru", "marzu", "abril", "mayu", "xunu", "xunetu", "agostu", "setiembre", "ochobre", "payares", "avientu" ]
+      },
+      "eras" : {
+        "narrow" : [ "e.C.", "d.C." ],
+        "abbreviated" : [ "e.C.", "d.C." ],
+        "wide" : [ "enantes de Cristu", "después de Cristu" ]
+      },
+      "firstDayOfWeek" : 0,
+      "weekendRange" : [ 6, 0 ],
+      "dateFormats" : {
+        "short" : "d/M/yy",
+        "medium" : "d MMM y",
+        "long" : "d MMMM 'de' y",
+        "full" : "EEEE, d MMMM 'de' y"
+      },
+      "timeFormats" : {
+        "short" : "HH:mm",
+        "medium" : "HH:mm:ss",
+        "long" : "HH:mm:ss z",
+        "full" : "HH:mm:ss zzzz"
+      },
+      "dateTimeFormats" : {
+        "short" : "{1} {0}",
+        "medium" : "{1}, {0}",
+        "long" : "{1} 'a' 'les' {0}",
+        "full" : "{1} 'a' 'les' {0}",
+        "availableFormats" : {
+          "Bh" : "h B",
+          "Bhm" : "h:mm B",
+          "Bhms" : "h:mm:ss B",
+          "d" : "d",
+          "E" : "ccc",
+          "EBhm" : "E h:mm B",
+          "EBhms" : "E h:mm:ss B",
+          "Ed" : "E d",
+          "Ehm" : "E h:mm a",
+          "EHm" : "E HH:mm",
+          "Ehms" : "E h:mm:ss a",
+          "EHms" : "E HH:mm:ss",
+          "Gy" : "y G",
+          "GyMMM" : "MMM y G",
+          "GyMMMd" : "d MMM y G",
+          "GyMMMEd" : "E, d MMM y G",
+          "H" : "HH",
+          "h" : "h a",
+          "hm" : "h:mm a",
+          "Hm" : "HH:mm",
+          "hms" : "h:mm:ss a",
+          "Hms" : "HH:mm:ss",
+          "hmsv" : "h:mm:ss a v",
+          "Hmsv" : "HH:mm:ss v",
+          "hmv" : "h:mm a v",
+          "Hmv" : "HH:mm v",
+          "M" : "L",
+          "Md" : "d/M",
+          "MEd" : "E, d/M",
+          "MMM" : "LLL",
+          "MMMd" : "d MMM",
+          "MMMEd" : "E, d MMM",
+          "MMMMd" : "d MMMM",
+          "MMMMW-count-one" : "'selmana' W 'de' MMM",
+          "MMMMW-count-other" : "'selmana' W 'de' MMM",
+          "ms" : "mm:ss",
+          "y" : "y",
+          "yM" : "M/y",
+          "yMd" : "d/M/y",
+          "yMEd" : "E, d/M/y",
+          "yMMM" : "MMM y",
+          "yMMMd" : "d MMM y",
+          "yMMMEd" : "E, d MMM y",
+          "yMMMM" : "LLLL 'de' y",
+          "yQQQ" : "QQQ y",
+          "yQQQQ" : "QQQQ 'de' y",
+          "yw-count-one" : "'selmana' w 'de' Y",
+          "yw-count-other" : "'selmana' w 'de' Y"
+        },
+        "appendItems" : {
+          "Day" : "{0} ({2}: {1})",
+          "Day-Of-Week" : "{0} {1}",
+          "Era" : "{1} {0}",
+          "Hour" : "{0} ({2}: {1})",
+          "Minute" : "{0} ({2}: {1})",
+          "Month" : "{0} ({2}: {1})",
+          "Quarter" : "{0} ({2}: {1})",
+          "Second" : "{0} ({2}: {1})",
+          "Timezone" : "{0} {1}",
+          "Week" : "{0} ({2}: {1})",
+          "Year" : "{1} {0}"
+        },
+        "intervalFormats" : {
+          "d" : {
+            "d" : "d – d"
+          },
+          "h" : {
+            "a" : "h a – h a",
+            "h" : "h – h a"
+          },
+          "H" : {
+            "H" : "HH – HH"
+          },
+          "hm" : {
+            "a" : "h:mm a – h:mm a",
+            "h" : "h:mm – h:mm a",
+            "m" : "h:mm – h:mm a"
+          },
+          "Hm" : {
+            "H" : "HH:mm – HH:mm",
+            "m" : "HH:mm – HH:mm"
+          },
+          "hmv" : {
+            "a" : "h:mm a – h:mm a v",
+            "h" : "h:mm – h:mm a v",
+            "m" : "h:mm – h:mm a v"
+          },
+          "Hmv" : {
+            "H" : "HH:mm – HH:mm v",
+            "m" : "HH:mm – HH:mm v"
+          },
+          "hv" : {
+            "a" : "h a – h a v",
+            "h" : "h – h a v"
+          },
+          "Hv" : {
+            "H" : "HH – HH v"
+          },
+          "intervalFormatFallback" : "{0} – {1}",
+          "M" : {
+            "M" : "M – M"
+          },
+          "Md" : {
+            "d" : "dd – dd/MM",
+            "M" : "dd/MM – dd/MM"
+          },
+          "MEd" : {
+            "d" : "E, dd – E, dd/MM",
+            "M" : "E, dd/MM – E, dd/MM"
+          },
+          "MMM" : {
+            "M" : "LLL – LLL"
+          },
+          "MMMd" : {
+            "d" : "d – d MMM",
+            "M" : "d/MM – d/MM"
+          },
+          "MMMEd" : {
+            "d" : "E, d MMM – E, d MMM",
+            "M" : "E, d MMM – E, d MMM"
+          },
+          "y" : {
+            "y" : "y – y"
+          },
+          "yM" : {
+            "y" : "MM/y – MM/y",
+            "M" : "MM – MM/y"
+          },
+          "yMd" : {
+            "d" : "d/M/y – d/M/y",
+            "y" : "d/M/y – d/M/y",
+            "M" : "d/M/y – d/M/y"
+          },
+          "yMEd" : {
+            "d" : "E, d/M/y – E, d/M/y",
+            "y" : "E, d/M/y – E, d/M/y",
+            "M" : "E, d/M/y – E, d/M/y"
+          },
+          "yMMM" : {
+            "y" : "MMM y – MMM y",
+            "M" : "MMM – MMM y"
+          },
+          "yMMMd" : {
+            "d" : "d – d MMM 'de' y",
+            "y" : "d MMM 'de' y – d MMM 'de' y",
+            "M" : "d MMM – d MMM 'de' y"
+          },
+          "yMMMEd" : {
+            "d" : "E, d MMM – E, d MMM 'de' y",
+            "y" : "E, d MMM 'de' y – E, d MMM 'de' y",
+            "M" : "E, d MMM – E, d MMM 'de' y"
+          },
+          "yMMMM" : {
+            "y" : "LLLL 'de' y – LLLL 'de' y",
+            "M" : "LLLL – LLLL 'de' y"
+          }
+        }
+      },
+      "dateFields" : {
+        "year" : {
+          "displayName" : "añu",
+          "relative-type-0" : "esti añu",
+          "relative-type-1" : "l’añu viniente",
+          "relative-type--1" : "l’añu pasáu",
+          "relativeTime-type-future" : {
+            "relativeTimePattern-count-other" : "en {0} años",
+            "relativeTimePattern-count-one" : "en {0} añu"
+          },
+          "relativeTime-type-past" : {
+            "relativeTimePattern-count-other" : "hai {0} años",
+            "relativeTimePattern-count-one" : "hai {0} añu"
+          }
+        },
+        "month" : {
+          "displayName" : "mes",
+          "relative-type-0" : "esti mes",
+          "relative-type-1" : "el mes viniente",
+          "relative-type--1" : "el mes pasáu",
+          "relativeTime-type-future" : {
+            "relativeTimePattern-count-other" : "en {0} meses",
+            "relativeTimePattern-count-one" : "en {0} mes"
+          },
+          "relativeTime-type-past" : {
+            "relativeTimePattern-count-other" : "hai {0} meses",
+            "relativeTimePattern-count-one" : "hai {0} mes"
+          }
+        },
+        "day" : {
+          "displayName" : "día",
+          "relative-type-2" : "pasao mañana",
+          "relative-type-0" : "güei",
+          "relative-type-1" : "mañana",
+          "relative-type--2" : "antayeri",
+          "relative-type--1" : "ayeri",
+          "relativeTime-type-future" : {
+            "relativeTimePattern-count-other" : "en {0} díes",
+            "relativeTimePattern-count-one" : "en {0} día"
+          },
+          "relativeTime-type-past" : {
+            "relativeTimePattern-count-other" : "hai {0} díes",
+            "relativeTimePattern-count-one" : "hai {0} día"
+          }
+        },
+        "hour" : {
+          "displayName" : "hora",
+          "relative-type-0" : "esta hora",
+          "relativeTime-type-future" : {
+            "relativeTimePattern-count-other" : "en {0} hores",
+            "relativeTimePattern-count-one" : "en {0} hora"
+          },
+          "relativeTime-type-past" : {
+            "relativeTimePattern-count-other" : "hai {0} hores",
+            "relativeTimePattern-count-one" : "hai {0} hora"
+          }
+        },
+        "minute" : {
+          "displayName" : "minutu",
+          "relative-type-0" : "esti minutu",
+          "relativeTime-type-future" : {
+            "relativeTimePattern-count-other" : "en {0} minutos",
+            "relativeTimePattern-count-one" : "en {0} minutu"
+          },
+          "relativeTime-type-past" : {
+            "relativeTimePattern-count-other" : "hai {0} minutos",
+            "relativeTimePattern-count-one" : "hai {0} minutu"
+          }
+        },
+        "second" : {
+          "displayName" : "segundu",
+          "relative-type-0" : "agora",
+          "relativeTime-type-future" : {
+            "relativeTimePattern-count-other" : "en {0} segundos",
+            "relativeTimePattern-count-one" : "en {0} segundu"
+          },
+          "relativeTime-type-past" : {
+            "relativeTimePattern-count-other" : "hai {0} segundos",
+            "relativeTimePattern-count-one" : "hai {0} segundu"
+          }
+        }
+      }
+    },
+    "numbers" : {
+      "numberSymbols" : {
+        "decimal" : ",",
+        "group" : ".",
+        "list" : ";",
+        "percentSign" : "%",
+        "plusSign" : "+",
+        "minusSign" : "-",
+        "exponential" : "E",
+        "superscriptingExponent" : "×",
+        "perMille" : "‰",
+        "infinity" : "∞",
+        "nan" : "ND",
+        "timeSeparator" : ":"
+      },
+      "numberFormats" : {
+        "decimalFormats" : "#,##0.###",
+        "percentFormats" : "#,##0%",
+        "currencyFormats" : "#,##0.00 ¤",
+        "scientificFormats" : "#E0"
+      }
+    },
+    "plurals" : {
+      "pluralRules" : {
+        "pluralRule-count-one" : "i = 1 and v = 0 @integer 1",
+        "pluralRule-count-other" : " @integer 0, 2~16, 100, 1000, 10000, 100000, 1000000, … @decimal 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0, …"
+      }
+    },
+    "measurements" : {
+      "durationUnit-type-ms" : {
+        "durationUnitPattern" : "m:ss"
+      },
+      "durationUnit-type-hm" : {
+        "durationUnitPattern" : "h:mm"
+      },
+      "short" : {
+        "length-picometer" : {
+          "unitPattern-count-other" : "{0} pm",
+          "displayName" : "pm",
+          "unitPattern-count-one" : "{0} pm"
+        },
+        "angle-radian" : {
+          "unitPattern-count-other" : "{0} rad",
+          "displayName" : "radianes",
+          "unitPattern-count-one" : "{0} rad"
+        },
+        "area-square-yard" : {
+          "unitPattern-count-other" : "{0} yd²",
+          "displayName" : "yd²",
+          "unitPattern-count-one" : "{0} yd²"
+        },
+        "angle-arc-minute" : {
+          "unitPattern-count-other" : "{0} arcmins",
+          "displayName" : "arcmins",
+          "unitPattern-count-one" : "{0} arcmin"
+        },
+        "area-hectare" : {
+          "unitPattern-count-other" : "{0} ha",
+          "displayName" : "hectárees",
+          "unitPattern-count-one" : "{0} ha"
+        },
+        "consumption-mile-per-gallon-imperial" : {
+          "unitPattern-count-other" : "{0} mpg imp.",
+          "displayName" : "milles/gal imp.",
+          "unitPattern-count-one" : "{0} mpg imp."
+        },
+        "speed-mile-per-hour" : {
+          "unitPattern-count-other" : "{0} mi/h",
+          "displayName" : "milles/hora",
+          "unitPattern-count-one" : "{0} mi/h"
+        },
+        "mass-kilogram" : {
+          "perUnitPattern" : "{0}/kg",
+          "unitPattern-count-other" : "{0} kg",
+          "displayName" : "kg",
+          "unitPattern-count-one" : "{0} kg"
+        },
+        "volume-cubic-yard" : {
+          "unitPattern-count-other" : "{0} yd³",
+          "displayName" : "yd³",
+          "unitPattern-count-one" : "{0} yd³"
+        },
+        "light-lux" : {
+          "unitPattern-count-other" : "{0} lx",
+          "displayName" : "lux",
+          "unitPattern-count-one" : "{0} lx"
+        },
+        "length-point" : {
+          "unitPattern-count-other" : "{0} pt",
+          "displayName" : "pt",
+          "unitPattern-count-one" : "{0} pt"
+        },
+        "length-parsec" : {
+          "unitPattern-count-other" : "{0} pc",
+          "displayName" : "pc",
+          "unitPattern-count-one" : "{0} pc"
+        },
+        "temperature-generic" : {
+          "unitPattern-count-other" : "{0}°",
+          "displayName" : "°",
+          "unitPattern-count-one" : "{0}°"
+        },
+        "power-watt" : {
+          "unitPattern-count-other" : "{0} W",
+          "displayName" : "vatios",
+          "unitPattern-count-one" : "{0} W"
+        },
+        "per" : {
+          "compoundUnitPattern" : "{0}/{1}"
+        },
+        "angle-revolution" : {
+          "unitPattern-count-other" : "{0} rev",
+          "displayName" : "rev",
+          "unitPattern-count-one" : "{0} rev"
+        },
+        "frequency-kilohertz" : {
+          "unitPattern-count-other" : "{0} kHz",
+          "displayName" : "kHz",
+          "unitPattern-count-one" : "{0} kHz"
+        },
+        "speed-kilometer-per-hour" : {
+          "unitPattern-count-other" : "{0} km/h",
+          "displayName" : "km/h",
+          "unitPattern-count-one" : "{0} km/h"
+        },
+        "area-square-inch" : {
+          "perUnitPattern" : "{0}/in²",
+          "unitPattern-count-other" : "{0} in²",
+          "displayName" : "in²",
+          "unitPattern-count-one" : "{0} in²"
+        },
+        "length-foot" : {
+          "perUnitPattern" : "{0}/ft",
+          "unitPattern-count-other" : "{0} ft",
+          "displayName" : "pies",
+          "unitPattern-count-one" : "{0} ft"
+        },
+        "concentr-milligram-per-deciliter" : {
+          "unitPattern-count-other" : "{0} mg/dL",
+          "displayName" : "mg/dL",
+          "unitPattern-count-one" : "{0} mg/dL"
+        },
+        "area-square-mile" : {
+          "perUnitPattern" : "{0}/mi²",
+          "unitPattern-count-other" : "{0} mi²",
+          "displayName" : "mi²",
+          "unitPattern-count-one" : "{0} mi²"
+        },
+        "area-acre" : {
+          "unitPattern-count-other" : "{0} ac",
+          "displayName" : "acre",
+          "unitPattern-count-one" : "{0} ac"
+        },
+        "energy-calorie" : {
+          "unitPattern-count-other" : "{0} cal",
+          "displayName" : "cal",
+          "unitPattern-count-one" : "{0} cal"
+        },
+        "duration-month" : {
+          "perUnitPattern" : "{0}/mes",
+          "unitPattern-count-other" : "{0} meses",
+          "displayName" : "meses",
+          "unitPattern-count-one" : "{0} mes"
+        },
+        "concentr-millimole-per-liter" : {
+          "unitPattern-count-other" : "{0} mmol/L",
+          "displayName" : "milimol/llitru",
+          "unitPattern-count-one" : "{0} mmol/L"
+        },
+        "electric-volt" : {
+          "unitPattern-count-other" : "{0} V",
+          "displayName" : "voltios",
+          "unitPattern-count-one" : "{0} V"
+        },
+        "duration-week" : {
+          "perUnitPattern" : "{0}/sel",
+          "unitPattern-count-other" : "{0} sels",
+          "displayName" : "selmanes",
+          "unitPattern-count-one" : "{0} sel"
+        },
+        "length-meter" : {
+          "perUnitPattern" : "{0}/m",
+          "unitPattern-count-other" : "{0} m",
+          "displayName" : "metros",
+          "unitPattern-count-one" : "{0} m"
+        },
+        "duration-minute" : {
+          "perUnitPattern" : "{0}/min",
+          "unitPattern-count-other" : "{0} mins",
+          "displayName" : "mins",
+          "unitPattern-count-one" : "{0} min"
+        },
+        "energy-kilojoule" : {
+          "unitPattern-count-other" : "{0} kJ",
+          "displayName" : "quiloxuliu",
+          "unitPattern-count-one" : "{0} kJ"
+        },
+        "duration-millisecond" : {
+          "unitPattern-count-other" : "{0} ms",
+          "displayName" : "milisegs",
+          "unitPattern-count-one" : "{0} ms"
+        },
+        "length-yard" : {
+          "unitPattern-count-other" : "{0} yd",
+          "displayName" : "yd",
+          "unitPattern-count-one" : "{0} yd"
+        },
+        "volume-cubic-mile" : {
+          "unitPattern-count-other" : "{0} mi³",
+          "displayName" : "mi³",
+          "unitPattern-count-one" : "{0} mi³"
+        },
+        "digital-gigabyte" : {
+          "unitPattern-count-other" : "{0} GB",
+          "displayName" : "GByte",
+          "unitPattern-count-one" : "{0} GB"
+        },
+        "volume-milliliter" : {
+          "unitPattern-count-other" : "{0} mL",
+          "displayName" : "mL",
+          "unitPattern-count-one" : "{0} mL"
+        },
+        "length-inch" : {
+          "perUnitPattern" : "{0}/in",
+          "unitPattern-count-other" : "{0} in",
+          "displayName" : "pulgaes",
+          "unitPattern-count-one" : "{0} in"
+        },
+        "mass-ton" : {
+          "unitPattern-count-other" : "{0} tn",
+          "displayName" : "tonelaes",
+          "unitPattern-count-one" : "{0} tn"
+        },
+        "acceleration-g-force" : {
+          "unitPattern-count-other" : "{0} Gs",
+          "displayName" : "fuercia g",
+          "unitPattern-count-one" : "{0} G"
+        },
+        "duration-microsecond" : {
+          "unitPattern-count-other" : "{0} μs",
+          "displayName" : "μsegs",
+          "unitPattern-count-one" : "{0} μs"
+        },
+        "volume-cubic-centimeter" : {
+          "perUnitPattern" : "{0}/cm³",
+          "unitPattern-count-other" : "{0} cm³",
+          "displayName" : "cm³",
+          "unitPattern-count-one" : "{0} cm³"
+        },
+        "electric-ohm" : {
+          "unitPattern-count-other" : "{0} Ω",
+          "displayName" : "ohmnios",
+          "unitPattern-count-one" : "{0} Ω"
+        },
+        "volume-teaspoon" : {
+          "unitPattern-count-other" : "{0} cuyrn",
+          "displayName" : "cuyrn",
+          "unitPattern-count-one" : "{0} cuyrn"
+        },
+        "volume-pint" : {
+          "unitPattern-count-other" : "{0} pt",
+          "displayName" : "pintes",
+          "unitPattern-count-one" : "{0} pt"
+        },
+        "digital-gigabit" : {
+          "unitPattern-count-other" : "{0} Gb",
+          "displayName" : "Gbit",
+          "unitPattern-count-one" : "{0} Gb"
+        },
+        "pressure-hectopascal" : {
+          "unitPattern-count-other" : "{0} hPa",
+          "displayName" : "hPa",
+          "unitPattern-count-one" : "{0} hPa"
+        },
+        "volume-cup-metric" : {
+          "unitPattern-count-other" : "{0} mc",
+          "displayName" : "taces mét.",
+          "unitPattern-count-one" : "{0} mc"
+        },
+        "mass-stone" : {
+          "unitPattern-count-other" : "{0} st",
+          "displayName" : "piedres",
+          "unitPattern-count-one" : "{0} st"
+        },
+        "area-square-meter" : {
+          "perUnitPattern" : "{0}/m²",
+          "unitPattern-count-other" : "{0} m²",
+          "displayName" : "m²",
+          "unitPattern-count-one" : "{0} m²"
+        },
+        "energy-foodcalorie" : {
+          "unitPattern-count-other" : "{0} Cal",
+          "displayName" : "Cal",
+          "unitPattern-count-one" : "{0} Cal"
+        },
+        "volume-acre-foot" : {
+          "unitPattern-count-other" : "{0} ac ft",
+          "displayName" : "ac ft",
+          "unitPattern-count-one" : "{0} ac ft"
+        },
+        "acceleration-meter-per-second-squared" : {
+          "unitPattern-count-other" : "{0} m/s²",
+          "displayName" : "m/s²",
+          "unitPattern-count-one" : "{0} m/s²"
+        },
+        "mass-gram" : {
+          "perUnitPattern" : "{0}/g",
+          "unitPattern-count-other" : "{0} g",
+          "displayName" : "gramos",
+          "unitPattern-count-one" : "{0} g"
+        },
+        "electric-milliampere" : {
+          "unitPattern-count-other" : "{0} mA",
+          "displayName" : "miliamps",
+          "unitPattern-count-one" : "{0} mA"
+        },
+        "temperature-fahrenheit" : {
+          "unitPattern-count-other" : "{0}°F",
+          "displayName" : "°F",
+          "unitPattern-count-one" : "{0}°F"
+        },
+        "speed-meter-per-second" : {
+          "unitPattern-count-other" : "{0} m/s",
+          "displayName" : "metros/seg",
+          "unitPattern-count-one" : "{0} m/s"
+        },
+        "mass-milligram" : {
+          "unitPattern-count-other" : "{0} mg",
+          "displayName" : "mg",
+          "unitPattern-count-one" : "{0} mg"
+        },
+        "mass-microgram" : {
+          "unitPattern-count-other" : "{0} µg",
+          "displayName" : "µg",
+          "unitPattern-count-one" : "{0} µg"
+        },
+        "frequency-hertz" : {
+          "unitPattern-count-other" : "{0} Hz",
+          "displayName" : "Hz",
+          "unitPattern-count-one" : "{0} Hz"
+        },
+        "volume-pint-metric" : {
+          "unitPattern-count-other" : "{0} mpt",
+          "displayName" : "mpt",
+          "unitPattern-count-one" : "{0} mpt"
+        },
+        "volume-cup" : {
+          "unitPattern-count-other" : "{0} tz",
+          "displayName" : "taces",
+          "unitPattern-count-one" : "{0} tz"
+        },
+        "length-millimeter" : {
+          "unitPattern-count-other" : "{0} mm",
+          "displayName" : "mm",
+          "unitPattern-count-one" : "{0} mm"
+        },
+        "volume-bushel" : {
+          "unitPattern-count-other" : "{0} bu",
+          "displayName" : "bushels",
+          "unitPattern-count-one" : "{0} bu"
+        },
+        "power-megawatt" : {
+          "unitPattern-count-other" : "{0} MW",
+          "displayName" : "MW",
+          "unitPattern-count-one" : "{0} MW"
+        },
+        "volume-fluid-ounce" : {
+          "unitPattern-count-other" : "{0} fl oz",
+          "displayName" : "fl oz",
+          "unitPattern-count-one" : "{0} fl oz"
+        },
+        "volume-tablespoon" : {
+          "unitPattern-count-other" : "{0} cuyar",
+          "displayName" : "cuyar",
+          "unitPattern-count-one" : "{0} cuyar"
+        },
+        "volume-quart" : {
+          "unitPattern-count-other" : "{0} qt",
+          "displayName" : "cuartos",
+          "unitPattern-count-one" : "{0} qt"
+        },
+        "length-mile" : {
+          "unitPattern-count-other" : "{0} mi",
+          "displayName" : "milles",
+          "unitPattern-count-one" : "{0} mi"
+        },
+        "duration-day" : {
+          "perUnitPattern" : "{0}/día",
+          "unitPattern-count-other" : "{0} díes",
+          "displayName" : "díes",
+          "unitPattern-count-one" : "{0} día"
+        },
+        "digital-terabyte" : {
+          "unitPattern-count-other" : "{0} TB",
+          "displayName" : "TByte",
+          "unitPattern-count-one" : "{0} TB"
+        },
+        "duration-year" : {
+          "perUnitPattern" : "{0}/añ",
+          "unitPattern-count-other" : "{0} añs",
+          "displayName" : "años",
+          "unitPattern-count-one" : "{0} añ"
+        },
+        "mass-ounce" : {
+          "perUnitPattern" : "{0}/oz",
+          "unitPattern-count-other" : "{0} oz",
+          "displayName" : "oz",
+          "unitPattern-count-one" : "{0} oz"
+        },
+        "power-gigawatt" : {
+          "unitPattern-count-other" : "{0} GW",
+          "displayName" : "GW",
+          "unitPattern-count-one" : "{0} GW"
+        },
+        "area-square-foot" : {
+          "unitPattern-count-other" : "{0} ft²",
+          "displayName" : "ft²",
+          "unitPattern-count-one" : "{0} ft²"
+        },
+        "volume-cubic-kilometer" : {
+          "unitPattern-count-other" : "{0} km³",
+          "displayName" : "km³",
+          "unitPattern-count-one" : "{0} km³"
+        },
+        "volume-gallon" : {
+          "perUnitPattern" : "{0}/gal",
+          "unitPattern-count-other" : "{0} gal",
+          "displayName" : "gal",
+          "unitPattern-count-one" : "{0} gal"
+        },
+        "length-decimeter" : {
+          "unitPattern-count-other" : "{0} dm",
+          "displayName" : "dm",
+          "unitPattern-count-one" : "{0} dm"
+        },
+        "length-nanometer" : {
+          "unitPattern-count-other" : "{0} nm",
+          "displayName" : "nm",
+          "unitPattern-count-one" : "{0} nm"
+        },
+        "volume-megaliter" : {
+          "unitPattern-count-other" : "{0} Ml",
+          "displayName" : "ML",
+          "unitPattern-count-one" : "{0} ML"
+        },
+        "area-square-centimeter" : {
+          "perUnitPattern" : "{0}/cm²",
+          "unitPattern-count-other" : "{0} cm²",
+          "displayName" : "cm²",
+          "unitPattern-count-one" : "{0} cm²"
+        },
+        "concentr-part-per-million" : {
+          "unitPattern-count-other" : "{0} ppm",
+          "displayName" : "ppm",
+          "unitPattern-count-one" : "{0} ppm"
+        },
+        "consumption-liter-per-kilometer" : {
+          "unitPattern-count-other" : "{0} L/km",
+          "displayName" : "llitros/km",
+          "unitPattern-count-one" : "{0} L/km"
+        },
+        "length-micrometer" : {
+          "unitPattern-count-other" : "{0} µm",
+          "displayName" : "µmetros",
+          "unitPattern-count-one" : "{0} µm"
+        },
+        "duration-second" : {
+          "perUnitPattern" : "{0}/seg",
+          "unitPattern-count-other" : "{0} segs",
+          "displayName" : "segs",
+          "unitPattern-count-one" : "{0} seg"
+        },
+        "frequency-gigahertz" : {
+          "unitPattern-count-other" : "{0} GHz",
+          "displayName" : "GHz",
+          "unitPattern-count-one" : "{0} GHz"
+        },
+        "length-light-year" : {
+          "unitPattern-count-other" : "{0} ly",
+          "displayName" : "añ. lluz",
+          "unitPattern-count-one" : "{0} ly"
+        },
+        "digital-megabyte" : {
+          "unitPattern-count-other" : "{0} MB",
+          "displayName" : "MByte",
+          "unitPattern-count-one" : "{0} MB"
+        },
+        "digital-byte" : {
+          "unitPattern-count-other" : "{0} byte",
+          "displayName" : "byte",
+          "unitPattern-count-one" : "{0} byte"
+        },
+        "mass-pound" : {
+          "perUnitPattern" : "{0}/lb",
+          "unitPattern-count-other" : "{0} lbs",
+          "displayName" : "llibres",
+          "unitPattern-count-one" : "{0} lb"
+        },
+        "power-milliwatt" : {
+          "unitPattern-count-other" : "{0} mW",
+          "displayName" : "mW",
+          "unitPattern-count-one" : "{0} mW"
+        },
+        "pressure-inch-hg" : {
+          "unitPattern-count-other" : "{0} inHg",
+          "displayName" : "in Hg",
+          "unitPattern-count-one" : "{0} inHg"
+        },
+        "volume-centiliter" : {
+          "unitPattern-count-other" : "{0} cL",
+          "displayName" : "cL",
+          "unitPattern-count-one" : "{0} cL"
+        },
+        "consumption-mile-per-gallon" : {
+          "unitPattern-count-other" : "{0} mpg",
+          "displayName" : "milles/gal",
+          "unitPattern-count-one" : "{0} mpg"
+        },
+        "speed-knot" : {
+          "unitPattern-count-other" : "{0} kn",
+          "displayName" : "kn",
+          "unitPattern-count-one" : "{0} kn"
+        },
+        "angle-arc-second" : {
+          "unitPattern-count-other" : "{0}″",
+          "displayName" : "arcsecs",
+          "unitPattern-count-one" : "{0}″"
+        },
+        "length-nautical-mile" : {
+          "unitPattern-count-other" : "{0} nmi",
+          "displayName" : "nmi",
+          "unitPattern-count-one" : "{0} nmi"
+        },
+        "length-astronomical-unit" : {
+          "unitPattern-count-other" : "{0} ua",
+          "displayName" : "ua",
+          "unitPattern-count-one" : "{0} ua"
+        },
+        "concentr-karat" : {
+          "unitPattern-count-other" : "{0} kt",
+          "displayName" : "quilates",
+          "unitPattern-count-one" : "{0} kt"
+        },
+        "volume-cubic-meter" : {
+          "perUnitPattern" : "{0}/m³",
+          "unitPattern-count-other" : "{0} m³",
+          "displayName" : "m³",
+          "unitPattern-count-one" : "{0} m³"
+        },
+        "digital-terabit" : {
+          "unitPattern-count-other" : "{0} Tb",
+          "displayName" : "Tbit",
+          "unitPattern-count-one" : "{0} Tb"
+        },
+        "pressure-millibar" : {
+          "unitPattern-count-other" : "{0} mbar",
+          "displayName" : "mbar",
+          "unitPattern-count-one" : "{0} mbar"
+        },
+        "angle-degree" : {
+          "unitPattern-count-other" : "{0}°",
+          "displayName" : "graos",
+          "unitPattern-count-one" : "{0}°"
+        },
+        "temperature-kelvin" : {
+          "unitPattern-count-other" : "{0} K",
+          "displayName" : "K",
+          "unitPattern-count-one" : "{0} K"
+        },
+        "length-furlong" : {
+          "unitPattern-count-other" : "{0} fur",
+          "displayName" : "furlongs",
+          "unitPattern-count-one" : "{0} fur"
+        },
+        "length-kilometer" : {
+          "perUnitPattern" : "{0}/km",
+          "unitPattern-count-other" : "{0} km",
+          "displayName" : "km",
+          "unitPattern-count-one" : "{0} km"
+        },
+        "consumption-liter-per-100kilometers" : {
+          "unitPattern-count-other" : "{0} L/100 km",
+          "displayName" : "L/100 km",
+          "unitPattern-count-one" : "{0} L/100 km"
+        },
+        "digital-kilobyte" : {
+          "unitPattern-count-other" : "{0} kB",
+          "displayName" : "kByte",
+          "unitPattern-count-one" : "{0} kB"
+        },
+        "coordinateUnit" : {
+          "east" : "{0}E",
+          "south" : "{0}S",
+          "north" : "{0}N",
+          "west" : "{0}O"
+        },
+        "digital-megabit" : {
+          "unitPattern-count-other" : "{0} Mb",
+          "displayName" : "Mbit",
+          "unitPattern-count-one" : "{0} Mb"
+        },
+        "energy-joule" : {
+          "unitPattern-count-other" : "{0} J",
+          "displayName" : "xulios",
+          "unitPattern-count-one" : "{0} J"
+        },
+        "volume-deciliter" : {
+          "unitPattern-count-other" : "{0} dL",
+          "displayName" : "dL",
+          "unitPattern-count-one" : "{0} dL"
+        },
+        "volume-cubic-foot" : {
+          "unitPattern-count-other" : "{0} ft³",
+          "displayName" : "ft³",
+          "unitPattern-count-one" : "{0} ft³"
+        },
+        "energy-kilocalorie" : {
+          "unitPattern-count-other" : "{0} kcal",
+          "displayName" : "kcal",
+          "unitPattern-count-one" : "{0} kcal"
+        },
+        "temperature-celsius" : {
+          "unitPattern-count-other" : "{0}°C",
+          "displayName" : "°C",
+          "unitPattern-count-one" : "{0}°C"
+        },
+        "mass-carat" : {
+          "unitPattern-count-other" : "{0} CD",
+          "displayName" : "quilates",
+          "unitPattern-count-one" : "{0} CD"
+        },
+        "digital-kilobit" : {
+          "unitPattern-count-other" : "{0} kb",
+          "displayName" : "kbit",
+          "unitPattern-count-one" : "{0} kb"
+        },
+        "volume-liter" : {
+          "perUnitPattern" : "{0}/l",
+          "unitPattern-count-other" : "{0} l",
+          "displayName" : "llitros",
+          "unitPattern-count-one" : "{0} l"
+        },
+        "duration-hour" : {
+          "perUnitPattern" : "{0}/hr",
+          "unitPattern-count-other" : "{0} hrs",
+          "displayName" : "hores",
+          "unitPattern-count-one" : "{0} hr"
+        },
+        "length-centimeter" : {
+          "perUnitPattern" : "{0}/cm",
+          "unitPattern-count-other" : "{0} cm",
+          "displayName" : "cm",
+          "unitPattern-count-one" : "{0} cm"
+        },
+        "mass-ounce-troy" : {
+          "unitPattern-count-other" : "{0} oz t",
+          "displayName" : "oz troy",
+          "unitPattern-count-one" : "{0} oz t"
+        },
+        "pressure-millimeter-of-mercury" : {
+          "unitPattern-count-other" : "{0} mm Hg",
+          "displayName" : "mm Hg",
+          "unitPattern-count-one" : "{0} mm Hg"
+        },
+        "volume-hectoliter" : {
+          "unitPattern-count-other" : "{0} hL",
+          "displayName" : "hectollitros",
+          "unitPattern-count-one" : "{0} hL"
+        },
+        "digital-bit" : {
+          "unitPattern-count-other" : "{0} bit",
+          "displayName" : "bit",
+          "unitPattern-count-one" : "{0} bit"
+        },
+        "duration-century" : {
+          "unitPattern-count-other" : "{0} sgls",
+          "displayName" : "sgl",
+          "unitPattern-count-one" : "{0} sgl"
+        },
+        "length-mile-scandinavian" : {
+          "unitPattern-count-other" : "{0} smi",
+          "displayName" : "smi",
+          "unitPattern-count-one" : "{0} smi"
+        },
+        "length-fathom" : {
+          "unitPattern-count-other" : "{0} ftm",
+          "displayName" : "fathoms",
+          "unitPattern-count-one" : "{0} ftm"
+        },
+        "power-horsepower" : {
+          "unitPattern-count-other" : "{0} hp",
+          "displayName" : "hp",
+          "unitPattern-count-one" : "{0} hp"
+        },
+        "energy-kilowatt-hour" : {
+          "unitPattern-count-other" : "{0} kWh",
+          "displayName" : "kW-hora",
+          "unitPattern-count-one" : "{0} kWh"
+        },
+        "area-square-kilometer" : {
+          "perUnitPattern" : "{0}/km²",
+          "unitPattern-count-other" : "{0} km²",
+          "displayName" : "km²",
+          "unitPattern-count-one" : "{0} km²"
+        },
+        "duration-nanosecond" : {
+          "unitPattern-count-other" : "{0} ns",
+          "displayName" : "nanosegs",
+          "unitPattern-count-one" : "{0} ns"
+        },
+        "volume-gallon-imperial" : {
+          "perUnitPattern" : "{0}/gal. imp.",
+          "unitPattern-count-other" : "{0} gal. imp.",
+          "displayName" : "gal. imp.",
+          "unitPattern-count-one" : "{0} gal. imp."
+        },
+        "frequency-megahertz" : {
+          "unitPattern-count-other" : "{0} MHz",
+          "displayName" : "MHz",
+          "unitPattern-count-one" : "{0} MHz"
+        },
+        "electric-ampere" : {
+          "unitPattern-count-other" : "{0} A",
+          "displayName" : "amps",
+          "unitPattern-count-one" : "{0} A"
+        },
+        "mass-metric-ton" : {
+          "unitPattern-count-other" : "{0} t",
+          "displayName" : "t",
+          "unitPattern-count-one" : "{0} t"
+        },
+        "volume-cubic-inch" : {
+          "unitPattern-count-other" : "{0} in³",
+          "displayName" : "pulgaes³",
+          "unitPattern-count-one" : "{0} in³"
+        },
+        "pressure-pound-per-square-inch" : {
+          "unitPattern-count-other" : "{0} psi",
+          "displayName" : "psi",
+          "unitPattern-count-one" : "{0} psi"
+        },
+        "power-kilowatt" : {
+          "unitPattern-count-other" : "{0} kW",
+          "displayName" : "kW",
+          "unitPattern-count-one" : "{0} kW"
+        }
+      },
+      "narrow" : {
+        "length-picometer" : {
+          "unitPattern-count-other" : "{0}pm",
+          "displayName" : "pm",
+          "unitPattern-count-one" : "{0}pm"
+        },
+        "angle-radian" : {
+          "unitPattern-count-other" : "{0}rad",
+          "displayName" : "rad",
+          "unitPattern-count-one" : "{0}rad"
+        },
+        "area-square-yard" : {
+          "unitPattern-count-other" : "{0}yd²",
+          "displayName" : "yd²",
+          "unitPattern-count-one" : "{0}yd²"
+        },
+        "angle-arc-minute" : {
+          "unitPattern-count-other" : "{0}′",
+          "displayName" : "arcmin",
+          "unitPattern-count-one" : "{0}′"
+        },
+        "area-hectare" : {
+          "unitPattern-count-other" : "{0}ha",
+          "displayName" : "hectárea",
+          "unitPattern-count-one" : "{0}ha"
+        },
+        "consumption-mile-per-gallon-imperial" : {
+          "unitPattern-count-other" : "{0}mpg im",
+          "displayName" : "mpg imp",
+          "unitPattern-count-one" : "{0}mpg im"
+        },
+        "speed-mile-per-hour" : {
+          "unitPattern-count-other" : "{0}mph",
+          "displayName" : "mi/h",
+          "unitPattern-count-one" : "{0}mph"
+        },
+        "mass-kilogram" : {
+          "perUnitPattern" : "{0}/kg",
+          "unitPattern-count-other" : "{0}kg",
+          "displayName" : "kg",
+          "unitPattern-count-one" : "{0}kg"
+        },
+        "volume-cubic-yard" : {
+          "unitPattern-count-other" : "{0}yd³",
+          "displayName" : "yd³",
+          "unitPattern-count-one" : "{0}yd³"
+        },
+        "light-lux" : {
+          "unitPattern-count-other" : "{0}lx",
+          "displayName" : "lux",
+          "unitPattern-count-one" : "{0}lx"
+        },
+        "length-point" : {
+          "unitPattern-count-other" : "{0} pt",
+          "displayName" : "pt",
+          "unitPattern-count-one" : "{0} pt"
+        },
+        "length-parsec" : {
+          "unitPattern-count-other" : "{0}pc",
+          "displayName" : "parsec",
+          "unitPattern-count-one" : "{0}pc"
+        },
+        "temperature-generic" : {
+          "unitPattern-count-other" : "{0}°",
+          "displayName" : "°",
+          "unitPattern-count-one" : "{0}°"
+        },
+        "power-watt" : {
+          "unitPattern-count-other" : "{0}W",
+          "displayName" : "vatios",
+          "unitPattern-count-one" : "{0}W"
+        },
+        "per" : {
+          "compoundUnitPattern" : "{0}/{1}"
+        },
+        "angle-revolution" : {
+          "unitPattern-count-other" : "{0}rev",
+          "displayName" : "rev",
+          "unitPattern-count-one" : "{0}rev"
+        },
+        "frequency-kilohertz" : {
+          "unitPattern-count-other" : "{0}kHz",
+          "displayName" : "kHz",
+          "unitPattern-count-one" : "{0}kHz"
+        },
+        "speed-kilometer-per-hour" : {
+          "unitPattern-count-other" : "{0}km/h",
+          "displayName" : "km/h",
+          "unitPattern-count-one" : "{0}km/h"
+        },
+        "area-square-inch" : {
+          "perUnitPattern" : "{0}/in²",
+          "unitPattern-count-other" : "{0}in²",
+          "displayName" : "in²",
+          "unitPattern-count-one" : "{0}in²"
+        },
+        "length-foot" : {
+          "perUnitPattern" : "{0}/ft",
+          "unitPattern-count-other" : "{0}′",
+          "displayName" : "ft",
+          "unitPattern-count-one" : "{0}′"
+        },
+        "concentr-milligram-per-deciliter" : {
+          "unitPattern-count-other" : "{0}mg/dL",
+          "displayName" : "mg/dL",
+          "unitPattern-count-one" : "{0}mg/dL"
+        },
+        "area-square-mile" : {
+          "perUnitPattern" : "{0}/mi²",
+          "unitPattern-count-other" : "{0}mi²",
+          "displayName" : "mi²",
+          "unitPattern-count-one" : "{0}mi²"
+        },
+        "area-acre" : {
+          "unitPattern-count-other" : "{0}ac",
+          "displayName" : "acre",
+          "unitPattern-count-one" : "{0}ac"
+        },
+        "energy-calorie" : {
+          "unitPattern-count-other" : "{0}cal",
+          "displayName" : "cal",
+          "unitPattern-count-one" : "{0}cal"
+        },
+        "duration-month" : {
+          "perUnitPattern" : "{0}/mes",
+          "unitPattern-count-other" : "{0}meses",
+          "displayName" : "mes",
+          "unitPattern-count-one" : "{0}mes"
+        },
+        "concentr-millimole-per-liter" : {
+          "unitPattern-count-other" : "{0}mmol/L",
+          "displayName" : "mmol/L",
+          "unitPattern-count-one" : "{0}mmol/L"
+        },
+        "electric-volt" : {
+          "unitPattern-count-other" : "{0}V",
+          "displayName" : "voltios",
+          "unitPattern-count-one" : "{0}V"
+        },
+        "duration-week" : {
+          "perUnitPattern" : "{0}/sel",
+          "unitPattern-count-other" : "{0}sels",
+          "displayName" : "sel",
+          "unitPattern-count-one" : "{0}sel"
+        },
+        "length-meter" : {
+          "perUnitPattern" : "{0}/m",
+          "unitPattern-count-other" : "{0}m",
+          "displayName" : "m",
+          "unitPattern-count-one" : "{0}m"
+        },
+        "duration-minute" : {
+          "perUnitPattern" : "{0}/min",
+          "unitPattern-count-other" : "{0}mins",
+          "displayName" : "min",
+          "unitPattern-count-one" : "{0}min"
+        },
+        "energy-kilojoule" : {
+          "unitPattern-count-other" : "{0}kJ",
+          "displayName" : "kJ",
+          "unitPattern-count-one" : "{0}kJ"
+        },
+        "duration-millisecond" : {
+          "unitPattern-count-other" : "{0}ms",
+          "displayName" : "mseg",
+          "unitPattern-count-one" : "{0}ms"
+        },
+        "length-yard" : {
+          "unitPattern-count-other" : "{0}yd",
+          "displayName" : "yd",
+          "unitPattern-count-one" : "{0}yd"
+        },
+        "volume-cubic-mile" : {
+          "unitPattern-count-other" : "{0} mi³",
+          "displayName" : "mi³",
+          "unitPattern-count-one" : "{0}mi³"
+        },
+        "digital-gigabyte" : {
+          "unitPattern-count-other" : "{0}GB",
+          "displayName" : "GByte",
+          "unitPattern-count-one" : "{0}GB"
+        },
+        "volume-milliliter" : {
+          "unitPattern-count-other" : "{0}mL",
+          "displayName" : "mL",
+          "unitPattern-count-one" : "{0}mL"
+        },
+        "length-inch" : {
+          "perUnitPattern" : "{0}/in",
+          "unitPattern-count-other" : "{0}″",
+          "displayName" : "in",
+          "unitPattern-count-one" : "{0}″"
+        },
+        "mass-ton" : {
+          "unitPattern-count-other" : "{0}tn",
+          "displayName" : "ton",
+          "unitPattern-count-one" : "{0}tn"
+        },
+        "acceleration-g-force" : {
+          "unitPattern-count-other" : "{0}Gs",
+          "displayName" : "fuercia g",
+          "unitPattern-count-one" : "{0}G"
+        },
+        "duration-microsecond" : {
+          "unitPattern-count-other" : "{0}μs",
+          "displayName" : "μseg",
+          "unitPattern-count-one" : "{0}μs"
+        },
+        "volume-cubic-centimeter" : {
+          "perUnitPattern" : "{0}/cm³",
+          "unitPattern-count-other" : "{0}cm³",
+          "displayName" : "cm³",
+          "unitPattern-count-one" : "{0}cm³"
+        },
+        "electric-ohm" : {
+          "unitPattern-count-other" : "{0}Ω",
+          "displayName" : "ohmnios",
+          "unitPattern-count-one" : "{0}Ω"
+        },
+        "volume-teaspoon" : {
+          "unitPattern-count-other" : "{0}tsp",
+          "displayName" : "tsp",
+          "unitPattern-count-one" : "{0}tsp"
+        },
+        "volume-pint" : {
+          "unitPattern-count-other" : "{0}pt",
+          "displayName" : "pt",
+          "unitPattern-count-one" : "{0}pt"
+        },
+        "digital-gigabit" : {
+          "unitPattern-count-other" : "{0}Gb",
+          "displayName" : "Gbit",
+          "unitPattern-count-one" : "{0}Gb"
+        },
+        "pressure-hectopascal" : {
+          "unitPattern-count-other" : "{0}hPa",
+          "displayName" : "hPa",
+          "unitPattern-count-one" : "{0}hPa"
+        },
+        "volume-cup-metric" : {
+          "unitPattern-count-other" : "{0}mc",
+          "displayName" : "taces mét.",
+          "unitPattern-count-one" : "{0}mc"
+        },
+        "mass-stone" : {
+          "unitPattern-count-other" : "{0}st",
+          "displayName" : "piedres",
+          "unitPattern-count-one" : "{0}st"
+        },
+        "area-square-meter" : {
+          "perUnitPattern" : "{0} per m²",
+          "unitPattern-count-other" : "{0} m²",
+          "displayName" : "m²",
+          "unitPattern-count-one" : "{0} m²"
+        },
+        "energy-foodcalorie" : {
+          "unitPattern-count-other" : "{0}Cal",
+          "displayName" : "Cal",
+          "unitPattern-count-one" : "{0}Cal"
+        },
+        "volume-acre-foot" : {
+          "unitPattern-count-other" : "{0}ac ft",
+          "displayName" : "acre ft",
+          "unitPattern-count-one" : "{0}ac ft"
+        },
+        "acceleration-meter-per-second-squared" : {
+          "unitPattern-count-other" : "{0}m/s²",
+          "displayName" : "m/s²",
+          "unitPattern-count-one" : "{0}m/s²"
+        },
+        "mass-gram" : {
+          "perUnitPattern" : "{0}/g",
+          "unitPattern-count-other" : "{0}g",
+          "displayName" : "gramos",
+          "unitPattern-count-one" : "{0}g"
+        },
+        "electric-milliampere" : {
+          "unitPattern-count-other" : "{0}mA",
+          "displayName" : "mA",
+          "unitPattern-count-one" : "{0}mA"
+        },
+        "temperature-fahrenheit" : {
+          "unitPattern-count-other" : "{0}°F",
+          "displayName" : "°F",
+          "unitPattern-count-one" : "{0}°F"
+        },
+        "speed-meter-per-second" : {
+          "unitPattern-count-other" : "{0}m/s",
+          "displayName" : "m/s",
+          "unitPattern-count-one" : "{0}m/s"
+        },
+        "mass-milligram" : {
+          "unitPattern-count-other" : "{0}mg",
+          "displayName" : "mg",
+          "unitPattern-count-one" : "{0}mg"
+        },
+        "mass-microgram" : {
+          "unitPattern-count-other" : "{0}µg",
+          "displayName" : "µg",
+          "unitPattern-count-one" : "{0}µg"
+        },
+        "frequency-hertz" : {
+          "unitPattern-count-other" : "{0}Hz",
+          "displayName" : "Hz",
+          "unitPattern-count-one" : "{0}Hz"
+        },
+        "volume-pint-metric" : {
+          "unitPattern-count-other" : "{0}mpt",
+          "displayName" : "mpt",
+          "unitPattern-count-one" : "{0}mpt"
+        },
+        "volume-cup" : {
+          "unitPattern-count-other" : "{0}tz",
+          "displayName" : "taces",
+          "unitPattern-count-one" : "{0}tz"
+        },
+        "length-millimeter" : {
+          "unitPattern-count-other" : "{0}mm",
+          "displayName" : "mm",
+          "unitPattern-count-one" : "{0}mm"
+        },
+        "volume-bushel" : {
+          "unitPattern-count-other" : "{0}bu",
+          "displayName" : "bushel",
+          "unitPattern-count-one" : "{0}bu"
+        },
+        "power-megawatt" : {
+          "unitPattern-count-other" : "{0}MW",
+          "displayName" : "MW",
+          "unitPattern-count-one" : "{0}MW"
+        },
+        "volume-fluid-ounce" : {
+          "unitPattern-count-other" : "{0}fl oz",
+          "displayName" : "fl oz",
+          "unitPattern-count-one" : "{0}fl oz"
+        },
+        "volume-tablespoon" : {
+          "unitPattern-count-other" : "{0}tbsp",
+          "displayName" : "tbsp",
+          "unitPattern-count-one" : "{0}tbsp"
+        },
+        "volume-quart" : {
+          "unitPattern-count-other" : "{0}qt",
+          "displayName" : "qt",
+          "unitPattern-count-one" : "{0}qt"
+        },
+        "length-mile" : {
+          "unitPattern-count-other" : "{0}mi",
+          "displayName" : "mi",
+          "unitPattern-count-one" : "{0}mi"
+        },
+        "duration-day" : {
+          "perUnitPattern" : "{0}/día",
+          "unitPattern-count-other" : "{0}díes",
+          "displayName" : "día",
+          "unitPattern-count-one" : "{0}día"
+        },
+        "digital-terabyte" : {
+          "unitPattern-count-other" : "{0}TB",
+          "displayName" : "TByte",
+          "unitPattern-count-one" : "{0}TB"
+        },
+        "duration-year" : {
+          "perUnitPattern" : "{0}/añ",
+          "unitPattern-count-other" : "{0}añs",
+          "displayName" : "añ",
+          "unitPattern-count-one" : "{0}añ"
+        },
+        "mass-ounce" : {
+          "perUnitPattern" : "{0}/oz",
+          "unitPattern-count-other" : "{0}oz",
+          "displayName" : "oz",
+          "unitPattern-count-one" : "{0}oz"
+        },
+        "power-gigawatt" : {
+          "unitPattern-count-other" : "{0}GW",
+          "displayName" : "GW",
+          "unitPattern-count-one" : "{0}GW"
+        },
+        "area-square-foot" : {
+          "unitPattern-count-other" : "{0}ft²",
+          "displayName" : "ft²",
+          "unitPattern-count-one" : "{0}ft²"
+        },
+        "volume-cubic-kilometer" : {
+          "unitPattern-count-other" : "{0}km³",
+          "displayName" : "km³",
+          "unitPattern-count-one" : "{0}km³"
+        },
+        "volume-gallon" : {
+          "perUnitPattern" : "{0}/gal",
+          "unitPattern-count-other" : "{0}gal",
+          "displayName" : "gal",
+          "unitPattern-count-one" : "{0}gal"
+        },
+        "length-decimeter" : {
+          "unitPattern-count-other" : "{0}dm",
+          "displayName" : "dm",
+          "unitPattern-count-one" : "{0}dm"
+        },
+        "length-nanometer" : {
+          "unitPattern-count-other" : "{0}nm",
+          "displayName" : "nm",
+          "unitPattern-count-one" : "{0}nm"
+        },
+        "volume-megaliter" : {
+          "unitPattern-count-other" : "{0}ML",
+          "displayName" : "ML",
+          "unitPattern-count-one" : "{0}ML"
+        },
+        "area-square-centimeter" : {
+          "perUnitPattern" : "{0}/cm²",
+          "unitPattern-count-other" : "{0}cm²",
+          "displayName" : "cm²",
+          "unitPattern-count-one" : "{0}cm²"
+        },
+        "concentr-part-per-million" : {
+          "unitPattern-count-other" : "{0}ppm",
+          "displayName" : "ppm",
+          "unitPattern-count-one" : "{0}ppm"
+        },
+        "consumption-liter-per-kilometer" : {
+          "unitPattern-count-other" : "{0}L/km",
+          "displayName" : "L/km",
+          "unitPattern-count-one" : "{0}L/km"
+        },
+        "length-micrometer" : {
+          "unitPattern-count-other" : "{0}µm",
+          "displayName" : "µm",
+          "unitPattern-count-one" : "{0}µm"
+        },
+        "duration-second" : {
+          "perUnitPattern" : "{0}/seg",
+          "unitPattern-count-other" : "{0}segs",
+          "displayName" : "seg",
+          "unitPattern-count-one" : "{0}seg"
+        },
+        "frequency-gigahertz" : {
+          "unitPattern-count-other" : "{0}GHz",
+          "displayName" : "GHz",
+          "unitPattern-count-one" : "{0}GHz"
+        },
+        "length-light-year" : {
+          "unitPattern-count-other" : "{0}ly",
+          "displayName" : "añ. lluz",
+          "unitPattern-count-one" : "{0}ly"
+        },
+        "digital-megabyte" : {
+          "unitPattern-count-other" : "{0}MB",
+          "displayName" : "MByte",
+          "unitPattern-count-one" : "{0}MB"
+        },
+        "digital-byte" : {
+          "unitPattern-count-other" : "{0}byte",
+          "displayName" : "byte",
+          "unitPattern-count-one" : "{0}byte"
+        },
+        "mass-pound" : {
+          "perUnitPattern" : "{0}/lb",
+          "unitPattern-count-other" : "{0}#",
+          "displayName" : "lb",
+          "unitPattern-count-one" : "{0}#"
+        },
+        "power-milliwatt" : {
+          "unitPattern-count-other" : "{0}mW",
+          "displayName" : "mW",
+          "unitPattern-count-one" : "{0}mW"
+        },
+        "pressure-inch-hg" : {
+          "unitPattern-count-other" : "{0}″ Hg",
+          "displayName" : "″ Hg",
+          "unitPattern-count-one" : "{0}″ Hg"
+        },
+        "volume-centiliter" : {
+          "unitPattern-count-other" : "{0}cL",
+          "displayName" : "cL",
+          "unitPattern-count-one" : "{0}cL"
+        },
+        "consumption-mile-per-gallon" : {
+          "unitPattern-count-other" : "{0}mpg",
+          "displayName" : "mpg",
+          "unitPattern-count-one" : "{0}mpg"
+        },
+        "speed-knot" : {
+          "unitPattern-count-other" : "{0}kn",
+          "displayName" : "kn",
+          "unitPattern-count-one" : "{0}kn"
+        },
+        "angle-arc-second" : {
+          "unitPattern-count-other" : "{0}″",
+          "displayName" : "arcsecs",
+          "unitPattern-count-one" : "{0}″"
+        },
+        "length-nautical-mile" : {
+          "unitPattern-count-other" : "{0}nmi",
+          "displayName" : "nmi",
+          "unitPattern-count-one" : "{0}nmi"
+        },
+        "length-astronomical-unit" : {
+          "unitPattern-count-other" : "{0}ua",
+          "displayName" : "ua",
+          "unitPattern-count-one" : "{0}ua"
+        },
+        "concentr-karat" : {
+          "unitPattern-count-other" : "{0}kt",
+          "displayName" : "quilate",
+          "unitPattern-count-one" : "{0}kt"
+        },
+        "volume-cubic-meter" : {
+          "perUnitPattern" : "{0}/m³",
+          "unitPattern-count-other" : "{0}m³",
+          "displayName" : "m³",
+          "unitPattern-count-one" : "{0}m³"
+        },
+        "digital-terabit" : {
+          "unitPattern-count-other" : "{0}Tb",
+          "displayName" : "Tbit",
+          "unitPattern-count-one" : "{0}Tb"
+        },
+        "pressure-millibar" : {
+          "unitPattern-count-other" : "{0}mb",
+          "displayName" : "mbar",
+          "unitPattern-count-one" : "{0}mb"
+        },
+        "angle-degree" : {
+          "unitPattern-count-other" : "{0}°",
+          "displayName" : "graos",
+          "unitPattern-count-one" : "{0}°"
+        },
+        "temperature-kelvin" : {
+          "unitPattern-count-other" : "{0}K",
+          "displayName" : "K",
+          "unitPattern-count-one" : "{0}K"
+        },
+        "length-furlong" : {
+          "unitPattern-count-other" : "{0}fur",
+          "displayName" : "furlongs",
+          "unitPattern-count-one" : "{0}fur"
+        },
+        "length-kilometer" : {
+          "perUnitPattern" : "{0}/km",
+          "unitPattern-count-other" : "{0}km",
+          "displayName" : "km",
+          "unitPattern-count-one" : "{0}km"
+        },
+        "consumption-liter-per-100kilometers" : {
+          "unitPattern-count-other" : "{0}L/100km",
+          "displayName" : "L/100km",
+          "unitPattern-count-one" : "{0}L/100km"
+        },
+        "digital-kilobyte" : {
+          "unitPattern-count-other" : "{0}kB",
+          "displayName" : "kByte",
+          "unitPattern-count-one" : "{0}kB"
+        },
+        "coordinateUnit" : {
+          "east" : "{0}E",
+          "south" : "{0}S",
+          "north" : "{0}N",
+          "west" : "{0}O"
+        },
+        "digital-megabit" : {
+          "unitPattern-count-other" : "{0}Mb",
+          "displayName" : "Mbit",
+          "unitPattern-count-one" : "{0}Mb"
+        },
+        "energy-joule" : {
+          "unitPattern-count-other" : "{0}J",
+          "displayName" : "xulios",
+          "unitPattern-count-one" : "{0}J"
+        },
+        "volume-deciliter" : {
+          "unitPattern-count-other" : "{0}dL",
+          "displayName" : "dL",
+          "unitPattern-count-one" : "{0}dL"
+        },
+        "volume-cubic-foot" : {
+          "unitPattern-count-other" : "{0}ft³",
+          "displayName" : "ft³",
+          "unitPattern-count-one" : "{0}ft³"
+        },
+        "energy-kilocalorie" : {
+          "unitPattern-count-other" : "{0}kcal",
+          "displayName" : "kcal",
+          "unitPattern-count-one" : "{0}kcal"
+        },
+        "temperature-celsius" : {
+          "unitPattern-count-other" : "{0}°C",
+          "displayName" : "°C",
+          "unitPattern-count-one" : "{0}°C"
+        },
+        "mass-carat" : {
+          "unitPattern-count-other" : "{0}CD",
+          "displayName" : "quilates",
+          "unitPattern-count-one" : "{0}CD"
+        },
+        "digital-kilobit" : {
+          "unitPattern-count-other" : "{0}kb",
+          "displayName" : "kbit",
+          "unitPattern-count-one" : "{0}kb"
+        },
+        "volume-liter" : {
+          "perUnitPattern" : "{0}/l",
+          "unitPattern-count-other" : "{0}l",
+          "displayName" : "llitru",
+          "unitPattern-count-one" : "{0}l"
+        },
+        "duration-hour" : {
+          "perUnitPattern" : "{0}/hr",
+          "unitPattern-count-other" : "{0}hrs",
+          "displayName" : "hora",
+          "unitPattern-count-one" : "{0}hr"
+        },
+        "length-centimeter" : {
+          "perUnitPattern" : "{0}/cm",
+          "unitPattern-count-other" : "{0}cm",
+          "displayName" : "cm",
+          "unitPattern-count-one" : "{0}cm"
+        },
+        "mass-ounce-troy" : {
+          "unitPattern-count-other" : "{0}oz t",
+          "displayName" : "oz t",
+          "unitPattern-count-one" : "{0}oz t"
+        },
+        "pressure-millimeter-of-mercury" : {
+          "unitPattern-count-other" : "{0}mm Hg",
+          "displayName" : "mm Hg",
+          "unitPattern-count-one" : "{0}mm Hg"
+        },
+        "volume-hectoliter" : {
+          "unitPattern-count-other" : "{0}hL",
+          "displayName" : "hL",
+          "unitPattern-count-one" : "{0}hL"
+        },
+        "digital-bit" : {
+          "unitPattern-count-other" : "{0}bits",
+          "displayName" : "bit",
+          "unitPattern-count-one" : "{0}bit"
+        },
+        "duration-century" : {
+          "unitPattern-count-other" : "{0} sgls",
+          "displayName" : "sgl",
+          "unitPattern-count-one" : "{0} sgl"
+        },
+        "length-mile-scandinavian" : {
+          "unitPattern-count-other" : "{0}smi",
+          "displayName" : "smi",
+          "unitPattern-count-one" : "{0}smi"
+        },
+        "length-fathom" : {
+          "unitPattern-count-other" : "{0}fm",
+          "displayName" : "fathom",
+          "unitPattern-count-one" : "{0}fm"
+        },
+        "power-horsepower" : {
+          "unitPattern-count-other" : "{0}hp",
+          "displayName" : "hp",
+          "unitPattern-count-one" : "{0}hp"
+        },
+        "energy-kilowatt-hour" : {
+          "unitPattern-count-other" : "{0}kWh",
+          "displayName" : "kWh",
+          "unitPattern-count-one" : "{0}kWh"
+        },
+        "area-square-kilometer" : {
+          "perUnitPattern" : "{0}/km²",
+          "unitPattern-count-other" : "{0} km²",
+          "displayName" : "km²",
+          "unitPattern-count-one" : "{0} km²"
+        },
+        "duration-nanosecond" : {
+          "unitPattern-count-other" : "{0}ns",
+          "displayName" : "ns",
+          "unitPattern-count-one" : "{0}ns"
+        },
+        "volume-gallon-imperial" : {
+          "perUnitPattern" : "{0}/gal imp",
+          "unitPattern-count-other" : "{0} gal imp",
+          "displayName" : "gal. imp.",
+          "unitPattern-count-one" : "{0} gal imp"
+        },
+        "frequency-megahertz" : {
+          "unitPattern-count-other" : "{0}MHz",
+          "displayName" : "MHz",
+          "unitPattern-count-one" : "{0}MHz"
+        },
+        "electric-ampere" : {
+          "unitPattern-count-other" : "{0}A",
+          "displayName" : "amp",
+          "unitPattern-count-one" : "{0}A"
+        },
+        "mass-metric-ton" : {
+          "unitPattern-count-other" : "{0}t",
+          "displayName" : "t",
+          "unitPattern-count-one" : "{0}t"
+        },
+        "volume-cubic-inch" : {
+          "unitPattern-count-other" : "{0}in³",
+          "displayName" : "in³",
+          "unitPattern-count-one" : "{0}in³"
+        },
+        "pressure-pound-per-square-inch" : {
+          "unitPattern-count-other" : "{0}psi",
+          "displayName" : "psi",
+          "unitPattern-count-one" : "{0}psi"
+        },
+        "power-kilowatt" : {
+          "unitPattern-count-other" : "{0}kW",
+          "displayName" : "kW",
+          "unitPattern-count-one" : "{0}kW"
+        }
+      },
+      "durationUnit-type-hms" : {
+        "durationUnitPattern" : "h:mm:ss"
+      },
+      "long" : {
+        "length-picometer" : {
+          "unitPattern-count-other" : "{0} picómetros",
+          "displayName" : "picómetros",
+          "unitPattern-count-one" : "{0} picómetru"
+        },
+        "angle-radian" : {
+          "unitPattern-count-other" : "{0} radianes",
+          "displayName" : "radianes",
+          "unitPattern-count-one" : "{0} radián"
+        },
+        "area-square-yard" : {
+          "unitPattern-count-other" : "{0} yardes cuadraes",
+          "displayName" : "yardes cuadraes",
+          "unitPattern-count-one" : "{0} yarda cuadrada"
+        },
+        "angle-arc-minute" : {
+          "unitPattern-count-other" : "{0} minutos d'arcu",
+          "displayName" : "minutos d’arcu",
+          "unitPattern-count-one" : "{0} minutu d'arcu"
+        },
+        "area-hectare" : {
+          "unitPattern-count-other" : "{0} hectárees",
+          "displayName" : "hectárees",
+          "unitPattern-count-one" : "{0} hectárea"
+        },
+        "consumption-mile-per-gallon-imperial" : {
+          "unitPattern-count-other" : "{0} milles per galón imperial",
+          "displayName" : "milles per galón imperial",
+          "unitPattern-count-one" : "{0} milla per galón imperial"
+        },
+        "speed-mile-per-hour" : {
+          "unitPattern-count-other" : "{0} milles per hora",
+          "displayName" : "milles per hora",
+          "unitPattern-count-one" : "{0} milla per hora"
+        },
+        "mass-kilogram" : {
+          "perUnitPattern" : "{0} per quilogramu",
+          "unitPattern-count-other" : "{0} quilogramos",
+          "displayName" : "quilogramos",
+          "unitPattern-count-one" : "{0} quilogramu"
+        },
+        "volume-cubic-yard" : {
+          "unitPattern-count-other" : "{0} yardes cúbiques",
+          "displayName" : "yardes cúbiques",
+          "unitPattern-count-one" : "{0} yarda cúbica"
+        },
+        "light-lux" : {
+          "unitPattern-count-other" : "{0} lux",
+          "displayName" : "lux",
+          "unitPattern-count-one" : "{0} lux"
+        },
+        "length-point" : {
+          "unitPattern-count-other" : "{0} puntos",
+          "displayName" : "Puntos",
+          "unitPattern-count-one" : "{0} puntu"
+        },
+        "length-parsec" : {
+          "unitPattern-count-other" : "{0} parsecs",
+          "displayName" : "parsecs",
+          "unitPattern-count-one" : "{0} parsec"
+        },
+        "temperature-generic" : {
+          "unitPattern-count-other" : "{0}°",
+          "displayName" : "°",
+          "unitPattern-count-one" : "{0}°"
+        },
+        "power-watt" : {
+          "unitPattern-count-other" : "{0} vatios",
+          "displayName" : "vatios",
+          "unitPattern-count-one" : "{0} vatiu"
+        },
+        "per" : {
+          "compoundUnitPattern" : "{0} per {1}"
+        },
+        "angle-revolution" : {
+          "unitPattern-count-other" : "{0} revoluciones",
+          "displayName" : "revolución",
+          "unitPattern-count-one" : "{0} revolución"
+        },
+        "frequency-kilohertz" : {
+          "unitPattern-count-other" : "{0} kilohercios",
+          "displayName" : "quilohercios",
+          "unitPattern-count-one" : "{0} quiloherciu"
+        },
+        "speed-kilometer-per-hour" : {
+          "unitPattern-count-other" : "{0} quilómetros per hora",
+          "displayName" : "quilómetros per hora",
+          "unitPattern-count-one" : "{0} quilómetru per hora"
+        },
+        "area-square-inch" : {
+          "perUnitPattern" : "{0} per pulgada cuadrada",
+          "unitPattern-count-other" : "{0} pulgaes cuadraes",
+          "displayName" : "pulgaes cuadraes",
+          "unitPattern-count-one" : "{0} pulgada cuadrada"
+        },
+        "length-foot" : {
+          "perUnitPattern" : "{0} per pie",
+          "unitPattern-count-other" : "{0} pies",
+          "displayName" : "pies",
+          "unitPattern-count-one" : "{0} pie"
+        },
+        "concentr-milligram-per-deciliter" : {
+          "unitPattern-count-other" : "{0} miligramos per decillitru",
+          "displayName" : "miligramos per decillitru",
+          "unitPattern-count-one" : "{0} miligramu per decillitru"
+        },
+        "area-square-mile" : {
+          "perUnitPattern" : "{0} per milla cuadrada",
+          "unitPattern-count-other" : "{0} milles cuadraes",
+          "displayName" : "milles cuadraes",
+          "unitPattern-count-one" : "{0} milla cuadrada"
+        },
+        "area-acre" : {
+          "unitPattern-count-other" : "{0} acres",
+          "displayName" : "acres",
+          "unitPattern-count-one" : "{0} acre"
+        },
+        "energy-calorie" : {
+          "unitPattern-count-other" : "{0} caloríes",
+          "displayName" : "caloríes",
+          "unitPattern-count-one" : "{0} caloría"
+        },
+        "duration-month" : {
+          "perUnitPattern" : "{0} per mes",
+          "unitPattern-count-other" : "{0} meses",
+          "displayName" : "meses",
+          "unitPattern-count-one" : "{0} mes"
+        },
+        "concentr-millimole-per-liter" : {
+          "unitPattern-count-other" : "{0} milimoles per llitru",
+          "displayName" : "milimoles per llitru",
+          "unitPattern-count-one" : "{0} milimol per llitru"
+        },
+        "electric-volt" : {
+          "unitPattern-count-other" : "{0} voltios",
+          "displayName" : "voltios",
+          "unitPattern-count-one" : "{0} voltiu"
+        },
+        "duration-week" : {
+          "perUnitPattern" : "{0} per selmana",
+          "unitPattern-count-other" : "{0} selmanes",
+          "displayName" : "selmanes",
+          "unitPattern-count-one" : "{0} selmana"
+        },
+        "length-meter" : {
+          "perUnitPattern" : "{0} per metru",
+          "unitPattern-count-other" : "{0} metros",
+          "displayName" : "metros",
+          "unitPattern-count-one" : "{0} metru"
+        },
+        "duration-minute" : {
+          "perUnitPattern" : "{0} per minutu",
+          "unitPattern-count-other" : "{0} minutos",
+          "displayName" : "minutos",
+          "unitPattern-count-one" : "{0} minutu"
+        },
+        "energy-kilojoule" : {
+          "unitPattern-count-other" : "{0} quiloxulios",
+          "displayName" : "quiloxulios",
+          "unitPattern-count-one" : "{0} quiloxuliu"
+        },
+        "duration-millisecond" : {
+          "unitPattern-count-other" : "{0} milisegundos",
+          "displayName" : "milisegundos",
+          "unitPattern-count-one" : "{0} milisegundu"
+        },
+        "length-yard" : {
+          "unitPattern-count-other" : "{0} yardes",
+          "displayName" : "yardes",
+          "unitPattern-count-one" : "{0} yarda"
+        },
+        "volume-cubic-mile" : {
+          "unitPattern-count-other" : "{0} milles cúbiques",
+          "displayName" : "milles cúbiques",
+          "unitPattern-count-one" : "{0} milla cúbica"
+        },
+        "digital-gigabyte" : {
+          "unitPattern-count-other" : "{0} gigabytes",
+          "displayName" : "gigabytes",
+          "unitPattern-count-one" : "{0} gigabyte"
+        },
+        "volume-milliliter" : {
+          "unitPattern-count-other" : "{0} milillitros",
+          "displayName" : "milillitros",
+          "unitPattern-count-one" : "{0} milillitru"
+        },
+        "length-inch" : {
+          "perUnitPattern" : "{0} per pulgada",
+          "unitPattern-count-other" : "{0} pulgaes",
+          "displayName" : "pulgaes",
+          "unitPattern-count-one" : "{0} pulgada"
+        },
+        "mass-ton" : {
+          "unitPattern-count-other" : "{0} tonelaes",
+          "displayName" : "tonelaes",
+          "unitPattern-count-one" : "{0} tonelada"
+        },
+        "acceleration-g-force" : {
+          "unitPattern-count-other" : "{0} fuercies gues",
+          "displayName" : "fuercia g",
+          "unitPattern-count-one" : "{0} fuercia g"
+        },
+        "duration-microsecond" : {
+          "unitPattern-count-other" : "{0} microsegundos",
+          "displayName" : "microsegundos",
+          "unitPattern-count-one" : "{0} microsegundu"
+        },
+        "volume-cubic-centimeter" : {
+          "perUnitPattern" : "{0} per centímetru cúbicu",
+          "unitPattern-count-other" : "{0} centímetros cúbicos",
+          "displayName" : "centímetros cúbicos",
+          "unitPattern-count-one" : "{0} centímetru cúbicu"
+        },
+        "electric-ohm" : {
+          "unitPattern-count-other" : "{0} ohmios",
+          "displayName" : "ohmnios",
+          "unitPattern-count-one" : "{0} ohmiu"
+        },
+        "volume-teaspoon" : {
+          "unitPattern-count-other" : "{0} cuyarines",
+          "displayName" : "cuyarines",
+          "unitPattern-count-one" : "{0} cuyarina"
+        },
+        "volume-pint" : {
+          "unitPattern-count-other" : "{0} pintes",
+          "displayName" : "pintes",
+          "unitPattern-count-one" : "{0} pinta"
+        },
+        "digital-gigabit" : {
+          "unitPattern-count-other" : "{0} gigabits",
+          "displayName" : "gigabits",
+          "unitPattern-count-one" : "{0} gigabit"
+        },
+        "pressure-hectopascal" : {
+          "unitPattern-count-other" : "{0} hectopascales",
+          "displayName" : "hectopascales",
+          "unitPattern-count-one" : "{0} hectopascal"
+        },
+        "volume-cup-metric" : {
+          "unitPattern-count-other" : "{0} taces métriques",
+          "displayName" : "taces métriques",
+          "unitPattern-count-one" : "{0} taza métrica"
+        },
+        "mass-stone" : {
+          "unitPattern-count-other" : "{0} piedres",
+          "displayName" : "piedres",
+          "unitPattern-count-one" : "{0} piedra"
+        },
+        "area-square-meter" : {
+          "perUnitPattern" : "{0} per metru cuadráu",
+          "unitPattern-count-other" : "{0} metros cuadraos",
+          "displayName" : "metros cuadraos",
+          "unitPattern-count-one" : "{0} metru cuadráu"
+        },
+        "energy-foodcalorie" : {
+          "unitPattern-count-other" : "{0} Caloríes",
+          "displayName" : "Caloríes",
+          "unitPattern-count-one" : "{0} Caloría"
+        },
+        "volume-acre-foot" : {
+          "unitPattern-count-other" : "{0} acre-pies",
+          "displayName" : "acre-pies",
+          "unitPattern-count-one" : "{0} acre-pie"
+        },
+        "acceleration-meter-per-second-squared" : {
+          "unitPattern-count-other" : "{0} metros por segundu al cuadráu",
+          "displayName" : "metros per segundu al cuadráu",
+          "unitPattern-count-one" : "{0} metru per segundu al cuadráu"
+        },
+        "mass-gram" : {
+          "perUnitPattern" : "{0} per gramu",
+          "unitPattern-count-other" : "{0} gramos",
+          "displayName" : "gramos",
+          "unitPattern-count-one" : "{0} gramu"
+        },
+        "electric-milliampere" : {
+          "unitPattern-count-other" : "{0} milliamperios",
+          "displayName" : "miliamperios",
+          "unitPattern-count-one" : "{0} milliamperiu"
+        },
+        "temperature-fahrenheit" : {
+          "unitPattern-count-other" : "{0} graos Fahrenheit",
+          "displayName" : "graos Fahrenheit",
+          "unitPattern-count-one" : "{0} grau Fahrenheit"
+        },
+        "speed-meter-per-second" : {
+          "unitPattern-count-other" : "{0} metros per segundu",
+          "displayName" : "metros per segundu",
+          "unitPattern-count-one" : "{0} metru per segundu"
+        },
+        "mass-milligram" : {
+          "unitPattern-count-other" : "{0} miligramos",
+          "displayName" : "miligramos",
+          "unitPattern-count-one" : "{0} miligramu"
+        },
+        "mass-microgram" : {
+          "unitPattern-count-other" : "{0} microgramos",
+          "displayName" : "microgramos",
+          "unitPattern-count-one" : "{0} microgramu"
+        },
+        "frequency-hertz" : {
+          "unitPattern-count-other" : "{0} hercios",
+          "displayName" : "hercios",
+          "unitPattern-count-one" : "{0} herciu"
+        },
+        "volume-pint-metric" : {
+          "unitPattern-count-other" : "{0} pintes métriques",
+          "displayName" : "pintes métriques",
+          "unitPattern-count-one" : "{0} pinta métrica"
+        },
+        "volume-cup" : {
+          "unitPattern-count-other" : "{0} taces",
+          "displayName" : "taces",
+          "unitPattern-count-one" : "{0} taza"
+        },
+        "length-millimeter" : {
+          "unitPattern-count-other" : "{0} milímetros",
+          "displayName" : "milímetros",
+          "unitPattern-count-one" : "{0} milímetru"
+        },
+        "volume-bushel" : {
+          "unitPattern-count-other" : "{0} bushels",
+          "displayName" : "bushels",
+          "unitPattern-count-one" : "{0} bushel"
+        },
+        "power-megawatt" : {
+          "unitPattern-count-other" : "{0} megavatios",
+          "displayName" : "megavatios",
+          "unitPattern-count-one" : "{0} megavatiu"
+        },
+        "volume-fluid-ounce" : {
+          "unitPattern-count-other" : "{0} onces de fluidos",
+          "displayName" : "onces de fluidos",
+          "unitPattern-count-one" : "{0} onza de fluidos"
+        },
+        "volume-tablespoon" : {
+          "unitPattern-count-other" : "{0} cuyares",
+          "displayName" : "cuyares",
+          "unitPattern-count-one" : "{0} cuyar"
+        },
+        "volume-quart" : {
+          "unitPattern-count-other" : "{0} cuartos",
+          "displayName" : "cuartos",
+          "unitPattern-count-one" : "{0} cuartu"
+        },
+        "length-mile" : {
+          "unitPattern-count-other" : "{0} milles",
+          "displayName" : "milles",
+          "unitPattern-count-one" : "{0} milla"
+        },
+        "duration-day" : {
+          "perUnitPattern" : "{0} per día",
+          "unitPattern-count-other" : "{0} díes",
+          "displayName" : "díes",
+          "unitPattern-count-one" : "{0} día"
+        },
+        "digital-terabyte" : {
+          "unitPattern-count-other" : "{0} terabytes",
+          "displayName" : "terabytes",
+          "unitPattern-count-one" : "{0} terabyte"
+        },
+        "duration-year" : {
+          "perUnitPattern" : "{0} per añu",
+          "unitPattern-count-other" : "{0} años",
+          "displayName" : "años",
+          "unitPattern-count-one" : "{0} añu"
+        },
+        "mass-ounce" : {
+          "perUnitPattern" : "{0} per onza",
+          "unitPattern-count-other" : "{0} onces",
+          "displayName" : "onces",
+          "unitPattern-count-one" : "{0} onza"
+        },
+        "power-gigawatt" : {
+          "unitPattern-count-other" : "{0} gigavatios",
+          "displayName" : "gigavatios",
+          "unitPattern-count-one" : "{0} gigavatiu"
+        },
+        "area-square-foot" : {
+          "unitPattern-count-other" : "{0} pies cuadraos",
+          "displayName" : "pies cuadraos",
+          "unitPattern-count-one" : "{0} pie cuadráu"
+        },
+        "volume-cubic-kilometer" : {
+          "unitPattern-count-other" : "{0} quilómetros cúbicos",
+          "displayName" : "quilómetros cúbicos",
+          "unitPattern-count-one" : "{0} quilómetru cúbicu"
+        },
+        "volume-gallon" : {
+          "perUnitPattern" : "{0} per galón",
+          "unitPattern-count-other" : "{0} galones",
+          "displayName" : "galones",
+          "unitPattern-count-one" : "{0} galón"
+        },
+        "length-decimeter" : {
+          "unitPattern-count-other" : "{0} decímetros",
+          "displayName" : "decímetros",
+          "unitPattern-count-one" : "{0} decímetru"
+        },
+        "length-nanometer" : {
+          "unitPattern-count-other" : "{0} nanómetros",
+          "displayName" : "nanómetros",
+          "unitPattern-count-one" : "{0} nanómetru"
+        },
+        "volume-megaliter" : {
+          "unitPattern-count-other" : "{0} megallitros",
+          "displayName" : "megallitros",
+          "unitPattern-count-one" : "{0} megallitru"
+        },
+        "area-square-centimeter" : {
+          "perUnitPattern" : "{0} per centímetru cuadráu",
+          "unitPattern-count-other" : "{0} centímetros cuadraos",
+          "displayName" : "centímetros cuadraos",
+          "unitPattern-count-one" : "{0} centímetru cuadráu"
+        },
+        "concentr-part-per-million" : {
+          "unitPattern-count-other" : "{0} partes per millón",
+          "displayName" : "partes per millón",
+          "unitPattern-count-one" : "{0} parte per millón"
+        },
+        "consumption-liter-per-kilometer" : {
+          "unitPattern-count-other" : "{0} llitros per quilómetru",
+          "displayName" : "llitros per quilómetru",
+          "unitPattern-count-one" : "{0} llitru per quilómetru"
+        },
+        "length-micrometer" : {
+          "unitPattern-count-other" : "{0} micrómetros",
+          "displayName" : "micrómetros",
+          "unitPattern-count-one" : "{0} micrómetru"
+        },
+        "duration-second" : {
+          "perUnitPattern" : "{0} per segundu",
+          "unitPattern-count-other" : "{0} segundos",
+          "displayName" : "segundos",
+          "unitPattern-count-one" : "{0} segundu"
+        },
+        "frequency-gigahertz" : {
+          "unitPattern-count-other" : "{0} gigahercios",
+          "displayName" : "gigahercios",
+          "unitPattern-count-one" : "{0} gigaherciu"
+        },
+        "length-light-year" : {
+          "unitPattern-count-other" : "{0} años lluz",
+          "displayName" : "años lluz",
+          "unitPattern-count-one" : "{0} añu lluz"
+        },
+        "digital-megabyte" : {
+          "unitPattern-count-other" : "{0} megabytes",
+          "displayName" : "megabytes",
+          "unitPattern-count-one" : "{0} megabyte"
+        },
+        "digital-byte" : {
+          "unitPattern-count-other" : "{0} bytes",
+          "displayName" : "bytes",
+          "unitPattern-count-one" : "{0} byte"
+        },
+        "mass-pound" : {
+          "perUnitPattern" : "{0} per llibra",
+          "unitPattern-count-other" : "{0} llibres",
+          "displayName" : "llibres",
+          "unitPattern-count-one" : "{0} llibra"
+        },
+        "power-milliwatt" : {
+          "unitPattern-count-other" : "{0} millivatios",
+          "displayName" : "millivatios",
+          "unitPattern-count-one" : "{0} millivatiu"
+        },
+        "pressure-inch-hg" : {
+          "unitPattern-count-other" : "{0} pulgaes de mercuriu",
+          "displayName" : "pulgaes de mercuriu",
+          "unitPattern-count-one" : "{0} pulgada de mercuriu"
+        },
+        "volume-centiliter" : {
+          "unitPattern-count-other" : "{0} centillitros",
+          "displayName" : "centillitros",
+          "unitPattern-count-one" : "{0} centillitru"
+        },
+        "consumption-mile-per-gallon" : {
+          "unitPattern-count-other" : "{0} milles per galón",
+          "displayName" : "milles per galón",
+          "unitPattern-count-one" : "{0} milla per galón"
+        },
+        "speed-knot" : {
+          "unitPattern-count-other" : "{0} nuedos",
+          "displayName" : "nuedu",
+          "unitPattern-count-one" : "{0} nuedu"
+        },
+        "angle-arc-second" : {
+          "unitPattern-count-other" : "{0} segundos d'arcu",
+          "displayName" : "segundos d’arcu",
+          "unitPattern-count-one" : "{0} segundu d'arcu"
+        },
+        "length-nautical-mile" : {
+          "unitPattern-count-other" : "{0} milles náutiques",
+          "displayName" : "milles náutiques",
+          "unitPattern-count-one" : "{0} milla náutica"
+        },
+        "length-astronomical-unit" : {
+          "unitPattern-count-other" : "{0} unidaes astronómiques",
+          "displayName" : "unidaes astronómiques",
+          "unitPattern-count-one" : "{0} unidá astronómica"
+        },
+        "concentr-karat" : {
+          "unitPattern-count-other" : "{0} quilates",
+          "displayName" : "quilates",
+          "unitPattern-count-one" : "{0} quilate"
+        },
+        "volume-cubic-meter" : {
+          "perUnitPattern" : "{0} per metru cúbicu",
+          "unitPattern-count-other" : "{0} metros cúbicos",
+          "displayName" : "metros cúbicos",
+          "unitPattern-count-one" : "{0} metru cúbicu"
+        },
+        "digital-terabit" : {
+          "unitPattern-count-other" : "{0} terabits",
+          "displayName" : "terabits",
+          "unitPattern-count-one" : "{0} terabit"
+        },
+        "pressure-millibar" : {
+          "unitPattern-count-other" : "{0} milibares",
+          "displayName" : "milibares",
+          "unitPattern-count-one" : "{0} milibar"
+        },
+        "angle-degree" : {
+          "unitPattern-count-other" : "{0} graos",
+          "displayName" : "graos",
+          "unitPattern-count-one" : "{0} grau"
+        },
+        "temperature-kelvin" : {
+          "unitPattern-count-other" : "{0} kelvins",
+          "displayName" : "kelvins",
+          "unitPattern-count-one" : "{0} kelvin"
+        },
+        "length-furlong" : {
+          "unitPattern-count-other" : "{0} furlongs",
+          "displayName" : "furlongs",
+          "unitPattern-count-one" : "{0} furlong"
+        },
+        "length-kilometer" : {
+          "perUnitPattern" : "{0} per quilómetru",
+          "unitPattern-count-other" : "{0} quilómetros",
+          "displayName" : "quilómetros",
+          "unitPattern-count-one" : "{0} quilómetru"
+        },
+        "consumption-liter-per-100kilometers" : {
+          "unitPattern-count-other" : "{0} llitros per 100 quilómetros",
+          "displayName" : "llitros per 100 quilómetros",
+          "unitPattern-count-one" : "{0} llitru per 100 quilómetros"
+        },
+        "digital-kilobyte" : {
+          "unitPattern-count-other" : "{0} kilobytes",
+          "displayName" : "kilobytes",
+          "unitPattern-count-one" : "{0} kilobyte"
+        },
+        "coordinateUnit" : {
+          "east" : "{0}E",
+          "south" : "{0}S",
+          "north" : "{0}N",
+          "west" : "{0}O"
+        },
+        "digital-megabit" : {
+          "unitPattern-count-other" : "{0} megabits",
+          "displayName" : "megabits",
+          "unitPattern-count-one" : "{0} megabit"
+        },
+        "energy-joule" : {
+          "unitPattern-count-other" : "{0} xulios",
+          "displayName" : "xulios",
+          "unitPattern-count-one" : "{0} xuliu"
+        },
+        "volume-deciliter" : {
+          "unitPattern-count-other" : "{0} decillitros",
+          "displayName" : "decillitros",
+          "unitPattern-count-one" : "{0} decillitru"
+        },
+        "volume-cubic-foot" : {
+          "unitPattern-count-other" : "{0} pies cúbicos",
+          "displayName" : "pies cúbicos",
+          "unitPattern-count-one" : "{0} pie cúbicu"
+        },
+        "energy-kilocalorie" : {
+          "unitPattern-count-other" : "{0} quilocaloríes",
+          "displayName" : "quilocaloríes",
+          "unitPattern-count-one" : "{0} quilocaloría"
+        },
+        "temperature-celsius" : {
+          "unitPattern-count-other" : "{0} graos Celsius",
+          "displayName" : "graos Celsius",
+          "unitPattern-count-one" : "{0} grau Celsius"
+        },
+        "mass-carat" : {
+          "unitPattern-count-other" : "{0} quilates",
+          "displayName" : "quilates",
+          "unitPattern-count-one" : "{0} quilate"
+        },
+        "digital-kilobit" : {
+          "unitPattern-count-other" : "{0} kilobits",
+          "displayName" : "kilobits",
+          "unitPattern-count-one" : "{0} kilobit"
+        },
+        "volume-liter" : {
+          "perUnitPattern" : "{0} per llitru",
+          "unitPattern-count-other" : "{0} llitros",
+          "displayName" : "llitros",
+          "unitPattern-count-one" : "{0} llitru"
+        },
+        "duration-hour" : {
+          "perUnitPattern" : "{0} per hora",
+          "unitPattern-count-other" : "{0} hores",
+          "displayName" : "hores",
+          "unitPattern-count-one" : "{0} hora"
+        },
+        "length-centimeter" : {
+          "perUnitPattern" : "{0} por centímetru",
+          "unitPattern-count-other" : "{0} centímetros",
+          "displayName" : "centímetros",
+          "unitPattern-count-one" : "{0} centímetru"
+        },
+        "mass-ounce-troy" : {
+          "unitPattern-count-other" : "{0} onces troy",
+          "displayName" : "onces troy",
+          "unitPattern-count-one" : "{0} onza troy"
+        },
+        "pressure-millimeter-of-mercury" : {
+          "unitPattern-count-other" : "{0} milímetros de mercuriu",
+          "displayName" : "milímetros de mercuriu",
+          "unitPattern-count-one" : "{0} milímetru de mercuriu"
+        },
+        "volume-hectoliter" : {
+          "unitPattern-count-other" : "{0} hectollitros",
+          "displayName" : "hectollitros",
+          "unitPattern-count-one" : "{0} hectollitru"
+        },
+        "digital-bit" : {
+          "unitPattern-count-other" : "{0} bits",
+          "displayName" : "bits",
+          "unitPattern-count-one" : "{0} bit"
+        },
+        "duration-century" : {
+          "unitPattern-count-other" : "{0} sieglos",
+          "displayName" : "sieglos",
+          "unitPattern-count-one" : "{0} sieglu"
+        },
+        "length-mile-scandinavian" : {
+          "unitPattern-count-other" : "{0} milles escandinaves",
+          "displayName" : "milla escandinava",
+          "unitPattern-count-one" : "{0} milla escandinava"
+        },
+        "length-fathom" : {
+          "unitPattern-count-other" : "{0} fathoms",
+          "displayName" : "fathoms",
+          "unitPattern-count-one" : "{0} fathom"
+        },
+        "power-horsepower" : {
+          "unitPattern-count-other" : "{0} caballos de fuerza",
+          "displayName" : "caballos",
+          "unitPattern-count-one" : "{0} caballu de fuerza"
+        },
+        "energy-kilowatt-hour" : {
+          "unitPattern-count-other" : "{0} quilovatios hora",
+          "displayName" : "quilovatios hora",
+          "unitPattern-count-one" : "{0} quilovatiu hora"
+        },
+        "area-square-kilometer" : {
+          "perUnitPattern" : "{0} per quilómetru cuadráu",
+          "unitPattern-count-other" : "{0} kilómetros cuadraos",
+          "displayName" : "kilómetros cuadraos",
+          "unitPattern-count-one" : "{0} kilómetru cuadráu"
+        },
+        "duration-nanosecond" : {
+          "unitPattern-count-other" : "{0} nanosegundos",
+          "displayName" : "nanosegundos",
+          "unitPattern-count-one" : "{0} nanosegundu"
+        },
+        "volume-gallon-imperial" : {
+          "perUnitPattern" : "{0} per galón imperial",
+          "unitPattern-count-other" : "{0} galones imperiales",
+          "displayName" : "galones imperiales",
+          "unitPattern-count-one" : "{0} galón imperial"
+        },
+        "frequency-megahertz" : {
+          "unitPattern-count-other" : "{0} megahercios",
+          "displayName" : "megahercios",
+          "unitPattern-count-one" : "{0} megaherciu"
+        },
+        "electric-ampere" : {
+          "unitPattern-count-other" : "{0} amperios",
+          "displayName" : "amperios",
+          "unitPattern-count-one" : "{0} amperiu"
+        },
+        "mass-metric-ton" : {
+          "unitPattern-count-other" : "{0} tonelaes métriques",
+          "displayName" : "tonelaes métriques",
+          "unitPattern-count-one" : "{0} tonelada métrica"
+        },
+        "volume-cubic-inch" : {
+          "unitPattern-count-other" : "{0} pulgaes cúbiques",
+          "displayName" : "pulgaes cúbiques",
+          "unitPattern-count-one" : "{0} pulgada cúbica"
+        },
+        "pressure-pound-per-square-inch" : {
+          "unitPattern-count-other" : "{0} llibres per pulgada cuadrada",
+          "displayName" : "llibres per pulgada cuadrada",
+          "unitPattern-count-one" : "{0} llibra per pulgada cuadrada"
+        },
+        "power-kilowatt" : {
+          "unitPattern-count-other" : "{0} quilovatios",
+          "displayName" : "quilovatios",
+          "unitPattern-count-one" : "{0} quilovatiu"
+        }
+      }
+    },
+    "currencies" : {
+      "ADP" : {
+        "symbol" : "ADP",
+        "displayName" : "Peseta andorrana",
+        "displayName-count-one" : "peseta andorrana",
+        "displayName-count-other" : "pesetes andorranes"
+      },
+      "AED" : {
+        "symbol" : "AED",
+        "displayName" : "Dirḥam de los Emiratos Árabes Xuníos",
+        "displayName-count-one" : "dirḥam EAX",
+        "displayName-count-other" : "dirḥams EAX"
+      },
+      "AFA" : {
+        "symbol" : "AFA",
+        "displayName" : "Afganí afganistanu (1927–2002)",
+        "displayName-count-one" : "afganí afganistanu (1927–2002)",
+        "displayName-count-other" : "afganís afganistanos (1927–2002)"
+      },
+      "AFN" : {
+        "symbol" : "AFN",
+        "displayName" : "Afganí afganistanu",
+        "displayName-count-one" : "afganí afganistanu",
+        "displayName-count-other" : "afganís afganistanos"
+      },
+      "ALK" : {
+        "symbol" : "ALK",
+        "displayName" : "Lek albanés (1946–1965)",
+        "displayName-count-one" : "lek albanés (1946–1965)",
+        "displayName-count-other" : "lekë albaneses (1946–1965)"
+      },
+      "ALL" : {
+        "symbol" : "ALL",
+        "displayName" : "Lek albanés",
+        "displayName-count-one" : "lek albanés",
+        "displayName-count-other" : "lekë albaneses"
+      },
+      "AMD" : {
+        "symbol" : "AMD",
+        "displayName" : "Dram armeniu",
+        "displayName-count-one" : "dram armeniu",
+        "displayName-count-other" : "drams armenios"
+      },
+      "ANG" : {
+        "symbol" : "ANG",
+        "displayName" : "Guílder de les Antilles Neerlandeses",
+        "displayName-count-one" : "guílder de les Antilles Neerlandeses",
+        "displayName-count-other" : "guílders de les Antilles Neerlandeses"
+      },
+      "AOA" : {
+        "symbol" : "AOA",
+        "displayName" : "Kwanza angolanu",
+        "displayName-count-one" : "kwanza angolanu",
+        "symbol-alt-narrow" : "Kz",
+        "displayName-count-other" : "kwanzas angolanos"
+      },
+      "AOK" : {
+        "symbol" : "AOK",
+        "displayName" : "Kwanza angolanu (1977–1991)",
+        "displayName-count-one" : "kwanza angolanu (1977–1991)",
+        "displayName-count-other" : "kwanzas angolanos (1977–1991)"
+      },
+      "AON" : {
+        "symbol" : "AON",
+        "displayName" : "Kwanza nuevu angolanu (1990–2000)",
+        "displayName-count-one" : "kwanza nuevu angolanu (1990–2000)",
+        "displayName-count-other" : "kwanzas nuevos angolanos (1990–2000)"
+      },
+      "AOR" : {
+        "symbol" : "AOR",
+        "displayName" : "Kwanza angolanu reaxustáu (1995–1999)",
+        "displayName-count-one" : "kwanza angolanu reaxustáu (1995–1999)",
+        "displayName-count-other" : "kwanzas angolanos reaxustaos (1995–1999)"
+      },
+      "ARA" : {
+        "symbol" : "ARA",
+        "displayName" : "Austral arxentín",
+        "displayName-count-one" : "austral arxentín",
+        "displayName-count-other" : "australes arxentinos"
+      },
+      "ARL" : {
+        "symbol" : "ARL",
+        "displayName" : "Pesu Ley arxentín (1970–1983)",
+        "displayName-count-one" : "pesu ley arxentín (1970–1983)",
+        "displayName-count-other" : "pesos ley arxentinos (1970–1983)"
+      },
+      "ARM" : {
+        "symbol" : "ARM",
+        "displayName" : "Pesu arxentín (1881–1970)",
+        "displayName-count-one" : "pesu arxentín (1881–1970)",
+        "displayName-count-other" : "pesos arxentinos (1881–1970)"
+      },
+      "ARP" : {
+        "symbol" : "ARP",
+        "displayName" : "Pesu arxentín (1983–1985)",
+        "displayName-count-one" : "pesu arxentín (1983–1985)",
+        "displayName-count-other" : "pesos arxentinos (1983–1985)"
+      },
+      "ARS" : {
+        "symbol" : "ARS",
+        "displayName" : "pesu arxentín",
+        "displayName-count-one" : "pesu arxentín",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "pesos arxentinos"
+      },
+      "ATS" : {
+        "symbol" : "ATS",
+        "displayName" : "Chelín austriacu",
+        "displayName-count-one" : "chelín austriacu",
+        "displayName-count-other" : "chelinos austriacos"
+      },
+      "AUD" : {
+        "symbol" : "A$",
+        "displayName" : "Dólar australianu",
+        "displayName-count-one" : "dólar australianu",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares australianos"
+      },
+      "AWG" : {
+        "symbol" : "AWG",
+        "displayName" : "Florín arubanu",
+        "displayName-count-one" : "florín arubanu",
+        "displayName-count-other" : "florines arubanos"
+      },
+      "AZM" : {
+        "symbol" : "AZM",
+        "displayName" : "Manat azerbaixanu (1993–2006)",
+        "displayName-count-one" : "manat azerbaixanu (1993–2006)",
+        "displayName-count-other" : "manats azerbaixanos (1993–2006)"
+      },
+      "AZN" : {
+        "symbol" : "AZN",
+        "displayName" : "Manat azerbaixanu",
+        "displayName-count-one" : "manat azerbaixanu",
+        "displayName-count-other" : "manats azerbaixanos"
+      },
+      "BAD" : {
+        "symbol" : "BAD",
+        "displayName" : "Dinar de Bosnia-Herzegovina (1992–1994)",
+        "displayName-count-one" : "dinar de Bosnia-Herzegovina (1992–1994)",
+        "displayName-count-other" : "dinares de Bosnia-Herzegovina (1992–1994)"
+      },
+      "BAM" : {
+        "symbol" : "BAM",
+        "displayName" : "marcu convertible de Bosnia-Herzegovina",
+        "displayName-count-one" : "marcu convertible de Bosnia-Herzegovina",
+        "symbol-alt-narrow" : "KM",
+        "displayName-count-other" : "marcos convertibles de Bosnia-Herzegovina"
+      },
+      "BAN" : {
+        "symbol" : "BAN",
+        "displayName" : "Dinar nuevu de Bosnia-Herzegovina (1994–1997)",
+        "displayName-count-one" : "dinar nuevu de Bosnia-Herzegovina (1994–1997)",
+        "displayName-count-other" : "dinares nuevos de Bosnia-Herzegovina (1994–1997)"
+      },
+      "BBD" : {
+        "symbol" : "BBD",
+        "displayName" : "Dólar barbadianu",
+        "displayName-count-one" : "dólar barbadianu",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares barbadianos"
+      },
+      "BDT" : {
+        "symbol" : "BDT",
+        "displayName" : "Taka bangladexí",
+        "displayName-count-one" : "taka bangladexí",
+        "symbol-alt-narrow" : "৳",
+        "displayName-count-other" : "takas bangladexinos"
+      },
+      "BEC" : {
+        "symbol" : "BEC",
+        "displayName" : "Francu belga (convertible)",
+        "displayName-count-one" : "francu belga (convertible)",
+        "displayName-count-other" : "francos belgas (convertibles)"
+      },
+      "BEF" : {
+        "symbol" : "BEF",
+        "displayName" : "Francu belga",
+        "displayName-count-one" : "francu belga",
+        "displayName-count-other" : "francos belgues"
+      },
+      "BEL" : {
+        "symbol" : "BEL",
+        "displayName" : "Francu belga (financieru)",
+        "displayName-count-one" : "francu belga (financieru)",
+        "displayName-count-other" : "francos belgues (financieros)"
+      },
+      "BGL" : {
+        "symbol" : "BGL",
+        "displayName" : "Lev fuerte búlgaru",
+        "displayName-count-one" : "lev fuerte búlgaru",
+        "displayName-count-other" : "leva fuertes búlgaros"
+      },
+      "BGM" : {
+        "symbol" : "BGM",
+        "displayName" : "Lev socialista búlgaru",
+        "displayName-count-one" : "lev socialista búlgaru",
+        "displayName-count-other" : "leva socialistes búlgaros"
+      },
+      "BGN" : {
+        "symbol" : "BGN",
+        "displayName" : "Lev búlgaru",
+        "displayName-count-one" : "lev búlgaru",
+        "displayName-count-other" : "leva búlgaros"
+      },
+      "BGO" : {
+        "symbol" : "BGO",
+        "displayName" : "Lev búlgaru (1879–1952)",
+        "displayName-count-one" : "lev búlgaru (1879–1952)",
+        "displayName-count-other" : "leva búlgaros (1879–1952)"
+      },
+      "BHD" : {
+        "symbol" : "BHD",
+        "displayName" : "Dinar baḥreiní",
+        "displayName-count-one" : "dinar baḥreiní",
+        "displayName-count-other" : "dinares baḥreininos"
+      },
+      "BIF" : {
+        "symbol" : "BIF",
+        "displayName" : "Francu burundianu",
+        "displayName-count-one" : "francu burundianu",
+        "displayName-count-other" : "francos burundianos"
+      },
+      "BMD" : {
+        "symbol" : "BMD",
+        "displayName" : "Dólar bermudianu",
+        "displayName-count-one" : "dólar bermudianu",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares bermudianos"
+      },
+      "BND" : {
+        "symbol" : "BND",
+        "displayName" : "dólar bruneyanu",
+        "displayName-count-one" : "dólar bruneyanu",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares bruneyanos"
+      },
+      "BOB" : {
+        "symbol" : "BOB",
+        "displayName" : "Bolivianu de Bolivia",
+        "displayName-count-one" : "bolivianu de Bolivia",
+        "symbol-alt-narrow" : "Bs",
+        "displayName-count-other" : "bolivianos de Bolivia"
+      },
+      "BOL" : {
+        "symbol" : "BOL",
+        "displayName" : "Boliviano de Bolivia (1863–1963)",
+        "displayName-count-one" : "boliviano de Bolivia (1863–1963)",
+        "displayName-count-other" : "bolivianos de Bolivia (1863–1963)"
+      },
+      "BOP" : {
+        "symbol" : "BOP",
+        "displayName" : "Pesu bolivianu",
+        "displayName-count-one" : "pesu bolivianu",
+        "displayName-count-other" : "pesos bolivianos"
+      },
+      "BOV" : {
+        "symbol" : "BOV",
+        "displayName" : "Bolivianos mvdol",
+        "displayName-count-one" : "bolivianu mvdol",
+        "displayName-count-other" : "bolivianos mvdol"
+      },
+      "BRB" : {
+        "symbol" : "BRB",
+        "displayName" : "Cruzeiro nuevu brasilanu (1967–1986)",
+        "displayName-count-one" : "cruzeiro nuevu brasilanu (1967–1986)",
+        "displayName-count-other" : "cruzeiros nuevos brasilanos (1967–1986)"
+      },
+      "BRC" : {
+        "symbol" : "BRC",
+        "displayName" : "Cruzado brasilanu (1986–1989)",
+        "displayName-count-one" : "cruzado brasilanu (1986–1989)",
+        "displayName-count-other" : "cruzados brasilanos (1986–1989)"
+      },
+      "BRE" : {
+        "symbol" : "BRE",
+        "displayName" : "Cruzeiro brasilanu (1990–1993)",
+        "displayName-count-one" : "cruzeiro brasilanu (1990–1993)",
+        "displayName-count-other" : "cruzeiros brasilanos (1990–1993)"
+      },
+      "BRL" : {
+        "symbol" : "R$",
+        "displayName" : "real brasilanu",
+        "displayName-count-one" : "real brasilanu",
+        "symbol-alt-narrow" : "R$",
+        "displayName-count-other" : "reales brasilanos"
+      },
+      "BRN" : {
+        "symbol" : "BRN",
+        "displayName" : "Cruzado nuevu brasilanu (1989–1990)",
+        "displayName-count-one" : "cruzado nuevu brasilanu (1989–1990)",
+        "displayName-count-other" : "cruzados nuevos brasilanos (1989–1990)"
+      },
+      "BRR" : {
+        "symbol" : "BRR",
+        "displayName" : "Cruzeiro brasilanu (1993–1994)",
+        "displayName-count-one" : "cruzeiro brasilanu (1993–1994)",
+        "displayName-count-other" : "cruzeiros brasilanos (1993–1994)"
+      },
+      "BRZ" : {
+        "symbol" : "BRZ",
+        "displayName" : "Cruzeiru brasilanu (1942–1967)",
+        "displayName-count-one" : "cruzeiru brasilanu (1942–1967)",
+        "displayName-count-other" : "cruzeiros brasilanos (1942–1967)"
+      },
+      "BSD" : {
+        "symbol" : "BSD",
+        "displayName" : "Dólar bahamés",
+        "displayName-count-one" : "dólar bahamés",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares bahameses"
+      },
+      "BTN" : {
+        "symbol" : "BTN",
+        "displayName" : "Ngultrum butanés",
+        "displayName-count-one" : "ngultrum butanés",
+        "displayName-count-other" : "ngultrums butaneses"
+      },
+      "BUK" : {
+        "symbol" : "BUK",
+        "displayName" : "Kyat birmanu",
+        "displayName-count-one" : "kyat birmanu",
+        "displayName-count-other" : "kyats birmanos"
+      },
+      "BWP" : {
+        "symbol" : "BWP",
+        "displayName" : "Pula botsuaniana",
+        "displayName-count-one" : "pula botsuaniana",
+        "symbol-alt-narrow" : "P",
+        "displayName-count-other" : "pulas botsuanianes"
+      },
+      "BYB" : {
+        "symbol" : "BYB",
+        "displayName" : "Rublu nuevu bielorrusu (1994–1999)",
+        "displayName-count-one" : "rublu nuevu bielorrusu (1994–1999)",
+        "displayName-count-other" : "rublos nuevos bielorrusos (1994–1999)"
+      },
+      "BYN" : {
+        "symbol" : "BYN",
+        "displayName" : "Rublu bielorrusu",
+        "displayName-count-one" : "rublu bielorrusu",
+        "symbol-alt-narrow" : "BYN",
+        "displayName-count-other" : "rublos bielorrusos"
+      },
+      "BYR" : {
+        "symbol" : "BYR",
+        "displayName" : "Rublu bielorrusu (2000–2016)",
+        "displayName-count-one" : "rublu bielorrusu (2000–2016)",
+        "displayName-count-other" : "rublos bielorrusos (2000–2016)"
+      },
+      "BZD" : {
+        "symbol" : "BZD",
+        "displayName" : "Dólar belizianu",
+        "displayName-count-one" : "dólar belizianu",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares belizianos"
+      },
+      "CAD" : {
+        "symbol" : "CA$",
+        "displayName" : "Dólar canadiense",
+        "displayName-count-one" : "dólar canadiense",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares canadienses"
+      },
+      "CDF" : {
+        "symbol" : "CDF",
+        "displayName" : "francu congolés",
+        "displayName-count-one" : "francu congolés",
+        "displayName-count-other" : "francos congoleses"
+      },
+      "CHE" : {
+        "symbol" : "CHE",
+        "displayName" : "Euru WIR",
+        "displayName-count-one" : "euru WIR",
+        "displayName-count-other" : "euros WIR"
+      },
+      "CHF" : {
+        "symbol" : "CHF",
+        "displayName" : "francu suizu",
+        "displayName-count-one" : "francu suizu",
+        "displayName-count-other" : "francos suizos"
+      },
+      "CHW" : {
+        "symbol" : "CHW",
+        "displayName" : "Francu WIR",
+        "displayName-count-one" : "francu WIR",
+        "displayName-count-other" : "francos WIR"
+      },
+      "CLE" : {
+        "symbol" : "CLE",
+        "displayName" : "Escudu chilenu",
+        "displayName-count-one" : "escudu chilenu",
+        "displayName-count-other" : "escudos chilenos"
+      },
+      "CLF" : {
+        "symbol" : "CLF",
+        "displayName" : "Unidá de cuenta chilena (UF)",
+        "displayName-count-one" : "unidá de cuenta chilena (UF)",
+        "displayName-count-other" : "unidaes de cuenta chilenes (UF)"
+      },
+      "CLP" : {
+        "symbol" : "CLP",
+        "displayName" : "pesu chilenu",
+        "displayName-count-one" : "pesu chilenu",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "pesos chilenos"
+      },
+      "CNH" : {
+        "symbol" : "CNH",
+        "displayName" : "CNH"
+      },
+      "CNX" : {
+        "symbol" : "CNX",
+        "displayName" : "Dólar del Bancu Popular Chinu",
+        "displayName-count-one" : "dólar del Bancu Popular Chinu",
+        "displayName-count-other" : "dólares del Bancu Popular Chinu"
+      },
+      "CNY" : {
+        "symbol" : "CN¥",
+        "displayName" : "Yuan chinu",
+        "displayName-count-one" : "yuan chinu",
+        "symbol-alt-narrow" : "¥",
+        "displayName-count-other" : "yuanes chinos"
+      },
+      "COP" : {
+        "symbol" : "COP",
+        "displayName" : "pesu colombianu",
+        "displayName-count-one" : "pesu colombianu",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "pesos colombianos"
+      },
+      "COU" : {
+        "symbol" : "COU",
+        "displayName" : "Unidá de valor real colombiana",
+        "displayName-count-one" : "unidá de valor real colombiana",
+        "displayName-count-other" : "unidaes de valor real colombianes"
+      },
+      "CRC" : {
+        "symbol" : "CRC",
+        "displayName" : "Colón costarricanu",
+        "displayName-count-one" : "colón costarricanu",
+        "symbol-alt-narrow" : "₡",
+        "displayName-count-other" : "colones costarricanos"
+      },
+      "CSD" : {
+        "symbol" : "CSD",
+        "displayName" : "Dinar serbiu (2002–2006)",
+        "displayName-count-one" : "dinar serbiu (2002–2006)",
+        "displayName-count-other" : "dinares serbios (2002–2006)"
+      },
+      "CSK" : {
+        "symbol" : "CSK",
+        "displayName" : "Corona fuerte checoslovaca",
+        "displayName-count-one" : "corona fuerte checoslovaca",
+        "displayName-count-other" : "corones fuertes checoslovaques"
+      },
+      "CUC" : {
+        "symbol" : "CUC",
+        "displayName" : "Pesu cubanu convertible",
+        "displayName-count-one" : "pesu cubanu convertible",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "pesos cubanos convertibles"
+      },
+      "CUP" : {
+        "symbol" : "CUP",
+        "displayName" : "Pesu cubanu",
+        "displayName-count-one" : "pesu cubanu",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "pesos cubanos"
+      },
+      "CVE" : {
+        "symbol" : "CVE",
+        "displayName" : "escudu cabuverdianu",
+        "displayName-count-one" : "escudu cabuverdianu",
+        "displayName-count-other" : "escudos cabuverdianos"
+      },
+      "CYP" : {
+        "symbol" : "CYP",
+        "displayName" : "Llibra xipriota",
+        "displayName-count-one" : "llibra xipriota",
+        "displayName-count-other" : "llibres xipriotes"
+      },
+      "CZK" : {
+        "symbol" : "CZK",
+        "displayName" : "Corona checa",
+        "displayName-count-one" : "corona checa",
+        "symbol-alt-narrow" : "Kč",
+        "displayName-count-other" : "corones cheques"
+      },
+      "DDM" : {
+        "symbol" : "DDM",
+        "displayName" : "Marcu d’Alemaña Oriental",
+        "displayName-count-one" : "marcu d’Alemaña Oriental",
+        "displayName-count-other" : "marcos d’Alemaña Oriental"
+      },
+      "DEM" : {
+        "symbol" : "DEM",
+        "displayName" : "Marcu alemán",
+        "displayName-count-one" : "marcu alemán",
+        "displayName-count-other" : "marcos alemanes"
+      },
+      "DJF" : {
+        "symbol" : "DJF",
+        "displayName" : "Francu xibutianu",
+        "displayName-count-one" : "francu xibutianu",
+        "displayName-count-other" : "francos xibutianos"
+      },
+      "DKK" : {
+        "symbol" : "DKK",
+        "displayName" : "corona danesa",
+        "displayName-count-one" : "corona danesa",
+        "symbol-alt-narrow" : "DKK",
+        "displayName-count-other" : "corones daneses"
+      },
+      "DOP" : {
+        "symbol" : "DOP",
+        "displayName" : "Pesu dominicanu",
+        "displayName-count-one" : "pesu dominicanu",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "pesos dominicanos"
+      },
+      "DZD" : {
+        "symbol" : "DZD",
+        "displayName" : "dinar arxelín",
+        "displayName-count-one" : "dinar arxelín",
+        "displayName-count-other" : "dinares arxelinos"
+      },
+      "ECS" : {
+        "symbol" : "ECS",
+        "displayName" : "Sucre ecuatorianu",
+        "displayName-count-one" : "sucre ecuatorianu",
+        "displayName-count-other" : "sucres ecuatorianos"
+      },
+      "ECV" : {
+        "symbol" : "ECV",
+        "displayName" : "Unidá ecuatoriana de valor constante",
+        "displayName-count-one" : "unidá ecuatoriana de valor constante",
+        "displayName-count-other" : "unidaes ecuatorianes de valor constante"
+      },
+      "EEK" : {
+        "symbol" : "EEK",
+        "displayName" : "Corona estonia",
+        "displayName-count-one" : "corona estoniana",
+        "displayName-count-other" : "corones estonianes"
+      },
+      "EGP" : {
+        "symbol" : "EGP",
+        "displayName" : "llibra exipciana",
+        "displayName-count-one" : "llibra exipciana",
+        "symbol-alt-narrow" : "E£",
+        "displayName-count-other" : "llibres exipcianes"
+      },
+      "ERN" : {
+        "symbol" : "ERN",
+        "displayName" : "Nakfa eritréu",
+        "displayName-count-one" : "nakfa eritréu",
+        "displayName-count-other" : "nafkas eritreos"
+      },
+      "ESA" : {
+        "symbol" : "ESA",
+        "displayName" : "Peseta española (cuenta A)",
+        "displayName-count-one" : "peseta española (cuenta A)",
+        "displayName-count-other" : "pesetes españoles (cuenta A)"
+      },
+      "ESB" : {
+        "symbol" : "ESB",
+        "displayName" : "Peseta española (cuenta convertible)",
+        "displayName-count-one" : "peseta española (cuenta convertible)",
+        "displayName-count-other" : "pesetes españoles (cuenta convertible)"
+      },
+      "ESP" : {
+        "symbol" : "ESP",
+        "displayName" : "Peseta española",
+        "displayName-count-one" : "peseta española",
+        "symbol-alt-narrow" : "₧",
+        "displayName-count-other" : "pesetes españoles"
+      },
+      "ETB" : {
+        "symbol" : "ETB",
+        "displayName" : "Birr etíope",
+        "displayName-count-one" : "birr etíope",
+        "displayName-count-other" : "birrs etíopes"
+      },
+      "EUR" : {
+        "symbol" : "€",
+        "displayName" : "euro",
+        "displayName-count-one" : "euro",
+        "symbol-alt-narrow" : "€",
+        "displayName-count-other" : "euros"
+      },
+      "FIM" : {
+        "symbol" : "FIM",
+        "displayName" : "Marcu finlandés",
+        "displayName-count-one" : "marcu finlandés",
+        "displayName-count-other" : "marcos finlandeses"
+      },
+      "FJD" : {
+        "symbol" : "FJD",
+        "displayName" : "dólar fixanu",
+        "displayName-count-one" : "dólar fixanu",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares fixanos"
+      },
+      "FKP" : {
+        "symbol" : "FKP",
+        "displayName" : "llibra malviniana",
+        "displayName-count-one" : "llibra malviniana",
+        "symbol-alt-narrow" : "£",
+        "displayName-count-other" : "llibres malvinianes"
+      },
+      "FRF" : {
+        "symbol" : "FRF",
+        "displayName" : "Francu francés",
+        "displayName-count-one" : "francu francés",
+        "displayName-count-other" : "francos franceses"
+      },
+      "GBP" : {
+        "symbol" : "£",
+        "displayName" : "llibra esterlina",
+        "displayName-count-one" : "llibra esterlina",
+        "symbol-alt-narrow" : "£",
+        "displayName-count-other" : "llibres esterlines"
+      },
+      "GEK" : {
+        "symbol" : "GEK",
+        "displayName" : "Kupon larit xeorxanu",
+        "displayName-count-one" : "kupon larit xeorxanu",
+        "displayName-count-other" : "kupon larits xeorxanos"
+      },
+      "GEL" : {
+        "symbol" : "GEL",
+        "displayName" : "Lari xeorxanu",
+        "displayName-count-one" : "lari xeorxanu",
+        "symbol-alt-narrow" : "₾",
+        "displayName-count-other" : "laris xeorxanos"
+      },
+      "GHC" : {
+        "symbol" : "GHC",
+        "displayName" : "Cedi ghanianu (1979–2007)",
+        "displayName-count-one" : "cedi ghanianu (1979–2007)",
+        "displayName-count-other" : "cedis ghanianos (1979–2007)"
+      },
+      "GHS" : {
+        "symbol" : "GHS",
+        "displayName" : "cedi ghanianu",
+        "displayName-count-one" : "cedi ghanianu",
+        "displayName-count-other" : "cedis ghanianos"
+      },
+      "GIP" : {
+        "symbol" : "GIP",
+        "displayName" : "llibra de Xibraltar",
+        "displayName-count-one" : "llibra de Xibraltar",
+        "symbol-alt-narrow" : "£",
+        "displayName-count-other" : "llibres de Xibraltar"
+      },
+      "GMD" : {
+        "symbol" : "GMD",
+        "displayName" : "dalasi gambianu",
+        "displayName-count-one" : "dalasi gambianu",
+        "displayName-count-other" : "dalasis gambianos"
+      },
+      "GNF" : {
+        "symbol" : "GNF",
+        "displayName" : "francu guineanu",
+        "displayName-count-one" : "francu guineanu",
+        "symbol-alt-narrow" : "FG",
+        "displayName-count-other" : "francos guineanos"
+      },
+      "GNS" : {
+        "symbol" : "GNS",
+        "displayName" : "syli guineanu",
+        "displayName-count-one" : "syli guineanu",
+        "displayName-count-other" : "sylis guineanos"
+      },
+      "GQE" : {
+        "symbol" : "GQE",
+        "displayName" : "Ekwele de Guinea Ecuatorial",
+        "displayName-count-one" : "ekwele de Guinea Ecuatorial",
+        "displayName-count-other" : "ekweles de Guinea Ecuatorial"
+      },
+      "GRD" : {
+        "symbol" : "GRD",
+        "displayName" : "Dracma griegu",
+        "displayName-count-one" : "dracma griegu",
+        "displayName-count-other" : "dracmes griegos"
+      },
+      "GTQ" : {
+        "symbol" : "GTQ",
+        "displayName" : "Quetzal guatemalianu",
+        "displayName-count-one" : "quetzal guatemalianu",
+        "symbol-alt-narrow" : "Q",
+        "displayName-count-other" : "quetzales guatemalianos"
+      },
+      "GWE" : {
+        "symbol" : "GWE",
+        "displayName" : "Escudo de Guinea portuguesa",
+        "displayName-count-one" : "escudo de Guinea portuguesa",
+        "displayName-count-other" : "escudos de Guinea portuguesa"
+      },
+      "GWP" : {
+        "symbol" : "GWP",
+        "displayName" : "Pesu de Guinea-Bisáu",
+        "displayName-count-one" : "pesu de Guinea-Bisáu",
+        "displayName-count-other" : "pesos de Guinea-Bisáu"
+      },
+      "GYD" : {
+        "symbol" : "GYD",
+        "displayName" : "dólar guyanés",
+        "displayName-count-one" : "dólar guyanés",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares guyaneses"
+      },
+      "HKD" : {
+        "symbol" : "HK$",
+        "displayName" : "Dólar hongkonés",
+        "displayName-count-one" : "dólar hongkonés",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares ḥongkoneses"
+      },
+      "HNL" : {
+        "symbol" : "HNL",
+        "displayName" : "Lempira hondurana",
+        "displayName-count-one" : "lempira hondurana",
+        "symbol-alt-narrow" : "L",
+        "displayName-count-other" : "lempires honduranes"
+      },
+      "HRD" : {
+        "symbol" : "HRD",
+        "displayName" : "Dinar croata",
+        "displayName-count-one" : "dinar croata",
+        "displayName-count-other" : "dinares croates"
+      },
+      "HRK" : {
+        "symbol" : "HRK",
+        "displayName" : "Kuna croata",
+        "displayName-count-one" : "kuna croata",
+        "symbol-alt-narrow" : "HRK",
+        "displayName-count-other" : "kunes croates"
+      },
+      "HTG" : {
+        "symbol" : "HTG",
+        "displayName" : "Gourde haitianu",
+        "displayName-count-one" : "gourde haitianu",
+        "displayName-count-other" : "gourde haitianos"
+      },
+      "HUF" : {
+        "symbol" : "HUF",
+        "displayName" : "Forint húngaru",
+        "displayName-count-one" : "forint húngaru",
+        "symbol-alt-narrow" : "Ft",
+        "displayName-count-other" : "forints húngaros"
+      },
+      "IDR" : {
+        "symbol" : "IDR",
+        "displayName" : "rupiah indonesia",
+        "displayName-count-one" : "rupiah indonesia",
+        "symbol-alt-narrow" : "Rp",
+        "displayName-count-other" : "rupiahs indonesies"
+      },
+      "IEP" : {
+        "symbol" : "IEP",
+        "displayName" : "Llibra irlandesa",
+        "displayName-count-one" : "llibra irlandesa",
+        "displayName-count-other" : "llibres irlandeses"
+      },
+      "ILP" : {
+        "symbol" : "ILP",
+        "displayName" : "Llibra israelina",
+        "displayName-count-one" : "llibra israelina",
+        "displayName-count-other" : "llibres israelines"
+      },
+      "ILR" : {
+        "symbol" : "ILR",
+        "displayName" : "Xequel israelín (1980–1985)",
+        "displayName-count-one" : "xequel israelín (1980–1985)",
+        "displayName-count-other" : "xequels israelinos (1980–1985)"
+      },
+      "ILS" : {
+        "symbol" : "₪",
+        "displayName" : "Xequel nuevu israelín",
+        "displayName-count-one" : "xequel nuevu israelín",
+        "symbol-alt-narrow" : "₪",
+        "displayName-count-other" : "xequels nuevos israelinos"
+      },
+      "INR" : {
+        "symbol" : "₹",
+        "displayName" : "Rupia india",
+        "displayName-count-one" : "rupia india",
+        "symbol-alt-narrow" : "₹",
+        "displayName-count-other" : "rupies indies"
+      },
+      "IQD" : {
+        "symbol" : "IQD",
+        "displayName" : "Dinar iraquín",
+        "displayName-count-one" : "dinar iraquín",
+        "displayName-count-other" : "dinares iraquinos"
+      },
+      "IRR" : {
+        "symbol" : "IRR",
+        "displayName" : "Rial iranín",
+        "displayName-count-one" : "rial iranín",
+        "displayName-count-other" : "riales iraninos"
+      },
+      "ISJ" : {
+        "symbol" : "ISJ",
+        "displayName" : "Corona islandesa (1918–1981)",
+        "displayName-count-one" : "corona islandesa (1918–1981)",
+        "displayName-count-other" : "corones islandeses (1918–1981)"
+      },
+      "ISK" : {
+        "symbol" : "ISK",
+        "displayName" : "corona islandesa",
+        "displayName-count-one" : "corona islandesa",
+        "symbol-alt-narrow" : "ISK",
+        "displayName-count-other" : "corones islandeses"
+      },
+      "ITL" : {
+        "symbol" : "ITL",
+        "displayName" : "Llira italiana",
+        "displayName-count-one" : "llira italiana",
+        "displayName-count-other" : "llires italianes"
+      },
+      "JMD" : {
+        "symbol" : "JMD",
+        "displayName" : "Dólar xamaicanu",
+        "displayName-count-one" : "dólar xamaicanu",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares xamaicanos"
+      },
+      "JOD" : {
+        "symbol" : "JOD",
+        "displayName" : "Dinar xordanu",
+        "displayName-count-one" : "dinar xordanu",
+        "displayName-count-other" : "dinares xordanos"
+      },
+      "JPY" : {
+        "symbol" : "¥",
+        "displayName" : "Yen xaponés",
+        "displayName-count-one" : "yen xaponés",
+        "symbol-alt-narrow" : "¥",
+        "displayName-count-other" : "yenes xaponeses"
+      },
+      "KES" : {
+        "symbol" : "KES",
+        "displayName" : "Shilling kenianu",
+        "displayName-count-one" : "shilling kenianu",
+        "displayName-count-other" : "shillings kenianos"
+      },
+      "KGS" : {
+        "symbol" : "KGS",
+        "displayName" : "Som kirguistanín",
+        "displayName-count-one" : "som kirguistanín",
+        "displayName-count-other" : "soms kirguistaninos"
+      },
+      "KHR" : {
+        "symbol" : "KHR",
+        "displayName" : "riel camboyanu",
+        "displayName-count-one" : "riel camboyanu",
+        "symbol-alt-narrow" : "៛",
+        "displayName-count-other" : "riels camboyanos"
+      },
+      "KMF" : {
+        "symbol" : "KMF",
+        "displayName" : "Francu comoranu",
+        "displayName-count-one" : "francu comoranu",
+        "symbol-alt-narrow" : "CF",
+        "displayName-count-other" : "francos comoranos"
+      },
+      "KPW" : {
+        "symbol" : "KPW",
+        "displayName" : "Won norcoreanu",
+        "displayName-count-one" : "won norcoreanu",
+        "symbol-alt-narrow" : "₩",
+        "displayName-count-other" : "wons norcoreanos"
+      },
+      "KRH" : {
+        "symbol" : "KRH",
+        "displayName" : "Hwan surcoreanu (1953–1962)",
+        "displayName-count-one" : "hwan surcoreanu (1953–1962)",
+        "displayName-count-other" : "hwans surcoreanos (1953–1962)"
+      },
+      "KRO" : {
+        "symbol" : "KRO",
+        "displayName" : "Won surcoreanu (1945–1953)",
+        "displayName-count-one" : "won surcoreanu (1945–1953)",
+        "displayName-count-other" : "won surcoreanos (1945–1953)"
+      },
+      "KRW" : {
+        "symbol" : "₩",
+        "displayName" : "Won surcoreanu",
+        "displayName-count-one" : "won surcoreanu",
+        "symbol-alt-narrow" : "₩",
+        "displayName-count-other" : "wons surcoreanos"
+      },
+      "KWD" : {
+        "symbol" : "KWD",
+        "displayName" : "Dinar kuwaitianu",
+        "displayName-count-one" : "dinar kuwaitianu",
+        "displayName-count-other" : "dinares kuwaitianos"
+      },
+      "KYD" : {
+        "symbol" : "KYD",
+        "displayName" : "dólar caimanés",
+        "displayName-count-one" : "dólar caimanés",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares caimaneses"
+      },
+      "KZT" : {
+        "symbol" : "KZT",
+        "displayName" : "Tenge kazaquistanín",
+        "displayName-count-one" : "tenge kazaquistanín",
+        "symbol-alt-narrow" : "₸",
+        "displayName-count-other" : "tenges kazaquistaninos"
+      },
+      "LAK" : {
+        "symbol" : "LAK",
+        "displayName" : "kip laosianu",
+        "displayName-count-one" : "kip laosianu",
+        "symbol-alt-narrow" : "₭",
+        "displayName-count-other" : "kips laosianos"
+      },
+      "LBP" : {
+        "symbol" : "LBP",
+        "displayName" : "Llibra libanesa",
+        "displayName-count-one" : "llibra libanesa",
+        "symbol-alt-narrow" : "L£",
+        "displayName-count-other" : "llibres libaneses"
+      },
+      "LKR" : {
+        "symbol" : "LKR",
+        "displayName" : "Rupia de Sri Lanka",
+        "displayName-count-one" : "rupia de Sri Lanka",
+        "symbol-alt-narrow" : "Rs",
+        "displayName-count-other" : "rupies de Sri Lanka"
+      },
+      "LRD" : {
+        "symbol" : "LRD",
+        "displayName" : "dólar liberianu",
+        "displayName-count-one" : "dólar liberianu",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares liberianos"
+      },
+      "LSL" : {
+        "symbol" : "LSL",
+        "displayName" : "Loti de Lesothu",
+        "displayName-count-one" : "loti de Lesothu",
+        "displayName-count-other" : "lotis de Lesothu"
+      },
+      "LTL" : {
+        "symbol" : "LTL",
+        "displayName" : "Litas lituanu",
+        "displayName-count-one" : "litas lituanu",
+        "symbol-alt-narrow" : "Lt",
+        "displayName-count-other" : "litas lituanos"
+      },
+      "LTT" : {
+        "symbol" : "LTT",
+        "displayName" : "Talonas lituanu",
+        "displayName-count-one" : "talonas lituanu",
+        "displayName-count-other" : "talonas lituanos"
+      },
+      "LUC" : {
+        "symbol" : "LUC",
+        "displayName" : "Francu convertible luxemburgués",
+        "displayName-count-one" : "francu convertible luxemburgués",
+        "displayName-count-other" : "francos convertibles luxemburgueses"
+      },
+      "LUF" : {
+        "symbol" : "LUF",
+        "displayName" : "Francu luxemburgués",
+        "displayName-count-one" : "francu luxemburgués",
+        "displayName-count-other" : "francos luxemburgueses"
+      },
+      "LUL" : {
+        "symbol" : "LUL",
+        "displayName" : "Francu financieru luxemburgués",
+        "displayName-count-one" : "francu financieru luxemburgués",
+        "displayName-count-other" : "francos financieros luxemburgueses"
+      },
+      "LVL" : {
+        "symbol" : "LVL",
+        "displayName" : "Lats letón",
+        "displayName-count-one" : "lats letón",
+        "symbol-alt-narrow" : "Ls",
+        "displayName-count-other" : "lats letones"
+      },
+      "LVR" : {
+        "symbol" : "LVR",
+        "displayName" : "Rublu letón",
+        "displayName-count-one" : "rublu letón",
+        "displayName-count-other" : "rublos letones"
+      },
+      "LYD" : {
+        "symbol" : "LYD",
+        "displayName" : "dinar libiu",
+        "displayName-count-one" : "dinar libiu",
+        "displayName-count-other" : "dinares libios"
+      },
+      "MAD" : {
+        "symbol" : "MAD",
+        "displayName" : "dirḥam marroquín",
+        "displayName-count-one" : "dirḥam marroquín",
+        "displayName-count-other" : "dirḥams marroquinos"
+      },
+      "MAF" : {
+        "symbol" : "MAF",
+        "displayName" : "francu marroquín",
+        "displayName-count-one" : "francu marroquín",
+        "displayName-count-other" : "francos marroquinos"
+      },
+      "MCF" : {
+        "symbol" : "MCF",
+        "displayName" : "Francu monegascu",
+        "displayName-count-one" : "francu monegascu",
+        "displayName-count-other" : "francos monegascos"
+      },
+      "MDC" : {
+        "symbol" : "MDC",
+        "displayName" : "Cupón moldavu",
+        "displayName-count-one" : "cupón moldavu",
+        "displayName-count-other" : "cupones moldavos"
+      },
+      "MDL" : {
+        "symbol" : "MDL",
+        "displayName" : "Leu moldavu",
+        "displayName-count-one" : "leu moldavu",
+        "displayName-count-other" : "leus moldavos"
+      },
+      "MGA" : {
+        "symbol" : "MGA",
+        "displayName" : "Ariary malgaxe",
+        "displayName-count-one" : "ariary malgaxe",
+        "symbol-alt-narrow" : "Ar",
+        "displayName-count-other" : "ariarys malgaxes"
+      },
+      "MGF" : {
+        "symbol" : "MGF",
+        "displayName" : "Francu malgaxe",
+        "displayName-count-one" : "francu malgaxe",
+        "displayName-count-other" : "francos malgaxes"
+      },
+      "MKD" : {
+        "symbol" : "MKD",
+        "displayName" : "Denar macedoniu",
+        "displayName-count-one" : "denar macedoniu",
+        "displayName-count-other" : "denares macedonios"
+      },
+      "MKN" : {
+        "symbol" : "MKN",
+        "displayName" : "Denar macedoniu (1992–1993)",
+        "displayName-count-one" : "denar macedoniu (1992–1993)",
+        "displayName-count-other" : "denares macedonios (1992–1993)"
+      },
+      "MLF" : {
+        "symbol" : "MLF",
+        "displayName" : "Francu malianu",
+        "displayName-count-one" : "francu malianu",
+        "displayName-count-other" : "francos malianos"
+      },
+      "MMK" : {
+        "symbol" : "MMK",
+        "displayName" : "kyat de Myanmar",
+        "displayName-count-one" : "kyat de Myanmar",
+        "symbol-alt-narrow" : "K",
+        "displayName-count-other" : "kyats de Myanmar"
+      },
+      "MNT" : {
+        "symbol" : "MNT",
+        "displayName" : "Tugrik mongol",
+        "displayName-count-one" : "tugrik mongol",
+        "symbol-alt-narrow" : "₮",
+        "displayName-count-other" : "tugriks mongoles"
+      },
+      "MOP" : {
+        "symbol" : "MOP",
+        "displayName" : "Pataca de Macáu",
+        "displayName-count-one" : "pataca de Macáu",
+        "displayName-count-other" : "pataques de Macáu"
+      },
+      "MRO" : {
+        "symbol" : "MRO",
+        "displayName" : "ouguiya mauritanu",
+        "displayName-count-one" : "ouguiya mauritanu",
+        "displayName-count-other" : "ouguiyas mauritanos"
+      },
+      "MTL" : {
+        "symbol" : "MTL",
+        "displayName" : "Llira maltesa",
+        "displayName-count-one" : "llira maltesa",
+        "displayName-count-other" : "llires malteses"
+      },
+      "MTP" : {
+        "symbol" : "MTP",
+        "displayName" : "Llibra maltesa",
+        "displayName-count-one" : "llibra maltesa",
+        "displayName-count-other" : "llibres malteses"
+      },
+      "MUR" : {
+        "symbol" : "MUR",
+        "displayName" : "Rupia mauriciana",
+        "displayName-count-one" : "rupia mauriciana",
+        "symbol-alt-narrow" : "Rs",
+        "displayName-count-other" : "rupies mauricianes"
+      },
+      "MVP" : {
+        "symbol" : "MVP",
+        "displayName" : "Rupia maldiviana (1947–1981)",
+        "displayName-count-one" : "rupia maldiviana (1947–1981)",
+        "displayName-count-other" : "rupies maldivianes (1947–1981)"
+      },
+      "MVR" : {
+        "symbol" : "MVR",
+        "displayName" : "Rufiyaa maldiviana",
+        "displayName-count-one" : "rufiyaa maldiviana",
+        "displayName-count-other" : "rufiyaas maldivianas"
+      },
+      "MWK" : {
+        "symbol" : "MWK",
+        "displayName" : "Kwacha malauianu",
+        "displayName-count-one" : "kwacha malauianu",
+        "displayName-count-other" : "kwachas malauianos"
+      },
+      "MXN" : {
+        "symbol" : "MX$",
+        "displayName" : "Pesu mexicanu",
+        "displayName-count-one" : "pesu mexicanu",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "pesos mexicanos"
+      },
+      "MXP" : {
+        "symbol" : "MXP",
+        "displayName" : "Pesu de plata mexicanu (1861–1992)",
+        "displayName-count-one" : "pesu de plata mexicanu (1861–1992)",
+        "displayName-count-other" : "pesos de plata mexicanos (1861–1992)"
+      },
+      "MXV" : {
+        "symbol" : "MXV",
+        "displayName" : "Unidá d’inversión mexicana",
+        "displayName-count-one" : "unidá d’inversión mexicana",
+        "displayName-count-other" : "unidaes d’inversión mexicanes"
+      },
+      "MYR" : {
+        "symbol" : "MYR",
+        "displayName" : "ringgit malasiu",
+        "displayName-count-one" : "ringgit malasiu",
+        "symbol-alt-narrow" : "RM",
+        "displayName-count-other" : "ringgits malasios"
+      },
+      "MZE" : {
+        "symbol" : "MZE",
+        "displayName" : "Escudu mozambicanu",
+        "displayName-count-one" : "escudu mozambicanu",
+        "displayName-count-other" : "escudos mozambicanos"
+      },
+      "MZM" : {
+        "symbol" : "MZM",
+        "displayName" : "Metical mozambicanu (1980–2006)",
+        "displayName-count-one" : "metical mozambicanu (1980–2006)",
+        "displayName-count-other" : "meticales mozambicanos (1980–2006)"
+      },
+      "MZN" : {
+        "symbol" : "MZN",
+        "displayName" : "Metical mozambicanu",
+        "displayName-count-one" : "metical mozambicanu",
+        "displayName-count-other" : "meticales mozambicanos"
+      },
+      "NAD" : {
+        "symbol" : "NAD",
+        "displayName" : "Dólar namibianu",
+        "displayName-count-one" : "dólar namibianu",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares namibianos"
+      },
+      "NGN" : {
+        "symbol" : "NGN",
+        "displayName" : "naira nixeriana",
+        "displayName-count-one" : "naira nixeriana",
+        "symbol-alt-narrow" : "₦",
+        "displayName-count-other" : "nairas nixerianes"
+      },
+      "NIC" : {
+        "symbol" : "NIC",
+        "displayName" : "Córdoba nicaraguanu (1988–1991)",
+        "displayName-count-one" : "córdoba nicaraguanu (1988–1991)",
+        "displayName-count-other" : "córdobes nicaraguanes (1988–1991)"
+      },
+      "NIO" : {
+        "symbol" : "NIO",
+        "displayName" : "Córdoba nicaraguanu",
+        "displayName-count-one" : "córdoba nicaraguanu",
+        "symbol-alt-narrow" : "C$",
+        "displayName-count-other" : "córdobes nicaraguanos"
+      },
+      "NLG" : {
+        "symbol" : "NLG",
+        "displayName" : "Florín neerlandés",
+        "displayName-count-one" : "florín neerlandés",
+        "displayName-count-other" : "florines neerlandeses"
+      },
+      "NOK" : {
+        "symbol" : "NOK",
+        "displayName" : "corona noruega",
+        "displayName-count-one" : "corona noruega",
+        "symbol-alt-narrow" : "NOK",
+        "displayName-count-other" : "corones noruegues"
+      },
+      "NPR" : {
+        "symbol" : "NPR",
+        "displayName" : "Rupia nepalesa",
+        "displayName-count-one" : "rupia nepalesa",
+        "symbol-alt-narrow" : "Rs",
+        "displayName-count-other" : "rupies nepaleses"
+      },
+      "NZD" : {
+        "symbol" : "NZ$",
+        "displayName" : "dólar neozelandés",
+        "displayName-count-one" : "dólar neozelandés",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares neozelandeses"
+      },
+      "OMR" : {
+        "symbol" : "OMR",
+        "displayName" : "Rial omanianu",
+        "displayName-count-one" : "rial omanianu",
+        "displayName-count-other" : "riales omanianos"
+      },
+      "PAB" : {
+        "symbol" : "PAB",
+        "displayName" : "Balboa panamiegu",
+        "displayName-count-one" : "balboa panamiegu",
+        "displayName-count-other" : "balboes panamiegos"
+      },
+      "PEI" : {
+        "symbol" : "PEI",
+        "displayName" : "Inti peruanu",
+        "displayName-count-one" : "inti peruanu",
+        "displayName-count-other" : "intis peruanos"
+      },
+      "PEN" : {
+        "symbol" : "PEN",
+        "displayName" : "Sol peruanu",
+        "displayName-count-one" : "sol peruanu",
+        "displayName-count-other" : "soles peruanos"
+      },
+      "PES" : {
+        "symbol" : "PES",
+        "displayName" : "Sol peruanu (1863–1965)",
+        "displayName-count-one" : "sol peruanu (1863–1965)",
+        "displayName-count-other" : "soles peruanos (1863–1965)"
+      },
+      "PGK" : {
+        "symbol" : "PGK",
+        "displayName" : "kina papuana",
+        "displayName-count-one" : "kina papuana",
+        "displayName-count-other" : "kines papuanes"
+      },
+      "PHP" : {
+        "symbol" : "PHP",
+        "displayName" : "pesu filipín",
+        "displayName-count-one" : "pesu filipín",
+        "symbol-alt-narrow" : "₱",
+        "displayName-count-other" : "pesos filipinos"
+      },
+      "PKR" : {
+        "symbol" : "PKR",
+        "displayName" : "Rupia paquistanina",
+        "displayName-count-one" : "rupia paquistanina",
+        "symbol-alt-narrow" : "Rs",
+        "displayName-count-other" : "rupies paquistanines"
+      },
+      "PLN" : {
+        "symbol" : "PLN",
+        "displayName" : "Zloty polacu",
+        "displayName-count-one" : "zloty polacu",
+        "symbol-alt-narrow" : "PLN",
+        "displayName-count-other" : "zlotys polacos"
+      },
+      "PLZ" : {
+        "symbol" : "PLZ",
+        "displayName" : "Zloty polacu (1950–1995)",
+        "displayName-count-one" : "zloty polacu (1950–1995)",
+        "displayName-count-other" : "zloty polacos (1950–1995)"
+      },
+      "PTE" : {
+        "symbol" : "PTE",
+        "displayName" : "Escudu portugués",
+        "displayName-count-one" : "escudu portugués",
+        "displayName-count-other" : "escudos portugueses"
+      },
+      "PYG" : {
+        "symbol" : "PYG",
+        "displayName" : "guaraní paraguayu",
+        "displayName-count-one" : "guaraní paraguayu",
+        "symbol-alt-narrow" : "₲",
+        "displayName-count-other" : "guaranís paraguayos"
+      },
+      "QAR" : {
+        "symbol" : "QAR",
+        "displayName" : "Rial qatarín",
+        "displayName-count-one" : "rial qatarín",
+        "displayName-count-other" : "riales qatarinos"
+      },
+      "RHD" : {
+        "symbol" : "RHD",
+        "displayName" : "Dólar rodesianu",
+        "displayName-count-one" : "dólar rodesianu",
+        "displayName-count-other" : "dólares rodesianos"
+      },
+      "ROL" : {
+        "symbol" : "ROL",
+        "displayName" : "Leu rumanu (1952–2006)",
+        "displayName-count-one" : "leu rumanu (1952–2006)",
+        "displayName-count-other" : "leus rumanos (1952–2006)"
+      },
+      "RON" : {
+        "symbol" : "RON",
+        "displayName" : "Leu rumanu",
+        "displayName-count-one" : "leu rumanu",
+        "symbol-alt-narrow" : "lei",
+        "displayName-count-other" : "leus rumanos"
+      },
+      "RSD" : {
+        "symbol" : "RSD",
+        "displayName" : "dinar serbiu",
+        "displayName-count-one" : "dinar serbiu",
+        "displayName-count-other" : "dinares serbios"
+      },
+      "RUB" : {
+        "symbol" : "RUB",
+        "symbol-alt-variant" : "₽",
+        "displayName" : "Rublu rusu",
+        "displayName-count-one" : "rublu rusu",
+        "symbol-alt-narrow" : "₽",
+        "displayName-count-other" : "rublos rusos"
+      },
+      "RUR" : {
+        "symbol" : "RUR",
+        "displayName" : "Rublu rusu (1991–1998)",
+        "displayName-count-one" : "rublu rusu (1991–1998)",
+        "symbol-alt-narrow" : "RUR",
+        "displayName-count-other" : "rublos rusos (1991–1998)"
+      },
+      "RWF" : {
+        "symbol" : "RWF",
+        "displayName" : "Francu ruandés",
+        "displayName-count-one" : "francu ruandés",
+        "symbol-alt-narrow" : "RF",
+        "displayName-count-other" : "francos ruandeses"
+      },
+      "SAR" : {
+        "symbol" : "SAR",
+        "displayName" : "Riyal saudita",
+        "displayName-count-one" : "riyal saudita",
+        "displayName-count-other" : "riyales saudites"
+      },
+      "SBD" : {
+        "symbol" : "SBD",
+        "displayName" : "dólar salomonés",
+        "displayName-count-one" : "dólar salomonés",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares salomoneses"
+      },
+      "SCR" : {
+        "symbol" : "SCR",
+        "displayName" : "Rupia seixelesa",
+        "displayName-count-one" : "rupia seixelesa",
+        "displayName-count-other" : "rupies seixeleses"
+      },
+      "SDD" : {
+        "symbol" : "SDD",
+        "displayName" : "dinar sudanés (1992–2007)",
+        "displayName-count-one" : "dinar sudanés (1992–2007)",
+        "displayName-count-other" : "dinares sudaneses (1992–2007)"
+      },
+      "SDG" : {
+        "symbol" : "SDG",
+        "displayName" : "llibra sudanesa",
+        "displayName-count-one" : "llibra sudanesa",
+        "displayName-count-other" : "llibres sudaneses"
+      },
+      "SDP" : {
+        "symbol" : "SDP",
+        "displayName" : "llibra sudanesa (1957–1998)",
+        "displayName-count-one" : "llibra sudanesa (1957–1998)",
+        "displayName-count-other" : "llibres sudaneses (1957–1998)"
+      },
+      "SEK" : {
+        "symbol" : "SEK",
+        "displayName" : "corona sueca",
+        "displayName-count-one" : "corona sueca",
+        "symbol-alt-narrow" : "SEK",
+        "displayName-count-other" : "corones sueques"
+      },
+      "SGD" : {
+        "symbol" : "SGD",
+        "displayName" : "dólar singapuranu",
+        "displayName-count-one" : "dólar singapuranu",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares singapuranos"
+      },
+      "SHP" : {
+        "symbol" : "SHP",
+        "displayName" : "llibra de Santa Lena",
+        "displayName-count-one" : "llibra de Santa Lena",
+        "symbol-alt-narrow" : "£",
+        "displayName-count-other" : "llibres de Santa Lena"
+      },
+      "SIT" : {
+        "symbol" : "SIT",
+        "displayName" : "Tolar eslovenu",
+        "displayName-count-one" : "tolar eslovenu",
+        "displayName-count-other" : "tolares eslovenos"
+      },
+      "SKK" : {
+        "symbol" : "SKK",
+        "displayName" : "Corona eslovaca",
+        "displayName-count-one" : "corona eslovaca",
+        "displayName-count-other" : "corones eslovaques"
+      },
+      "SLL" : {
+        "symbol" : "SLL",
+        "displayName" : "leone sierralleonés",
+        "displayName-count-one" : "leone sierralleonés",
+        "displayName-count-other" : "leones sierralleoneses"
+      },
+      "SOS" : {
+        "symbol" : "SOS",
+        "displayName" : "Shilling somalín",
+        "displayName-count-one" : "shilling somalín",
+        "displayName-count-other" : "shillings somalinos"
+      },
+      "SRD" : {
+        "symbol" : "SRD",
+        "displayName" : "dólar surinamés",
+        "displayName-count-one" : "dólar surinamés",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares surinameses"
+      },
+      "SRG" : {
+        "symbol" : "SRG",
+        "displayName" : "Florín surinamés",
+        "displayName-count-one" : "florín surinamés",
+        "displayName-count-other" : "florinos surinameses"
+      },
+      "SSP" : {
+        "symbol" : "SSP",
+        "displayName" : "llibra sursudanesa",
+        "displayName-count-one" : "llibra sursudanesa",
+        "symbol-alt-narrow" : "£",
+        "displayName-count-other" : "llibres sursudaneses"
+      },
+      "STD" : {
+        "symbol" : "STD",
+        "displayName" : "dobra de Santu Tomé y Príncipe",
+        "displayName-count-one" : "dobra de Santu Tomé y Príncipe",
+        "symbol-alt-narrow" : "Db",
+        "displayName-count-other" : "dobras de Santu Tomé y Príncipe"
+      },
+      "STN" : {
+        "symbol" : "STN",
+        "displayName" : "STN"
+      },
+      "SUR" : {
+        "symbol" : "SUR",
+        "displayName" : "Rublu soviéticu",
+        "displayName-count-one" : "rublu soviéticu",
+        "displayName-count-other" : "rublos soviéticos"
+      },
+      "SVC" : {
+        "symbol" : "SVC",
+        "displayName" : "Colón salvadorianu",
+        "displayName-count-one" : "colón salvadorianu",
+        "displayName-count-other" : "colones salvadorianos"
+      },
+      "SYP" : {
+        "symbol" : "SYP",
+        "displayName" : "Llibra siria",
+        "displayName-count-one" : "llibra siria",
+        "symbol-alt-narrow" : "£",
+        "displayName-count-other" : "llibres siries"
+      },
+      "SZL" : {
+        "symbol" : "SZL",
+        "displayName" : "Lilangeni suazilandés",
+        "displayName-count-one" : "lilangeni suazilandés",
+        "displayName-count-other" : "lilangenis suazilandeses"
+      },
+      "THB" : {
+        "symbol" : "฿",
+        "displayName" : "baht tailandés",
+        "displayName-count-one" : "baht tailandés",
+        "symbol-alt-narrow" : "฿",
+        "displayName-count-other" : "bahts tailandeses"
+      },
+      "TJR" : {
+        "symbol" : "TJR",
+        "displayName" : "Rublu taxiquistanín",
+        "displayName-count-one" : "rublu taxiquistanín",
+        "displayName-count-other" : "rublos taxiquistaninos"
+      },
+      "TJS" : {
+        "symbol" : "TJS",
+        "displayName" : "Somoni taxiquistanín",
+        "displayName-count-one" : "somoni taxiquistanín",
+        "displayName-count-other" : "somonis taxiquistaninos"
+      },
+      "TMM" : {
+        "symbol" : "TMM",
+        "displayName" : "Manat turcomanu (1993–2009)",
+        "displayName-count-one" : "manat turcomanu (1993–2009)",
+        "displayName-count-other" : "manats turcomanos (1993–2009)"
+      },
+      "TMT" : {
+        "symbol" : "TMT",
+        "displayName" : "Manat turcomanu",
+        "displayName-count-one" : "manat turcomanu",
+        "displayName-count-other" : "manats turcomanos"
+      },
+      "TND" : {
+        "symbol" : "TND",
+        "displayName" : "dinar tunecín",
+        "displayName-count-one" : "dinar tunecín",
+        "displayName-count-other" : "dinares tunecinos"
+      },
+      "TOP" : {
+        "symbol" : "TOP",
+        "displayName" : "paʻanga tonganu",
+        "displayName-count-one" : "paʻanga tonganu",
+        "symbol-alt-narrow" : "T$",
+        "displayName-count-other" : "paʻangas tonganos"
+      },
+      "TPE" : {
+        "symbol" : "TPE",
+        "displayName" : "Escudu timorés",
+        "displayName-count-one" : "escudu timorés",
+        "displayName-count-other" : "escudos timoreses"
+      },
+      "TRL" : {
+        "symbol" : "TRL",
+        "displayName" : "Llira turca (1922–2005)",
+        "displayName-count-one" : "llira turca (1922–2005)",
+        "displayName-count-other" : "llires turques (1922–2005)"
+      },
+      "TRY" : {
+        "symbol" : "TRY",
+        "symbol-alt-variant" : "TL",
+        "displayName" : "Llira turca",
+        "displayName-count-one" : "llira turca",
+        "symbol-alt-narrow" : "₺",
+        "displayName-count-other" : "llires turques"
+      },
+      "TTD" : {
+        "symbol" : "TTD",
+        "displayName" : "dólar de Trinidá y Tobagu",
+        "displayName-count-one" : "dólar de Trinidá y Tobagu",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares de Trinidá y Tobagu"
+      },
+      "TWD" : {
+        "symbol" : "NT$",
+        "displayName" : "Dólar nuevu taiwanés",
+        "displayName-count-one" : "dólar nuevu taiwanés",
+        "symbol-alt-narrow" : "NT$",
+        "displayName-count-other" : "dólares nuevos taiwaneses"
+      },
+      "TZS" : {
+        "symbol" : "TZS",
+        "displayName" : "Shilling tanzanianu",
+        "displayName-count-one" : "shilling tanzanianu",
+        "displayName-count-other" : "shillings tanzanianos"
+      },
+      "UAH" : {
+        "symbol" : "UAH",
+        "displayName" : "Grivna ucraína",
+        "displayName-count-one" : "grivna ucraína",
+        "symbol-alt-narrow" : "₴",
+        "displayName-count-other" : "grivnas ucraínes"
+      },
+      "UAK" : {
+        "symbol" : "UAK",
+        "displayName" : "Karbovanets ucraína",
+        "displayName-count-one" : "karbovanets ucraína",
+        "displayName-count-other" : "karbovanets ucraínes"
+      },
+      "UGS" : {
+        "symbol" : "UGS",
+        "displayName" : "Shilling ugandés (1966–1987)",
+        "displayName-count-one" : "shilling ugandés (1966–1987)",
+        "displayName-count-other" : "shillings ugandeses (1966–1987)"
+      },
+      "UGX" : {
+        "symbol" : "UGX",
+        "displayName" : "Shilling ugandés",
+        "displayName-count-one" : "shilling ugandés",
+        "displayName-count-other" : "shillings ugandeses"
+      },
+      "USD" : {
+        "symbol" : "$",
+        "displayName" : "Dólar estaunidense",
+        "displayName-count-one" : "dólar estaunidense",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares estaunidenses"
+      },
+      "USN" : {
+        "symbol" : "USN",
+        "displayName" : "Dólar d’EE.XX. (día siguiente)",
+        "displayName-count-one" : "dólar d’EE.XX. (día siguiente)",
+        "displayName-count-other" : "dólares d’EE.XX. (día siguiente)"
+      },
+      "USS" : {
+        "symbol" : "USS",
+        "displayName" : "Dólar d’EE.XX. (mesmu día)",
+        "displayName-count-one" : "dólar d’EE.XX. (mesmu día)",
+        "displayName-count-other" : "dólares d’EE.XX. (mesmu día)"
+      },
+      "UYI" : {
+        "symbol" : "UYI",
+        "displayName" : "Pesu uruguayu (Unidaes indexaes)",
+        "displayName-count-one" : "pesu uruguayu (unidaes indexaes)",
+        "displayName-count-other" : "pesos uruguayos (unidaes indexaes)"
+      },
+      "UYP" : {
+        "symbol" : "UYP",
+        "displayName" : "Pesu uruguayu (1975–1993)",
+        "displayName-count-one" : "pesu uruguayu (1975–1993)",
+        "displayName-count-other" : "pesos uruguayos (1975–1993)"
+      },
+      "UYU" : {
+        "symbol" : "UYU",
+        "displayName" : "pesu uruguayu",
+        "displayName-count-one" : "pesu uruguayu",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "pesos uruguayos"
+      },
+      "UZS" : {
+        "symbol" : "UZS",
+        "displayName" : "Som uzbequistanín",
+        "displayName-count-one" : "som uzbequistanín",
+        "displayName-count-other" : "soms uzbequistaninos"
+      },
+      "VEB" : {
+        "symbol" : "VEB",
+        "displayName" : "Bolívar venezolanu (1871–2008)",
+        "displayName-count-one" : "bolívar venezolanu (1871–2008)",
+        "displayName-count-other" : "bolívares venezolanos (1871–2008)"
+      },
+      "VEF" : {
+        "symbol" : "VEF",
+        "displayName" : "bolívar venezolanu",
+        "displayName-count-one" : "bolívar venezolanu",
+        "symbol-alt-narrow" : "Bs",
+        "displayName-count-other" : "bolívares venezolanos"
+      },
+      "VND" : {
+        "symbol" : "₫",
+        "displayName" : "dong vietnamín",
+        "displayName-count-one" : "dong vietnamín",
+        "symbol-alt-narrow" : "₫",
+        "displayName-count-other" : "dongs vietnaminos"
+      },
+      "VNN" : {
+        "symbol" : "VNN",
+        "displayName" : "Dong vietnamín (1978–1985)",
+        "displayName-count-one" : "dong vietnamín (1978–1985)",
+        "displayName-count-other" : "dongs vietnaminos (1978–1985)"
+      },
+      "VUV" : {
+        "symbol" : "VUV",
+        "displayName" : "vatu vanuatuanu",
+        "displayName-count-one" : "vatu vanuatuanu",
+        "displayName-count-other" : "vatus vanuatuanos"
+      },
+      "WST" : {
+        "symbol" : "WST",
+        "displayName" : "tala samoanu",
+        "displayName-count-one" : "tala samoanu",
+        "displayName-count-other" : "talas samoanos"
+      },
+      "XAF" : {
+        "symbol" : "FCFA",
+        "displayName" : "Francu CFA centroafricanu",
+        "displayName-count-one" : "francu CFA centroafricanu",
+        "displayName-count-other" : "francos CFA centroafricanos"
+      },
+      "XAG" : {
+        "symbol" : "XAG",
+        "displayName" : "Plata",
+        "displayName-count-one" : "onza troy de plata",
+        "displayName-count-other" : "onces troy de plata"
+      },
+      "XAU" : {
+        "symbol" : "XAU",
+        "displayName" : "Oru",
+        "displayName-count-one" : "onza troy d’oru",
+        "displayName-count-other" : "onces troy d’oru"
+      },
+      "XBA" : {
+        "symbol" : "XBA",
+        "displayName" : "Unidá Compuesta Europea",
+        "displayName-count-one" : "unidá compuesta europea",
+        "displayName-count-other" : "unidaes compuestes europées"
+      },
+      "XBB" : {
+        "symbol" : "XBB",
+        "displayName" : "Unidá monetaria europea",
+        "displayName-count-one" : "unidá monetaria europea",
+        "displayName-count-other" : "unidaes monetaries europées"
+      },
+      "XBC" : {
+        "symbol" : "XBC",
+        "displayName" : "Unidá de cuenta europea (XBC)",
+        "displayName-count-one" : "unidá de cuenta europea (XBC)",
+        "displayName-count-other" : "unidaes de cuenta europées (XBC)"
+      },
+      "XBD" : {
+        "symbol" : "XBD",
+        "displayName" : "Unidá de cuenta europea (XBD)",
+        "displayName-count-one" : "unidá de cuenta europea (XBD)",
+        "displayName-count-other" : "unidaes de cuenta europées (XBD)"
+      },
+      "XCD" : {
+        "symbol" : "EC$",
+        "displayName" : "dólar del Caribe Oriental",
+        "displayName-count-one" : "dólar del Caribe Oriental",
+        "symbol-alt-narrow" : "$",
+        "displayName-count-other" : "dólares del Caribe Oriental"
+      },
+      "XDR" : {
+        "symbol" : "XDR",
+        "displayName" : "Drechos especiales de xiru",
+        "displayName-count-one" : "drechos especiales de xiru",
+        "displayName-count-other" : "drechos especiales de xiru"
+      },
+      "XEU" : {
+        "symbol" : "XEU",
+        "displayName" : "Unidá de divisa europea",
+        "displayName-count-one" : "unidá de divisa europea",
+        "displayName-count-other" : "unidaes de divisa europees"
+      },
+      "XFO" : {
+        "symbol" : "XFO",
+        "displayName" : "Francu oru francés",
+        "displayName-count-one" : "francu oru francés",
+        "displayName-count-other" : "francos oru franceses"
+      },
+      "XFU" : {
+        "symbol" : "XFU",
+        "displayName" : "Francu UIC francés",
+        "displayName-count-one" : "francu UIC francés",
+        "displayName-count-other" : "francos UIC franceses"
+      },
+      "XOF" : {
+        "symbol" : "CFA",
+        "displayName" : "francu CFA BCEAO",
+        "displayName-count-one" : "francu CFA BCEAO",
+        "displayName-count-other" : "francos CFA BCEAO"
+      },
+      "XPD" : {
+        "symbol" : "XPD",
+        "displayName" : "Paladiu",
+        "displayName-count-one" : "onza troy de paladiu",
+        "displayName-count-other" : "onces troy de paladiu"
+      },
+      "XPF" : {
+        "symbol" : "CFPF",
+        "displayName" : "francu CFP",
+        "displayName-count-one" : "francu CFP",
+        "displayName-count-other" : "francos CFP"
+      },
+      "XPT" : {
+        "symbol" : "XPT",
+        "displayName" : "Platín",
+        "displayName-count-one" : "onza troy de platín",
+        "displayName-count-other" : "onces troy de platín"
+      },
+      "XRE" : {
+        "symbol" : "XRE",
+        "displayName" : "Fondos RINET",
+        "displayName-count-one" : "unidá de fondos RINET",
+        "displayName-count-other" : "unidaes de fondos RINET"
+      },
+      "XSU" : {
+        "symbol" : "XSU",
+        "displayName" : "Sucre",
+        "displayName-count-one" : "sucre",
+        "displayName-count-other" : "sucres"
+      },
+      "XTS" : {
+        "symbol" : "XTS",
+        "displayName" : "Códigu monetariu de prueba",
+        "displayName-count-one" : "códigu monetariu de prueba",
+        "displayName-count-other" : "códigos monetarios de prueba"
+      },
+      "XUA" : {
+        "symbol" : "XUA",
+        "displayName" : "unidá de cuenta ADB",
+        "displayName-count-one" : "unidá de cuenta ADB",
+        "displayName-count-other" : "unidaes de cuenta ADB"
+      },
+      "XXX" : {
+        "symbol" : "XXX",
+        "displayName" : "Divisa desconocida",
+        "displayName-count-one" : "(unidá desconocida de divisa)",
+        "displayName-count-other" : "(divises desconocíes)"
+      },
+      "YDD" : {
+        "symbol" : "YDD",
+        "displayName" : "Dinar yemenín",
+        "displayName-count-one" : "dinar yemenín",
+        "displayName-count-other" : "dinares yemeninos"
+      },
+      "YER" : {
+        "symbol" : "YER",
+        "displayName" : "Rial yemenín",
+        "displayName-count-one" : "rial yemenín",
+        "displayName-count-other" : "riales yemeninos"
+      },
+      "YUD" : {
+        "symbol" : "YUD",
+        "displayName" : "Dinar fuerte yugoslavu (1966–1990)",
+        "displayName-count-one" : "dinar fuerte yugoslavu (1966–1990)",
+        "displayName-count-other" : "dinares fuertes yugoslavos (1966–1990)"
+      },
+      "YUM" : {
+        "symbol" : "YUM",
+        "displayName" : "Dinar nuevu yugoslavu (1994–2002)",
+        "displayName-count-one" : "dinar nuevu yugoslavu (1994–2002)",
+        "displayName-count-other" : "dinares nuevos yugoslavos (1994–2002)"
+      },
+      "YUN" : {
+        "symbol" : "YUN",
+        "displayName" : "Dinar convertible yugoslavu (1990–1992)",
+        "displayName-count-one" : "dinar convertible yugoslavu (1990–1992)",
+        "displayName-count-other" : "dinares convertibles yugoslavos (1990–1992)"
+      },
+      "YUR" : {
+        "symbol" : "YUR",
+        "displayName" : "Dinar reformáu yugoslavu (1992–1993)",
+        "displayName-count-one" : "dinar reformáu yugoslavu (1992–1993)",
+        "displayName-count-other" : "dinares reformaos yugoslavos (1992–1993)"
+      },
+      "ZAL" : {
+        "symbol" : "ZAL",
+        "displayName" : "Rand sudafricanu (financieru)",
+        "displayName-count-one" : "rand sudafricanu (financieru)",
+        "displayName-count-other" : "rands sudafricanos (financieros)"
+      },
+      "ZAR" : {
+        "symbol" : "ZAR",
+        "displayName" : "Rand sudafricanu",
+        "displayName-count-one" : "rand sudafricanu",
+        "symbol-alt-narrow" : "R",
+        "displayName-count-other" : "rands sudafricanos"
+      },
+      "ZMK" : {
+        "symbol" : "ZMK",
+        "displayName" : "Kwacha zambianu (1968–2012)",
+        "displayName-count-one" : "kwacha zambianu (1968–2012)",
+        "displayName-count-other" : "kwachas zambianos (1968–2012)"
+      },
+      "ZMW" : {
+        "symbol" : "ZMW",
+        "displayName" : "Kwacha zambianu",
+        "displayName-count-one" : "kwacha zambianu",
+        "symbol-alt-narrow" : "ZK",
+        "displayName-count-other" : "kwachas zambianos"
+      },
+      "ZRN" : {
+        "symbol" : "ZRN",
+        "displayName" : "Zaire nuevu zairiegu (1993–1998)",
+        "displayName-count-one" : "zaire nuevu zairiegu (1993–1998)",
+        "displayName-count-other" : "zaires nuevos zairiegos (1993–1998)"
+      },
+      "ZRZ" : {
+        "symbol" : "ZRZ",
+        "displayName" : "Zaire zairiegu (1971–1993)",
+        "displayName-count-one" : "zaire zairiegu (1971–1993)",
+        "displayName-count-other" : "zaires zairiegos (1971–1993)"
+      },
+      "ZWD" : {
+        "symbol" : "ZWD",
+        "displayName" : "Dólar zimbabuanu (1980–2008)",
+        "displayName-count-one" : "dólar zimbabuanu (1980–2008)",
+        "displayName-count-other" : "dólares zimbabuanos (1980–2008)"
+      },
+      "ZWL" : {
+        "symbol" : "ZWL",
+        "displayName" : "Dólar zimbabuanu (2009)",
+        "displayName-count-one" : "dólar zimbabuanu (2009)",
+        "displayName-count-other" : "dólares zimbabuanos (2009)"
+      },
+      "ZWR" : {
+        "symbol" : "ZWR",
+        "displayName" : "Dólar zimbabuanu (2008)",
+        "displayName-count-one" : "dólar zimbabuanu (2008)",
+        "displayName-count-other" : "dólares zimbabuanos (2008)"
+      }
+    }
+  }
+}
