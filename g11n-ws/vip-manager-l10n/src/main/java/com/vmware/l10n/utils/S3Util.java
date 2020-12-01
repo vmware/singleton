@@ -55,20 +55,11 @@ public class S3Util {
 	}
 
 	public String readBundle(String basePath, SingleComponentDTO compDTO) {
-		logger.debug("read bundle file: {}/{}/{}/{}", compDTO.getProductName(), compDTO.getVersion(),
-				compDTO.getComponent(), compDTO.getLocale());
-
 		String bundlePath = getBundleFilePath(basePath, compDTO);
-		String result = s3Inst.getObjectAsString(bucketName, bundlePath);
-
-		logger.debug("end reading bundle file");
-		return result;
+		return s3Inst.getObjectAsString(bucketName, bundlePath);
 	}
 
 	public boolean writeBundle(String basePath, SingleComponentDTO compDTO) {
-		logger.debug("write bundle file: {}/{}/{}/{}", compDTO.getProductName(), compDTO.getVersion(),
-				compDTO.getComponent(), compDTO.getLocale());
-
 		try {
 			String bundlePath = getBundleFilePath(basePath, compDTO);
 			s3Inst.putObject(bucketName, bundlePath, compDTO.toPrettyString());
@@ -76,8 +67,6 @@ public class S3Util {
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 			return false;
-		} finally {
-			logger.debug("end writing bundle file");
 		}
 	}
 
