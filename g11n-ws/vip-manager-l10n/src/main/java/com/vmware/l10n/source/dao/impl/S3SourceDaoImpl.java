@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.vmware.l10n.record.dao.SqlLiteDao;
 import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.l10n.utils.S3Util;
+import com.vmware.l10n.utils.S3Util.Locker;
 import com.vmware.l10n.utils.SourceUtils;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
@@ -55,7 +56,8 @@ public class S3SourceDaoImpl implements SourceDao {
 			return false;
 		}
 
-		if (!s3util.lockBundleFile(basePath, compDTO, 10000)) {
+		Locker locker = s3util.new Locker(basePath, compDTO);
+		if (!locker.lockFile()) {
 			logger.warn("failed to lock bundle file, return.");
 			return false;
 		}
@@ -79,7 +81,7 @@ public class S3SourceDaoImpl implements SourceDao {
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		} finally {
-			s3util.unlockBundleFile(basePath, compDTO);
+			locker.unlockFile();
 		}
 
 		return bSuccess;

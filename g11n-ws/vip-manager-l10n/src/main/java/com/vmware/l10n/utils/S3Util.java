@@ -3,74 +3,45 @@
 package com.vmware.l10n.utils;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import com.amazonaws.SdkClientException;
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.AmazonS3Exception;
-import com.amazonaws.services.s3.model.GetBucketLocationRequest;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vmware.l10n.conf.RsaCryptUtil;
+import com.vmware.l10n.conf.S3Client;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;
-import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.i18n.resourcefile.ResourceFilePathGetter;
+import com.vmware.vip.common.utils.TimeUtils;
 
 @Component("S3Util")
 @Profile("s3")
 public class S3Util {
 	private static Logger logger = LoggerFactory.getLogger(S3Util.class);
 
+	private static Random random = new Random(System.currentTimeMillis());
+	private static long retryInterval = 500; // milliseconds
+	private static long deadlockInterval = 10 * 60 * 1000L; // 10 minutes
+	private static long waitS3Operation = 100; // milliseconds
+	private static long waitToLock = 10 * 1000L; // 10 seconds
+
 	private AmazonS3 s3Inst;
 
-	/**
-	 * the s3 password is encryption or not
-	 */
-	@Value("${s3.keysEncryptEnable:false}")
-	private boolean encryption;
-
-	/**
-	 * the s3 password public key used to decrypt data
-	 */
-	@Value("${s3.publicKey}")
-	private String publicKey;
-
-	/**
-	 * the s3 access Key
-	 */
-	@Value("${s3.accessKey}")
-	private String accessKey;
-
-	/**
-	 * the s3 secret key
-	 */
-	@Value("${s3.secretkey}")
-	private String secretkey;
-
-	/**
-	 * the s3 region name
-	 */
-	@Value("${s3.region}")
-	private String s3Region;
+	@Autowired
+	private S3Client client;
 
 	/**
 	 * the s3 bucket Name
@@ -78,28 +49,9 @@ public class S3Util {
 	@Value("${s3.bucketName}")
 	private String bucketName;
 
-	private Random random = new Random(System.currentTimeMillis());
-
-	private static long retryInterval = 500; // milliseconds
-	private static long deadlockInterval = 10 * 60 * 1000L; // 10 minutes
-	private static long waitS3Operation = 100; // milliseconds
-	
-	/**
-	 * initialize the the S3 client environment
-	 */
 	@PostConstruct
 	private void init() {
-		s3Inst = AmazonS3ClientBuilder.standard()
-				.withCredentials(new AWSStaticCredentialsProvider(
-						new BasicAWSCredentials(this.getAccessKey(), this.getSecretkey())))
-				.withRegion(s3Region).enablePathStyleAccess().build();
-		if (!s3Inst.doesBucketExistV2(bucketName)) {
-			s3Inst.createBucket(bucketName);
-			// Verify that the bucket was created by retrieving it and checking its
-			// location.
-			String bucketLocation = s3Inst.getBucketLocation(new GetBucketLocationRequest(bucketName));
-			logger.info("Bucket location: {}", bucketLocation);
-		}
+		s3Inst = client.getS3Client();
 	}
 
 	public String readBundle(String basePath, SingleComponentDTO compDTO) {
@@ -119,7 +71,7 @@ public class S3Util {
 
 		try {
 			String bundlePath = getBundleFilePath(basePath, compDTO);
-			s3Inst.putObject(bucketName, bundlePath, convertComponentToString(compDTO));
+			s3Inst.putObject(bucketName, bundlePath, compDTO.toPrettyString());
 			return true;
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
@@ -132,99 +84,6 @@ public class S3Util {
 	public boolean isBundleExist(String basePath, SingleComponentDTO singleComponentDTO) {
 		String bundlePath = getBundleFilePath(basePath, singleComponentDTO);
 		return s3Inst.doesObjectExist(bucketName, bundlePath);
-	}
-
-	public String convertComponentToString(SingleComponentDTO compDTO) throws JsonProcessingException {
-		Map<String, Object> json = new HashMap<>();
-		json.put(ConstantsKeys.COMPONENT, compDTO.getComponent());
-		json.put(ConstantsKeys.lOCALE, compDTO.getLocale());
-		json.put(ConstantsKeys.MESSAGES, compDTO.getMessages());
-		json.put(ConstantsKeys.ID, compDTO.getId());
-		return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(json);
-	}
-
-	public boolean lockBundleFile(String basePath, SingleComponentDTO compDTO, long waittime) {
-		long endTime = System.currentTimeMillis() + waittime;
-		String lockfilePath = getLockFile(getBundleFilePath(basePath, compDTO));
-		String content = Double.toString(random.nextDouble());
-
-		do {
-			if (!waitLockfileDisappeared(lockfilePath, endTime)) {
-				return false;
-			}
-
-			// Write the lock file
-			s3Inst.putObject(bucketName, lockfilePath, content);
-			sleep(waitS3Operation); // Wait for a while to let S3 finish writing.
-			
-			// Check file content is correct
-			try {
-				if(content.equals(s3Inst.getObjectAsString(bucketName, lockfilePath))) {
-					return true;
-				}
-			} catch (AmazonS3Exception e) {
-				logger.error(e.getMessage(), e);
-			}
-
-			sleep(retryInterval);
-		} while (System.currentTimeMillis() < endTime);
-
-		return false;
-	}
-
-	public void unlockBundleFile(String basePath, SingleComponentDTO compDTO) {
-		String bundlePath = getBundleFilePath(basePath, compDTO);
-		String lockFilePath = getLockFile(bundlePath);
-		try {
-			s3Inst.deleteObject(bucketName, lockFilePath);
-		} catch (SdkClientException e) {
-			logger.error(e.getMessage(), e);
-		}
-	}
-
-	private String getLockFile(String bundlePath) {
-		return bundlePath.substring(0, bundlePath.lastIndexOf('.')) + ".lock";
-	}
-
-	private boolean waitLockfileDisappeared(String lockfilePath, long endTime) {
-		boolean bDeadlockTested = false;
-		try {
-			List<S3ObjectSummary> objects = s3Inst.listObjectsV2(bucketName, lockfilePath).getObjectSummaries();
-			while (!objects.isEmpty()) {
-				if (!bDeadlockTested) {
-					bDeadlockTested = true;
-					// Get file creation time to detect deadlock
-					S3ObjectSummary lockfileObject = objects.get(0);
-					Date lastModified = lockfileObject.getLastModified();
-					if (new Date().getTime() - lastModified.getTime() > deadlockInterval) {// longer than 10min
-						s3Inst.deleteObject(bucketName, lockfilePath);
-						logger.warn("deleted dead lock file");
-						return true;
-					}
-				}
-				
-				sleep(retryInterval);
-				if (System.currentTimeMillis() >= endTime) {
-					logger.warn("failed to wait for lockfile disappeared");
-					return false;
-				}
-				
-				objects = s3Inst.listObjectsV2(bucketName, lockfilePath).getObjectSummaries();
-			}
-
-			return true;
-		} catch (AmazonS3Exception e) {
-			logger.error(e.getMessage(), e);
-			return false;
-		}
-	}
-
-	private void sleep(long millisecond) {
-		try {
-			TimeUnit.MILLISECONDS.sleep(millisecond);
-		} catch (InterruptedException e) {
-			Thread.currentThread().interrupt();
-		}
 	}
 
 	private static String getBundleFilePath(String basePath, SingleComponentDTO dto) {
@@ -252,29 +111,81 @@ public class S3Util {
 
 	}
 
-	public String getAccessKey() {
-		if (this.encryption) {
-			try {
-				return RsaCryptUtil.decryptData(this.getAccessKey(), this.publicKey);
-			} catch (Exception e) {
-				logger.error(e.getMessage(), e);
-				return null;
-			}
-		} else {
-			return this.accessKey;
-		}
-	}
+	public class Locker {
+		private String key;
 
-	public String getSecretkey() {
-		if (this.encryption) {
+		public Locker(String basePath, SingleComponentDTO compDTO) {
+			String bundlePath = getBundleFilePath(basePath, compDTO);
+			this.key = bundlePath.substring(0, bundlePath.lastIndexOf('.')) + ".lock";
+		}
+
+		public boolean lockFile() {
+			long endTime = System.currentTimeMillis() + waitToLock;
+			String content = Double.toString(random.nextDouble());
+
+			do {
+				if (!waitLockfileDisappeared(endTime)) {
+					return false;
+				}
+
+				// Write the lock file
+				s3Inst.putObject(bucketName, this.key, content);
+				TimeUtils.sleep(waitS3Operation); // Wait for a while to let S3 finish writing.
+
+				// Check file content is correct
+				try {
+					if (content.equals(s3Inst.getObjectAsString(bucketName, this.key))) {
+						return true;
+					}
+				} catch (AmazonS3Exception e) {
+					logger.error(e.getMessage(), e);
+				}
+
+				TimeUtils.sleep(retryInterval);
+			} while (System.currentTimeMillis() < endTime);
+
+			return false;
+		}
+
+		public void unlockFile() {
 			try {
-				return RsaCryptUtil.decryptData(this.secretkey, this.publicKey);
-			} catch (Exception e) {
+				s3Inst.deleteObject(bucketName, this.key);
+			} catch (SdkClientException e) {
 				logger.error(e.getMessage(), e);
-				return null;
 			}
-		} else {
-			return this.secretkey;
+		}
+
+		private boolean waitLockfileDisappeared(long endTime) {
+			boolean bDeadlockTested = false;
+			try {
+				List<S3ObjectSummary> objects = s3Inst.listObjectsV2(bucketName, this.key).getObjectSummaries();
+				while (!objects.isEmpty()) {
+					if (!bDeadlockTested) {
+						bDeadlockTested = true;
+						// Get file creation time to detect deadlock
+						S3ObjectSummary lockfileObject = objects.get(0);
+						Date lastModified = lockfileObject.getLastModified();
+						if (new Date().getTime() - lastModified.getTime() > deadlockInterval) {// longer than 10min
+							s3Inst.deleteObject(bucketName, this.key);
+							logger.warn("deleted dead lock file");
+							return true;
+						}
+					}
+
+					TimeUtils.sleep(retryInterval);
+					if (System.currentTimeMillis() >= endTime) {
+						logger.warn("failed to wait for lockfile disappeared");
+						return false;
+					}
+
+					objects = s3Inst.listObjectsV2(bucketName, this.key).getObjectSummaries();
+				}
+
+				return true;
+			} catch (AmazonS3Exception e) {
+				logger.error(e.getMessage(), e);
+				return false;
+			}
 		}
 	}
 }
