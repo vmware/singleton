@@ -9,20 +9,12 @@ project.archivesBaseName = 'sample-with-shared-lib'
 
 sourceCompatibility = 1.8
 version = '1.0'
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'Sample App with Shared Library',
-                   'Implementation-Version': version,
-                   'Main-Class': 'com.vmware.vipclient.sample.Main'
-    }
-    
-    from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-    }
-}
 
 repositories {
     mavenCentral()
+    maven {
+        url 'https://build-artifactory.eng.vmware.com/vip-gradle-local/'
+    }
 }
 
 dependencies {
@@ -33,6 +25,27 @@ dependencies {
     compile group: 'log4j', name: 'log4j', version: '1.2.17'
 
     compile fileTree(dir: 'lib', include: ['*.jar'])
+    compile(group: 'g11n-translation', name: 'JavaSample', version: '1.0.0.0', ext: 'zip')
 }
 
+task unzip(type: Copy) {
+    def zipFile = file(project.configurations.compile.find {it.name.startsWith("JavaSample-1.0.0.0") })
+    println "zip: " + zipFile
+    def outputDir = file("${buildDir}/resources/main/offlineBundles")
+    println "output dir: " + outputDir
+    from zipTree(zipFile)
+    into outputDir
+}
 
+jar {
+    dependsOn unzip
+    manifest {
+        attributes 'Implementation-Title': 'Sample App with Shared Library',
+                'Implementation-Version': version,
+                'Main-Class': 'com.vmware.vipclient.sample.Main'
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
