@@ -51,30 +51,31 @@ public class ComponentService {
 		}
 
 		DataSourceEnum dataSource = msgSourceQueueIter.next();
-		if (!proceed(dataSource))
-			refreshCacheItem(cacheItem, msgSourceQueueIter); // Try the next dataSource in the queue
+		if (!proceed(dataSource)) {
+			refreshCacheItem(cacheItem, msgSourceQueueIter); // Try the next dataSource
+		} else {
+			long timestampOld = cacheItem.getTimestamp();
+			String localeOrig = dto.getLocale();
+			if (dataSource.equals(DataSourceEnum.VIP) && dto.getLocale().equals(ConstantsKeys.SOURCE)) {
+				dto.setLocale(ConstantsKeys.LATEST);
+			}
+			dataSource.createMessageOpt(dto).getComponentMessages(cacheItem);
+			long timestamp = cacheItem.getTimestamp();
+			if (timestampOld == timestamp) {
+				logger.debug(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED, dto.getComponent(), dto.getLocale(), dataSource.toString()));
+			}
+			dto.setLocale(localeOrig);
 
-		long timestampOld = cacheItem.getTimestamp();
-		String localeOrig = dto.getLocale();
-		if (dataSource.equals(DataSourceEnum.VIP) && dto.getLocale().equals(ConstantsKeys.SOURCE)) {
-			dto.setLocale(ConstantsKeys.LATEST);
-		}
-		dataSource.createMessageOpt(dto).getComponentMessages(cacheItem);
-		long timestamp = cacheItem.getTimestamp();
-		if (timestampOld == timestamp) {
-			logger.debug(FormatUtils.format(ConstantsMsg.GET_MESSAGES_FAILED, dto.getComponent(), dto.getLocale(), dataSource.toString()));
-		}
-		dto.setLocale(localeOrig);
-
-		// If timestamp is 0, it means that cacheItem not yet in cache. So try the next data source.
-		if (timestamp == 0) {
-			// Try the next dataSource in the queue
-			refreshCacheItem(cacheItem, msgSourceQueueIter);
+			// If timestamp is 0, it means that cacheItem not yet in cache. So try the next data source.
+			if (timestamp == 0) {
+				// Try the next dataSource in the queue
+				refreshCacheItem(cacheItem, msgSourceQueueIter);
+			}
 		}
 	}
 
 	/**
-	 * @return 'true' if either of the following cases. Otherwise, false.
+	 * @return 'true' for either of the following cases. Otherwise, false (locale not supported in data source).
 	 * <ul>
 	 * 	<li>the dataSource's set of supported locales is not in cache. If the list is not in cache, it should not block refreshCacheItem</li>
 	 * 	<li>the requested locale is found in the data source's cached set of supported locales.</li>
@@ -152,6 +153,7 @@ public class ComponentService {
 			try {
 				ps.getSupportedLocales();
 			} catch (Exception e) {
+				logger.error("Failed to refresh list of supported locales.");
 			}
 		};
 		new Thread(runnable).start();
