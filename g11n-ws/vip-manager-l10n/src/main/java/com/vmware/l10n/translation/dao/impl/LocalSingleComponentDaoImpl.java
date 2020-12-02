@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -32,13 +33,14 @@ import com.vmware.vip.common.utils.SortJSONUtils;
  * This java class is used to handle translation bundle file or translation cache for single component
  */
 @Repository
-public class SingleComponentDaoImpl implements SingleComponentDao {
+@Profile(value="bundle")
+public class LocalSingleComponentDaoImpl implements SingleComponentDao {
 
 
 	@Value("${translation.bundle.file.basepath}")
 	private String basePath;
 
-    private static Logger LOGGER = LoggerFactory.getLogger(SingleComponentDaoImpl.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(LocalSingleComponentDaoImpl.class);
 
 
 
@@ -49,7 +51,7 @@ public class SingleComponentDaoImpl implements SingleComponentDao {
      * @see com.vmware.vip.core.translation.dao.BaseComponentDao#getLocalTranslationFromFile(java.lang.Object)
      */
     @Override
-    public ComponentMessagesDTO getLocalTranslationFromFile(ComponentMessagesDTO componentMessagesDTO) throws L10nAPIException{
+    public ComponentMessagesDTO getTranslationFromFile(ComponentMessagesDTO componentMessagesDTO) throws L10nAPIException{
         LOGGER.info("[getLocalTranslation]");
         String result = "";
         String component = componentMessagesDTO.getComponent();
@@ -102,7 +104,7 @@ public class SingleComponentDaoImpl implements SingleComponentDao {
      */
 	
 	@Override
-	public boolean writeLocalTranslationToFile(ComponentMessagesDTO componentMessagesDTO) {
+	public boolean writeTranslationToFile(ComponentMessagesDTO componentMessagesDTO) {
 		String component = componentMessagesDTO.getComponent();
 		if (StringUtils.isEmpty(component)) {
 			component = ConstantsFile.DEFAULT_COMPONENT;

@@ -25,7 +25,7 @@ import com.vmware.vip.common.l10n.source.util.PathUtil;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
 public class SourceServiceTest {
-	private static Logger logger = LoggerFactory.getLogger(SourceDaoSource.class);
+	private static Logger logger = LoggerFactory.getLogger(SourceServiceTest.class);
 	@Autowired
 	private WebApplicationContext webApplicationContext;	
 
