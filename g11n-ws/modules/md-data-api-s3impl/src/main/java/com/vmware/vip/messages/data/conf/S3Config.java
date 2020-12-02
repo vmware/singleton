@@ -4,6 +4,8 @@
  */
 package com.vmware.vip.messages.data.conf;
 
+import java.io.File;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,7 +18,7 @@ public class S3Config {
 	public String getAccessKey() {
 		if (this.encryption) {
 			try {
-				return RsaCryptUtils.decryptData(this.accessKey, this.publicKey);
+				return RsaCryptUtils.decryptData(this.accessKey, this.getPublicKey());
 			} catch (Exception e) {
 				return null;
 			}
@@ -32,7 +34,7 @@ public class S3Config {
 	public String getSecretkey() {
 		if (this.encryption) {
 			try {
-				return RsaCryptUtils.decryptData(this.secretkey, this.publicKey);
+				return RsaCryptUtils.decryptData(this.secretkey, this.getPublicKey());
 			} catch (Exception e) {
 				return null;
 			}
@@ -70,7 +72,12 @@ public class S3Config {
 	}
 
 	public String getPublicKey() {
-		return publicKey;
+		File file = new File(this.publicKey);
+		if(file.exists()) {
+			return RsaCryptUtils.getPublicKeyStrFromFile(file);
+		}else {
+		 return null;	
+		}
 	}
 
 	public void setPublicKey(String publicKey) {
