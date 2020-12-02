@@ -11,7 +11,7 @@ How to build and run this sample application as an executable jar
 ------------
  * Go to the root directory of this sample application
    ```
-   g11n-java-client/sample/-client-app/sample-app-with-shared-lib
+   g11n-java-client/sample-client-app/sample-app-with-shared-lib
    ```
  * Create a lib folder.
    ```
@@ -33,6 +33,7 @@ How to build and run this sample application as an executable jar
    ```
    java -jar ./build/libs/sample-with-shared-lib-1.0.jar
    ```
+ 
 How to build and run this sample application as a Spring Boot executable jar
 ------------
  * Go to the root directory of this sample application
