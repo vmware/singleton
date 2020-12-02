@@ -106,8 +106,12 @@ public class ComponentService {
 		CacheService cacheService = new CacheService(dto);
 		MessageCacheItem cacheItem = cacheService.getCacheOfComponent();
 		if (cacheItem != null) { // Item is in cache
-			if (cacheItem.isExpired())
-				refreshCacheItemTask(cacheItem); // Refresh the cacheItem in a separate thread
+			if (cacheItem.isExpired()) {
+				synchronized (cacheItem) { // Allow only one thread to refresh the cacheItem
+					if (cacheItem.isExpired())
+						refreshCacheItemTask(cacheItem); // Refresh the cacheItem in a separate thread
+				}
+			}
 		} else { // Item is not in cache.
 			ProductService ps = new ProductService(dto);
 			Locale locale = Locale.forLanguageTag(dto.getLocale());
@@ -150,15 +154,19 @@ public class ComponentService {
 	 */
     private MessageCacheItem createCacheItem() {
 		CacheService cacheService = new CacheService(dto);
-		// Create a new cacheItem object to be stored in cache
-		MessageCacheItem cacheItem = new MessageCacheItem();
 
-		refreshCacheItem(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().iterator());
-		if (!cacheItem.getCachedData().isEmpty()) {
-			cacheService.addCacheOfComponent(cacheItem);
+		synchronized (this) { // Allow only one thread to create the new cache item
+			MessageCacheItem cacheItem = cacheService.getCacheOfComponent();
+			if (cacheItem == null) { // If the cache item hasn't been created by any other thread
+				cacheItem = new MessageCacheItem(); // Create a new cacheItem object to be stored in cache
+
+				refreshCacheItem(cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().iterator());
+				if (!cacheItem.getCachedData().isEmpty()) {
+					cacheService.addCacheOfComponent(cacheItem);
+				}
+			}
+			return cacheItem;
 		}
-
-		return cacheItem;
 	}
 
 	private void refreshCacheItemTask(MessageCacheItem cacheItem) {
