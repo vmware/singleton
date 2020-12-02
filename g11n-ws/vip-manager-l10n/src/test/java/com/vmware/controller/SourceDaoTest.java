@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vmware.l10n.BootApplication;
 import com.vmware.l10n.source.crons.SourceSendingCron;
 import com.vmware.l10n.source.dao.SourceDao;
@@ -23,8 +24,8 @@ import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
-public class SourceDaoSource {
-	 private static Logger logger = LoggerFactory.getLogger(SourceDaoSource.class);
+public class SourceDaoTest {
+	 private static Logger logger = LoggerFactory.getLogger(SourceDaoTest.class);
 	
 	@Autowired
 	private WebApplicationContext webApplicationContext;
@@ -32,7 +33,7 @@ public class SourceDaoSource {
 
 	
 @Test
-public void  test001() {
+public void  test001() throws JsonProcessingException {
 	SourceDao sourceDao = webApplicationContext.getBean(SourceDao.class);
 	SourceSendingCron sourceSend =  webApplicationContext.getBean(SourceSendingCron.class);
 	
@@ -47,14 +48,14 @@ public void  test001() {
 	map.put("dc.unittest.value", "this is unit test value");
 	
 	single.setMessages(map);
-	sourceDao.updateToBundle(single, sourceSend.getBasePath());
+	sourceDao.updateToBundle(single);
 	
 	
 	map.put("dc.unittest.new", "this is unit test new value");
 	
-	sourceDao.updateToBundle(single, sourceSend.getBasePath());
+	sourceDao.updateToBundle(single);
 	
-	sourceDao.getFromBundle(single, sourceSend.getBasePath());
+	sourceDao.getFromBundle(single);
 	
 }
 	

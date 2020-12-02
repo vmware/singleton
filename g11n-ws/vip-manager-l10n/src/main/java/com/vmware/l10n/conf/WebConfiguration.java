@@ -70,13 +70,4 @@ public class WebConfiguration implements WebMvcConfigurer {
 		registry.addInterceptor(new CollectSourceValidationInterceptor(WhiteListUtils.getWhiteList(whiteListLocation)))
 		.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/**", L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v1/translation/**");
 	}
-	
-	private List<String> parseLocales(String localesString){
-		String[] locales = localesString.split(ConstantsChar.COMMA);
-		List<String> localeList = new ArrayList<>();
-		for(int i=0; i<locales.length; i++) {
-			localeList.add(locales[i].trim());
-		}
-		return localeList;
-	}
 }
