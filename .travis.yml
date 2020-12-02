@@ -1,0 +1,66 @@
+dist: trusty
+language: java
+python:
+  - 3.4
+jdk:
+  - openjdk8
+before_install:
+- |
+    git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '(\.md$)|(^(docs|g11n-ws/docs))/' || {
+      echo "Only docs were updated, stopping build process."
+      exit
+    }
+    sudo apt-get -y install python3-pip python-dev
+    python3 -V
+    pip3 -V
+install:
+  - sudo pip3 install requests
+jobs:
+  include:
+  - name: "Check Header"
+    env: TEST=check_header
+  - name: "Unit Test"
+    env: TEST=unit_test
+  - name: "Code Scan"
+    env: TEST=code_scan
+  - name: "Smoke Test"
+    env: TEST=smoke_test
+script: >
+  if [ x${TEST} = xcheck_header ]; then
+    git clone --branch=devops https://github.com/vmware/singleton.git devops
+    cp $TRAVIS_BUILD_DIR/devops/check_headers.py .
+    chmod +x check_headers.py
+    python3 ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)" -u "gradlew.bat"
+  fi &&
+  if [ x${TEST} = xunit_test ]; then
+    # ./gradlew test --console=plain
+    true
+  fi &&
+  if [ x${TEST} = xcode_scan ]; then
+    java -version
+    git clone --branch=devops https://github.com/vmware/singleton.git devops
+    SONARSCANNER='sonar-scanner-cli-4.0.0.1744-linux'
+    SONARSCANNERINNER='sonar-scanner-4.0.0.1744-linux'
+    wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/$SONARSCANNER.zip
+    unzip $SONARSCANNER.zip
+    rm -f $SONARSCANNER.zip
+    str=$(printf '=%.0s' {1..50})
+    echo $str Code Scan Start $str
+    
+    java -version
+        
+    cd $TRAVIS_BUILD_DIR && ls -la
+    wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
+    sudo chmod +x install-jdk.sh
+    export JAVA_HOME=$HOME/openjdk11
+    export PATH="$JAVA_HOME/bin:$PATH"
+    $TRAVIS_BUILD_DIR/install-jdk.sh --target "/home/travis/openjdk11" --workspace "/home/travis/.cache/install-jdk" --feature "11" --license "GPL" --cacerts
+    java -version
+        
+    
+    echo $str Code Scan End $str
+    
+  fi &&
+  if [ x${TEST} = xsmoke_test ]; then
+    git clone --branch=devops https://github.com/vmware/singleton.git devops
+  fi
