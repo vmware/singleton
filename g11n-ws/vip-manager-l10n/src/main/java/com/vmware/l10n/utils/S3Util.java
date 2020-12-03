@@ -85,9 +85,6 @@ public class S3Util {
 	private static String genProductVersionS3Path(String basePath, String productName, String version) {
 		StringBuilder path = new StringBuilder();
 		path.append(basePath);
-		if (!basePath.endsWith(ConstantsChar.BACKSLASH)) {
-			path.append(ConstantsChar.BACKSLASH);
-		}
 		path.append(productName);
 		path.append(ConstantsChar.BACKSLASH);
 		path.append(version);
@@ -97,7 +94,7 @@ public class S3Util {
 	}
 
 	public class Locker {
-		private String key;
+		private final String key;
 
 		public Locker(String basePath, SingleComponentDTO compDTO) {
 			String bundlePath = getBundleFilePath(basePath, compDTO);

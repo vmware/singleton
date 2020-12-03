@@ -2,6 +2,8 @@
 //SPDX-License-Identifier: EPL-2.0
 package com.vmware.l10n.source.dao.impl;
 
+import javax.annotation.PostConstruct;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.l10n.utils.S3Util;
 import com.vmware.l10n.utils.S3Util.Locker;
 import com.vmware.l10n.utils.SourceUtils;
+import com.vmware.vip.common.constants.ConstantsChar;
+import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 
@@ -36,6 +40,17 @@ public class S3SourceDaoImpl implements SourceDao {
 	@Value("${source.bundle.file.basepath}")
 	private String basePath;
 
+	@PostConstruct
+	private void init() {
+		if (basePath.startsWith("/")) {
+			basePath = basePath.substring(1);
+		}
+		if (!basePath.isEmpty() && !basePath.endsWith(ConstantsChar.BACKSLASH)) {
+			basePath += ConstantsChar.BACKSLASH;
+		}
+		basePath += ConstantsFile.L10N_BUNDLES_PATH;
+	}
+
 	@Override
 	public String getFromBundle(SingleComponentDTO componentMessagesDTO) {
 		logger.debug("Read content from file: {}/{}", componentMessagesDTO.getLocale(),
@@ -49,19 +64,24 @@ public class S3SourceDaoImpl implements SourceDao {
 		logger.debug("[Save sources to storage]: {}/{}/{}/{}", compDTO.getProductName(), compDTO.getVersion(),
 				compDTO.getComponent(), compDTO.getLocale());
 
-		boolean bExist = s3util.isBundleExist(basePath, compDTO);
-
 		Locker locker = s3util.new Locker(basePath, compDTO);
 		if (!locker.lockFile()) {
 			logger.warn("failed to lock bundle file, return.");
 			return false;
 		}
-		
+
+		boolean bExist = s3util.isBundleExist(basePath, compDTO);
+
 		boolean bSuccess = false;
 		try {
-			String existingBundle = s3util.readBundle(basePath, compDTO);
-			SingleComponentDTO latestDTO = SourceUtils.mergeCacheWithBundle(compDTO, existingBundle);
-			bSuccess = s3util.writeBundle(basePath, latestDTO);
+			if (bExist) {
+				String existingBundle = s3util.readBundle(basePath, compDTO);
+				SingleComponentDTO latestDTO = SourceUtils.mergeCacheWithBundle(compDTO, existingBundle);
+				bSuccess = s3util.writeBundle(basePath, latestDTO);
+			} else {
+				bSuccess = s3util.writeBundle(basePath, compDTO);
+			}
+
 			if (bSuccess) {
 				if (bExist) {
 					logger.debug("The bundle file {}/{} is found, update the bundle file.", compDTO.getLocale(),
