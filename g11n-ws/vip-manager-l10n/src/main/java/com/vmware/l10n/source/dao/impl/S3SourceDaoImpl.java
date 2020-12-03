@@ -73,10 +73,10 @@ public class S3SourceDaoImpl implements SourceDao {
 			return false;
 		}
 
-		boolean bExist = s3util.isBundleExist(basePath, compDTO);
 
 		boolean bSuccess = false;
 		try {
+			boolean bExist = s3util.isBundleExist(basePath, compDTO);
 			if (bExist) {
 				String existingBundle = s3util.readBundle(basePath, compDTO);
 				SingleComponentDTO latestDTO = SourceUtils.mergeCacheWithBundle(compDTO, existingBundle);
