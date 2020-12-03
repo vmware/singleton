@@ -50,7 +50,8 @@ public class S3SourceDaoImpl implements SourceDao {
 		if (!basePath.isEmpty() && !basePath.endsWith(ConstantsChar.BACKSLASH)) {
 			basePath += ConstantsChar.BACKSLASH;
 		}
-		basePath += ConstantsFile.L10N_BUNDLES_PATH.replace(File.separator, ConstantsChar.BACKSLASH);
+		basePath += ConstantsFile.L10N_BUNDLES_PATH;
+		basePath = basePath.replace(File.separator, ConstantsChar.BACKSLASH);
 	}
 
 	@Override
