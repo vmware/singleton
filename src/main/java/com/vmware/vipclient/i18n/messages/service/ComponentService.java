@@ -51,7 +51,7 @@ public class ComponentService {
 		}
 
 		DataSourceEnum dataSource = msgSourceQueueIter.next();
-		if (!proceed(dataSource)) {
+		if (!proceed(dataSource)) { //Requested locale is not supported, does not match any supported locales
 			refreshCacheItem(cacheItem, msgSourceQueueIter); // Try the next dataSource
 		} else {
 			long timestampOld = cacheItem.getTimestamp();
@@ -82,12 +82,18 @@ public class ComponentService {
 	 * </ul>
 	 */
 	private boolean proceed(DataSourceEnum dataSource) {
-		ProductService ps = new ProductService(dto);
-		Set<Locale> supportedLocales = ps.getSupportedLocales(false, dataSource);
-		logger.debug("supported languages: [{}]", supportedLocales.toString());
+		//Refresh the cache of supported locales as needed in a separate thread (non-blocking).
+		refreshSupportedLocalesTask(dataSource);
 
-		return (supportedLocales.isEmpty() ||
-				ps.isSupportedLocale(false, dataSource, Locale.forLanguageTag(dto.getLocale())));
+		ProductService ps = new ProductService(dto);
+		Set<String> supportedLocales = ps.getCachedSupportedLocales(dataSource);
+		logger.debug("supported languages: [{}]", supportedLocales);
+
+		/*
+		 * Do not block refreshCacheItem if set of supported locales is not in cache (i.e. supportedLocales.isEmpty()).
+		 * This happens either when cache is not initialized, OR previous attempts to fetch the set had failed.
+		 */
+		return (supportedLocales.isEmpty() || supportedLocales.contains(dto.getLocale()) || VIPCfg.getInstance().isPseudo());
 	}
 
 	/**
@@ -129,29 +135,19 @@ public class ComponentService {
 			if (cacheItem.isExpired())
 				refreshCacheItemTask(cacheItem); // Refresh the cacheItem in a separate thread
 		} else { // Item is not in cache.
-			ProductService ps = new ProductService(dto);
-			Locale locale = Locale.forLanguageTag(dto.getLocale());
-
-			/*
-			 * Do not block createCacheItem if set of supported locales is not in cache (i.e. ps.getSupportedLocales(false).isEmpty()).
-			 * This happens either when cache is not initialized, OR previous attempts to fetch the set had failed.
-			 */
-			if (ps.getSupportedLocales(false).isEmpty() || ps.isSupportedLocale(false, locale) || VIPCfg.getInstance().isPseudo()) {
-				cacheItem = createCacheItem(); // Fetch for the requested locale from data store, create cacheItem and store in cache
-				if (cacheItem.getCachedData().isEmpty())  // Failed to fetch messages for the requested locale
-					cacheItem = getFallbackLocaleMessages(fallbackLocalesIter);
-			} else   // Requested locale is not supported and does not match any supported locales
+			cacheItem = createCacheItem(); // Fetch for the requested locale from data store, create cacheItem and store in cache
+			if (cacheItem.getCachedData().isEmpty())  // Failed to fetch messages for the requested locale
 				cacheItem = getFallbackLocaleMessages(fallbackLocalesIter);
 		}
 
 		return cacheItem;
 	}
 
-	private void refreshSupportedLocalesTask() {
+	private void refreshSupportedLocalesTask(DataSourceEnum dataSource) {
 		ProductService ps = new ProductService(dto);
 		Runnable runnable = () -> {
 			try {
-				ps.getSupportedLocales();
+				ps.getSupportedLocales(dataSource);
 			} catch (Exception e) {
 				logger.error("Failed to refresh list of supported locales.");
 			}
@@ -160,11 +156,10 @@ public class ComponentService {
 	}
 
 	private void doLocaleMatching() {
-		//Refresh the cache of supported locales as needed in a separate thread (non-blocking).
-		refreshSupportedLocalesTask();
+		dto.setLocale(LocaleUtility.fmtToMappedLocale(dto.getLocale()).toLanguageTag());
 
-		// Use withCacheRefresh=false to get the list of supported locales that is already in cache
-		Locale matchedLocale = LocaleUtility.pickupLocaleFromList(new ProductService(dto).getSupportedLocales(false), Locale.forLanguageTag(dto.getLocale()));
+		Set<Locale> supportedLocales = LocaleUtility.langTagtoLocaleSet(new ProductService(dto).getCachedSupportedLocales());
+		Locale matchedLocale = LocaleUtility.pickupLocaleFromList(supportedLocales, Locale.forLanguageTag(dto.getLocale()));
 		if (matchedLocale != null) { // Requested locale matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr")
 			dto.setLocale(matchedLocale.toLanguageTag());
 		}

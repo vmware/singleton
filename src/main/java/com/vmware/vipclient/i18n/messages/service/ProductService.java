@@ -35,10 +35,10 @@ public class ProductService {
      */
     public List<Map> getAllComponentTranslation() {
         List<Map> list = new ArrayList<Map>();
-        Set<Locale> locales = this.getSupportedLocales();
+        Set<String> locales = this.getSupportedLocales();
         List<String> components = this.getComponents();
         if (locales != null && components != null) {
-            for (Locale locale : locales) {
+            for (String locale : locales) {
                 for (Object component : components) {
                     MessagesDTO msgDTO = new MessagesDTO(((String) component).trim(), LocaleUtility.fmtToMappedLocale(locale).toString().trim(),
                             dto.getProductID(), dto.getVersion());
@@ -72,42 +72,53 @@ public class ProductService {
         return components;
     }
 
-    public Set<Locale> getSupportedLocales() {
+    private Set<String> getSupportedLocales() {
         return getSupportedLocales(true);
     }
 
+    public Set<String> getCachedSupportedLocales() {
+        return getSupportedLocales(false);
+    }
+
     /**
-     * Retrieves the list of locales of a product.
+     * Retrieves the set of supported locales.
      *
-     * @param withCacheRefresh If true, it recursively applies data source fallback mechanism in case of failure.
-     * @return list of locales of the product specified in the dto object, or an empty list in case of failure to retrieve from any data source.
+     * @param withCacheRefresh If true, it will trigger a cache populate or refresh as necessary before returning.
+     *                         If false, it will return the data from the cache as is, or an empty Set if not in cache.
+     * @return The set of supported locales.
      */
-    public Set<Locale> getSupportedLocales(boolean withCacheRefresh) {
-        return langTagtoLocaleSet(getSupportedLanguageTags(withCacheRefresh));
-    }
-
-    public Set<Locale> getSupportedLocales(boolean withCacheRefresh, DataSourceEnum dataSource) {
-        return langTagtoLocaleSet(getSupportedLanguageTags(withCacheRefresh, dataSource));
-    }
-
-    private Set<String> getSupportedLanguageTags(boolean withCacheRefresh) {
+    private Set<String> getSupportedLocales(boolean withCacheRefresh) {
         Iterator<DataSourceEnum> msgSourceQueueIter = VIPCfg.getInstance().getMsgOriginsQueue().iterator();
         Set<String> supportedLangTags = new HashSet<>();
         while(msgSourceQueueIter.hasNext()) {
-            supportedLangTags.addAll(getSupportedLanguageTags(withCacheRefresh, msgSourceQueueIter.next()));
+            if (withCacheRefresh)
+                supportedLangTags.addAll(getSupportedLocales(msgSourceQueueIter.next()));
+            else
+                supportedLangTags.addAll(getCachedSupportedLocales(msgSourceQueueIter.next()));
         }
         return supportedLangTags;
     }
 
-    private Set<String> getSupportedLanguageTags(boolean withCacheRefresh, DataSourceEnum dataSource) {
-        if (withCacheRefresh)
-            return getSupportedLanguageTags(dataSource);
+    /**
+     * Retrieves the cached set of locales that are supported in the given data source.
+     *
+     * @param dataSource The data source
+     * @return The cached set of locales that are supported in the given data source.
+     */
+    public Set<String> getCachedSupportedLocales(DataSourceEnum dataSource) {
         CacheService cs = new CacheService(new MessagesDTO(dto));
         MessageCacheItem cacheItem = cs.getCacheOfLocales(dataSource);
         return cacheItem == null ? new HashSet<>() : cacheItem.getCachedData().keySet();
     }
 
-    public Set<String> getSupportedLanguageTags(DataSourceEnum dataSource) {
+    /**
+     * Retrieves the set of locales that are supported in the given data source.
+     * It will trigger a cache populate or refresh as necessary before returning.
+     *
+     * @param dataSource The data source
+     * @return The set of locales supported in the given data source.
+     */
+    public Set<String> getSupportedLocales(DataSourceEnum dataSource) {
         CacheService cs = new CacheService(new MessagesDTO(dto));
         MessageCacheItem cacheItem = cs.getCacheOfLocales(dataSource);
         if (cacheItem != null) {
@@ -120,14 +131,6 @@ public class ProductService {
                 return new HashSet<>();
             return cacheItem.getCachedData().keySet();
         }
-    }
-
-    public boolean isSupportedLocale(boolean withCacheRefresh, Locale locale) {
-        return getSupportedLanguageTags(withCacheRefresh).contains(LocaleUtility.fmtToMappedLocale(locale).toLanguageTag());
-    }
-
-    public boolean isSupportedLocale(boolean withCacheRefresh, DataSourceEnum dataSource, Locale locale) {
-        return getSupportedLanguageTags(withCacheRefresh, dataSource).contains(LocaleUtility.fmtToMappedLocale(locale).toLanguageTag());
     }
 
     private void refreshLocalesCacheItem(final MessageCacheItem cacheItem, DataSourceEnum dataSource) {
@@ -163,13 +166,5 @@ public class ProductService {
         }
         return null;
     }
-    private Set<Locale> langTagtoLocaleSet (Set<String> languageTags) {
-        Set<Locale> locales = new HashSet<>();
-        if (languageTags != null) {
-            for (String languageTag : languageTags) {
-                locales.add(Locale.forLanguageTag(languageTag));
-            }
-        }
-        return locales;
-    }
+
 }

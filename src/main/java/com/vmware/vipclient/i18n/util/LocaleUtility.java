@@ -225,5 +225,15 @@ public class LocaleUtility {
 	public static void setFallbackLocales(List<Locale> fallbackLocales) {
 		LocaleUtility.fallbackLocales = fallbackLocales;
 	}
-    
+
+    public static Set<Locale> langTagtoLocaleSet (Set<String> languageTags) {
+        Set<Locale> locales = new HashSet<>();
+        if (languageTags != null) {
+            for (String languageTag : languageTags) {
+                locales.add(Locale.forLanguageTag(languageTag));
+            }
+        }
+        return locales;
+    }
+
 }
