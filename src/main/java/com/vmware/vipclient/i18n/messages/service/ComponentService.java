@@ -82,9 +82,6 @@ public class ComponentService {
 	 * </ul>
 	 */
 	private boolean proceed(DataSourceEnum dataSource) {
-		//Refresh the cache of supported locales as needed in a separate thread (non-blocking).
-		refreshSupportedLocalesTask(dataSource);
-
 		ProductService ps = new ProductService(dto);
 		Set<String> supportedLocales = ps.getCachedSupportedLocales(dataSource);
 		logger.debug("supported languages: [{}]", supportedLocales);
@@ -143,22 +140,16 @@ public class ComponentService {
 		return cacheItem;
 	}
 
-	private void refreshSupportedLocalesTask(DataSourceEnum dataSource) {
-		ProductService ps = new ProductService(dto);
-		Runnable runnable = () -> {
-			try {
-				ps.getSupportedLocales(dataSource);
-			} catch (Exception e) {
-				logger.error("Failed to refresh list of supported locales.");
-			}
-		};
-		new Thread(runnable).start();
-	}
-
 	private void doLocaleMatching() {
 		dto.setLocale(LocaleUtility.fmtToMappedLocale(dto.getLocale()).toLanguageTag());
 
-		Set<Locale> supportedLocales = LocaleUtility.langTagtoLocaleSet(new ProductService(dto).getCachedSupportedLocales());
+		ProductService ps = new ProductService(dto);
+
+		//Refresh the cache of supported locales as needed in a separate thread (non-blocking).
+		ps.refreshSupportedLocalesTask();
+
+		//Match against list of supported locales that is already in the cache
+		Set<Locale> supportedLocales = LocaleUtility.langTagtoLocaleSet(ps.getCachedSupportedLocales());
 		Locale matchedLocale = LocaleUtility.pickupLocaleFromList(supportedLocales, Locale.forLanguageTag(dto.getLocale()));
 		if (matchedLocale != null) { // Requested locale matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr")
 			dto.setLocale(matchedLocale.toLanguageTag());

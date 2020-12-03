@@ -167,4 +167,15 @@ public class ProductService {
         return null;
     }
 
+    public void refreshSupportedLocalesTask() {
+        Runnable runnable = () -> {
+            try {
+                getSupportedLocales();
+            } catch (Exception e) {
+                logger.error("Failed to refresh list of supported locales.");
+            }
+        };
+        new Thread(runnable).start();
+    }
+
 }
