@@ -83,15 +83,15 @@ public class ProductService {
     /**
      * Retrieves the set of supported locales.
      *
-     * @param withCacheRefresh If true, it will trigger a cache populate or refresh as necessary before returning.
+     * @param refreshCache If true, it will trigger a cache populate or refresh as necessary before returning.
      *                         If false, it will return the data from the cache as is, or an empty Set if not in cache.
      * @return The set of supported locales.
      */
-    private Set<String> getSupportedLocales(boolean withCacheRefresh) {
+    private Set<String> getSupportedLocales(boolean refreshCache) {
         Iterator<DataSourceEnum> msgSourceQueueIter = VIPCfg.getInstance().getMsgOriginsQueue().iterator();
         Set<String> supportedLangTags = new HashSet<>();
         while(msgSourceQueueIter.hasNext()) {
-            if (withCacheRefresh)
+            if (refreshCache)
                 supportedLangTags.addAll(getSupportedLocales(msgSourceQueueIter.next()));
             else
                 supportedLangTags.addAll(getCachedSupportedLocales(msgSourceQueueIter.next()));
