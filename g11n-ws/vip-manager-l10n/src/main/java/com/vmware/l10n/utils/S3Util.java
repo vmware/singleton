@@ -35,7 +35,7 @@ public class S3Util {
 
 	private static Random random = new Random(System.currentTimeMillis());
 	private static long retryInterval = 500; // milliseconds
-	private static long deadlockInterval = 10 * 60 * 1000L; // 10 minutes
+	private static long deadlockInterval = 30 * 1000L;
 	private static long waitS3Operation = 100; // milliseconds
 	private static long waitToLock = 10 * 1000L; // 10 seconds
 
@@ -76,7 +76,7 @@ public class S3Util {
 			dto.setComponent(ConstantsFile.DEFAULT_COMPONENT);
 		}
 		return genProductVersionS3Path(basePath, dto.getProductName(), dto.getVersion()) + dto.getComponent()
-				+ ConstantsChar.BACKSLASH + ResourceFilePathGetter.getLocalizedJSONFileName(dto.getLocale());
+		+ ConstantsChar.BACKSLASH + ResourceFilePathGetter.getLocalizedJSONFileName(dto.getLocale());
 	}
 
 	/**
