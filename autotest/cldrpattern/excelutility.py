@@ -1,37 +1,37 @@
 from openpyxl import load_workbook
+import constant
 
 def excelutil():
-    workbook = load_workbook(filename='ExternalPatternLibTestCases.xlsx')
+    workbook = load_workbook(filename=constant.CaseFile)
     sheet = workbook.active
 
     datas = []
+    try:
+        for row in sheet.iter_rows(min_row=2, values_only=True):
 
-    for row in sheet.iter_rows(min_row=2, values_only=True):
         # data = TestData(casename=row[0],
         #                 path=row[1],
         #                 filename=row[2],
         #                 key=row[3],
         #                 expected=row[4])
-        data = {"caseid": row[0],
-                "casename":row[1],
-                "path": row[2],
-                "filename": row[3],
-                "key": row[4],
-                "expected": str(row[5])}
-        datas.append(data)
-    return datas
+            data = {"caseid": row[0],
+                    "casename": row[1],
+                    "path": row[2],
+                    "filename": row[3],
+                    "key": row[4],
+                    "expected": str(row[5]),
+                    "category": row[6]}
+            datas.append(data)
+        return datas
+    except Exception as e:
+        print("Error message is: %s" % e)
 
-
-# rootdir = r'D:\PycharmProjects\SmokeTesting\singleton-i18n-patterns-core-0.5.1'
 # datas = excelutil()
-# print(excelutil()[0])
+# print(excelutil()[1])
 # print(excelutil())
-# print(datas[1].key)
-# print(len(datas))
-# print(datas[19])
-# print(rootdir+datas[2].path+datas[2].filename)
 # print(datas)
-# print(json.dumps(datas))
+# print(len(datas))
+# print(datas[0])
 
 
 

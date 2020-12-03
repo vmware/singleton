@@ -2,12 +2,8 @@ import os,json,HTMLTestRunner,unittest
 from excelutility import excelutil
 from ddt import ddt,data
 from datetime import datetime
+import constant
 
-# Set testdata directory:
-# rootdir = 'D:\\PycharmProjects\\SmokeTesting\\singleton-i18n-patterns-core-0.5.1' #The path of cldr data storage
-# test_dir = 'D:\\PycharmProjects\\SmokeTesting' #The directory of generated test report
-rootdir = './singleton-i18n-patterns-core-0.5.1' #The path of cldr data storage
-test_dir = './' #The directory of generated test report
 
 def curfoldercount(dir):
     return str(len(os.listdir(dir)))
@@ -26,6 +22,14 @@ def rootfilecount(dir):
         L.extend(files)
     return str(len(L))
 
+def curfilename(dir):
+    L = []
+    for paths, folders, files in os.walk(dir):
+        L.extend(files)
+    return L
+
+
+
 def readjson(dir, filename, key):
     with open(dir+filename, 'r', encoding='utf-8') as f:
         temp = json.load(f)
@@ -42,25 +46,17 @@ class Test(unittest.TestCase):
     @data(*excelutil())
     def test(self, case):
 
-        if (case['casename'] == 'Check the number of folders in cldr folder'):
-            print('############Case ID: %s #####Case Name: %s############' %(case['caseid'],case['casename']))
-            rootfolder = rootfoldercount(rootdir + case['path'])
-            self.assertEqual(rootfolder, case['expected'])
-        elif (case['casename'] == 'Check the number of files in cldr folder'):
+        if (case['category'] == 'FolderCountCheck'):
             print('############Case ID: %s #####Case Name: %s############' % (case['caseid'], case['casename']))
-            rootfile = rootfilecount(rootdir + case['path'])
-            self.assertEqual(rootfile, case['expected'])
-        elif (case['casename'] == 'Check no file in folder data'):
-            print('############Case ID: %s #####Case Name: %s############' % (case['caseid'], case['casename']))
-            curfile = rootfilecount(rootdir + case['path'])
-            self.assertEqual(curfile, case['expected'])
-        elif (case['key'] == None and case['filename'] == None and case['path'] != '\\cldr'):
-            print('############Case ID: %s #####Case Name: %s############' % (case['caseid'], case['casename']))
-            curfolder = curfoldercount(rootdir + case['path'])
+            curfolder = curfoldercount(constant.rootdir + case['path'])
             self.assertEqual(curfolder, case['expected'])
-        else:
+        elif (case['category'] == 'FileNameCheck'):
             print('############Case ID: %s #####Case Name: %s############' % (case['caseid'], case['casename']))
-            result = readjson(rootdir + case['path'], case['filename'], case['key'])
+            curfileList = curfilename(constant.rootdir + case['path'])
+            self.assertEqual(curfileList.sort(), eval(case['expected']).sort())
+        elif (case['category'] == 'JsonValueCheck'):
+            print('############Case ID: %s #####Case Name: %s############' % (case['caseid'], case['casename']))
+            result = readjson(constant.rootdir + case['path'], case['filename'], case['key'])
             self.assertEqual(result, case['expected'])
 
 
@@ -68,9 +64,9 @@ class Test(unittest.TestCase):
 if __name__ == "__main__":
 
     print('=====AutoTest Start======')
-    discover = unittest.defaultTestLoader.discover(test_dir, pattern='test.py')
+    discover = unittest.defaultTestLoader.discover(constant.test_dir, pattern='test.py')
     now = datetime.now().strftime('%Y-%m-%d_%H_%M_%S_')
-    filename = test_dir + now + 'result.html'
+    filename = constant.test_dir + now + 'result.html'
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='test report', description='test result')
     result = runner.run(discover)
