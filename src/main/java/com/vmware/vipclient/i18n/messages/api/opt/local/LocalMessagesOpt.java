@@ -64,7 +64,7 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 				return is;
 			/*
 			 * If valid URI is not found, find the next best matching locale available in the file system
-			 * Ths could happen if:
+			 * This could happen if:
 			 * a. the matching resource bundle had been corrupted or removed from the file system since last check.
 			 * b. the requested locale hadn't been matched against the list of supported locales. This happens if
 			 * supported locales cache hasn't been initialized or if previous attempts to populate the cache had failed.
