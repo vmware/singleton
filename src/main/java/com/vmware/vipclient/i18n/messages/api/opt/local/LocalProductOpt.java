@@ -26,6 +26,13 @@ public class LocalProductOpt implements ProductOpt {
     private static final String BUNDLE_PREFIX = "messages_";
     private static final String BUNDLE_SUFFIX = ".json";
 
+    private static class FileSystemLockHolder {
+        public static final Object lock = new Object();
+    }
+    public static Object getLock() {
+        return FileSystemLockHolder.lock;
+    }
+
     private BaseDTO dto = null;
 
     public LocalProductOpt(BaseDTO dto) {
@@ -36,14 +43,14 @@ public class LocalProductOpt implements ProductOpt {
         List<String> supportedLocales = new ArrayList<String>();
         try {
             Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl());
-
             URI uri = Thread.currentThread().getContextClassLoader().
                     getResource(path.toString()).toURI();
-
             if (uri.getScheme().equals("jar")) {
-                try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
-                    path = fileSystem.getPath(path.toString());
-                    getSupportedLocales(path, supportedLocales);
+                synchronized (getLock()) {
+                    try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
+                        path = fileSystem.getPath(path.toString());
+                        getSupportedLocales(path, supportedLocales);
+                    }
                 }
             } else {
                 path = Paths.get(uri);
@@ -68,9 +75,11 @@ public class LocalProductOpt implements ProductOpt {
                     getResource(path.toString()).toURI();
 
             if (uri.getScheme().equals("jar")) {
-                try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
-                    path = fileSystem.getPath(path.toString());
-                    getComponents(path, components);
+                synchronized (getLock()) {
+                    try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
+                        path = fileSystem.getPath(path.toString());
+                        getComponents(path, components);
+                    }
                 }
             } else {
                 path = Paths.get(uri);
