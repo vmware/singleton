@@ -13,9 +13,19 @@ ext {
     version = '1.0'
 }
 
+[compileJava,compileTestJava,javadoc]*.options*.encoding = 'UTF-8'
+
 configurations {
-    jar
+        providedRuntime
 }
+
+
+sourceSets {
+    main.java.srcDirs = ['src/main/java']
+    main.resources.srcDirs = ['src/main/resources']
+}
+
+
 
 jar {
     baseName = "i18n-patterns-core"
@@ -41,27 +51,15 @@ dependencies {
     testCompile group: 'log4j', name: 'log4j', version: '1.2.17'
 }
 
-test {
-    systemProperties 'property': 'value'
-}
-
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
-}
-
-task copyLibs(type :Copy, dependsOn: jar) {
-    from "$buildDir/libs"
-    into "$rootDir/../../../publish/"
-    println "The build was output to -> $rootDir/../../../publish/"
-    include "**/*.jar"
-}
-
 task copyResources(type: Copy) {
 	File dir = new File("${buildDir}/classes/main");
 	dir.deleteDir();
-    from "${projectDir}/src/main/resources"
+	from "${projectDir}/src/main/resources"
     into "${buildDir}/classes/main"
+    from "${projectDir}/src/main/resources"
+    into "${buildDir}/resources/main"
 }
+
 processTestResources.dependsOn copyResources
 
 task download(type: JavaExec, dependsOn: classes){
@@ -69,5 +67,5 @@ task download(type: JavaExec, dependsOn: classes){
 	classpath sourceSets.main.runtimeClasspath
 }
 
-assemble.dependsOn.add download
-assemble.dependsOn.add copyLibs
+copyResources.dependsOn download
+//assemble.dependsOn.add copyLibs

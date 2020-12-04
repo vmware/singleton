@@ -13,17 +13,30 @@ public class PatternParseMain {
 
     public static void main(String[] args) {
 //        CLDRUtils.download();
+    	System.out.println("start patternDataExtract");
         CLDRUtils.patternDataExtract();
+        System.out.println("start localesExtract");
         LocaleDataUtils.localesExtract();
+        System.out.println("start miscDataExtract");
         MiscUtils.miscDataExtract();
+        System.out.println("start supplementalCurrencyExtract");
         SupplementUtils.supplementalCurrencyExtract();
+        System.out.println("start supplementalNumberingSystemsExtract");
         SupplementUtils.supplementalNumberingSystemsExtract();
+        System.out.println("start aliasesExtract");
         CLDRUtils.aliasesExtract();
+        System.out.println("start defaultContentExtract");
         CLDRUtils.defaultContentExtract();
+        System.out.println("start regionDataExtract");
         CLDRUtils.regionDataExtract();
+        System.out.println("start pluralsExtract");
         CLDRUtils.pluralsExtract();
+        System.out.println("start languageDataExtract");
         CLDRUtils.languageDataExtract();
+        System.out.println("start patternTimeZoneNameExtract");
         CLDRUtils.patternTimeZoneNameExtract();
+        
+        System.out.println("end extract cldr data");
     }
 
 }
