@@ -143,13 +143,8 @@ public class ComponentService {
 	private void doLocaleMatching() {
 		dto.setLocale(LocaleUtility.fmtToMappedLocale(dto.getLocale()).toLanguageTag());
 
-		ProductService ps = new ProductService(dto);
-
-		//Refresh the cache of supported locales as needed in a separate thread (non-blocking).
-		ps.refreshSupportedLocalesTask();
-
 		//Match against list of supported locales that is already in the cache
-		Set<Locale> supportedLocales = LocaleUtility.langTagtoLocaleSet(ps.getCachedSupportedLocales());
+		Set<Locale> supportedLocales = LocaleUtility.langTagtoLocaleSet(new ProductService(dto).getCachedSupportedLocales());
 		Locale matchedLocale = LocaleUtility.pickupLocaleFromList(supportedLocales, Locale.forLanguageTag(dto.getLocale()));
 		if (matchedLocale != null) { // Requested locale matches a supported locale (eg. requested locale "fr_CA matches supported locale "fr")
 			dto.setLocale(matchedLocale.toLanguageTag());

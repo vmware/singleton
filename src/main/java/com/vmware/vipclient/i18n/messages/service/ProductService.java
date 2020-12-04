@@ -7,7 +7,6 @@ package com.vmware.vipclient.i18n.messages.service;
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
-import com.vmware.vipclient.i18n.base.cache.TranslationCacheManager;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.messages.api.opt.ProductOpt;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
@@ -73,22 +72,34 @@ public class ProductService {
         return components;
     }
 
+    /**
+     * Retrieves the combined set of supported locales from all data sources.
+     *
+     * @return The combined set of supported locales from all data sources. An empty set if fetch fails.
+     */
     private Set<String> getSupportedLocales() {
-        return getSupportedLocales(true);
-    }
-
-    public Set<String> getCachedSupportedLocales() {
-        return getSupportedLocales(false);
+        return combineSupportedLocales(true);
     }
 
     /**
-     * Retrieves the set of supported locales.
+     * Retrieves the combined set of cached supported locales from all data sources.
+     * It also refreshes/populates the cache if expired/not yet cached in a separate thread.
+     *
+     * @return The combined set of supported locales from all data sources found in cache.
+     * An empty set if cache is empty or not yet populated.
+     */
+    public Set<String> getCachedSupportedLocales() {
+        return combineSupportedLocales(false);
+    }
+
+    /**
+     * Retrieves the combined set of supported locales from all data sources.
      *
      * @param refreshCache If true, it will trigger a cache populate or refresh as necessary before returning.
      *                         If false, it will return the data from the cache as is, or an empty Set if not in cache.
      * @return The set of supported locales.
      */
-    private Set<String> getSupportedLocales(boolean refreshCache) {
+    private Set<String> combineSupportedLocales(boolean refreshCache) {
         Iterator<DataSourceEnum> msgSourceQueueIter = VIPCfg.getInstance().getMsgOriginsQueue().iterator();
         Set<String> supportedLangTags = new HashSet<>();
         while(msgSourceQueueIter.hasNext()) {
@@ -104,12 +115,10 @@ public class ProductService {
      * Retrieves the cached set of locales that are supported in the given data source.
      *
      * @param dataSource The data source
-     * @return The cached set of locales that are supported in the given data source.
+     * @return The data from the cache as is, or an empty Set if not in cache.
      */
     public Set<String> getCachedSupportedLocales(DataSourceEnum dataSource) {
-        CacheService cs = new CacheService(new MessagesDTO(dto));
-        MessageCacheItem cacheItem = cs.getCacheOfLocales(dataSource);
-        return cacheItem == null ? new HashSet<>() : cacheItem.getCachedData().keySet();
+        return processSupportedLocales(dataSource, false);
     }
 
     /**
@@ -117,31 +126,30 @@ public class ProductService {
      * It will trigger a cache populate or refresh as necessary before returning.
      *
      * @param dataSource The data source
-     * @return The set of locales supported in the given data source.
+     * @return The set of locales supported in the given data source. An empty set if fetch fails.
      */
     public Set<String> getSupportedLocales(DataSourceEnum dataSource) {
+        return processSupportedLocales(dataSource, true);
+    }
+
+    private Set<String> processSupportedLocales(DataSourceEnum dataSource, boolean waitFetchFromDS) {
         CacheService cs = new CacheService(new MessagesDTO(dto));
         MessageCacheItem cacheItem = cs.getCacheOfLocales(dataSource);
         if (cacheItem != null) {
-            if (cacheItem.isExpired()) {
-                synchronized (cacheItem) { // Allow only 1 thread to refresh the cacheItem at a time.
-                    if (cacheItem.isExpired())
-                        refreshLocalesCacheItemTask(cacheItem, dataSource);
-                }
-            }
+            if (cacheItem.isExpired())
+                refreshLocalesCacheItemTask(cacheItem, dataSource);
             return cacheItem.getCachedData().keySet();
         } else {
-            // Allow only 1 thread to create the cacheItem.
-            synchronized (TranslationCacheManager.getInstance().getCache(VIPCfg.CACHE_L3)) {
-                if (cs.getCacheOfLocales(dataSource) == null) // Check again if it is still not in cache
-                    cacheItem = createLocalesCacheItem(dataSource);
-            }
+            if (waitFetchFromDS)
+                cacheItem = createLocalesCacheItem(dataSource);
+            else
+                createLocalesCacheItemTask(dataSource);
+
             if (cacheItem == null)
                 return new HashSet<>();
             return cacheItem.getCachedData().keySet();
         }
     }
-
     private void refreshLocalesCacheItem(final MessageCacheItem cacheItem, DataSourceEnum dataSource) {
         long timestampOld = cacheItem.getTimestamp();
         dataSource.createProductOpt(dto).getSupportedLocales(cacheItem);
@@ -176,15 +184,14 @@ public class ProductService {
         return null;
     }
 
-    public void refreshSupportedLocalesTask() {
+    private void createLocalesCacheItemTask(DataSourceEnum dataSource) {
         Runnable runnable = () -> {
             try {
-                getSupportedLocales();
+                createLocalesCacheItem(dataSource);
             } catch (Exception e) {
-                logger.error("Failed to refresh list of supported locales.");
+                logger.error("Failed to refresh list of supported locales for data source " + dataSource);
             }
         };
         new Thread(runnable).start();
     }
-
 }
