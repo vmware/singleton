@@ -17,7 +17,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vmware.l10n.translation.dao.SingleComponentDao;
 import com.vmware.l10n.translation.dto.ComponentMessagesDTO;
@@ -26,6 +25,7 @@ import com.vmware.l10n.utils.MapUtil;
 import com.vmware.vip.common.constants.TranslationQueryStatusType;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO.TranslationDTO;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
 
 /**
  * This class synchronizes the latest translation for vIP server.
@@ -50,13 +50,22 @@ public class TranslationSyncServerServiceImpl implements TranslationSyncServerSe
      */
 	private boolean updateTranslation(ComponentMessagesDTO componentMessagesDTO) throws L10nAPIException, JsonProcessingException {
 		LOGGER.info("Start Update transaltion for: ["+componentMessagesDTO.getProductName()+"], ["+componentMessagesDTO.getVersion()+"], ["+componentMessagesDTO.getComponent()+"], ["+componentMessagesDTO.getLocale()+"]");
-		//merge with local bundle file
-		componentMessagesDTO = mergeComponentMessagesDTOWithFile(componentMessagesDTO);
-		//update the local bundle file
-		LOGGER.info("Update the local bundle file");
-		boolean flag = singleComponentDao.writeTranslationToFile(componentMessagesDTO);
-		LOGGER.info("End of Update transaltion");
-		return flag;
+
+		if (!singleComponentDao.lockFile(componentMessagesDTO)) {
+			return false;
+		}
+
+		try {
+			// merge with local bundle file
+			componentMessagesDTO = mergeComponentMessagesDTOWithFile(componentMessagesDTO);
+			// update the local bundle file
+			LOGGER.info("Update the local bundle file");
+			boolean flag = singleComponentDao.writeTranslationToFile(componentMessagesDTO);
+			LOGGER.info("End of Update transaltion");
+			return flag;
+		} finally {
+			singleComponentDao.unlockFile(componentMessagesDTO);
+		}
 	}
 
 	/**
@@ -66,12 +75,12 @@ public class TranslationSyncServerServiceImpl implements TranslationSyncServerSe
 	 *        The list of ComponentMessagesDTO.
 	 * @return List<TranslationDTO>
 	 *         The list of Update failed.
-	 * @throws JsonProcessingException 
+	 * @throws JsonProcessingException
 	 *
 	 */
 	@Override
 	public List<TranslationDTO> updateBatchTranslation(List<ComponentMessagesDTO> componentMessagesDTOList) throws L10nAPIException, JsonProcessingException{
-		List<TranslationDTO> translationDTOList = new ArrayList<TranslationDTO>();
+		List<TranslationDTO> translationDTOList = new ArrayList<>();
 		for(ComponentMessagesDTO componentMessagesDTO : componentMessagesDTOList){
 			if(!updateTranslation(componentMessagesDTO)){
 				TranslationDTO translationDTO = new UpdateTranslationDTO.UpdateTranslationDataDTO.TranslationDTO();
@@ -127,5 +136,5 @@ public class TranslationSyncServerServiceImpl implements TranslationSyncServerSe
 			return componentMessagesDTO;
 		}
 	}
-	
+
 }
