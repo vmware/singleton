@@ -133,7 +133,7 @@ public class ProductService {
         } else {
             // Allow only 1 thread to create the cacheItem.
             synchronized (TranslationCacheManager.getInstance().getCache(VIPCfg.CACHE_L3)) {
-                if (cs.getCacheOfLocales(dataSource) == null)
+                if (cs.getCacheOfLocales(dataSource) == null) // Check again if it is still not in cache
                     cacheItem = createLocalesCacheItem(dataSource);
             }
             if (cacheItem == null)
