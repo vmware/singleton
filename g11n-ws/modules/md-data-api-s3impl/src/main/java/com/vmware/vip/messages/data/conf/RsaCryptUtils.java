@@ -14,7 +14,8 @@ import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
-import java.util.Base64;
+import org.apache.commons.codec.binary.Base64;
+
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -31,7 +32,6 @@ public class RsaCryptUtils {
 	}
 
 	private static final String CHARSET = "UTF-8";
-	private static final Base64.Decoder decoder64 = Base64.getDecoder();
 
 	/**
 	 * decode Data by public key
@@ -43,7 +43,7 @@ public class RsaCryptUtils {
 	public static String decryptData(String data, String publicInfoStr)
 			throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException,
 			BadPaddingException, IllegalBlockSizeException, UnsupportedEncodingException {
-		byte[] encryptDataBytes = decoder64.decode(data.getBytes(CHARSET));
+		byte[] encryptDataBytes = Base64.decodeBase64(data);
 		Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
 		cipher.init(Cipher.DECRYPT_MODE, getPublicKey(publicInfoStr));
 		return new String(cipher.doFinal(encryptDataBytes), CHARSET);
@@ -59,7 +59,7 @@ public class RsaCryptUtils {
 	 */
 	private static PublicKey getPublicKey(String base64PublicKey)
 			throws NoSuchAlgorithmException, InvalidKeySpecException {
-		X509EncodedKeySpec keySpec = new X509EncodedKeySpec(Base64.getDecoder().decode(base64PublicKey.getBytes()));
+		X509EncodedKeySpec keySpec = new X509EncodedKeySpec(Base64.decodeBase64(base64PublicKey));
 		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
 		return keyFactory.generatePublic(keySpec);
 	}
