@@ -37,7 +37,7 @@ public class LocalProductOpt implements ProductOpt {
         List<String> supportedLocales = new ArrayList<>();
         try {
             Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl());
-            List<URI> uris = FileUtil.findUris(path);
+            List<URI> uris = FileUtil.getAllResources(path);
             for (URI uri : uris) {
                 if (uri.getScheme().equals("jar")) {
                     try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
@@ -64,7 +64,7 @@ public class LocalProductOpt implements ProductOpt {
         List<String> components = new ArrayList<String>();
         try {
             Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl());
-            List<URI> uris = FileUtil.findUris(path);
+            List<URI> uris = FileUtil.getAllResources(path);
             for (URI uri : uris) {
                 if (uri.getScheme().equals("jar")) {
                     try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {

@@ -87,13 +87,12 @@ public class FileUtil {
         return jsonObj;
     }
 
-    public static List<URI> findUris(Path path) {
+    public static List<URI> getAllResources(Path path) {
         List<URI> uris = new LinkedList<>();
         try {
             Enumeration<URL> urls = Thread.currentThread().getContextClassLoader().getResources(path.toString());
             while(urls.hasMoreElements()) {
-                URL url = urls.nextElement();
-                uris.add(url.toURI());
+                uris.add(urls.nextElement().toURI());
             }
         } catch (Exception e) {
             logger.debug(e.getMessage());
