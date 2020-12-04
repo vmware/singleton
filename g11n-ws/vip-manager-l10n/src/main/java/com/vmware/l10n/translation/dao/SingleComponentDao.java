@@ -5,26 +5,29 @@
 package com.vmware.l10n.translation.dao;
 
 import com.vmware.vip.common.l10n.exception.L10nAPIException;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vmware.l10n.translation.dto.ComponentMessagesDTO;
 
 /**
  * For single component translation file handle
  */
-public interface SingleComponentDao{
+public interface SingleComponentDao {
 
-    /**
-     * Write the translation to local bundle
-     *
-     * @param componentMessagesDTO Translation object,this object content will be written into file
-     * @return if success return true, otherwise false
-     */
-    public boolean writeLocalTranslationToFile(ComponentMessagesDTO componentMessagesDTO);
+	/**
+	 * Write the translation to bundle
+	 *
+	 * @param componentMessagesDTO Translation object,this object content will be written into file
+	 * @return if success return true, otherwise false
+	 * @throws JsonProcessingException
+	 */
+	public boolean writeTranslationToFile(ComponentMessagesDTO componentMessagesDTO) throws JsonProcessingException;
 
-    /**
-     * Get translation data from local file
-     *
-     * @param t The generic object
-     * @return T
-     */
-    public ComponentMessagesDTO getLocalTranslationFromFile(ComponentMessagesDTO componentMessagesDTO) throws L10nAPIException;
+	/**
+	 * Get translation data from file
+	 *
+	 * @param t The generic object
+	 * @return T
+	 */
+	public ComponentMessagesDTO getTranslationFromFile(ComponentMessagesDTO componentMessagesDTO) throws L10nAPIException;
 }

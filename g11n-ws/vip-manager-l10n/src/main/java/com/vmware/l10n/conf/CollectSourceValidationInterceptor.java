@@ -237,7 +237,6 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 		}
 		if(!allowList.isEmpty() && allowList.containsKey(productName)
 				&& allowList.get(productName).contains(version)) {
-			return;
 		}else {
 			throw new VIPAPIException(String.format(ValidationMsg.PRODUCTNAME_NOT_SUPPORTED, productName));
 		}

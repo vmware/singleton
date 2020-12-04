@@ -64,18 +64,10 @@ public class WebConfiguration implements WebMvcConfigurer {
 		if (cspAuthFlag.equalsIgnoreCase("true")) {
 			logger.info("add enable CSP authentication interceptor");
 			registry.addInterceptor(new CspAuthInterceptor(tokenService))
-			.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/**");
+			.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/**", L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v1/translation/**");
 		}
 		logger.info("add source collection validation interceptor");
-		registry.addInterceptor(new CollectSourceValidationInterceptor(WhiteListUtils.getWhiteList(whiteListLocation))).addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/**");
-	}
-	
-	private List<String> parseLocales(String localesString){
-		String[] locales = localesString.split(ConstantsChar.COMMA);
-		List<String> localeList = new ArrayList<>();
-		for(int i=0; i<locales.length; i++) {
-			localeList.add(locales[i].trim());
-		}
-		return localeList;
+		registry.addInterceptor(new CollectSourceValidationInterceptor(WhiteListUtils.getWhiteList(whiteListLocation)))
+		.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/**", L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v1/translation/**");
 	}
 }

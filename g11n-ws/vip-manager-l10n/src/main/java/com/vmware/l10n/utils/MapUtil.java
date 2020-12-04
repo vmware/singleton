@@ -73,7 +73,7 @@ public class MapUtil {
 	 * @return
 	 */
 	public static ContainerFactory getContainerFactory() {
-		ContainerFactory containerFactory = new ContainerFactory() {
+		return new ContainerFactory() {
 			public List<Object> creatArrayContainer() {
 				return new LinkedList<Object>();
 			}
@@ -82,6 +82,5 @@ public class MapUtil {
 				return new LinkedHashMap<String, Object>();
 			}
 		};
-		return containerFactory;
 	}
 }

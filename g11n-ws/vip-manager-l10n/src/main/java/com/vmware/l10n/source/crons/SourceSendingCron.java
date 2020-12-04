@@ -25,12 +25,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.l10n.source.service.RemoteSyncService;
-import com.vmware.l10n.source.service.SourceService;
 import com.vmware.l10n.source.service.impl.SourceServiceImpl;
-import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 import com.vmware.l10n.utils.DiskQueueUtils;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.APIV2;
@@ -40,7 +37,8 @@ import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.common.exceptions.VIPHttpException;
 import com.vmware.vip.common.http.HTTPRequester;
-import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
+import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
 
 
@@ -50,7 +48,7 @@ import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
 @Service
 @PropertySource("classpath:application.properties")
 public class SourceSendingCron {
-	private static Logger LOGGER = LoggerFactory.getLogger(SourceService.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(SourceSendingCron.class);
 	private final static String LOCAL_STR = "local";
 	private final static BlockingQueue<String> instruments = new LinkedBlockingQueue<String>();
 
@@ -64,7 +62,7 @@ public class SourceSendingCron {
 	/** the path of local resource file,can be configed in spring config file **/
 	@Value("${source.bundle.file.basepath}")
 	private String basePath;
-
+	
 	/** the url of GRM API,can be configed in spring config file **/
 	@Value("${grm.server.url}")
 	private String remoteGRMURL;
@@ -181,14 +179,11 @@ public class SourceSendingCron {
 						ComponentSourceDTO cachedComDTO = entry.getValue();
 
 						if (!StringUtils.isEmpty(cachedComDTO)) {
-							SingleComponentDTO sdto = new SingleComponentDTO();
+							ComponentMessagesDTO sdto = new ComponentMessagesDTO();
 							BeanUtils.copyProperties(cachedComDTO, sdto);
-							String result = sourceDao.getFromBundle(sdto, basePath);
-							ComponentMessagesDTO componentMessagesDTO = sourceDao.mergeCacheWithBundle(cachedComDTO,
-									result);
 							boolean updateFlag = false;
 							// update the source to bundle.
-							updateFlag = sourceDao.updateToBundle(componentMessagesDTO, basePath);
+							updateFlag = sourceDao.updateToBundle(sdto);
 							if (updateFlag) {
 								if (connected) {
 									// push the source to GRM.
@@ -224,7 +219,6 @@ public class SourceSendingCron {
 			} catch (VIPCacheException e) {
 				LOGGER.error(e.getMessage(), e);
 			} catch (L10nAPIException e) {
-
 				setConnected(false);
 				try {
 					flushCacheToDisk(TranslationCache3.getCache(CacheName.SOURCEBACKUP, ComponentSourceDTO.class));
@@ -234,10 +228,10 @@ public class SourceSendingCron {
 				}
 				LOGGER.info("Fail to push source to remote.");
 			} catch (VIPHttpException e) {
-
 				LOGGER.error("Http request error occurs.", e);
+			} catch (Exception e) {
+				LOGGER.error(e.getMessage(), e);
 			}
-
 		}
 	}
 
@@ -317,5 +311,4 @@ public class SourceSendingCron {
 	private static void setConnected(boolean connected) {
 		SourceSendingCron.connected = connected;
 	}
-
 }

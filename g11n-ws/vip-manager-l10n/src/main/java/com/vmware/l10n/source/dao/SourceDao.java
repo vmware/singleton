@@ -4,11 +4,9 @@
  */
 package com.vmware.l10n.source.dao;
 
-import java.util.Map;
-
-import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
-import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
+import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 
 /**
  * This class handles the source strings, write to local resource file or send
@@ -26,8 +24,7 @@ public interface SourceDao {
 	 *            configed in spring config file
 	 * @return the content of the resource file
 	 */
-	public String getFromBundle(SingleComponentDTO singleComponentDTO,
-			String filePath);
+	public String getFromBundle(SingleComponentDTO singleComponentDTO);
 
 	/**
 	 * Write source strings to local resource file.
@@ -38,27 +35,7 @@ public interface SourceDao {
 	 *            the location where the resource file is placed, can be
 	 *            configed in spring config file
 	 * @return update result, true represents success, false represents failure.
+	 * @throws JsonProcessingException 
 	 */
-	public boolean updateToBundle(ComponentMessagesDTO componentMessagesDTO,
-			String basepath);
-
-	/**
-	 * Send source strings to GRM by component.
-	 * 
-	 * @param url
-	 *            the url of register strings API provided by GRM
-	 * @param requestParam
-	 *            the request body, it includes 'messages' and 'comments', the
-	 *            former represents source strings and the latter represents
-	 *            comments for source strings
-	 * @return send result, true represents success, false represents failure.
-	 */
-	public boolean sendToRemote(String url, Map<String, Object> requestParam);
-
-	/*
-	 * load the bundle content and merge it with cache.
-	 */
-	public ComponentMessagesDTO mergeCacheWithBundle(
-			ComponentSourceDTO cachedComponentSourceDTO, String bundleJSON);
-
+	public boolean updateToBundle(ComponentMessagesDTO componentMessagesDTO) throws JsonProcessingException;
 }
