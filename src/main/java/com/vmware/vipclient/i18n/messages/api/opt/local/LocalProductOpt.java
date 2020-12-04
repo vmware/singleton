@@ -8,6 +8,7 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.messages.api.opt.ProductOpt;
 import com.vmware.vipclient.i18n.messages.dto.BaseDTO;
+import com.vmware.vipclient.i18n.util.FileUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,21 +41,22 @@ public class LocalProductOpt implements ProductOpt {
     }
 
     public void getSupportedLocales(MessageCacheItem cacheItem) {
-        List<String> supportedLocales = new ArrayList<String>();
+        List<String> supportedLocales = new ArrayList<>();
         try {
             Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl());
-            URI uri = Thread.currentThread().getContextClassLoader().
-                    getResource(path.toString()).toURI();
-            if (uri.getScheme().equals("jar")) {
-                synchronized (getLock()) {
-                    try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
-                        path = fileSystem.getPath(path.toString());
-                        getSupportedLocales(path, supportedLocales);
+            List<URI> uris = FileUtil.getAllResources(path);
+            for (URI uri : uris) {
+                if (uri.getScheme().equals("jar")) {
+                    synchronized (getLock()) {
+                        try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
+                            path = fileSystem.getPath(path.toString());
+                            getSupportedLocales(path, supportedLocales);
+                        }
                     }
+                } else {
+                    path = Paths.get(uri);
+                    getSupportedLocales(path, supportedLocales);
                 }
-            } else {
-                path = Paths.get(uri);
-                getSupportedLocales(path, supportedLocales);
             }
         } catch (Exception e) {
             logger.debug("Fetching the list of supported locales failed: " +  e.getMessage());
@@ -71,19 +73,19 @@ public class LocalProductOpt implements ProductOpt {
         List<String> components = new ArrayList<String>();
         try {
             Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl());
-            URI uri = Thread.currentThread().getContextClassLoader().
-                    getResource(path.toString()).toURI();
-
-            if (uri.getScheme().equals("jar")) {
-                synchronized (getLock()) {
-                    try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
-                        path = fileSystem.getPath(path.toString());
-                        getComponents(path, components);
+            List<URI> uris = FileUtil.getAllResources(path);
+            for (URI uri : uris) {
+                if (uri.getScheme().equals("jar")) {
+                    synchronized (getLock()) {
+                        try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
+                            path = fileSystem.getPath(path.toString());
+                            getComponents(path, components);
+                        }
                     }
+                } else {
+                    path = Paths.get(uri);
+                    getComponents(path, components);
                 }
-            } else {
-                path = Paths.get(uri);
-                getComponents(path, components);
             }
         } catch (Exception e) {
             logger.debug(e.getMessage());
