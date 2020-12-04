@@ -197,7 +197,10 @@ public class TranslationSyncServerController {
             response.setResponse(APIResponseStatus.INTERNAL_SERVER_ERROR);
             LOGGER.error(e.getMessage(), e);
          
-        }
+        } catch (JsonProcessingException e) {
+        	response.setResponse(APIResponseStatus.BAD_REQUEST);
+            return response;
+		}
         if (translationDTOList != null && translationDTOList.size() > 0) {
             response.setData(translationDTOList);
             response.setResponse(APIResponseStatus.OK);

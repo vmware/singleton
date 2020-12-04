@@ -20,7 +20,7 @@ public class S3Config {
 	public String getAccessKey() {
 		if (this.encryption) {
 			try {
-                logger.debug("accessKey: {}", this.accessKey);
+          logger.debug("accessKey: {}", this.accessKey);
 				return RsaCryptUtils.decryptData(this.accessKey, this.getPublicKey());
 			} catch (Exception e) {
 				logger.error(e.getMessage(), e);

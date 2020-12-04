@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.vmware.vip.common.l10n.exception.L10nAPIException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vmware.l10n.translation.dao.SingleComponentDao;
 import com.vmware.l10n.translation.dto.ComponentMessagesDTO;
 import com.vmware.l10n.translation.service.TranslationSyncServerService;
@@ -44,15 +45,16 @@ public class TranslationSyncServerServiceImpl implements TranslationSyncServerSe
      *        The object of ComponentMessagesDTO, containing the latest translation.
      * @return boolean
      *         Sync successfully, return true, otherwise return false.
+     * @throws JsonProcessingException 
      * 
      */
-	private boolean updateTranslation(ComponentMessagesDTO componentMessagesDTO) throws L10nAPIException {
+	private boolean updateTranslation(ComponentMessagesDTO componentMessagesDTO) throws L10nAPIException, JsonProcessingException {
 		LOGGER.info("Start Update transaltion for: ["+componentMessagesDTO.getProductName()+"], ["+componentMessagesDTO.getVersion()+"], ["+componentMessagesDTO.getComponent()+"], ["+componentMessagesDTO.getLocale()+"]");
 		//merge with local bundle file
 		componentMessagesDTO = mergeComponentMessagesDTOWithFile(componentMessagesDTO);
 		//update the local bundle file
 		LOGGER.info("Update the local bundle file");
-		boolean flag = singleComponentDao.writeLocalTranslationToFile(componentMessagesDTO);
+		boolean flag = singleComponentDao.writeTranslationToFile(componentMessagesDTO);
 		LOGGER.info("End of Update transaltion");
 		return flag;
 	}
@@ -64,10 +66,11 @@ public class TranslationSyncServerServiceImpl implements TranslationSyncServerSe
 	 *        The list of ComponentMessagesDTO.
 	 * @return List<TranslationDTO>
 	 *         The list of Update failed.
+	 * @throws JsonProcessingException 
 	 *
 	 */
 	@Override
-	public List<TranslationDTO> updateBatchTranslation(List<ComponentMessagesDTO> componentMessagesDTOList) throws L10nAPIException{
+	public List<TranslationDTO> updateBatchTranslation(List<ComponentMessagesDTO> componentMessagesDTOList) throws L10nAPIException, JsonProcessingException{
 		List<TranslationDTO> translationDTOList = new ArrayList<TranslationDTO>();
 		for(ComponentMessagesDTO componentMessagesDTO : componentMessagesDTOList){
 			if(!updateTranslation(componentMessagesDTO)){
@@ -92,7 +95,7 @@ public class TranslationSyncServerServiceImpl implements TranslationSyncServerSe
 	private ComponentMessagesDTO mergeComponentMessagesDTOWithFile(ComponentMessagesDTO componentMessagesDTO) throws L10nAPIException {
 		ComponentMessagesDTO paramComponentMessagesDTO = new ComponentMessagesDTO();
 		BeanUtils.copyProperties(componentMessagesDTO, paramComponentMessagesDTO);
-		ComponentMessagesDTO result = singleComponentDao.getLocalTranslationFromFile(paramComponentMessagesDTO);
+		ComponentMessagesDTO result = singleComponentDao.getTranslationFromFile(paramComponentMessagesDTO);
 		if(!StringUtils.isEmpty(result) && !StringUtils.isEmpty(result.getStatus()) && result.getStatus().equals("Translation"+TranslationQueryStatusType.FileFound)){
 			Object messageObj = result.getMessages();
 			if (!StringUtils.isEmpty(messageObj)) {

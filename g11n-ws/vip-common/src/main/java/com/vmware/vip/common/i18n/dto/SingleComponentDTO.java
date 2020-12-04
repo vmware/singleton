@@ -5,6 +5,7 @@
 package com.vmware.vip.common.i18n.dto;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,6 +17,8 @@ import org.json.simple.parser.ContainerFactory;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.utils.LocaleUtils;
 
@@ -101,7 +104,16 @@ public class SingleComponentDTO extends BaseDTO  implements Serializable{
    	return "[productname-version-component-locale-pseudo-messages]: " + this.getProductName() + " - " + this.getVersion() + " - " + this.getComponent() + " - " + this.getLocale() + " - " + this.getPseudo() + " - " + this.getMessages();
    }
 
-   /**
+   public String toPrettyString() throws JsonProcessingException {
+	Map<String, Object> json = new HashMap<>();
+	json.put(ConstantsKeys.COMPONENT, getComponent());
+	json.put(ConstantsKeys.lOCALE, getLocale());
+	json.put(ConstantsKeys.MESSAGES, getMessages());
+	json.put(ConstantsKeys.ID, getId());
+	return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(json);
+}
+
+/**
     * Get single component's DTO from one JSON string
     *
     * @param jsonStr One JSON string can convert to a SingleComponentDTO object
