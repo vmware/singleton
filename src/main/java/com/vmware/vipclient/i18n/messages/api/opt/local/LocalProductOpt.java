@@ -63,9 +63,7 @@ public class LocalProductOpt implements ProductOpt {
     public List<String> getComponents() {
         List<String> components = new ArrayList<String>();
         try {
-
             Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl());
-
             URI uri = Thread.currentThread().getContextClassLoader().
                     getResource(path.toString()).toURI();
 
@@ -74,12 +72,10 @@ public class LocalProductOpt implements ProductOpt {
                     path = fileSystem.getPath(path.toString());
                     getComponents(path, components);
                 }
-
             } else {
                 path = Paths.get(uri);
                 getComponents(path, components);
             }
-
         } catch (Exception e) {
             logger.debug(e.getMessage());
         }
