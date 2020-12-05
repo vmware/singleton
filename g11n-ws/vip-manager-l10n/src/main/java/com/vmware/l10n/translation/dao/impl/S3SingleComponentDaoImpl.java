@@ -2,6 +2,10 @@
 //SPDX-License-Identifier: EPL-2.0
 package com.vmware.l10n.translation.dao.impl;
 
+import java.io.File;
+
+import javax.annotation.PostConstruct;
+
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +20,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vmware.l10n.translation.dao.SingleComponentDao;
 import com.vmware.l10n.translation.dto.ComponentMessagesDTO;
 import com.vmware.l10n.utils.S3Util;
+import com.vmware.l10n.utils.S3Util.Locker;
+import com.vmware.vip.common.constants.ConstantsChar;
+import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.constants.ConstantsUnicode;
 import com.vmware.vip.common.constants.TranslationQueryStatusType;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
@@ -33,12 +40,24 @@ public class S3SingleComponentDaoImpl implements SingleComponentDao {
 	@Autowired
 	private S3Util s3util;
 
-    /**
-     * Get translation data from file
-     *
-     * @param componentMessagesDTO Specify the bundle file to get.
-     * @return componentMessagesDTO
-     */
+	@PostConstruct
+	private void init() {
+		if (basePath.startsWith("/")) {
+			basePath = basePath.substring(1);
+		}
+		if (!basePath.isEmpty() && !basePath.endsWith(ConstantsChar.BACKSLASH)) {
+			basePath += ConstantsChar.BACKSLASH;
+		}
+		basePath += ConstantsFile.L10N_BUNDLES_PATH;
+		basePath = basePath.replace(File.separator, ConstantsChar.BACKSLASH);
+	}
+
+	/**
+	 * Get translation data from file
+	 *
+	 * @param componentMessagesDTO Specify the bundle file to get.
+	 * @return componentMessagesDTO
+	 */
 	@Override
 	public ComponentMessagesDTO getTranslationFromFile(ComponentMessagesDTO componentMessagesDTO)
 			throws L10nAPIException {
@@ -82,7 +101,19 @@ public class S3SingleComponentDaoImpl implements SingleComponentDao {
 		} else {
 			logger.debug("The bunlde file is not found, cascade create the dir,add new bundle file ");
 		}
-		
+
 		return s3util.writeBundle(basePath, componentMessagesDTO);
+	}
+
+	@Override
+	public boolean lockFile(ComponentMessagesDTO componentMessagesDTO) {
+		Locker locker = s3util.new Locker(basePath, componentMessagesDTO);
+		return locker.lockFile();
+	}
+
+	@Override
+	public void unlockFile(ComponentMessagesDTO componentMessagesDTO) {
+		Locker locker = s3util.new Locker(basePath, componentMessagesDTO);
+		locker.unlockFile();
 	}
 }

@@ -4,10 +4,9 @@
  */
 package com.vmware.l10n.translation.dao;
 
-import com.vmware.vip.common.l10n.exception.L10nAPIException;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vmware.l10n.translation.dto.ComponentMessagesDTO;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
 
 /**
  * For single component translation file handle
@@ -30,4 +29,8 @@ public interface SingleComponentDao {
 	 * @return T
 	 */
 	public ComponentMessagesDTO getTranslationFromFile(ComponentMessagesDTO componentMessagesDTO) throws L10nAPIException;
+
+	public boolean lockFile(ComponentMessagesDTO componentMessagesDTO);
+
+	public void unlockFile(ComponentMessagesDTO componentMessagesDTO);
 }
