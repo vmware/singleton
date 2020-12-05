@@ -44,8 +44,9 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
     
     @Override
     public void getComponentMessages(MessageCacheItem cacheItem) {
-		InputStream is = getInputStream();
+		InputStream is = null;
 		try {
+			is = getInputStream();
 			JSONParser jsonParser = new JSONParser();
 			JSONObject jsonObject = (JSONObject) jsonParser.parse(new InputStreamReader(is, "UTF-8"));
 			Map<String, String> messages = (JSONObject) jsonObject.get("messages");
@@ -53,7 +54,8 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 		} catch (Exception e) {
 			logger.error("Failed to get offline messages for product: " + dto.getProductID() + " " + dto.getVersion() +
 					", component: " + dto.getComponent() + ", locale: " + dto.getLocale() + ", exception: " + e.getMessage());
-		} finally {
+		}
+		if (is != null) {
 			try {
 				is.close();
 			} catch (IOException e) {
