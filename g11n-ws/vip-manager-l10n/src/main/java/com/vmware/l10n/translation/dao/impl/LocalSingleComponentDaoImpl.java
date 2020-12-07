@@ -7,16 +7,15 @@ package com.vmware.l10n.translation.dao.impl;
 import java.io.File;
 
 import org.apache.commons.io.FileUtils;
+import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.json.simple.parser.ParseException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
-import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.l10n.translation.dao.SingleComponentDao;
 import com.vmware.l10n.translation.dto.ComponentMessagesDTO;
 import com.vmware.l10n.translation.readers.LocalJSONReader;
@@ -27,6 +26,7 @@ import com.vmware.vip.common.constants.TranslationQueryStatusType;
 import com.vmware.vip.common.exceptions.VIPResourceOperationException;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.i18n.resourcefile.ResourceFilePathGetter;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.utils.SortJSONUtils;
 
 /**
@@ -134,6 +134,16 @@ public class LocalSingleComponentDaoImpl implements SingleComponentDao {
 			}
 			return true;
 		}
+	}
+
+	@Override
+	public boolean lockFile(ComponentMessagesDTO componentMessagesDTO) {
+		return true;
+	}
+
+	@Override
+	public void unlockFile(ComponentMessagesDTO componentMessagesDTO) {
+		// There is only one thread when using local bundle
 	}
 }
 
