@@ -41,7 +41,7 @@ public class LocalProductOpt implements ProductOpt {
             for (URI uri : uris) {
                 if (uri.getScheme().equals("jar")) {
                     try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
-                        path = fileSystem.getPath(Paths.get(uri).toString());
+                        path = fileSystem.getPath(path.toString());
                         getSupportedLocales(path, supportedLocales);
                     }
                 } else {
@@ -49,12 +49,12 @@ public class LocalProductOpt implements ProductOpt {
                     getSupportedLocales(path, supportedLocales);
                 }
             }
-
         } catch (Exception e) {
-            logger.debug(e.getMessage());
+            logger.debug("Fetching the list of supported locales failed: " +  e.getMessage());
+            return;
         }
         Map<String, String> languageTagMap = new HashMap<>();
-        for (String languageTag: supportedLocales) {
+        for (String languageTag : supportedLocales) {
             languageTagMap.put(languageTag, languageTag);
         }
         cacheItem.setCacheItem(languageTagMap, null, System.currentTimeMillis(), null);
@@ -68,7 +68,7 @@ public class LocalProductOpt implements ProductOpt {
             for (URI uri : uris) {
                 if (uri.getScheme().equals("jar")) {
                     try (FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
-                        path = fileSystem.getPath(Paths.get(uri).toString());
+                        path = fileSystem.getPath(path.toString());
                         getComponents(path, components);
                     }
                 } else {
@@ -76,7 +76,6 @@ public class LocalProductOpt implements ProductOpt {
                     getComponents(path, components);
                 }
             }
-
         } catch (Exception e) {
             logger.debug(e.getMessage());
         }
