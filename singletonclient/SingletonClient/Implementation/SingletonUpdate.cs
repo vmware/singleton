@@ -60,15 +60,6 @@ namespace SingletonClient.Implementation
             _config = release.GetSingletonConfig();
         }
 
-        private void UpdateList(List<string> strList, JArray ja)
-        {
-            strList.Clear();
-            foreach (var one in ja)
-            {
-                strList.Add(one.ToString());
-            }
-        }
-
         public void UpdateBriefinfo(string url, string infoName, List<string> infoList)
         {
             Hashtable headers = SingletonUtil.NewHashtable(false);
@@ -79,7 +70,7 @@ namespace SingletonClient.Implementation
                 JObject result = obj.Value<JObject>(SingletonConst.KeyResult);
                 JObject data = result.Value<JObject>(SingletonConst.KeyData);
                 JArray ar = data.Value<JArray>(infoName);
-                UpdateList(infoList, ar);
+                SingletonUtil.SetListFromJson(infoList, ar);
             }
         }
 
@@ -222,9 +213,11 @@ namespace SingletonClient.Implementation
                 ).Split(',');
 
             List<string> componentList = _config.GetConfig().GetComponentList();
-            if (componentList == null)
+            if (componentList.Count == 0)
             {
                 componentList = _config.GetExternalComponentList();
+                List<string> releaseComponents = _release.GetRelease().GetMessages().GetComponentList();
+                SingletonUtil.UpdateListFromAnotherList(releaseComponents, componentList);
             }
 
             int messageCount = 0;
