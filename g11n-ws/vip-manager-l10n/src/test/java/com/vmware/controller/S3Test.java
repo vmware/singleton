@@ -27,6 +27,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -39,6 +40,7 @@ import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
+@ActiveProfiles("s3")
 public class S3Test {
 	private static Logger logger = LoggerFactory.getLogger(S3Test.class);
 
@@ -138,13 +140,13 @@ public class S3Test {
 				String component = filePath.getName(nameCount - 2).toString();
 				String version = filePath.getName(nameCount - 3).toString();
 				String product = filePath.getName(nameCount - 4).toString();
-	
+
 				ComponentMessagesDTO dto = new ComponentMessagesDTO();
 				dto.setProductName(product);
 				dto.setVersion(version);
 				dto.setComponent(component);
 				dto.setLocale(locale);
-	
+
 				JSONObject obj;
 				try {
 					obj = (JSONObject) new JSONParser().parse(new FileReader(filePath.toString()));
@@ -152,7 +154,7 @@ public class S3Test {
 				} catch (IOException | ParseException e) {
 					logger.error(e.getMessage(), e);
 				}
-	
+
 				if (dto.getLocale().equals("latest")) {
 					try {
 						sourceDao.updateToBundle(dto);
@@ -168,7 +170,7 @@ public class S3Test {
 					} catch (JsonProcessingException e) {
 						logger.error(e.getMessage(), e);
 					}
-	
+
 					try {
 						singleComponentDao.getTranslationFromFile(translationDto);
 					} catch (L10nAPIException e) {
@@ -180,7 +182,7 @@ public class S3Test {
 
 		Assert.assertTrue(true);
 	}
-	
+
 	@Test
 	public void test003() throws JsonProcessingException {
 		SourceDao sourceDao = webApplicationContext.getBean(SourceDao.class);
@@ -197,7 +199,7 @@ public class S3Test {
 
 		single.setMessages(map);
 
-		
+
 
 		for (int i=0; i< 30; i++) {
 			sourceDao.updateToBundle(single);
@@ -205,5 +207,5 @@ public class S3Test {
 
 
 		Assert.assertTrue(true);
-	}	
+	}
 }

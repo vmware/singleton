@@ -79,6 +79,10 @@ public class S3Util {
 		+ ConstantsChar.BACKSLASH + ResourceFilePathGetter.getLocalizedJSONFileName(dto.getLocale());
 	}
 
+	public String readFile(String key) {
+		return s3Inst.getObjectAsString(bucketName, key);
+	}
+
 	/**
 	 * generate the product version path
 	 */
