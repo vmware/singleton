@@ -27,7 +27,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -40,7 +39,6 @@ import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
-@ActiveProfiles("s3")
 public class S3Test {
 	private static Logger logger = LoggerFactory.getLogger(S3Test.class);
 
