@@ -60,9 +60,9 @@ namespace Product2ResLib
             Console.WriteLine(index);
             Console.WriteLine(configNames[index]);
 
-            IConfig cfg = I18n.LoadConfig(
+            IConfig cfg = I18N.LoadConfig(
                 Values.BASE_RES_NAME, Values.assembly, configNames[index]);
-            rel = I18n.GetRelease(cfg);
+            rel = I18N.GetRelease(cfg);
         }
 
         public static int GetCount()

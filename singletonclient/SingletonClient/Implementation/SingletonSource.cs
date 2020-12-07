@@ -7,10 +7,10 @@ namespace SingletonClient.Implementation
 {
     public class SingletonSource : ISource
     {
-        private string _component;
-        private string _key;
-        private string _source;
-        private string _comment;
+        private readonly string _component;
+        private readonly string _key;
+        private readonly string _source;
+        private readonly string _comment;
 
         public SingletonSource(
             string component, string key, string source, string comment = null)

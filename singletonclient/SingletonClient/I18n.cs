@@ -11,7 +11,7 @@ namespace SingletonClient
     /// <summary>
     /// Factory class of Singleton 
     /// </summary>
-    public sealed class I18n
+    public static class I18N
     {
         /// <summary>
         /// Load the configuration kept in the assembly's resource.

@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
-using Newtonsoft.Json.Linq;
 using SingletonClient.Implementation.Helpers;
+using SingletonClient.Implementation.Support;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -39,8 +39,8 @@ namespace SingletonClient.Implementation
         private ICacheMessages _productCache;
         private ILocaleMessages _sourceCache;
 
-        private List<string> _localeList = new List<string>();
-        private List<string> _componentList = new List<string>();
+        private readonly List<string> _localeList = new List<string>();
+        private readonly List<string> _componentList = new List<string>();
 
         private ISingletonAccessTask _task;
 
@@ -50,7 +50,7 @@ namespace SingletonClient.Implementation
         // value: (Hashtable) components -> 
         //     key: (string) component
         //     value: (ISingletonComponent) component object
-        private Hashtable _localesTable = SingletonUtil.NewHashtable();
+        private readonly Hashtable _localesTable = SingletonUtil.NewHashtable(true);
 
         private bool InitRelease()
         {
@@ -69,20 +69,54 @@ namespace SingletonClient.Implementation
             return true;
         }
 
-        private Hashtable GetLocaleComponents(string locale, bool add)
+        private Hashtable GetLocaleComponents(ISingletonLocale singletonLocale, bool add)
         {
-            Hashtable components = (Hashtable)_localesTable[locale];
+            string originalLocale = singletonLocale.GetOriginalLocale();
+            Hashtable components = (Hashtable)_localesTable[originalLocale];
             if (components == null && add)
             {
-                components = SingletonUtil.NewHashtable();
-                _localesTable[locale] = components;
+                for(int i=1; i<singletonLocale.GetCount(); i++)
+                {
+                    string tempLocale = singletonLocale.GetNearLocale(i);
+                    components = (Hashtable)_localesTable[tempLocale];
+                    if (components != null)
+                    {
+                        break;
+                    }
+                }
+
+                if (components == null)
+                {
+                    components = SingletonUtil.NewHashtable(true);
+                }
+                _localesTable[originalLocale] = components;
             }
             return components;
         }
 
-        private ISingletonComponent GetComponent(
-            Hashtable components, string locale, string component, bool add)
+        private bool CheckBundleRequest(ISingletonLocale singletonLocale, string component)
         {
+            if (string.IsNullOrEmpty(component))
+            {
+                return false;
+            }
+
+            if (_config.IsOnlineSupported() && !_config.IsOfflineSupported())
+            {
+                bool inLocaleScope = singletonLocale.IsInLocaleList(_localeList);
+                bool inComponentScope = _componentList.Contains(component);
+                if (!inLocaleScope || !inComponentScope)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private ISingletonComponent GetComponent(
+            Hashtable components, ISingletonLocale singletonLocale, string component, bool add)
+        {
+            string locale = singletonLocale.GetOriginalLocale();
             ISingletonComponent obj = (ISingletonComponent)components[component];
             if (obj == null && add)
             {
@@ -97,32 +131,16 @@ namespace SingletonClient.Implementation
             return obj;
         }
 
-        private bool CheckBundleRequest(string locale, string component)
+        private ISingletonComponent GetComponent(ISingletonLocale singletonLocale, string component)
         {
-            if (string.IsNullOrEmpty(locale) || string.IsNullOrEmpty(component))
-            {
-                return false;
-            }
-            if (_config.IsOnlineSupported() && !_config.IsOfflineSupported())
-            {
-                if (!_localeList.Contains(locale) || !_componentList.Contains(component))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        private ISingletonComponent GetComponent(string locale, string component)
-        {
-            if (!CheckBundleRequest(locale, component))
+            if (!CheckBundleRequest(singletonLocale, component))
             {
                 return null;
             }
 
-            Hashtable htComponents = GetLocaleComponents(locale, true);
+            Hashtable htComponents = GetLocaleComponents(singletonLocale, true);
             ISingletonComponent componentObj = GetComponent(
-                htComponents, locale, component, true);
+                htComponents, singletonLocale, component, true);
             componentObj.GetAccessTask().CheckTimeSpan();
             return componentObj;
         }
@@ -162,7 +180,10 @@ namespace SingletonClient.Implementation
             int tryDelay = _config.GetTryDelay();
             _task = new SingletonAccessRemoteTask(this, interval, tryDelay);
 
-            InitRelease();
+            if (!InitRelease())
+            {
+                return;
+            }
 
             _task.CheckTimeSpan();
         }
@@ -369,7 +390,7 @@ namespace SingletonClient.Implementation
                 {
                     text = string.Format(text, objects);
                 }
-                catch (FormatException e)
+                catch (FormatException)
                 {
                     string[] strs = Regex.Split(text, "{([0-9]+)}");
                     int maxPlaceHolderIndex = -1;
@@ -405,15 +426,8 @@ namespace SingletonClient.Implementation
 
         private string GetBundleMessage(string locale, ISource source)
         {
-            ISingletonComponent componentData = GetComponent(locale, source.GetComponent());
-            if (componentData == null)
-            {
-                String nearLocale = SingletonUtil.NearLocale(locale);
-                if (nearLocale != locale)
-                {
-                    componentData = GetComponent(nearLocale, source.GetComponent());
-                }
-            }
+            ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
+            ISingletonComponent componentData = GetComponent(singletonLocale, source.GetComponent());
             return (componentData != null) ? componentData.GetString(source.GetKey()) : null;
         }
 
@@ -466,11 +480,11 @@ namespace SingletonClient.Implementation
         /// <summary>
         /// ITranslation
         /// </summary>
-        public string GetString(string locale, ISource sourceObject)
+        public string GetString(string locale, ISource source)
         {
             _task.CheckTimeSpan();
 
-            return GetStringFromMessages(locale, sourceObject);
+            return GetStringFromMessages(locale, source);
         }
 
         public string GetString(
@@ -501,11 +515,15 @@ namespace SingletonClient.Implementation
         /// <summary>
         /// ITranslation
         /// </summary>
-        public string GetLocaleSupported(string locale)
+        public List<string> GetLocaleSupported(string locale)
         {
-            return SingletonUtil.NearLocale(locale);
+            ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
+            if (singletonLocale == null)
+            {
+                return SingletonUtil.GetEmptyStringList();
+            }
+            return singletonLocale.GetNearLocaleList();
         }
-
     }
 }
 

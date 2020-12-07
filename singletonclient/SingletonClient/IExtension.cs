@@ -80,16 +80,17 @@ namespace SingletonClient
     }
 
     /// <summary>
-    /// Interface for product data in a cache.
+    /// Interface for a component cache manager.
     /// </summary>
-    public interface ICacheMessages
+    public interface ICacheComponentManager
     {
         /// <summary>
-        /// Get interface to access locale data in a cache.
+        /// Create a component cache object.
         /// </summary>
         /// <param name="locale"></param>
+        /// <param name="component"></param>
         /// <returns></returns>
-        ILocaleMessages GetLocaleMessages(string locale);
+        IComponentMessages NewComponentCache(string locale, string component);
     }
 
     /// <summary>
@@ -103,6 +104,14 @@ namespace SingletonClient
         /// <param name="cacheManager"></param>
         /// <param name="cacheManagerName"></param>
         void RegisterCacheManager(ICacheManager cacheManager, string cacheManagerName);
+
+        /// <summary>
+        /// Register a component cache manager with its name.
+        /// </summary>
+        /// <param name="cacheComponentManager"></param>
+        /// <param name="cachComponenteManagerName"></param>
+        void RegisterCacheComponentManager(ICacheComponentManager cacheComponentManager,
+            string cacheComponentManagerName);
 
         /// <summary>
         /// Register a logger with its name.

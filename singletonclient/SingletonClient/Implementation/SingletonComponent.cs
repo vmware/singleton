@@ -20,15 +20,15 @@ namespace SingletonClient.Implementation
 
     public class SingletonComponent : ISingletonComponent, ISingletonAccessRemote
     {
-        private ISingletonRelease _releaseObject;
-        private IComponentMessages _componentCache;
+        private readonly ISingletonRelease _releaseObject;
+        private readonly IComponentMessages _componentCache;
 
-        private string _locale;
-        private string _component;
+        private readonly string _locale;
+        private readonly string _component;
 
         private string _etag;
 
-        private ISingletonAccessTask _task;
+        private readonly ISingletonAccessTask _task;
 
         public SingletonComponent(ISingletonRelease releaseObject, string locale, string component)
         {
@@ -55,7 +55,7 @@ namespace SingletonClient.Implementation
         public void GetDataFromRemote()
         {
             string adr = _releaseObject.GetApi().GetComponentApi(_component, _locale);
-            Hashtable headers = SingletonUtil.NewHashtable();
+            Hashtable headers = SingletonUtil.NewHashtable(false);
             if (_etag != null)
             {
                 headers[SingletonConst.HeaderRequestEtag] = _etag;

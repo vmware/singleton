@@ -20,7 +20,7 @@ namespace SingletonClient.Implementation.Support
             return kvTable;
         }
 
-        private string Put(string key, string message, Hashtable kvTable)
+        public string Put(string key, string message, Hashtable kvTable)
         {
             string oldMessage = (string)kvTable[key];
             kvTable[key] = message;
@@ -39,7 +39,6 @@ namespace SingletonClient.Implementation.Support
 
             while ((limit = lr.ReadLine()) >= 0)
             {
-                c = '\0';
                 keyLen = 0;
                 valueStart = limit;
                 hasSep = false;
@@ -47,7 +46,7 @@ namespace SingletonClient.Implementation.Support
                 precedingBackslash = false;
                 while (keyLen < limit)
                 {
-                    c = lr.lineBuf[keyLen];
+                    c = lr.LineBuf[keyLen];
                     //need check if escaped.
                     if ((c == '=' || c == ':') && !precedingBackslash)
                     {
@@ -72,7 +71,7 @@ namespace SingletonClient.Implementation.Support
                 }
                 while (valueStart < limit)
                 {
-                    c = lr.lineBuf[valueStart];
+                    c = lr.LineBuf[valueStart];
                     if (c != ' ' && c != '\t' && c != '\f')
                     {
                         if (!hasSep && (c == '=' || c == ':'))
@@ -86,8 +85,8 @@ namespace SingletonClient.Implementation.Support
                     }
                     valueStart++;
                 }
-                string key = LoadConvert(lr.lineBuf, 0, keyLen, convtBuf);
-                string value = LoadConvert(lr.lineBuf, valueStart, limit - valueStart, convtBuf);
+                string key = LoadConvert(lr.LineBuf, 0, keyLen, convtBuf);
+                string value = LoadConvert(lr.LineBuf, valueStart, limit - valueStart, convtBuf);
                 Put(key, value, kvTable);
             }
         }
@@ -180,6 +179,12 @@ namespace SingletonClient.Implementation.Support
     {
         private const int MAX_LINE_BUFFER = 1024;
 
+        private char[] lineBuf = new char[MAX_LINE_BUFFER];
+
+        private readonly char[] inCharBuf;
+        private readonly int inLimit = 0;
+        private int inOff = 0;
+
         public LineReader(char[] inCharBuf)
         {
             this.inCharBuf = inCharBuf;
@@ -189,16 +194,16 @@ namespace SingletonClient.Implementation.Support
             }
         }
 
-        public char[] lineBuf = new char[MAX_LINE_BUFFER];
+        public char[] LineBuf
+        {
+            get { return lineBuf; }
+        }
 
-        private char[] inCharBuf;
-        private int inLimit = 0;
-        private int inOff = 0;
-
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Bug", "S2583:Conditionally executed code should be reachable", Justification = "<Pending>")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S2589:Boolean expressions should not be gratuitous", Justification = "<Pending>")]
         public int ReadLine()
         {
             int len = 0;
-            char c = '\0';
 
             bool skipWhiteSpace = true;
             bool isCommentLine = false;
@@ -224,7 +229,7 @@ namespace SingletonClient.Implementation.Support
 
                 //The line below is equivalent to calling a
                 //ISO8859-1 decoder.
-                c = inCharBuf[inOff++];
+                char c = inCharBuf[inOff++];
 
                 if (skipLF)
                 {
