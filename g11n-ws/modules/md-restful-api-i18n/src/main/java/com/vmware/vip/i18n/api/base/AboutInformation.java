@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.vmware.vip.api.rest.API;
-import com.vmware.vip.api.rest.APIV2;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.i18n.api.base.BaseAction;
 import com.vmware.vip.api.rest.APIOperation;
@@ -28,6 +27,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import java.util.Properties;
 import com.vmware.vip.common.utils.PropertiesFileUtil;
+import org.json.simple.JSONObject;
 
 @RestController
 public class AboutInformation extends BaseAction {
@@ -37,8 +37,10 @@ public class AboutInformation extends BaseAction {
 
 	@RequestMapping(value = API.ABOUT, method = RequestMethod.GET, produces = {API.API_CHARSET})
 	@ResponseStatus(HttpStatus.OK)
-	public APIResponseDTO getSupportedLocales(HttpServletRequest request) throws Exception{
-		return super.handleResponse(200, "about", version);
+	public APIResponseDTO getSupportedLocales(HttpServletRequest request) throws Exception {
+		JSONObject info = new JSONObject();
+		info.put("version", version);
+		return super.handleResponse(200, "about", info);
 	}
 
 }
