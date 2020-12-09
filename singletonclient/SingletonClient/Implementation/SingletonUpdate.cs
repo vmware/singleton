@@ -218,6 +218,16 @@ namespace SingletonClient.Implementation
                 componentList = _config.GetExternalComponentList();
                 List<string> releaseComponents = _release.GetRelease().GetMessages().GetComponentList();
                 SingletonUtil.UpdateListFromAnotherList(releaseComponents, componentList);
+
+                List<string> releaseLocales = _release.GetRelease().GetMessages().GetLocaleList();
+                if (releaseLocales.Count == 0)
+                {
+                    for (int i = 0; i < releaseComponents.Count; i++)
+                    {
+                        List<string> componentLocaleList = _config.GetExternalLocaleList(releaseComponents[i]);
+                        SingletonUtil.UpdateListFromAnotherList(releaseLocales, componentLocaleList);
+                    }
+                }
             }
 
             int messageCount = 0;
