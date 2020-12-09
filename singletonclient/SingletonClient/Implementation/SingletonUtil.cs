@@ -257,6 +257,41 @@ namespace SingletonClient.Implementation
         {
             // Method intentionally left empty.
         }
+
+        /// <summary>
+        /// Set list from json.
+        /// </summary>
+        /// <param name="strList"></param>
+        /// <param name="ja"></param>
+        public static void SetListFromJson(List<string> strList, JArray ja)
+        {
+            strList.Clear();
+            foreach (var one in ja)
+            {
+                strList.Add(one.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Update list from another list.
+        /// </summary>
+        /// <param name="strList"></param>
+        /// <param name="ja"></param>
+        public static void UpdateListFromAnotherList(List<string> strList, List<string> strAnotherList)
+        {
+            if (strAnotherList == null)
+            {
+                return;
+            }
+
+            for(int i=0; i<strAnotherList.Count; i++)
+            {
+                if (!strList.Contains(strAnotherList[i]))
+                {
+                    strList.Add(strAnotherList[i]);
+                }
+            }
+        }
     }
 }
 
