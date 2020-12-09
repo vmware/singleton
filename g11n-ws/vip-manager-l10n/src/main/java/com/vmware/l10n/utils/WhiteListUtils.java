@@ -31,12 +31,12 @@ import com.vmware.vip.common.constants.ConstantsUnicode;
 
 public abstract class WhiteListUtils {
 	@Value("${white.list.location:bundle.json}")
-	protected String whiteListLocation;
+	protected String whitelistLocation;
 
-	protected abstract String readWhiteListFile();
+	protected abstract String readWhitelistFile();
 
 	public Map<String, List<String>> getWhiteList() {
-		String result = readWhiteListFile();
+		String result = readWhitelistFile();
 		if (!StringUtils.isEmpty(result)) {
 			ObjectMapper objmap = new ObjectMapper();
 			JavaType stringType = objmap.constructType(String.class);
@@ -54,11 +54,11 @@ public abstract class WhiteListUtils {
 		return null;
 	}
 
-	public static class LocalWhiteList extends WhiteListUtils {
+	public static class LocalWhitelistUtils extends WhiteListUtils {
 		@Override
-		protected String readWhiteListFile() {
+		protected String readWhitelistFile() {
 			StringBuilder sb = new StringBuilder();
-			File file = new File(whiteListLocation);
+			File file = new File(whitelistLocation);
 			InputStream inputStream = null;
 			if (file.exists()) {
 				try {
@@ -85,13 +85,16 @@ public abstract class WhiteListUtils {
 		}
 	}
 
-	public static class S3WhiteList extends WhiteListUtils {
+	public static class S3WhitelistUtils extends WhiteListUtils {
 		@Autowired
 		public S3Util s3util;
 
 		@Override
-		protected String readWhiteListFile() {
-			return s3util.readFile(whiteListLocation);
+		protected String readWhitelistFile() {
+			if (s3util.isFileExist(whitelistLocation)) {
+				return s3util.readFile(whitelistLocation);
+			}
+			return "";
 		}
 	}
 }

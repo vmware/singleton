@@ -4,8 +4,6 @@
  */
 package com.vmware.l10n.conf;
 
-import java.util.Arrays;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -23,8 +21,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.util.UrlPathHelper;
 
 import com.vmware.l10n.utils.WhiteListUtils;
-import com.vmware.l10n.utils.WhiteListUtils.LocalWhiteList;
-import com.vmware.l10n.utils.WhiteListUtils.S3WhiteList;
+import com.vmware.l10n.utils.WhiteListUtils.LocalWhitelistUtils;
+import com.vmware.l10n.utils.WhiteListUtils.S3WhitelistUtils;
 import com.vmware.vip.api.rest.l10n.L10nI18nAPI;
 
 /**
@@ -44,30 +42,34 @@ public class WebConfiguration implements WebMvcConfigurer {
 	@Autowired
 	private WhiteListUtils whitelistUtils;
 
-	@Autowired
 	@Bean
-	public WhiteListUtils whitelistUtils(Environment environment, ApplicationContext ctx) {
-		if (Arrays.stream(environment.getActiveProfiles()).anyMatch(env -> (env.equalsIgnoreCase("bundle")))) {
-			return new LocalWhiteList();
-		} else if (Arrays.stream(environment.getActiveProfiles()).anyMatch(env -> (env.equalsIgnoreCase("s3")))) {
-			return new S3WhiteList();
-		}
-		return null;
+	@Profile("bundle")
+	@Autowired
+	public WhiteListUtils bundleWhitelistUtils(ApplicationContext ctx) {
+		return new LocalWhitelistUtils();
 	}
+
+	@Bean
+	@Profile("s3")
+	@Autowired
+	public WhiteListUtils s3WhitelistUtils(ApplicationContext ctx) {
+		return new S3WhitelistUtils();
+	}
+
 	@Override
-    public void configurePathMatch(PathMatchConfigurer configurer) {
+	public void configurePathMatch(PathMatchConfigurer configurer) {
 		UrlPathHelper urlPathHelper = new UrlPathHelper();
 		urlPathHelper.setUrlDecode(false);
 		configurer.setUrlPathHelper(urlPathHelper);
 	}
 
 	@Override
-    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+	public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
 		configurer.favorPathExtension(false);
 	}
 
 	@Override
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
 
