@@ -19,6 +19,7 @@ import com.vmware.l10n.utils.WhiteListUtils;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
 public class TestUtils {
+
 	@Autowired
 	private WebApplicationContext webApplicationContext;
 

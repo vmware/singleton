@@ -138,13 +138,13 @@ public class S3Test {
 				String component = filePath.getName(nameCount - 2).toString();
 				String version = filePath.getName(nameCount - 3).toString();
 				String product = filePath.getName(nameCount - 4).toString();
-
+	
 				ComponentMessagesDTO dto = new ComponentMessagesDTO();
 				dto.setProductName(product);
 				dto.setVersion(version);
 				dto.setComponent(component);
 				dto.setLocale(locale);
-
+	
 				JSONObject obj;
 				try {
 					obj = (JSONObject) new JSONParser().parse(new FileReader(filePath.toString()));
@@ -152,7 +152,7 @@ public class S3Test {
 				} catch (IOException | ParseException e) {
 					logger.error(e.getMessage(), e);
 				}
-
+	
 				if (dto.getLocale().equals("latest")) {
 					try {
 						sourceDao.updateToBundle(dto);
@@ -168,7 +168,7 @@ public class S3Test {
 					} catch (JsonProcessingException e) {
 						logger.error(e.getMessage(), e);
 					}
-
+	
 					try {
 						singleComponentDao.getTranslationFromFile(translationDto);
 					} catch (L10nAPIException e) {
@@ -180,7 +180,7 @@ public class S3Test {
 
 		Assert.assertTrue(true);
 	}
-
+	
 	@Test
 	public void test003() throws JsonProcessingException {
 		SourceDao sourceDao = webApplicationContext.getBean(SourceDao.class);
@@ -197,7 +197,7 @@ public class S3Test {
 
 		single.setMessages(map);
 
-
+		
 
 		for (int i=0; i< 30; i++) {
 			sourceDao.updateToBundle(single);
@@ -205,5 +205,5 @@ public class S3Test {
 
 
 		Assert.assertTrue(true);
-	}
+	}	
 }
