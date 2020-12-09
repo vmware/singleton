@@ -67,3 +67,13 @@ uploadArchives {
        }
     }
 }
+
+task createAbout() {
+    ext.outputFile = file("$buildDir/resources/main/about.properties")
+    outputs.file(outputFile)
+    doLast {
+        outputFile.text = "version=${project.version.toString()}"
+    }
+}
+
+assemble.dependsOn.add createAbout

@@ -12,4 +12,5 @@ public class API {
     public static final String TYPE_SOURCE = "source";
     public static final String TYPE_TRANSLATION = "translation";
     public static final String TYPE_FORMATTING = "formatting";
+    public static final String ABOUT = I18N_API_ROOT + "/about";
 }
