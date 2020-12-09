@@ -2,7 +2,7 @@
  * Copyright 2019-2020 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
-package com.vmware.vip.messages.data.conf;
+package com.vmware.l10n.conf;
 
 import java.io.File;
 
@@ -10,18 +10,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 /**
  * the configuration of the S3 client
  */
 @Configuration
-public class S3Config {
-	private static Logger logger = LoggerFactory.getLogger(S3Config.class);
+@Profile("s3")
+public class S3Cfg {
+	private static Logger logger = LoggerFactory.getLogger(S3Cfg.class);
 	public String getAccessKey() {
 		if (this.encryption) {
 			try {
-          logger.debug("accessKey: {}", this.accessKey);
-				return RsaCryptUtils.decryptData(this.accessKey, this.getPublicKey());
+				logger.debug("accessKey: {}", this.accessKey);
+				return RsaCryptUtil.decryptData(this.accessKey, this.getPublicKey());
 			} catch (Exception e) {
 				logger.error(e.getMessage(), e);
 				return null;
@@ -38,8 +40,8 @@ public class S3Config {
 	public String getSecretkey() {
 		if (this.encryption) {
 			try {
-				 logger.debug("secretkey: {}", this.secretkey);
-				return RsaCryptUtils.decryptData(this.secretkey, this.getPublicKey());
+				logger.debug("secretkey: {}", this.secretkey);
+				return RsaCryptUtil.decryptData(this.secretkey, this.getPublicKey());
 			} catch (Exception e) {
 				logger.error(e.getMessage(), e);
 				return null;
@@ -80,13 +82,12 @@ public class S3Config {
 	public String getPublicKey() {
 		File file = new File(this.publicKey);
 		if(file.exists()) {
-			String content = RsaCryptUtils.getPublicKeyStrFromFile(file);
+			String content = RsaCryptUtil.getPublicKeyStrFromFile(file);
 			logger.debug("public key: {}", content);
 			return content;
-			
 		}else {
-			 logger.error("not found public key file: {}", file.getAbsoluteFile());
-		 return null;	
+			logger.error("not found public key file: {}", file.getAbsoluteFile());
+			return null;
 		}
 	}
 
@@ -99,7 +100,6 @@ public class S3Config {
 	 */
 	@Value("${s3.keysEncryptEnable:false}")
 	private Boolean encryption;
-	
 
 	/**
 	 * the s3 password public key use to decrypt data
@@ -130,5 +130,4 @@ public class S3Config {
 	 */
 	@Value("${s3.bucketName}")
 	private String bucketName;
-
 }
