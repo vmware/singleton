@@ -29,7 +29,7 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 
 	private Logger logger = LoggerFactory.getLogger(LocalMessagesOpt.class.getName());
 
-	private static final String OFFLINE_RESOURCE_PATH = "{0}/messages_{1}.json";
+	private static final String OFFLINE_RESOURCE_PATH = "{0}{1}/messages_{2}.json";
     private MessagesDTO dto;
 
     public LocalMessagesOpt(MessagesDTO dto) {
@@ -67,9 +67,11 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 	private InputStream getInputStream() {
 		String locale = LocaleUtility.fmtToMappedLocale(dto.getLocale()).toLanguageTag();
 		while (true) {
-			String filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), locale);
-			Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl(), filePath);
-			InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(path.toString());
+			String offlineResourcePath = VIPCfg.getInstance().getOfflineResourcesBaseUrl();
+			if(!offlineResourcePath.endsWith("/"))
+				offlineResourcePath = offlineResourcePath + "/";
+			String filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, offlineResourcePath, dto.getComponent(), locale);
+			InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(filePath);
 			if (is != null)
 				return is;
 			/*
