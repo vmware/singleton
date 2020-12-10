@@ -25,16 +25,13 @@ dependencies {
     compile group: 'log4j', name: 'log4j', version: '1.2.17'
 
     compile fileTree(dir: 'lib', include: ['*.jar'])
-    compile(group: 'g11n-translation', name: 'JavaSample', version: '1.0.0.0', ext: 'zip')
+    compile group: 'g11n-translation', name: 'JavaSample', version: '1.0.0.0', ext: 'zip'
 }
 
 task unzip(type: Copy) {
-    def zipFile = file(project.configurations.compile.find {it.name.startsWith("JavaSample-1.0.0.0") })
-    println "zip: " + zipFile
-    def outputDir = file("${buildDir}/resources/main/offlineBundles")
-    println "output dir: " + outputDir
+    def zipFile = file(configurations.compile.find {it.name.startsWith("JavaSample-1.0.0.0") })
     from zipTree(zipFile)
-    into outputDir
+    into file("${buildDir}/resources/main/offlineBundles")
 }
 
 sourceSets {
