@@ -40,7 +40,7 @@ public class LocalLocaleOpt implements LocaleOpt{
 		Map<String, String> supportedLanguageNames = new HashMap<String, String>();
 
 		ProductService ps = new ProductService(dto);
-		Set<String> supportedLanguages = ps.getSupportedLanguageTags(DataSourceEnum.Bundle);
+		Set<String> supportedLanguages = ps.getSupportedLocales(DataSourceEnum.Bundle);
 
 		if(supportedLanguages != null && !supportedLanguages.isEmpty()) {
 			Map<String, String> languagesNames = getLanguagesNamesFromBundle(locale);
