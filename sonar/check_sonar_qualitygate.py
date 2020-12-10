@@ -7,6 +7,7 @@ import sys
 
 def request_check_sonar_quality(url):
     req = urllib.request.Request(url)
+    print(req)
     set_Req_Header(req)
     response = urllib.request.urlopen(req).read().decode("utf8")
     json_res = json.loads(response)
@@ -37,6 +38,7 @@ if __name__ == "__main__":
         if args.BranchName != "":
             queryProjectKey=projectKeyPrefix + ":" + args.BranchName
         url = "{}/api/qualitygates/project_status?projectKey={}".format(args.HostName, queryProjectKey)
+        print(url)
         json_res = request_check_sonar_quality(url)
         if json_res['projectStatus']['status'] == 'OK':
             quality_summary = "Quality is OK!!!"
