@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
@@ -27,36 +29,14 @@ import com.fasterxml.jackson.databind.type.MapLikeType;
 import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.constants.ConstantsUnicode;
 
-public class WhiteListUtils {
+public abstract class WhiteListUtils {
+	@Value("${white.list.location:bundle.json}")
+	protected String whitelistLocation;
 
-	private WhiteListUtils() {
-	}
+	protected abstract String readWhitelistFile();
 
-	public static Map<String, List<String>> getWhiteList(String path) {
-		StringBuilder sb = new StringBuilder();
-		File file = new File(path);
-		InputStream inputStream = null;
-		if (file.exists()) {
-			try {
-				inputStream = new FileInputStream(file);
-			} catch (FileNotFoundException e) {
-			}
-		} else {
-			inputStream = WhiteListUtils.class.getClassLoader().getResourceAsStream(ConstantsFile.WHITE_LIST_FILE);
-		}
-		try (BufferedReader inputReader = new BufferedReader(
-				new InputStreamReader(inputStream, ConstantsUnicode.UTF8))) {
-			String line = inputReader.readLine();
-			while (null != line) {
-				sb.append(line);
-				line = inputReader.readLine();
-			}
-		} catch (UnsupportedEncodingException e) {
-			return null;
-		} catch (IOException e) {
-			return null;
-		}
-		String result = sb.toString();
+	public Map<String, List<String>> getWhiteList() {
+		String result = readWhitelistFile();
 		if (!StringUtils.isEmpty(result)) {
 			ObjectMapper objmap = new ObjectMapper();
 			JavaType stringType = objmap.constructType(String.class);
@@ -74,4 +54,47 @@ public class WhiteListUtils {
 		return null;
 	}
 
+	public static class LocalWhitelistUtils extends WhiteListUtils {
+		@Override
+		protected String readWhitelistFile() {
+			StringBuilder sb = new StringBuilder();
+			File file = new File(whitelistLocation);
+			InputStream inputStream = null;
+			if (file.exists()) {
+				try {
+					inputStream = new FileInputStream(file);
+				} catch (FileNotFoundException e) {
+				}
+			} else {
+				inputStream = WhiteListUtils.class.getClassLoader().getResourceAsStream(ConstantsFile.WHITE_LIST_FILE);
+			}
+			try (BufferedReader inputReader = new BufferedReader(
+					new InputStreamReader(inputStream, ConstantsUnicode.UTF8))) {
+				String line = inputReader.readLine();
+				while (null != line) {
+					sb.append(line);
+					line = inputReader.readLine();
+				}
+			} catch (UnsupportedEncodingException e) {
+				return null;
+			} catch (IOException e) {
+				return null;
+			}
+
+			return sb.toString();
+		}
+	}
+
+	public static class S3WhitelistUtils extends WhiteListUtils {
+		@Autowired
+		public S3Util s3util;
+
+		@Override
+		protected String readWhitelistFile() {
+			if (s3util.isFileExist(whitelistLocation)) {
+				return s3util.readFile(whitelistLocation);
+			}
+			return "";
+		}
+	}
 }
