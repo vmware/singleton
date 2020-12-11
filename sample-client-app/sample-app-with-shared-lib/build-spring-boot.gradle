@@ -20,11 +20,15 @@ repositories {
 	}
 }
 
+configurations {
+	zipArchive
+}
+
 dependencies {
 	implementation files('lib/sample-shared-library-1.0.jar')
 	implementation files('lib/vip4java-0.1.0.jar')
 	compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
-	compile group: 'g11n-translation', name: 'JavaSample', version: '1.0.0.0', ext: 'zip'
+	zipArchive group: 'g11n-translation', name: 'JavaSample', version: '1.0.0.0', ext: 'zip'
 
 	// tag::actuator[]
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
@@ -42,8 +46,7 @@ test {
 }
 
 task unzip(type: Copy) {
-	def zipFile = file(configurations.compile.find {it.name.startsWith("JavaSample-1.0.0.0") })
-	from zipTree(zipFile)
+	from zipTree(configurations.zipArchive.singleFile)
 	into file("${buildDir}/resources/main/offlineBundles")
 }
 

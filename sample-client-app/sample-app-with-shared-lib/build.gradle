@@ -17,6 +17,10 @@ repositories {
     }
 }
 
+configurations {
+    zipArchive
+}
+
 dependencies {
     compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
 
@@ -25,13 +29,7 @@ dependencies {
     compile group: 'log4j', name: 'log4j', version: '1.2.17'
 
     compile fileTree(dir: 'lib', include: ['*.jar'])
-    compile group: 'g11n-translation', name: 'JavaSample', version: '1.0.0.0', ext: 'zip'
-}
-
-task unzip(type: Copy) {
-    def zipFile = file(configurations.compile.find {it.name.startsWith("JavaSample-1.0.0.0") })
-    from zipTree(zipFile)
-    into file("${buildDir}/resources/main/offlineBundles")
+    zipArchive group: 'g11n-translation', name: 'JavaSample', version: '1.0.0.0', ext: 'zip'
 }
 
 sourceSets {
@@ -44,7 +42,6 @@ sourceSets {
 }
 
 jar {
-    dependsOn unzip
     manifest {
         attributes 'Implementation-Title': 'Sample App with Shared Library',
                 'Implementation-Version': version,
@@ -54,4 +51,9 @@ jar {
     from {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
+
+    into('offlineBundles') {
+        from zipTree(configurations.zipArchive.singleFile)
+    }
 }
+
