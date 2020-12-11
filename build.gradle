@@ -1,6 +1,8 @@
 //Copyright 2019-2020 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java'
+apply plugin: "jacoco"
+apply plugin: "org.sonarqube"
 
 description = 'VIP i18n pattern CLDR data extract tools'
 
@@ -19,6 +21,16 @@ configurations {
         providedRuntime
 }
 
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
+  }
+}
 
 sourceSets {
     main.java.srcDirs = ['src/main/java']
@@ -49,6 +61,15 @@ dependencies {
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
     testCompile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.26'
     testCompile group: 'log4j', name: 'log4j', version: '1.2.17'
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.enabled false
+        xml.destination file("${buildDir}/reports/jacoco.xml")
+    }
 }
 
 task copyResources(type: Copy) {
