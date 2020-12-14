@@ -384,7 +384,7 @@ namespace SingletonClient.Implementation
                 return null;
             }
             string text = this.GetString(locale, source);
-            if (text != null && objects.Length > 0)
+            if (text != null && objects != null && objects.Length > 0)
             {
                 try
                 {
