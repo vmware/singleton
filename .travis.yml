@@ -28,7 +28,18 @@ script: >
       chmod +x check_headers.py
       python3 ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
   fi &&
-  if [ x${TEST} = xunit_test ]; then cd $TRAVIS_BUILD_DIR && ./gradlew test; fi &&
+  if [ x${TEST} = xunit_test ]; then 
+      cd $TRAVIS_BUILD_DIR && ./gradlew test
+      ls -la build/libs
+      # build sample-shared-library
+      cd $TRAVIS_BUILD_DIR/sample-client-app/sample-shared-library && mkdir lib
+      cp ../../build/libs/vip4java-0.1.0.jar ./lib/ && gradle build
+      ls -la build/libs/
+      # build sample-app-with-shared-lib
+      cd $TRAVIS_BUILD_DIR/sample-client-app/sample-app-with-shared-lib && mkdir lib
+      cp ../../build/libs/vip4java-0.1.0.jar ./lib/ && cp ../sample-shared-library/build/libs/sample-shared-library-1.0.jar ./lib/ && gradle build
+      ls -la build/libs
+  fi &&
   if [ x${TEST} = xcode_scan ]; then
     git clone --branch=devops https://github.com/vmware/singleton.git devops
     SONARSCANNER='sonar-scanner-cli-4.0.0.1744-linux'
