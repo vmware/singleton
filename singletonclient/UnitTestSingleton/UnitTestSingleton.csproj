@@ -44,11 +44,11 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="SingletonClient">
-      <HintPath>..\SingletonClient\bin\Debug\SingletonClient.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="YamlDotNet, Version=8.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e, processorArchitecture=MSIL">
+      <HintPath>..\packages\YamlDotNet.8.1.2\lib\net45\YamlDotNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseIo.cs" />
@@ -99,7 +99,12 @@
   <ItemGroup>
     <None Include="res\sgtn_sample.yml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SingletonClient\SingletonClient.csproj">
+      <Project>{cb362310-6d0d-4482-a330-1f4bdd512ce5}</Project>
+      <Name>SingletonClient</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="testdata\get_localelist.txt" />
     <Content Include="testdata\http_list.txt" />

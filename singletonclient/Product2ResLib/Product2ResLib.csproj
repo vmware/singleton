@@ -130,12 +130,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\singletonclient\singletonclient.csproj">
-      <Project>{3b6c416b-159e-4905-b7a9-592a455b0624}</Project>
-      <Name>singletonclient</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="SingletonRes\sgtn_sample.json" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +146,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="SingletonRes\sgtn_offline_external_de.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SingletonClient\SingletonClient.csproj">
+      <Project>{cb362310-6d0d-4482-a330-1f4bdd512ce5}</Project>
+      <Name>SingletonClient</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
