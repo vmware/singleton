@@ -87,12 +87,12 @@ public abstract class WhiteListUtils {
 
 	public static class S3WhitelistUtils extends WhiteListUtils {
 		@Autowired
-		public S3Util s3util;
+		public S3Inst s3inst;
 
 		@Override
 		protected String readWhitelistFile() {
-			if (s3util.isFileExist(whitelistLocation)) {
-				return s3util.readFile(whitelistLocation);
+			if (s3inst.isObjectExist(whitelistLocation)) {
+				return s3inst.readObject(whitelistLocation);
 			}
 			return "";
 		}
