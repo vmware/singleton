@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import com.vmware.l10n.conf.S3Cfg;
+import com.vmware.l10n.conf.S3Client;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,32 +37,30 @@ public class S3Util {
 	private static long waitToLock = 10 * 1000L; // 10 seconds
 
 	@Autowired
-	private S3Inst s3Inst;
+	private S3Client s3Client;
 
 	public String readBundle(String basePath, SingleComponentDTO compDTO) {
 		String bundlePath = getBundleFilePath(basePath, compDTO);
-		return s3Inst.readObject(bundlePath);
+		return s3Client.readObject(bundlePath);
 	}
 
 	public boolean writeBundle(String basePath, SingleComponentDTO compDTO) throws JsonProcessingException {
 		String bundlePath = getBundleFilePath(basePath, compDTO);
-		s3Inst.putObject(bundlePath, compDTO.toPrettyString());
+		s3Client.putObject(bundlePath, compDTO.toPrettyString());
 		return true;
 	}
 
 	public boolean isBundleExist(String basePath, SingleComponentDTO singleComponentDTO) {
 		String bundlePath = getBundleFilePath(basePath, singleComponentDTO);
-		return s3Inst.isObjectExist(bundlePath);
+		return s3Client.isObjectExist(bundlePath);
 	}
 
 	private String getBundleFilePath(String basePath, SingleComponentDTO dto) {
 		if (StringUtils.isEmpty(dto.getComponent())) {
 			dto.setComponent(ConstantsFile.DEFAULT_COMPONENT);
 		}
-		String bundlePath = genProductVersionS3Path(basePath, dto.getProductName(), dto.getVersion()) + dto.getComponent()
+		return genProductVersionS3Path(basePath, dto.getProductName(), dto.getVersion()) + dto.getComponent()
 		+ ConstantsChar.BACKSLASH + ResourceFilePathGetter.getLocalizedJSONFileName(dto.getLocale());
-
-		return s3Inst.normalizePath(bundlePath);
 	}
 
 	/**
@@ -77,6 +77,9 @@ public class S3Util {
 	}
 
 	public class Locker {
+		@Autowired
+		private S3Cfg config;
+
 		private final String key;
 
 		public Locker(String basePath, SingleComponentDTO compDTO) {
@@ -94,12 +97,12 @@ public class S3Util {
 				}
 
 				// Write the lock file
-				s3Inst.putObject(this.key, content);
+				s3Client.putObject(this.key, content);
 				TimeUtils.sleep(waitS3Operation); // Wait for a while to let S3 finish writing.
 
 				// Check file content is correct
 				try {
-					if (content.equals(s3Inst.readObject(this.key))) {
+					if (content.equals(s3Client.readObject(this.key))) {
 						return true;
 					}
 				} catch (AmazonS3Exception e) {
@@ -114,7 +117,7 @@ public class S3Util {
 
 		public void unlockFile() {
 			try {
-				s3Inst.deleteObject(this.key);
+				s3Client.deleteObject(this.key);
 			} catch (SdkClientException e) {
 				logger.error(e.getMessage(), e);
 			}
@@ -122,7 +125,7 @@ public class S3Util {
 
 		private boolean waitLockfileDisappeared(long endTime) {
 			boolean bDeadlockTested = false;
-			List<S3ObjectSummary> objects = s3Inst.amazonS3.listObjectsV2(s3Inst.bucketName, this.key).getObjectSummaries();
+			List<S3ObjectSummary> objects = s3Client.getS3Client().listObjectsV2(config.getBucketName(), this.key).getObjectSummaries();
 			while (!objects.isEmpty()) {
 				if (!bDeadlockTested) {
 					bDeadlockTested = true;
@@ -130,7 +133,7 @@ public class S3Util {
 					S3ObjectSummary lockfileObject = objects.get(0);
 					Date lastModified = lockfileObject.getLastModified();
 					if (new Date().getTime() - lastModified.getTime() > deadlockInterval) {// longer than 10min
-						s3Inst.deleteObject(this.key);
+						s3Client.deleteObject(this.key);
 						logger.warn("deleted dead lock file");
 						return true;
 					}
@@ -142,7 +145,7 @@ public class S3Util {
 					return false;
 				}
 
-				objects = s3Inst.amazonS3.listObjectsV2(s3Inst.bucketName, this.key).getObjectSummaries();
+				objects = s3Client.getS3Client().listObjectsV2(config.getBucketName(), this.key).getObjectSummaries();
 			}
 
 			return true;

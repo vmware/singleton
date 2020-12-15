@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.vmware.l10n.conf.S3Client;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -87,12 +88,12 @@ public abstract class WhiteListUtils {
 
 	public static class S3WhitelistUtils extends WhiteListUtils {
 		@Autowired
-		public S3Inst s3inst;
+		public S3Client s3Client;
 
 		@Override
 		protected String readWhitelistFile() {
-			if (s3inst.isObjectExist(whitelistLocation)) {
-				return s3inst.readObject(whitelistLocation);
+			if (s3Client.isObjectExist(whitelistLocation)) {
+				return s3Client.readObject(whitelistLocation);
 			}
 			return "";
 		}
