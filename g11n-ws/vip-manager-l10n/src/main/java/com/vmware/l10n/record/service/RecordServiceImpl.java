@@ -10,9 +10,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.l10n.record.dao.SqlLiteDao;
 import com.vmware.l10n.record.model.ComponentSourceModel;
 import com.vmware.l10n.record.model.RecordModel;
-import com.vmware.l10n.source.crons.SourceSendingCron;
 import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,6 @@ import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class RecordServiceImpl implements RecordService{
@@ -30,8 +30,6 @@ public class RecordServiceImpl implements RecordService{
 	@Autowired
 	private SqlLiteDao sqlLite;
 	
-	@Autowired
-	private SourceSendingCron sourceSendingCron;
 	@Autowired
 	private SourceDao sourceDao;
 
@@ -42,7 +40,7 @@ public class RecordServiceImpl implements RecordService{
 	}
 
 	@Override
-	public int updateSynchSourceRecord(String product, String version, String component, String locale, int status) {
+	public int updateSynchSourceRecord(String product, String version, String component, String locale, long status) {
 		// TODO Auto-generated method stub
 		
 		RecordModel record = new RecordModel();
@@ -91,6 +89,12 @@ public class RecordServiceImpl implements RecordService{
 		}
 
 		return null;
+	}
+
+	@Override
+	public List<RecordModel> getChangedRecordsS3(long lastModifyTime) throws L10nAPIException {
+		// TODO Auto-generated method stub
+		return sourceDao.getUpdateRecords(lastModifyTime);
 	}
 
 }

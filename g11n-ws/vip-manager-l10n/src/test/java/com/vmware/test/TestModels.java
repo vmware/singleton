@@ -4,12 +4,22 @@
  */
 package com.vmware.test;
 
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 import org.junit.Test;
 import org.springframework.beans.BeanUtils;
 
+import com.vmware.l10n.conf.RsaCryptUtil;
+import com.vmware.l10n.conf.S3Cfg;
 import com.vmware.l10n.record.model.ComponentSourceModel;
 import  com.vmware.l10n.source.dto.GRMResponseDTO;
 import com.vmware.l10n.source.dto.SourceDTO;
@@ -109,4 +119,54 @@ public class TestModels {
             e.printStackTrace();
         }
     }
+    
+    @Test
+    public void testS3Cfg() {
+    	S3Cfg cfg = new S3Cfg();
+    	cfg.setAccessKey("abc");
+    	cfg.setBucketName("abc");
+    	cfg.setEncryption(false);
+    	cfg.setPublicKey("abccdf");
+    	cfg.setS3Region("us");
+    	cfg.setSecretkey("sdfadsf");
+    	cfg.getAccessKey();
+    	cfg.getBucketName();
+    	cfg.isEncryption();
+    	cfg.getPublicKey();
+    	cfg.getS3Region();
+    	cfg.getSecretkey();
+    	
+    }
+    
+    @Test
+    public void testRsaUtil() {
+    	String pubKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCB2ahoumYOFtIN5W1I8NIPDQNH/wK1YQsWtxqrXAu67XEg6rCm7Lwdj889L5kXuI3+nW93833zxb5+K1W//R+srfcwA/jZMqs1EVKyrdareWqVW0b6DvZFPV38UQVJmwfBJBkdUoTSZtqBrFhSFMfFWSG7Qoxz1NlJaJylkaEk3QIDAQAB";
+    	String data = "Jfe9vTfTsU6OQfZ4xikT+oKxytZOB1binD5wi10n2GMoI+4Jc/Yyy9x9WbTbzj1a4lM6nGBYnOQSjFn3e1QhcL8uj7eCg9mLt6bTec1FGi5ctPFrJexnkBX9lis+qQ1ntwkbf6h2g6U1SYN7N/t+/fq7ubybR6QdKY6hNwIJrCA=";
+    	try {
+			RsaCryptUtil.decryptData(data, pubKey);
+		} catch (InvalidKeyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchPaddingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidKeySpecException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BadPaddingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalBlockSizeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    
 }
