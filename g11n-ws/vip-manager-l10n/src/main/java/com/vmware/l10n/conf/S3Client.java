@@ -52,4 +52,27 @@ public class S3Client {
 	public AmazonS3 getS3Client() {
 		return s3Client;
 	}
+
+	public String readObject(String key) {
+		return s3Client.getObjectAsString(config.getBucketName(), normalizePath(key));
+	}
+
+    public void putObject(String key, String content) {
+        s3Client.putObject(config.getBucketName(), normalizePath(key), content);
+    }
+
+	public void deleteObject(String key) {
+		s3Client.deleteObject(config.getBucketName(), normalizePath(key));
+	}
+
+	public boolean isObjectExist(String key) {
+		return s3Client.doesObjectExist(config.getBucketName(), normalizePath(key));
+	}
+
+	public String normalizePath(String path) {
+		if (path.startsWith("/")) {
+			path = path.substring(1);
+		}
+		return path;
+	}
 }

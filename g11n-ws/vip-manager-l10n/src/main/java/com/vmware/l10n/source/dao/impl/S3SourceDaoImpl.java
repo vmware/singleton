@@ -61,7 +61,7 @@ public class S3SourceDaoImpl implements SourceDao {
 			basePath += ConstantsChar.BACKSLASH;
 		}
 		basePath += ConstantsFile.L10N_BUNDLES_PATH;
-		basePath = basePath.replace(File.separator, ConstantsChar.BACKSLASH);
+		basePath = basePath.replace("\\", ConstantsChar.BACKSLASH);
 	}
 
 	@Override
@@ -82,7 +82,6 @@ public class S3SourceDaoImpl implements SourceDao {
 			logger.warn("failed to lock bundle file, return.");
 			return false;
 		}
-
 
 		boolean bSuccess = false;
 		try {
