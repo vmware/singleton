@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingletonClient", "SingletonClient\SingletonClient.csproj", "{3B6C416B-159E-4905-B7A9-592A455B0624}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientTestApp", "ClientTestApp\ClientTestApp.csproj", "{789307A1-363E-40F4-9717-274867B38C04}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product1ResLib", "Product1ResLib\Product1ResLib.csproj", "{BFED3576-FAC9-4188-8149-28FF8B5706EA}"
@@ -17,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SingletonIcu", "SingletonIc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestSingletonIcu", "UnitTestSingletonIcu\UnitTestSingletonIcu.csproj", "{AD8AB806-C7F7-464F-B4CD-073464DE6228}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingletonClient", "SingletonClient\SingletonClient.csproj", "{CB362310-6D0D-4482-A330-1F4BDD512CE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,18 +27,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3B6C416B-159E-4905-B7A9-592A455B0624}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B6C416B-159E-4905-B7A9-592A455B0624}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B6C416B-159E-4905-B7A9-592A455B0624}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{3B6C416B-159E-4905-B7A9-592A455B0624}.Debug|x64.Build.0 = Debug|Any CPU
-		{3B6C416B-159E-4905-B7A9-592A455B0624}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3B6C416B-159E-4905-B7A9-592A455B0624}.Debug|x86.Build.0 = Debug|Any CPU
-		{3B6C416B-159E-4905-B7A9-592A455B0624}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B6C416B-159E-4905-B7A9-592A455B0624}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3B6C416B-159E-4905-B7A9-592A455B0624}.Release|x64.ActiveCfg = Release|Any CPU
-		{3B6C416B-159E-4905-B7A9-592A455B0624}.Release|x64.Build.0 = Release|Any CPU
-		{3B6C416B-159E-4905-B7A9-592A455B0624}.Release|x86.ActiveCfg = Release|Any CPU
-		{3B6C416B-159E-4905-B7A9-592A455B0624}.Release|x86.Build.0 = Release|Any CPU
 		{789307A1-363E-40F4-9717-274867B38C04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{789307A1-363E-40F4-9717-274867B38C04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{789307A1-363E-40F4-9717-274867B38C04}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -109,6 +97,18 @@ Global
 		{AD8AB806-C7F7-464F-B4CD-073464DE6228}.Release|x64.Build.0 = Release|Any CPU
 		{AD8AB806-C7F7-464F-B4CD-073464DE6228}.Release|x86.ActiveCfg = Release|Any CPU
 		{AD8AB806-C7F7-464F-B4CD-073464DE6228}.Release|x86.Build.0 = Release|Any CPU
+		{CB362310-6D0D-4482-A330-1F4BDD512CE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB362310-6D0D-4482-A330-1F4BDD512CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB362310-6D0D-4482-A330-1F4BDD512CE5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CB362310-6D0D-4482-A330-1F4BDD512CE5}.Debug|x64.Build.0 = Debug|Any CPU
+		{CB362310-6D0D-4482-A330-1F4BDD512CE5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CB362310-6D0D-4482-A330-1F4BDD512CE5}.Debug|x86.Build.0 = Debug|Any CPU
+		{CB362310-6D0D-4482-A330-1F4BDD512CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB362310-6D0D-4482-A330-1F4BDD512CE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB362310-6D0D-4482-A330-1F4BDD512CE5}.Release|x64.ActiveCfg = Release|Any CPU
+		{CB362310-6D0D-4482-A330-1F4BDD512CE5}.Release|x64.Build.0 = Release|Any CPU
+		{CB362310-6D0D-4482-A330-1F4BDD512CE5}.Release|x86.ActiveCfg = Release|Any CPU
+		{CB362310-6D0D-4482-A330-1F4BDD512CE5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
