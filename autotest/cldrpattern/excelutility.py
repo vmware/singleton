@@ -16,11 +16,12 @@ def excelutil():
         #                 expected=row[4])
             data = {"caseid": row[0],
                     "casename": row[1],
-                    "path": row[2],
-                    "filename": row[3],
-                    "key": row[4],
-                    "expected": str(row[5]),
-                    "category": row[6]}
+                    "zipdir": row[2],
+                    "innerzipdir": row[3],
+                    "filename": row[4],
+                    "key": row[5],
+                    "expected": str(row[6]),
+                    "category": row[7]}
             datas.append(data)
         return datas
     except Exception as e:
