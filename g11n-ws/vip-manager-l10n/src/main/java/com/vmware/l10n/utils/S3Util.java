@@ -6,8 +6,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-import com.vmware.l10n.conf.S3Cfg;
-import com.vmware.l10n.conf.S3Client;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +17,8 @@ import com.amazonaws.SdkClientException;
 import com.amazonaws.services.s3.model.AmazonS3Exception;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.vmware.l10n.conf.S3Cfg;
+import com.vmware.l10n.conf.S3Client;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
@@ -35,6 +35,9 @@ public class S3Util {
 	private static long deadlockInterval = 30 * 1000L;
 	private static long waitS3Operation = 100; // milliseconds
 	private static long waitToLock = 10 * 1000L; // 10 seconds
+
+	@Autowired
+	private S3Cfg config;
 
 	@Autowired
 	private S3Client s3Client;
@@ -77,9 +80,6 @@ public class S3Util {
 	}
 
 	public class Locker {
-		@Autowired
-		private S3Cfg config;
-
 		private final String key;
 
 		public Locker(String basePath, SingleComponentDTO compDTO) {
