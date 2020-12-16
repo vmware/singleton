@@ -49,7 +49,7 @@ public class S3SingleComponentDaoImpl implements SingleComponentDao {
 			basePath += ConstantsChar.BACKSLASH;
 		}
 		basePath += ConstantsFile.L10N_BUNDLES_PATH;
-		basePath = basePath.replace(File.separator, ConstantsChar.BACKSLASH);
+		basePath = basePath.replace("\\", ConstantsChar.BACKSLASH);
 	}
 
 	/**
