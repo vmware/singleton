@@ -29,7 +29,6 @@ public interface PropertyContantKeys {
 	public static final String DEFAULT_MSG_FILE_NAME = "messages";
 	public static final String DEFAULT_SOURCE_ROOT = "i18n";
 	public static final String DEFAULT_SOURCE_TYPE = ".json";
-	public static final String LATEST_JSON_NAME = "messages_latest.json";
     
 	
 	//url

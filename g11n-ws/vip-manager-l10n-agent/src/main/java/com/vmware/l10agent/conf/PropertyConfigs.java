@@ -72,11 +72,9 @@ public class PropertyConfigs {
 		
 		try {
 			Date date = sdf1.parse(this.syncStartDatetime);
-			long datelong = date.getTime();
-			return datelong;
+			return date.getTime();
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			return 1;
+			return 0;
 		}
 		
 	}
@@ -90,7 +88,7 @@ public class PropertyConfigs {
 	}
 
 	public int getRecordReqThread() {
-		int result= 1 ;
+		int result;
 		try {
 		result = Integer.valueOf(this.recordReqThread);
 		if(result <1) {
