@@ -7,6 +7,7 @@ import java.util.List;
 import java.io.File;
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +52,7 @@ public class S3SourceDaoImpl implements SourceDao {
 	/**
 	 * the path of local resource file,can be configured in spring config file
 	 **/
-	@Value("${source.bundle.file.basepath:.}")
+	@Value("${source.bundle.file.basepath}")
 	private String basePath;
 
 	@PostConstruct
@@ -112,13 +113,23 @@ public class S3SourceDaoImpl implements SourceDao {
 	}
 	
 	@Override
-	public List<RecordModel> getUpdateRecords(long lastModyTime) throws L10nAPIException{
+	public List<RecordModel> getUpdateRecords(String productName, String version, long lastModifyTime) throws L10nAPIException{
 		
 		List<RecordModel> records = new ArrayList<RecordModel>();
 		ListObjectsV2Request req = new ListObjectsV2Request().withBucketName(config.getBucketName());
 	    String latestJsonFile = ConstantsFile.LOCAL_FILE_SUFFIX+ConstantsChar.UNDERLINE+ConstantsKeys.LATEST+ConstantsFile.FILE_TPYE_JSON;
-	    logger.info("begin getUpdateRecords lastModyTime: {}, prefix: {}", lastModyTime, this.basePath);
-	    req.setPrefix(this.basePath);
+		StringBuilder prefix = new StringBuilder();
+		prefix.append(this.basePath);
+		if (!StringUtils.isEmpty(productName)) {
+			prefix.append(productName);
+			prefix.append(ConstantsChar.BACKSLASH);
+		}
+		if (!StringUtils.isEmpty(version)) {
+			prefix.append(version);
+			prefix.append(ConstantsChar.BACKSLASH);
+		}
+	    logger.info("begin getUpdateRecords lastModyTime: {}, prefix: {}", lastModifyTime, this.basePath);
+	    req.setPrefix(prefix.toString());
         ListObjectsV2Result result;
         do {
             result = s3Client.getS3Client().listObjectsV2(req);
@@ -126,7 +137,7 @@ public class S3SourceDaoImpl implements SourceDao {
           	  String keyStr = oSy.getKey();
           	  long  currentModifyTime = oSy.getLastModified().getTime();
           	  if(keyStr.endsWith(latestJsonFile)
-          			  && currentModifyTime>lastModyTime) {
+          			  && currentModifyTime>lastModifyTime) {
           		logger.info("Need Udate:{}:{}", keyStr, currentModifyTime);  
           		records.add(parseKeyStr2Record(keyStr,this.basePath, currentModifyTime));
           	  }

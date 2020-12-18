@@ -19,7 +19,7 @@ public interface SingleComponentService {
 	
 	public boolean delSourceComponentFile(RecordModel record);
 	
-	public boolean synchComponentFile2I18n(RecordModel record);
+	public boolean synchComponentFile2Internal(RecordModel record);
 	
 	
 

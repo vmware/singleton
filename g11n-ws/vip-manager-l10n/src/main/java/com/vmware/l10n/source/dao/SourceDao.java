@@ -46,5 +46,5 @@ public interface SourceDao {
 	/**
 	 * get the update records from bundle
 	 */
-	public List<RecordModel> getUpdateRecords(long lastModify) throws L10nAPIException;
+	public List<RecordModel> getUpdateRecords(String productName, String version, long lastModifyTime)throws L10nAPIException;
 }

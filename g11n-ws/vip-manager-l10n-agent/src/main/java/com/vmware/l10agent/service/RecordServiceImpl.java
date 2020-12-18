@@ -11,6 +11,7 @@ import java.util.Map.Entry;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,14 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.vmware.l10agent.base.PropertyContantKeys;
+import com.vmware.l10agent.base.TaskSysnQueues;
 import com.vmware.l10agent.conf.PropertyConfigs;
 import com.vmware.l10agent.model.ComponentSourceModel;
 import com.vmware.l10agent.model.RecordModel;
 import com.vmware.l10agent.utils.AccessTokenUtils;
 import com.vmware.l10agent.utils.HttpRequester;
-import com.vmware.vip.api.rest.l10n.L10NAPIV1;
+import com.vmware.vip.api.rest.l10n.L10nI18nAPI;
 import com.vmware.vip.common.i18n.status.Response;
 /**
  * 
@@ -61,7 +64,7 @@ public class RecordServiceImpl implements RecordService {
 	@Override
 	public List<RecordModel> getRecordModelsByRemote() {
 		// TODO Auto-generated method stub
-		String getRecodeUrl = config.getRemoteBaseL10Url() + L10NAPIV1.API_L10N + "/records";
+		String getRecodeUrl = config.getRemoteBaseL10Url() + L10nI18nAPI.SOURCE_SYNC_RECORDS_APIV1;
 		Map<String, String> params = null;
 		if (config.getAccessModel().equalsIgnoreCase("remote")) {
 			params = new HashMap<String, String>();
@@ -92,7 +95,7 @@ public class RecordServiceImpl implements RecordService {
 	@Override
 	public ComponentSourceModel getComponentByRemote(RecordModel record) {
 		// TODO Auto-generated method stub
-		String getComponentUrl = config.getRemoteBaseL10Url() + L10NAPIV1.API_L10N + "/sourcecomponent/"
+		String getComponentUrl = config.getRemoteBaseL10Url() + L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v1/source/sourcecomponent/"
 				+ record.getProduct() + "/" + record.getVersion() + "/" + record.getComponent() + "/"
 				+ record.getLocale() + "/";
 		Map<String, String> params = null;
@@ -100,30 +103,32 @@ public class RecordServiceImpl implements RecordService {
 			params = new HashMap<String, String>();
 			params.put("AccessToken", tokenStr);
 		}
-
+		getComponentUrl = getComponentUrl.replaceAll(" ", "%20");   
 		 logger.info("getComponentUrl:>>>"+getComponentUrl);
 		String result = HttpRequester.sendGet(getComponentUrl, params, null);
 		if(result == null) {
 			refreshToken();
 			result = HttpRequester.sendGet(getComponentUrl, params, null);
 		}
-
+		
+		if(result != null) {
+        logger.info(result);
 		JSONObject resultJsonObj = JSONObject.parseObject(result);
 		int responseCode = resultJsonObj.getJSONObject("response").getInteger("code");
-
-		if (responseCode == 204) {
+		if (responseCode == 204 ) {
 			return null;
 		} else {
 			JSONObject recorJsonObj = resultJsonObj.getJSONObject("data");
 			return recorJsonObj.toJavaObject(ComponentSourceModel.class);
 		}
-
+		}
+		return null;
 	}
 
 	@Override
 	public boolean synchRecordModelsByRemote(RecordModel record) {
 		// TODO Auto-generated method stub
-		String synchRecordUrl = config.getRemoteBaseL10Url() + L10NAPIV1.API_L10N + "/synchrecord";
+		String synchRecordUrl = config.getRemoteBaseL10Url() + L10nI18nAPI.SOURCE_SYNC_RECORD_STATUS_APIV1;
 		Map<String, String> param = new HashMap<String, String>();
 
 		if (config.getAccessModel().equalsIgnoreCase("remote")) {
@@ -154,6 +159,84 @@ public class RecordServiceImpl implements RecordService {
 			return true;
 		}
 
+	}
+
+
+	@Override
+	public void getRecordModelsByRemoteV1() {
+		String getRecodeUrl = config.getRemoteBaseL10Url() + L10nI18nAPI.SOURCE_SYNC_RECORDS_APIV1;
+		Map<String, String> params = new HashMap<String, String>();
+		if (config.getAccessModel().equalsIgnoreCase("remote")) {
+			params.put("AccessToken", tokenStr);
+		}
+		params.put(PropertyContantKeys.RECORD_UPDATE, "true");
+        logger.info("getRecordUrl:>>>"+getRecodeUrl);
+		String result = HttpRequester.sendGet(getRecodeUrl, params, null);
+		if(result == null) {
+			refreshToken();
+			result = HttpRequester.sendGet(getRecodeUrl, params, null);
+		}
+		logger.info(result);
+		if(result == null || result.trim().equals("")) {
+			return;
+		}
+		JSONObject resultJsonObj = JSONObject.parseObject(result);
+		int responseCode = resultJsonObj.getJSONObject("response").getInteger("code");
+
+		if (responseCode == 204) {
+			logger.warn("response code is {}", responseCode);
+			return;
+		} else {
+			JSONArray recorJsonArr = resultJsonObj.getJSONArray("data");
+		     List<RecordModel>  list = recorJsonArr.toJavaList(RecordModel.class);
+		     for(RecordModel rm :list) {
+		    	 try {
+		    		rm.setStatus(0);
+					TaskSysnQueues.SendComponentTasks.put(rm);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					logger.error(e.getMessage(), e);
+					Thread.currentThread().interrupt();
+				}
+		     }
+		}
+	}
+
+
+	@Override
+	public List<RecordModel> getRecordModelsByRemoteS3(String product, String version, long lastModifyTime) {
+		String getRecodeUrl = config.getRemoteBaseL10Url() + L10nI18nAPI.SOURCE_SYNC_RECORDS_APIV2;
+		Map<String, String> params = new HashMap<String, String>();;
+		if (config.getAccessModel().equalsIgnoreCase("remote")) {
+			params.put("AccessToken", tokenStr);
+		}
+		if(!StringUtils.isEmpty(product)) {
+			params.put(PropertyContantKeys.PRODUCT_NAME, String.valueOf(lastModifyTime));
+		}
+        if(!StringUtils.isEmpty(version)) {
+        	params.put(PropertyContantKeys.VERSION, version);
+		}
+		params.put(PropertyContantKeys.LONG_DATE, String.valueOf(lastModifyTime));
+        logger.info("getRecordUrl:>>>"+getRecodeUrl);
+		String result = HttpRequester.sendGet(getRecodeUrl, params, null);
+		if(result == null) {
+			refreshToken();
+			result = HttpRequester.sendGet(getRecodeUrl, params, null);
+		}
+		logger.info("requestResult:{}",result);
+		if(result == null || result.trim().equals("")) {
+			return null;
+		}
+		JSONObject resultJsonObj = JSONObject.parseObject(result);
+		int responseCode = resultJsonObj.getJSONObject("response").getInteger("code");
+
+		if (responseCode == 204) {
+			logger.warn("response code is {}", responseCode);
+			return null;
+		} else {
+			JSONArray recorJsonArr = resultJsonObj.getJSONArray("data");
+		    return recorJsonArr.toJavaList(RecordModel.class);
+		}
 	}
 
 }

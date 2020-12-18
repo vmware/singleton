@@ -92,9 +92,10 @@ public class RecordServiceImpl implements RecordService{
 	}
 
 	@Override
-	public List<RecordModel> getChangedRecordsS3(long lastModifyTime) throws L10nAPIException {
+	public List<RecordModel> getChangedRecordsS3(String productName, String version, long lastModifyTime)
+			throws L10nAPIException {
 		// TODO Auto-generated method stub
-		return sourceDao.getUpdateRecords(lastModifyTime);
+		return sourceDao.getUpdateRecords(productName, version, lastModifyTime);
 	}
 
 }

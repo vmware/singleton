@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vmware.l10n.record.model.ComponentSourceModel;
 import com.vmware.l10n.record.model.RecordModel;
 import com.vmware.l10n.record.service.RecordService;
+import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.l10n.L10nI18nAPI;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
@@ -42,9 +43,16 @@ public class RecordController {
 		 List<RecordModel>  list =  recordService.getChangedRecords();
 		 
 		 if((list != null) && (list.size()>0)) {
-			 responseDto = new APIResponseDTO();
-			 responseDto.setData(list);
-			 
+			responseDto = new APIResponseDTO();
+			responseDto.setData(list);
+			String record = request.getParameter("recordUpdate");
+			if (record != null && record.equalsIgnoreCase("true")) {
+				for (RecordModel rm : list) {
+					recordService.updateSynchSourceRecord(rm.getProduct(), rm.getVersion(), rm.getComponent(),
+							rm.getLocale(), rm.getStatus());
+					rm.setStatus(0);
+				}
+			}
 		 }else {
 			 responseDto = new APIResponseDTO();
 			 responseDto.setResponse(APIResponseStatus.NO_CONTENT);
@@ -56,30 +64,22 @@ public class RecordController {
 	}
 	
 	@GetMapping(L10nI18nAPI.SOURCE_SYNC_RECORDS_APIV2)
-	public APIResponseDTO getRecoredV2Model(HttpServletRequest request) throws L10nAPIException{
+	public APIResponseDTO getRecoredV2Model(
+			@RequestParam(value =APIParamName.PRODUCT_NAME, required=false)String productName, 
+			@RequestParam(value =APIParamName.VERSION, required=false)String version, 
+			@RequestParam(value =APIParamName.LONGDATE, required=false)String longDate, HttpServletRequest request) throws L10nAPIException{
 		logger.info("begin get the changed V3 record");
 		logger.info(LOGURLSTR, request.getRequestURL());
-		String record = request.getParameter("record");
-		APIResponseDTO responseDto = null;
-		List<RecordModel>  recordList = null;
-		if(record != null && record.equalsIgnoreCase("s3")) {
-			String lastModify = request.getParameter("lastModify");
-			long lastModifyTime =0;
-			try {
-				lastModifyTime = Long.parseLong(lastModify);
-			}catch(Exception e) {
-				logger.warn("parse lastModify error: {}", lastModify);
-				lastModifyTime=0;
-			}
-		    recordList =  recordService.getChangedRecordsS3(lastModifyTime);
-		    logger.info("s3records size {}",recordList.size());
-		
-		}else {
-			recordList =  recordService.getChangedRecords();
-		    for(RecordModel rm : recordList) {
-			   recordService.updateSynchSourceRecord(rm.getProduct(), rm.getVersion(), rm.getComponent(), rm.getLocale(), rm.getStatus());
-		    }
+		long lastModifyTime = 0;
+		try {
+			lastModifyTime = Long.parseLong(longDate);
+		} catch (Exception e) {
+			logger.warn("parse lastModify error: {}", longDate);
+			lastModifyTime = 0;
 		}
+		List<RecordModel> recordList = recordService.getChangedRecordsS3(productName, version, lastModifyTime);
+		logger.info("s3records size {}", recordList.size());
+		APIResponseDTO responseDto = null;
 		if ((recordList != null) && (recordList.size() > 0)) {
 			responseDto = new APIResponseDTO();
 			responseDto.setData(recordList);

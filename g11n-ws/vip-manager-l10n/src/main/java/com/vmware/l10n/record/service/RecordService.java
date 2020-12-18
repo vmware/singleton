@@ -12,8 +12,7 @@ import com.vmware.vip.common.l10n.exception.L10nAPIException;
 
 public interface RecordService {
 	public List<RecordModel> getChangedRecords();
-	public List<RecordModel> getChangedRecordsS3(long lastModifyTime) throws L10nAPIException;
+	public List<RecordModel> getChangedRecordsS3(String productName, String version, long lastModifyTime) throws L10nAPIException;
 	public int updateSynchSourceRecord( String product, String version, String component, String locale, long status);
 	public ComponentSourceModel getComponentSource(String product, String version, String component, String locale);
-
 }

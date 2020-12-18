@@ -35,6 +35,7 @@ import javax.net.ssl.X509TrustManager;
 
 import com.alibaba.fastjson.JSONObject;
 import com.vmware.l10agent.base.PropertyContantKeys;
+import com.vmware.vip.common.exceptions.VIPHttpException;
 
 
 /**
@@ -420,10 +421,6 @@ public static String sendJsonWithToken(String url, String method, String jsonStr
 		}
 		return sslSocketFactory;
 	}
-
-	
-	
-
 
 
 }

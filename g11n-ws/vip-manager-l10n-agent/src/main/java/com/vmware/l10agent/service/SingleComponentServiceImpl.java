@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.vmware.l10agent.base.PropertyContantKeys;
 import com.vmware.l10agent.base.TaskSysnQueues;
 import com.vmware.l10agent.conf.PropertyConfigs;
@@ -133,44 +134,10 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 		}
 		return true;
 	}
-
-
-	@Override
-	public boolean synchComponentFile2I18n(RecordModel record) {
-		// TODO Auto-generated method stub
-		
-		 ComponentSourceModel model =  getSourceComponentFile(record);
-		 
-		 for(Entry<String, Object > entry: model.getMessages().entrySet()) {
-			 try {
-				boolean result = synchkey2VipI18n(record, entry.getKey(), (String)entry.getValue(), null, null);
-			    if(!result) {
-			    	try {
-						TaskSysnQueues.SendComponentTasks.put(record);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-					    Thread.currentThread().interrupt();
-		
-						logger.info(e.getMessage(), e);
-					}
-			    	return result;
-			    }
-			 } catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				logger.error(e.getMessage(), e);
-				return false;
-			}
-		 }
-		  
-		
-		return true;
-	}
 	
 	
 	private boolean synchkey2VipI18n(RecordModel record, String key, String srcValue, String commentForSource, String sourceFormat) throws UnsupportedEncodingException {
 		StringBuffer urlStr = new StringBuffer(configs.getVipBasei18nUrl());
-		
-		
         urlStr.append(PropertyContantKeys.I18n_Source_Collect_Url
                 .replace("{" + APIParamName.PRODUCT_NAME + "}", record.getProduct())
                 .replace("{" + APIParamName.VERSION + "}", record.getVersion())
@@ -206,20 +173,79 @@ public class SingleComponentServiceImpl implements SingleComponentService{
         
         return true;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	 
 
-	 
-	 
-	 
-    
+	private boolean synchkey2VipL10n(RecordModel record,  String key, String srcValue, String commentForSource, String sourceFormat) throws UnsupportedEncodingException{
+		StringBuffer urlStr = new StringBuffer(configs.getRemoteBaseL10Url());
+        urlStr.append(PropertyContantKeys.L10n_Source_Collect_Url
+                .replace("{" + APIParamName.PRODUCT_NAME + "}", record.getProduct())
+                .replace("{" + APIParamName.VERSION + "}", record.getVersion())
+                .replace("{" + APIParamName.COMPONENT + "}", record.getComponent())
+                .replace("{" + APIParamName.LOCALE + "}", record.getLocale())
+                .replace("{" + APIParamName.KEY + "}", key));
+          logger.info("source:{}", srcValue);
+        try {
+            logger.info("-----Start to send source----------");
+            logger.debug(key+"----------"+srcValue);
+            String response = postData(srcValue, urlStr.toString().replaceAll(" ", "%20"));
+            logger.info(response);
+          JSONObject resultJsonObj = JSONObject.parseObject(response);
+   		  int responseCode = resultJsonObj.getJSONObject("response").getInteger("code");
+           if(responseCode != 200) {
+        	   logger.error("Failed to sync the source to l10n -> {} : {}", key, srcValue);
+        	   return false;
+           }
+        } catch (Exception e) {
+            logger.warn("Failed to sync the source to l10n -> {} : {}", key, srcValue);
+            return false;
+        }
+        
+        return true;
+	}
+	
+	
 	
 
+	@Override
+	public boolean synchComponentFile2Internal(RecordModel record) {
+		// TODO Auto-generated method stub
+      ComponentSourceModel model =  getSourceComponentFile(record);
+		 
+		 for(Entry<String, Object > entry: model.getMessages().entrySet()) {
+			 try {
+				boolean result = synchkey2VipL10n(record, entry.getKey(), (String)entry.getValue(), null, null);
+			    if(!result) {
+			    	result = synchkey2VipI18n(record, entry.getKey(), (String)entry.getValue(), null, null);
+			    	if(!result) {
+			    		try {
+			    			if(record.getStatus()<5) {
+			    				record.setStatus(record.getStatus()+1);
+			    				TaskSysnQueues.SendComponentTasks.put(record);
+			    			}
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+						    Thread.currentThread().interrupt();
+			
+							logger.info(e.getMessage(), e);
+						}
+				    	return result;
+			    	}
+			    }
+			 } catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				logger.error(e.getMessage(), e);
+				return false;
+			}
+		 }
+		  
+		
+		return true;
+	}
+	
+	private String postData(String source, String urlStr)  throws VIPHttpException {
+		String response =  HTTPRequester.postData(source, urlStr, "application/json", "POST", null);
+		if(response == null || response.equalsIgnoreCase("")) {
+			throw new VIPHttpException("postFormData error.");
+		}
+		return response;
+	}
 }

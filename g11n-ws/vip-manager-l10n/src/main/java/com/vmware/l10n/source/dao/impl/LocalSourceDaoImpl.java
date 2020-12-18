@@ -124,7 +124,7 @@ public class LocalSourceDaoImpl implements SourceDao {
 
 
 	@Override
-	public List<RecordModel> getUpdateRecords(long lastModify) throws L10nAPIException{
+	public List<RecordModel> getUpdateRecords(String productName, String version, long lastModifyTime) throws L10nAPIException{
 		// TODO Auto-generated method stub
 		LOGGER.error("bundle use the local disk media request the S3 API!");
 		throw new L10nAPIException("Local disk bundle can't support get update record method!");

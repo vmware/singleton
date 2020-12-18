@@ -15,9 +15,10 @@ import com.vmware.l10agent.model.RecordModel;
  *
  */
 public interface RecordService  {
-	
-	public List<RecordModel> getRecordModelsByRemote ();
-	public boolean synchRecordModelsByRemote (RecordModel record);
+	public void getRecordModelsByRemoteV1();
+	public List<RecordModel> getRecordModelsByRemoteS3(String product, String version, long lastModifyTime);
+	public List<RecordModel> getRecordModelsByRemote();
+	public boolean synchRecordModelsByRemote(RecordModel record);
 	public ComponentSourceModel getComponentByRemote(RecordModel record);
 
 }

@@ -42,4 +42,5 @@ public class TestUtils {
 	public void testWhiteList() {
 		WhiteListUtils whiteListUtils = webApplicationContext.getBean(WhiteListUtils.class);		whiteListUtils.getWhiteList();
 	}
+	
 }
