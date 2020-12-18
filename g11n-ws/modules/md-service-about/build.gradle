@@ -7,6 +7,7 @@ apply plugin: 'io.spring.dependency-management'
 
 sourceCompatibility = 1.8
 
+
 buildscript {
 	repositories {
 	  maven {
@@ -26,6 +27,9 @@ jar {
         attributes 'Implementation-Title': 'Gradle Quickstart',
                    'Implementation-Version': version
     }
+   from('src/main/java') {
+      include '**/*.properties'
+   }
 }
 
 repositories {
@@ -33,29 +37,23 @@ repositories {
 }
 
 dependencies {
-    compile project(":md-restful-api")
-    compile project(":md-service-about")
-    compile project(":md-service-i18n-l2")
+    compile project(":vip-common")
     compile project(":md-service-i18n-l3")
-    compile("org.springframework:spring-webmvc:$springWebVersion")
-    compile ('org.apache.tomcat.embed:tomcat-embed-core:9.0.37')
-    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
-	compile("commons-codec:commons-codec:1.10")
-	// Actuator - START
-    compile group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.1.0'
-    // Actuator - END
+    compile "org.springframework.boot:spring-boot"
+    compile('org.springframework.boot:spring-boot-autoconfigure')
 }
 
 bootJar {
   enabled = false
 }
 jar {
-	enabled = true
+  enabled = true
 }
 
 test {
     systemProperties 'property': 'value'
 }
+
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'

@@ -5,6 +5,8 @@
 package com.vmware.vip.api.rest;
 
 public class APIOperation {
+	public final static String ABOUT_VERSION_VALUE = "Get the build's version information";
+	public final static String ABOUT_VERSION_NOTES = "Get the build's version information, including service's version info and product's translation's version info.";
 	public final static String PRODUCT_TRANSLATION_VALUE = "Get the product's translation";
 	public final static String PRODUCT_TRANSLATION_NOTES = "Get the product's translations by the specific version.";
 	public final static String PRODUCT_LOCALE_LIST_VALUE = "Get the supported locale list";
