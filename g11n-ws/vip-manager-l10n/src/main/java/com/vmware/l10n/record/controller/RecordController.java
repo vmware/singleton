@@ -64,11 +64,11 @@ public class RecordController {
 	}
 	
 	@GetMapping(L10nI18nAPI.SOURCE_SYNC_RECORDS_APIV2)
-	public APIResponseDTO getRecoredV2Model(
+	public APIResponseDTO getRecoredS3Model(
 			@RequestParam(value =APIParamName.PRODUCT_NAME, required=false)String productName, 
 			@RequestParam(value =APIParamName.VERSION, required=false)String version, 
 			@RequestParam(value =APIParamName.LONGDATE, required=false)String longDate, HttpServletRequest request) throws L10nAPIException{
-		logger.info("begin get the changed V3 record");
+		logger.info("start getting the changed s3 record");
 		logger.info(LOGURLSTR, request.getRequestURL());
 		long lastModifyTime = 0;
 		try {
