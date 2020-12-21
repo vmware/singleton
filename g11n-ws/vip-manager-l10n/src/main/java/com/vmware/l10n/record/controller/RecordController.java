@@ -34,7 +34,11 @@ public class RecordController {
 	private RecordService recordService;
 	
 	private final static String LOGURLSTR="The request url is {}";
-	
+	/**
+	 * get the update source record from sqlite database
+	 * @param request
+	 * @return
+	 */
 	@GetMapping(L10nI18nAPI.SOURCE_SYNC_RECORDS_APIV1)
 	public APIResponseDTO getRecoredModel(HttpServletRequest request){
 		logger.info("begin get the changed record");
@@ -62,7 +66,15 @@ public class RecordController {
 		return responseDto;
 		
 	}
-	
+	/**
+	 * get the update source record from s3 storage
+	 * @param productName
+	 * @param version
+	 * @param longDate
+	 * @param request
+	 * @return
+	 * @throws L10nAPIException
+	 */
 	@GetMapping(L10nI18nAPI.SOURCE_SYNC_RECORDS_APIV2)
 	public APIResponseDTO getRecoredS3Model(
 			@RequestParam(value =APIParamName.PRODUCT_NAME, required=false)String productName, 
@@ -91,6 +103,16 @@ public class RecordController {
 		return responseDto;
 	}
 	
+	/**
+	 * sync the update source record status 
+	 * @param product
+	 * @param version
+	 * @param component
+	 * @param locale
+	 * @param status
+	 * @param request
+	 * @return
+	 */
 	@PostMapping(L10nI18nAPI.SOURCE_SYNC_RECORD_STATUS_APIV1)
 	public Response synchRecoredModel(@RequestParam String product, @RequestParam String version, @RequestParam String component, @RequestParam String locale, @RequestParam String status,
 			HttpServletRequest request){
@@ -110,8 +132,15 @@ public class RecordController {
 		
 	}
 	
-	
-	
+	/**
+	 *  get the update source record from l10n
+	 * @param product
+	 * @param version
+	 * @param component
+	 * @param locale
+	 * @param request
+	 * @return
+	 */
 	@GetMapping(L10nI18nAPI.SOURCE_SYNC_RECORD_SOURCE_APIV1)
 	public APIResponseDTO getSourceComponentModel(@PathVariable String product, @PathVariable String version, @PathVariable String component, @PathVariable String locale,
 			HttpServletRequest request){

@@ -61,6 +61,9 @@ public class RecordServiceImpl implements RecordService {
 		}
     }
 
+    /**
+     * get update record from l10n sqlite database when l10n deploy single instance
+     */
 	@Override
 	public List<RecordModel> getRecordModelsByRemote() {
 		// TODO Auto-generated method stub
@@ -92,6 +95,9 @@ public class RecordServiceImpl implements RecordService {
 
 	}
 
+	/**
+	 * get the update source content from remote l10n
+	 */
 	@Override
 	public ComponentSourceModel getComponentByRemote(RecordModel record) {
 		// TODO Auto-generated method stub
@@ -124,7 +130,9 @@ public class RecordServiceImpl implements RecordService {
 		}
 		return null;
 	}
-
+    /**
+     * sync update record status to remote l10n that deploy single instance 
+     */
 	@Override
 	public boolean synchRecordModelsByRemote(RecordModel record) {
 		// TODO Auto-generated method stub
@@ -161,7 +169,9 @@ public class RecordServiceImpl implements RecordService {
 
 	}
 
-
+	/**
+	 * get update record from l10n sqlite database when l10n deploy multi-instance
+	 */
 	@Override
 	public void getRecordModelsByRemoteV1() {
 		String getRecodeUrl = config.getRemoteBaseL10Url() + L10nI18nAPI.SOURCE_SYNC_RECORDS_APIV1;
@@ -202,7 +212,9 @@ public class RecordServiceImpl implements RecordService {
 		}
 	}
 
-
+    /**
+     * get update record  when l10n use s3 data storage
+     */
 	@Override
 	public List<RecordModel> getRecordModelsByRemoteS3(String product, String version, long lastModifyTime) {
 		String getRecodeUrl = config.getRemoteBaseL10Url() + L10nI18nAPI.SOURCE_SYNC_RECORDS_APIV2;

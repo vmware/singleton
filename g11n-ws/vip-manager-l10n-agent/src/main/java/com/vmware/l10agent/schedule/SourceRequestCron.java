@@ -22,7 +22,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.vmware.l10agent.base.TaskSysnQueues;
 import com.vmware.l10agent.conf.PropertyConfigs;
 import com.vmware.l10agent.model.ComponentSourceModel;
@@ -76,7 +75,7 @@ public class SourceRequestCron {
 		String path = file.getAbsolutePath();
 		 File baseFile = new File(configs.getSourceFileBasepath());
 		String basePath =  baseFile.getAbsolutePath();
-		logger.info(path);
+		logger.info("File absolute path: {}", path);
 		basePath = basePath+File.separator;
 	    logger.info(basePath);
 		String resultStr = path.replace(basePath, "");

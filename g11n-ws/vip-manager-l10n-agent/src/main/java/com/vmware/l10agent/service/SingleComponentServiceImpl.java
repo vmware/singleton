@@ -89,7 +89,9 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 			return null;
 		}
 	}
-	
+	/**
+	 * write the update source content to locale file
+	 */
 	@Override
 	public boolean writerComponentFile(ComponentSourceModel sourceModel) {
 		// TODO Auto-generated method stub
@@ -106,7 +108,9 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 	
 		return true;
 	}
-
+    /**
+     * read the update source content from locale file
+     */
 	@Override
 	public ComponentSourceModel getSourceComponentFile(RecordModel record) {
 		// TODO Auto-generated method stub
@@ -123,7 +127,9 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 		return null;
 	}
 
-
+    /**
+     * delete the sync source content from locale file
+     */
 	@Override
 	public boolean delSourceComponentFile(RecordModel record) {
 		// TODO Auto-generated method stub
@@ -204,7 +210,9 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 	
 	
 	
-
+    /**
+     * sync the local source content to internal l10n or i18n
+     */
 	@Override
 	public boolean synchComponentFile2Internal(RecordModel record) {
 		// TODO Auto-generated method stub
