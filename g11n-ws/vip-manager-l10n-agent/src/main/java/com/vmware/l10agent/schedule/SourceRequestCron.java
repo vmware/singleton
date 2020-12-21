@@ -60,6 +60,9 @@ public class SourceRequestCron {
 
 	@PostConstruct
 	public void initSendFile() {
+		if(configs.getRecordApiVersion().equalsIgnoreCase("s3")) {
+			lastModifyTime = configs.getSyncStartDatetime();
+		}
 		logger.info("begin recover the remained resource!!");
 		File file = new File(configs.getSourceFileBasepath());
 
