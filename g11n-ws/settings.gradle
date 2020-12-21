@@ -14,6 +14,7 @@ include ':md-restful-api-i18n'
 include ':md-restful-api-db'
 include ':md-data-api-mt'
 include ':md-service-authen'
+include 'md-service-about'
 include ':md-service-i18n-l2'
 include ':md-service-i18n-l3'
 include ':md-restful-synch'
@@ -31,6 +32,7 @@ project(':vip-manager-l10n-agent').projectDir = "$rootDir/vip-manager-l10n-agent
 project(':md-service-i18n-l2').projectDir     = "$rootDir/modules/md-service-i18n-l2" as File
 project(':md-service-i18n-l3').projectDir     = "$rootDir/modules/md-service-i18n-l3" as File
 project(':md-service-authen').projectDir      = "$rootDir/modules/md-service-authen" as File
+project(':md-service-about').projectDir      = "$rootDir/modules/md-service-about" as File
 project(':md-restful-api-db').projectDir      = "$rootDir/modules/md-restful-api-db" as File
 project(':md-restful-api-i18n').projectDir    = "$rootDir/modules/md-restful-api-i18n" as File
 project(':md-restful-api').projectDir         = "$rootDir/modules/md-restful-api" as File
