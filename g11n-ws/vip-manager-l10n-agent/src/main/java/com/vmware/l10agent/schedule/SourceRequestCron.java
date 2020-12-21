@@ -234,13 +234,15 @@ public class SourceRequestCron {
 	}
 	
 	private void doRecordApiS3() {
-		 Map<String,List<String>> allowList = getSyncS3List();
-		 for(Entry<String, List<String>> entry : allowList.entrySet()) {
-			 String product = entry.getKey();
-	     for(String version : entry.getValue()) {
-	    	 processS3SycSource(product, version);
-	     }
-		 }
+		Map<String, List<String>> allowList = getSyncS3List();
+		if (allowList != null) {
+			for (Entry<String, List<String>> entry : allowList.entrySet()) {
+				String product = entry.getKey();
+				for (String version : entry.getValue()) {
+					processS3SycSource(product, version);
+				}
+			}
+		}
 	}
 
 	private void processS3SycSource(String product, String version) {
