@@ -10,6 +10,7 @@ import com.vmware.vip.api.rest.APIParamValue;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,6 +45,11 @@ public class AboutVersionAPI extends BaseAction {
     public APIResponseDTO getVersionInfo(
             @ApiParam(name = APIParamName.PRODUCT_NAME, required = false, value = APIParamValue.PRODUCT_NAME) @RequestParam(required = false) String productName,
             @ApiParam(name = APIParamName.VERSION, required = false, value = APIParamValue.VERSION) @RequestParam(required = false) String version) throws AboutAPIException {
-        return super.handleResponse(APIResponseStatus.OK, versionService.getBuildVersion(productName, version));
+        if(!StringUtils.isEmpty(productName) && !StringUtils.isEmpty(version)) {
+            String availableVersion = super.getAvailableVersion(productName, version);
+            return super.handleVersionFallbackResponse(version, availableVersion, versionService.getBuildVersion(productName, availableVersion));
+        }else{
+            return super.handleResponse(APIResponseStatus.OK, versionService.getBuildVersion(productName, version));
+        }
     }
 }
