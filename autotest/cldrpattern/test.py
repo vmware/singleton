@@ -65,10 +65,10 @@ def unzipfile(dir, path):
                 for f in zf.namelist():
                     zf.extract(f, path)
         zf.close()
-    except:
-        print(f'{i} is unzip failed.')
+    except Exception as e:
+        print("%s is unzipped failed with error '%s'" % (i,repr(e)))
 
-# unzipfile('./singleton-g11n-cldr-pattern/src/main/resources/cldr/data/32.0.0', constant.unzipfile_dir)
+# unzipfile('./32.0.0', './new')
 
 
 
