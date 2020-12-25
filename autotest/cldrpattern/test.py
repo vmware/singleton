@@ -1,4 +1,4 @@
-import os,json,HTMLTestRunner,unittest
+import os,json,HTMLTestRunner,unittest,sys
 from excelutility import excelutil
 from ddt import ddt,data
 from datetime import datetime
@@ -72,6 +72,7 @@ def unzipfile(dir, path):
 
 
 
+
 @ddt
 class Test(unittest.TestCase):
 
@@ -107,6 +108,7 @@ if __name__ == "__main__":
 
     print('=====AutoTest Start======')
     unzipfile(constant.rootdir + constant.version, constant.unzipfile_dir)
+    # unittest.main()
     discover = unittest.defaultTestLoader.discover(constant.test_dir, pattern='test.py')
     now = datetime.now().strftime('%Y-%m-%d_%H_%M_%S_')
     filename = constant.test_dir + now + 'result.html'
@@ -120,6 +122,8 @@ if __name__ == "__main__":
     print('Detailed test report can be found: %s' % os.path.abspath(filename))
     fp.close()
     print('=====AutoTest End======')
+    if (unpass > 0):
+        sys.exit(1)
 
 
 
