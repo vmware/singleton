@@ -65,8 +65,10 @@ public class PatternService {
         }
         cacheItem = new PatternCacheItem();
         getPatternsFromDS(locale, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-        formattingCacheService.addPatterns(locale, cacheItem);
-        logger.debug("Pattern is cached for locale [{}]!\n\n", locale);
+        if(!cacheItem.getCachedData().isEmpty()) {
+            formattingCacheService.addPatterns(locale, cacheItem);
+            logger.debug("Pattern is cached for locale [{}]!\n\n", locale);
+        }
         return cacheItem;
     }
 
@@ -105,8 +107,10 @@ public class PatternService {
         }
         cacheItem = new PatternCacheItem();
         getPatternsFromDS(language, region, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-        formattingCacheService.addPatterns(language, region, cacheItem);
-        logger.debug("Pattern is cached for language [{}], region [{}]!\n\n", language, region);
+        if(!cacheItem.getCachedData().isEmpty()) {
+            formattingCacheService.addPatterns(language, region, cacheItem);
+            logger.debug("Pattern is cached for language [{}], region [{}]!\n\n", language, region);
+        }
         return cacheItem;
     }
 

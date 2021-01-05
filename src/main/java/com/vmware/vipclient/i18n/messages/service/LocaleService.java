@@ -67,8 +67,10 @@ public class LocaleService {
         }
         cacheItem = new LocaleCacheItem();
         getRegionsFromDS(locale, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-        formattingCacheService.addRegions(locale, cacheItem);
-        logger.debug("Regions is cached for locale [{}]!\n\n", locale);
+        if(!cacheItem.getCachedData().isEmpty()) {
+            formattingCacheService.addRegions(locale, cacheItem);
+            logger.debug("Regions is cached for locale [{}]!\n\n", locale);
+        }
         return cacheItem;
     }
 
@@ -121,8 +123,10 @@ public class LocaleService {
         }
         cacheItem = new LocaleCacheItem();
         getSupportedLanguagesFromDS(locale, cacheItem, VIPCfg.getInstance().getMsgOriginsQueue().listIterator());
-        formattingCacheService.addSupportedLanguages(dto, locale, cacheItem);
-        logger.debug("DisplayNames is cached for product [{}], version [{}], locale [{}]!\n\n", dto.getProductID(), dto.getVersion(), locale);
+        if(!cacheItem.getCachedData().isEmpty()) {
+            formattingCacheService.addSupportedLanguages(dto, locale, cacheItem);
+            logger.debug("DisplayNames is cached for product [{}], version [{}], locale [{}]!\n\n", dto.getProductID(), dto.getVersion(), locale);
+        }
         return cacheItem;
     }
 

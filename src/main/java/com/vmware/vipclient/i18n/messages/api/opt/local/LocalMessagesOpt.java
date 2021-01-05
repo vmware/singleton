@@ -5,30 +5,29 @@
 package com.vmware.vipclient.i18n.messages.api.opt.local;
 
 import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
+import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.api.opt.MessageOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
-import com.vmware.vipclient.i18n.messages.service.ProductService;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.JSONBundleUtil;
+import com.vmware.vipclient.i18n.util.LocaleUtility;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.net.URI;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class LocalMessagesOpt implements Opt, MessageOpt {
-	
+
 	private Logger logger = LoggerFactory.getLogger(LocalMessagesOpt.class.getName());
 
-	private static final String OFFLINE_RESOURCE_PATH = "{0}/messages_{1}.json";
+	private static final String OFFLINE_RESOURCE_PATH = "{0}{1}/messages_{2}.json";
     private MessagesDTO dto;
 
     public LocalMessagesOpt(MessagesDTO dto) {
@@ -43,43 +42,48 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
     
     @Override
     public void getComponentMessages(MessageCacheItem cacheItem) {
-		Map<String, String> messages = null;
+		InputStream is = null;
 		try {
-			Locale bestMatch = Locale.lookup(Arrays.asList(new Locale.LanguageRange((dto.getLocale()))),
-					getSupportedLocales());
-			String filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, dto.getComponent(), bestMatch.toLanguageTag());
-			Path path = Paths.get(VIPCfg.getInstance().getOfflineResourcesBaseUrl(), filePath);
-			
-			URI uri = Thread.currentThread().getContextClassLoader().
-					getResource(path.toString()).toURI();
-
-	    	if (uri.getScheme().equals("jar")) {
-				try(FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap())) {
-					path = fileSystem.getPath(path.toString());
-					messages = JSONBundleUtil.getMessages(path);
-				}
-			} else {
-				path = Paths.get(uri);
-				messages = JSONBundleUtil.getMessages(path);
-			}
-		} catch (Exception e) {
-			logger.debug(e.getMessage());
-			// Do not update cacheItem
-		}
-		if (messages!=null && !messages.isEmpty())
+			is = getInputStream();
+			JSONParser jsonParser = new JSONParser();
+			JSONObject jsonObject = (JSONObject) jsonParser.parse(new InputStreamReader(is, "UTF-8"));
+			Map<String, String> messages = (JSONObject) jsonObject.get("messages");
 			cacheItem.setCacheItem(messages, null, System.currentTimeMillis(), null);
-		else
-			new LocalSrcMessagesPropsOpt(this.dto).getComponentMessages(cacheItem);
-    }
-    
-    private List<Locale> getSupportedLocales() {
-		ProductService ps = new ProductService(dto);
-		Set<String> supportedLanguages = ps.getSupportedLanguageTags(DataSourceEnum.Bundle);
-        logger.debug("supported languages: [{}]", supportedLanguages.toString());
-    	List<Locale> supportedLocales = new LinkedList<Locale>();
-    	for (String languageTag : supportedLanguages) {
-    		supportedLocales.add(Locale.forLanguageTag(languageTag));
-    	}
-    	return supportedLocales;
-    }
+		} catch (Exception e) {
+			logger.error("Failed to get offline messages for product: " + dto.getProductID() + " " + dto.getVersion() +
+					", component: " + dto.getComponent() + ", locale: " + dto.getLocale() + ", exception: " + e.getMessage());
+		}
+		if (is != null) {
+			try {
+				is.close();
+			} catch (IOException e) {
+				logger.debug(e.getMessage());
+			}
+		}
+	}
+
+	private InputStream getInputStream() {
+		String locale = LocaleUtility.fmtToMappedLocale(dto.getLocale()).toLanguageTag();
+		while (true) {
+			String offlineResourcePath = VIPCfg.getInstance().getOfflineResourcesBaseUrl();
+			if(!offlineResourcePath.endsWith("/"))
+				offlineResourcePath = offlineResourcePath + "/";
+			String filePath = FormatUtils.format(OFFLINE_RESOURCE_PATH, offlineResourcePath, dto.getComponent(), locale);
+			InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(filePath);
+			if (is != null)
+				return is;
+			/*
+			 * If valid URI is not found, find the next best matching locale available in the file system
+			 * This could happen if:
+			 * a. the matching resource bundle had been corrupted or removed from the file system since last check.
+			 * b. the requested locale hadn't been matched against the list of supported locales. This happens if
+			 * supported locales cache hasn't been initialized or if previous attempts to populate the cache had failed.
+			 */
+			int index = locale.lastIndexOf("-");
+			if (index <= 0)
+				break;
+			locale = locale.substring(0, index);
+		}
+		throw new VIPJavaClientException("Failed to get resource bundle for locale: " + locale);
+	}
 }

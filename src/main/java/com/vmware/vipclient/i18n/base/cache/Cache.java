@@ -98,9 +98,7 @@ public interface Cache {
     public int getXCapacity();
 
     /**
-     * check if the cache is expired
-     * 
-     * @return false if expired
+     * @deprecated Use the {@link com.vmware.vipclient.i18n.base.cache.CacheItem#isExpired() isExpired} method.
      */
     public boolean isExpired();
 
