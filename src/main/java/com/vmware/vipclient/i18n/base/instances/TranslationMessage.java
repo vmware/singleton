@@ -17,7 +17,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vmware.vipclient.i18n.VIPCfg;
-import com.vmware.vipclient.i18n.base.cache.MessageCacheItem;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
@@ -68,19 +67,25 @@ public class TranslationMessage implements Message {
      * </ul>
      */
     public String getMessage(final Locale locale, final String component, final String key, final Object... args) {
-    	// Use source message if the message hasn't been collected/translated
-    	String source = getMessages(Locale.forLanguageTag(ConstantsKeys.SOURCE), component, false).get(key);
-    	String collectedSourceMsg = getMessages(LocaleUtility.getSourceLocale(), component, false).get(key);
-    	if (source!=null && !source.isEmpty() && !source.equals(collectedSourceMsg)) {
-			return FormatUtils.format(source, LocaleUtility.getSourceLocale(), args);
-		}
-    	
-    	String message = FormatUtils.format(getMessages(locale, component).get(key), locale, args);
-    	if (message == null || message.isEmpty()) {
-    		throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component, locale));
-    	}
-    	
-    	return message;
+    	return getMessage(null, locale, component, key, args);
+    }
+    public String getMessage(String resourceBundle, final Locale locale, final String component, final String key, final Object... args) {
+        // Use source message if the message hasn't been collected/translated
+        String source = resourceBundle != null ? ResourceBundle.getBundle(resourceBundle).getString(key) :
+                getMessages(Locale.forLanguageTag(ConstantsKeys.SOURCE), component, false).get(key);
+        String collectedSourceMsg = getMessages(LocaleUtility.getSourceLocale(), component, false).get(key);
+        if (source!=null && !source.isEmpty() && !source.equals(collectedSourceMsg)) {
+            return FormatUtils.format(source, LocaleUtility.getSourceLocale(), args);
+        }
+
+        String message = FormatUtils.format(getMessages(locale, component).get(key), locale, args);
+        if (message == null || message.isEmpty()) {
+            if (resourceBundle != null)
+                return source;
+            throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component, locale));
+        }
+
+        return message;
     }
     
     /**
