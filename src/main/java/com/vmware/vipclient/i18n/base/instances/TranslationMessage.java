@@ -68,21 +68,44 @@ public class TranslationMessage implements Message {
      * </ul>
      */
     public String getMessage(final Locale locale, final String component, final String key, final Object... args) {
-    	// Use source message if the message hasn't been collected/translated
-    	String source = getMessages(Locale.forLanguageTag(ConstantsKeys.SOURCE), component, false).get(key);
-    	String collectedSourceMsg = getMessages(LocaleUtility.getSourceLocale(), component, false).get(key);
-    	if (source!=null && !source.isEmpty() && !source.equals(collectedSourceMsg)) {
-			return FormatUtils.format(source, LocaleUtility.getSourceLocale(), args);
-		}
-    	
-    	String message = FormatUtils.format(getMessages(locale, component).get(key), locale, args);
-    	if (message == null || message.isEmpty()) {
-    		throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component, locale));
-    	}
-    	
-    	return message;
+        return getMessage(null, locale, component, key, args);
     }
-    
+
+    /**
+     * Retrieves the localized message
+     *
+     * @param resourceBundle The base name of a ResourceBundle that contains the source message
+     * @param locale The locale in which the message is requested to be localized
+     * @param component The Singleton component in which the message belongs
+     * @param key The key that represents the message
+     * @param args Values to replace placeholders in the message with
+     * @return One of the items in the following priority-ordered list:.
+     * @throws VIPJavaClientException If none from the list below is available
+     * <ul>
+     * 		<li>The source message, if source message hasn't been collected and translated</li>
+     * 		<li>The message in the requested locale</li>
+     * 		<li>The message in the next available fallback locale</li>
+     * 		<li>The source message</li>
+     * </ul>
+     */
+    public String getMessage(String resourceBundle, final Locale locale, final String component, final String key, final Object... args) {
+        // Use source message if the message hasn't been collected/translated
+        String source = resourceBundle != null ? ResourceBundle.getBundle(resourceBundle).getString(key) :
+                getMessages(Locale.forLanguageTag(ConstantsKeys.SOURCE), component, false).get(key);
+        String collectedSourceMsg = getMessages(LocaleUtility.getSourceLocale(), component, false).get(key);
+        if (source!=null && !source.isEmpty() && !source.equals(collectedSourceMsg)) {
+            return FormatUtils.format(source, LocaleUtility.getSourceLocale(), args);
+        }
+
+        String message = FormatUtils.format(getMessages(locale, component).get(key), locale, args);
+        if (message == null || message.isEmpty()) {
+            if (resourceBundle != null)
+                return source;
+            throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component, locale));
+        }
+        return message;
+    }
+
     /**
      * get a translation under the component of the configured product
      *

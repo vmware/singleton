@@ -230,11 +230,11 @@ public class OfflineModeTest extends BaseTestClass {
         dto.setVersion(VIPCfg.getInstance().getVersion());
 
         String component = "JAVA2";
-        String message = translation.getMessage(locale, component, "props.key.1", args);
+        String message = translation.getMessage("offlineBundles.JAVA2.messages", locale, component, "props.key.1", args);
         // Returns the source message from props file
         assertEquals("props.value.1", message);
 
-        message = translation.getMessage(locale, component, "props.key.3", args);
+        message = translation.getMessage("offlineBundles.JAVA2.subdir.messages", locale, component, "props.key.3", args);
         // Returns the source message from another props file
         assertEquals("props.value.3", message);
 
