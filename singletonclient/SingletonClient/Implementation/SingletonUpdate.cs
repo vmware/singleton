@@ -42,9 +42,10 @@ namespace SingletonClient.Implementation
         /// <summary>
         /// Load offline bundle to its cache.
         /// </summary>
-        /// <param name="locale"></param>
+        /// <param name="singletonLocale"></param>
+        /// <param name="asSource"></param>
         /// <returns></returns>
-        ILocaleMessages LoadOfflineBundle(string locale, bool useNearLocale);
+        ILocaleMessages LoadOfflineBundle(ISingletonLocale singletonLocale, bool asSource = false);
     }
 
     public class SingletonUpdate: ISingletonUpdate
@@ -173,45 +174,31 @@ namespace SingletonClient.Implementation
             }
         }
 
-        public ILocaleMessages LoadOfflineBundle(string locale, bool useNearLocale)
+        public ILocaleMessages LoadOfflineBundle(ISingletonLocale singletonLocale, bool asSource)
         {
+            string locale = singletonLocale.GetOriginalLocale();
             if (_usedOfflineLocales.Contains(locale))
             {
                 return null;
             }
             _usedOfflineLocales.Add(locale);
 
-            ILocaleMessages languageMessages = LoadOfflineLocaleBundle(locale, locale);
-            if (languageMessages == null && useNearLocale)
+            ILocaleMessages languageMessages = null;
+
+            for(int i=0; i<singletonLocale.GetCount(); i++)
             {
-                ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
-                for(int i=0; i<singletonLocale.GetCount(); i++)
+                string nearLocale = singletonLocale.GetNearLocale(i);
+                languageMessages = LoadOfflineLocaleBundle(locale, nearLocale, asSource);
+                if (languageMessages != null)
                 {
-                    string nearLocale = singletonLocale.GetNearLocale(i);
-                    if (nearLocale.Equals(locale))
-                    {
-                        continue;
-                    }
-                    languageMessages = LoadOfflineLocaleBundle(locale, nearLocale);
-                    if (languageMessages != null)
-                    {
-                        break;
-                    }
+                    break;
                 }
             }
             return languageMessages;
         }
 
-        private ILocaleMessages LoadOfflineLocaleBundle(string locale, string nearLocale)
+        private List<string> GetComponentList()
         {
-            ICacheMessages productCache = _release.GetReleaseMessages();
-            ILocaleMessages localeCache = productCache.GetLocaleMessages(nearLocale);
-
-            string[] parts = new string[3];
-            string[] arrayFormat = (
-                _config.GetDefaultResourceFormat() + "," + ConfigConst.StoreTypeInternal
-                ).Split(',');
-
             List<string> componentList = _config.GetConfig().GetComponentList();
             if (componentList.Count == 0)
             {
@@ -230,6 +217,20 @@ namespace SingletonClient.Implementation
                 }
             }
 
+            return componentList;
+        }
+
+        private ILocaleMessages LoadOfflineLocaleBundle(string locale, string nearLocale, bool asSource)
+        {
+            string[] parts = new string[3];
+            string[] arrayFormat = (
+                _config.GetDefaultResourceFormat() + "," + ConfigConst.StoreTypeInternal
+                ).Split(',');
+
+            List<string> componentList = GetComponentList();
+
+            ICacheMessages productCache = _release.GetReleaseMessages();
+            ILocaleMessages localeCache = productCache.GetLocaleMessages(locale, asSource);
             int messageCount = 0;
 
             for (int i = 0; componentList != null && i < componentList.Count; i++)

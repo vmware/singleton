@@ -27,10 +27,6 @@ namespace UnitTestSingleton
             Assert.AreEqual(text == null, true);
 
             headers.Clear();
-            text = service.HttpPost("https://mail.yahoo.com", "{}", headers);
-            Assert.AreEqual(text.Contains("Yahoo"), true);
-
-            headers.Clear();
             text = service.HttpPost("http://github.next.com", "{}", headers);
             Assert.AreEqual(text == null, true);
         }

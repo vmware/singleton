@@ -14,6 +14,7 @@ namespace SingletonClient.Implementation.Support
     {
         private readonly string cacheComponentType;
         private readonly Hashtable locales = SingletonUtil.NewHashtable(true);
+        private readonly Hashtable sources = SingletonUtil.NewHashtable(true);
 
         /// <summary>
         /// Initializes.
@@ -26,22 +27,37 @@ namespace SingletonClient.Implementation.Support
         }
 
         /// <summary>
-        /// Comment.
+        /// Get locale messages object.
         /// </summary>
         /// <param name="locale">locale.</param>
+        /// <param name="asSource">asSource.</param>
         /// <returns>return.</returns>
-        public ILocaleMessages GetLocaleMessages(string locale)
+        public ILocaleMessages GetLocaleMessages(string locale, bool asSource)
         {
+            Hashtable table = asSource ? sources : locales;
             if (locale == null)
             {
                 return null;
             }
 
-            ILocaleMessages cache = (ILocaleMessages)this.locales[locale];
-            if (cache == null)
+            ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
+            ILocaleMessages cache;
+            int count = singletonLocale.GetCount();
+            for (int i = 0; i < count; i++)
             {
-                cache = new SingletonCacheLocaleMessages(cacheComponentType, locale);
-                this.locales[locale] = cache;
+                string nearLocale = singletonLocale.GetNearLocale(i);
+                cache = (ILocaleMessages)table[nearLocale];
+                if (cache != null)
+                {
+                    return cache;
+                }
+            }
+
+            cache = new SingletonCacheLocaleMessages(cacheComponentType, locale);
+            for (int i = 0; i < count; i++)
+            {
+                string nearLocale = singletonLocale.GetNearLocale(i);
+                table[nearLocale] = cache;
             }
 
             return cache;

@@ -63,7 +63,8 @@ namespace SingletonClient.Implementation
 
             if (_config.IsOfflineSupported())
             {
-                _sourceCache = _update.LoadOfflineBundle(_config.GetSourceLocale(), true);
+                ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(_config.GetSourceLocale());
+                _sourceCache = _update.LoadOfflineBundle(singletonLocale, true);
             }
 
             return true;
@@ -125,7 +126,7 @@ namespace SingletonClient.Implementation
 
                 if (_config.IsOfflineSupported())
                 {
-                    _update.LoadOfflineBundle(locale, true);
+                    _update.LoadOfflineBundle(singletonLocale);
                 }
             }
             return obj;
