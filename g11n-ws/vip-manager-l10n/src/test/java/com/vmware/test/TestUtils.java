@@ -5,12 +5,24 @@
 package com.vmware.test;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.context.WebApplicationContext;
 
+import com.vmware.l10n.BootApplication;
 import com.vmware.l10n.source.dto.GRMAPIResponseStatus;
 import com.vmware.l10n.utils.SourceUtils;
 import com.vmware.l10n.utils.WhiteListUtils;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = BootApplication.class)
 public class TestUtils {
+
+	@Autowired
+	private WebApplicationContext webApplicationContext;
+
 	@Test
 	public void test001sourceUtils() {
 		SourceUtils.createSourceDTO("TEST", "1.0.0", "test", "en", "test.key", "this is test", "", "");
@@ -28,6 +40,6 @@ public class TestUtils {
 
 	@Test
 	public void testWhiteList() {
-		WhiteListUtils.getWhiteList("bundle.json");
+		WhiteListUtils whiteListUtils = webApplicationContext.getBean(WhiteListUtils.class);		whiteListUtils.getWhiteList();
 	}
 }

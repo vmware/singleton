@@ -39,6 +39,7 @@ public class Constants {
 	public static final String POPULATION_PERCENT = "_populationPercent";
 	public static final String SCRIPTS = "_scripts";
 	public static final String REPLACEMENT = "_replacement";
+	public static final String TERRITORY_001 = "001";
 
 	// file named
 	public static final String SUPPLEMENTAL = "supplemental";
@@ -106,7 +107,23 @@ public class Constants {
 	public static final String DECIMAL_FORMATS_LONG = "decimalFormats-long";
 	public static final String DECIMAL_FORMATS_SHORT = "decimalFormats-short";
 	public static final String CURRENCY_FORMATS_SHORT = "currencyFormats-short";
-
+	
+	//timezonename 
+	public static final String TIMEZONENAME_HOUR_FORMAT ="hourFormat";
+	public static final String TIMEZONENAME_GMT_ZERO_FORMAT ="gmtZeroFormat";
+	public static final String TIMEZONENAME_GMT_FORMAT ="gmtFormat";
+	public static final String TIMEZONENAME_REGION_FORMAT ="regionFormat";
+	public static final String TIMEZONENAME_REGION_FORMAT_TYPE_DAYLIGHT ="regionFormat-type-daylight";
+	public static final String TIMEZONENAME_REGION_FORMAT_TYPE_STANDARD ="regionFormat-type-standard";
+	public static final String TIMEZONENAME_FALLBACK_FORMAT ="fallbackFormat";
+	public static final String TIMEZONENAME_METAZONES ="metaZones";
+	public static final String TIMEZONENAME_USES_METAZONE = "usesMetazone";
+	public static final String TIMEZONENAME_METAZONE_TIMEZONEKEY ="timezoneKey";
+	public static final String TIMEZONENAME_METAZONE_EXEMPLARCITY="exemplarCity";
+	public static final String TIMEZONENAME_METAZONE_TIMEZONE ="timeZone";
+	public static final String TIMEZONENAME_METAZONE_USESMETAZONES ="usesMetazones";
+	public static final String TIMEZONENAME_METAZONE_MAPZONES ="mapZones";
+	
 	// currency supplemental data
 	public static final String SUPPLEMENTAL_CURRENCY_DATA = "supplemental.currencyData";
 	public static final String FRACTIONS = "fractions";

@@ -28,7 +28,7 @@ import com.vmware.vip.common.l10n.source.util.PathUtil;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
 public class SourceSendingCronTest {
-	 private static Logger logger = LoggerFactory.getLogger(SourceDaoSource.class);
+	private static Logger logger = LoggerFactory.getLogger(SourceSendingCronTest.class);
 		
 	@Autowired
 	private WebApplicationContext webApplicationContext;
@@ -85,6 +85,7 @@ public class SourceSendingCronTest {
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Thread.currentThread().interrupt();
 		}
 		sourceSend.setSyncEnabled(true);
 		sourceSend.syncSourceToRemoteAndLocal();

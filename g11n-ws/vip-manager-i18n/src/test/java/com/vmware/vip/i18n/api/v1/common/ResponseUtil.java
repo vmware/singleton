@@ -66,7 +66,9 @@ public class ResponseUtil {
         int responseCode = 0;
         try {
             Response response = getResponse(responseStr);
-            responseCode=response.getCode();
+            if(response != null) {
+            	responseCode=response.getCode();
+            }
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -100,7 +102,9 @@ public class ResponseUtil {
         Object nodeValue = null;
         try{
             Map dataMap=(Map) getMainDataFromResponse(responseStr);
-            nodeValue = dataMap.get(dataNode);
+            if(dataMap != null) {
+            	nodeValue = dataMap.get(dataNode);
+            }
         }catch(Exception e){
             e.printStackTrace();
         }

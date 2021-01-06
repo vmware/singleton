@@ -19,6 +19,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.vip.api.rest.APIParamName;
+import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ValidationMsg;
 import com.vmware.vip.common.exceptions.VIPAPIException;
@@ -31,12 +32,10 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 	
 	private static Logger LOGGER = LoggerFactory.getLogger(CollectSourceValidationInterceptor.class);
 	
-	public CollectSourceValidationInterceptor(List<String> sourceLocales, Map<String, List<String>> allowListMap) {
-		this.sourceLocales = sourceLocales;
+	public CollectSourceValidationInterceptor(Map<String, List<String>> allowListMap) {
 		this.allowList = allowListMap;
 	}
-	
-	private List<String> sourceLocales;
+
 	private Map<String, List<String>> allowList;
 	
 	/**
@@ -59,7 +58,7 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 		LOGGER.debug(logOfUrl);
 		LOGGER.debug(logOfQueryStr);
 		try {
-			validate(request, this.sourceLocales, this.allowList); 
+			validate(request, this.allowList); 
 		} catch (VIPAPIException e) {
 			LOGGER.warn(e.getMessage());
 			Response r = new Response();
@@ -88,7 +87,7 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 	 * @param language types that can collect source 
 	 * @throws VIPAPIException
 	 */
-	private static void validate(HttpServletRequest request, List<String> sourceLocales, Map<String, List<String>> whiteList) throws VIPAPIException {
+	private static void validate(HttpServletRequest request, Map<String, List<String>> whiteList) throws VIPAPIException {
 		if (request == null) { 
 			return;
 		}
@@ -97,7 +96,7 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 		validateVersion(request);
 		validateComponent(request);
 		validateKey(request);
-		validateLocale(request, sourceLocales);
+		validateLocale(request);
 		validateSourceformat(request);
 		validateCollectsource(request);
 		validatePseudo(request);
@@ -169,7 +168,7 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 	}
 
 	@SuppressWarnings("unchecked")
-	private static void validateLocale(HttpServletRequest request, List<String> sourceLocales2)
+	private static void validateLocale(HttpServletRequest request)
 			throws VIPAPIException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
@@ -181,11 +180,8 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 		}
 		if (!RegExpValidatorUtils.IsLetterAndNumberAndValidchar(locale)) {
 			throw new VIPAPIException(ValidationMsg.LOCALE_NOT_VALIDE);
-		}else if (!sourceLocales2.contains(locale)) {
-			throw new VIPAPIException(ValidationMsg.LOCALE_NOT_VALIDE);
 		}
 	}
-
 
 	private static void validateSourceformat(HttpServletRequest request)
 			throws VIPAPIException {
@@ -239,9 +235,8 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 		if (StringUtils.isEmpty(productName) || StringUtils.isEmpty(version)) {
 			return;
 		}
-		if(!allowList.isEmpty() && allowList.containsKey(productName)
+		if(null != allowList && !allowList.isEmpty() && allowList.containsKey(productName)
 				&& allowList.get(productName).contains(version)) {
-			return;
 		}else {
 			throw new VIPAPIException(String.format(ValidationMsg.PRODUCTNAME_NOT_SUPPORTED, productName));
 		}

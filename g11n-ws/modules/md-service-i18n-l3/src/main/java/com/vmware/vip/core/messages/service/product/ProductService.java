@@ -263,8 +263,6 @@ public class ProductService implements IProductService {
 		} catch (ParseException e2) {
 			logger.error(e2.getMessage(), e2);
 		}
-
-		if (result != null) {
 			Object messageObj = result.getMessages();
 			if (!StringUtils.isEmpty(messageObj)) {
 				Map<String, Object> messages = (Map<String, Object>) messageObj;
@@ -279,9 +277,6 @@ public class ProductService implements IProductService {
 			} else {
 				return componentMessagesDTO;
 			}
-		} else {
-			return componentMessagesDTO;
-		}
 	}
 
 	/**

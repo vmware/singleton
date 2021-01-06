@@ -4,15 +4,6 @@
  */
 package com.vmware.l10n.record.service;
 
-import java.io.IOException;
-import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,10 +13,20 @@ import com.vmware.l10n.record.model.RecordModel;
 import com.vmware.l10n.source.crons.SourceSendingCron;
 import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class RecordServiceImpl implements RecordService{
 	private static Logger logger = LoggerFactory.getLogger(RecordServiceImpl.class);
+
 	@Autowired
 	private SqlLiteDao sqlLite;
 	
@@ -33,7 +34,7 @@ public class RecordServiceImpl implements RecordService{
 	private SourceSendingCron sourceSendingCron;
 	@Autowired
 	private SourceDao sourceDao;
-	
+
 	@Override
 	public List<RecordModel> getChangedRecords() {
 		// TODO Auto-generated method stub
@@ -62,9 +63,9 @@ public class RecordServiceImpl implements RecordService{
 		singleComponentDTO.setVersion(version);
 		singleComponentDTO.setComponent(component);
 		singleComponentDTO.setLocale(locale);
-		
-		
-		String componentJSON = sourceDao.getFromBundle(singleComponentDTO, sourceSendingCron.getBasePath());
+
+
+		String componentJSON = sourceDao.getFromBundle(singleComponentDTO);
 		
 		if (!StringUtils.isEmpty(componentJSON)) {
 			  ObjectMapper mapper = new ObjectMapper();
@@ -86,15 +87,9 @@ public class RecordServiceImpl implements RecordService{
 				// TODO Auto-generated catch block
 				logger.error(e.getMessage(), e);
 			}
-			  
-			 
-			  
-			  return source;
-			  
+			return source;
 		}
-		
-		
-		
+
 		return null;
 	}
 

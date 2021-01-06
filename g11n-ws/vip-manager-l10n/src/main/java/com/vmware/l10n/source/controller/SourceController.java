@@ -167,10 +167,10 @@ public class SourceController {
 	 */
 	private void setResponseStatus(SourceAPIResponseDTO sourceAPIResponseDTO, boolean isSourceCached) {
 		if (isSourceCached) {
-			sourceAPIResponseDTO.setStatus(APIResponseStatus.OK);
+			sourceAPIResponseDTO.setResponse(APIResponseStatus.OK);
 		} else {
 			sourceAPIResponseDTO
-					.setStatus(APIResponseStatus.INTERNAL_SERVER_ERROR);
+					.setResponse(APIResponseStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 

@@ -18,6 +18,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Scanner;
@@ -25,6 +26,7 @@ import java.util.TreeMap;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import com.vmware.i18n.common.DayEnum;
 import com.vmware.i18n.common.OfficialStatusEnum;
 import com.vmware.i18n.utils.timezone.CldrTimeZoneUtils;
 
@@ -46,6 +48,7 @@ public class CLDRUtils {
     public static final Properties PROP = PropertiesFileUtil.loadFromFile(CONFIG_PATH);
     public static final String CLDR_VERSION = PROP.getProperty("cldr.version");
     public static final String CLDR_URLS = PROP.getProperty("cldr.urls");
+    public static final String CLDR_ADDITIONAL_CONFIG = PROP.getProperty("cldr.additional.config");
     public static final String FILE_NAME = CLDR_VERSION + ".zip";
     public static final String CLDR_DOWNLOAD_DIR = "src" + File.separator + "main" + File.separator + "resources"
             + File.separator + "cldr" + File.separator + "data" + File.separator + CLDR_VERSION + File.separator;
@@ -167,6 +170,12 @@ public class CLDRUtils {
         // eras
         Map<String, Object> erasMap = erasExtract(locale, dateContents);
 
+        Map<String, Object> supplementalWeekData = getSupplementalWeekData();
+        //first day of week
+        Integer firstDayOfWeek = extractFirstDay(locale, (Map<String, String>) supplementalWeekData.get("firstDay"));
+        //weekend range
+        List<Integer> weekendRange = extractWeekendRange(locale, supplementalWeekData);
+
         // dateFormats
         Map<String, Object> dateFormatMap = dateFormatExtract(locale, dateContents);
 
@@ -184,8 +193,8 @@ public class CLDRUtils {
         dateMap.put(Constants.MONTH_FORMAT, monthsFormatMap);
         dateMap.put(Constants.MONTHS_STANDALONE, monthsStandaloneMap);
         dateMap.put(Constants.ERAS, erasMap);
-        dateMap.put(Constants.FIRST_DAY_OF_WEEK, 0);
-        dateMap.put(Constants.WEEKEND_RANGE, Arrays.asList(6, 0));
+        dateMap.put(Constants.FIRST_DAY_OF_WEEK, firstDayOfWeek);
+        dateMap.put(Constants.WEEKEND_RANGE, weekendRange);
         dateMap.put(Constants.DATE_FORMATS, dateFormatMap);
         dateMap.put(Constants.TIME_FORMATS, timeFormatMap);
         dateMap.put(Constants.DATE_TIME_FORMATS, dateTimeMap);
@@ -563,6 +572,43 @@ public class CLDRUtils {
         return erasMap;
     }
 
+    /**
+     * Get the first day of one Country, the implementation is according to https://www.unicode.org/reports/tr35/tr35-49/tr35-dates.html#Week_Data
+     *
+     * @param localeStr
+     * @param firstDayData
+     * @return
+     */
+    private static Integer extractFirstDay(String localeStr, Map<String, String> firstDayData){
+        String firstDay = firstDayData.get(Constants.TERRITORY_001);
+        String territory = LocaleDataUtils.getInstance().getDefaultRegionCode(localeStr, LocaleDataUtils.getInstance().getRegionsData(localeStr));
+        if(territory != null && firstDayData.get(territory) != null)
+            firstDay = firstDayData.get(territory);
+        return DayEnum.getIndexByDay(firstDay);
+    }
+
+    /**
+     * Get the weekend range of one Country, the implementation is according to https://www.unicode.org/reports/tr35/tr35-49/tr35-dates.html#Week_Data
+     *
+     * @param localeStr
+     * @param supplementalWeekData
+     * @return
+     */
+    private static List<Integer> extractWeekendRange(String localeStr, Map<String, Object> supplementalWeekData){
+        Map<String, String> weekendStartData = (Map<String, String>) supplementalWeekData.get("weekendStart");
+        Map<String, String> weekendEndData = (Map<String, String>) supplementalWeekData.get("weekendEnd");
+        String weekendStart = weekendStartData.get(Constants.TERRITORY_001);
+        String weekendEnd = weekendEndData.get(Constants.TERRITORY_001);
+        String territory = LocaleDataUtils.getInstance().getDefaultRegionCode(localeStr, LocaleDataUtils.getInstance().getRegionsData(localeStr));
+        if(territory != null) {
+            if (weekendStartData.get(territory) != null)
+                weekendStart = weekendStartData.get(territory);
+            if (weekendEndData.get(territory) != null)
+                weekendEnd = weekendEndData.get(territory);
+        }
+        return Arrays.asList(DayEnum.getIndexByDay(weekendStart), DayEnum.getIndexByDay(weekendEnd));
+    }
+
     private static Map<String, Object> dateFormatExtract(String locale, JSONObject content) {
         String dateFormat = JSONUtil.select(content, "main." + locale + ".dates.calendars.gregorian.dateFormats")
                 .toString();
@@ -595,9 +641,18 @@ public class CLDRUtils {
         dateTimeMap.put("medium", dateTimeMedium);
         dateTimeMap.put("long", dateTimeLong);
         dateTimeMap.put("full", dateTimeFull);
-        dateTimeMap.put("availableFormats", JSONUtil.string2SortMap(availableFormats));
         dateTimeMap.put("appendItems", JSONUtil.string2SortMap(appendItems));
         dateTimeMap.put("intervalFormats", JSONUtil.string2SortMap(intervalFormats));
+
+        Map<String, Object> timeFormatMap = timeFormatExtract(locale, content);
+        Map<String, Object> availableFormatsMap = JSONUtil.string2SortMap(availableFormats);
+        List<String> configs = Arrays.asList(CLDRUtils.CLDR_ADDITIONAL_CONFIG.split(","));
+
+        if (!configs.isEmpty() && configs.contains("availableFormats") && timeFormatMap.containsKey("full")) {
+            String regEx = "(\\.ss|:ss| ss 's'|ss秒| s초| ss ວິນາທີ| ss วินาที)";
+            availableFormatsMap.put("hmz", timeFormatMap.get("full").toString().replaceAll(regEx, ""));
+        }
+        dateTimeMap.put("availableFormats", availableFormatsMap);
         return dateTimeMap;
     }
 
@@ -832,6 +887,21 @@ public class CLDRUtils {
         }
         String resultDataJson = territoryDataObject.toString();
         return JSONUtil.string2SortMap(resultDataJson);
+    }
+
+    /**
+     * Get supplemental week data from 'cldr-core-{cldr.version}/supplemental/weekData.json' file
+     *
+     * @return Map<String   ,       Object>
+     */
+    public static Map<String, Object> getSupplementalWeekData() {
+        String zipPath = CLDRConstants.CORE_ZIP_FILE_PATH;
+        String fileName = "cldr-core-" + CLDR_VERSION + "/supplemental/weekData.json";
+        String json = CLDRUtils.readZip(fileName, zipPath);
+        JSONObject weekDataContents = JSONUtil.string2JSON(json);
+        String weekDataJsonStr = JSONUtil.select(weekDataContents, "supplemental.weekData")
+                .toString();
+        return JSONUtil.getMapFromJson(weekDataJsonStr);
     }
 
     public static void writePatternDataIntoFile(String filePath, Map<String, Object> patternMap) {

@@ -31,7 +31,7 @@ import com.vmware.vip.api.rest.l10n.L10NAPIV1;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
 public class TranslationControllerTest {
-	 private static Logger logger = LoggerFactory.getLogger(SourceDaoSource.class);
+	 private static Logger logger = LoggerFactory.getLogger(TranslationControllerTest.class);
 	@Autowired
 	private WebApplicationContext webApplicationContext;
 

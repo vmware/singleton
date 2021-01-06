@@ -31,6 +31,7 @@ public class ExceptionHandle {
 			response.setResponse(APIResponseStatus.INTERNAL_SERVER_ERROR);
 		} else {
 			logger.error("unknown error");
+			logger.error(e.getMessage(),e);
 		}
 		return response;
 	}

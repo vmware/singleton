@@ -6,6 +6,7 @@ package com.vmware.vip.core.conf;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.vmware.vip.core.Interceptor.*;
@@ -83,6 +84,9 @@ public class WebConfiguration implements WebMvcConfigurer {
 
 	@Value("${cache-control.value:}")
 	private String cacheControlValue;
+	
+	@Value("${config.client.requestIds:}")
+	private String requestIdsStr; 
 
 	@Autowired
 	private TokenService tokenService;
@@ -122,7 +126,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 		 */
 
 		// Request Validation
-		InterceptorRegistration apival = registry.addInterceptor(new APIValidationInterceptor(productService.getAllowPrductList())).addPathPatterns("/**").excludePathPatterns(API.I18N_API_ROOT+"doc/**");
+		InterceptorRegistration apival = registry.addInterceptor(new APIValidationInterceptor(productService.getAllowPrductList(), this.requestIdsStr)).addPathPatterns("/**").excludePathPatterns(API.I18N_API_ROOT+"doc/**");
 
 		// authentication
 
