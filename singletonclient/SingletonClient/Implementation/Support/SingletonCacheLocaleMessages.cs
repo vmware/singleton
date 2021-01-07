@@ -29,6 +29,15 @@ namespace SingletonClient.Implementation.Support
         }
 
         /// <summary>
+        /// Get locale.
+        /// </summary>
+        /// <returns>return.</returns>
+        public string GetLocale()
+        {
+            return locale;
+        }
+
+        /// <summary>
         /// Comment.
         /// </summary>
         /// <param name="component">component.</param>
