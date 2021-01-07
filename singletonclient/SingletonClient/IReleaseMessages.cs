@@ -17,7 +17,7 @@ namespace SingletonClient
         /// Get interface to access locale messages in a cache.
         /// </summary>
         /// <param name="locale"></param>
-        /// <param name="asSource"></param>
+        /// <param name="asSource">Stored as source messages.</param>
         /// <returns></returns>
         ILocaleMessages GetLocaleMessages(string locale, bool asSource = false);
     }
@@ -154,4 +154,3 @@ namespace SingletonClient
         Dictionary<string, ILocaleMessages> GetAllLocaleMessages();
     }
 }
-
