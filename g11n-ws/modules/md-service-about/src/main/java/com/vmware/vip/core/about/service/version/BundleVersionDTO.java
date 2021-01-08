@@ -1,7 +1,7 @@
 package com.vmware.vip.core.about.service.version;
 
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 import java.io.Serializable;
