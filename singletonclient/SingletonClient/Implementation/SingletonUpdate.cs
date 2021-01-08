@@ -48,12 +48,13 @@ namespace SingletonClient.Implementation
         ILocaleMessages LoadOfflineBundle(ISingletonLocale singletonLocale, bool asSource = false);
     }
 
-    public class SingletonUpdate: ISingletonUpdate
+    public class SingletonUpdate : ISingletonUpdate
     {
         protected ISingletonRelease _release;
         protected ISingletonConfig _config;
 
         private readonly List<string> _usedOfflineLocales = new List<string>();
+        private List<string> _localComponentList = null;
 
         public SingletonUpdate(ISingletonRelease release)
         {
@@ -113,7 +114,7 @@ namespace SingletonClient.Implementation
                 return;
             }
 
-            resourcePath = resourcePath.Replace(SingletonConst.PlaceNoLocaleDefine, 
+            resourcePath = resourcePath.Replace(SingletonConst.PlaceNoLocaleDefine,
                 componentCache.GetComponent());
 
             if (ConfigConst.FormatBundle.Equals(parserName))
@@ -185,7 +186,7 @@ namespace SingletonClient.Implementation
 
             ILocaleMessages languageMessages = null;
 
-            for(int i=0; i<singletonLocale.GetCount(); i++)
+            for (int i = 0; i < singletonLocale.GetCount(); i++)
             {
                 string nearLocale = singletonLocale.GetNearLocale(i);
                 languageMessages = LoadOfflineLocaleBundle(locale, nearLocale, asSource);
@@ -199,25 +200,30 @@ namespace SingletonClient.Implementation
 
         private List<string> GetComponentList()
         {
-            List<string> componentList = _config.GetConfig().GetComponentList();
-            if (componentList.Count == 0)
+            if (_localComponentList != null)
             {
-                componentList = _config.GetExternalComponentList();
-                List<string> releaseComponents = _release.GetRelease().GetMessages().GetComponentList();
-                SingletonUtil.UpdateListFromAnotherList(releaseComponents, componentList);
-
-                List<string> releaseLocales = _release.GetRelease().GetMessages().GetLocaleList();
-                if (releaseLocales.Count == 0)
-                {
-                    for (int i = 0; i < releaseComponents.Count; i++)
-                    {
-                        List<string> componentLocaleList = _config.GetExternalLocaleList(releaseComponents[i]);
-                        SingletonUtil.UpdateListFromAnotherList(releaseLocales, componentLocaleList);
-                    }
-                }
+                return _localComponentList;
             }
 
-            return componentList;
+            _localComponentList = _config.GetConfig().GetComponentList();
+            bool fromExternal = (_localComponentList.Count == 0);
+            if (fromExternal)
+            {
+                _localComponentList = _config.GetExternalComponentList();
+            }
+
+            List<string> releaseComponents = _release.GetRelease().GetMessages().GetComponentList();
+            SingletonUtil.UpdateListFromAnotherList(releaseComponents, _localComponentList);
+
+            List<string> releaseLocales = _release.GetRelease().GetMessages().GetLocaleList();
+            for (int i = 0; i < _localComponentList.Count; i++)
+            {
+                List<string> componentLocaleList = fromExternal ? _config.GetExternalLocaleList(_localComponentList[i]) :
+                    _config.GetConfig().GetLocaleList(_localComponentList[i]);
+                SingletonUtil.UpdateListFromAnotherList(releaseLocales, componentLocaleList);
+            }
+
+            return _localComponentList;
         }
 
         private ILocaleMessages LoadOfflineLocaleBundle(string locale, string nearLocale, bool asSource)
@@ -243,7 +249,7 @@ namespace SingletonClient.Implementation
                 for (int k = 0; k < resList.Count; k++)
                 {
                     string[] array = resList[k].Split(',');
-                    for(int m=0; m<3; m++)
+                    for (int m = 0; m < 3; m++)
                     {
                         parts[m] = (m < array.Length) ? array[m].Trim() : arrayFormat[m - 1].Trim();
                     }
