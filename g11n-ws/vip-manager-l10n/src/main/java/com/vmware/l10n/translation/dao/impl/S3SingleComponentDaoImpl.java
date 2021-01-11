@@ -2,8 +2,6 @@
 //SPDX-License-Identifier: EPL-2.0
 package com.vmware.l10n.translation.dao.impl;
 
-import java.io.File;
-
 import javax.annotation.PostConstruct;
 
 import org.json.simple.parser.ParseException;
@@ -23,7 +21,6 @@ import com.vmware.l10n.utils.S3Util;
 import com.vmware.l10n.utils.S3Util.Locker;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;
-import com.vmware.vip.common.constants.ConstantsUnicode;
 import com.vmware.vip.common.constants.TranslationQueryStatusType;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.l10n.exception.L10nAPIException;
@@ -63,17 +60,12 @@ public class S3SingleComponentDaoImpl implements SingleComponentDao {
 			throws L10nAPIException {
 		logger.debug("[get Translation from S3]");
 
-		String bunldeString;
+		String bunldeString = null;
 		if (s3util.isBundleExist(basePath, componentMessagesDTO)) {
 			componentMessagesDTO.setStatus("Translation" + TranslationQueryStatusType.FileFound.toString());
 			bunldeString = s3util.readBundle(basePath, componentMessagesDTO);
-		} else {
-			componentMessagesDTO.setStatus("Translation" + TranslationQueryStatusType.FileNotFound.toString());
-			ComponentMessagesDTO tempDTO = new ComponentMessagesDTO();
-			BeanUtils.copyProperties(componentMessagesDTO, tempDTO);
-			tempDTO.setLocale(ConstantsUnicode.EN);
-			bunldeString = s3util.readBundle(basePath, tempDTO);
 		}
+
 		if (StringUtils.isEmpty(bunldeString)) {
 			componentMessagesDTO.setStatus(TranslationQueryStatusType.ComponentNotFound.toString());
 			return componentMessagesDTO;
