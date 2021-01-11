@@ -89,5 +89,10 @@ script: >
     # cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-$PROJECT_BRANCH-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
   fi &&
   if [ x${TEST} = xsmoke_test ]; then
-    true
+    git clone --branch=devops https://github.com/vmware/singleton.git devops
+    mv $TRAVIS_BUILD_DIR/devops/autotest/cldrpattern .
+    docker run -it -v $(pwd):/root/app python:3.7 sh -c 'pip install ddt datetime openpyxl && \
+      cd /root/app/cldrpattern && \
+      cp HTMLTestRunner.py /usr/lib/python3.7 && \
+      python test.py'
   fi
