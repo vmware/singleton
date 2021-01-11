@@ -77,7 +77,7 @@ public class DateFormatUtilOfflineTest extends BaseTestClass {
         dateFormatI18n = (DateFormatting) i18n.getFormattingInstance(DateFormatting.class);
     }
 
-//    @Test
+    @Test
     public void testFormatDateWithLocale() {
 
         Locale locale = new Locale("en", "US");
@@ -186,7 +186,7 @@ public class DateFormatUtilOfflineTest extends BaseTestClass {
                 "short", timeZone, locale));
     }
 
-//    @Test
+    @Test
     public void testFormatDateWithLanguageRegion() {
         String language = "en";
         String region = "US";

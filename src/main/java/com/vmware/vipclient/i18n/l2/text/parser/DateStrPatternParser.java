@@ -4,13 +4,12 @@
  */
 package com.vmware.vipclient.i18n.l2.text.parser;
 
-import java.util.Calendar;
-
+import com.vmware.vipclient.i18n.l2.common.PatternKeys;
+import com.vmware.vipclient.i18n.l2.text.PatternItem;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import com.vmware.vipclient.i18n.l2.common.PatternKeys;
-import com.vmware.vipclient.i18n.l2.text.PatternItem;
+import java.util.Calendar;
 
 public class DateStrPatternParser implements PatternParser {
     private JSONObject formatObj;
@@ -38,8 +37,6 @@ public class DateStrPatternParser implements PatternParser {
 
             }
         } else if (String.valueOf(item.getType()).indexOf("E") != -1) {// daysFormat
-            Long firstDay = (Long) formatObj.get("firstDayOfWeek");
-            JSONArray weekendRange = (JSONArray) formatObj.get("weekendRange");
             formatObj = (JSONObject) formatObj.get("daysFormat");
             switch (item.getLength()) {
             case 4:
@@ -54,9 +51,7 @@ public class DateStrPatternParser implements PatternParser {
             default:
                 formatData = (JSONArray) formatObj.get(PatternKeys.ABBREVIATED);
             }
-            // String firstDay=(String) formatObj.get("firstDayOfWeek");
-            value = value - 1 + firstDay.intValue();// Integer.parseInt(firstDay);
-            value = value == 7 ? 0 : value;
+            value = value - 1;// Since the day index in Calendar starts from 1, but that in format data starts from 0, hence value need reduce one
         }
 
         if (null == formatData) {
