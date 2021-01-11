@@ -1,11 +1,12 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.except;
 
 import java.text.MessageFormat;
 
+import com.vmware.vip.core.about.exception.AboutAPIException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,7 +30,11 @@ public class ExceptionHandle {
 		APIResponseDTO response = new APIResponseDTO();
 		response.setData("");
 		response.setSignature("");
-		if (e instanceof L3APIException) {
+		if (e instanceof AboutAPIException) {
+			logger.error("====== About API's Exception =======");
+			logger.error(e.getMessage());
+			response.setResponse(new Response(APIResponseStatus.INTERNAL_NO_RESOURCE_ERROR.getCode(), e.getMessage()));
+		} else if (e instanceof L3APIException) {
 			logger.error("====== L3 API's Exception =======");
 			logger.error(e.getMessage());
 			response.setResponse(new Response(APIResponseStatus.INTERNAL_NO_RESOURCE_ERROR.getCode(), e.getMessage()));

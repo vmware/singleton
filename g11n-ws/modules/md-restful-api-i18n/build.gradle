@@ -1,4 +1,4 @@
-//Copyright 2019-2020 VMware, Inc.
+//Copyright 2019-2021 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java'
 apply plugin: 'eclipse'
@@ -34,6 +34,7 @@ repositories {
 
 dependencies {
     compile project(":md-restful-api")
+    compile project(":md-service-about")
     compile project(":md-service-i18n-l2")
     compile project(":md-service-i18n-l3")
     compile("org.springframework:spring-webmvc:$springWebVersion")
