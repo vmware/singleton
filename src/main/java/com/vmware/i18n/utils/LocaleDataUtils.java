@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.utils;
@@ -211,6 +211,7 @@ public class LocaleDataUtils {
 	 * @param locale
 	 * @return
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Map<String, String> getRegionsData(String locale) {
 		Map resultMap = new LinkedHashMap();
 		String zipPath = CLDRConstants.LOCALE_ZIP_FILE_PATH;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.test.i18n;
@@ -17,9 +17,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.vmware.i18n.PatternUtil;
-import com.vmware.i18n.pattern.action.PatternAction;
 import com.vmware.i18n.utils.CLDRUtils;
-import com.vmware.i18n.utils.JSONUtil;
 
 public class I18nUtilTest {
 

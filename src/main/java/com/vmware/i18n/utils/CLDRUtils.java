@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.utils;
@@ -18,17 +18,12 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Scanner;
 import java.util.TreeMap;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-
-import com.vmware.i18n.common.DayEnum;
-import com.vmware.i18n.common.OfficialStatusEnum;
-import com.vmware.i18n.utils.timezone.CldrTimeZoneUtils;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -38,6 +33,9 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.i18n.common.CLDRConstants;
 import com.vmware.i18n.common.Constants;
+import com.vmware.i18n.common.DayEnum;
+import com.vmware.i18n.common.OfficialStatusEnum;
+import com.vmware.i18n.utils.timezone.CldrTimeZoneUtils;
 
 public class CLDRUtils {
 
@@ -172,7 +170,8 @@ public class CLDRUtils {
 
         Map<String, Object> supplementalWeekData = getSupplementalWeekData();
         //first day of week
-        Integer firstDayOfWeek = extractFirstDay(locale, (Map<String, String>) supplementalWeekData.get("firstDay"));
+        @SuppressWarnings("unchecked")
+		Integer firstDayOfWeek = extractFirstDay(locale, (Map<String, String>) supplementalWeekData.get("firstDay"));
         //weekend range
         List<Integer> weekendRange = extractWeekendRange(locale, supplementalWeekData);
 
@@ -594,8 +593,9 @@ public class CLDRUtils {
      * @param supplementalWeekData
      * @return
      */
+    @SuppressWarnings("unchecked")
     private static List<Integer> extractWeekendRange(String localeStr, Map<String, Object> supplementalWeekData){
-        Map<String, String> weekendStartData = (Map<String, String>) supplementalWeekData.get("weekendStart");
+		Map<String, String> weekendStartData = (Map<String, String>) supplementalWeekData.get("weekendStart");
         Map<String, String> weekendEndData = (Map<String, String>) supplementalWeekData.get("weekendEnd");
         String weekendStart = weekendStartData.get(Constants.TERRITORY_001);
         String weekendEnd = weekendEndData.get(Constants.TERRITORY_001);
@@ -745,7 +745,8 @@ public class CLDRUtils {
 
     private static Map<String, Object> dataSort(Object data, String key) {
         if (data instanceof Map) {
-            Map<String, Object> datMap = (Map<String, Object>)data;
+            @SuppressWarnings("unchecked")
+			Map<String, Object> datMap = (Map<String, Object>)data;
             Map<String, Object> sortedMap = new HashMap<>();
             sortedMap.put(key, JSONUtil.string2SortMap(datMap.get(key).toString()));
             return sortedMap;

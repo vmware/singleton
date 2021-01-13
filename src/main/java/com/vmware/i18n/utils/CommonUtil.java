@@ -1,10 +1,9 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.utils;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +16,7 @@ import sun.util.locale.ParseStatus;
 
 import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.*;
 
+@SuppressWarnings("restriction")
 public class CommonUtil {
 
     /**
@@ -158,9 +158,11 @@ public class CommonUtil {
                 }
 
                 if (isEmpty(cldrLocale) && !isEmpty(languageDataMap.get(segmentedLanguage))) {
-                    Map<String, Object> languageData = (Map<String, Object>) languageDataMap.get(segmentedLanguage);
+                    @SuppressWarnings("unchecked")
+					Map<String, Object> languageData = (Map<String, Object>) languageDataMap.get(segmentedLanguage);
                     if (!isEmpty(languageData.get(Constants.SCRIPTS))) {
-                        List<String> scripts = (List<String>) languageData.get(Constants.SCRIPTS);
+                        @SuppressWarnings("unchecked")
+						List<String> scripts = (List<String>) languageData.get(Constants.SCRIPTS);
                         boolean existenceOfScript = false;
                         for (String script : scripts) {
                             if (languageScript.toLowerCase().equals(script.toLowerCase())) {
@@ -220,7 +222,8 @@ public class CommonUtil {
     public static String getMatchingLocale(Map<String, Object> languageAliases, String locale) {
         for (Map.Entry<String, Object> item : languageAliases.entrySet()) {
             if (locale.toLowerCase().equals(item.getKey().toLowerCase())) {
-                Map<String, String> data = (Map<String, String>) item.getValue();
+                @SuppressWarnings("unchecked")
+				Map<String, String> data = (Map<String, String>) item.getValue();
                 locale = data.get(Constants.REPLACEMENT);
                 return locale;
             }
@@ -237,7 +240,8 @@ public class CommonUtil {
     public static Map<String, Object> getMatchingPluralByLanguage(String language) {
         for (Map.Entry<String, Object> item : pluralsMap.entrySet()) {
             if (language.toLowerCase().equals(item.getKey().toLowerCase())) {
-                Map<String, Object> data = (Map<String, Object>) item.getValue();
+                @SuppressWarnings("unchecked")
+				Map<String, Object> data = (Map<String, Object>) item.getValue();
                 return data;
             }
         }
