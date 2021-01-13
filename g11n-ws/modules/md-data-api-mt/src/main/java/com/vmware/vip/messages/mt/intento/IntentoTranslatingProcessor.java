@@ -1,7 +1,8 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
+
 package com.vmware.vip.messages.mt.intento;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -98,7 +99,7 @@ public class IntentoTranslatingProcessor implements IMTProcessor {
     }
 
     /**
-     * get a FromModel object from an array of sources for MT request
+     * get an object of FromModel from an array of sources as will be converted into json string for MT request
      *
      * @param fromLang
      * @param toLang
@@ -129,8 +130,8 @@ public class IntentoTranslatingProcessor implements IMTProcessor {
     }
 
     /**
-     * get an id's translations from Intento, it uses async method which will pause one second in 5 retries, so at most
-     * it will consume 5 seconds to get translations from Intento.
+     * get an id's translations from Intento, it uses async method which will pause for some seconds(around 400ms ~ 2000ms) in every retry(5 times),
+     * so at most it will consume less than 5 seconds to get translations from Intento.
      *
      * @param id
      * @return

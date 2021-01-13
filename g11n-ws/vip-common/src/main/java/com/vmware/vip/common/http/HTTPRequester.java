@@ -255,12 +255,15 @@ public class HTTPRequester {
 		return postResult;
 	}
 
-	/*
-	 * Post data by content type.
+	/**
+	 * get data
+	 * @param urlStr
+	 * @param requestMethod
+	 * @param headers
+	 * @return
 	 */
-
 	public static String getData(String urlStr, String requestMethod, Map<String, String> headers) {
-		LOGGER.info("The remote url is : " + urlStr);
+		LOGGER.trace("The remote url is : " + urlStr);
 		HttpURLConnection http = null;
 		InputStream input = null;
 		BufferedReader in = null;

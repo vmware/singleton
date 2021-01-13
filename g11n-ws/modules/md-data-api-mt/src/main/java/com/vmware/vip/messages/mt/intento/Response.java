@@ -1,8 +1,11 @@
+/*
+ * Copyright 2019-2021 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
+
 package com.vmware.vip.messages.mt.intento;
 
-
 import com.fasterxml.jackson.databind.node.ObjectNode;
-
 import java.util.List;
 
 /**
@@ -12,7 +15,7 @@ public class Response {
     private List<String> results;
 
     private ObjectNode meta;
-    
+
     private ObjectNode service;
 
     public List<String> getResults() {
