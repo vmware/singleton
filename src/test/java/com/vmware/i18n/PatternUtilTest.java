@@ -44,7 +44,7 @@ public class PatternUtilTest {
 		}
 	}
     
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("unused")
 	@Test
 	public void testtimezoneListAPI() {
     	String locale = "fr";

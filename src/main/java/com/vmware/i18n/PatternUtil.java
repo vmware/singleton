@@ -7,11 +7,7 @@ package com.vmware.i18n;
 import com.vmware.i18n.common.CLDRConstants;
 import com.vmware.i18n.locale.action.LocaleAction;
 import com.vmware.i18n.pattern.action.PatternAction;
-import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.i18n.utils.timezone.TimeZoneName;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class PatternUtil {
 

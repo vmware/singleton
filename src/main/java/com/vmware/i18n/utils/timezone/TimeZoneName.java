@@ -8,8 +8,6 @@ import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.i18n.common.Constants;
 
 
@@ -18,14 +16,15 @@ public class TimeZoneName implements Serializable {
    
     private static final long serialVersionUID = 9060484294234938026L;
     
-    /** * @param gmtZeroFormat
-    /** * @param gmtFormat
-    /** * @param hourFormat
-    /** * @param regionFormat
-    /** * @param regionFormatTypeDaylight
-    /** * @param regionFormatTypeStandard
-    /** * @param fallbackFormat
-    /** * @param metaZones */
+    /**
+     * @param gmtZeroFormat
+     * @param gmtFormat
+     * @param hourFormat
+     * @param regionFormat
+     * @param regionFormatTypeDaylight
+     * @param regionFormatTypeStandard
+     * @param fallbackFormat
+     * @param metaZones */
     public TimeZoneName(String language, String gmtZeroFormat, String gmtFormat, String hourFormat,
             String regionFormat, String regionFormatTypeDaylight, String regionFormatTypeStandard,
             String fallbackFormat, List<LinkedHashMap<String,Object>> metaZones) {
