@@ -11,6 +11,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.vmware.vip.messages.mt.intento.IntentoTranslatingProcessor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,6 @@ import com.vmware.vip.messages.data.dao.api.IOneComponentDao;
 import com.vmware.vip.messages.data.dao.exception.DataException;
 import com.vmware.vip.messages.data.dao.exception.MTException;
 import com.vmware.vip.messages.mt.MTConfig;
-import com.vmware.vip.messages.mt.azure.AzureTranslatingProcessor;
 
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
@@ -52,7 +52,7 @@ public class MTService implements IMTService {
 	@Autowired
 	IOneComponentService oneComponentService;
 
-	private IMTProcessor mtProcessor = new AzureTranslatingProcessor();
+	private IMTProcessor mtProcessor = new IntentoTranslatingProcessor();
 
 	/**
 	 * Get component MT translation
