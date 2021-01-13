@@ -58,7 +58,7 @@ public class IntentoTranslatingProcessor implements IMTProcessor {
                                        List<String> sourceList) throws MTException {
         String key = LocaleUtils.normalizeToLanguageTag(fromLang) + "_" + LocaleUtils.normalizeToLanguageTag(toLang);
         if (MTConfig.isTranslatedFull(key)) {
-            throw new MTException("Request failed: daily MT translated wordcount is over!");
+            throw new MTException("Daily MT translated word count is exceeded!");
         }
 
         ObjectNode resultNode = null;
