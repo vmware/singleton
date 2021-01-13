@@ -11,7 +11,7 @@ import com.vmware.i18n.utils.CommonUtil;
 
 public class LocaleAction {
 
-	private static volatile LocaleAction instance = null;
+	private static LocaleAction instance = null;
 	private ILocaleService service = null;
 
 	private LocaleAction() {

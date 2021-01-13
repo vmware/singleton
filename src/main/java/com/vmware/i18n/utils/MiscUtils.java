@@ -4,26 +4,32 @@
  */
 package com.vmware.i18n.utils;
 
-import com.vmware.i18n.cldr.CLDR;
-import com.vmware.i18n.common.CLDRConstants;
-import com.vmware.i18n.common.Constants;
+import java.io.File;
+import java.text.MessageFormat;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.text.MessageFormat;
-import java.util.*;
+import com.vmware.i18n.cldr.CLDR;
+import com.vmware.i18n.common.CLDRConstants;
+import com.vmware.i18n.common.Constants;
 
 public class MiscUtils {
 
 	private static Logger logger = LoggerFactory.getLogger(MiscUtils.class);
 
-	private static volatile MiscUtils instance;
+	private static MiscUtils instance;
 
 	public static MiscUtils getInstance() {
 		if (instance == null) {
-			instance = new MiscUtils();
+			synchronized (MiscUtils.class) {
+				if (null == instance) {
+					instance = new MiscUtils();
+				}
+			}
 		}
 		return instance;
 	}
@@ -39,8 +45,8 @@ public class MiscUtils {
 				CLDR cldr = new CLDR(locale);
 				contextTransformsMap.put(Constants.LANGUAGES, cldr.getLanguage());
 				contextTransformsMap.put(Constants.CONTEXT_TRANSFORMS, contextTransformsData);
-				CLDRUtils.writePatternDataIntoFile(CLDRConstants.GEN_CLDR_MISC_DIR + locale +
-						File.separator + CLDRConstants.CONTEXT_TRANSFORM_JSON, contextTransformsMap);
+				CLDRUtils.writePatternDataIntoFile(CLDRConstants.GEN_CLDR_MISC_DIR + locale + File.separator
+						+ CLDRConstants.CONTEXT_TRANSFORM_JSON, contextTransformsMap);
 			}
 		}
 		logger.info("Extract cldr misc data complete!");
