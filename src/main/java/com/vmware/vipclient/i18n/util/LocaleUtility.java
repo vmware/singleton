@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.util;
@@ -225,5 +225,15 @@ public class LocaleUtility {
 	public static void setFallbackLocales(List<Locale> fallbackLocales) {
 		LocaleUtility.fallbackLocales = fallbackLocales;
 	}
-    
+
+    public static Set<Locale> langTagtoLocaleSet (Set<String> languageTags) {
+        Set<Locale> locales = new HashSet<>();
+        if (languageTags != null) {
+            for (String languageTag : languageTags) {
+                locales.add(Locale.forLanguageTag(languageTag));
+            }
+        }
+        return locales;
+    }
+
 }

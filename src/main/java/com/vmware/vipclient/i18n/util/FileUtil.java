@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.util;
@@ -9,15 +9,14 @@ import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.*;
+import java.net.*;
+import java.nio.file.*;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Stream;
 
 public class FileUtil {
     static Logger logger = LoggerFactory.getLogger(FileUtil.class);
@@ -88,4 +87,16 @@ public class FileUtil {
         return jsonObj;
     }
 
+    public static List<URI> getAllResources(Path path) {
+        List<URI> uris = new LinkedList<>();
+        try {
+            Enumeration<URL> urls = Thread.currentThread().getContextClassLoader().getResources(path.toString());
+            while(urls.hasMoreElements()) {
+                uris.add(urls.nextElement().toURI());
+            }
+        } catch (Exception e) {
+            logger.debug(e.getMessage());
+        }
+        return uris;
+    }
 }

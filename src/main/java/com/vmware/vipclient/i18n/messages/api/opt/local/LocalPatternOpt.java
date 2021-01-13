@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.messages.api.opt.local;
@@ -44,12 +44,11 @@ public class LocalPatternOpt implements PatternOpt{
         try {
             String patternStr = PatternUtil.getPatternFromLib(normalizedLocale, null);
             Map<String, Object> patterns = (Map<String, Object>) new JSONParser().parse(patternStr);
-            if(patterns != null) {
+            if(patterns != null && (patterns.get(PatternKeys.CATEGORIES) != null)) {
                 logger.debug("Found the pattern from local bundle for locale [{}].\n", normalizedLocale);
                 cacheItem.set((Map<String, Object>) patterns.get(PatternKeys.CATEGORIES), System.currentTimeMillis());
             }else{
-                logger.debug("Didn't find the pattern from local bundle for locale [{}].\n", normalizedLocale);
-                cacheItem.set(null, System.currentTimeMillis());
+                logger.warn("Didn't find the pattern from local bundle for locale [{}].\n", normalizedLocale);
             }
         } catch (Exception e) {
             e.printStackTrace();

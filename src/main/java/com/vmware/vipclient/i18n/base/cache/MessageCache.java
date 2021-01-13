@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.base.cache;
@@ -190,8 +190,10 @@ public class MessageCache implements Cache {
         }
         return f;
     }
-    
-    @Deprecated
+
+    /**
+     * @deprecated Use the {@link com.vmware.vipclient.i18n.base.cache.CacheItem#isExpired() isExpired} method.
+     */
     public boolean isExpired() {
         boolean f = false;
         long expired = this.getExpiredTime();

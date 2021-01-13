@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vipclient.i18n.base.cache;
@@ -41,12 +41,12 @@ public class TranslationCacheManager {
         
         return c;
     }
-    
+
+    @Deprecated
     private static void cleanEntireCache(Cache c) {
-    	// If cache is MessageCache and cacheExpireTime config is not set, 
-    	// this means that the expiration and cleanup is per MessageCacheItem.
-        if ((c instanceof MessageCache && VIPCfg.getInstance().getCacheExpiredTime() != 0)
-        		|| !(c instanceof MessageCache)) {
+    	// If cacheExpireTime config is not set,
+    	// this means that the expiration and cleanup is per CacheItem.
+        if (VIPCfg.getInstance().getCacheExpiredTime() != 0) {
         	if (c != null && c.isExpired()) {
         		cleanCache(c);
         	}
@@ -57,6 +57,7 @@ public class TranslationCacheManager {
      * Cleans the entire cache 
    	 * @param c Cache to be cleaned.
      */
+    @Deprecated
     public static void cleanCache(Cache c) {
         c.clear();
         c.setLastClean(System.currentTimeMillis());  
