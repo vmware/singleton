@@ -45,11 +45,8 @@ return a fake(pseudo) translation generated from the source text instead of retu
 - *false: Returns the translation in a normal way.*
 
 ## API
-
-See Javadoc at https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/javadoc.
-
 ### Translation
-
+See Javadoc at https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/javadoc/com/vmware/vipclient/i18n/base/instances/TranslationMessage.html.
 ### Formatting
-
+See Javadoc at https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/javadoc/com/vmware/vipclient/i18n/base/instances/DateFormatting.html.
 
