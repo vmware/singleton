@@ -11,7 +11,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import com.vmware.vip.messages.mt.intento.IntentoTranslatingProcessor;
+import com.vmware.vip.messages.mt.MTFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,8 +51,6 @@ public class MTService implements IMTService {
 
 	@Autowired
 	IOneComponentService oneComponentService;
-
-	private IMTProcessor mtProcessor = new IntentoTranslatingProcessor();
 
 	/**
 	 * Get component MT translation
@@ -99,6 +97,7 @@ public class MTService implements IMTService {
 				OrderedKV kv = new OrderedKV(messages);
 				List<String> sourceList = kv.getValues();
 				List<String> mtResult = new ArrayList<String>();
+				IMTProcessor mtProcessor = MTFactory.getMTProcessor();
 				// Since Azure has limitation(max 25) to the array size of source, so we need to handle it.
 				int translatedCount = new Integer(MTConfig.TRANSLATECOUNT).intValue(), fromIndex = 0, toIndex = translatedCount;
 				if (sourceList.size() < translatedCount) {
@@ -195,7 +194,8 @@ public class MTService implements IMTService {
 					// 2. create or update MT string to component object
 					// 3. update component object to cache
 		         String mtTranslation = mtTranslationPara;
-		           Map<String, String> cachedMTMap = null;
+		         Map<String, String> cachedMTMap = null;
+		         IMTProcessor mtProcessor = MTFactory.getMTProcessor();
 					if (TranslationCache3.getCachedObject(CacheName.MTSOURCE, com_key,ComponentMessagesDTO.class) != null) {
 						ComponentMessagesDTO cacheComDTO =  TranslationCache3
 								.getCachedObject(CacheName.MTSOURCE, com_key, ComponentMessagesDTO.class);
