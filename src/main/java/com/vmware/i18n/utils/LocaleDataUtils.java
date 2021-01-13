@@ -210,7 +210,7 @@ public class LocaleDataUtils {
 	 * @param locale
 	 * @return
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Map<String, String> getRegionsData(String locale) {
 		Map resultMap = new LinkedHashMap();
 		String zipPath = CLDRConstants.LOCALE_ZIP_FILE_PATH;
