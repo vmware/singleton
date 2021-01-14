@@ -28,6 +28,7 @@ public class LocaleDataUtils {
 		}
 		return instance;
 	}
+
 	/**
 	 * get all cldr scripts data
 	 *
@@ -60,18 +61,18 @@ public class LocaleDataUtils {
 			String locale = item.toString();
 			String[] arr = locale.split("-");
 			switch (arr.length) {
-			case 2:
-				if (regionMap.containsKey(arr[1])) {
-					defaultRegionMap.put(arr[0], arr[1]);
-				}
-				break;
-			case 3:
-				if (regionMap.containsKey(arr[2])) {
-					defaultRegionMap.put(arr[0] + "-" + arr[1], arr[2]);
-				}
-				break;
-			default:
-				break;
+            case 2:
+                if (regionMap.containsKey(arr[1])){
+                    defaultRegionMap.put(arr[0], arr[1]);
+                }
+                break;
+            case 3:
+                if (regionMap.containsKey(arr[2])){
+                    defaultRegionMap.put(arr[0] + "-" + arr[1], arr[2]);
+                }
+                break;
+            default:
+                break;
 			}
 		}
 		return defaultRegionMap;
@@ -97,14 +98,14 @@ public class LocaleDataUtils {
 			String[] arr = locale.split("-");
 			switch (arr.length) {
 			case 2:
-				if (regionMap.containsKey(arr[1])) {
+				if (regionMap.containsKey(arr[1])){
 					localesRegionMap.put(locale, arr[1]);
 				}
 				break;
 			case 3:
-				if (regionMap.containsKey(arr[2])) {
+				if (regionMap.containsKey(arr[2])){
 					localesRegionMap.put(locale, arr[2]);
-				} else if (!regionMap.containsKey(arr[2]) && regionMap.containsKey(arr[1])) {
+				}else if(!regionMap.containsKey(arr[2]) && regionMap.containsKey(arr[1])){
 					localesRegionMap.put(locale, arr[1]);
 				}
 				break;
@@ -112,15 +113,20 @@ public class LocaleDataUtils {
 				break;
 			}
 		}
-		return localesRegionMap;
-	}
+        return localesRegionMap;
+    }
 
 	/**
 	 *
-	 * @Title: getDefaultReginCode @Description: getDefaultRegionCode @param: @param
-	 * inputLocale @param: @return @return: String @date 2019-05-30 14:25 @throws
+	 * @Title: getDefaultReginCode
+	 * @Description: getDefaultRegionCode
+	 * @param: @param inputLocale
+	 * @param: @return      
+	 * @return: String 
+	 * @date 2019-05-30 14:25     
+	 * @throws
 	 */
-	public String getDefaultRegionCode(String inputLocale, Map<String, String> regionMap) {
+	public String getDefaultRegionCode(String inputLocale, Map<String, String> regionMap ) {
 
 		String defaultRegionCode = "";
 		Map<String, String> defaultRegionMap = getAllDefaultRegion(regionMap);
@@ -128,9 +134,9 @@ public class LocaleDataUtils {
 		if (inputLocale.indexOf('_') != -1) {
 			inputLocale = inputLocale.replace("_", "-");
 		}
-		if (defaultRegionMap.containsKey(inputLocale)) {
+		if (defaultRegionMap.containsKey(inputLocale)){
 			defaultRegionCode = defaultRegionMap.get(inputLocale);
-		} else {
+		}else{
 			if (localesRegionMap.containsKey(inputLocale)) {
 				defaultRegionCode = localesRegionMap.get(inputLocale);
 			}
@@ -153,7 +159,7 @@ public class LocaleDataUtils {
 		return defaultRegionMap;
 	}
 
-	private JSONArray getDefaultContentLocaleArray() {
+	private JSONArray getDefaultContentLocaleArray(){
 		String fileName = "cldr-core-" + CLDRUtils.CLDR_VERSION + "/defaultContent.json";
 		String json = CLDRUtils.readZip(fileName, CLDRConstants.CORE_ZIP_FILE_PATH);
 		JSONObject allRegionContents = JSONUtil.string2JSON(json);
@@ -161,7 +167,7 @@ public class LocaleDataUtils {
 		return array;
 	}
 
-	private Map<String, String> getTerriContain() {
+	private Map<String, String> getTerriContain(){
 		Map<String, String> containMap = new HashMap<String, String>();
 		String fileName = "cldr-core-" + CLDRUtils.CLDR_VERSION + "/supplemental/territoryContainment.json";
 		String json = CLDRUtils.readZip(fileName, CLDRConstants.CORE_ZIP_FILE_PATH);
