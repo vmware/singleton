@@ -6,6 +6,7 @@ weight: 10
 ---
 
 #Singleton Java Client Library
+
 To facilitate consumption of the Singleton Service API, internationalization(i18n) client libraries have been
 developed in several programming languages. These libraries encapsulate API calls to the Singleton service, 
 significantly improving development efficiency and reducing the cost of development work. 
@@ -46,7 +47,11 @@ return a fake(pseudo) translation generated from the source text instead of retu
 
 ## API
 ### Translation
-See Javadoc at https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/javadoc/com/vmware/vipclient/i18n/base/instances/TranslationMessage.html.
+See Javadoc at https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/javadoc/com/vmware/vipclient/i18n/base/instances/TranslationMessage.html.
 ### Formatting
-See Javadoc at https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/javadoc/com/vmware/vipclient/i18n/base/instances/DateFormatting.html.
-
+#### Date
+See Javadoc at https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/javadoc/com/vmware/vipclient/i18n/base/instances/DateFormatting.html.
+#### Number
+See Javadoc at https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/javadoc/com/vmware/vipclient/i18n/base/instances/NumberFormatting.html
+### Supported Locales
+See Javadoc at https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/javadoc/com/vmware/vipclient/i18n/base/instances/LocaleMessage.html
