@@ -4,9 +4,19 @@
  */
 package com.vmware.vip.i18n.api.v2.about;
 
+import com.vmware.vip.api.rest.API;
 import com.vmware.vip.api.rest.APIOperation;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.APIParamValue;
+import com.vmware.vip.api.rest.APIV2;
+import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
+import com.vmware.vip.common.i18n.status.APIResponseStatus;
+import com.vmware.vip.core.about.exception.AboutAPIException;
+import com.vmware.vip.core.about.service.version.BuildVersionDTO;
+import com.vmware.vip.core.about.service.version.BundleVersionDTO;
+import com.vmware.vip.core.about.service.version.IVersionService;
+import com.vmware.vip.core.about.service.version.ServiceVersionDTO;
+import com.vmware.vip.i18n.api.base.BaseAction;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +25,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.vmware.vip.api.rest.API;
-import com.vmware.vip.api.rest.APIV2;
-import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
-import com.vmware.vip.common.i18n.status.APIResponseStatus;
-import com.vmware.vip.core.about.exception.AboutAPIException;
-import com.vmware.vip.core.about.service.version.IVersionService;
-import com.vmware.vip.i18n.api.base.BaseAction;
 
 /**
  * APIs for getting version information
@@ -45,11 +47,16 @@ public class AboutVersionAPI extends BaseAction {
     public APIResponseDTO getVersionInfo(
             @ApiParam(name = APIParamName.PRODUCT_NAME, required = false, value = APIParamValue.PRODUCT_NAME) @RequestParam(required = false) String productName,
             @ApiParam(name = APIParamName.VERSION, required = false, value = APIParamValue.VERSION) @RequestParam(required = false) String version) throws AboutAPIException {
-        if(!StringUtils.isEmpty(productName) && !StringUtils.isEmpty(version)) {
-            String availableVersion = super.getAvailableVersion(productName, version);
-            return super.handleVersionFallbackResponse(version, availableVersion, versionService.getBuildVersion(productName, availableVersion));
+        BuildVersionDTO buildVersionDTO = new BuildVersionDTO();
+        ServiceVersionDTO serviceVersionDTO = versionService.getServiceVersion();
+        buildVersionDTO.setService(serviceVersionDTO);
+        if(StringUtils.isEmpty(productName) && StringUtils.isEmpty(version)) {
+            return super.handleResponse(APIResponseStatus.OK, buildVersionDTO);
         }else{
-            return super.handleResponse(APIResponseStatus.OK, versionService.getBuildVersion(productName, version));
+            String availableVersion = super.getAvailableVersion(productName, version);
+            BundleVersionDTO bundleVersionDTO = versionService.getBundleVersion(productName, availableVersion);
+            buildVersionDTO.setBundle(bundleVersionDTO);
+            return super.handleVersionFallbackResponse(version, availableVersion, buildVersionDTO);
         }
     }
 }
