@@ -174,8 +174,8 @@ public class LocaleDataUtils {
 	}
 
 	/**
-	 * 1.the region's key shouldn't contain 'alt' 2.the region's key shouldn't be
-	 * found in 'territoryContainment' node in 'territoryContainment.json'
+	 * 1.the region's key shouldn't contain 'alt' 
+	 * 2.the region's key shouldn't be found in 'territoryContainment' node in 'territoryContainment.json'
 	 */
 
 	private Map<String, String> getRegionList(String inputLocale, Map<String, String> terriContain) {
