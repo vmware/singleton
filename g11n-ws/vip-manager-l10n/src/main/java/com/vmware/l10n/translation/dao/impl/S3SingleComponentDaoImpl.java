@@ -60,19 +60,19 @@ public class S3SingleComponentDaoImpl implements SingleComponentDao {
 			throws L10nAPIException {
 		logger.debug("[get Translation from S3]");
 
-		String bunldeString;
+		String bundleString = null;
 		if (s3util.isBundleExist(basePath, componentMessagesDTO)) {
 			componentMessagesDTO.setStatus("Translation" + TranslationQueryStatusType.FileFound.toString());
-			bunldeString = s3util.readBundle(basePath, componentMessagesDTO);
+			bundleString = s3util.readBundle(basePath, componentMessagesDTO);
 		}
-		if (StringUtils.isEmpty(bunldeString)) {
+		if (StringUtils.isEmpty(bundleString)) {
 			componentMessagesDTO.setStatus(TranslationQueryStatusType.ComponentNotFound.toString());
 			return componentMessagesDTO;
 		}
 
 		SingleComponentDTO caseComponentMessagesDTO;
 		try {
-			caseComponentMessagesDTO = SingleComponentDTO.getSingleComponentDTOWithLinkedMessages(bunldeString);
+			caseComponentMessagesDTO = SingleComponentDTO.getSingleComponentDTOWithLinkedMessages(bundleString);
 			caseComponentMessagesDTO.setProductName(componentMessagesDTO.getProductName());
 			caseComponentMessagesDTO.setVersion(componentMessagesDTO.getVersion());
 			caseComponentMessagesDTO.setStatus(componentMessagesDTO.getStatus());
