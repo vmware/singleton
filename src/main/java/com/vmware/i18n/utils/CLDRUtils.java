@@ -91,19 +91,28 @@ public class CLDRUtils {
 						logger.error("create file failure when CLDR download!");
 					}
 				}
+				try {
 				fs = new FileOutputStream(CLDR_DOWNLOAD_DIR + fileName);
 				byte[] buffer = new byte[2048];
 				while ((byteread = is.read(buffer)) != -1) {
 					fs.write(buffer, 0, byteread);
 				}
 				fs.flush();
+				}finally {
+					if(fs != null) {
+						fs.close();
+					}
+					IOUtil.closeInputStream(is);
+				}
 			}
 		} catch (Exception e) {
 			logger.error("CLDR Download error:" + e.getMessage());
 			e.printStackTrace();
 		} finally {
 			try {
-				fs.close();
+				if(fs != null) {
+					fs.close();
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

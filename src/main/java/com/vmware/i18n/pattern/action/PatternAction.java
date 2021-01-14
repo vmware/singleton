@@ -17,13 +17,9 @@ public class PatternAction {
 		service = new PatternServiceImpl();
 	}
 
-	public static PatternAction getInstance() {
-		if (null == instance) {
-			synchronized (PatternAction.class) {
-				if (null == instance) {
-					instance = new PatternAction();
-				}
-			}
+	public static synchronized PatternAction getInstance() {
+		if ( instance == null ) {
+			instance = new PatternAction();
 		}
 		return instance;
 	}

@@ -22,17 +22,12 @@ public class LocaleDataUtils {
 
 	private static LocaleDataUtils instance;
 
-	public static LocaleDataUtils getInstance() {
+	public static synchronized LocaleDataUtils getInstance() {
 		if (instance == null) {
-			synchronized (LocaleDataUtils.class) {
-				if (null == instance) {
-					instance = new LocaleDataUtils();
-				}
-			}
+			instance = new LocaleDataUtils();
 		}
 		return instance;
 	}
-
 	/**
 	 * get all cldr scripts data
 	 *

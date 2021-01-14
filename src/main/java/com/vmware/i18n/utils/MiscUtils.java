@@ -25,11 +25,7 @@ public class MiscUtils {
 
 	public static MiscUtils getInstance() {
 		if (instance == null) {
-			synchronized (MiscUtils.class) {
-				if (null == instance) {
-					instance = new MiscUtils();
-				}
-			}
+			instance = new MiscUtils();
 		}
 		return instance;
 	}

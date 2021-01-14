@@ -102,7 +102,8 @@ public class CLDR {
 	 * @return
 	 */
 	private String[] regex(String unicodeLanguageId) {
-		String regex = "(([a-z]{2,3})(-([A-Z][a-z]{3}))?(-([A-Z]{2}|[0-9]{3}))?)((-([a-zA-Z0-9]{5,8}|[0-9][a-zA-Z0-9]{3}))*)|(root)";
+		String regex = "(([a-z]{2,3})(-([A-Z][a-z]{3}))?(-([A-Z]{2}|[0-9]{3}))?)"+
+	    "((-([a-zA-Z0-9]{5,8}|[0-9][a-zA-Z0-9]{3}))*)|(root)";
 		Matcher matcher = Pattern.compile(regex).matcher(unicodeLanguageId);
 		String arr[] = new String[11];
 		int i = 0;
