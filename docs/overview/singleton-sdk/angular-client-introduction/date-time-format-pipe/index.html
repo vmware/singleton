@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-08-07T16:37:18 CST">
+<meta name="revised" content="2021-01-13T19:43:03 PST">
 <title>Date Time Format Pipe :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
 
     
   </head>
-  <body data-url="/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/">
+  <body data-url="https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/">
     
       <header>
   <div class="logo">
@@ -186,12 +186,11 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/overview/singleton-sdk/java-client-introduction/" class="dd-item">
-        <div>
-          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/">
-            Java Client Introduction
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
+    <li data-nav-id="/docs/overview/singleton-sdk/java-client-introduction/" class="dd-item
+        ">
+      <div>
+      <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/">Java Client Introduction</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
     </li>
       <li data-nav-id="/docs/overview/singleton-sdk/javascript-client-introduction/" class="dd-item">
         <div>
@@ -427,7 +426,9 @@
   -- 
    Singleton SDK</option> 
       <option value="/docs/overview/singleton-sdk/python-client-introduction/" >--- Python Client Introduction</option>
-      <option value="/docs/overview/singleton-sdk/java-client-introduction/" >--- Java Client Introduction</option>
+    <option value="/docs/overview/singleton-sdk/java-client-introduction/" >
+  --- 
+   Java Client Introduction</option>
       <option value="/docs/overview/singleton-sdk/javascript-client-introduction/" >--- Javascript Client Introduction</option>
     <option value="/docs/overview/singleton-sdk/angular-client-introduction/" >
   --- 
@@ -493,16 +494,16 @@
 <table>
 <thead>
 <tr>
-<th align="center">Parameter</th>
-<th align="center">Type</th>
-<th align="center">Description</th>
+<th style="text-align:center">Parameter</th>
+<th style="text-align:center">Type</th>
+<th style="text-align:center">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">value</td>
-<td align="center">any</td>
-<td align="center">a date object or a number (milliseconds since UTC epoch) or an ISO string (<a href="https://www.w3.org/TR/NOTE-datetime)">https://www.w3.org/TR/NOTE-datetime)</a>.</td>
+<td style="text-align:center">value</td>
+<td style="text-align:center">any</td>
+<td style="text-align:center">a date object or a number (milliseconds since UTC epoch) or an ISO string (<a href="https://www.w3.org/TR/NOTE-datetime)">https://www.w3.org/TR/NOTE-datetime)</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -510,21 +511,21 @@
 <table>
 <thead>
 <tr>
-<th align="center">Parameter</th>
-<th align="center">Type</th>
-<th align="center">Description</th>
+<th style="text-align:center">Parameter</th>
+<th style="text-align:center">Type</th>
+<th style="text-align:center">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">format</td>
-<td align="center">string</td>
-<td align="center">indicates which date/time components to include. The format can be predefined as shown below (all examples are given for en-US) or custom as shown in the table. Default is &lsquo;mediumDate&rsquo;.</td>
+<td style="text-align:center">format</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">indicates which date/time components to include. The format can be predefined as shown below (all examples are given for en-US) or custom as shown in the table. Default is &lsquo;mediumDate&rsquo;.</td>
 </tr>
 <tr>
-<td align="center">timezone</td>
-<td align="center">string</td>
-<td align="center">to be used for formatting. It understands UTC/GMT and the continental US time zone abbreviations, but for general use, use a time zone offset, for example, &lsquo;+0430&rsquo; (4 hours, 30 minutes east of the Greenwich meridian) If not specified, the local system timezone of the end-user&rsquo;s browser will be used.</td>
+<td style="text-align:center">timezone</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">to be used for formatting. It understands UTC/GMT and the continental US time zone abbreviations, but for general use, use a time zone offset, for example, &lsquo;+0430&rsquo; (4 hours, 30 minutes east of the Greenwich meridian) If not specified, the local system timezone of the end-user&rsquo;s browser will be used.</td>
 </tr>
 </tbody>
 </table>
@@ -532,71 +533,71 @@
 <table>
 <thead>
 <tr>
-<th align="center">Format</th>
-<th align="center">Unit</th>
-<th align="left">Output</th>
+<th style="text-align:center">Format</th>
+<th style="text-align:center">Unit</th>
+<th style="text-align:left">Output</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">&lsquo;shortTime&rsquo;</td>
-<td align="center">&lsquo;h:mm a&rsquo;</td>
-<td align="left">e.g. 5:40 PM</td>
+<td style="text-align:center">&lsquo;shortTime&rsquo;</td>
+<td style="text-align:center">&lsquo;h:mm a&rsquo;</td>
+<td style="text-align:left">e.g. 5:40 PM</td>
 </tr>
 <tr>
-<td align="center">&lsquo;mediumTime&rsquo;</td>
-<td align="center">&lsquo;h:mm:ss a&rsquo;</td>
-<td align="left">e.g. 5:40:22 PM</td>
+<td style="text-align:center">&lsquo;mediumTime&rsquo;</td>
+<td style="text-align:center">&lsquo;h:mm:ss a&rsquo;</td>
+<td style="text-align:left">e.g. 5:40:22 PM</td>
 </tr>
 <tr>
-<td align="center">&lsquo;longTime&rsquo;</td>
-<td align="center">&lsquo;h:mm:ss z&rsquo;</td>
-<td align="left">e.g. 5:40:22 PM GMT+8</td>
+<td style="text-align:center">&lsquo;longTime&rsquo;</td>
+<td style="text-align:center">&lsquo;h:mm:ss z&rsquo;</td>
+<td style="text-align:left">e.g. 5:40:22 PM GMT+8</td>
 </tr>
 <tr>
-<td align="center">&lsquo;fullTime&rsquo;</td>
-<td align="center">&lsquo;h:mm:ss zzzz&rsquo;</td>
-<td align="left">e.g. 5:40:22 PM GMT+08:00</td>
+<td style="text-align:center">&lsquo;fullTime&rsquo;</td>
+<td style="text-align:center">&lsquo;h:mm:ss zzzz&rsquo;</td>
+<td style="text-align:left">e.g. 5:40:22 PM GMT+08:00</td>
 </tr>
 <tr>
-<td align="center">&lsquo;shortDate&rsquo;</td>
-<td align="center">&lsquo;M/d/yy&rsquo;</td>
-<td align="left">e.g. 2/9/18</td>
+<td style="text-align:center">&lsquo;shortDate&rsquo;</td>
+<td style="text-align:center">&lsquo;M/d/yy&rsquo;</td>
+<td style="text-align:left">e.g. 2/9/18</td>
 </tr>
 <tr>
-<td align="center">&lsquo;mediumDate&rsquo;</td>
-<td align="center">&lsquo;MMM d, y&rsquo;</td>
-<td align="left">e.g. Feb 9, 2018</td>
+<td style="text-align:center">&lsquo;mediumDate&rsquo;</td>
+<td style="text-align:center">&lsquo;MMM d, y&rsquo;</td>
+<td style="text-align:left">e.g. Feb 9, 2018</td>
 </tr>
 <tr>
-<td align="center">&lsquo;longDate&rsquo;</td>
-<td align="center">&lsquo;MMMM d, y&rsquo;</td>
-<td align="left">e.g. February 9, 2018</td>
+<td style="text-align:center">&lsquo;longDate&rsquo;</td>
+<td style="text-align:center">&lsquo;MMMM d, y&rsquo;</td>
+<td style="text-align:left">e.g. February 9, 2018</td>
 </tr>
 <tr>
-<td align="center">&lsquo;fullDate&rsquo;</td>
-<td align="center">&lsquo;EEEE, MMMM d, y&rsquo;</td>
-<td align="left">e.g. Friday, February 9, 2018</td>
+<td style="text-align:center">&lsquo;fullDate&rsquo;</td>
+<td style="text-align:center">&lsquo;EEEE, MMMM d, y&rsquo;</td>
+<td style="text-align:left">e.g. Friday, February 9, 2018</td>
 </tr>
 <tr>
-<td align="center">&lsquo;short&rsquo;</td>
-<td align="center">&lsquo;M/d/yy, h:mm a&rsquo;</td>
-<td align="left">e.g. 2/9/18, 5:40 PM</td>
+<td style="text-align:center">&lsquo;short&rsquo;</td>
+<td style="text-align:center">&lsquo;M/d/yy, h:mm a&rsquo;</td>
+<td style="text-align:left">e.g. 2/9/18, 5:40 PM</td>
 </tr>
 <tr>
-<td align="center">&lsquo;medium&rsquo;</td>
-<td align="center">&lsquo;MMM d, y, h:mm:ss a&rsquo;</td>
-<td align="left">e.g. Feb 9, 2018, 5:40:22 PM</td>
+<td style="text-align:center">&lsquo;medium&rsquo;</td>
+<td style="text-align:center">&lsquo;MMM d, y, h:mm:ss a&rsquo;</td>
+<td style="text-align:left">e.g. Feb 9, 2018, 5:40:22 PM</td>
 </tr>
 <tr>
-<td align="center">&lsquo;long&rsquo;</td>
-<td align="center">&lsquo;MMMM d, y, h:mm:ss a z&rsquo;</td>
-<td align="left">e.g. February 9, 2018 at 5:40:22 PM GMT+8</td>
+<td style="text-align:center">&lsquo;long&rsquo;</td>
+<td style="text-align:center">&lsquo;MMMM d, y, h:mm:ss a z&rsquo;</td>
+<td style="text-align:left">e.g. February 9, 2018 at 5:40:22 PM GMT+8</td>
 </tr>
 <tr>
-<td align="center">&lsquo;full&rsquo;</td>
-<td align="center">&lsquo;EEEE, MMMM d, y, h:mm:ss a zzzz&rsquo;</td>
-<td align="left">e.g. Friday, February 9, 2018 at 5:40:22 PM GMT+08:00</td>
+<td style="text-align:center">&lsquo;full&rsquo;</td>
+<td style="text-align:center">&lsquo;EEEE, MMMM d, y, h:mm:ss a zzzz&rsquo;</td>
+<td style="text-align:left">e.g. Friday, February 9, 2018 at 5:40:22 PM GMT+08:00</td>
 </tr>
 </tbody>
 </table>
