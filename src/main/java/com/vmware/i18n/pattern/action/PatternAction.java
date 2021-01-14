@@ -10,25 +10,25 @@ import com.vmware.i18n.utils.timezone.TimeZoneName;
 
 public class PatternAction {
 
-	private static PatternAction instance = null;
-	private IPatternService service = null;
+    private static PatternAction instance = null;
+    private IPatternService service = null;
 
-	private PatternAction() {
-		service = new PatternServiceImpl();
-	}
+    private PatternAction() {
+        service = new PatternServiceImpl();
+    }
 
-	public static synchronized PatternAction getInstance() {
-		if ( instance == null ) {
+	public static PatternAction getInstance() {
+		if (instance == null) {
 			instance = new PatternAction();
 		}
 		return instance;
 	}
 
-	public String getPattern(String locale, String categories) {
-		return service.getPattern(locale, categories);
-	}
-
-	public TimeZoneName getTimeZoneName(String locale, boolean defaultTerritory) {
-		return service.getTimeZoneName(locale, defaultTerritory);
-	}
+    public String getPattern(String locale, String categories) {
+        return service.getPattern(locale, categories);
+    }
+    
+    public TimeZoneName getTimeZoneName(String locale, boolean defaultTerritory) {
+        return service.getTimeZoneName(locale, defaultTerritory);
+    }
 }
