@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-01-13T19:54:18 PST">
+<meta name="revised" content="2021-01-14T13:09:42 PST">
 <title>Java Client Introduction :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -468,30 +468,37 @@
     
     
 
-<p>#Singleton Java Client Library</p>
+<h1 id="singleton-java-client-library">Singleton Java Client Library</h1>
 <p>To facilitate consumption of the Singleton Service API, internationalization(i18n) client libraries have been
 developed in several programming languages. These libraries encapsulate API calls to the Singleton service,
 significantly improving development efficiency and reducing the cost of development work.
 This section gives a high-level overview of the Singleton Java Client Library.</p>
-<h2 id="installation">Installation</h2>
-<p>The Singleton Java Client Library can be added as a dependency in your client Java application.
-Builds can be found in <a href="https://mvnrepository.com/artifact/com.vmware.singleton/singleton-client-java">https://mvnrepository.com/artifact/com.vmware.singleton/singleton-client-java</a></p>
 <h2 id="features">Features</h2>
 <ul>
 <li>Translation - retrieving localized/translated text</li>
 <li>Formatting - retrieving formatted data using CLDR-compliant, localized patterns (e.g. date, time, number, currency)</li>
 <li>Pluralization - retrieving singular/plural variations of data</li>
-<li>Pseudo-translation - generating a fake(pseudo) translation from source text. This is often used for testing purposes.for testing purposes</li>
+<li>Pseudo-translation - generating a fake(pseudo) translation from source text. This is often used for testing purposes.</li>
 <li>Client-side Localization(L10n) Cache - allows the client application to quickly serve L10n data
 without frequently communicating with the Singleton service.</li>
 </ul>
-<h2 id="globalization-modes">Globalization Modes</h2>
+<h2 id="globalizationg11n-modes">Globalization(G11n) Modes</h2>
+<p>A Java client application can be configured in one of the following modes.</p>
 <ul>
-<li>Online</li>
-<li>Offline</li>
+<li>Online - The Singleton service serves localized resources to the client application over HTTP.</li>
+<li>Offline - The client application uses localized resources that are stored in locally bundled files.</li>
 </ul>
+<p>Note: The client application can also be configured with both Online and Offline modes enabled. In this case,
+then Offline Mode will only be used as fallback in case of a Singleton service call failure.</p>
+<h2 id="installation">Installation</h2>
+<p>The Singleton Java Client Library must be added as a dependency in your client Java application.
+Builds can be found in <a href="https://mvnrepository.com/artifact/com.vmware.singleton/singleton-client-java">this</a> Maven repository.
+You may also see a sample application <a href="https://github.com/vmware/singleton/tree/g11n-java-client/sample-client-app">here</a>.</p>
 <h2 id="configuration">Configuration</h2>
-<p>The following parameters make up the Singleton configuration of a client application:</p>
+<p>The following properties make up the Singleton configuration of a client application.
+Store them in a Properties file, and put the file in the application classpath.
+See the <a href="https://github.com/vmware/singleton/blob/g11n-java-client/sample-client-app/src/main/resources/sampleconfig.properties">configuration file</a>
+in the sample application for reference.</p>
 <ul>
 <li>productName - (Required) The name of the product with resources that are localized in the Singleton service.</li>
 <li>version: (Required) Corresponds to the versioned set of localized resources of the specified product.</li>
@@ -499,24 +506,45 @@ without frequently communicating with the Singleton service.</li>
 If this parameter is not present, it means that Online Mode is not supported.</li>
 <li>offlineResourcesBaseUrl: (Optional if viServer is present) The classpath of locally bundled localized resources.
 If this parameter is present, then Offline Mode is supported. If the vipServer parameter is also present,
-then Offline Mode will only be used as fallback mechanism in case of a Singleton service call failure.</li>
+then Offline Mode will only be used as fallback in case of a Singleton service call failure.</li>
 <li>initializeCache - (Default: false) If true, it initializes the client-side G11n cache at application start up.</li>
 <li>pseudo - (Default: false) If true, pseudo-translation is enabled which means that the get translation API endpoint will
 return a fake(pseudo) translation generated from the source text instead of returning the text in its localized form.</li>
-<li>machineTranslation - (Default: false) Returns the MT (Machine Translation) output or not. The default value is false. Turned off at the server side by default.</li>
-<li><em>true: Returns the MT (Machine Translation) output, regardless of whether the existing translation is here.</em></li>
-<li><em>false: Returns the translation in a normal way.</em></li>
+<li>machineTranslation - (Default: false) If true, the get translation API endpoint will return a machine-generated
+translation(Machine Translation or MT). Note: This feature is off by default in Singleton service (server side).</li>
 </ul>
+<h2 id="initialization">Initialization</h2>
+<p>A few objects provided by the Singleton Java Client Library has to be instantiated and initialized before
+using the API. This includes loading the configuration parameters from the Properties file above.
+See how this is done in the <a href="https://github.com/vmware/singleton/blob/g11n-java-client/sample-client-app/src/main/java/com/vmware/vipclient/sample/Main.java">sample application</a>.</p>
 <h2 id="api">API</h2>
-<h3 id="translation">Translation</h3>
-<p>See Javadoc at <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/javadoc/com/vmware/vipclient/i18n/base/instances/TranslationMessage.html">https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/javadoc/com/vmware/vipclient/i18n/base/instances/TranslationMessage.html</a>.</p>
-<h3 id="formatting">Formatting</h3>
-<h4 id="date">Date</h4>
-<p>See Javadoc at <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/javadoc/com/vmware/vipclient/i18n/base/instances/DateFormatting.html">https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/javadoc/com/vmware/vipclient/i18n/base/instances/DateFormatting.html</a>.</p>
-<h4 id="number">Number</h4>
-<p>See Javadoc at <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/javadoc/com/vmware/vipclient/i18n/base/instances/NumberFormatting.html">https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/javadoc/com/vmware/vipclient/i18n/base/instances/NumberFormatting.html</a></p>
-<h3 id="supported-locales">Supported Locales</h3>
-<p>See Javadoc at <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/javadoc/com/vmware/vipclient/i18n/base/instances/LocaleMessage.html">https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/javadoc/com/vmware/vipclient/i18n/base/instances/LocaleMessage.html</a></p>
+<p>After initialization, the client application may already use the following API to access localized content:</p>
+<table>
+<thead>
+<tr>
+<th>L10n Data Type</th>
+<th>Javadoc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Translation</td>
+<td><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/javadoc/com/vmware/vipclient/i18n/base/instances/TranslationMessage.html">TranslationMessage</a></td>
+</tr>
+<tr>
+<td>Date</td>
+<td><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/javadoc/com/vmware/vipclient/i18n/base/instances/DateFormatting.html">DateFormatting</a></td>
+</tr>
+<tr>
+<td>Number</td>
+<td><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/javadoc/com/vmware/vipclient/i18n/base/instances/NumberFormatting.html">NumberFormatting</a></td>
+</tr>
+<tr>
+<td>Supported Locales</td>
+<td><a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/javadoc/com/vmware/vipclient/i18n/base/instances/LocaleMessage.html">LocaleMessage</a></td>
+</tr>
+</tbody>
+</table>
 
 
 
