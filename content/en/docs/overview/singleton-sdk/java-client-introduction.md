@@ -43,10 +43,11 @@ in the sample application for reference.
 - productName - (Required) The name of the product with resources that are localized in the Singleton service.
 - version: (Required) Corresponds to the versioned set of localized resources of the specified product.  
 - vipServer: (Optional) The HTTP url of the Singleton service's host (<http/s>://\<hostname>/\<ip>:\<port>>).
-If this parameter is not present, it means that Online Mode is not supported.
-- offlineResourcesBaseUrl: (Optional if viServer is present) The classpath of locally bundled localized resources.
-If this parameter is present, then Offline Mode is supported. If the vipServer parameter is also present, 
-then Offline Mode will only be used as fallback in case of a Singleton service call failure.
+Note: If this parameter is not present, it means that Online Mode is disabled.
+- offlineResourcesBaseUrl: (Optional if viServer is present) The location of localized resources (locally bundled JSON files) 
+relative to the application classpath. See sample JSON files in 
+[here](https://github.com/vmware/singleton/tree/g11n-java-client/sample-client-app/src/main/resources/offlineBundles).
+Note: If this parameter is not present, then Offline Mode is disabled. 
 - initializeCache - (Default: false) If true, it initializes the client-side G11n cache at application start up.
 - pseudo - (Default: false) If true, pseudo-translation is enabled which means that the get translation API endpoint will 
 return a fake(pseudo) translation generated from the source text instead of returning the text in its localized form.
