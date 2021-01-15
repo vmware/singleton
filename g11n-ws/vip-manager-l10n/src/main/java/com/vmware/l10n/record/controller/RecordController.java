@@ -87,7 +87,6 @@ public class RecordController {
 			lastModifyTime = Long.parseLong(longDate);
 		} catch (Exception e) {
 			logger.warn("parse lastModify error: {}", longDate);
-			lastModifyTime = 0;
 		}
 		List<RecordModel> recordList = recordService.getChangedRecordsS3(productName, version, lastModifyTime);
 		logger.info("s3records size {}", recordList.size());

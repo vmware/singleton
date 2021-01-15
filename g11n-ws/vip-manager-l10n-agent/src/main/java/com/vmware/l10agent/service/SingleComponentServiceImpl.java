@@ -191,7 +191,7 @@ public class SingleComponentServiceImpl implements SingleComponentService{
           logger.info("source:{}", srcValue);
         try {
             logger.info("-----Start to send source----------");
-            logger.debug(key+"----------"+srcValue);
+            logger.debug("{}----------{}", key, srcValue);
             String response = postData(srcValue, urlStr.toString().replaceAll(" ", "%20"));
             logger.info(response);
           JSONObject resultJsonObj = JSONObject.parseObject(response);

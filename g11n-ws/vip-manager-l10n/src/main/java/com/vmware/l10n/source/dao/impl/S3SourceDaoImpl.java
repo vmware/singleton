@@ -117,6 +117,7 @@ public class S3SourceDaoImpl implements SourceDao {
 		
 		List<RecordModel> records = new ArrayList<RecordModel>();
 		ListObjectsV2Request req = new ListObjectsV2Request().withBucketName(config.getBucketName());
+		
 	    String latestJsonFile = ConstantsFile.LOCAL_FILE_SUFFIX+ConstantsChar.UNDERLINE+ConstantsKeys.LATEST+ConstantsFile.FILE_TPYE_JSON;
 		StringBuilder prefix = new StringBuilder();
 		prefix.append(this.basePath);
@@ -130,6 +131,7 @@ public class S3SourceDaoImpl implements SourceDao {
 		}
 	    logger.info("begin getUpdateRecords lastModyTime: {}, prefix: {}", lastModifyTime, this.basePath);
 	    req.setPrefix(prefix.toString());
+	    
         ListObjectsV2Result result;
         do {
             result = s3Client.getS3Client().listObjectsV2(req);

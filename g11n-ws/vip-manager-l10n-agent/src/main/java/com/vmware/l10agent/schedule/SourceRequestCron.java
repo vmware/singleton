@@ -80,7 +80,7 @@ public class SourceRequestCron {
 		String basePath =  baseFile.getAbsolutePath();
 		logger.info("File absolute path: {}", path);
 		basePath = basePath+File.separator;
-	    logger.info(basePath);
+	    logger.debug(basePath);
 		String resultStr = path.replace(basePath, "");
 		logger.debug(resultStr);
 		String pattern = File.separator;
@@ -105,7 +105,6 @@ public class SourceRequestCron {
 			}
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			logger.error("convert collect resouce error ",e);
 		}
 
@@ -120,8 +119,6 @@ public class SourceRequestCron {
 				try {
 					TaskSysnQueues.SendComponentTasks.put(model);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					
 					logger.error(e.getMessage(), e);
 					 Thread.currentThread().interrupt();
 				}
@@ -200,11 +197,10 @@ public class SourceRequestCron {
 		if (component != null && !component.getMessages().isEmpty() ) {
 			boolean write = singleComponentService.writerComponentFile(component);
 			if(!write) {
-				logger.error("write local ComponentSourceModel error! record-{}-{}-{}-{}",record.getProduct(), record.getVersion(), record.getComponent());
+				logger.error("write local ComponentSourceModel error! record-{}-{}-{}",record.getProduct(), record.getVersion(), record.getComponent());
 				try {
 					TaskSysnQueues.SendComponentTasks.put(record);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					logger.error(e.getMessage(), e);
 					Thread.currentThread().interrupt();
 				}
@@ -252,7 +248,6 @@ public class SourceRequestCron {
 	    	 try {
 				TaskSysnQueues.SendComponentTasks.put(rm);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				logger.error(e.getMessage(), e);
 				Thread.currentThread().interrupt();
 			}
@@ -281,7 +276,6 @@ public class SourceRequestCron {
 				HashMap<String,List<String>> arry = JSON.parseObject(result, HashMap.class);
 				return arry;
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
