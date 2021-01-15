@@ -190,12 +190,17 @@ namespace SingletonClient.Implementation
     {
         private IConfigItem _root;
 
-        private readonly string _resourceBaseName;
         private readonly Assembly _resourceAssembly;
 
-        public SingletonConfig(string resourceBaseName, Assembly resourceAssembly)
+        private class SingletonConfigReach
         {
-            _resourceBaseName = resourceBaseName;
+            public IConfigItem _componentItem;
+            public IConfigItem _templateItem;
+            public IConfigItem _localesItem;
+        }
+
+        public SingletonConfig(Assembly resourceAssembly)
+        {
             _resourceAssembly = resourceAssembly;
         }
 
@@ -251,43 +256,71 @@ namespace SingletonClient.Implementation
             return (componentItem == null) ? null : componentItem.GetMapItem(key);
         }
 
-        private IConfigItem GetLocalesItem(string component)
+        private SingletonConfigReach GetLocalesItem(string component)
         {
-            IConfigItem componentItem = GetComponentArrayItem(component);
-            IConfigItem localesItem = (componentItem == null) ?
-                null : componentItem.GetMapItem(ConfigConst.KeyLocales);
+            SingletonConfigReach reach = new SingletonConfigReach();
 
-            if (componentItem != null && localesItem == null)
+            reach._componentItem = GetComponentArrayItem(component);
+            if (reach._componentItem == null)
             {
-                localesItem = GetItem(ConfigConst.KeyLocales);
+                return reach;
             }
-            return localesItem;
+
+            reach._localesItem = reach._componentItem.GetMapItem(ConfigConst.KeyLocales);
+            if (reach._localesItem != null)
+            {
+                return reach;
+            }
+
+            IConfigItem templateItem = reach._componentItem.GetMapItem(ConfigConst.KeyTemplate);
+            string templateName = (templateItem == null) ? ConfigConst.KeyComponentTemplate : templateItem.GetString();
+            reach._templateItem = GetItem(templateName);
+            if (reach._templateItem == null)
+            {
+                return reach;
+            }
+
+            reach._localesItem = reach._templateItem.GetMapItem(ConfigConst.KeyLocales);
+            if (reach._localesItem != null)
+            {
+                return reach;
+            }
+
+            IConfigItem localesReferItem = reach._templateItem.GetMapItem(ConfigConst.KeyLocalesRefer);
+            if (localesReferItem != null)
+            {
+                string localesReferName = localesReferItem.GetString();
+                reach._localesItem = this.GetItem(localesReferName);
+            }
+
+            return reach;
         }
 
         public List<string> GetLocaleList(string component)
         {
-            IConfigItem localesItem = GetLocalesItem(component);
-            if (localesItem == null)
+            SingletonConfigReach reach = GetLocalesItem(component);
+            if (reach._localesItem == null)
             {
                 return new List<string>();
             }
-            return localesItem.GetArrayItemList(ConfigConst.KeyLanguage);
+            return reach._localesItem.GetArrayItemList(ConfigConst.KeyLanguage);
         }
 
         public IConfigItem GetLocaleAttribute(string component, string locale, string key)
         {
-            IConfigItem localesItem = GetLocalesItem(component);
-            IConfigItem localeItem = (localesItem == null) ? null :
-                localesItem.GetArrayItem(ConfigConst.KeyLanguage, locale);
+            SingletonConfigReach reach = GetLocalesItem(component);
+            IConfigItem localeItem = (reach._localesItem == null) ? null :
+                reach._localesItem.GetArrayItem(ConfigConst.KeyLanguage, locale);
             if (localeItem != null)
             {
-                localeItem = localeItem.GetMapItem(key);
-                if (localeItem == null && ConfigConst.KeyOfflinePath.Equals(key))
+                IConfigItem item = localeItem.GetMapItem(key);
+                if (item == null && ConfigConst.KeyOfflinePath.Equals(key) && reach._templateItem != null)
                 {
-                    localeItem = this.GetItem(key);
+                    item = reach._templateItem.GetMapItem(ConfigConst.KeyOfflinePath);
                 }
+                return item;
             }
-            return localeItem;
+            return null;
         }
 
         /// <summary>
@@ -295,10 +328,10 @@ namespace SingletonClient.Implementation
         /// </summary>
         /// <param name="resourceName"></param>
         /// <returns></returns>
-        public string ReadResourceText(string resourceName)
+        public string ReadResourceText(string resourceBaseName, string resourceName)
         {
             Byte[] bytes = SingletonUtil.ReadResource(
-                _resourceBaseName, _resourceAssembly, resourceName);
+                resourceBaseName, _resourceAssembly, resourceName);
             string text = SingletonUtil.ConvertToText(bytes);
             return text;
         }
@@ -320,9 +353,6 @@ namespace SingletonClient.Implementation
                 locale = ConfigConst.DefaultLocale;
             }
 
-            string[] parts = _resourceAssembly.FullName.Split(new char[] { ',' });
-            resourceName = parts[0] + "." + resourceName;
-
             if (ConfigConst.FormatResx.Equals(format))
             {
                 return SingletonUtil.ReadResourceMap(resourceName, locale, _resourceAssembly);
@@ -336,14 +366,15 @@ namespace SingletonClient.Implementation
     {
         private readonly IConfig _config;
 
-        private readonly string _offlineUrl;
+        private readonly string _internalRoot;
         private readonly string _serviceUrl;
+        private readonly string _defaultResourceFormat;
 
-        private string _product;
-        private string _version;
+        private readonly string _product;
+        private readonly string _version;
 
-        private string _bundleRoot;
-        private List<string> _externalComponentList;
+        private readonly string _bundleRoot;
+        private readonly List<string> _externalComponentList = new List<string>();
 
         private readonly bool _isProductMode;
         private readonly bool _isOnlineSupported;
@@ -355,51 +386,61 @@ namespace SingletonClient.Implementation
         {
             _config = config;
 
-            string _onlineUrl = GetTextWithDefault(ConfigConst.KeyOnlineUrl, null);
-            _offlineUrl = GetTextWithDefault(ConfigConst.KeyOfflineUrl, null);
+            // Get product name and l10n version
+            _product = GetTextWithDefault(ConfigConst.KeyProduct, null);
+            _version = GetTextWithDefault(ConfigConst.KeyVersion, null);
 
-            if (_onlineUrl != null)
-            {
-                string[] strings = (_onlineUrl + "/").Replace("//", "/").Split('/');
-                _serviceUrl = strings[0] + "//" + strings[1];
-                ExtractProductInfo(strings);
-            }
-            if (_offlineUrl != null)
-            {
-                _bundleRoot = _offlineUrl.Replace("file:///", "").Replace("://", "\x01");
-                _bundleRoot = (_bundleRoot + "/").Replace("//", "/");
-                string[] strings = _bundleRoot.Split('/');
-                ExtractProductInfo(strings);
-
-                BuildExternalComponentList();
-                _bundleRoot = _bundleRoot.Replace("\x01", "://");
-            }
-
+            // Check if it is in product mode
             IConfigItem configItem = _config.GetItem(ConfigConst.KeyProductMode);
-            _isProductMode = true;
-            if (configItem != null)
-            {
-                _isProductMode = configItem.GetBool();
-            }
+            _isProductMode = (configItem == null) || configItem.GetBool();
 
+            // Get online url
+            _serviceUrl = GetTextWithDefault(ConfigConst.KeyOnlineUrl, null);
             _isOnlineSupported = !string.IsNullOrEmpty(GetServiceUrl());
-            _isOfflineSupported = !string.IsNullOrEmpty(_offlineUrl);
 
+            // Check offline config
+            string offlineUrl = GetTextWithDefault(ConfigConst.KeyOfflineUrl, null);
+            if (offlineUrl != null)
+            {
+                // Handle default resource format
+                configItem = _config.GetItem(ConfigConst.KeyDefaultResourceFormat);
+                string resourceFormat = (configItem != null && configItem.GetString().Length > 0) ?
+                    configItem.GetString() + "," + ConfigConst.StoreTypeInternal : "resx, internal";
+                string[] parts = Regex.Split(resourceFormat.Trim(), "[\\s]*\\,[\\s]*");
+                bool isDefaultResourceInternal = parts[1].Equals(ConfigConst.StoreTypeInternal);
+                _defaultResourceFormat = parts[0] + "," + parts[1];
+
+                // Get internal resource root
+                _internalRoot = isDefaultResourceInternal ?
+                    offlineUrl : GetTextWithDefault(ConfigConst.KeyInternalResourceRoot, null);
+
+                // Get external resource root
+                string external = isDefaultResourceInternal ?
+                    GetTextWithDefault(ConfigConst.KeyExternalResourceRoot, null) : offlineUrl;
+                if (external != null)
+                {
+                    _bundleRoot = external.Replace("file:///", "").Replace("://", "\x01");
+                    _bundleRoot = (_bundleRoot + "/").Replace("//", "/");
+
+                    BuildExternalComponentList(external);
+                    _bundleRoot = _bundleRoot.Replace("\x01", "://");
+                }
+            }
+            _isOfflineSupported = !string.IsNullOrEmpty(offlineUrl);
+
+            // Get default locale and source locale
             ISingletonLocale defaultLocale = SingletonUtil.GetSingletonLocale(GetDefaultLocale());
             ISingletonLocale sourceLocale = SingletonUtil.GetSingletonLocale(GetSourceLocale());
             _isSourceDefault = defaultLocale.Compare(sourceLocale);
 
+            // Get if messages need to be prepared during startup
             configItem = _config.GetItem(ConfigConst.KeyLoadOnStartup);
-            _isLoadOnStartup = false;
-            if (configItem != null)
-            {
-                _isLoadOnStartup = configItem.GetBool();
-            }
+            _isLoadOnStartup = (configItem != null) && configItem.GetBool();
         }
 
-        private void BuildExternalComponentList()
+        private void BuildExternalComponentList(string external)
         {
-            if (string.IsNullOrEmpty(_bundleRoot) || !_offlineUrl.StartsWith("file:"))
+            if (string.IsNullOrEmpty(_bundleRoot) || !external.StartsWith("file:"))
             {
                 return;
             }
@@ -409,7 +450,7 @@ namespace SingletonClient.Implementation
             {
                 DirectoryInfo[] dirinfo = dir.GetDirectories();
 
-                _externalComponentList = new List<string>();
+                _externalComponentList.Clear();
                 for (int i = 0; i < dirinfo.Length; i++)
                 {
                     _externalComponentList.Add(dirinfo[i].Name);
@@ -424,28 +465,6 @@ namespace SingletonClient.Implementation
         public IConfig GetConfig()
         {
             return _config;
-        }
-
-        private void ExtractProductInfo(string[] strings)
-        {
-            _version = GetTextWithDefault(ConfigConst.KeyVersion, null);
-
-            if (string.IsNullOrEmpty(_version))
-            {
-                if (strings.Length >= 3)
-                {
-                    _version = strings[strings.Length - 2];
-                    _product = strings[strings.Length - 3];
-                }
-            }
-            else
-            {
-                if (strings.Length >= 2)
-                {
-                    _product = strings[strings.Length - 2];
-                    _bundleRoot = (_bundleRoot + "/" + _version + "/").Replace("//", "/");
-                }
-            }
         }
 
         public string GetProduct()
@@ -577,14 +596,12 @@ namespace SingletonClient.Implementation
 
         public string GetInternalResourceRoot()
         {
-            IConfigItem configItem = _config.GetItem(ConfigConst.KeyInternalResourceRoot);
-            return (configItem == null) ? null : configItem.GetString();
+            return _internalRoot;
         }
 
         public string GetDefaultResourceFormat()
         {
-            IConfigItem configItem = _config.GetItem(ConfigConst.KeyDefaultResourceFormat);
-            return (configItem == null) ? null : configItem.GetString();
+            return _defaultResourceFormat;
         }
 
         public bool IsOnlineSupported()
@@ -609,7 +626,7 @@ namespace SingletonClient.Implementation
 
         public List<string> GetExternalLocaleList(string component)
         {
-            if (this._externalComponentList == null)
+            if (this._externalComponentList.Count == 0)
             {
                 return SingletonUtil.GetEmptyStringList();
             }

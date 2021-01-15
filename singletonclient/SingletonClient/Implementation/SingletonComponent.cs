@@ -4,6 +4,7 @@
  */
 
 using Newtonsoft.Json.Linq;
+using SingletonClient.Implementation.Support;
 using System.Collections;
 using System.Text.RegularExpressions;
 
@@ -15,6 +16,8 @@ namespace SingletonClient.Implementation
 
         ISingletonAccessTask GetAccessTask();
 
+        void GetDataFromLocal();
+
         int GetDataCount();
     }
 
@@ -23,17 +26,20 @@ namespace SingletonClient.Implementation
         private readonly ISingletonRelease _releaseObject;
         private readonly IComponentMessages _componentCache;
 
+        private readonly ISingletonLocale _singletonLocale;
         private readonly string _locale;
         private readonly string _component;
 
         private string _etag;
+        private bool _localHandled = false;
 
         private readonly ISingletonAccessTask _task;
 
-        public SingletonComponent(ISingletonRelease releaseObject, string locale, string component)
+        public SingletonComponent(ISingletonRelease releaseObject, ISingletonLocale singletonLocale, string component)
         {
             _releaseObject = releaseObject;
-            _locale = locale;
+            _singletonLocale = singletonLocale;
+            _locale = _singletonLocale.GetOriginalLocale();
             _component = component;
 
             ISingletonConfig config = releaseObject.GetSingletonConfig();
@@ -43,7 +49,7 @@ namespace SingletonClient.Implementation
             _task = new SingletonAccessRemoteTask(this, interval, tryDelay);
 
             ICacheMessages productCache = releaseObject.GetReleaseMessages();
-            ILocaleMessages langCache = productCache.GetLocaleMessages(locale);
+            ILocaleMessages langCache = productCache.GetLocaleMessages(_locale);
             _componentCache = langCache.GetComponentMessages(component);
         }
 
@@ -86,6 +92,25 @@ namespace SingletonClient.Implementation
                 {
                     _componentCache.SetString(item.Key.ToString(), item.Value.ToString());
                 }
+            }
+            else if (!obj.HasValues)
+            {
+                GetDataFromLocal();
+            }
+        }
+
+        public void GetDataFromLocal()
+        {
+            if (_localHandled)
+            {
+                return;
+            }
+            _localHandled = true;
+
+            ISingletonConfig config = _releaseObject.GetSingletonConfig();
+            if (config.IsOfflineSupported())
+            {
+                _releaseObject.GetUpdate().LoadOfflineBundle(_singletonLocale);
             }
         }
 

@@ -14,6 +14,9 @@ namespace ClientTestApp
 {
     class Program
     {
+        private static int endWait = 0;
+        private static int selection = 0;
+
         private string TestFormat(string strFormat, params object[] args)
         {
             int n = args.Length;
@@ -23,8 +26,8 @@ namespace ClientTestApp
 
         private void Init()
         {
-            new Function1().Involve();
-            new Function2().Involve();
+            endWait = new Function1().Involve(endWait);
+            endWait = new Function2().Involve(selection, endWait);
         }
 
         private void Work()
@@ -155,13 +158,17 @@ namespace ClientTestApp
 
         static void Main(string[] args)
         {
+            if (args.Length > 0)
+            {
+                selection = Convert.ToInt32(args[0]);
+            }
             Console.WriteLine("Hello World!");
 
             new Program().Work();
             //new Program().WorkIcu("ab", 12);
 
             Console.WriteLine("--- End --- ");
-            Thread.Sleep(1000 * 60);
+            Thread.Sleep(1000 * endWait);
         }
     }
 }

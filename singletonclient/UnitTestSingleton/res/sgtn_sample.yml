@@ -1,13 +1,14 @@
 ﻿
-online_service_url: http://127.0.0.1:8090/singleton/CSHARP/
-offline_resources_base_url: file:///d:/l10n/CSHARP/
+product: CSHARP
 l10n_version: 1.0.0
+
+online_service_url: http://127.0.0.1:8090
+
+offline_resources_base_url: res
+default_resource_format: properties, internal
 
 prod_mode: false
 default_locale: en-US
-
-internal_resources_root: res
-default_resource_format: properties, internal
 
 # optional, access service type
 access_service_type: test
@@ -25,28 +26,25 @@ logger_type: default
 log_level: Debug
 
 
+locales: # as default
+  - language_tag: en-US
+
+component_template_resx:
+  locales_refer: locales
+  offline_resources_path:
+    - source.$COMPONENT, resx
+
+component_template: # as default
+  locales_refer: locales
+  offline_resources_path:
+    - Singleton__ITEMNAME__$COMPONENT
+
 components: 
   - name: about
-    locales:
-      - language_tag: en-US
-        offline_resources_path: 
-          - source.about, resx
+    template: component_template_resx
 
   - name: index
-    locales:
-      - language_tag: en-US
-        offline_resources_path: 
-          - index
+    template: component_template # default
 
   - name: contact
-    locales:
-      - language_tag: en-US
-        offline_resources_path: 
-          - contact
-
-  - name: common
-    locales:
-      - language_tag: en-US
-        offline_resources_path: 
-          - common
 

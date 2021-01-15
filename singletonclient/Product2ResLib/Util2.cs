@@ -11,19 +11,18 @@ namespace Product2ResLib
 {
     class Values
     {
-        private static string nameSpace = 
-            System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace;
-        public static string BASE_RES_NAME = nameSpace + ".SingletonRes.Singleton";
+        public static string RES_NAME = "SingletonRes.Singleton";
         public static Assembly assembly = typeof(Values).Assembly;
     }
 
     public class Util2
     {
         private static IRelease rel;
-        private static int count = 1;
+        private static int count;
 
-        public static void Init()
+        public static void Init(int index)
         {
+            count = 1;
             new TestUtil().DoSomething();
 
             string[] configNames =
@@ -46,22 +45,20 @@ namespace Product2ResLib
 
                 "sgtn_online_only_component",
 
-                "sgtn_online_with_internal",
-
                 "sgtn_online_with_external",
+
+                "sgtn_online_with_internal",
 
                 "sgtn_sample_comment",
 
 
-                "singleton_config"
+                "sgtn_sample"
             };
 
-            int index = 9;
-            Console.WriteLine(index);
-            Console.WriteLine(configNames[index]);
+            Console.WriteLine("--- config --- " + index + " --- " + configNames[index]);
 
             IConfig cfg = I18N.LoadConfig(
-                Values.BASE_RES_NAME, Values.assembly, configNames[index]);
+                Values.RES_NAME, Values.assembly, configNames[index]);
             rel = I18N.GetRelease(cfg);
         }
 

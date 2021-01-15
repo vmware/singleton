@@ -14,14 +14,6 @@ using System.Reflection;
 
 namespace Product1ResLib
 {
-    class Values
-    {
-        private static string nameSpace =
-            System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace;
-        public static string BASE_RES_NAME = nameSpace + ".SingletonRes.Singleton";
-        public static Assembly assembly = typeof(Values).Assembly;
-    }
-
     public class Util1
     {
         private static IRelease rel;
@@ -30,7 +22,7 @@ namespace Product1ResLib
         public static void Init()
         {
             IConfig cfg = I18N.LoadConfig(
-                Values.BASE_RES_NAME, Values.assembly, "singleton_config");
+                "SingletonRes.Singleton", Assembly.GetExecutingAssembly(), "singleton_config");
             rel = I18N.GetRelease(cfg);
         }
 
@@ -83,7 +75,7 @@ namespace Product1ResLib
     {
         public static void DoTest1()
         {
-            byte[] bytes = SingletonUtil.ReadResource(Values.BASE_RES_NAME, Values.assembly, "my_source");
+            byte[] bytes = SingletonUtil.ReadResource("SingletonRes.Singleton", Assembly.GetExecutingAssembly(), "my_source");
             string content = SingletonUtil.ConvertToText(bytes);
             var properties = Properties.Load(new StringReader(content));
 

@@ -32,7 +32,7 @@ namespace SingletonClient.Implementation.Support
         /// <param name="locale">locale.</param>
         /// <param name="asSource">asSource.</param>
         /// <returns>return.</returns>
-        public ILocaleMessages GetLocaleMessages(string locale, bool asSource)
+        public ILocaleMessages GetLocaleMessages(string locale, bool asSource = false)
         {
             Hashtable table = asSource ? sources : locales;
             if (locale == null)

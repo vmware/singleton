@@ -1,18 +1,20 @@
 ﻿
-offline_resources_base_url: CSHARP/1.0.0
+product: CSHARP
+l10n_version: 1.0.0
 
+offline_resources_base_url: SingletonRes
 default_resource_format: resx, internal
-internal_resources_root: SingletonRes
 
-offline_resources_path:
-  - source.$COMPONENT_$LOCALE
 
-locales:
-  - language_tag: en-US
-    offline_resources_path:
-      - source.$COMPONENT
-  - language_tag: de-DE
-  - language_tag: zh-Hans
+component_template:
+  offline_resources_path:
+    - source.$COMPONENT_$LOCALE
+  locales:
+    - language_tag: en-US
+      offline_resources_path:
+        - source.$COMPONENT
+    - language_tag: de-DE
+    - language_tag: zh-Hans
 
 components: 
   - name: about

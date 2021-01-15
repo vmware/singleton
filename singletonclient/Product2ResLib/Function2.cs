@@ -14,9 +14,18 @@ namespace Product2ResLib
 {
     public class Function2
     {
-        public void Involve()
+        private static int wait = 7;
+
+        public int Involve(int index, int endWait)
         {
-            Util2.Init();
+            int delay = 5;
+            if (index <= 5)
+            {
+                wait = 0;
+                delay = 0;
+            }
+            Util2.Init(index);
+            return endWait > delay ? endWait : delay;
         }
 
         private void Log(string text)
@@ -40,12 +49,12 @@ namespace Product2ResLib
 
         public void UseProduct()
         {
-            Thread.Sleep(7 * 1000);
+            Thread.Sleep(wait * 1000);
 
             SetCurrentLocale("de");
             GetTranslation("about", "about.message");
 
-            SetCurrentLocale("my-MY");
+            SetCurrentLocale("ur_PK");
             GetTranslation("about", "about.message");
 
             SetCurrentLocale("zh-Hans");
@@ -57,7 +66,7 @@ namespace Product2ResLib
             SetCurrentLocale("zh-Hans");
             GetTranslation("contact", "contact.applicationname");
 
-            Thread.Sleep(7 * 1000);
+            Thread.Sleep(wait * 1000);
             SetCurrentLocale("de");
             GetTranslation("about", "about.message");
 
