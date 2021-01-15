@@ -1,4 +1,4 @@
-//Copyright 2019-2020 VMware, Inc.
+//Copyright 2019-2021 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 buildscript {
     repositories {
@@ -21,7 +21,9 @@ ext {
     projectVersion = '0.0.1-SNAPSHOT'
     springBootVersion = '2.3.4.RELEASE'
     springWebVersion='5.2.9.RELEASE'
-    jacksonVersion = '2.10.0.pr1'
+    jacksonVersion = '2.11.4'
+    sqliteVersion= '3.34.0'
+    tomcatVersion= '9.0.41'
     commonsCollectionsVersion = '3.2.2'
     ehCacheVersion = '3.6.3'
     cacheApiVersion='1.1.0'
@@ -30,8 +32,9 @@ ext {
     jsonSimpleVersion = '1.1.1'
     commonsLangVersion = '3.4'
     commonsIoVersion = '2.4'
+    commonsCodecVersion='1.15'
     antVersion = '1.10.9'
-    guavaVersion="29.0-jre"
+    guavaVersion="30.1-jre"
     log4j2Version="2.13.3"
     buildRelease = 'beta'
     remoteServer = ""
