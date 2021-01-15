@@ -4,25 +4,6 @@
  */
 package com.vmware.vip.i18n.api.v2.synch;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.vip.api.rest.API;
@@ -40,8 +21,24 @@ import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO
 import com.vmware.vip.messages.synch.model.SynchFile2GitReq;
 import com.vmware.vip.messages.synch.service.SynchService;
 import com.vmware.vip.messages.synch.utils.HttpsUtils;
-
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -123,7 +120,7 @@ public class TranslationSynchController {
 
 	private APIResponseDTO handleResponse(Response response, Object data) {
 		APIResponseDTO d = new APIResponseDTO();
-		d.setData(data == null ? "" : data);
+		d.setData(data);
 		response.setServerTime(LocalDateTime.now().toString());
 		d.setResponse(response);
 		if (logger.isDebugEnabled()) {

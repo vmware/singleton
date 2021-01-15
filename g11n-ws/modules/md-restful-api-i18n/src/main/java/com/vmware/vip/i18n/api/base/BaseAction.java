@@ -51,7 +51,7 @@ public class BaseAction {
 	
 	protected APIResponseDTO handleResponse(Response response, Object data) {
 		APIResponseDTO d = new APIResponseDTO();
-		d.setData(data == null ? "" : data);
+		d.setData(data);
 		response.setServerTime(LocalDateTime.now().toString());
 		d.setResponse(response);
 		if (logger.isDebugEnabled()) {
