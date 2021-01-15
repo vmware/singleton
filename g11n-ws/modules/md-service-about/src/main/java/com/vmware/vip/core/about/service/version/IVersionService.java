@@ -11,12 +11,19 @@ import com.vmware.vip.core.about.exception.AboutAPIException;
  */
 public interface IVersionService {
     /**
-     * Get the build's version information, including service's version info and product's translation's version info.
+     * Get Singleton code's version
+     *
+     * @return
+     */
+    public ServiceVersionDTO getServiceVersion();
+
+    /**
+     * Get product's translation's version
      *
      * @param productName
      * @param version
      * @return
      * @throws AboutAPIException
      */
-    public BuildVersionDTO getBuildVersion(String productName, String version) throws AboutAPIException;
+    public BundleVersionDTO getBundleVersion(String productName, String version) throws AboutAPIException;
 }
