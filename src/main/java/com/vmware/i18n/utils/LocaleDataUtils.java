@@ -20,9 +20,9 @@ public class LocaleDataUtils {
 
 	private static Logger logger = LoggerFactory.getLogger(LocaleDataUtils.class);
 
-	private static volatile LocaleDataUtils instance;
+	private static LocaleDataUtils instance;
 
-	public static LocaleDataUtils getInstance() {
+	public static synchronized LocaleDataUtils getInstance() {
 		if (instance == null) {
 			instance = new LocaleDataUtils();
 		}

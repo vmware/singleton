@@ -6,25 +6,20 @@ package com.vmware.i18n.locale.action;
 
 import com.vmware.i18n.locale.service.ILocaleService;
 import com.vmware.i18n.locale.service.impl.LocaleServiceImpl;
-import com.vmware.i18n.pattern.action.PatternAction;
 import com.vmware.i18n.utils.CommonUtil;
 
 public class LocaleAction {
 
-	private static volatile LocaleAction instance = null;
+	private static LocaleAction instance = null;
 	private ILocaleService service = null;
 
 	private LocaleAction() {
 		service = new LocaleServiceImpl();
 	}
 
-	public static LocaleAction getInstance() {
-		if (null == instance) {
-			synchronized (PatternAction.class) {
-				if (null == instance) {
-					instance = new LocaleAction();
-				}
-			}
+	public static synchronized LocaleAction getInstance() {
+		if ( instance == null ) {
+			instance = new LocaleAction();
 		}
 		return instance;
 	}

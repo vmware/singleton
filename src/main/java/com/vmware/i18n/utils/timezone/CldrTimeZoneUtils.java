@@ -32,63 +32,67 @@ public class CldrTimeZoneUtils {
 	public static Map<String, JSONArray> findTimezoneKeys(JSONObject metaZonesJson) {
 		JSONObject timzone = (JSONObject) select(metaZonesJson, "supplemental.metaZones.metazoneInfo.timezone");
 		Map<String, JSONArray> result = new TreeMap<String, JSONArray>();
-		for (Entry<String, Object> entry : (Set<Map.Entry<String, Object>>) timzone.entrySet()) {
-			String zoneKeystr1 = entry.getKey();
-			Object obj1 = entry.getValue();
-			if (obj1 instanceof List) {
-				JSONArray objArry = (JSONArray) obj1;
-				JSONObject usesMetazones = (JSONObject) objArry.get(0);
-				JSONObject usesMetazoneObj = (JSONObject) usesMetazones.get(Constants.TIMEZONENAME_USES_METAZONE);
-				if (usesMetazoneObj != null) {
-					result.put(zoneKeystr1, objArry);
-					continue;
-				}
-			}
-			JSONObject jsonObj1 = (JSONObject) obj1;
-			for (Entry<String, Object> entry1 : (Set<Map.Entry<String, Object>>) jsonObj1.entrySet()) {
-				String zoneKeystr2 = entry1.getKey();
-				Object obj2 = entry1.getValue();
-				if (obj2 instanceof List) {
-					JSONArray objArry2 = (JSONArray) obj2;
-					JSONObject usesMetazones2 = (JSONObject) objArry2.get(0);
-					JSONObject usesMetazoneObj2 = (JSONObject) usesMetazones2.get(Constants.TIMEZONENAME_USES_METAZONE);
-					if (usesMetazoneObj2 != null) {
-						zoneKeystr2 = zoneKeystr1 + "/" + zoneKeystr2;
-						result.put(zoneKeystr2, objArry2);
+		if (timzone != null) {
+			for (Entry<String, Object> entry : (Set<Map.Entry<String, Object>>) timzone.entrySet()) {
+				String zoneKeystr1 = entry.getKey();
+				Object obj1 = entry.getValue();
+				if (obj1 instanceof List) {
+					JSONArray objArry = (JSONArray) obj1;
+					JSONObject usesMetazones = (JSONObject) objArry.get(0);
+					JSONObject usesMetazoneObj = (JSONObject) usesMetazones.get(Constants.TIMEZONENAME_USES_METAZONE);
+					if (usesMetazoneObj != null) {
+						result.put(zoneKeystr1, objArry);
 						continue;
 					}
 				}
-				JSONObject jsonObj2 = (JSONObject) obj2;
-				for (Entry<String, Object> entry2 : (Set<Map.Entry<String, Object>>) jsonObj2.entrySet()) {
-					String zoneKeystr3 = entry2.getKey();
-					Object obj3 = entry2.getValue();
-					if (obj3 instanceof List) {
-						JSONArray objArry3 = (JSONArray) obj3;
-						JSONObject usesMetazones3 = (JSONObject) objArry3.get(0);
-						JSONObject usesMetazoneObj3 = (JSONObject) usesMetazones3
+				JSONObject jsonObj1 = (JSONObject) obj1;
+				for (Entry<String, Object> entry1 : (Set<Map.Entry<String, Object>>) jsonObj1.entrySet()) {
+					String zoneKeystr2 = entry1.getKey();
+					Object obj2 = entry1.getValue();
+					if (obj2 instanceof List) {
+						JSONArray objArry2 = (JSONArray) obj2;
+						JSONObject usesMetazones2 = (JSONObject) objArry2.get(0);
+						JSONObject usesMetazoneObj2 = (JSONObject) usesMetazones2
 								.get(Constants.TIMEZONENAME_USES_METAZONE);
-						if (usesMetazoneObj3 != null) {
-							zoneKeystr3 = zoneKeystr1 + "/" + zoneKeystr2 + "/" + zoneKeystr3;
-							result.put(zoneKeystr3, objArry3);
+						if (usesMetazoneObj2 != null) {
+							zoneKeystr2 = zoneKeystr1 + "/" + zoneKeystr2;
+							result.put(zoneKeystr2, objArry2);
 							continue;
 						}
 					}
-					JSONObject jsonObj3 = (JSONObject) obj3;
-					for (Entry<String, Object> entry3 : (Set<Map.Entry<String, Object>>) jsonObj3.entrySet()) {
-						String zoneKeystr4 = entry3.getKey();
-						Object obj4 = entry3.getValue();
-						if (obj4 instanceof List) {
-							JSONArray objArry4 = (JSONArray) obj4;
-							JSONObject usesMetazones4 = (JSONObject) objArry4.get(0);
-							JSONObject usesMetazoneObj4 = (JSONObject) usesMetazones4
+					JSONObject jsonObj2 = (JSONObject) obj2;
+					for (Entry<String, Object> entry2 : (Set<Map.Entry<String, Object>>) jsonObj2.entrySet()) {
+						String zoneKeystr3 = entry2.getKey();
+						Object obj3 = entry2.getValue();
+						if (obj3 instanceof List) {
+							JSONArray objArry3 = (JSONArray) obj3;
+							JSONObject usesMetazones3 = (JSONObject) objArry3.get(0);
+							JSONObject usesMetazoneObj3 = (JSONObject) usesMetazones3
 									.get(Constants.TIMEZONENAME_USES_METAZONE);
-							if (usesMetazoneObj4 != null) {
-								zoneKeystr4 = zoneKeystr1 + "/" + zoneKeystr2 + "/" + zoneKeystr3 + "/" + zoneKeystr4;
-								result.put(zoneKeystr4, objArry4);
+							if (usesMetazoneObj3 != null) {
+								zoneKeystr3 = zoneKeystr1 + "/" + zoneKeystr2 + "/" + zoneKeystr3;
+								result.put(zoneKeystr3, objArry3);
 								continue;
 							}
 						}
-						System.out.println("###############there have 5 level timezone key####################");
+						JSONObject jsonObj3 = (JSONObject) obj3;
+						for (Entry<String, Object> entry3 : (Set<Map.Entry<String, Object>>) jsonObj3.entrySet()) {
+							String zoneKeystr4 = entry3.getKey();
+							Object obj4 = entry3.getValue();
+							if (obj4 instanceof List) {
+								JSONArray objArry4 = (JSONArray) obj4;
+								JSONObject usesMetazones4 = (JSONObject) objArry4.get(0);
+								JSONObject usesMetazoneObj4 = (JSONObject) usesMetazones4
+										.get(Constants.TIMEZONENAME_USES_METAZONE);
+								if (usesMetazoneObj4 != null) {
+									zoneKeystr4 = zoneKeystr1 + "/" + zoneKeystr2 + "/" + zoneKeystr3 + "/"
+											+ zoneKeystr4;
+									result.put(zoneKeystr4, objArry4);
+									continue;
+								}
+							}
+							System.out.println("###############there have 5 level timezone key####################");
+						}
 					}
 				}
 			}
@@ -108,23 +112,25 @@ public class CldrTimeZoneUtils {
 		String regionFormatTypeDaylight = (String) select(dates, "timeZoneNames.regionFormat-type-daylight");
 		String regionFormatTypeStandard = (String) select(dates, "timeZoneNames.regionFormat-type-standard");
 		String fallbackFormat = (String) select(dates, "timeZoneNames.fallbackFormat");
-		List<LinkedHashMap<String,Object>> metaZones = new ArrayList<LinkedHashMap<String,Object>>(); 
+		List<LinkedHashMap<String, Object>> metaZones = new ArrayList<LinkedHashMap<String, Object>>();
 		Map<String, JSONArray> timezoneKeysProps = findTimezoneKeys(metaZonesJson);
-		Iterator<JSONObject> iterator = arry.iterator();
 		Map<String, List<JSONObject>> mapZonesMap = new TreeMap<String, List<JSONObject>>();
-		while (iterator.hasNext()) {
-			JSONObject objZone = iterator.next();
-			String timezoneKey = (String) select(objZone, "mapZone._type");
-			if (mapZonesMap.get(timezoneKey) != null) {
-				mapZonesMap.get(timezoneKey).add(objZone);
-			} else {
-				List<JSONObject> list = new ArrayList<>();
-				list.add(objZone);
-				mapZonesMap.put(timezoneKey, list);
+		if (arry != null) {
+			Iterator<JSONObject> iterator = arry.iterator();
+			while (iterator.hasNext()) {
+				JSONObject objZone = iterator.next();
+				String timezoneKey = (String) select(objZone, "mapZone._type");
+				if (mapZonesMap.get(timezoneKey) != null) {
+					mapZonesMap.get(timezoneKey).add(objZone);
+				} else {
+					List<JSONObject> list = new ArrayList<>();
+					list.add(objZone);
+					mapZonesMap.put(timezoneKey, list);
+				}
 			}
 		}
 		for (Entry<String, JSONArray> entry : timezoneKeysProps.entrySet()) {
-			LinkedHashMap<String,Object> cldrMetaZone = new LinkedHashMap<String,Object>();
+			LinkedHashMap<String, Object> cldrMetaZone = new LinkedHashMap<String, Object>();
 			String timezoneKey = entry.getKey();
 			cldrMetaZone.put(Constants.TIMEZONENAME_METAZONE_TIMEZONEKEY, timezoneKey);
 			String timeZone = findTimeZone(timezoneKey, gmtFormat, gmtZeroFormat, hourFormat);
@@ -134,7 +140,7 @@ public class CldrTimeZoneUtils {
 			cldrMetaZone.put(Constants.TIMEZONENAME_METAZONE_EXEMPLARCITY, exemplarCity);
 			cldrMetaZone.put(Constants.TIMEZONENAME_METAZONE_TIMEZONE, timeZone);
 			Iterator<JSONObject> metaiterator = mataZoneP.iterator();
-			List<Map<String,Object>> usesMetazones = new ArrayList<Map<String,Object>>();
+			List<Map<String, Object>> usesMetazones = new ArrayList<Map<String, Object>>();
 			while (metaiterator.hasNext()) {
 				JSONObject objZone = metaiterator.next();
 				Map<String, Object> usesMetazoneMap = new TreeMap<String, Object>();
@@ -202,7 +208,7 @@ public class CldrTimeZoneUtils {
 			return MessageFormat.format(gmtFormat, outputFormat.format(date));
 
 		} else if (offset < 0) {
-			Date date = new Date(0 - offset);
+			Date date = new Date(0 - (long) offset);
 			SimpleDateFormat outputFormat = new SimpleDateFormat(hourFormat.split(";")[1].trim());
 			outputFormat.setTimeZone(TimeZone.getTimeZone(gmtZeroFormat));
 			return MessageFormat.format(gmtFormat, outputFormat.format(date));
