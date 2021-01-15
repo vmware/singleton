@@ -4,21 +4,20 @@
  */
 package com.vmware.vip.core.except;
 
-import java.text.MessageFormat;
-
-import com.vmware.vip.core.about.exception.AboutAPIException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.vmware.vip.common.exceptions.VIPHttpException;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.common.i18n.status.Response;
+import com.vmware.vip.core.about.exception.AboutAPIException;
 import com.vmware.vip.core.messages.exception.L2APIException;
 import com.vmware.vip.core.messages.exception.L3APIException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.text.MessageFormat;
 
 @ControllerAdvice
 public class ExceptionHandle {
@@ -28,7 +27,6 @@ public class ExceptionHandle {
 	@ResponseBody
 	public APIResponseDTO handler(Exception e) {
 		APIResponseDTO response = new APIResponseDTO();
-		response.setData("");
 		response.setSignature("");
 		if (e instanceof AboutAPIException) {
 			logger.error("====== About API's Exception =======");
