@@ -28,6 +28,7 @@ public class ConstantsMsg {
    public static final String PATTERN_NOT_VALIDATE = "The request pattern name is invalid";
    public static final String FIFE_NOT_FOUND= "File is not existing";
    public static final String SCOPE_FILTER_NOT_VALIDATE = "The request parameter scopeFilter is invalid, only one filtering method is supported";
+   public static final String PRODUCT_OR_VERSION_MISSING = "Only one parameter of 'productName' and 'version' is provided, they should be used in pairs!";
 
    private ConstantsMsg() {
    }
