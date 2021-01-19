@@ -22,7 +22,6 @@ public class ExceptionHandle {
 	public APIResponseDTO handler(Exception e) {
 		APIResponseDTO response = new APIResponseDTO();
 		response.setResponse(APIResponseStatus.UNKNOWN_ERROR);
-		response.setData("");
 		response.setSignature("");
 		if (e instanceof L10nAPIException) {
 			logger.error("====== L10n API's Exception =======");

@@ -46,20 +46,22 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
     }
-    compile('org.apache.tomcat.embed:tomcat-embed-core:9.0.39')
-    compile('org.apache.tomcat:tomcat-annotations-api:9.0.39')
-    compile('org.xerial:sqlite-jdbc:3.31.1')
-    compile('com.fasterxml.jackson.core:jackson-databind:2.10.0.pr1')
-    compile('com.fasterxml.jackson.core:jackson-core:2.10.0.pr1')
+    compile("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
+    compile("org.apache.tomcat:tomcat-annotations-api:$tomcatVersion")
+    compile("org.xerial:sqlite-jdbc:$sqliteVersion")
+    compile("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+    compile("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
     compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final")
     compile('org.yaml:snakeyaml:1.26')
     compile("io.springfox:springfox-swagger-ui:2.9.2")
     compile("io.springfox:springfox-swagger2:2.9.2")
     compile("com.google.guava:guava:$guavaVersion")
     compile("io.jsonwebtoken:jjwt:0.9.0")
+    compile("org.apache.httpcomponents:httpclient:4.5.13")
     
     compile group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.11.550'
-    compile group: 'commons-codec', name: 'commons-codec', version: '1.15'
+    //commonsCodecVersion
+    compile("commons-codec:commons-codec:$commonsCodecVersion")
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 
@@ -134,3 +136,4 @@ test {
         events "passed", "skipped", "failed"
     }
 }
+
