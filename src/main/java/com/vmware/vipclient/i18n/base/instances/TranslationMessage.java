@@ -4,18 +4,6 @@
  */
 package com.vmware.vipclient.i18n.base.instances;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.Set;
-
-import org.json.simple.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.common.ConstantsMsg;
 import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
@@ -23,11 +11,12 @@ import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.messages.service.ComponentService;
 import com.vmware.vipclient.i18n.messages.service.ComponentsService;
 import com.vmware.vipclient.i18n.messages.service.StringService;
-import com.vmware.vipclient.i18n.util.ConstantsKeys;
-import com.vmware.vipclient.i18n.util.FormatUtils;
-import com.vmware.vipclient.i18n.util.JSONUtils;
-import com.vmware.vipclient.i18n.util.LocaleUtility;
-import com.vmware.vipclient.i18n.util.StringUtil;
+import com.vmware.vipclient.i18n.util.*;
+import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.*;
 
 /**
  * This class provide some APIs to get translation from VIP service in
@@ -49,7 +38,8 @@ public class TranslationMessage implements Message {
     public TranslationMessage() {
         super();
     }
-    
+
+
     /**
      * Retrieves the localized message
      * 
@@ -57,7 +47,7 @@ public class TranslationMessage implements Message {
      * @param component The Singleton component in which the message belongs
      * @param key The key that represents the message
      * @param args Values to replace placeholders in the message with
-     * @return One of the items in the following priority-ordered list:. 
+     * @return One of the items in the following priority-ordered list:
      * @throws VIPJavaClientException If none from the list below is available 
      * <ul>
      * 		<li>The source message, if source message hasn't been collected and translated</li>
@@ -67,27 +57,59 @@ public class TranslationMessage implements Message {
      * </ul>
      */
     public String getMessage(final Locale locale, final String component, final String key, final Object... args) {
-    	return getMessage(null, locale, component, key, args);
+    	return getMessageWithArgs(null, locale, component, key, args);
     }
+
+    /**
+     * Retrieves the localized message
+     *
+     * @param locale The locale in which the message is requested to be localized
+     * @param component The Singleton component in which the message belongs
+     * @param key The key that represents the message
+     * @param args Named arguments to replace placeholders in the message with
+     * @return One of the items in the following priority-ordered list:
+     * @throws VIPJavaClientException If none from the list below is available
+     * <ul>
+     * 		<li>The source message, if source message hasn't been collected and translated</li>
+     * 		<li>The message in the requested locale</li>
+     * 		<li>The message in the next available fallback locale</li>
+     * 		<li>The source message</li>
+     * </ul>
+     */
+    public String getMessage(final Locale locale, final String component, final String key, final Map<String, Object> args) {
+        return getMessageWithArgs(null, locale, component, key, args);
+    }
+
+    public String getMessage(String resourceBundle, final Locale locale, final String component, final String key, final Map<String, Object> args) {
+        return getMessageWithArgs(resourceBundle, locale, component, key, args);
+    }
+
     public String getMessage(String resourceBundle, final Locale locale, final String component, final String key, final Object... args) {
+        return getMessageWithArgs(resourceBundle, locale, component, key, args);
+    }
+
+    private String getMessageWithArgs(String resourceBundle, final Locale locale, final String component, final String key, final Object args) {
         // Use source message if the message hasn't been collected/translated
         String source = resourceBundle != null ? ResourceBundle.getBundle(resourceBundle).getString(key) :
-                getMessages(Locale.forLanguageTag(ConstantsKeys.SOURCE), component, false).get(key);
-        String collectedSourceMsg = getMessages(LocaleUtility.getSourceLocale(), component, false).get(key);
-        if (source!=null && !source.isEmpty() && !source.equals(collectedSourceMsg)) {
-            return FormatUtils.format(source, LocaleUtility.getSourceLocale(), args);
+                getMessages(Locale.forLanguageTag(ConstantsKeys.SOURCE), component, false).getMessages().get(key);
+        if (source!=null && !source.isEmpty()) {
+            String collectedSource = getMessages(LocaleUtility.getSourceLocale(), component, false).getMessages().get(key);
+            if (!source.equals(collectedSource)) {
+                return FormatUtils.formatMsg(source, LocaleUtility.getSourceLocale(), args);
+            }
         }
 
-        String message = FormatUtils.format(getMessages(locale, component).get(key), locale, args);
+        ComponentService.TranslationsDTO msgsItemDTO = getMessages(locale, component, true);
+        String message = msgsItemDTO.getMessages().get(key);
         if (message == null || message.isEmpty()) {
             if (resourceBundle != null)
                 return source;
             throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component, locale));
         }
 
-        return message;
+        return FormatUtils.formatMsg(message, Locale.forLanguageTag(msgsItemDTO.getLocale()), args);
     }
-    
+
     /**
      * get a translation under the component of the configured product
      *
@@ -368,15 +390,15 @@ public class TranslationMessage implements Message {
      * </ul>
      */
     public Map<String, String> getMessages(final Locale locale, final String component) {
-        return getMessages(locale, component, true);
+        return getMessages(locale, component, true).getMessages();
     }
 
-    private Map<String, String> getMessages(Locale locale, String component, boolean useLocaleFallback) {
+    private ComponentService.TranslationsDTO getMessages(final Locale locale, final String component, boolean useLocaleFallback) {
         MessagesDTO dto = new MessagesDTO(component, null, null, locale.toLanguageTag(), this.cfg);
         if (useLocaleFallback)
-            return new ComponentService(dto).getMessages().getCachedData();
+            return new ComponentService(dto).getTranslations();
         else
-            return new ComponentService(dto).getMessages(null).getCachedData();
+            return new ComponentService(dto).getTranslations(null);
     }
 
     /**
