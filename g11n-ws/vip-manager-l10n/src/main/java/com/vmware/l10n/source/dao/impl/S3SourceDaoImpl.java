@@ -57,7 +57,11 @@ public class S3SourceDaoImpl implements SourceDao {
 
 	@PostConstruct
 	private void init() {
-		basePath = basePath.replace(ConstantsChar.DOT, "").replace(ConstantsChar.BACKSLASH, "");
+		if (basePath.startsWith("/")) {
+			basePath = basePath.substring(1);
+		}else if(basePath.startsWith(ConstantsChar.DOT+ConstantsChar.BACKSLASH)) {
+			basePath = basePath.replace(ConstantsChar.DOT, "").replace(ConstantsChar.BACKSLASH, "");
+		}
 		if (!basePath.isEmpty() && !basePath.endsWith(ConstantsChar.BACKSLASH)) {
 			basePath += ConstantsChar.BACKSLASH;
 		}
