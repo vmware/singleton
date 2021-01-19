@@ -9,6 +9,7 @@ import com.vmware.vip.api.rest.APIOperation;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.APIParamValue;
 import com.vmware.vip.api.rest.APIV2;
+import com.vmware.vip.common.constants.ConstantsMsg;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.core.about.exception.AboutAPIException;
@@ -52,11 +53,13 @@ public class AboutVersionAPI extends BaseAction {
         buildVersionDTO.setService(serviceVersionDTO);
         if(StringUtils.isEmpty(productName) && StringUtils.isEmpty(version)) {
             return super.handleResponse(APIResponseStatus.OK, buildVersionDTO);
-        }else{
+        }else if(!StringUtils.isEmpty(productName) && !StringUtils.isEmpty(version)){
             String availableVersion = super.getAvailableVersion(productName, version);
             BundleVersionDTO bundleVersionDTO = versionService.getBundleVersion(productName, availableVersion);
             buildVersionDTO.setBundle(bundleVersionDTO);
             return super.handleVersionFallbackResponse(version, availableVersion, buildVersionDTO);
+        }else{
+            return super.handleResponse(APIResponseStatus.BAD_REQUEST.getCode(), ConstantsMsg.PRODUCT_OR_VERSION_MISSING, null);
         }
     }
 }
