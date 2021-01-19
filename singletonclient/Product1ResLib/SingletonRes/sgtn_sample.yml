@@ -1,14 +1,15 @@
 ﻿
-online_service_url: http://127.0.0.1:8090/singleton/CSHARP/
+product: CSHARP
 l10n_version: 2.0.0
 
-offline_resources_base_url: CSHARP
+online_service_url: http://127.0.0.1:8090
+
+offline_resources_base_url: SingletonRes.Singleton
+default_resource_format: properties, internal
 
 prod_mode: false
-default_locale: en-US
 
-default_resource_format: properties, internal
-internal_resources_root: SingletonRes
+default_locale: en-US
 
 # optional, access service type
 access_service_type: default
@@ -25,10 +26,12 @@ logger_type: default
 # optional, log level
 log_level: Debug
 
-components: 
+components:
   - name: about
     locales:
       - language_tag: en-US
-        offline_resources_path: 
+        offline_resources_path:
           - my_source
-
+      - language_tag: de
+        offline_resources_path:
+          - my_source_de

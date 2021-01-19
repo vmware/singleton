@@ -19,6 +19,7 @@ namespace SingletonClient.Implementation
         void SetConfig(IConfig config);
         ISingletonConfig GetSingletonConfig();
         ISingletonApi GetApi();
+        ISingletonUpdate GetUpdate();
         ICacheMessages GetReleaseMessages();
         IAccessService GetAccessService();
         void Log(LogType logType, string text);
@@ -38,6 +39,7 @@ namespace SingletonClient.Implementation
 
         private ICacheMessages _productCache;
         private ILocaleMessages _sourceCache;
+        private ISingletonLocale _sourceLocale;
 
         private readonly List<string> _localeList = new List<string>();
         private readonly List<string> _componentList = new List<string>();
@@ -61,10 +63,10 @@ namespace SingletonClient.Implementation
             _productCache = _cacheManager.GetReleaseCache(
                 _config.GetProduct(), _config.GetVersion());
 
+            _sourceLocale = SingletonUtil.GetSingletonLocale(_config.GetSourceLocale());
             if (_config.IsOfflineSupported())
             {
-                ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(_config.GetSourceLocale());
-                _sourceCache = _update.LoadOfflineBundle(singletonLocale, true);
+                _sourceCache = _update.LoadOfflineBundle(_sourceLocale, true);
             }
 
             return true;
@@ -117,16 +119,15 @@ namespace SingletonClient.Implementation
         private ISingletonComponent GetComponent(
             Hashtable components, ISingletonLocale singletonLocale, string component, bool add)
         {
-            string locale = singletonLocale.GetOriginalLocale();
             ISingletonComponent obj = (ISingletonComponent)components[component];
             if (obj == null && add)
             {
-                obj = new SingletonComponent(this, locale, component);
+                obj = new SingletonComponent(this, singletonLocale, component);
                 components[component] = obj;
 
-                if (_config.IsOfflineSupported())
+                if (!_config.IsOnlineSupported())
                 {
-                    _update.LoadOfflineBundle(singletonLocale);
+                    obj.GetDataFromLocal();
                 }
             }
             return obj;
@@ -205,6 +206,14 @@ namespace SingletonClient.Implementation
         /// <summary>
         /// ISingletonRelease
         /// </summary>
+        public ISingletonUpdate GetUpdate()
+        {
+            return _update;
+        }
+
+        /// <summary>
+        /// ISingletonRelease
+        /// </summary>
         public ICacheMessages GetReleaseMessages()
         {
             return _productCache;
@@ -239,7 +248,7 @@ namespace SingletonClient.Implementation
                 for (int k = 0; k < _componentList.Count; k++)
                 {
                     string component = _componentList[k];
-                    if (componentLocalList == null || componentLocalList.Contains(component))
+                    if (componentLocalList.Count == 0 || componentLocalList.Contains(component))
                     {
                         ISource sourceObject = this.CreateSource(component, "$", "$");
                         this.GetStringFromMessages(_localeList[i], sourceObject);
@@ -316,7 +325,14 @@ namespace SingletonClient.Implementation
 
             if (source == null)
             {
-                source = (_sourceCache == null) ? null : _sourceCache.GetString(component, key);
+                if (_sourceCache == null)
+                {
+                    source = GetBundleMessage(_config.GetSourceLocale(), component, key);
+                }
+                else
+                {
+                    source =  _sourceCache.GetString(component, key);
+                }
             }
             ISource src = new SingletonSource(component, key, source, comment);
             return src;
@@ -349,9 +365,9 @@ namespace SingletonClient.Implementation
         /// <summary>
         /// IReleaseMessages
         /// </summary>
-        public ILocaleMessages GetLocaleMessages(string locale)
+        public ILocaleMessages GetLocaleMessages(string locale, bool asSource = false)
         {
-            ILocaleMessages languageMessages = GetReleaseMessages().GetLocaleMessages(locale);
+            ILocaleMessages languageMessages = GetReleaseMessages().GetLocaleMessages(locale, asSource);
             return languageMessages;
         }
 
@@ -425,15 +441,25 @@ namespace SingletonClient.Implementation
             return text;
         }
 
-        private string GetBundleMessage(string locale, ISource source)
+        private string GetBundleMessage(string locale, string component, string key)
         {
             ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
-            ISingletonComponent componentData = GetComponent(singletonLocale, source.GetComponent());
-            return (componentData != null) ? componentData.GetString(source.GetKey()) : null;
+            ISingletonComponent componentData = GetComponent(singletonLocale, component);
+            return (componentData != null) ? componentData.GetString(key) : null;
+        }
+
+        private string GetBundleMessage(string locale, ISource source)
+        {
+            return GetBundleMessage(locale, source.GetComponent(), source.GetKey());
         }
 
         private string GetTranslationMessage(string locale, ISource source, string textSource)
         {
+            if(_sourceLocale.GetNearLocaleList().Contains(locale))
+            {
+                return source.GetSource();
+            }
+
             string text = GetBundleMessage(locale, source);
             if (text == null)
             {

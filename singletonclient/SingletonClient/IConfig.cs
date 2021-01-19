@@ -101,9 +101,10 @@ namespace SingletonClient
         /// <summary>
         /// Read text of a resource by the resource name.
         /// </summary>
+        /// <param name="resourceBaseName"></param>
         /// <param name="resourceName"></param>
         /// <returns></returns>
-        string ReadResourceText(string resourceName);
+        string ReadResourceText(string resourceBaseName, string resourceName);
 
         /// <summary>
         /// Read message map by the resource name and locale when it's an internal format.
@@ -118,6 +119,7 @@ namespace SingletonClient
     public static class ConfigConst
     {
         // Standard keys
+        public const string KeyProduct = "product";
         public const string KeyOnlineUrl = "online_service_url";
         public const string KeyOfflineUrl = "offline_resources_base_url";
         public const string KeyVersion = "l10n_version";
@@ -126,8 +128,11 @@ namespace SingletonClient
         public const string KeyDefaultLocale = "default_locale";
 
         public const string KeyComponents = "components";
+        public const string KeyTemplate = "template";
+        public const string KeyComponentTemplate = "component_template";
         public const string KeyName = "name";
         public const string KeyLocales = "locales";
+        public const string KeyLocalesRefer = "locales_refer";
         public const string KeyLanguage = "language_tag";
         public const string KeyOfflinePath = "offline_resources_path";  // path[, format, storetype]
 
@@ -145,6 +150,7 @@ namespace SingletonClient
         public const string KeyTryDelay = "try_delay";
         public const string KeyLoggerType = "logger_type";
         public const string KeyLogLevel = "log_level";
+        public const string KeyExternalResourceRoot = "external_resources_root";
         public const string KeyInternalResourceRoot = "internal_resources_root";
         public const string KeyAccessServiceType = "access_service_type";
         public const string KeyDefaultResourceFormat = "default_resource_format";

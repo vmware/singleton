@@ -213,9 +213,9 @@ namespace Product2ResLib.SingletonRes {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] sgtn_sample_comment {
+        internal static byte[] sgtn_sample {
             get {
-                object obj = ResourceManager.GetObject("sgtn_sample_comment", resourceCulture);
+                object obj = ResourceManager.GetObject("sgtn_sample", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -223,9 +223,9 @@ namespace Product2ResLib.SingletonRes {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] singleton_config {
+        internal static byte[] sgtn_sample_comment {
             get {
-                object obj = ResourceManager.GetObject("singleton_config", resourceCulture);
+                object obj = ResourceManager.GetObject("sgtn_sample_comment", resourceCulture);
                 return ((byte[])(obj));
             }
         }

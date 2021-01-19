@@ -98,7 +98,8 @@ namespace SingletonClient.Implementation
             }
             else
             {
-                string text = _config.GetConfig().ReadResourceText(resourceName);
+                string resourceRoot = _config.GetInternalResourceRoot();
+                string text = _config.GetConfig().ReadResourceText(resourceRoot, resourceName);
                 bundle = parser.Parse(text);
             }
 
@@ -175,7 +176,7 @@ namespace SingletonClient.Implementation
             }
         }
 
-        public ILocaleMessages LoadOfflineBundle(ISingletonLocale singletonLocale, bool asSource)
+        public ILocaleMessages LoadOfflineBundle(ISingletonLocale singletonLocale, bool asSource = false)
         {
             string locale = singletonLocale.GetOriginalLocale();
             if (_usedOfflineLocales.Contains(locale))
@@ -229,9 +230,7 @@ namespace SingletonClient.Implementation
         private ILocaleMessages LoadOfflineLocaleBundle(string locale, string nearLocale, bool asSource)
         {
             string[] parts = new string[3];
-            string[] arrayFormat = (
-                _config.GetDefaultResourceFormat() + "," + ConfigConst.StoreTypeInternal
-                ).Split(',');
+            string[] arrayFormat = _config.GetDefaultResourceFormat().Split(',');
 
             List<string> componentList = GetComponentList();
 

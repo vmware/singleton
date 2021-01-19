@@ -82,8 +82,7 @@ namespace SingletonClient.Implementation
 
         private void LoadFallbackDefine()
         {
-            string nameSpace = System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace;
-            string resName = nameSpace + ".SingletonRes.Singleton";
+            string resName = "Implementation.SingletonRes.Singleton";
             Assembly assembly = typeof(SingletonClientManager).Assembly;
 
             byte[] bytes = SingletonUtil.ReadResource(resName, assembly, "fallback");
@@ -133,8 +132,8 @@ namespace SingletonClient.Implementation
         public IConfig LoadConfig(
             string resourceBaseName, Assembly assembly, string configResourceName)
         {
-            SingletonConfig config = new SingletonConfig(resourceBaseName, assembly);
-            string text = config.ReadResourceText(configResourceName);
+            SingletonConfig config = new SingletonConfig(assembly);
+            string text = config.ReadResourceText(resourceBaseName, configResourceName);
             config.SetConfigData(text);
 
             ISingletonConfig singletonConfig = new SingletonConfigWrapper(config);

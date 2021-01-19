@@ -145,7 +145,7 @@ namespace SingletonClient
         /// </summary>
         /// <param name="locale"></param>
         /// <returns></returns>
-        ILocaleMessages GetLocaleMessages(string locale);
+        ILocaleMessages GetLocaleMessages(string locale, bool asSource = false);
 
         /// <summary>
         /// Get a group of translation messages of different locales. 

@@ -138,9 +138,10 @@ namespace Product1ResLib
     {
         private string _component = "about";
 
-        public void Involve()
+        public int Involve(int endWait)
         {
             Util1.Init();
+            return endWait > 5 ? endWait : 5;
         }
 
         public void UseProduct()
@@ -163,9 +164,9 @@ namespace Product1ResLib
 
         private ITranslation InitLevel3()
         {
-            Assembly assembly = typeof(Values).Assembly;
+            Assembly assembly = Assembly.GetExecutingAssembly();
             IConfig config = I18N.LoadConfig(
-                "Product1ResLib.SingletonRes.Singleton", assembly, "singleton_config");
+                "SingletonRes.Singleton", assembly, "singleton_config");
 
             IRelease release = I18N.GetRelease(config);
             return release.GetTranslation();

@@ -14,6 +14,7 @@ using System.IO;
 using System.Reflection;
 using System.Resources;
 using System.Text;
+using System.Text.RegularExpressions;
 using YamlDotNet.RepresentationModel;
 
 namespace SingletonClient.Implementation
@@ -52,6 +53,14 @@ namespace SingletonClient.Implementation
         public static Byte[] ReadResource(
             string resourceBaseName, Assembly assembly, string resourceName)
         {
+            resourceBaseName = assembly.GetName().Name + "." + resourceBaseName;
+            string[] parts = Regex.Split(resourceName, "__ITEMNAME__");
+            if (parts.Length > 1)
+            {
+                resourceBaseName += "." + parts[0];
+                resourceName = parts[1];
+            }
+
             ResourceManager resourceManager = new ResourceManager(resourceBaseName, assembly);
             Byte[] bytes = (Byte[])resourceManager.GetObject(resourceName);
             return bytes;
@@ -67,6 +76,7 @@ namespace SingletonClient.Implementation
         {
             Hashtable table = new Hashtable();
 
+            resourceBaseName = assembly.GetName().Name + "." + resourceBaseName;
             ResourceManager resourceManager = new ResourceManager(resourceBaseName, assembly);
             string localeInUse = locale;
             ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(localeInUse);

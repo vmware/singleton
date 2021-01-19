@@ -73,6 +73,16 @@ namespace Product1ResLib.SingletonRes {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] my_source_de {
+            get {
+                object obj = ResourceManager.GetObject("my_source_de", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] singleton_config {
             get {
                 object obj = ResourceManager.GetObject("singleton_config", resourceCulture);
