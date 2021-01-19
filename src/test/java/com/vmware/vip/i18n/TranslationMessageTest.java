@@ -553,4 +553,22 @@ public class TranslationMessageTest extends BaseTestClass {
         // more cases to test cache
         // more cases to test the message sending to server
     }
+
+    @Test
+    public void testNamedArgs() {
+        String component = "JAVA";
+        String key = "NamedArgs";
+        Locale locale_en = new Locale("en", "US");
+        Locale locale_de = Locale.forLanguageTag("de");
+        Map<String, Object> msgArgs = new HashMap<>();
+        msgArgs.put("start", 1);
+        msgArgs.put("to", 5);
+        msgArgs.put("total", 10);
+
+        String message_en = translation.getMessage(locale_en, component, key, msgArgs);
+        Assert.assertEquals("1 - 5 of 10 customers", message_en);
+
+        String message_de = translation.getMessage(locale_de, component, key, msgArgs);
+        Assert.assertEquals("1 - 5 of 10 kunden", message_de);
+    }
 }

@@ -4,8 +4,10 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 
 import com.vmware.vipclient.i18n.VIPCfg;
@@ -94,17 +96,7 @@ public class ComponentService {
 	}
 
 	/**
-	 * Get MessageCacheItem from cache.
-	 * The cache is refreshed if MessageCacheItem is expired or not found.
-	 * Pre-configured locale fallback queue is used on failure.
-	 *
-	 * @return A MessageCacheItem whose message map is one of the items in the following priority-ordered list:
-	 * <ul>
-	 * 		<li>The messages in the requested locale</li>
-	 * 		<li>The messages in a default locale</li>
-	 * 		<li>The source messages</li>
-	 * 		<li>An empty map</li>
-	 * </ul>
+	 * @deprecated Use {@link #getTranslations()}.
 	 */
 	public MessageCacheItem getMessages() {
 		Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
@@ -112,18 +104,47 @@ public class ComponentService {
 	}
 
 	/**
-	 * Get MessageCacheItem from cache.
-	 * The cache is refreshed if MessageCacheItem is expired or not found.
-	 *
-	 * @param fallbackLocalesIter The locale fallback queue to be used on failure. If null, there will be no fallback mechanism on failure so the message map will be empty.
-	 *
-	 * @return A MessageCacheItem whose data map is one of the following:
-	 * <ul>
-	 * 		<li>The messages in the requested locale</li>
-	 * 	 	<li>The messages in a fallback locale</li>
-	 * </ul>
+	 * @deprecated Use {@link #getTranslations(Iterator)}.
 	 */
 	public MessageCacheItem getMessages(Iterator<Locale> fallbackLocalesIter) {
+		return new MessageCacheItem(this.getMessageCacheItem(fallbackLocalesIter).getMessages());
+	}
+
+	/**
+	 * Calls {@link #getTranslations(Iterator)} using the pre-configured locale fallback queue.
+	 *
+	 * @return A TranslationsDTO whose message map is one of the items in the following priority-ordered list:
+	 * <ul>
+	 * 		<li>The messages in the requested locale</li>
+	 * 		<li>The messages in a fallback locale</li>
+	 * 		<li>The source messages</li>
+	 * 		<li>An empty map</li>
+	 * </ul>
+	 */
+	public TranslationsDTO getTranslations() {
+		Iterator<Locale> fallbackLocalesIter = LocaleUtility.getFallbackLocales().iterator();
+		return this.getTranslations(fallbackLocalesIter);
+	}
+
+	/**
+	 * Gets messages from cache.
+	 * The cache is refreshed if the set of localized messages is expired or not found.
+	 *
+	 * @param fallbackLocalesIter The locale fallback queue iterator to be used on failure. If null, there will be no fallback mechanism on failure so the message map will be empty.
+	 *
+	 * @return A TranslationsDTO whose data map is one of the following:
+	 * <ul>
+	 * 		<li>The messages in the requested locale</li>
+	 * 	    <li>The messages in a fallback locale </li>
+	 * 	 	<li>The source messages</li>
+	 * 	 	<li>An empty map</li>
+	 * </ul>
+	 */
+	public TranslationsDTO getTranslations(Iterator<Locale> fallbackLocalesIter) {
+		return this.getMessageCacheItem(fallbackLocalesIter);
+	}
+
+	private TranslationsDTO getMessageCacheItem(Iterator<Locale> fallbackLocalesIter) {
 		this.doLocaleMatching();
 
 		CacheService cacheService = new CacheService(dto);
@@ -134,10 +155,9 @@ public class ComponentService {
 		} else { // Item is not in cache.
 			cacheItem = createCacheItem(); // Fetch for the requested locale from data store, create cacheItem and store in cache
 			if (cacheItem.getCachedData().isEmpty())  // Failed to fetch messages for the requested locale
-				cacheItem = getFallbackLocaleMessages(fallbackLocalesIter);
+				return getFallbackLocaleMessages(fallbackLocalesIter);
 		}
-
-		return cacheItem;
+		return new TranslationsDTO(dto.getLocale(), cacheItem);
 	}
 
 	private void doLocaleMatching() {
@@ -156,7 +176,7 @@ public class ComponentService {
 	 * and then invoking {@link #getMessages(Iterator)}.
 	 * @param fallbackLocalesIter The fallback locale queue to use in case of failure. If null, no locale fallback will be applied.
      */
-    private MessageCacheItem getFallbackLocaleMessages(Iterator<Locale> fallbackLocalesIter) {
+    private TranslationsDTO getFallbackLocaleMessages(Iterator<Locale> fallbackLocalesIter) {
 		if (fallbackLocalesIter != null && fallbackLocalesIter.hasNext()) {
 			Locale fallbackLocale = fallbackLocalesIter.next();
 			if (fallbackLocale.toLanguageTag().equals(dto.getLocale())) {
@@ -164,9 +184,9 @@ public class ComponentService {
 			}
 			// Use MessageCacheItem of the next fallback locale.
 			MessagesDTO fallbackLocaleDTO = new MessagesDTO(dto.getComponent(), fallbackLocale.toLanguageTag(), dto.getProductID(), dto.getVersion());
-			return new ComponentService(fallbackLocaleDTO).getMessages(fallbackLocalesIter);
+			return new ComponentService(fallbackLocaleDTO).getMessageCacheItem(fallbackLocalesIter);
 		}
-		return new MessageCacheItem();
+		return new TranslationsDTO(dto.getLocale(), new MessageCacheItem());
 	}
 
 	/**
@@ -212,4 +232,26 @@ public class ComponentService {
         }
         return r;
     }
+
+	/**
+	 * A Data Transfer Object (DTO) for localized messages retrieved from cache.
+	 */
+	public class TranslationsDTO {
+		String locale;
+		Map<String, String> messages;
+
+		TranslationsDTO(String locale, MessageCacheItem messageCacheItem) {
+			this.locale = locale;
+			this.messages = new HashMap<>();
+			this.messages.putAll(messageCacheItem.getCachedData());
+		}
+
+		public String getLocale() {
+			return locale;
+		}
+
+		public Map<String, String> getMessages() {
+			return messages;
+		}
+	}
 }
