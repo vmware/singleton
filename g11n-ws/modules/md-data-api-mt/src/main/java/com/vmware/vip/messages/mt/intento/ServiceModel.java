@@ -18,9 +18,6 @@ public class ServiceModel {
 
     private Map<String, List<Map<String, String>>> auth;
 
-    public ServiceModel() {
-    }
-
     public boolean isAsync() {
         return async;
     }

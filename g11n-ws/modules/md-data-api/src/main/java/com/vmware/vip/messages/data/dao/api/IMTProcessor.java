@@ -16,7 +16,7 @@ import com.vmware.vip.messages.data.dao.exception.MTException;
  */
 public interface IMTProcessor {
 
-	public String translateStr(String fromLang, String toLang, String source) throws MTException;
+	public String translateString(String fromLang, String toLang, String source) throws MTException;
 
 	public List<String> translateArray(String fromLang, String toLang, List<String> sourceList) throws MTException;
 }

@@ -5,6 +5,8 @@
 
 package com.vmware.vip.messages.mt.intento;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.vmware.vip.common.http.HTTPRequester;
@@ -22,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * a processor to handle Inteto MT
+ * a processor to handle Intento MT
  */
 public class IntentoTranslatingProcessor implements IMTProcessor {
     private static Logger logger = LoggerFactory.getLogger(IntentoTranslatingProcessor.class);
@@ -36,7 +38,7 @@ public class IntentoTranslatingProcessor implements IMTProcessor {
      * @return
      * @throws MTException
      */
-    public String translateStr(String fromLang, String toLang, String source)
+    public String translateString(String fromLang, String toLang, String source)
             throws MTException {
         List<String> sourceList = new ArrayList<>();
         sourceList.add(source);
@@ -76,7 +78,7 @@ public class IntentoTranslatingProcessor implements IMTProcessor {
             headers.put("apikey", IntentoConfig.API_KEY);
             String response = HTTPRequester.postData(requestJson, urlStr,
                     "application/json", "POST", headers);
-            if (response == null || response.equalsIgnoreCase("")) {
+            if (response == null || response.isEmpty()) {
                 throw new MTException("Request failed: respond empty from MT server!");
             }
             resultNode = mapper.readValue(response, ObjectNode.class);
@@ -90,11 +92,11 @@ public class IntentoTranslatingProcessor implements IMTProcessor {
         } else {
             throw new MTException("Getting MT async translation is failed!");
         }
-        if (resultArrayNode != null && resultArrayNode.getResponse().size() > 0) {
+        if (resultArrayNode == null || resultArrayNode.getResponse() == null || resultArrayNode.getResponse().isEmpty()) {
+            throw new MTException("The MT response is empty!");
+        } else {
             MTConfig.updateTranslationCache(key, resultArrayNode.getResponse().size());
             return resultArrayNode.getResponse().get(0).getResults();
-        } else {
-            throw new MTException("MT response is null or size is 0!");
         }
     }
 
@@ -125,8 +127,7 @@ public class IntentoTranslatingProcessor implements IMTProcessor {
         klist.add(kmap);
         auth.put(IntentoConfig.PROVIDER, klist);
         service.setAuth(auth);
-        FromModel from = new FromModel(context, service);
-        return from;
+        return new FromModel(context, service);
     }
 
     /**
@@ -152,13 +153,15 @@ public class IntentoTranslatingProcessor implements IMTProcessor {
                 }
                 if (resultNode == null || !resultNode.getDone()) {
                     i++;
-                    Thread.sleep((IntentoConfig.INTERVAL/IntentoConfig.RETRY) * i);
+                    Thread.sleep((IntentoConfig.INTERVAL / IntentoConfig.RETRY) * i);
                 } else {
                     break;
                 }
             }
-        } catch (Exception e) {
-            throw new MTException("Parsing MT response is failed!");
+        } catch (JsonProcessingException pe) {
+            throw new MTException("Json processing is failed!");
+        } catch (InterruptedException pe) {
+            throw new MTException("Sleep thread interrupted!");
         }
         return resultNode;
     }

@@ -205,7 +205,7 @@ public class MTService implements IMTService {
 						if (cachedMTMap != null && cachedMTMap.containsKey(key)) {
 							mtTranslation = cachedMTMap.get(key);
 						} else {
-							mtTranslation = mtProcessor.translateStr(
+							mtTranslation = mtProcessor.translateString(
 									ConstantsUnicode.EN, comDTO.getLocale(), source);
 							if(cachedMTMap == null) {
 								cachedMTMap = new HashMap<String, String>();
@@ -221,7 +221,7 @@ public class MTService implements IMTService {
 					// 2. put it to component object;
 					// 3. add the component object to cache
 					else {
-						mtTranslation = mtProcessor.translateStr(
+						mtTranslation = mtProcessor.translateString(
 								ConstantsUnicode.EN_US, comDTO.getLocale(), source);
 						Map<String, String> newMap = new HashMap<String, String>();
 						newMap.put(key, mtTranslation);

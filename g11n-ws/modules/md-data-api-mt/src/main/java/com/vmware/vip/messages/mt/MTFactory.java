@@ -17,7 +17,7 @@ public class MTFactory {
 
     private static IMTProcessor processor = null;
 
-    private MTFactory(){
+    private MTFactory() {
 
     }
 
@@ -26,21 +26,20 @@ public class MTFactory {
      *
      * @return
      */
-    public static synchronized  IMTProcessor getMTProcessor() {
-        if(processor!=null) {
-            return processor;
-        } else {
-            String mtServer = MTConfig.getMTSERVER();
-            if (!StringUtils.isEmpty(mtServer)) {
-                if (mtServer.contains("microsoft")) {
-                    processor = new AzureTranslatingProcessor();
-                } else if (mtServer.contains("inten.to")) {
-                    processor = new IntentoTranslatingProcessor();
-                }
-            } else {
-                processor = new AzureTranslatingProcessor();
-            }
+    public static synchronized IMTProcessor getMTProcessor() {
+        if (processor != null) {
             return processor;
         }
+        String mtServer = MTConfig.getMTSERVER();
+        if (!StringUtils.isEmpty(mtServer)) {
+            if (mtServer.contains("microsoft")) {
+                processor = new AzureTranslatingProcessor();
+            } else if (mtServer.contains("inten.to")) {
+                processor = new IntentoTranslatingProcessor();
+            }
+        } else {
+            processor = new AzureTranslatingProcessor();
+        }
+        return processor;
     }
 }

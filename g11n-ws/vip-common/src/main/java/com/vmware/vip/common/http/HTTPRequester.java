@@ -268,7 +268,7 @@ public class HTTPRequester {
 		InputStream input = null;
 		BufferedReader in = null;
 		InputStreamReader reader = null;
-		String getResult = "";
+		StringBuffer getResult = new StringBuffer();
 		try {
 			URL url = new URL(urlStr);
 			http = createConnection(url);
@@ -295,7 +295,7 @@ public class HTTPRequester {
 				in = new BufferedReader(reader);
 				String inputLine;
 				while ((inputLine = in.readLine()) != null) {
-					getResult += inputLine;
+					getResult.append(inputLine);
 				}
 			} else {
 				LOGGER.error("Failed to get data, get the response code: {} >>>",http.getResponseCode());
@@ -311,6 +311,6 @@ public class HTTPRequester {
 				http.disconnect();
 			}
 		}
-		return getResult;
+		return getResult.toString();
 	}
 }
