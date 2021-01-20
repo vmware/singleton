@@ -263,7 +263,7 @@ public class HTTPRequester {
 	 * @return
 	 */
 	public static String getData(String urlStr, String requestMethod, Map<String, String> headers) {
-		LOGGER.trace("The remote url is : " + urlStr);
+		LOGGER.trace("The remote url is : {}", urlStr);
 		HttpURLConnection http = null;
 		InputStream input = null;
 		BufferedReader in = null;
@@ -298,10 +298,10 @@ public class HTTPRequester {
 					getResult.append(inputLine);
 				}
 			} else {
-				LOGGER.error("Failed to get data, get the response code: {} >>>",http.getResponseCode());
+				LOGGER.error("Failed to get data, get the response code: {} >>>", http.getResponseCode());
 			}
 		} catch (Exception e) {
-			LOGGER.error("Failed to create http connection.");
+			LOGGER.error("Failed to create http connection.", e);
 
 		} finally {
 			IOUtil.closeReader(in);

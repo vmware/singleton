@@ -6,7 +6,6 @@
 package com.vmware.vip.messages.mt.intento;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.vmware.vip.common.http.HTTPRequester;
@@ -72,8 +71,7 @@ public class IntentoTranslatingProcessor implements IMTProcessor {
             ObjectMapper mapper = new ObjectMapper();
             String requestJson = mapper.writeValueAsString(fromObj);
             String urlStr = MTConfig.MTSERVER;
-            logger.trace("Using Intento MT Server:");
-            logger.trace(MTConfig.MTSERVER);
+            logger.trace("Using Intento MT Server: {}", MTConfig.MTSERVER);
             Map<String, String> headers = new HashMap<>();
             headers.put("apikey", IntentoConfig.API_KEY);
             String response = HTTPRequester.postData(requestJson, urlStr,
@@ -83,7 +81,7 @@ public class IntentoTranslatingProcessor implements IMTProcessor {
             }
             resultNode = mapper.readValue(response, ObjectNode.class);
         } catch (IOException e) {
-            logger.error("Failed to request MT translation");
+            logger.error("Failed to request MT translation", e);
         }
 
         ToResult resultArrayNode = null;
@@ -158,10 +156,10 @@ public class IntentoTranslatingProcessor implements IMTProcessor {
                     break;
                 }
             }
-        } catch (JsonProcessingException pe) {
-            throw new MTException("Json processing is failed!");
-        } catch (InterruptedException pe) {
-            throw new MTException("Sleep thread interrupted!");
+        } catch (JsonProcessingException e) {
+            throw new MTException("Json processing is failed!", e);
+        } catch (InterruptedException e) {
+            throw new MTException("Sleep thread interrupted!", e);
         }
         return resultNode;
     }
