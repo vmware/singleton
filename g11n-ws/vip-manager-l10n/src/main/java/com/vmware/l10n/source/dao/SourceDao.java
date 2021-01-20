@@ -4,8 +4,12 @@
  */
 package com.vmware.l10n.source.dao;
 
+import java.util.List;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.vmware.l10n.record.model.RecordModel;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 
 /**
@@ -38,4 +42,9 @@ public interface SourceDao {
 	 * @throws JsonProcessingException 
 	 */
 	public boolean updateToBundle(ComponentMessagesDTO componentMessagesDTO) throws JsonProcessingException;
+	
+	/**
+	 * get the update records from bundle
+	 */
+	public List<RecordModel> getUpdateRecords(String productName, String version, long lastModifyTime)throws L10nAPIException;
 }

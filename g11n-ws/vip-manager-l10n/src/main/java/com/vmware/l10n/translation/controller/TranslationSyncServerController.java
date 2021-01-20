@@ -68,7 +68,7 @@ public class TranslationSyncServerController {
     @ResponseStatus(HttpStatus.OK)
     public void processMethod(Exception e, HttpServletRequest request,
             HttpServletResponse response) throws IOException {
-        LOGGER.error("abnormal server:{}", e.getLocalizedMessage());
+        LOGGER.error("abnormal server:{}", e.getLocalizedMessage(), e);
         response.setCharacterEncoding(ConstantsUnicode.UTF8);
         response.setContentType("application/json; charset=utf-8");
         APIResponseDTO apiResponseDTO = new APIResponseDTO();
