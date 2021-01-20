@@ -21,4 +21,12 @@ public interface L10nI18nAPI {
 	//Translation Product Component Key API 
 	public static String  KEYS_TRANSLATION_APIV2 = BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys";
 	public static String  KEY_TRANSLATION_APIV2 = BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key:.+}";
+
+    //v1 l10n agent sync source API
+	public static String SOURCE_SYNC_RECORDS_APIV1 = BASE_COLLECT_SOURCE_PATH + "/api/v1/source/records";
+	public static String SOURCE_SYNC_RECORD_STATUS_APIV1 = BASE_COLLECT_SOURCE_PATH + "/api/v1/source/synchrecord";
+	public static String SOURCE_SYNC_RECORD_SOURCE_APIV1 = BASE_COLLECT_SOURCE_PATH + "/api/v1/source/sourcecomponent/{product}/{version}/{component}/{locale}/";
+
+	public static String SOURCE_SYNC_RECORDS_APIV2 = BASE_COLLECT_SOURCE_PATH + "/api/v2/source/records";
+
 }

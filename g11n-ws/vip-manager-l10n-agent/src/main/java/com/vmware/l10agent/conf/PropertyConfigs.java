@@ -5,6 +5,9 @@
 package com.vmware.l10agent.conf;
 
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,7 +22,7 @@ import com.vmware.l10agent.base.PropertyContantKeys;
  */
 @Configuration
 public class PropertyConfigs {
-
+	private  SimpleDateFormat sdf1=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	/** the path of local resource file,can be configed in spring config file **/
 	@Value("${source.bundle.file.basepath}")
 	private String sourceFileBasepath;
@@ -31,6 +34,8 @@ public class PropertyConfigs {
 	@Value("${vip.i18n.base.url}")
 	private String vipBasei18nUrl;
 	
+	@Value("${vip.l10n.base.url}")
+	private String vipBaseL10nUrl;
 	
 	@Value("${access.mode}")
 	private String accessModel;
@@ -50,6 +55,55 @@ public class PropertyConfigs {
 	
 	@Value("${access.grant_type}")
 	private String accessGrant_type;
+	
+	@Value("${source.sync.api.version:v1}")
+	private String recordApiVersion;
+	
+	@Value("${source.sync.req.thread:1}")
+	private String recordReqThread;
+
+	@Value("${source.sync.s3.syncListPath:bundle.json}")
+	private String syncListPath;
+
+	@Value("${source.sync.s3.startTime:2020-01-01 01:00:00}")
+	private String syncStartDatetime;
+	
+	public long getSyncStartDatetime() {
+		
+		try {
+			Date date = sdf1.parse(this.syncStartDatetime);
+			return date.getTime();
+		} catch (ParseException e) {
+			return 0;
+		}
+		
+	}
+	
+	public String getRecordApiVersion() {
+		return recordApiVersion;
+	}
+
+	public void setRecordApiVersion(String recordApiVersion) {
+		this.recordApiVersion = recordApiVersion;
+	}
+
+	public int getRecordReqThread() {
+		int result;
+		try {
+		result = Integer.valueOf(this.recordReqThread);
+		if(result <1) {
+			result =1 ;
+		}
+		}catch(Exception e) {
+			result =1;
+		}
+		return result;
+	}
+
+	public void setRecordReqThread(String recordReqThread) {
+		this.recordReqThread = recordReqThread;
+	}
+
 	
 	
 	public String getSourceFileBasepath() {
@@ -122,7 +176,13 @@ public class PropertyConfigs {
 		this.accessGrant_type = accessGrant_type;
 	}
 
+	public String getVipBaseL10nUrl() {
+		return vipBaseL10nUrl;
+	}
+		
+	public String getSyncListPath() {
+		return syncListPath;
+	}
 
-	
 
 }

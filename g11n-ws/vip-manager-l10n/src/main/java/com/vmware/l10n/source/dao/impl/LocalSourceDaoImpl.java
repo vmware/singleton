@@ -4,19 +4,9 @@
  */
 package com.vmware.l10n.source.dao.impl;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vmware.l10n.record.dao.SqlLiteDao;
-import com.vmware.l10n.source.dao.SourceDao;
-import com.vmware.l10n.utils.SourceUtils;
-import com.vmware.vip.common.constants.ConstantsChar;
-import com.vmware.vip.common.constants.ConstantsFile;
-import com.vmware.vip.common.constants.ConstantsKeys;
-import com.vmware.vip.common.exceptions.VIPResourceOperationException;
-import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
-import com.vmware.vip.common.i18n.resourcefile.LocalJSONReader;
-import com.vmware.vip.common.i18n.resourcefile.ResourceFilePathGetter;
-import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
-import com.vmware.vip.common.utils.SortJSONUtils;
+import java.io.File;
+import java.util.List;
+
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,9 +16,20 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Paths;
+import com.vmware.l10n.record.dao.SqlLiteDao;
+import com.vmware.l10n.record.model.RecordModel;
+import com.vmware.l10n.source.dao.SourceDao;
+import com.vmware.l10n.utils.SourceUtils;
+import com.vmware.vip.common.constants.ConstantsChar;
+import com.vmware.vip.common.constants.ConstantsFile;
+import com.vmware.vip.common.constants.ConstantsKeys;
+import com.vmware.vip.common.exceptions.VIPResourceOperationException;
+import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
+import com.vmware.vip.common.i18n.resourcefile.LocalJSONReader;
+import com.vmware.vip.common.i18n.resourcefile.ResourceFilePathGetter;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
+import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
+import com.vmware.vip.common.utils.SortJSONUtils;
 
 @Repository
 @Profile(value="bundle")
@@ -119,6 +120,13 @@ public class LocalSourceDaoImpl implements SourceDao {
 			
 			return true;
 		}
+	}
+
+
+	@Override
+	public List<RecordModel> getUpdateRecords(String productName, String version, long lastModifyTime) throws L10nAPIException{
+		LOGGER.error("bundle use the local disk media request the S3 API!");
+		throw new L10nAPIException("Local disk bundle can't support get update record method!");
 	}
 
 }
