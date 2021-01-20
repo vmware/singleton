@@ -159,6 +159,7 @@ public class IntentoTranslatingProcessor implements IMTProcessor {
         } catch (JsonProcessingException e) {
             throw new MTException("Json processing is failed!", e);
         } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             throw new MTException("Sleep thread interrupted!", e);
         }
         return resultNode;
