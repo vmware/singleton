@@ -26,7 +26,7 @@ import com.vmware.vip.messages.mt.MTConfig;
 public class AzureTranslatingProcessor implements IMTProcessor {
 	private static Logger logger = LoggerFactory.getLogger(AzureTranslatingProcessor.class);
 
-	public String translateStr(String fromLang, String toLang, String source)
+	public String translateString(String fromLang, String toLang, String source)
 			throws MTException {
 		List<String> sourceList = new ArrayList<String>();
 		sourceList.add(source);
@@ -51,8 +51,7 @@ public class AzureTranslatingProcessor implements IMTProcessor {
 			String requestJson = mapper.writeValueAsString(fromObj
 					.getSourceObjectList());
 			String urlStr = MTConfig.MTSERVER + fromObj.getToLang();
-			logger.info("Using MT Server:");
-			logger.info(MTConfig.MTSERVER);
+			logger.info("Using MT Server:" + MTConfig.MTSERVER);
 			Map<String, String> headers = new HashMap<String, String>();
 			headers.put("Ocp-Apim-Subscription-Key", MTConfig.KEY);
 			if(StringUtils.isNotBlank(MTConfig.REGION)) {

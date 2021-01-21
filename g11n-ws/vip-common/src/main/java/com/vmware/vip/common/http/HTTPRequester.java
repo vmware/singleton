@@ -254,4 +254,63 @@ public class HTTPRequester {
 		}
 		return postResult;
 	}
+
+	/**
+	 * get data
+	 * @param urlStr
+	 * @param requestMethod
+	 * @param headers
+	 * @return
+	 */
+	public static String getData(String urlStr, String requestMethod, Map<String, String> headers) {
+		LOGGER.trace("The remote url is : {}", urlStr);
+		HttpURLConnection http = null;
+		InputStream input = null;
+		BufferedReader in = null;
+		InputStreamReader reader = null;
+		StringBuffer getResult = new StringBuffer();
+		try {
+			URL url = new URL(urlStr);
+			http = createConnection(url);
+			if (http == null) {
+				throw new NullPointerException("create http connection is null");
+			}
+			http.setDoInput(true);
+			http.setDoOutput(true);
+			http.setUseCaches(false);
+			http.setConnectTimeout(CONNECT_TIMEOUT);
+			http.setReadTimeout(READ_TIMEOUT);
+			http.setRequestMethod(requestMethod);
+			if (headers != null && !headers.isEmpty()) {
+				Iterator<String> it = headers.keySet().iterator();
+				while (it.hasNext()) {
+					String key = it.next();
+					http.setRequestProperty(key, headers.get(key));
+				}
+			}
+			http.connect();
+			if (http.getResponseCode() == APIResponseStatus.OK.getCode()) {
+				input = http.getInputStream();
+				reader = new InputStreamReader(input, ConstantsUnicode.UTF8);
+				in = new BufferedReader(reader);
+				String inputLine;
+				while ((inputLine = in.readLine()) != null) {
+					getResult.append(inputLine);
+				}
+			} else {
+				LOGGER.error("Failed to get data, get the response code: {} >>>", http.getResponseCode());
+			}
+		} catch (Exception e) {
+			LOGGER.error("Failed to get data.", e);
+
+		} finally {
+			IOUtil.closeReader(in);
+			IOUtil.closeReader(reader);
+			IOUtil.closeInputStream(input);
+			if (http != null) {
+				http.disconnect();
+			}
+		}
+		return getResult.toString();
+	}
 }
