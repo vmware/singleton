@@ -33,7 +33,7 @@ script: >
     python3 ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)" -u "gradlew.bat"
   fi &&
   if [ x${TEST} = xunit_test ]; then
-    ./gradlew test --console=plain
+    ./gradlew test
   fi &&
   if [ x${TEST} = xcode_scan ]; then
     java -version
@@ -86,7 +86,7 @@ script: >
       echo "Only docs were updated, stopping build process."
       exit
     }
-    # cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-$PROJECT_BRANCH-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
+    cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-$PROJECT_BRANCH-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
   fi &&
   if [ x${TEST} = xsmoke_test ]; then
     git clone --branch=devops https://github.com/vmware/singleton.git devops
