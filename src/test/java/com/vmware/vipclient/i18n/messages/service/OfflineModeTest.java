@@ -187,7 +187,39 @@ public class OfflineModeTest extends BaseTestClass {
     	cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
     	cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
     }
-    
+
+    @Test
+    public void testGetMsgsFailedSourceProps() {
+        // Offline mode only; Source messages are in multiple properties file
+        String offlineResourcesBaseUrlOrig = cfg.getOfflineResourcesBaseUrl();
+        cfg.setOfflineResourcesBaseUrl("offlineBundles/");
+        List<DataSourceEnum> msgOriginsQueueOrig = cfg.getMsgOriginsQueue();
+        cfg.setMsgOriginsQueue(new LinkedList<>(Arrays.asList(DataSourceEnum.Bundle)));
+
+        Cache c = VIPCfg.getInstance().createTranslationCache(MessageCache.class);
+        TranslationCacheManager.cleanCache(c);
+        I18nFactory i18n = I18nFactory.getInstance(VIPCfg.getInstance());
+        TranslationMessage translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
+
+        dto.setProductID(VIPCfg.getInstance().getProductName());
+        dto.setVersion(VIPCfg.getInstance().getVersion());
+
+        String component = "JAVA2";
+        String message = translation.getMessage("offlineBundles.JAVA2.messages", locale, component, "props.key.1", args);
+        // Returns the source message from props file
+        assertEquals("props.value.1", message);
+
+        message = translation.getMessage("offlineBundles.JAVA2.subdir.messages", locale, component, "props.key.3", args);
+        // Returns the source message from another props file
+        assertEquals("props.value.3", message);
+
+        message = translation.getMessage(locale, component, key, args);
+        assertEquals(FormatUtils.format(messageFil, args), message);
+
+        cfg.setOfflineResourcesBaseUrl(offlineResourcesBaseUrlOrig);
+        cfg.setMsgOriginsQueue(msgOriginsQueueOrig);
+    }
+
     @Test
     public void testGetMsgsFailedNewSource() { 
     	// Offline mode only; Message is new and hasn't been collected

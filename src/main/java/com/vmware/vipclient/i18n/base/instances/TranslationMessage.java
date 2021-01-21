@@ -39,6 +39,7 @@ public class TranslationMessage implements Message {
         super();
     }
 
+
     /**
      * Retrieves the localized message
      * 
@@ -56,7 +57,7 @@ public class TranslationMessage implements Message {
      * </ul>
      */
     public String getMessage(final Locale locale, final String component, final String key, final Object... args) {
-    	return getMessageWithArgs(locale, component, key, args);
+    	return getMessageWithArgs(null, locale, component, key, args);
     }
 
     /**
@@ -76,12 +77,21 @@ public class TranslationMessage implements Message {
      * </ul>
      */
     public String getMessage(final Locale locale, final String component, final String key, final Map<String, Object> args) {
-        return getMessageWithArgs(locale, component, key, args);
+        return getMessageWithArgs(null, locale, component, key, args);
     }
 
-    private String getMessageWithArgs(final Locale locale, final String component, final String key, final Object args) {
+    public String getMessage(String resourceBundle, final Locale locale, final String component, final String key, final Map<String, Object> args) {
+        return getMessageWithArgs(resourceBundle, locale, component, key, args);
+    }
+
+    public String getMessage(String resourceBundle, final Locale locale, final String component, final String key, final Object... args) {
+        return getMessageWithArgs(resourceBundle, locale, component, key, args);
+    }
+
+    private String getMessageWithArgs(String resourceBundle, final Locale locale, final String component, final String key, final Object args) {
         // Use source message if the message hasn't been collected/translated
-        String source = getMessages(Locale.forLanguageTag(ConstantsKeys.SOURCE), component, false).getMessages().get(key);
+        String source = resourceBundle != null ? ResourceBundle.getBundle(resourceBundle).getString(key) :
+                getMessages(Locale.forLanguageTag(ConstantsKeys.SOURCE), component, false).getMessages().get(key);
         if (source!=null && !source.isEmpty()) {
             String collectedSource = getMessages(LocaleUtility.getSourceLocale(), component, false).getMessages().get(key);
             if (!source.equals(collectedSource)) {
@@ -92,6 +102,8 @@ public class TranslationMessage implements Message {
         ComponentService.TranslationsDTO msgsItemDTO = getMessages(locale, component, true);
         String message = msgsItemDTO.getMessages().get(key);
         if (message == null || message.isEmpty()) {
+            if (resourceBundle != null)
+                return source;
             throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component, locale));
         }
 
