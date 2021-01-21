@@ -8,6 +8,8 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import com.vmware.l10agent.model.RecordModel;
+
+
 /**
  * 
  *
@@ -16,7 +18,6 @@ import com.vmware.l10agent.model.RecordModel;
  */
 public class TaskSysnQueues {
 	public final static BlockingQueue<RecordModel> SendComponentTasks = new LinkedBlockingQueue<RecordModel>();
-
 	public final static BlockingQueue<String> InstructTasks = new LinkedBlockingQueue<String>();
 
 }

@@ -421,9 +421,5 @@ public static String sendJsonWithToken(String url, String method, String jsonStr
 		return sslSocketFactory;
 	}
 
-	
-	
-
-
 
 }

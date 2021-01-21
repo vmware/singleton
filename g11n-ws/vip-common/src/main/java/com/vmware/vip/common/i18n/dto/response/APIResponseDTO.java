@@ -4,10 +4,10 @@
  */
 package com.vmware.vip.common.i18n.dto.response;
 
-import java.io.Serializable;
-
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.common.i18n.status.Response;
+
+import java.io.Serializable;
 
 /**
  * This class is used for wrapping the general API's response result.
@@ -55,11 +55,7 @@ public class APIResponseDTO implements Serializable {
     }
 
     public void setData(Object data) {
-    	if(data == null) {
-    		this.data = "";
-    	} else {
-            this.data = data;
-    	}
+        this.data = data;
     }
 
 }
