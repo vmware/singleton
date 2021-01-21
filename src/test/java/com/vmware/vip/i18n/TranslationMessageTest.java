@@ -79,20 +79,20 @@ public class TranslationMessageTest extends BaseTestClass {
         Locale locale3 = Locale.forLanguageTag("zh-Hans");
         String message3 = translation.getMessage(locale3, component, key, args);
         
-        Assert.assertEquals("[a] ²âÊÔ¾¯Ê¾", message3);
+        Assert.assertEquals("[a] æµ‹è¯•è­¦ç¤º", message3);
 
         Locale locale4 = Locale.forLanguageTag("zh-Hant");
         String message4 = translation.getMessage(locale4, component, key, args);
-        Assert.assertEquals("[a] œyÔ‡¾¯Ê¾", message4);
+        Assert.assertEquals("[a] æ¸¬è©¦è­¦ç¤º", message4);
 
         Locale locale5 = Locale.forLanguageTag("zh-Hans-CN");
         String message5 = translation.getMessage(locale5, component, key, args);
        
-        Assert.assertEquals("[a] ²âÊÔ¾¯Ê¾", message5);
+        Assert.assertEquals("[a] æµ‹è¯•è­¦ç¤º", message5);
 
         Locale locale6 = Locale.forLanguageTag("zh-Hant-TW");
         String message6 = translation.getMessage(locale6, component, key, args);
-        Assert.assertEquals("[a] œyÔ‡¾¯Ê¾", message6);
+        Assert.assertEquals("[a] æ¸¬è©¦è­¦ç¤º", message6);
 
     }
     
@@ -137,22 +137,22 @@ public class TranslationMessageTest extends BaseTestClass {
         Locale locale3 = Locale.forLanguageTag("zh-Hans");
         String message3 = translation.getString2(component, bundle, locale3, key,
                 args);
-        Assert.assertEquals("[a] ²âÊÔ¾¯Ê¾", message3);
+        Assert.assertEquals("[a] æµ‹è¯•è­¦ç¤º", message3);
 
         Locale locale4 = Locale.forLanguageTag("zh-Hant");
         String message4 = translation.getString2(component, bundle, locale4, key,
                 args);
-        Assert.assertEquals("[a] œyÔ‡¾¯Ê¾", message4);
+        Assert.assertEquals("[a] æ¸¬è©¦è­¦ç¤º", message4);
 
         Locale locale5 = Locale.forLanguageTag("zh-Hans-CN");
         String message5 = translation.getString2(component, bundle, locale5, key,
                 args);
-        Assert.assertEquals("[a] ²âÊÔ¾¯Ê¾", message5);
+        Assert.assertEquals("[a] æµ‹è¯•è­¦ç¤º", message5);
 
         Locale locale6 = Locale.forLanguageTag("zh-Hant-TW");
         String message6 = translation.getString2(component, bundle, locale6, key,
                 args);
-        Assert.assertEquals("[a] œyÔ‡¾¯Ê¾", message6);
+        Assert.assertEquals("[a] æ¸¬è©¦è­¦ç¤º", message6);
 
     }
 
@@ -180,20 +180,20 @@ public class TranslationMessageTest extends BaseTestClass {
         Assert.assertEquals("There are 345,678 files on disk \"MyDisk\".", pluralMessage3);
 
         Locale locale7 = new Locale("zh", "CN");
-        Object[] zh_pluralArgs1 = { 0, "ÎÒµÄÓ²ÅÌ" };
+        Object[] zh_pluralArgs1 = { 0, "æˆ‘çš„ç¡¬ç›˜" };
         String pluralMessage4 = translation.getString2(component, bundle, locale7, pluralKey,
                 zh_pluralArgs1);
-        Assert.assertEquals("\"ÎÒµÄÓ²ÅÌ\"ÉÏÓĞ0¸öÎÄ¼ş¡£", pluralMessage4);
+        Assert.assertEquals("\"æˆ‘çš„ç¡¬ç›˜\"ä¸Šæœ‰0ä¸ªæ–‡ä»¶ã€‚", pluralMessage4);
 
-        Object[] zh_pluralArgs2 = { 1, "ÎÒµÄÓ²ÅÌ" };
+        Object[] zh_pluralArgs2 = { 1, "æˆ‘çš„ç¡¬ç›˜" };
         String pluralMessage5 = translation.getString2(component, bundle, locale7, pluralKey,
                 zh_pluralArgs2);
-        Assert.assertEquals("\"ÎÒµÄÓ²ÅÌ\"ÉÏÓĞ1¸öÎÄ¼ş¡£", pluralMessage5);
+        Assert.assertEquals("\"æˆ‘çš„ç¡¬ç›˜\"ä¸Šæœ‰1ä¸ªæ–‡ä»¶ã€‚", pluralMessage5);
 
-        Object[] zh_pluralArgs3 = { 345678, "ÎÒµÄÓ²ÅÌ" };
+        Object[] zh_pluralArgs3 = { 345678, "æˆ‘çš„ç¡¬ç›˜" };
         String pluralMessage6 = translation.getString2(component, bundle, locale7, pluralKey,
                 zh_pluralArgs3);
-        Assert.assertEquals("\"ÎÒµÄÓ²ÅÌ\"ÉÏÓĞ345,678¸öÎÄ¼ş¡£", pluralMessage6);
+        Assert.assertEquals("\"æˆ‘çš„ç¡¬ç›˜\"ä¸Šæœ‰345,678ä¸ªæ–‡ä»¶ã€‚", pluralMessage6);
     }
 
     @Test
@@ -213,8 +213,8 @@ public class TranslationMessageTest extends BaseTestClass {
         String key = "global_text_username";
         String message_en_US = "User name";
         String message_de = "Benutzername";
-        String message_zh_CN = "ÓÃ»§Ãû";
-        String message_zh_TW = "Ê¹ÓÃÕßÃû·Q";
+        String message_zh_CN = "ç”¨æˆ·å";
+        String message_zh_TW = "ä½¿ç”¨è€…åç¨±";
         Map<String, String> retMap1 = translation.getMessages(new Locale("en", "US"), component);
         Assert.assertEquals(message_en_US, retMap1.get(key));
 
@@ -245,8 +245,8 @@ public class TranslationMessageTest extends BaseTestClass {
         String key = "global_text_username";
         String message_en_US = "User name";
         String message_de = "Benutzername";
-        String message_zh_CN = "ÓÃ»§Ãû";
-        String message_zh_TW = "Ê¹ÓÃÕßÃû·Q";
+        String message_zh_CN = "ç”¨æˆ·å";
+        String message_zh_TW = "ä½¿ç”¨è€…åç¨±";
         Map<String, String> retMap1 = translation.getStrings(new Locale("en", "US"), component);
         Assert.assertEquals(message_en_US, retMap1.get(key));
 
@@ -332,7 +332,7 @@ public class TranslationMessageTest extends BaseTestClass {
         Locale zhLocale = new Locale("zh", "Hans");
         String comp = "Component1";
         String key = "single quotation marks-notcollected";
-        String source = "Operator '{0}' ²»Ö§³Ö for property ' { 1} '";
+        String source = "Operator '{0}' ä¸æ”¯æŒ for property ' { 1} '";
         Object[] args = { "aaa", "bbb" };
 
         VIPCfg vc = VIPCfg.getInstance();
@@ -346,7 +346,7 @@ public class TranslationMessageTest extends BaseTestClass {
         vc.setPseudo(existing_pseudo);
         vc.setCollectSource(existing_collect);
 
-        String expected = "@@Operator 'aaa' ²»Ö§³Ö for property ' bbb '@@";
+        String expected = "@@Operator 'aaa' ä¸æ”¯æŒ for property ' bbb '@@";
         logger.debug("enTrans1: " + enTrans1);
         Assert.assertArrayEquals(new Object[] { expected }, new Object[] { enTrans1 });
     }
@@ -548,7 +548,7 @@ public class TranslationMessageTest extends BaseTestClass {
         Assert.assertEquals(2, result2.size()); // 2 locales
         Assert.assertEquals(2, result2.get(locale4).size()); // 2 components
         Assert.assertEquals(2, result2.get(locale4).get(component2).size()); // 2 messages
-        Assert.assertEquals("Öµ-1", result2.get(locale4).get(component2).get("user-1"));
+        Assert.assertEquals("å€¼-1", result2.get(locale4).get(component2).get("user-1"));
 
         // more cases to test cache
         // more cases to test the message sending to server
