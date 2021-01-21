@@ -37,7 +37,8 @@ public class MTFactory {
             } else if (mtServer.contains("inten.to")) {
                 processor = new IntentoTranslatingProcessor();
             }
-        } else {
+        }
+        if (processor == null) {
             processor = new AzureTranslatingProcessor();
         }
         return processor;

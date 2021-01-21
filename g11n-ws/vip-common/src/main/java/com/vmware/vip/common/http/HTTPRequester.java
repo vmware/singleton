@@ -301,7 +301,7 @@ public class HTTPRequester {
 				LOGGER.error("Failed to get data, get the response code: {} >>>", http.getResponseCode());
 			}
 		} catch (Exception e) {
-			LOGGER.error("Failed to create http connection.", e);
+			LOGGER.error("Failed to get data.", e);
 
 		} finally {
 			IOUtil.closeReader(in);
