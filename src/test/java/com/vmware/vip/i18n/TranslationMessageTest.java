@@ -578,11 +578,11 @@ public class TranslationMessageTest extends BaseTestClass {
 		String plural_key = "sample.plural.key1";
 		Locale locale_ar = Locale.forLanguageTag("ar");
 		
-		int artInt = 3;
+		int argInt = 3;
 		String argString = "MyDisk";
-		Object[] msgArgs = new Object[] {artInt, argString}; //In ar, 3 belongs to 'few' type.
+		Object[] msgArgs = new Object[] {argInt, argString}; //In ar, 3 belongs to 'few' type.
 
 		String message_ar = translation.getMessage(locale_ar, component, plural_key, msgArgs);
-		Assert.assertEquals("There are "+artInt+" files on disk \""+argString+"\".", message_ar);
+		Assert.assertEquals("There are "+argInt+" files on disk \""+argString+"\".", message_ar);
 	}
 }
