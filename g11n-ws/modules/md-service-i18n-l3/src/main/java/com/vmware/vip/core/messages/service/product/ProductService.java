@@ -4,24 +4,6 @@
  */
 package com.vmware.vip.core.messages.service.product;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import javax.annotation.Resource;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
-import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.vip.common.cache.CacheName;
@@ -34,7 +16,6 @@ import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.common.i18n.dto.DropVersionDTO;
 import com.vmware.vip.common.i18n.dto.DropVersionDTO.ComponentVersionDTO;
 import com.vmware.vip.common.i18n.dto.DropVersionDTO.ComponentVersionDTO.VersionDTO;
-import com.vmware.vip.common.i18n.dto.MultiComponentsDTO;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO.TranslationDTO;
 import com.vmware.vip.common.utils.JSONUtils;
@@ -43,6 +24,22 @@ import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO
 import com.vmware.vip.messages.data.dao.api.IOneComponentDao;
 import com.vmware.vip.messages.data.dao.api.IProductDao;
 import com.vmware.vip.messages.data.dao.exception.DataException;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import javax.annotation.Resource;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Service
 public class ProductService implements IProductService {
@@ -263,6 +260,7 @@ public class ProductService implements IProductService {
 		} catch (ParseException e2) {
 			logger.error(e2.getMessage(), e2);
 		}
+		if(!StringUtils.isEmpty(result)) {
 			Object messageObj = result.getMessages();
 			if (!StringUtils.isEmpty(messageObj)) {
 				Map<String, Object> messages = (Map<String, Object>) messageObj;
@@ -273,10 +271,9 @@ public class ProductService implements IProductService {
 					messages.put(entry.getKey(), entry.getValue());
 				}
 				componentMessagesDTO.setMessages(messages);
-				return componentMessagesDTO;
-			} else {
-				return componentMessagesDTO;
 			}
+		}
+		return componentMessagesDTO;
 	}
 
 	/**
