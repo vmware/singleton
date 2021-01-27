@@ -1,6 +1,6 @@
 # -*-coding:UTF-8 -*-
 #
-# Copyright 2020 VMware, Inc.
+# Copyright 2020-2021 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 #
 
@@ -10,7 +10,7 @@ import json
 
 import sys
 sys.path.append('..')
-from sgtn_client import I18n, Release, Translation
+from sgtn_client import I18N, Release, Translation
 
 
 PRODUCT = 'PYTHON'
@@ -24,6 +24,7 @@ CONFIG_FILES = [
     'sample_offline_disk.yml',
     'sample_offline_remote.yml'
     ]
+CONFIG_INDEX = 0
 
 
 class SampleApplication():
@@ -59,25 +60,46 @@ class SampleApplication():
         self.prepare_sub_path('log')
         self.prepare_sub_path('singleton')
 
-        I18n.add_config_file(CONFIG_FILES[2])
+        #
+        # step 1
+        #     Initialize configuration file
+        #
+        I18N.add_config_file(CONFIG_FILES[CONFIG_INDEX])
 
         start = time.time()
-        I18n.set_current_locale(LOCALE)
-        I18n.set_current_locale(LOCALE)
-        current = I18n.get_current_locale()
+        I18N.set_current_locale(LOCALE)
+        current = I18N.get_current_locale()
         print('--- current --- %s ---' % current)
 
-        rel = I18n.get_release(PRODUCT, VERSION)
+        #
+        # step 2
+        #     Get release object
+        #
+        rel = I18N.get_release(PRODUCT, VERSION)
 
         cfg = rel.get_config()
         #self.show('config', 'data', self.dict2string(cfg.get_config_data()))
         cfg_info = cfg.get_info()
         self.show('config', 'info', self.dict2string(cfg_info))
 
+        #
+        # step 3
+        #     Get translation object
+        #
         trans = rel.get_translation()
         self.check_locale(trans, 'ZH_cn')
         self.check_locale(trans, 'EN_us')
 
+        #
+        # step 4
+        #     Set global locale
+        #
+        I18N.set_current_locale(LOCALE)
+
+        #
+        # step 5
+        #     Get translation messages by get_string()
+        #
         found = trans.get_string(COMPONENT, KEY, source = SOURCE, locale = LOCALE)
         print('--- found --- 4 --- %s ---' % found)
         found = trans.get_string(COMPONENT, KEY, source = SOURCE)
@@ -92,7 +114,7 @@ class SampleApplication():
 
         found = trans.get_string(COMPONENT, 'aa', format_items = ['11', '22'])
         print('--- found --- 21 --- %s ---' % found)
-        found = trans.get_string(COMPONENT, 'cc', x = 'ee', y = 'ff')
+        found = trans.get_string(COMPONENT, 'cc', format_items = {'x': 'ee', 'y': 'ff'})
         print('--- found --- 22 --- %s ---' % found)
 
         spent = time.time() - start
@@ -111,4 +133,3 @@ class SampleApplication():
 
 
 SampleApplication().main()
-

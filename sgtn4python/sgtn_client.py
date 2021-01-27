@@ -1,6 +1,6 @@
 # -*-coding:UTF-8 -*-
 #
-# Copyright 2020 VMware, Inc.
+# Copyright 2020-2021 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 #
 
@@ -29,10 +29,11 @@ KEY_CODE = 'code'
 KEY_DATA = 'data'
 KEY_MESSAGES = 'messages'
 
+KEY_PRODUCT = 'product'
+KEY_VERSION = 'l10n_version'
 KEY_SERVICE_URL = 'online_service_url'
 KEY_OFFLINE_URL = 'offline_resources_base_url'
 KEY_LOCAL_PATH = 'offline_resources_path'
-KEY_VERSION = 'l10n_version'
 
 KEY_DEFAULT_LOCALE = 'default_locale'
 KEY_SOURCE_LOCALE = 'source_locale'
@@ -45,7 +46,11 @@ KEY_LOCALES = 'locales'
 KEY_LANG_TAG = 'language_tag'
 KEY_COMPONENT_TAG = 'name'
 
-HEADER_REQUEST_ETAG = "If-None-Match";
+KEY_COMPONENT_TEMPLATE = "component_template"
+KEY_LOCALES_REFER = "locales_refer"
+KEY_TEMPLATE = "template"
+
+HEADER_REQUEST_ETAG = "If-None-Match"
 
 LOCALE_DEFAULT = 'en-US'
 MAX_THREAD = 1000
@@ -140,8 +145,18 @@ class SingletonConfig(Config):
         self.base = base_path
         self.config_data = config_data
 
-        self.remote_url = self.get_url(KEY_SERVICE_URL)
-        self.local_url = self.get_url(KEY_OFFLINE_URL)
+        self.product = config_data.get(KEY_PRODUCT)
+        self.version = config_data.get(KEY_VERSION)
+
+        self.remote_url = config_data.get(KEY_SERVICE_URL)
+        self.local_url = config_data.get(KEY_OFFLINE_URL)
+
+        if self.local_url:
+            parts = self.local_url.split('/')
+            self.local_type = parts[0][:-1]
+
+            if self.local_type == LOCAL_TYPE_FILE:
+                self.local_url = '/'.join(parts[2:])
 
         self.log_path = self.get_path(KEY_LOGPATH)          # log path
         self.cache_path = self.get_path(KEY_CACHEPATH)      # cache path
@@ -152,21 +167,44 @@ class SingletonConfig(Config):
         self.default_locale = self.get_item(KEY_DEFAULT_LOCALE, LOCALE_DEFAULT)
         self.source_locale = self.get_item(KEY_SOURCE_LOCALE, self.default_locale)
 
-        if self.local_url:
-            parts = self.local_url.split('/')
-            self.local_type = parts[0][:-1]
-            if self.local_type == LOCAL_TYPE_FILE:
-                self.local_url = '/'.join(parts[2:-1])
-            else:
-                self.local_url = '/'.join(parts[:-1])
+        self._expand_components()
 
-        if self.remote_url:
-            parts = self.remote_url.split('/')
-            self.remote_url = '/'.join(parts[:-4])
+    def _expand_components(self):
+        self.components = None
+        components = self.config_data.get(KEY_COMPONENTS)
+        if not components:
+            return
 
-        _local_paths = self.config_data.get(KEY_LOCAL_PATH)
-        _locales = self.extract_list(KEY_LOCALES, KEY_LANG_TAG, KEY_LOCAL_PATH, _local_paths)
-        self.components = self.extract_list(KEY_COMPONENTS, KEY_COMPONENT_TAG, KEY_LOCALES, _locales)
+        expand = {}
+        self.components = {}
+        for i in range(len(components)):
+            component = components[i]
+            if KEY_LOCALES in component:
+                continue
+
+            template_name = component.get(KEY_TEMPLATE)
+            if not template_name:
+                template_name = KEY_COMPONENT_TEMPLATE
+
+            if template_name not in expand:
+                t = self.config_data.get(template_name)
+                refer_name = t.get(KEY_LOCALES_REFER)
+
+                refer = self.config_data.get(refer_name)
+                if not refer:
+                    continue
+
+                dup = {}
+                for k in range(len(refer)):
+                    locale_def = copy.deepcopy(refer[k])
+                    dup[locale_def.get(KEY_LANG_TAG)] = locale_def
+                    if KEY_LOCAL_PATH not in locale_def:
+                        locale_def[KEY_LOCAL_PATH] = t.get(KEY_LOCAL_PATH)
+
+                expand[template_name] = dup
+
+            component[KEY_LOCALES] = expand[template_name]
+            self.components[component.get(KEY_COMPONENT_TAG)] = copy.deepcopy(component)
 
     def get_config_data(self):
         # method of Config
@@ -196,19 +234,6 @@ class SingletonConfig(Config):
         if value is None:
             value = default_value
         return value
-
-    def get_url(self, key):
-        text = self.config_data.get(key)
-        if text:
-            version = self.get_item(KEY_VERSION, '')
-            text = os.path.join(text, version, '')
-
-            parts = text.split('/')
-            n = len(parts)
-
-            self.product = parts[n-3]   # product name
-            self.version = parts[n-2]   # l10n version
-        return text
 
     def get_path(self, key):
         path = self.config_data.get(key)
@@ -444,14 +469,17 @@ class SingletonRelease(Release, Translation):
         items = kwargs.get(KEY_ITEMS) if kwargs else None
 
         if not locale:
-            locale = I18n.get_current_locale()
+            locale = I18N.get_current_locale()
         if not source:
             if component in self.source:
                 source = self.source[component].messages.get(key)
 
         text = self._get_message(component, key, source, locale)
         if text and items:
-            text = text.format(*items)
+            if isinstance(items, list):
+                text = text.format(*items)
+            elif isinstance(items, dict):
+                text = text.format(**items)
 
         if text is None:
             text = key
@@ -491,7 +519,7 @@ class SingletonRelease(Release, Translation):
         return None
 
     def _extract_info_from_dir(self, root):
-        if self.cfg.local_type != 'file':
+        if self.cfg.local_type != LOCAL_TYPE_FILE:
             return
 
         components = {}
@@ -656,7 +684,7 @@ class SingletonClientManager(object):
             releases[cfg.version] = release_obj
 
 
-class I18n():
+class I18N():
 
     @classmethod
     def add_config_file(cls, config_file):
@@ -702,4 +730,3 @@ class I18n():
     @classmethod
     def get_release(cls, product, version):
         return SingletonClientManager().get_release(product, version)
-

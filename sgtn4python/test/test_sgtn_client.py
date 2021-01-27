@@ -1,4 +1,8 @@
 # -*-coding:UTF-8 -*-
+#
+# Copyright 2020-2021 VMware, Inc.
+# SPDX-License-Identifier: EPL-2.0
+#
 import unittest
 
 import os
@@ -7,7 +11,7 @@ import json
 
 import sys
 sys.path.append('..')
-from sgtn_client import I18n, Release, Translation
+from sgtn_client import I18N, Release, Translation
 from sgtn_util import FileUtil, NetUtil
 
 
@@ -56,16 +60,16 @@ class TestClient(unittest.TestCase):
         self.prepare_sub_path('log')
         self.prepare_sub_path('singleton')
 
-        I18n.add_config_file('sgtn_client.yml')
+        I18N.add_config_file('sgtn_client.yml')
 
         start = time.time()
-        I18n.set_current_locale(LOCALE)
-        I18n.set_current_locale(LOCALE)
-        current = I18n.get_current_locale()
+        I18N.set_current_locale(LOCALE)
+        I18N.set_current_locale(LOCALE)
+        current = I18N.get_current_locale()
         print('--- current --- %s ---' % current)
         self.assertEqual(current, 'de')
 
-        rel = I18n.get_release(PRODUCT, VERSION)
+        rel = I18N.get_release(PRODUCT, VERSION)
 
         cfg = rel.get_config()
         cfg_info = cfg.get_info()
