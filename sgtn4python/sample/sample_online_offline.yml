@@ -1,6 +1,9 @@
-online_service_url: http://192.168.1.31:8090/singleton/PYTHON/
-offline_resources_base_url: file:///data/l10n/PYTHON
+
+product: PYTHON
 l10n_version: 1.0.0
+
+online_service_url: http://192.168.1.31:8090
+offline_resources_base_url: file:///data/l10n/PYTHON/1.0.0
 
 # log path for the python client
 log_path: ./log/
@@ -14,15 +17,17 @@ try_delay: 10
 
 # how many seconds should be waited to update cache data when there is old data existed
 cache_expired_time: 60
-
-offline_resources_path:
-  - $COMPONENT/messages_$LOCALE.json
   
 locales:
   - language_tag: en-US
     offline_resources_path:
       - $COMPONENT/messages.properties
   - language_tag: de
+
+component_template:
+  locales_refer: locales
+  offline_resources_path:
+    - $COMPONENT/messages_$LOCALE.json
  
 components:
   - name: about
