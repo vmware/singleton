@@ -2,6 +2,8 @@
 //SPDX-License-Identifier: EPL-2.0
 package com.vmware.l10n.translation.dao.impl;
 
+import java.util.HashMap;
+
 import javax.annotation.PostConstruct;
 
 import org.json.simple.parser.ParseException;
@@ -14,7 +16,9 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
+import com.amazonaws.util.json.Jackson;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.vmware.l10n.conf.S3Client;
 import com.vmware.l10n.translation.dao.SingleComponentDao;
 import com.vmware.l10n.translation.dto.ComponentMessagesDTO;
 import com.vmware.l10n.utils.S3Util;
@@ -23,6 +27,9 @@ import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.constants.TranslationQueryStatusType;
 import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
+import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO;
+import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO;
+import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO.CreationDTO;
 import com.vmware.vip.common.l10n.exception.L10nAPIException;
 
 
@@ -36,6 +43,9 @@ public class S3SingleComponentDaoImpl implements SingleComponentDao {
 
 	@Autowired
 	private S3Util s3util;
+
+	@Autowired
+	private S3Client s3Client;
 
 	@PostConstruct
 	private void init() {
@@ -106,5 +116,29 @@ public class S3SingleComponentDaoImpl implements SingleComponentDao {
 	public void unlockFile(ComponentMessagesDTO componentMessagesDTO) {
 		Locker locker = s3util.new Locker(basePath, componentMessagesDTO);
 		locker.unlockFile();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void saveCreationInfo(UpdateTranslationDTO updateTranslationDTO) {
+		UpdateTranslationDataDTO transData = updateTranslationDTO.getData();
+		CreationDTO creationDTO = transData.getCreation();
+		String opId = (creationDTO == null) ? "" : creationDTO.getOperationid();
+		String filepath = S3Util.genProductVersionS3Path(basePath, transData.getProductName(), transData.getVersion())
+				+ ConstantsFile.CREATION_INFO;
+
+		// read
+		final HashMap<String, String> jsonMap;
+		if (s3Client.isObjectExist(filepath)) {
+			jsonMap = Jackson.fromJsonString(s3Client.readObject(filepath), HashMap.class);
+		} else {
+			jsonMap = new HashMap<>();
+		}
+
+		// set or update
+		transData.getTranslation().forEach(translation -> jsonMap.put(translation.getLocale(), opId));
+
+		// write
+		s3Client.putObject(filepath, Jackson.toJsonPrettyString(jsonMap));
 	}
 }
