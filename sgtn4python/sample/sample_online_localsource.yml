@@ -2,7 +2,7 @@
 product: PYTHON
 l10n_version: 1.0.0
 
-online_service_url: http://192.168.1.31:8090
+online_service_url: http://127.0.0.1:8090
 offline_resources_base_url: file:///data/l10n/PYTHON/1.0.0
 
 # log path for the python client
@@ -22,12 +22,9 @@ locales:
   - language_tag: en-US
     offline_resources_path:
       - $COMPONENT/messages.properties
-  - language_tag: de
 
 component_template:
   locales_refer: locales
-  offline_resources_path:
-    - $COMPONENT/messages_$LOCALE.json
  
 components:
   - name: about
