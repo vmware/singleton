@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 import { PLURALFUNCS } from '../src/formatters/plural/plurals.func';
