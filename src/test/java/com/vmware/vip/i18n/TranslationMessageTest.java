@@ -571,4 +571,18 @@ public class TranslationMessageTest extends BaseTestClass {
         String message_de = translation.getMessage(locale_de, component, key, msgArgs);
         Assert.assertEquals("1 - 5 of 10 kunden", message_de);
     }
+
+	@Test
+	public void testPluralFallback() {
+		String component = "JAVA";
+		String plural_key = "sample.plural.key1";
+		Locale locale_ar = Locale.forLanguageTag("ar");
+		
+		int argInt = 3;
+		String argString = "MyDisk";
+		Object[] msgArgs = new Object[] {argInt, argString}; //In ar, 3 belongs to 'few' type.
+
+		String message_ar = translation.getMessage(locale_ar, component, plural_key, msgArgs);
+		Assert.assertEquals("There are "+argInt+" files on disk \""+argString+"\".", message_ar);
+	}
 }
