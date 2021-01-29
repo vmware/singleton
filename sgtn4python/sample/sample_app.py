@@ -20,7 +20,7 @@ LOCALE = 'de'
 
 CONFIG_FILES = [
     'sample_online_only.yml',
-    'sample_online_offline.yml',
+    'sample_online_localsource.yml',
     'sample_offline_disk.yml',
     'sample_offline_remote.yml'
     ]
@@ -100,22 +100,24 @@ class SampleApplication():
         # step 5
         #     Get translation messages by get_string()
         #
+        found = trans.get_string(COMPONENT, KEY, source = SOURCE, locale = 'en-US')
+        print('--- found --- source --- %s ---' % found)
         found = trans.get_string(COMPONENT, KEY, source = SOURCE, locale = LOCALE)
-        print('--- found --- 4 --- %s ---' % found)
+        print('--- found --- %s --- %s ---' % (LOCALE, found))
         found = trans.get_string(COMPONENT, KEY, source = SOURCE)
-        print('--- found --- 3 --- %s ---' % found)
+        print('--- found --- current --- %s ---' % found)
         found = trans.get_string(COMPONENT, KEY)
-        print('--- found --- 1a --- %s ---' % found)
+        print('--- found --- only by key --- %s ---' % found)
         found = trans.get_string('TT', KEY)
-        print('--- found --- 1b --- %s ---' % found)
+        print('--- found --- wrong component --- %s ---' % found)
 
         if (self.need_wait(cfg_info)):
             time.sleep(5)
 
         found = trans.get_string(COMPONENT, 'aa', format_items = ['11', '22'])
-        print('--- found --- 21 --- %s ---' % found)
+        print('--- found --- array in format --- %s ---' % found)
         found = trans.get_string(COMPONENT, 'cc', format_items = {'x': 'ee', 'y': 'ff'})
-        print('--- found --- 22 --- %s ---' % found)
+        print('--- found --- dict in format --- %s ---' % found)
 
         spent = time.time() - start
 

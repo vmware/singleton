@@ -550,8 +550,9 @@ class SingletonRelease(Release, Translation):
         locale_item = self.locales[locale]
 
         if not self.cfg.local_url:
-            for component in self.component_list:
-                locale_item[component] = self._get_remote_resource(locale, component)
+            if self.component_list:
+                for component in self.component_list:
+                    locale_item[component] = self._get_remote_resource(locale, component)
             return
 
         if not self.cfg.components:
