@@ -35,10 +35,11 @@ KEY_ERROR = 'error'
 LOG_TYPE_INFO = 'info'
 LOG_TYPE_ERROR = 'error'
 
+# below keys are in lower case
 LOCALE_MAP = {
-    'zh-Hant': 'zh-Hant',
-    'zh-Hans': 'zh-Hans',
-    'zh-CN': 'zh-Hans'
+    'zh-hant': 'zh-Hant',
+    'zh-hans': 'zh-Hans',
+    'zh-cn': 'zh-Hans'
     }
 
 class FileUtil:
@@ -238,7 +239,7 @@ class SysUtil:
             parts[1] = parts[1].upper()
         locale = '-'.join(parts)
 
-        fallback = LOCALE_MAP.get(locale)
+        fallback = LOCALE_MAP.get(locale.lower())
         if fallback:
             return fallback
 
