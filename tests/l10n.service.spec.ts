@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 import { VIPModule, L10nService, VIPService, LocaleService, I18nLoader } from '../index';
