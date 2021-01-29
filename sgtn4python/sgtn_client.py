@@ -624,17 +624,17 @@ class SingletonRelease(Release, Translation):
 
         translation = source
 
-        if component_obj:
-            found = component_obj.messages.get(key)
-            if not found:
-                remote_default_locale = self.get_locale_supported(self.cfg.default_locale)
-                if remote_source_locale != remote_default_locale:
-                    component_def = self._get_component(remote_default_locale, component)
-                    if component_def:
-                        found = component_def.messages.get(key)
+        found = component_obj.messages.get(key) if component_obj else None
+        if not found:
+            remote_default_locale = self.get_locale_supported(self.cfg.default_locale)
+            if remote_source_locale != remote_default_locale:
+                component_def = self._get_component(remote_default_locale, component)
+                if component_def:
+                    found = component_def.messages.get(key)
 
+        if found:
             source_remote = component_src.messages.get(key) if component_src else None
-            if (source_remote is None or source_remote == source) and found:
+            if source_remote is None or source_remote == source:
                 translation = found
 
         return translation
