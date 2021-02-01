@@ -1,0 +1,44 @@
+
+product: PYTHON
+l10n_version: 1.0.0
+
+offline_resources_base_url: http://127.0.0.1:8094/l10n/PYTHON/1.0.0
+
+# log path for the python client
+log_path: ./log/
+
+  
+components:
+  - name: about
+    locales:
+      - language_tag: en-US
+        offline_resources_path:
+          - about/messages.properties
+      - language_tag: de
+        offline_resources_path:
+          - about/messages_de.json
+      - language_tag: fr
+        offline_resources_path:
+          - about/messages_fr.json
+  - name: common
+    locales:
+      - language_tag: en-US
+        offline_resources_path:
+          - common/messages_latest.json
+      - language_tag: de
+        offline_resources_path:
+          - common/messages_de.json
+      - language_tag: fr
+        offline_resources_path:
+          - common/messages_fr.json
+  - name: contact
+    locales:
+      - language_tag: en-US
+        offline_resources_path:
+          - contact/messages_latest.json
+      - language_tag: de
+        offline_resources_path:
+          - contact/messages_de.json
+      - language_tag: fr
+        offline_resources_path:
+          - contact/messages_fr.json
