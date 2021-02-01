@@ -20,6 +20,10 @@ public class MTConfig {
 		MTSERVER = mTSERVER;
 	}
 
+	public static String getMTSERVER() {
+		return MTSERVER;
+	}
+
 	public static void setKEY(String kEY) {
 		KEY = kEY;
 	}
