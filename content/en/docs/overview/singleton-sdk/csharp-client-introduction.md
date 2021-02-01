@@ -33,6 +33,7 @@ C# Client is a class libary running on Windows .NET Framework. It enables applic
 * [Interface For Extension](#Interface-For-Extension)
    * [IExtension](#IExtension)
    * [ICacheManager](#ICacheManager)
+   * [ICacheComponentManager](#ICacheComponentManager)
    * [ICacheMessages](#ICacheMessages)
    * [ILog](#ILog)
    * [IResourceParser](#IResourceParser)
