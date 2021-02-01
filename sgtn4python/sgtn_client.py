@@ -291,6 +291,7 @@ class SingletonComponent:
         self.querying = False
         self.interval = self.rel.interval
         self.etag = None
+        self.cache_path = None
 
         if self.rel.cache_path:
             self.cache_path = os.path.join(self.rel.cache_path, component, 'messages_%s.json' % locale)
@@ -516,7 +517,7 @@ class SingletonRelease(Release, Translation):
         code, dt = NetUtil.http_get(addr, None)
         if code == 200 and ClientUtil.check_response_valid(dt):
             scope = dt[KEY_RESULT][KEY_DATA][key]
-            if scope:
+            if scope and self.cache_path:
                 FileUtil.save_json_file(os.path.join(self.cache_path, keep_name), scope)
             return scope
         return None
