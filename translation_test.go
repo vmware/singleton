@@ -247,7 +247,6 @@ func TestGetStringFallback(t *testing.T) {
 }
 
 func TestGetStringAbnormal(t *testing.T) {
-
 	test := struct {
 		desc  string
 		mocks []string
@@ -284,7 +283,7 @@ func TestGetStringAbnormal(t *testing.T) {
 	assert.Contains(t, err2.Error(), defaultLocaleFr)
 	assert.Contains(t, err2.Error(), compSunglow)
 	assert.Contains(t, err2.Error(), "fail to get message")
-	assert.Equal(t, "", message2)
+	assert.Equal(t, keyNonexistent, message2)
 
 	// original locale doesn't have component.
 	// default locale has component, but doesn't have Key
@@ -293,26 +292,26 @@ func TestGetStringAbnormal(t *testing.T) {
 	assert.Contains(t, err3.Error(), defaultLocaleFr)
 	assert.Contains(t, err3.Error(), compUsers)
 	assert.Contains(t, err3.Error(), "fail to get message")
-	assert.Equal(t, "", message3)
+	assert.Equal(t, keyNonexistent, message3)
 
 	// Both locales doesn't have the component
 	compNonexistent := "comp-notexist"
 	message4, err4 := trans.GetStringMessage(name, version, localeZhhans, compNonexistent, key, arg)
 	assert.NotNil(t, err4)
 	assert.NotContains(t, err4.Error(), "fail to get message")
-	assert.Equal(t, "", message4)
+	assert.Equal(t, key, message4)
 
 	// Get default locale directly. Default locale doesn't have the component
 	message5, err5 := trans.GetStringMessage(name, version, defaultLocaleFr, compNonexistent, key, arg)
 	assert.NotNil(t, err5)
 	assert.NotContains(t, err5.Error(), "fail to get message")
-	assert.Equal(t, "", message5)
+	assert.Equal(t, key, message5)
 
 	// Get default locale directly. Default locale doesn't have the key
 	message6, err6 := trans.GetStringMessage(name, version, defaultLocaleFr, compUsers, keyNonexistent, arg)
 	assert.NotNil(t, err6)
 	assert.Contains(t, err6.Error(), "fail to get message")
-	assert.Equal(t, "", message6)
+	assert.Equal(t, keyNonexistent, message6)
 
 	assert.True(t, gock.IsDone())
 }
