@@ -133,7 +133,7 @@ components:
   - name: about
     template: component_template # default
   - name: common
-  - name: common
+  - name: contact
 ```
 
 # APIs Available
