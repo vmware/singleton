@@ -22,7 +22,8 @@ CONFIG_FILES = [
     'sample_online_only.yml',
     'sample_online_localsource.yml',
     'sample_offline_disk.yml',
-    'sample_offline_remote.yml'
+    'sample_offline_remote.yml',
+    'sample_offline_remote_original.yml'
     ]
 CONFIG_INDEX = 0
 
@@ -104,6 +105,8 @@ class SampleApplication():
         print('--- found --- source --- %s ---' % found)
         found = trans.get_string(COMPONENT, KEY, source = SOURCE, locale = LOCALE)
         print('--- found --- %s --- %s ---' % (LOCALE, found))
+        found = trans.get_string(COMPONENT, KEY, source = SOURCE, locale = 'hh')
+        print('--- found --- %s --- %s ---' % ('hh', found))
         found = trans.get_string(COMPONENT, KEY, source = SOURCE)
         print('--- found --- current --- %s ---' % found)
         found = trans.get_string(COMPONENT, KEY)

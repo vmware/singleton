@@ -169,6 +169,15 @@ class SingletonConfig(Config):
 
         self._expand_components()
 
+    def _expand_locales(self, locales_def_array, template):
+        locales = {}
+        for k in range(len(locales_def_array)):
+            locale_def = copy.deepcopy(locales_def_array[k])
+            locales[locale_def.get(KEY_LANG_TAG)] = locale_def
+            if KEY_LOCAL_PATH not in locale_def and template:
+                locale_def[KEY_LOCAL_PATH] = template.get(KEY_LOCAL_PATH)
+        return locales
+
     def _expand_components(self):
         self.components = None
         components = self.config_data.get(KEY_COMPONENTS)
@@ -180,6 +189,8 @@ class SingletonConfig(Config):
         for i in range(len(components)):
             component = components[i]
             if KEY_LOCALES in component:
+                component[KEY_LOCALES] = self._expand_locales(component[KEY_LOCALES], None)
+                self.components[component.get(KEY_COMPONENT_TAG)] = copy.deepcopy(component)
                 continue
 
             template_name = component.get(KEY_TEMPLATE)
@@ -193,15 +204,7 @@ class SingletonConfig(Config):
                 refer = self.config_data.get(refer_name)
                 if not refer:
                     continue
-
-                dup = {}
-                for k in range(len(refer)):
-                    locale_def = copy.deepcopy(refer[k])
-                    dup[locale_def.get(KEY_LANG_TAG)] = locale_def
-                    if KEY_LOCAL_PATH not in locale_def:
-                        locale_def[KEY_LOCAL_PATH] = t.get(KEY_LOCAL_PATH)
-
-                expand[template_name] = dup
+                expand[template_name] = self._expand_locales(refer, t)
 
             component[KEY_LOCALES] = expand[template_name]
             self.components[component.get(KEY_COMPONENT_TAG)] = copy.deepcopy(component)
