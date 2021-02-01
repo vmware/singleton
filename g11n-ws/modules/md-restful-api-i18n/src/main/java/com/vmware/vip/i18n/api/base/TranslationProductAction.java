@@ -272,11 +272,12 @@ public class TranslationProductAction  extends BaseAction {
     }
 
     public APIResponseDTO getVersionInfo(String productName,String version) throws L3APIException{
-        DropVersionDTO versioninfo = productService.getVersionInfo(productName, version);
+    	String availableVersion = super.getAvailableVersion(productName, version);
+        DropVersionDTO versioninfo = productService.getVersionInfo(productName, availableVersion);
         Map<String,Object> data = new HashMap<String,Object>();
         data.put(PRODUCT_NAME, productName);
-        data.put(VERSION, version);
+        data.put(VERSION, availableVersion);
         data.put("versioninfo", versioninfo);
-        return super.handleResponse(APIResponseStatus.OK, data);
+        return super.handleVersionFallbackResponse(version, availableVersion, data);
     }
 }
