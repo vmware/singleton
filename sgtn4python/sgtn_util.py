@@ -38,6 +38,7 @@ LOG_TYPE_ERROR = 'error'
 # below keys are in lower case
 LOCALE_MAP = {
     'zh-hant': 'zh-Hant',
+    'zh-tw': 'zh-Hant',
     'zh-hans': 'zh-Hans',
     'zh-cn': 'zh-Hans'
     }
