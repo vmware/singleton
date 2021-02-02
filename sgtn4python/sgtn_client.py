@@ -477,6 +477,8 @@ class SingletonRelease(Release, Translation):
         if not source:
             if component in self.source:
                 source = self.source[component].messages.get(key)
+            elif self.component_list and component in self.component_list:
+                self.source[component] = self._get_remote_resource(self.cfg.source_locale, component)
 
         text = self._get_message(component, key, source, locale)
         if text and items:
