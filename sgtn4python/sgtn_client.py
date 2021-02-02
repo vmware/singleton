@@ -175,7 +175,7 @@ class SingletonConfig(Config):
             locale_def = copy.deepcopy(locales_def_array[k])
             locales[locale_def.get(KEY_LANG_TAG)] = locale_def
             if KEY_LOCAL_PATH not in locale_def and template:
-                locale_def[KEY_LOCAL_PATH] = template.get(KEY_LOCAL_PATH)
+                locale_def[KEY_LOCAL_PATH] = copy.deepcopy(template.get(KEY_LOCAL_PATH))
         return locales
 
     def _expand_components(self):
