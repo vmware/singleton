@@ -242,20 +242,23 @@ public class SourceRequestCron {
 	}
 
 	private void processS3SycSource(String product, String version) {
-		 List<RecordModel> list = recordService.getRecordModelsByRemoteS3(product, version,lastModifyTime);
-		 for(RecordModel rm :list) {
-			 logger.debug("{},{},{},{},{}",rm.getProduct(), rm.getVersion(), rm.getLocale(), rm.getComponent(), rm.getStatus());
-	    	 try {
-				TaskSysnQueues.SendComponentTasks.put(rm);
-			} catch (InterruptedException e) {
-				logger.error(e.getMessage(), e);
-				Thread.currentThread().interrupt();
-			}
-	    	if(rm.getStatus()>lastModifyTime) {
+		List<RecordModel> list = recordService.getRecordModelsByRemoteS3(product, version, lastModifyTime);
+		if (list != null) {
+			for (RecordModel rm : list) {
+				logger.debug("{},{},{},{},{}", rm.getProduct(), rm.getVersion(), rm.getLocale(), rm.getComponent(),
+						rm.getStatus());
+				try {
+					TaskSysnQueues.SendComponentTasks.put(rm);
+				} catch (InterruptedException e) {
+					logger.error(e.getMessage(), e);
+					Thread.currentThread().interrupt();
+				}
+				if (rm.getStatus() > lastModifyTime) {
 					lastModifyTime = rm.getStatus();
 				}
-	    	 rm.setStatus(0); 
-	     }
+				rm.setStatus(0);
+			}
+		}
 	}
 
 	private void doRecordApiV1() {

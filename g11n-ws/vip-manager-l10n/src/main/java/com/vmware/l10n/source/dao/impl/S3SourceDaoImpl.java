@@ -133,7 +133,7 @@ public class S3SourceDaoImpl implements SourceDao {
 			prefix.append(version);
 			prefix.append(ConstantsChar.BACKSLASH);
 		}
-	    logger.info("begin getUpdateRecords lastModyTime: {}, prefix: {}", lastModifyTime, this.basePath);
+	    logger.info("begin getUpdateRecords lastModyTime: {}, prefix: {}", lastModifyTime, prefix.toString());
 	    req.setPrefix(prefix.toString());
 	    
         ListObjectsV2Result result;
