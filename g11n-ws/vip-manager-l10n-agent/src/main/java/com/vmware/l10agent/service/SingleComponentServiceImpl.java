@@ -143,6 +143,9 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 	
 	
 	private boolean synchkey2VipI18n(RecordModel record, String key, String srcValue, String commentForSource, String sourceFormat) throws UnsupportedEncodingException {
+		if(configs.getVipBasei18nUrl().equalsIgnoreCase(PropertyContantKeys.LOCAL)) {
+			return false;
+		}
 		StringBuffer urlStr = new StringBuffer(configs.getVipBasei18nUrl());
         urlStr.append(PropertyContantKeys.I18n_Source_Collect_Url
                 .replace("{" + APIParamName.PRODUCT_NAME + "}", record.getProduct())
@@ -181,7 +184,10 @@ public class SingleComponentServiceImpl implements SingleComponentService{
 	}
 
 	private boolean synchkey2VipL10n(RecordModel record,  String key, String srcValue, String commentForSource, String sourceFormat) throws UnsupportedEncodingException{
-		StringBuffer urlStr = new StringBuffer(configs.getRemoteBaseL10Url());
+		if(configs.getVipBaseL10nUrl().equalsIgnoreCase(PropertyContantKeys.LOCAL)) {
+			return false;
+		}
+		StringBuffer urlStr = new StringBuffer(configs.getVipBaseL10nUrl());
         urlStr.append(PropertyContantKeys.L10n_Source_Collect_Url
                 .replace("{" + APIParamName.PRODUCT_NAME + "}", record.getProduct())
                 .replace("{" + APIParamName.VERSION + "}", record.getVersion())

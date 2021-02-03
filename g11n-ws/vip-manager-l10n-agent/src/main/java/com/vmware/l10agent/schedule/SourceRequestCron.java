@@ -45,6 +45,7 @@ public class SourceRequestCron {
 	private static Logger logger = LoggerFactory.getLogger(SourceRequestCron.class);
     private final static String instructV1 = "v1";
     private final static String instructS3 = "s3";
+    private final static Map<String,Long> prodVersionLastModify = new HashMap<>();
 	@Autowired
 	private RecordService recordService;
 
@@ -56,13 +57,21 @@ public class SourceRequestCron {
 	
 
 	public final static long SECOND = 1000;
-	private static long lastModifyTime = 0;
 
 	@PostConstruct
 	public void initSendFile() {
 		if(configs.getRecordApiVersion().equalsIgnoreCase("s3")) {
-			lastModifyTime = configs.getSyncStartDatetime();
+			long lastModifyTime = configs.getSyncStartDatetime();
+			Map<String, List<String>> allowList = getSyncS3List();
+			for(Entry<String, List<String>> entry : allowList.entrySet()) {
+				String productName = entry.getKey();
+				List<String> versionStrs = entry.getValue();
+			    for(String versionStr : versionStrs) {
+			    	prodVersionLastModify.put(productName+versionStr, lastModifyTime);	
+			    }
+			}
 		}
+		
 		logger.info("begin recover the remained resource!!");
 		File file = new File(configs.getSourceFileBasepath());
 
@@ -242,7 +251,8 @@ public class SourceRequestCron {
 	}
 
 	private void processS3SycSource(String product, String version) {
-		List<RecordModel> list = recordService.getRecordModelsByRemoteS3(product, version, lastModifyTime);
+	    long maxModifyTime = prodVersionLastModify.get(product+version);
+		List<RecordModel> list = recordService.getRecordModelsByRemoteS3(product, version, maxModifyTime);
 		if (list != null) {
 			for (RecordModel rm : list) {
 				logger.debug("{},{},{},{},{}", rm.getProduct(), rm.getVersion(), rm.getLocale(), rm.getComponent(),
@@ -253,11 +263,12 @@ public class SourceRequestCron {
 					logger.error(e.getMessage(), e);
 					Thread.currentThread().interrupt();
 				}
-				if (rm.getStatus() > lastModifyTime) {
-					lastModifyTime = rm.getStatus();
+				if (rm.getStatus() > maxModifyTime) {
+					maxModifyTime = rm.getStatus();
 				}
 				rm.setStatus(0);
 			}
+			prodVersionLastModify.put(product+version, maxModifyTime);
 		}
 	}
 
