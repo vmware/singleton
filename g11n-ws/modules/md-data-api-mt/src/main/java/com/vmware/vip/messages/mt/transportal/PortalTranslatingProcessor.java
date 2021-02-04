@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.messages.mt.transportal;
@@ -23,7 +23,7 @@ import com.vmware.vip.messages.mt.MTConfig;
 public class PortalTranslatingProcessor implements IMTProcessor {
 	private static Logger logger = LoggerFactory.getLogger(PortalTranslatingProcessor.class);
 
-	public String translateStr(String fromLang, String toLang, String source) throws MTException {
+	public String translateString(String fromLang, String toLang, String source) throws MTException {
 		List<String> sourceList = new ArrayList<String>();
 		sourceList.add(source);
 		List<String> translationList = this.translateArray(fromLang, toLang,

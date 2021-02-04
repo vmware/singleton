@@ -1,4 +1,4 @@
-//Copyright 2019-2020 VMware, Inc.
+//Copyright 2019-2021 VMware, Inc.
 //SPDX-License-Identifier: EPL-2.0
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
@@ -18,10 +18,8 @@ dependencies {
     compile project(":md-restful-api")
     compile "org.springframework.boot:spring-boot-starter"
     compile ('org.springframework.boot:spring-boot-starter-log4j2')
-    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.47'
-    
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.75'
     testCompile("org.springframework.boot:spring-boot-starter-test")
-  
 }
 
 bootJar {

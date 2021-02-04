@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.controller;
@@ -28,7 +28,7 @@ import com.vmware.vip.common.l10n.source.util.PathUtil;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
 public class SourceSendingCronTest {
-	 private static Logger logger = LoggerFactory.getLogger(SourceDaoSource.class);
+	private static Logger logger = LoggerFactory.getLogger(SourceSendingCronTest.class);
 		
 	@Autowired
 	private WebApplicationContext webApplicationContext;

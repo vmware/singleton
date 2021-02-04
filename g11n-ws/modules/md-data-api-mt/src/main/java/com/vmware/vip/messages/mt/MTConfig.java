@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.messages.mt;
@@ -18,6 +18,10 @@ public class MTConfig {
 	
 	public static void setMTSERVER(String mTSERVER) {
 		MTSERVER = mTSERVER;
+	}
+
+	public static String getMTSERVER() {
+		return MTSERVER;
 	}
 
 	public static void setKEY(String kEY) {

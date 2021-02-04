@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.controller;
@@ -24,6 +24,7 @@ import org.springframework.web.context.WebApplicationContext;
 import com.vmware.l10n.BootApplication;
 import com.vmware.l10n.record.model.RecordModel;
 import com.vmware.vip.api.rest.l10n.L10NAPIV1;
+import com.vmware.vip.api.rest.l10n.L10nI18nAPI;
 
 /**
  * 
@@ -98,6 +99,20 @@ public class RecordControllerTest {
 		    logger.info(resultStr);
 	}
 	
+	@Test
+	public void test004getRecoredModelfromS3() throws Exception {
+		try {
+		MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(
+				webApplicationContext).build();
+		String urlStr =L10nI18nAPI.SOURCE_SYNC_RECORDS_APIV2;
+		
+		MvcResult mvcRS = mockMvc.perform(MockMvcRequestBuilders.get(urlStr)).andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
+	   String resultStr =   mvcRS.getResponse().getContentAsString();
+	   
+	   logger.info(resultStr);
+		}catch(Exception e) {
+		}
+	}
 	
 	
 	

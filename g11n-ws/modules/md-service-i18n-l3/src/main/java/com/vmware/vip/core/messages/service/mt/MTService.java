@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.core.messages.service.mt;
@@ -11,6 +11,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.vmware.vip.messages.mt.MTFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,6 @@ import com.vmware.vip.messages.data.dao.api.IOneComponentDao;
 import com.vmware.vip.messages.data.dao.exception.DataException;
 import com.vmware.vip.messages.data.dao.exception.MTException;
 import com.vmware.vip.messages.mt.MTConfig;
-import com.vmware.vip.messages.mt.azure.AzureTranslatingProcessor;
 
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
@@ -51,8 +51,6 @@ public class MTService implements IMTService {
 
 	@Autowired
 	IOneComponentService oneComponentService;
-
-	private IMTProcessor mtProcessor = new AzureTranslatingProcessor();
 
 	/**
 	 * Get component MT translation
@@ -99,6 +97,7 @@ public class MTService implements IMTService {
 				OrderedKV kv = new OrderedKV(messages);
 				List<String> sourceList = kv.getValues();
 				List<String> mtResult = new ArrayList<String>();
+				IMTProcessor mtProcessor = MTFactory.getMTProcessor();
 				// Since Azure has limitation(max 25) to the array size of source, so we need to handle it.
 				int translatedCount = new Integer(MTConfig.TRANSLATECOUNT).intValue(), fromIndex = 0, toIndex = translatedCount;
 				if (sourceList.size() < translatedCount) {
@@ -195,7 +194,8 @@ public class MTService implements IMTService {
 					// 2. create or update MT string to component object
 					// 3. update component object to cache
 		         String mtTranslation = mtTranslationPara;
-		           Map<String, String> cachedMTMap = null;
+		         Map<String, String> cachedMTMap = null;
+		         IMTProcessor mtProcessor = MTFactory.getMTProcessor();
 					if (TranslationCache3.getCachedObject(CacheName.MTSOURCE, com_key,ComponentMessagesDTO.class) != null) {
 						ComponentMessagesDTO cacheComDTO =  TranslationCache3
 								.getCachedObject(CacheName.MTSOURCE, com_key, ComponentMessagesDTO.class);
@@ -205,7 +205,7 @@ public class MTService implements IMTService {
 						if (cachedMTMap != null && cachedMTMap.containsKey(key)) {
 							mtTranslation = cachedMTMap.get(key);
 						} else {
-							mtTranslation = mtProcessor.translateStr(
+							mtTranslation = mtProcessor.translateString(
 									ConstantsUnicode.EN, comDTO.getLocale(), source);
 							if(cachedMTMap == null) {
 								cachedMTMap = new HashMap<String, String>();
@@ -221,7 +221,7 @@ public class MTService implements IMTService {
 					// 2. put it to component object;
 					// 3. add the component object to cache
 					else {
-						mtTranslation = mtProcessor.translateStr(
+						mtTranslation = mtProcessor.translateString(
 								ConstantsUnicode.EN_US, comDTO.getLocale(), source);
 						Map<String, String> newMap = new HashMap<String, String>();
 						newMap.put(key, mtTranslation);

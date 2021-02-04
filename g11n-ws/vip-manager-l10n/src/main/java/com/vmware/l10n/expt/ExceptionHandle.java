@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.expt;
@@ -22,7 +22,6 @@ public class ExceptionHandle {
 	public APIResponseDTO handler(Exception e) {
 		APIResponseDTO response = new APIResponseDTO();
 		response.setResponse(APIResponseStatus.UNKNOWN_ERROR);
-		response.setData("");
 		response.setSignature("");
 		if (e instanceof L10nAPIException) {
 			logger.error("====== L10n API's Exception =======");
@@ -31,6 +30,7 @@ public class ExceptionHandle {
 			response.setResponse(APIResponseStatus.INTERNAL_SERVER_ERROR);
 		} else {
 			logger.error("unknown error");
+			logger.error(e.getMessage(),e);
 		}
 		return response;
 	}

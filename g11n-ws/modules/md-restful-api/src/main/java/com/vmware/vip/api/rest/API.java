@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.api.rest;
@@ -12,4 +12,5 @@ public class API {
     public static final String TYPE_SOURCE = "source";
     public static final String TYPE_TRANSLATION = "translation";
     public static final String TYPE_FORMATTING = "formatting";
+    public static final String TYPE_ABOUT = "about";
 }

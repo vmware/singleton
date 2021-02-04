@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.record.dao;
@@ -136,8 +136,6 @@ public class SqlLiteDaoImpl implements SqlLiteDao {
 	public int updateSynchSourceRecord(RecordModel dto) {
 		// TODO Auto-generated method stub
 		logger.info("begin synch souce record!!!");
-		
-		
 		String creatSql = "update source_record set synch_edition= synch_edition+"+dto.getStatus()+" where product=? and version=? and component=? and locale=?";
 	  logger.debug(creatSql);
 		Connection conn = null;
@@ -182,14 +180,14 @@ public class SqlLiteDaoImpl implements SqlLiteDao {
 			ResultSet resultSet = null;
 			try {
 				resultSet = ps.executeQuery();
-				if (resultSet.next()) {
+			    while(resultSet.next()) {
 					RecordModel model = new RecordModel();
 					model.setProduct(resultSet.getString(1));
 					model.setVersion(resultSet.getString(2));
 					model.setComponent(resultSet.getString(3));
 					model.setLocale(resultSet.getString(4));
 					int status = resultSet.getInt(5)- resultSet.getInt(6);
-					model.setStatus(status);
+					model.setStatus((long)status);
 					list.add(model);
 				}
 			} finally {

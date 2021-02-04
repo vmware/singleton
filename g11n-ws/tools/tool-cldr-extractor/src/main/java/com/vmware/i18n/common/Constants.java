@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.common;
@@ -39,6 +39,7 @@ public class Constants {
 	public static final String POPULATION_PERCENT = "_populationPercent";
 	public static final String SCRIPTS = "_scripts";
 	public static final String REPLACEMENT = "_replacement";
+	public static final String TERRITORY_001 = "001";
 
 	// file named
 	public static final String SUPPLEMENTAL = "supplemental";

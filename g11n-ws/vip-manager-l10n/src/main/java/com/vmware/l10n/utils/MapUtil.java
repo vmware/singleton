@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.utils;
@@ -73,7 +73,7 @@ public class MapUtil {
 	 * @return
 	 */
 	public static ContainerFactory getContainerFactory() {
-		ContainerFactory containerFactory = new ContainerFactory() {
+		return new ContainerFactory() {
 			public List<Object> creatArrayContainer() {
 				return new LinkedList<Object>();
 			}
@@ -82,6 +82,5 @@ public class MapUtil {
 				return new LinkedHashMap<String, Object>();
 			}
 		};
-		return containerFactory;
 	}
 }

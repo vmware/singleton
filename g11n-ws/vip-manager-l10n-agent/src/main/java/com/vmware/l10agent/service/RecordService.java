@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10agent.service;
@@ -15,9 +15,10 @@ import com.vmware.l10agent.model.RecordModel;
  *
  */
 public interface RecordService  {
-	
-	public List<RecordModel> getRecordModelsByRemote ();
-	public boolean synchRecordModelsByRemote (RecordModel record);
+	public void getRecordModelsByRemoteV1();
+	public List<RecordModel> getRecordModelsByRemoteS3(String product, String version, long lastModifyTime);
+	public List<RecordModel> getRecordModelsByRemote();
+	public boolean synchRecordModelsByRemote(RecordModel record);
 	public ComponentSourceModel getComponentByRemote(RecordModel record);
 
 }

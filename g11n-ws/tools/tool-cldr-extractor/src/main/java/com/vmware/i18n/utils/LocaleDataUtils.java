@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.i18n.utils;
@@ -186,10 +186,10 @@ public class LocaleDataUtils {
 
 	private Map<String, String> getRegionList(String inputLocale, Map<String, String> terriContain) {
 		Map<String, String> regionMap = new TreeMap<String, String>();
-		Map<String, Object> cldrRegionData = getRegionsData(inputLocale);
+		Map<String, String> cldrRegionData = getRegionsData(inputLocale);
 		if (cldrRegionData != null) {
-			Set<Map.Entry<String, Object>> cldrRegionDataSet = cldrRegionData.entrySet();
-			for (Map.Entry<String, Object> cldrRegion : cldrRegionDataSet) {
+			Set<Map.Entry<String, String>> cldrRegionDataSet = cldrRegionData.entrySet();
+			for (Map.Entry<String, String> cldrRegion : cldrRegionDataSet) {
 				if (cldrRegion.getKey().indexOf("alt") == -1) {
 					String region = null;
 					region = cldrRegion.getKey();
@@ -211,8 +211,8 @@ public class LocaleDataUtils {
 	 * @param locale
 	 * @return
 	 */
-	private Map<String, Object> getRegionsData(String locale) {
-		Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
+	public Map<String, String> getRegionsData(String locale) {
+		Map resultMap = new LinkedHashMap();
 		String zipPath = CLDRConstants.LOCALE_ZIP_FILE_PATH;
 		String fileName = "cldr-localenames-full-" + CLDRConstants.CLDR_VERSION + "/main/" + locale
 				+ "/territories.json";
@@ -224,7 +224,7 @@ public class LocaleDataUtils {
 		}
 		String localeDataJson = JSONUtil.select(localeDataContents, node).toString();
 		resultMap.putAll(JSONUtil.string2SortMap(localeDataJson));
-		return resultMap;
+		return (Map<String, String>) resultMap;
 	}
 
 	/**

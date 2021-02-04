@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.translation.service.impl;
@@ -17,7 +17,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.vmware.vip.common.l10n.exception.L10nAPIException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vmware.l10n.translation.dao.SingleComponentDao;
 import com.vmware.l10n.translation.dto.ComponentMessagesDTO;
 import com.vmware.l10n.translation.service.TranslationSyncServerService;
@@ -25,6 +25,7 @@ import com.vmware.l10n.utils.MapUtil;
 import com.vmware.vip.common.constants.TranslationQueryStatusType;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO.TranslationDTO;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
 
 /**
  * This class synchronizes the latest translation for vIP server.
@@ -44,17 +45,27 @@ public class TranslationSyncServerServiceImpl implements TranslationSyncServerSe
      *        The object of ComponentMessagesDTO, containing the latest translation.
      * @return boolean
      *         Sync successfully, return true, otherwise return false.
+     * @throws JsonProcessingException 
      * 
      */
-	private boolean updateTranslation(ComponentMessagesDTO componentMessagesDTO) throws L10nAPIException {
+	private boolean updateTranslation(ComponentMessagesDTO componentMessagesDTO) throws L10nAPIException, JsonProcessingException {
 		LOGGER.info("Start Update transaltion for: ["+componentMessagesDTO.getProductName()+"], ["+componentMessagesDTO.getVersion()+"], ["+componentMessagesDTO.getComponent()+"], ["+componentMessagesDTO.getLocale()+"]");
-		//merge with local bundle file
-		componentMessagesDTO = mergeComponentMessagesDTOWithFile(componentMessagesDTO);
-		//update the local bundle file
-		LOGGER.info("Update the local bundle file");
-		boolean flag = singleComponentDao.writeLocalTranslationToFile(componentMessagesDTO);
-		LOGGER.info("End of Update transaltion");
-		return flag;
+
+		if (!singleComponentDao.lockFile(componentMessagesDTO)) {
+			return false;
+		}
+
+		try {
+			// merge with local bundle file
+			componentMessagesDTO = mergeComponentMessagesDTOWithFile(componentMessagesDTO);
+			// update the local bundle file
+			LOGGER.info("Update the local bundle file");
+			boolean flag = singleComponentDao.writeTranslationToFile(componentMessagesDTO);
+			LOGGER.info("End of Update transaltion");
+			return flag;
+		} finally {
+			singleComponentDao.unlockFile(componentMessagesDTO);
+		}
 	}
 
 	/**
@@ -64,11 +75,12 @@ public class TranslationSyncServerServiceImpl implements TranslationSyncServerSe
 	 *        The list of ComponentMessagesDTO.
 	 * @return List<TranslationDTO>
 	 *         The list of Update failed.
+	 * @throws JsonProcessingException
 	 *
 	 */
 	@Override
-	public List<TranslationDTO> updateBatchTranslation(List<ComponentMessagesDTO> componentMessagesDTOList) throws L10nAPIException{
-		List<TranslationDTO> translationDTOList = new ArrayList<TranslationDTO>();
+	public List<TranslationDTO> updateBatchTranslation(List<ComponentMessagesDTO> componentMessagesDTOList) throws L10nAPIException, JsonProcessingException{
+		List<TranslationDTO> translationDTOList = new ArrayList<>();
 		for(ComponentMessagesDTO componentMessagesDTO : componentMessagesDTOList){
 			if(!updateTranslation(componentMessagesDTO)){
 				TranslationDTO translationDTO = new UpdateTranslationDTO.UpdateTranslationDataDTO.TranslationDTO();
@@ -92,7 +104,7 @@ public class TranslationSyncServerServiceImpl implements TranslationSyncServerSe
 	private ComponentMessagesDTO mergeComponentMessagesDTOWithFile(ComponentMessagesDTO componentMessagesDTO) throws L10nAPIException {
 		ComponentMessagesDTO paramComponentMessagesDTO = new ComponentMessagesDTO();
 		BeanUtils.copyProperties(componentMessagesDTO, paramComponentMessagesDTO);
-		ComponentMessagesDTO result = singleComponentDao.getLocalTranslationFromFile(paramComponentMessagesDTO);
+		ComponentMessagesDTO result = singleComponentDao.getTranslationFromFile(paramComponentMessagesDTO);
 		if(!StringUtils.isEmpty(result) && !StringUtils.isEmpty(result.getStatus()) && result.getStatus().equals("Translation"+TranslationQueryStatusType.FileFound)){
 			Object messageObj = result.getMessages();
 			if (!StringUtils.isEmpty(messageObj)) {
@@ -124,5 +136,9 @@ public class TranslationSyncServerServiceImpl implements TranslationSyncServerSe
 			return componentMessagesDTO;
 		}
 	}
-	
+
+	@Override
+	public void saveCreationInfo(UpdateTranslationDTO updateTranslationDTO) {
+		singleComponentDao.saveCreationInfo(updateTranslationDTO);
+	}
 }

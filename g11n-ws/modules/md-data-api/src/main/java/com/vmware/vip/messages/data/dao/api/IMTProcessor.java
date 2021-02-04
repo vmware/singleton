@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.messages.data.dao.api;
@@ -16,7 +16,7 @@ import com.vmware.vip.messages.data.dao.exception.MTException;
  */
 public interface IMTProcessor {
 
-	public String translateStr(String fromLang, String toLang, String source) throws MTException;
+	public String translateString(String fromLang, String toLang, String source) throws MTException;
 
 	public List<String> translateArray(String fromLang, String toLang, List<String> sourceList) throws MTException;
 }

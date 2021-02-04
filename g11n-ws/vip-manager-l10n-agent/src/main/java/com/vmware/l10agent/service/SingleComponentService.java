@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10agent.service;
@@ -19,7 +19,7 @@ public interface SingleComponentService {
 	
 	public boolean delSourceComponentFile(RecordModel record);
 	
-	public boolean synchComponentFile2I18n(RecordModel record);
+	public boolean synchComponentFile2Internal(RecordModel record);
 	
 	
 

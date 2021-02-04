@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.record.model;
@@ -18,7 +18,7 @@ public class RecordModel implements Serializable{
 	private String version;
 	private String component;
 	private String locale;
-	private Integer status;
+	private long status;
 	
 	
 	public String getProduct() {
@@ -45,12 +45,13 @@ public class RecordModel implements Serializable{
 	public void setLocale(String locale) {
 		this.locale = locale;
 	}
-	public Integer getStatus() {
+	public long getStatus() {
 		return status;
 	}
-	public void setStatus(Integer status) {
+	public void setStatus(long status) {
 		this.status = status;
 	}
+
 	
 
 }

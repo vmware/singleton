@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.controller;
@@ -31,7 +31,7 @@ import com.vmware.vip.api.rest.l10n.L10NAPIV1;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
 public class TranslationControllerTest {
-	 private static Logger logger = LoggerFactory.getLogger(SourceDaoSource.class);
+	 private static Logger logger = LoggerFactory.getLogger(TranslationControllerTest.class);
 	@Autowired
 	private WebApplicationContext webApplicationContext;
 

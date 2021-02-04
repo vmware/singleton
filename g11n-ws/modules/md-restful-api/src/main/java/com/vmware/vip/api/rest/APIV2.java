@@ -1,13 +1,17 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.vip.api.rest;
 
 public class APIV2 {
 	public static final String V = "v2";
+    public static final String API_FORMATTING = API.I18N_API_ROOT + V + "/" + API.TYPE_FORMATTING;
 	public static final String API_TRANSLATOIN = API.I18N_API_ROOT + V + "/" + API.TYPE_TRANSLATION;
-	public static final String API_FORMATTING = API.I18N_API_ROOT + V + "/" + API.TYPE_FORMATTING;
+	public static final String API_ABOUT = API.I18N_API_ROOT + V + "/" + API.TYPE_ABOUT;
+
+    public static final String VERSION = API_ABOUT  + "/version";
+
 	// product-based
 	public static final String PRODUCT_TRANSLATION_GET    = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}";
 	public static final String PRODUCT_TRANSLATION_PUT    = API_TRANSLATOIN + "/products/{"+APIParamName.PRODUCT_NAME+"}/versions/{"+APIParamName.VERSION2+"}";

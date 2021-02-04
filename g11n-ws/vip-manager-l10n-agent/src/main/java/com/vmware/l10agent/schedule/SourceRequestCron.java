@@ -1,12 +1,17 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10agent.schedule;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 
@@ -16,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSON;
 import com.vmware.l10agent.base.TaskSysnQueues;
 import com.vmware.l10agent.conf.PropertyConfigs;
 import com.vmware.l10agent.model.ComponentSourceModel;
@@ -37,7 +43,8 @@ import com.vmware.l10agent.utils.ResouceFileUtils;
 @Service
 public class SourceRequestCron {
 	private static Logger logger = LoggerFactory.getLogger(SourceRequestCron.class);
-
+    private final static String instructV1 = "v1";
+    private final static String instructS3 = "s3";
 	@Autowired
 	private RecordService recordService;
 
@@ -46,11 +53,16 @@ public class SourceRequestCron {
 
 	@Autowired
 	private PropertyConfigs configs;
+	
 
 	public final static long SECOND = 1000;
+	private static long lastModifyTime = 0;
 
 	@PostConstruct
 	public void initSendFile() {
+		if(configs.getRecordApiVersion().equalsIgnoreCase("s3")) {
+			lastModifyTime = configs.getSyncStartDatetime();
+		}
 		logger.info("begin recover the remained resource!!");
 		File file = new File(configs.getSourceFileBasepath());
 
@@ -66,9 +78,9 @@ public class SourceRequestCron {
 		String path = file.getAbsolutePath();
 		 File baseFile = new File(configs.getSourceFileBasepath());
 		String basePath =  baseFile.getAbsolutePath();
-		//logger.info(path);
+		logger.info("File absolute path: {}", path);
 		basePath = basePath+File.separator;
-	  //	logger.info(basePath);
+	    logger.debug(basePath);
 		String resultStr = path.replace(basePath, "");
 		logger.debug(resultStr);
 		String pattern = File.separator;
@@ -93,7 +105,6 @@ public class SourceRequestCron {
 			}
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			logger.error("convert collect resouce error ",e);
 		}
 
@@ -103,13 +114,11 @@ public class SourceRequestCron {
 			model.setVersion(comp.getVersion());
 			model.setComponent(comp.getComponent());
 			model.setLocale(comp.getLocale());
-			model.setStatus(1);
+			model.setStatus(0);
 			if(comp.isMessageNotNull()) {
 				try {
 					TaskSysnQueues.SendComponentTasks.put(model);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					
 					logger.error(e.getMessage(), e);
 					 Thread.currentThread().interrupt();
 				}
@@ -133,12 +142,9 @@ public class SourceRequestCron {
 		}
 		for (File subf : flist) {
 			if (subf.isDirectory()) {
-
-				//System.out.println("Dir==>" + subf.getAbsolutePath());
 				recoverDirectory(subf);
 			} else {
 				logger.info("file==>" + subf.getAbsolutePath());
-				//subf.setReadable(true);
 				addTheFile2Queue(subf);
 
 			}
@@ -148,10 +154,13 @@ public class SourceRequestCron {
 	@Scheduled(cron = "${remote.source.schedule.cron}")
 	public void lauchInstructToSync() {
 		try {
-			TaskSysnQueues.InstructTasks.put("DONE");
+			if(configs.getRecordApiVersion().equalsIgnoreCase("s3")) {
+				TaskSysnQueues.InstructTasks.put(instructS3);
+			}else {
+				TaskSysnQueues.InstructTasks.put(instructV1);
+			}
+			
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-		
 			logger.error(e.getMessage(), e);
 			Thread.currentThread().interrupt();
 		}
@@ -159,29 +168,50 @@ public class SourceRequestCron {
 
 	@Scheduled(fixedDelay = SECOND * 10)
 	public void syncToInternali18nManager() {
-		while (!TaskSysnQueues.SendComponentTasks.isEmpty()) {
-			logger.info("begin synch local component Model to VIP i18n");
-
-			RecordModel record = TaskSysnQueues.SendComponentTasks.poll();
-			if (record != null) {
-
-				boolean result = singleComponentService.synchComponentFile2I18n(record);
-
-				if (result) {
-					singleComponentService.delSourceComponentFile(record);
-					logger.info("synch component Model to VIP successfully!!!");
-				} else {
-					logger.error("synch component Model to VIP failure!!!");
-				}
-
-			} else {
-				logger.info("no synch component!!!!!");
+	
+			Set<RecordModel> set = new HashSet<RecordModel>();
+			while (!TaskSysnQueues.SendComponentTasks.isEmpty()) {
+				logger.info("begin synch local component Model to VIP i18n");
+				RecordModel record = TaskSysnQueues.SendComponentTasks.poll();
+			    set.add(record);
 			}
-
-		}
-
+	       for(RecordModel record : set) {
+	   		   writeLocalResource(record); 
+	    	   syncResource(record);
+			}
 	}
 
+	private void syncResource(RecordModel record) {
+		boolean result = singleComponentService.synchComponentFile2Internal(record);
+		if (result) {
+			singleComponentService.delSourceComponentFile(record);
+			logger.info("synch component Model to VIP successfully!!!");
+		} else {
+			logger.error("synch component Model to VIP failure!!!");
+		}
+	}
+	
+	private void writeLocalResource(RecordModel record) {
+		logger.error("query record content-{}-{}-{}-{}",record.getProduct(), record.getVersion(), record.getComponent(), record.getLocale());
+		ComponentSourceModel component = recordService.getComponentByRemote(record);
+		if (component != null && !component.getMessages().isEmpty() ) {
+			boolean write = singleComponentService.writerComponentFile(component);
+			if(!write) {
+				logger.error("write local ComponentSourceModel error! record-{}-{}-{}",record.getProduct(), record.getVersion(), record.getComponent());
+				try {
+					TaskSysnQueues.SendComponentTasks.put(record);
+				} catch (InterruptedException e) {
+					logger.error(e.getMessage(), e);
+					Thread.currentThread().interrupt();
+				}
+			
+			}
+		}
+    }
+	
+	
+	
+	
 	/**
 	 * Synchronize the updated source to local resource file and GRM timingly
 	 */
@@ -189,54 +219,71 @@ public class SourceRequestCron {
 	public void syncSourcefromRemoteToLocal() {
 
 		while (!TaskSysnQueues.InstructTasks.isEmpty()) {
-			
-			
-			TaskSysnQueues.InstructTasks.poll();
-			
-			
-			logger.info("begin synch component Model from remote l10n to local agent");
-			List<RecordModel> list = recordService.getRecordModelsByRemote();
-
-			if (list != null && list.size() > 0) {
-
-				for (RecordModel record : list) {
-
-					ComponentSourceModel component = recordService.getComponentByRemote(record);
-
-					if (component != null && !component.getMessages().isEmpty() ) {
-                       
-						boolean write = singleComponentService.writerComponentFile(component);
-						if (write) {
-							boolean synch = recordService.synchRecordModelsByRemote(record);
-							if (synch) {
-								try {
-									TaskSysnQueues.SendComponentTasks.put(record);
-								} catch (InterruptedException e) {
-									// TODO Auto-generated catch block
-								
-									logger.error(e.getMessage(), e);
-									Thread.currentThread().interrupt();
-								}
-								logger.info("synch Record Model from Remote successfully!!!");
-							} else {
-								logger.info("synch Record Model to Remote failure!!!");
-							}
-						} else {
-							logger.error("write local ComponentSourceModel error");
-						}
-					} else {
-						 recordService.synchRecordModelsByRemote(record);
-						logger.info("there no ComponentSourceModel from remote");
-					}
-
-				}
-
-			} else {
-				logger.info("there no record model in remote server");
-			}
-
-		}
-
+			String doneVerion = TaskSysnQueues.InstructTasks.poll();
+			if(instructS3.equals(doneVerion)) {
+				  doRecordApiS3();
+			   }else {
+				  doRecordApiV1();
+			   }
+				
+	    }
 	}
+	
+	private void doRecordApiS3() {
+		Map<String, List<String>> allowList = getSyncS3List();
+		if (allowList != null) {
+			for (Entry<String, List<String>> entry : allowList.entrySet()) {
+				String product = entry.getKey();
+				for (String version : entry.getValue()) {
+					processS3SycSource(product, version);
+				}
+			}
+		}
+	}
+
+	private void processS3SycSource(String product, String version) {
+		 List<RecordModel> list = recordService.getRecordModelsByRemoteS3(product, version,lastModifyTime);
+		 for(RecordModel rm :list) {
+			 logger.debug("{},{},{},{},{}",rm.getProduct(), rm.getVersion(), rm.getLocale(), rm.getComponent(), rm.getStatus());
+	    	 try {
+				TaskSysnQueues.SendComponentTasks.put(rm);
+			} catch (InterruptedException e) {
+				logger.error(e.getMessage(), e);
+				Thread.currentThread().interrupt();
+			}
+	    	if(rm.getStatus()>lastModifyTime) {
+					lastModifyTime = rm.getStatus();
+				}
+	    	 rm.setStatus(0); 
+	     }
+	}
+
+	private void doRecordApiV1() {
+		for(int i=0; i<configs.getRecordReqThread(); i++) {
+			Thread thread = new Thread(new MutiThreadReqApiV1(this.recordService));
+			thread.start();
+		}
+	}
+	
+	
+	
+	private Map<String,List<String>> getSyncS3List(){
+		File file = new File(configs.getSyncListPath());
+		if(file.exists()) {
+			try {
+				String result = ResouceFileUtils.readerFile2String(file);
+				@SuppressWarnings("unchecked")
+				HashMap<String,List<String>> arry = JSON.parseObject(result, HashMap.class);
+				return arry;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		logger.error("Not find sync s3 list file!");
+		return null;
+	}
+	
+	
+
 
 }

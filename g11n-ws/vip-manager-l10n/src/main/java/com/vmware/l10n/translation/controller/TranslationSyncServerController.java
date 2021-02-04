@@ -1,14 +1,12 @@
 /*
- * Copyright 2019-2020 VMware, Inc.
+ * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
 package com.vmware.l10n.translation.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,23 +28,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.l10n.translation.dto.ComponentMessagesDTO;
 import com.vmware.l10n.translation.service.TranslationSyncServerService;
 import com.vmware.vip.api.rest.API;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.l10n.L10NAPIV1;
-import com.vmware.vip.common.i18n.status.APIResponseStatus;
-import com.vmware.vip.common.utils.JSONUtils;
-import com.vmware.vip.common.constants.ConstantsChar;
-import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.constants.ConstantsUnicode;
-import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
-import com.vmware.vip.common.i18n.resourcefile.ResourceFilePathGetter;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO;
-import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO.CreationDTO;
 import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO.TranslationDTO;
+import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
+import com.vmware.vip.common.i18n.status.APIResponseStatus;
+import com.vmware.vip.common.l10n.exception.L10nAPIException;
 
 /**
  *
@@ -55,20 +48,16 @@ import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationData
  */
 @RestController
 public class TranslationSyncServerController {
-    private static Logger LOGGER = LoggerFactory
-            .getLogger(TranslationSyncServerController.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(TranslationSyncServerController.class);
+
     @Autowired
     TranslationSyncServerService translationSyncServerService;
-
-    /** the path of local resource file,can be configed in spring config file **/
-    @Value("${translation.bundle.file.basepath}")
-    private String basePath;
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.OK)
     public void processMethod(Exception e, HttpServletRequest request,
             HttpServletResponse response) throws IOException {
-        LOGGER.error("abnormal server:{}", e.getLocalizedMessage());
+        LOGGER.error("abnormal server:{}", e.getLocalizedMessage(), e);
         response.setCharacterEncoding(ConstantsUnicode.UTF8);
         response.setContentType("application/json; charset=utf-8");
         APIResponseDTO apiResponseDTO = new APIResponseDTO();
@@ -77,38 +66,6 @@ public class TranslationSyncServerController {
         String responseJson = mapper.writeValueAsString(apiResponseDTO);
         response.getWriter().printf(responseJson);
         response.flushBuffer();
-    }
-
-    private void saveCreationInfo(UpdateTranslationDTO updateTranslationDTO) {
-        UpdateTranslationDataDTO transData = updateTranslationDTO.getData();
-
-        String opId = "";
-        CreationDTO creationDTO = transData.getCreation();
-        if (creationDTO != null) {
-            opId = creationDTO.getOperationid();
-        }
-
-        String filepath = basePath
-                + ConstantsFile.L10N_BUNDLES_PATH
-                + ResourceFilePathGetter.getProductVersionConcatName(transData)
-                + ConstantsChar.BACKSLASH
-                + ConstantsFile.CREATION_INFO;
-       
-
-        // read
-        Map<String, Object> json = JSONUtils.getMapFromJsonFile(filepath);
-
-        // set
-        List<TranslationDTO> groups = transData.getTranslation();
-        for (int i=0; i<groups.size(); i++) {
-            json.put(groups.get(i).getLocale(), opId);
-        }
-        File pareFile = new File(filepath);
-        if(!pareFile.getParentFile().exists()){
-           pareFile.getParentFile().mkdirs(); 
-        }
-        // write
-        JSONUtils.writeMapToJsonFile(filepath, json);
     }
 
     /**
@@ -197,12 +154,15 @@ public class TranslationSyncServerController {
             response.setResponse(APIResponseStatus.INTERNAL_SERVER_ERROR);
             LOGGER.error(e.getMessage(), e);
          
-        }
+        } catch (JsonProcessingException e) {
+        	response.setResponse(APIResponseStatus.BAD_REQUEST);
+            return response;
+		}
         if (translationDTOList != null && translationDTOList.size() > 0) {
             response.setData(translationDTOList);
             response.setResponse(APIResponseStatus.OK);
         }
-        saveCreationInfo(updateTranslationDTO);
+        translationSyncServerService.saveCreationInfo(updateTranslationDTO);
         return response;
     }
 }
