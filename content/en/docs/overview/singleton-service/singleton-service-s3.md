@@ -6,9 +6,7 @@
 
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (Java 9+ are not supported, will get compiler issue)
 
-- [Git](https://git-scm.com/downloads)
-
-- Singleton S3 server
+- Singleton S3 server jar
 
 - S3 configurations (accessKey, secretkey, region, bucketName)
 
@@ -151,58 +149,17 @@ public class RsaCryptUtils {
 }
 ```
 
-
- We recommend  use the g11n-s3keys-crypt tools generate it. 
-
-### Use g11n-s3keys-crypt tools generate accessKey and secretkey
-Building  g11n-s3keys-crypt from source code
-
-Clone the repository using Git.
+Generate the private.key and public.key . You can get the public key use demo code getPublicKey() method and get the private key use demo code getPrivateKey() method.  You need write the private key and public key to file like following.
 
 ```
-git clone https://gitlab.eng.vmware.com/g11n-vip/g11n-s3keys-crypt.git
-Or
-git clone git@gitlab.eng.vmware.com:g11n-vip/g11n-s3keys-crypt.git
+private.key public.key
 ```
 
-Go to g11n-s3keys-crypt to run a build using Gradle.
 
-```
-cd g11n-s3keys-crypt
-./gradlew build
-```
 
-Jar files will be generated inside the following location:
+You can use the encryptData() method and private key that you generated to encrypt the S3's accessKey and secretkey.
 
-```
-g11n-s3keys-crypt/build/libs (Eg. g11n-s3keys-crypt/build/libs/g11n-s3keys-crypt.jar)
-```
-
-### How to use g11n-s3keys-crypt
-
-Prepare the input file and the file formatting is properties(Eg. input.properties)
-
-```
-s3.password.accessKey=#####
-s3.password.secretkey=######
-```
-
-Run the g11n-s3keys-crypt
-
-```
- cd g11n-s3keys-crypt/build/libs 
- java -jar g11n-s3keys-crypt.jar inputFile=./input.properties
-```
-
-You can find output.properties under current Directory
-
-```
-cd g11n-s3keys-crypt/build/libs 
-ls
- g11n-s3keys-crypt.jar input.properties output.properties private.key public.key
-```
-
-The result from output file
+The result like following:
 
 ```
 #Mon Nov 30 11:14:57 CST 2020
@@ -227,9 +184,9 @@ Change accessKey, secretkey Encrypt content and the publicKey's path to i18n man
 s3.keysEncryptEnable=true
 # the ublickey file's path
 s3.publicKey=./public.key
-# the accesskey that get from above encrypt output.properties file content
+# the accesskey that get from above encrypt result content
 s3.accessKey=#####
-## the secretkey that get from above encrypt output.properties file content
+## the secretkey that get from above encrypt result content
 s3.secretkey=######
 ##get from S3 configuration's region 
 s3.region=###### 
