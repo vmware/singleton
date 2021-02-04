@@ -270,14 +270,58 @@ class SingletonApi:
         return '%s%scomponentlist' % (self.addr, head)
 
 
-class SingletonComponentThread(Thread):
+class SingletonUpdateThread(Thread):
 
-    def __init__(self, component_obj):
+    def __init__(self, obj):
         Thread.__init__(self)
-        self.comp = component_obj
+        self.obj = obj
 
     def run(self):
-        self.comp.get_from_remote()
+        self.obj.get_from_remote()
+
+
+class SingletonAccessRemoteTask:
+
+    def __init__(self, release_obj, obj):
+        self.rel = release_obj
+        self.obj = obj
+
+        self.last_time = 0
+        self.querying = False
+        self.interval = self.rel.interval
+
+    def set_retry(self, current):
+        # try again after try_delay seconds
+        self.last_time = current - self.interval + self.rel.try_delay
+
+    def check(self):
+        if not self.rel.cfg.remote_url:
+            return
+
+        access_remote = False
+        if self.interval > 0:
+            current = time.time()
+            if current > self.last_time + self.interval:
+                access_remote = True
+        else:
+            if self.last_time == 0:
+                access_remote = True
+
+        if not access_remote:
+            return
+
+        if self.querying:
+            if self.obj.get_data_count() == 0:
+                while(self.querying):
+                    time.sleep(0.1)
+            return
+
+        self.querying = True
+        if self.obj.get_data_count() == 0:
+            self.obj.get_from_remote()
+        else:
+            th = SingletonUpdateThread(self.obj)
+            th.start()
 
 
 class SingletonComponent:
@@ -287,11 +331,9 @@ class SingletonComponent:
         self.locale = locale
         self.component = component
         self.messages = OrderedDict()
-        self.last_time = 0
-        self.querying = False
-        self.interval = self.rel.interval
         self.etag = None
         self.cache_path = None
+        self.task = SingletonAccessRemoteTask(release_obj, self)
 
         if self.rel.cache_path:
             self.cache_path = os.path.join(self.rel.cache_path, component, 'messages_%s.json' % locale)
@@ -300,7 +342,7 @@ class SingletonComponent:
             if os.path.exists(self.cache_path):
                 dt = FileUtil.read_json_file(self.cache_path)
                 if KEY_MESSAGES in dt:
-                    self.last_time = os.path.getmtime(self.cache_path)
+                    self.task.last_time = os.path.getmtime(self.cache_path)
                     self.messages = dt[KEY_MESSAGES]
 
     def is_messages_same(self, dt1, dt2):
@@ -324,64 +366,25 @@ class SingletonComponent:
             if code == 200 and ClientUtil.check_response_valid(dt):
                 self.etag, interval = NetUtil.get_etag_maxage(dt.get(KEY_HEADERS))
                 if interval:
-                    self.interval = interval
+                    self.task.interval = interval
 
                 messages = dt[KEY_RESULT][KEY_DATA][KEY_MESSAGES]
                 if self.cache_path and not self.is_messages_same(self.messages, messages):
                     self.rel.log('--- save --- %s ---' % self.cache_path)
                     FileUtil.save_json_file(self.cache_path, dt[KEY_RESULT][KEY_DATA])
                 self.messages = messages
-                self.last_time = current
+                self.task.last_time = current
+            elif code == 304:
+                self.task.last_time = current
             else:
-                # try again after 10 seconds
-                self.last_time = current - self.interval + self.rel.try_delay
+                self.task.set_retry(current)
         except Exception as e:
-            # try again after 10 seconds
-            self.last_time = current - self.interval + self.rel.try_delay
+            self.task.set_retry(current)
 
-        self.querying = False
+        self.task.querying = False
 
-    def check_access_remote(self, access_remote):
-        if access_remote:
-            if self.querying:
-                if len(self.messages) == 0:
-                    while(self.querying):
-                        time.sleep(0.1)
-            else:
-                self.querying = True
-                if len(self.messages) == 0:
-                    self.get_from_remote()
-                else:
-                    th = SingletonComponentThread(self)
-                    th.start()
-
-    def check(self):
-        if not self.rel.cfg.remote_url:
-            return
-
-        access_remote = False
-        if self.interval > 0:
-            current = time.time()
-            if current > self.last_time + self.interval:
-                access_remote = True
-            if current > self.rel.last_time + self.interval:
-                th = SingletonScopeThread(self.rel)
-                th.start()
-        else:
-            if self.last_time == 0:
-                access_remote = True
-
-        self.check_access_remote(access_remote)
-
-
-class SingletonScopeThread(Thread):
-
-    def __init__(self, release_obj):
-        Thread.__init__(self)
-        self.rel = release_obj
-
-    def run(self):
-        self.rel.get_scope_from_remote()
+    def get_data_count(self):
+        return len(self.messages)
 
 
 class SingletonRelease(Release, Translation):
@@ -393,7 +396,6 @@ class SingletonRelease(Release, Translation):
         self.logger = None
         self.interval = 0
         self.try_delay = 0
-        self.last_time = 0
         self.detach = False
 
         self.locale_list = []
@@ -413,10 +415,11 @@ class SingletonRelease(Release, Translation):
             self.cache_path = os.path.join(cfg.cache_path, self.cfg.product, self.cfg.version)
             self.log('--- cache path --- %s ---' % self.cache_path)
 
-        self.get_scope()
-
         self.interval = cfg.cache_expired_time
         self.try_delay = cfg.try_delay
+
+        self.task = SingletonAccessRemoteTask(self, self)
+        self.get_scope()
 
         self._get_resource(self.cfg.source_locale)
         self.source = self.locales.get(self.cfg.source_locale)
@@ -439,23 +442,31 @@ class SingletonRelease(Release, Translation):
             return
 
         if not self.locale_list:
-            self.get_scope_from_remote()
+            self.get_from_remote()
         else:
-            th = SingletonScopeThread(self)
+            th = SingletonUpdateThread(self)
             th.start()
 
-    def get_scope_from_remote(self):
-        self.last_time = time.time()
+    def get_from_remote(self):
+        self.task.last_time = time.time()
 
-        # get locale list
-        scope = self._get_scope_item(self.api.get_localelist_api(), KEY_LOCALES, 'locale_list.json')
-        if scope:
-            self.locale_list = scope
+        try:
+            # get locale list
+            scope = self._get_scope_item(self.api.get_localelist_api(), KEY_LOCALES, 'locale_list.json')
+            if scope:
+                self.locale_list = scope
 
-        # get component list
-        scope = self._get_scope_item(self.api.get_componentlist_api(), KEY_COMPONENTS, 'component_list.json')
-        if scope:
-            self.component_list = scope
+            # get component list
+            scope = self._get_scope_item(self.api.get_componentlist_api(), KEY_COMPONENTS, 'component_list.json')
+            if scope:
+                self.component_list = scope
+        except Exception as e:
+            pass
+
+        self.task.querying = False
+
+    def get_data_count(self):
+        return len(self.locale_list) + len(self.component_list)
 
     def log(self, text, log_type = LOG_TYPE_INFO):
         SysUtil.log(self.logger, text, log_type)
@@ -521,6 +532,10 @@ class SingletonRelease(Release, Translation):
     def _get_scope_item(self, addr, key, keep_name):
         code, dt = NetUtil.http_get(addr, None)
         if code == 200 and ClientUtil.check_response_valid(dt):
+            _, interval = NetUtil.get_etag_maxage(dt.get(KEY_HEADERS))
+            if interval:
+                self.task.interval = interval
+
             scope = dt[KEY_RESULT][KEY_DATA][key]
             if scope and self.cache_path:
                 FileUtil.save_json_file(os.path.join(self.cache_path, keep_name), scope)
@@ -606,7 +621,8 @@ class SingletonRelease(Release, Translation):
             component_obj = SingletonComponent(self, locale, component)
             components[component] = component_obj
 
-        component_obj.check()
+        self.task.check()
+        component_obj.task.check()
         return component_obj
 
     def _get_component(self, locale, component):
