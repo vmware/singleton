@@ -63,12 +63,14 @@ public class SourceRequestCron {
 		if(configs.getRecordApiVersion().equalsIgnoreCase("s3")) {
 			long lastModifyTime = configs.getSyncStartDatetime();
 			Map<String, List<String>> allowList = getSyncS3List();
-			for(Entry<String, List<String>> entry : allowList.entrySet()) {
-				String productName = entry.getKey();
-				List<String> versionStrs = entry.getValue();
-			    for(String versionStr : versionStrs) {
-			    	prodVersionLastModify.put(productName+versionStr, lastModifyTime);	
-			    }
+			if (allowList != null) {
+				for (Entry<String, List<String>> entry : allowList.entrySet()) {
+					String productName = entry.getKey();
+					List<String> versionStrs = entry.getValue();
+					for (String versionStr : versionStrs) {
+						prodVersionLastModify.put(productName + versionStr, lastModifyTime);
+					}
+				}
 			}
 		}
 		
