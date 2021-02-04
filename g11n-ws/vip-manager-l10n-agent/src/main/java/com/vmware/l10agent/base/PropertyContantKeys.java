@@ -23,6 +23,7 @@ public interface PropertyContantKeys {
 	public static final String LONG_DATE = "longDate";
 	public final static String PRODUCT_NAME = "productName";
 	public final static String VERSION = "version";
+	public final static String LOCAL = "local";
 	
 	//source file type
 	public static final String DEFAULT_COMPONENT = "default";

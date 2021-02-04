@@ -28,7 +28,7 @@ public class PropertyConfigs {
 	private String sourceFileBasepath;
 
 	
-	@Value("${remote.l10.base.url}")
+	@Value("${remote.l10n.base.url}")
 	private String remoteBaseL10Url;
 	
 	@Value("${vip.i18n.base.url}")
