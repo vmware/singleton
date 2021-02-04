@@ -5,15 +5,13 @@
 package com.vmware.vip.core.about.service.version;
 
 import com.vmware.vip.common.constants.ConstantsChar;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-
 import com.vmware.vip.common.i18n.dto.DropVersionDTO;
 import com.vmware.vip.core.about.exception.AboutAPIException;
 import com.vmware.vip.core.messages.exception.L3APIException;
 import com.vmware.vip.core.messages.service.product.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 @Service
 public class VersionService implements IVersionService{
@@ -38,22 +36,12 @@ public class VersionService implements IVersionService{
     @Autowired
     ProductService productService;
 
-    @Override
-    public BuildVersionDTO getBuildVersion(String productName, String version) throws AboutAPIException {
-        BuildVersionDTO buildVersionDTO = new BuildVersionDTO();
-        buildVersionDTO.setService(getServiceVersion());
-        if(!StringUtils.isEmpty(productName) && !StringUtils.isEmpty(version)){
-            buildVersionDTO.setBundle(getBundleVersion(productName, version));
-        }
-        return buildVersionDTO;
-    }
-
     /**
      * Get Singleton service's version
      *
      * @return
      */
-    private ServiceVersionDTO getServiceVersion(){
+    public ServiceVersionDTO getServiceVersion(){
         ServiceVersionDTO serviceVersionDTO = new ServiceVersionDTO();
         serviceVersionDTO.setName(name);
         serviceVersionDTO.setAuthor(author);
@@ -72,7 +60,7 @@ public class VersionService implements IVersionService{
      * @return
      * @throws AboutAPIException
      */
-    private BundleVersionDTO getBundleVersion(String productName, String version) throws AboutAPIException {
+    public BundleVersionDTO getBundleVersion(String productName, String version) throws AboutAPIException {
         BundleVersionDTO bundleVersionDTO = new BundleVersionDTO();
         bundleVersionDTO.setProductName(productName);
         bundleVersionDTO.setVersion(version);
