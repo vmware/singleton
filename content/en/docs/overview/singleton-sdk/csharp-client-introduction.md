@@ -13,11 +13,11 @@ C# Client is a class libary running on Windows .NET Framework. It enables applic
 - Getting the translation.
 - Getting messages by cache interfaces.
 - Getting configuration content.
-- Enrich implementations by extends different extension interfaces.
+- Enrich implementations by extending different extension interfaces.
 
 # APIs Available
 * [Factory Class](#Factory-Class)
-   * [I18n](#I18n)
+   * [I18N](#I18N)
 * [Interface For Configuration](#Interface-For-Configuration)
    * [IConfig](#IConfig)
    * [IConfigItem](#IConfigItem)
@@ -33,27 +33,28 @@ C# Client is a class libary running on Windows .NET Framework. It enables applic
 * [Interface For Extension](#Interface-For-Extension)
    * [IExtension](#IExtension)
    * [ICacheManager](#ICacheManager)
+   * [ICacheComponentManager](#ICacheComponentManager)
    * [ICacheMessages](#ICacheMessages)
    * [ILog](#ILog)
    * [IResourceParser](#IResourceParser)
    * [IAccessService](#IAccessService)
 
 ## Factory Class
-### I18n
+### I18N
 
 * It's the factory class that creates and initializes the configuration object and the release object.
 
 ```csharp
-public sealed class I18n
+public sealed class I18N
 {
-	public static IConfig LoadConfig(string resourceBaseName, Assembly assembly, string configResourceName);
-	public static IConfig GetConfig(string product, string version);
-	public static IRelease GetRelease(IConfig config);
-	public static IExtension GetExtension();
+    public static IConfig LoadConfig(string resourceBaseName, Assembly assembly, string configResourceName);
+    public static IConfig GetConfig(string product, string version);
+    public static IRelease GetRelease(IConfig config);
+    public static IExtension GetExtension();
 }
 ```
 
-### I18n / LoadConfig
+### I18N / LoadConfig
 
 * Load a configuration json or yaml text from the resource defined by a resx file and initialize a correspondent release object.
 
@@ -67,7 +68,7 @@ public sealed class I18n
 | ------ | ------ |
 | [IConfig](#IConfig) | Configuration Object |
 
-### I18n / GetConfig
+### I18N / GetConfig
 
 * Get a loaded configuration object by product and version.
 
@@ -80,7 +81,7 @@ public sealed class I18n
 | ------ | ------ |
 | [IConfig](#IConfig) | Configuration Object |
 
-### I18n / GetRelease
+### I18N / GetRelease
 
 * Get the release object initialized by a configuration object.
 
@@ -92,7 +93,7 @@ public sealed class I18n
 | ------ | ------ |
 | [IRelease](#IRelease) | The release object |
 
-### I18n / GetExtension
+### I18N / GetExtension
 
 * Get the extension interface to change ways of implementation.
 
@@ -106,13 +107,13 @@ public sealed class I18n
 ```csharp
 public interface IConfig
 {
-	IConfigItem GetItem(string key);
-	List<string> GetComponentList();
-	IConfigItem GetComponentAttribute(string component, string key);
-	List<string> GetLocaleList(string component);
-	IConfigItem GetLocaleAttribute(string component, string locale, string key);
-	string ReadResourceText(string resourceName);
-	Hashtable ReadResourceMap(string resourceName, string format, string locale);
+    IConfigItem GetItem(string key);
+    List<string> GetComponentList();
+    IConfigItem GetComponentAttribute(string component, string key);
+    List<string> GetLocaleList(string component);
+    IConfigItem GetLocaleAttribute(string component, string locale, string key);
+    string ReadResourceText(string resourceBaseName, string resourceName);
+    Hashtable ReadResourceMap(string resourceName, string format, string locale);
 }
 ```
 
@@ -181,6 +182,7 @@ public interface IConfig
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
+| resourceBaseName | string | Resource base name |
 | resourceName | string | Resource name |
 
 | Return | Description |
@@ -206,13 +208,13 @@ public interface IConfig
 ```csharp
 public interface IConfigItem
 {
-	string GetString();
-	List<string> GetStringList();
-	bool GetBool();
-	int GetInt();
-	IConfigItem GetMapItem(string key);
-	List<string> GetArrayItemList(string key);
-	IConfigItem GetArrayItem(string key, string value);
+    string GetString();
+    List<string> GetStringList();
+    bool GetBool();
+    int GetInt();
+    IConfigItem GetMapItem(string key);
+    List<string> GetArrayItemList(string key);
+    IConfigItem GetArrayItem(string key, string value);
 }
 ```
 
@@ -291,9 +293,9 @@ public interface IConfigItem
 ```csharp
 public interface IRelease
 {
-	IConfig GetConfig();
-	IReleaseMessages GetMessages();
-	ITranslation GetTranslation();
+    IConfig GetConfig();
+    IReleaseMessages GetMessages();
+    ITranslation GetTranslation();
 }
 ```
 
@@ -326,13 +328,13 @@ public interface IRelease
 ```csharp
 public interface ITranslation
 {
-	ISource CreateSource(string component, string key, string source = null, string comment = null);
-	string GetString(string locale, ISource source);
-	string GetString(string component, string key, string source = null, string comment = null);
-	string Format(string locale, ISource source, params object[] objects);
-	bool SetCurrentLocale(string locale);
-	string GetCurrentLocale();
-	string GetLocaleSupported(string locale);
+    ISource CreateSource(string component, string key, string source = null, string comment = null);
+    string GetString(string locale, ISource source);
+    string GetString(string component, string key, string source = null, string comment = null);
+    string Format(string locale, ISource source, params object[] objects);
+    bool SetCurrentLocale(string locale);
+    string GetCurrentLocale();
+    string GetLocaleSupported(string locale);
 }
 ```
 
@@ -433,10 +435,10 @@ public interface ITranslation
 ```csharp
 public interface ISource
 {
-	string GetComponent();
-	string GetKey();
-	string GetSource();
-	string GetComment();
+    string GetComponent();
+    string GetKey();
+    string GetSource();
+    string GetComment();
 }
 ```
 
@@ -445,10 +447,10 @@ public interface ISource
 ```csharp
 public interface IReleaseMessages
 {
-	List<string> GetLocaleList();
-	List<string> GetComponentList();
-	ILocaleMessages GetLocaleMessages(string locale);
-	Dictionary<string, ILocaleMessages> GetAllLocaleMessages();
+    List<string> GetLocaleList();
+    List<string> GetComponentList();
+    ILocaleMessages GetLocaleMessages(string locale, bool asSource = false);
+    Dictionary<string, ILocaleMessages> GetAllLocaleMessages();
 }
 ```
 
@@ -472,9 +474,10 @@ public interface IReleaseMessages
 
 * Get the locale messagess from release messages by locale.
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| locale | string | Locale |
+| Parameter | Type | Description | Default |
+| ------ | ------ | ------ | ------ |
+| locale | string | Locale |  |
+| asSource | bool | If messages are of source | false |
 
 | Return | Description |
 | ------ | ------ |
@@ -482,7 +485,7 @@ public interface IReleaseMessages
 
 ### IReleaseMessages / GetAllLocaleMessages
 
-* Get all locale messagess of the release messages.
+* Get all locale messagess of the release messages that don't include source.
 
 | Return | Description |
 | ------ | ------ |
@@ -492,11 +495,20 @@ public interface IReleaseMessages
 ```csharp
 public interface ILocaleMessages
 {
-	List<string> GetComponentList();
-	IComponentMessages GetComponentMessages(string component);
-	string GetString(string component, string key);
+    string GetLocale();
+    List<string> GetComponentList();
+    IComponentMessages GetComponentMessages(string component);
+    string GetString(string component, string key);
 }
 ```
+
+### ILocaleMessages / GetLocale
+
+* Get locale of the messages.
+
+| Return | Description |
+| ------ | ------ |
+| string | Locale name |
 
 ### ILocaleMessages / GetComponentList
 
@@ -535,16 +547,16 @@ public interface ILocaleMessages
 ```csharp
 public interface IComponentMessages
 {
-	void SetString(string key, string message);
-	string GetString(string key);
-	ICollection GetKeys();
-	int GetCount();
-	string GetLocale();
-	string GetComponent();
-	void SetResourcePath(string resourcePath);
-	string GetResourcePath();
-	void SetResourceType(string resourceType);
-	string GetResourceType();
+    void SetString(string key, string message);
+    string GetString(string key);
+    ICollection GetKeys();
+    int GetCount();
+    string GetLocale();
+    string GetComponent();
+    void SetResourcePath(string resourcePath);
+    string GetResourcePath();
+    void SetResourceType(string resourceType);
+    string GetResourceType();
 }
 ```
 
@@ -638,14 +650,16 @@ public interface IComponentMessages
 ```csharp
 public interface IExtension
 {
-	void RegisterCacheManager(ICacheManager cacheManager, string cacheManagerName);
-	void RegistertLogger(ILog logger, string loggerName);
-	void RegisterResourceParser(IResourceParser parser, string parserName);
-	void RegisterAccessService(IAccessService accessService, string accessName);
+    void RegisterCacheManager(ICacheManager cacheManager, string cacheManagerName);
+    void RegisterCacheComponentManager(ICacheComponentManager cacheComponentManager,
+        string cacheComponentManagerName);
+    void RegistertLogger(ILog logger, string loggerName);
+    void RegisterResourceParser(IResourceParser parser, string parserName);
+    void RegisterAccessService(IAccessService accessService, string accessName);
 }
 ```
 
-### IComponentMessages / RegisterCacheManager
+### IExtension / RegisterCacheManager
 
 * Register cache manager object with its name.
 
@@ -654,7 +668,16 @@ public interface IExtension
 | cacheManager | [ICacheManager](#ICacheManager) | Cache manager object |
 | cacheManagerName | string | Cache manager name |
 
-### IComponentMessages / RegistertLogger
+### IExtension / RegisterCacheComponentManager
+
+* Register component cache manager object with its name.
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| cacheComponentManager | [ICacheComponentManager](#ICacheComponentManager) | Component cache manager object |
+| cacheComponentManagerName | string | Component cache manager name |
+
+### IExtension / RegistertLogger
 
 * Register a logger with its name.
 
@@ -663,7 +686,7 @@ public interface IExtension
 | logger | [ILog](#ILog) | Logger object |
 | loggerName | string | Logger name |
 
-### IComponentMessages / RegisterResourceParser
+### IExtension / RegisterResourceParser
 
 * Register a resource parser with its name.
 
@@ -672,7 +695,7 @@ public interface IExtension
 | parser | [IResourceParser](#IResourceParser) | Parser object |
 | parserName | string | Parser name |
 
-### IComponentMessages / RegisterAccessService
+### IExtension / RegisterAccessService
 
 * Register an accessing service object with its name.
 
@@ -685,7 +708,7 @@ public interface IExtension
 ```csharp
 public interface ICacheManager
 {
-	ICacheMessages GetReleaseCache(string product, string version);
+    ICacheMessages GetReleaseCache(string product, string version);
 }
 ```
 
@@ -706,7 +729,7 @@ public interface ICacheManager
 ```csharp
 public interface ICacheMessages
 {
-	ILocaleMessages GetLocaleMessages(string locale);
+    ILocaleMessages GetLocaleMessages(string locale, bool asSource = false);
 }
 ```
 
@@ -714,19 +737,41 @@ public interface ICacheMessages
 
 * Get the locale messages from the release cache.
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| locale | string | Locale |
+| Parameter | Type | Description | Default |
+| ------ | ------ | ------ | ------ |
+| locale | string | Locale |  |
+| asSource | bool | If messages are of source | false |
 
 | Return | Description |
 | ------ | ------ |
 | [ILocaleMessages](#ILocaleMessages) | The locale messages |
 
+### ICacheComponentManager
+```csharp
+public interface ICacheComponentManager
+{
+    IComponentMessages NewComponentCache(string locale, string component);
+}
+```
+
+### ICacheComponentManager / NewComponentCache
+
+* Create a new component messages object.
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| locale | string | Locale |
+| component | string | Component |
+
+| Return | Description |
+| ------ | ------ |
+| [IComponentMessages](#IComponentMessages) | The component messages for a locale |
+
 ### ILog
 ```csharp
 public interface ILog
 {
-	void Log(LogType logType, string text);
+    void Log(LogType logType, string text);
 }
 ```
 
@@ -743,11 +788,11 @@ public interface ILog
 ```csharp
 public enum LogType
 {
-	Debug,
-	Info,
-	Warning,
-	Error,
-	None
+    Debug,
+    Info,
+    Warning,
+    Error,
+    None
 }
 ```
 
@@ -755,7 +800,7 @@ public enum LogType
 ```csharp
 public interface IResourceParser
 {
-	Hashtable Parse(string text);
+    Hashtable Parse(string text);
 }
 ```
 
@@ -775,8 +820,8 @@ public interface IResourceParser
 ```csharp
 public interface IAccessService
 {
-	string HttpGet(string url, Hashtable headers);
-	string HttpPost(string url, string text, Hashtable headers);
+    string HttpGet(string url, Hashtable headers);
+    string HttpPost(string url, string text, Hashtable headers);
 }
 ```
 
