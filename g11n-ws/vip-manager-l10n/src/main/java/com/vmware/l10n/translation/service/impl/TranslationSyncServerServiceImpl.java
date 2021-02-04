@@ -137,4 +137,8 @@ public class TranslationSyncServerServiceImpl implements TranslationSyncServerSe
 		}
 	}
 
+	@Override
+	public void saveCreationInfo(UpdateTranslationDTO updateTranslationDTO) {
+		singleComponentDao.saveCreationInfo(updateTranslationDTO);
+	}
 }

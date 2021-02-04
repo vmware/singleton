@@ -58,7 +58,7 @@ public class S3Util {
 		return s3Client.isObjectExist(bundlePath);
 	}
 
-	private String getBundleFilePath(String basePath, SingleComponentDTO dto) {
+	public static String getBundleFilePath(String basePath, SingleComponentDTO dto) {
 		if (StringUtils.isEmpty(dto.getComponent())) {
 			dto.setComponent(ConstantsFile.DEFAULT_COMPONENT);
 		}
@@ -69,7 +69,7 @@ public class S3Util {
 	/**
 	 * generate the product version path
 	 */
-	private static String genProductVersionS3Path(String basePath, String productName, String version) {
+	public static String genProductVersionS3Path(String basePath, String productName, String version) {
 		StringBuilder path = new StringBuilder();
 		path.append(basePath);
 		path.append(productName);
