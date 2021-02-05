@@ -115,7 +115,10 @@ class SampleApplication():
         print('--- found --- wrong component --- %s ---' % found)
 
         if (self.need_wait(cfg_info)):
-            time.sleep(5)
+            for i in range(10):
+                time.sleep(5)
+                found = trans.get_string(COMPONENT, KEY, source = SOURCE, locale = LOCALE)
+                print('--- found --- %s --- %s --- %s ---' % (i, LOCALE, found))
 
         found = trans.get_string(COMPONENT, 'aa', format_items = ['11', '22'])
         print('--- found --- array in format --- %s ---' % found)
