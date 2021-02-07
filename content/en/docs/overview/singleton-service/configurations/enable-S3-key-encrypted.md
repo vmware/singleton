@@ -1,4 +1,4 @@
-# How to use encrypt AWS S3 access key and secretkey in singleton service
+# Encrypt AWS S3 accesskey and secretkey in Singleton Service
 
 
 
@@ -6,17 +6,15 @@
 
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (Java 9+ are not supported, will get compiler issue)
 
-- [Git](https://git-scm.com/downloads)
-
-- Singleton S3 server
+- Singleton S3 I18n Service Build
 
 - S3 configurations (accessKey, secretkey, region, bucketName)
 
   
 
-## 1. Encrypt the AWS S3 accessKey and secretkey
+## 1. Encrypt AWS S3 accessKey and secretkey
 
- You can use the java language RSA crypt generate the private.key public.key and access key and secretkey by yourself.
+ You can use the java language RsaCryptUtils to generate private.key and public.key.
 
 The demo code as following:
 
@@ -151,68 +149,36 @@ public class RsaCryptUtils {
 }
 ```
 
+Generate the private.key and public.key. 
+- Get the public key use demo code getPublicKey() method 
 
- We recommend  use the g11n-s3keys-crypt tools generate it. 
+- Get the private key use demo code getPrivateKey() method.  
 
-### Use g11n-s3keys-crypt tools generate accessKey and secretkey
-Building  g11n-s3keys-crypt from source code
+  
 
-Clone the repository using Git.
-
-```
-git clone https://gitlab.eng.vmware.com/g11n-vip/g11n-s3keys-crypt.git
-Or
-git clone git@gitlab.eng.vmware.com:g11n-vip/g11n-s3keys-crypt.git
-```
-
-Go to g11n-s3keys-crypt to run a build using Gradle.
+You need to output private key and public key to files name as following:
 
 ```
-cd g11n-s3keys-crypt
-./gradlew build
+private.key
+public.key
 ```
 
-Jar files will be generated inside the following location:
 
-```
-g11n-s3keys-crypt/build/libs (Eg. g11n-s3keys-crypt/build/libs/g11n-s3keys-crypt.jar)
-```
 
-### How to use g11n-s3keys-crypt
+You can use the encryptData() method and private key that you generated to encrypt your own S3 accessKey and secretkey.
 
-Prepare the input file and the file formatting is properties(Eg. input.properties)
-
-```
-s3.password.accessKey=#####
-s3.password.secretkey=######
-```
-
-Run the g11n-s3keys-crypt
-
-```
- cd g11n-s3keys-crypt/build/libs 
- java -jar g11n-s3keys-crypt.jar inputFile=./input.properties
-```
-
-You can find output.properties under current Directory
-
-```
-cd g11n-s3keys-crypt/build/libs 
-ls
- g11n-s3keys-crypt.jar input.properties output.properties private.key public.key
-```
-
-The result from output file
+The result like following:
 
 ```
 #Mon Nov 30 11:14:57 CST 2020
 s3.password.accessKey=JmrCnC4h+nUb8nq8o65UCUDua7TtCTNzy5zwwsbLOvX5xCZOs/DcQSHM6yBLvO5sF1eQ2KR2BvXcPQQYUafMm/AXAJGgr1dmvGLVieo/ulLJ0Uol0ohIPM3/UO/jXh4uo6V3Rd/sdM7OwUP9CCit+wK4pY9+tQ64gS55Kh8XUAx0YMSwAlgCA6796A6fAOHIjw3Y5U7aPgPLRKFAJJIiaQbRg019eqFQJ+ihF245L7F2Hjc2t2fOWuNlpWCQ5QIjOuNvbG5b72cBkB7CCTNWLtddgQ75eTH1PNb65EDHGgLbURBYTD9HfMT3y+74OfA3MkpGIZNFm4lzb5qlX1gAEQ\=\=
+
 s3.password.secretkey=n0rn+nam61O7c6Bz2+pAOqVCwaJjjKsczNLAggGPPh+g9Kc+knWJfhSK7cStetbmseWCTG758dDss2N02exPx6j7/4pYELyMfYQFFl0xCCdfu5ySPjSD1fqzcprAH/yQJhGAvUIonUZMB24DsrZkA8bImVZ9hxoz4wXhCC0sKif9FON+oIsic/WgLs1NuDsiFwivHq+bEMZjzLQOd9/ZL7wGd7QZmgDW18bHLyzezETXjzazjK6o0ekQ/KF/4sZLn7yUGVIuG9XEI6xeMtvd3hx/Bit55enMAk9AsnpmGZJ4BQne3eCjKbVueRKqFwMx0jDKGsE5wQe3dp8td5H7Ww\=\=
 ```
 
-## 2.How to configuration in singleton s3 server
+## 2. Configure in Singleton S3 I18n Service Build
 
-Move the public.key file to singleton.jar directory
+Copy public.key file to the directory of singleton.jar 
 
 ```
 ls 
@@ -220,16 +186,16 @@ singleton.jar public.key
 ```
 
 
-Change accessKey, secretkey Encrypt content and the publicKey's path to i18n manager S3 configuration (application-s3.properties)
+Change encrypted accessKey, secretkey content  to  Singleton S3 I18n Service Build configuration (application-s3.properties)
 
 ```
 #S3 store config
 s3.keysEncryptEnable=true
-# the ublickey file's path
+# the public key file's path
 s3.publicKey=./public.key
-# the accesskey that get from above encrypt output.properties file content
+# the accesskey that get from above encrypt result content
 s3.accessKey=#####
-## the secretkey that get from above encrypt output.properties file content
+## the secretkey that get from above encrypt result content
 s3.secretkey=######
 ##get from S3 configuration's region 
 s3.region=###### 
@@ -237,7 +203,7 @@ s3.region=######
 s3.bucketName=######
 ```
 
-start singleton S3 server
+Start Singleton S3 I18n Service Build
 
 ```
 java -jar singleton.jar
