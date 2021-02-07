@@ -603,6 +603,7 @@ class SingletonRelease(Release, Translation):
         near_locale = self.get_locale_supported(locale)
         if locale not in self.locale_list and near_locale not in self.locale_list:
             return None
+        self.task.check()
         if component not in self.component_list:
             return None
 
@@ -621,7 +622,6 @@ class SingletonRelease(Release, Translation):
             component_obj = SingletonComponent(self, locale, component)
             components[component] = component_obj
 
-        self.task.check()
         component_obj.task.check()
         return component_obj
 
