@@ -488,11 +488,6 @@ class SingletonRelease(Release, Translation):
         if not source:
             if component in self.source:
                 source = self.source[component].messages.get(key)
-            else:
-                remote_source = self._get_remote_resource(self.cfg.source_locale, component)
-                if remote_source:
-                    self.source[component] = remote_source
-                    source = self.source[component].messages.get(key)
 
         text = self._get_message(component, key, source, locale)
         if text and items:
