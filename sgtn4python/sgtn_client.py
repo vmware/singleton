@@ -369,9 +369,12 @@ class SingletonComponent:
                     self.task.interval = interval
 
                 messages = dt[KEY_RESULT][KEY_DATA][KEY_MESSAGES]
-                if self.cache_path and not self.is_messages_same(self.messages, messages):
-                    self.rel.log('--- save --- %s ---' % self.cache_path)
-                    FileUtil.save_json_file(self.cache_path, dt[KEY_RESULT][KEY_DATA])
+                if self.cache_path:
+                    if os.path.exists(self.cache_path) and self.is_messages_same(self.messages, messages):
+                        os.utime(self.cache_path, (current, current))
+                    else:
+                        self.rel.log('--- save --- %s ---' % self.cache_path)
+                        FileUtil.save_json_file(self.cache_path, dt[KEY_RESULT][KEY_DATA])
                 self.messages = messages
                 self.task.last_time = current
             elif code == 304:
@@ -403,6 +406,7 @@ class SingletonRelease(Release, Translation):
         self.data = {}
 
         self.locales = {}
+        self.source_pool = {}
 
         if not cfg:
             return
@@ -421,8 +425,8 @@ class SingletonRelease(Release, Translation):
         self.task = SingletonAccessRemoteTask(self, self)
         self.get_scope()
 
-        self._get_resource(self.cfg.source_locale)
-        self.source = self.locales.get(self.cfg.source_locale)
+        self._get_local_resource(self.source_pool, self.cfg.source_locale)
+        self.source = self.source_pool.get(self.cfg.source_locale)
 
     def get_config(self):
         # method of Release
@@ -466,6 +470,8 @@ class SingletonRelease(Release, Translation):
         self.task.querying = False
 
     def get_data_count(self):
+        if not self.locale_list or not self.component_list:
+            return 0
         return len(self.locale_list) + len(self.component_list)
 
     def log(self, text, log_type = LOG_TYPE_INFO):
@@ -561,17 +567,14 @@ class SingletonRelease(Release, Translation):
                     locales_cfg[locale] = {KEY_LOCAL_PATH: [os.path.join(component, res_file)]}
         return components
 
-    def _get_resource(self, locale):
-        if self.locales.get(locale):
+    def _get_local_resource(self, pool, locale):
+        if pool.get(locale):
             return
 
-        self.locales[locale] = {}
-        locale_item = self.locales[locale]
+        pool[locale] = {}
+        locale_item = pool[locale]
 
         if not self.cfg.local_url:
-            if self.component_list:
-                for component in self.component_list:
-                    locale_item[component] = self._get_remote_resource(locale, component)
             return
 
         if not self.cfg.components:
@@ -593,12 +596,12 @@ class SingletonRelease(Release, Translation):
                 locale_item[component] = component_obj
 
     def _get_remote_resource(self, locale, component):
+        self.task.check()
         if not self.locale_list or not self.component_list:
             return None
         near_locale = self.get_locale_supported(locale)
         if locale not in self.locale_list and near_locale not in self.locale_list:
             return None
-        self.task.check()
         if component not in self.component_list:
             return None
 
@@ -621,17 +624,18 @@ class SingletonRelease(Release, Translation):
         return component_obj
 
     def _get_component(self, locale, component):
+        component_remote = self._get_remote_resource(locale, component)
+        if component_remote:
+            return component_remote
+
         component_obj = None
-        near_locale = self.get_locale_supported(locale)
         if self.cfg.local_url:
-            self._get_resource(near_locale)
+            near_locale = self.get_locale_supported(locale)
+            self._get_local_resource(self.locales, near_locale)
             locale_obj = self.locales.get(near_locale)
             if locale_obj:
                 component_obj = locale_obj.get(component)
 
-        component_remote = self._get_remote_resource(locale, component)
-        if component_remote:
-            return component_remote
         return component_obj
 
     def _get_message(self, component, key, source, locale):
@@ -654,7 +658,7 @@ class SingletonRelease(Release, Translation):
 
         if found:
             source_remote = component_src.messages.get(key) if component_src else None
-            if source_remote is None or source_remote == source:
+            if source is None or source_remote is None or source_remote == source:
                 translation = found
 
         return translation
