@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-01-15T12:07:43 PST">
+<meta name="revised" content="2021-02-07T18:37:25 CST">
 <title>Python Client Introduction :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
 
     
   </head>
-  <body data-url="https://vmware.github.io/singleton/docs/overview/singleton-sdk/python-client-introduction/">
+  <body data-url="/docs/overview/singleton-sdk/python-client-introduction/">
     
       <header>
   <div class="logo">
@@ -158,6 +158,13 @@
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/">
             Enable S3 Storage
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/">
+            
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -341,6 +348,13 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
         </ul>
     </li>
         </ul>
@@ -433,6 +447,7 @@
    Angular Client Introduction</option>
       <option value="/docs/overview/singleton-sdk/csharp-client-introduction/" >--- C# Client Introduction</option>
       <option value="/docs/overview/singleton-sdk/go-client-introduction/" >--- Go Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/" >--- </option>
   
   
     <option value="/docs/tutorials/" >
@@ -476,16 +491,236 @@
 <h1 id="prerequisites">Prerequisites</h1>
 <p>Python 2.x</p>
 <p>Python 3.x</p>
-<p>It&rsquo;s better to install <a href="https://pypi.org/project/PyYAML/">PyYAML</a> module of python.</p>
+<p>It&rsquo;s better to install <a href="https://pypi.org/project/PyYAML/">PyYAML</a> module of python. Otherwise, the configuration file should be written in json.</p>
 <h1 id="how-to-get-the-client-code">How to get the client code</h1>
 <pre><code>git clone -b g11n-python-client https://github.com/vmware/singleton.git
-</code></pre><p>The client code is <a href="https://github.com/vmware/singleton/blob/g11n-python-client/sgtn4python/sgtn_client.py">sgtn_client.py</a>, <a href="https://github.com/vmware/singleton/blob/g11n-python-client/sgtn4python/sgtn_properties.py">sgtn_properties.py</a> and <a href="https://github.com/vmware/singleton/blob/g11n-python-client/sgtn4python/sgtn_util.py">sgtn_util.py</a>.
-It needs a configuration file, like the <a href="https://github.com/vmware/singleton/blob/g11n-python-client/sgtn4python/sample/sample_online_offline.yml">sample configuration file</a>.</p>
-<h1 id="apis-available">APIs Available</h1>
+</code></pre><p>The client code is <a href="https://github.com/vmware/singleton/blob/g11n-python-client/sgtn4python/sgtn_client.py">sgtn_client.py</a>, <a href="https://github.com/vmware/singleton/blob/g11n-python-client/sgtn4python/sgtn_properties.py">sgtn_properties.py</a> and <a href="https://github.com/vmware/singleton/blob/g11n-python-client/sgtn4python/sgtn_util.py">sgtn_util.py</a>. Put them to a place where they can be imported to the application code.
+It needs a configuration file, for example, <a href="https://github.com/vmware/singleton/blob/g11n-python-client/sgtn4python/test/sgtn_client.yml">sgtn_client.yml</a>.</p>
+<h1 id="how-to-write-a-configuration-file">How to write a configuration file</h1>
+<ul>
+<li>Basic definition</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>product</td>
+<td>string</td>
+<td>Product name</td>
+</tr>
+<tr>
+<td>l10n_version</td>
+<td>string</td>
+<td>L10N version, sometimes same with product version</td>
+</tr>
+<tr>
+<td>online_service_url</td>
+<td>string</td>
+<td>Points to singleton service</td>
+</tr>
+<tr>
+<td>offline_resources_base_url</td>
+<td>string</td>
+<td>Points to local directory starting with &lsquo;file://&rsquo;</td>
+</tr>
+<tr>
+<td>components</td>
+<td>dict</td>
+<td>Definition of components</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Extended definition</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default_locale</td>
+<td>string</td>
+<td>Default locale</td>
+<td>en-US</td>
+</tr>
+<tr>
+<td>source_locale</td>
+<td>string</td>
+<td>Source locale</td>
+<td>Same with default locale</td>
+</tr>
+<tr>
+<td>log_path</td>
+<td>string</td>
+<td>Log path, &lsquo;./&rsquo; means the path of configuration.</td>
+<td></td>
+</tr>
+<tr>
+<td>cache_path</td>
+<td>string</td>
+<td>Cache file path, &lsquo;./&rsquo; means the path of configuration.</td>
+<td></td>
+</tr>
+<tr>
+<td>try_delay</td>
+<td>integer</td>
+<td>Interval to try again when failed</td>
+<td>10</td>
+</tr>
+<tr>
+<td>cache_expired_time</td>
+<td>integer</td>
+<td>Interval to update data</td>
+<td>3600</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Component definition</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Component name</td>
+<td></td>
+</tr>
+<tr>
+<td>locales</td>
+<td>dict</td>
+<td>Definition for locales inside a component item</td>
+<td></td>
+</tr>
+<tr>
+<td>template</td>
+<td>string</td>
+<td>Top item name to define a template for component</td>
+<td>component_template</td>
+</tr>
+<tr>
+<td>locales_refer</td>
+<td>string</td>
+<td>Top item name to define locales</td>
+<td></td>
+</tr>
+<tr>
+<td>language_tag</td>
+<td>string</td>
+<td>Locale name</td>
+<td></td>
+</tr>
+<tr>
+<td>offline_resources_path</td>
+<td>string</td>
+<td>Local resource path</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Special string for component definition</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$COMPONENT</td>
+<td>Current component inside a component item</td>
+</tr>
+<tr>
+<td>$LOCALE</td>
+<td>Current locale inside a locale item</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Example of component definition in original way</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">components:
+  - <span style="color:#66d9ef">name</span>: about
+    locales:
+      - <span style="color:#66d9ef">language_tag</span>: en-US
+        offline_resources_path:
+          - about/messages.properties
+      - <span style="color:#66d9ef">language_tag</span>: de
+        offline_resources_path:
+          - about/messages_de.json
+      - <span style="color:#66d9ef">language_tag</span>: fr
+        offline_resources_path:
+          - about/messages_fr.json
+  - <span style="color:#66d9ef">name</span>: common
+    locales:
+      - <span style="color:#66d9ef">language_tag</span>: en-US
+        offline_resources_path:
+          - common/messages.properties
+      - <span style="color:#66d9ef">language_tag</span>: de
+        offline_resources_path:
+          - common/messages_de.json
+      - <span style="color:#66d9ef">language_tag</span>: fr
+        offline_resources_path:
+          - common/messages_fr.json
+  - <span style="color:#66d9ef">name</span>: contact
+    locales:
+      - <span style="color:#66d9ef">language_tag</span>: en-US
+        offline_resources_path:
+          - contact/messages.properties
+      - <span style="color:#66d9ef">language_tag</span>: de
+        offline_resources_path:
+          - contact/messages_de.json
+      - <span style="color:#66d9ef">language_tag</span>: fr
+        offline_resources_path:
+          - contact/messages_fr.json
+</code></pre></div><ul>
+<li>Example of component definition in concise way</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">locales:
+  - <span style="color:#66d9ef">language_tag</span>: en-US
+    offline_resources_path:
+      - $COMPONENT/messages.properties
+  - <span style="color:#66d9ef">language_tag</span>: de
+  - <span style="color:#66d9ef">language_tag</span>: fr
+
+component_template:
+  <span style="color:#66d9ef">locales_refer</span>: locales
+  offline_resources_path:
+    - $COMPONENT/messages_$LOCALE.json
+
+components:
+  - <span style="color:#66d9ef">name</span>: about
+    <span style="color:#66d9ef">template</span>: component_template <span style="color:#75715e"># default</span>
+  - <span style="color:#66d9ef">name</span>: common
+  - <span style="color:#66d9ef">name</span>: contact
+</code></pre></div><h1 id="apis-available">APIs Available</h1>
 <ul>
 <li><a href="#Factory-Class">Factory Class</a>
 <ul>
-<li><a href="#I18n">I18n</a></li>
+<li><a href="#I18N">I18N</a></li>
 </ul>
 </li>
 <li><a href="#Interface-For-Release">Interface For Release</a>
@@ -505,17 +740,17 @@ It needs a configuration file, like the <a href="https://github.com/vmware/singl
 </li>
 </ul>
 <h2 id="factory-class">Factory Class</h2>
-<h3 id="i18n">I18n</h3>
+<h3 id="i18n">I18N</h3>
 <ul>
 <li>It&rsquo;s the factory class that creates and initializes the configuration object and the release object.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">I18n</span>():
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">I18N</span>():
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_config_file</span>(cls, config_file)
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_config</span>(cls, base_path, config_data)
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set_current_locale</span>(cls, locale)
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_current_locale</span>(cls)
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_release</span>(cls, product, version)
-</code></pre></div><h3 id="i18n--add_config_file">I18n / add_config_file</h3>
+</code></pre></div><h3 id="i18n--add_config_file">I18N / add_config_file</h3>
 <ul>
 <li>Load a configuration json or yaml file and initialize a corresponding release object.</li>
 </ul>
@@ -535,7 +770,7 @@ It needs a configuration file, like the <a href="https://github.com/vmware/singl
 </tr>
 </tbody>
 </table>
-<h3 id="i18n--add_config">I18n / add_config</h3>
+<h3 id="i18n--add_config">I18N / add_config</h3>
 <ul>
 <li>Load a configuration json or yaml text with a base directory and initialize a correspondent release object.</li>
 </ul>
@@ -551,7 +786,7 @@ It needs a configuration file, like the <a href="https://github.com/vmware/singl
 <tr>
 <td>base_path</td>
 <td>string</td>
-<td>Base directory</td>
+<td>The path of configuration</td>
 </tr>
 <tr>
 <td>config_data</td>
@@ -560,7 +795,7 @@ It needs a configuration file, like the <a href="https://github.com/vmware/singl
 </tr>
 </tbody>
 </table>
-<h3 id="i18n--set_current_locale">I18n / set_current_locale</h3>
+<h3 id="i18n--set_current_locale">I18N / set_current_locale</h3>
 <ul>
 <li>Set locale of current thread.</li>
 </ul>
@@ -580,7 +815,7 @@ It needs a configuration file, like the <a href="https://github.com/vmware/singl
 </tr>
 </tbody>
 </table>
-<h3 id="i18n--get_current_locale">I18n / get_current_locale</h3>
+<h3 id="i18n--get_current_locale">I18N / get_current_locale</h3>
 <ul>
 <li>Get locale of current thread.</li>
 </ul>
@@ -598,7 +833,7 @@ It needs a configuration file, like the <a href="https://github.com/vmware/singl
 </tr>
 </tbody>
 </table>
-<h3 id="i18n--get_release">I18n / get_release</h3>
+<h3 id="i18n--get_release">I18N / get_release</h3>
 <table>
 <thead>
 <tr>
@@ -755,7 +990,48 @@ It needs a configuration file, like the <a href="https://github.com/vmware/singl
 </tr>
 </tbody>
 </table>
+<ul>
+<li>kwargs</li>
+</ul>
 <table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale</td>
+<td>Current locale</td>
+</tr>
+<tr>
+<td>source</td>
+<td>string</td>
+<td>Source message</td>
+<td>Source from resource file</td>
+</tr>
+<tr>
+<td>format_items</td>
+<td>string</td>
+<td>Items for string formatting</td>
+<td>Nothing</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Example of string formatting which follows the python format function</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>get_string(COMPONENT, KEY) <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;AAA{0}BBB{1}CCC&#39;</span>
+msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>get_string(COMPONENT, KEY, format_items <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;11&#39;</span>, <span style="color:#e6db74">&#39;22&#39;</span>]) <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;AAA11BBB22CCC&#39;</span>
+
+msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>get_string(COMPONENT, KEY) <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;AAA{x}BBB{y}CCC&#39;</span>
+msg <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>get_string(COMPONENT, KEY, format_items <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;x&#39;</span>: <span style="color:#e6db74">&#39;ee&#39;</span>, <span style="color:#e6db74">&#39;y&#39;</span>: <span style="color:#e6db74">&#39;ff&#39;</span>}) <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;AAAeeBBBffCCC&#39;</span>
+</code></pre></div><table>
 <thead>
 <tr>
 <th>Return</th>

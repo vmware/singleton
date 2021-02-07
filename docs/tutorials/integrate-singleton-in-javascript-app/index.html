@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-01-15T12:07:43 PST">
+<meta name="revised" content="2021-02-07T18:37:25 CST">
 <title>Integrate Singleton in Javascript App :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
 
     
   </head>
-  <body data-url="https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-javascript-app/">
+  <body data-url="/docs/tutorials/integrate-singleton-in-javascript-app/">
     
       <header>
   <div class="logo">
@@ -157,6 +157,13 @@
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/">
             Enable S3 Storage
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/">
+            
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -339,6 +346,13 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
         </ul>
     </li>
         </ul>
@@ -507,8 +521,8 @@ the index.js file on React.Here take Integration with React as example as below.
 <span style="color:#66d9ef">import</span> <span style="color:#a6e22e">App</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./App&#39;</span>;
 <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">i18nClient</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./i18n/i18nClient&#39;</span>;
 
-(<span style="color:#66d9ef">async</span> () =&gt; {
-  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">i18nClient</span>.<span style="color:#a6e22e">coreService</span>.<span style="color:#a6e22e">loadI18nData</span>(); <span style="color:#75715e">// loading data from Singleton Service
+(<span style="color:#a6e22e">async</span> () =&gt; {
+  <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">i18nClient</span>.<span style="color:#a6e22e">coreService</span>.<span style="color:#a6e22e">loadI18nData</span>(); <span style="color:#75715e">// loading data from Singleton Service
 </span><span style="color:#75715e"></span>  <span style="color:#a6e22e">ReactDOM</span>.<span style="color:#a6e22e">render</span>(
     <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">App</span> <span style="color:#f92672">/&gt;</span>,
     document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;root&#39;</span>)
@@ -547,9 +561,9 @@ the index.js file on React.Here take Integration with React as example as below.
             <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">header</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;App-header&#34;</span><span style="color:#f92672">&gt;</span>
                 <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">a</span><span style="color:#f92672">&gt;</span>
                     {<span style="color:#a6e22e">l10n</span>(<span style="color:#e6db74">&#39;LEARN&#39;</span>)}
-                <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/a&gt;</span>
-            <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/header&gt;</span>
-        <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
+                <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/a&gt;</span>
+            <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/header&gt;</span>
+        <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
     );
 }
 

@@ -6,7 +6,11 @@
     <description>Recent content in About Singleton on Singleton</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 24 Sep 2019 18:41:11 +0800</lastBuildDate><atom:link href="https://vmware.github.io/singleton/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 24 Sep 2019 18:41:11 +0800</lastBuildDate>
+    
+	<atom:link href="https://vmware.github.io/singleton/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Python Client Introduction</title>
       <link>https://vmware.github.io/singleton/docs/overview/singleton-sdk/python-client-introduction/</link>
@@ -16,8 +20,8 @@
       <description>Introduction Several python files are provided as the python client to support accessing Singleton service, making Singleton users to handle its globalization easily.
 Features in Python Client  Getting configuration content. Getting the translation. Getting messages of a locale.  Prerequisites Python 2.x
 Python 3.x
-It&amp;rsquo;s better to install PyYAML module of python.
-How to get the client code git clone -b g11n-python-client https://github.com/vmware/singleton.git The client code is sgtn_client.py, sgtn_properties.py and sgtn_util.</description>
+It&amp;rsquo;s better to install PyYAML module of python. Otherwise, the configuration file should be written in json.
+How to get the client code git clone -b g11n-python-client https://github.</description>
     </item>
     
     <item>
@@ -119,7 +123,7 @@ Using the Mixin approach allows you to achieve three things:
       <pubDate>Thu, 02 Jul 2020 11:09:53 +0800</pubDate>
       
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-db-build-introducation/</guid>
-      <description>1. Prerequisites  Java 8 (Java 9+ are not supported, will get compiler issue) Git Docker  2. Create Singleton Database docker image 2.1 Required  Linux 64-bit Operation System and install docker successfully  2.2 Prepare the init db scripts 2.2.1 prepare the create users and databases sql scripts vipinitdb.sql CREATE USER pgvipconfig WITH PASSWORD &#39;vipconfig&#39;; CREATE USER pgvipdata WITH PASSWORD &#39;vipdata&#39;; CREATE DATABASE vipconfig OWNER pgvipconfig; CREATE DATABASE vipdata0 OWNER pgvipdata; CREATE DATABASE vipdata1 OWNER pgvipdata; 2.</description>
+      <description>1. Prerequisites  Java 8 (Java 9+ are not supported, will get compiler issue) Git Docker  2. Create Singleton Database docker image 2.1 Required  Linux 64-bit Operation System and install docker successfully  2.2 Prepare the init db scripts 2.2.1 prepare the create users and databases sql scripts vipinitdb.sql CREATE USER pgvipconfig WITH PASSWORD &#39;vipconfig&#39;;CREATE USER pgvipdata WITH PASSWORD &#39;vipdata&#39;;CREATE DATABASE vipconfig OWNER pgvipconfig;CREATE DATABASE vipdata0 OWNER pgvipdata;CREATE DATABASE vipdata1 OWNER pgvipdata;2.</description>
     </item>
     
     <item>
@@ -128,7 +132,7 @@ Using the Mixin approach allows you to achieve three things:
       <pubDate>Tue, 24 Sep 2019 20:09:53 +0800</pubDate>
       
       <guid>https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-javascript-app/</guid>
-      <description>This guideline demonstrates how to integrate Singleton JSClient with your frontend Framework on your application. Singleton JSClient is a common lib providing I18n support theoretically for any frontend framework on your application. The client will communicate with Singleton service to dynamically fetch translation and I18n pattern data for providing globalization support in messages and formatting. For I18n formatting, Singleton JSClient also provides I18n support for datetime format, number format, currency and plural.</description>
+      <description>This guideline demonstrates how to integrate Singleton JSClient with your frontend Framework on your application.Singleton JSClient is a common lib providing I18n support theoretically for any frontend framework on your application. The clientwill communicate with Singleton service to dynamically fetch translation and I18n pattern data for providing globalization supportin messages and formatting.For I18n formatting, Singleton JSClient also provides I18n support for datetime format, number format, currency and plural.</description>
     </item>
     
     <item>
@@ -139,7 +143,7 @@ Using the Mixin approach allows you to achieve three things:
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-pipe/</guid>
       <description>Overview Use the translate pipe in your HTML templates to retrieve translations from the singleton service.
 API L10nPlus pipe Get translation by key, will find the source in the sourceBundle according to the key.
-{{ key | vtranslate:[ : variables ] }} L10n pipe (deprecated) {{ key | translate: [ : source [ : variables ] ] }} Input    Parameter Type Description     key string Define the key to identify the translation, it should name like this: component_module_page_control_shortmsg.</description>
+{{ key | vtranslate:[ : variables ] }}L10n pipe (deprecated) {{ key | translate: [ : source [ : variables ] ] }}Input    Parameter Type Description     key string Define the key to identify the translation, it should name like this: component_module_page_control_shortmsg.</description>
     </item>
     
     <item>
@@ -179,7 +183,7 @@ Features Overview  Getting and managing locales. Getting the i18n resources from
       
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/translate-directive/</guid>
       <description>Overview Use the translate directive in your HTML templates to retrieve translations from the singleton service.
-@Directive({ selector: &#39;[l10n]&#39; }) class L10nDirective implements AfterViewInit { l10n: string; source: string; params: string[]; constructor(el: ElementRef, ...) ngAfterViewInit() } Selector [l10n]
+@Directive({ selector: &#39;[l10n]&#39; })class L10nDirective implements AfterViewInit {l10n: string;source: string;params: string[];constructor(el: ElementRef, ...)ngAfterViewInit()}Selector [l10n]
 Inputs    Attribute Type Required Description     key String Required Bound to L10nDirective.l10n.Define the key to identify the translation, it should name like this: component_module_page_control_shortmsg. e.g. web_settings_stats_statsTable_host;   source String No Bound to L10nDirective.</description>
     </item>
     
@@ -191,7 +195,7 @@ Inputs    Attribute Type Required Description     key String Required Bound to L
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/l10n-service/</guid>
       <description>Overview The pipe or directive can&amp;rsquo;t cover all situations, some strings need to be processed in JavaScript module rather than in the template. L10nService provides APIs for translation related information in addition to pipe and directive.
 API Get source string Will return source string in sourceBundle by key.
-public getSourceString(key: string): string; Get formatted message The parameters and return values are the same as the l10n pipe and directive. Get formatted message by key and variables.</description>
+public getSourceString(key: string): string;Get formatted message The parameters and return values are the same as the l10n pipe and directive. Get formatted message by key and variables.</description>
     </item>
     
     <item>
@@ -202,8 +206,8 @@ public getSourceString(key: string): string; Get formatted message The parameter
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/i18n-service/</guid>
       <description>Overview I18n service provides APIs which are supposed to be used in JavaScript module to get supported languages &amp;amp; regions, and format locale-sensitive data.
 Supported Language &amp;amp; Region APIs getSupportedLanguages Get the supported languages which are available in singleton service for the specific product.
-getSupportedLanguages(): Promise&amp;lt;languagesList&amp;gt;; getSupportedRegions Get the supported regions from singleton service, the supported region list should be unified in all products.
-getSupportedRegions(languageTag: string): Promise&amp;lt;regionsList&amp;gt;;    Parameter Type Description     languageTag String Get supported region list with the localized display name by the &amp;lsquo;languageTag&amp;rsquo;.</description>
+getSupportedLanguages(): Promise&amp;lt;languagesList&amp;gt;;getSupportedRegions Get the supported regions from singleton service, the supported region list should be unified in all products.
+getSupportedRegions(languageTag: string): Promise&amp;lt;regionsList&amp;gt;;   Parameter Type Description     languageTag String Get supported region list with the localized display name by the &amp;lsquo;languageTag&amp;rsquo;.</description>
     </item>
     
     <item>
@@ -214,7 +218,7 @@ getSupportedRegions(languageTag: string): Promise&amp;lt;regionsList&amp;gt;;   
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/plural-format/</guid>
       <description>Overview Transform a plural message string to a string that pluralizes the value according to locale rules and translations. It can be implemented using l10n utils, the only difference is the definition of the source.
 Plural Source Text The source text defines the message output for each plural case of the specified locale. Syntax:
-selector { message } /** * selector: explicitValue | keyword * explicitValue: &#39;=&#39; number // adjacent, no white space in between * keyword: Pluralization categories * message: string */ Pluralization categories include (depending on the language):</description>
+selector { message }/*** selector: explicitValue | keyword* explicitValue: &#39;=&#39; number // adjacent, no white space in between* keyword: Pluralization categories* message: string*/Pluralization categories include (depending on the language):</description>
     </item>
     
     <item>
@@ -224,7 +228,7 @@ selector { message } /** * selector: explicitValue | keyword * explicitValue: &#
       
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/relative-time-format/</guid>
       <description>Overview Formats simple relative dates. Try to give the best relative time span representation based on start time and end time.
-API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: Object ): string Parameters    Parameter Type Required Description     from Date Required Relative time start time.   to Date Required Relative time end time.   locale String Optional The locale is only required in async mode for non-blocking loading.</description>
+API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: Object ): stringParameters    Parameter Type Required Description     from Date Required Relative time start time.   to Date Required Relative time end time.   locale String Optional The locale is only required in async mode for non-blocking loading.</description>
     </item>
     
     <item>
@@ -234,7 +238,7 @@ API public formatRelativeTime( from: Date, to: Date, locale?: string, options?: 
       
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/date-time-format-pipe/</guid>
       <description>Overview Use the dateFormat pipe in your HTML templates to format a date according to locale rules.
-Usage {{ value | dateFormat [ : format [ : timezone ] ] }} Input Value    Parameter Type Description     value any a date object or a number (milliseconds since UTC epoch) or an ISO string (https://www.w3.org/TR/NOTE-datetime).    Parameters    Parameter Type Description     format string indicates which date/time components to include.</description>
+Usage {{ value | dateFormat [ : format [ : timezone ] ] }}Input Value    Parameter Type Description     value any a date object or a number (milliseconds since UTC epoch) or an ISO string (https://www.w3.org/TR/NOTE-datetime).    Parameters    Parameter Type Description     format string indicates which date/time components to include.</description>
     </item>
     
     <item>
@@ -244,7 +248,7 @@ Usage {{ value | dateFormat [ : format [ : timezone ] ] }} Input Value    Parame
       
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/number-format-pipe/</guid>
       <description>Overview Formats a number as text. Group sizing and separator and other locale-specific configurations are based on the pattern data.
-Usage {{ value | numberFormat }} Input Value    Parameter Type Description     value number The number to be formatted.    Example Code   </description>
+Usage {{ value | numberFormat }}Input Value    Parameter Type Description     value number The number to be formatted.    Example Code   </description>
     </item>
     
     <item>
@@ -254,7 +258,7 @@ Usage {{ value | numberFormat }} Input Value    Parameter Type Description     v
       
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/currency-format-pipe/</guid>
       <description>Overview Formats a number into currency string. Group sizing and separator and other locale-specific configurations are based on the pattern data.
-Usage {{ value | currencyFormat [ : currencyCode ] }} Parameters    Parameter Type Description     currencyCode string Currencycode should be in accordance with ISO 4217 standard, such as USD for the US dollar and EUR for the euro. Optional. Default value is USD.    Example Code </description>
+Usage {{ value | currencyFormat [ : currencyCode ] }}Parameters    Parameter Type Description     currencyCode string Currencycode should be in accordance with ISO 4217 standard, such as USD for the US dollar and EUR for the euro. Optional. Default value is USD.    Example Code </description>
     </item>
     
     <item>
@@ -264,7 +268,7 @@ Usage {{ value | currencyFormat [ : currencyCode ] }} Parameters    Parameter Ty
       
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/angular-client-introduction/percent-format-pipe/</guid>
       <description>Overview Formats a number into percentage string. Group sizing and separator and other locale-specific configurations are based on the pattern data.
-Usage {{ value | percentFormat }} Example Code   </description>
+Usage {{ value | percentFormat }}Example Code   </description>
     </item>
     
     <item>
@@ -273,7 +277,7 @@ Usage {{ value | percentFormat }} Example Code   </description>
       <pubDate>Tue, 24 Sep 2019 20:10:10 +0800</pubDate>
       
       <guid>https://vmware.github.io/singleton/docs/tutorials/integrate-singleton-in-angular-app/</guid>
-      <description>This guideline demonstrates how to integrate Singleton AngularClient with your Angular Framework on your application. Singleton AngularClient is a common lib providing I18n support for Angular framework on your application. The client will communicate with Singleton service to dynamically fetch translation and I18n pattern data for providing globalization support in messages and formatting. For I18n formatting, Singleton AngularClient also provides I18n support for datetime format, number format, currency and plural. Singleton AngularClient formatting is based on CLDR data repository and keeps the same scope in supported locale set.</description>
+      <description>This guideline demonstrates how to integrate Singleton AngularClient with your Angular Framework on your application.Singleton AngularClient is a common lib providing I18n support for Angular framework on your application. The client will communicate withSingleton service to dynamically fetch translation and I18n pattern data for providing globalization support in messages and formatting.For I18n formatting, Singleton AngularClient also provides I18n support for datetime format, number format, currency and plural.Singleton AngularClient formatting is based on CLDR data repository and keeps the same scope in supported locale set.</description>
     </item>
     
     <item>
@@ -303,7 +307,7 @@ Specification Register product No matter the singleton service will be running i
       
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/csharp-client-introduction/</guid>
       <description>Introduction C# Client is a class libary running on Windows .NET Framework. It enables applications that can use .NET Framework libraries to handle its globalization easily.
-Features in C# Client  Getting the translation. Getting messages by cache interfaces. Getting configuration content. Enrich implementations by extends different extension interfaces.  APIs Available  Factory Class  I18n   Interface For Configuration  IConfig IConfigItem   Interface For Release  IRelease   Interface For Translation  ITranslation ISource   Interface For Cache Messages  IReleaseMessages ILocaleMessages IComponentMessages   Interface For Extension  IExtension ICacheManager ICacheMessages ILog IResourceParser IAccessService    Factory Class I18n  It&amp;rsquo;s the factory class that creates and initializes the configuration object and the release object.</description>
+Features in C# Client  Getting the translation. Getting messages by cache interfaces. Getting configuration content. Enrich implementations by extending different extension interfaces.  APIs Available  Factory Class  I18N   Interface For Configuration  IConfig IConfigItem   Interface For Release  IRelease   Interface For Translation  ITranslation ISource   Interface For Cache Messages  IReleaseMessages ILocaleMessages IComponentMessages   Interface For Extension  IExtension ICacheManager ICacheComponentManager ICacheMessages ILog IResourceParser IAccessService    Factory Class I18N  It&amp;rsquo;s the factory class that creates and initializes the configuration object and the release object.</description>
     </item>
     
     <item>
@@ -387,8 +391,8 @@ How to enable product white list in Singleton Service?</description>
       <description>Singleton Service now supports to store the translation bundle files on AWS S3.
 This page will introduce the details about Singleton Service S3 build.
 How to generate Singleton Service S3 build? The steps to generate S3 build:
- Clone Singleton Service code using Git.  git clone git@github.com:vmware/singleton.git Update the complie configuration file in singleton/g11n-ws/gradle.properties  datatype=bundle to
-datatype=s3 Update the below s3 config items according to your requirements in singleton/g11n-ws/vip-manager-i18n/src/main/resources/application-s3.</description>
+ Clone Singleton Service code using Git.  git clone git@github.com:vmware/singleton.gitUpdate the complie configuration file in singleton/g11n-ws/gradle.properties  datatype=bundleto
+datatype=s3Update the below s3 config items according to your requirements in singleton/g11n-ws/vip-manager-i18n/src/main/resources/application-s3.</description>
     </item>
     
     <item>
@@ -408,6 +412,29 @@ datatype=s3 Update the below s3 config items according to your requirements in s
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/</guid>
       <description>Singleton Service has two API versions available at present: v1 and v2. API v1 was created in the early times of Singleton, while API v2 has been validated with many VMware products over years, which includes the largest number of APIs, and is closer to the Restful style. It is recommended to use API v2 in practice. This version provides two types of APIs:
  Formatting API, which is used to format the data like the date time/number/currency/unit of measure/singular and plural variations, just to name a few.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/</guid>
+      <description>Encrypt AWS S3 accesskey and secretkey in Singleton Service Prerequisites   Java 8 (Java 9+ are not supported, will get compiler issue)
+  Singleton S3 I18n Service Build
+  S3 configurations (accessKey, secretkey, region, bucketName)
+  1. Encrypt AWS S3 accessKey and secretkey You can use the java language RsaCryptUtils to generate private.key and public.key.
+The demo code as following:
+import java.io.IOException;import java.io.UnsupportedEncodingException;import java.security.InvalidKeyException;import java.</description>
     </item>
     
   </channel>

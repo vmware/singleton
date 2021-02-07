@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-01-15T12:07:43 PST">
+<meta name="revised" content="2021-02-07T18:37:25 CST">
 <title>Singleton Service APIs :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
 
     
   </head>
-  <body data-url="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/">
+  <body data-url="/docs/overview/singleton-service/singleton-service-apis/">
     
       <header>
   <div class="logo">
@@ -159,6 +159,13 @@
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/">
             Enable S3 Storage
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/">
+            
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -341,6 +348,13 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
         </ul>
     </li>
         </ul>
@@ -476,7 +490,7 @@
 <p><strong>Parameters:</strong></p>
 <p>locale: <strong>(required)</strong> (String), to indicate the language as requested; e.g. en, zh-CN etc.</p>
 <p>longDate: <strong>(required)</strong> (String), to indicate the time stamp in long date format; e.g. 1472728030290</p>
-<p>pattern: <strong>(required)</strong> (String), to indicate the pattern to be used; e.g. YEAR = &ldquo;y&rdquo;, QUARTER = &ldquo;QQQQ&rdquo;, ABBR_QUARTER =&ldquo;QQQ&rdquo;, QUARTER_YEAR = &ldquo;QQQQy&rdquo; etc.</p>
+<p>pattern: <strong>(required)</strong> (String), to indicate the pattern to be used; e.g. YEAR = &ldquo;y&rdquo;, QUARTER = &ldquo;QQQQ&rdquo;, ABBR_QUARTER =&quot;QQQ&rdquo;, QUARTER_YEAR = &ldquo;QQQQy&rdquo; etc.</p>
 <p><strong>Return value:</strong></p>
 <p>(JSON Object) The formatted date time value.</p>
 <p><strong>Example:</strong></p>
@@ -509,22 +523,22 @@
 <p>Return value:</p>
 <p>&ldquo;numbers&rdquo;: {</p>
 <p>​       &ldquo;numberSymbols&rdquo;: {</p>
-<p>​         &ldquo;decimal&rdquo;: &ldquo;.&rdquo;,</p>
-<p>​         &ldquo;group&rdquo;: &ldquo;,&rdquo;,</p>
-<p>​         &ldquo;list&rdquo;: &ldquo;;&rdquo;,</p>
-<p>​         &ldquo;percentSign&rdquo;: &ldquo;%&rdquo;,</p>
+<p>​         &ldquo;decimal&rdquo;: &ldquo;.&quot;,</p>
+<p>​         &ldquo;group&rdquo;: &ldquo;,&quot;,</p>
+<p>​         &ldquo;list&rdquo;: &ldquo;;&quot;,</p>
+<p>​         &ldquo;percentSign&rdquo;: &ldquo;%&quot;,</p>
 <p>​         &ldquo;plusSign&rdquo;: &ldquo;+&rdquo;,</p>
-<p>​         &ldquo;minusSign&rdquo;: &ldquo;-&rdquo;,</p>
+<p>​         &ldquo;minusSign&rdquo;: &ldquo;-&quot;,</p>
 <p>​         &ldquo;exponential&rdquo;: &ldquo;E&rdquo;,</p>
 <p>​         &ldquo;superscriptingExponent&rdquo;: &ldquo;×&rdquo;,</p>
-<p>​         &ldquo;perMille&rdquo;: &ldquo;‰&rdquo;,</p>
+<p>​         &ldquo;perMille&rdquo;: &ldquo;‰&quot;,</p>
 <p>​         &ldquo;infinity&rdquo;: &ldquo;∞&rdquo;,</p>
 <p>​         &ldquo;nan&rdquo;: &ldquo;NaN&rdquo;,</p>
 <p>​         &ldquo;timeSeparator&rdquo;: &ldquo;:&rdquo;</p>
 <p>​       },</p>
 <p>​       &ldquo;numberFormats&rdquo;: {</p>
-<p>​         &ldquo;decimalFormats&rdquo;: &ldquo;#,##0.###&rdquo;,</p>
-<p>​         &ldquo;percentFormats&rdquo;: &ldquo;#,##0%&rdquo;,</p>
+<p>​         &ldquo;decimalFormats&rdquo;: &ldquo;#,##0.###&quot;,</p>
+<p>​         &ldquo;percentFormats&rdquo;: &ldquo;#,##0%&quot;,</p>
 <p>​         &ldquo;currencyFormats&rdquo;: &ldquo;¤#,##0.00&rdquo;,</p>
 <p>​         &ldquo;scientificFormats&rdquo;: &ldquo;#E0&rdquo;</p>
 <p>​        }</p>
@@ -544,22 +558,22 @@
 <p>Return value:</p>
 <p>&ldquo;numbers&rdquo;: {</p>
 <p>​       &ldquo;numberSymbols&rdquo;: {</p>
-<p>​         &ldquo;decimal&rdquo;: &ldquo;.&rdquo;,</p>
-<p>​         &ldquo;group&rdquo;: &ldquo;,&rdquo;,</p>
-<p>​         &ldquo;list&rdquo;: &ldquo;;&rdquo;,</p>
-<p>​         &ldquo;percentSign&rdquo;: &ldquo;%&rdquo;,</p>
+<p>​         &ldquo;decimal&rdquo;: &ldquo;.&quot;,</p>
+<p>​         &ldquo;group&rdquo;: &ldquo;,&quot;,</p>
+<p>​         &ldquo;list&rdquo;: &ldquo;;&quot;,</p>
+<p>​         &ldquo;percentSign&rdquo;: &ldquo;%&quot;,</p>
 <p>​         &ldquo;plusSign&rdquo;: &ldquo;+&rdquo;,</p>
-<p>​         &ldquo;minusSign&rdquo;: &ldquo;-&rdquo;,</p>
+<p>​         &ldquo;minusSign&rdquo;: &ldquo;-&quot;,</p>
 <p>​         &ldquo;exponential&rdquo;: &ldquo;E&rdquo;,</p>
 <p>​         &ldquo;superscriptingExponent&rdquo;: &ldquo;×&rdquo;,</p>
-<p>​         &ldquo;perMille&rdquo;: &ldquo;‰&rdquo;,</p>
+<p>​         &ldquo;perMille&rdquo;: &ldquo;‰&quot;,</p>
 <p>​         &ldquo;infinity&rdquo;: &ldquo;∞&rdquo;,</p>
 <p>​         &ldquo;nan&rdquo;: &ldquo;NaN&rdquo;,</p>
 <p>​         &ldquo;timeSeparator&rdquo;: &ldquo;:&rdquo;</p>
 <p>​       },</p>
 <p>​       &ldquo;numberFormats&rdquo;: {</p>
-<p>​         &ldquo;decimalFormats&rdquo;: &ldquo;#,##0.###&rdquo;,</p>
-<p>​         &ldquo;percentFormats&rdquo;: &ldquo;#,##0%&rdquo;,</p>
+<p>​         &ldquo;decimalFormats&rdquo;: &ldquo;#,##0.###&quot;,</p>
+<p>​         &ldquo;percentFormats&rdquo;: &ldquo;#,##0%&quot;,</p>
 <p>​         &ldquo;currencyFormats&rdquo;: &ldquo;¤#,##0.00&rdquo;,</p>
 <p>​         &ldquo;scientificFormats&rdquo;: &ldquo;#E0&rdquo;</p>
 <p>​        }</p>
@@ -577,7 +591,7 @@
 <p><strong>{Singleton service}</strong>/i18n/api/v2/locale/normalizedBrowserLocale</p>
 <p>Return value:</p>
 <p>&ldquo;data&rdquo;: {</p>
-<p>&ldquo;displayName&rdquo;: &ldquo;English (UnitedStates)&rdquo;,</p>
+<p>&ldquo;displayName&rdquo;: &ldquo;English (UnitedStates)&quot;,</p>
 <p>&ldquo;locale&rdquo;: &ldquo;en-US&rdquo;</p>
 <p>}</p>
 <h4 id="geti18napiv2localesupportedlanguagelist"><strong>GET</strong>/i18n/api/v2/locale/supportedLanguageList</h4>
@@ -760,7 +774,7 @@
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/" title="Enable S3 Storage"> <i class="fa fa-chevron-left"></i><label>Enable S3 Storage</label></a>
+<a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/" title=""> <i class="fa fa-chevron-left"></i><label></label></a>
     <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/" title="Singleton SDK" style="margin-right: 0px;"><label>Singleton SDK</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 

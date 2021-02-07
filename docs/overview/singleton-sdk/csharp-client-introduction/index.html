@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-01-15T12:07:43 PST">
+<meta name="revised" content="2021-02-07T18:37:25 CST">
 <title>C# Client Introduction :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
 
     
   </head>
-  <body data-url="https://vmware.github.io/singleton/docs/overview/singleton-sdk/csharp-client-introduction/">
+  <body data-url="/docs/overview/singleton-sdk/csharp-client-introduction/">
     
       <header>
   <div class="logo">
@@ -158,6 +158,13 @@
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/">
             Enable S3 Storage
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/">
+            
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -341,6 +348,13 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
         </ul>
     </li>
         </ul>
@@ -433,6 +447,7 @@
    Angular Client Introduction</option>
       <option value="/docs/overview/singleton-sdk/csharp-client-introduction/"  selected>--- C# Client Introduction</option>
       <option value="/docs/overview/singleton-sdk/go-client-introduction/" >--- Go Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/" >--- </option>
   
   
     <option value="/docs/tutorials/" >
@@ -472,13 +487,13 @@
 <li>Getting the translation.</li>
 <li>Getting messages by cache interfaces.</li>
 <li>Getting configuration content.</li>
-<li>Enrich implementations by extends different extension interfaces.</li>
+<li>Enrich implementations by extending different extension interfaces.</li>
 </ul>
 <h1 id="apis-available">APIs Available</h1>
 <ul>
 <li><a href="#Factory-Class">Factory Class</a>
 <ul>
-<li><a href="#I18n">I18n</a></li>
+<li><a href="#I18N">I18N</a></li>
 </ul>
 </li>
 <li><a href="#Interface-For-Configuration">Interface For Configuration</a>
@@ -509,6 +524,7 @@
 <ul>
 <li><a href="#IExtension">IExtension</a></li>
 <li><a href="#ICacheManager">ICacheManager</a></li>
+<li><a href="#ICacheComponentManager">ICacheComponentManager</a></li>
 <li><a href="#ICacheMessages">ICacheMessages</a></li>
 <li><a href="#ILog">ILog</a></li>
 <li><a href="#IResourceParser">IResourceParser</a></li>
@@ -517,18 +533,18 @@
 </li>
 </ul>
 <h2 id="factory-class">Factory Class</h2>
-<h3 id="i18n">I18n</h3>
+<h3 id="i18n">I18N</h3>
 <ul>
 <li>It&rsquo;s the factory class that creates and initializes the configuration object and the release object.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">I18n</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">I18N</span>
 {
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IConfig LoadConfig(<span style="color:#66d9ef">string</span> resourceBaseName, Assembly assembly, <span style="color:#66d9ef">string</span> configResourceName);
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IConfig GetConfig(<span style="color:#66d9ef">string</span> product, <span style="color:#66d9ef">string</span> version);
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IRelease GetRelease(IConfig config);
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IExtension GetExtension();
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IConfig LoadConfig(<span style="color:#66d9ef">string</span> resourceBaseName, Assembly assembly, <span style="color:#66d9ef">string</span> configResourceName);
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IConfig GetConfig(<span style="color:#66d9ef">string</span> product, <span style="color:#66d9ef">string</span> version);
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IRelease GetRelease(IConfig config);
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IExtension GetExtension();
 }
-</code></pre></div><h3 id="i18n--loadconfig">I18n / LoadConfig</h3>
+</code></pre></div><h3 id="i18n--loadconfig">I18N / LoadConfig</h3>
 <ul>
 <li>Load a configuration json or yaml text from the resource defined by a resx file and initialize a correspondent release object.</li>
 </ul>
@@ -572,7 +588,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="i18n--getconfig">I18n / GetConfig</h3>
+<h3 id="i18n--getconfig">I18N / GetConfig</h3>
 <ul>
 <li>Get a loaded configuration object by product and version.</li>
 </ul>
@@ -611,7 +627,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="i18n--getrelease">I18n / GetRelease</h3>
+<h3 id="i18n--getrelease">I18N / GetRelease</h3>
 <ul>
 <li>Get the release object initialized by a configuration object.</li>
 </ul>
@@ -645,7 +661,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="i18n--getextension">I18n / GetExtension</h3>
+<h3 id="i18n--getextension">I18N / GetExtension</h3>
 <ul>
 <li>Get the extension interface to change ways of implementation.</li>
 </ul>
@@ -667,13 +683,13 @@
 <h3 id="iconfig">IConfig</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IConfig
 {
-	IConfigItem GetItem(<span style="color:#66d9ef">string</span> key);
-	List&lt;<span style="color:#66d9ef">string</span>&gt; GetComponentList();
-	IConfigItem GetComponentAttribute(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> key);
-	List&lt;<span style="color:#66d9ef">string</span>&gt; GetLocaleList(<span style="color:#66d9ef">string</span> component);
-	IConfigItem GetLocaleAttribute(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> locale, <span style="color:#66d9ef">string</span> key);
-	<span style="color:#66d9ef">string</span> ReadResourceText(<span style="color:#66d9ef">string</span> resourceName);
-	Hashtable ReadResourceMap(<span style="color:#66d9ef">string</span> resourceName, <span style="color:#66d9ef">string</span> format, <span style="color:#66d9ef">string</span> locale);
+    IConfigItem GetItem(<span style="color:#66d9ef">string</span> key);
+    List&lt;<span style="color:#66d9ef">string</span>&gt; GetComponentList();
+    IConfigItem GetComponentAttribute(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> key);
+    List&lt;<span style="color:#66d9ef">string</span>&gt; GetLocaleList(<span style="color:#66d9ef">string</span> component);
+    IConfigItem GetLocaleAttribute(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> locale, <span style="color:#66d9ef">string</span> key);
+    <span style="color:#66d9ef">string</span> ReadResourceText(<span style="color:#66d9ef">string</span> resourceBaseName, <span style="color:#66d9ef">string</span> resourceName);
+    Hashtable ReadResourceMap(<span style="color:#66d9ef">string</span> resourceName, <span style="color:#66d9ef">string</span> format, <span style="color:#66d9ef">string</span> locale);
 }
 </code></pre></div><h3 id="iconfig--getitem">IConfig / GetItem</h3>
 <ul>
@@ -858,6 +874,11 @@
 </thead>
 <tbody>
 <tr>
+<td>resourceBaseName</td>
+<td>string</td>
+<td>Resource base name</td>
+</tr>
+<tr>
 <td>resourceName</td>
 <td>string</td>
 <td>Resource name</td>
@@ -925,13 +946,13 @@
 <h3 id="iconfigitem">IConfigItem</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IConfigItem
 {
-	<span style="color:#66d9ef">string</span> GetString();
-	List&lt;<span style="color:#66d9ef">string</span>&gt; GetStringList();
-	<span style="color:#66d9ef">bool</span> GetBool();
-	<span style="color:#66d9ef">int</span> GetInt();
-	IConfigItem GetMapItem(<span style="color:#66d9ef">string</span> key);
-	List&lt;<span style="color:#66d9ef">string</span>&gt; GetArrayItemList(<span style="color:#66d9ef">string</span> key);
-	IConfigItem GetArrayItem(<span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">value</span>);
+    <span style="color:#66d9ef">string</span> GetString();
+    List&lt;<span style="color:#66d9ef">string</span>&gt; GetStringList();
+    <span style="color:#66d9ef">bool</span> GetBool();
+    <span style="color:#66d9ef">int</span> GetInt();
+    IConfigItem GetMapItem(<span style="color:#66d9ef">string</span> key);
+    List&lt;<span style="color:#66d9ef">string</span>&gt; GetArrayItemList(<span style="color:#66d9ef">string</span> key);
+    IConfigItem GetArrayItem(<span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">value</span>);
 }
 </code></pre></div><h3 id="iconfigitem--getstring">IConfigItem / GetString</h3>
 <ul>
@@ -1116,9 +1137,9 @@
 <h3 id="irelease">IRelease</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IRelease
 {
-	IConfig GetConfig();
-	IReleaseMessages GetMessages();
-	ITranslation GetTranslation();
+    IConfig GetConfig();
+    IReleaseMessages GetMessages();
+    ITranslation GetTranslation();
 }
 </code></pre></div><h3 id="irelease--getconfig">IRelease / GetConfig</h3>
 <ul>
@@ -1178,13 +1199,13 @@
 <h3 id="itranslation">ITranslation</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> ITranslation
 {
-	ISource CreateSource(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">string</span> source = <span style="color:#66d9ef">null</span>, <span style="color:#66d9ef">string</span> comment = <span style="color:#66d9ef">null</span>);
-	<span style="color:#66d9ef">string</span> GetString(<span style="color:#66d9ef">string</span> locale, ISource source);
-	<span style="color:#66d9ef">string</span> GetString(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">string</span> source = <span style="color:#66d9ef">null</span>, <span style="color:#66d9ef">string</span> comment = <span style="color:#66d9ef">null</span>);
-	<span style="color:#66d9ef">string</span> Format(<span style="color:#66d9ef">string</span> locale, ISource source, <span style="color:#66d9ef">params</span> <span style="color:#66d9ef">object</span>[] objects);
-	<span style="color:#66d9ef">bool</span> SetCurrentLocale(<span style="color:#66d9ef">string</span> locale);
-	<span style="color:#66d9ef">string</span> GetCurrentLocale();
-	<span style="color:#66d9ef">string</span> GetLocaleSupported(<span style="color:#66d9ef">string</span> locale);
+    ISource CreateSource(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">string</span> source = <span style="color:#66d9ef">null</span>, <span style="color:#66d9ef">string</span> comment = <span style="color:#66d9ef">null</span>);
+    <span style="color:#66d9ef">string</span> GetString(<span style="color:#66d9ef">string</span> locale, ISource source);
+    <span style="color:#66d9ef">string</span> GetString(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">string</span> source = <span style="color:#66d9ef">null</span>, <span style="color:#66d9ef">string</span> comment = <span style="color:#66d9ef">null</span>);
+    <span style="color:#66d9ef">string</span> Format(<span style="color:#66d9ef">string</span> locale, ISource source, <span style="color:#66d9ef">params</span> <span style="color:#66d9ef">object</span>[] objects);
+    <span style="color:#66d9ef">bool</span> SetCurrentLocale(<span style="color:#66d9ef">string</span> locale);
+    <span style="color:#66d9ef">string</span> GetCurrentLocale();
+    <span style="color:#66d9ef">string</span> GetLocaleSupported(<span style="color:#66d9ef">string</span> locale);
 }
 </code></pre></div><h3 id="itranslation--createsource">ITranslation / CreateSource</h3>
 <ul>
@@ -1472,19 +1493,19 @@
 <h3 id="isource">ISource</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> ISource
 {
-	<span style="color:#66d9ef">string</span> GetComponent();
-	<span style="color:#66d9ef">string</span> GetKey();
-	<span style="color:#66d9ef">string</span> GetSource();
-	<span style="color:#66d9ef">string</span> GetComment();
+    <span style="color:#66d9ef">string</span> GetComponent();
+    <span style="color:#66d9ef">string</span> GetKey();
+    <span style="color:#66d9ef">string</span> GetSource();
+    <span style="color:#66d9ef">string</span> GetComment();
 }
 </code></pre></div><h2 id="interface-for-cache-messages">Interface For Cache Messages</h2>
 <h3 id="ireleasemessages">IReleaseMessages</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IReleaseMessages
 {
-	List&lt;<span style="color:#66d9ef">string</span>&gt; GetLocaleList();
-	List&lt;<span style="color:#66d9ef">string</span>&gt; GetComponentList();
-	ILocaleMessages GetLocaleMessages(<span style="color:#66d9ef">string</span> locale);
-	Dictionary&lt;<span style="color:#66d9ef">string</span>, ILocaleMessages&gt; GetAllLocaleMessages();
+    List&lt;<span style="color:#66d9ef">string</span>&gt; GetLocaleList();
+    List&lt;<span style="color:#66d9ef">string</span>&gt; GetComponentList();
+    ILocaleMessages GetLocaleMessages(<span style="color:#66d9ef">string</span> locale, <span style="color:#66d9ef">bool</span> asSource = <span style="color:#66d9ef">false</span>);
+    Dictionary&lt;<span style="color:#66d9ef">string</span>, ILocaleMessages&gt; GetAllLocaleMessages();
 }
 </code></pre></div><h3 id="ireleasemessages--getlocalelist">IReleaseMessages / GetLocaleList</h3>
 <ul>
@@ -1532,6 +1553,7 @@
 <th>Parameter</th>
 <th>Type</th>
 <th>Description</th>
+<th>Default</th>
 </tr>
 </thead>
 <tbody>
@@ -1539,6 +1561,13 @@
 <td>locale</td>
 <td>string</td>
 <td>Locale</td>
+<td></td>
+</tr>
+<tr>
+<td>asSource</td>
+<td>bool</td>
+<td>If messages are of source</td>
+<td>false</td>
 </tr>
 </tbody>
 </table>
@@ -1558,7 +1587,7 @@
 </table>
 <h3 id="ireleasemessages--getalllocalemessages">IReleaseMessages / GetAllLocaleMessages</h3>
 <ul>
-<li>Get all locale messagess of the release messages.</li>
+<li>Get all locale messagess of the release messages that don&rsquo;t include source.</li>
 </ul>
 <table>
 <thead>
@@ -1577,11 +1606,30 @@
 <h3 id="ilocalemessages">ILocaleMessages</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> ILocaleMessages
 {
-	List&lt;<span style="color:#66d9ef">string</span>&gt; GetComponentList();
-	IComponentMessages GetComponentMessages(<span style="color:#66d9ef">string</span> component);
-	<span style="color:#66d9ef">string</span> GetString(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> key);
+    <span style="color:#66d9ef">string</span> GetLocale();
+    List&lt;<span style="color:#66d9ef">string</span>&gt; GetComponentList();
+    IComponentMessages GetComponentMessages(<span style="color:#66d9ef">string</span> component);
+    <span style="color:#66d9ef">string</span> GetString(<span style="color:#66d9ef">string</span> component, <span style="color:#66d9ef">string</span> key);
 }
-</code></pre></div><h3 id="ilocalemessages--getcomponentlist">ILocaleMessages / GetComponentList</h3>
+</code></pre></div><h3 id="ilocalemessages--getlocale">ILocaleMessages / GetLocale</h3>
+<ul>
+<li>Get locale of the messages.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>Locale name</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ilocalemessages--getcomponentlist">ILocaleMessages / GetComponentList</h3>
 <ul>
 <li>Get the component list of locale messages.</li>
 </ul>
@@ -1675,16 +1723,16 @@
 <h3 id="icomponentmessages">IComponentMessages</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IComponentMessages
 {
-	<span style="color:#66d9ef">void</span> SetString(<span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">string</span> message);
-	<span style="color:#66d9ef">string</span> GetString(<span style="color:#66d9ef">string</span> key);
-	ICollection GetKeys();
-	<span style="color:#66d9ef">int</span> GetCount();
-	<span style="color:#66d9ef">string</span> GetLocale();
-	<span style="color:#66d9ef">string</span> GetComponent();
-	<span style="color:#66d9ef">void</span> SetResourcePath(<span style="color:#66d9ef">string</span> resourcePath);
-	<span style="color:#66d9ef">string</span> GetResourcePath();
-	<span style="color:#66d9ef">void</span> SetResourceType(<span style="color:#66d9ef">string</span> resourceType);
-	<span style="color:#66d9ef">string</span> GetResourceType();
+    <span style="color:#66d9ef">void</span> SetString(<span style="color:#66d9ef">string</span> key, <span style="color:#66d9ef">string</span> message);
+    <span style="color:#66d9ef">string</span> GetString(<span style="color:#66d9ef">string</span> key);
+    ICollection GetKeys();
+    <span style="color:#66d9ef">int</span> GetCount();
+    <span style="color:#66d9ef">string</span> GetLocale();
+    <span style="color:#66d9ef">string</span> GetComponent();
+    <span style="color:#66d9ef">void</span> SetResourcePath(<span style="color:#66d9ef">string</span> resourcePath);
+    <span style="color:#66d9ef">string</span> GetResourcePath();
+    <span style="color:#66d9ef">void</span> SetResourceType(<span style="color:#66d9ef">string</span> resourceType);
+    <span style="color:#66d9ef">string</span> GetResourceType();
 }
 </code></pre></div><h3 id="icomponentmessages--setstring">IComponentMessages / SetString</h3>
 <ul>
@@ -1897,12 +1945,14 @@
 <h3 id="iextension">IExtension</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IExtension
 {
-	<span style="color:#66d9ef">void</span> RegisterCacheManager(ICacheManager cacheManager, <span style="color:#66d9ef">string</span> cacheManagerName);
-	<span style="color:#66d9ef">void</span> RegistertLogger(ILog logger, <span style="color:#66d9ef">string</span> loggerName);
-	<span style="color:#66d9ef">void</span> RegisterResourceParser(IResourceParser parser, <span style="color:#66d9ef">string</span> parserName);
-	<span style="color:#66d9ef">void</span> RegisterAccessService(IAccessService accessService, <span style="color:#66d9ef">string</span> accessName);
+    <span style="color:#66d9ef">void</span> RegisterCacheManager(ICacheManager cacheManager, <span style="color:#66d9ef">string</span> cacheManagerName);
+    <span style="color:#66d9ef">void</span> RegisterCacheComponentManager(ICacheComponentManager cacheComponentManager,
+        <span style="color:#66d9ef">string</span> cacheComponentManagerName);
+    <span style="color:#66d9ef">void</span> RegistertLogger(ILog logger, <span style="color:#66d9ef">string</span> loggerName);
+    <span style="color:#66d9ef">void</span> RegisterResourceParser(IResourceParser parser, <span style="color:#66d9ef">string</span> parserName);
+    <span style="color:#66d9ef">void</span> RegisterAccessService(IAccessService accessService, <span style="color:#66d9ef">string</span> accessName);
 }
-</code></pre></div><h3 id="icomponentmessages--registercachemanager">IComponentMessages / RegisterCacheManager</h3>
+</code></pre></div><h3 id="iextension--registercachemanager">IExtension / RegisterCacheManager</h3>
 <ul>
 <li>Register cache manager object with its name.</li>
 </ul>
@@ -1927,7 +1977,32 @@
 </tr>
 </tbody>
 </table>
-<h3 id="icomponentmessages--registertlogger">IComponentMessages / RegistertLogger</h3>
+<h3 id="iextension--registercachecomponentmanager">IExtension / RegisterCacheComponentManager</h3>
+<ul>
+<li>Register component cache manager object with its name.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cacheComponentManager</td>
+<td><a href="#ICacheComponentManager">ICacheComponentManager</a></td>
+<td>Component cache manager object</td>
+</tr>
+<tr>
+<td>cacheComponentManagerName</td>
+<td>string</td>
+<td>Component cache manager name</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iextension--registertlogger">IExtension / RegistertLogger</h3>
 <ul>
 <li>Register a logger with its name.</li>
 </ul>
@@ -1952,7 +2027,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="icomponentmessages--registerresourceparser">IComponentMessages / RegisterResourceParser</h3>
+<h3 id="iextension--registerresourceparser">IExtension / RegisterResourceParser</h3>
 <ul>
 <li>Register a resource parser with its name.</li>
 </ul>
@@ -1977,7 +2052,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="icomponentmessages--registeraccessservice">IComponentMessages / RegisterAccessService</h3>
+<h3 id="iextension--registeraccessservice">IExtension / RegisterAccessService</h3>
 <ul>
 <li>Register an accessing service object with its name.</li>
 </ul>
@@ -2005,7 +2080,7 @@
 <h3 id="icachemanager">ICacheManager</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> ICacheManager
 {
-	ICacheMessages GetReleaseCache(<span style="color:#66d9ef">string</span> product, <span style="color:#66d9ef">string</span> version);
+    ICacheMessages GetReleaseCache(<span style="color:#66d9ef">string</span> product, <span style="color:#66d9ef">string</span> version);
 }
 </code></pre></div><h3 id="icachemanager--getreleasecache">ICacheManager / GetReleaseCache</h3>
 <ul>
@@ -2049,7 +2124,7 @@
 <h3 id="icachemessages">ICacheMessages</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> ICacheMessages
 {
-	ILocaleMessages GetLocaleMessages(<span style="color:#66d9ef">string</span> locale);
+    ILocaleMessages GetLocaleMessages(<span style="color:#66d9ef">string</span> locale, <span style="color:#66d9ef">bool</span> asSource = <span style="color:#66d9ef">false</span>);
 }
 </code></pre></div><h3 id="icachemessages--getlocalemessages">ICacheMessages / GetLocaleMessages</h3>
 <ul>
@@ -2061,6 +2136,7 @@
 <th>Parameter</th>
 <th>Type</th>
 <th>Description</th>
+<th>Default</th>
 </tr>
 </thead>
 <tbody>
@@ -2068,6 +2144,13 @@
 <td>locale</td>
 <td>string</td>
 <td>Locale</td>
+<td></td>
+</tr>
+<tr>
+<td>asSource</td>
+<td>bool</td>
+<td>If messages are of source</td>
+<td>false</td>
 </tr>
 </tbody>
 </table>
@@ -2085,10 +2168,54 @@
 </tr>
 </tbody>
 </table>
+<h3 id="icachecomponentmanager">ICacheComponentManager</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> ICacheComponentManager
+{
+    IComponentMessages NewComponentCache(<span style="color:#66d9ef">string</span> locale, <span style="color:#66d9ef">string</span> component);
+}
+</code></pre></div><h3 id="icachecomponentmanager--newcomponentcache">ICacheComponentManager / NewComponentCache</h3>
+<ul>
+<li>Create a new component messages object.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale</td>
+</tr>
+<tr>
+<td>component</td>
+<td>string</td>
+<td>Component</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#IComponentMessages">IComponentMessages</a></td>
+<td>The component messages for a locale</td>
+</tr>
+</tbody>
+</table>
 <h3 id="ilog">ILog</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> ILog
 {
-	<span style="color:#66d9ef">void</span> Log(LogType logType, <span style="color:#66d9ef">string</span> text);
+    <span style="color:#66d9ef">void</span> Log(LogType logType, <span style="color:#66d9ef">string</span> text);
 }
 </code></pre></div><h3 id="ilog--log">ILog / Log</h3>
 <ul>
@@ -2118,16 +2245,16 @@
 <h3 id="logtype">LogType</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">enum</span> LogType
 {
-	Debug,
-	Info,
-	Warning,
-	Error,
-	None
+    Debug,
+    Info,
+    Warning,
+    Error,
+    None
 }
 </code></pre></div><h3 id="iresourceparser">IResourceParser</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IResourceParser
 {
-	Hashtable Parse(<span style="color:#66d9ef">string</span> text);
+    Hashtable Parse(<span style="color:#66d9ef">string</span> text);
 }
 </code></pre></div><h3 id="iresourceparser--parse">IResourceParser / Parse</h3>
 <ul>
@@ -2166,8 +2293,8 @@
 <h3 id="iaccessservice">IAccessService</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IAccessService
 {
-	<span style="color:#66d9ef">string</span> HttpGet(<span style="color:#66d9ef">string</span> url, Hashtable headers);
-	<span style="color:#66d9ef">string</span> HttpPost(<span style="color:#66d9ef">string</span> url, <span style="color:#66d9ef">string</span> text, Hashtable headers);
+    <span style="color:#66d9ef">string</span> HttpGet(<span style="color:#66d9ef">string</span> url, Hashtable headers);
+    <span style="color:#66d9ef">string</span> HttpPost(<span style="color:#66d9ef">string</span> url, <span style="color:#66d9ef">string</span> text, Hashtable headers);
 }
 </code></pre></div><h3 id="iaccessservice--httpget">IAccessService / HttpGet</h3>
 <ul>

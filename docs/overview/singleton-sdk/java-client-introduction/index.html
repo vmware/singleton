@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-01-15T12:07:43 PST">
+<meta name="revised" content="2021-02-07T18:37:25 CST">
 <title>Java Client Introduction :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
 
     
   </head>
-  <body data-url="https://vmware.github.io/singleton/docs/overview/singleton-sdk/java-client-introduction/">
+  <body data-url="/docs/overview/singleton-sdk/java-client-introduction/">
     
       <header>
   <div class="logo">
@@ -158,6 +158,13 @@
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/">
             Enable S3 Storage
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/">
+            
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -341,6 +348,13 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
         </ul>
     </li>
         </ul>
@@ -433,6 +447,7 @@
    Angular Client Introduction</option>
       <option value="/docs/overview/singleton-sdk/csharp-client-introduction/" >--- C# Client Introduction</option>
       <option value="/docs/overview/singleton-sdk/go-client-introduction/" >--- Go Client Introduction</option>
+      <option value="/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/" >--- </option>
   
   
     <option value="/docs/tutorials/" >
@@ -467,8 +482,8 @@
     
     <h1 id="singleton-java-client-library">Singleton Java Client Library</h1>
 <p>To facilitate consumption of the Singleton Service API, internationalization(i18n) client libraries have been
-developed in several programming languages. These libraries encapsulate API calls to the Singleton service,
-significantly improving development efficiency and reducing the cost of development work.
+developed in several programming languages. These libraries encapsulate API calls to the Singleton service, 
+significantly improving development efficiency and reducing the cost of development work. 
 This section gives a high-level overview of the Singleton Java Client Library.</p>
 <h2 id="features">Features</h2>
 <ul>
@@ -476,7 +491,7 @@ This section gives a high-level overview of the Singleton Java Client Library.</
 <li>Formatting - retrieving formatted data using CLDR-compliant, localized patterns (e.g. date, time, number, currency)</li>
 <li>Pluralization - retrieving singular/plural variations of data</li>
 <li>Pseudo-translation - generating a fake(pseudo) translation from source text. This is often used for testing purposes.</li>
-<li>Client-side Localization(L10n) Cache - allows the client application to quickly serve L10n data
+<li>Client-side Localization(L10n) Cache - allows the client application to quickly serve L10n data 
 without frequently communicating with the Singleton service.</li>
 </ul>
 <h2 id="globalizationg11n-modes">Globalization(G11n) Modes</h2>
@@ -485,35 +500,35 @@ without frequently communicating with the Singleton service.</li>
 <li>Online - The Singleton service serves localized resources to the client application over HTTP.</li>
 <li>Offline - The client application uses localized resources that are stored in locally bundled files.</li>
 </ul>
-<p>Note: The client application can also be configured with both Online and Offline modes enabled. In this case,
+<p>Note: The client application can also be configured with both Online and Offline modes enabled. In this case, 
 then Offline Mode will only be used as fallback in case of a Singleton service call failure.</p>
 <h2 id="installation">Installation</h2>
-<p>The Singleton Java Client Library must be added as a dependency in your client Java application.
+<p>The Singleton Java Client Library must be added as a dependency in your client Java application. 
 Builds can be found in <a href="https://mvnrepository.com/artifact/com.vmware.singleton/singleton-client-java">this</a> Maven repository.
 You may also see a sample application <a href="https://github.com/vmware/singleton/tree/g11n-java-client/sample-client-app">here</a>.</p>
 <h2 id="configuration">Configuration</h2>
-<p>The following properties make up the Singleton configuration of a client application.
+<p>The following properties make up the Singleton configuration of a client application. 
 Store them in a Properties file, and put the file in the application classpath.
-See the <a href="https://github.com/vmware/singleton/blob/g11n-java-client/sample-client-app/src/main/resources/sampleconfig.properties">configuration file</a>
+See the <a href="https://github.com/vmware/singleton/blob/g11n-java-client/sample-client-app/src/main/resources/sampleconfig.properties">configuration file</a> 
 in the sample application for reference.</p>
 <ul>
 <li>productName - (Required) The name of the product with resources that are localized in the Singleton service.</li>
 <li>version: (Required) Corresponds to the versioned set of localized resources of the specified product.</li>
 <li>vipServer: (Optional) The HTTP url of the Singleton service&rsquo;s host (&lt;http/s&gt;://&lt;hostname&gt;/&lt;ip&gt;:&lt;port&raquo;).
 Note: If this parameter is not present, it means that Online Mode is disabled.</li>
-<li>offlineResourcesBaseUrl: (Optional if viServer is present) The location of localized resources (locally bundled JSON files)
-relative to the application classpath. See sample JSON files in
+<li>offlineResourcesBaseUrl: (Optional if viServer is present) The location of localized resources (locally bundled JSON files) 
+relative to the application classpath. See sample JSON files in 
 <a href="https://github.com/vmware/singleton/tree/g11n-java-client/sample-client-app/src/main/resources/offlineBundles">here</a>.
 Note: If this parameter is not present, then Offline Mode is disabled.</li>
 <li>initializeCache - (Default: false) If true, it initializes the client-side G11n cache at application start up.</li>
-<li>pseudo - (Default: false) If true, pseudo-translation is enabled which means that the get translation API endpoint will
+<li>pseudo - (Default: false) If true, pseudo-translation is enabled which means that the get translation API endpoint will 
 return a fake(pseudo) translation generated from the source text instead of returning the text in its localized form.</li>
-<li>machineTranslation - (Default: false) If true, the get translation API endpoint will return a machine-generated
+<li>machineTranslation - (Default: false) If true, the get translation API endpoint will return a machine-generated 
 translation(Machine Translation or MT). Note: This feature is off by default in Singleton service (server side).</li>
 </ul>
 <h2 id="initialization">Initialization</h2>
-<p>A few objects provided by the Singleton Java Client Library has to be instantiated and initialized before
-using the API. This includes loading the configuration parameters from the Properties file above.
+<p>A few objects provided by the Singleton Java Client Library has to be instantiated and initialized before 
+using the API. This includes loading the configuration parameters from the Properties file above. 
 See how this is done in the <a href="https://github.com/vmware/singleton/blob/g11n-java-client/sample-client-app/src/main/java/com/vmware/vipclient/sample/Main.java">sample application</a>.</p>
 <h2 id="api">API</h2>
 <p>After initialization, the client application may already use the following API to access localized content:</p>

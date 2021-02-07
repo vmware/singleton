@@ -6,7 +6,11 @@
     <description>Recent content in Singleton SDK on Singleton</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 24 Sep 2019 22:59:26 +0800</lastBuildDate><atom:link href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 24 Sep 2019 22:59:26 +0800</lastBuildDate>
+    
+	<atom:link href="https://vmware.github.io/singleton/docs/overview/singleton-sdk/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Python Client Introduction</title>
       <link>https://vmware.github.io/singleton/docs/overview/singleton-sdk/python-client-introduction/</link>
@@ -16,8 +20,8 @@
       <description>Introduction Several python files are provided as the python client to support accessing Singleton service, making Singleton users to handle its globalization easily.
 Features in Python Client  Getting configuration content. Getting the translation. Getting messages of a locale.  Prerequisites Python 2.x
 Python 3.x
-It&amp;rsquo;s better to install PyYAML module of python.
-How to get the client code git clone -b g11n-python-client https://github.com/vmware/singleton.git The client code is sgtn_client.py, sgtn_properties.py and sgtn_util.</description>
+It&amp;rsquo;s better to install PyYAML module of python. Otherwise, the configuration file should be written in json.
+How to get the client code git clone -b g11n-python-client https://github.</description>
     </item>
     
     <item>
@@ -47,7 +51,7 @@ Features Overview  Getting and managing locales. Getting the i18n resources from
       
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/csharp-client-introduction/</guid>
       <description>Introduction C# Client is a class libary running on Windows .NET Framework. It enables applications that can use .NET Framework libraries to handle its globalization easily.
-Features in C# Client  Getting the translation. Getting messages by cache interfaces. Getting configuration content. Enrich implementations by extends different extension interfaces.  APIs Available  Factory Class  I18n   Interface For Configuration  IConfig IConfigItem   Interface For Release  IRelease   Interface For Translation  ITranslation ISource   Interface For Cache Messages  IReleaseMessages ILocaleMessages IComponentMessages   Interface For Extension  IExtension ICacheManager ICacheMessages ILog IResourceParser IAccessService    Factory Class I18n  It&amp;rsquo;s the factory class that creates and initializes the configuration object and the release object.</description>
+Features in C# Client  Getting the translation. Getting messages by cache interfaces. Getting configuration content. Enrich implementations by extending different extension interfaces.  APIs Available  Factory Class  I18N   Interface For Configuration  IConfig IConfigItem   Interface For Release  IRelease   Interface For Translation  ITranslation ISource   Interface For Cache Messages  IReleaseMessages ILocaleMessages IComponentMessages   Interface For Extension  IExtension ICacheManager ICacheComponentManager ICacheMessages ILog IResourceParser IAccessService    Factory Class I18N  It&amp;rsquo;s the factory class that creates and initializes the configuration object and the release object.</description>
     </item>
     
     <item>
@@ -58,6 +62,15 @@ Features in C# Client  Getting the translation. Getting messages by cache interf
       <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/go-client-introduction/</guid>
       <description>The Singleton Go Client is a Singleton SDK to fetch translations from Singleton service or bundles easily.
 Features in Go Client SDK   Supported interfaces:  GetLocaleList: Get supported locale list GetComponentList: Get supported component list GetStringMessage: Get a message with optional arguments. Fallback to default locale is provided. GetComponentMessages: Get messages of a component. Fallback to default locale is NOT provided.   Provide cache management as well as cache registration.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://vmware.github.io/singleton/docs/overview/singleton-sdk/resources/java-client/0.5.1/javadoc/</guid>
+      <description></description>
     </item>
     
   </channel>
