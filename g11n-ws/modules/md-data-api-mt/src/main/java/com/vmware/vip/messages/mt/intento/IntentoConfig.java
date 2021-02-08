@@ -10,9 +10,9 @@ package com.vmware.vip.messages.mt.intento;
  */
 public class IntentoConfig {
 
-    public static final int INTERVAL = 2000;
+    public static final int INTERVAL = 4000;
 
-    public static final int RETRY = 5;
+    public static final int RETRY = 10;
 
     public static String PROVIDER = "";
 
