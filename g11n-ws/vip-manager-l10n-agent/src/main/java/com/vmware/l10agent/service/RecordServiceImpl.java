@@ -223,13 +223,16 @@ public class RecordServiceImpl implements RecordService {
 			params.put("AccessToken", tokenStr);
 		}
 		if(!StringUtils.isEmpty(product)) {
-			params.put(PropertyContantKeys.PRODUCT_NAME, String.valueOf(lastModifyTime));
+			params.put(PropertyContantKeys.PRODUCT_NAME, String.valueOf(product));
 		}
         if(!StringUtils.isEmpty(version)) {
         	params.put(PropertyContantKeys.VERSION, version);
 		}
 		params.put(PropertyContantKeys.LONG_DATE, String.valueOf(lastModifyTime));
         logger.info("getRecordUrl:>>>"+getRecodeUrl);
+        for(Entry<String, String> entry : params.entrySet()) {
+        	logger.info("paramters: {}---{}", entry.getKey(), entry.getValue());
+        }
 		String result = HttpRequester.sendGet(getRecodeUrl, params, null);
 		if(result == null) {
 			refreshToken();
