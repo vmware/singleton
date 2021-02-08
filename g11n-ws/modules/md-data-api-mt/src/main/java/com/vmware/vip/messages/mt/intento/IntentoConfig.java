@@ -12,7 +12,7 @@ public class IntentoConfig {
 
     public static final int INTERVAL = 4000;
 
-    public static final int RETRY = 11;
+    public static final int RETRY = 10;
 
     public static String PROVIDER = "";
 
