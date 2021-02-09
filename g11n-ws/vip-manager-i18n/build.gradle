@@ -89,6 +89,12 @@ dependencies {
     compile('io.swagger:swagger-models:1.5.22')
     compile('org.yaml:snakeyaml:1.26')
     //swagger UI -END
+    //jdk 11
+    runtime 'javax.xml.bind:jaxb-api:+'
+    runtime 'javax.activation:activation:+'
+    runtime 'com.sun.xml.bind:jaxb-impl:+'
+    runtime 'com.sun.xml.bind:jaxb-core:+'
+    //end jdk 11
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("org.asciidoctor:asciidoctorj:1.5.6")
     testCompile("io.swagger:swagger-annotations:1.5.6")
