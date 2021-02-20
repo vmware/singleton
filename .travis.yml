@@ -28,7 +28,10 @@ script: >
   fi &&
   if [ x${TEST} = xunit_test ]; then
     go build
-    go test -v
+    go test -v | tee unittest.log
+    if [ x$(tail -n 2 unittest.log | head -1) != xPASS ]; then
+      echo "exit status 1" && sleep 5s && exit 1
+    fi
   fi &&
   if [ x${TEST} = xcode_scan ]; then
     SONARSCANNER='sonar-scanner-cli-4.0.0.1744-linux'
