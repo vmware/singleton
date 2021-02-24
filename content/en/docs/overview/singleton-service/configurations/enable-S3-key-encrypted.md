@@ -1,6 +1,9 @@
+---
+title: "Enable S3 Key Encrypted"
+date: 2021-02-24T16:00:33+08:00
+draft: false
+---
 # Encrypt AWS S3 accesskey and secretkey in Singleton Service
-
-
 
 ## Prerequisites
 
@@ -10,7 +13,6 @@
 
 - S3 configurations (accessKey, secretkey, region, bucketName)
 
-  
 
 ## 1. Encrypt AWS S3 accessKey and secretkey
 

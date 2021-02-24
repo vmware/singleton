@@ -32,14 +32,19 @@ datatype=s3
 ```
 
 3. Update the below s3 config items according to your requirements in `singleton/g11n-ws/vip-manager-i18n/src/main/resources/application-s3.properties`
-
 ```
 #S3 store config
+s3.keysEncryptEnable=true
+#The decode public key file path
+s3.publicKey=public.key
 s3.accessKey=#####
 s3.secretkey=######
 s3.region=######
 s3.bucketName=######
 ```
+For S3 keys, you can define plain text, or encrypted text:
+- Plain text: Set s3.keysEncryptEnable=false, only provide s3.accessKey and s3.secretkey;
+- Encrypted text: Set s3.keysEncryptEnable=true, and refer to [Enable S3 Key Encrypted](https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/) for the details.
 
 4. Complie a build using Gradle wrapper under 
    `./gradlew build`
