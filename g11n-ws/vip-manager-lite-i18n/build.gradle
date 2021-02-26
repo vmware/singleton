@@ -83,6 +83,7 @@ dependencies {
     compile("org.apache.logging.log4j:log4j-core:$log4j2Version")
     compile("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
     compile('org.yaml:snakeyaml:1.26')  
+    compile ('org.springframework.boot:spring-boot-starter-actuator')
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("org.asciidoctor:asciidoctorj:1.5.6")
     testCompile("org.springframework.restdocs:spring-restdocs-mockmvc")
