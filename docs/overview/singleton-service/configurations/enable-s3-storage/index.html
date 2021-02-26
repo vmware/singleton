@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-02-07T18:37:25 CST">
+<meta name="revised" content="2021-02-26T09:59:30 CST">
 <title>Enable S3 Storage :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -142,6 +142,13 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/">
+            Enable S3 Key Encrypted
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
       <li data-nav-id="/docs/overview/singleton-service/configurations/enable-new-product/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-new-product/">
@@ -160,13 +167,6 @@
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/">
             Enable S3 Storage
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/" class="dd-item">
-        <div>
-          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/">
-            
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -444,10 +444,10 @@
    Configurations</option> 
       <option value="/docs/overview/singleton-service/configurations/enable-source-collection/" >---- Enable Source Collection</option>
       <option value="/docs/overview/singleton-service/configurations/enable-pseudo-translation/" >---- Enable Pseudo Translation</option>
+      <option value="/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/" >---- Enable S3 Key Encrypted</option>
       <option value="/docs/overview/singleton-service/configurations/enable-new-product/" >---- Enable New Product(s)</option>
       <option value="/docs/overview/singleton-service/configurations/enable-product-white-list/" >---- Enable Product White List</option>
       <option value="/docs/overview/singleton-service/configurations/enable-s3-storage/"  selected>---- Enable S3 Storage</option>
-      <option value="/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/" >---- </option>
   
       <option value="/docs/overview/singleton-service/singleton-service-apis/" >--- Singleton Service APIs</option>
   
@@ -513,7 +513,7 @@ s3.bucketName=######
 </code></pre><p>For S3 keys, you can define plain text, or encrypted text:</p>
 <ul>
 <li>Plain text: Set s3.keysEncryptEnable=false, only provide s3.accessKey and s3.secretkey;</li>
-<li>Encrypted text: Set s3.keysEncryptEnable=true, and refer to <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/enable-s3-key-encrypted/">S3 key encrypted</a> for detail configuration.</li>
+<li>Encrypted text: Set s3.keysEncryptEnable=true, and refer to <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/">Enable S3 Key Encrypted</a> for the details.</li>
 </ul>
 <ol start="4">
 <li>Complie a build using Gradle wrapper under 
@@ -530,7 +530,7 @@ Jar files will be generated to</li>
         <div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-product-white-list/" title="Enable Product White List"> <i class="fa fa-chevron-left"></i><label>Enable Product White List</label></a>
-    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/" title="" style="margin-right: 0px;"><label></label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="https://vmware.github.io/singleton/docs/overview/singleton-service/singleton-service-apis/" title="Singleton Service APIs" style="margin-right: 0px;"><label>Singleton Service APIs</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

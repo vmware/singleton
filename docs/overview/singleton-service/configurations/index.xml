@@ -30,6 +30,20 @@
     </item>
     
     <item>
+      <title>Enable S3 Key Encrypted</title>
+      <link>https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/</link>
+      <pubDate>Wed, 24 Feb 2021 16:00:33 +0800</pubDate>
+      
+      <guid>https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/</guid>
+      <description>Encrypt AWS S3 accesskey and secretkey in Singleton Service Prerequisites   Java 8 (Java 9+ are not supported, will get compiler issue)
+  Singleton S3 I18n Service Build
+  S3 configurations (accessKey, secretkey, region, bucketName)
+  1. Encrypt AWS S3 accessKey and secretkey You can use the java language RsaCryptUtils to generate private.key and public.key.
+The demo code as following:
+import java.io.IOException;import java.io.UnsupportedEncodingException;import java.security.InvalidKeyException;import java.</description>
+    </item>
+    
+    <item>
       <title>Enable New Product(s)</title>
       <link>https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-new-product/</link>
       <pubDate>Thu, 14 May 2020 11:25:07 +0800</pubDate>
@@ -64,20 +78,6 @@ This page will introduce the details about Singleton Service S3 build.
 How to generate Singleton Service S3 build? The steps to generate S3 build:
  Clone Singleton Service code using Git.  git clone git@github.com:vmware/singleton.gitUpdate the complie configuration file in singleton/g11n-ws/gradle.properties  datatype=bundleto
 datatype=s3Update the below s3 config items according to your requirements in singleton/g11n-ws/vip-manager-i18n/src/main/resources/application-s3.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/</guid>
-      <description>Encrypt AWS S3 accesskey and secretkey in Singleton Service Prerequisites   Java 8 (Java 9+ are not supported, will get compiler issue)
-  Singleton S3 I18n Service Build
-  S3 configurations (accessKey, secretkey, region, bucketName)
-  1. Encrypt AWS S3 accessKey and secretkey You can use the java language RsaCryptUtils to generate private.key and public.key.
-The demo code as following:
-import java.io.IOException;import java.io.UnsupportedEncodingException;import java.security.InvalidKeyException;import java.</description>
     </item>
     
   </channel>

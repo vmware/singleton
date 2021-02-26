@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-02-07T18:37:25 CST">
+<meta name="revised" content="2021-02-26T09:59:30 CST">
 <title>Configurations :: Singleton</title>
 <link rel="shortcut icon" href="https://vmware.github.io/singleton/images/favicon.png" type="image/x-icon" />
 <link href="https://vmware.github.io/singleton/css/font-awesome.min.css" rel="stylesheet">
@@ -142,6 +142,13 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/" class="dd-item">
+        <div>
+          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/">
+            Enable S3 Key Encrypted
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
       <li data-nav-id="/docs/overview/singleton-service/configurations/enable-new-product/" class="dd-item">
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-new-product/">
@@ -160,13 +167,6 @@
         <div>
           <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/">
             Enable S3 Storage
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/" class="dd-item">
-        <div>
-          <a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/">
-            
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -437,19 +437,6 @@
     <option value="/docs/overview/singleton-service/" >
   -- 
    Singleton Service</option> 
-      <option value="/docs/overview/singleton-service/singleton-service-db-build-introducation/" >--- DB builder for User guideline</option>
-      <option value="/docs/overview/singleton-service/singleton-service-script/" >--- Singleton Service Script</option>
-    <option value="/docs/overview/singleton-service/configurations/"  selected>
-  --- 
-   Configurations</option> 
-      <option value="/docs/overview/singleton-service/configurations/enable-source-collection/" >---- Enable Source Collection</option>
-      <option value="/docs/overview/singleton-service/configurations/enable-pseudo-translation/" >---- Enable Pseudo Translation</option>
-      <option value="/docs/overview/singleton-service/configurations/enable-new-product/" >---- Enable New Product(s)</option>
-      <option value="/docs/overview/singleton-service/configurations/enable-product-white-list/" >---- Enable Product White List</option>
-      <option value="/docs/overview/singleton-service/configurations/enable-s3-storage/" >---- Enable S3 Storage</option>
-      <option value="/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/" >---- </option>
-  
-      <option value="/docs/overview/singleton-service/singleton-service-apis/" >--- Singleton Service APIs</option>
   
     <option value="/docs/overview/singleton-sdk/" >
   -- 
@@ -534,6 +521,28 @@
 
    <article class="post docs">
     <header class="post-header">
+        <h2 class="post-title"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/">Enable S3 Key Encrypted</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p>Encrypt AWS S3 accesskey and secretkey in Singleton Service Prerequisites   Java 8 (Java 9+ are not supported, will get compiler issue)
+  Singleton S3 I18n Service Build
+  S3 configurations (accessKey, secretkey, region, bucketName)
+  1. Encrypt AWS S3 accessKey and secretkey You can use the java language RsaCryptUtils to generate private.key and public.key.
+The demo code as following:
+import java.io.IOException;import java.io.UnsupportedEncodingException;import java.security.InvalidKeyException;import java. <a class="read-more" href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/">&raquo;</a></p>
+    </section>
+    <footer class=" footline" >
+         
+        
+
+        
+        
+
+    </footer>
+</article>
+
+   <article class="post docs">
+    <header class="post-header">
         <h2 class="post-title"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-new-product/">Enable New Product(s)</a></h2>
     </header>
     <section class="post-excerpt">
@@ -582,28 +591,6 @@ This page will introduce the details about Singleton Service S3 build.
 How to generate Singleton Service S3 build? The steps to generate S3 build:
  Clone Singleton Service code using Git.  git clone git@github.com:vmware/singleton.gitUpdate the complie configuration file in singleton/g11n-ws/gradle.properties  datatype=bundleto
 datatype=s3Update the below s3 config items according to your requirements in singleton/g11n-ws/vip-manager-i18n/src/main/resources/application-s3. <a class="read-more" href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-storage/">&raquo;</a></p>
-    </section>
-    <footer class=" footline" >
-         
-        
-
-        
-        
-
-    </footer>
-</article>
-
-   <article class="post docs">
-    <header class="post-header">
-        <h2 class="post-title"><a href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/"></a></h2>
-    </header>
-    <section class="post-excerpt">
-        <p>Encrypt AWS S3 accesskey and secretkey in Singleton Service Prerequisites   Java 8 (Java 9+ are not supported, will get compiler issue)
-  Singleton S3 I18n Service Build
-  S3 configurations (accessKey, secretkey, region, bucketName)
-  1. Encrypt AWS S3 accessKey and secretkey You can use the java language RsaCryptUtils to generate private.key and public.key.
-The demo code as following:
-import java.io.IOException;import java.io.UnsupportedEncodingException;import java.security.InvalidKeyException;import java. <a class="read-more" href="https://vmware.github.io/singleton/docs/overview/singleton-service/configurations/enable-s3-key-encrypted/">&raquo;</a></p>
     </section>
     <footer class=" footline" >
          
