@@ -15,6 +15,7 @@ namespace SingletonClient.Implementation.Support
     {
         private readonly string cacheComponentType;
         private readonly string locale;
+        private readonly bool asSource;
         private readonly Hashtable components = SingletonUtil.NewHashtable(true);
 
         /// <summary>
@@ -22,10 +23,11 @@ namespace SingletonClient.Implementation.Support
         /// </summary>
         /// <param name="cacheComponentType">cacheComponentType.</param>
         /// <param name="locale">locale.</param>
-        public SingletonCacheLocaleMessages(string cacheComponentType, string locale)
+        public SingletonCacheLocaleMessages(string cacheComponentType, string locale, bool asSource)
         {
             this.cacheComponentType = cacheComponentType;
             this.locale = locale;
+            this.asSource = asSource;
         }
 
         /// <summary>
@@ -56,7 +58,7 @@ namespace SingletonClient.Implementation.Support
                 ICacheComponentManager cacheComponentManager = singletonClientManager.GetCacheComponentManager(
                     this.cacheComponentType);
 
-                cache = cacheComponentManager.NewComponentCache(this.locale, component);
+                cache = cacheComponentManager.NewComponentCache(this.locale, component, this.asSource);
                 this.components[component] = cache;
             }
 

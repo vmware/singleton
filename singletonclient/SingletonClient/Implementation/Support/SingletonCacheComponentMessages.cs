@@ -11,14 +11,16 @@ namespace SingletonClient.Implementation.Support
     {
         private readonly string _locale;
         private readonly string _component;
+        private readonly bool _asSource;
         private string _resourcePath;
         private string _resourceType;
         private readonly Hashtable _messages = SingletonUtil.NewHashtable(true);
 
-        public SingletonCacheComponentMessages(string locale, string component)
+        public SingletonCacheComponentMessages(string locale, string component, bool asSource)
         {
             _component = component;
             _locale = locale;
+            _asSource = asSource;
         }
 
         public void SetString(string key, string message)

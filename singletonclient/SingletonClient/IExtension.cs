@@ -89,8 +89,9 @@ namespace SingletonClient
         /// </summary>
         /// <param name="locale"></param>
         /// <param name="component"></param>
+        /// <param name="asSource"></param>
         /// <returns></returns>
-        IComponentMessages NewComponentCache(string locale, string component);
+        IComponentMessages NewComponentCache(string locale, string component, bool asSource = false);
     }
 
     /// <summary>

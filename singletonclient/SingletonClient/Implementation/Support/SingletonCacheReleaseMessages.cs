@@ -53,7 +53,7 @@ namespace SingletonClient.Implementation.Support
                 }
             }
 
-            cache = new SingletonCacheLocaleMessages(cacheComponentType, locale);
+            cache = new SingletonCacheLocaleMessages(cacheComponentType, locale, asSource);
             for (int i = 0; i < count; i++)
             {
                 string nearLocale = singletonLocale.GetNearLocale(i);
