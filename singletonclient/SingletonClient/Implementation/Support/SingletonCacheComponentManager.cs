@@ -7,9 +7,9 @@ namespace SingletonClient.Implementation.Support
 {
     public class SingletonCacheComponentManager: ICacheComponentManager
     {
-        public IComponentMessages NewComponentCache(string locale, string component)
+        public IComponentMessages NewComponentCache(string locale, string component, bool asSource = false)
         {
-            IComponentMessages cache = new SingletonCacheComponentMessages(locale, component);
+            IComponentMessages cache = new SingletonCacheComponentMessages(locale, component, asSource);
             return cache;
         }
     }
