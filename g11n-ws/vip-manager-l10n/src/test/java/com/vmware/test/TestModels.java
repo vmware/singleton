@@ -18,6 +18,7 @@ import javax.crypto.NoSuchPaddingException;
 import org.junit.Test;
 import org.springframework.beans.BeanUtils;
 
+import com.vmware.l10n.conf.PublicKeyResponse;
 import com.vmware.l10n.conf.RsaCryptUtil;
 import com.vmware.l10n.conf.S3Cfg;
 import com.vmware.l10n.record.model.ComponentSourceModel;
@@ -166,6 +167,24 @@ public class TestModels {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+    }
+    
+    @Test
+    public void testPublicKeyResponse() {
+    	PublicKeyResponse resp = new PublicKeyResponse();
+    	resp.setAlg("alg");
+    	resp.setIssuer("issue");
+    	resp.setValue("value");
+    	resp.getAlg();
+    	resp.getIssuer();
+    	resp.getValue();
+    	resp.toString();
+    	resp.hashCode();
+    	PublicKeyResponse resp1 = new PublicKeyResponse();
+    	resp1.setAlg("alg");
+    	resp1.setIssuer("issue");
+    	resp1.setValue("value");
+    	resp.equals(resp1);
     }
     
     
