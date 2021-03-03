@@ -4,28 +4,31 @@
  */
 package com.vmware.i18n.l2.service.pattern;
 
-import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localeAliasesMap;
-import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePathMap;
-
-import java.util.*;
-
-import javax.annotation.Resource;
-
 import com.vmware.i18n.PatternUtil;
 import com.vmware.i18n.dto.LocaleDataDTO;
-import com.vmware.vip.common.constants.ConstantsChar;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-
 import com.vmware.i18n.l2.dao.pattern.IPatternDao;
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vip.common.cache.CacheName;
 import com.vmware.vip.common.cache.TranslationCache3;
+import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.common.utils.JSONUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+
+import javax.annotation.Resource;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localeAliasesMap;
+import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePathMap;
 
 @Service
 public class PatternServiceImpl implements IPatternService {
@@ -281,10 +284,10 @@ public class PatternServiceImpl implements IPatternService {
 		String scopeFilter = scopeFilters.get(index);
 		Map<String, Object> patternMap = new HashMap<>();
 
-		if (index == scopeFilters.size() - 1) {
-			patternMap.put(scopeFilter, originPatternMap.get(scopeFilter));
-		} else if (!CommonUtil.isEmpty(originPatternMap.get(scopeFilter))) {
-			originPatternMap = (Map<String, Object>) originPatternMap.get(scopeFilter);
+        originPatternMap = (Map<String, Object>) originPatternMap.get(scopeFilter);
+		if ((index == scopeFilters.size() - 1) || (CommonUtil.isEmpty(originPatternMap))) {
+			patternMap.put(scopeFilter, originPatternMap);
+		} else {
 			patternMap.put(scopeFilter, getData(originPatternMap, scopeFilters, index + 1));
 		}
 		return patternMap;
