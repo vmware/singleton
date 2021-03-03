@@ -51,9 +51,10 @@ public class TestUtils {
 	public void testRSAUtil() {
 		File file = new File("testRSA.test");
 		try {
-			file.createNewFile();
-			RsaCryptUtil.getPublicKeyStrFromFile(file);
-			file.delete();
+			if(file.createNewFile()){
+				RsaCryptUtil.getPublicKeyStrFromFile(file);
+			}
+			file.deleteOnExit();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
