@@ -4,6 +4,9 @@
  */
 package com.vmware.test;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.vmware.l10n.BootApplication;
+import com.vmware.l10n.conf.RsaCryptUtil;
 import com.vmware.l10n.source.dto.GRMAPIResponseStatus;
 import com.vmware.l10n.utils.SourceUtils;
 import com.vmware.l10n.utils.WhiteListUtils;
@@ -41,6 +45,21 @@ public class TestUtils {
 	@Test
 	public void testWhiteList() {
 		WhiteListUtils whiteListUtils = webApplicationContext.getBean(WhiteListUtils.class);		whiteListUtils.getWhiteList();
+	}
+	
+	@Test
+	public void testRSAUtil() {
+		File file = new File("testRSA.test");
+		try {
+			if(file.createNewFile()){
+				RsaCryptUtil.getPublicKeyStrFromFile(file);
+			}
+			file.deleteOnExit();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 }
