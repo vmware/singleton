@@ -74,6 +74,8 @@ dependencies {
     compile("org.xerial:sqlite-jdbc:$sqliteVersion")
     compile("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
     compile("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
+    compile("org.ehcache:ehcache:$ehCacheVersion")
+    compile("javax.cache:cache-api:$cacheApiVersion")
     // Actuator - START
     compile group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.5.5'
 	compile group: 'io.micrometer', name: 'micrometer-core', version: '1.5.5'
