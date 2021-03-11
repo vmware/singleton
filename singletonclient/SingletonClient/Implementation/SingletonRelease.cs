@@ -187,7 +187,10 @@ namespace SingletonClient.Implementation
                 return;
             }
 
-            _task.CheckTimeSpan();
+            if (this._config.IsOnlineSupported())
+            {
+                GetDataFromRemote();
+            }
         }
 
         public ISingletonConfig GetSingletonConfig()

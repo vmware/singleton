@@ -3,6 +3,10 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
+using System;
+using System.Collections.Generic;
+using SingletonClient.Implementation.Support;
+
 namespace SingletonClient.Implementation
 {
     public interface ISingletonApi
@@ -43,8 +47,36 @@ namespace SingletonClient.Implementation
 
         public string GetComponentApi(string component, string locale)
         {
+            List<string> localeList = _releaseObject.GetRelease().GetMessages().GetLocaleList();
+            string localeInUse = null;
+            for (int i = 0; i < localeList.Count; i++)
+            {
+                if (String.Equals(locale, localeList[i], StringComparison.CurrentCultureIgnoreCase))
+                {
+                    localeInUse = locale;
+                    break;
+                }
+            }
+            if (localeInUse == null)
+            {
+                ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
+                for (int i = 0; i < localeList.Count; i++)
+                {
+                    if (singletonLocale.Contains(localeList[i]))
+                    {
+                        localeInUse = localeList[i];
+                        break;
+                    }
+                }
+
+                if (localeInUse == null)
+                {
+                    localeInUse = locale;
+                }
+            }
+
             string head = string.Format(VipPathHead, _product, _version);
-            string path = string.Format(VipGetComponent, locale, component);
+            string path = string.Format(VipGetComponent, localeInUse, component);
             string api = string.Format("{0}{1}{2}{3}", _urlService, head, path, VipParameter);
             return api;
         }
