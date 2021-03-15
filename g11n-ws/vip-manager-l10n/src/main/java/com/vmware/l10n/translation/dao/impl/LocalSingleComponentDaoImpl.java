@@ -124,6 +124,7 @@ public class LocalSingleComponentDaoImpl implements SingleComponentDao {
 			LOGGER.info("The bunlde file path {}{} is found, update the bundle file.", basePath, filepath );
 			try {
 				SortJSONUtils.writeJSONObjectToJSONFile(basePath + filepath, componentMessagesDTO);
+				LOGGER.info("The bunlde file {}{} have updated sucessfully", basePath, filepath);
 				return true;
 			} catch (VIPResourceOperationException e) {
 				
@@ -135,6 +136,7 @@ public class LocalSingleComponentDaoImpl implements SingleComponentDao {
 			try {
 				FileUtils.write(targetFile, "","UTF-8",true);
 				SortJSONUtils.writeJSONObjectToJSONFile(basePath + filepath, componentMessagesDTO);
+				LOGGER.info("The bunlde file {}{} have updated sucessfully", basePath, filepath);
 			} catch (Exception e) {
 				LOGGER.error(e.getMessage(), e);
 				return false;

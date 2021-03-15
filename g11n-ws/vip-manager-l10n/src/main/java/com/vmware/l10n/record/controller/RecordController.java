@@ -88,6 +88,7 @@ public class RecordController {
 		} catch (Exception e) {
 			logger.warn("parse lastModify error: {}", longDate);
 		}
+		logger.info("The parameters are: productName={}, version={},longDate={}", productName, version, longDate);
 		List<RecordModel> recordList = recordService.getChangedRecordsS3(productName, version, lastModifyTime);
 		logger.info("s3records size {}", recordList.size());
 		APIResponseDTO responseDto = null;
@@ -119,6 +120,7 @@ public class RecordController {
 		logger.info(LOGURLSTR, request.getRequestURL());
 		Response response = null;
 		int statusInt = Integer.parseInt(status.trim());
+		logger.info("The parameters are: productName={}, version={}, component={}, locale={}", product, version, component, locale);
 		int result = recordService.updateSynchSourceRecord(product, version, component, locale, statusInt);
 		
 		if(result >0) {
@@ -146,6 +148,7 @@ public class RecordController {
 		APIResponseDTO responseDto = null;
 		logger.info("begin get  component content");
 		logger.info(LOGURLSTR, request.getRequestURL());
+		logger.info("The parameters are: productName={}, version={}, component={}, locale={}", product, version, component, locale);
 		ComponentSourceModel model = recordService.getComponentSource(product, version, component, locale);
 		 if(model != null) {
 			 responseDto = new APIResponseDTO();
