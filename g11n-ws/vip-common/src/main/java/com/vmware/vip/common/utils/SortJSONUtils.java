@@ -63,7 +63,7 @@ public class SortJSONUtils {
          write = new OutputStreamWriter(outputStream, ConstantsUnicode.UTF8);
          writer = new BufferedWriter(write);
          String jsonStr = getOrderJsonString(json);
-         logger.info("JSON content: {}", jsonStr);
+         logger.debug("JSON content: {}", jsonStr);
          writer.write(jsonStr);
       } catch (IOException e) {
          throw new VIPResourceOperationException("Write file '" + jsonFileName + "' failed.");
