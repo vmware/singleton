@@ -18,7 +18,7 @@ import com.vmware.l10n.BootApplication;
 import com.vmware.l10n.conf.RsaCryptUtil;
 import com.vmware.l10n.source.dto.GRMAPIResponseStatus;
 import com.vmware.l10n.utils.SourceUtils;
-import com.vmware.l10n.utils.WhiteListUtils;
+import com.vmware.l10n.utils.AllowListUtils;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
@@ -43,8 +43,8 @@ public class TestUtils {
 	}
 
 	@Test
-	public void testWhiteList() {
-		WhiteListUtils whiteListUtils = webApplicationContext.getBean(WhiteListUtils.class);		whiteListUtils.getWhiteList();
+	public void testAllowList() {
+		AllowListUtils allowListUtils = webApplicationContext.getBean(AllowListUtils.class);		allowListUtils.getAllowList();
 	}
 	
 	@Test

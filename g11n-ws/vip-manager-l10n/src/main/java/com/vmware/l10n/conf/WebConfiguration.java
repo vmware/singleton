@@ -20,9 +20,9 @@ import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.util.UrlPathHelper;
 
-import com.vmware.l10n.utils.WhiteListUtils;
-import com.vmware.l10n.utils.WhiteListUtils.LocalWhitelistUtils;
-import com.vmware.l10n.utils.WhiteListUtils.S3WhitelistUtils;
+import com.vmware.l10n.utils.AllowListUtils;
+import com.vmware.l10n.utils.AllowListUtils.LocalAllowlistUtils;
+import com.vmware.l10n.utils.AllowListUtils.S3AllowlistUtils;
 import com.vmware.vip.api.rest.l10n.L10nI18nAPI;
 
 /**
@@ -40,20 +40,20 @@ public class WebConfiguration implements WebMvcConfigurer {
 	private TokenService tokenService;
 
 	@Autowired
-	private WhiteListUtils whitelistUtils;
+	private AllowListUtils allowlistUtils;
 
 	@Bean
 	@Profile("bundle")
 	@Autowired
-	public WhiteListUtils bundleWhitelistUtils(ApplicationContext ctx) {
-		return new LocalWhitelistUtils();
+	public AllowListUtils bundleAllowlistUtils(ApplicationContext ctx) {
+		return new LocalAllowlistUtils();
 	}
 
 	@Bean
 	@Profile("s3")
 	@Autowired
-	public WhiteListUtils s3WhitelistUtils(ApplicationContext ctx) {
-		return new S3WhitelistUtils();
+	public AllowListUtils s3AllowlistUtils(ApplicationContext ctx) {
+		return new S3AllowlistUtils();
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 			.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/**", L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v1/translation/**");
 		}
 		logger.info("add source collection validation interceptor");
-		registry.addInterceptor(new CollectSourceValidationInterceptor(whitelistUtils.getWhiteList()))
+		registry.addInterceptor(new CollectSourceValidationInterceptor(allowlistUtils.getAllowList()))
 		.addPathPatterns(L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v2/translation/**", L10nI18nAPI.BASE_COLLECT_SOURCE_PATH + "/api/v1/translation/**");
 	}
 }
