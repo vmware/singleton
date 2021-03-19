@@ -6,6 +6,8 @@ package com.vmware.l10n.source.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
@@ -41,6 +43,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @RestController("i10n-TranslationSourceAPI")
 public class TranslationSourceAPI  {
+	private static Logger logger = LoggerFactory.getLogger(TranslationSourceAPI.class);
 	@Autowired
 	private SourceService sourceService;
 	
@@ -68,6 +71,7 @@ public class TranslationSourceAPI  {
 		String newLocale =  StringUtils.isEmpty(locale) ? ConstantsUnicode.EN : locale;
 		StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, newLocale, key,
 				source, null, sourceFormat);
+		logger.info("The parameters are: productName={}, version={}, component={}, locale={}, key={}, source={}", productName, version, component, newLocale, key, source);
 		boolean isSourceCached = sourceService.cacheSource(sourceObj);
 		return SourceUtils.handleSourceResponse(isSourceCached);
 	}
@@ -110,6 +114,7 @@ public class TranslationSourceAPI  {
 		String newLocale =  StringUtils.isEmpty(locale) ? ConstantsUnicode.EN : locale;
 		StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, newLocale, key,
 				source, null, sourceFormat);
+		logger.info("The parameters are: productName={}, version={}, component={}, locale={}, key={}, source={}", productName, version, component, newLocale, key, source);
 		boolean isSourceCached = sourceService.cacheSource(sourceObj);
 		return SourceUtils.handleSourceResponse(isSourceCached);
     	
