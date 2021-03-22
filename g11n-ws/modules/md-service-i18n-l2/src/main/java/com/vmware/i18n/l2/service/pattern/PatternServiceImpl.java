@@ -284,10 +284,11 @@ public class PatternServiceImpl implements IPatternService {
 		String scopeFilter = scopeFilters.get(index);
 		Map<String, Object> patternMap = new HashMap<>();
 
-        originPatternMap = (Map<String, Object>) originPatternMap.get(scopeFilter);
-		if ((index == scopeFilters.size() - 1) || (CommonUtil.isEmpty(originPatternMap))) {
-			patternMap.put(scopeFilter, originPatternMap);
+		//The data type of the last node may not Map, so can't put line 290 before below if statement, or bug https://github.com/vmware/singleton/issues/1037 will appear.
+		if ((index == scopeFilters.size() - 1) || (CommonUtil.isEmpty(originPatternMap.get(scopeFilter)))) {
+			patternMap.put(scopeFilter, originPatternMap.get(scopeFilter));
 		} else {
+			originPatternMap = (Map<String, Object>) originPatternMap.get(scopeFilter);
 			patternMap.put(scopeFilter, getData(originPatternMap, scopeFilters, index + 1));
 		}
 		return patternMap;
