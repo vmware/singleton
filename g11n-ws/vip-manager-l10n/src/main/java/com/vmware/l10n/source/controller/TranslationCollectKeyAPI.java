@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
@@ -40,7 +42,7 @@ import springfox.documentation.annotations.ApiIgnore;
 
 @RestController("i10n-TranslationCollectKeyAPI")
 public class TranslationCollectKeyAPI {
-
+   private static Logger logger = LoggerFactory.getLogger(TranslationCollectKeyAPI.class);
 	@Autowired
 	private SourceService sourceService;
 
@@ -67,6 +69,7 @@ public class TranslationCollectKeyAPI {
 		String newKey = StringUtils.isEmpty(sourceFormat) ? key
 				: (key + ConstantsChar.DOT + ConstantsChar.POUND + sourceFormat.toUpperCase());
 		String newSource = source == null ? "" : source;
+		logger.info("The parameters are: productName={}, version={}, component={}, locale={}, key={}, source={}", productName, version, component, locale, key, newSource);
 		StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, newLocale, newKey,
 				newSource, commentForSource, sourceFormat);
 		boolean isSourceCached = sourceService.cacheSource(sourceObj);
@@ -115,6 +118,7 @@ public class TranslationCollectKeyAPI {
 		if(!StringUtils.isEmpty(source) || !StringUtils.isEmpty(querySource)) {
 		   newSource = source == null ? querySource : source;
 		}
+		logger.info("The parameters are: productName={}, version={}, component={}, locale={}, key={}, source={}", productName, version, component, locale, key, newSource);
 		StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, newLocale, newKey,
 				newSource, commentForSource, sourceFormat);
 		boolean isSourceCached = sourceService.cacheSource(sourceObj);
@@ -147,6 +151,7 @@ public class TranslationCollectKeyAPI {
 		String newSource = source == null ? "" : source;
 		StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, ConstantsFile.DEFAULT_COMPONENT, newLocale, newKey,
 				newSource, commentForSource, sourceFormat);
+		logger.info("The parameters are: productName={}, version={}, locale={}, key={}, source={}", productName, version, locale, key, newSource);
 		boolean isSourceCached = sourceService.cacheSource(sourceObj);
 		return SourceUtils.handleSourceResponse(isSourceCached);
 		
@@ -177,6 +182,7 @@ public class TranslationCollectKeyAPI {
 		String newSource = source == null ? "" : source;
 		StringSourceDTO sourceObj = SourceUtils.createSourceDTO(productName, version, component, locale, newKey,
 				newSource, commentForSource, sourceFormat);
+		logger.info("The parameters are: productName={}, version={}, component={}, locale={}, key={}, source={}", productName, version, component, locale, key, newSource);
 		boolean isSourceCached = sourceService.cacheSource(sourceObj);
 		return SourceUtils.handleSourceResponse(isSourceCached);
 	}
@@ -196,6 +202,7 @@ public class TranslationCollectKeyAPI {
 			@RequestBody List<KeySourceCommentDTO> sourceSet,
 			@ApiParam(name = APIParamName.COLLECT_SOURCE, value = APIParamValue.COLLECT_SOURCE) @RequestParam(value = APIParamName.COLLECT_SOURCE, required = true, defaultValue = "true") String collectSource,
 			HttpServletRequest request) throws L10nAPIException {
+		logger.info("The parameters are: productName={}, version={}, component={}, locale={}", productName, version, component, locale);
 		for (KeySourceCommentDTO sto : sourceSet) {
 			String newLocale = locale == null ? ConstantsUnicode.EN : locale;
 			String newKey = sto.getKey();
