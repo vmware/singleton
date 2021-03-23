@@ -23,8 +23,8 @@ import java.util.Map;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
 public class FormattingPatternAPITest {
-    public static final String PatternAPIURI = "/i18n/api/v2/formatting/patterns/locales/en-US?scope=dates,numbers";
-    public static final String PatternAPIURL = "/i18n/api/v2/formatting/patterns?language=fr&region=FR&scope=dates,numbers";
+    public static final String LocalePatternAPIURI = "/i18n/api/v2/formatting/patterns/locales/{locale}";
+    public static final String LanguageRegionPatternAPIURI = "/i18n/api/v2/formatting/patterns";
 
     @Autowired
     private WebApplicationContext webApplicationContext;
@@ -38,27 +38,83 @@ public class FormattingPatternAPITest {
 
     @Test
     public void testGetI18nPattern() throws Exception {
+        String locale = "en-US";
         String cateStr = "dates,numbers";
-        String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, PatternAPIURI);
+
+        //Test with valid 'scope' parameter
+        String url = new StringBuilder(
+                LocalePatternAPIURI.replace("{locale}", locale))
+                .append("?scope=").append(cateStr)
+                .toString();
+        String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, url);
         Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("data");
         Map<String, Object> catesMap = (Map<String, Object>) dataMap.get("categories");
         String[] catesArr = cateStr.split(",");
         for (String key : catesArr) {
             Assert.assertNotNull(catesMap.get(key));
         }
+
+        //Test with invalid 'scope' parameter
+        url = new StringBuilder(
+                LocalePatternAPIURI.replace("{locale}", locale))
+                .append("?scope=").append("datess,numbers")
+                .toString();
+        json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, url);
+        Map<String, Object> respMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        Assert.assertEquals(400L, respMap.get("code"));
+
+        //Test with valid 'scope' and 'scopeFilter' parameter
+        url = new StringBuilder(
+                LocalePatternAPIURI.replace("{locale}", locale))
+                .append("?scope=").append(cateStr)
+                .append("&scopeFilter=").append("dates_dateFormats_short")
+                .toString();
+        json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, url);
+        respMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        Assert.assertEquals(200L, respMap.get("code"));
+
+        //Test with valid 'scope' and invalid 'scopeFilter' parameter
+        url = new StringBuilder(
+                LocalePatternAPIURI.replace("{locale}", locale))
+                .append("?scope=").append(cateStr)
+                .append("&scopeFilter=").append("dates_a,c_d")
+                .toString();
+        json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, url);
+        respMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        Assert.assertEquals(200L, respMap.get("code"));
     }
 
     @SuppressWarnings("unchecked")
     @Test
     public void testGetI18nPatternWithLanguageAndRegion() throws Exception {
+        String language = "fr";
+        String region = "FR";
         String cateStr = "dates,numbers";
-        String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, PatternAPIURL);
+
+        //Test with valid 'scope' parameter
+        String url = new StringBuilder(LanguageRegionPatternAPIURI)
+                .append("?language=").append(language)
+                .append("&region=").append(region)
+                .append("&scope=").append(cateStr)
+                .toString();
+        String json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, url);
         Map<String, Object> dataMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("data");
         Map<String, Object> catesMap = (Map<String, Object>) dataMap.get("categories");
         String[] catesArr = cateStr.split(",");
         for (String key : catesArr) {
             Assert.assertNotNull(catesMap.get(key));
         }
+
+        //Test with valid 'scope' and 'scopeFilter' parameter
+        url = new StringBuilder(LanguageRegionPatternAPIURI)
+                .append("?language=").append(language)
+                .append("&region=").append(region)
+                .append("&scope=").append(cateStr)
+                .append("&scopeFilter=").append("dates_dateFormats_short")
+                .toString();
+        json = RequestUtil.sendRequest(webApplicationContext, ConstantsForTest.GET, url);
+        Map<String, Object> respMap = (Map<String, Object>) JSONUtils.getMapFromJson(json).get("response");
+        Assert.assertEquals(200L, respMap.get("code"));
     }
 
 }
