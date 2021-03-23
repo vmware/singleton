@@ -314,7 +314,7 @@ public class ParameterValidation implements IVlidation {
      * validate the product name by the allow list
      *
      * @param productName
-     * @param whiteListFilePath
+     * @param allowListMap
      * @throws ValidationException
      */
     private void validateProductByAllowList(String productName, Map<String, Object> allowListMap) throws ValidationException {
