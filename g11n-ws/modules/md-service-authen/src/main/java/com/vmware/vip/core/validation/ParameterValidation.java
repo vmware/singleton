@@ -59,7 +59,7 @@ public class ParameterValidation implements IVlidation {
 			return;
 		}
 		if ("get".equalsIgnoreCase(request.getMethod())) {
-			validateProductByWhiteList(productName, (Map<String, Object>)request.getAttribute(ParameterValidation.TAG_ALLOW_PRODUCT_LIST_MAP));
+			validateProductByAllowList(productName, (Map<String, Object>)request.getAttribute(ParameterValidation.TAG_ALLOW_PRODUCT_LIST_MAP));
 		}
 		if (!RegExpValidatorUtils.IsLetterOrNumber(productName)) {
 			throw new ValidationException(ValidationMsg.PRODUCTNAME_NOT_VALIDE);
@@ -311,14 +311,14 @@ public class ParameterValidation implements IVlidation {
 	}
 
     /**
-     * validate the product name by the white list
+     * validate the product name by the allow list
      *
      * @param productName
-     * @param whiteListFilePath
+     * @param allowListMap
      * @throws ValidationException
      */
-    private void validateProductByWhiteList(String productName, Map<String, Object> whiteListMap) throws ValidationException {
-        if (whiteListMap != null && !whiteListMap.isEmpty() && !whiteListMap.containsKey(productName)) {
+    private void validateProductByAllowList(String productName, Map<String, Object> allowListMap) throws ValidationException {
+        if (allowListMap != null && !allowListMap.isEmpty() && !allowListMap.containsKey(productName)) {
         	throw new ValidationException(String.format(ValidationMsg.PRODUCTNAME_NOT_SUPPORTED, productName));
         }
     }

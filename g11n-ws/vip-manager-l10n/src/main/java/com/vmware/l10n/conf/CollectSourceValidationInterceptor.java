@@ -87,11 +87,11 @@ public class CollectSourceValidationInterceptor extends HandlerInterceptorAdapte
 	 * @param language types that can collect source 
 	 * @throws VIPAPIException
 	 */
-	private static void validate(HttpServletRequest request, Map<String, List<String>> whiteList) throws VIPAPIException {
+	private static void validate(HttpServletRequest request, Map<String, List<String>> allowList) throws VIPAPIException {
 		if (request == null) { 
 			return;
 		}
-		validateAllowList(request, whiteList);
+		validateAllowList(request, allowList);
 		validateProductname(request);
 		validateVersion(request);
 		validateComponent(request);

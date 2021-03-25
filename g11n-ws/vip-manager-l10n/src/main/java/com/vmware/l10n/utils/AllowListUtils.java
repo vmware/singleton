@@ -30,14 +30,14 @@ import com.fasterxml.jackson.databind.type.MapLikeType;
 import com.vmware.vip.common.constants.ConstantsFile;
 import com.vmware.vip.common.constants.ConstantsUnicode;
 
-public abstract class WhiteListUtils {
-	@Value("${white.list.location:bundle.json}")
-	protected String whitelistLocation;
+public abstract class AllowListUtils {
+	@Value("${allow.list.location:bundle.json}")
+	protected String allowlistLocation;
 
-	protected abstract String readWhitelistFile();
+	protected abstract String readAllowlistFile();
 
-	public Map<String, List<String>> getWhiteList() {
-		String result = readWhitelistFile();
+	public Map<String, List<String>> getAllowList() {
+		String result = readAllowlistFile();
 		if (!StringUtils.isEmpty(result)) {
 			ObjectMapper objmap = new ObjectMapper();
 			JavaType stringType = objmap.constructType(String.class);
@@ -55,11 +55,11 @@ public abstract class WhiteListUtils {
 		return null;
 	}
 
-	public static class LocalWhitelistUtils extends WhiteListUtils {
+	public static class LocalAllowlistUtils extends AllowListUtils {
 		@Override
-		protected String readWhitelistFile() {
+		protected String readAllowlistFile() {
 			StringBuilder sb = new StringBuilder();
-			File file = new File(whitelistLocation);
+			File file = new File(allowlistLocation);
 			InputStream inputStream = null;
 			if (file.exists()) {
 				try {
@@ -67,7 +67,7 @@ public abstract class WhiteListUtils {
 				} catch (FileNotFoundException e) {
 				}
 			} else {
-				inputStream = WhiteListUtils.class.getClassLoader().getResourceAsStream(ConstantsFile.WHITE_LIST_FILE);
+				inputStream = AllowListUtils.class.getClassLoader().getResourceAsStream(ConstantsFile.ALLOW_LIST_FILE);
 			}
 			try (BufferedReader inputReader = new BufferedReader(
 					new InputStreamReader(inputStream, ConstantsUnicode.UTF8))) {
@@ -86,14 +86,14 @@ public abstract class WhiteListUtils {
 		}
 	}
 
-	public static class S3WhitelistUtils extends WhiteListUtils {
+	public static class S3AllowlistUtils extends AllowListUtils {
 		@Autowired
 		public S3Client s3Client;
 
 		@Override
-		protected String readWhitelistFile() {
-			if (s3Client.isObjectExist(whitelistLocation)) {
-				return s3Client.readObject(whitelistLocation);
+		protected String readAllowlistFile() {
+			if (s3Client.isObjectExist(allowlistLocation)) {
+				return s3Client.readObject(allowlistLocation);
 			}
 			return "";
 		}
