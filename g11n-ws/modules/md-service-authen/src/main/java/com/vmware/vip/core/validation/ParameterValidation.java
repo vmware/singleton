@@ -5,17 +5,15 @@
 package com.vmware.vip.core.validation;
 
 
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.web.servlet.HandlerMapping;
-
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ValidationMsg;
 import com.vmware.vip.common.utils.RegExpValidatorUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.servlet.HandlerMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 public class ParameterValidation implements IVlidation {
 	HttpServletRequest request = null;
@@ -58,12 +56,10 @@ public class ParameterValidation implements IVlidation {
 		if (StringUtils.isEmpty(productName)) {
 			return;
 		}
-		if ("get".equalsIgnoreCase(request.getMethod())) {
-			validateProductByAllowList(productName, (Map<String, Object>)request.getAttribute(ParameterValidation.TAG_ALLOW_PRODUCT_LIST_MAP));
-		}
 		if (!RegExpValidatorUtils.IsLetterOrNumber(productName)) {
 			throw new ValidationException(ValidationMsg.PRODUCTNAME_NOT_VALIDE);
 		}
+		validateProductByAllowList(productName, (Map<String, Object>)request.getAttribute(ParameterValidation.TAG_ALLOW_PRODUCT_LIST_MAP));
 	}
 
 	@SuppressWarnings("unchecked")
