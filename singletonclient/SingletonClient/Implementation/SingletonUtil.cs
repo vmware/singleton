@@ -21,6 +21,15 @@ namespace SingletonClient.Implementation
 {
     public static class SingletonUtil
     {
+        public enum ResponseStatus
+        {
+            NetFail,
+            WrongFormat,
+            NoMessages,
+            NotModified,
+            Messages
+        };
+
         /// <summary>
         /// New a Hashtable object and make it thread safe.
         /// </summary>
@@ -153,34 +162,38 @@ namespace SingletonClient.Implementation
             return dict;
         }
 
-        public static bool CheckResponseValid(JToken token, Hashtable headers)
+        public static ResponseStatus CheckResponseValid(JToken token, Hashtable headers)
         {
             if (headers != null)
             {
                 string responseCode = (string)headers[SingletonConst.HeaderResponseCode];
                 if (SingletonConst.StatusNotModified.Equals(responseCode))
                 {
-                    return false;
+                    return ResponseStatus.NotModified;
                 }
             }
+
             if (token == null)
             {
-                return false;
+                return ResponseStatus.NetFail;
             }
             JObject result = token.Value<JObject>(SingletonConst.KeyResult);
             if (result == null)
             {
-                return false;
+                return ResponseStatus.WrongFormat;
             }
             JObject status = result.Value<JObject>(SingletonConst.KeyResponse);
-            if (status != null)
+            if (status == null)
             {
-                int code = status.Value<int>(SingletonConst.KeyCode);
-                if (code == 200 || code == 604) {
-                    return true;
-                }
+                return ResponseStatus.WrongFormat;
             }
-            return false;
+
+            int code = status.Value<int>(SingletonConst.KeyCode);
+            if (code == 200 || code == 604)
+            {
+                return ResponseStatus.Messages;
+            }
+            return ResponseStatus.NoMessages;
         }
 
         public static JObject HttpGetJson(IAccessService accessService, string url, Hashtable headers)
@@ -251,7 +264,8 @@ namespace SingletonClient.Implementation
             {
                 string text = File.ReadAllText(path, Encoding.UTF8);
                 return text;
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 HandleException(e);
             }
@@ -294,7 +308,7 @@ namespace SingletonClient.Implementation
                 return;
             }
 
-            for(int i=0; i<strAnotherList.Count; i++)
+            for (int i = 0; i < strAnotherList.Count; i++)
             {
                 if (!strList.Contains(strAnotherList[i]))
                 {

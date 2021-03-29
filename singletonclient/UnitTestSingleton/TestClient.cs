@@ -10,6 +10,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 using SingletonClient;
 using SingletonClient.Implementation;
+using static SingletonClient.Implementation.SingletonUtil;
 
 namespace UnitTestSingleton
 {
@@ -54,7 +55,7 @@ namespace UnitTestSingleton
             IConfigItem textItem = configWrapper.GetConfig().GetItem("_none");
             Assert.AreEqual(textItem, null);
 
-            Assert.AreEqual(SingletonUtil.CheckResponseValid(null, null), false);
+            Assert.AreEqual(SingletonUtil.CheckResponseValid(null, null), ResponseStatus.NetFail);
 
             byte[] bytes = { 0xef, 0xbb, 0xbf, 0x31 };
             text = SingletonUtil.ConvertToText(bytes);
