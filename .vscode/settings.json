@@ -1,0 +1,19 @@
+{
+  "files.exclude": {
+    "**/.git": true
+  },
+  "psi-header.config": {
+    "forceToTop": true,
+    "blankLinesAfter": 1
+  },
+  "psi-header.changes-tracking.autoHeader": "autoSave",
+  "psi-header.templates": [
+    {
+      "language": "*",
+      "template": [
+        "Copyright <<year>> VMware, Inc.",
+        "SPDX-License-Identifier: EPL-2.0"
+      ]
+    }
+  ]
+}

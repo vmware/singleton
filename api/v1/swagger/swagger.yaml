@@ -1,0 +1,648 @@
+definitions:
+  api.BusinessError:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+    type: object
+  api.Response:
+    properties:
+      data:
+        type: object
+      response:
+        $ref: '#/definitions/api.BusinessError'
+    type: object
+  translation.UpdateTranslationDTO:
+    type: object
+info:
+  contact:
+    name: Singleton Team
+    url: https://github.com/vmware/singleton
+  description: This is a Singleton server
+  license:
+    name: EPL-2.0
+    url: https://www.eclipse.org/legal/epl-2.0/
+  title: Singleton Service API
+  version: "1.0"
+paths:
+  /bundles/components:
+    get:
+      deprecated: true
+      description: Get the component list by the specific version.
+      parameters:
+      - description: product name
+        in: query
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: query
+        name: version
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get the component list
+      tags:
+      - translation-product-api
+  /date/localizedDate:
+    get:
+      deprecated: true
+      description: Get localized date by locale and pattern
+      parameters:
+      - description: locale String. e.g. 'en-US'
+        in: query
+        name: locale
+        required: true
+        type: string
+      - description: long value of the date(e.g. 1472728030290). the specified number
+          of milliseconds since the standard base time known as 'the epoch', namely
+          January 1, 1970, 00:00:00 GMT.
+        in: query
+        name: longDate
+        required: true
+        type: integer
+      - description: 'pattern used to format the long date(the value could be one
+          of this: YEAR = ''y'',QUARTER = ''QQQQ'',ABBR_QUARTER = ''QQQ'',QUARTER_YEAR
+          = ''QQQQy'',QUARTER_ABBR_YEAR = ''QQQy'',MONTH = ''MMMM'',ABBR_MONTH = ''MMM'',NUM_MONTH
+          = ''M'',MONTH_YEAR = ''MMMMy'',MONTH_ABBR_YEAR = ''MMMy'',MONTH_NUM_YEAR
+          = ''My'',DAY = ''d'',MONTH_DAY_YEAR = ''MMMMdy'',ABBR_MONTH_DAY_YEAR = ''MMMdy'',NUM_MONTH_DAY_YEAR
+          = ''Mdy'',WEEKDAY = ''EEEE'',ABBR_WEEKDAY = ''E'',WEEKDAY_MONTH_DAY_YEAR
+          = ''EEEEMMMMdy'',ABBR_WEEKDAY_MONTH_DAY_YEAR = ''EMMMdy'',NUM_WEEKDAY_MONTH_DAY_YEAR
+          = ''EMdy'',MONTH_DAY = ''MMMMd'',ABBR_MONTH_DAY = ''MMMd'',NUM_MONTH_DAY
+          = ''Md'',WEEKDAY_MONTH_DAY = ''EEEEMMMMd'',ABBR_WEEKDAY_MONTH_DAY = ''EMMMd'',NUM_WEEKDAY_MONTH_DAY
+          = ''EMd'')'
+        in: query
+        name: pattern
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get localized date
+      tags:
+      - formatting-api
+  /i18nPattern:
+    get:
+      deprecated: true
+      description: Get pattern from CLDR by locale and scope
+      parameters:
+      - description: locale String. e.g. 'en-US'
+        in: query
+        name: locale
+        required: true
+        type: string
+      - description: pattern category string, separated by commas. e.g. 'dates,numbers,currencies,plurals,measurements,dateFields'
+        in: query
+        name: scope
+        required: true
+        type: string
+      - description: a string for filtering the pattern data, separated by comma and
+          underline. e.g. 'dates_eras,dates_dateTimeFormats'
+        in: query
+        name: scopeFilter
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "206":
+          description: Successful Partially
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get pattern from CLDR
+      tags:
+      - formatting-pattern-api
+  /translation:
+    get:
+      deprecated: true
+      description: Get the product's translations by the specific version.
+      parameters:
+      - description: product name
+        in: query
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: query
+        name: version
+        required: true
+        type: string
+      - description: locale String. e.g. 'en-US'
+        in: query
+        name: locale
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "206":
+          description: Successful Partially
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get the product's translation
+      tags:
+      - translation-product-api
+  /translation/component:
+    get:
+      deprecated: true
+      description: Get a component's translation by the specific version
+      parameters:
+      - description: product name
+        in: query
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: query
+        name: version
+        required: true
+        type: string
+      - description: locale String. e.g. 'en-US'
+        in: query
+        name: locale
+        type: string
+      - description: component name
+        in: query
+        name: component
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get a component's translation
+      tags:
+      - translation-component-api
+  /translation/components:
+    get:
+      deprecated: true
+      description: Get multiple components' by the specific version
+      parameters:
+      - description: product name
+        in: query
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: query
+        name: version
+        required: true
+        type: string
+      - description: locales
+        in: query
+        name: locales
+        required: true
+        type: string
+      - description: components
+        in: query
+        name: components
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "206":
+          description: Successful Partially
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get multiple components' translation
+      tags:
+      - translation-component-api
+  /translation/product/{productName}/component/{component}:
+    get:
+      deprecated: true
+      description: Get a component's translation by the specific version
+      parameters:
+      - description: product name
+        in: path
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: query
+        name: version
+        required: true
+        type: string
+      - description: locale String. e.g. 'en-US'
+        in: query
+        name: locale
+        type: string
+      - description: component name
+        in: path
+        name: component
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get a component's translation
+      tags:
+      - translation-product-component-api
+  /translation/product/{productName}/component/{component}/key/{key}:
+    get:
+      deprecated: true
+      description: Get a key's translation in specific component
+      parameters:
+      - description: product name
+        in: path
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: query
+        name: version
+        required: true
+        type: string
+      - description: locale String. e.g. 'en-US'
+        in: query
+        name: locale
+        type: string
+      - description: component name
+        in: path
+        name: component
+        required: true
+        type: string
+      - description: key
+        in: path
+        name: key
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get a key's translation
+      tags:
+      - translation-product-component-key-api
+  /translation/product/{productName}/components/{components}:
+    get:
+      deprecated: true
+      description: Get multiple components' by the specific version
+      parameters:
+      - description: product name
+        in: path
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: query
+        name: version
+        required: true
+        type: string
+      - description: locales
+        in: query
+        name: locales
+        required: true
+        type: string
+      - description: components
+        in: path
+        name: components
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "206":
+          description: Successful Partially
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get multiple components' by the specific version
+      tags:
+      - translation-product-component-api
+  /translation/product/{productName}/key/{key}:
+    get:
+      deprecated: true
+      description: Get a key's translation in specific component
+      parameters:
+      - description: product name
+        in: path
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: query
+        name: version
+        required: true
+        type: string
+      - description: locale String. e.g. 'en-US'
+        in: query
+        name: locale
+        type: string
+      - description: key
+        in: path
+        name: key
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get a key's translation
+      tags:
+      - translation-product-component-key-api
+  /translation/product/{productName}/version/{version}:
+    put:
+      consumes:
+      - application/json
+      deprecated: true
+      description: Update translation
+      parameters:
+      - description: product name
+        in: path
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: path
+        name: version
+        required: true
+        type: string
+      - description: translationData
+        in: body
+        name: translationData
+        required: true
+        schema:
+          $ref: '#/definitions/translation.UpdateTranslationDTO'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "206":
+          description: Successful Partially
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Update translation
+      tags:
+      - translation-sync-api
+  /translation/product/{productName}/version/{version}/supportedLocales:
+    get:
+      deprecated: true
+      description: Get the supported locale list which contains all supported locale
+        by the specific version.
+      parameters:
+      - description: product name
+        in: path
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: path
+        name: version
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get the supported locale list
+      tags:
+      - translation-product-api
+  /translation/string:
+    get:
+      deprecated: true
+      description: Get a key's translation in specific component
+      parameters:
+      - description: product name
+        in: query
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: query
+        name: version
+        required: true
+        type: string
+      - description: locale String. e.g. 'en-US'
+        in: query
+        name: locale
+        type: string
+      - description: component name
+        in: query
+        name: component
+        required: true
+        type: string
+      - description: key
+        in: query
+        name: key
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get a key's translation
+      tags:
+      - translation-key-api
+swagger: "2.0"
+tags:
+- name: formatting-api
+- name: formatting-pattern-api
+- name: translation-component-api
+- name: translation-key-api
+- name: translation-product-api
+- name: translation-product-component-api
+- name: translation-product-component-key-api
+- name: translation-sync-api

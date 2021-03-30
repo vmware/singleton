@@ -1,0 +1,709 @@
+definitions:
+  api.BusinessError:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+    type: object
+  api.Response:
+    properties:
+      data:
+        type: object
+      response:
+        $ref: '#/definitions/api.BusinessError'
+    type: object
+  combine.translationWithPatternPostReq:
+    properties:
+      combine:
+        type: integer
+      components:
+        items:
+          type: string
+        type: array
+      language:
+        type: string
+      productName:
+        type: string
+      region:
+        type: string
+      scope:
+        type: string
+      scopeFilter:
+        type: string
+      version:
+        type: string
+    required:
+    - combine
+    - components
+    - language
+    - productName
+    - scope
+    - version
+    type: object
+  jsoniter.Any:
+    type: object
+  translation.BundleData:
+    properties:
+      component:
+        type: string
+      locale:
+        type: string
+      messages:
+        $ref: '#/definitions/jsoniter.Any'
+    required:
+    - component
+    - locale
+    - messages
+    type: object
+  translation.UpdateBundle:
+    properties:
+      creation:
+        properties:
+          operationid:
+            type: string
+        type: object
+      dataOrigin:
+        type: string
+      productName:
+        type: string
+      translation:
+        items:
+          $ref: '#/definitions/translation.BundleData'
+        type: array
+      version:
+        type: string
+    required:
+    - productName
+    - translation
+    - version
+    type: object
+  translation.UpdateTranslationDTO:
+    properties:
+      data:
+        $ref: '#/definitions/translation.UpdateBundle'
+      requester:
+        type: string
+    required:
+    - data
+    type: object
+info:
+  contact:
+    name: Singleton Team
+    url: https://github.com/vmware/singleton
+  description: This is a Singleton server
+  license:
+    name: EPL-2.0
+    url: https://www.eclipse.org/legal/epl-2.0/
+  title: Singleton Service API
+  version: "2.0"
+paths:
+  /combination/translationsAndPattern:
+    get:
+      description: Get translation and pattern data by customized type
+      parameters:
+      - description: an integer which represents combine type number 1 or 2
+        in: query
+        name: combine
+        required: true
+        type: integer
+      - description: product name
+        in: query
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: query
+        name: version
+        required: true
+        type: string
+      - description: a string contains multiple components, separated by commas. e.g.
+          'cim,common,cpa,cpu'
+        in: query
+        name: components
+        required: true
+        type: string
+      - description: a string which represents language, e.g. en,en-US,pt,pt-BR,zh-Hans
+        in: query
+        name: language
+        required: true
+        type: string
+      - description: a string which represents region, e.g. US,PT,CN
+        in: query
+        name: region
+        type: string
+      - description: pattern category string, separated by commas. e.g. 'dates,numbers,currencies,plurals,measurements,dateFields'
+        in: query
+        name: scope
+        required: true
+        type: string
+      - description: a string for filtering the pattern data, separated by comma and
+          underline. e.g. 'dates_eras,dates_dateTimeFormats'
+        in: query
+        name: scopeFilter
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "206":
+          description: Successful Partially
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get translation and pattern data
+      tags:
+      - translation-with-pattern-api
+    post:
+      deprecated: true
+      description: Get translation and pattern data by customized type
+      parameters:
+      - description: translationWithPatternPostReq
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/combine.translationWithPatternPostReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "206":
+          description: Successful Partially
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get translation and pattern data (Deprecated because GET method is
+        ready)
+      tags:
+      - translation-with-pattern-api
+  /formatting/date/localizedDate:
+    get:
+      deprecated: true
+      description: Get localized date by locale and pattern
+      parameters:
+      - description: locale String. e.g. 'en-US'
+        in: query
+        name: locale
+        required: true
+        type: string
+      - description: long value of the date(e.g. 1472728030290). the specified number
+          of milliseconds since the standard base time known as 'the epoch', namely
+          January 1, 1970, 00:00:00 GMT.
+        in: query
+        name: longDate
+        required: true
+        type: integer
+      - description: 'pattern used to format the long date(the value could be one
+          of this: YEAR = ''y'',QUARTER = ''QQQQ'',ABBR_QUARTER = ''QQQ'',QUARTER_YEAR
+          = ''QQQQy'',QUARTER_ABBR_YEAR = ''QQQy'',MONTH = ''MMMM'',ABBR_MONTH = ''MMM'',NUM_MONTH
+          = ''M'',MONTH_YEAR = ''MMMMy'',MONTH_ABBR_YEAR = ''MMMy'',MONTH_NUM_YEAR
+          = ''My'',DAY = ''d'',MONTH_DAY_YEAR = ''MMMMdy'',ABBR_MONTH_DAY_YEAR = ''MMMdy'',NUM_MONTH_DAY_YEAR
+          = ''Mdy'',WEEKDAY = ''EEEE'',ABBR_WEEKDAY = ''E'',WEEKDAY_MONTH_DAY_YEAR
+          = ''EEEEMMMMdy'',ABBR_WEEKDAY_MONTH_DAY_YEAR = ''EMMMdy'',NUM_WEEKDAY_MONTH_DAY_YEAR
+          = ''EMdy'',MONTH_DAY = ''MMMMd'',ABBR_MONTH_DAY = ''MMMd'',NUM_MONTH_DAY
+          = ''Md'',WEEKDAY_MONTH_DAY = ''EEEEMMMMd'',ABBR_WEEKDAY_MONTH_DAY = ''EMMMd'',NUM_WEEKDAY_MONTH_DAY
+          = ''EMd'')'
+        in: query
+        name: pattern
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get localized date
+      tags:
+      - formatting-api
+  /formatting/patterns:
+    get:
+      description: Get pattern data with language, region
+      parameters:
+      - description: a string which represents language, e.g. en,en-US,pt,pt-BR,zh-Hans
+        in: query
+        name: language
+        required: true
+        type: string
+      - description: a string which represents region, e.g. US,PT,CN
+        in: query
+        name: region
+        required: true
+        type: string
+      - description: pattern category string, separated by commas. e.g. 'dates,numbers,currencies,plurals,measurements,dateFields'
+        in: query
+        name: scope
+        required: true
+        type: string
+      - description: a string for filtering the pattern data, separated by comma and
+          underline. e.g. 'dates_eras,dates_dateTimeFormats'
+        in: query
+        name: scopeFilter
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "206":
+          description: Successful Partially
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get pattern data
+      tags:
+      - formatting-pattern-api
+  /formatting/patterns/locales/{locale}:
+    get:
+      description: Get pattern data in a specified locale
+      parameters:
+      - description: locale String. e.g. 'en-US'
+        in: path
+        name: locale
+        required: true
+        type: string
+      - description: pattern category string, separated by commas. e.g. 'dates,numbers,currencies,plurals,measurements,dateFields'
+        in: query
+        name: scope
+        required: true
+        type: string
+      - description: a string for filtering the pattern data, separated by comma and
+          underline. e.g. 'dates_eras,dates_dateTimeFormats'
+        in: query
+        name: scopeFilter
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "206":
+          description: Successful Partially
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get pattern data
+      tags:
+      - formatting-pattern-api
+  /locale/regionList:
+    get:
+      description: Get region names in a specified locale
+      parameters:
+      - description: 'the supported language list, separated by commas. e.g. ''en,zh,ja'' '
+        in: query
+        name: supportedLanguageList
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "206":
+          description: Successful Partially
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get region names
+      tags:
+      - locale-api
+  /locale/supportedLanguageList:
+    get:
+      description: Get language display names in a specified locale
+      parameters:
+      - description: product name
+        in: query
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: query
+        name: version
+        required: true
+        type: string
+      - description: displayLanguage
+        in: query
+        name: displayLanguage
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "206":
+          description: Successful Partially
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get language display names
+      tags:
+      - locale-api
+  /translation/products/{productName}/versions/{version}:
+    get:
+      description: Get messages of all the product or parts of the product
+      parameters:
+      - description: product name
+        in: path
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: path
+        name: version
+        required: true
+        type: string
+      - description: locales
+        in: query
+        name: locales
+        type: string
+      - description: components
+        in: query
+        name: components
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "206":
+          description: Successful Partially
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get messages of the product
+      tags:
+      - translation-product-api
+    put:
+      consumes:
+      - application/json
+      description: Update bundles
+      parameters:
+      - description: product name
+        in: path
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: path
+        name: version
+        required: true
+        type: string
+      - description: translationData
+        in: body
+        name: translationData
+        required: true
+        schema:
+          $ref: '#/definitions/translation.UpdateTranslationDTO'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "206":
+          description: Successful Partially
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Update bundles
+      tags:
+      - translation-sync-api
+  /translation/products/{productName}/versions/{version}/componentlist:
+    get:
+      description: Get available component names in the product
+      parameters:
+      - description: product name
+        in: path
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: path
+        name: version
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get component names
+      tags:
+      - translation-product-api
+  /translation/products/{productName}/versions/{version}/localelist:
+    get:
+      description: Get available locale names in the product
+      parameters:
+      - description: product name
+        in: path
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: path
+        name: version
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get locale names
+      tags:
+      - translation-product-api
+  /translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}:
+    get:
+      description: Get messages of a single bundle
+      parameters:
+      - description: product name
+        in: path
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: path
+        name: version
+        required: true
+        type: string
+      - description: locale name
+        in: path
+        name: locale
+        required: true
+        type: string
+      - description: component name
+        in: path
+        name: component
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get messages of a single bundle
+      tags:
+      - translation-product-component-api
+  /translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}:
+    get:
+      deprecated: true
+      description: Get a message by its key
+      parameters:
+      - description: product name
+        in: path
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: path
+        name: version
+        required: true
+        type: string
+      - description: locale name
+        in: path
+        name: locale
+        required: true
+        type: string
+      - description: component name
+        in: path
+        name: component
+        required: true
+        type: string
+      - description: key
+        in: path
+        name: key
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get a message
+      tags:
+      - translation-product-component-key-api
+swagger: "2.0"
+tags:
+- name: formatting-api
+- name: formatting-pattern-api
+- name: locale-api
+- name: translation-product-api
+- name: translation-product-component-api
+- name: translation-product-component-key-api
+- name: translation-sync-api
+- name: translation-with-pattern-api

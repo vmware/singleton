@@ -1,0 +1,47 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/cmd/singleton",
+            "cwd": "${workspaceFolder}",
+            "env": {},
+            "buildFlags": "-tags='jsoniter'",
+            "args": [
+                "--config=${workspaceFolder}/tests/testdata/config/config.yaml",
+                "--local-bundle.base-path=${workspaceFolder}/tests/testdata/bundles",
+            ],
+        },
+        {
+            "name": "Launch test",
+            "type": "go",
+            "request": "launch",
+            "mode": "test",
+            "program": "${workspaceFolder}/tests",
+            "buildFlags": "-tags=jsoniter",
+            "args": [
+                "-test.v",
+                // "-test.run=^TestGetPatternByLangReg$",
+                "--config=${workspaceFolder}/tests/testdata/config/config.yaml"
+            ]
+        },
+       {
+            "name": "Launch bench test",
+            "type": "go",
+            "request": "launch",
+            "mode": "test",
+            "program": "${workspaceFolder}/tests",
+            "cwd": "${workspaceFolder}",
+            "buildFlags": "-tags=jsoniter",
+            "args": [
+                "-test.v",
+                "-test.run=^Benchmark",
+                // "-test.bench=BenchmarkGetComponentsMessages"
+                "--config=${workspaceFolder}/tests/testdata/config/config.yaml"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,954 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a Singleton server",
+        "title": "Singleton Service API",
+        "contact": {
+            "name": "Singleton Team",
+            "url": "https://github.com/vmware/singleton"
+        },
+        "license": {
+            "name": "EPL-2.0",
+            "url": "https://www.eclipse.org/legal/epl-2.0/"
+        },
+        "version": "1.0"
+    },
+    "paths": {
+        "/bundles/components": {
+            "get": {
+                "description": "Get the component list by the specific version.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "translation-product-api"
+                ],
+                "summary": "Get the component list",
+                "deprecated": true,
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "product name",
+                        "name": "productName",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "version",
+                        "name": "version",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/date/localizedDate": {
+            "get": {
+                "description": "Get localized date by locale and pattern",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "formatting-api"
+                ],
+                "summary": "Get localized date",
+                "deprecated": true,
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "locale String. e.g. 'en-US'",
+                        "name": "locale",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "long value of the date(e.g. 1472728030290). the specified number of milliseconds since the standard base time known as 'the epoch', namely January 1, 1970, 00:00:00 GMT.",
+                        "name": "longDate",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "pattern used to format the long date(the value could be one of this: YEAR = 'y',QUARTER = 'QQQQ',ABBR_QUARTER = 'QQQ',QUARTER_YEAR = 'QQQQy',QUARTER_ABBR_YEAR = 'QQQy',MONTH = 'MMMM',ABBR_MONTH = 'MMM',NUM_MONTH = 'M',MONTH_YEAR = 'MMMMy',MONTH_ABBR_YEAR = 'MMMy',MONTH_NUM_YEAR = 'My',DAY = 'd',MONTH_DAY_YEAR = 'MMMMdy',ABBR_MONTH_DAY_YEAR = 'MMMdy',NUM_MONTH_DAY_YEAR = 'Mdy',WEEKDAY = 'EEEE',ABBR_WEEKDAY = 'E',WEEKDAY_MONTH_DAY_YEAR = 'EEEEMMMMdy',ABBR_WEEKDAY_MONTH_DAY_YEAR = 'EMMMdy',NUM_WEEKDAY_MONTH_DAY_YEAR = 'EMdy',MONTH_DAY = 'MMMMd',ABBR_MONTH_DAY = 'MMMd',NUM_MONTH_DAY = 'Md',WEEKDAY_MONTH_DAY = 'EEEEMMMMd',ABBR_WEEKDAY_MONTH_DAY = 'EMMMd',NUM_WEEKDAY_MONTH_DAY = 'EMd')",
+                        "name": "pattern",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/i18nPattern": {
+            "get": {
+                "description": "Get pattern from CLDR by locale and scope",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "formatting-pattern-api"
+                ],
+                "summary": "Get pattern from CLDR",
+                "deprecated": true,
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "locale String. e.g. 'en-US'",
+                        "name": "locale",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "pattern category string, separated by commas. e.g. 'dates,numbers,currencies,plurals,measurements,dateFields'",
+                        "name": "scope",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "a string for filtering the pattern data, separated by comma and underline. e.g. 'dates_eras,dates_dateTimeFormats'",
+                        "name": "scopeFilter",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "206": {
+                        "description": "Successful Partially",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/translation": {
+            "get": {
+                "description": "Get the product's translations by the specific version.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "translation-product-api"
+                ],
+                "summary": "Get the product's translation",
+                "deprecated": true,
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "product name",
+                        "name": "productName",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "version",
+                        "name": "version",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "locale String. e.g. 'en-US'",
+                        "name": "locale",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "206": {
+                        "description": "Successful Partially",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/translation/component": {
+            "get": {
+                "description": "Get a component's translation by the specific version",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "translation-component-api"
+                ],
+                "summary": "Get a component's translation",
+                "deprecated": true,
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "product name",
+                        "name": "productName",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "version",
+                        "name": "version",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "locale String. e.g. 'en-US'",
+                        "name": "locale",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "component name",
+                        "name": "component",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/translation/components": {
+            "get": {
+                "description": "Get multiple components' by the specific version",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "translation-component-api"
+                ],
+                "summary": "Get multiple components' translation",
+                "deprecated": true,
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "product name",
+                        "name": "productName",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "version",
+                        "name": "version",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "locales",
+                        "name": "locales",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "components",
+                        "name": "components",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "206": {
+                        "description": "Successful Partially",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/translation/product/{productName}/component/{component}": {
+            "get": {
+                "description": "Get a component's translation by the specific version",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "translation-product-component-api"
+                ],
+                "summary": "Get a component's translation",
+                "deprecated": true,
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "product name",
+                        "name": "productName",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "version",
+                        "name": "version",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "locale String. e.g. 'en-US'",
+                        "name": "locale",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "component name",
+                        "name": "component",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/translation/product/{productName}/component/{component}/key/{key}": {
+            "get": {
+                "description": "Get a key's translation in specific component",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "translation-product-component-key-api"
+                ],
+                "summary": "Get a key's translation",
+                "deprecated": true,
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "product name",
+                        "name": "productName",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "version",
+                        "name": "version",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "locale String. e.g. 'en-US'",
+                        "name": "locale",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "component name",
+                        "name": "component",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "key",
+                        "name": "key",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/translation/product/{productName}/components/{components}": {
+            "get": {
+                "description": "Get multiple components' by the specific version",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "translation-product-component-api"
+                ],
+                "summary": "Get multiple components' by the specific version",
+                "deprecated": true,
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "product name",
+                        "name": "productName",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "version",
+                        "name": "version",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "locales",
+                        "name": "locales",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "components",
+                        "name": "components",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "206": {
+                        "description": "Successful Partially",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/translation/product/{productName}/key/{key}": {
+            "get": {
+                "description": "Get a key's translation in specific component",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "translation-product-component-key-api"
+                ],
+                "summary": "Get a key's translation",
+                "deprecated": true,
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "product name",
+                        "name": "productName",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "version",
+                        "name": "version",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "locale String. e.g. 'en-US'",
+                        "name": "locale",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "key",
+                        "name": "key",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/translation/product/{productName}/version/{version}": {
+            "put": {
+                "description": "Update translation",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "translation-sync-api"
+                ],
+                "summary": "Update translation",
+                "deprecated": true,
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "product name",
+                        "name": "productName",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "version",
+                        "name": "version",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "translationData",
+                        "name": "translationData",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/translation.UpdateTranslationDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "206": {
+                        "description": "Successful Partially",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/translation/product/{productName}/version/{version}/supportedLocales": {
+            "get": {
+                "description": "Get the supported locale list which contains all supported locale by the specific version.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "translation-product-api"
+                ],
+                "summary": "Get the supported locale list",
+                "deprecated": true,
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "product name",
+                        "name": "productName",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "version",
+                        "name": "version",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/translation/string": {
+            "get": {
+                "description": "Get a key's translation in specific component",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "translation-key-api"
+                ],
+                "summary": "Get a key's translation",
+                "deprecated": true,
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "product name",
+                        "name": "productName",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "version",
+                        "name": "version",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "locale String. e.g. 'en-US'",
+                        "name": "locale",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "component name",
+                        "name": "component",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "key",
+                        "name": "key",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "api.BusinessError": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.Response": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object"
+                },
+                "response": {
+                    "$ref": "#/definitions/api.BusinessError"
+                }
+            }
+        },
+        "translation.UpdateTranslationDTO": {
+            "type": "object"
+        }
+    },
+    "tags": [
+        {
+            "name": "formatting-api"
+        },
+        {
+            "name": "formatting-pattern-api"
+        },
+        {
+            "name": "translation-component-api"
+        },
+        {
+            "name": "translation-key-api"
+        },
+        {
+            "name": "translation-product-api"
+        },
+        {
+            "name": "translation-product-component-api"
+        },
+        {
+            "name": "translation-product-component-key-api"
+        },
+        {
+            "name": "translation-sync-api"
+        }
+    ]
+}
