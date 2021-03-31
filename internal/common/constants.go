@@ -9,3 +9,8 @@ const (
 	ParamAnd = "&"
 	ParamSep = ","
 )
+
+const (
+	FailToReadCache = "Fail to read from cache: '%s'"
+)
+

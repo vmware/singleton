@@ -10,6 +10,8 @@ import (
 	"sgtnserver/internal/logger"
 	"strings"
 	"time"
+
+	"go.uber.org/zap"
 )
 
 // Contains ...
@@ -50,31 +52,26 @@ func TitleCase(s string) string {
 	return s
 }
 
-// DoOrWait ...
-func DoOrWait(ctx context.Context, doing chan struct{}, doer func() error, waiter func() error, todo bool) {
-	if todo {
-		var err error
-		defer func() {
-			defer close(doing)
-			if err == nil {
-				start := time.Now()
-				for {
-					if err := waiter(); err == nil {
-						break
-					}
-					if time.Since(start) > time.Millisecond*30 {
-						logger.FromContext(ctx).DPanic("Time out to wait for cache ready. Suggest to wait more time!")
-						break
-					}
-					time.Sleep(time.Microsecond)
+// DoAndCheck ...
+func DoAndCheck(ctx context.Context, done chan struct{}, doer, checker func() error) (err error) {
+	const waittime, retryInterval = time.Millisecond * 30, time.Microsecond * 100
+	defer func() {
+		defer close(done)
+		if err == nil {
+			start := time.Now()
+			for {
+				if err := checker(); err == nil {
+					break
 				}
+				if time.Since(start) >= waittime {
+					logger.FromContext(ctx).DPanic("Time out to wait for cache ready. Suggest to wait more time!", zap.Duration("waitTime", waittime))
+					break
+				}
+				time.Sleep(retryInterval)
 			}
-		}()
-		err = doer()
-	} else {
-		<-doing
-		waiter()
-	}
+		}
+	}()
+	return doer()
 }
 
 func ToGenericArray(x []string) []interface{} {

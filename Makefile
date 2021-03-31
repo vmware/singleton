@@ -18,7 +18,7 @@ BUILDSFOLDER = builds
 BINARY = ${BUILDSFOLDER}/singleton-$(GOOS)-$(GOARCH)
 
 BUILD_CMD = go build -tags="${ALL_TAGS}" ${LDFLAGS} -o $(BINARY) "${PKG_PATH}"
-TEST_CMD = go test ./tests --config="${config}" -tags="${ALL_TAGS}"
+TEST_CMD = go test ./tests --config="${config}" -tags="${ALL_TAGS}" -failfast
 
 default: build
 
@@ -43,9 +43,9 @@ endif
 
 test:
 ifdef tests
-	${TEST_CMD} -v -run="${tests}" -failfast
+	${TEST_CMD} -v -run="${tests}" -race
 else
-	${TEST_CMD} -v -failfast
+	${TEST_CMD} -v -race
 endif
 
 bench:

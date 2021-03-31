@@ -33,40 +33,40 @@ func (c *TransCacheMgr) GetBundleInfo(ctx context.Context) (*translation.BundleI
 
 func (c *TransCacheMgr) GetBundle(ctx context.Context, id *translation.BundleID) (data *translation.Bundle, err error) {
 	cacheKey := getCacheKey(id)
-	if bundleData, err := c.Cache.Get(cacheKey); err == nil {
-		return bundleData.(*translation.Bundle), nil
+
+	//Read from cache
+	if dataInCache, err := c.Cache.Get(cacheKey); err == nil {
+		return dataInCache.(*translation.Bundle), nil
 	}
 
-	populateCache := func() error {
+	// (Read from storage and populate cache) or (wait and read from cache)
+	populateCache := func() (err error) {
 		data, err = c.DAO.GetBundle(ctx, id)
 		if err == nil {
-			if setCacheError := c.Cache.Set(cacheKey, data); setCacheError != nil {
-				logger.FromContext(ctx).DPanic(setCacheError.Error())
-				return setCacheError
+			if cacheErr := c.Cache.Set(cacheKey, data); cacheErr != nil {
+				logger.FromContext(ctx).DPanic(cacheErr.Error())
+				return cacheErr
 			}
 		}
-		return err
+		return
 	}
-	var getCacheError error // For log error message before return
 	getFromCache := func() error {
-		if bundleData, e := c.Cache.Get(cacheKey); e == nil {
-			data = bundleData.(*translation.Bundle)
-			err = nil
-		} else {
-			err = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(e, "Fail to read from cache: '%s'", cacheKey)
-			// because this function is used to verify cache is ready, my run many times. So can't log error here, log it below
-		}
-		getCacheError = err
+		_, err := c.Cache.Get(cacheKey)
 		return err
 	}
+
 	actual, loaded := c.locks.LoadOrStore(cacheKey, make(chan struct{}))
 	if !loaded {
 		defer c.locks.Delete(cacheKey)
-	}
-	common.DoOrWait(ctx, actual.(chan struct{}), populateCache, getFromCache, !loaded)
-
-	if loaded && getCacheError != nil { // For the routine waiting for cache population, should log the error message.
-		logger.FromContext(ctx).DPanic(getCacheError.Error())
+		err = common.DoAndCheck(ctx, actual.(chan struct{}), populateCache, getFromCache)
+	} else { // For the routine waiting for cache population, get from cache
+		<-actual.(chan struct{})
+		if dataInCache, e := c.Cache.Get(cacheKey); e == nil {
+			data = dataInCache.(*translation.Bundle)
+		} else {
+			err = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(e, common.FailToReadCache, cacheKey)
+			logger.FromContext(ctx).DPanic(err.Error())
+		}
 	}
 
 	return

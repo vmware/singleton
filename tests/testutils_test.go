@@ -22,13 +22,9 @@ import (
 	"github.com/jucardi/go-osx/paths"
 
 	"sgtnserver/api"
-	_ "sgtnserver/api/v1/cldr"
-	_ "sgtnserver/api/v1/formatting"
-	_ "sgtnserver/api/v1/translation"
 	v2 "sgtnserver/api/v2"
 	_ "sgtnserver/api/v2/cldr"
 	_ "sgtnserver/api/v2/combine"
-	_ "sgtnserver/api/v2/formatting"
 	_ "sgtnserver/api/v2/translation"
 	"sgtnserver/internal/logger"
 )

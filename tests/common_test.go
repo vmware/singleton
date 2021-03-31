@@ -21,22 +21,20 @@ import (
 	"go.uber.org/zap"
 )
 
-func TestDoOrWait(t *testing.T) {
+func TestDoAndCheck(t *testing.T) {
 	group := sync.WaitGroup{}
 
 	doneCount := 0
 	waiterCount := int64(0)
-	doing := make(chan struct{})
+	done := make(chan struct{})
 	doer := func() error {
 		doneCount++
 		time.Sleep(time.Millisecond)
-		group.Done()
 		return nil
 	}
 	waiter := func() error {
 		atomic.AddInt64(&waiterCount, 1)
 		time.Sleep(time.Millisecond)
-		group.Done()
 		return nil
 	}
 
@@ -45,11 +43,18 @@ func TestDoOrWait(t *testing.T) {
 	for i := 0; i < maxNumber; i++ {
 		todo := false
 		if i == r {
-			group.Add(1)
 			todo = true
 		}
 		group.Add(1)
-		go common.DoOrWait(logger.NewContext(nil, logger.Log.With(zap.Int("thread", i))), doing, doer, waiter, todo)
+		go func(i int) {
+			if todo {
+				common.DoAndCheck(logger.NewContext(nil, logger.Log.With(zap.Int("thread", i))), done, doer, waiter)
+			} else {
+				<-done
+				waiter()
+			}
+			group.Done()
+		}(i)
 	}
 
 	group.Wait()

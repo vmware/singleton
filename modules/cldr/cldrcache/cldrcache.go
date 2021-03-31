@@ -68,53 +68,49 @@ func GetLocaleData(ctx context.Context, locale, dataType string, data interface{
 	}
 
 	cacheKey := dataType + ":" + cldrLocale
+
+	//Read from cache
 	if dataInCache, e := localeDataCache.Get(cacheKey); e == nil {
-		reflect.ValueOf(data).Elem().Set(reflect.ValueOf(dataInCache).Elem())
+		reflect.ValueOf(data).Elem().Set(reflect.ValueOf(dataInCache))
 		return nil
 	}
 	if _, ok := nonexistentMap.Load(cacheKey); ok {
 		return sgtnerror.StatusNotFound.WithUserMessage("Locale is '%s', type is %v", locale, dataType)
 	}
 
-	populateCache := func() error {
+	// (Read from storage and populate cache) or (wait and read from cache)
+	populateCache := func() (err error) {
 		err = dao.GetLocaleData(ctx, dataType, cldrLocale, data)
 		if err == nil {
-			if setCacheError := localeDataCache.Set(cacheKey, data); setCacheError != nil {
-				logger.FromContext(ctx).DPanic(setCacheError.Error())
-				return setCacheError
+			if cacheErr := localeDataCache.Set(cacheKey, reflect.ValueOf(data).Elem().Interface()); cacheErr != nil {
+				logger.FromContext(ctx).DPanic(cacheErr.Error())
+				return cacheErr
 			}
-		} else if // this is for contextTransforms, only part of locales have this data. Save cache to avoid querying from storage repeated
-		sgtnerror.GetCode(err) == http.StatusNotFound {
-			nonexistentMap.Store(cacheKey, nil)
+		} else if sgtnerror.GetCode(err) == http.StatusNotFound {
+			nonexistentMap.Store(cacheKey, nil) // this is for contextTransforms, only part of locales have this data. Save result to avoid querying from storage repeatedly
 		}
-
 		return err
 	}
-
-	var getCacheError error // For log error message before return
 	getFromCache := func() error {
-		if dataInCache, e := localeDataCache.Get(cacheKey); e == nil {
-			reflect.ValueOf(data).Elem().Set(reflect.ValueOf(dataInCache).Elem())
-			err = nil
-		} else {
-			err = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(e, "Fail to read locale data from cache: '%s'", cacheKey)
-			// because this function is used to verify cache is ready, my run many times. So can't log error here, log it below
-		}
-		getCacheError = err
+		_, err := localeDataCache.Get(cacheKey)
 		return err
 	}
 
 	actual, loaded := localeDataLocks.LoadOrStore(cacheKey, make(chan struct{}))
 	if !loaded {
 		defer localeDataLocks.Delete(cacheKey)
+		err = common.DoAndCheck(ctx, actual.(chan struct{}), populateCache, getFromCache)
+	} else { // For the routine waiting for cache population, get from cache
+		<-actual.(chan struct{})
+		if dataInCache, e := localeDataCache.Get(cacheKey); e == nil {
+			reflect.ValueOf(data).Elem().Set(reflect.ValueOf(dataInCache))
+		} else {
+			err = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(e, common.FailToReadCache, cacheKey)
+			logger.FromContext(ctx).DPanic(err.Error())
+		}
 	}
 
-	common.DoOrWait(ctx, actual.(chan struct{}), populateCache, getFromCache, !loaded)
-
-	if loaded && getCacheError != nil { // For the routine waiting for cache population, should log the error message.
-		logger.FromContext(ctx).DPanic(getCacheError.Error())
-	}
-	return err
+	return
 }
 
 // InitCLDRCache .
