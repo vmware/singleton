@@ -7,6 +7,7 @@ using Newtonsoft.Json.Linq;
 using SingletonClient.Implementation.Support;
 using System.Collections;
 using System.Text.RegularExpressions;
+using static SingletonClient.Implementation.SingletonUtil;
 
 namespace SingletonClient.Implementation
 {
@@ -67,7 +68,8 @@ namespace SingletonClient.Implementation
                 headers[SingletonConst.HeaderRequestEtag] = _etag;
             }
             JObject obj = SingletonUtil.HttpGetJson(_releaseObject.GetAccessService(), adr, headers);
-            if (SingletonUtil.CheckResponseValid(obj, headers))
+            ResponseStatus status = SingletonUtil.CheckResponseValid(obj, headers);
+            if (status == ResponseStatus.Messages)
             {
                 _etag = (string)headers[SingletonConst.HeaderEtag];
                 string cacheControl = (string)headers[SingletonConst.HeaderCacheControl];
@@ -93,7 +95,7 @@ namespace SingletonClient.Implementation
                     _componentCache.SetString(item.Key.ToString(), item.Value.ToString());
                 }
             }
-            else if (!obj.HasValues)
+            else if (status == ResponseStatus.NetFail || status == ResponseStatus.NoMessages)
             {
                 GetDataFromLocal();
             }

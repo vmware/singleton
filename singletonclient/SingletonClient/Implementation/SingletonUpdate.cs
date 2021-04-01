@@ -8,6 +8,7 @@ using SingletonClient.Implementation.Support;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using static SingletonClient.Implementation.SingletonUtil;
 
 namespace SingletonClient.Implementation
 {
@@ -67,7 +68,7 @@ namespace SingletonClient.Implementation
             Hashtable headers = SingletonUtil.NewHashtable(false);
             JObject obj = SingletonUtil.HttpGetJson(_release.GetAccessService(), url, headers);
 
-            if (SingletonUtil.CheckResponseValid(obj, headers))
+            if (SingletonUtil.CheckResponseValid(obj, headers) == ResponseStatus.Messages)
             {
                 JObject result = obj.Value<JObject>(SingletonConst.KeyResult);
                 JObject data = result.Value<JObject>(SingletonConst.KeyData);
