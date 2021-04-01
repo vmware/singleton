@@ -10,11 +10,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 /**
  * the configuration of the S3 client
  */
 @Configuration
+@Profile("s3")
 public class S3Config {
 	private static Logger logger = LoggerFactory.getLogger(S3Config.class);
 	public String getAccessKey() {

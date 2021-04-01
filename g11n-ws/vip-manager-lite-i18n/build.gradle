@@ -49,6 +49,13 @@ test {
 
 
 dependencies {
+   if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
+        compile project(":md-data-api-pgimpl")
+    }else if (project.hasProperty('datatype') && project.getProperty('datatype') == 's3') {
+        compile project(":md-data-api-s3impl")
+    }else {
+        compile project(":md-data-api-bundleimpl")
+    }
     compile project(":vip-common")
     compile project(":md-restful-api-i18n")
     compile("org.apache.commons:commons-lang3:$commonsLangVersion")

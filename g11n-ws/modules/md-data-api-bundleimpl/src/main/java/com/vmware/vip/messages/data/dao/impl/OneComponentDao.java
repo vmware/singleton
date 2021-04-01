@@ -12,6 +12,7 @@ import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -35,6 +36,7 @@ import com.vmware.vip.messages.data.exception.BundleException;
  * This java class is used to handle translation bundle file or translation
  * cache for single component
  */
+@Profile("bundle")
 @Repository
 public class OneComponentDao implements IOneComponentDao {
 	

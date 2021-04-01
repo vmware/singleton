@@ -37,14 +37,6 @@ repositories {
 }
 
 dependencies {
-
-    if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
-        compile project(":md-data-api-pgimpl")
-    }else if (project.hasProperty('datatype') && project.getProperty('datatype') == 's3') {
-        compile project(":md-data-api-s3impl")
-    }else {
-        compile project(":md-data-api-bundleimpl")
-    }
     compile project(":md-data-api-mt")
     compile project(":md-data-api")
     compile project(":vip-common")
