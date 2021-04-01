@@ -54,24 +54,24 @@ func TitleCase(s string) string {
 
 // DoAndCheck ...
 func DoAndCheck(ctx context.Context, done chan struct{}, doer, checker func() error) (err error) {
+	defer close(done)
+
 	const waittime, retryInterval = time.Millisecond * 30, time.Microsecond * 100
-	defer func() {
-		defer close(done)
-		if err == nil {
-			start := time.Now()
-			for {
-				if err := checker(); err == nil {
-					break
-				}
-				if time.Since(start) >= waittime {
-					logger.FromContext(ctx).DPanic("Time out to wait for cache ready. Suggest to wait more time!", zap.Duration("waitTime", waittime))
-					break
-				}
-				time.Sleep(retryInterval)
+	err = doer()
+	if err == nil {
+		start := time.Now()
+		for {
+			if err := checker(); err == nil {
+				break
 			}
+			if time.Since(start) >= waittime {
+				logger.FromContext(ctx).DPanic("Time out to wait for cache ready. Suggest to wait more time!", zap.Duration("waitTime", waittime))
+				break
+			}
+			time.Sleep(retryInterval)
 		}
-	}()
-	return doer()
+	}
+	return
 }
 
 func ToGenericArray(x []string) []interface{} {

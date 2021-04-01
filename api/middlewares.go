@@ -85,42 +85,45 @@ func GinZap(log *zap.Logger) gin.HandlerFunc {
 func RecoveryWithZap(log *zap.Logger) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		defer func() {
-			if err := recover(); err != nil {
-				if zLog, ok := c.Get(LoggerKey); ok {
-					log = zLog.(*zap.Logger)
-				}
+			err := recover()
+			if err == nil {
+				return
+			}
 
-				// Check for a broken connection, as it is not really a
-				// condition that warrants a panic stack trace.
-				var brokenPipe bool
-				if ne, ok := err.(*net.OpError); ok {
-					if se, ok := ne.Err.(*os.SyscallError); ok {
-						if strings.Contains(strings.ToLower(se.Error()), "broken pipe") || strings.Contains(strings.ToLower(se.Error()), "connection reset by peer") {
-							brokenPipe = true
-						}
+			if zLog, ok := c.Get(LoggerKey); ok {
+				log = zLog.(*zap.Logger)
+			}
+
+			// Check for a broken connection, as it is not really a
+			// condition that warrants a panic stack trace.
+			var brokenPipe bool
+			if ne, ok := err.(*net.OpError); ok {
+				if se, ok := ne.Err.(*os.SyscallError); ok {
+					if strings.Contains(strings.ToLower(se.Error()), "broken pipe") || strings.Contains(strings.ToLower(se.Error()), "connection reset by peer") {
+						brokenPipe = true
 					}
 				}
+			}
 
-				fields := []zapcore.Field{zap.Time("time", time.Now()), zap.String("path", c.Request.URL.Path), zap.Any("error", err)}
-				if gin.IsDebugging() {
-					httpRequest, _ := httputil.DumpRequest(c.Request, true)
-					hds := strings.Split(string(httpRequest), "\r\n")
-					for idx, header := range hds {
-						current := strings.Split(header, ":")
-						if current[0] == "Authorization" {
-							hds[idx] = current[0] + ": *"
-						}
+			fields := []zapcore.Field{zap.Time("time", time.Now()), zap.String("path", c.Request.URL.Path), zap.Any("error", err)}
+			if gin.IsDebugging() {
+				httpRequest, _ := httputil.DumpRequest(c.Request, true)
+				hds := strings.Split(string(httpRequest), "\r\n")
+				for idx, header := range hds {
+					current := strings.Split(header, ":")
+					if current[0] == "Authorization" {
+						hds[idx] = current[0] + ": *"
 					}
-					fields = append(fields, zap.Strings("headers", hds), zap.ByteString("request", httpRequest))
 				}
-				log.Error("[Recovery from panic]", fields...)
+				fields = append(fields, zap.Strings("headers", hds), zap.ByteString("request", httpRequest))
+			}
+			log.Error("[Recovery from panic]", fields...)
 
-				// If the connection is dead, we can't write a status to it.
-				if brokenPipe {
-					c.Abort()
-				} else {
-					c.AbortWithStatus(http.StatusInternalServerError)
-				}
+			// If the connection is dead, we can't write a status to it.
+			if brokenPipe {
+				c.Abort()
+			} else {
+				c.AbortWithStatus(http.StatusInternalServerError)
 			}
 		}()
 

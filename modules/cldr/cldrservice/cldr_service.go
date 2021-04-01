@@ -156,63 +156,62 @@ func processFilters(data map[string]interface{}, scopeFilter string) map[string]
 		return data
 	}
 
-	const scopeFilterSep = "_"
-	const excludeMark = "^"
-	const objxMapPathSep = "."
-
-	excludeNodes := func(data map[string]interface{}, filters string) map[string]interface{} {
-		for _, filter := range strings.Split(filters, common.ParamSep) {
-			if filter == "" {
-				continue
-			}
-
-			parts := strings.Split(filter, scopeFilterSep)
-			if patternData := data[parts[0]]; patternData != nil {
-				if anyValue, ok := patternData.(jsoniter.Any); ok {
-					patternData = objx.Map{}
-					anyValue.ToVal(&patternData)
-					data[parts[0]] = patternData
-				}
-				parentM := objx.Map(patternData.(map[string]interface{}))
-				parentPath := strings.Join(parts[1:len(parts)-1], objxMapPathSep)
-				if parentPath != "" {
-					parentM = parentM.Get(parentPath).ObjxMap()
-				}
-				delete(parentM, parts[len(parts)-1])
-			}
-		}
-		return data
-	}
-	includeNodes := func(data map[string]interface{}, filters string) map[string]interface{} {
-		oldData := objx.Map(data)
-		newData := objx.Map{}
-		for _, filter := range strings.Split(filters, common.ParamSep) {
-			if filter == "" {
-				continue
-			}
-
-			var v interface{}
-			filterParts := strings.Split(filter, scopeFilterSep)
-			objxPath := strings.Join(filterParts, objxMapPathSep)
-			if partData := oldData[filterParts[0]]; partData != nil {
-				if anyValue, ok := partData.(jsoniter.Any); ok {
-					if targetAnyValue := anyValue.Get(common.ToGenericArray(filterParts[1:])...); targetAnyValue.LastError() == nil {
-						v = targetAnyValue
-					}
-				} else {
-					logger.Log.Error("Pattern data type is not jsoniter.Any!")
-				}
-			}
-			newData.Set(objxPath, v)
-		}
-
-		return newData
-	}
-
-	if strings.HasPrefix(scopeFilter, excludeMark) {
+	if strings.HasPrefix(scopeFilter, "^") {
 		tempFilters := strings.TrimSuffix(strings.TrimPrefix(scopeFilter[1:], "("), ")")
 		return excludeNodes(data, tempFilters)
 	} else {
 		return includeNodes(data, scopeFilter)
 	}
+}
+
+const scopeFilterSep = "_"
+const objxMapPathSep = "."
+
+func excludeNodes(data map[string]interface{}, filters string) map[string]interface{} {
+	for _, filter := range strings.Split(filters, common.ParamSep) {
+		if filter == "" {
+			continue
+		}
+
+		parts := strings.Split(filter, scopeFilterSep)
+		if patternData := data[parts[0]]; patternData != nil {
+			if anyValue, ok := patternData.(jsoniter.Any); ok {
+				patternData = objx.Map{}
+				anyValue.ToVal(&patternData)
+				data[parts[0]] = patternData
+			}
+			parentM := objx.Map(patternData.(map[string]interface{}))
+			parentPath := strings.Join(parts[1:len(parts)-1], objxMapPathSep)
+			if parentPath != "" {
+				parentM = parentM.Get(parentPath).ObjxMap()
+			}
+			delete(parentM, parts[len(parts)-1])
+		}
+	}
+	return data
+}
+func includeNodes(data map[string]interface{}, filters string) map[string]interface{} {
+	oldData := objx.Map(data)
+	newData := objx.Map{}
+	for _, filter := range strings.Split(filters, common.ParamSep) {
+		if filter == "" {
+			continue
+		}
+
+		var v interface{}
+		filterParts := strings.Split(filter, scopeFilterSep)
+		objxPath := strings.Join(filterParts, objxMapPathSep)
+		if partData := oldData[filterParts[0]]; partData != nil {
+			if anyValue, ok := partData.(jsoniter.Any); ok {
+				if targetAnyValue := anyValue.Get(common.ToGenericArray(filterParts[1:])...); targetAnyValue.LastError() == nil {
+					v = targetAnyValue
+				}
+			} else {
+				logger.Log.Error("Pattern data type is not jsoniter.Any!")
+			}
+		}
+		newData.Set(objxPath, v)
+	}
+
+	return newData
 }
