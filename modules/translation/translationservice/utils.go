@@ -30,7 +30,7 @@ func PickupLocales(name, version string, locales []string) []string {
 		return locales
 	}
 
-	pickedLocales := make([]string, len(locales), len(locales))
+	pickedLocales := make([]string, len(locales))
 	for i, locale := range locales {
 		if pickedLocale := PickupLocaleFromList(localeCandidates, locale); pickedLocale != "" {
 			pickedLocales[i] = pickedLocale
@@ -70,11 +70,11 @@ func PickupLocaleFromList(locales sets.Set, preferredLocale string) string {
 		if strings.EqualFold(normalizedInLoopLocale.Language, normalizedOriginalLocale.Language) {
 			chosenLocale = normalizedInLoopLocale.Language
 			script := normalizedInLoopLocale.Scripts
-			if "" != (script) && strings.EqualFold(script, normalizedOriginalLocale.Scripts) {
+			if script != "" && strings.EqualFold(script, normalizedOriginalLocale.Scripts) {
 				chosenLocale = normalizedOriginalLocale.Language + cldr.LocalePartSep + script
 			}
 			region := normalizedInLoopLocale.Region
-			if "" != region && strings.EqualFold(region, normalizedOriginalLocale.Region) {
+			if region != "" && strings.EqualFold(region, normalizedOriginalLocale.Region) {
 				chosenLocale = chosenLocale + cldr.LocalePartSep + region
 			}
 		}

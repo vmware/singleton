@@ -53,10 +53,8 @@ func GetPatternByLangReg(ctx context.Context, language, region, catgs, filter st
 			if normalizedLanguage == "" {
 				err = sgtnerror.StatusNotFound.WithUserMessage(cldr.InvalidLocale, language)
 				log.Error(err.Error())
-			} else {
-				if catgData, err = localeutil.GetPatternData(ctx, normalizedLanguage, catg); err == nil {
-					specialCatgNumber++
-				}
+			} else if catgData, err = localeutil.GetPatternData(ctx, normalizedLanguage, catg); err == nil {
+				specialCatgNumber++
 			}
 		} else {
 			if combinedLocale == "" {
@@ -80,15 +78,15 @@ func GetPatternByLangReg(ctx context.Context, language, region, catgs, filter st
 	getSupplementalData(ctx, resultMap, returnErr)
 
 	localeToSet := combinedLocale
-	if len(resultMap) == 0 {
+	switch {
+	case len(resultMap) == 0:
 		localeToSet = ""
-	} else if specialCatgNumber == len(resultMap) {
+	case specialCatgNumber == len(resultMap):
 		localeToSet = normalizedLanguage
-	} else if specialCatgNumber != 0 {
-		if combinedLocale != normalizedLanguage {
-			localeToSet = ""
-		}
+	case specialCatgNumber != 0 && combinedLocale != normalizedLanguage:
+		localeToSet = ""
 	}
+
 	return resultMap, localeToSet, returnErr.ErrorOrNil()
 }
 

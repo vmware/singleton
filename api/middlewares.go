@@ -74,7 +74,7 @@ func GinZap(log *zap.Logger) gin.HandlerFunc {
 
 		defer func() {
 			if ce := newLog.Check(zap.InfoLevel, "End a request"); ce != nil {
-				ce.Write(zap.Int("status", c.Writer.Status()), zap.Duration("latency", time.Now().Sub(start)))
+				ce.Write(zap.Int("status", c.Writer.Status()), zap.Duration("latency", time.Since(start)))
 			}
 		}()
 
@@ -98,10 +98,11 @@ func RecoveryWithZap(log *zap.Logger) gin.HandlerFunc {
 			// condition that warrants a panic stack trace.
 			var brokenPipe bool
 			if ne, ok := err.(*net.OpError); ok {
-				if se, ok := ne.Err.(*os.SyscallError); ok {
-					if strings.Contains(strings.ToLower(se.Error()), "broken pipe") || strings.Contains(strings.ToLower(se.Error()), "connection reset by peer") {
-						brokenPipe = true
-					}
+				se, ok := ne.Err.(*os.SyscallError)
+				if ok &&
+					(strings.Contains(strings.ToLower(se.Error()), "broken pipe") ||
+						strings.Contains(strings.ToLower(se.Error()), "connection reset by peer")) {
+					brokenPipe = true
 				}
 			}
 
@@ -132,31 +133,32 @@ func RecoveryWithZap(log *zap.Logger) gin.HandlerFunc {
 }
 
 func CompressResponse() func(*gin.Context) {
+	brCompressor := brotli.Brotli(brotli.DefaultCompression)
+	brHandler := func(c *gin.Context) bool {
+		if strings.Contains(c.Request.Header.Get(headers.AcceptEncoding), CompressionBrotli) {
+			brCompressor(c)
+			return true
+		}
+		return false
+	}
+
+	gzipCompressor := gzip.Gzip(gzip.DefaultCompression)
+	gzipHandler := func(c *gin.Context) bool {
+		if strings.Contains(c.Request.Header.Get(headers.AcceptEncoding), CompressionGzip) {
+			gzipCompressor(c)
+			return true
+		}
+		return false
+	}
+
 	var processors []func(c *gin.Context) bool
 	for _, algorithm := range strings.Split(config.Settings.Server.CompressionAlgorithm, common.ParamAnd) {
 		switch algorithm {
 		case CompressionBrotli:
-			brCompressor := brotli.Brotli(brotli.DefaultCompression)
-			handler := func(c *gin.Context) bool {
-				if strings.Contains(c.Request.Header.Get(headers.AcceptEncoding), CompressionBrotli) {
-					brCompressor(c)
-					return true
-				}
-				return false
-			}
-			processors = append(processors, handler)
+			processors = append(processors, brHandler)
 		case CompressionGzip:
-			gzipCompressor := gzip.Gzip(gzip.DefaultCompression)
-			handler := func(c *gin.Context) bool {
-				if strings.Contains(c.Request.Header.Get(headers.AcceptEncoding), CompressionGzip) {
-					gzipCompressor(c)
-					return true
-				}
-				return false
-			}
-			processors = append(processors, handler)
+			processors = append(processors, gzipHandler)
 		}
-
 	}
 
 	return func(c *gin.Context) {

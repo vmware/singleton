@@ -7,9 +7,10 @@ package common
 
 import (
 	"context"
-	"sgtnserver/internal/logger"
 	"strings"
 	"time"
+
+	"sgtnserver/internal/logger"
 
 	"go.uber.org/zap"
 )
@@ -45,7 +46,7 @@ func TitleCase(s string) string {
 
 	if s[0] >= 'a' && s[0] <= 'z' {
 		bts := []byte(s)
-		bts[0] = bts[0] - 32
+		bts[0] -= 32
 		return string(bts)
 	}
 
@@ -56,7 +57,7 @@ func TitleCase(s string) string {
 func DoAndCheck(ctx context.Context, done chan struct{}, doer, checker func() error) (err error) {
 	defer close(done)
 
-	const waittime, retryInterval = time.Millisecond * 30, time.Microsecond * 100
+	const waitTime, retryInterval = time.Millisecond * 30, time.Microsecond * 100
 	err = doer()
 	if err == nil {
 		start := time.Now()
@@ -64,8 +65,8 @@ func DoAndCheck(ctx context.Context, done chan struct{}, doer, checker func() er
 			if err := checker(); err == nil {
 				break
 			}
-			if time.Since(start) >= waittime {
-				logger.FromContext(ctx).DPanic("Time out to wait for cache ready. Suggest to wait more time!", zap.Duration("waitTime", waittime))
+			if time.Since(start) >= waitTime {
+				logger.FromContext(ctx).DPanic("Time out to wait for cache ready. Suggest to wait more time!", zap.Duration("waitTime", waitTime))
 				break
 			}
 			time.Sleep(retryInterval)

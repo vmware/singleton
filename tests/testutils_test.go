@@ -23,9 +23,6 @@ import (
 
 	"sgtnserver/api"
 	v2 "sgtnserver/api/v2"
-	_ "sgtnserver/api/v2/cldr"
-	_ "sgtnserver/api/v2/combine"
-	_ "sgtnserver/api/v2/translation"
 	"sgtnserver/internal/logger"
 )
 
@@ -68,7 +65,7 @@ func TestMain(m *testing.M) {
 
 	GinTestEngine = api.InitServer()
 
-	os.Exit(m.Run())
+	m.Run()
 }
 
 func init() {

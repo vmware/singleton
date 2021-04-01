@@ -41,14 +41,10 @@ func TestDoAndCheck(t *testing.T) {
 	maxNumber := 200
 	r := rand.Intn(maxNumber)
 	for i := 0; i < maxNumber; i++ {
-		todo := false
-		if i == r {
-			todo = true
-		}
 		group.Add(1)
-		go func(i int) {
-			if todo {
-				common.DoAndCheck(logger.NewContext(nil, logger.Log.With(zap.Int("thread", i))), done, doer, waiter)
+		go func(n int) {
+			if n == r {
+				common.DoAndCheck(logger.NewContext(nil, logger.Log.With(zap.Int("thread", n))), done, doer, waiter)
 			} else {
 				<-done
 				waiter()

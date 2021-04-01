@@ -44,8 +44,7 @@ func GetPatternByLocale(c *gin.Context) {
 	if err := c.ShouldBindQuery(req); err != nil {
 		vErrors, _ := err.(validator.ValidationErrors)
 		for _, e := range vErrors {
-			if e.Field() == api.LocaleAPIKey {
-			} else {
+			if !(e.Field() == api.LocaleAPIKey) {
 				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
 				return
 			}

@@ -129,7 +129,7 @@ func GetPathLocale(locale string) string {
 		}
 	case 2: // e.g. zh-Hans or zh-CN => zh-Hans-CN
 		likelySubStr := cldrcache.LikelySubtagMap["und-"+parts[1]] // Get locale ID from Region
-		if (likelySubStr == "") || 0 != strings.Compare(parts[0], strings.Split(likelySubStr, cldr.LocalePartSep)[0]) {
+		if likelySubStr == "" || strings.Compare(parts[0], strings.Split(likelySubStr, cldr.LocalePartSep)[0]) != 0 {
 			break
 		}
 		if likelySubStr != "" {
@@ -182,8 +182,8 @@ func ParseLocale(originalLocale string) *Locale {
 		case 0:
 			locale.Language = strings.ToLower(p)
 			if langDataFirst := cldrcache.SupplementLanguageDataMap[locale.Language]; langDataFirst != nil {
-				langData.Territories = langDataFirst.Territories[:]
-				langData.Scripts = langDataFirst.Scripts[:]
+				langData.Territories = langDataFirst.Territories
+				langData.Scripts = langDataFirst.Scripts
 			}
 			if langDataSecond := cldrcache.SupplementLanguageDataMap[locale.Language+"-alt-secondary"]; langDataSecond != nil {
 				langData.Territories = append(langData.Territories, langDataSecond.Territories...)

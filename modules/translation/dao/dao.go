@@ -6,13 +6,14 @@
 package dao
 
 import (
+	"strings"
+
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
 	"sgtnserver/modules/translation"
 	"sgtnserver/modules/translation/dao/decorator"
 	"sgtnserver/modules/translation/dao/localbundle"
 	"sgtnserver/modules/translation/dao/s3bundle"
-	"strings"
 )
 
 const bundleInLocal = "local"

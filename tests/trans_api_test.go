@@ -18,7 +18,6 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"sgtnserver/api/v2/translation"
-	_ "sgtnserver/api/v2/translation"
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/translation/translationservice"

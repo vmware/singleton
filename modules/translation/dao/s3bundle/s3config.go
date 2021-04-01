@@ -19,12 +19,12 @@ type (
 	}
 )
 
-func NewS3Config(PublicKeyFile, AccessKey, SecretKey, Region string) *S3Config {
+func NewS3Config(publicKeyFile, accessKey, secretKey, region string) *S3Config {
 	config := &S3Config{
-		publicKeyFile: PublicKeyFile,
-		accessKey:     AccessKey,
-		secretKey:     SecretKey,
-		region:        Region}
+		publicKeyFile: publicKeyFile,
+		accessKey:     accessKey,
+		secretKey:     secretKey,
+		region:        region}
 
 	if len(config.publicKeyFile) != 0 {
 		// Get public key

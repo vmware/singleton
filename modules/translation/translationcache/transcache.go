@@ -34,7 +34,7 @@ func (c *TransCacheMgr) GetBundleInfo(ctx context.Context) (*translation.BundleI
 func (c *TransCacheMgr) GetBundle(ctx context.Context, id *translation.BundleID) (data *translation.Bundle, err error) {
 	cacheKey := getCacheKey(id)
 
-	//Read from cache
+	// Read from cache
 	if dataInCache, err := c.Cache.Get(cacheKey); err == nil {
 		return dataInCache.(*translation.Bundle), nil
 	}

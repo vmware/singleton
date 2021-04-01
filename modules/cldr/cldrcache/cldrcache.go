@@ -69,7 +69,7 @@ func GetLocaleData(ctx context.Context, locale, dataType string, data interface{
 
 	cacheKey := dataType + ":" + cldrLocale
 
-	//Read from cache
+	// Read from cache
 	if dataInCache, e := localeDataCache.Get(cacheKey); e == nil {
 		reflect.ValueOf(data).Elem().Set(reflect.ValueOf(dataInCache))
 		return nil

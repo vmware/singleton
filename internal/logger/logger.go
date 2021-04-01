@@ -7,6 +7,7 @@ package logger
 
 import (
 	"os"
+
 	"sgtnserver/internal/config"
 
 	"go.uber.org/zap"

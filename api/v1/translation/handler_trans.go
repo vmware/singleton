@@ -232,8 +232,7 @@ func GetBundle(c *gin.Context) {
 	if err := c.ShouldBindUri(&id); err != nil {
 		vErrors, _ := err.(validator.ValidationErrors)
 		for _, e := range vErrors {
-			if e.Field() == api.LocaleAPIKey || e.Field() == api.VersionAPIKey {
-			} else {
+			if !(e.Field() == api.LocaleAPIKey || e.Field() == api.VersionAPIKey) {
 				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
 				return
 			}
@@ -279,8 +278,7 @@ func GetMultipleBundles(c *gin.Context) {
 	if err := c.ShouldBindUri(&req); err != nil {
 		vErrors, _ := err.(validator.ValidationErrors)
 		for _, e := range vErrors {
-			if e.Field() == api.LocalesAPIKey || e.Field() == api.VersionAPIKey {
-			} else {
+			if !(e.Field() == api.LocalesAPIKey || e.Field() == api.VersionAPIKey) {
 				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
 				return
 			}
@@ -327,8 +325,7 @@ func GetString(c *gin.Context) {
 	if err := c.ShouldBindUri(&id); err != nil {
 		vErrors, _ := err.(validator.ValidationErrors)
 		for _, e := range vErrors {
-			if e.Field() == api.LocaleAPIKey || e.Field() == api.VersionAPIKey {
-			} else {
+			if !(e.Field() == api.LocaleAPIKey || e.Field() == api.VersionAPIKey) {
 				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
 				return
 			}
@@ -372,8 +369,7 @@ func GetString3(c *gin.Context) {
 	if err := c.ShouldBindUri(&id); err != nil {
 		vErrors, _ := err.(validator.ValidationErrors)
 		for _, e := range vErrors {
-			if e.Field() == api.LocaleAPIKey || e.Field() == api.VersionAPIKey /*|| e.Field() == api.ComponentAPIKey*/ {
-			} else {
+			if !(e.Field() == api.LocaleAPIKey || e.Field() == api.VersionAPIKey) {
 				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
 				return
 			}
@@ -385,7 +381,7 @@ func GetString3(c *gin.Context) {
 			if e.Field() == api.LocaleAPIKey || e.Field() == api.VersionAPIKey {
 				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
 				return
-			} // else if e.Field() == api.ComponentAPIKey {}
+			}
 		}
 	}
 	version := c.GetString(api.SgtnVersionKey)

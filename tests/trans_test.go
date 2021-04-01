@@ -277,7 +277,7 @@ func TestBundleInfoByPutBundle(t *testing.T) {
 		l3Service.ClearCache(nil)
 	}()
 
-	// Check bundle infomation is updated
+	// Check bundle information is updated
 	availableBundles, ok := bundleinfo.GetAvailableBundles(Name, Version)
 	assert.True(t, ok)
 	assert.Contains(t, availableBundles.Values(), compactID)

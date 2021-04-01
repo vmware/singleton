@@ -13,4 +13,3 @@ const (
 const (
 	FailToReadCache = "Fail to read from cache: '%s'"
 )
-

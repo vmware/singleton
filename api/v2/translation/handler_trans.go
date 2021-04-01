@@ -103,8 +103,7 @@ func GetMultipleBundles(c *gin.Context) {
 	if err := c.ShouldBindUri(&req); err != nil {
 		vErrors, _ := err.(validator.ValidationErrors)
 		for _, e := range vErrors {
-			if e.Field() == api.LocalesAPIKey || e.Field() == api.ComponentsAPIKey {
-			} else {
+			if !(e.Field() == api.LocalesAPIKey || e.Field() == api.ComponentsAPIKey) {
 				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
 				return
 			}
