@@ -655,6 +655,8 @@ class SingletonRelease(Release, Translation):
                 component_def = self._get_component(remote_default_locale, component)
                 if component_def:
                     found = component_def.messages.get(key)
+            elif source == None and component_src:
+                translation = component_src.messages.get(key)
 
         if found:
             source_remote = component_src.messages.get(key) if component_src else None
