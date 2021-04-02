@@ -166,36 +166,32 @@ const scopeFilterSep = "_"
 const objxMapPathSep = "."
 
 func excludeNodes(data map[string]interface{}, filters string) map[string]interface{} {
+	objxMap := objx.Map(data)
 	for _, filter := range strings.Split(filters, common.ParamSep) {
 		if filter == "" {
 			continue
 		}
 
-		parts := strings.Split(filter, scopeFilterSep)
-		if patternData := data[parts[0]]; patternData != nil {
-			if anyValue, ok := patternData.(jsoniter.Any); ok {
-				patternData = objx.Map{}
-				anyValue.ToVal(&patternData)
-				data[parts[0]] = patternData
+		filterParts := strings.Split(filter, scopeFilterSep)
+		if partData := data[filterParts[0]]; partData != nil {
+			if anyValue, ok := partData.(jsoniter.Any); ok {
+				mapData := make(map[string]interface{})
+				anyValue.ToVal(&mapData)
+				data[filterParts[0]] = mapData
 			}
-			parentM := objx.Map(patternData.(map[string]interface{}))
-			parentPath := strings.Join(parts[1:len(parts)-1], objxMapPathSep)
-			if parentPath != "" {
-				parentM = parentM.Get(parentPath).ObjxMap()
-			}
-			delete(parentM, parts[len(parts)-1])
+			parentPath := strings.Join(filterParts[:len(filterParts)-1], objxMapPathSep)
+			parentMap := objxMap.Get(parentPath).ObjxMap()
+			delete(parentMap, filterParts[len(filterParts)-1])
 		}
 	}
 	return data
 }
 func includeNodes(data map[string]interface{}, filters string) map[string]interface{} {
-	oldData := objx.Map(data)
-	newData := objx.Map{}
+	oldData, newData := objx.Map(data), objx.Map{}
 	for _, filter := range strings.Split(filters, common.ParamSep) {
 		if filter == "" {
 			continue
 		}
-
 		var v interface{}
 		filterParts := strings.Split(filter, scopeFilterSep)
 		objxPath := strings.Join(filterParts, objxMapPathSep)
@@ -210,6 +206,5 @@ func includeNodes(data map[string]interface{}, filters string) map[string]interf
 		}
 		newData.Set(objxPath, v)
 	}
-
 	return newData
 }
