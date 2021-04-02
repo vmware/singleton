@@ -6,6 +6,6 @@
 package cldr
 
 const (
-	WrongDataType = "Not found: '%s'"
-	InvalidLocale = "Invalid locale '%s'"
+	InvalidDataType = "'%s' is invalid"
+	InvalidLocale   = "Invalid locale '%s'"
 )

@@ -28,7 +28,7 @@ func GetCoreData(ctx context.Context, dataType CoreDataType, data interface{}) e
 
 	info := getItemInfoOfCoreGroup(dataType)
 	if info.filePath == "" {
-		err := sgtnerror.StatusBadRequest.WithUserMessage(cldr.WrongDataType, CoreDataTypeNames[dataType])
+		err := sgtnerror.StatusBadRequest.WithUserMessage(cldr.InvalidDataType, CoreDataTypeNames[dataType])
 		log.Error(err.Error())
 		return err
 	}
@@ -46,26 +46,23 @@ func GetLocaleData(ctx context.Context, dataType, locale string, data interface{
 
 	info := getItemInfoOfLocaleGroup(dataType)
 	if info.filePath == "" {
-		err := sgtnerror.StatusBadRequest.WithUserMessage(cldr.WrongDataType, dataType)
+		err := sgtnerror.StatusBadRequest.WithUserMessage(cldr.InvalidDataType, dataType)
 		log.Error(err.Error())
 		return err
 	}
 
 	filePath := fmt.Sprintf(info.filePath, locale)
-
 	err := readDataFromBinary(filePath, data, info.jsonPath...)
 	if err != nil {
-		var returnErr error
 		if os.IsNotExist(err) || strings.Contains(err.Error(), "not found") {
-			returnErr = sgtnerror.StatusNotFound.WrapErrorWithMessage(err, filePath)
-			log.Warn(returnErr.Error())
+			err = sgtnerror.StatusNotFound.WrapErrorWithMessage(err, filePath)
+			log.Warn(err.Error())
 		} else {
-			returnErr = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, filePath)
-			log.Error(returnErr.Error())
+			err = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, filePath)
+			log.Error(err.Error())
 		}
-		return returnErr
 	}
-	return nil
+	return err
 }
 
 func readDataFromBinary(filePath string, data interface{}, jsonPath ...interface{}) error {
