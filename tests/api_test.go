@@ -17,6 +17,7 @@ import (
 	"github.com/go-http-utils/headers"
 
 	"sgtnserver/api"
+	"sgtnserver/internal/config"
 	"sgtnserver/internal/sgtnerror"
 )
 
@@ -51,15 +52,47 @@ func TestRecovery(t *testing.T) {
 }
 
 func TestCompressResponse(t *testing.T) {
-	e := CreateHTTPExpect(t, GinTestEngine)
 
-	// Test Gzip
-	resp := e.GET(GetBundleURL, Name, Version, "zh-Hans", "sunglow").WithHeader(headers.AcceptEncoding, api.CompressionGzip).Expect()
-	resp.ContentEncoding(api.CompressionGzip)
+	oldAlgorithm := config.Settings.Server.CompressionAlgorithm
+	defer func() {
+		config.Settings.Server.CompressionAlgorithm = oldAlgorithm
+	}()
 
-	// Test br
-	resp = e.GET(GetBundleURL, Name, Version, "zh-Hans", "sunglow").WithHeader(headers.AcceptEncoding, api.CompressionBrotli).Expect()
-	resp.ContentEncoding(api.CompressionBrotli)
+	tests := []struct {
+		testName                     string
+		CompressionAlgorithm, header string
+		expectedEncoding             []string
+	}{
+		{CompressionAlgorithm: "gzip&br", header: "", expectedEncoding: nil},
+		{CompressionAlgorithm: "gzip&br", header: "gzip", expectedEncoding: []string{"gzip"}},
+		{CompressionAlgorithm: "gzip&br", header: "br", expectedEncoding: []string{"br"}},
+
+		{CompressionAlgorithm: "gzip", header: "", expectedEncoding: nil},
+		{CompressionAlgorithm: "gzip", header: "gzip", expectedEncoding: []string{"gzip"}},
+		{CompressionAlgorithm: "gzip", header: "br", expectedEncoding: nil},
+
+		{CompressionAlgorithm: "br", header: "", expectedEncoding: nil},
+		{CompressionAlgorithm: "br", header: "gzip", expectedEncoding: nil},
+		{CompressionAlgorithm: "br", header: "br", expectedEncoding: []string{"br"}},
+
+		{CompressionAlgorithm: "", header: "", expectedEncoding: nil},
+		{CompressionAlgorithm: "", header: "gzip", expectedEncoding: nil},
+		{CompressionAlgorithm: "", header: "br", expectedEncoding: nil},
+	}
+
+	for _, tt := range tests {
+		tt := tt
+		t.Run("'"+tt.CompressionAlgorithm+"':'"+tt.header+"'", func(t *testing.T) {
+			config.Settings.Server.CompressionAlgorithm = tt.CompressionAlgorithm
+			e := CreateHTTPExpect(t, api.InitServer())
+			req := e.GET(GetBundleURL, Name, Version, Locale, Component)
+			if tt.header != "" {
+				req.WithHeader(headers.AcceptEncoding, tt.header)
+			}
+			respNoCompression := req.Expect()
+			respNoCompression.ContentEncoding(tt.expectedEncoding...)
+		})
+	}
 }
 
 func TestAbortWithError(t *testing.T) {
