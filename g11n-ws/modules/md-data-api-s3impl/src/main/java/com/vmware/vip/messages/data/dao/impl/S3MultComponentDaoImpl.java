@@ -9,6 +9,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.messages.data.dao.api.IMultComponentDao;
@@ -19,6 +20,7 @@ import com.vmware.vip.messages.data.dao.model.ResultI18Message;
  * this class get the bundle json from bundle file
  */
 @Repository
+@Profile("s3")
 public class S3MultComponentDaoImpl implements IMultComponentDao {
    private static Logger logger = LoggerFactory.getLogger(S3MultComponentDaoImpl.class);
 
