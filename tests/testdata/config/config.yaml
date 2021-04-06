@@ -13,7 +13,7 @@ S3Bundle:
 
 RefreshBundleInterval: 60s # interval to refresh bundle information
 
-HeaderOfTraceID: abc,123,edf # comma separated headers carrying trace ID
+HeaderOfTraceID: # comma separated headers carrying trace ID
 
 Server:
   RunMode: debug # debug or release
@@ -26,7 +26,7 @@ Server:
   KeyFile:
   MaxHeaderBytes: 1024000
   CacheControl: max-age=2, public
-  CompressionAlgorithm: gzip&br #gzip, br, gzip&br
+  CompressionAlgorithm: #gzip, br, gzip&br
 
 CrossDomain:
   Enable: true
@@ -48,7 +48,7 @@ Cache:
   Enable: true
   MaxCost: 1000 # number of entities to store
   BufferItems: 64
-  Expiration: 0s #seconds
+  Expiration: 10s #seconds
 
 SwaggerUI: true
 

@@ -106,7 +106,7 @@ func RecoveryWithZap(log *zap.Logger) gin.HandlerFunc {
 				}
 			}
 
-			fields := []zapcore.Field{zap.Time("time", time.Now()), zap.String("path", c.Request.URL.Path), zap.Any("error", err)}
+			fields := []zapcore.Field{zap.Any("error", err)}
 			if gin.IsDebugging() {
 				httpRequest, _ := httputil.DumpRequest(c.Request, true)
 				hds := strings.Split(string(httpRequest), "\r\n")

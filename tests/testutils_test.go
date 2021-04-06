@@ -14,7 +14,6 @@ import (
 	"path/filepath"
 	"reflect"
 	"testing"
-	"time"
 
 	"github.com/gavv/httpexpect/v2"
 	"github.com/gin-gonic/gin"
@@ -23,6 +22,7 @@ import (
 
 	"sgtnserver/api"
 	v2 "sgtnserver/api/v2"
+	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
 )
 
@@ -125,7 +125,6 @@ func RandomInt(min, max int) int {
 
 // Generate a random string of a-z chars with len
 func RandomString(len int) string {
-	rand.Seed(time.Now().UnixNano())
 	bytes := make([]byte, len)
 	for i := 0; i < len; i++ {
 		bytes[i] = byte(RandomInt(97, 122))
@@ -166,4 +165,30 @@ func Contain(list interface{}, target interface{}) int {
 		}
 	}
 	return -1
+}
+
+// Replace stdout and stderr
+func ReplaceStds() (reader, writer *os.File, revert func()) {
+	rescueStdout, rescueStderr := os.Stdout, os.Stderr
+	reader, writer, _ = os.Pipe()
+	os.Stdout, os.Stderr = writer, writer
+
+	revert = func() {
+		os.Stdout, os.Stderr = rescueStdout, rescueStderr
+	}
+	return
+}
+
+func ReplaceLogger(tempLogFile string) func() {
+	os.Remove(tempLogFile)
+	oldLogFile := config.Settings.LOG.Filename
+
+	config.Settings.LOG.Filename = tempLogFile
+	logger.InitLogger()
+
+	return func() {
+		config.Settings.LOG.Filename = oldLogFile
+		logger.InitLogger()
+		os.Remove(tempLogFile)
+	}
 }
