@@ -227,7 +227,7 @@ func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {
 			parts := strings.Split(localeToSet, cldr.LocalePartSep)
 			language = parts[0]
 			if region = coreutil.ParseRegion(parts); region == "" {
-				region = localeutil.GetLocaleDefaultRegion(ctx, localeToSet)
+				region, _ = localeutil.GetLocaleDefaultRegion(ctx, localeToSet)
 			}
 		}
 		transData, translationError = l3Service.GetMultipleBundles(ctx, params.ProductName, version, params.Language, params.Components)

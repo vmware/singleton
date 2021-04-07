@@ -6,6 +6,7 @@
 package tests
 
 import (
+	"context"
 	"net/http"
 	"testing"
 	"time"
@@ -40,7 +41,7 @@ func TestSimpleDateTime(t *testing.T) {
 			tm := time.Unix(seconds, milliseconds)
 			log.Infof("time is:%+v", tm)
 
-			actual, err := formatting.SimpleFormatDateTime(nil, tm, d.pattern, d.locale)
+			actual, err := formatting.SimpleFormatDateTime(context.TODO(), tm, d.pattern, d.locale)
 			if d.wantedCode == http.StatusOK {
 				assert.Nil(t, err)
 				assert.Equal(t, d.expected, actual)

@@ -332,7 +332,7 @@ func TestCrossDomainByGettingTranslation(t *testing.T) {
 			resp := e.GET(GetBundleURL, Name, Version, Locale, Component).WithHost(host).Expect()
 			resp.Status(http.StatusOK)
 			if resp.Raw().StatusCode == http.StatusOK {
-				//Verify "Access-Control-Allow-Origin" header in response
+				// Verify "Access-Control-Allow-Origin" header in response
 				resp.Header("Access-Control-Allow-Origin").Empty()
 			}
 
@@ -340,9 +340,9 @@ func TestCrossDomainByGettingTranslation(t *testing.T) {
 				resp = e.GET(GetBundleURL, Name, Version, Locale, Component).WithHost(host).WithHeader("Origin", tt.origin).Expect()
 				if tt.origin == origin {
 					resp.Status(http.StatusOK)
-					//Verify "Access-Control-Allow-Origin" header in response
+					// Verify "Access-Control-Allow-Origin" header in response
 					resp.Header("Access-Control-Allow-Origin").Empty()
-				} else { //Verify "Access-Control-Allow-Origin" header in response
+				} else { // Verify "Access-Control-Allow-Origin" header in response
 					if tt.AllowOrigin == "*" || tt.AllowOrigin == tt.origin {
 						resp.Status(http.StatusOK)
 						resp.Header("Access-Control-Allow-Origin").Equal(tt.AllowOrigin)
@@ -355,14 +355,14 @@ func TestCrossDomainByGettingTranslation(t *testing.T) {
 				defer os.RemoveAll(path.Join(config.Settings.LocalBundle.BasePath, Name, Version, component))
 				resp = e.PUT(PutBundlesURL, Name, Version).WithHost(host).WithHeader("Origin", tt.origin).WithBytes([]byte(fmt.Sprintf(bundleDataToPut, Name, Version, Locale, component, Key, Msg))).Expect()
 				if tt.AllowOrigin == "GET" {
-					//Verify PUT is forbidden
+					// Verify PUT is forbidden
 					resp.Status(http.StatusForbidden)
 				} else {
 					if tt.origin == origin {
 						resp.Status(http.StatusOK)
-						//Verify "Access-Control-Allow-Origin" header in response
+						// Verify "Access-Control-Allow-Origin" header in response
 						resp.Header("Access-Control-Allow-Origin").Empty()
-					} else { //Verify "Access-Control-Allow-Origin" header in response
+					} else { // Verify "Access-Control-Allow-Origin" header in response
 						if tt.AllowOrigin == "*" || tt.AllowOrigin == tt.origin {
 							resp.Status(http.StatusOK)
 							resp.Header("Access-Control-Allow-Origin").Equal(tt.AllowOrigin)
