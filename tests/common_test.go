@@ -6,6 +6,7 @@
 package tests
 
 import (
+	"context"
 	"errors"
 	"math/rand"
 	"sync"
@@ -44,7 +45,7 @@ func TestDoAndCheck(t *testing.T) {
 		group.Add(1)
 		go func(n int) {
 			if n == r {
-				common.DoAndCheck(logger.NewContext(nil, logger.Log.With(zap.Int("thread", n))), done, doer, waiter)
+				common.DoAndCheck(logger.NewContext(context.TODO(), logger.Log.With(zap.Int("thread", n))), done, doer, waiter)
 			} else {
 				<-done
 				waiter()
