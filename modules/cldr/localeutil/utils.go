@@ -24,13 +24,13 @@ func GetContextTransforms(ctx context.Context, locale string) (map[string]interf
 	return data, err
 }
 
-func GetLocaleDefaultRegion(ctx context.Context, locale string) string {
+func GetLocaleDefaultRegion(ctx context.Context, locale string) (string, error) {
 	_, territories, err := GetLocaleTerritories(ctx, locale)
 	if err != nil {
-		return ""
+		return "", err
 	}
 
-	return territories.DefaultRegionCode
+	return territories.DefaultRegionCode, nil
 }
 
 // GetLocaleLanguages ...
