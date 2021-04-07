@@ -6,6 +6,7 @@
 package tests
 
 import (
+	"context"
 	"fmt"
 	"net/http"
 	"os"
@@ -23,7 +24,7 @@ import (
 	"sgtnserver/modules/translation/translationservice"
 )
 
-func TestCrossDomainByGettingTranslation(t *testing.T) {
+func TestCrossDomainByGettingTranslation(t *testing.T) { // TODO: add more test cases
 	const originHeader = "http://localhost"
 	e := CreateHTTPExpect(t, GinTestEngine)
 
@@ -78,10 +79,11 @@ func TestGetBundleNormal(t *testing.T) {
 
 	// Test CacheControl
 	resp.Header(headers.CacheControl).Equal(config.Settings.Server.CacheControl)
+	etag := resp.Header(headers.ETag).Raw()
 
 	// Send request again to test Etag
 	req = e.GET(GetBundleURL, Name, Version, "zh-Hans", "sunglow")
-	resp = req.WithHeader(headers.IfNoneMatch, resp.Header(headers.ETag).Raw()).Expect()
+	resp = req.WithHeader(headers.IfNoneMatch, etag).Expect()
 	resp.Status(http.StatusNotModified)
 	resp.Body().Empty()
 
@@ -382,7 +384,7 @@ func TestPutBundle(t *testing.T) {
 
 			if tt.wantedCode == http.StatusOK {
 				// Query to check putting is successful
-				data, err := translationservice.GetService().GetString(nil, tt.name, tt.version, Locale, component, Key)
+				data, err := translationservice.GetService().GetString(context.TODO(), tt.name, tt.version, Locale, component, Key)
 				assert.Nil(t, err)
 				assert.Equal(t, Msg, data.Translation)
 			}
@@ -445,6 +447,7 @@ func TestPutBundleWithoutData(t *testing.T) {
 		})
 	}
 }
+
 func TestVersionFallback(t *testing.T) {
 	e := CreateHTTPExpect(t, GinTestEngine)
 

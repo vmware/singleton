@@ -67,7 +67,7 @@ func GetPatternByLocale(c *gin.Context) {
 		parts := strings.Split(cldrLocale, cldr.LocalePartSep)
 		region := coreutil.ParseRegion(parts)
 		if region == "" {
-			region = localeutil.GetLocaleDefaultRegion(ctx, cldrLocale)
+			region, _ = localeutil.GetLocaleDefaultRegion(ctx, cldrLocale)
 		}
 		data = PatternData{
 			LocaleID:   cldrLocale,
