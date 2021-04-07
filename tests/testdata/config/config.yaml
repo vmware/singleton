@@ -32,15 +32,15 @@ CrossDomain:
   Enable: true
   AllowCredentials: true
   AllowOrigin: "*"
-  AllowMethods: GET, POST, PUT, DELETE, OPTIONS
-  AllowHeaders: csp-auth-token, Content-Type, x-xmp-ui, Authorization
+  AllowMethods: GET,POST,PUT,DELETE,OPTIONS
+  AllowHeaders: csp-auth-token,Content-Type,x-xmp-ui,Authorization
   MaxAge: 3600
 
 LOG:
   Filename: logs/singleton.log
   MaxSize: 5 # megabytes
-  MaxBackups: 3
-  MaxAge: 28 # days
+  MaxBackups: 50
+  MaxAge: 365 # days
   FileLevel: debug
   Level: debug
 

@@ -29,6 +29,7 @@ import (
 var (
 	json          = jsoniter.ConfigDefault
 	log           = logger.Log.Sugar()
+	logFolder     = filepath.Dir(config.Settings.LOG.Filename) + string(os.PathSeparator)
 	GinTestEngine *gin.Engine
 )
 

@@ -12,7 +12,6 @@ import (
 	"net"
 	"net/http"
 	"os"
-	"path/filepath"
 	"strings"
 	"testing"
 
@@ -22,6 +21,7 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"sgtnserver/api"
+	"sgtnserver/internal/common"
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
@@ -32,8 +32,6 @@ func TestTraceIDs(t *testing.T) {
 	defer func() {
 		config.Settings.HeaderOfTraceID = oldTraceIDs
 	}()
-
-	logFolder := filepath.Dir(config.Settings.LOG.Filename) + string(os.PathSeparator)
 
 	tests := []struct {
 		logFile         string
@@ -95,7 +93,7 @@ func TestTraceIDs(t *testing.T) {
 			logContent := string(bts)
 
 			idSet := hashset.New()
-			for _, traceID := range strings.Split(tt.traceIDsSetting, ",") {
+			for _, traceID := range strings.Split(tt.traceIDsSetting, common.ParamSep) {
 				idSet.Add(traceID)
 			}
 			hasTraceIDsInLog := false
@@ -119,8 +117,6 @@ func TestTraceIDs(t *testing.T) {
 }
 
 func TestRecovery(t *testing.T) {
-	logFolder := filepath.Dir(config.Settings.LOG.Filename) + string(os.PathSeparator)
-
 	tests := []struct {
 		testName     string
 		ginMode      string
