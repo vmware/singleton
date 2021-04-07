@@ -99,12 +99,12 @@ func TestTraceIDs(t *testing.T) {
 			hasTraceIDsInLog := false
 			for k, v := range tt.headers {
 				if idSet.Contains(k) {
-					assert.Contains(t, logContent, k)
-					assert.Contains(t, logContent, v)
+					assert.Contains(t, logContent, `"`+k+`"`)
+					assert.Contains(t, logContent, `"`+v+`"`)
 					hasTraceIDsInLog = true
 				} else {
-					assert.NotContains(t, logContent, k)
-					assert.NotContains(t, logContent, v)
+					assert.NotContains(t, logContent, `"`+k+`"`)
+					assert.NotContains(t, logContent, `"`+v+`"`)
 				}
 			}
 			if hasTraceIDsInLog {
@@ -160,6 +160,10 @@ func TestRecovery(t *testing.T) {
 			logContent := string(bts)
 			assert.Contains(t, logContent, "[Recovery from panic]")
 			assert.Contains(t, logContent, tt.panicErr.Error())
+			if tt.ginMode == gin.DebugMode {
+				assert.Contains(t, logContent, `"headers"`)
+				assert.Contains(t, logContent, `"request"`)
+			}
 		})
 	}
 }
