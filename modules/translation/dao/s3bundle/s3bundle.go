@@ -139,9 +139,9 @@ func (b *S3Bundle) GetBundle(ctx context.Context, id *translation.BundleID) (bun
 	}
 
 	if awsErr, ok := err.(awserr.Error); ok && awsErr.Code() == s3.ErrCodeNoSuchKey {
-		returnErr = sgtnerror.StatusNotFound.WrapErrorWithMessage(err, translation.FailReadBundle, input)
+		returnErr = sgtnerror.StatusNotFound.WrapErrorWithMessage(err, translation.FailToReadBundle, id.Name, id.Version, id.Locale, id.Component)
 	} else {
-		returnErr = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailReadBundle, input)
+		returnErr = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToReadBundle, id.Name, id.Version, id.Locale, id.Component)
 	}
 	logger.FromContext(ctx).Error(returnErr.Error())
 
