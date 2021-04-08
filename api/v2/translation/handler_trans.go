@@ -34,11 +34,7 @@ var l3Service translation.Service = translationservice.GetService()
 func GetAvailableComponents(c *gin.Context) {
 	id := ReleaseID{}
 	if err := c.ShouldBindUri(&id); err != nil {
-		var msg interface{} = err.Error()
-		if vErrors, ok := err.(validator.ValidationErrors); ok {
-			msg = api.RemoveStruct(vErrors.Translate(api.ValidatorTranslator))
-		}
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%+v", msg))
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
 	version := c.GetString(api.SgtnVersionKey)
@@ -66,11 +62,7 @@ func GetAvailableComponents(c *gin.Context) {
 func GetAvailableLocales(c *gin.Context) {
 	id := ReleaseID{}
 	if err := c.ShouldBindUri(&id); err != nil {
-		var msg interface{} = err.Error()
-		if vErrors, ok := err.(validator.ValidationErrors); ok {
-			msg = api.RemoveStruct(vErrors.Translate(api.ValidatorTranslator))
-		}
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%+v", msg))
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
 	version := c.GetString(api.SgtnVersionKey)
@@ -142,11 +134,7 @@ func GetMultipleBundles(c *gin.Context) {
 func GetBundle(c *gin.Context) {
 	id := BundleID{}
 	if err := c.ShouldBindUri(&id); err != nil {
-		var msg interface{} = err.Error()
-		if vErrors, ok := err.(validator.ValidationErrors); ok {
-			msg = api.RemoveStruct(vErrors.Translate(api.ValidatorTranslator))
-		}
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%+v", msg))
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
 	version := c.GetString(api.SgtnVersionKey)
@@ -175,11 +163,7 @@ func GetBundle(c *gin.Context) {
 func GetString(c *gin.Context) {
 	id := MessageID{}
 	if err := c.ShouldBindUri(&id); err != nil {
-		var msg interface{} = err.Error()
-		if vErrors, ok := err.(validator.ValidationErrors); ok {
-			msg = api.RemoveStruct(vErrors.Translate(api.ValidatorTranslator))
-		}
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%+v", msg))
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
 	version := c.GetString(api.SgtnVersionKey)
@@ -206,21 +190,13 @@ func GetString(c *gin.Context) {
 func PutBundles(c *gin.Context) {
 	id := ReleaseID{}
 	if err := c.ShouldBindUri(&id); err != nil {
-		var msg interface{} = err.Error()
-		if vErrors, ok := err.(validator.ValidationErrors); ok {
-			msg = api.RemoveStruct(vErrors.Translate(api.ValidatorTranslator))
-		}
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%+v", msg))
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
 
 	req := UpdateTranslationDTO{}
 	if err := c.ShouldBindJSON(&req); err != nil {
-		var msg interface{} = err.Error()
-		if vErrors, ok := err.(validator.ValidationErrors); ok {
-			msg = api.RemoveStruct(vErrors.Translate(api.ValidatorTranslator))
-		}
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%+v", msg))
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
 
