@@ -9,7 +9,6 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
 
 	"sgtnserver/api"
 	"sgtnserver/internal/logger"
@@ -38,11 +37,7 @@ import (
 func GetPatternData(c *gin.Context) {
 	req := new(PatternByLocaleReq)
 	if err := c.ShouldBindQuery(req); err != nil {
-		var msg interface{} = err.Error()
-		if vErrors, ok := err.(validator.ValidationErrors); ok {
-			msg = api.RemoveStruct(vErrors.Translate(api.ValidatorTranslator))
-		}
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%+v", msg))
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
 

@@ -98,11 +98,7 @@ func GetPatternByLocale(c *gin.Context) {
 func GetPatternDataByLangReg(c *gin.Context) {
 	params := new(PatternByLangRegReq)
 	if err := c.ShouldBindQuery(params); err != nil {
-		var msg interface{} = err.Error()
-		if vErrors, ok := err.(validator.ValidationErrors); ok {
-			msg = api.RemoveStruct(vErrors.Translate(api.ValidatorTranslator))
-		}
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%+v", msg))
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
 
@@ -135,11 +131,7 @@ func GetPatternDataByLangReg(c *gin.Context) {
 func GetRegionListOfLanguages(c *gin.Context) {
 	params := new(LocaleRegionsReq)
 	if err := c.ShouldBindQuery(params); err != nil {
-		var msg interface{} = err.Error()
-		if vErrors, ok := err.(validator.ValidationErrors); ok {
-			msg = api.RemoveStruct(vErrors.Translate(api.ValidatorTranslator))
-		}
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%+v", msg))
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
 

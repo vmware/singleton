@@ -44,7 +44,7 @@ func (e Error) WithUserMessage(msg string, args ...interface{}) error {
 	return &Error{
 		cause:   nil,
 		code:    e.code,
-		message: e.message + ":" + message}
+		message: e.message + ": " + message}
 }
 
 func (e Error) WrapError(err error) error {
@@ -58,7 +58,7 @@ func (e Error) WrapErrorWithMessage(err error, userMsg string, args ...interface
 
 	message := e.message
 	if len(userMsg) > 0 {
-		message += ":" + fmt.Sprintf(userMsg, args...)
+		message += ": " + fmt.Sprintf(userMsg, args...)
 	}
 	return &Error{
 		cause:   err,
@@ -73,7 +73,7 @@ func (e Error) Error() string {
 	}
 
 	if e.cause != nil {
-		msg += " : " + e.cause.Error()
+		msg += ": " + e.cause.Error()
 	}
 
 	return msg
