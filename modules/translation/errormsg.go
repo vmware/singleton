@@ -7,5 +7,5 @@ package translation
 
 const (
 	ReleaseNonexistent = "%s/%s doesn't exist"
-	FailReadBundle     = "Fail to read %v"
+	FailToReadBundle   = "Fail to get translation for %s/%s/%s/%s"
 )

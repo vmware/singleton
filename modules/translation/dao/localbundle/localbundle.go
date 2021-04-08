@@ -115,9 +115,9 @@ func (b *LocalBundle) GetBundle(ctx context.Context, id *translation.BundleID) (
 		}
 	}
 	if os.IsNotExist(err) {
-		returnErr = sgtnerror.StatusNotFound.WrapErrorWithMessage(err, translation.FailReadBundle, *id)
+		returnErr = sgtnerror.StatusNotFound.WrapErrorWithMessage(err, translation.FailToReadBundle, id.Name, id.Version, id.Locale, id.Component)
 	} else {
-		returnErr = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailReadBundle, *id)
+		returnErr = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToReadBundle, id.Name, id.Version, id.Locale, id.Component)
 	}
 	logger.FromContext(ctx).Error(returnErr.Error())
 	return nil, returnErr
