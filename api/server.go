@@ -45,6 +45,10 @@ func InitServer() *gin.Engine {
 
 	LogToZap(ginEngine, logger.Log)
 
+	if config.Settings.CrossDomain.Enable {
+		ginEngine.Use(HandleCrossDomain())
+	}
+
 	if len(config.Settings.Server.CompressionAlgorithm) > 0 {
 		ginEngine.Use(CompressResponse())
 	}
@@ -52,10 +56,6 @@ func InitServer() *gin.Engine {
 	ginEngine.Use(CC(false))
 
 	InitValidator()
-
-	if config.Settings.CrossDomain.Enable {
-		ginEngine.Use(HandleCrossDomain())
-	}
 
 	for _, r := range routers {
 		r.Init(&ginEngine.RouterGroup)
