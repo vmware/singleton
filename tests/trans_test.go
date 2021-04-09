@@ -104,7 +104,8 @@ func TestTransExceptionArgs(t *testing.T) {
 	invalidKey := "invalid_key"
 	normalBundleID := translation.BundleID{Name: invalidName, Version: Version, Locale: Locale, Component: Component}
 
-	_, err = translationservice.GetService().GetString(context.TODO(), Name, Version, Locale, Component, invalidKey)
+	msgID := translation.MessageID{Name: Name, Version: Version, Locale: Locale, Component: Component, Key: invalidKey}
+	_, err = translationservice.GetService().GetString(context.TODO(), &msgID)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidKey)
 
@@ -143,7 +144,8 @@ func TestTransExceptionArgs(t *testing.T) {
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidName)
 
-	_, err = translationservice.GetService().GetString(context.TODO(), id.Name, id.Version, id.Locale, id.Component, "")
+	msgID = translation.MessageID{Name: id.Name, Version: id.Version, Locale: id.Locale, Component: id.Component, Key: ""}
+	_, err = translationservice.GetService().GetString(context.TODO(), &msgID)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidName)
 
@@ -170,7 +172,8 @@ func TestTransExceptionArgs(t *testing.T) {
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidVersion)
 
-	_, err = translationservice.GetService().GetString(context.TODO(), id.Name, id.Version, id.Locale, id.Component, "")
+	msgID = translation.MessageID{Name: id.Name, Version: id.Version, Locale: id.Locale, Component: id.Component, Key: ""}
+	_, err = translationservice.GetService().GetString(context.TODO(), &msgID)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidVersion)
 
@@ -185,7 +188,8 @@ func TestTransExceptionArgs(t *testing.T) {
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidLocale)
 
-	_, err = translationservice.GetService().GetString(context.TODO(), id.Name, id.Version, id.Locale, id.Component, "")
+	msgID = translation.MessageID{Name: id.Name, Version: id.Version, Locale: id.Locale, Component: id.Component, Key: ""}
+	_, err = translationservice.GetService().GetString(context.TODO(), &msgID)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidLocale)
 
@@ -200,7 +204,8 @@ func TestTransExceptionArgs(t *testing.T) {
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidComponent)
 
-	_, err = translationservice.GetService().GetString(context.TODO(), id.Name, id.Version, id.Locale, id.Component, "")
+	msgID = translation.MessageID{Name: id.Name, Version: id.Version, Locale: id.Locale, Component: id.Component, Key: ""}
+	_, err = translationservice.GetService().GetString(context.TODO(), &msgID)
 	assert.NotNil(t, err)
 	assert.Contains(t, err.Error(), invalidComponent)
 }

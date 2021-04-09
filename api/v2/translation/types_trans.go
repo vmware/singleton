@@ -5,7 +5,9 @@
 
 package translation
 
-import jsoniter "github.com/json-iterator/go"
+import (
+	jsoniter "github.com/json-iterator/go"
+)
 
 // Request
 type (
@@ -22,7 +24,8 @@ type (
 
 	MessageID struct {
 		BundleID
-		Key string `uri:"key" form:"key" binding:"required,key"`
+		Key    string `uri:"key" form:"key" binding:"required,key"`
+		Source string `form:"source"`
 	}
 
 	ProductReq struct {
