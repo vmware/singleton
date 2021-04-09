@@ -86,8 +86,8 @@ func GetMultipleBundles2(c *gin.Context) {
 	}
 	version := c.GetString(api.SgtnVersionKey)
 
-	componentsData, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), req.ProductName, version, req.Locales, req.Components)
-	data := v2Translation.ConvertReleaseToAPI(req.ProductName, version, componentsData)
+	bundles, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), req.ProductName, version, req.Locales, req.Components)
+	data := v2Translation.ConvertReleaseToAPI(req.ProductName, version, bundles)
 	api.HandleResponse(c, data, multiErr)
 }
 
@@ -156,8 +156,8 @@ func GetProduct(c *gin.Context) {
 	}
 	version := c.GetString(api.SgtnVersionKey)
 
-	componentsData, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), req.ProductName, version, req.Locale, "")
-	data := v2Translation.ConvertReleaseToAPI(req.ProductName, version, componentsData)
+	bundles, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), req.ProductName, version, req.Locale, "")
+	data := v2Translation.ConvertReleaseToAPI(req.ProductName, version, bundles)
 	api.HandleResponse(c, data, multiErr)
 }
 
@@ -295,8 +295,8 @@ func GetMultipleBundles(c *gin.Context) {
 	}
 	version := c.GetString(api.SgtnVersionKey)
 
-	componentsData, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), req.ProductName, version, req.Locales, req.Components)
-	data := v2Translation.ConvertReleaseToAPI(req.ProductName, version, componentsData)
+	bundles, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), req.ProductName, version, req.Locales, req.Components)
+	data := v2Translation.ConvertReleaseToAPI(req.ProductName, version, bundles)
 	api.HandleResponse(c, data, multiErr)
 }
 
