@@ -14,15 +14,15 @@ var (
 	StatusSuccess        = Error{code: http.StatusOK, message: "OK"}
 	StatusPartialSuccess = Error{code: 207, message: "Successful Partially"}
 
-	StatusBadRequest    = Error{code: http.StatusBadRequest, message: ""}
-	StatusNotFound      = Error{code: http.StatusNotFound, message: ""}
+	StatusBadRequest    = Error{code: http.StatusBadRequest, message: "Bad Request"}
+	StatusNotFound      = Error{code: http.StatusNotFound, message: "Not Found"}
 	StatusInvalidToken  = Error{code: 498, message: "Invalid Token"}
 	StatusTokenRequired = Error{code: 499, message: "Token Required"}
 
 	StatusVersionFallbackTranslation = Error{code: 604, message: "Version has been fallen back"}
 
-	StatusInternalServerError = Error{code: http.StatusInternalServerError, message: ""}
-	UnknownError              = Error{code: 520, message: ""}
+	StatusInternalServerError = Error{code: http.StatusInternalServerError, message: "Internal Server Error"}
+	UnknownError              = Error{code: 520, message: "Unknown Error"}
 )
 
 type Error struct {
