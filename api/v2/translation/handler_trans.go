@@ -120,8 +120,8 @@ func GetMultipleBundles(c *gin.Context) {
 	}
 	version := c.GetString(api.SgtnVersionKey)
 
-	componentsData, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), req.ProductName, version, req.Locales, req.Components)
-	data := ConvertReleaseToAPI(req.ProductName, version, componentsData)
+	bundles, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), req.ProductName, version, req.Locales, req.Components)
+	data := ConvertReleaseToAPI(req.ProductName, version, bundles)
 	api.HandleResponse(c, data, multiErr)
 }
 
@@ -244,10 +244,14 @@ func ConvertBundleToInternal(apiData *UpdateBundle) []*translation.Bundle {
 	return internalData
 }
 
-func ConvertReleaseToAPI(productName, version string, bundleSlice []*translation.Bundle) *ReleaseData {
+func ConvertReleaseToAPI(productName, version string, bundles []*translation.Bundle) *ReleaseData {
+	if len(bundles) == 0 {
+		return nil
+	}
+
 	pData := ReleaseData{ProductName: productName, Version: version}
 	localeSet, componentSet := linkedhashset.New(), linkedhashset.New()
-	for _, d := range bundleSlice {
+	for _, d := range bundles {
 		pData.Bundles = append(pData.Bundles, BundleData{Component: d.ID.Component, Locale: d.ID.Locale, Messages: d.Messages})
 		localeSet.Add(d.ID.Locale)
 		componentSet.Add(d.ID.Component)

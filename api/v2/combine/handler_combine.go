@@ -238,7 +238,7 @@ func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {
 	allErrors = sgtnerror.Append(patternError, translationError)
 
 	for _, t := range transData {
-		data.Components = append(data.Components, transApi.ConvertBundleToAPI(t))
+		data.Bundles = append(data.Bundles, transApi.ConvertBundleToAPI(t))
 	}
 	if len(patternDataMap) > 0 {
 		data.Pattern = patternData{
