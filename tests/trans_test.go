@@ -98,7 +98,7 @@ func TestTransCache(t *testing.T) {
 	assert.Nil(t, err)
 }
 
-func TestTransExceptionArgs(t *testing.T) { // TODO use table to manage test data
+func TestTransExceptionArgs(t *testing.T) {
 	var err error
 	invalidName, invalidVersion, invalidLocale, invalidComponent := "product_invalid", "version_invalid", "locale_invalid", "component_invalid"
 	invalidKey := "invalid_key"

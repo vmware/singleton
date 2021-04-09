@@ -125,12 +125,12 @@ type Config struct {
 	} `json:"Cache" yaml:"Cache"`
 
 	CrossDomain struct {
-		Enable           bool   `json:"Enable" yaml:"Enable"`
-		AllowCredentials bool   `json:"AllowCredentials" yaml:"AllowCredentials"`
-		AllowOrigin      string `json:"AllowOrigin" yaml:"AllowOrigin"`
-		AllowMethods     string `json:"AllowMethods" yaml:"AllowMethods"`
-		AllowHeaders     string `json:"AllowHeaders" yaml:"AllowHeaders"`
-		MaxAge           int    `json:"MaxAge" yaml:"MaxAge"`
+		Enable           bool          `json:"Enable" yaml:"Enable"`
+		AllowCredentials bool          `json:"AllowCredentials" yaml:"AllowCredentials"`
+		AllowOrigin      string        `json:"AllowOrigin" yaml:"AllowOrigin"`
+		AllowMethods     string        `json:"AllowMethods" yaml:"AllowMethods"`
+		AllowHeaders     string        `json:"AllowHeaders" yaml:"AllowHeaders"`
+		MaxAge           time.Duration `json:"MaxAge" yaml:"MaxAge"`
 	} `json:"CrossDomain" yaml:"CrossDomain"`
 }
 
