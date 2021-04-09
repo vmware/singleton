@@ -111,16 +111,19 @@ func RecoveryWithZap(log *zap.Logger) gin.HandlerFunc {
 			}
 
 			fields := []zapcore.Field{zap.Any("error", err)}
-			if gin.IsDebugging() {
+			if brokenPipe {
 				httpRequest, _ := httputil.DumpRequest(c.Request, true)
-				hds := strings.Split(string(httpRequest), "\r\n")
-				for idx, header := range hds {
+				fields = append(fields, zap.ByteString("request", httpRequest))
+			} else if gin.IsDebugging() {
+				httpRequest, _ := httputil.DumpRequest(c.Request, true)
+				headers := strings.Split(string(httpRequest), "\r\n")
+				for idx, header := range headers {
 					current := strings.Split(header, ":")
 					if current[0] == "Authorization" {
-						hds[idx] = current[0] + ": *"
+						headers[idx] = current[0] + ": *"
 					}
 				}
-				fields = append(fields, zap.Strings("headers", hds), zap.ByteString("request", httpRequest))
+				fields = append(fields, zap.String("request", strings.Join(headers, "\r\n")))
 			}
 			log.Error("[Recovery from panic]", fields...)
 
@@ -181,6 +184,6 @@ func HandleCrossDomain() gin.HandlerFunc {
 		AllowMethods:     e.Split(config.Settings.CrossDomain.AllowMethods, -1),
 		AllowHeaders:     e.Split(config.Settings.CrossDomain.AllowHeaders, -1),
 		AllowCredentials: config.Settings.CrossDomain.AllowCredentials,
-		MaxAge:           time.Duration(config.Settings.CrossDomain.MaxAge) * time.Second,
+		MaxAge:           config.Settings.CrossDomain.MaxAge,
 	})
 }
