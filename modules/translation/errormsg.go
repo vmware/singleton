@@ -5,7 +5,13 @@
 
 package translation
 
+import (
+	"fmt"
+)
+
 const (
 	ReleaseNonexistent = "%s/%s doesn't exist"
 	FailToReadBundle   = "Fail to get translation for %s/%s/%s/%s"
 )
+
+var ErrStringNotFound = fmt.Errorf("key isn't found")

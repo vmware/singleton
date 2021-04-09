@@ -80,14 +80,26 @@ func (e Error) Error() string {
 }
 
 type (
-	coded interface {
+	Coded interface {
 		Code() int
+	}
+
+	Causer interface {
+		Cause() error
 	}
 )
 
 func GetCode(e error) int {
-	if c, ok := e.(coded); ok {
+	if c, ok := e.(Coded); ok {
 		return c.Code()
 	}
 	return UnknownError.code
+}
+
+func GetCause(e error) error {
+	if c, ok := e.(Causer); ok {
+		return GetCause(c.Cause())
+	}
+
+	return e
 }

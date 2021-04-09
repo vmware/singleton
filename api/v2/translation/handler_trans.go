@@ -154,6 +154,7 @@ func GetBundle(c *gin.Context) {
 // @Param locale path string true "locale name"
 // @Param component path string true "component name"
 // @Param key path string true "key"
+// @Param source query string false "a source string"
 // @Success 200 {object} api.Response "OK"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
@@ -168,8 +169,9 @@ func GetString(c *gin.Context) {
 	}
 	version := c.GetString(api.SgtnVersionKey)
 
-	msg, err := l3Service.GetString(logger.NewContext(c, c.MustGet(api.LoggerKey)), id.ProductName, version, id.Locale, id.Component, id.Key)
-	api.HandleResponse(c, msg, err)
+	internalID := translation.MessageID{Name: id.ProductName, Version: version, Locale: id.Locale, Component: id.Component, Key: id.Key}
+	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, id.Source)
+	api.HandleResponse(c, result, err)
 }
 
 // PutBundles godoc

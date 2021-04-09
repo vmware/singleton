@@ -76,7 +76,7 @@ downloadgo-bindata:
 
 swagger:
 	swag init -d api -g v1/swagger/swagger.go --exclude api/v2 -o api/v1/swagger
-	swag init -d api -g v2/swagger/swagger.go --exclude api/v1 -o api/v2/swagger --parseDependency
+	swag init -d api -g v2/swagger/swagger.go --exclude api/v1 -o api/v2/swagger
 
 .PHONY: build run test bench coverage bindata downloadgo-bindata swagger build_all
 

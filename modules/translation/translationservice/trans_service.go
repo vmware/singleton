@@ -145,26 +145,71 @@ func (ts Service) GetBundle(ctx context.Context, id *translation.BundleID) (*tra
 }
 
 // GetString ...
-func (ts Service) GetString(ctx context.Context, name, version, locale, component, key string) (*translation.StringMessage, error) {
-	b, err := ts.GetBundle(ctx, &translation.BundleID{Name: name, Version: version, Locale: locale, Component: component})
+func (ts Service) GetString(ctx context.Context, id *translation.MessageID) (*translation.StringMessage, error) {
+	b, err := ts.GetBundle(ctx, &translation.BundleID{Name: id.Name, Version: id.Version, Locale: id.Locale, Component: id.Component})
 	if err != nil {
 		return nil, err
 	}
 
-	anyValue := b.Messages.Get(key)
+	anyValue := b.Messages.Get(id.Key)
 	if anyValue.LastError() == nil {
 		return &translation.StringMessage{
-				Name:        name,
-				Version:     version,
+				Name:        id.Name,
+				Version:     id.Version,
 				Locale:      b.ID.Locale,
-				Component:   component,
-				Key:         key,
+				Component:   id.Component,
+				Key:         id.Key,
 				Translation: anyValue.ToString()},
 			nil
 	}
 
-	return nil, sgtnerror.StatusNotFound.WithUserMessage("Key isn't found: '%s'", key)
+	return nil, sgtnerror.StatusNotFound.WrapErrorWithMessage(translation.ErrStringNotFound, "Fail to get translation for key '%s'", id.Key)
 	// Log.Debug(returnErr)//Don't log because of key is very small granularity
+}
+
+func (ts Service) GetStringWithSource(ctx context.Context, id *translation.MessageID, source string) (result map[string]interface{}, returnErr error) {
+	const EnLocale = "en"
+	var stringTrans, status string
+	if source != "" {
+		msgEn, errEn := ts.GetString(ctx, id)
+		if errEn != nil || msgEn.Translation != source {
+			stringTrans, status = source, "The translation is not found or it is not latest, return the received source"
+		} else {
+			msg, err := ts.GetString(ctx, id)
+			if err == nil {
+				stringTrans, status = msg.Translation, "The translation is found and returned"
+			} else {
+				if errEn == nil {
+					stringTrans, status = msgEn.Translation, "The translation is not found, English found, return the English as translation"
+				} else {
+					stringTrans, status = source, "The translation is not found, English not found, return the received source"
+				}
+			}
+		}
+	} else {
+		msg, err := ts.GetString(ctx, id)
+		if err == nil {
+			stringTrans, status = msg.Translation, "The translation is found and returned"
+		} else {
+			msgEn, errEn := ts.GetString(ctx, id)
+			if errEn == nil {
+				stringTrans, status = msgEn.Translation, "The translation is not found, English found, return the English as translation"
+			} else {
+				return nil, err
+			}
+		}
+	}
+
+	return map[string]interface{}{
+			"productName": id.Name,
+			"version":     id.Version,
+			"locale":      id.Locale,
+			"component":   id.Component,
+			"key":         id.Key,
+			"translation": stringTrans,
+			"source":      source,
+			"status":      status},
+		nil
 }
 
 // PutBundles ...
