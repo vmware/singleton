@@ -83,7 +83,7 @@ func ToBusinessError(err error) *BusinessError {
 			}
 			return &BusinessError{Code: sgtnerror.UnknownError.Code(), UserMsg: e.Error()}
 		}
-		return &BusinessError{Code: sgtnerror.StatusPartialSuccess.Code(), UserMsg: e.Error()}
+		return &BusinessError{Code: sgtnerror.StatusPartialSuccess.Code(), UserMsg: sgtnerror.StatusPartialSuccess.Message()}
 	case *sgtnerror.Error:
 		if e == nil {
 			return &BusinessError{Code: sgtnerror.StatusSuccess.Code(), UserMsg: sgtnerror.StatusSuccess.Message()}

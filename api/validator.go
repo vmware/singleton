@@ -99,12 +99,11 @@ func InitValidator() {
 
 func ExtractErrorMsg(err error) string {
 	if vErrors, ok := err.(validator.ValidationErrors); ok {
-		builder := strings.Builder{}
-		for _, e := range vErrors {
-			builder.WriteString(e.Translate(ValidatorTranslator))
-			builder.WriteString("; ")
+		msgs := make([]string, len(vErrors))
+		for i, e := range vErrors {
+			msgs[i] = e.Translate(ValidatorTranslator)
 		}
-		return builder.String()
+		return strings.Join(msgs, "; ")
 	}
 	return err.Error()
 }

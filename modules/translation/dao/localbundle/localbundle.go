@@ -38,7 +38,7 @@ func (b *LocalBundle) GetBundleInfo(ctx context.Context) (data *translation.Bund
 	log := logger.FromContext(ctx)
 	products, err := ioutil.ReadDir(b.BasePath)
 	if err != nil {
-		returnErr = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, "Fail to read dir '%s'", b.BasePath)
+		returnErr = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToGetBundleInfo)
 		log.Error(returnErr.Error())
 		return nil, returnErr
 	}
@@ -51,7 +51,7 @@ func (b *LocalBundle) GetBundleInfo(ctx context.Context) (data *translation.Bund
 		productDir := path.Join(b.BasePath, product.Name())
 		versions, err := ioutil.ReadDir(productDir)
 		if err != nil {
-			returnErr = sgtnerror.StatusInternalServerError.WrapError(err)
+			returnErr = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToGetBundleInfo)
 			log.Error(returnErr.Error())
 			return nil, returnErr
 		}
@@ -63,7 +63,7 @@ func (b *LocalBundle) GetBundleInfo(ctx context.Context) (data *translation.Bund
 			verDir := path.Join(productDir, v.Name())
 			components, err := ioutil.ReadDir(verDir)
 			if err != nil {
-				returnErr = sgtnerror.StatusInternalServerError.WrapError(err)
+				returnErr = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToGetBundleInfo)
 				log.Error(returnErr.Error())
 				return nil, returnErr
 			}
@@ -76,7 +76,7 @@ func (b *LocalBundle) GetBundleInfo(ctx context.Context) (data *translation.Bund
 				componentDir := path.Join(verDir, component.Name())
 				bundles, err := ioutil.ReadDir(componentDir)
 				if err != nil {
-					returnErr = sgtnerror.StatusInternalServerError.WrapError(err)
+					returnErr = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToGetBundleInfo)
 					log.Error(returnErr.Error())
 					return nil, returnErr
 				}
@@ -128,14 +128,14 @@ func (b *LocalBundle) PutBundle(ctx context.Context, bundleData *translation.Bun
 	bundle := &translation.BundleFile{Component: bundleData.ID.Component, Locale: bundleData.ID.Locale, Messages: bundleData.Messages}
 	bts, err := json.MarshalIndent(bundle, "", "    ")
 	if err != nil {
-		returnErr = sgtnerror.StatusBadRequest.WrapError(err)
+		returnErr = sgtnerror.StatusBadRequest.WrapErrorWithMessage(err, translation.WrongBundleContent, bundleData.ID.Name, bundleData.ID.Version, bundleData.ID.Component, bundleData.ID.Locale)
 	} else {
 		dirPath, fullPath := b.getBundlePath(&bundleData.ID)
 		if err = os.MkdirAll(dirPath, 0755); err == nil {
 			err = ioutil.WriteFile(fullPath, bts, 0644)
 		}
 		if err != nil {
-			returnErr = sgtnerror.StatusInternalServerError.WrapError(err)
+			returnErr = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToStoreBundle, bundleData.ID.Name, bundleData.ID.Version, bundleData.ID.Component, bundleData.ID.Locale)
 		}
 	}
 
