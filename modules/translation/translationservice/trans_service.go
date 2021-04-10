@@ -168,32 +168,32 @@ func (ts Service) GetString(ctx context.Context, id *translation.MessageID) (*tr
 }
 
 func (ts Service) GetStringWithSource(ctx context.Context, id *translation.MessageID, source string) (result map[string]interface{}, returnErr error) {
-	const EnLocale = "en"
-	var stringTrans, status string
+	var stringTrans string
+	var status translation.TranslationStatus
+	msg, err := ts.GetString(ctx, id)
+	idEn := *id
+	idEn.Locale = "en"
+	msgEn, errEn := ts.GetString(ctx, &idEn)
 	if source != "" {
-		msgEn, errEn := ts.GetString(ctx, id)
 		if errEn != nil || msgEn.Translation != source {
-			stringTrans, status = source, "The translation is not found or it is not latest, return the received source"
+			stringTrans, status = source, translation.SourceUpdated
 		} else {
-			msg, err := ts.GetString(ctx, id)
 			if err == nil {
-				stringTrans, status = msg.Translation, "The translation is found and returned"
+				stringTrans, status = msg.Translation, translation.TranslationValid
 			} else {
 				if errEn == nil {
-					stringTrans, status = msgEn.Translation, "The translation is not found, English found, return the English as translation"
+					stringTrans, status = msgEn.Translation, translation.FallbackToEn
 				} else {
-					stringTrans, status = source, "The translation is not found, English not found, return the received source"
+					stringTrans, status = source, translation.FallbackToSource
 				}
 			}
 		}
 	} else {
-		msg, err := ts.GetString(ctx, id)
 		if err == nil {
-			stringTrans, status = msg.Translation, "The translation is found and returned"
+			stringTrans, status = msg.Translation, translation.TranslationValid
 		} else {
-			msgEn, errEn := ts.GetString(ctx, id)
 			if errEn == nil {
-				stringTrans, status = msgEn.Translation, "The translation is not found, English found, return the English as translation"
+				stringTrans, status = msgEn.Translation, translation.FallbackToEn
 			} else {
 				return nil, err
 			}
