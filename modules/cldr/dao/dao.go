@@ -22,7 +22,13 @@ import (
 
 var json = jsoniter.ConfigDefault
 
-func GetCoreData(ctx context.Context, dataType CoreDataType, data interface{}) error {
+func GetDAO() cldrDAO {
+	return cldrDAO{}
+}
+
+type cldrDAO struct{}
+
+func (cldrDAO) GetCoreData(ctx context.Context, dataType cldr.CoreDataType, data interface{}) error {
 	log := logger.FromContext(ctx)
 	log.Debug("Read core locale data from storage", zap.String("type", coreDataTypeStrings[dataType]))
 
@@ -40,7 +46,7 @@ func GetCoreData(ctx context.Context, dataType CoreDataType, data interface{}) e
 	return err
 }
 
-func GetLocaleData(ctx context.Context, dataType, locale string, data interface{}) error {
+func (cldrDAO) GetLocaleData(ctx context.Context, locale, dataType string, data interface{}) error {
 	log := logger.FromContext(ctx)
 	log.Debug("Read locale data from storage", zap.String("locale", locale), zap.String("type", dataType))
 

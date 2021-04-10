@@ -11,7 +11,6 @@ import (
 
 	"sgtnserver/internal/common"
 	"sgtnserver/modules/cldr"
-	"sgtnserver/modules/cldr/cldrcache"
 )
 
 var localeSplitter = regexp.MustCompile("[-_]")
@@ -23,7 +22,7 @@ func GetCLDRLocale(locale string) string {
 	if matchedLocale != "" {
 		localeToProcess = strings.ToLower(matchedLocale)
 	}
-	cldrLocale := cldrcache.AvailableLocalesMap[localeToProcess]
+	cldrLocale := AvailableLocalesMap[localeToProcess]
 	if cldrLocale == "" {
 		cldrLocale = GetLocaleByDefaultContent(localeToProcess)
 	}
@@ -35,7 +34,7 @@ func GetCLDRLocale(locale string) string {
 // there is a matching locale, and if so, get the processed result and run
 // e.g. fr-FR ==> fr
 func GetLocaleByDefaultContent(locale string) string {
-	if gotten, ok := cldrcache.DefaultContentMap[locale]; ok {
+	if gotten, ok := DefaultContentMap[locale]; ok {
 		locale = gotten[0:strings.LastIndex(gotten, cldr.LocalePartSep)]
 		return locale
 	}
@@ -74,7 +73,7 @@ func GetLocaleByLangReg(language, region string) string {
 			}
 		}
 
-		supplementLanguageData := cldrcache.SupplementLanguageDataMap[grandLanguage]
+		supplementLanguageData := SupplementLanguageDataMap[grandLanguage]
 		if supplementLanguageData != nil {
 			scripts := supplementLanguageData.Scripts
 			if len(scripts) != 0 {
@@ -97,7 +96,7 @@ func GetLocaleByLangReg(language, region string) string {
 		}
 	}
 
-	langFromRegion := cldrcache.RegionToLangMap[strings.ToUpper(region)]
+	langFromRegion := RegionToLangMap[strings.ToUpper(region)]
 	if langFromRegion != "" {
 		locale = langFromRegion + cldr.LocalePartSep + region
 		return GetCLDRLocale(locale)
@@ -108,14 +107,14 @@ func GetLocaleByLangReg(language, region string) string {
 
 // GetLocaleNameByAliasData Convert a deprecated name to its replacement by aliases.json
 func GetLocaleNameByAliasData(oldLocale string) string {
-	return cldrcache.LocaleAliasesMap[oldLocale].Replacement
+	return LocaleAliasesMap[oldLocale].Replacement
 }
 
 // GetPathLocale Parse locale and match cldr locale path: e.g. zh-Hans-CN = > zh-Hans,
 // zh-CN = > zh-Hans-CN = > zh-Hans, if no matching item, return zh
 func GetPathLocale(locale string) string {
 	normalizedLocale := strings.ReplaceAll(strings.ToLower(locale), "_", cldr.LocalePartSep)
-	cldrLocale := cldrcache.AvailableLocalesMap[normalizedLocale]
+	cldrLocale := AvailableLocalesMap[normalizedLocale]
 	if cldrLocale != "" {
 		return cldrLocale
 	}
@@ -123,24 +122,24 @@ func GetPathLocale(locale string) string {
 	parts := strings.Split(normalizedLocale, cldr.LocalePartSep)
 	switch len(parts) {
 	case 3:
-		cldrLocale = cldrcache.AvailableLocalesMap[parts[0]+cldr.LocalePartSep+parts[1]] // e.g. zh-Hans
+		cldrLocale = AvailableLocalesMap[parts[0]+cldr.LocalePartSep+parts[1]] // e.g. zh-Hans
 		if cldrLocale == "" {
-			cldrLocale = cldrcache.AvailableLocalesMap[parts[0]+cldr.LocalePartSep+parts[2]] // zh-CN
+			cldrLocale = AvailableLocalesMap[parts[0]+cldr.LocalePartSep+parts[2]] // zh-CN
 		}
 	case 2: // e.g. zh-Hans or zh-CN => zh-Hans-CN
-		likelySubStr := cldrcache.LikelySubtagMap["und-"+parts[1]] // Get locale ID from Region
+		likelySubStr := LikelySubtagMap["und-"+parts[1]] // Get locale ID from Region
 		if likelySubStr == "" || strings.Compare(parts[0], strings.Split(likelySubStr, cldr.LocalePartSep)[0]) != 0 {
 			break
 		}
 		if likelySubStr != "" {
-			cldrLocale = cldrcache.AvailableLocalesMap[strings.ToLower(likelySubStr)]
+			cldrLocale = AvailableLocalesMap[strings.ToLower(likelySubStr)]
 			if cldrLocale == "" {
 				likelySubStrArr := strings.Split(likelySubStr, cldr.LocalePartSep)
-				cldrLocale = cldrcache.AvailableLocalesMap[strings.ToLower(likelySubStrArr[0]+cldr.LocalePartSep+likelySubStrArr[1])]
+				cldrLocale = AvailableLocalesMap[strings.ToLower(likelySubStrArr[0]+cldr.LocalePartSep+likelySubStrArr[1])]
 			}
 		}
 		if cldrLocale == "" {
-			cldrLocale = cldrcache.AvailableLocalesMap[parts[0]]
+			cldrLocale = AvailableLocalesMap[parts[0]]
 		}
 	}
 
@@ -181,11 +180,11 @@ func ParseLocale(originalLocale string) *Locale {
 		switch n {
 		case 0:
 			locale.Language = strings.ToLower(p)
-			if langDataFirst := cldrcache.SupplementLanguageDataMap[locale.Language]; langDataFirst != nil {
+			if langDataFirst := SupplementLanguageDataMap[locale.Language]; langDataFirst != nil {
 				langData.Territories = langDataFirst.Territories
 				langData.Scripts = langDataFirst.Scripts
 			}
-			if langDataSecond := cldrcache.SupplementLanguageDataMap[locale.Language+"-alt-secondary"]; langDataSecond != nil {
+			if langDataSecond := SupplementLanguageDataMap[locale.Language+"-alt-secondary"]; langDataSecond != nil {
 				langData.Territories = append(langData.Territories, langDataSecond.Territories...)
 				langData.Scripts = append(langData.Scripts, langDataSecond.Scripts...)
 			}

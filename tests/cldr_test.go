@@ -136,6 +136,10 @@ func TestScopeFilter(t *testing.T) {
 }
 
 func TestCLDRCache(t *testing.T) {
+	if !localeutil.EnableCache {
+		return
+	}
+
 	c, ok := cache.GetCache("cldr")
 	assert.True(t, ok)
 	c.Clear()

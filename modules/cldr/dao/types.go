@@ -5,6 +5,8 @@
 
 package dao
 
+import "sgtnserver/modules/cldr"
+
 const cldrBaseFolder = "cldr/"
 const (
 	ParseDataPath            = cldrBaseFolder + "pattern/common/parse.json"
@@ -23,79 +25,51 @@ const (
 )
 
 var CoreDataTypeNames = [...]string{
-	CoreSplmtAlias:            "CoreSplmtAlias",
-	CoreSplmtCurrencyData:     "CoreSplmtCurrencyData",
-	CoreSplmtLanguageData:     "CoreSplmtLanguageData",
-	CoreSplmtLikelySubTags:    "CoreSplmtLikelySubTags",
-	CoreSplmtNumberingSystems: "CoreSplmtNumberingSystems",
-	CoreAvaLocales:            "CoreAvaLocales",
+	cldr.CoreSplmtAlias:            "CoreSplmtAlias",
+	cldr.CoreSplmtCurrencyData:     "CoreSplmtCurrencyData",
+	cldr.CoreSplmtLanguageData:     "CoreSplmtLanguageData",
+	cldr.CoreSplmtLikelySubTags:    "CoreSplmtLikelySubTags",
+	cldr.CoreSplmtNumberingSystems: "CoreSplmtNumberingSystems",
+	cldr.CoreAvaLocales:            "CoreAvaLocales",
 
-	RegionToLanguage: "RegionToLanguage",
-	DefaultContent:   "DefaultContent",
+	cldr.RegionToLanguage: "RegionToLanguage",
+	cldr.DefaultContent:   "DefaultContent",
 }
 
-const (
-	PatternDates        = "dates"
-	PatternNumbers      = "numbers"
-	PatternPlurals      = "plurals"
-	PatternMeasurements = "measurements"
-	PatternCurrencies   = "currencies"
-	PatternDateFields   = "dateFields"
-
-	ContextTransform  = "ContextTransform"
-	LocaleLanguages   = "LocaleLanguages"
-	LocaleTerritories = "LocaleTerritories"
-)
-
 var coreDataInfo = [...]cldrItemInfo{
-	CoreSplmtAlias:            {LocaleAliasesPath, []interface{}{"languageAlias"}},
-	CoreSplmtCurrencyData:     {SupplementalCurrencyPath, nil},
-	CoreSplmtLanguageData:     {LanguageDataPath, []interface{}{"languageData"}},
-	CoreSplmtLikelySubTags:    {ParseDataPath, []interface{}{"likelySubtag"}},
-	CoreSplmtNumberingSystems: {NumberingSystemsPath, []interface{}{}},
-	CoreAvaLocales:            {ParseDataPath, []interface{}{"localePath"}},
+	cldr.CoreSplmtAlias:            {LocaleAliasesPath, []interface{}{"languageAlias"}},
+	cldr.CoreSplmtCurrencyData:     {SupplementalCurrencyPath, nil},
+	cldr.CoreSplmtLanguageData:     {LanguageDataPath, []interface{}{"languageData"}},
+	cldr.CoreSplmtLikelySubTags:    {ParseDataPath, []interface{}{"likelySubtag"}},
+	cldr.CoreSplmtNumberingSystems: {NumberingSystemsPath, []interface{}{}},
+	cldr.CoreAvaLocales:            {ParseDataPath, []interface{}{"localePath"}},
 
-	RegionToLanguage: {RegionLanguagesMapPath, []interface{}{"regionInfo"}},
-	DefaultContent:   {DefaultContentPath, []interface{}{"defaultContent"}},
+	cldr.RegionToLanguage: {RegionLanguagesMapPath, []interface{}{"regionInfo"}},
+	cldr.DefaultContent:   {DefaultContentPath, []interface{}{"defaultContent"}},
 }
 
 var localeDataInfo = map[string]cldrItemInfo{
-	PatternDates:        {PatternJSONPath, []interface{}{"categories", "dates"}},
-	PatternNumbers:      {PatternJSONPath, []interface{}{"categories", "numbers"}},
-	PatternPlurals:      {PatternJSONPath, []interface{}{"categories", "plurals"}},
-	PatternMeasurements: {PatternJSONPath, []interface{}{"categories", "measurements"}},
-	PatternCurrencies:   {PatternJSONPath, []interface{}{"categories", "currencies"}},
-	PatternDateFields:   {DateFieldsJSONPath, []interface{}{"dateFields"}},
+	cldr.PatternDates:        {PatternJSONPath, []interface{}{"categories", "dates"}},
+	cldr.PatternNumbers:      {PatternJSONPath, []interface{}{"categories", "numbers"}},
+	cldr.PatternPlurals:      {PatternJSONPath, []interface{}{"categories", "plurals"}},
+	cldr.PatternMeasurements: {PatternJSONPath, []interface{}{"categories", "measurements"}},
+	cldr.PatternCurrencies:   {PatternJSONPath, []interface{}{"categories", "currencies"}},
+	cldr.PatternDateFields:   {DateFieldsJSONPath, []interface{}{"dateFields"}},
 
-	ContextTransform:  {ContextTransformPath, []interface{}{"contextTransforms"}},
-	LocaleLanguages:   {LocaleLanguagesPath, []interface{}{"languages"}},
-	LocaleTerritories: {LocaleTerritoriesPath, []interface{}{}},
+	cldr.ContextTransform:  {ContextTransformPath, []interface{}{"contextTransforms"}},
+	cldr.LocaleLanguages:   {LocaleLanguagesPath, []interface{}{"languages"}},
+	cldr.LocaleTerritories: {LocaleTerritoriesPath, []interface{}{}},
 }
 
-type CoreDataType int
-
-// Core data
-const (
-	CoreSplmtAlias CoreDataType = iota
-	CoreSplmtCurrencyData
-	CoreSplmtLanguageData
-	CoreSplmtLikelySubTags
-	CoreSplmtNumberingSystems
-	CoreAvaLocales
-
-	RegionToLanguage
-	DefaultContent
-)
-
 var coreDataTypeStrings = [...]string{
-	CoreSplmtAlias:            "SplmtAlias",
-	CoreSplmtCurrencyData:     "SplmtCurrency",
-	CoreSplmtLanguageData:     "SplmtLanguage",
-	CoreSplmtLikelySubTags:    "LikelySubTags",
-	CoreSplmtNumberingSystems: "NumberingSystems",
-	CoreAvaLocales:            "AvaLocales",
-	RegionToLanguage:          "RegionToLanguage",
-	DefaultContent:            "DefaultContent",
+	cldr.CoreSplmtAlias:            "SplmtAlias",
+	cldr.CoreSplmtCurrencyData:     "SplmtCurrency",
+	cldr.CoreSplmtLanguageData:     "SplmtLanguage",
+	cldr.CoreSplmtLikelySubTags:    "LikelySubTags",
+	cldr.CoreSplmtNumberingSystems: "NumberingSystems",
+	cldr.CoreAvaLocales:            "AvaLocales",
+	cldr.RegionToLanguage:          "RegionToLanguage",
+	cldr.DefaultContent:            "DefaultContent",
 }
 
 type cldrItemInfo struct {
@@ -103,7 +77,7 @@ type cldrItemInfo struct {
 	jsonPath []interface{}
 }
 
-func getItemInfoOfCoreGroup(t CoreDataType) cldrItemInfo {
+func getItemInfoOfCoreGroup(t cldr.CoreDataType) cldrItemInfo {
 	if int(t) < len(coreDataInfo) {
 		return coreDataInfo[t]
 	}

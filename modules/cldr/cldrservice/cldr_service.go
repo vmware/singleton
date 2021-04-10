@@ -15,7 +15,6 @@ import (
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/cldr"
 	"sgtnserver/modules/cldr/coreutil"
-	"sgtnserver/modules/cldr/dao"
 	"sgtnserver/modules/cldr/localeutil"
 
 	"github.com/emirpasic/gods/sets/hashset"
@@ -27,12 +26,12 @@ import (
 var ArgSplitter = regexp.MustCompile(`\s*,\s*`)
 
 // SpecialCategories Data is always form language
-var SpecialCategories = hashset.New(dao.PatternDateFields, dao.PatternPlurals)
+var SpecialCategories = hashset.New(cldr.PatternDateFields, cldr.PatternPlurals)
 
 // SupplementalCategories Need to get some extra data for these categories
-var SupplementalCategories = map[string]dao.CoreDataType{
-	dao.PatternCurrencies: dao.CoreSplmtCurrencyData,
-	dao.PatternNumbers:    dao.CoreSplmtNumberingSystems}
+var SupplementalCategories = map[string]cldr.CoreDataType{
+	cldr.PatternCurrencies: cldr.CoreSplmtCurrencyData,
+	cldr.PatternNumbers:    cldr.CoreSplmtNumberingSystems}
 
 func GetPatternByLangReg(ctx context.Context, language, region, catgs, filter string) (resultMap map[string]interface{}, cldrLocale string, err error) {
 	log := logger.FromContext(ctx)
@@ -68,8 +67,8 @@ func GetPatternByLangReg(ctx context.Context, language, region, catgs, filter st
 		if err == nil {
 			resultMap[catg] = catgData
 
-			if catg == dao.PatternCurrencies && common.Contains(categories, dao.PatternNumbers) < 0 {
-				categories = append(categories, dao.PatternNumbers)
+			if catg == cldr.PatternCurrencies && common.Contains(categories, cldr.PatternNumbers) < 0 {
+				categories = append(categories, cldr.PatternNumbers)
 			}
 		}
 	}
@@ -114,8 +113,8 @@ func GetPatternByLocale(ctx context.Context, locale, catgs, filter string) (newL
 		if err == nil {
 			resultMap[catg] = catgData
 
-			if catg == dao.PatternCurrencies && common.Contains(categories, dao.PatternNumbers) < 0 {
-				categories = append(categories, dao.PatternNumbers)
+			if catg == cldr.PatternCurrencies && common.Contains(categories, cldr.PatternNumbers) < 0 {
+				categories = append(categories, cldr.PatternNumbers)
 			}
 		}
 	}
@@ -140,7 +139,7 @@ func getSupplementalData(ctx context.Context, resultMap map[string]interface{}, 
 			coreData, err := coreutil.GetCoreData(ctx, coreType)
 			returnErr = sgtnerror.Append(returnErr, err)
 			if err == nil {
-				suppleMap[catg] = coreData
+				suppleMap[catg] = coreData.(jsoniter.Any)
 			}
 		}
 	}
