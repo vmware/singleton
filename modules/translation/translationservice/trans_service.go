@@ -284,6 +284,56 @@ func (ts Service) ClearCache(ctx context.Context) (err error) {
 	return
 }
 
+func (ts Service) GetTranslationStatus(ctx context.Context, id *translation.BundleID) (map[string]interface{}, error) {
+	logger.FromContext(ctx).Debug("Get a bundle", zap.String(translation.Name, id.Name), zap.String(translation.Version, id.Version),
+		zap.String(translation.Locale, id.Locale), zap.String(translation.Component, id.Component))
+
+	id.Locale = PickupLocales(id.Name, id.Version, []string{id.Locale})[0]
+
+	const enLocale = "en"
+	const ready, notready = "1", "0"
+
+	translationData, tErr := ts.GetBundle(ctx, id)
+	if tErr != nil {
+		return nil, sgtnerror.TranslationNotReady
+	}
+
+	latestID := *id
+	latestID.Locale = "latest"
+	latestData, latestErr := ts.GetBundle(ctx, &latestID)
+	if latestErr != nil {
+		return nil, sgtnerror.TranslationReady
+	}
+
+	var enErr error
+	var enData = translationData
+	if translationData.ID.Locale != enLocale {
+		enID := *id
+		enID.Locale = enLocale
+		enData, enErr = ts.GetBundle(ctx, &enID)
+		if enErr != nil {
+			return nil, sgtnerror.TranslationNotReady
+		}
+	}
+
+	var latestMessages, enMessages map[string]string
+	latestData.Messages.ToVal(&latestMessages)
+	enData.Messages.ToVal(&enMessages)
+
+	var result = make(map[string]interface{}, len(latestMessages))
+	var err = sgtnerror.TranslationReady
+	for k, latestValue := range latestMessages {
+		if latestValue == enMessages[k] {
+			result[k] = ready
+		} else {
+			result[k] = notready
+			err = sgtnerror.TranslationNotReady
+		}
+	}
+
+	return result, err
+}
+
 var service Service
 
 func newService() Service {
