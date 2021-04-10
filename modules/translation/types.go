@@ -37,7 +37,9 @@ type (
 		Locale    string
 		Component string
 	}
+)
 
+type (
 	// StringMessage ...
 	StringMessage struct {
 		Name    string `json:"productName"`
@@ -49,11 +51,11 @@ type (
 		Key         string `json:"key"`
 		Translation string `json:"translation"`
 	}
-)
 
-// BundleFile ...
-type BundleFile struct {
-	Component string       `json:"component"`
-	Locale    string       `json:"locale"`
-	Messages  jsoniter.Any `json:"messages"`
-}
+	// BundleFile ...
+	BundleFile struct {
+		Component string       `json:"component"`
+		Locale    string       `json:"locale"`
+		Messages  jsoniter.Any `json:"messages"`
+	}
+)
