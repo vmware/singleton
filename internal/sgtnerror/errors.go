@@ -12,6 +12,8 @@ import (
 
 var (
 	StatusSuccess        = Error{code: http.StatusOK, message: "OK"}
+	TranslationNotReady  = Error{code: 205, message: "translations are not ready"}
+	TranslationReady     = Error{code: 206, message: "translations are ready"}
 	StatusPartialSuccess = Error{code: 207, message: "Successful Partially"}
 
 	StatusBadRequest    = Error{code: http.StatusBadRequest, message: "Bad Request"}

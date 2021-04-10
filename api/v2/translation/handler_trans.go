@@ -126,22 +126,34 @@ func GetMultipleBundles(c *gin.Context) {
 // @Param version path string true "version"
 // @Param locale path string true "locale name"
 // @Param component path string true "component name"
+// @Param checkTranslationStatus query string false "checkTranslationStatus" default(false)
 // @Success 200 {object} api.Response "OK"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /translation/products/{productName}/versions/{version}/locales/{locale}/components/{component} [get]
 func GetBundle(c *gin.Context) {
-	id := BundleID{}
+	id := GetBundleReq{}
 	if err := c.ShouldBindUri(&id); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
-	version := c.GetString(api.SgtnVersionKey)
-	data, err := l3Service.GetBundle(logger.NewContext(c, c.MustGet(api.LoggerKey)),
-		&translation.BundleID{Name: id.ProductName, Version: version, Locale: id.Locale, Component: id.Component})
+	if err := c.ShouldBindQuery(&id.CheckTranslationStatus); err != nil {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+		return
+	}
 
-	api.HandleResponse(c, ConvertBundleToAPI(data), err)
+	version := c.GetString(api.SgtnVersionKey)
+	ctx := logger.NewContext(c, c.MustGet(api.LoggerKey))
+	bundleID := &translation.BundleID{Name: id.ProductName, Version: version, Locale: id.Locale, Component: id.Component}
+	data, err := l3Service.GetBundle(ctx, bundleID)
+	bundleAPIData := ConvertBundleToAPI(data)
+
+	if err == nil && id.CheckTranslationStatus.Check {
+		bundleAPIData.Status, err = l3Service.GetTranslationStatus(ctx, bundleID)
+	}
+
+	api.HandleResponse(c, bundleAPIData, err)
 }
 
 // GetString godoc
