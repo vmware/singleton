@@ -23,15 +23,23 @@ import (
 	"go.uber.org/zap"
 )
 
-var ArgSplitter = regexp.MustCompile(`\s*,\s*`)
+var (
+	ArgSplitter = regexp.MustCompile(`\s*` + common.ParamSep + `\s*`)
 
-// SpecialCategories Data is always form language
-var SpecialCategories = hashset.New(cldr.PatternDateFields, cldr.PatternPlurals)
+	// SpecialCategories Data is always form language
+	SpecialCategories = hashset.New(cldr.PatternDateFields, cldr.PatternPlurals)
 
-// SupplementalCategories Need to get some extra data for these categories
-var SupplementalCategories = map[string]cldr.CoreDataType{
-	cldr.PatternCurrencies: cldr.CoreSplmtCurrencyData,
-	cldr.PatternNumbers:    cldr.CoreSplmtNumberingSystems}
+	// SupplementalCategories Need to get some extra data for these categories
+	SupplementalCategories = map[string]cldr.CoreDataType{
+		cldr.PatternCurrencies: cldr.CoreSplmtCurrencyData,
+		cldr.PatternNumbers:    cldr.CoreSplmtNumberingSystems,
+	}
+)
+
+const (
+	scopeFilterSep = "_"
+	objxMapPathSep = "."
+)
 
 func GetPatternByLangReg(ctx context.Context, language, region, catgs, filter string) (resultMap map[string]interface{}, cldrLocale string, err error) {
 	log := logger.FromContext(ctx)
@@ -160,9 +168,6 @@ func processFilters(data map[string]interface{}, scopeFilter string) map[string]
 		return includeNodes(data, scopeFilter)
 	}
 }
-
-const scopeFilterSep = "_"
-const objxMapPathSep = "."
 
 func excludeNodes(data map[string]interface{}, filters string) map[string]interface{} {
 	objxMap := objx.Map(data)

@@ -13,20 +13,6 @@ const (
 
 const LocalePartSep = "-"
 
-// Locale data type
-const (
-	PatternDates        = "dates"
-	PatternNumbers      = "numbers"
-	PatternPlurals      = "plurals"
-	PatternMeasurements = "measurements"
-	PatternCurrencies   = "currencies"
-	PatternDateFields   = "dateFields"
-
-	ContextTransform  = "ContextTransform"
-	LocaleLanguages   = "LocaleLanguages"
-	LocaleTerritories = "LocaleTerritories"
-)
-
 type CoreDataType int
 
 // Core data type
@@ -40,4 +26,18 @@ const (
 
 	RegionToLanguage
 	DefaultContent
+)
+
+// Locale data type
+const (
+	PatternDates        = "dates"
+	PatternNumbers      = "numbers"
+	PatternPlurals      = "plurals"
+	PatternMeasurements = "measurements"
+	PatternCurrencies   = "currencies"
+	PatternDateFields   = "dateFields"
+
+	ContextTransform  = "ContextTransform"
+	LocaleLanguages   = "LocaleLanguages"
+	LocaleTerritories = "LocaleTerritories"
 )

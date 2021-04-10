@@ -8,45 +8,52 @@ package dao
 import "sgtnserver/modules/cldr"
 
 const cldrBaseFolder = "cldr/"
-const (
-	ParseDataPath            = cldrBaseFolder + "pattern/common/parse.json"
-	PatternJSONPath          = cldrBaseFolder + "pattern/common/%s/pattern.json"
-	SupplementalCurrencyPath = cldrBaseFolder + "supplement/currencies.json"
-	NumberingSystemsPath     = cldrBaseFolder + "supplement/numbers.json"
 
-	LocaleTerritoriesPath  = cldrBaseFolder + "localedata/%s/territories.json"
-	LocaleLanguagesPath    = cldrBaseFolder + "localedata/%s/languages.json"
-	ContextTransformPath   = cldrBaseFolder + "misc/%s/contextTransforms.json"
-	DefaultContentPath     = cldrBaseFolder + "defaultContent/defaultContent.json"
-	RegionLanguagesMapPath = cldrBaseFolder + "regionLanguage/regionLanguageMapping.json"
-	LocaleAliasesPath      = cldrBaseFolder + "aliases/aliases.json"
-	LanguageDataPath       = cldrBaseFolder + "supplement/languageData.json"
-	DateFieldsJSONPath     = cldrBaseFolder + "pattern/common/%s/dateFields.json"
+// Core Data
+const (
+	LocaleAliasesPath        = cldrBaseFolder + "aliases/aliases.json"
+	SupplementalCurrencyPath = cldrBaseFolder + "supplement/currencies.json"
+	LanguageDataPath         = cldrBaseFolder + "supplement/languageData.json"
+	ParseDataPath            = cldrBaseFolder + "pattern/common/parse.json"
+	NumberingSystemsPath     = cldrBaseFolder + "supplement/numbers.json"
+	RegionLanguagesMapPath   = cldrBaseFolder + "regionLanguage/regionLanguageMapping.json"
+	DefaultContentPath       = cldrBaseFolder + "defaultContent/defaultContent.json"
 )
 
-var CoreDataTypeNames = [...]string{
-	cldr.CoreSplmtAlias:            "CoreSplmtAlias",
-	cldr.CoreSplmtCurrencyData:     "CoreSplmtCurrencyData",
-	cldr.CoreSplmtLanguageData:     "CoreSplmtLanguageData",
-	cldr.CoreSplmtLikelySubTags:    "CoreSplmtLikelySubTags",
-	cldr.CoreSplmtNumberingSystems: "CoreSplmtNumberingSystems",
-	cldr.CoreAvaLocales:            "CoreAvaLocales",
+var (
+	coreDataInfo = [...]cldrItemInfo{
+		cldr.CoreSplmtAlias:            {LocaleAliasesPath, []interface{}{"languageAlias"}},
+		cldr.CoreSplmtCurrencyData:     {SupplementalCurrencyPath, nil},
+		cldr.CoreSplmtLanguageData:     {LanguageDataPath, []interface{}{"languageData"}},
+		cldr.CoreSplmtLikelySubTags:    {ParseDataPath, []interface{}{"likelySubtag"}},
+		cldr.CoreSplmtNumberingSystems: {NumberingSystemsPath, []interface{}{}},
+		cldr.CoreAvaLocales:            {ParseDataPath, []interface{}{"localePath"}},
 
-	cldr.RegionToLanguage: "RegionToLanguage",
-	cldr.DefaultContent:   "DefaultContent",
-}
+		cldr.RegionToLanguage: {RegionLanguagesMapPath, []interface{}{"regionInfo"}},
+		cldr.DefaultContent:   {DefaultContentPath, []interface{}{"defaultContent"}},
+	}
 
-var coreDataInfo = [...]cldrItemInfo{
-	cldr.CoreSplmtAlias:            {LocaleAliasesPath, []interface{}{"languageAlias"}},
-	cldr.CoreSplmtCurrencyData:     {SupplementalCurrencyPath, nil},
-	cldr.CoreSplmtLanguageData:     {LanguageDataPath, []interface{}{"languageData"}},
-	cldr.CoreSplmtLikelySubTags:    {ParseDataPath, []interface{}{"likelySubtag"}},
-	cldr.CoreSplmtNumberingSystems: {NumberingSystemsPath, []interface{}{}},
-	cldr.CoreAvaLocales:            {ParseDataPath, []interface{}{"localePath"}},
+	coreDataTypeStrings = [...]string{
+		cldr.CoreSplmtAlias:            "SplmtAlias",
+		cldr.CoreSplmtCurrencyData:     "SplmtCurrency",
+		cldr.CoreSplmtLanguageData:     "SplmtLanguage",
+		cldr.CoreSplmtLikelySubTags:    "LikelySubTags",
+		cldr.CoreSplmtNumberingSystems: "NumberingSystems",
+		cldr.CoreAvaLocales:            "AvaLocales",
 
-	cldr.RegionToLanguage: {RegionLanguagesMapPath, []interface{}{"regionInfo"}},
-	cldr.DefaultContent:   {DefaultContentPath, []interface{}{"defaultContent"}},
-}
+		cldr.RegionToLanguage: "RegionToLanguage",
+		cldr.DefaultContent:   "DefaultContent",
+	}
+)
+
+// Locale Data
+const (
+	PatternJSONPath       = cldrBaseFolder + "pattern/common/%s/pattern.json"
+	LocaleTerritoriesPath = cldrBaseFolder + "localedata/%s/territories.json"
+	LocaleLanguagesPath   = cldrBaseFolder + "localedata/%s/languages.json"
+	ContextTransformPath  = cldrBaseFolder + "misc/%s/contextTransforms.json"
+	DateFieldsJSONPath    = cldrBaseFolder + "pattern/common/%s/dateFields.json"
+)
 
 var localeDataInfo = map[string]cldrItemInfo{
 	cldr.PatternDates:        {PatternJSONPath, []interface{}{"categories", "dates"}},
@@ -61,17 +68,6 @@ var localeDataInfo = map[string]cldrItemInfo{
 	cldr.LocaleTerritories: {LocaleTerritoriesPath, []interface{}{}},
 }
 
-var coreDataTypeStrings = [...]string{
-	cldr.CoreSplmtAlias:            "SplmtAlias",
-	cldr.CoreSplmtCurrencyData:     "SplmtCurrency",
-	cldr.CoreSplmtLanguageData:     "SplmtLanguage",
-	cldr.CoreSplmtLikelySubTags:    "LikelySubTags",
-	cldr.CoreSplmtNumberingSystems: "NumberingSystems",
-	cldr.CoreAvaLocales:            "AvaLocales",
-	cldr.RegionToLanguage:          "RegionToLanguage",
-	cldr.DefaultContent:            "DefaultContent",
-}
-
 type cldrItemInfo struct {
 	filePath string
 	jsonPath []interface{}
@@ -83,6 +79,7 @@ func getItemInfoOfCoreGroup(t cldr.CoreDataType) cldrItemInfo {
 	}
 	return cldrItemInfo{}
 }
+
 func getItemInfoOfLocaleGroup(t string) cldrItemInfo {
 	return localeDataInfo[t]
 }

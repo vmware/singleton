@@ -227,7 +227,7 @@ func TestAllFailed(t *testing.T) {
 		resp := e.GET(GetBundlesURL, Name, Version).
 			WithQuery("locales", d.locales).WithQuery("components", d.components).Expect()
 		resp.Status(http.StatusNotFound)
-		for _, v := range strings.Split(d.locales, ",") {
+		for _, v := range strings.Split(d.locales, common.ParamSep) {
 			resp.Body().Contains(v)
 		}
 	}

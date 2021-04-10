@@ -26,75 +26,77 @@ var (
 	DefaultContentMap         map[string]string
 )
 
-var permanentCachedTypes = map[cldr.CoreDataType]interface{}{}
+var (
+	cachedTypes = map[cldr.CoreDataType]interface{}{}
 
-var EnableCache = false
+	EnableCache = false
 
-var coreDao cldrCoreDAO
+	dataOrigin coreDataOrigin
+)
 
-type cldrCoreDAO interface {
+type coreDataOrigin interface {
 	GetCoreData(ctx context.Context, t cldr.CoreDataType, data interface{}) error
 }
 
 func GetCoreData(ctx context.Context, t cldr.CoreDataType) (interface{}, error) {
-	if dataInPermCache, ok := permanentCachedTypes[t]; ok {
+	if dataInPermCache, ok := cachedTypes[t]; ok {
 		return dataInPermCache, nil
 	}
 
 	var data jsoniter.Any
-	err := coreDao.GetCoreData(ctx, t, &data)
+	err := dataOrigin.GetCoreData(ctx, t, &data)
 	return data, err
 }
 
 func init() {
 	if EnableCache {
-		coreDao = cldrcache.GetCache()
+		dataOrigin = cldrcache.GetCache()
 	} else {
-		coreDao = dao.GetDAO()
+		dataOrigin = dao.GetDAO()
 	}
 
-	err := coreDao.GetCoreData(context.TODO(), cldr.CoreSplmtLikelySubTags, &LikelySubtagMap)
+	err := dataOrigin.GetCoreData(context.TODO(), cldr.CoreSplmtLikelySubTags, &LikelySubtagMap)
 	if err != nil {
 		logger.Log.Fatal(err.Error())
 	} else {
-		permanentCachedTypes[cldr.CoreSplmtLikelySubTags] = LikelySubtagMap
+		cachedTypes[cldr.CoreSplmtLikelySubTags] = LikelySubtagMap
 	}
-	err = coreDao.GetCoreData(context.TODO(), cldr.CoreAvaLocales, &AvailableLocalesMap)
+	err = dataOrigin.GetCoreData(context.TODO(), cldr.CoreAvaLocales, &AvailableLocalesMap)
 	if err != nil {
 		logger.Log.Fatal(err.Error())
 	} else {
-		permanentCachedTypes[cldr.CoreAvaLocales] = AvailableLocalesMap
+		cachedTypes[cldr.CoreAvaLocales] = AvailableLocalesMap
 	}
 
-	err = coreDao.GetCoreData(context.TODO(), cldr.RegionToLanguage, &RegionToLangMap)
+	err = dataOrigin.GetCoreData(context.TODO(), cldr.RegionToLanguage, &RegionToLangMap)
 	if err != nil {
 		logger.Log.Fatal(err.Error())
 	} else {
-		permanentCachedTypes[cldr.RegionToLanguage] = RegionToLangMap
+		cachedTypes[cldr.RegionToLanguage] = RegionToLangMap
 	}
 
 	var tempAliasMap map[string]cldr.LocaleAlias
-	err = coreDao.GetCoreData(context.TODO(), cldr.CoreSplmtAlias, &tempAliasMap)
+	err = dataOrigin.GetCoreData(context.TODO(), cldr.CoreSplmtAlias, &tempAliasMap)
 	if err != nil {
 		logger.Log.Fatal(err.Error())
 	} else {
 		for k, v := range tempAliasMap {
 			LocaleAliasesMap[strings.ToLower(k)] = v
 		}
-		permanentCachedTypes[cldr.CoreSplmtAlias] = LocaleAliasesMap
+		cachedTypes[cldr.CoreSplmtAlias] = LocaleAliasesMap
 	}
 
-	err = coreDao.GetCoreData(context.TODO(), cldr.CoreSplmtLanguageData, &SupplementLanguageDataMap)
+	err = dataOrigin.GetCoreData(context.TODO(), cldr.CoreSplmtLanguageData, &SupplementLanguageDataMap)
 	if err != nil {
 		logger.Log.Fatal(err.Error())
 	} else {
-		permanentCachedTypes[cldr.CoreSplmtLanguageData] = SupplementLanguageDataMap
+		cachedTypes[cldr.CoreSplmtLanguageData] = SupplementLanguageDataMap
 	}
 
-	err = coreDao.GetCoreData(context.TODO(), cldr.DefaultContent, &DefaultContentMap)
+	err = dataOrigin.GetCoreData(context.TODO(), cldr.DefaultContent, &DefaultContentMap)
 	if err != nil {
 		logger.Log.Fatal(err.Error())
 	} else {
-		permanentCachedTypes[cldr.DefaultContent] = DefaultContentMap
+		cachedTypes[cldr.DefaultContent] = DefaultContentMap
 	}
 }

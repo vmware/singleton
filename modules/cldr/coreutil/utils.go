@@ -15,6 +15,10 @@ import (
 
 var localeSplitter = regexp.MustCompile("[-_]")
 
+type Locale struct {
+	Language, Scripts, Region string
+}
+
 // GetCLDRLocale Query whether locale exists, if not, query defaultContent.json
 func GetCLDRLocale(locale string) string {
 	localeToProcess := strings.ToLower(strings.ReplaceAll(locale, "_", cldr.LocalePartSep))
@@ -211,8 +215,4 @@ func ParseLocale(originalLocale string) *Locale {
 	}
 
 	return locale
-}
-
-type Locale struct {
-	Language, Scripts, Region string
 }

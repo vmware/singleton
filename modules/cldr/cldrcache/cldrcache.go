@@ -19,17 +19,15 @@ import (
 )
 
 var (
+	cldrDao = dao.GetDAO()
+
 	coreDataCache   cache.Cache
 	localeDataCache cache.Cache
+
+	localeDataLocks = sync.Map{}
 )
-var localeDataLocks = sync.Map{}
-var cldrDao = dao.GetDAO()
 
 type cldrCache struct{}
-
-func GetCache() cldrCache {
-	return cldrCache{}
-}
 
 func (cldrCache) GetCoreData(ctx context.Context, dataType cldr.CoreDataType, data interface{}) (err error) {
 	cacheKey := int(dataType)
@@ -48,7 +46,6 @@ func (cldrCache) GetCoreData(ctx context.Context, dataType cldr.CoreDataType, da
 }
 
 func (cldrCache) GetLocaleData(ctx context.Context, cldrLocale, dataType string, data interface{}) (err error) {
-
 	cacheKey := dataType + ":" + cldrLocale
 
 	// Read from cache
@@ -88,6 +85,10 @@ func (cldrCache) GetLocaleData(ctx context.Context, cldrLocale, dataType string,
 	}
 
 	return
+}
+
+func GetCache() cldrCache {
+	return cldrCache{}
 }
 
 // InitCLDRCache .
