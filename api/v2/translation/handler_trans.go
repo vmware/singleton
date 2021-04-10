@@ -162,15 +162,20 @@ func GetBundle(c *gin.Context) {
 // @Router /translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key} [get]
 // @Deprecated
 func GetString(c *gin.Context) {
-	id := MessageID{}
-	if err := c.ShouldBindUri(&id); err != nil {
+	req := GetStringReq{}
+	if err := c.ShouldBindUri(&req); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
+	if err := c.ShouldBindQuery(&req); err != nil {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+		return
+	}
+
 	version := c.GetString(api.SgtnVersionKey)
 
-	internalID := translation.MessageID{Name: id.ProductName, Version: version, Locale: id.Locale, Component: id.Component, Key: id.Key}
-	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, id.Source)
+	internalID := translation.MessageID{Name: req.ProductName, Version: version, Locale: req.Locale, Component: req.Component, Key: req.Key}
+	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, req.Source)
 	api.HandleResponse(c, result, err)
 }
 

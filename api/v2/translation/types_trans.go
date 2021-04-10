@@ -22,7 +22,7 @@ type (
 		Component string `uri:"component" form:"component" binding:"required,component"`
 	}
 
-	MessageID struct {
+	GetStringReq struct {
 		BundleID
 		Key    string `uri:"key" form:"key" binding:"required,key"`
 		Source string `form:"source"`

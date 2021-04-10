@@ -100,7 +100,7 @@ func GetMultipleBundles2(c *gin.Context) {
 // @Router /translation/string [get]
 // @Deprecated
 func GetString2(c *gin.Context) {
-	id := MessageID{Locale: v1.DefaultLocale}
+	id := GetStringReq{Locale: v1.DefaultLocale}
 	if err := c.ShouldBindQuery(&id); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
@@ -294,7 +294,7 @@ func GetMultipleBundles(c *gin.Context) {
 // @Router /translation/product/{productName}/component/{component}/key/{key} [get]
 // @Deprecated
 func GetString(c *gin.Context) {
-	id := MessageID{Locale: v1.DefaultLocale}
+	id := GetStringReq{Locale: v1.DefaultLocale}
 	if err := c.ShouldBindUri(&id); err != nil {
 		vErrors, _ := err.(validator.ValidationErrors)
 		for _, e := range vErrors {

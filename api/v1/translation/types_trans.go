@@ -12,7 +12,7 @@ import (
 type (
 	ReleaseID translation.ReleaseID
 
-	MessageID struct {
+	GetStringReq struct {
 		ReleaseID
 		Locale    string `uri:"locale" form:"locale" binding:"locale"`
 		Component string `uri:"component" form:"component" binding:"required,component"`
