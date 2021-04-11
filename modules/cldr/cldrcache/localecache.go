@@ -14,36 +14,18 @@ import (
 	"sgtnserver/internal/common"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
-	"sgtnserver/modules/cldr"
 	"sgtnserver/modules/cldr/dao"
 )
 
 var (
 	cldrDao = dao.GetDAO()
 
-	coreDataCache   cache.Cache
 	localeDataCache cache.Cache
 
 	localeDataLocks = sync.Map{}
 )
 
 type cldrCache struct{}
-
-func (cldrCache) GetCoreData(ctx context.Context, dataType cldr.CoreDataType, data interface{}) (err error) {
-	cacheKey := int(dataType)
-	if dataInCache, err := coreDataCache.Get(cacheKey); err == nil {
-		reflect.ValueOf(data).Elem().Set(reflect.ValueOf(dataInCache).Elem())
-		return nil
-	}
-
-	if err = cldrDao.GetCoreData(ctx, dataType, data); err == nil {
-		if cacheErr := coreDataCache.Set(cacheKey, data); cacheErr != nil {
-			logger.FromContext(ctx).Error(cacheErr.Error())
-		}
-	}
-
-	return err
-}
 
 func (cldrCache) GetLocaleData(ctx context.Context, cldrLocale, dataType string, data interface{}) (err error) {
 	cacheKey := dataType + ":" + cldrLocale
@@ -95,10 +77,6 @@ func GetCache() cldrCache {
 func InitCLDRCache() {
 	localeDataCache = cache.NewCache("cldr", map[string]interface{}{
 		"MaxCost":     100,
-		"BufferItems": 64,
-	})
-	coreDataCache = cache.NewCache("cldrcore", map[string]interface{}{
-		"MaxCost":     20,
 		"BufferItems": 64,
 	})
 }
