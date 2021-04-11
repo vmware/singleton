@@ -8,11 +8,11 @@ package localeutil
 import (
 	"context"
 
-	jsoniter "github.com/json-iterator/go"
-
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/cldr"
 	"sgtnserver/modules/cldr/coreutil"
+
+	jsoniter "github.com/json-iterator/go"
 )
 
 type LocaleTerritories struct {

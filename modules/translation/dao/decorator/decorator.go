@@ -10,11 +10,11 @@ import (
 	"fmt"
 	"sync"
 
-	"go.uber.org/zap"
-
 	"sgtnserver/internal/logger"
 	"sgtnserver/modules/translation"
 	"sgtnserver/modules/translation/bundleinfo"
+
+	"go.uber.org/zap"
 )
 
 type decorator struct {

@@ -13,12 +13,12 @@ import (
 	"path/filepath"
 	"strings"
 
-	jsoniter "github.com/json-iterator/go"
-	"go.uber.org/zap"
-
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/translation"
+
+	jsoniter "github.com/json-iterator/go"
+	"go.uber.org/zap"
 )
 
 var json = jsoniter.ConfigDefault

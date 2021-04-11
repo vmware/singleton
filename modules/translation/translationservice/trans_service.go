@@ -9,9 +9,6 @@ import (
 	"context"
 	"strings"
 
-	"github.com/fatih/structs"
-	"go.uber.org/zap"
-
 	"sgtnserver/internal/cache"
 	"sgtnserver/internal/common"
 	"sgtnserver/internal/config"
@@ -21,6 +18,9 @@ import (
 	"sgtnserver/modules/translation/bundleinfo"
 	"sgtnserver/modules/translation/dao"
 	"sgtnserver/modules/translation/translationcache"
+
+	"github.com/fatih/structs"
+	"go.uber.org/zap"
 )
 
 type Service struct {

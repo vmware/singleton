@@ -8,8 +8,6 @@ package cldr
 import (
 	"strings"
 
-	"github.com/gin-gonic/gin"
-
 	"sgtnserver/api"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
@@ -17,6 +15,8 @@ import (
 	"sgtnserver/modules/cldr/cldrservice"
 	"sgtnserver/modules/cldr/coreutil"
 	"sgtnserver/modules/cldr/localeutil"
+
+	"github.com/gin-gonic/gin"
 )
 
 // GetPatternData godoc

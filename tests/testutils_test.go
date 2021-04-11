@@ -15,15 +15,15 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/gavv/httpexpect/v2"
-	"github.com/gin-gonic/gin"
-	jsoniter "github.com/json-iterator/go"
-	"github.com/jucardi/go-osx/paths"
-
 	"sgtnserver/api"
 	v2 "sgtnserver/api/v2"
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
+
+	"github.com/gavv/httpexpect/v2"
+	"github.com/gin-gonic/gin"
+	jsoniter "github.com/json-iterator/go"
+	"github.com/jucardi/go-osx/paths"
 )
 
 var (

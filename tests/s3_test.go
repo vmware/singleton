@@ -14,14 +14,13 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"strings"
-	"testing"
-
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/translation"
 	"sgtnserver/modules/translation/dao/localbundle"
 	"sgtnserver/modules/translation/dao/s3bundle"
+	"strings"
+	"testing"
 
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/buf1024/golib/crypt"

@@ -6,15 +6,15 @@
 package translation
 
 import (
-	"github.com/emirpasic/gods/sets/linkedhashset"
-	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
-
 	"sgtnserver/api"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/translation"
 	"sgtnserver/modules/translation/translationservice"
+
+	"github.com/emirpasic/gods/sets/linkedhashset"
+	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
 )
 
 var l3Service translation.Service = translationservice.GetService()
