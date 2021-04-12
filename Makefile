@@ -17,7 +17,7 @@ GOARCH = $(shell go env GOARCH)
 BUILDSFOLDER = builds
 BINARY = ${BUILDSFOLDER}/singleton-$(GOOS)-$(GOARCH)
 
-BUILD_CMD = go build -tags="${ALL_TAGS}" ${LDFLAGS} -o $(BINARY) "${PKG_PATH}"
+BUILD_CMD = go build -o $(BINARY) -tags="${ALL_TAGS}" ${LDFLAGS} "${PKG_PATH}"
 TEST_CMD = go test ./tests --config="${config}" -tags="${ALL_TAGS}" -failfast
 
 default: build
@@ -49,7 +49,7 @@ else
 endif
 
 bench:
-	${TEST_CMD} -run=^Bench -bench="${bench}" -benchmem
+	${TEST_CMD} -run=^$$ -bench="${bench}" -benchmem --log.Filename= --log.Level=fatal --server.run-mode=test
 
 coverage: Cover := cover.out
 coverage: TEMPCover := ${Cover}.temp
