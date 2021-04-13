@@ -10,7 +10,6 @@ import (
 	"github.com/go-playground/validator/v10"
 
 	"sgtnserver/api"
-	v1 "sgtnserver/api/v1"
 	v2Translation "sgtnserver/api/v2/translation"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
@@ -39,7 +38,7 @@ func GetBundle2(c *gin.Context) {
 		ReleaseID
 		Locale    string `uri:"locale" form:"locale" binding:"locale"`
 		Component string `uri:"component" form:"component" binding:"required,component"`
-	}{Locale: v1.DefaultLocale}
+	}{Locale: translation.EnLocale}
 	if err := c.ShouldBindQuery(&id); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
@@ -100,7 +99,7 @@ func GetMultipleBundles2(c *gin.Context) {
 // @Router /translation/string [get]
 // @Deprecated
 func GetString2(c *gin.Context) {
-	id := GetStringReq{Locale: v1.DefaultLocale}
+	id := GetStringReq{Locale: translation.EnLocale}
 	if err := c.ShouldBindQuery(&id); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
@@ -130,7 +129,7 @@ func GetProduct(c *gin.Context) {
 	req := struct {
 		ReleaseID
 		Locale string `uri:"locale" form:"locale" binding:"locale"`
-	}{Locale: v1.DefaultLocale}
+	}{Locale: translation.EnLocale}
 	if err := c.ShouldBindQuery(&req); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
@@ -205,7 +204,7 @@ func GetBundle(c *gin.Context) {
 		ReleaseID
 		Locale    string `uri:"locale" form:"locale" binding:"locale"`
 		Component string `uri:"component" form:"component" binding:"required,component"`
-	}{Locale: v1.DefaultLocale}
+	}{Locale: translation.EnLocale}
 	if err := c.ShouldBindUri(&id); err != nil {
 		vErrors, _ := err.(validator.ValidationErrors)
 		for _, e := range vErrors {
@@ -294,7 +293,7 @@ func GetMultipleBundles(c *gin.Context) {
 // @Router /translation/product/{productName}/component/{component}/key/{key} [get]
 // @Deprecated
 func GetString(c *gin.Context) {
-	id := GetStringReq{Locale: v1.DefaultLocale}
+	id := GetStringReq{Locale: translation.EnLocale}
 	if err := c.ShouldBindUri(&id); err != nil {
 		vErrors, _ := err.(validator.ValidationErrors)
 		for _, e := range vErrors {
@@ -342,7 +341,7 @@ func GetString3(c *gin.Context) {
 		Component string
 		Key       string `uri:"key" form:"key" binding:"required,key"`
 		Source    string `form:"source"`
-	}{Locale: v1.DefaultLocale, Component: "default"}
+	}{Locale: translation.EnLocale, Component: "default"}
 	if err := c.ShouldBindUri(&id); err != nil {
 		vErrors, _ := err.(validator.ValidationErrors)
 		for _, e := range vErrors {
