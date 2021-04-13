@@ -29,7 +29,7 @@ var (
 var (
 	cachedTypes = map[cldr.CoreDataType]interface{}{}
 
-	EnableCache = false
+	EnableCache = true
 
 	dataOrigin coreDataOrigin
 )

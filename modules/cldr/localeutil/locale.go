@@ -17,7 +17,7 @@ import (
 )
 
 var (
-	EnableCache = false
+	EnableCache = true
 
 	dataOrigin localeDataOrigin
 )
