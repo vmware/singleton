@@ -86,7 +86,7 @@ func (e *MultiError) IsAllFailed() bool {
 
 func FormatFunc(es []error) string {
 	if len(es) == 1 {
-		return fmt.Sprintf("1 error occurred. %s", GetUserMessage(es[0]))
+		return GetUserMessage(es[0])
 	}
 
 	points := make([]string, len(es))
