@@ -24,7 +24,7 @@ func (r *combineRouter) Init(e *gin.RouterGroup) {
 	e.GET("/combination/translationsAndPattern", translation.HandleAllowList, translation.HandleVersionFallback, getCombinedData)
 
 	// translations and pattern combined interface by POST (deprecated)
-	e.POST("/combination/translationsAndPattern", translation.HandleAllowList, getCombinedDataByPost)
+	e.POST("/combination/translationsAndPattern", getCombinedDataByPost)
 
 }
 func init() {
