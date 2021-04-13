@@ -17,7 +17,7 @@ GOARCH = $(shell go env GOARCH)
 BUILDSFOLDER = builds
 BINARY = ${BUILDSFOLDER}/singleton-$(GOOS)-$(GOARCH)
 
-BUILD_CMD = go build -tags="${ALL_TAGS}" ${LDFLAGS} -o $(BINARY) "${PKG_PATH}"
+BUILD_CMD = go build -o $(BINARY) -tags="${ALL_TAGS}" ${LDFLAGS} "${PKG_PATH}"
 TEST_CMD = go test ./tests --config="${config}" -tags="${ALL_TAGS}" -failfast
 
 default: build
@@ -49,7 +49,10 @@ else
 endif
 
 bench:
-	${TEST_CMD} -run=^Bench -bench="${bench}" -benchmem
+	${TEST_CMD} -bench="${bench}" -benchmem --log.Filename= --log.Level=fatal --server.run-mode=test
+
+profile:
+	${TEST_CMD} -bench="${bench}" -benchmem -blockprofile block.out -cpuprofile=cpu.out -memprofile mem.out -mutexprofile mutex.out -trace trace.out --log.Filename= --log.Level=fatal --server.run-mode=test
 
 coverage: Cover := cover.out
 coverage: TEMPCover := ${Cover}.temp
@@ -78,7 +81,7 @@ swagger:
 	swag init -d api -g v1/swagger/swagger.go --exclude api/v2 -o api/v1/swagger
 	swag init -d api -g v2/swagger/swagger.go --exclude api/v1 -o api/v2/swagger
 
-.PHONY: build run test bench coverage bindata downloadgo-bindata swagger build_all
+.PHONY: build run test bench profile coverage bindata downloadgo-bindata swagger build_all
 
 help:
 	@echo "make build: build the project"

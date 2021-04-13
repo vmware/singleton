@@ -13,6 +13,7 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
+	"strings"
 	"testing"
 
 	"sgtnserver/api"
@@ -62,6 +63,15 @@ const (
 func TestMain(m *testing.M) {
 	defer logger.Log.Sync()
 
+	testArgs := os.Args[:1]
+	for _, arg := range os.Args {
+		if strings.HasPrefix(arg, "-test.") {
+			testArgs = append(testArgs, arg)
+		}
+	}
+	os.Args = testArgs
+	log.Infof("CLI args are: %v", os.Args)
+
 	flag.Parse()
 
 	GinTestEngine = api.InitServer()
@@ -89,8 +99,6 @@ func init() {
 			log.Infof("Now current directory is: %s", cwd)
 		}
 	}
-
-	log.Infof("CLI args are: %v", os.Args)
 }
 
 func CreateHTTPExpect(t *testing.T, ginEngine *gin.Engine) *httpexpect.Expect {
