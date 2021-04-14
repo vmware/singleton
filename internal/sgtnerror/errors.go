@@ -46,11 +46,7 @@ func (e Error) WithUserMessage(msg string, args ...interface{}) error {
 	return &Error{
 		cause:   nil,
 		code:    e.code,
-		message: e.message + ": " + message}
-}
-
-func (e Error) WrapError(err error) error {
-	return e.WrapErrorWithMessage(err, "")
+		message: message}
 }
 
 func (e Error) WrapErrorWithMessage(err error, userMsg string, args ...interface{}) error {
@@ -58,14 +54,10 @@ func (e Error) WrapErrorWithMessage(err error, userMsg string, args ...interface
 		return nil
 	}
 
-	message := e.message
-	if len(userMsg) > 0 {
-		message += ": " + fmt.Sprintf(userMsg, args...)
-	}
 	return &Error{
 		cause:   err,
 		code:    e.code,
-		message: message}
+		message: fmt.Sprintf(userMsg, args...)}
 }
 
 func (e Error) Error() string {
@@ -86,8 +78,8 @@ type (
 		Code() int
 	}
 
-	Causer interface {
-		Cause() error
+	Messager interface {
+		Message() string
 	}
 )
 
@@ -98,10 +90,9 @@ func GetCode(e error) int {
 	return UnknownError.code
 }
 
-func GetCause(e error) error {
-	if c, ok := e.(Causer); ok {
-		return GetCause(c.Cause())
+func GetUserMessage(err error) string {
+	if e, ok := err.(Messager); ok {
+		return e.Message()
 	}
-
-	return e
+	return err.Error()
 }

@@ -36,7 +36,7 @@ func (cldrDAO) GetCoreData(ctx context.Context, dataType cldr.CoreDataType, data
 		return err
 	}
 
-	err := sgtnerror.StatusInternalServerError.WrapError(readDataFromBinary(info.filePath, data, info.jsonPath...))
+	err := sgtnerror.StatusInternalServerError.WrapErrorWithMessage(readDataFromBinary(info.filePath, data, info.jsonPath...), "fail to read cldr data %v", coreDataTypeStrings[dataType])
 	if err != nil {
 		log.Error(err.Error())
 	}

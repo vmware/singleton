@@ -77,7 +77,7 @@ func TestTransCache(t *testing.T) {
 	id := &translation.BundleID{Name: Name, Version: Version, Locale: locale, Component: Component}
 	_, err := l3Service.GetBundle(context.TODO(), id)
 	assert.NotNil(t, err)
-	assert.Contains(t, err.Error(), "Not Found")
+	assert.Contains(t, err.Error(), "Fail to get translation for")
 
 	err = fileutils.CopyFile(viFilePath, zhFilePath)
 	assert.Nil(t, err)
