@@ -26,12 +26,12 @@ type coreCache struct{}
 func (coreCache) GetCoreData(ctx context.Context, dataType cldr.CoreDataType, data interface{}) (err error) {
 	cacheKey := int(dataType)
 	if dataInCache, err := coreDataCache.Get(cacheKey); err == nil {
-		reflect.ValueOf(data).Elem().Set(reflect.ValueOf(dataInCache).Elem())
+		reflect.ValueOf(data).Elem().Set(reflect.ValueOf(dataInCache))
 		return nil
 	}
 
 	if err = cldrDao.GetCoreData(ctx, dataType, data); err == nil {
-		if cacheErr := coreDataCache.Set(cacheKey, data); cacheErr != nil {
+		if cacheErr := coreDataCache.Set(cacheKey, reflect.ValueOf(data).Elem().Interface()); cacheErr != nil {
 			logger.FromContext(ctx).Error(cacheErr.Error())
 		}
 	}
