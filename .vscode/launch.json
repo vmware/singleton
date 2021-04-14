@@ -38,7 +38,7 @@
             "buildFlags": "-tags=jsoniter",
             "args": [
                 "-test.bench=.",
-                "-benchmem",
+                "-test.benchmem",
                 "--config=${workspaceFolder}/tests/testdata/config/config.yaml",
                 "--local-bundle.base-path=${workspaceFolder}/tests/testdata/bundles",
                 "--log.Filename=",
