@@ -11,7 +11,7 @@ import (
 
 	"sgtnserver/internal/logger"
 	"sgtnserver/modules/cldr"
-	"sgtnserver/modules/cldr/cldrcache"
+	"sgtnserver/modules/cldr/coreutil/cache"
 	"sgtnserver/modules/cldr/dao"
 
 	jsoniter "github.com/json-iterator/go"
@@ -50,7 +50,7 @@ func GetCoreData(ctx context.Context, t cldr.CoreDataType) (interface{}, error) 
 
 func init() {
 	if EnableCache {
-		dataOrigin = cldrcache.GetCache()
+		dataOrigin = cache.GetCache()
 	} else {
 		dataOrigin = dao.GetDAO()
 	}

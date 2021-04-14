@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
-package cldrcache
+package cache
 
 import (
 	"context"
@@ -12,11 +12,18 @@ import (
 	"sgtnserver/internal/cache"
 	"sgtnserver/internal/logger"
 	"sgtnserver/modules/cldr"
+	"sgtnserver/modules/cldr/dao"
 )
 
-var coreDataCache cache.Cache
+var (
+	cldrDao = dao.GetDAO()
 
-func (cldrCache) GetCoreData(ctx context.Context, dataType cldr.CoreDataType, data interface{}) (err error) {
+	coreDataCache cache.Cache
+)
+
+type coreCache struct{}
+
+func (coreCache) GetCoreData(ctx context.Context, dataType cldr.CoreDataType, data interface{}) (err error) {
 	cacheKey := int(dataType)
 	if dataInCache, err := coreDataCache.Get(cacheKey); err == nil {
 		reflect.ValueOf(data).Elem().Set(reflect.ValueOf(dataInCache).Elem())
@@ -30,6 +37,9 @@ func (cldrCache) GetCoreData(ctx context.Context, dataType cldr.CoreDataType, da
 	}
 
 	return err
+}
+func GetCache() coreCache {
+	return coreCache{}
 }
 
 func init() {

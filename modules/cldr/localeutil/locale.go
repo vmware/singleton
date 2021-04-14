@@ -7,13 +7,14 @@ package localeutil
 
 import (
 	"context"
+	"strings"
+
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/cldr"
-	"sgtnserver/modules/cldr/cldrcache"
 	"sgtnserver/modules/cldr/coreutil"
 	"sgtnserver/modules/cldr/dao"
-	"strings"
+	"sgtnserver/modules/cldr/localeutil/cache"
 )
 
 var (
@@ -39,7 +40,7 @@ func GetLocaleData(ctx context.Context, locale, dataType string, data interface{
 
 func init() {
 	if EnableCache {
-		dataOrigin = cldrcache.GetCache()
+		dataOrigin = cache.GetCache()
 	} else {
 		dataOrigin = dao.GetDAO()
 	}

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
-package cldrcache
+package cache
 
 import (
 	"context"
@@ -25,9 +25,9 @@ var (
 	localeDataLocks = sync.Map{}
 )
 
-type cldrCache struct{}
+type localeCache struct{}
 
-func (cldrCache) GetLocaleData(ctx context.Context, cldrLocale, dataType string, data interface{}) (err error) {
+func (localeCache) GetLocaleData(ctx context.Context, cldrLocale, dataType string, data interface{}) (err error) {
 	cacheKey := dataType + ":" + cldrLocale
 
 	// Read from cache
@@ -69,8 +69,8 @@ func (cldrCache) GetLocaleData(ctx context.Context, cldrLocale, dataType string,
 	return
 }
 
-func GetCache() cldrCache {
-	return cldrCache{}
+func GetCache() localeCache {
+	return localeCache{}
 }
 
 // InitCLDRCache .
