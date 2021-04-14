@@ -49,7 +49,7 @@ else
 endif
 
 bench:
-	${TEST_CMD} -run=^$$ -bench="${bench}" -benchmem --log.Filename= --log.Level=fatal --server.run-mode=test
+	${TEST_CMD} -bench="${bench}" -benchmem --log.Filename= --log.Level=fatal --server.run-mode=test
 
 profile:
 	${TEST_CMD} -run=^$$ -bench="${bench}" -benchmem -blockprofile block.out -cpuprofile=cpu.out -memprofile mem.out -mutexprofile mutex.out -trace trace.out --log.Filename= --log.Level=fatal --server.run-mode=test

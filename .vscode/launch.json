@@ -37,7 +37,6 @@
             "cwd": "${workspaceFolder}",
             "buildFlags": "-tags=jsoniter",
             "args": [
-                "-run=^$",
                 "-test.bench=.",
                 "-benchmem",
                 "--config=${workspaceFolder}/tests/testdata/config/config.yaml",
