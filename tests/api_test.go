@@ -160,7 +160,7 @@ func TestRecovery(t *testing.T) {
 			logContent := string(bts)
 			assert.Contains(t, logContent, "[Recovery from panic]")
 			assert.Contains(t, logContent, tt.panicErr.Error())
-			if tt.ginMode == gin.DebugMode {
+			if strings.Contains(tt.panicErr.Error(), "broken") || tt.ginMode == gin.DebugMode {
 				assert.Contains(t, logContent, `"request"`)
 			}
 		})
