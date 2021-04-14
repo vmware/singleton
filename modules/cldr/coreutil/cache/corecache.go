@@ -38,6 +38,7 @@ func (coreCache) GetCoreData(ctx context.Context, dataType cldr.CoreDataType, da
 
 	return err
 }
+
 func GetCache() coreCache {
 	return coreCache{}
 }
