@@ -9,9 +9,6 @@ before_install:
       echo "Only docs were updated, stopping build process."
       exit
     }
-branches:
-  only:
-    - g11n-go-service
 jobs:
   include:
   - name: "Check Header"
