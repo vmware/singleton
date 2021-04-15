@@ -7,8 +7,8 @@ package translation
 
 import (
 	"sgtnserver/api"
-	v1 "sgtnserver/api/v1"
 	v2Translation "sgtnserver/api/v2/translation"
+	"sgtnserver/internal/common"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/translation"
@@ -38,7 +38,7 @@ func GetBundle2(c *gin.Context) {
 		ReleaseID
 		Locale    string `form:"locale" binding:"locale"`
 		Component string `form:"component" binding:"required,component"`
-	}{Locale: v1.DefaultLocale}
+	}{Locale: common.EnLocale}
 	if err := c.ShouldBindQuery(&id); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
@@ -100,7 +100,7 @@ func GetMultipleBundles2(c *gin.Context) {
 // @Router /translation/string [get]
 // @Deprecated
 func GetString2(c *gin.Context) {
-	id := GetStringReq{Locale: v1.DefaultLocale}
+	id := GetStringReq{Locale: common.EnLocale}
 	if err := c.ShouldBindQuery(&id); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
@@ -130,7 +130,7 @@ func GetProduct(c *gin.Context) {
 	req := struct {
 		ReleaseID
 		Locale string `form:"locale" binding:"locale"`
-	}{Locale: v1.DefaultLocale}
+	}{Locale: common.EnLocale}
 	if err := c.ShouldBindQuery(&req); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
@@ -212,7 +212,7 @@ func GetBundle(c *gin.Context) {
 	formPart := struct {
 		Version string `form:"version" binding:"required,version"`
 		Locale  string `form:"locale" binding:"locale"`
-	}{Locale: v1.DefaultLocale}
+	}{Locale: common.EnLocale}
 	if err := c.ShouldBindQuery(&formPart); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
@@ -295,7 +295,7 @@ func GetString(c *gin.Context) {
 		Version string `form:"version" binding:"required,version"`
 		Locale  string `form:"locale" binding:"locale"`
 		Source  string `form:"source"`
-	}{Locale: v1.DefaultLocale}
+	}{Locale: common.EnLocale}
 	if err := c.ShouldBindQuery(&formPart); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
@@ -336,7 +336,7 @@ func GetString3(c *gin.Context) {
 		Version string `form:"version" binding:"required,version"`
 		Locale  string `form:"locale" binding:"locale"`
 		Source  string `form:"source"`
-	}{Locale: v1.DefaultLocale}
+	}{Locale: common.EnLocale}
 	if err := c.ShouldBindQuery(&formPart); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return

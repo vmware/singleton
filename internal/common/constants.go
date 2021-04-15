@@ -11,5 +11,10 @@ const (
 )
 
 const (
+	Latest   = "latest"
+	EnLocale = "en"
+)
+
+const (
 	FailToReadCache = "Fail to read from cache: '%s'"
 )
