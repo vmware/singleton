@@ -227,7 +227,7 @@ func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {
 			parts := strings.Split(localeToSet, cldr.LocalePartSep)
 			language = parts[0]
 			if region = coreutil.ParseRegion(parts); region == "" {
-				region = localeutil.GetLocaleDefaultRegion(ctx, localeToSet)
+				region, _ = localeutil.GetLocaleDefaultRegion(ctx, localeToSet)
 			}
 		}
 		transData, translationError = l3Service.GetMultipleBundles(ctx, params.ProductName, version, params.Language, params.Components)
@@ -238,7 +238,7 @@ func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {
 	allErrors = sgtnerror.Append(patternError, translationError)
 
 	for _, t := range transData {
-		data.Components = append(data.Components, transApi.ConvertBundleToAPI(t))
+		data.Bundles = append(data.Bundles, transApi.ConvertBundleToAPI(t))
 	}
 	if len(patternDataMap) > 0 {
 		data.Pattern = patternData{

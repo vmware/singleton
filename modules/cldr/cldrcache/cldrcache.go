@@ -125,20 +125,20 @@ func InitCLDRCache() {
 	})
 	cachePermanentTypes = map[dao.CoreDataType]interface{}{}
 
-	err := dao.GetCoreData(nil, dao.CoreSplmtLikelySubTags, &LikelySubtagMap)
+	err := dao.GetCoreData(context.TODO(), dao.CoreSplmtLikelySubTags, &LikelySubtagMap)
 	if err != nil {
 		logger.Log.Fatal(err.Error())
 	} else {
 		cachePermanentTypes[dao.CoreSplmtLikelySubTags] = LikelySubtagMap
 	}
-	err = dao.GetCoreData(nil, dao.CoreAvaLocales, &AvailableLocalesMap)
+	err = dao.GetCoreData(context.TODO(), dao.CoreAvaLocales, &AvailableLocalesMap)
 	if err != nil {
 		logger.Log.Fatal(err.Error())
 	} else {
 		cachePermanentTypes[dao.CoreAvaLocales] = AvailableLocalesMap
 	}
 
-	err = dao.GetCoreData(nil, dao.RegionToLanguage, &RegionToLangMap)
+	err = dao.GetCoreData(context.TODO(), dao.RegionToLanguage, &RegionToLangMap)
 	if err != nil {
 		logger.Log.Fatal(err.Error())
 	} else {
@@ -146,7 +146,7 @@ func InitCLDRCache() {
 	}
 
 	var tempAliasMap map[string]cldr.LocaleAlias
-	err = dao.GetCoreData(nil, dao.CoreSplmtAlias, &tempAliasMap)
+	err = dao.GetCoreData(context.TODO(), dao.CoreSplmtAlias, &tempAliasMap)
 	if err != nil {
 		logger.Log.Fatal(err.Error())
 	} else {
@@ -156,14 +156,14 @@ func InitCLDRCache() {
 		cachePermanentTypes[dao.CoreSplmtAlias] = LocaleAliasesMap
 	}
 
-	err = dao.GetCoreData(nil, dao.CoreSplmtLanguageData, &SupplementLanguageDataMap)
+	err = dao.GetCoreData(context.TODO(), dao.CoreSplmtLanguageData, &SupplementLanguageDataMap)
 	if err != nil {
 		logger.Log.Fatal(err.Error())
 	} else {
 		cachePermanentTypes[dao.CoreSplmtLanguageData] = SupplementLanguageDataMap
 	}
 
-	err = dao.GetCoreData(nil, dao.DefaultContent, &DefaultContentMap)
+	err = dao.GetCoreData(context.TODO(), dao.DefaultContent, &DefaultContentMap)
 	if err != nil {
 		logger.Log.Fatal(err.Error())
 	} else {

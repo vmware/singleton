@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"os"
+	"regexp"
 	"strings"
 	"time"
 
@@ -31,18 +32,7 @@ import (
 func GinZap(log *zap.Logger) gin.HandlerFunc {
 	rander := rand.New(rand.NewSource(time.Now().UnixNano()))
 
-	var outsideIDTracer func(c *gin.Context) (fields []zap.Field)
-	if len(config.Settings.HeaderOfTraceID) > 0 {
-		headerNames := strings.Split(config.Settings.HeaderOfTraceID, ",")
-		outsideIDTracer = func(c *gin.Context) (fields []zap.Field) {
-			for _, headerName := range headerNames {
-				if v := c.Request.Header.Get(headerName); len(v) > 0 {
-					fields = append(fields, zap.String(headerName, v))
-				}
-			}
-			return
-		}
-	}
+	var outsideIDTracer = getOutsideIDTracer()
 
 	return func(c *gin.Context) {
 		start := time.Now()
@@ -81,6 +71,20 @@ func GinZap(log *zap.Logger) gin.HandlerFunc {
 		c.Next()
 	}
 }
+func getOutsideIDTracer() func(c *gin.Context) (fields []zap.Field) {
+	if len(config.Settings.HeaderOfTraceID) > 0 {
+		headerNames := strings.Split(config.Settings.HeaderOfTraceID, common.ParamSep)
+		return func(c *gin.Context) (fields []zap.Field) {
+			for _, headerName := range headerNames {
+				if v := c.Request.Header.Get(headerName); len(v) > 0 {
+					fields = append(fields, zap.String(headerName, v))
+				}
+			}
+			return
+		}
+	}
+	return nil
+}
 
 func RecoveryWithZap(log *zap.Logger) gin.HandlerFunc {
 	return func(c *gin.Context) {
@@ -106,17 +110,20 @@ func RecoveryWithZap(log *zap.Logger) gin.HandlerFunc {
 				}
 			}
 
-			fields := []zapcore.Field{zap.Time("time", time.Now()), zap.String("path", c.Request.URL.Path), zap.Any("error", err)}
-			if gin.IsDebugging() {
+			fields := []zapcore.Field{zap.Any("error", err)}
+			if brokenPipe {
 				httpRequest, _ := httputil.DumpRequest(c.Request, true)
-				hds := strings.Split(string(httpRequest), "\r\n")
-				for idx, header := range hds {
+				fields = append(fields, zap.ByteString("request", httpRequest))
+			} else if gin.IsDebugging() {
+				httpRequest, _ := httputil.DumpRequest(c.Request, true)
+				headers := strings.Split(string(httpRequest), "\r\n")
+				for idx, header := range headers {
 					current := strings.Split(header, ":")
 					if current[0] == "Authorization" {
-						hds[idx] = current[0] + ": *"
+						headers[idx] = current[0] + ": *"
 					}
 				}
-				fields = append(fields, zap.Strings("headers", hds), zap.ByteString("request", httpRequest))
+				fields = append(fields, zap.String("request", strings.Join(headers, "\r\n")))
 			}
 			log.Error("[Recovery from panic]", fields...)
 
@@ -171,11 +178,12 @@ func CompressResponse() func(*gin.Context) {
 }
 
 func HandleCrossDomain() gin.HandlerFunc {
+	e := regexp.MustCompile(`\s*` + common.ParamSep + `\s*`)
 	return cors.New(cors.Config{
-		AllowOrigins:     strings.Split(config.Settings.CrossDomain.AllowOrigin, ","),
-		AllowMethods:     strings.Split(config.Settings.CrossDomain.AllowMethods, ","),
-		AllowHeaders:     strings.Split(config.Settings.CrossDomain.AllowHeaders, ","),
+		AllowOrigins:     e.Split(config.Settings.CrossDomain.AllowOrigin, -1),
+		AllowMethods:     e.Split(config.Settings.CrossDomain.AllowMethods, -1),
+		AllowHeaders:     e.Split(config.Settings.CrossDomain.AllowHeaders, -1),
 		AllowCredentials: config.Settings.CrossDomain.AllowCredentials,
-		MaxAge:           time.Duration(config.Settings.CrossDomain.MaxAge) * time.Second,
+		MaxAge:           config.Settings.CrossDomain.MaxAge,
 	})
 }

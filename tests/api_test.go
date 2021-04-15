@@ -7,59 +7,206 @@ package tests
 
 import (
 	"errors"
+	"fmt"
+	"io/ioutil"
 	"net"
 	"net/http"
 	"os"
 	"strings"
 	"testing"
 
+	"github.com/emirpasic/gods/sets/hashset"
 	"github.com/gin-gonic/gin"
 	"github.com/go-http-utils/headers"
+	"github.com/stretchr/testify/assert"
 
 	"sgtnserver/api"
+	"sgtnserver/internal/common"
+	"sgtnserver/internal/config"
+	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
 )
 
 func TestTraceIDs(t *testing.T) {
-	e := CreateHTTPExpect(t, GinTestEngine)
+	oldTraceIDs := config.Settings.HeaderOfTraceID
+	defer func() {
+		config.Settings.HeaderOfTraceID = oldTraceIDs
+	}()
 
-	// Test outside trace IDs
-	req := e.GET(GetBundleURL, Name, Version, "zh-Hans", "sunglow")
-	resp := req.WithHeader("abc", "abc trace ID").WithHeader("123", "123 trace ID").Expect()
-	resp.Status(http.StatusOK)
+	tests := []struct {
+		logFile         string
+		traceIDsSetting string
+		headers         map[string]string
+	}{
+		{
+			logFile:         logFolder + RandomString(4) + "_temp.log",
+			traceIDsSetting: "abc,123,edf",
+			headers:         map[string]string{"abc": "first trace ID", "123": "second trace ID", "edf": "third traceID"},
+		},
+		{
+			logFile:         logFolder + RandomString(4) + "_temp.log",
+			traceIDsSetting: "abc,123,edf",
+			headers:         map[string]string{"abc": "first trace ID", "123": "second trace ID"},
+		},
+		{
+			logFile:         logFolder + RandomString(4) + "_temp.log",
+			traceIDsSetting: "abc,123,edf",
+			headers:         map[string]string{"abc": "first trace ID", "XXX": "other trace ID"},
+		},
+		{
+			logFile:         logFolder + RandomString(4) + "_temp.log",
+			traceIDsSetting: "abc,123,edf",
+			headers:         map[string]string{"XXX": "other trace ID"},
+		},
+		{
+			logFile:         logFolder + RandomString(4) + "_temp.log",
+			traceIDsSetting: "abc,123,edf",
+			headers:         map[string]string{},
+		},
+		{
+			logFile:         logFolder + RandomString(4) + "_temp.log",
+			traceIDsSetting: "abc",
+			headers:         map[string]string{"abc": "first trace ID", "123": "second trace ID"},
+		},
+		{
+			logFile:         logFolder + RandomString(4) + "_temp.log",
+			traceIDsSetting: "",
+			headers:         map[string]string{"abc": "first trace ID", "123": "second trace ID"},
+		},
+	}
+
+	for i, tt := range tests {
+		tt := tt
+		t.Run(fmt.Sprintf("case-%v:%v", i, tt.traceIDsSetting), func(t *testing.T) {
+			defer ReplaceLogger(tt.logFile)()
+
+			config.Settings.HeaderOfTraceID = tt.traceIDsSetting
+			e := CreateHTTPExpect(t, api.InitServer())
+
+			// Test outside trace IDs
+			req := e.GET(GetBundleURL, Name, Version, Locale, Component)
+			resp := req.WithHeaders(tt.headers).Expect()
+			resp.Status(http.StatusOK)
+
+			logger.Log.Sync()
+			bts, _ := ioutil.ReadFile(tt.logFile)
+			logContent := string(bts)
+
+			idSet := hashset.New()
+			for _, traceID := range strings.Split(tt.traceIDsSetting, common.ParamSep) {
+				idSet.Add(traceID)
+			}
+			hasTraceIDsInLog := false
+			for k, v := range tt.headers {
+				if idSet.Contains(k) {
+					assert.Contains(t, logContent, `"`+k+`"`)
+					assert.Contains(t, logContent, `"`+v+`"`)
+					hasTraceIDsInLog = true
+				} else {
+					assert.NotContains(t, logContent, `"`+k+`"`)
+					assert.NotContains(t, logContent, `"`+v+`"`)
+				}
+			}
+			if hasTraceIDsInLog {
+				assert.Contains(t, logContent, "Outside trace IDs")
+			} else {
+				assert.NotContains(t, logContent, "Outside trace IDs")
+			}
+		})
+	}
 }
 
 func TestRecovery(t *testing.T) {
-	e := CreateHTTPExpect(t, GinTestEngine)
+	tests := []struct {
+		testName     string
+		ginMode      string
+		URL, logFile string
+		panicErr     error
+		wantedCode   int
+	}{
+		{testName: "NormalRecovery",
+			ginMode:    gin.TestMode,
+			URL:        "/TestRecovery",
+			logFile:    logFolder + "recovery.log",
+			panicErr:   errors.New("Recovery error"),
+			wantedCode: http.StatusInternalServerError,
+		},
+		{testName: "BorkenPipe",
+			ginMode:    gin.DebugMode,
+			URL:        "/TestRecovery_broken_pipeline",
+			logFile:    logFolder + "brokenpipe.log",
+			panicErr:   &net.OpError{Err: &os.SyscallError{Err: errors.New("broken pipe error")}},
+			wantedCode: http.StatusOK,
+		},
+	}
 
-	url1 := "/TestRecovery"
-	GinTestEngine.GET(url1, func(c *gin.Context) {
-		panic(url1)
-	})
-	e.GET(url1).Expect()
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.testName, func(t *testing.T) {
+			oldMode := gin.Mode()
+			gin.SetMode(tt.ginMode)
+			defer gin.SetMode(oldMode)
 
-	oldMode := gin.Mode()
-	gin.SetMode(gin.DebugMode)
-	defer gin.SetMode(oldMode)
-	url2 := "/TestRecovery_broken_pipeline"
-	GinTestEngine.GET(url2, func(c *gin.Context) {
-		err := &net.OpError{Err: &os.SyscallError{Err: errors.New("broken pipe")}}
-		panic(err)
-	})
+			defer ReplaceLogger(tt.logFile)()
 
-	e.GET(url2).Expect().Status(http.StatusOK)
+			ginEngine := api.InitServer()
+			e := CreateHTTPExpect(t, ginEngine)
+			ginEngine.GET(tt.URL, func(c *gin.Context) { panic(tt.panicErr) })
+
+			e.GET(tt.URL).Expect().Status(tt.wantedCode)
+
+			logger.Log.Sync()
+			bts, _ := ioutil.ReadFile(tt.logFile)
+			logContent := string(bts)
+			assert.Contains(t, logContent, "[Recovery from panic]")
+			assert.Contains(t, logContent, tt.panicErr.Error())
+			if strings.Contains(tt.panicErr.Error(), "broken") || tt.ginMode == gin.DebugMode {
+				assert.Contains(t, logContent, `"request"`)
+			}
+		})
+	}
 }
 
 func TestCompressResponse(t *testing.T) {
-	e := CreateHTTPExpect(t, GinTestEngine)
+	oldAlgorithm := config.Settings.Server.CompressionAlgorithm
+	defer func() {
+		config.Settings.Server.CompressionAlgorithm = oldAlgorithm
+	}()
 
-	// Test Gzip
-	resp := e.GET(GetBundleURL, Name, Version, "zh-Hans", "sunglow").WithHeader(headers.AcceptEncoding, api.CompressionGzip).Expect()
-	resp.ContentEncoding(api.CompressionGzip)
+	tests := []struct {
+		CompressionAlgorithm, header string
+		expectedEncoding             []string
+	}{
+		{CompressionAlgorithm: "gzip&br", header: "", expectedEncoding: nil},
+		{CompressionAlgorithm: "gzip&br", header: "gzip", expectedEncoding: []string{"gzip"}},
+		{CompressionAlgorithm: "gzip&br", header: "br", expectedEncoding: []string{"br"}},
 
-	// Test br
-	resp = e.GET(GetBundleURL, Name, Version, "zh-Hans", "sunglow").WithHeader(headers.AcceptEncoding, api.CompressionBrotli).Expect()
-	resp.ContentEncoding(api.CompressionBrotli)
+		{CompressionAlgorithm: "gzip", header: "", expectedEncoding: nil},
+		{CompressionAlgorithm: "gzip", header: "gzip", expectedEncoding: []string{"gzip"}},
+		{CompressionAlgorithm: "gzip", header: "br", expectedEncoding: nil},
+
+		{CompressionAlgorithm: "br", header: "", expectedEncoding: nil},
+		{CompressionAlgorithm: "br", header: "gzip", expectedEncoding: nil},
+		{CompressionAlgorithm: "br", header: "br", expectedEncoding: []string{"br"}},
+
+		{CompressionAlgorithm: "", header: "", expectedEncoding: nil},
+		{CompressionAlgorithm: "", header: "gzip", expectedEncoding: nil},
+		{CompressionAlgorithm: "", header: "br", expectedEncoding: nil},
+	}
+
+	for _, tt := range tests {
+		tt := tt
+		t.Run("'"+tt.CompressionAlgorithm+"':'"+tt.header+"'", func(t *testing.T) {
+			config.Settings.Server.CompressionAlgorithm = tt.CompressionAlgorithm
+			e := CreateHTTPExpect(t, api.InitServer())
+			req := e.GET(GetBundleURL, Name, Version, Locale, Component)
+			if tt.header != "" {
+				req.WithHeader(headers.AcceptEncoding, tt.header)
+			}
+			respNoCompression := req.Expect()
+			respNoCompression.ContentEncoding(tt.expectedEncoding...)
+		})
+	}
 }
 
 func TestAbortWithError(t *testing.T) {
@@ -109,8 +256,7 @@ func TestPartialSuccess(t *testing.T) {
 
 func TestAllowList(t *testing.T) {
 	e := CreateHTTPExpect(t, GinTestEngine)
-	productName := "not-found"
-	resp := e.GET(GetBundleURL, productName, Version, "zh-Hans", "sunglow").Expect()
+	resp := e.GET(GetBundleURL, "not-found", Version, "zh-Hans", "sunglow").Expect()
 	resp.Status(http.StatusBadRequest)
 	resp.Body().Contains("doesn't exist")
 }

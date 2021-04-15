@@ -49,7 +49,7 @@ else
 endif
 
 bench:
-	${TEST_CMD} -run=^Bench -bench="${bench}"
+	${TEST_CMD} -run=^Bench -bench="${bench}" -benchmem
 
 coverage: Cover := cover.out
 coverage: TEMPCover := ${Cover}.temp

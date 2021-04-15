@@ -6,6 +6,7 @@
 package tests
 
 import (
+	"context"
 	"fmt"
 	"net/http"
 	"os"
@@ -13,47 +14,17 @@ import (
 	"strconv"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/go-http-utils/headers"
 	"github.com/stretchr/testify/assert"
 
+	"sgtnserver/api"
 	"sgtnserver/api/v2/translation"
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/translation/translationservice"
 )
-
-func TestCrossDomainByGettingTranslation(t *testing.T) {
-	const originHeader = "http://localhost"
-	e := CreateHTTPExpect(t, GinTestEngine)
-
-	resp := e.GET(GetBundleURL, Name, Version, "zh-Hans", "sunglow").WithHeader("Origin", originHeader).Expect()
-	resp.Status(http.StatusOK)
-
-	allowCredentials := config.Settings.CrossDomain.AllowCredentials
-	resp.Headers().ContainsMap(map[string][]interface{}{
-		headers.AccessControlAllowOrigin:      {"*"},
-		headers.AccessControlAllowCredentials: {strconv.FormatBool(allowCredentials)}})
-}
-
-// func TestCrossDomain(t *testing.T) {
-// 	const originHeader = "http://localhost"
-// 	e := createHTTPExpect(t, ginTestEngine)
-
-// 	resp := e.OPTIONS("/").WithHeader("Origin", originHeader).Expect()
-// 	resp.Status(http.StatusOK)
-
-// 	maxAge := config.Settings.CrossDomain.MaxAge
-// 	allowMethods := config.Settings.CrossDomain.AllowMethods
-// 	allowHeaders := config.Settings.CrossDomain.AllowHeaders
-// 	allowCredentials := config.Settings.CrossDomain.AllowCredentials
-// 	resp.Headers().ContainsMap(map[string][]interface{}{
-// 		headers.AccessControlAllowOrigin:      {originHeader},
-// 		headers.AccessControlAllowMethods:     {allowMethods},
-// 		headers.AccessControlAllowHeaders:     {allowHeaders},
-// 		headers.AccessControlAllowCredentials: {strconv.FormatBool(allowCredentials)},
-// 		headers.AccessControlMaxAge:           {maxAge.Seconds()}})
-// }
 
 func TestGetSupportedComponents(t *testing.T) {
 	e := CreateHTTPExpect(t, GinTestEngine)
@@ -67,26 +38,16 @@ func TestGetSupportedComponents(t *testing.T) {
 	assert.Equal(t, resp.Body().Raw(), resp2.Body().Raw(), "ETag aren't same!")
 }
 
-func TestGetBundleNormal(t *testing.T) {
-	e := CreateHTTPExpect(t, GinTestEngine)
+func TestGetSupportedLocales(t *testing.T) {
+	expected := `{"response":{"code":200,"message":"OK"},"data":{"locales":["de","en","es-MX","es","fr-CA","fr","ja","ko","pt-PT","pt","yue-Hant","yue","zh-Hans-HK","zh-Hans","zh-Hant-HK","zh-Hant"],"productName":"VPE","version":"1.0.0"}}`
 
-	req := e.GET(GetBundleURL, Name, Version, "zh-Hans", "sunglow")
-	resp := req.Expect()
-	expected := `{"response":{"code":200,"message":"OK"},"data":{"productName":"VPE","version":"1.0.0","locale":"zh-Hans","component":"sunglow","messages":{"message":"消息","one.arg":"测试一个参数{0}","pagination":"{0}-{1} 个客户，共 {2} 个","plural.files":"{files, plural,=0 {category 0 : 无文件。} =1 {category 1 : 在{place}上有且仅有一个文件。} one {category one : 在{place}上有一个文件。}other {category other : {place}上有 # 文件。}}"}}}`
+	e := CreateHTTPExpect(t, GinTestEngine)
+	resp := e.GET(GetSupportedLocalesURL, Name, Version).Expect()
 	resp.Status(http.StatusOK)
 	assert.JSONEq(t, expected, resp.Body().Raw())
 
-	// Test CacheControl
-	resp.Header(headers.CacheControl).Equal(config.Settings.Server.CacheControl)
-
-	// Send request again to test Etag
-	req = e.GET(GetBundleURL, Name, Version, "zh-Hans", "sunglow")
-	resp = req.WithHeader(headers.IfNoneMatch, resp.Header(headers.ETag).Raw()).Expect()
-	resp.Status(http.StatusNotModified)
-	resp.Body().Empty()
-
-	resp = e.GET(GetBundleURL, Name, Version, "zh-Hans", "nonexistent").Expect()
-	resp.Status(http.StatusNotFound).Body().Contains("nonexistent")
+	resp2 := e.GET(GetSupportedLocalesURL, Name, Version).Expect()
+	assert.Equal(t, resp.Body().Raw(), resp2.Body().Raw(), "ETag aren't same!")
 }
 
 func TestGetBundlesMessages(t *testing.T) {
@@ -316,16 +277,140 @@ func TestGetBundlesMessages(t *testing.T) {
 	}
 }
 
-func TestGetSupportedLocales(t *testing.T) {
-	expected := `{"response":{"code":200,"message":"OK"},"data":{"locales":["de","en","es-MX","es","fr-CA","fr","ja","ko","pt-PT","pt","yue-Hant","yue","zh-Hans-HK","zh-Hans","zh-Hant-HK","zh-Hant"],"productName":"VPE","version":"1.0.0"}}`
+func TestCrossDomainByGettingTranslation(t *testing.T) {
+	host := "localhost"
+	if config.Settings.Server.HTTPPort != 80 {
+		host += fmt.Sprintf(":%d", config.Settings.Server.HTTPPort)
+	}
 
+	origin := "http://" + host
+
+	oldSetting := config.Settings
+	defer func() {
+		config.Settings = oldSetting
+		l3Service.ClearCache(context.TODO())
+	}()
+
+	tests := []struct {
+		testName         string
+		Enable           bool
+		AllowCredentials bool
+		AllowOrigin      string
+		AllowMethods     string
+		AllowHeaders     string
+		MaxAge           time.Duration
+
+		origin string
+		host   string
+	}{
+		{testName: "Disabled", Enable: false},
+		{testName: "allowAllOrigins", Enable: true, AllowOrigin: "*", origin: "http://anyhost"},
+		{testName: "allowSomeOrigins_LocalReq", Enable: true, AllowOrigin: "http://allowedhost", origin: origin},
+		{testName: "allowSomeOrigins_denied", Enable: true, AllowOrigin: "http://allowedhost", origin: "http://deniedhost"},
+		{testName: "allowSomeOrigins_allowed", Enable: true, AllowOrigin: "http://allowedhost", origin: "http://allowedhost"},
+		{testName: "allowGetOnly", Enable: true, AllowOrigin: "*", AllowMethods: "GET", origin: "http://anyhost"},
+	}
+
+	for i, tt := range tests {
+		tt := tt
+
+		t.Run(fmt.Sprintf("%d-%s", i, tt.testName), func(t *testing.T) {
+			config.Settings.CrossDomain.Enable = tt.Enable
+			config.Settings.CrossDomain.AllowCredentials = tt.AllowCredentials
+			config.Settings.CrossDomain.AllowOrigin = tt.AllowOrigin
+			if tt.AllowMethods != "" {
+				config.Settings.CrossDomain.AllowMethods = tt.AllowMethods
+			} else {
+				config.Settings.CrossDomain.AllowMethods = "GET,POST,PUT,DELETE,OPTIONS"
+			}
+			config.Settings.CrossDomain.AllowHeaders = tt.AllowHeaders
+			config.Settings.CrossDomain.MaxAge = tt.MaxAge
+
+			e := CreateHTTPExpect(t, api.InitServer())
+
+			// Without origin header. This isn't a cross domain request
+			resp := e.GET(GetBundleURL, Name, Version, Locale, Component).WithHost(host).Expect()
+			resp.Status(http.StatusOK)
+			if resp.Raw().StatusCode == http.StatusOK {
+				// Verify "Access-Control-Allow-Origin" header in response
+				resp.Header("Access-Control-Allow-Origin").Empty()
+			}
+
+			if tt.Enable {
+				resp = e.GET(GetBundleURL, Name, Version, Locale, Component).WithHost(host).WithHeader("Origin", tt.origin).Expect()
+				if tt.origin == origin {
+					resp.Status(http.StatusOK)
+					// Verify "Access-Control-Allow-Origin" header in response
+					resp.Header("Access-Control-Allow-Origin").Empty()
+				} else { // Verify "Access-Control-Allow-Origin" header in response
+					if tt.AllowOrigin == "*" || tt.AllowOrigin == tt.origin {
+						resp.Status(http.StatusOK)
+						resp.Header("Access-Control-Allow-Origin").Equal(tt.AllowOrigin)
+					} else {
+						resp.Status(http.StatusForbidden)
+					}
+				}
+
+				component := RandomString(6)
+				defer os.RemoveAll(path.Join(config.Settings.LocalBundle.BasePath, Name, Version, component))
+				resp = e.PUT(PutBundlesURL, Name, Version).WithHost(host).WithHeader("Origin", tt.origin).WithBytes([]byte(fmt.Sprintf(bundleDataToPut, Name, Version, Locale, component, Key, Msg))).Expect()
+				if tt.AllowOrigin == "GET" {
+					// Verify PUT is forbidden
+					resp.Status(http.StatusForbidden)
+				} else {
+					if tt.origin == origin {
+						resp.Status(http.StatusOK)
+						// Verify "Access-Control-Allow-Origin" header in response
+						resp.Header("Access-Control-Allow-Origin").Empty()
+					} else { // Verify "Access-Control-Allow-Origin" header in response
+						if tt.AllowOrigin == "*" || tt.AllowOrigin == tt.origin {
+							resp.Status(http.StatusOK)
+							resp.Header("Access-Control-Allow-Origin").Equal(tt.AllowOrigin)
+						} else {
+							resp.Status(http.StatusForbidden)
+						}
+					}
+				}
+			}
+		})
+	}
+}
+
+func TestCrossDomain_OPTIONS(t *testing.T) {
+	const originHeader = "http://localhost"
 	e := CreateHTTPExpect(t, GinTestEngine)
-	resp := e.GET(GetSupportedLocalesURL, Name, Version).Expect()
+
+	resp := e.OPTIONS("/").WithHeader("Origin", originHeader).Expect()
+	resp.Status(http.StatusNoContent)
+
+	resp.Header("Access-Control-Allow-Credentials").Equal(strconv.FormatBool(config.Settings.CrossDomain.AllowCredentials))
+	resp.Header("Access-Control-Allow-Headers").EqualFold(config.Settings.CrossDomain.AllowHeaders)
+	resp.Header("Access-Control-Allow-Methods").Equal(config.Settings.CrossDomain.AllowMethods)
+	resp.Header("Access-Control-Allow-Origin").EqualFold(config.Settings.CrossDomain.AllowOrigin)
+	resp.Header("Access-Control-Max-Age").Equal(strconv.FormatInt(int64(config.Settings.CrossDomain.MaxAge.Seconds()), 10))
+}
+
+func TestGetBundleNormal(t *testing.T) {
+	e := CreateHTTPExpect(t, GinTestEngine)
+
+	req := e.GET(GetBundleURL, Name, Version, "zh-Hans", "sunglow")
+	resp := req.Expect()
+	expected := `{"response":{"code":200,"message":"OK"},"data":{"productName":"VPE","version":"1.0.0","locale":"zh-Hans","component":"sunglow","messages":{"message":"消息","one.arg":"测试一个参数{0}","pagination":"{0}-{1} 个客户，共 {2} 个","plural.files":"{files, plural,=0 {category 0 : 无文件。} =1 {category 1 : 在{place}上有且仅有一个文件。} one {category one : 在{place}上有一个文件。}other {category other : {place}上有 # 文件。}}"}}}`
 	resp.Status(http.StatusOK)
 	assert.JSONEq(t, expected, resp.Body().Raw())
 
-	resp2 := e.GET(GetSupportedLocalesURL, Name, Version).Expect()
-	assert.Equal(t, resp.Body().Raw(), resp2.Body().Raw(), "ETag aren't same!")
+	// Test CacheControl
+	resp.Header(headers.CacheControl).Equal(config.Settings.Server.CacheControl)
+	etag := resp.Header(headers.ETag).Raw()
+
+	// Send request again to test Etag
+	req = e.GET(GetBundleURL, Name, Version, "zh-Hans", "sunglow")
+	resp = req.WithHeader(headers.IfNoneMatch, etag).Expect()
+	resp.Status(http.StatusNotModified)
+	resp.Body().Empty()
+
+	resp = e.GET(GetBundleURL, Name, Version, "zh-Hans", "nonexistent").Expect()
+	resp.Status(http.StatusNotFound).Body().Contains("nonexistent")
 }
 
 func TestGetSingleMessage(t *testing.T) {
@@ -382,7 +467,7 @@ func TestPutBundle(t *testing.T) {
 
 			if tt.wantedCode == http.StatusOK {
 				// Query to check putting is successful
-				data, err := translationservice.GetService().GetString(nil, tt.name, tt.version, Locale, component, Key)
+				data, err := translationservice.GetService().GetString(context.TODO(), tt.name, tt.version, Locale, component, Key)
 				assert.Nil(t, err)
 				assert.Equal(t, Msg, data.Translation)
 			}
@@ -445,6 +530,7 @@ func TestPutBundleWithoutData(t *testing.T) {
 		})
 	}
 }
+
 func TestVersionFallback(t *testing.T) {
 	e := CreateHTTPExpect(t, GinTestEngine)
 
