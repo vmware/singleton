@@ -77,17 +77,15 @@ func ToBusinessError(err error) *BusinessError {
 		if e.IsAllFailed() {
 			// If all the operations are failed, return the first error code.
 			for _, err := range e.Errors() {
-				if se, ok := err.(*sgtnerror.Error); ok {
+				if se, ok := err.(sgtnerror.Error); ok {
 					return &BusinessError{Code: se.Code(), UserMsg: e.Error()}
 				}
 			}
 			return &BusinessError{Code: sgtnerror.UnknownError.Code(), UserMsg: e.Error()}
+		} else {
+			return &BusinessError{Code: sgtnerror.StatusPartialSuccess.Code(), UserMsg: sgtnerror.StatusPartialSuccess.Message()}
 		}
-		return &BusinessError{Code: sgtnerror.StatusPartialSuccess.Code(), UserMsg: sgtnerror.StatusPartialSuccess.Message()}
-	case *sgtnerror.Error:
-		if e == nil {
-			return &BusinessError{Code: sgtnerror.StatusSuccess.Code(), UserMsg: sgtnerror.StatusSuccess.Message()}
-		}
+	case sgtnerror.Error:
 		return &BusinessError{Code: e.Code(), UserMsg: e.Message()}
 	default:
 		return &BusinessError{Code: sgtnerror.UnknownError.Code(), UserMsg: err.Error()}

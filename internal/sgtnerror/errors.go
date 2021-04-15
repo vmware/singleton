@@ -43,7 +43,7 @@ func (e Error) Message() string {
 
 func (e Error) WithUserMessage(msg string, args ...interface{}) error {
 	message := fmt.Sprintf(msg, args...)
-	return &Error{
+	return Error{
 		cause:   nil,
 		code:    e.code,
 		message: message}
@@ -54,7 +54,7 @@ func (e Error) WrapErrorWithMessage(err error, userMsg string, args ...interface
 		return nil
 	}
 
-	return &Error{
+	return Error{
 		cause:   err,
 		code:    e.code,
 		message: fmt.Sprintf(userMsg, args...)}
