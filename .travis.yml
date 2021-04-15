@@ -1,6 +1,6 @@
 language: go
 go:
-  - 1.13
+  - 1.16
 python:
   - 3.4
 before_install:
@@ -13,7 +13,9 @@ jobs:
   include:
   - name: "Check Header"
     env: TEST=check_header
-  - name: "Build & Unit Test"
+  - name: "Build"
+    env: TEST=build
+  - name: "Unit Test"
     env: TEST=unit_test
   - name: "Code Scan"
     env: TEST=code_scan
@@ -26,10 +28,15 @@ script: >
     chmod +x check_headers.py
     python3 ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
   fi &&
-  if [ x${TEST} = xunit_test ]; then
+
+  if [ x${TEST} = xbuild ]; then
     make build
+  fi &&
+
+  if [ x${TEST} = xunit_test ]; then
     make test
   fi &&
+
   if [ x${TEST} = xcode_scan ]; then
     SONARSCANNER='sonar-scanner-cli-4.0.0.1744-linux'
     SONARSCANNERINNER='sonar-scanner-4.0.0.1744-linux'
