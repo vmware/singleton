@@ -40,7 +40,11 @@ public class S3MultComponentDaoImpl implements IMultComponentDao {
       }
       for (String component : components) {
          for (String locale : locales) {
-            bundles.add(oneComponentDao.get2JsonStr(productName, version, component, locale));
+        	 try {
+               bundles.add(oneComponentDao.get2JsonStr(productName, version, component, locale));
+        	 }catch(DataException e ) {
+        		 logger.warn(e.getMessage(), e);
+        	 }
          }
       }
       logger.debug("end get2JsonStrs");
