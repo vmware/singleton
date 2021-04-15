@@ -3,7 +3,6 @@
 package com.vmware.l10n.utils;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Random;
 
 import org.slf4j.Logger;
@@ -15,7 +14,7 @@ import org.springframework.util.StringUtils;
 
 import com.amazonaws.SdkClientException;
 import com.amazonaws.services.s3.model.AmazonS3Exception;
-import com.amazonaws.services.s3.model.S3ObjectSummary;
+import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vmware.l10n.conf.S3Cfg;
 import com.vmware.l10n.conf.S3Client;
@@ -31,10 +30,10 @@ public class S3Util {
 	private static Logger logger = LoggerFactory.getLogger(S3Util.class);
 
 	private static Random random = new Random(System.currentTimeMillis());
-	private static long retryInterval = 500; // milliseconds
-	private static long deadlockInterval = 30 * 1000L;
-	private static long waitS3Operation = 100; // milliseconds
-	private static long waitToLock = 10 * 1000L; // 10 seconds
+	private static long retryInterval = 1000; // milliseconds
+	private static long deadlockInterval = 600 * 1000L; // 10min
+	private static long waitS3Operation = 50; // milliseconds
+
 
 	@Autowired
 	private S3Cfg config;
@@ -88,18 +87,16 @@ public class S3Util {
 		}
 
 		public boolean lockFile() {
-			long endTime = System.currentTimeMillis() + waitToLock;
 			String content = Double.toString(random.nextDouble());
-
+             int time=0;
 			do {
-				if (!waitLockfileDisappeared(endTime)) {
+				if (!waitLockfileDisappeared()) {
 					return false;
 				}
 
 				// Write the lock file
 				s3Client.putObject(this.key, content);
 				TimeUtils.sleep(waitS3Operation); // Wait for a while to let S3 finish writing.
-
 				// Check file content is correct
 				try {
 					if (content.equals(s3Client.readObject(this.key))) {
@@ -110,7 +107,8 @@ public class S3Util {
 				}
 
 				TimeUtils.sleep(retryInterval);
-			} while (System.currentTimeMillis() < endTime);
+				time++;
+			} while (time<10);
 
 			return false;
 		}
@@ -123,31 +121,36 @@ public class S3Util {
 			}
 		}
 
-		private boolean waitLockfileDisappeared(long endTime) {
+		private boolean waitLockfileDisappeared() {
 			boolean bDeadlockTested = false;
-			List<S3ObjectSummary> objects = s3Client.getS3Client().listObjectsV2(config.getBucketName(), this.key).getObjectSummaries();
-			while (!objects.isEmpty()) {
+			boolean existed = s3Client.getS3Client().doesObjectExist(config.getBucketName(), this.key);
+			int i = 0;
+			while(existed) {
+				try {
 				if (!bDeadlockTested) {
 					bDeadlockTested = true;
 					// Get file creation time to detect deadlock
-					S3ObjectSummary lockfileObject = objects.get(0);
-					Date lastModified = lockfileObject.getLastModified();
-					if (new Date().getTime() - lastModified.getTime() > deadlockInterval) {// longer than 10min
+					ObjectMetadata objectMeta = s3Client.getS3Client().getObjectMetadata(config.getBucketName(), this.key);
+					Date lastModified = objectMeta.getLastModified();
+					long interval = new Date().getTime() - lastModified.getTime();
+					
+					if ( interval > deadlockInterval) {// longer than 10min
 						s3Client.deleteObject(this.key);
-						logger.warn("deleted dead lock file");
+						logger.warn("deleted dead lock file and the time interval: {} ms", interval);
 						return true;
 					}
 				}
-
+				}catch(Exception e) {
+					logger.warn(e.getMessage(), e);
+				}
 				TimeUtils.sleep(retryInterval);
-				if (System.currentTimeMillis() >= endTime) {
+				if (i>100) {
 					logger.warn("failed to wait for lockfile disappeared");
 					return false;
 				}
-
-				objects = s3Client.getS3Client().listObjectsV2(config.getBucketName(), this.key).getObjectSummaries();
+				
+				existed =  s3Client.getS3Client().doesObjectExist(config.getBucketName(), this.key);
 			}
-
 			return true;
 		}
 	}
