@@ -28,7 +28,6 @@ script: >
   fi &&
   if [ x${TEST} = xunit_test ]; then
     make build
-    ls -ltr builds
     make test
   fi &&
   if [ x${TEST} = xcode_scan ]; then
