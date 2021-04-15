@@ -15,7 +15,6 @@ import (
 	"sgtnserver/modules/translation/translationservice"
 
 	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
 )
 
 var l3Service translation.Service = translationservice.GetService()
@@ -37,14 +36,15 @@ var l3Service translation.Service = translationservice.GetService()
 func GetBundle2(c *gin.Context) {
 	id := struct {
 		ReleaseID
-		Locale    string `uri:"locale" form:"locale" binding:"locale"`
-		Component string `uri:"component" form:"component" binding:"required,component"`
+		Locale    string `form:"locale" binding:"locale"`
+		Component string `form:"component" binding:"required,component"`
 	}{Locale: v1.DefaultLocale}
 	if err := c.ShouldBindQuery(&id); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
 	version := c.GetString(api.SgtnVersionKey)
+
 	data, err := l3Service.GetBundle(logger.NewContext(c, c.MustGet(api.LoggerKey)),
 		&translation.BundleID{Name: id.ProductName, Version: version, Locale: id.Locale, Component: id.Component})
 
@@ -129,7 +129,7 @@ func GetString2(c *gin.Context) {
 func GetProduct(c *gin.Context) {
 	req := struct {
 		ReleaseID
-		Locale string `uri:"locale" form:"locale" binding:"locale"`
+		Locale string `form:"locale" binding:"locale"`
 	}{Locale: v1.DefaultLocale}
 	if err := c.ShouldBindQuery(&req); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
@@ -201,32 +201,27 @@ func GetAvailableLocales(c *gin.Context) {
 // @Router /translation/product/{productName}/component/{component} [get]
 // @Deprecated
 func GetBundle(c *gin.Context) {
-	id := struct {
-		ReleaseID
-		Locale    string `uri:"locale" form:"locale" binding:"locale"`
-		Component string `uri:"component" form:"component" binding:"required,component"`
+	uriPart := struct {
+		ProductName string `uri:"productName" binding:"required,alphanum"`
+		Component   string `uri:"component" binding:"required,component"`
+	}{}
+	if err := c.ShouldBindUri(&uriPart); err != nil {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+		return
+	}
+	formPart := struct {
+		Version string `form:"version" binding:"required,version"`
+		Locale  string `form:"locale" binding:"locale"`
 	}{Locale: v1.DefaultLocale}
-	if err := c.ShouldBindUri(&id); err != nil {
-		vErrors, _ := err.(validator.ValidationErrors)
-		for _, e := range vErrors {
-			if !(e.Field() == api.LocaleAPIKey || e.Field() == api.VersionAPIKey) {
-				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
-				return
-			}
-		}
+	if err := c.ShouldBindQuery(&formPart); err != nil {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+		return
 	}
-	if err := c.ShouldBindQuery(&id); err != nil {
-		vErrors, _ := err.(validator.ValidationErrors)
-		for _, e := range vErrors {
-			if e.Field() == api.LocaleAPIKey || e.Field() == api.VersionAPIKey {
-				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
-				return
-			}
-		}
-	}
+
 	version := c.GetString(api.SgtnVersionKey)
+
 	data, err := l3Service.GetBundle(logger.NewContext(c, c.MustGet(api.LoggerKey)),
-		&translation.BundleID{Name: id.ProductName, Version: version, Locale: id.Locale, Component: id.Component})
+		&translation.BundleID{Name: uriPart.ProductName, Version: version, Locale: formPart.Locale, Component: uriPart.Component})
 
 	api.HandleResponse(c, v2Translation.ConvertBundleToAPI(data), err)
 }
@@ -247,33 +242,26 @@ func GetBundle(c *gin.Context) {
 // @Router /translation/product/{productName}/components/{components} [get]
 // @Deprecated
 func GetMultipleBundles(c *gin.Context) {
-	req := struct {
-		ReleaseID
-		Locales    string `form:"locales" binding:"required,locales"`
-		Components string `uri:"components" binding:"required,components"`
+	uriPart := struct {
+		ProductName string `uri:"productName" binding:"required,alphanum"`
+		Components  string `uri:"components" binding:"required,components"`
 	}{}
-	if err := c.ShouldBindUri(&req); err != nil {
-		vErrors, _ := err.(validator.ValidationErrors)
-		for _, e := range vErrors {
-			if !(e.Field() == api.LocalesAPIKey || e.Field() == api.VersionAPIKey) {
-				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
-				return
-			}
-		}
+	if err := c.ShouldBindUri(&uriPart); err != nil {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+		return
 	}
-	if err := c.ShouldBindQuery(&req); err != nil {
-		vErrors, _ := err.(validator.ValidationErrors)
-		for _, e := range vErrors {
-			if e.Field() == api.LocalesAPIKey || e.Field() == api.VersionAPIKey {
-				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
-				return
-			}
-		}
+	formPart := struct {
+		Version string `form:"version" binding:"required,version"`
+		Locales string `form:"locales" binding:"required,locales"`
+	}{}
+	if err := c.ShouldBindQuery(&formPart); err != nil {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+		return
 	}
 	version := c.GetString(api.SgtnVersionKey)
 
-	bundles, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), req.ProductName, version, req.Locales, req.Components)
-	data := v2Translation.ConvertReleaseToAPI(req.ProductName, version, bundles)
+	componentsData, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), uriPart.ProductName, version, formPart.Locales, uriPart.Components)
+	data := v2Translation.ConvertReleaseToAPI(uriPart.ProductName, version, componentsData)
 	api.HandleResponse(c, data, multiErr)
 }
 
@@ -294,29 +282,28 @@ func GetMultipleBundles(c *gin.Context) {
 // @Router /translation/product/{productName}/component/{component}/key/{key} [get]
 // @Deprecated
 func GetString(c *gin.Context) {
-	id := GetStringReq{Locale: v1.DefaultLocale}
-	if err := c.ShouldBindUri(&id); err != nil {
-		vErrors, _ := err.(validator.ValidationErrors)
-		for _, e := range vErrors {
-			if !(e.Field() == api.LocaleAPIKey || e.Field() == api.VersionAPIKey) {
-				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
-				return
-			}
-		}
+	uriPart := struct {
+		ProductName string `uri:"productName" binding:"required,alphanum"`
+		Component   string `uri:"component" binding:"required,component"`
+		Key         string `uri:"key" binding:"required,key"`
+	}{}
+	if err := c.ShouldBindUri(&uriPart); err != nil {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+		return
 	}
-	if err := c.ShouldBindQuery(&id); err != nil {
-		vErrors, _ := err.(validator.ValidationErrors)
-		for _, e := range vErrors {
-			if e.Field() == api.LocaleAPIKey || e.Field() == api.VersionAPIKey {
-				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
-				return
-			}
-		}
+	formPart := struct {
+		Version string `form:"version" binding:"required,version"`
+		Locale  string `form:"locale" binding:"locale"`
+		Source  string `form:"source"`
+	}{Locale: v1.DefaultLocale}
+	if err := c.ShouldBindQuery(&formPart); err != nil {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+		return
 	}
 	version := c.GetString(api.SgtnVersionKey)
 
-	internalID := translation.MessageID{Name: id.ProductName, Version: version, Locale: id.Locale, Component: id.Component, Key: id.Key}
-	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, id.Source)
+	internalID := translation.MessageID{Name: uriPart.ProductName, Version: version, Locale: formPart.Locale, Component: uriPart.Component, Key: uriPart.Key}
+	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, formPart.Source)
 	api.HandleResponse(c, result, err)
 }
 
@@ -336,35 +323,28 @@ func GetString(c *gin.Context) {
 // @Router /translation/product/{productName}/key/{key} [get]
 // @Deprecated
 func GetString3(c *gin.Context) {
-	id := struct {
-		ReleaseID
-		Locale    string `uri:"locale" form:"locale" binding:"locale"`
-		Component string
-		Key       string `uri:"key" form:"key" binding:"required,key"`
-		Source    string `form:"source"`
-	}{Locale: v1.DefaultLocale, Component: "default"}
-	if err := c.ShouldBindUri(&id); err != nil {
-		vErrors, _ := err.(validator.ValidationErrors)
-		for _, e := range vErrors {
-			if !(e.Field() == api.LocaleAPIKey || e.Field() == api.VersionAPIKey) {
-				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
-				return
-			}
-		}
+	uriPart := struct {
+		ProductName string `uri:"productName" binding:"required,alphanum"`
+		Component   string
+		Key         string `uri:"key" binding:"required,key"`
+	}{Component: "default"}
+	if err := c.ShouldBindUri(&uriPart); err != nil {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+		return
 	}
-	if err := c.ShouldBindQuery(&id); err != nil {
-		vErrors, _ := err.(validator.ValidationErrors)
-		for _, e := range vErrors {
-			if e.Field() == api.LocaleAPIKey || e.Field() == api.VersionAPIKey {
-				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
-				return
-			}
-		}
+	formPart := struct {
+		Version string `form:"version" binding:"required,version"`
+		Locale  string `form:"locale" binding:"locale"`
+		Source  string `form:"source"`
+	}{Locale: v1.DefaultLocale}
+	if err := c.ShouldBindQuery(&formPart); err != nil {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+		return
 	}
 	version := c.GetString(api.SgtnVersionKey)
 
-	internalID := translation.MessageID{Name: id.ProductName, Version: version, Locale: id.Locale, Component: id.Component, Key: id.Key}
-	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, id.Source)
+	internalID := translation.MessageID{Name: uriPart.ProductName, Version: version, Locale: formPart.Locale, Component: uriPart.Component, Key: uriPart.Key}
+	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, formPart.Source)
 	api.HandleResponse(c, result, err)
 }
 
