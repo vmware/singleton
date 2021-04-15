@@ -23,7 +23,6 @@ func (r *translationRouter) Init(e *gin.RouterGroup) {
 
 		// Product APIs
 		tranGroup.GET(productPart, GetMultipleBundles)
-		tranGroup.PUT(productPart, PutBundles)
 
 		tranGroup.GET(productPart+"/localelist", GetAvailableLocales)
 		tranGroup.GET(productPart+"/componentlist", GetAvailableComponents)
@@ -34,7 +33,10 @@ func (r *translationRouter) Init(e *gin.RouterGroup) {
 		// Key APIs
 		tranGroup.GET(productPart+"/locales/:locale/components/:component/keys/:key", GetString)
 	}
+
+	e.PUT("/translation/products/:productName/versions/:version", PutBundles)
 }
+
 func init() {
 	v2.Register(&translationRouter{})
 }
