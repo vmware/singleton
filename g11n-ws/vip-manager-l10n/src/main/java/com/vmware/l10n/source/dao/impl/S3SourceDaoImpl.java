@@ -79,7 +79,7 @@ public class S3SourceDaoImpl implements SourceDao {
 
 	@Override
 	public boolean updateToBundle(ComponentMessagesDTO compDTO) throws JsonProcessingException {
-		logger.info("[Save sources to storage]: {}/{}/{}/{}", compDTO.getProductName(), compDTO.getVersion(),
+		logger.debug("[Save sources to storage]: {}/{}/{}/{}", compDTO.getProductName(), compDTO.getVersion(),
 				compDTO.getComponent(), compDTO.getLocale());
 
 		Locker locker = s3util.new Locker(this.basePath, compDTO);

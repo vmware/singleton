@@ -161,7 +161,7 @@ public class SourceSendingCron {
 				if(queueFiles == null ) {
 					return;
 				}
-				LOGGER.info("the source cache file size ----------------{}", queueFiles.size());
+				LOGGER.debug("the source cache file size ----------------{}", queueFiles.size());
 
 				for (File quefile : queueFiles) {
 
