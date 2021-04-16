@@ -54,7 +54,7 @@ func (ts Service) GetAvailableLocales(ctx context.Context, name, version string)
 
 	for _, e := range locales.Values() {
 		locale := e.(string)
-		if locale != common.Latest {
+		if locale != translation.Latest {
 			data = append(data, locale)
 		}
 	}
@@ -75,7 +75,7 @@ func (ts Service) GetAvailableBundles(ctx context.Context, name, version string)
 	data = make([]translation.CompactBundleID, 0, len(values))
 	for _, v := range values {
 		id := v.(translation.CompactBundleID)
-		if id.Locale != common.Latest {
+		if id.Locale != translation.Latest {
 			data = append(data, id)
 		}
 	}
@@ -181,9 +181,9 @@ func (ts Service) GetStringWithSource(ctx context.Context, id *translation.Messa
 	msg, err := ts.GetString(ctx, id)
 
 	msgEn, errEn := msg, err
-	if id.Locale != common.EnLocale {
+	if id.Locale != translation.EnLocale {
 		idEn := *id
-		idEn.Locale = common.EnLocale
+		idEn.Locale = translation.EnLocale
 		msgEn, errEn = ts.GetString(ctx, &idEn)
 	}
 	if source != "" {
@@ -302,7 +302,7 @@ func (ts Service) GetTranslationStatus(ctx context.Context, id *translation.Bund
 	}
 
 	latestID := *id
-	latestID.Locale = common.Latest
+	latestID.Locale = translation.Latest
 	latestData, latestErr := ts.GetBundle(ctx, &latestID)
 	if latestErr != nil {
 		return nil, sgtnerror.TranslationReady
@@ -310,9 +310,9 @@ func (ts Service) GetTranslationStatus(ctx context.Context, id *translation.Bund
 
 	var enErr error
 	var enData = translationData
-	if translationData.ID.Locale != common.EnLocale {
+	if translationData.ID.Locale != translation.EnLocale {
 		enID := *id
-		enID.Locale = common.EnLocale
+		enID.Locale = translation.EnLocale
 		enData, enErr = ts.GetBundle(ctx, &enID)
 		if enErr != nil {
 			return nil, sgtnerror.TranslationNotReady

@@ -11,52 +11,20 @@ import (
 )
 
 var (
-	StatusSuccess = Error{
-		code:     http.StatusOK,
-		httpCode: http.StatusOK,
-		message:  "OK"}
-	TranslationNotReady = Error{
-		code:     205,
-		httpCode: http.StatusOK,
-		message:  "translations are not ready"}
-	TranslationReady = Error{
-		code:     206,
-		httpCode: http.StatusOK,
-		message:  "translations are ready"}
-	StatusPartialSuccess = Error{
-		code:     207,
-		httpCode: http.StatusOK,
-		message:  "Successful Partially"}
+	StatusSuccess        = Error{code: http.StatusOK, httpCode: http.StatusOK, message: "OK"}
+	TranslationNotReady  = Error{code: 205, httpCode: http.StatusOK, message: "translations are not ready"}
+	TranslationReady     = Error{code: 206, httpCode: http.StatusOK, message: "translations are ready"}
+	StatusPartialSuccess = Error{code: 207, httpCode: http.StatusOK, message: "Successful Partially"}
 
-	StatusBadRequest = Error{
-		code:     http.StatusBadRequest,
-		httpCode: http.StatusBadRequest,
-		message:  "Bad Request"}
-	StatusNotFound = Error{
-		code:     http.StatusNotFound,
-		httpCode: http.StatusNotFound,
-		message:  "Not Found"}
-	StatusInvalidToken = Error{
-		code:     498,
-		httpCode: 498,
-		message:  "Invalid Token"}
-	StatusTokenRequired = Error{
-		code:     499,
-		httpCode: 499,
-		message:  "Token Required"}
+	StatusBadRequest    = Error{code: http.StatusBadRequest, httpCode: http.StatusBadRequest, message: "Bad Request"}
+	StatusNotFound      = Error{code: http.StatusNotFound, httpCode: http.StatusNotFound, message: "Not Found"}
+	StatusInvalidToken  = Error{code: 498, httpCode: 498, message: "Invalid Token"}
+	StatusTokenRequired = Error{code: 499, httpCode: 499, message: "Token Required"}
 
-	StatusVersionFallbackTranslation = Error{
-		code:    604,
-		message: "Version has been fallen back"}
+	StatusVersionFallbackTranslation = Error{code: 604, message: "Version has been fallen back"}
 
-	StatusInternalServerError = Error{
-		code:     http.StatusInternalServerError,
-		httpCode: http.StatusInternalServerError,
-		message:  "Internal Server Error"}
-	UnknownError = Error{
-		code:     520,
-		httpCode: 520,
-		message:  "Unknown Error"}
+	StatusInternalServerError = Error{code: http.StatusInternalServerError, httpCode: http.StatusInternalServerError, message: "Internal Server Error"}
+	UnknownError              = Error{code: 520, httpCode: 520, message: "Unknown Error"}
 )
 
 type Error struct {
