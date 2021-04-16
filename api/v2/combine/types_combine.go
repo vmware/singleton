@@ -43,7 +43,7 @@ type (
 type (
 	translationWithPatternData struct {
 		Bundles []*translation.SingleBundleData `json:"components,omitempty"`
-		Pattern patternData                     `json:"pattern,omitempty"`
+		Pattern *patternData                    `json:"pattern,omitempty"`
 	}
 
 	patternData struct {

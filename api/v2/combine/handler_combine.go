@@ -193,7 +193,7 @@ func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {
 	var transData []*translation.Bundle
 	var patternDataMap map[string]interface{}
 	var localeToSet, language, region = "", params.Language, params.Region
-	data := translationWithPatternData{}
+	data := new(translationWithPatternData)
 
 	switch params.Combine {
 	// get pattern use parameter: language, scope, region, get the translation use parameters language, productName, version, component
@@ -224,24 +224,26 @@ func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {
 	for _, t := range transData {
 		data.Bundles = append(data.Bundles, transApi.ConvertBundleToAPI(t))
 	}
-	if len(patternDataMap) > 0 {
-		data.Pattern = patternData{
+	if len(patternDataMap) > 0 && isExistPattern(patternDataMap) {
+		data.Pattern = &patternData{
 			PatternData: cldrApi.PatternData{
 				LocaleID:   localeToSet,
 				Language:   language,
 				Region:     region,
 				Categories: patternDataMap,
 			},
-			IsExistPattern: func() bool {
-				for _, v := range patternDataMap {
-					if v != nil {
-						return true
-					}
-				}
-				return false
-			}(),
+			IsExistPattern: true,
 		}
 	}
 
 	api.HandleResponse(c, data, allErrors)
+}
+
+func isExistPattern(patternDataMap map[string]interface{}) bool {
+	for _, v := range patternDataMap {
+		if v != nil && !common.IsZeroOfUnderlyingType(v) {
+			return true
+		}
+	}
+	return false
 }
