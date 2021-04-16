@@ -179,9 +179,13 @@ func (ts Service) GetStringWithSource(ctx context.Context, id *translation.Messa
 	var stringTrans string
 	var status translation.TranslationStatus
 	msg, err := ts.GetString(ctx, id)
-	idEn := *id
-	idEn.Locale = common.EnLocale
-	msgEn, errEn := ts.GetString(ctx, &idEn)
+
+	msgEn, errEn := msg, err
+	if id.Locale != common.EnLocale {
+		idEn := *id
+		idEn.Locale = common.EnLocale
+		msgEn, errEn = ts.GetString(ctx, &idEn)
+	}
 	if source != "" {
 		if errEn != nil || msgEn.Translation != source {
 			stringTrans, status = source, translation.SourceUpdated
