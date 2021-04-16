@@ -346,7 +346,7 @@ func TestVersionFallback(t *testing.T) {
 	resp := e.GET(GetSupportedComponentsURL, Name, "1.0.1.0").Expect()
 	resp.Status(http.StatusOK)
 
-	serviceErr, _ := GetErrorAndData(strings.NewReader(resp.Body().Raw()))
+	serviceErr, _ := GetErrorAndData(resp.Body().Raw())
 	assert.Equal(t, sgtnerror.StatusVersionFallbackTranslation.Code(), serviceErr.Code)
 	assert.Contains(t, serviceErr.UserMsg, sgtnerror.StatusVersionFallbackTranslation.Message())
 }
