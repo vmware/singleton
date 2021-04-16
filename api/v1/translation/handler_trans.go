@@ -128,8 +128,8 @@ func GetString2(c *gin.Context) {
 func GetProduct(c *gin.Context) {
 	req := struct {
 		ReleaseID
-		Locale string `form:"locale" binding:"locale"`
-	}{Locale: translation.EnLocale}
+		Locale string `form:"locale" binding:"omitempty,locale"`
+	}{}
 	if err := c.ShouldBindQuery(&req); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
