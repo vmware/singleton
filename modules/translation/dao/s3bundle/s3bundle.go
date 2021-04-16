@@ -153,11 +153,11 @@ func (b *S3Bundle) PutBundle(ctx context.Context, bundleData *translation.Bundle
 	bundle := &translation.BundleFile{Component: bundleData.ID.Component, Locale: bundleData.ID.Locale, Messages: bundleData.Messages}
 	bts, err := json.MarshalIndent(bundle, "", "    ")
 	if err != nil {
-		returnErr = sgtnerror.StatusBadRequest.WrapErrorWithMessage(err, translation.WrongBundleContent, bundleData.ID.Name, bundleData.ID.Version, bundleData.ID.Component, bundleData.ID.Locale)
+		returnErr = sgtnerror.StatusBadRequest.WrapErrorWithMessage(err, translation.WrongBundleContent, bundleData.ID.Name, bundleData.ID.Version, bundleData.ID.Locale, bundleData.ID.Component)
 	} else {
 		input := s3.PutObjectInput{Bucket: b.Bucket, Key: b.GetKey(&bundleData.ID), Body: bytes.NewReader(bts)}
 		if _, err = b.S3Client.PutObject(&input); err != nil {
-			returnErr = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToStoreBundle, bundleData.ID.Name, bundleData.ID.Version, bundleData.ID.Component, bundleData.ID.Locale)
+			returnErr = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToStoreBundle, bundleData.ID.Name, bundleData.ID.Version, bundleData.ID.Locale, bundleData.ID.Component)
 		}
 	}
 

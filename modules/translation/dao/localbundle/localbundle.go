@@ -128,14 +128,14 @@ func (b *LocalBundle) PutBundle(ctx context.Context, bundleData *translation.Bun
 	bundle := &translation.BundleFile{Component: bundleData.ID.Component, Locale: bundleData.ID.Locale, Messages: bundleData.Messages}
 	bts, err := json.MarshalIndent(bundle, "", "    ")
 	if err != nil {
-		returnErr = sgtnerror.StatusBadRequest.WrapErrorWithMessage(err, translation.WrongBundleContent, bundleData.ID.Name, bundleData.ID.Version, bundleData.ID.Component, bundleData.ID.Locale)
+		returnErr = sgtnerror.StatusBadRequest.WrapErrorWithMessage(err, translation.WrongBundleContent, bundleData.ID.Name, bundleData.ID.Version, bundleData.ID.Locale, bundleData.ID.Component)
 	} else {
 		dirPath, fullPath := b.getBundlePath(&bundleData.ID)
 		if err = os.MkdirAll(dirPath, 0755); err == nil {
 			err = ioutil.WriteFile(fullPath, bts, 0644)
 		}
 		if err != nil {
-			returnErr = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToStoreBundle, bundleData.ID.Name, bundleData.ID.Version, bundleData.ID.Component, bundleData.ID.Locale)
+			returnErr = sgtnerror.StatusInternalServerError.WrapErrorWithMessage(err, translation.FailToStoreBundle, bundleData.ID.Name, bundleData.ID.Version, bundleData.ID.Locale, bundleData.ID.Component)
 		}
 	}
 
