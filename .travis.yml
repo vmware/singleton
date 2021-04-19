@@ -16,10 +16,10 @@ jobs:
     env: TEST=check_header
   - name: "Build"
     env: TEST=build
-  - name: "Unit Test"
-    env: TEST=unit_test
-  - name: "Code Scan"
-    env: TEST=code_scan
+  # - name: "Unit Test"
+  #   env: TEST=unit_test
+  # - name: "Code Scan"
+  #   env: TEST=code_scan
 
   
 script: >
