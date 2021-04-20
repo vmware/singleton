@@ -139,11 +139,13 @@ func GetBundle(c *gin.Context) {
 	data, err := l3Service.GetBundle(ctx, bundleID)
 	bundleAPIData := ConvertBundleToAPI(data)
 
+	mErr := sgtnerror.Append(err)
 	if err == nil && req.CheckTranslationStatus {
 		bundleAPIData.Status, err = l3Service.GetTranslationStatus(ctx, bundleID)
+		mErr = sgtnerror.Append(err)
 	}
 
-	api.HandleResponse(c, bundleAPIData, err)
+	api.HandleResponse(c, bundleAPIData, mErr)
 }
 
 // GetString godoc
