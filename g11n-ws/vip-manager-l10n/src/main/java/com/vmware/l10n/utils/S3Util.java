@@ -33,7 +33,6 @@ public class S3Util {
 	private static Random random = new Random(System.currentTimeMillis());
 	private static long retryInterval = 500; // milliseconds
 	private static long deadlockInterval = 30 * 1000L;
-	//private static long waitS3Operation = 100; // milliseconds
 	private static long waitToLock = 10 * 1000L; // 10 seconds
 
 	@Autowired
