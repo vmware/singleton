@@ -266,8 +266,8 @@ func TestEtag(t *testing.T) {
 
 	resp := e.GET(GetBundleURL, Name, Version, Locale, Component).Expect()
 	resp.Status(http.StatusOK)
-	log.Info(resp.Header(headers.ETag).Raw())
-	resp.Header(headers.ETag).Equal(`"405-42766a785b0558578b5a0890774007a34e5c91ef"`)
+	expectedEtag := api.GenerateEtag([]byte(resp.Body().Raw()), false)
+	resp.Header(headers.ETag).Equal(expectedEtag)
 
 	// Send request again to test Etag
 	req := e.GET(GetBundleURL, Name, Version, Locale, Component)
