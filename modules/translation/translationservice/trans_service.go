@@ -294,13 +294,13 @@ func (ts Service) GetTranslationStatus(ctx context.Context, id *translation.Bund
 
 	translationData, tErr := ts.GetBundle(ctx, id)
 	if tErr != nil {
-		return nil, sgtnerror.TranslationNotReady
+		return nil, tErr
 	}
 
 	latestID := *id
 	latestID.Locale = translation.Latest
 	latestData, latestErr := ts.GetBundle(ctx, &latestID)
-	if latestErr != nil {
+	if latestErr != nil { // If there is no latest bundle, return true
 		return nil, sgtnerror.TranslationReady
 	}
 
@@ -311,7 +311,7 @@ func (ts Service) GetTranslationStatus(ctx context.Context, id *translation.Bund
 		enID.Locale = translation.EnLocale
 		enData, enErr = ts.GetBundle(ctx, &enID)
 		if enErr != nil {
-			return nil, sgtnerror.TranslationNotReady
+			return nil, enErr
 		}
 	}
 
