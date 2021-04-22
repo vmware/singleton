@@ -3,7 +3,6 @@
 package com.vmware.l10n.utils;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Random;
 
 import org.slf4j.Logger;
@@ -13,11 +12,10 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import com.amazonaws.services.s3.model.ObjectMetadata;
-import com.amazonaws.services.s3.model.PutObjectResult;
 import com.amazonaws.SdkClientException;
 import com.amazonaws.services.s3.model.AmazonS3Exception;
-import com.amazonaws.services.s3.model.S3ObjectSummary;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.PutObjectResult;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vmware.l10n.conf.S3Cfg;
 import com.vmware.l10n.conf.S3Client;
