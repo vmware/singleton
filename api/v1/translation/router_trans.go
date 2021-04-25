@@ -38,13 +38,14 @@ func (r *translationRouter) Init(e *gin.RouterGroup) {
 		// Translation Product Component Key API
 		tranGroup.GET("/product/:productName/component/:component/key/:key", GetString)
 		tranGroup.GET("/product/:productName/key/:key", GetString3)
-
-		// Translation Sync API
-		tranGroup.PUT("/product/:productName/version/:version", PutBundles)
 	}
 
 	// Translation Product Component API
 	e.GET("/bundles/components", translation.HandleAllowList, translation.HandleVersionFallback, GetAvailableComponents)
+
+	// Translation Sync API
+	e.PUT("/translation/product/:productName/version/:version", PutBundles)
+
 }
 func init() {
 	v1.Register(&translationRouter{})

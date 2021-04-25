@@ -18,16 +18,19 @@ type (
 
 	BundleID struct {
 		ReleaseID
-		Locale    string `uri:"locale" form:"locale" binding:"required,locale"`
-		Component string `uri:"component" form:"component" binding:"required,component"`
+		Locale    string `uri:"locale" binding:"required,locale"`
+		Component string `uri:"component" binding:"required,component"`
+	}
+
+	StringID struct {
+		BundleID
+		Key string `uri:"key" binding:"required,key"`
 	}
 
 	GetStringReq struct {
-		BundleID
-		Key    string `uri:"key" form:"key" binding:"required,key"`
+		StringID
 		Source string `form:"source"`
 	}
-
 	ProductReq struct {
 		ReleaseID
 		Locales    string `form:"locales" binding:"omitempty,locales"`
@@ -54,9 +57,7 @@ type (
 
 	GetBundleReq struct {
 		BundleID
-		CheckTranslationStatus struct {
-			Check bool `form:"checkTranslationStatus" default:"false"`
-		}
+		CheckTranslationStatus bool `form:"checkTranslationStatus" default:"false"`
 	}
 )
 

@@ -14,7 +14,6 @@ import (
 
 	"github.com/emirpasic/gods/sets/linkedhashset"
 	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
 )
 
 var l3Service translation.Service = translationservice.GetService()
@@ -93,22 +92,12 @@ func GetAvailableLocales(c *gin.Context) {
 func GetMultipleBundles(c *gin.Context) {
 	req := ProductReq{}
 	if err := c.ShouldBindUri(&req); err != nil {
-		vErrors, _ := err.(validator.ValidationErrors)
-		for _, e := range vErrors {
-			if !(e.Field() == api.LocalesAPIKey || e.Field() == api.ComponentsAPIKey) {
-				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
-				return
-			}
-		}
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+		return
 	}
 	if err := c.ShouldBindQuery(&req); err != nil {
-		vErrors, _ := err.(validator.ValidationErrors)
-		for _, e := range vErrors {
-			if e.Field() == api.LocalesAPIKey || e.Field() == api.ComponentsAPIKey {
-				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
-				return
-			}
-		}
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+		return
 	}
 	version := c.GetString(api.SgtnVersionKey)
 
@@ -133,31 +122,34 @@ func GetMultipleBundles(c *gin.Context) {
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /translation/products/{productName}/versions/{version}/locales/{locale}/components/{component} [get]
 func GetBundle(c *gin.Context) {
-	id := GetBundleReq{}
-	if err := c.ShouldBindUri(&id); err != nil {
+	req := GetBundleReq{}
+	if err := c.ShouldBindUri(&req); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
-	if err := c.ShouldBindQuery(&id.CheckTranslationStatus); err != nil {
+	if err := c.ShouldBindQuery(&req); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
 
 	version := c.GetString(api.SgtnVersionKey)
+
 	ctx := logger.NewContext(c, c.MustGet(api.LoggerKey))
-	bundleID := &translation.BundleID{Name: id.ProductName, Version: version, Locale: id.Locale, Component: id.Component}
+	bundleID := &translation.BundleID{Name: req.ProductName, Version: version, Locale: req.Locale, Component: req.Component}
 	data, err := l3Service.GetBundle(ctx, bundleID)
 	bundleAPIData := ConvertBundleToAPI(data)
 
-	if err == nil && id.CheckTranslationStatus.Check {
+	mErr := sgtnerror.Append(err)
+	if err == nil && req.CheckTranslationStatus {
 		bundleAPIData.Status, err = l3Service.GetTranslationStatus(ctx, bundleID)
+		mErr = sgtnerror.Append(err)
 	}
 
-	api.HandleResponse(c, bundleAPIData, err)
+	api.HandleResponse(c, bundleAPIData, mErr)
 }
 
 // GetString godoc
-// @Summary Get a message
+// @Summary Get a string's translation
 // @Description Get a message by its key
 // @Tags translation-product-component-key-api
 // @Produce json
