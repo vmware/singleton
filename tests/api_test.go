@@ -12,13 +12,14 @@ import (
 	"net"
 	"net/http"
 	"os"
+	"strings"
+	"testing"
+
 	"sgtnserver/api"
 	"sgtnserver/internal/common"
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
-	"strings"
-	"testing"
 
 	"github.com/emirpasic/gods/sets/hashset"
 	"github.com/gin-gonic/gin"

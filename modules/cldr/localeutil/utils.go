@@ -53,9 +53,11 @@ func GetLocaleTerritories(ctx context.Context, locale string) (data *LocaleTerri
 	return data, err
 }
 
-func GetTerritoriesOfMultipleLocales(ctx context.Context, locales []string) (territoryList []*LocaleTerritories, err error) {
+func GetTerritoriesOfMultipleLocales(ctx context.Context, locales []string) ([]*LocaleTerritories, error) {
 	var returnErr *sgtnerror.MultiError
 
+	var err error
+	var territoryList []*LocaleTerritories = make([]*LocaleTerritories, 0, len(locales))
 	for _, locale := range locales {
 		var territories *LocaleTerritories
 		cldrLocale := coreutil.GetCLDRLocale(locale)
