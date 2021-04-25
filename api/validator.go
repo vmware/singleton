@@ -97,10 +97,13 @@ func InitValidator() {
 	}
 }
 
-func RemoveStruct(m map[string]string) map[string]string {
-	res := map[string]string{}
-	for k, v := range m {
-		res[k[strings.LastIndex(k, ".")+1:]] = v
+func ExtractErrorMsg(err error) string {
+	if vErrors, ok := err.(validator.ValidationErrors); ok {
+		msgs := make([]string, len(vErrors))
+		for i, e := range vErrors {
+			msgs[i] = e.Translate(ValidatorTranslator)
+		}
+		return strings.Join(msgs, "; ")
 	}
-	return res
+	return err.Error()
 }

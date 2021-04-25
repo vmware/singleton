@@ -14,7 +14,6 @@ import (
 	"sgtnserver/modules/formatting"
 
 	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
 )
 
 // GetLocalizedDate godoc
@@ -34,11 +33,7 @@ import (
 func GetLocalizedDate(c *gin.Context) {
 	params := new(DateReq)
 	if err := c.ShouldBindQuery(params); err != nil {
-		var msg interface{} = err.Error()
-		if vErrors, ok := err.(validator.ValidationErrors); ok {
-			msg = api.RemoveStruct(vErrors.Translate(api.ValidatorTranslator))
-		}
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%+v", msg))
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
 
