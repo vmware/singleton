@@ -54,7 +54,7 @@ func (ts Service) GetAvailableLocales(ctx context.Context, name, version string)
 
 	for _, e := range locales.Values() {
 		locale := e.(string)
-		if locale != "latest" {
+		if locale != translation.Latest {
 			data = append(data, locale)
 		}
 	}
@@ -75,7 +75,7 @@ func (ts Service) GetAvailableBundles(ctx context.Context, name, version string)
 	data = make([]translation.CompactBundleID, 0, len(values))
 	for _, v := range values {
 		id := v.(translation.CompactBundleID)
-		if id.Locale != "latest" {
+		if id.Locale != translation.Latest {
 			data = append(data, id)
 		}
 	}
@@ -179,9 +179,13 @@ func (ts Service) GetStringWithSource(ctx context.Context, id *translation.Messa
 	var stringTrans string
 	var status translation.TranslationStatus
 	msg, err := ts.GetString(ctx, id)
-	idEn := *id
-	idEn.Locale = "en"
-	msgEn, errEn := ts.GetString(ctx, &idEn)
+
+	msgEn, errEn := msg, err
+	if id.Locale != translation.EnLocale {
+		idEn := *id
+		idEn.Locale = translation.EnLocale
+		msgEn, errEn = ts.GetString(ctx, &idEn)
+	}
 	if source != "" {
 		if errEn != nil || msgEn.Translation != source {
 			stringTrans, status = source, translation.SourceUpdated
@@ -290,7 +294,6 @@ func (ts Service) GetTranslationStatus(ctx context.Context, id *translation.Bund
 
 	id.Locale = PickupLocales(id.Name, id.Version, []string{id.Locale})[0]
 
-	const enLocale = "en"
 	const ready, notready = "1", "0"
 
 	translationData, tErr := ts.GetBundle(ctx, id)
@@ -299,7 +302,7 @@ func (ts Service) GetTranslationStatus(ctx context.Context, id *translation.Bund
 	}
 
 	latestID := *id
-	latestID.Locale = "latest"
+	latestID.Locale = translation.Latest
 	latestData, latestErr := ts.GetBundle(ctx, &latestID)
 	if latestErr != nil {
 		return nil, sgtnerror.TranslationReady
@@ -307,9 +310,9 @@ func (ts Service) GetTranslationStatus(ctx context.Context, id *translation.Bund
 
 	var enErr error
 	var enData = translationData
-	if translationData.ID.Locale != enLocale {
+	if translationData.ID.Locale != translation.EnLocale {
 		enID := *id
-		enID.Locale = enLocale
+		enID.Locale = translation.EnLocale
 		enData, enErr = ts.GetBundle(ctx, &enID)
 		if enErr != nil {
 			return nil, sgtnerror.TranslationNotReady

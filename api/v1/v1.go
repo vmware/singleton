@@ -14,8 +14,6 @@ import (
 
 const APIRoot = "/i18n/api/v1"
 
-const DefaultLocale = "en"
-
 var routers []api.Router
 
 func init() {

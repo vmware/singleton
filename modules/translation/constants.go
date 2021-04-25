@@ -16,3 +16,8 @@ const (
 	BundlePrefix = "messages_"
 	BundleSuffix = ".json"
 )
+
+const (
+	Latest   = "latest"
+	EnLocale = "en"
+)
