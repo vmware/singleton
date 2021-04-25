@@ -623,6 +623,11 @@ paths:
         name: component
         required: true
         type: string
+      - default: "false"
+        description: checkTranslationStatus
+        in: query
+        name: checkTranslationStatus
+        type: string
       produces:
       - application/json
       responses:

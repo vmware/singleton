@@ -25,4 +25,6 @@ type Service interface {
 	GetAvailableComponents(ctx context.Context, name, version string) (data []string, returnErr error)
 
 	PutBundles(ctx context.Context, bundleData []*Bundle) error
+
+	GetTranslationStatus(ctx context.Context, id *BundleID) (map[string]interface{}, error)
 }

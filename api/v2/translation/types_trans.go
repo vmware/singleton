@@ -51,6 +51,13 @@ type (
 		Locale    string       `json:"locale" binding:"required,locale"`
 		Messages  jsoniter.Any `json:"messages" binding:"required"`
 	}
+
+	GetBundleReq struct {
+		BundleID
+		CheckTranslationStatus struct {
+			Check bool `form:"checkTranslationStatus" default:"false"`
+		}
+	}
 )
 
 // Response
@@ -62,6 +69,8 @@ type (
 		Component   string       `json:"component"`
 		ID          int          `json:"id,omitempty"`
 		Messages    jsoniter.Any `json:"messages"`
+
+		Status map[string]interface{} `json:"status,omitempty"`
 	}
 
 	ReleaseData struct {

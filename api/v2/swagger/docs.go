@@ -793,6 +793,13 @@ var doc = `{
                         "name": "component",
                         "in": "path",
                         "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "false",
+                        "description": "checkTranslationStatus",
+                        "name": "checkTranslationStatus",
+                        "in": "query"
                     }
                 ],
                 "responses": {
