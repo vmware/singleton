@@ -14,10 +14,13 @@ import (
 	"testing"
 	"time"
 
+	"sgtnserver/internal/cache"
 	"sgtnserver/internal/common"
+	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
 
+	"github.com/fatih/structs"
 	"github.com/stretchr/testify/assert"
 	"go.uber.org/zap"
 )
@@ -139,4 +142,21 @@ func TestMultiError(t *testing.T) {
 			assert.Equal(t, tt.isAllFailed, actualMultiError.IsAllFailed())
 		})
 	}
+}
+
+func TestCacheExpiration(t *testing.T) {
+	expirationDuration := time.Millisecond * 10
+	settings := structs.Map(config.Settings.Cache)
+	settings["Expiration"] = expirationDuration
+
+	newCache := cache.NewCache("test_expiration", settings)
+
+	key, value := "key", "value"
+	err := newCache.Set(key, value)
+	assert.Nil(t, err)
+
+	time.Sleep(expirationDuration)
+	actual, err := newCache.Get(key)
+	assert.NotNil(t, err)
+	assert.Nil(t, actual)
 }
