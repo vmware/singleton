@@ -7,7 +7,6 @@ package tests
 
 import (
 	"flag"
-	"io"
 	"math/rand"
 	"net/http"
 	"os"
@@ -116,9 +115,9 @@ func CreateHTTPExpect(t *testing.T, ginEngine *gin.Engine) *httpexpect.Expect {
 	})
 }
 
-func GetErrorAndData(r io.Reader) (bError *api.BusinessError, data interface{}) {
+func GetErrorAndData(r string) (bError *api.BusinessError, data interface{}) {
 	body := new(api.Response)
-	err := json.NewDecoder(r).Decode(body)
+	err := json.UnmarshalFromString(r, body)
 	if err != nil {
 		log.Error(err.Error())
 	}

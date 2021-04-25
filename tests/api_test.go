@@ -236,19 +236,21 @@ func TestPartialSuccess(t *testing.T) {
 	e := CreateHTTPExpect(t, GinTestEngine)
 
 	for _, d := range []struct {
-		testName            string
-		locales, components string
-		wantedCode          int
+		testName                    string
+		locales, components         string
+		wantedBCode, wantedHTTPCode int
 	}{
-		{testName: "Partially Successful", locales: "zh-Hans,en-Invalid", components: "sunglow", wantedCode: sgtnerror.StatusPartialSuccess.Code()},
-		{testName: "All Successful", locales: "zh-Hans,en", components: "sunglow", wantedCode: http.StatusOK},
-		{testName: "All Failed", locales: "zh-Hans,en", components: "invalidComponent", wantedCode: http.StatusNotFound},
+		{testName: "Partially Successful", locales: "zh-Hans,en-Invalid", components: "sunglow", wantedBCode: sgtnerror.StatusPartialSuccess.Code(), wantedHTTPCode: sgtnerror.StatusPartialSuccess.HTTPCode()},
+		{testName: "All Successful", locales: "zh-Hans,en", components: "sunglow", wantedBCode: http.StatusOK, wantedHTTPCode: http.StatusOK},
+		{testName: "All Failed", locales: "zh-Hans,en", components: "invalidComponent", wantedBCode: http.StatusNotFound, wantedHTTPCode: http.StatusNotFound},
 	} {
 		d := d
 		t.Run(d.testName, func(t *testing.T) {
 			resp := e.GET(GetBundlesURL, Name, Version).WithQuery("locales", d.locales).
 				WithQuery("components", d.components).Expect()
-			resp.Status(d.wantedCode)
+			resp.Status(d.wantedHTTPCode)
+			bError, _ := GetErrorAndData(resp.Body().Raw())
+			assert.Equal(t, d.wantedBCode, bError.Code)
 		})
 	}
 }
