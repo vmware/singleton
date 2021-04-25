@@ -8,11 +8,6 @@ package cldr
 import (
 	"strings"
 
-	"github.com/emirpasic/gods/maps/treemap"
-	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
-	jsoniter "github.com/json-iterator/go"
-
 	"sgtnserver/api"
 	"sgtnserver/internal/common"
 	"sgtnserver/internal/logger"
@@ -21,6 +16,11 @@ import (
 	"sgtnserver/modules/cldr/cldrservice"
 	"sgtnserver/modules/cldr/coreutil"
 	"sgtnserver/modules/cldr/localeutil"
+
+	"github.com/emirpasic/gods/maps/treemap"
+	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
+	jsoniter "github.com/json-iterator/go"
 )
 
 var json = jsoniter.ConfigDefault

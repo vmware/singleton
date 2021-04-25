@@ -8,9 +8,6 @@ package combine
 import (
 	"strings"
 
-	"github.com/gin-gonic/gin"
-	"go.uber.org/zap"
-
 	"sgtnserver/api"
 	cldrApi "sgtnserver/api/v2/cldr"
 	transApi "sgtnserver/api/v2/translation"
@@ -23,6 +20,9 @@ import (
 	"sgtnserver/modules/cldr/localeutil"
 	"sgtnserver/modules/translation"
 	"sgtnserver/modules/translation/translationservice"
+
+	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
 )
 
 var l3Service translation.Service = translationservice.GetService()

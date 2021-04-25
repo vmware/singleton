@@ -10,11 +10,11 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/gin-gonic/gin"
-	"go.uber.org/zap"
-
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
+
+	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
 )
 
 func IsHTTPSuccess(status int) bool {

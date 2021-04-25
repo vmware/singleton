@@ -12,6 +12,11 @@ import (
 	"net"
 	"net/http"
 	"os"
+	"sgtnserver/api"
+	"sgtnserver/internal/common"
+	"sgtnserver/internal/config"
+	"sgtnserver/internal/logger"
+	"sgtnserver/internal/sgtnerror"
 	"strings"
 	"testing"
 
@@ -19,12 +24,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-http-utils/headers"
 	"github.com/stretchr/testify/assert"
-
-	"sgtnserver/api"
-	"sgtnserver/internal/common"
-	"sgtnserver/internal/config"
-	"sgtnserver/internal/logger"
-	"sgtnserver/internal/sgtnerror"
 )
 
 func TestTraceIDs(t *testing.T) {
@@ -222,12 +221,12 @@ func TestAllFailed(t *testing.T) {
 	for _, d := range []struct {
 		locales, components string
 	}{
-		{"zh-Invalid,en-Invalid", "sunglow"},
+		{locales: "zh-Invalid,en-Invalid", components: "sunglow"},
 	} {
 		resp := e.GET(GetBundlesURL, Name, Version).
 			WithQuery("locales", d.locales).WithQuery("components", d.components).Expect()
 		resp.Status(http.StatusNotFound)
-		for _, v := range strings.Split(d.locales, ",") {
+		for _, v := range strings.Split(d.locales, common.ParamSep) {
 			resp.Body().Contains(v)
 		}
 	}
@@ -241,7 +240,7 @@ func TestPartialSuccess(t *testing.T) {
 		locales, components string
 		wantedCode          int
 	}{
-		{testName: "Partial Successful", locales: "zh-Hans,en-Invalid", components: "sunglow", wantedCode: sgtnerror.StatusPartialSuccess.Code()},
+		{testName: "Partially Successful", locales: "zh-Hans,en-Invalid", components: "sunglow", wantedCode: sgtnerror.StatusPartialSuccess.Code()},
 		{testName: "All Successful", locales: "zh-Hans,en", components: "sunglow", wantedCode: http.StatusOK},
 		{testName: "All Failed", locales: "zh-Hans,en", components: "invalidComponent", wantedCode: http.StatusNotFound},
 	} {

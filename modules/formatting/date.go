@@ -14,9 +14,8 @@ import (
 	"sgtnserver/modules/cldr"
 	"sgtnserver/modules/cldr/coreutil"
 
-	"golang.org/x/text/language"
-
 	"github.com/xiaochao8/format/date"
+	"golang.org/x/text/language"
 )
 
 // SimpleFormatDateTime

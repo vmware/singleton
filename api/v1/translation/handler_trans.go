@@ -6,9 +6,6 @@
 package translation
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
-
 	"sgtnserver/api"
 	v1 "sgtnserver/api/v1"
 	v2Translation "sgtnserver/api/v2/translation"
@@ -16,6 +13,9 @@ import (
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/translation"
 	"sgtnserver/modules/translation/translationservice"
+
+	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
 )
 
 var l3Service translation.Service = translationservice.GetService()
