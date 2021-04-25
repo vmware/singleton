@@ -852,6 +852,12 @@
                         "name": "key",
                         "in": "path",
                         "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "a source string",
+                        "name": "source",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -902,6 +908,7 @@
                     "type": "object"
                 },
                 "response": {
+                    "type": "object",
                     "$ref": "#/definitions/api.BusinessError"
                 }
             }
@@ -946,9 +953,6 @@
                 }
             }
         },
-        "jsoniter.Any": {
-            "type": "object"
-        },
         "translation.BundleData": {
             "type": "object",
             "required": [
@@ -964,7 +968,7 @@
                     "type": "string"
                 },
                 "messages": {
-                    "$ref": "#/definitions/jsoniter.Any"
+                    "type": "string"
                 }
             }
         },
@@ -1008,6 +1012,7 @@
             ],
             "properties": {
                 "data": {
+                    "type": "object",
                     "$ref": "#/definitions/translation.UpdateBundle"
                 },
                 "requester": {

@@ -10,8 +10,13 @@ import (
 )
 
 type (
-	ReleaseID            translation.ReleaseID
-	BundleID             translation.BundleID
-	MessageID            translation.MessageID
-	UpdateTranslationDTO translation.UpdateTranslationDTO
+	ReleaseID translation.ReleaseID
+
+	GetStringReq struct {
+		ReleaseID
+		Locale    string `uri:"locale" form:"locale" binding:"locale"`
+		Component string `uri:"component" form:"component" binding:"required,component"`
+		Key       string `uri:"key" form:"key" binding:"required,key"`
+		Source    string `form:"source"`
+	}
 )

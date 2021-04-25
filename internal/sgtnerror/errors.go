@@ -72,7 +72,7 @@ func (e Error) Error() string {
 }
 
 type (
-	coded interface {
+	Coded interface {
 		Code() int
 	}
 
@@ -82,7 +82,7 @@ type (
 )
 
 func GetCode(e error) int {
-	if c, ok := e.(coded); ok {
+	if c, ok := e.(Coded); ok {
 		return c.Code()
 	}
 	return UnknownError.code

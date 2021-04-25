@@ -12,8 +12,16 @@ definitions:
         type: object
       response:
         $ref: '#/definitions/api.BusinessError'
+        type: object
     type: object
   translation.UpdateTranslationDTO:
+    properties:
+      data:
+        type: UpdateBundle
+      requester:
+        type: string
+    required:
+    - data
     type: object
 info:
   contact:
@@ -379,6 +387,10 @@ paths:
         name: key
         required: true
         type: string
+      - description: a source string
+        in: query
+        name: source
+        type: string
       produces:
       - application/json
       responses:
@@ -475,6 +487,10 @@ paths:
         in: path
         name: key
         required: true
+        type: string
+      - description: a source string
+        in: query
+        name: source
         type: string
       produces:
       - application/json
@@ -613,6 +629,10 @@ paths:
         in: query
         name: key
         required: true
+        type: string
+      - description: a source string
+        in: query
+        name: source
         type: string
       produces:
       - application/json

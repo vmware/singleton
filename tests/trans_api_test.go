@@ -23,6 +23,7 @@ import (
 	"sgtnserver/api/v2/translation"
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/sgtnerror"
+	transmodule "sgtnserver/modules/translation"
 	"sgtnserver/modules/translation/translationservice"
 )
 
@@ -466,8 +467,9 @@ func TestPutBundle(t *testing.T) {
 			resp.Status(tt.wantedCode)
 
 			if tt.wantedCode == http.StatusOK {
+				id := transmodule.MessageID{Name: tt.name, Version: tt.version, Locale: Locale, Component: component, Key: Key}
 				// Query to check putting is successful
-				data, err := translationservice.GetService().GetString(context.TODO(), tt.name, tt.version, Locale, component, Key)
+				data, err := translationservice.GetService().GetString(context.TODO(), &id)
 				assert.Nil(t, err)
 				assert.Equal(t, Msg, data.Translation)
 			}
@@ -569,7 +571,11 @@ func TestApiTransExceptionArgs(t *testing.T) {
 			// t.Parallel()
 
 			resp := e.GET(GetKeyURL, tt.name, tt.version, tt.locale, tt.component, tt.key).Expect()
-			resp.Status(tt.wantedCode)
+			if tt.locale == "invalidLocale" {
+				resp.Status(http.StatusOK)
+			} else {
+				resp.Status(tt.wantedCode)
+			}
 
 			if strings.Contains(tt.testName, "Product") || strings.Contains(tt.testName, "Version") {
 				resp := e.GET(GetSupportedComponentsURL, tt.name, tt.version).Expect()

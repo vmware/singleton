@@ -92,6 +92,7 @@ func GetMultipleBundles2(c *gin.Context) {
 // @Param locale query string false "locale String. e.g. 'en-US'"
 // @Param component query string true "component name"
 // @Param key query string true "key"
+// @Param source query string false "a source string"
 // @Success 200 {object} api.Response "OK"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
@@ -99,20 +100,16 @@ func GetMultipleBundles2(c *gin.Context) {
 // @Router /translation/string [get]
 // @Deprecated
 func GetString2(c *gin.Context) {
-	id := struct {
-		ReleaseID
-		Locale    string `uri:"locale" form:"locale" binding:"locale"`
-		Component string `uri:"component" form:"component" binding:"required,component"`
-		Key       string `uri:"key" form:"key" binding:"required,key"`
-	}{Locale: v1.DefaultLocale}
+	id := GetStringReq{Locale: v1.DefaultLocale}
 	if err := c.ShouldBindQuery(&id); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
 	version := c.GetString(api.SgtnVersionKey)
 
-	msg, err := l3Service.GetString(logger.NewContext(c, c.MustGet(api.LoggerKey)), id.ProductName, version, id.Locale, id.Component, id.Key)
-	api.HandleResponse(c, msg, err)
+	internalID := translation.MessageID{Name: id.ProductName, Version: version, Locale: id.Locale, Component: id.Component, Key: id.Key}
+	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, id.Source)
+	api.HandleResponse(c, result, err)
 }
 
 // @Summary Get the product's translation
@@ -289,6 +286,7 @@ func GetMultipleBundles(c *gin.Context) {
 // @Param locale query string false "locale String. e.g. 'en-US'"
 // @Param component path string true "component name"
 // @Param key path string true "key"
+// @Param source query string false "a source string"
 // @Success 200 {object} api.Response "OK"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
@@ -296,12 +294,7 @@ func GetMultipleBundles(c *gin.Context) {
 // @Router /translation/product/{productName}/component/{component}/key/{key} [get]
 // @Deprecated
 func GetString(c *gin.Context) {
-	id := struct {
-		ReleaseID
-		Locale    string `uri:"locale" form:"locale" binding:"locale"`
-		Component string `uri:"component" form:"component" binding:"required,component"`
-		Key       string `uri:"key" form:"key" binding:"required,key"`
-	}{Locale: v1.DefaultLocale}
+	id := GetStringReq{Locale: v1.DefaultLocale}
 	if err := c.ShouldBindUri(&id); err != nil {
 		vErrors, _ := err.(validator.ValidationErrors)
 		for _, e := range vErrors {
@@ -322,8 +315,9 @@ func GetString(c *gin.Context) {
 	}
 	version := c.GetString(api.SgtnVersionKey)
 
-	msg, err := l3Service.GetString(logger.NewContext(c, c.MustGet(api.LoggerKey)), id.ProductName, version, id.Locale, id.Component, id.Key)
-	api.HandleResponse(c, msg, err)
+	internalID := translation.MessageID{Name: id.ProductName, Version: version, Locale: id.Locale, Component: id.Component, Key: id.Key}
+	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, id.Source)
+	api.HandleResponse(c, result, err)
 }
 
 // @Summary Get a key's translation
@@ -334,6 +328,7 @@ func GetString(c *gin.Context) {
 // @Param version query string true "version"
 // @Param locale query string false "locale String. e.g. 'en-US'"
 // @Param key path string true "key"
+// @Param source query string false "a source string"
 // @Success 200 {object} api.Response "OK"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 404 {string} string "Not Found"
@@ -343,9 +338,11 @@ func GetString(c *gin.Context) {
 func GetString3(c *gin.Context) {
 	id := struct {
 		ReleaseID
-		Locale string `uri:"locale" form:"locale" binding:"locale"`
-		Key    string `uri:"key" form:"key" binding:"required,key"`
-	}{Locale: v1.DefaultLocale}
+		Locale    string `uri:"locale" form:"locale" binding:"locale"`
+		Component string
+		Key       string `uri:"key" form:"key" binding:"required,key"`
+		Source    string `form:"source"`
+	}{Locale: v1.DefaultLocale, Component: "default"}
 	if err := c.ShouldBindUri(&id); err != nil {
 		vErrors, _ := err.(validator.ValidationErrors)
 		for _, e := range vErrors {
@@ -366,8 +363,9 @@ func GetString3(c *gin.Context) {
 	}
 	version := c.GetString(api.SgtnVersionKey)
 
-	msg, err := l3Service.GetString(logger.NewContext(c, c.MustGet(api.LoggerKey)), id.ProductName, version, id.Locale, "default", id.Key)
-	api.HandleResponse(c, msg, err)
+	internalID := translation.MessageID{Name: id.ProductName, Version: version, Locale: id.Locale, Component: id.Component, Key: id.Key}
+	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, id.Source)
+	api.HandleResponse(c, result, err)
 }
 
 // @Summary Update translation
