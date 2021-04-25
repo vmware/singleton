@@ -259,8 +259,8 @@ func GetMultipleBundles(c *gin.Context) {
 	}
 	version := c.GetString(api.SgtnVersionKey)
 
-	componentsData, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), uriPart.ProductName, version, formPart.Locales, uriPart.Components)
-	data := v2Translation.ConvertReleaseToAPI(uriPart.ProductName, version, componentsData)
+	bundles, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), uriPart.ProductName, version, formPart.Locales, uriPart.Components)
+	data := v2Translation.ConvertReleaseToAPI(uriPart.ProductName, version, bundles)
 	api.HandleResponse(c, data, multiErr)
 }
 

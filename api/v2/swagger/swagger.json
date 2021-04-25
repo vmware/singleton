@@ -822,7 +822,7 @@
                 "tags": [
                     "translation-product-component-key-api"
                 ],
-                "summary": "Get a message",
+                "summary": "Get a string's translation",
                 "deprecated": true,
                 "parameters": [
                     {
@@ -864,6 +864,95 @@
                         "type": "string",
                         "description": "a source string",
                         "name": "source",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Post a source",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "translation-product-component-key-api"
+                ],
+                "summary": "Post a source",
+                "deprecated": true,
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "product name",
+                        "name": "productName",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "version",
+                        "name": "version",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "locale name",
+                        "name": "locale",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "component name",
+                        "name": "component",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "key",
+                        "name": "key",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "a source string",
+                        "name": "source",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "default": "false",
+                        "description": "checkTranslationStatus",
+                        "name": "checkTranslationStatus",
                         "in": "query"
                     }
                 ],

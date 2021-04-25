@@ -6,6 +6,7 @@
 package translation
 
 import (
+	"io/ioutil"
 	"sgtnserver/api"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
@@ -180,6 +181,57 @@ func GetString(c *gin.Context) {
 
 	internalID := translation.MessageID{Name: req.ProductName, Version: version, Locale: req.Locale, Component: req.Component, Key: req.Key}
 	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, req.Source)
+	api.HandleResponse(c, result, err)
+}
+
+// GetStringByPost godoc
+// @Summary Post a source
+// @Description Post a source
+// @Tags translation-product-component-key-api
+// @Produce json
+// @Param productName path string true "product name"
+// @Param version path string true "version"
+// @Param locale path string true "locale name"
+// @Param component path string true "component name"
+// @Param key path string true "key"
+// @Param source body string false "a source string"
+// @Param checkTranslationStatus query string false "checkTranslationStatus" default(false)
+// @Success 200 {object} api.Response "OK"
+// @Failure 400 {string} string "Bad Request"
+// @Failure 404 {string} string "Not Found"
+// @Failure 500 {string} string "Internal Server Error"
+// @Router /translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key} [post]
+// @Deprecated
+func GetStringByPost(c *gin.Context) {
+	req := GetStringByPostReq{}
+	if err := c.ShouldBindUri(&req); err != nil {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+		return
+	}
+	if err := c.ShouldBindQuery(&req); err != nil {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+		return
+	}
+
+	if c.Request.Body != nil {
+		if bts, err := ioutil.ReadAll(c.Request.Body); err != nil {
+			api.AbortWithError(c, sgtnerror.StatusBadRequest.WrapErrorWithMessage(err, "fail to read request body"))
+			return
+		} else {
+			req.Source = string(bts)
+		}
+	}
+
+	internalID := translation.MessageID{Name: req.ProductName, Version: req.Version, Locale: req.Locale, Component: req.Component, Key: req.Key}
+	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, req.Source)
+	if err == nil && result != nil && req.CheckTranslationStatus {
+		if result["status"].(translation.TranslationStatus).IsReady() {
+			err = sgtnerror.TranslationReady
+		} else {
+			err = sgtnerror.TranslationNotReady
+		}
+	}
+
 	api.HandleResponse(c, result, err)
 }
 

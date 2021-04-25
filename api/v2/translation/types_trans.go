@@ -31,6 +31,13 @@ type (
 		StringID
 		Source string `form:"source"`
 	}
+
+	GetStringByPostReq struct {
+		StringID
+		Source                 string `form:"source"`
+		CheckTranslationStatus bool   `form:"checkTranslationStatus"`
+	}
+
 	ProductReq struct {
 		ReleaseID
 		Locales    string `form:"locales" binding:"omitempty,locales"`

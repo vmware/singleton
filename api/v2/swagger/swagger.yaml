@@ -703,7 +703,68 @@ paths:
           description: Internal Server Error
           schema:
             type: string
-      summary: Get a message
+      summary: Get a string's translation
+      tags:
+      - translation-product-component-key-api
+    post:
+      deprecated: true
+      description: Post a source
+      parameters:
+      - description: product name
+        in: path
+        name: productName
+        required: true
+        type: string
+      - description: version
+        in: path
+        name: version
+        required: true
+        type: string
+      - description: locale name
+        in: path
+        name: locale
+        required: true
+        type: string
+      - description: component name
+        in: path
+        name: component
+        required: true
+        type: string
+      - description: key
+        in: path
+        name: key
+        required: true
+        type: string
+      - description: a source string
+        in: body
+        name: source
+        schema:
+          type: string
+      - default: "false"
+        description: checkTranslationStatus
+        in: query
+        name: checkTranslationStatus
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Post a source
       tags:
       - translation-product-component-key-api
 swagger: "2.0"
