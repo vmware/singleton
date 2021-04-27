@@ -14,17 +14,17 @@ import (
 	"testing"
 	"time"
 
-	"github.com/go-test/deep"
-	"github.com/stretchr/objx"
-	"github.com/stretchr/testify/assert"
-	"go.uber.org/zap"
-
 	"sgtnserver/internal/cache"
 	"sgtnserver/internal/common"
 	"sgtnserver/internal/logger"
 	"sgtnserver/modules/cldr/cldrservice"
 	"sgtnserver/modules/cldr/coreutil"
 	"sgtnserver/modules/cldr/localeutil"
+
+	"github.com/go-test/deep"
+	"github.com/stretchr/objx"
+	"github.com/stretchr/testify/assert"
+	"go.uber.org/zap"
 )
 
 func TestGetCLDRLocale(t *testing.T) {
@@ -136,6 +136,10 @@ func TestScopeFilter(t *testing.T) {
 }
 
 func TestCLDRCache(t *testing.T) {
+	if !localeutil.EnableCache {
+		return
+	}
+
 	c, ok := cache.GetCache("cldr")
 	assert.True(t, ok)
 	c.Clear()

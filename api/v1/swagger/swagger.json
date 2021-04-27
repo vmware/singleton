@@ -521,6 +521,12 @@
                         "name": "key",
                         "in": "path",
                         "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "a source string",
+                        "name": "source",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -664,6 +670,12 @@
                         "name": "key",
                         "in": "path",
                         "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "a source string",
+                        "name": "source",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -867,6 +879,12 @@
                         "name": "key",
                         "in": "query",
                         "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "a source string",
+                        "name": "source",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -917,12 +935,24 @@
                     "type": "object"
                 },
                 "response": {
+                    "type": "object",
                     "$ref": "#/definitions/api.BusinessError"
                 }
             }
         },
         "translation.UpdateTranslationDTO": {
-            "type": "object"
+            "type": "object",
+            "required": [
+                "data"
+            ],
+            "properties": {
+                "data": {
+                    "type": "UpdateBundle"
+                },
+                "requester": {
+                    "type": "string"
+                }
+            }
         }
     },
     "tags": [

@@ -10,12 +10,12 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/emirpasic/gods/sets"
-	"go.uber.org/zap"
-
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
 	"sgtnserver/modules/translation"
+
+	"github.com/emirpasic/gods/sets"
+	"go.uber.org/zap"
 )
 
 var (
@@ -26,7 +26,7 @@ var (
 func InitBundleInfo(origin translation.MessageOrigin) {
 	logger.Log.Debug("Initialize bundle information")
 	msgOrigin = origin
-	if err := RefreshBundleInfo(nil); err != nil {
+	if err := RefreshBundleInfo(context.TODO()); err != nil {
 		panic(err)
 	}
 
@@ -41,7 +41,7 @@ func InitBundleInfo(origin translation.MessageOrigin) {
 			logger.Log.Debug("Start bundle information refresher")
 			for {
 				<-tick
-				RefreshBundleInfo(nil)
+				RefreshBundleInfo(context.TODO())
 			}
 		}()
 	}

@@ -5,7 +5,9 @@
 
 package translation
 
-import jsoniter "github.com/json-iterator/go"
+import (
+	jsoniter "github.com/json-iterator/go"
+)
 
 // Request
 type (
@@ -16,13 +18,24 @@ type (
 
 	BundleID struct {
 		ReleaseID
-		Locale    string `uri:"locale" form:"locale" binding:"required,locale"`
-		Component string `uri:"component" form:"component" binding:"required,component"`
+		Locale    string `uri:"locale" binding:"required,locale"`
+		Component string `uri:"component" binding:"required,component"`
 	}
 
-	MessageID struct {
+	StringID struct {
 		BundleID
-		Key string `uri:"key" form:"key" binding:"required,key"`
+		Key string `uri:"key" binding:"required,key"`
+	}
+
+	GetStringReq struct {
+		StringID
+		Source string `form:"source"`
+	}
+
+	GetStringByPostReq struct {
+		StringID
+		Source                 string `form:"source"`
+		CheckTranslationStatus bool   `form:"checkTranslationStatus"`
 	}
 
 	ProductReq struct {
@@ -48,6 +61,11 @@ type (
 		Locale    string       `json:"locale" binding:"required,locale"`
 		Messages  jsoniter.Any `json:"messages" binding:"required"`
 	}
+
+	GetBundleReq struct {
+		BundleID
+		CheckTranslationStatus bool `form:"checkTranslationStatus" default:"false"`
+	}
 )
 
 // Response
@@ -59,6 +77,8 @@ type (
 		Component   string       `json:"component"`
 		ID          int          `json:"id,omitempty"`
 		Messages    jsoniter.Any `json:"messages"`
+
+		Status map[string]interface{} `json:"status,omitempty"`
 	}
 
 	ReleaseData struct {

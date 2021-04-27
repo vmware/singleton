@@ -5,14 +5,18 @@
 
 package translation
 
-import "context"
+import (
+	"context"
+)
 
 type Service interface {
 	GetBundle(context.Context, *BundleID) (*Bundle, error)
 
 	// DeleteBundle(context.Context, *BundleID) error
 
-	GetString(ctx context.Context, name, version, locale, component, key string) (*StringMessage, error)
+	GetString(ctx context.Context, id *MessageID) (*StringMessage, error)
+
+	GetStringWithSource(ctx context.Context, id *MessageID, source string) (map[string]interface{}, error)
 
 	GetMultipleBundles(ctx context.Context, name, version, localeString, componentString string) (data []*Bundle, err error)
 
@@ -21,4 +25,6 @@ type Service interface {
 	GetAvailableComponents(ctx context.Context, name, version string) (data []string, returnErr error)
 
 	PutBundles(ctx context.Context, bundleData []*Bundle) error
+
+	GetTranslationStatus(ctx context.Context, id *BundleID) (map[string]interface{}, error)
 }

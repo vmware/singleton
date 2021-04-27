@@ -15,12 +15,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gin-contrib/cors"
-
 	"sgtnserver/internal/common"
 	"sgtnserver/internal/config"
 
 	brotli "github.com/anargu/gin-brotli"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
 	"github.com/go-http-utils/headers"

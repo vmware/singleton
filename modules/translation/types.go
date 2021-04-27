@@ -5,7 +5,9 @@
 
 package translation
 
-import jsoniter "github.com/json-iterator/go"
+import (
+	jsoniter "github.com/json-iterator/go"
+)
 
 type (
 	// Bundle ...
@@ -22,12 +24,22 @@ type (
 		Component string
 	}
 
+	MessageID struct {
+		Name      string
+		Version   string
+		Locale    string
+		Component string
+		Key       string
+	}
+
 	// CompactBundleID ...
 	CompactBundleID struct {
 		Locale    string
 		Component string
 	}
+)
 
+type (
 	// StringMessage ...
 	StringMessage struct {
 		Name    string `json:"productName"`

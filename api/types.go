@@ -12,7 +12,8 @@ type (
 	}
 
 	BusinessError struct {
-		Code    int    `json:"code"`
-		UserMsg string `json:"message"`
+		HTTPCode int    `json:"-"`
+		Code     int    `json:"code"`
+		UserMsg  string `json:"message"`
 	}
 )

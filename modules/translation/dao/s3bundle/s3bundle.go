@@ -11,6 +11,10 @@ import (
 	"regexp"
 	"strings"
 
+	"sgtnserver/internal/logger"
+	"sgtnserver/internal/sgtnerror"
+	"sgtnserver/modules/translation"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/aws/credentials"
@@ -19,24 +23,18 @@ import (
 	"github.com/aws/aws-sdk-go/service/s3/s3iface"
 	jsoniter "github.com/json-iterator/go"
 	"go.uber.org/zap"
-
-	"sgtnserver/internal/logger"
-	"sgtnserver/internal/sgtnerror"
-	"sgtnserver/modules/translation"
 )
 
 var json = jsoniter.ConfigDefault
 
 const slash = "/"
 
-type (
-	S3Bundle struct {
-		RootPrefix string
-		Bucket     *string
-		S3Client   s3iface.S3API
-		Config     *S3Config
-	}
-)
+type S3Bundle struct {
+	RootPrefix string
+	Bucket     *string
+	S3Client   s3iface.S3API
+	Config     *S3Config
+}
 
 // NewS3Bundle ...
 func NewS3Bundle(rootPrefix, bucket string, config *S3Config) *S3Bundle {

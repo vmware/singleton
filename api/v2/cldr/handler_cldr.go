@@ -8,11 +8,6 @@ package cldr
 import (
 	"strings"
 
-	"github.com/emirpasic/gods/maps/treemap"
-	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
-	jsoniter "github.com/json-iterator/go"
-
 	"sgtnserver/api"
 	"sgtnserver/internal/common"
 	"sgtnserver/internal/logger"
@@ -21,6 +16,10 @@ import (
 	"sgtnserver/modules/cldr/cldrservice"
 	"sgtnserver/modules/cldr/coreutil"
 	"sgtnserver/modules/cldr/localeutil"
+
+	"github.com/emirpasic/gods/maps/treemap"
+	"github.com/gin-gonic/gin"
+	jsoniter "github.com/json-iterator/go"
 )
 
 var json = jsoniter.ConfigDefault
@@ -40,28 +39,21 @@ var json = jsoniter.ConfigDefault
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /formatting/patterns/locales/{locale} [get]
 func GetPatternByLocale(c *gin.Context) {
-	req := new(PatternByLocaleReq)
-	if err := c.ShouldBindQuery(req); err != nil {
-		vErrors, _ := err.(validator.ValidationErrors)
-		for _, e := range vErrors {
-			if !(e.Field() == api.LocaleAPIKey) {
-				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
-				return
-			}
-		}
+	locale := struct {
+		Locale string `uri:"locale" binding:"required,locale"`
+	}{}
+	if err := c.ShouldBindUri(&locale); err != nil {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+		return
 	}
-	if err := c.ShouldBindUri(req); err != nil {
-		vErrors, _ := err.(validator.ValidationErrors)
-		for _, e := range vErrors {
-			if e.Field() == api.LocaleAPIKey {
-				api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(e.Translate(api.ValidatorTranslator)))
-				return
-			}
-		}
+	scope := PatternScope{}
+	if err := c.ShouldBindQuery(&scope); err != nil {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+		return
 	}
 
 	ctx := logger.NewContext(c, c.MustGet(api.LoggerKey))
-	cldrLocale, dataMap, err := cldrservice.GetPatternByLocale(ctx, req.Locale, req.Scope, req.ScopeFilter)
+	cldrLocale, dataMap, err := cldrservice.GetPatternByLocale(ctx, locale.Locale, scope.Scope, scope.ScopeFilter)
 	var data interface{}
 	if len(dataMap) > 0 {
 		parts := strings.Split(cldrLocale, cldr.LocalePartSep)

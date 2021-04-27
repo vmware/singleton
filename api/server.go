@@ -16,14 +16,14 @@ import (
 	"syscall"
 	"time"
 
+	"sgtnserver/internal/common"
+	"sgtnserver/internal/config"
+	"sgtnserver/internal/logger"
+
 	// "github.com/gin-contrib/pprof"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
-
-	"sgtnserver/internal/common"
-	"sgtnserver/internal/config"
-	"sgtnserver/internal/logger"
 )
 
 var (
