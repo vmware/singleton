@@ -9,7 +9,6 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
 	"go.uber.org/zap"
 
 	"sgtnserver/api"
@@ -50,11 +49,7 @@ var l3Service translation.Service = translationservice.GetService()
 func getCombinedData(c *gin.Context) {
 	params := new(translationWithPatternReq)
 	if err := c.ShouldBindQuery(params); err != nil {
-		var msg interface{} = err.Error()
-		if vErrors, ok := err.(validator.ValidationErrors); ok {
-			msg = api.RemoveStruct(vErrors.Translate(api.ValidatorTranslator))
-		}
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%+v", msg))
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
 
@@ -78,11 +73,7 @@ func getCombinedData(c *gin.Context) {
 func getLanguageListOfDispLang(c *gin.Context) {
 	params := new(languageListReq)
 	if err := c.ShouldBindQuery(params); err != nil {
-		var msg interface{} = err.Error()
-		if vErrors, ok := err.(validator.ValidationErrors); ok {
-			msg = api.RemoveStruct(vErrors.Translate(api.ValidatorTranslator))
-		}
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%+v", msg))
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
 	version := c.GetString(api.SgtnVersionKey)
@@ -173,11 +164,7 @@ func getLanguageListOfDispLang(c *gin.Context) {
 func getCombinedDataByPost(c *gin.Context) {
 	params := new(translationWithPatternPostReq)
 	if err := c.ShouldBindJSON(params); err != nil {
-		var msg interface{} = err.Error()
-		if vErrors, ok := err.(validator.ValidationErrors); ok {
-			msg = api.RemoveStruct(vErrors.Translate(api.ValidatorTranslator))
-		}
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("%+v", msg))
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
 
