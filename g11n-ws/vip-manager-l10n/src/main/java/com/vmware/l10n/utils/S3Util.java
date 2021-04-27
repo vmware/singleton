@@ -14,8 +14,11 @@ import org.springframework.util.StringUtils;
 
 import com.amazonaws.SdkClientException;
 import com.amazonaws.services.s3.model.AmazonS3Exception;
+import com.amazonaws.services.s3.model.ListVersionsRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectResult;
+import com.amazonaws.services.s3.model.S3VersionSummary;
+import com.amazonaws.services.s3.model.VersionListing;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vmware.l10n.conf.S3Cfg;
 import com.vmware.l10n.conf.S3Client;
@@ -96,13 +99,20 @@ public class S3Util {
 				}
 
 				// Write the lock file
+				ListVersionsRequest lvr = new ListVersionsRequest();
+				lvr.setBucketName(config.getBucketName());
+				lvr.setPrefix(this.key);
+				lvr.setMaxResults(2);
 				PutObjectResult pObjResult = s3Client.putObject(this.key, content);
 				// Check file content is correct
 				String putVersionId = pObjResult.getVersionId();
-				String getVersionId = s3Client.getS3Client().getObjectMetadata(config.getBucketName(), this.key).getVersionId();
-				
 				try {
-					if (putVersionId.equals(getVersionId)) {
+			    
+				    VersionListing versionListing = s3Client.getS3Client().listVersions(lvr);
+				    String getVersionId = versionListing.getVersionSummaries().get(0).getVersionId();
+				    int size = versionListing.getVersionSummaries().size();
+				   
+				    if (size == 1 && putVersionId.equals(getVersionId)) {
 						return true;
 					}
 					logger.warn("putVersiongId:{}, getVersionId：{}", putVersionId, getVersionId);
@@ -117,7 +127,23 @@ public class S3Util {
 
 		public void unlockFile() {
 			try {
-				s3Client.deleteObject(this.key);
+				ListVersionsRequest listVersionsRequest = new ListVersionsRequest();
+		    	listVersionsRequest.setBucketName(config.getBucketName());
+		    	listVersionsRequest.setPrefix(this.key);
+		        VersionListing versionListing = s3Client.getS3Client().listVersions(listVersionsRequest);
+		        while (true) 
+		        {
+		            for (S3VersionSummary vs : versionListing.getVersionSummaries()) {
+		            	logger.debug("-------------------delete versionId------------------{}", vs.getVersionId());
+		            	s3Client.getS3Client().deleteVersion(config.getBucketName(), vs.getKey(), vs.getVersionId());
+		            }
+		            
+		            if (versionListing.isTruncated()) {
+		                versionListing = s3Client.getS3Client().listNextBatchOfVersions(versionListing);
+		            } else {
+		                break;
+		            }
+		        }
 			} catch (SdkClientException e) {
 				logger.error(e.getMessage(), e);
 			}
@@ -134,7 +160,7 @@ public class S3Util {
 					ObjectMetadata objectMeta = s3Client.getS3Client().getObjectMetadata(config.getBucketName(), this.key);
 					Date lastModified = objectMeta.getLastModified();
 					if (new Date().getTime() - lastModified.getTime() > deadlockInterval) {// longer than 10min
-						s3Client.deleteObject(this.key);
+						unlockFile();
 						logger.warn("deleted dead lock file");
 						return true;
 					}
