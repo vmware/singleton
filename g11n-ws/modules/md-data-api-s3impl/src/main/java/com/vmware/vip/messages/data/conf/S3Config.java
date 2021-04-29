@@ -83,7 +83,7 @@ public class S3Config {
 
 	public String getPublicKey() {
 		String filePath = "";
-		if(this.publicKey.equals(ConstantsChar.POUND)) {
+		if(this.publicKey.startsWith(ConstantsChar.POUND)) {
 			filePath = this.publicKeyPath;
 		}else {
 			filePath = this.publicKey;
