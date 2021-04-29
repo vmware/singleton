@@ -90,6 +90,7 @@ dependencies {
     compile("org.apache.logging.log4j:log4j-core:$log4j2Version")
     compile("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
     compile('org.yaml:snakeyaml:1.26')  
+    compile("org.apache.httpcomponents:httpclient:$httpclient")
     compile ('org.springframework.boot:spring-boot-starter-actuator')
      //jdk 11
     runtime 'javax.xml.bind:jaxb-api:+'

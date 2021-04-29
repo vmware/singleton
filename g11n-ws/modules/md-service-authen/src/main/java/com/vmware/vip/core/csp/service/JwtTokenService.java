@@ -4,12 +4,10 @@
  */
 package com.vmware.vip.core.csp.service;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,31 +17,25 @@ import org.springframework.stereotype.Service;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.core.login.VipAuthConfig;
+import com.vmware.vip.core.security.RSAUtils;
 
 @Service
 public class JwtTokenService {
-	private final static String SECRET = UUID.randomUUID().toString();
+
+
 	private static Logger logger = LoggerFactory.getLogger(JwtTokenService.class);
 	@Autowired
 	private VipAuthConfig authConfig;
 	
-	private int expiresTime;
-	
 
-	public String createLoginToken(String username) {
+	public String createLoginToken(String username, int expiresDays) {
 		Date iatDate = new Date();
 		Calendar nowTime = Calendar.getInstance();
-		if (authConfig.getSessionExpire() < 1) {
-			this.expiresTime = 30;
-		}else {
-			this.expiresTime= authConfig.getSessionExpire();
-		}
-
-		nowTime.add(Calendar.MINUTE, expiresTime);
+		nowTime.add(Calendar.DATE, expiresDays);
 		Date expriesDate = nowTime.getTime();
 
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -54,17 +46,10 @@ public class JwtTokenService {
 		String token = null;
 		try {
 			token = JWT.create().withHeader(map).withClaim("username", username).withExpiresAt(expriesDate)
-					.withIssuedAt(iatDate).sign(Algorithm.HMAC256(SECRET));
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
+					.withIssuedAt(iatDate).sign(Algorithm.HMAC256(authConfig.getJwtSecret()));
+		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
-		} catch (JWTCreationException e) {
-			// TODO Auto-generated catch block
-			logger.error(e.getMessage(), e);
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			logger.error(e.getMessage(), e);
-		}
+		} 
 		return token;
 
 	}
@@ -75,7 +60,7 @@ public class JwtTokenService {
 	
 	public  Map<String, Claim> verifyToken(String token) throws Exception{
 		JWTVerifier verifier = null;
-		verifier = JWT.require(Algorithm.HMAC256(SECRET)).build();
+		verifier = JWT.require(Algorithm.HMAC256(authConfig.getJwtSecret())).build();
 		DecodedJWT decoded = null;
 		try {
 		    decoded = verifier.verify(token);
@@ -87,6 +72,50 @@ public class JwtTokenService {
 	
 	  return decoded.getClaims();
 	}
+		
+	public String createAPPToken(String appId, String username) {
+		Calendar nowTime = Calendar.getInstance();
+		long issueTime = nowTime.getTimeInMillis();
+		nowTime.add(Calendar.HOUR, authConfig.getTokenExpire());
+		long exprTime = nowTime.getTimeInMillis();
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append(appId);
+		sb.append(ConstantsChar.COLON);
+		sb.append(String.valueOf(exprTime));
+		sb.append(ConstantsChar.COLON);
+		sb.append(username);
+		sb.append(ConstantsChar.COLON);
+		sb.append(issueTime);
+		
+		try {
+			return RSAUtils.encryptData(sb.toString(), authConfig.getPrivateKey());
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			return null;
+		} 
+
+	}
+	
+	public boolean verifyAPPToken(String token, String appId) {
+		
+		 try {
+			String tokenStr =  RSAUtils.decryptData(token, authConfig.getPublicKey());
+			String[] tokens = tokenStr.split(ConstantsChar.COLON);
+			String tokenAppId = tokens[0];
+			long tokenExpTime = Long.parseLong(tokens[1]);
+			if(tokenAppId.equals(appId) && tokenExpTime > System.currentTimeMillis()) {
+				return true;
+			}else {
+				return false;
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			return false;
+		} 
+	}
+	
+	
 	
 
 }

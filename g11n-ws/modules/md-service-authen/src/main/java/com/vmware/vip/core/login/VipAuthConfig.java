@@ -4,14 +4,23 @@
  */
 package com.vmware.vip.core.login;
 
+import java.io.File;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
+import com.vmware.vip.core.security.RSAUtils;
+
+
 @Configuration
 public class VipAuthConfig {
+	private static Logger logger = LoggerFactory.getLogger(VipAuthConfig.class);
+	@Value("${vipservice.authority.jwt.secret:#}")
+	private String jwtSecretStr;
 	
-	@Value("${vipservice.authority.session.expiretime}")
-	private int sessionExpire;
+	private String jwtSecret = null;
 	
 	@Value("${vipservice.authority.token.expiretime}")
 	private int tokenExpire;
@@ -28,8 +37,24 @@ public class VipAuthConfig {
 	@Value("${csp.auth.url:###}")
 	private String cspAuthUrl;
 	
-	@Value("${vipservice.authority.ldap.searchbase:DC=vmware,DC=com}")
+	@Value("${vipservice.authority.ldap.searchbase:###}")
 	private String searchbase; 
+	
+	/**
+	 * RSA public key use to decrypt data
+	 */
+	@Value("${secret.rsa.publicKeyPath}")
+	private String publicKeyPath;
+	
+	/**
+	 * RSA private path use to encrypt data
+	 */
+	@Value("${secret.rsa.privateKeyPath}")
+	private String privateKeyPath;
+	
+	private String publicKey = null;
+	
+	private String privateKey = null;
 
 	public String getLdapServerUri() {
 		return ldapServerUri;
@@ -45,14 +70,6 @@ public class VipAuthConfig {
 
 	public void setTdomain(String tdomain) {
 		this.tdomain = tdomain;
-	}
-
-	public int getSessionExpire() {
-		return sessionExpire;
-	}
-
-	public void setSessionExpire(int sessionExpire) {
-		this.sessionExpire = sessionExpire;
 	}
 
 	public int getTokenExpire() {
@@ -86,4 +103,51 @@ public class VipAuthConfig {
 	public void setSearchbase(String searchbase) {
 		this.searchbase = searchbase;
 	}
+
+	public String getJwtSecret() {
+		if(this.jwtSecret == null) {
+			try {
+				this.jwtSecret = RSAUtils.decryptData(this.jwtSecretStr, getPublicKey());
+			} catch (Exception e) {
+				 logger.error(e.getMessage(), e);
+			}
+		}
+		return this.jwtSecret;
+	}
+	
+	
+	public String getPrivateKey() {
+		if(this.privateKey == null) {
+			File file = new File(this.privateKeyPath);
+			logger.info("the RSA private key path: {}", this.privateKeyPath);
+			if(file.exists()) {
+				this.privateKey = RSAUtils.getKeyStrFromFile(file);
+				logger.debug("private key: {}", this.privateKey);
+			}else {
+				 logger.error("not found private key file: {}", file.getAbsoluteFile());
+			 return null;	
+			} 
+		}
+		return this.privateKey;
+	}
+	
+	public String getPublicKey() {
+		if(this.publicKey == null) {
+			logger.info("the RSA public key path: {}", this.publicKeyPath);
+			File file = new File(this.publicKeyPath);
+			if(file.exists()) {
+				this.publicKey = RSAUtils.getKeyStrFromFile(file);
+				logger.debug("public key: {}", this.publicKey);
+			}else {
+				 logger.error("not found public key file: {}", file.getAbsoluteFile());
+			 return null;	
+			} 
+		}
+		return this.publicKey;
+	}
+	
+	
+	
+	
+
 }
