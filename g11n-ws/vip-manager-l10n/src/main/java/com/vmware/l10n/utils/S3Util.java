@@ -3,7 +3,6 @@
 package com.vmware.l10n.utils;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Random;
 
 import org.slf4j.Logger;
@@ -15,7 +14,11 @@ import org.springframework.util.StringUtils;
 
 import com.amazonaws.SdkClientException;
 import com.amazonaws.services.s3.model.AmazonS3Exception;
-import com.amazonaws.services.s3.model.S3ObjectSummary;
+import com.amazonaws.services.s3.model.ListVersionsRequest;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.PutObjectResult;
+import com.amazonaws.services.s3.model.S3VersionSummary;
+import com.amazonaws.services.s3.model.VersionListing;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vmware.l10n.conf.S3Cfg;
 import com.vmware.l10n.conf.S3Client;
@@ -33,7 +36,6 @@ public class S3Util {
 	private static Random random = new Random(System.currentTimeMillis());
 	private static long retryInterval = 500; // milliseconds
 	private static long deadlockInterval = 30 * 1000L;
-	private static long waitS3Operation = 100; // milliseconds
 	private static long waitToLock = 10 * 1000L; // 10 seconds
 
 	@Autowired
@@ -97,18 +99,26 @@ public class S3Util {
 				}
 
 				// Write the lock file
-				s3Client.putObject(this.key, content);
-				TimeUtils.sleep(waitS3Operation); // Wait for a while to let S3 finish writing.
-
+				ListVersionsRequest lvr = new ListVersionsRequest();
+				lvr.setBucketName(config.getBucketName());
+				lvr.setPrefix(this.key);
+				lvr.setMaxResults(2);
+				PutObjectResult pObjResult = s3Client.putObject(this.key, content);
 				// Check file content is correct
+				String putVersionId = pObjResult.getVersionId();
 				try {
-					if (content.equals(s3Client.readObject(this.key))) {
+			    
+				    VersionListing versionListing = s3Client.getS3Client().listVersions(lvr);
+				    String getVersionId = versionListing.getVersionSummaries().get(0).getVersionId();
+				    int size = versionListing.getVersionSummaries().size();
+				   
+				    if (size == 1 && putVersionId.equals(getVersionId)) {
 						return true;
 					}
+					logger.warn("putVersiongId:{}, getVersionId：{}", putVersionId, getVersionId);
 				} catch (AmazonS3Exception e) {
 					logger.error(e.getMessage(), e);
 				}
-
 				TimeUtils.sleep(retryInterval);
 			} while (System.currentTimeMillis() < endTime);
 
@@ -117,7 +127,23 @@ public class S3Util {
 
 		public void unlockFile() {
 			try {
-				s3Client.deleteObject(this.key);
+				ListVersionsRequest listVersionsRequest = new ListVersionsRequest();
+		    	listVersionsRequest.setBucketName(config.getBucketName());
+		    	listVersionsRequest.setPrefix(this.key);
+		        VersionListing versionListing = s3Client.getS3Client().listVersions(listVersionsRequest);
+		        while (true) 
+		        {
+		            for (S3VersionSummary vs : versionListing.getVersionSummaries()) {
+		            	logger.debug("-------------------delete versionId------------------{}", vs.getVersionId());
+		            	s3Client.getS3Client().deleteVersion(config.getBucketName(), vs.getKey(), vs.getVersionId());
+		            }
+		            
+		            if (versionListing.isTruncated()) {
+		                versionListing = s3Client.getS3Client().listNextBatchOfVersions(versionListing);
+		            } else {
+		                break;
+		            }
+		        }
 			} catch (SdkClientException e) {
 				logger.error(e.getMessage(), e);
 			}
@@ -125,31 +151,34 @@ public class S3Util {
 
 		private boolean waitLockfileDisappeared(long endTime) {
 			boolean bDeadlockTested = false;
-			List<S3ObjectSummary> objects = s3Client.getS3Client().listObjectsV2(config.getBucketName(), this.key).getObjectSummaries();
-			while (!objects.isEmpty()) {
+			boolean existed = s3Client.getS3Client().doesObjectExist(config.getBucketName(), this.key);
+			while (existed) {
+				try {
 				if (!bDeadlockTested) {
 					bDeadlockTested = true;
 					// Get file creation time to detect deadlock
-					S3ObjectSummary lockfileObject = objects.get(0);
-					Date lastModified = lockfileObject.getLastModified();
+					ObjectMetadata objectMeta = s3Client.getS3Client().getObjectMetadata(config.getBucketName(), this.key);
+					Date lastModified = objectMeta.getLastModified();
 					if (new Date().getTime() - lastModified.getTime() > deadlockInterval) {// longer than 10min
-						s3Client.deleteObject(this.key);
+						unlockFile();
 						logger.warn("deleted dead lock file");
 						return true;
 					}
 				}
-
+				}catch(Exception e) {
+					logger.warn(e.getMessage(), e);
+				}
 				TimeUtils.sleep(retryInterval);
 				if (System.currentTimeMillis() >= endTime) {
 					logger.warn("failed to wait for lockfile disappeared");
 					return false;
 				}
 
-				objects = s3Client.getS3Client().listObjectsV2(config.getBucketName(), this.key).getObjectSummaries();
+				existed =  s3Client.getS3Client().doesObjectExist(config.getBucketName(), this.key);
 			}
 
 			return true;
 		}
 	}
+	
 }
-

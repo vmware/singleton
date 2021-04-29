@@ -17,6 +17,7 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.GetBucketLocationRequest;
+import com.amazonaws.services.s3.model.PutObjectResult;
 
 /**
  * the configuration of the S3 client
@@ -57,8 +58,8 @@ public class S3Client {
 		return s3Client.getObjectAsString(config.getBucketName(), normalizePath(key));
 	}
 
-    public void putObject(String key, String content) {
-        s3Client.putObject(config.getBucketName(), normalizePath(key), content);
+    public PutObjectResult putObject(String key, String content) {
+        return s3Client.putObject(config.getBucketName(), normalizePath(key), content);
     }
 
 	public void deleteObject(String key) {
