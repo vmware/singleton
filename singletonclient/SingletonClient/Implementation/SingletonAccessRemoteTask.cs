@@ -58,14 +58,14 @@ namespace SingletonClient.Implementation
         private int _interval;
         private readonly int _tryDelay;
 
-        private DateTime _utcCurrent;
+        private int _ticks;
 
         public SingletonAccessRemoteTask(
             ISingletonAccessRemote update, int interval, int tryDelay)
         {
             _update = update;
-            _interval = interval;
-            _tryDelay = tryDelay;
+            _interval = interval * 1000;
+            _tryDelay = tryDelay * 1000;
         }
 
         public void SetInterval(int interval)
@@ -85,7 +85,7 @@ namespace SingletonClient.Implementation
                 _trying = true;
             }
 
-            _utcCurrent = DateTime.Now.ToUniversalTime();
+            _ticks = System.Environment.TickCount;
             _querying = false;
         }
 
@@ -127,24 +127,23 @@ namespace SingletonClient.Implementation
                 return;
             }
 
-            if (_utcCurrent.Ticks == 0)
+            if (_ticks == 0)
             {
                 TryAccessRemote();
             }
             else if (_interval > 0)
             {
-                DateTime now = DateTime.Now.ToUniversalTime();
-                TimeSpan span = now - _utcCurrent;
+                int span = System.Environment.TickCount - _ticks;
                 if (_trying)
                 {
-                    if (span.TotalSeconds > _tryDelay)
+                    if (span > _tryDelay)
                     {
                         TryAccessRemote();
                     }
                 }
                 else
                 {
-                    if (span.TotalSeconds > _interval)
+                    if (span > _interval)
                     {
                         TryAccessRemote();
                     }

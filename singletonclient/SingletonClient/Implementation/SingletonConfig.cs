@@ -63,6 +63,8 @@ namespace SingletonClient.Implementation
 
         bool IsLoadOnStartup();
 
+        bool IsOnlyByKey();
+
         List<string> GetExternalComponentList();
 
         List<string> GetExternalLocaleList(string component);
@@ -381,6 +383,7 @@ namespace SingletonClient.Implementation
         private readonly bool _isOfflineSupported;
         private readonly bool _isSourceDefault;
         private readonly bool _isLoadOnStartup;
+        private readonly bool _isOnlyByKey;
 
         public SingletonConfigWrapper(IConfig config)
         {
@@ -436,6 +439,10 @@ namespace SingletonClient.Implementation
             // Get if messages need to be prepared during startup
             configItem = _config.GetItem(ConfigConst.KeyLoadOnStartup);
             _isLoadOnStartup = (configItem != null) && configItem.GetBool();
+
+            // Get if key is unique whatever component is
+            _isOnlyByKey = ConfigConst.CacheByKey.Equals(this.GetCacheType(),
+                StringComparison.InvariantCultureIgnoreCase);
         }
 
         private void BuildExternalComponentList(string external)
@@ -617,6 +624,11 @@ namespace SingletonClient.Implementation
         public bool IsLoadOnStartup()
         {
             return _isLoadOnStartup;
+        }
+
+        public bool IsOnlyByKey()
+        {
+            return _isOnlyByKey;
         }
 
         public List<string> GetExternalComponentList()
