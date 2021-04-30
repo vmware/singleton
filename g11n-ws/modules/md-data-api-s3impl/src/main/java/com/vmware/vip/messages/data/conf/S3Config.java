@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.vmware.vip.common.constants.ConstantsChar;
+
 /**
  * the configuration of the S3 client
  */
@@ -80,7 +82,13 @@ public class S3Config {
 	}
 
 	public String getPublicKey() {
-		File file = new File(this.publicKey);
+		String filePath = "";
+		if(this.publicKey.startsWith(ConstantsChar.POUND)) {
+			filePath = this.publicKeyPath;
+		}else {
+			filePath = this.publicKey;
+		}
+		File file = new File(filePath);
 		if(file.exists()) {
 			String content = RsaCryptUtils.getPublicKeyStrFromFile(file);
 			logger.debug("public key: {}", content);
@@ -106,8 +114,15 @@ public class S3Config {
 	/**
 	 * the s3 password public key use to decrypt data
 	 */
-	@Value("${s3.publicKey}")
+	@Value("${s3.publicKey:#}")
 	private String publicKey;
+	
+
+	/**
+	 * the s3 password public key use to decrypt data
+	 */
+	@Value("${secret.rsa.publicKeyPath:#}")
+	private String publicKeyPath;
 
 	/**
 	 * the s3 access Key

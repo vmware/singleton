@@ -48,11 +48,11 @@ dependencies {
     }
     compile("org.apache.logging.log4j:log4j-api:$log4j2Version")
     compile ("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
-    compile ("org.xerial:sqlite-jdbc:$sqliteVersion")
 	compile("io.jsonwebtoken:jjwt:0.9.0")
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
 	compile("commons-codec:commons-codec:$commonsCodecVersion")
-	compile ("com.auth0:java-jwt:3.3.0")
+	compile ("com.auth0:java-jwt:3.15.0")
+	compile group: 'commons-codec', name: 'commons-codec', version: '1.15'
 }
 
 bootJar {

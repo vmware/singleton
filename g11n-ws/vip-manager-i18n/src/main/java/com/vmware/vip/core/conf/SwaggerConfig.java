@@ -123,12 +123,17 @@ public class SwaggerConfig {
 	}
 
 	private List<Parameter> createParameter() {
-		ParameterBuilder tokenPar = new ParameterBuilder();
 		List<Parameter> pars = new ArrayList<Parameter>();
-		tokenPar.name("authorization").description("authorization code").modelRef(new ModelRef("string"))
+		ParameterBuilder token = new ParameterBuilder();
+		token.name("token").description("token code").modelRef(new ModelRef("string"))
+				.parameterType("header").required(false).build();
+		
+		ParameterBuilder appId = new ParameterBuilder();
+		appId.name("appId").description("the app Id").modelRef(new ModelRef("string"))
 				.parameterType("header").required(false).build();
 
-		pars.add(tokenPar.build());
+		pars.add(token.build());
+		pars.add(appId.build());
 
 		return pars;
 	}
