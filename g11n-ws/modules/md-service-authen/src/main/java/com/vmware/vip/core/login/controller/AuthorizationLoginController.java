@@ -95,7 +95,7 @@ public class AuthorizationLoginController {
 			logger.warn(e.getMessage());
 			Response r = new Response();
 			r.setCode(HttpStatus.UNAUTHORIZED.value());
-			r.setMessage("Your authorization has expired or other authorization error!!!");
+			r.setMessage("The authorization fails, please validate the token!");
 			r.setServerTime(LocalDateTime.now().toString());
 			d.setResponse(r);
 		    return d;

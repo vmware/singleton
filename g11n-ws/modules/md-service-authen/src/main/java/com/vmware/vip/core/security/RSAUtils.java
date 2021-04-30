@@ -48,12 +48,9 @@ public class RSAUtils {
     
     
     private static PrivateKey getPrivateKey(String base64PrivateKey) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        PrivateKey privateKey = null;
         PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(Base64.decodeBase64(base64PrivateKey));
-        KeyFactory keyFactory = null;
-        keyFactory = KeyFactory.getInstance("RSA");
-        privateKey = keyFactory.generatePrivate(keySpec);
-        return privateKey;
+        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+        return keyFactory.generatePrivate(keySpec);
     }
  
 	

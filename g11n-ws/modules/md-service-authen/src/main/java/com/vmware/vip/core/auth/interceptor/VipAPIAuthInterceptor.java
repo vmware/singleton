@@ -48,7 +48,7 @@ public class VipAPIAuthInterceptor extends HandlerInterceptorAdapter{
 		  }
 		    
 		    response.setStatus(HttpStatus.UNAUTHORIZED.value());
-            response.setHeader("unauthorized", "token or authorization has expired or other authorization error!!!");
+            response.setHeader("unauthorized", "The authorization fails, please validate the token!");
             response.setCharacterEncoding("UTF-8");
             response.setContentType("application/json; charset=utf-8");
             APIResponseDTO d = new APIResponseDTO();

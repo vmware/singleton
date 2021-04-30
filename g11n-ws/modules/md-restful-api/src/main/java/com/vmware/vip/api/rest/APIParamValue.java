@@ -35,6 +35,6 @@ public class APIParamValue {
 	public final static String REGIONS    	  = "a string which represents regions, separated by commas. e.g. US, PT, CN";
 	public final static String USERNAME       = "ldap user name";
 	public final static String PASSWORD       = "ldap user password";
-	public final static String EXPIREDAYS        = "To be able to use the time you are going to apply for Authorization, the unit is one day";
+	public final static String EXPIREDAYS     = "the authorised token's expired days";
 
 }
