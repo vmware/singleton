@@ -42,8 +42,15 @@ export abstract class ResponseParser {
     getTranslations(res: ResType): Object | null {
         const data = this.validateResponse(res);
         const translations = data && data.messages ? data.messages :
-            data && data.components && data.components[0].messages ? data.components[0].messages : null;
+            data && data.components ? this.getMessages(data.components) : null; 
         return translations;
+    }
+    getMessages(components: ResType) {
+        var result = {};
+        components.forEach((component: ResType) => {
+            result = { ...result, ...component.messages };
+        })
+        return result;
     }
     getSupportedLanguages( res: ResType ): {}[]|null {
         const data = this.validateResponse( res );
