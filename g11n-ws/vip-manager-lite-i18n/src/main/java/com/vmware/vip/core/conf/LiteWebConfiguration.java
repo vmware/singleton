@@ -4,20 +4,18 @@
  */
 package com.vmware.vip.core.conf;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
-import org.apache.catalina.Context;
-import org.apache.catalina.connector.Connector;
+import com.vmware.vip.api.rest.API;
+import com.vmware.vip.api.rest.APIV1;
+import com.vmware.vip.api.rest.APIV2;
+import com.vmware.vip.core.Interceptor.LiteAPICacheControlInterceptor;
+import com.vmware.vip.core.Interceptor.LiteAPICrossDomainInterceptor;
+import com.vmware.vip.core.Interceptor.LiteAPIValidationInterceptor;
+import com.vmware.vip.core.messages.service.product.IProductService;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.tomcat.util.descriptor.web.SecurityCollection;
-import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
-import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.ShallowEtagHeaderFilter;
@@ -29,12 +27,9 @@ import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.util.UrlPathHelper;
 
-import com.vmware.vip.api.rest.API;
-import com.vmware.vip.api.rest.APIV1;
-import com.vmware.vip.api.rest.APIV2;
-import com.vmware.vip.core.Interceptor.LiteAPICacheControlInterceptor;
-import com.vmware.vip.core.Interceptor.LiteAPICrossDomainInterceptor;
-import com.vmware.vip.core.Interceptor.LiteAPIValidationInterceptor;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Web Configuration
@@ -82,8 +77,12 @@ public class LiteWebConfiguration implements WebMvcConfigurer {
 	private String cacheControlValue;
 	
 	@Value("${config.client.requestIds:}")
-	private String requestIdsStr; 
-	
+	private String requestIdsStr;
+
+	@Autowired
+	private IProductService productService;
+
+
 	/**
 	 * Add ETag into response header for data cache
 	 */
@@ -110,7 +109,7 @@ public class LiteWebConfiguration implements WebMvcConfigurer {
 		 */
 
 		// Request Validation
-	     registry.addInterceptor(new LiteAPIValidationInterceptor(this.requestIdsStr)).addPathPatterns("/**").excludePathPatterns(API.I18N_API_ROOT+"doc/**");
+	     registry.addInterceptor(new LiteAPIValidationInterceptor(productService.getAllowPrductList(), this.requestIdsStr)).addPathPatterns("/**").excludePathPatterns(API.I18N_API_ROOT+"doc/**");
 
 		// authentication
 

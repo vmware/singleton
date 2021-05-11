@@ -4,21 +4,6 @@
  */
 package com.vmware.vip.core.Interceptor;
 
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.util.StringUtils;
-import org.springframework.web.servlet.HandlerMapping;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.common.constants.ConstantsChar;
@@ -28,6 +13,19 @@ import com.vmware.vip.common.exceptions.VIPAPIException;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.common.i18n.status.Response;
 import com.vmware.vip.common.utils.RegExpValidatorUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.util.StringUtils;
+import org.springframework.web.servlet.HandlerMapping;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Interceptor for collection new resource
@@ -35,10 +33,12 @@ import com.vmware.vip.common.utils.RegExpValidatorUtils;
 public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 	private static Logger LOGGER = LoggerFactory.getLogger(LiteAPIValidationInterceptor.class);
 
+	private Map<String, Object> allowedListMap;
 	private String clientRequestIdsStr;
 	private List<String> clientRequestIds;
-	public LiteAPIValidationInterceptor(String clientReqIdsStr) {
+	public LiteAPIValidationInterceptor(Map<String, Object> allowedListMap, String clientReqIdsStr) {
 		super();
+		this.allowedListMap = allowedListMap;
 		this.clientRequestIdsStr = clientReqIdsStr;
 		try {
 			this.clientRequestIds = Arrays.asList(this.clientRequestIdsStr.split(ConstantsChar.COMMA));
@@ -154,6 +154,7 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 		if (!RegExpValidatorUtils.IsLetterOrNumber(productName)) {
 			throw new VIPAPIException(ValidationMsg.PRODUCTNAME_NOT_VALIDE);
 		}
+		validateProductByAllowList(productName, allowedListMap);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -384,6 +385,17 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 		}
 	}
 
-
+	/**
+	 * validate the product name by the allow list
+	 *
+	 * @param productName
+	 * @param allowListMap
+	 * @throws VIPAPIException
+	 */
+	private void validateProductByAllowList(String productName, Map<String, Object> allowListMap) throws VIPAPIException {
+		if (allowListMap != null && !allowListMap.isEmpty() && !allowListMap.containsKey(productName)) {
+			throw new VIPAPIException(String.format(ValidationMsg.PRODUCTNAME_NOT_SUPPORTED, productName));
+		}
+	}
 
 }
