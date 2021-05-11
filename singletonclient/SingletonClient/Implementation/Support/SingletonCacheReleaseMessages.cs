@@ -12,6 +12,7 @@ namespace SingletonClient.Implementation.Support
     /// </summary>
     public class SingletonCacheReleaseMessages : ICacheMessages
     {
+        private readonly ISingletonRelease release;
         private readonly string cacheComponentType;
         private readonly Hashtable locales = SingletonUtil.NewHashtable(true);
         private readonly Hashtable sources = SingletonUtil.NewHashtable(true);
@@ -21,9 +22,10 @@ namespace SingletonClient.Implementation.Support
         /// </summary>
         /// <param name="cacheComponentType">cacheComponentType.</param>
         /// <param name="locale">locale.</param>
-        public SingletonCacheReleaseMessages(string cacheComponentType)
+        public SingletonCacheReleaseMessages(ISingletonRelease release)
         {
-            this.cacheComponentType = cacheComponentType;
+            this.release = release;
+            this.cacheComponentType = release.GetSingletonConfig().GetCacheComponentType();
         }
 
         /// <summary>
@@ -53,7 +55,7 @@ namespace SingletonClient.Implementation.Support
                 }
             }
 
-            cache = new SingletonCacheLocaleMessages(cacheComponentType, locale, asSource);
+            cache = new SingletonCacheLocaleMessages(release, locale, asSource);
             for (int i = 0; i < count; i++)
             {
                 string nearLocale = singletonLocale.GetNearLocale(i);

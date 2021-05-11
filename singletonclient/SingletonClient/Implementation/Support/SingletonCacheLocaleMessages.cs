@@ -5,6 +5,7 @@
 
 namespace SingletonClient.Implementation.Support
 {
+    using SingletonClient.Implementation.Support.ByKey;
     using System.Collections;
     using System.Collections.Generic;
 
@@ -13,21 +14,30 @@ namespace SingletonClient.Implementation.Support
     /// </summary>
     public class SingletonCacheLocaleMessages : ILocaleMessages
     {
+        private readonly ISingletonRelease release;
+        private readonly ISingletonConfig singletonConfig;
         private readonly string cacheComponentType;
         private readonly string locale;
         private readonly bool asSource;
         private readonly Hashtable components = SingletonUtil.NewHashtable(true);
+
+        private ISingletonByKeyRelease byKeyRelease;
+        private ISingletonByKeyLocale byKeyLocale;
 
         /// <summary>
         /// Initializes.
         /// </summary>
         /// <param name="cacheComponentType">cacheComponentType.</param>
         /// <param name="locale">locale.</param>
-        public SingletonCacheLocaleMessages(string cacheComponentType, string locale, bool asSource)
+        public SingletonCacheLocaleMessages(ISingletonRelease release, string locale, bool asSource)
         {
-            this.cacheComponentType = cacheComponentType;
+            this.release = release;
+            this.singletonConfig = release.GetSingletonConfig();
+            this.cacheComponentType = release.GetSingletonConfig().GetCacheComponentType();
             this.locale = locale;
             this.asSource = asSource;
+
+            this.byKeyRelease = this.release.GetSingletonByKeyRelease();
         }
 
         /// <summary>
@@ -55,10 +65,17 @@ namespace SingletonClient.Implementation.Support
             if (cache == null)
             {
                 ISingletonClientManager singletonClientManager = SingletonClientManager.GetInstance();
-                ICacheComponentManager cacheComponentManager = singletonClientManager.GetCacheComponentManager(
-                    this.cacheComponentType);
+                if (singletonConfig.IsOnlyByKey())
+                {
+                    cache = new SingletonCacheByKeyComponentMessages(release, this.locale, component, this.asSource);
+                }
+                else
+                {
+                    ICacheComponentManager cacheComponentManager = singletonClientManager.GetCacheComponentManager(
+                        this.cacheComponentType);
 
-                cache = cacheComponentManager.NewComponentCache(this.locale, component, this.asSource);
+                    cache = cacheComponentManager.NewComponentCache(this.locale, component, this.asSource);
+                }
                 this.components[component] = cache;
             }
 
@@ -88,7 +105,22 @@ namespace SingletonClient.Implementation.Support
         /// <returns>return.</returns>
         public string GetString(string component, string key)
         {
+            if (this.byKeyLocale != null)
+            {
+                int componentIndex = this.byKeyRelease.GetComponentIndex(component);
+                return this.byKeyRelease.GetString(key, componentIndex, this.byKeyLocale);
+            }
+
+            if (string.IsNullOrEmpty(component))
+            {
+                return null;
+            }
+
             IComponentMessages componentCache = this.GetComponentMessages(component);
+            if (this.byKeyRelease != null)
+            {
+                this.byKeyLocale = byKeyRelease.GetLocaleItem(this.locale, this.asSource);
+            }
             return (componentCache == null) ? null : componentCache.GetString(key);
         }
     }

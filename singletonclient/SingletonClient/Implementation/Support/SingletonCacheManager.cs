@@ -4,6 +4,7 @@
  */
 
 using System.Collections;
+using SingletonClient.Implementation.Support.ByKey;
 
 namespace SingletonClient.Implementation.Support
 {
@@ -23,9 +24,9 @@ namespace SingletonClient.Implementation.Support
             if (cache == null)
             {
                 IConfig config = SingletonClientManager.GetInstance().GetConfig(product, version);
-                ISingletonConfig singletonConfig = new SingletonConfigWrapper(config);
-                string cacheComponentType = singletonConfig.GetCacheComponentType();
-                cache = new SingletonCacheReleaseMessages(cacheComponentType);
+                ISingletonRelease release = (ISingletonRelease)SingletonClientManager.GetInstance().GetRelease(config);
+
+                cache = new SingletonCacheReleaseMessages(release);
                 versions[version] = cache;
             }
             return cache;

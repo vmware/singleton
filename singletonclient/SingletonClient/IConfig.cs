@@ -157,6 +157,9 @@ namespace SingletonClient
         public const string KeySourceLocale = "source_locale";
         public const string KeyLoadOnStartup = "load_on_startup";
 
+        // Special values
+        public const string CacheByKey = "by_key";
+
         // Default values
         public const string DefaultType = "default";    // KeyCacheType, KeyLoggerType, KeyAccessServiceType
         public const string DefaultLocale = "en-US";    // KeyDefaultLocale

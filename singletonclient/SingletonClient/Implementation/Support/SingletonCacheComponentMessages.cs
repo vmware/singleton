@@ -6,39 +6,34 @@
 namespace SingletonClient.Implementation.Support
 {
     using System.Collections;
+    using SingletonClient.Implementation.Support.Base;
 
-    public class SingletonCacheComponentMessages : IComponentMessages
+    public class SingletonCacheComponentMessages : SingletonComponentBaseMessages
     {
-        private readonly string _locale;
-        private readonly string _component;
-        private readonly bool _asSource;
-        private string _resourcePath;
-        private string _resourceType;
         private readonly Hashtable _messages = SingletonUtil.NewHashtable(true);
 
-        public SingletonCacheComponentMessages(string locale, string component, bool asSource)
+        public SingletonCacheComponentMessages(
+            ISingletonRelease release, string locale, string component, bool asSource):
+            base(release, locale, component, asSource)
         {
-            _component = component;
-            _locale = locale;
-            _asSource = asSource;
         }
 
-        public void SetString(string key, string message)
+        public override void SetString(string key, string message)
         {
             _messages[key] = message;
         }
 
-        public int GetCount()
+        public override int GetCount()
         {
             return _messages.Keys.Count;
         }
 
-        public ICollection GetKeys()
+        public override ICollection GetKeys()
         {
             return _messages.Keys;
         }
 
-        public string GetString(string key)
+        public override string GetString(string key)
         {
             if (key == null)
             {
@@ -46,36 +41,6 @@ namespace SingletonClient.Implementation.Support
             }
             string message = (string)_messages[key];
             return message;
-        }
-
-        public string GetLocale()
-        {
-            return _locale;
-        }
-
-        public string GetComponent()
-        {
-            return _component;
-        }
-
-        public void SetResourcePath(string resourcePath)
-        {
-            _resourcePath = resourcePath;
-        }
-
-        public string GetResourcePath()
-        {
-            return _resourcePath;
-        }
-
-        public void SetResourceType(string resourceType)
-        {
-            _resourceType = resourceType;
-        }
-
-        public string GetResourceType()
-        {
-            return _resourceType;
         }
     }
 }

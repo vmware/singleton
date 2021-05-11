@@ -61,6 +61,7 @@ namespace SingletonClient.Implementation
         {
             ICacheManager cacheManager = new SingletonCacheManager();
             RegisterCacheManager(cacheManager, ConfigConst.DefaultType);
+            RegisterCacheManager(cacheManager, ConfigConst.CacheByKey);
 
             ICacheComponentManager cacheComponentManager = new SingletonCacheComponentManager();
             RegisterCacheComponentManager(cacheComponentManager, ConfigConst.DefaultType);
