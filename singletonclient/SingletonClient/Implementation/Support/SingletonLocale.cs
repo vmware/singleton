@@ -5,6 +5,7 @@
 
 namespace SingletonClient.Implementation.Support
 {
+    using System.Collections;
     using System.Collections.Generic;
 
     public interface ISingletonLocale
@@ -18,6 +19,8 @@ namespace SingletonClient.Implementation.Support
         bool IsInLocaleList(List<string> checkList);
         bool IsLocaleAtStringEnd(string text);
         bool Contains(string locale);
+        object FindItem(Hashtable items, int start);
+        void SetItems(Hashtable items, object item);
     }
 
     public class SingletonLocale: ISingletonLocale
@@ -108,6 +111,29 @@ namespace SingletonClient.Implementation.Support
         public bool Contains(string locale)
         {
             return localeList.Contains(locale);
+        }
+
+        public object FindItem(Hashtable items, int start)
+        {
+            for (int i = start; i < GetCount(); i++)
+            {
+                string nearLocale = GetNearLocale(i);
+                object item = items[nearLocale];
+                if (item != null)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+
+        public void SetItems(Hashtable items, object item)
+        {
+            for (int i = 0; i < GetCount(); i++)
+            {
+                string nearLocale = GetNearLocale(i);
+                items[nearLocale] = item;
+            }
         }
     }
 }

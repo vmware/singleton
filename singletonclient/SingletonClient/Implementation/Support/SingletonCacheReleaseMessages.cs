@@ -14,7 +14,10 @@ namespace SingletonClient.Implementation.Support
     {
         private readonly ISingletonRelease release;
         private readonly string cacheComponentType;
+
+        // ILocaleMessages of bundles
         private readonly Hashtable locales = SingletonUtil.NewHashtable(true);
+        // ILocaleMessages of local source
         private readonly Hashtable sources = SingletonUtil.NewHashtable(true);
 
         /// <summary>
@@ -43,24 +46,14 @@ namespace SingletonClient.Implementation.Support
             }
 
             ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
-            ILocaleMessages cache;
-            int count = singletonLocale.GetCount();
-            for (int i = 0; i < count; i++)
+            ILocaleMessages cache = (ILocaleMessages)singletonLocale.FindItem(table, 0);
+            if (cache != null)
             {
-                string nearLocale = singletonLocale.GetNearLocale(i);
-                cache = (ILocaleMessages)table[nearLocale];
-                if (cache != null)
-                {
-                    return cache;
-                }
+                return cache;
             }
 
             cache = new SingletonCacheLocaleMessages(release, locale, asSource);
-            for (int i = 0; i < count; i++)
-            {
-                string nearLocale = singletonLocale.GetNearLocale(i);
-                table[nearLocale] = cache;
-            }
+            singletonLocale.SetItems(table, cache);
 
             return cache;
         }
