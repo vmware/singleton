@@ -48,6 +48,7 @@ public class ConstantsKeys {
    public static final String CATEGORIES = "categories";
    public static final String PATTERN = "pattern";
    public static final String IS_EXIST_PATTERN = "isExistPattern";
+   public static final String LANGUAGE_DATA_EXIST = "languageDataExist";
    public static final String LANGUAGE = "language";
    public static final String REGION = "region";
    public static final String COMBINE = "combine";

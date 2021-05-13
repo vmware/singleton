@@ -90,10 +90,19 @@ public class FormattingPatternAPI extends BaseAction {
         }
 
         Map<String, Object> patternMap = patternService.getPatternWithLanguageAndRegion(language, region, categories, scopeFilter);
-        if (!(boolean)patternMap.get("isExistPattern")) {
-            return super.handleResponse(APIResponseStatus.INTERNAL_NO_RESOURCE_ERROR.getCode(), ConstantsMsg.NO_PATTERN_FOUND_NO_MAPPING_LANGUAGE, patternMap);
+
+        boolean patternExist = (boolean)patternMap.get(ConstantsKeys.IS_EXIST_PATTERN);
+        Object languageDataExsit = patternMap.get(ConstantsKeys.LANGUAGE_DATA_EXIST); //it's null when plurals/dateFields is not in 'scope', true/false when plurals/dateFields is in 'scope'
+        patternMap.remove(ConstantsKeys.IS_EXIST_PATTERN);
+        if(patternMap.containsKey(ConstantsKeys.LANGUAGE_DATA_EXIST)) {
+            patternMap.remove(ConstantsKeys.LANGUAGE_DATA_EXIST);
         }
-        patternMap.remove("isExistPattern");
-        return super.handleResponse(APIResponseStatus.OK, patternMap);
+        if(patternExist && (languageDataExsit == null || (boolean)languageDataExsit)) {
+            return super.handleResponse(APIResponseStatus.OK, patternMap);
+        }else if(!patternExist && (languageDataExsit == null || !(boolean)languageDataExsit)) {
+            return super.handleResponse(APIResponseStatus.INTERNAL_NO_RESOURCE_ERROR.getCode(), ConstantsMsg.NO_PATTERN_FOUND, null);
+        }else{
+            return super.handleResponse(APIResponseStatus.MULTTRANSLATION_PART_CONTENT.getCode(), ConstantsMsg.PART_PATTERN_FOUND, patternMap);
+        }
     }
 }

@@ -161,15 +161,25 @@ public class PatternServiceImpl implements IPatternService {
 			patternMap.put(ConstantsKeys.IS_EXIST_PATTERN, true);
 		}
 
+		//ConstantsKeys.LANGUAGE_DATA_EXIST is a flag for easily determine the response code in FormattingPatternAPI,
+		// when plurals/dateFields is not in 'scope', it should be null;
+		// when plurals/dateFields is in 'scope', it should be true when data exist, false when data doesn't exist;
 		if (categoryList.contains(ConstantsKeys.PLURALS)) {
 			handleSpecialCategory(ConstantsKeys.PLURALS, language, categoriesMap);
+            if (!StringUtils.isEmpty(categoriesMap.get(ConstantsKeys.PLURALS))) {
+                patternMap.put(ConstantsKeys.LANGUAGE_DATA_EXIST, true);
+            } else{
+				patternMap.put(ConstantsKeys.LANGUAGE_DATA_EXIST, false);
+			}
 		}
 
 		if (categoryList.contains(ConstantsKeys.DATE_FIELDS)) {
 			handleSpecialCategory(ConstantsKeys.DATE_FIELDS, language, categoriesMap);
 			// As long as the value of dateFields exist, the response needs to return its value.
-			if (null != categoriesMap.get(ConstantsKeys.DATE_FIELDS)) {
-				patternMap.put(ConstantsKeys.IS_EXIST_PATTERN, true);
+			if (!StringUtils.isEmpty(categoriesMap.get(ConstantsKeys.DATE_FIELDS))) {
+				patternMap.put(ConstantsKeys.LANGUAGE_DATA_EXIST, true);
+			} else {
+				patternMap.put(ConstantsKeys.LANGUAGE_DATA_EXIST, false);
 			}
 		}
 
