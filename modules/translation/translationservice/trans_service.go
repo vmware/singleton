@@ -289,7 +289,7 @@ func (ts Service) ClearCache(ctx context.Context) (err error) {
 }
 
 func (ts Service) GetTranslationStatus(ctx context.Context, id *translation.BundleID) (map[string]interface{}, error) {
-	logger.FromContext(ctx).Debug("Get a bundle", zap.String(translation.Name, id.Name), zap.String(translation.Version, id.Version),
+	logger.FromContext(ctx).Debug("Get a bundle's translation status", zap.String(translation.Name, id.Name), zap.String(translation.Version, id.Version),
 		zap.String(translation.Locale, id.Locale), zap.String(translation.Component, id.Component))
 
 	id.Locale = PickupLocales(id.Name, id.Version, []string{id.Locale})[0]

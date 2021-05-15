@@ -10,7 +10,6 @@ import (
 
 	"sgtnserver/api"
 	"sgtnserver/internal/logger"
-	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/cldr"
 	"sgtnserver/modules/cldr/cldrservice"
 	"sgtnserver/modules/cldr/coreutil"
@@ -36,8 +35,7 @@ import (
 // @Deprecated
 func GetPatternData(c *gin.Context) {
 	req := new(PatternByLocaleReq)
-	if err := c.ShouldBindQuery(req); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+	if err := api.ExtractParameters(c, nil, &req); err != nil {
 		return
 	}
 

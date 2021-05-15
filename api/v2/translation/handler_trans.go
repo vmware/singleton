@@ -33,10 +33,10 @@ var l3Service translation.Service = translationservice.GetService()
 // @Router /translation/products/{productName}/versions/{version}/componentlist [get]
 func GetAvailableComponents(c *gin.Context) {
 	id := ReleaseID{}
-	if err := c.ShouldBindUri(&id); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+	if err := api.ExtractParameters(c, &id, nil); err != nil {
 		return
 	}
+
 	version := c.GetString(api.SgtnVersionKey)
 
 	components, err := l3Service.GetAvailableComponents(logger.NewContext(c, c.MustGet(api.LoggerKey)), id.ProductName, version)
@@ -61,10 +61,10 @@ func GetAvailableComponents(c *gin.Context) {
 // @Router /translation/products/{productName}/versions/{version}/localelist [get]
 func GetAvailableLocales(c *gin.Context) {
 	id := ReleaseID{}
-	if err := c.ShouldBindUri(&id); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+	if err := api.ExtractParameters(c, &id, nil); err != nil {
 		return
 	}
+
 	version := c.GetString(api.SgtnVersionKey)
 
 	locales, err := l3Service.GetAvailableLocales(logger.NewContext(c, c.MustGet(api.LoggerKey)), id.ProductName, version)
@@ -92,12 +92,7 @@ func GetAvailableLocales(c *gin.Context) {
 // @Router /translation/products/{productName}/versions/{version} [get]
 func GetMultipleBundles(c *gin.Context) {
 	req := ProductReq{}
-	if err := c.ShouldBindUri(&req); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
-		return
-	}
-	if err := c.ShouldBindQuery(&req); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+	if err := api.ExtractParameters(c, &req, &req); err != nil {
 		return
 	}
 	version := c.GetString(api.SgtnVersionKey)
@@ -124,12 +119,7 @@ func GetMultipleBundles(c *gin.Context) {
 // @Router /translation/products/{productName}/versions/{version}/locales/{locale}/components/{component} [get]
 func GetBundle(c *gin.Context) {
 	req := GetBundleReq{}
-	if err := c.ShouldBindUri(&req); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
-		return
-	}
-	if err := c.ShouldBindQuery(&req); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+	if err := api.ExtractParameters(c, &req, &req); err != nil {
 		return
 	}
 
@@ -168,12 +158,7 @@ func GetBundle(c *gin.Context) {
 // @Deprecated
 func GetString(c *gin.Context) {
 	req := GetStringReq{}
-	if err := c.ShouldBindUri(&req); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
-		return
-	}
-	if err := c.ShouldBindQuery(&req); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+	if err := api.ExtractParameters(c, &req, &req); err != nil {
 		return
 	}
 
@@ -204,12 +189,7 @@ func GetString(c *gin.Context) {
 // @Deprecated
 func GetStringByPost(c *gin.Context) {
 	req := GetStringByPostReq{}
-	if err := c.ShouldBindUri(&req); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
-		return
-	}
-	if err := c.ShouldBindQuery(&req); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+	if err := api.ExtractParameters(c, &req, &req); err != nil {
 		return
 	}
 
@@ -252,8 +232,7 @@ func GetStringByPost(c *gin.Context) {
 // @Router /translation/products/{productName}/versions/{version} [put]
 func PutBundles(c *gin.Context) {
 	id := ReleaseID{}
-	if err := c.ShouldBindUri(&id); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+	if err := api.ExtractParameters(c, &id, nil); err != nil {
 		return
 	}
 

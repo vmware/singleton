@@ -138,6 +138,13 @@ func TestRecovery(t *testing.T) {
 			panicErr:   &net.OpError{Err: &os.SyscallError{Err: errors.New("broken pipe error")}},
 			wantedCode: http.StatusOK,
 		},
+		{testName: "DebugMode",
+			ginMode:    gin.DebugMode,
+			URL:        "/TestRecovery_debugMode",
+			logFile:    logFolder + "debugmode.log",
+			panicErr:   errors.New("debugmode error"),
+			wantedCode: http.StatusInternalServerError,
+		},
 	}
 
 	for _, tt := range tests {

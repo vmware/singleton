@@ -46,14 +46,13 @@ var l3Service translation.Service = translationservice.GetService()
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /combination/translationsAndPattern [get]
 func getCombinedData(c *gin.Context) {
-	params := new(translationWithPatternReq)
-	if err := c.ShouldBindQuery(params); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+	req := new(translationWithPatternReq)
+	if err := api.ExtractParameters(c, nil, &req); err != nil {
 		return
 	}
 
-	params.Version = c.GetString(api.SgtnVersionKey)
-	doGetCombinedData(c, params)
+	req.Version = c.GetString(api.SgtnVersionKey)
+	doGetCombinedData(c, req)
 }
 
 // getLanguageListOfDispLang godoc
@@ -71,15 +70,14 @@ func getCombinedData(c *gin.Context) {
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /locale/supportedLanguageList [get]
 func getLanguageListOfDispLang(c *gin.Context) {
-	params := new(languageListReq)
-	if err := c.ShouldBindQuery(params); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+	req := new(languageListReq)
+	if err := api.ExtractParameters(c, nil, &req); err != nil {
 		return
 	}
 	version := c.GetString(api.SgtnVersionKey)
 	ctx := logger.NewContext(c, c.MustGet(api.LoggerKey))
 
-	productLocales, err := l3Service.GetAvailableLocales(ctx, params.ProductName, version)
+	productLocales, err := l3Service.GetAvailableLocales(ctx, req.ProductName, version)
 	if err != nil {
 		api.AbortWithError(c, err)
 		return
@@ -90,10 +88,10 @@ func getLanguageListOfDispLang(c *gin.Context) {
 	var contextData map[string]interface{}
 
 	// Get display Names when displayLanguage is provided
-	if params.DisplayLanguage != "" {
-		cldrLocale := coreutil.GetCLDRLocale(params.DisplayLanguage)
+	if req.DisplayLanguage != "" {
+		cldrLocale := coreutil.GetCLDRLocale(req.DisplayLanguage)
 		if cldrLocale == "" {
-			api.AbortWithError(c, sgtnerror.StatusNotFound.WithUserMessage(cldr.InvalidLocale, params.DisplayLanguage))
+			api.AbortWithError(c, sgtnerror.StatusNotFound.WithUserMessage(cldr.InvalidLocale, req.DisplayLanguage))
 			return
 		}
 		languagesDataOfLocale, err = localeutil.GetLocaleLanguages(ctx, cldrLocale)
@@ -110,7 +108,7 @@ func getLanguageListOfDispLang(c *gin.Context) {
 		if cldrLocale := coreutil.GetCLDRLocale(newLocale); cldrLocale != "" {
 			newLocale = cldrLocale
 		}
-		if params.DisplayLanguage == "" {
+		if req.DisplayLanguage == "" {
 			// Get display name when displayLanguage isn't specified. Need to display language in itself.
 			languagesDataOfLocale, err = localeutil.GetLocaleLanguages(ctx, newLocale)
 			multiErr = sgtnerror.Append(multiErr, err)
@@ -140,9 +138,9 @@ func getLanguageListOfDispLang(c *gin.Context) {
 	}
 
 	data := map[string]interface{}{
-		api.ProductNameAPIKey: params.ProductName,
+		api.ProductNameAPIKey: req.ProductName,
 		api.VersionAPIKey:     version,
-		"displayLanguage":     params.DisplayLanguage,
+		"displayLanguage":     req.DisplayLanguage,
 		"languages":           infos}
 
 	api.HandleResponse(c, data, multiErr)

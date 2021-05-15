@@ -6,12 +6,12 @@
 package cache
 
 import (
+	"fmt"
 	"time"
 
 	"sgtnserver/internal/logger"
 
 	"github.com/dgraph-io/ristretto"
-	"github.com/pkg/errors"
 	"go.uber.org/zap"
 )
 
@@ -51,7 +51,7 @@ func (c *RistrettoCache) Get(key interface{}) (interface{}, error) {
 	if found {
 		return v, nil
 	} else {
-		return nil, errors.Errorf("Not found key: '%s'", key)
+		return nil, fmt.Errorf("Not found key: '%s'", key)
 	}
 }
 
@@ -59,6 +59,6 @@ func (c *RistrettoCache) Set(key, value interface{}) error {
 	if c.Cache.SetWithTTL(key, value, 1, c.expirationTime) {
 		return nil
 	} else {
-		return errors.Errorf("Fail to store data to cache. key: '%s'", key)
+		return fmt.Errorf("Fail to store data to cache. key: '%s'", key)
 	}
 }

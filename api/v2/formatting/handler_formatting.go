@@ -10,7 +10,6 @@ import (
 
 	"sgtnserver/api"
 	"sgtnserver/internal/logger"
-	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/formatting"
 
 	"github.com/gin-gonic/gin"
@@ -31,19 +30,18 @@ import (
 // @Router /formatting/date/localizedDate [get]
 // @Deprecated
 func GetLocalizedDate(c *gin.Context) {
-	params := new(DateReq)
-	if err := c.ShouldBindQuery(params); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+	req := new(DateReq)
+	if err := api.ExtractParameters(c, nil, &req); err != nil {
 		return
 	}
 
 	ctx := logger.NewContext(c, c.MustGet(api.LoggerKey))
-	tm := time.Unix(0, params.LongDate*int64(time.Millisecond))
-	formatted, err := formatting.SimpleFormatDateTime(ctx, tm, params.Pattern, params.Locale)
+	tm := time.Unix(0, req.LongDate*int64(time.Millisecond))
+	formatted, err := formatting.SimpleFormatDateTime(ctx, tm, req.Pattern, req.Locale)
 	data := DateResp{
-		Pattern:       params.Pattern,
-		Locale:        params.Locale,
-		LongDate:      params.LongDate,
+		Pattern:       req.Pattern,
+		Locale:        req.Locale,
+		LongDate:      req.LongDate,
 		FormattedDate: formatted}
 
 	api.HandleResponse(c, data, err)

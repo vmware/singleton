@@ -62,16 +62,34 @@ func AbortWithError(c *gin.Context, err error) {
 	c.AbortWithStatusJSON(bError.HTTPCode, Response{Error: bError})
 }
 
+func ExtractParameters(c *gin.Context, uriPart, formPart interface{}) (err error) {
+	if uriPart != nil {
+		if err = c.ShouldBindUri(uriPart); err != nil {
+			AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(ExtractErrorMsg(err)))
+			return err
+		}
+	}
+
+	if formPart != nil {
+		if err = c.ShouldBindQuery(formPart); err != nil {
+			AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(ExtractErrorMsg(err)))
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ToBusinessError ...
 func ToBusinessError(err error) *BusinessError {
 	if err == nil {
-		return &BusinessError{Code: sgtnerror.StatusSuccess.Code(), HTTPCode: sgtnerror.StatusSuccess.HTTPCode(), UserMsg: sgtnerror.StatusSuccess.Message()}
+		return err_success
 	}
 
 	switch e := err.(type) {
 	case *sgtnerror.MultiError:
 		if e.ErrorOrNil() == nil {
-			return &BusinessError{Code: sgtnerror.StatusSuccess.Code(), HTTPCode: sgtnerror.StatusSuccess.HTTPCode(), UserMsg: sgtnerror.StatusSuccess.Message()}
+			return err_success
 		}
 		if e.IsAllFailed() {
 			// If all the operations are failed, return the first error code.
@@ -82,7 +100,7 @@ func ToBusinessError(err error) *BusinessError {
 			}
 			return &BusinessError{Code: sgtnerror.UnknownError.Code(), HTTPCode: sgtnerror.UnknownError.HTTPCode(), UserMsg: e.Error()}
 		} else {
-			return &BusinessError{Code: sgtnerror.StatusPartialSuccess.Code(), HTTPCode: sgtnerror.StatusPartialSuccess.HTTPCode(), UserMsg: sgtnerror.StatusPartialSuccess.Message()}
+			return err_207
 		}
 	case sgtnerror.Error:
 		return &BusinessError{Code: e.Code(), HTTPCode: e.HTTPCode(), UserMsg: e.Message()}
