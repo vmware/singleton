@@ -8,8 +8,9 @@ package api
 import (
 	"fmt"
 	"regexp"
-	"sgtnserver/internal/logger"
 	"strings"
+
+	"sgtnserver/internal/logger"
 
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/locales/en"
@@ -17,17 +18,19 @@ import (
 	"github.com/go-playground/validator/v10"
 )
 
+// Regular expression string
 const (
 	letterAndNumberAndValidCharString      = `[A-Za-z0-9_\-\.]+`
 	letterAndNumberAndValidCharStringError = "Incorrect %s(only allows letter, number, dot, underline, dash)"
 )
 
+// Regular expression
 var (
 	letterAndNumberAndValidCharRegx = regexp.MustCompile(`^` + letterAndNumberAndValidCharString + `$`)
 	versionRegex                    = regexp.MustCompile(`^\d+(\.\d+)*$`)
 	componentsRegex                 = regexp.MustCompile(`^` + letterAndNumberAndValidCharString + `(,\s*` + letterAndNumberAndValidCharString + `)*$`)
 	localesRegex                    = componentsRegex
-	scopeRegex                      = regexp.MustCompile(`^(\s*[a-zA-Z]+\s*)(,\s*[a-zA-Z]+\s*)*$`)
+	patternScopeRegex               = regexp.MustCompile(`^(\s*[a-zA-Z]+\s*)(,\s*[a-zA-Z]+\s*)*$`)
 )
 
 var validatorInfoArray = [][]interface{}{
@@ -36,7 +39,7 @@ var validatorInfoArray = [][]interface{}{
 	{LocaleAPIKey, letterAndNumberAndValidCharRegx, fmt.Sprintf(letterAndNumberAndValidCharStringError, LocaleAPIKey)},
 	{LanguageAPIKey, letterAndNumberAndValidCharRegx, fmt.Sprintf(letterAndNumberAndValidCharStringError, LanguageAPIKey)},
 	{RegionAPIKey, letterAndNumberAndValidCharRegx, fmt.Sprintf(letterAndNumberAndValidCharStringError, RegionAPIKey)},
-	{ScopeAPIKey, scopeRegex, "Incorrect " + ScopeAPIKey},
+	{ScopeAPIKey, patternScopeRegex, "Incorrect " + ScopeAPIKey},
 	{ComponentsAPIKey, componentsRegex, fmt.Sprintf(letterAndNumberAndValidCharStringError, ComponentsAPIKey)},
 	{LocalesAPIKey, localesRegex, fmt.Sprintf(letterAndNumberAndValidCharStringError, LocalesAPIKey)},
 	{KeyAPIKey, letterAndNumberAndValidCharRegx, fmt.Sprintf(letterAndNumberAndValidCharStringError, KeyAPIKey)},
