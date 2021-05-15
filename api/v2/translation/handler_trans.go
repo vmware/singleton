@@ -32,16 +32,16 @@ var l3Service translation.Service = translationservice.GetService()
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /translation/products/{productName}/versions/{version}/componentlist [get]
 func GetAvailableComponents(c *gin.Context) {
-	id := ReleaseID{}
-	if err := api.ExtractParameters(c, &id, nil); err != nil {
+	req := ReleaseID{}
+	if err := api.ExtractParameters(c, &req, nil); err != nil {
 		return
 	}
 
 	version := c.GetString(api.SgtnVersionKey)
 
-	components, err := l3Service.GetAvailableComponents(logger.NewContext(c, c.MustGet(api.LoggerKey)), id.ProductName, version)
+	components, err := l3Service.GetAvailableComponents(logger.NewContext(c, c.MustGet(api.LoggerKey)), req.ProductName, version)
 	data := gin.H{
-		api.ProductNameAPIKey: id.ProductName,
+		api.ProductNameAPIKey: req.ProductName,
 		api.VersionAPIKey:     version,
 		api.ComponentsAPIKey:  components}
 	api.HandleResponse(c, data, err)
@@ -60,16 +60,16 @@ func GetAvailableComponents(c *gin.Context) {
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /translation/products/{productName}/versions/{version}/localelist [get]
 func GetAvailableLocales(c *gin.Context) {
-	id := ReleaseID{}
-	if err := api.ExtractParameters(c, &id, nil); err != nil {
+	req := ReleaseID{}
+	if err := api.ExtractParameters(c, &req, nil); err != nil {
 		return
 	}
 
 	version := c.GetString(api.SgtnVersionKey)
 
-	locales, err := l3Service.GetAvailableLocales(logger.NewContext(c, c.MustGet(api.LoggerKey)), id.ProductName, version)
+	locales, err := l3Service.GetAvailableLocales(logger.NewContext(c, c.MustGet(api.LoggerKey)), req.ProductName, version)
 	data := gin.H{
-		api.ProductNameAPIKey: id.ProductName,
+		api.ProductNameAPIKey: req.ProductName,
 		api.VersionAPIKey:     version,
 		api.LocalesAPIKey:     locales}
 	api.HandleResponse(c, data, err)
@@ -231,8 +231,8 @@ func GetStringByPost(c *gin.Context) {
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /translation/products/{productName}/versions/{version} [put]
 func PutBundles(c *gin.Context) {
-	id := ReleaseID{}
-	if err := api.ExtractParameters(c, &id, nil); err != nil {
+	uriPart := ReleaseID{}
+	if err := api.ExtractParameters(c, &uriPart, nil); err != nil {
 		return
 	}
 
@@ -242,7 +242,7 @@ func PutBundles(c *gin.Context) {
 		return
 	}
 
-	if id.ProductName != req.Data.ProductName || id.Version != req.Data.Version {
+	if uriPart.ProductName != req.Data.ProductName || uriPart.Version != req.Data.Version {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("Product name/version should be consistent between URL and post data"))
 		return
 	}

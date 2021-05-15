@@ -46,13 +46,13 @@ var l3Service translation.Service = translationservice.GetService()
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /combination/translationsAndPattern [get]
 func getCombinedData(c *gin.Context) {
-	req := new(translationWithPatternReq)
+	req := translationWithPatternReq{}
 	if err := api.ExtractParameters(c, nil, &req); err != nil {
 		return
 	}
 
 	req.Version = c.GetString(api.SgtnVersionKey)
-	doGetCombinedData(c, req)
+	doGetCombinedData(c, &req)
 }
 
 // getLanguageListOfDispLang godoc
@@ -70,7 +70,7 @@ func getCombinedData(c *gin.Context) {
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /locale/supportedLanguageList [get]
 func getLanguageListOfDispLang(c *gin.Context) {
-	req := new(languageListReq)
+	req := languageListReq{}
 	if err := api.ExtractParameters(c, nil, &req); err != nil {
 		return
 	}

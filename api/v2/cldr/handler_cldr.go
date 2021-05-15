@@ -82,7 +82,7 @@ func GetPatternByLocale(c *gin.Context) {
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /formatting/patterns [get]
 func GetPatternDataByLangReg(c *gin.Context) {
-	req := new(PatternByLangRegReq)
+	req := PatternByLangRegReq{}
 	if err := api.ExtractParameters(c, nil, &req); err != nil {
 		return
 	}
@@ -114,7 +114,7 @@ func GetPatternDataByLangReg(c *gin.Context) {
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /locale/regionList [get]
 func GetRegionListOfLanguages(c *gin.Context) {
-	req := new(LocaleRegionsReq)
+	req := LocaleRegionsReq{}
 	if err := api.ExtractParameters(c, nil, &req); err != nil {
 		return
 	}

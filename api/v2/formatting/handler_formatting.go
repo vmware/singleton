@@ -30,7 +30,7 @@ import (
 // @Router /formatting/date/localizedDate [get]
 // @Deprecated
 func GetLocalizedDate(c *gin.Context) {
-	req := new(DateReq)
+	req := DateReq{}
 	if err := api.ExtractParameters(c, nil, &req); err != nil {
 		return
 	}

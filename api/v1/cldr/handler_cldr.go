@@ -34,7 +34,7 @@ import (
 // @Router /i18nPattern [get]
 // @Deprecated
 func GetPatternData(c *gin.Context) {
-	req := new(PatternByLocaleReq)
+	req := PatternByLocaleReq{}
 	if err := api.ExtractParameters(c, nil, &req); err != nil {
 		return
 	}
