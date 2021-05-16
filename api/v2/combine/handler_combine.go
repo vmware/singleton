@@ -184,27 +184,27 @@ func getCombinedDataByPost(c *gin.Context) {
 	doGetCombinedData(c, &req)
 }
 
-func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {
+func doGetCombinedData(c *gin.Context, req *translationWithPatternReq) {
 	ctx := logger.NewContext(c, c.MustGet(api.LoggerKey))
 
 	var allErrors, translationError, patternError error
 	var transData []*translation.Bundle
 	var patternDataMap map[string]interface{}
-	var localeToSet, language, region = "", params.Language, params.Region
+	var localeToSet, language, region = "", req.Language, req.Region
 	data := new(translationWithPatternData)
 
-	switch params.Combine {
+	switch req.Combine {
 	// get pattern use parameter: language, scope, region, get the translation use parameters language, productName, version, component
 	case 1:
-		if len(params.Region) == 0 {
-			api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("Region can't be empty when combine type is %d", params.Combine))
+		if len(req.Region) == 0 {
+			api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("Region can't be empty when combine type is %d", req.Combine))
 			return
 		}
-		patternDataMap, localeToSet, patternError = cldrservice.GetPatternByLangReg(ctx, params.Language, params.Region, params.Scope, params.ScopeFilter)
-		transData, translationError = l3Service.GetMultipleBundles(ctx, params.ProductName, params.Version, params.Language, params.Components)
+		patternDataMap, localeToSet, patternError = cldrservice.GetPatternByLangReg(ctx, req.Language, req.Region, req.Scope, req.ScopeFilter)
+		transData, translationError = l3Service.GetMultipleBundles(ctx, req.ProductName, req.Version, req.Language, req.Components)
 	// get pattern use parameter: language, scope, get the translation use parameters language, productName, version, component
 	case 2:
-		localeToSet, patternDataMap, patternError = cldrservice.GetPatternByLocale(ctx, params.Language, params.Scope, params.ScopeFilter)
+		localeToSet, patternDataMap, patternError = cldrservice.GetPatternByLocale(ctx, req.Language, req.Scope, req.ScopeFilter)
 		if localeToSet != "" && len(patternDataMap) > 0 {
 			parts := strings.Split(localeToSet, cldr.LocalePartSep)
 			language = parts[0]
@@ -212,9 +212,9 @@ func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {
 				region, _ = localeutil.GetLocaleDefaultRegion(ctx, localeToSet)
 			}
 		}
-		transData, translationError = l3Service.GetMultipleBundles(ctx, params.ProductName, params.Version, params.Language, params.Components)
+		transData, translationError = l3Service.GetMultipleBundles(ctx, req.ProductName, req.Version, req.Language, req.Components)
 	default:
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("Unsupported combination type: %d", params.Combine))
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("Unsupported combination type: %d", req.Combine))
 		return
 	}
 	allErrors = sgtnerror.Append(patternError, translationError)
