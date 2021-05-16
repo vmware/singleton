@@ -61,7 +61,7 @@ func InitValidator() {
 		name, r := info[0].(string), info[1].(*regexp.Regexp)
 		err := validate.RegisterValidation(name,
 			func(fl validator.FieldLevel) bool {
-				return r.MatchString(fl.Field().Interface().(string))
+				return r.MatchString(fl.Field().String())
 			})
 		if err == nil {
 			err = validate.RegisterTranslation(name, enTranslator,
