@@ -218,7 +218,7 @@ func TestGetBundleNormal(t *testing.T) {
 	resp.Body().Empty()
 
 	resp = e.GET(GetBundleURL, Name, Version, "zh-Hans", "nonexistent").Expect()
-	resp.Status(http.StatusNotFound).Body().Contains("nonexistent")
+	resp.Status(sgtnerror.StatusNotFound.HTTPCode()).Body().Contains("nonexistent")
 }
 
 func TestGetSingleMessage(t *testing.T) {
@@ -364,11 +364,11 @@ func TestApiTransExceptionArgs(t *testing.T) {
 		{testName: "illegalProductCharacter", name: "---", version: Version, locale: Locale, component: Component, key: Key, wantedCode: http.StatusBadRequest},
 		{testName: "invalidVersion", name: Name, version: "invalidVersion", locale: Locale, component: Component, key: Key, wantedCode: http.StatusBadRequest},
 		{testName: "illegalVersionCharacter", name: Name, version: "abc", locale: Locale, component: Component, key: Key, wantedCode: http.StatusBadRequest},
-		{testName: "invalidLocale", name: Name, version: Version, locale: "invalidLocale", component: Component, key: Key, wantedCode: http.StatusNotFound},
+		{testName: "invalidLocale", name: Name, version: Version, locale: "invalidLocale", component: Component, key: Key, wantedCode: sgtnerror.StatusNotFound.HTTPCode()},
 		{testName: "illegalLocaleCharacter", name: Name, version: Version, locale: "€", component: Component, key: Key, wantedCode: http.StatusBadRequest},
-		{testName: "invalidComponent", name: Name, version: Version, locale: Locale, component: "invalidComponent", key: Key, wantedCode: http.StatusNotFound},
+		{testName: "invalidComponent", name: Name, version: Version, locale: Locale, component: "invalidComponent", key: Key, wantedCode: sgtnerror.StatusNotFound.HTTPCode()},
 		{testName: "illegalComponentCharacter", name: Name, version: Version, locale: Locale, component: "\t", key: Key, wantedCode: http.StatusBadRequest},
-		{testName: "invalidKey", name: Name, version: Version, locale: Locale, component: Component, key: "nonexistent", wantedCode: http.StatusNotFound},
+		{testName: "invalidKey", name: Name, version: Version, locale: Locale, component: Component, key: "nonexistent", wantedCode: sgtnerror.StatusNotFound.HTTPCode()},
 		{testName: "illegalKeyCharacter", name: Name, version: Version, locale: Locale, component: Component, key: "\t", wantedCode: http.StatusBadRequest},
 	}
 

@@ -17,7 +17,7 @@ var (
 	StatusPartialSuccess = Error{code: 207, httpCode: http.StatusOK, message: "Successful Partially"}
 
 	StatusBadRequest    = Error{code: http.StatusBadRequest, httpCode: http.StatusBadRequest, message: "Bad Request"}
-	StatusNotFound      = Error{code: http.StatusNotFound, httpCode: http.StatusNotFound, message: "Not Found"}
+	StatusNotFound      = Error{code: http.StatusNotFound, httpCode: http.StatusBadRequest}
 	StatusInvalidToken  = Error{code: 498, httpCode: 498, message: "Invalid Token"}
 	StatusTokenRequired = Error{code: 499, httpCode: 499, message: "Token Required"}
 

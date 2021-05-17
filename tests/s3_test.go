@@ -111,7 +111,7 @@ func TestGetBundleFromS3(t *testing.T) {
 			id: translation.BundleID{Name: Name, Version: Version, Locale: Locale, Component: Component}},
 		{testName: "FileContentWrong", mockOutput: fmt.Sprintf(bundleFile, "anotherLocale"), mockReturnError: nil, wantedCode: http.StatusOK,
 			id: translation.BundleID{Name: Name, Version: Version, Locale: "yue", Component: Component}},
-		{testName: "ReturnNotFound", mockOutput: fmt.Sprintf(bundleFile, Locale), mockReturnError: MockAWSError{s3.ErrCodeNoSuchKey}, wantedCode: http.StatusNotFound,
+		{testName: "ReturnNotFound", mockOutput: fmt.Sprintf(bundleFile, Locale), mockReturnError: MockAWSError{s3.ErrCodeNoSuchKey}, wantedCode: sgtnerror.StatusNotFound.Code(),
 			id: translation.BundleID{Name: Name, Version: Version, Locale: Locale, Component: Component}},
 		{testName: "ReturnOtherError", mockOutput: fmt.Sprintf(bundleFile, Locale), mockReturnError: errors.New("other type of error"), wantedCode: http.StatusInternalServerError,
 			id: translation.BundleID{Name: Name, Version: Version, Locale: Locale, Component: Component}},
