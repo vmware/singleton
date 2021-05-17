@@ -84,8 +84,8 @@ func TestTraceIDs(t *testing.T) {
 			e := CreateHTTPExpect(t, api.InitServer())
 
 			// Test outside trace IDs
-			req := e.GET(GetBundleURL, Name, Version, Locale, Component)
-			resp := req.WithHeaders(tt.headers).Expect()
+			params := e.GET(GetBundleURL, Name, Version, Locale, Component)
+			resp := params.WithHeaders(tt.headers).Expect()
 			resp.Status(http.StatusOK)
 
 			logger.Log.Sync()
@@ -206,11 +206,11 @@ func TestCompressResponse(t *testing.T) {
 		t.Run("'"+tt.CompressionAlgorithm+"':'"+tt.header+"'", func(t *testing.T) {
 			config.Settings.Server.CompressionAlgorithm = tt.CompressionAlgorithm
 			e := CreateHTTPExpect(t, api.InitServer())
-			req := e.GET(GetBundleURL, Name, Version, Locale, Component)
+			params := e.GET(GetBundleURL, Name, Version, Locale, Component)
 			if tt.header != "" {
-				req.WithHeader(headers.AcceptEncoding, tt.header)
+				params.WithHeader(headers.AcceptEncoding, tt.header)
 			}
-			respNoCompression := req.Expect()
+			respNoCompression := params.Expect()
 			respNoCompression.ContentEncoding(tt.expectedEncoding...)
 		})
 	}
@@ -281,8 +281,8 @@ func TestEtag(t *testing.T) {
 	resp.Header(headers.ETag).Equal(expectedEtag)
 
 	// Send request again to test Etag
-	req := e.GET(GetBundleURL, Name, Version, Locale, Component)
-	resp = req.WithHeader(headers.IfNoneMatch, resp.Header(headers.ETag).Raw()).Expect()
+	params := e.GET(GetBundleURL, Name, Version, Locale, Component)
+	resp = params.WithHeader(headers.IfNoneMatch, resp.Header(headers.ETag).Raw()).Expect()
 	resp.Status(http.StatusNotModified)
 	resp.Body().Empty()
 }

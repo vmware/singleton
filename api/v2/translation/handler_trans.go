@@ -32,16 +32,16 @@ var l3Service translation.Service = translationservice.GetService()
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /translation/products/{productName}/versions/{version}/componentlist [get]
 func GetAvailableComponents(c *gin.Context) {
-	req := ReleaseID{}
-	if err := api.ExtractParameters(c, &req, nil); err != nil {
+	params := ReleaseID{}
+	if err := api.ExtractParameters(c, &params, nil); err != nil {
 		return
 	}
 
 	version := c.GetString(api.SgtnVersionKey)
 
-	components, err := l3Service.GetAvailableComponents(logger.NewContext(c, c.MustGet(api.LoggerKey)), req.ProductName, version)
+	components, err := l3Service.GetAvailableComponents(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName, version)
 	data := gin.H{
-		api.ProductNameAPIKey: req.ProductName,
+		api.ProductNameAPIKey: params.ProductName,
 		api.VersionAPIKey:     version,
 		api.ComponentsAPIKey:  components}
 	api.HandleResponse(c, data, err)
@@ -60,16 +60,16 @@ func GetAvailableComponents(c *gin.Context) {
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /translation/products/{productName}/versions/{version}/localelist [get]
 func GetAvailableLocales(c *gin.Context) {
-	req := ReleaseID{}
-	if err := api.ExtractParameters(c, &req, nil); err != nil {
+	params := ReleaseID{}
+	if err := api.ExtractParameters(c, &params, nil); err != nil {
 		return
 	}
 
 	version := c.GetString(api.SgtnVersionKey)
 
-	locales, err := l3Service.GetAvailableLocales(logger.NewContext(c, c.MustGet(api.LoggerKey)), req.ProductName, version)
+	locales, err := l3Service.GetAvailableLocales(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName, version)
 	data := gin.H{
-		api.ProductNameAPIKey: req.ProductName,
+		api.ProductNameAPIKey: params.ProductName,
 		api.VersionAPIKey:     version,
 		api.LocalesAPIKey:     locales}
 	api.HandleResponse(c, data, err)
@@ -91,14 +91,14 @@ func GetAvailableLocales(c *gin.Context) {
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /translation/products/{productName}/versions/{version} [get]
 func GetMultipleBundles(c *gin.Context) {
-	req := ProductReq{}
-	if err := api.ExtractParameters(c, &req, &req); err != nil {
+	params := ProductReq{}
+	if err := api.ExtractParameters(c, &params, &params); err != nil {
 		return
 	}
 	version := c.GetString(api.SgtnVersionKey)
 
-	bundles, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), req.ProductName, version, req.Locales, req.Components)
-	data := ConvertReleaseToAPI(req.ProductName, version, bundles)
+	bundles, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName, version, params.Locales, params.Components)
+	data := ConvertReleaseToAPI(params.ProductName, version, bundles)
 	api.HandleResponse(c, data, multiErr)
 }
 
@@ -118,20 +118,20 @@ func GetMultipleBundles(c *gin.Context) {
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /translation/products/{productName}/versions/{version}/locales/{locale}/components/{component} [get]
 func GetBundle(c *gin.Context) {
-	req := GetBundleReq{}
-	if err := api.ExtractParameters(c, &req, &req); err != nil {
+	params := GetBundleReq{}
+	if err := api.ExtractParameters(c, &params, &params); err != nil {
 		return
 	}
 
 	version := c.GetString(api.SgtnVersionKey)
 
 	ctx := logger.NewContext(c, c.MustGet(api.LoggerKey))
-	bundleID := &translation.BundleID{Name: req.ProductName, Version: version, Locale: req.Locale, Component: req.Component}
+	bundleID := &translation.BundleID{Name: params.ProductName, Version: version, Locale: params.Locale, Component: params.Component}
 	data, err := l3Service.GetBundle(ctx, bundleID)
 	bundleAPIData := ConvertBundleToAPI(data)
 
 	mErr := sgtnerror.Append(err)
-	if err == nil && req.CheckTranslationStatus {
+	if err == nil && params.CheckTranslationStatus {
 		bundleAPIData.Status, err = l3Service.GetTranslationStatus(ctx, bundleID)
 		mErr = sgtnerror.Append(err)
 	}
@@ -157,15 +157,15 @@ func GetBundle(c *gin.Context) {
 // @Router /translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key} [get]
 // @Deprecated
 func GetString(c *gin.Context) {
-	req := GetStringReq{}
-	if err := api.ExtractParameters(c, &req, &req); err != nil {
+	params := GetStringReq{}
+	if err := api.ExtractParameters(c, &params, &params); err != nil {
 		return
 	}
 
 	version := c.GetString(api.SgtnVersionKey)
 
-	internalID := translation.MessageID{Name: req.ProductName, Version: version, Locale: req.Locale, Component: req.Component, Key: req.Key}
-	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, req.Source)
+	internalID := translation.MessageID{Name: params.ProductName, Version: version, Locale: params.Locale, Component: params.Component, Key: params.Key}
+	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, params.Source)
 	api.HandleResponse(c, result, err)
 }
 
@@ -188,8 +188,8 @@ func GetString(c *gin.Context) {
 // @Router /translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key} [post]
 // @Deprecated
 func GetStringByPost(c *gin.Context) {
-	req := GetStringByPostReq{}
-	if err := api.ExtractParameters(c, &req, &req); err != nil {
+	params := GetStringByPostReq{}
+	if err := api.ExtractParameters(c, &params, &params); err != nil {
 		return
 	}
 
@@ -198,13 +198,13 @@ func GetStringByPost(c *gin.Context) {
 			api.AbortWithError(c, sgtnerror.StatusBadRequest.WrapErrorWithMessage(err, "fail to read request body"))
 			return
 		} else {
-			req.Source = string(bts)
+			params.Source = string(bts)
 		}
 	}
 
-	internalID := translation.MessageID{Name: req.ProductName, Version: req.Version, Locale: req.Locale, Component: req.Component, Key: req.Key}
-	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, req.Source)
-	if err == nil && result != nil && req.CheckTranslationStatus {
+	internalID := translation.MessageID{Name: params.ProductName, Version: params.Version, Locale: params.Locale, Component: params.Component, Key: params.Key}
+	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, params.Source)
+	if err == nil && result != nil && params.CheckTranslationStatus {
 		if result["status"].(translation.TranslationStatus).IsReady() {
 			err = sgtnerror.TranslationReady
 		} else {
@@ -236,18 +236,18 @@ func PutBundles(c *gin.Context) {
 		return
 	}
 
-	req := UpdateTranslationDTO{}
-	if err := c.ShouldBindJSON(&req); err != nil {
+	params := UpdateTranslationDTO{}
+	if err := c.ShouldBindJSON(&params); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
 
-	if uriPart.ProductName != req.Data.ProductName || uriPart.Version != req.Data.Version {
+	if uriPart.ProductName != params.Data.ProductName || uriPart.Version != params.Data.Version {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("Product name/version should be consistent between URL and post data"))
 		return
 	}
 
-	err := l3Service.PutBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), ConvertBundleToInternal(req.Data))
+	err := l3Service.PutBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), ConvertBundleToInternal(params.Data))
 	api.HandleResponse(c, nil, err)
 }
 

@@ -32,19 +32,19 @@ var l3Service translation.Service = translationservice.GetService()
 // @Router /translation/component [get]
 // @Deprecated
 func GetBundle2(c *gin.Context) {
-	req := struct {
+	params := struct {
 		ReleaseID
 		Locale    string `form:"locale" binding:"locale"`
 		Component string `form:"component" binding:"required,component"`
 	}{Locale: translation.EnLocale}
-	if err := api.ExtractParameters(c, nil, &req); err != nil {
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
 	}
 
 	version := c.GetString(api.SgtnVersionKey)
 
 	data, err := l3Service.GetBundle(logger.NewContext(c, c.MustGet(api.LoggerKey)),
-		&translation.BundleID{Name: req.ProductName, Version: version, Locale: req.Locale, Component: req.Component})
+		&translation.BundleID{Name: params.ProductName, Version: version, Locale: params.Locale, Component: params.Component})
 
 	api.HandleResponse(c, v2Translation.ConvertBundleToAPI(data), err)
 }
@@ -65,19 +65,19 @@ func GetBundle2(c *gin.Context) {
 // @Router /translation/components [get]
 // @Deprecated
 func GetMultipleBundles2(c *gin.Context) {
-	req := struct {
+	params := struct {
 		ReleaseID
 		Locales    string `form:"locales" binding:"required,locales"`
 		Components string `form:"components" binding:"required,components"`
 	}{}
-	if err := api.ExtractParameters(c, nil, &req); err != nil {
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
 	}
 
 	version := c.GetString(api.SgtnVersionKey)
 
-	bundles, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), req.ProductName, version, req.Locales, req.Components)
-	data := v2Translation.ConvertReleaseToAPI(req.ProductName, version, bundles)
+	bundles, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName, version, params.Locales, params.Components)
+	data := v2Translation.ConvertReleaseToAPI(params.ProductName, version, bundles)
 	api.HandleResponse(c, data, multiErr)
 }
 
@@ -98,15 +98,15 @@ func GetMultipleBundles2(c *gin.Context) {
 // @Router /translation/string [get]
 // @Deprecated
 func GetString2(c *gin.Context) {
-	req := GetStringReq{Locale: translation.EnLocale}
-	if err := api.ExtractParameters(c, nil, &req); err != nil {
+	params := GetStringReq{Locale: translation.EnLocale}
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
 	}
 
 	version := c.GetString(api.SgtnVersionKey)
 
-	internalID := translation.MessageID{Name: req.ProductName, Version: version, Locale: req.Locale, Component: req.Component, Key: req.Key}
-	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, req.Source)
+	internalID := translation.MessageID{Name: params.ProductName, Version: version, Locale: params.Locale, Component: params.Component, Key: params.Key}
+	result, err := l3Service.GetStringWithSource(logger.NewContext(c, c.MustGet(api.LoggerKey)), &internalID, params.Source)
 	api.HandleResponse(c, result, err)
 }
 
@@ -125,18 +125,18 @@ func GetString2(c *gin.Context) {
 // @Router /translation [get]
 // @Deprecated
 func GetProduct(c *gin.Context) {
-	req := struct {
+	params := struct {
 		ReleaseID
 		Locale string `form:"locale" binding:"locale"`
 	}{Locale: translation.EnLocale}
-	if err := api.ExtractParameters(c, nil, &req); err != nil {
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
 	}
 
 	version := c.GetString(api.SgtnVersionKey)
 
-	bundles, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), req.ProductName, version, req.Locale, "")
-	data := v2Translation.ConvertReleaseToAPI(req.ProductName, version, bundles)
+	bundles, multiErr := l3Service.GetMultipleBundles(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName, version, params.Locale, "")
+	data := v2Translation.ConvertReleaseToAPI(params.ProductName, version, bundles)
 	api.HandleResponse(c, data, multiErr)
 }
 

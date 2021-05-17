@@ -82,18 +82,18 @@ func GetPatternByLocale(c *gin.Context) {
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /formatting/patterns [get]
 func GetPatternDataByLangReg(c *gin.Context) {
-	req := PatternByLangRegReq{}
-	if err := api.ExtractParameters(c, nil, &req); err != nil {
+	params := PatternByLangRegReq{}
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
 	}
 
-	dataMap, localeToSet, mError := cldrservice.GetPatternByLangReg(logger.NewContext(c, c.MustGet(api.LoggerKey)), req.Language, req.Region, req.Scope, req.ScopeFilter)
+	dataMap, localeToSet, mError := cldrservice.GetPatternByLangReg(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.Language, params.Region, params.Scope, params.ScopeFilter)
 	var data interface{}
 	if len(dataMap) > 0 {
 		data = PatternData{
 			LocaleID:   localeToSet,
-			Language:   req.Language,
-			Region:     req.Region,
+			Language:   params.Language,
+			Region:     params.Region,
 			Categories: dataMap,
 		}
 	}
@@ -114,12 +114,12 @@ func GetPatternDataByLangReg(c *gin.Context) {
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /locale/regionList [get]
 func GetRegionListOfLanguages(c *gin.Context) {
-	req := LocaleRegionsReq{}
-	if err := api.ExtractParameters(c, nil, &req); err != nil {
+	params := LocaleRegionsReq{}
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
 	}
 
-	data, multiErr := localeutil.GetTerritoriesOfMultipleLocales(logger.NewContext(c, c.MustGet(api.LoggerKey)), strings.Split(req.Locales, common.ParamSep))
+	data, multiErr := localeutil.GetTerritoriesOfMultipleLocales(logger.NewContext(c, c.MustGet(api.LoggerKey)), strings.Split(params.Locales, common.ParamSep))
 	for _, d := range data {
 		unsortedMap := map[string]interface{}{}
 		d.Territories.ToVal(&unsortedMap)

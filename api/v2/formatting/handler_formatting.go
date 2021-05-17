@@ -30,18 +30,18 @@ import (
 // @Router /formatting/date/localizedDate [get]
 // @Deprecated
 func GetLocalizedDate(c *gin.Context) {
-	req := DateReq{}
-	if err := api.ExtractParameters(c, nil, &req); err != nil {
+	params := DateReq{}
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
 	}
 
 	ctx := logger.NewContext(c, c.MustGet(api.LoggerKey))
-	tm := time.Unix(0, req.LongDate*int64(time.Millisecond))
-	formatted, err := formatting.SimpleFormatDateTime(ctx, tm, req.Pattern, req.Locale)
+	tm := time.Unix(0, params.LongDate*int64(time.Millisecond))
+	formatted, err := formatting.SimpleFormatDateTime(ctx, tm, params.Pattern, params.Locale)
 	data := DateResp{
-		Pattern:       req.Pattern,
-		Locale:        req.Locale,
-		LongDate:      req.LongDate,
+		Pattern:       params.Pattern,
+		Locale:        params.Locale,
+		LongDate:      params.LongDate,
 		FormattedDate: formatted}
 
 	api.HandleResponse(c, data, err)

@@ -85,17 +85,17 @@ func TestGetPatternByLangReg(t *testing.T) {
 		d := d
 
 		t.Run(d.lang+":"+d.reg+":"+d.scope, func(t *testing.T) {
-			req := e.GET(GetPatternByLangRegURL)
+			params := e.GET(GetPatternByLangRegURL)
 			if d.lang != "" {
-				req.WithQuery("language", d.lang)
+				params.WithQuery("language", d.lang)
 			}
 			if d.reg != "" {
-				req.WithQuery("region", d.reg)
+				params.WithQuery("region", d.reg)
 			}
 			if d.scope != "" {
-				req.WithQuery("scope", d.scope)
+				params.WithQuery("scope", d.scope)
 			}
-			resp := req.Expect()
+			resp := params.Expect()
 
 			resp.Status(d.wantedHTTPCode)
 
@@ -126,11 +126,11 @@ func TestGetPatternByLocale(t *testing.T) {
 	} {
 		d := d
 		t.Run(d.locale+":"+d.scope, func(t *testing.T) {
-			req := e.GET(GetPatternByLocaleURL, d.locale)
+			params := e.GET(GetPatternByLocaleURL, d.locale)
 			if d.scope != "" {
-				req.WithQuery("scope", d.scope)
+				params.WithQuery("scope", d.scope)
 			}
-			resp := req.Expect()
+			resp := params.Expect()
 
 			resp.Status(http.StatusOK)
 
@@ -179,13 +179,13 @@ func TestGetPatternByLangRegExcep(t *testing.T) {
 		t.Run(tt.testName, func(t *testing.T) {
 			// t.Parallel()
 
-			req := e.GET(GetPatternByLangRegURL).WithQueryObject(
+			params := e.GET(GetPatternByLangRegURL).WithQueryObject(
 				map[string]interface{}{
 					"language":    tt.lang,
 					"region":      tt.reg,
 					"scope":       tt.scope,
 					"scopeFilter": tt.scopeFilter})
-			resp := req.Expect()
+			resp := params.Expect()
 
 			resp.Status(tt.wantedCode)
 		})
@@ -211,11 +211,11 @@ func TestGetPatternByLocaleExcep(t *testing.T) {
 		t.Run(tt.testName, func(t *testing.T) {
 			// t.Parallel()
 
-			req := e.GET(GetPatternByLocaleURL, tt.locale).WithQueryObject(
+			params := e.GET(GetPatternByLocaleURL, tt.locale).WithQueryObject(
 				map[string]interface{}{
 					"scope":       tt.scope,
 					"scopeFilter": tt.scopeFilter})
-			resp := req.Expect()
+			resp := params.Expect()
 
 			resp.Status(tt.wantedCode)
 		})
