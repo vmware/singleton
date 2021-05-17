@@ -160,8 +160,8 @@ func getLanguageListOfDispLang(c *gin.Context) {
 // @Router /combination/translationsAndPattern [post]
 // @Deprecated
 func getCombinedDataByPost(c *gin.Context) {
-	params := new(translationWithPatternPostReq)
-	if err := c.ShouldBindJSON(params); err != nil {
+	params := translationWithPatternPostReq{}
+	if err := c.ShouldBindJSON(&params); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
