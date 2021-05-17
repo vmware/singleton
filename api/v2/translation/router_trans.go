@@ -34,9 +34,9 @@ func (r *translationRouter) Init(e *gin.RouterGroup) {
 		tranGroup.GET(productPart+"/locales/:locale/components/:component/keys/:key", GetString)
 	}
 
-	e.POST("/translation/products/:productName/versions/:version/locales/:locale/components/:component/keys/:key", GetStringByPost)
+	e.POST("/translation/products/:productName/versions/:version/locales/:locale/components/:component/keys/:key", HandleAllowList, GetStringByPost)
 
-	e.PUT("/translation/products/:productName/versions/:version", PutBundles)
+	e.PUT("/translation/products/:productName/versions/:version", HandleAllowList, PutBundles)
 }
 
 func init() {
