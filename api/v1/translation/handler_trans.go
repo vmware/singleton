@@ -153,16 +153,16 @@ func GetProduct(c *gin.Context) {
 // @Router /bundles/components [get]
 // @Deprecated
 func GetAvailableComponents(c *gin.Context) {
-	id := ReleaseID{}
-	if err := api.ExtractParameters(c, nil, &id); err != nil {
+	params := ReleaseID{}
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
 	}
 
 	version := c.GetString(api.SgtnVersionKey)
 
-	components, err := l3Service.GetAvailableComponents(logger.NewContext(c, c.MustGet(api.LoggerKey)), id.ProductName, version)
+	components, err := l3Service.GetAvailableComponents(logger.NewContext(c, c.MustGet(api.LoggerKey)), params.ProductName, version)
 	data := gin.H{
-		api.ProductNameAPIKey: id.ProductName,
+		api.ProductNameAPIKey: params.ProductName,
 		api.VersionAPIKey:     version,
 		api.ComponentsAPIKey:  components}
 	api.HandleResponse(c, data, err)
