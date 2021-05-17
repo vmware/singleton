@@ -160,28 +160,28 @@ func getLanguageListOfDispLang(c *gin.Context) {
 // @Router /combination/translationsAndPattern [post]
 // @Deprecated
 func getCombinedDataByPost(c *gin.Context) {
-	postData := new(translationWithPatternPostReq)
-	if err := c.ShouldBindJSON(postData); err != nil {
+	params := new(translationWithPatternPostReq)
+	if err := c.ShouldBindJSON(params); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}
 
-	if !translationservice.IsProductExist(postData.ProductName) {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("Product '%s' doesn't exist", postData.ProductName))
+	if !translationservice.IsProductExist(params.ProductName) {
+		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage("Product '%s' doesn't exist", params.ProductName))
 		return
 	}
 
-	postData.Version = transApi.DoVersionFallback(c, postData.ProductName, postData.Version)
+	params.Version = transApi.DoVersionFallback(c, params.ProductName, params.Version)
 
-	params := translationWithPatternReq{
-		Combine:     postData.Combine,
-		ReleaseID:   postData.ReleaseID,
-		Language:    postData.Language,
-		Region:      postData.Region,
-		Components:  strings.Join(postData.Components, common.ParamSep),
-		Scope:       postData.Scope,
-		ScopeFilter: postData.ScopeFilter}
-	doGetCombinedData(c, &params)
+	req := translationWithPatternReq{
+		Combine:     params.Combine,
+		ReleaseID:   params.ReleaseID,
+		Language:    params.Language,
+		Region:      params.Region,
+		Components:  strings.Join(params.Components, common.ParamSep),
+		Scope:       params.Scope,
+		ScopeFilter: params.ScopeFilter}
+	doGetCombinedData(c, &req)
 }
 
 func doGetCombinedData(c *gin.Context, params *translationWithPatternReq) {

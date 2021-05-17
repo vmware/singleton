@@ -20,8 +20,8 @@ func BenchmarkGetMultipleComponents(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		w := httptest.NewRecorder()
 		curURL := fmt.Sprintf(myURL, "", "")
-		params, _ := http.NewRequest("GET", curURL, nil)
-		GinTestEngine.ServeHTTP(w, params)
+		req, _ := http.NewRequest("GET", curURL, nil)
+		GinTestEngine.ServeHTTP(w, req)
 		assert.Equal(b, http.StatusOK, w.Result().StatusCode)
 	}
 }
@@ -32,8 +32,8 @@ func BenchmarkGetOneComponentByProduct(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		w := httptest.NewRecorder()
 		curURL := fmt.Sprintf(myURL, Component, Locale)
-		params, _ := http.NewRequest("GET", curURL, nil)
-		GinTestEngine.ServeHTTP(w, params)
+		req, _ := http.NewRequest("GET", curURL, nil)
+		GinTestEngine.ServeHTTP(w, req)
 		assert.Equal(b, http.StatusOK, w.Result().StatusCode)
 	}
 }
@@ -44,8 +44,8 @@ func BenchmarkGetComponent(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		w := httptest.NewRecorder()
 		realURL := fmt.Sprintf(myURL, Locale, Component)
-		params, _ := http.NewRequest("GET", realURL, nil)
-		GinTestEngine.ServeHTTP(w, params)
+		req, _ := http.NewRequest("GET", realURL, nil)
+		GinTestEngine.ServeHTTP(w, req)
 		assert.Equal(b, http.StatusOK, w.Result().StatusCode)
 	}
 }
@@ -64,8 +64,8 @@ func BenchmarkGetPatternByLocale(b *testing.B) {
 		} {
 			w := httptest.NewRecorder()
 			realURL := fmt.Sprintf(myURL, d.locale, d.scope)
-			params, _ := http.NewRequest("GET", realURL, nil)
-			GinTestEngine.ServeHTTP(w, params)
+			req, _ := http.NewRequest("GET", realURL, nil)
+			GinTestEngine.ServeHTTP(w, req)
 			assert.Equal(b, http.StatusOK, w.Result().StatusCode)
 		}
 	}
@@ -85,8 +85,8 @@ func BenchmarkGetPatternByLangReg(b *testing.B) {
 		} {
 			w := httptest.NewRecorder()
 			curURL := fmt.Sprintf(myURL, d.language, d.region, d.scope)
-			params, _ := http.NewRequest("GET", curURL, nil)
-			GinTestEngine.ServeHTTP(w, params)
+			req, _ := http.NewRequest("GET", curURL, nil)
+			GinTestEngine.ServeHTTP(w, req)
 			assert.Equal(b, http.StatusOK, w.Result().StatusCode)
 		}
 	}
