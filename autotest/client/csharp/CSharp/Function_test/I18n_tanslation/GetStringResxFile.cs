@@ -19,8 +19,11 @@ namespace CSharp
         private IRelease Release;
         private ISource SourceError;
         private ISource SourceArgument;
+        private ISource SourceAbout;
         private ISource SourceHTMLTag;
         private ISource SourceHTMLTagWithSource;
+        private ISource Sourcetest;
+        private ISource Sourcetest1;
         private String[] args;
 
 
@@ -36,6 +39,8 @@ namespace CSharp
             SourceHTMLTag = Translation.CreateSource("RESX", "Resx-message.URL");
             SourceHTMLTagWithSource = Translation.CreateSource("RESX", "Resx-message.URL", "<html><body><p><span style=\"color: rgb(255,0,0);\"><strong>The scheduled maintenance has started.</strong></span></p><p>Important information about maintenance can be found here: <a class=\"external-link\" href=\"http://www.vmware.com\">https://www.vmware.com</a><strong><br/></strong></p></body></html>");
             args = new string[] { "1" };
+            Sourcetest = Translation.CreateSource("ResourceResx", "RESX.ARGUMENT");
+            Sourcetest1 = Translation.CreateSource("about","about.message");
         }
 
         [TestMethod]
@@ -95,6 +100,7 @@ namespace CSharp
             Assert.AreEqual("Ajoutez {0} à l'objet.", resultFR2);
             Assert.AreEqual(TestDataConstant.valueURLfr, resultFR3);
         }
+
 
 
         [TestMethod]
@@ -168,12 +174,13 @@ namespace CSharp
         public void GetLocaleMessages_nonexistentLanguage_da()
         {
 
-            String resultDA = Translation.GetString("da", SourceError);
-            Console.WriteLine("da transaltion: {0}", resultDA);
-            Assert.AreEqual(TestDataConstant.valueError, resultDA);
+            //String resultDA = Translation.GetString("da", SourceError);
+            //Console.WriteLine("da transaltion: {0}", resultDA);
+            //Assert.AreEqual(TestDataConstant.valueError, resultDA);
             Translation.SetCurrentLocale("da");
-            String resultDAFull = Translation.GetString("RESX", TestDataConstant.keyArg, TestDataConstant.valueArg, "argument verification");
-            Assert.AreEqual(TestDataConstant.valueArg, resultDAFull);
+            String resultDAFull = Translation.GetString("RESX", TestDataConstant.keyArg);
+            //String resultDAFull = Translation.GetString("RESX", TestDataConstant.keyArg, TestDataConstant.valueArg, "argument verification");
+            Assert.AreEqual("RESX.ARGUMENT", resultDAFull);
             String resultDAFormat = Translation.Format("da", SourceArgument, "1");
             Assert.AreEqual("Add 1 to the object.", resultDAFormat);
 
@@ -186,15 +193,17 @@ namespace CSharp
         [Description("Get translation with invalid language")]
         public void GetLocaleMessages_InvalidLanguage_abc()
         {
-
+            Translation.SetCurrentLocale("dac");
+            String Currentlocale1 = Translation.GetCurrentLocale();
+            Console.WriteLine(Currentlocale1);
             String resultABC = Translation.GetString("abc", SourceError);
             Console.WriteLine("abc transaltion: {0}", resultABC);
-            Assert.AreEqual(TestDataConstant.valueError, resultABC);
+            Assert.AreEqual("Ihre Kontaktseite.", resultABC);
             Translation.SetCurrentLocale("abc");
             String resultABCFull = Translation.GetString("RESX", TestDataConstant.keyArg, TestDataConstant.valueArg, "argument verification");
-            Assert.AreEqual(TestDataConstant.valueArg, resultABCFull);
+            Assert.AreEqual("Fügen Sie dem Objekt {0} hinzu.", resultABCFull);
             String resultABCFormat = Translation.Format("abc", SourceArgument, "1");
-            Assert.AreEqual("Add 1 to the object.", resultABCFormat);
+            Assert.AreEqual("Fügen Sie dem Objekt 1 hinzu.", resultABCFormat);
 
 
         }

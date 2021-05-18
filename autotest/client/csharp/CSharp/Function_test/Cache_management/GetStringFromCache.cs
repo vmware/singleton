@@ -29,7 +29,8 @@ namespace CSharp
         {
             UtilForCache.Init();
             PM = UtilForCache.Messages();
-            LM_translation_la = PM.GetLocaleMessages("latest");
+            LM_translation_la = PM.GetLocaleMessages("en");
+            //LM_translation = PM.GetAllLocaleMessages();
 
             //LM_source = PM.GetAllSource();
 
@@ -152,14 +153,10 @@ namespace CSharp
         [Description("Get string2 in cache from GetTranslation() with existing locale")]
         public void ProductString2_InCache_GetTranslation_ExistingLocale()
         {
-
-
             LM_translation = PM.GetLocaleMessages("zh-Hans");
             string result = LM_translation.GetString("RESX", "Resx-message.URL");
             Console.WriteLine(result);
             Assert.AreEqual(TestDataConstant.valueURLcn, result);
-
-
         }
 
         [TestMethod]
@@ -195,13 +192,13 @@ namespace CSharp
         [TestMethod]
         [Priority(1)]
         [TestCategory("")]
-        [Description("Get string in cache from GetTranslation() with empty locale")]
+        [Description("Get string in cache from GetTranslation() with empty locale --ruturn default locale-5-17")]
         public void ProductString_GetTranslation_EmptyLocale()
         {
             LM_translation = PM.GetLocaleMessages("");
             string result = LM_translation.GetString("RESX", "RESX.ARGUMENT");
             Console.WriteLine(result);
-            Assert.AreEqual(null, result);
+            Assert.AreEqual("Add {0} to the object.", result);
 
 
         }

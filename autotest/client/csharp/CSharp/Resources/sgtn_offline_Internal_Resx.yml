@@ -1,0 +1,28 @@
+﻿#offline_resources_base_url: CSharpClient/3.0.3
+product: CSharpClient
+l10n_version: 3.0.3
+
+default_resource_format: resx, internal
+offline_resources_base_url: Resources
+
+default_locale: de
+source_locale: en-US
+
+cache_expire: 5
+try_delay: 2
+component_template:
+    offline_resources_path:
+      - source.$COMPONENT_$LOCALE
+
+    locales:
+      - language_tag: en-US
+        offline_resources_path:
+          - source.$COMPONENT
+      - language_tag: de-DE
+      - language_tag: fr
+      - language_tag: ko-KR
+      - language_tag: zh-Hans
+
+components: 
+  - name: RESX    
+  - name: ResourceResx

@@ -14,7 +14,7 @@ namespace CSharp
     {
         private static string nameSpace =
             System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace;
-        public static string BASE_RES_NAME = nameSpace + ".Resources.Resource";
+        public static string BASE_RES_NAME = "Resources.Resource";
         public static Assembly assembly = typeof(ValuesFallbackPreVer).Assembly;
     }
 
@@ -25,9 +25,9 @@ namespace CSharp
 
         public static void Init()
         {
-            IConfig cfg = I18n.LoadConfig(
+            IConfig cfg = I18N.LoadConfig(
                 ValuesFallbackPreVer.BASE_RES_NAME, ValuesFallbackPreVer.assembly, "SingletonFallbackPreVer");
-            rel = I18n.GetRelease(cfg);
+            rel = I18N.GetRelease(cfg);
         }
 
 
@@ -38,7 +38,7 @@ namespace CSharp
 
         public static IExtension Extension()
         {
-            return I18n.GetExtension();
+            return I18N.GetExtension();
         
         }
 

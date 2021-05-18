@@ -39,7 +39,7 @@ namespace CSharp
         {
             List<string> LocaleList = PM.GetLocaleList();
             String result = Common.ParseListStringContent(LocaleList);
-            
+           
             Console.WriteLine(result);
             Assert.AreEqual(result, "ar, de, en, fr, ja, ko, zh-Hans, zh-Hant, es");
 

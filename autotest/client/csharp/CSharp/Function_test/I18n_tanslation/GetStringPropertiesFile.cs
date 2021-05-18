@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SingletonClient;
+using System.Threading;
 
 
 namespace CSharp
@@ -23,6 +24,7 @@ namespace CSharp
         private ISource SourceHTMLTag;
         private ISource SourceHTMLTagWithSource;
         private String[] args;
+        private IReleaseMessages PM;
 
 
         public GetStringPropertiesFile()
@@ -30,6 +32,7 @@ namespace CSharp
             UtilAllFalse.Init();
             //Release = Util.Release();
             Translation = UtilAllFalse.Translation();
+            PM = UtilAllFalse.Messages();
             //SourceAbout = Translation.CreateSource("about", "about.message", "Your application description page.", "this is comment.");
             SourceAbout = Translation.CreateSource("about", "about.message");
             //SourceArgument = Translation.CreateSource("DefaultComponent", "message.argument", "Operator '{0}' is not support for property '{1}'.");
@@ -83,6 +86,10 @@ namespace CSharp
             Translation.SetCurrentLocale("zh-Hans");
             //String result1 = Translation.GetString("about", "about.message", "Your application description page.", "this is comment.");
             String result1 = Translation.GetString("about", "about.message");
+            //Thread.Sleep(2000);
+            String result7 = PM.GetLocaleMessages("zh-Hans").GetString("about", "about.title");
+            Console.WriteLine("the cache:{0}",result7);
+
             String result2 = Translation.GetString("DefaultComponent", "message.argument", "Operator '{0}' is not support for property '{1}'.");
             String result3 = Translation.GetString("DefaultComponent", "message.url", "<html><body><p><span style=\"color: rgb(255,0,0);\"><strong>The scheduled maintenance has started.</strong></span></p><p>Important information about maintenance can be found here: <a class=\"external-link\" href=\"http://www.vmware.com\">https://www.vmware.com</a><strong><br/></strong></p></body></html>");
             Console.WriteLine("full param transaltion: {0}", result1);
@@ -390,7 +397,7 @@ namespace CSharp
             Translation.SetCurrentLocale("zh-CN");
             String resultDAFull = Translation.GetString("about", "dddddd");
             Console.WriteLine("DA transaltion: {0}", resultDAFull);
-            Assert.AreEqual(null, resultDAFull);
+            Assert.AreEqual("dddddd", resultDAFull);
             //String resultDAFormat = Translation.Format("zh-CN", null, "+", "moto");
             //Assert.AreEqual(null, resultDAFormat);
 
