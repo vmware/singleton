@@ -48,6 +48,8 @@ var validatorInfoArray = [][]interface{}{
 var enTranslator ut.Translator
 
 func InitValidator() {
+	logger.Log.Debug("Initialize parameter validator")
+
 	validate, ok := binding.Validator.Engine().(*validator.Validate)
 	if !ok {
 		return
