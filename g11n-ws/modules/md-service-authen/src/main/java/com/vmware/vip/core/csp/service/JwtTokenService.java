@@ -76,7 +76,7 @@ public class JwtTokenService {
 	public String createAPPToken(String appId, String username) {
 		Calendar nowTime = Calendar.getInstance();
 		long issueTime = nowTime.getTimeInMillis();
-		nowTime.add(Calendar.HOUR, authConfig.getTokenExpire());
+		nowTime.add(Calendar.MINUTE, authConfig.getTokenExpire());
 		long exprTime = nowTime.getTimeInMillis();
 		
 		StringBuilder sb = new StringBuilder();
