@@ -252,15 +252,7 @@ namespace SingletonClient.Implementation
             if (useLocale == null)
             {
                 ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
-                for (int i = 1; i < singletonLocale.GetCount(); i++)
-                {
-                    string tempLocale = singletonLocale.GetNearLocale(i);
-                    useLocale = (SingletonUseLocale)_localesTable[tempLocale];
-                    if (useLocale != null)
-                    {
-                        break;
-                    }
-                }
+                useLocale = (SingletonUseLocale)singletonLocale.FindItem(_localesTable, 1);
 
                 if (useLocale == null)
                 {
@@ -349,6 +341,7 @@ namespace SingletonClient.Implementation
                         text = GetSourceMessage(accessObject.Component, accessObject.Key);
                     }
                 }
+
                 if (text == null)
                 {
                     text = accessObject.Key;
@@ -379,6 +372,15 @@ namespace SingletonClient.Implementation
             if (_byKeyRelease != null)
             {
                 accessObject.PrepareByKey(_byKeyRelease);
+                if (accessObject.UseLocale.IsSourceLocale)
+                {
+                    string soureMessage = GetSourceMessage(accessObject.Component, accessObject.Key);
+                    if (soureMessage == null)
+                    {
+                        soureMessage = _config.IsProductMode() ? accessObject.Key : "@" + accessObject.Key;
+                    }
+                    return soureMessage;
+                }
                 return GetTranslationMessage(accessObject, null);
             }
 
