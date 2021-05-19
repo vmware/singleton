@@ -6,94 +6,81 @@
 package api
 
 import (
-	"reflect"
+	"fmt"
 	"regexp"
 	"strings"
+
+	"sgtnserver/internal/logger"
 
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/locales/en"
 	ut "github.com/go-playground/universal-translator"
 	"github.com/go-playground/validator/v10"
-	enTranslations "github.com/go-playground/validator/v10/translations/en"
 )
 
+// Regular expression string
 const (
-	numberAndDotString                = `^\d+(\.\d+)*$`
-	letterAndNumberAndValidCharString = `[A-Za-z0-9_\-\.]+`
-	letterArrayString                 = `^(\s*[a-zA-Z]+\s*)(,\s*[a-zA-Z]+\s*)*$`
-
-	localeString = `[A-Za-z0-9_\-\.]+`
+	letterAndNumberAndValidCharString      = `[A-Za-z0-9_\-\.]+`
+	letterAndNumberAndValidCharStringError = "Incorrect %s(only allows letter, number, dot, underline, dash)"
 )
 
+// Regular expression
 var (
-	numberAndDotRegx                = regexp.MustCompile(numberAndDotString)
 	letterAndNumberAndValidCharRegx = regexp.MustCompile(`^` + letterAndNumberAndValidCharString + `$`)
-	letterArrayRegx                 = regexp.MustCompile(letterArrayString)
-
-	versionRegex    = numberAndDotRegx
-	componentRegex  = letterAndNumberAndValidCharRegx
-	localeRegex     = regexp.MustCompile(`^` + localeString + `$`)
-	componentsRegex = regexp.MustCompile(`^` + letterAndNumberAndValidCharString + `(,\s*` + letterAndNumberAndValidCharString + `)*$`)
-	localesRegex    = regexp.MustCompile(`^` + localeString + `(,\s*` + localeString + `)*$`)
-	languageRegex   = localeRegex
-	regionRegex     = localeRegex
-	scopeRegex      = letterArrayRegx
-	keyRegex        = letterAndNumberAndValidCharRegx
+	versionRegex                    = regexp.MustCompile(`^\d+(\.\d+)*$`)
+	componentsRegex                 = regexp.MustCompile(`^` + letterAndNumberAndValidCharString + `(,\s*` + letterAndNumberAndValidCharString + `)*$`)
+	localesRegex                    = componentsRegex
+	patternScopeRegex               = regexp.MustCompile(`^(\s*[a-zA-Z]+\s*)(,\s*[a-zA-Z]+\s*)*$`)
 )
 
-var (
-	uni                 *ut.UniversalTranslator
-	ValidatorTranslator ut.Translator
-)
+var validatorInfoArray = [][]interface{}{
+	{VersionAPIKey, versionRegex, "Incorrect " + VersionAPIKey + "(only allows number, dot. such as 1.0.0)"},
+	{ComponentAPIKey, letterAndNumberAndValidCharRegx, fmt.Sprintf(letterAndNumberAndValidCharStringError, ComponentAPIKey)},
+	{LocaleAPIKey, letterAndNumberAndValidCharRegx, fmt.Sprintf(letterAndNumberAndValidCharStringError, LocaleAPIKey)},
+	{LanguageAPIKey, letterAndNumberAndValidCharRegx, fmt.Sprintf(letterAndNumberAndValidCharStringError, LanguageAPIKey)},
+	{RegionAPIKey, letterAndNumberAndValidCharRegx, fmt.Sprintf(letterAndNumberAndValidCharStringError, RegionAPIKey)},
+	{ScopeAPIKey, patternScopeRegex, "Incorrect " + ScopeAPIKey},
+	{ComponentsAPIKey, componentsRegex, fmt.Sprintf(letterAndNumberAndValidCharStringError, ComponentsAPIKey)},
+	{LocalesAPIKey, localesRegex, fmt.Sprintf(letterAndNumberAndValidCharStringError, LocalesAPIKey)},
+	{KeyAPIKey, letterAndNumberAndValidCharRegx, fmt.Sprintf(letterAndNumberAndValidCharStringError, KeyAPIKey)},
+}
+
+var enTranslator ut.Translator
 
 func InitValidator() {
-	v, ok := binding.Validator.Engine().(*validator.Validate)
+	logger.Log.Debug("Initialize parameter validator")
+
+	validate, ok := binding.Validator.Engine().(*validator.Validate)
 	if !ok {
 		return
 	}
 
-	v.RegisterTagNameFunc(func(fld reflect.StructField) string {
-		tagValue := fld.Tag.Get("uri")
-		if tagValue == "" {
-			tagValue = fld.Tag.Get("form")
-			if tagValue == "" {
-				tagValue = fld.Tag.Get("json")
-			}
-		}
-		name := strings.SplitN(tagValue, ",", 2)[0]
-		if name == "-" {
-			return ""
-		}
-		return name
-	})
+	enLocale := en.New()
+	uTranslator := ut.New(enLocale)
+	enTranslator, _ = uTranslator.GetTranslator(enLocale.Locale())
 
-	enTranslator := en.New()
-	uni = ut.New(enTranslator, enTranslator)
-	ValidatorTranslator, _ = uni.GetTranslator("en")
-	_ = enTranslations.RegisterDefaultTranslations(v, ValidatorTranslator)
-
-	var validatorMap = map[string]*regexp.Regexp{
-		VersionAPIKey:    versionRegex,
-		ComponentAPIKey:  componentRegex,
-		LocaleAPIKey:     localeRegex,
-		LanguageAPIKey:   languageRegex,
-		RegionAPIKey:     regionRegex,
-		ScopeAPIKey:      scopeRegex,
-		ComponentsAPIKey: componentsRegex,
-		LocalesAPIKey:    localesRegex,
-		KeyAPIKey:        keyRegex,
-	}
-	for name, regex := range validatorMap {
-		name, regex := name, regex
-		_ = v.RegisterValidation(name, func(fl validator.FieldLevel) bool {
-			return regex.MatchString(fl.Field().Interface().(string))
-		})
-		_ = v.RegisterTranslation(name, ValidatorTranslator, func(ut ut.Translator) error {
-			return ut.Add(name, "{0} '{1}' is invalid!", true)
-		}, func(ut ut.Translator, fe validator.FieldError) string {
-			t, _ := ut.T(name, fe.Field(), fe.Value().(string))
-			return t
-		})
+	for _, info := range validatorInfoArray {
+		name, r := info[0].(string), info[1].(*regexp.Regexp)
+		err := validate.RegisterValidation(name,
+			func(fl validator.FieldLevel) bool {
+				return r.MatchString(fl.Field().String())
+			})
+		if err == nil {
+			err = validate.RegisterTranslation(name, enTranslator,
+				func(ut ut.Translator) error {
+					return ut.Add(name, info[2].(string), true)
+				},
+				func(ut ut.Translator, fe validator.FieldError) string {
+					t, err := ut.T(fe.Tag())
+					if err != nil {
+						logger.Log.Warn(err.Error())
+					}
+					return t
+				})
+		}
+		if err != nil {
+			logger.Log.Fatal(err.Error())
+		}
 	}
 }
 
@@ -101,7 +88,7 @@ func ExtractErrorMsg(err error) string {
 	if vErrors, ok := err.(validator.ValidationErrors); ok {
 		msgs := make([]string, len(vErrors))
 		for i, e := range vErrors {
-			msgs[i] = e.Translate(ValidatorTranslator)
+			msgs[i] = e.Translate(enTranslator)
 		}
 		return strings.Join(msgs, "; ")
 	}

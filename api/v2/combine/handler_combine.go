@@ -46,14 +46,13 @@ var l3Service translation.Service = translationservice.GetService()
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /combination/translationsAndPattern [get]
 func getCombinedData(c *gin.Context) {
-	params := new(translationWithPatternReq)
-	if err := c.ShouldBindQuery(params); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+	params := translationWithPatternReq{}
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
 	}
 
 	params.Version = c.GetString(api.SgtnVersionKey)
-	doGetCombinedData(c, params)
+	doGetCombinedData(c, &params)
 }
 
 // getLanguageListOfDispLang godoc
@@ -71,9 +70,8 @@ func getCombinedData(c *gin.Context) {
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /locale/supportedLanguageList [get]
 func getLanguageListOfDispLang(c *gin.Context) {
-	params := new(languageListReq)
-	if err := c.ShouldBindQuery(params); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+	params := languageListReq{}
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
 	}
 	version := c.GetString(api.SgtnVersionKey)
@@ -162,8 +160,8 @@ func getLanguageListOfDispLang(c *gin.Context) {
 // @Router /combination/translationsAndPattern [post]
 // @Deprecated
 func getCombinedDataByPost(c *gin.Context) {
-	params := new(translationWithPatternPostReq)
-	if err := c.ShouldBindJSON(params); err != nil {
+	params := translationWithPatternPostReq{}
+	if err := c.ShouldBindJSON(&params); err != nil {
 		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
 		return
 	}

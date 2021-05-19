@@ -138,6 +138,13 @@ func TestRecovery(t *testing.T) {
 			panicErr:   &net.OpError{Err: &os.SyscallError{Err: errors.New("broken pipe error")}},
 			wantedCode: http.StatusOK,
 		},
+		{testName: "DebugMode",
+			ginMode:    gin.DebugMode,
+			URL:        "/TestRecovery_debugMode",
+			logFile:    logFolder + "debugmode.log",
+			panicErr:   errors.New("debugmode error"),
+			wantedCode: http.StatusInternalServerError,
+		},
 	}
 
 	for _, tt := range tests {
@@ -226,7 +233,9 @@ func TestAllFailed(t *testing.T) {
 	} {
 		resp := e.GET(GetBundlesURL, Name, Version).
 			WithQuery("locales", d.locales).WithQuery("components", d.components).Expect()
-		resp.Status(http.StatusNotFound)
+		resp.Status(sgtnerror.StatusNotFound.HTTPCode())
+		bError, _ := GetErrorAndData(resp.Body().Raw())
+		assert.Equal(t, sgtnerror.StatusNotFound.Code(), bError.Code)
 		for _, v := range strings.Split(d.locales, common.ParamSep) {
 			resp.Body().Contains(v)
 		}
@@ -243,7 +252,7 @@ func TestPartialSuccess(t *testing.T) {
 	}{
 		{testName: "Partially Successful", locales: "zh-Hans,en-Invalid", components: "sunglow", wantedBCode: sgtnerror.StatusPartialSuccess.Code(), wantedHTTPCode: sgtnerror.StatusPartialSuccess.HTTPCode()},
 		{testName: "All Successful", locales: "zh-Hans,en", components: "sunglow", wantedBCode: http.StatusOK, wantedHTTPCode: http.StatusOK},
-		{testName: "All Failed", locales: "zh-Hans,en", components: "invalidComponent", wantedBCode: http.StatusNotFound, wantedHTTPCode: http.StatusNotFound},
+		{testName: "All Failed", locales: "zh-Hans,en", components: "invalidComponent", wantedBCode: sgtnerror.StatusNotFound.Code(), wantedHTTPCode: sgtnerror.StatusNotFound.HTTPCode()},
 	} {
 		d := d
 		t.Run(d.testName, func(t *testing.T) {

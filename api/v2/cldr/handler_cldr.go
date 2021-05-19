@@ -11,7 +11,6 @@ import (
 	"sgtnserver/api"
 	"sgtnserver/internal/common"
 	"sgtnserver/internal/logger"
-	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/cldr"
 	"sgtnserver/modules/cldr/cldrservice"
 	"sgtnserver/modules/cldr/coreutil"
@@ -42,13 +41,8 @@ func GetPatternByLocale(c *gin.Context) {
 	locale := struct {
 		Locale string `uri:"locale" binding:"required,locale"`
 	}{}
-	if err := c.ShouldBindUri(&locale); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
-		return
-	}
 	scope := PatternScope{}
-	if err := c.ShouldBindQuery(&scope); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+	if err := api.ExtractParameters(c, &locale, &scope); err != nil {
 		return
 	}
 
@@ -88,9 +82,8 @@ func GetPatternByLocale(c *gin.Context) {
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /formatting/patterns [get]
 func GetPatternDataByLangReg(c *gin.Context) {
-	params := new(PatternByLangRegReq)
-	if err := c.ShouldBindQuery(params); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+	params := PatternByLangRegReq{}
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
 	}
 
@@ -121,9 +114,8 @@ func GetPatternDataByLangReg(c *gin.Context) {
 // @Failure 500 {string} string "Internal Server Error"
 // @Router /locale/regionList [get]
 func GetRegionListOfLanguages(c *gin.Context) {
-	params := new(LocaleRegionsReq)
-	if err := c.ShouldBindQuery(params); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+	params := LocaleRegionsReq{}
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
 	}
 

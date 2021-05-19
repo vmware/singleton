@@ -178,7 +178,7 @@ func ParseLocale(originalLocale string) *Locale {
 		return nil
 	}
 
-	locale := new(Locale)
+	locale := Locale{}
 	var langData cldr.LanguageData
 	for n, p := range parts {
 		switch n {
@@ -200,19 +200,19 @@ func ParseLocale(originalLocale string) *Locale {
 				locale.Scripts = langData.Scripts[i]
 			} else if j := common.ContainsIgnoreCase(langData.Territories, p); j >= 0 {
 				locale.Region = langData.Territories[j]
-				return locale
+				return &locale
 			} else {
 				return nil
 			}
 		case 2:
 			if j := common.ContainsIgnoreCase(langData.Territories, p); j >= 0 {
 				locale.Region = langData.Territories[j]
-				return locale
+				return &locale
 			} else {
 				return nil
 			}
 		}
 	}
 
-	return locale
+	return &locale
 }
