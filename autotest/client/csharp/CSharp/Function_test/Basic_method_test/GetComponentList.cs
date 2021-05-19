@@ -34,7 +34,7 @@ namespace CSharp
 
 
         [TestMethod]
-        [Priority(0)]
+        [Priority(1)]
         [TestCategory("")]
         [Description("Get component list")]
         public void ProductComponentList_bug659()
@@ -50,7 +50,7 @@ namespace CSharp
         }
 
         [TestMethod]
-        [Priority(0)]
+        [Priority(1)]
         [TestCategory("")]
         [Description("Get translation for local no exist and local is't default_locale")]
         public void GetLocaleMessagesOfflinebug856()

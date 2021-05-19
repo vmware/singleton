@@ -49,7 +49,7 @@ namespace CSharp
             //LM_translation_la = PM.GetLocaleMessages("latest");
             //CM_source = LM_translation_la.GetComponentMessages("RESX");
             LM_translation_cn = PM.GetLocaleMessages("zh-Hans");
-            LM_translation_en = PM.GetLocaleMessages("en_US");
+            LM_translation_en = PM.GetLocaleMessages("en-US");
             CM_translation_en = LM_translation_en.GetComponentMessages("RESX");
             CM_translation_cn = LM_translation_cn.GetComponentMessages("RESX");
             //CManager = new SingletonCacheManager();
@@ -147,7 +147,7 @@ namespace CSharp
             Assert.AreEqual("string 4", value);
 
             String locale = CM_translation_en.GetLocale();
-            Assert.AreEqual("en_US", locale);
+            Assert.AreEqual("en-US", locale);
 
             String component = CM_translation_en.GetComponent();
             Assert.AreEqual("RESX", component);
