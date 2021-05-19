@@ -91,18 +91,25 @@ public class FormattingPatternAPI extends BaseAction {
 
         Map<String, Object> patternMap = patternService.getPatternWithLanguageAndRegion(language, region, categories, scopeFilter);
 
-        boolean patternExist = (boolean)patternMap.get(ConstantsKeys.IS_EXIST_PATTERN);
-        Object languageDataExsit = patternMap.get(ConstantsKeys.LANGUAGE_DATA_EXIST); //it's null when plurals/dateFields is not in 'scope', true/false when plurals/dateFields is in 'scope'
-        patternMap.remove(ConstantsKeys.IS_EXIST_PATTERN);
-        if(patternMap.containsKey(ConstantsKeys.LANGUAGE_DATA_EXIST)) {
-            patternMap.remove(ConstantsKeys.LANGUAGE_DATA_EXIST);
-        }
-        if(patternExist && (languageDataExsit == null || (boolean)languageDataExsit)) {
+        int emptyCount = getEmptyCategoryCount(patternMap, categories);
+        if(emptyCount == 0) {
             return super.handleResponse(APIResponseStatus.OK, patternMap);
-        }else if(!patternExist && (languageDataExsit == null || !(boolean)languageDataExsit)) {
+        }else if(emptyCount == categories.size()) {
             return super.handleResponse(APIResponseStatus.INTERNAL_NO_RESOURCE_ERROR.getCode(), ConstantsMsg.NO_PATTERN_FOUND, null);
         }else{
             return super.handleResponse(APIResponseStatus.MULTTRANSLATION_PART_CONTENT.getCode(), ConstantsMsg.PART_PATTERN_FOUND, patternMap);
         }
     }
+
+    private int getEmptyCategoryCount(Map<String, Object> patternMap, List<String> categories){
+        int count =0;
+        Map<String, Object> categoriesMap = (Map<String, Object>) patternMap.get(ConstantsKeys.CATEGORIES);
+        for(String category : categories){
+            Object cateData = categoriesMap.get(category);
+            if(cateData == null)
+                count++;
+        }
+        return count;
+    }
+
 }
