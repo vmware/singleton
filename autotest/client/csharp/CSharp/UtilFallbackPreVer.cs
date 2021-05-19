@@ -12,8 +12,6 @@ namespace CSharp
 {
     class ValuesFallbackPreVer
     {
-        private static string nameSpace =
-            System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace;
         public static string BASE_RES_NAME = "Resources.Resource";
         public static Assembly assembly = typeof(ValuesFallbackPreVer).Assembly;
     }
