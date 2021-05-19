@@ -252,7 +252,6 @@ public class PatternServiceImpl implements IPatternService {
 				Map<String, Object> tempPatternMap = getData(patternMap, scopeFilters, 0);
 				newPatternMap = mergePatternMap(newPatternMap, tempPatternMap, scopeFilters, 0);
 			}
-			patternMap.clear();
 			patternMap.putAll(newPatternMap);
 		}
 	}
