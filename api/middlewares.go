@@ -40,6 +40,12 @@ func GinZap(log *zap.Logger) gin.HandlerFunc {
 		newLog := log.With(zap.Uint32("traceId", rander.Uint32()))
 		c.Set(LoggerKey, newLog)
 
+		defer func() {
+			if ce := newLog.Check(zap.InfoLevel, "End a request"); ce != nil {
+				ce.Write(zap.Int("status", c.Writer.Status()), zap.Duration("latency", time.Since(start)))
+			}
+		}()
+
 		// Print start message
 		if ce := newLog.Check(zap.InfoLevel, "Start a request"); ce != nil {
 			fields := []zapcore.Field{
@@ -60,12 +66,6 @@ func GinZap(log *zap.Logger) gin.HandlerFunc {
 				}
 			}
 		}
-
-		defer func() {
-			if ce := newLog.Check(zap.InfoLevel, "End a request"); ce != nil {
-				ce.Write(zap.Int("status", c.Writer.Status()), zap.Duration("latency", time.Since(start)))
-			}
-		}()
 
 		c.Next()
 	}
