@@ -10,6 +10,7 @@ import com.vmware.vipclient.i18n.exceptions.VIPJavaClientException;
 import com.vmware.vipclient.i18n.messages.api.opt.MessageOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.Opt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
+import com.vmware.vipclient.i18n.util.ConstantsKeys;
 import com.vmware.vipclient.i18n.util.FormatUtils;
 import com.vmware.vipclient.i18n.util.JSONBundleUtil;
 import com.vmware.vipclient.i18n.util.LocaleUtility;
@@ -21,9 +22,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
-import java.nio.file.*;
-import java.util.*;
+import java.util.Map;
 
 public class LocalMessagesOpt implements Opt, MessageOpt {
 
@@ -52,8 +51,13 @@ public class LocalMessagesOpt implements Opt, MessageOpt {
 			Map<String, String> messages = (JSONObject) jsonObject.get("messages");
 			cacheItem.setCacheItem(messages, null, System.currentTimeMillis(), null);
 		} catch (Exception e) {
-			logger.error("Failed to get offline messages for product: " + dto.getProductID() + " " + dto.getVersion() +
-					", component: " + dto.getComponent() + ", locale: " + dto.getLocale() + ", exception: " + e.getMessage());
+			String msg = "Failed to get offline messages for product: " + dto.getProductID() + " " + dto.getVersion() +
+					", component: " + dto.getComponent() + ", locale: " + dto.getLocale() + ", exception: " + e.getMessage();
+			if (!ConstantsKeys.SOURCE.equals(dto.getLocale())) {
+				logger.error(msg);
+			}else{
+				logger.debug(msg);
+			}
 		}
 		if (is != null) {
 			try {
