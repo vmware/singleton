@@ -196,19 +196,23 @@ func includeNodes(data map[string]interface{}, filters string) map[string]interf
 		if filter == "" {
 			continue
 		}
-		var v interface{}
+
 		filterParts := strings.Split(filter, scopeFilterSep)
-		objxPath := strings.Join(filterParts, objxMapPathSep)
-		if partData := oldData[filterParts[0]]; partData != nil {
-			if anyValue, ok := partData.(jsoniter.Any); ok {
-				if targetAnyValue := anyValue.Get(common.ToGenericArray(filterParts[1:])...); targetAnyValue.LastError() == nil {
-					v = targetAnyValue
-				}
-			} else {
-				logger.Log.Error("Pattern data type is not jsoniter.Any!")
+		if catgData := oldData[filterParts[0]]; catgData != nil {
+			if anyValue, ok := catgData.(jsoniter.Any); ok && len(filterParts) > 1 {
+				oldData[filterParts[0]] = anyValue.GetInterface()
 			}
 		}
-		newData.Set(objxPath, v)
+
+		objxPath := strings.Join(filterParts, objxMapPathSep)
+		newData.Set(objxPath, oldData.Get(objxPath).Data())
 	}
+
+	for k, v := range oldData {
+		if _, ok := newData[k]; !ok {
+			newData[k] = v
+		}
+	}
+
 	return newData
 }
