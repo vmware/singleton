@@ -20,6 +20,7 @@
     <TestProjectType>UnitTest</TestProjectType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -92,11 +93,15 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml" />
-    <Reference Include="YamlDotNet, Version=6.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e, processorArchitecture=MSIL">
-      <HintPath>..\packages\YamlDotNet.6.0.0\lib\net45\YamlDotNet.dll</HintPath>
+    <Reference Include="YamlDotNet, Version=8.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e, processorArchitecture=MSIL">
+      <HintPath>..\packages\YamlDotNet.8.0.0\lib\net45\YamlDotNet.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Function_test\Basic_method_test\GetComponentListofflinestartup.cs" />
+    <Compile Include="Function_test\Basic_method_test\GetComponentListonlinewithoffline.cs" />
+    <Compile Include="Function_test\Basic_method_test\GetComponentListoffline.cs" />
+    <Compile Include="Function_test\Basic_method_test\GetComponentListonline.cs" />
     <Compile Include="Function_test\Basic_method_test\GetComponentList.cs" />
     <Compile Include="Function_test\Basic_method_test\GetSupportLanguageList.cs" />
     <Compile Include="Function_test\Basic_method_test\InitialConfigTest.cs" />
@@ -106,15 +111,20 @@
     <Compile Include="Function_test\Cache_management\GetComponentFromCache.cs" />
     <Compile Include="Function_test\Cache_management\GetComponentListFromCache.cs" />
     <Compile Include="Function_test\Cache_management\GetStringFromCache.cs" />
+    <Compile Include="Function_test\Cache_management\GettranslationwithofflineExpiredTime.cs" />
+    <Compile Include="Function_test\Cache_management\Gettranslationwittofflineexpired.cs" />
     <Compile Include="Function_test\Cache_management\GettranslationwithExpiredTime.cs" />
-    <Compile Include="Function_test\Collect_source\SourceCollectionWithList.cs" />
-    <Compile Include="Function_test\Collect_source\SoureCollectionTest.cs" />
     <Compile Include="Function_test\Fall_back_test\TranslationFallbackToPreVer.cs" />
     <Compile Include="Function_test\I18n_tanslation\GetStringPropertiesFile.cs" />
     <Compile Include="Function_test\I18n_tanslation\GetStringResxFile.cs" />
-    <Compile Include="Function_test\Machine_translation\GetStringMT.cs" />
-    <Compile Include="Function_test\Pseudo_translation\GetStringMT.cs" />
-    <Compile Include="Function_test\Pseudo_translation\GetStringPseudo.cs" />
+    <Compile Include="Function_test\Test_yaml_configuration\NewFolder1\GetStringofflinedisk.cs" />
+    <Compile Include="Function_test\Test_yaml_configuration\NewFolder2\GetStringoflineexternal.cs" />
+    <Compile Include="Function_test\Test_yaml_configuration\NewFolder3\GetStringofflineinternalresx.cs" />
+    <Compile Include="Function_test\Test_yaml_configuration\NewFolder4\GetStringofflineinternalnative.cs" />
+    <Compile Include="Function_test\Test_yaml_configuration\NewFolder5\GetStringofflineinternalproperties.cs" />
+    <Compile Include="Function_test\Test_yaml_configuration\NewFolder6\GetStringonlineonly.cs" />
+    <Compile Include="Function_test\Test_yaml_configuration\NewFolder7\GetStringonlineandofflineinternal.cs" />
+    <Compile Include="Function_test\Test_yaml_configuration\NewFolder8\GetStringonlinewithexternal.cs" />
     <Compile Include="Resources\Resource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -122,6 +132,66 @@
     </Compile>
     <Compile Include="Resources\source\ResourceNewResx.Designer.cs">
       <DependentUpon>ResourceNewResx.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\source\RESX.zh-Hans1.Designer.cs">
+      <DependentUpon>RESX.zh-Hans.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\source\RESX_zh-Hans1.Designer.cs">
+      <DependentUpon>RESX_zh-Hans.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\source\RESX_ko.Designer.cs">
+      <DependentUpon>RESX_ko.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\source\RESX.ru.Designer.cs">
+      <DependentUpon>RESX.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\source\RESX.ja.Designer.cs">
+      <DependentUpon>RESX.ja.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\source\RESX.my.Designer.cs">
+      <DependentUpon>RESX.my.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\source\RESX.de.Designer.cs">
+      <DependentUpon>RESX.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\source\RESX_fr.Designer.cs">
+      <DependentUpon>RESX_fr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\source\RESX_de.Designer.cs">
+      <DependentUpon>RESX_de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\source\RESX.Designer.cs">
+      <DependentUpon>RESX.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\source\ResourceResx_de.Designer.cs">
+      <DependentUpon>ResourceResx_de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\source\ResourceResx.de.Designer.cs">
+      <DependentUpon>ResourceResx.de.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -136,7 +206,15 @@
     <Compile Include="UtilForCacheExpired.cs" />
     <Compile Include="UtilForCache.cs" />
     <Compile Include="UtilCollectTrue.cs" />
-    <Compile Include="UtilMTTrue.cs" />
+    <Compile Include="Utiloffline_disk_cache.cs" />
+    <Compile Include="Utiloffline_Internal_Resx.cs" />
+    <Compile Include="Utiloffline_internal_properties.cs" />
+    <Compile Include="Utiloffline_internal_native.cs" />
+    <Compile Include="Utilonline_only.cs" />
+    <Compile Include="Utilonline_with_external.cs" />
+    <Compile Include="Utilonline_with_internal.cs" />
+    <Compile Include="Utiloffline_external.cs" />
+    <Compile Include="Utiloffline_disk.cs" />
     <Compile Include="UtilPseudoTrue.cs" />
     <Compile Include="UtilAllTrue.cs" />
     <Compile Include="UtilAllFalse.cs" />
@@ -151,19 +229,34 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="Resources\SingletonForcacheExpired.yml" />
+    <None Include="Resources\sgtn_offline_disk_cache.yml" />
+    <None Include="Resources\sgtn_offline_disk.yml" />
+    <None Include="Resources\sgtn_offline_external.yml" />
+    <None Include="Resources\sgtn_offline_internal_properties.yml" />
+    <None Include="Resources\sgtn_offline_Internal_Resx.yml" />
+    <None Include="Resources\sgtn_offline_internal_native.yml" />
+    <None Include="Resources\sgtn_online_only.yml" />
+    <None Include="Resources\sgtn_online_with_external.yml" />
+    <None Include="Resources\sgtn_online_with_internal.yml" />
+    <None Include="Resources\SingletonForonlinecacheExpired.yml" />
     <None Include="Resources\SingletonFallbackPreVer.yml" />
     <None Include="Resources\SingletonForCache.yml" />
     <None Include="Resources\SingletonCollectTrue.yml" />
-    <None Include="Resources\SingletonMTTrue.yml" />
     <None Include="Resources\SingletonAllTrue.yml" />
     <None Include="Resources\SingletonPseudoTrue.yml" />
     <None Include="Resources\SingletonAllFalse.yml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\source\about_fr.properties" />
+    <None Include="Resources\source\about_zh-Hant.properties" />
+    <None Include="Resources\source\about_zh-Hans.properties" />
+    <None Include="Resources\source\about_my.properties" />
+    <None Include="Resources\source\about_ja.properties" />
+    <None Include="Resources\source\about_de.properties" />
     <None Include="Resources\source\about.properties" />
+    <None Include="Resources\source\contact_zh-Hant.properties" />
+    <None Include="Resources\source\contact_fr.properties" />
     <None Include="Resources\source\contact.properties" />
-    <None Include="Resources\source\DefaultComponent.properties" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -172,10 +265,59 @@
     <EmbeddedResource Include="Resources\Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\source\ResourceNewResx.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceNewResx.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\source\RESX.zh-Hans.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RESX.zh-Hans1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\source\RESX_zh-Hans.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RESX_zh-Hans1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\source\RESX_ko.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RESX_ko.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\source\RESX.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RESX.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\source\RESX.ja.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RESX.ja.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\source\RESX.my.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RESX.my.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\source\RESX.de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RESX.de.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\source\RESX_fr.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RESX_fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\source\RESX_de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RESX_de.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\source\RESX.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RESX.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\source\ResourceResx_de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceResx_de.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\source\ResourceResx.de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceResx.de.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\source\ResourceResx.resx">
       <Generator>ResXFileCodeGenerator</Generator>

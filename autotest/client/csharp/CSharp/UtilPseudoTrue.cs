@@ -12,9 +12,7 @@ namespace CSharp
 {
     class ValuesPseudoTrue
     {
-        private static string nameSpace =
-            System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace;
-        public static string BASE_RES_NAME = nameSpace + ".Resources.Resource";
+        public static string BASE_RES_NAME = "Resources.Resource";
         public static Assembly assembly = typeof(ValuesPseudoTrue).Assembly;
     }
 
@@ -25,9 +23,9 @@ namespace CSharp
 
         public static void Init()
         {
-            IConfig cfg = I18n.LoadConfig(
+            IConfig cfg = I18N.LoadConfig(
                 ValuesPseudoTrue.BASE_RES_NAME, ValuesPseudoTrue.assembly, "SingletonPseudoTrue");
-            rel = I18n.GetRelease(cfg);
+            rel = I18N.GetRelease(cfg);
         }
 
 
@@ -38,7 +36,7 @@ namespace CSharp
 
         public static IExtension Extension()
         {
-            return I18n.GetExtension();
+            return I18N.GetExtension();
         }
 
         public static IRelease Release()

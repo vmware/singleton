@@ -42,15 +42,65 @@ namespace CSharp
 
         }
 
-       // [TestMethod]
-       // [Priority(0)]
-       // [TestCategory("")]
-       // [Description("Source with required files: component and key")]
-       //public void Test_Supportlocal()
-       // {
-       //     string xxx=Translation.GetLocaleSupported("231231231");
-       //     Console.WriteLine(xxx);
-       // }
+        [TestMethod]
+        [Priority(0)]
+        [TestCategory("")]
+        [Description("get supported locale")]
+        public void Test_Supportlocal()
+        {
+            Translation.SetCurrentLocale("zh-hant-TW");
+            string x1 = Translation.GetCurrentLocale();
+            Console.WriteLine(x1);
+
+            //string xx1 = Translation.GetLocaleSupported("zh-hant-TW");
+            //Console.WriteLine(xx1);
+
+            Translation.SetCurrentLocale("fr-CA");
+            string x2 = Translation.GetCurrentLocale();
+            Console.WriteLine(x2);
+
+            //string xx2 = Translation.GetLocaleSupported("fr-CA");
+            //Console.WriteLine(xx2);
+
+            Translation.SetCurrentLocale("da");
+            string x3 = Translation.GetCurrentLocale();
+            Console.WriteLine(x3);
+
+            //string xx3 = Translation.GetLocaleSupported("da");
+            //Console.WriteLine(xx3);
+
+            Translation.SetCurrentLocale("");
+            string x4 = Translation.GetCurrentLocale();
+            Console.WriteLine(x4);
+
+            //string xx4 = Translation.GetLocaleSupported("");
+            //Console.WriteLine(xx4);
+
+            Translation.SetCurrentLocale("null");
+            string x5 = Translation.GetCurrentLocale();
+            Console.WriteLine(x5);
+
+            //string xx5 = Translation.GetLocaleSupported("null");
+            //Console.WriteLine(xx5);
+
+            Translation.SetCurrentLocale("zh-XX-TW");
+            string x6 = Translation.GetCurrentLocale();
+            Console.WriteLine(x6);
+            //string xx6 = Translation.GetLocaleSupported("zh-XX-TW");
+            //Console.WriteLine(xx6);
+
+            Translation.SetCurrentLocale("KK");
+            string x7 = Translation.GetCurrentLocale();
+            Console.WriteLine(x7);
+            //string xx7 = Translation.GetLocaleSupported("KK");
+            //Console.WriteLine(xx7);
+
+            Translation.SetCurrentLocale("ppp-x");
+            string x8 = Translation.GetCurrentLocale();
+            Console.WriteLine(x8);
+            //string xx8 = Translation.GetLocaleSupported("ppp-x");
+            //Console.WriteLine(xx8);
+        }
 
         [TestMethod]
         [Priority(1)]

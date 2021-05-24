@@ -24,9 +24,9 @@
 //            UtilAllFalse.Init();
 //            //config = Util.Config();
 //            //release = Util.Release();
-//            configLoad = I18n.LoadConfig(
+//            configLoad = I18N.LoadConfig(
 //                ValuesAllFalse.BASE_RES_NAME, ValuesAllFalse.assembly, "SingletonAllFalse");
-//            configGet = I18n.GetConfig("CSharpClient", "1.0.0");
+//            configGet = I18N.GetConfig("CSharpClient", "1.0.0");
 //            configRel = UtilAllFalse.Config();
         
 //        }

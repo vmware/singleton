@@ -87,5 +87,14 @@ namespace CSharp.Resources.source {
                         "bnet-selected-error", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 123124.
+        /// </summary>
+        internal static string String123 {
+            get {
+                return ResourceManager.GetString("String123", resourceCulture);
+            }
+        }
     }
 }

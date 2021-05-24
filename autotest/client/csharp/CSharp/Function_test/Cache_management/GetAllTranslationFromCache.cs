@@ -86,7 +86,7 @@ namespace CSharp
         [Description("Get locale's translation not in cache")]
         public void GetLocaleTranslationNotInCache()
         {
-
+            
             String translationNotInCache = PM.GetLocaleMessages("fr").GetString("about", "about.message");
             Console.WriteLine("FR translation for about.message : {0} ", translationNotInCache);
             Assert.AreEqual(null, translationNotInCache);

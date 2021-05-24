@@ -45,80 +45,86 @@ namespace CSharp
             //IE_source = UtilAllFalse.Extension();
             // EM = IE_source.RegisterCacheManager();
             //IC_source =
-            LM_translation_la = PM.GetLocaleMessages("latest");
-            CM_source = LM_translation_la.GetComponentMessages("RESX");
-            LM_translation_en = PM.GetLocaleMessages("en");
+            /////The client doesn't know the latest language
+            //LM_translation_la = PM.GetLocaleMessages("latest");
+            //CM_source = LM_translation_la.GetComponentMessages("RESX");
             LM_translation_cn = PM.GetLocaleMessages("zh-Hans");
+            LM_translation_en = PM.GetLocaleMessages("en-US");
             CM_translation_en = LM_translation_en.GetComponentMessages("RESX");
             CM_translation_cn = LM_translation_cn.GetComponentMessages("RESX");
             //CManager = new SingletonCacheManager();
-            
-        }
-
-
-        [TestMethod]
-        [Priority(0)]
-        [TestCategory("")]
-        [Description("Add one string to cache from GetAllSource(), will get the latest file content")]
-        public void ProductString_GetAllSource_addOneString()
-        {
-            int count = CM_source.GetCount();
-            Console.WriteLine(count);
-
-            CM_source.SetString("RESX.1", "string 1");
-            int count1 = CM_source.GetCount();
-            Console.WriteLine(count1);
-            Assert.AreEqual(count + 1, count1);
-
-            //Thread.Sleep(70000);
-
-            String value = CM_source.GetString("RESX.1");
-            Console.WriteLine(value);
-            Assert.AreEqual("string 1", value);
-
-            String locale = CM_source.GetLocale();
-            Assert.AreEqual("latest", locale);
-
-            String component = CM_source.GetComponent();
-            Assert.AreEqual("RESX", component);
-
-            ICollection keys = CM_source.GetKeys();
-            Assert.AreEqual(count1, keys.Count);
-
 
         }
 
-        [TestMethod]
-        [Priority(1)]
-        [TestCategory("")]
-        [Description("Add multi string to cache from GetAllSource(), will get the latest file content")]
-        public void ProductString_GetAllSource_addMultiString()
-        {
-            int count = CM_source.GetCount();
-            Console.WriteLine(count);
+        //////The client doesn't know the latest language
+        //[TestMethod]
+        //[Priority(0)]
+        //[TestCategory("")]
+        //[Description("Add one string to cache from GetAllSource(), will get the latest file content")]
+        //public void ProductString_GetAllSource_addOneString()
+        //{
+        //    LM_translation_la = PM.GetLocaleMessages("latest");
+        //    CM_source = LM_translation_la.GetComponentMessages("RESX");
+        //    int count = CM_source.GetCount();
+        //    Console.WriteLine(count);
 
-            CM_source.SetString("RESX.2", "string 2");
-            CM_source.SetString("RESX.3", "string 3");
-            int count2 = CM_source.GetCount();
-            Console.WriteLine(count2);
-            Assert.AreEqual(count + 2, count2);
+        //    CM_source.SetString("RESX.1", "string 1");
+        //    int count1 = CM_source.GetCount();
+        //    Console.WriteLine(count1);
+        //    Assert.AreEqual(count + 1, count1);
+
+        //    //Thread.Sleep(70000);
+
+        //    String value = CM_source.GetString("RESX.1");
+        //    Console.WriteLine(value);
+        //    Assert.AreEqual("string 1", value);
+
+        //    String locale = CM_source.GetLocale();
+        //    Assert.AreEqual("latest", locale);
+
+        //    String component = CM_source.GetComponent();
+        //    Assert.AreEqual("RESX", component);
+
+        //    ICollection keys = CM_source.GetKeys();
+        //    Assert.AreEqual(count1, keys.Count);
 
 
-            String value = CM_source.GetString("RESX.2");
-            Console.WriteLine(value);
-            Assert.AreEqual("string 2", value);
+        //}
 
-            String locale = CM_source.GetLocale();
-            Assert.AreEqual("latest", locale);
+        //////The client doesn't know the latest language
+        //[TestMethod]
+        //[Priority(1)]
+        //[TestCategory("")]
+        //[Description("Add multi string to cache from GetAllSource(), will get the latest file content")]
+        //public void ProductString_GetAllSource_addMultiString()
+        //{
+        //    LM_translation_la = PM.GetLocaleMessages("xxxxxxxxxxx");
+        //    CM_source = LM_translation_la.GetComponentMessages("RESX");
+        //    int count = CM_source.GetCount();
+        //    Console.WriteLine(count);
 
-            String component = CM_source.GetComponent();
-            Assert.AreEqual("RESX", component);
+        //    CM_source.SetString("RESX.2", "string 2");
+        //    CM_source.SetString("RESX.3", "string 3");
+        //    int count2 = CM_source.GetCount();
+        //    Console.WriteLine(count2);
+        //    Assert.AreEqual(count + 2, count2);
 
-            ICollection keys = CM_source.GetKeys();
-            Assert.AreEqual(count2, keys.Count);
+
+        //    String value = CM_source.GetString("RESX.2");
+        //    Console.WriteLine(value);
+        //    Assert.AreEqual("string 2", value);
+
+        //    String locale = CM_source.GetLocale();
+        //    Assert.AreEqual("latest", locale);
+
+        //    String component = CM_source.GetComponent();
+        //    Assert.AreEqual("RESX", component);
+
+        //    ICollection keys = CM_source.GetKeys();
+        //    Assert.AreEqual(count2, keys.Count);
 
 
-        }
+        //}
 
         [TestMethod]
         [Priority(0)]
@@ -126,6 +132,7 @@ namespace CSharp
         [Description("Add one string to cache from GetLocaleMessages(), will get the language_en file content")]
         public void ProductString_GetLocaleMessagesEN_addOneString()
         {
+
             int count = CM_translation_en.GetCount();
             Console.WriteLine(count);
 
@@ -140,13 +147,10 @@ namespace CSharp
             Assert.AreEqual("string 4", value);
 
             String locale = CM_translation_en.GetLocale();
-            Assert.AreEqual("en", locale);
+            Assert.AreEqual("en-US", locale);
 
             String component = CM_translation_en.GetComponent();
             Assert.AreEqual("RESX", component);
-
-            ICollection keys = CM_translation_en.GetKeys();
-            Assert.AreEqual(count1, keys.Count);
 
 
         }
@@ -251,9 +255,9 @@ namespace CSharp
         }
 
 
-        
 
-        
+
+
 
 
     }

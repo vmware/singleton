@@ -1,0 +1,31 @@
+﻿
+product: CSharpClient
+l10n_version: 3.0.9
+
+default_resource_format: properties, internal
+offline_resources_base_url: Resources.Resource
+
+#prod_mode: true
+default_locale: de-DE
+source_locale: en
+
+cache_expire: 20
+try_delay: 2
+component_template:
+    offline_resources_path:
+      - $COMPONENT_$LOCALE
+
+    locales:
+      - language_tag: en-US
+        offline_resources_path:
+          - $COMPONENT
+      - language_tag: de-DE
+      - language_tag: ja-JP
+      - language_tag: fr-FR
+      - language_tag: zh-Hans
+      - language_tag: zh-Hant
+
+components: 
+  - name: about
+  - name: contact
+

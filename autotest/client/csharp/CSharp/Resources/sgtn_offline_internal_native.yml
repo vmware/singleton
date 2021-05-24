@@ -1,0 +1,28 @@
+﻿
+product: CSharpClient
+l10n_version: 9.0.0
+default_resource_format: resx, internal
+offline_resources_base_url: Resources
+
+#prod_mode: true
+default_locale: de
+#load_on_startup: true
+source_locale: en
+
+component_template:
+    locales_refer: locales
+    offline_resources_path:
+        - source.$COMPONENT
+
+locales:
+  - language_tag: en
+  - language_tag: de-DE
+ # - language_tag: zh-Hans
+  - language_tag: my-MY
+  - language_tag: ja-JP
+  - language_tag: zh-Hans
+
+components: 
+  - name: RESX
+  - name: ResourceResx
+

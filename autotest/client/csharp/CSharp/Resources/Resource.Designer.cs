@@ -10,8 +10,8 @@
 
 namespace CSharp.Resources {
     using System;
-
-
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -31,7 +31,7 @@ namespace CSharp.Resources {
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resource() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -45,7 +45,7 @@ namespace CSharp.Resources {
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
@@ -59,7 +59,7 @@ namespace CSharp.Resources {
                 resourceCulture = value;
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -69,7 +69,67 @@ namespace CSharp.Resources {
                 return ((byte[])(obj));
             }
         }
-
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] about_de {
+            get {
+                object obj = ResourceManager.GetObject("about_de", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] about_fr {
+            get {
+                object obj = ResourceManager.GetObject("about_fr", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] about_ja {
+            get {
+                object obj = ResourceManager.GetObject("about_ja", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] about_my {
+            get {
+                object obj = ResourceManager.GetObject("about_my", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] about_zh_Hans {
+            get {
+                object obj = ResourceManager.GetObject("about_zh-Hans", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] about_zh_Hant {
+            get {
+                object obj = ResourceManager.GetObject("about_zh-Hant", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -79,17 +139,442 @@ namespace CSharp.Resources {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] DefaultComponent {
+        internal static byte[] contact_fr {
             get {
-                object obj = ResourceManager.GetObject("DefaultComponent", resourceCulture);
+                object obj = ResourceManager.GetObject("contact_fr", resourceCulture);
                 return ((byte[])(obj));
             }
         }
-
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] contact_zh_Hant {
+            get {
+                object obj = ResourceManager.GetObject("contact_zh-Hant", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;root&gt;
+        ///  &lt;!-- 
+        ///    Microsoft ResX Schema 
+        ///    
+        ///    Version 2.0
+        ///    
+        ///    The primary goals of this format is to allow a simple XML format 
+        ///    that is mostly human readable. The generation and parsing of the 
+        ///    various data types are done through the TypeConverter classes 
+        ///    associated with the data types.
+        ///    
+        ///    Example:
+        ///    
+        ///    ... ado.net/XML headers &amp; schema ...
+        ///    &lt;resheader name=&quot;resmimetype&quot;&gt;text/microsoft-resx&lt;/resheader&gt;
+        ///    &lt;resheader n [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ResourceNewResx {
+            get {
+                return ResourceManager.GetString("ResourceNewResx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;root&gt;
+        ///  &lt;!-- 
+        ///    Microsoft ResX Schema 
+        ///    
+        ///    Version 2.0
+        ///    
+        ///    The primary goals of this format is to allow a simple XML format 
+        ///    that is mostly human readable. The generation and parsing of the 
+        ///    various data types are done through the TypeConverter classes 
+        ///    associated with the data types.
+        ///    
+        ///    Example:
+        ///    
+        ///    ... ado.net/XML headers &amp; schema ...
+        ///    &lt;resheader name=&quot;resmimetype&quot;&gt;text/microsoft-resx&lt;/resheader&gt;
+        ///    &lt;resheader n [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ResourceResx {
+            get {
+                return ResourceManager.GetString("ResourceResx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;root&gt;
+        ///  &lt;!-- 
+        ///    Microsoft ResX Schema 
+        ///    
+        ///    Version 2.0
+        ///    
+        ///    The primary goals of this format is to allow a simple XML format 
+        ///    that is mostly human readable. The generation and parsing of the 
+        ///    various data types are done through the TypeConverter classes 
+        ///    associated with the data types.
+        ///    
+        ///    Example:
+        ///    
+        ///    ... ado.net/XML headers &amp; schema ...
+        ///    &lt;resheader name=&quot;resmimetype&quot;&gt;text/microsoft-resx&lt;/resheader&gt;
+        ///    &lt;resheader n [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ResourceResx_de {
+            get {
+                return ResourceManager.GetString("ResourceResx_de", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;root&gt;
+        ///  &lt;!-- 
+        ///    Microsoft ResX Schema 
+        ///    
+        ///    Version 2.0
+        ///    
+        ///    The primary goals of this format is to allow a simple XML format 
+        ///    that is mostly human readable. The generation and parsing of the 
+        ///    various data types are done through the TypeConverter classes 
+        ///    associated with the data types.
+        ///    
+        ///    Example:
+        ///    
+        ///    ... ado.net/XML headers &amp; schema ...
+        ///    &lt;resheader name=&quot;resmimetype&quot;&gt;text/microsoft-resx&lt;/resheader&gt;
+        ///    &lt;resheader n [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string RESX {
+            get {
+                return ResourceManager.GetString("RESX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;root&gt;
+        ///  &lt;!-- 
+        ///    Microsoft ResX Schema 
+        ///    
+        ///    Version 2.0
+        ///    
+        ///    The primary goals of this format is to allow a simple XML format 
+        ///    that is mostly human readable. The generation and parsing of the 
+        ///    various data types are done through the TypeConverter classes 
+        ///    associated with the data types.
+        ///    
+        ///    Example:
+        ///    
+        ///    ... ado.net/XML headers &amp; schema ...
+        ///    &lt;resheader name=&quot;resmimetype&quot;&gt;text/microsoft-resx&lt;/resheader&gt;
+        ///    &lt;resheader n [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string RESX_de {
+            get {
+                return ResourceManager.GetString("RESX_de", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;root&gt;
+        ///  &lt;!-- 
+        ///    Microsoft ResX Schema 
+        ///    
+        ///    Version 2.0
+        ///    
+        ///    The primary goals of this format is to allow a simple XML format 
+        ///    that is mostly human readable. The generation and parsing of the 
+        ///    various data types are done through the TypeConverter classes 
+        ///    associated with the data types.
+        ///    
+        ///    Example:
+        ///    
+        ///    ... ado.net/XML headers &amp; schema ...
+        ///    &lt;resheader name=&quot;resmimetype&quot;&gt;text/microsoft-resx&lt;/resheader&gt;
+        ///    &lt;resheader n [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string RESX_de1 {
+            get {
+                return ResourceManager.GetString("RESX_de1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;root&gt;
+        ///  &lt;!-- 
+        ///    Microsoft ResX Schema 
+        ///    
+        ///    Version 2.0
+        ///    
+        ///    The primary goals of this format is to allow a simple XML format 
+        ///    that is mostly human readable. The generation and parsing of the 
+        ///    various data types are done through the TypeConverter classes 
+        ///    associated with the data types.
+        ///    
+        ///    Example:
+        ///    
+        ///    ... ado.net/XML headers &amp; schema ...
+        ///    &lt;resheader name=&quot;resmimetype&quot;&gt;text/microsoft-resx&lt;/resheader&gt;
+        ///    &lt;resheader n [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string RESX_fr {
+            get {
+                return ResourceManager.GetString("RESX_fr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;root&gt;
+        ///  &lt;!-- 
+        ///    Microsoft ResX Schema 
+        ///    
+        ///    Version 2.0
+        ///    
+        ///    The primary goals of this format is to allow a simple XML format 
+        ///    that is mostly human readable. The generation and parsing of the 
+        ///    various data types are done through the TypeConverter classes 
+        ///    associated with the data types.
+        ///    
+        ///    Example:
+        ///    
+        ///    ... ado.net/XML headers &amp; schema ...
+        ///    &lt;resheader name=&quot;resmimetype&quot;&gt;text/microsoft-resx&lt;/resheader&gt;
+        ///    &lt;resheader n [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string RESX_ja {
+            get {
+                return ResourceManager.GetString("RESX_ja", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;root&gt;
+        ///  &lt;!-- 
+        ///    Microsoft ResX Schema 
+        ///    
+        ///    Version 2.0
+        ///    
+        ///    The primary goals of this format is to allow a simple XML format 
+        ///    that is mostly human readable. The generation and parsing of the 
+        ///    various data types are done through the TypeConverter classes 
+        ///    associated with the data types.
+        ///    
+        ///    Example:
+        ///    
+        ///    ... ado.net/XML headers &amp; schema ...
+        ///    &lt;resheader name=&quot;resmimetype&quot;&gt;text/microsoft-resx&lt;/resheader&gt;
+        ///    &lt;resheader n [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string RESX_ko {
+            get {
+                return ResourceManager.GetString("RESX_ko", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;root&gt;
+        ///  &lt;!-- 
+        ///    Microsoft ResX Schema 
+        ///    
+        ///    Version 2.0
+        ///    
+        ///    The primary goals of this format is to allow a simple XML format 
+        ///    that is mostly human readable. The generation and parsing of the 
+        ///    various data types are done through the TypeConverter classes 
+        ///    associated with the data types.
+        ///    
+        ///    Example:
+        ///    
+        ///    ... ado.net/XML headers &amp; schema ...
+        ///    &lt;resheader name=&quot;resmimetype&quot;&gt;text/microsoft-resx&lt;/resheader&gt;
+        ///    &lt;resheader n [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string RESX_my {
+            get {
+                return ResourceManager.GetString("RESX_my", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;root&gt;
+        ///  &lt;!-- 
+        ///    Microsoft ResX Schema 
+        ///    
+        ///    Version 2.0
+        ///    
+        ///    The primary goals of this format is to allow a simple XML format 
+        ///    that is mostly human readable. The generation and parsing of the 
+        ///    various data types are done through the TypeConverter classes 
+        ///    associated with the data types.
+        ///    
+        ///    Example:
+        ///    
+        ///    ... ado.net/XML headers &amp; schema ...
+        ///    &lt;resheader name=&quot;resmimetype&quot;&gt;text/microsoft-resx&lt;/resheader&gt;
+        ///    &lt;resheader n [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string RESX_ru {
+            get {
+                return ResourceManager.GetString("RESX_ru", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;root&gt;
+        ///  &lt;!-- 
+        ///    Microsoft ResX Schema 
+        ///    
+        ///    Version 2.0
+        ///    
+        ///    The primary goals of this format is to allow a simple XML format 
+        ///    that is mostly human readable. The generation and parsing of the 
+        ///    various data types are done through the TypeConverter classes 
+        ///    associated with the data types.
+        ///    
+        ///    Example:
+        ///    
+        ///    ... ado.net/XML headers &amp; schema ...
+        ///    &lt;resheader name=&quot;resmimetype&quot;&gt;text/microsoft-resx&lt;/resheader&gt;
+        ///    &lt;resheader n [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string RESX_zh_hans {
+            get {
+                return ResourceManager.GetString("RESX_zh_hans", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;root&gt;
+        ///  &lt;!-- 
+        ///    Microsoft ResX Schema 
+        ///    
+        ///    Version 2.0
+        ///    
+        ///    The primary goals of this format is to allow a simple XML format 
+        ///    that is mostly human readable. The generation and parsing of the 
+        ///    various data types are done through the TypeConverter classes 
+        ///    associated with the data types.
+        ///    
+        ///    Example:
+        ///    
+        ///    ... ado.net/XML headers &amp; schema ...
+        ///    &lt;resheader name=&quot;resmimetype&quot;&gt;text/microsoft-resx&lt;/resheader&gt;
+        ///    &lt;resheader n [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string RESX_zh_hans1 {
+            get {
+                return ResourceManager.GetString("RESX_zh_hans1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_offline_disk {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_offline_disk", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_offline_disk_cache {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_offline_disk_cache", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_offline_external {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_offline_external", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_offline_internal_native {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_offline_internal_native", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_offline_internal_properties {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_offline_internal_properties", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_offline_Internal_Resx {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_offline_Internal_Resx", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_online_only {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_online_only", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_online_with_external {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_online_with_external", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_online_with_internal {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_online_with_internal", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -99,7 +584,7 @@ namespace CSharp.Resources {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -109,7 +594,7 @@ namespace CSharp.Resources {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -119,7 +604,7 @@ namespace CSharp.Resources {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -129,7 +614,7 @@ namespace CSharp.Resources {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -139,27 +624,17 @@ namespace CSharp.Resources {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] SingletonForcacheExpired {
+        internal static byte[] SingletonForonlinecacheExpired {
             get {
-                object obj = ResourceManager.GetObject("SingletonForcacheExpired", resourceCulture);
+                object obj = ResourceManager.GetObject("SingletonForonlinecacheExpired", resourceCulture);
                 return ((byte[])(obj));
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] SingletonMTTrue {
-            get {
-                object obj = ResourceManager.GetObject("SingletonMTTrue", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>

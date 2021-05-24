@@ -12,9 +12,7 @@ namespace CSharp
 {
     class ValuesForCacheExpired
     {
-        private static string nameSpace =
-            System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace;
-        public static string BASE_RES_NAME = nameSpace + ".Resources.Resource";
+        public static string BASE_RES_NAME = "Resources.Resource";
         public static Assembly assembly = typeof(ValuesForCacheExpired).Assembly;
     }
 
@@ -25,9 +23,9 @@ namespace CSharp
 
         public static void Init()
         {
-            IConfig cfg = I18n.LoadConfig(
-                ValuesForCacheExpired.BASE_RES_NAME, ValuesForCacheExpired.assembly, "SingletonForcacheExpired");
-            rel = I18n.GetRelease(cfg);
+            IConfig cfg = I18N.LoadConfig(
+                ValuesForCacheExpired.BASE_RES_NAME, ValuesForCacheExpired.assembly, "SingletonForonlinecacheExpired");
+            rel = I18N.GetRelease(cfg);
         }
 
 
@@ -38,7 +36,7 @@ namespace CSharp
 
         public static IExtension Extension()
         {
-            return I18n.GetExtension();
+            return I18N.GetExtension();
         
         }
 

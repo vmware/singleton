@@ -15,7 +15,8 @@ namespace CSharp
     public class TestDataConstant
     {
         //bat file path
-        public static string bat_path = @"E:\singleton\autotest\client\csharp\newbat\";
+        public static string bat_path = @"E:\test_devops_csharp\test_new_csharp\test1\csharp\newbat\";
+        public static string bat_path1 = @"E:\test_devops_csharp\test_new_csharp\test1\csharp\newbat1\";
         //source collect test data
         public static string key1 = "collect.message";
         public static string value1 = "application";

@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SingletonClient;
+using System.Threading;
+using System.IO;
 
 namespace CSharp
 {
@@ -26,7 +28,7 @@ namespace CSharp
             UtilAllFalse.Init();         
             PM = UtilAllFalse.Messages();
             //LM_source = PM.GetAllSource();
-
+            LM_source = PM.GetLocaleMessages("en");
             UtilAllFalse.Translation().GetString("zh-Hans", UtilAllFalse.Source("about", "about.message"));
 
         }
@@ -39,12 +41,10 @@ namespace CSharp
         public void ProductComponentList_GetAllSource()
         {
             
-            List<string> ComponentList = LM_source.GetComponentList();
+            List<string> ComponentList = PM.GetComponentList();
             String result = Common.ParseListStringContent(ComponentList);
             Console.WriteLine(result);
-            Assert.AreEqual("RESX, contact, about, DefaultComponent", result);
-
-            
+            Assert.AreEqual("about, contact, DefaultComponent, RESX", result);
         }
 
         [TestMethod]
@@ -57,10 +57,7 @@ namespace CSharp
             List<string> ComponentList = LM_translation.GetComponentList();
             String result = Common.ParseListStringContent(ComponentList);
             Console.WriteLine(result);
-            //Assert.AreEqual("about", result);
             Assert.IsTrue(ComponentList.Contains("about"));
-
-
         }
 
         [TestMethod]
