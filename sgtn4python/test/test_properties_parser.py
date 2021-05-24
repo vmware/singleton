@@ -7,7 +7,7 @@
 import sys
 import unittest
 
-sys.path.append('..')
+sys.path.append('../sgtnclient')
 if sys.version_info.major == 2:
     # Support utf8 text
     reload(sys)

@@ -10,8 +10,8 @@ import time
 import json
 
 import sys
-sys.path.append('..')
-from sgtn_client import I18N, Release, Translation
+sys.path.append('../sgtnclient')
+import I18N
 from sgtn_util import FileUtil, NetUtil
 
 
