@@ -39,7 +39,7 @@ var json = jsoniter.ConfigDefault
 // @Router /formatting/patterns/locales/{locale} [get]
 func GetPatternByLocale(c *gin.Context) {
 	locale := struct {
-		Locale string `uri:"locale" binding:"required,locale"`
+		Locale string `uri:"locale" binding:"locale"`
 	}{}
 	scope := PatternScope{}
 	if err := api.ExtractParameters(c, &locale, &scope); err != nil {

@@ -13,12 +13,12 @@ import (
 // Request
 type (
 	translationWithPatternReq struct {
-		Combine int `form:"combine" binding:"required"`
+		Combine int `form:"combine" binding:"oneof=1 2"`
 		translation.ReleaseID
-		Language    string `form:"language" binding:"required,language"`
+		Language    string `form:"language" binding:"language"`
 		Region      string `form:"region" binding:"omitempty,region"`
-		Components  string `form:"components" binding:"required,components"`
-		Scope       string `form:"scope" binding:"required,scope"`
+		Components  string `form:"components" binding:"components"`
+		Scope       string `form:"scope" binding:"scope"`
 		ScopeFilter string `form:"scopeFilter"`
 	}
 
@@ -29,12 +29,12 @@ type (
 
 	// translationWithPatternPostReq Deprecated because GET method is ready
 	translationWithPatternPostReq struct {
-		Combine int `form:"combine" binding:"required"`
+		Combine int `form:"combine" binding:"oneof=1 2"`
 		translation.ReleaseID
-		Language    string   `form:"language" binding:"required,language"`
+		Language    string   `form:"language" binding:"language"`
 		Region      string   `form:"region" binding:"omitempty,region"`
-		Components  []string `form:"components" binding:"required,dive,component"`
-		Scope       string   `form:"scope" binding:"required,scope"`
+		Components  []string `form:"components" binding:"dive,component"`
+		Scope       string   `form:"scope" binding:"scope"`
 		ScopeFilter string   `form:"scopeFilter"`
 	}
 )

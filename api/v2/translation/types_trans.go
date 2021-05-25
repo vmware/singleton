@@ -12,19 +12,19 @@ import (
 // Request
 type (
 	ReleaseID struct {
-		ProductName string `uri:"productName" form:"productName" binding:"required,alphanum"`
-		Version     string `uri:"version" form:"version" binding:"required,version"`
+		ProductName string `uri:"productName" form:"productName" binding:"alphanum"`
+		Version     string `uri:"version" form:"version" binding:"version"`
 	}
 
 	BundleID struct {
 		ReleaseID
-		Locale    string `uri:"locale" binding:"required,locale"`
-		Component string `uri:"component" binding:"required,component"`
+		Locale    string `uri:"locale" binding:"locale"`
+		Component string `uri:"component" binding:"component"`
 	}
 
 	StringID struct {
 		BundleID
-		Key string `uri:"key" binding:"required,key"`
+		Key string `uri:"key" binding:"key"`
 	}
 
 	GetStringReq struct {
@@ -57,8 +57,8 @@ type (
 		} `json:"creation"`
 	}
 	BundleData struct {
-		Component string       `json:"component" binding:"required,component"`
-		Locale    string       `json:"locale" binding:"required,locale"`
+		Component string       `json:"component" binding:"component"`
+		Locale    string       `json:"locale" binding:"locale"`
 		Messages  jsoniter.Any `json:"messages" binding:"required"`
 	}
 
