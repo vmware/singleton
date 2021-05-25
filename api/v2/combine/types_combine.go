@@ -15,11 +15,10 @@ type (
 	translationWithPatternReq struct {
 		Combine int `form:"combine" binding:"oneof=1 2"`
 		translation.ReleaseID
-		Language    string `form:"language" binding:"language"`
-		Region      string `form:"region" binding:"omitempty,region"`
-		Components  string `form:"components" binding:"components"`
-		Scope       string `form:"scope" binding:"scope"`
-		ScopeFilter string `form:"scopeFilter"`
+		Language   string `form:"language" binding:"language"`
+		Region     string `form:"region" binding:"omitempty,region"`
+		Components string `form:"components" binding:"components"`
+		cldr.PatternScope
 	}
 
 	languageListReq struct {
@@ -31,11 +30,10 @@ type (
 	translationWithPatternPostReq struct {
 		Combine int `form:"combine" binding:"oneof=1 2"`
 		translation.ReleaseID
-		Language    string   `form:"language" binding:"language"`
-		Region      string   `form:"region" binding:"omitempty,region"`
-		Components  []string `form:"components" binding:"dive,component"`
-		Scope       string   `form:"scope" binding:"scope"`
-		ScopeFilter string   `form:"scopeFilter"`
+		Language   string   `form:"language" binding:"language"`
+		Region     string   `form:"region" binding:"omitempty,region"`
+		Components []string `form:"components" binding:"dive,component"`
+		cldr.PatternScope
 	}
 )
 
