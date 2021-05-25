@@ -24,12 +24,6 @@ jobs:
         - git clone --branch=devops https://github.com/vmware/singleton.git devops
         - cp $TRAVIS_BUILD_DIR/devops/check_headers.py . && chmod +x check_headers.py
         - /c/Python39/python.exe ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
-    - stage: Unit Test
-      script:
-        - true
-    - stage: Code Scan
-      script:
-        - true
     - stage: Smoke Test
       script:
         - echo "Smoke Test start"
