@@ -16,6 +16,7 @@ import (
 	"github.com/go-playground/locales/en"
 	ut "github.com/go-playground/universal-translator"
 	"github.com/go-playground/validator/v10"
+	defaultEnMessages "github.com/go-playground/validator/v10/translations/en"
 )
 
 // Regular expression string
@@ -58,6 +59,10 @@ func InitValidator() {
 	enLocale := en.New()
 	uTranslator := ut.New(enLocale)
 	enTranslator, _ = uTranslator.GetTranslator(enLocale.Locale())
+	err := defaultEnMessages.RegisterDefaultTranslations(validate, enTranslator)
+	if err != nil {
+		logger.Log.Fatal(err.Error())
+	}
 
 	for _, info := range validatorInfoArray {
 		name, r := info[0].(string), info[1].(*regexp.Regexp)
