@@ -20,8 +20,7 @@ jobs:
     env: TEST=unit_test
   - name: "Code Scan"
     env: TEST=code_scan
-
-  
+ 
 script: >
   if [ x${TEST} = xcheck_header ]; then
     git clone --branch=devops https://github.com/vmware/singleton.git devops
