@@ -3,7 +3,7 @@ go:
   - 1.16
 python:
   - 3.4
-  
+
 before_install:
 - |
     git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.md$' || {
@@ -21,6 +21,7 @@ jobs:
     env: TEST=unit_test
   - name: "Code Scan"
     env: TEST=code_scan
+
  
 script: >
   if [ x${TEST} = xcheck_header ]; then
