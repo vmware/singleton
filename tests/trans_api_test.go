@@ -250,6 +250,7 @@ const bundleDataToPut = `
 
 func TestPutBundle(t *testing.T) {
 	e := CreateHTTPExpect(t, GinTestEngine)
+	newProduct, newVersion := "newProduct", "100"
 
 	tests := []struct {
 		TestName              string
@@ -257,14 +258,14 @@ func TestPutBundle(t *testing.T) {
 		wantedCode            int
 	}{
 		{TestName: "Normal", name: Name, version: Version, locale: Locale, wantedCode: http.StatusOK},
-		{TestName: "NewProduct", name: "newProduct", version: Version, locale: Locale, wantedCode: http.StatusBadRequest},
-		{TestName: "NewVersion", name: Name, version: "100", locale: Locale, wantedCode: http.StatusOK},
+		{TestName: "NewProduct", name: newProduct, version: Version, locale: Locale, wantedCode: http.StatusBadRequest},
+		{TestName: "NewVersion", name: Name, version: newVersion, locale: Locale, wantedCode: http.StatusOK},
 		{TestName: "inValidProduct", name: "---", version: Version, locale: Locale, wantedCode: http.StatusBadRequest},
 		{TestName: "invalidVersion", name: Name, version: "---", locale: Locale, wantedCode: http.StatusBadRequest},
 	}
 
-	os.RemoveAll(path.Join(config.Settings.LocalBundle.BasePath, "newProduct"))
-	os.RemoveAll(path.Join(config.Settings.LocalBundle.BasePath, Name, "100"))
+	os.RemoveAll(path.Join(config.Settings.LocalBundle.BasePath, newProduct))
+	os.RemoveAll(path.Join(config.Settings.LocalBundle.BasePath, Name, newVersion))
 	bundleinfo.RefreshBundleInfo(context.TODO())
 
 	for _, tt := range tests {
