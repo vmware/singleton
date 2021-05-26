@@ -20,6 +20,9 @@ import (
 	"sgtnserver/api/v2/translation"
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/sgtnerror"
+	transmodule "sgtnserver/modules/translation"
+	"sgtnserver/modules/translation/bundleinfo"
+	"sgtnserver/modules/translation/translationservice"
 
 	"github.com/go-http-utils/headers"
 	"github.com/stretchr/testify/assert"
@@ -244,6 +247,47 @@ const bundleDataToPut = `
   }
 }
 `
+
+func TestPutBundle(t *testing.T) {
+	e := CreateHTTPExpect(t, GinTestEngine)
+
+	tests := []struct {
+		TestName              string
+		name, version, locale string
+		wantedCode            int
+	}{
+		{TestName: "Normal", name: Name, version: Version, locale: Locale, wantedCode: http.StatusOK},
+		{TestName: "NewProduct", name: "newProduct", version: Version, locale: Locale, wantedCode: http.StatusBadRequest},
+		{TestName: "NewVersion", name: Name, version: "100", locale: Locale, wantedCode: http.StatusOK},
+		{TestName: "inValidProduct", name: "---", version: Version, locale: Locale, wantedCode: http.StatusBadRequest},
+		{TestName: "invalidVersion", name: Name, version: "---", locale: Locale, wantedCode: http.StatusBadRequest},
+	}
+
+	os.RemoveAll(path.Join(config.Settings.LocalBundle.BasePath, "newProduct"))
+	os.RemoveAll(path.Join(config.Settings.LocalBundle.BasePath, Name, "100"))
+	bundleinfo.RefreshBundleInfo(context.TODO())
+
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.TestName, func(t *testing.T) {
+			// t.Parallel()
+
+			component := RandomString(6)
+			defer os.RemoveAll(path.Join(config.Settings.LocalBundle.BasePath, tt.name, tt.version, component))
+
+			resp := e.PUT(PutBundlesURL, tt.name, tt.version).WithBytes([]byte(fmt.Sprintf(bundleDataToPut, tt.name, tt.version, tt.locale, component, Key, Msg))).Expect()
+			resp.Status(tt.wantedCode)
+
+			if tt.wantedCode == http.StatusOK {
+				id := transmodule.MessageID{Name: tt.name, Version: tt.version, Locale: Locale, Component: component, Key: Key}
+				// Query to check putting is successful
+				data, err := translationservice.GetService().GetString(context.TODO(), &id)
+				assert.Nil(t, err)
+				assert.Equal(t, Msg, data.Translation)
+			}
+		})
+	}
+}
 
 func TestPutBundleNameVersionInconsistent(t *testing.T) {
 	e := CreateHTTPExpect(t, GinTestEngine)

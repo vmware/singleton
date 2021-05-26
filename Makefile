@@ -43,9 +43,9 @@ endif
 
 test:
 ifdef tests
-	${TEST_CMD} -run="${tests}" -race
+	${TEST_CMD} -v -run="${tests}" -race
 else
-	${TEST_CMD} -race
+	${TEST_CMD} -v -race
 endif
 
 bench:
