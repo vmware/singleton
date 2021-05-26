@@ -126,10 +126,10 @@ class FileUtil:
         return dir_list, file_list
 
 class NetUtil:
-    
+
     simulate_data = None
     record_data = None
-    
+
     @classmethod
     def _get_data(cls, url, request_headers):
         if not cls.simulate_data:
@@ -145,7 +145,7 @@ class NetUtil:
 
             result = res_data.read()
             text = result.decode(UTF8)
-            
+
             if cls.record_data is not None:
                 header_part = json.dumps(request_headers) if request_headers else request_headers
                 cls.record_data['%s<<headers>>%s' % (url, header_part)] = {
@@ -161,7 +161,7 @@ class NetUtil:
                         raise Exception('Error 304:')
                 return kept['text'], kept['headers']
         return None, None
-    
+
     @classmethod
     def http_get_text(cls, url):
         text = None

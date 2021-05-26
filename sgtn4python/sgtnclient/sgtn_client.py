@@ -18,7 +18,9 @@ from collections import OrderedDict
 from sgtn_properties import Properties
 from sgtn_util import FileUtil, NetUtil, SysUtil
 from sgtn_util import LOG_TYPE_INFO, KEY_RESULT, KEY_HEADERS, KEY_ERROR
+from sgtn_bykey import SingletonByKey
 
+from I18N import Config, Release, Translation
 
 KEY_LOCALE = 'locale'
 KEY_SOURCE = 'source'
@@ -40,6 +42,7 @@ KEY_SOURCE_LOCALE = 'source_locale'
 KEY_TRYDELAY = 'try_delay'
 KEY_INTERVAL = 'cache_expired_time'
 KEY_CACHEPATH = 'cache_path'
+KEY_CACHETYPE = 'cache_type'
 KEY_LOGPATH = 'log_path'
 KEY_COMPONENTS = 'components'
 KEY_LOCALES = 'locales'
@@ -63,36 +66,6 @@ RES_TYPE_SGTN = '.json'
 _mlock = threading.Lock()
 _thread_locales = OrderedDict()
 # store thread locales
-
-
-class Config(object):
-
-    def get_config_data(self):
-        raise Exception()
-
-    def get_info(self):
-        raise Exception(NOT_IMP_EXCEPTION)
-
-
-class Release(object):
-
-    def get_config(self):
-        raise Exception(NOT_IMP_EXCEPTION)
-
-    def get_translation(self):
-        raise Exception(NOT_IMP_EXCEPTION)
-
-
-class Translation(object):
-
-    def get_string(self, component, key, **kwargs):
-        raise Exception(NOT_IMP_EXCEPTION)
-
-    def get_locale_strings(self, locale):
-        raise Exception(NOT_IMP_EXCEPTION)
-
-    def get_locale_supported(self, locale):
-        raise Exception(NOT_IMP_EXCEPTION)
 
 
 class ClientUtil:
@@ -160,6 +133,7 @@ class SingletonConfig(Config):
 
         self.log_path = self.get_path(KEY_LOGPATH)          # log path
         self.cache_path = self.get_path(KEY_CACHEPATH)      # cache path
+        self.cache_type = self.get_item(KEY_CACHETYPE, 'default')   # cache type
 
         self.cache_expired_time = self.get_item(KEY_INTERVAL, 3600) # cache expired time
         self.try_delay = self.get_item(KEY_TRYDELAY, 10)    # try delay
@@ -329,8 +303,10 @@ class SingletonComponent:
     def __init__(self, release_obj, locale, component):
         self.rel = release_obj
         self.locale = locale
+        self.localeItem = self.rel.bykey.get_locale_item(locale, True)
+        self.componentIndex = self.rel.bykey.get_component_index(component)
         self.component = component
-        self.messages = OrderedDict()
+        self.countOfMessages = 0
         self.etag = None
         self.cache_path = None
         self.task = SingletonAccessRemoteTask(release_obj, self)
@@ -343,13 +319,25 @@ class SingletonComponent:
                 dt = FileUtil.read_json_file(self.cache_path)
                 if KEY_MESSAGES in dt:
                     self.task.last_time = os.path.getmtime(self.cache_path)
-                    self.messages = dt[KEY_MESSAGES]
+                    self.set_messages(dt[KEY_MESSAGES])
 
-    def is_messages_same(self, dt1, dt2):
-        if len(dt1) != len(dt2):
-            return False
-        for key in dt1:
-            if dt1.get(key) != dt2.get(key):
+    def set_messages(self, messages):
+        self.countOfMessages = len(messages)
+        for key in messages:
+            text = messages[key]
+            self.rel.bykey.set_string(key, self.componentIndex, self.localeItem, text)
+
+    def get_messages(self):
+        return self.rel.bykey.get_messages(self.componentIndex, self.localeItem)
+
+    def get_message(self, key):
+        return self.rel.bykey.get_string(key, self.componentIndex, self.localeItem)
+
+    def is_messages_same(self, messages):
+        for key in messages:
+            text = messages[key]
+            message = self.rel.bykey.get_string(key, self.componentIndex, self.localeItem)
+            if message != text:
                 return False
         return True
 
@@ -370,12 +358,12 @@ class SingletonComponent:
 
                 messages = dt[KEY_RESULT][KEY_DATA][KEY_MESSAGES]
                 if self.cache_path:
-                    if os.path.exists(self.cache_path) and self.is_messages_same(self.messages, messages):
+                    if os.path.exists(self.cache_path) and self.is_messages_same(messages):
                         os.utime(self.cache_path, (current, current))
                     else:
                         self.rel.log('--- save --- %s ---' % self.cache_path)
                         FileUtil.save_json_file(self.cache_path, dt[KEY_RESULT][KEY_DATA])
-                self.messages = messages
+                self.set_messages(messages)
                 self.task.last_time = current
             elif code == 304:
                 self.task.last_time = current
@@ -387,7 +375,7 @@ class SingletonComponent:
         self.task.querying = False
 
     def get_data_count(self):
-        return len(self.messages)
+        return self.countOfMessages
 
 
 class SingletonRelease(Release, Translation):
@@ -427,6 +415,8 @@ class SingletonRelease(Release, Translation):
 
         self._get_local_resource(self.source_pool, self.cfg.source_locale)
         self.source = self.source_pool.get(self.cfg.source_locale)
+
+        self.bykey = SingletonByKey(self.cfg.source_locale, self.cfg.cache_type)
 
     def get_config(self):
         # method of Release
@@ -490,10 +480,10 @@ class SingletonRelease(Release, Translation):
         items = kwargs.get(KEY_ITEMS) if kwargs else None
 
         if not locale:
-            locale = I18N.get_current_locale()
+            locale = SingletonClientManager().get_current_locale()
         if not source:
             if component in self.source:
-                source = self.source[component].messages.get(key)
+                source = self.source[component].get_message(key)
 
         text = self._get_message(component, key, source, locale)
         if text and items:
@@ -515,7 +505,7 @@ class SingletonRelease(Release, Translation):
             components = self.locales.get(near_locale)
         if components:
             for component in components:
-                collect[component] = components[component].messages
+                collect[component] = components[component].get_messages()
         return collect
 
     def get_locale_supported(self, locale):
@@ -592,7 +582,7 @@ class SingletonRelease(Release, Translation):
                 path_define = locale_define.get(KEY_LOCAL_PATH)
                 map = self._load_one_local(component, locale, path_define)
                 component_obj = SingletonComponent(self, locale, component)
-                component_obj.messages = map
+                component_obj.set_messages(map)
                 locale_item[component] = component_obj
 
     def _get_remote_resource(self, locale, component):
@@ -648,18 +638,18 @@ class SingletonRelease(Release, Translation):
 
         translation = source
 
-        found = component_obj.messages.get(key) if component_obj else None
+        found = component_obj.get_message(key) if component_obj else None
         if not found:
             remote_default_locale = self.get_locale_supported(self.cfg.default_locale)
             if remote_source_locale != remote_default_locale:
                 component_def = self._get_component(remote_default_locale, component)
                 if component_def:
-                    found = component_def.messages.get(key)
+                    found = component_def.get_message(key)
             elif source == None and component_src:
-                translation = component_src.messages.get(key)
+                translation = component_src.get_message(key)
 
         if found:
-            source_remote = component_src.messages.get(key) if component_src else None
+            source_remote = component_src.get_message(key) if component_src else None
             if source is None or source_remote is None or source_remote == source:
                 translation = found
 
@@ -710,21 +700,7 @@ class SingletonClientManager(object):
             release_obj = SingletonRelease(cfg)
             releases[cfg.version] = release_obj
 
-
-class I18N():
-
-    @classmethod
-    def add_config_file(cls, config_file):
-        config_data = FileUtil.read_datatree(config_file)
-        base_path = os.path.dirname(os.path.realpath(config_file))
-        SingletonClientManager().add_config(base_path, config_data)
-
-    @classmethod
-    def add_config(cls, base_path, config_data):
-        SingletonClientManager().add_config(base_path, config_data)
-
-    @classmethod
-    def set_current_locale(cls, locale):
+    def set_current_locale(self, locale):
         global _mlock, _thread_locales
         thid = '%s' % threading.current_thread().ident
 
@@ -744,8 +720,7 @@ class I18N():
         _thread_locales[thid] = locale
         _mlock.release()
 
-    @classmethod
-    def get_current_locale(cls):
+    def get_current_locale(self):
         global _thread_locales
         thid = '%s' % threading.current_thread().ident
 
@@ -753,7 +728,3 @@ class I18N():
         if not current:
             current = LOCALE_DEFAULT
         return current
-
-    @classmethod
-    def get_release(cls, product, version):
-        return SingletonClientManager().get_release(product, version)

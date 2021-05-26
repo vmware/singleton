@@ -7,11 +7,11 @@
 import os
 import time
 import json
-
 import sys
-sys.path.append('..')
-from sgtn_client import I18N, Release, Translation
 
+#sys.path.append('../sgtnclient')
+#import I18N
+from sgtnclient import I18N
 
 PRODUCT = 'PYTHON'
 VERSION = '1.0.0'
