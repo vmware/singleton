@@ -6,8 +6,6 @@
 package translation
 
 import (
-	"net/http"
-
 	"sgtnserver/api"
 	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/translation/translationservice"
@@ -18,10 +16,6 @@ import (
 
 // HandleVersionFallback ...
 func HandleVersionFallback(c *gin.Context) {
-	if c.Request.Method != http.MethodGet {
-		return
-	}
-
 	var ok bool
 	name := c.Param(api.ProductNameAPIKey)
 	if name == "" {
@@ -36,19 +30,21 @@ func HandleVersionFallback(c *gin.Context) {
 		}
 	}
 
+	DoVersionFallback(c, name, version)
+}
+
+func DoVersionFallback(c *gin.Context, name, version string) string {
 	pickedVersion := translationservice.PickupVersion(name, version)
 	c.Set(api.SgtnVersionKey, pickedVersion)
 	if pickedVersion != version {
 		c.Set(api.VerFallbackKey, true)
 		api.GetLogger(c).Warn("Version fallback occurs", zap.String("from", version), zap.String("to", pickedVersion))
 	}
+
+	return pickedVersion
 }
 
 func HandleAllowList(c *gin.Context) {
-	if c.IsAborted() || c.Request.Method != http.MethodGet {
-		return
-	}
-
 	productName := c.Param(api.ProductNameAPIKey)
 	if productName == "" {
 		var ok bool

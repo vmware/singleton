@@ -6,14 +6,13 @@
 package swagger
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/swaggo/gin-swagger/swaggerFiles"
-
 	v1 "sgtnserver/api/v1"
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
 
+	"github.com/gin-gonic/gin"
 	ginSwagger "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
 // @title Singleton Service API

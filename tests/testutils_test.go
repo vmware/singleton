@@ -7,23 +7,23 @@ package tests
 
 import (
 	"flag"
-	"io"
 	"math/rand"
 	"net/http"
 	"os"
 	"path/filepath"
 	"reflect"
+	"strings"
 	"testing"
-
-	"github.com/gavv/httpexpect/v2"
-	"github.com/gin-gonic/gin"
-	jsoniter "github.com/json-iterator/go"
-	"github.com/jucardi/go-osx/paths"
 
 	"sgtnserver/api"
 	v2 "sgtnserver/api/v2"
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
+
+	"github.com/gavv/httpexpect/v2"
+	"github.com/gin-gonic/gin"
+	jsoniter "github.com/json-iterator/go"
+	"github.com/jucardi/go-osx/paths"
 )
 
 var (
@@ -62,6 +62,15 @@ const (
 func TestMain(m *testing.M) {
 	defer logger.Log.Sync()
 
+	testArgs := os.Args[:1]
+	for _, arg := range os.Args {
+		if strings.HasPrefix(arg, "-test.") {
+			testArgs = append(testArgs, arg)
+		}
+	}
+	os.Args = testArgs
+	log.Infof("CLI args are: %v", os.Args)
+
 	flag.Parse()
 
 	GinTestEngine = api.InitServer()
@@ -89,8 +98,6 @@ func init() {
 			log.Infof("Now current directory is: %s", cwd)
 		}
 	}
-
-	log.Infof("CLI args are: %v", os.Args)
 }
 
 func CreateHTTPExpect(t *testing.T, ginEngine *gin.Engine) *httpexpect.Expect {
@@ -108,9 +115,9 @@ func CreateHTTPExpect(t *testing.T, ginEngine *gin.Engine) *httpexpect.Expect {
 	})
 }
 
-func GetErrorAndData(r io.Reader) (bError *api.BusinessError, data interface{}) {
+func GetErrorAndData(r string) (bError *api.BusinessError, data interface{}) {
 	body := new(api.Response)
-	err := json.NewDecoder(r).Decode(body)
+	err := json.UnmarshalFromString(r, body)
 	if err != nil {
 		log.Error(err.Error())
 	}

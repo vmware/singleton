@@ -7,7 +7,7 @@ package translation
 
 import (
 	v1 "sgtnserver/api/v1"
-	"sgtnserver/api/v2/translation"
+	v2Translation "sgtnserver/api/v2/translation"
 	"sgtnserver/internal/logger"
 
 	"github.com/gin-gonic/gin"
@@ -18,7 +18,7 @@ type translationRouter struct{}
 func (r *translationRouter) Init(e *gin.RouterGroup) {
 	logger.Log.Debug("Initialize translation router")
 
-	tranGroup := e.Group("/translation", translation.HandleAllowList, translation.HandleVersionFallback)
+	tranGroup := e.Group("/translation", v2Translation.HandleAllowList, v2Translation.HandleVersionFallback)
 	{
 		// Component API
 		tranGroup.GET("/component", GetBundle2)
@@ -38,13 +38,14 @@ func (r *translationRouter) Init(e *gin.RouterGroup) {
 		// Translation Product Component Key API
 		tranGroup.GET("/product/:productName/component/:component/key/:key", GetString)
 		tranGroup.GET("/product/:productName/key/:key", GetString3)
-
-		// Translation Sync API
-		tranGroup.PUT("/product/:productName/version/:version", PutBundles)
 	}
 
 	// Translation Product Component API
-	e.GET("/bundles/components", translation.HandleAllowList, translation.HandleVersionFallback, GetAvailableComponents)
+	e.GET("/bundles/components", v2Translation.HandleAllowList, v2Translation.HandleVersionFallback, GetAvailableComponents)
+
+	// Translation Sync API
+	e.PUT("/translation/product/:productName/version/:version", v2Translation.HandleAllowList, PutBundles)
+
 }
 func init() {
 	v1.Register(&translationRouter{})

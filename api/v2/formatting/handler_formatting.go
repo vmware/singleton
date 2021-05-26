@@ -10,7 +10,6 @@ import (
 
 	"sgtnserver/api"
 	"sgtnserver/internal/logger"
-	"sgtnserver/internal/sgtnerror"
 	"sgtnserver/modules/formatting"
 
 	"github.com/gin-gonic/gin"
@@ -31,9 +30,8 @@ import (
 // @Router /formatting/date/localizedDate [get]
 // @Deprecated
 func GetLocalizedDate(c *gin.Context) {
-	params := new(DateReq)
-	if err := c.ShouldBindQuery(params); err != nil {
-		api.AbortWithError(c, sgtnerror.StatusBadRequest.WithUserMessage(api.ExtractErrorMsg(err)))
+	params := DateReq{}
+	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
 	}
 

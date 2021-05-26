@@ -15,16 +15,16 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/emirpasic/gods/sets/hashset"
-	"github.com/gin-gonic/gin"
-	"github.com/go-http-utils/headers"
-	"github.com/stretchr/testify/assert"
-
 	"sgtnserver/api"
 	"sgtnserver/internal/common"
 	"sgtnserver/internal/config"
 	"sgtnserver/internal/logger"
 	"sgtnserver/internal/sgtnerror"
+
+	"github.com/emirpasic/gods/sets/hashset"
+	"github.com/gin-gonic/gin"
+	"github.com/go-http-utils/headers"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestTraceIDs(t *testing.T) {
@@ -138,6 +138,13 @@ func TestRecovery(t *testing.T) {
 			panicErr:   &net.OpError{Err: &os.SyscallError{Err: errors.New("broken pipe error")}},
 			wantedCode: http.StatusOK,
 		},
+		{testName: "DebugMode",
+			ginMode:    gin.DebugMode,
+			URL:        "/TestRecovery_debugMode",
+			logFile:    logFolder + "debugmode.log",
+			panicErr:   errors.New("debugmode error"),
+			wantedCode: http.StatusInternalServerError,
+		},
 	}
 
 	for _, tt := range tests {
@@ -222,12 +229,14 @@ func TestAllFailed(t *testing.T) {
 	for _, d := range []struct {
 		locales, components string
 	}{
-		{"zh-Invalid,en-Invalid", "sunglow"},
+		{locales: "zh-Invalid,en-Invalid", components: "sunglow"},
 	} {
 		resp := e.GET(GetBundlesURL, Name, Version).
 			WithQuery("locales", d.locales).WithQuery("components", d.components).Expect()
-		resp.Status(http.StatusNotFound)
-		for _, v := range strings.Split(d.locales, ",") {
+		resp.Status(sgtnerror.StatusNotFound.HTTPCode())
+		bError, _ := GetErrorAndData(resp.Body().Raw())
+		assert.Equal(t, sgtnerror.StatusNotFound.Code(), bError.Code)
+		for _, v := range strings.Split(d.locales, common.ParamSep) {
 			resp.Body().Contains(v)
 		}
 	}
@@ -237,19 +246,21 @@ func TestPartialSuccess(t *testing.T) {
 	e := CreateHTTPExpect(t, GinTestEngine)
 
 	for _, d := range []struct {
-		testName            string
-		locales, components string
-		wantedCode          int
+		testName                    string
+		locales, components         string
+		wantedBCode, wantedHTTPCode int
 	}{
-		{testName: "Partial Successful", locales: "zh-Hans,en-Invalid", components: "sunglow", wantedCode: sgtnerror.StatusPartialSuccess.Code()},
-		{testName: "All Successful", locales: "zh-Hans,en", components: "sunglow", wantedCode: http.StatusOK},
-		{testName: "All Failed", locales: "zh-Hans,en", components: "invalidComponent", wantedCode: http.StatusNotFound},
+		{testName: "Partially Successful", locales: "zh-Hans,en-Invalid", components: "sunglow", wantedBCode: sgtnerror.StatusPartialSuccess.Code(), wantedHTTPCode: sgtnerror.StatusPartialSuccess.HTTPCode()},
+		{testName: "All Successful", locales: "zh-Hans,en", components: "sunglow", wantedBCode: http.StatusOK, wantedHTTPCode: http.StatusOK},
+		{testName: "All Failed", locales: "zh-Hans,en", components: "invalidComponent", wantedBCode: sgtnerror.StatusNotFound.Code(), wantedHTTPCode: sgtnerror.StatusNotFound.HTTPCode()},
 	} {
 		d := d
 		t.Run(d.testName, func(t *testing.T) {
 			resp := e.GET(GetBundlesURL, Name, Version).WithQuery("locales", d.locales).
 				WithQuery("components", d.components).Expect()
-			resp.Status(d.wantedCode)
+			resp.Status(d.wantedHTTPCode)
+			bError, _ := GetErrorAndData(resp.Body().Raw())
+			assert.Equal(t, d.wantedBCode, bError.Code)
 		})
 	}
 }

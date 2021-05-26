@@ -28,7 +28,7 @@
                 "--config=${workspaceFolder}/tests/testdata/config/config.yaml"
             ]
         },
-       {
+        {
             "name": "Launch bench test",
             "type": "go",
             "request": "launch",
@@ -37,10 +37,14 @@
             "cwd": "${workspaceFolder}",
             "buildFlags": "-tags=jsoniter",
             "args": [
-                "-test.v",
-                "-test.run=^Benchmark",
-                // "-test.bench=BenchmarkGetComponentsMessages"
-                "--config=${workspaceFolder}/tests/testdata/config/config.yaml"
+                "-test.bench=.",
+                "-test.benchmem",
+                // "-test.bench=BenchmarkGetComponentsMessages",
+                "--config=${workspaceFolder}/tests/testdata/config/config.yaml",
+                "--local-bundle.base-path=${workspaceFolder}/tests/testdata/bundles",
+                "--log.Filename=",
+                "--log.Level=fatal",
+                "--server.run-mode=test"
             ]
         }
     ]

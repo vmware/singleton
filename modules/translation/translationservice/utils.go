@@ -9,15 +9,15 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/emirpasic/gods/sets"
-	jsoniter "github.com/json-iterator/go"
-	"go.uber.org/zap"
-
 	"sgtnserver/internal/bindata"
 	"sgtnserver/internal/logger"
 	"sgtnserver/modules/cldr"
 	"sgtnserver/modules/cldr/coreutil"
 	"sgtnserver/modules/translation/bundleinfo"
+
+	"github.com/emirpasic/gods/sets"
+	jsoniter "github.com/json-iterator/go"
+	"go.uber.org/zap"
 )
 
 var json = jsoniter.ConfigDefault

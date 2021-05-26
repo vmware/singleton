@@ -6,15 +6,13 @@
 package v1
 
 import (
-	"github.com/gin-gonic/gin"
-
 	"sgtnserver/api"
 	"sgtnserver/internal/logger"
+
+	"github.com/gin-gonic/gin"
 )
 
 const APIRoot = "/i18n/api/v1"
-
-const DefaultLocale = "en"
 
 var routers []api.Router
 

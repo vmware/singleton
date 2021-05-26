@@ -7,17 +7,17 @@ package cldr
 
 // Request
 type (
-	PatternByLocaleReq struct {
-		Locale      string `uri:"locale" form:"locale" binding:"required,locale"`
+	PatternScope struct {
 		Scope       string `form:"scope" binding:"required,scope"`
 		ScopeFilter string `form:"scopeFilter"`
 	}
+
 	PatternByLangRegReq struct {
-		Language    string `form:"language" binding:"required,language"`
-		Region      string `form:"region" binding:"required,region"`
-		Scope       string `form:"scope" binding:"required,scope"`
-		ScopeFilter string `form:"scopeFilter"`
+		Language string `form:"language" binding:"required,language"`
+		Region   string `form:"region" binding:"required,region"`
+		PatternScope
 	}
+
 	LocaleRegionsReq struct {
 		Locales string `form:"supportedLanguageList" binding:"required,locales"`
 	}

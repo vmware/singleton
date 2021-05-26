@@ -6,10 +6,10 @@
 package v2
 
 import (
-	"github.com/gin-gonic/gin"
-
 	"sgtnserver/api"
 	"sgtnserver/internal/logger"
+
+	"github.com/gin-gonic/gin"
 )
 
 var routers []api.Router
