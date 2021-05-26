@@ -7,25 +7,15 @@ env:
   SOLUTION: SingletonClient.sln
 
 before_install:
-before_install:
 - |
     git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '(\.md$)|(^(docs|g11n-ws/docs))/' || {
       echo "Only docs were updated, stopping build process."
       exit
     }
-    sudo apt-get -y install python3-pip python-dev
-    python3 -V
-    pip3 -V
-    choco install -y nuget.commandline
-    choco install -y sonarqube-scanner.portable
-    choco install -y msbuild-sonarqube-runner
-
-install:
-  - cd $PROJECT_NAME
-  - dir
-  - nuget restore $SOLUTION
-  - "powershell -Command dir env:"
-
+    choco install python --version=3.9.0
+    powershell -Command 'dir "C:\" '
+    /c/Python39/python.exe -V
+    
 jobs:
   fast_finish: true
   include:
@@ -33,20 +23,51 @@ jobs:
       script:
         - git clone --branch=devops https://github.com/vmware/singleton.git devops
         - cp $TRAVIS_BUILD_DIR/devops/check_headers.py . && chmod +x check_headers.py
-        - python3 ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
-    - stage: Unit Test
+        - /c/Python39/python.exe ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
+    - stage: Smoke Test
       script:
-        - dir
-        - "powershell -Command msbuild consoleloggerparameters:ErrorsOnly maxcpucount nologo property:Configuration=Release verbosity:quiet $SOLUTION.sln"
-        - powershell -Command "C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\MSTest.exe" /testcontainer:%PROJECT_NAME%Tests.dll'
-    - stage: Code Scan
-      script:
+        - echo "Smoke Test start"
+        - cd $TRAVIS_BUILD_DIR
+        - git clone --branch=master https://github.com/vmware/singleton.git server
         - git clone --branch=devops https://github.com/vmware/singleton.git devops
-        - cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG-singleton-csharp-client-$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG-singleton-csharp-client-$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=csharp-client-gate -QualityGateConditions="./quality_gates/csharp-client.json" -SonarToken=$SONAR_TOKEN
-        - cd $TRAVIS_BUILD_DIR && ./$SONARSCANNERINNER/bin/sonar-scanner -Dsonar.sources=. -Dsonar.projectName=$SONAR_ORG-singleton-csharp-client-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.projectKey=$SONAR_ORG-singleton-csharp-client-$TRAVIS_BRANCH -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN 
-        - |
-            git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.travis\.yml$' || {
-              echo "No need to check sonar quality gate for only travis configuration updates"
-              exit
-            }
-            cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-singleton-csharp-client-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
+        
+        # setup i18n and l10n service
+        - choco install jdk8
+        - export JAVA_HOME="/C/Program Files/Java/jdk1.8.0_211"
+        - export CLASSPATH=".:$JAVA_HOME/lib/tools.jar"
+        - export PATH="$PATH:$JAVA_HOME\bin"
+        - java -version
+        - sed -i "s|source.cache.flag[ ]*=.*|source.cache.flag = true|" $TRAVIS_BUILD_DIR/server/g11n-ws/vip-manager-i18n/src/main/resources/application-bundle.properties
+        - cd $TRAVIS_BUILD_DIR/server/g11n-ws && ./gradlew build -x test
+        - mkdir -p $TRAVIS_BUILD_DIR/server/jar/i18n && mkdir -p $TRAVIS_BUILD_DIR/server/jar/l10n
+        - mv $TRAVIS_BUILD_DIR/server/publish/singleton-[0~9]*.jar $TRAVIS_BUILD_DIR/server/jar/i18n/i18n-service.jar
+        - mv $TRAVIS_BUILD_DIR/server/publish/vip-manager-l10n-[0~9]*.jar $TRAVIS_BUILD_DIR/server/jar/l10n/l10n-service.jar
+        - cd $TRAVIS_BUILD_DIR/server/jar/i18n && nohup java -jar i18n-service.jar >/dev/null 2>&1 &
+        - cd $TRAVIS_BUILD_DIR/server/jar/l10n && nohup java -jar l10n-service.jar >/dev/null 2>&1 &
+        - count=0 && while [ $count -le 180 ]; do if [ ! -d "$TRAVIS_BUILD_DIR/server/jar/i18n/l10n/bundles" ]; then sleep 1s; let count++; echo "waiting for i18n service to create bundle ... $count seconds..."; else break ;fi; done
+        - if [ ! -d "$TRAVIS_BUILD_DIR/server/jar/i18n/l10n/bundles" ]; then mkdir -p $TRAVIS_BUILD_DIR/server/jar/i18n/l10n/bundles; fi
+        - cp -r $TRAVIS_BUILD_DIR/devops/autotest/client/csharp/l10n/bundles/CSharpClient $TRAVIS_BUILD_DIR/server/jar/i18n/l10n/bundles
+        - ls -la $TRAVIS_BUILD_DIR/server/jar/i18n/l10n/bundles
+
+        # install build and test tool
+        - choco install nuget.commandline --version=5.4.0
+        - choco install visualstudio2019buildtools --package-parameters "--includeRecommended --includeOptional"
+        - choco install visualstudio2019-workload-vctools --package-parameters "--includeRecommended --includeOptional"
+        - export MSBUILD="/c/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/MSBuild/Current/Bin"
+        - export PATH="$PATH:$MSBUILD"
+        - choco install visualstudio2019testagent --package-parameters "--includeRecommended --includeOptional"
+        - export VSTEST="/c/Program Files (x86)/Microsoft Visual Studio/2019/TestAgent/Common7/IDE/Extensions/TestPlatform"
+        - export PATH="$PATH:$VSTEST"
+        - export MSBuildSDKsPath="/c/Program Files/dotnet/sdk/2.1.515/Sdks"
+        
+        # build and test
+        - cd $TRAVIS_BUILD_DIR/singletonclient && nuget restore SingletonClient.sln
+        - cd SingletonClient && MSBuild.exe SingletonClient.csproj -t:rebuild
+        - cp bin/Debug/netstandard2.0/SingletonClient.dll $TRAVIS_BUILD_DIR/devops/autotest/client/csharp/SingletonClient.dll
+        - cd $TRAVIS_BUILD_DIR/devops/autotest/client/csharp && nuget restore csharp.sln
+        - cd CSharp && MSBuild.exe CSharp.csproj -t:rebuild
+        - cd bin/Debug && pwd && ls -la
+        - curl -X GET 'http://localhost:8091/i18n/api/v2/formatting/patterns?language=en&region=TW&scope=dates'
+        - powershell -Command 'vstest.console CSharp.dll /TestCaseFilter:"Priority=0" /Logger:trx'
+        - powershell -Command 'Get-Process -Name java | Stop-Process'
+
