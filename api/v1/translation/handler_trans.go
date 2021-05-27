@@ -35,7 +35,7 @@ func GetBundle2(c *gin.Context) {
 	params := struct {
 		ReleaseID
 		Locale    string `form:"locale" binding:"locale"`
-		Component string `form:"component" binding:"required,component"`
+		Component string `form:"component" binding:"component"`
 	}{Locale: translation.EnLocale}
 	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
@@ -67,8 +67,8 @@ func GetBundle2(c *gin.Context) {
 func GetMultipleBundles2(c *gin.Context) {
 	params := struct {
 		ReleaseID
-		Locales    string `form:"locales" binding:"required,locales"`
-		Components string `form:"components" binding:"required,components"`
+		Locales    string `form:"locales" binding:"locales"`
+		Components string `form:"components" binding:"components"`
 	}{}
 	if err := api.ExtractParameters(c, nil, &params); err != nil {
 		return
@@ -200,11 +200,11 @@ func GetAvailableLocales(c *gin.Context) {
 // @Deprecated
 func GetBundle(c *gin.Context) {
 	uriPart := struct {
-		ProductName string `uri:"productName" binding:"required,alphanum"`
-		Component   string `uri:"component" binding:"required,component"`
+		ProductName string `uri:"productName" binding:"alphanum"`
+		Component   string `uri:"component" binding:"component"`
 	}{}
 	formPart := struct {
-		Version string `form:"version" binding:"required,version"`
+		Version string `form:"version" binding:"version"`
 		Locale  string `form:"locale" binding:"locale"`
 	}{Locale: translation.EnLocale}
 	if err := api.ExtractParameters(c, &uriPart, &formPart); err != nil {
@@ -236,12 +236,12 @@ func GetBundle(c *gin.Context) {
 // @Deprecated
 func GetMultipleBundles(c *gin.Context) {
 	uriPart := struct {
-		ProductName string `uri:"productName" binding:"required,alphanum"`
-		Components  string `uri:"components" binding:"required,components"`
+		ProductName string `uri:"productName" binding:"alphanum"`
+		Components  string `uri:"components" binding:"components"`
 	}{}
 	formPart := struct {
-		Version string `form:"version" binding:"required,version"`
-		Locales string `form:"locales" binding:"required,locales"`
+		Version string `form:"version" binding:"version"`
+		Locales string `form:"locales" binding:"locales"`
 	}{}
 	if err := api.ExtractParameters(c, &uriPart, &formPart); err != nil {
 		return
@@ -272,12 +272,12 @@ func GetMultipleBundles(c *gin.Context) {
 // @Deprecated
 func GetString(c *gin.Context) {
 	uriPart := struct {
-		ProductName string `uri:"productName" binding:"required,alphanum"`
-		Component   string `uri:"component" binding:"required,component"`
-		Key         string `uri:"key" binding:"required,key"`
+		ProductName string `uri:"productName" binding:"alphanum"`
+		Component   string `uri:"component" binding:"component"`
+		Key         string `uri:"key" binding:"key"`
 	}{}
 	formPart := struct {
-		Version string `form:"version" binding:"required,version"`
+		Version string `form:"version" binding:"version"`
 		Locale  string `form:"locale" binding:"locale"`
 		Source  string `form:"source"`
 	}{Locale: translation.EnLocale}
@@ -309,12 +309,12 @@ func GetString(c *gin.Context) {
 // @Deprecated
 func GetString3(c *gin.Context) {
 	uriPart := struct {
-		ProductName string `uri:"productName" binding:"required,alphanum"`
+		ProductName string `uri:"productName" binding:"alphanum"`
 		Component   string
-		Key         string `uri:"key" binding:"required,key"`
+		Key         string `uri:"key" binding:"key"`
 	}{Component: "default"}
 	formPart := struct {
-		Version string `form:"version" binding:"required,version"`
+		Version string `form:"version" binding:"version"`
 		Locale  string `form:"locale" binding:"locale"`
 		Source  string `form:"source"`
 	}{Locale: translation.EnLocale}

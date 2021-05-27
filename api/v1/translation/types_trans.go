@@ -13,8 +13,8 @@ type (
 	GetStringReq struct {
 		ReleaseID
 		Locale    string `form:"locale" binding:"locale"`
-		Component string `form:"component" binding:"required,component"`
-		Key       string `form:"key" binding:"required,key"`
+		Component string `form:"component" binding:"component"`
+		Key       string `form:"key" binding:"key"`
 		Source    string `form:"source"`
 	}
 )
