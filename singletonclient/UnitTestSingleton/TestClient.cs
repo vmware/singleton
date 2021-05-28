@@ -17,6 +17,9 @@ namespace UnitTestSingleton
     [TestClass]
     public class TestClient
     {
+        private const string PRODUCT = "CSHARP";
+        private const string VERSION = "1.0.0";
+
         private IConfig config;
         private IRelease release;
 
@@ -28,29 +31,29 @@ namespace UnitTestSingleton
             config = Util.Config();
             release = Util.Release();
 
-            Util.Translation().GetString("de", Util.Source("about", "about.message"));
+            Util.Translation().GetString("en", Util.Source("about", "$"));
+            Util.Translation().GetString("en", Util.Source("contact", "$"));
+            Util.Translation().GetString("de", Util.Source("about", "$"));
+            Util.Translation().GetString("de", Util.Source("contact", "$"));
         }
 
         [TestMethod]
         public void TestUtil()
         {
-            string text = BaseIo.obj().GetHttpInfo("aaa");
-            Assert.AreEqual(text, "");
-
-            text = BaseIo.obj().HttpGet("11.22.33", null);
-            Assert.AreEqual(text, "");
+            string text = BaseIo.obj().HttpGet("11.22.33", null);
+            Assert.AreEqual(string.IsNullOrEmpty(text), true);
 
             text = BaseIo.obj().HttpPost("11.22.33", "44.55", null);
-            Assert.AreEqual(text, null);
+            Assert.AreEqual(string.IsNullOrEmpty(text), true);
 
-            config = I18N.GetConfig("CSHARP", "1.0.0");
+            config = I18N.GetConfig(PRODUCT, VERSION);
             ISingletonConfig configWrapper = new SingletonConfigWrapper(config);
             string productName = configWrapper.GetProduct();
-            Assert.AreEqual(productName, "CSHARP");
+            Assert.AreEqual(productName, PRODUCT);
 
             SingletonConfig theConfig = (SingletonConfig)config;
             string jointKey = configWrapper.GetReleaseName();
-            Assert.AreEqual(jointKey, "CSHARP^1.0.0");
+            Assert.AreEqual(jointKey, PRODUCT + "^" + VERSION);
 
             IConfigItem textItem = configWrapper.GetConfig().GetItem("_none");
             Assert.AreEqual(textItem, null);
@@ -66,7 +69,7 @@ namespace UnitTestSingleton
             JObject obj = SingletonUtil.HttpPost(BaseIo.obj(), "__url", "body", null);
             Assert.AreEqual(obj.Count, 0);
 
-            Assert.AreEqual(I18N.GetConfig("CSHARP", null), null);
+            Assert.AreEqual(I18N.GetConfig(PRODUCT, null), null);
 
             SingletonClientManager mgr = (SingletonClientManager)I18N.GetExtension();
             Assert.AreEqual(mgr.GetRelease(null), null);
@@ -78,7 +81,7 @@ namespace UnitTestSingleton
         [TestMethod]
         public void TestRelease()
         {
-            config = I18N.GetConfig("CSHARP", "1.0.0");
+            config = I18N.GetConfig(PRODUCT, VERSION);
             List<string> localeList = config.GetLocaleList(null);
             Assert.AreEqual(localeList.Count, 0);
             localeList = config.GetLocaleList("");
@@ -101,8 +104,11 @@ namespace UnitTestSingleton
             string translation = Util.Translation().GetString("de", null);
             Assert.AreEqual(translation, null);
 
-            translation = Util.Translation().GetString("de", Util.Source("about", "about.message"));
+            translation = Util.Translation().GetString("de", Util.Source(null, "about.message"));
             Assert.AreEqual(translation, "Ihrer Bewerbungs Beschreibung Seite.");
+
+            translation = Util.Translation().GetString("de", Util.Source(null, "contact.support"));
+            Assert.AreEqual(translation, "Unterstützung:");
 
             translation = Util.Translation().GetString("zh-Hans", Util.Source("about", "about.message"));
             Assert.AreEqual(translation, "应用程序说明页。");
@@ -126,10 +132,10 @@ namespace UnitTestSingleton
             src = Util.Source("about", "about.title", null, null);
             translation = Util.Translation().GetString("zh-CN", src);
             Assert.AreEqual(translation, "关于 Version {1} of Product {0}");
-            translation = Util.Translation().Format("zh-CN", src, "CSHARP", "1.0.0");
-            Assert.AreEqual(translation, "关于 Version 1.0.0 of Product CSHARP");
-            translation = Util.Translation().Format("zh-CN", src, "CSHARP");
-            Assert.AreEqual(translation, "关于 Version {1} of Product CSHARP");
+            translation = Util.Translation().Format("zh-CN", src, PRODUCT, VERSION);
+            Assert.AreEqual(translation, "关于 Version 1.0.0 of Product " + PRODUCT);
+            translation = Util.Translation().Format("zh-CN", src, PRODUCT);
+            Assert.AreEqual(translation, "关于 Version {1} of Product " + PRODUCT);
         }
 
         [TestMethod]

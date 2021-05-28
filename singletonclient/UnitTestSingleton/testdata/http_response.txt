@@ -1,0 +1,232 @@
+﻿---api---
+[GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/localelist
+COMMENT: get locale list
+---data---
+{
+    "response":{
+        "code":200,
+        "message":"OK",
+        "serverTime":""
+    },
+    "signature":"",
+    "data":{
+        "locales":[
+            "zh-Hans",
+            "zh-Hant",
+            "fr",
+            "en",
+            "ja",
+            "ko",
+            "de"
+        ],
+        "version":"$VERSION",
+        "productName":"$PRODUCT"
+    }
+}
+
+---api---
+[GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/componentlist
+COMMENT: get component list
+---data---
+{
+    "response":{
+        "code":200,
+        "message":"OK",
+        "serverTime":""
+    },
+    "signature":"",
+    "data":{
+        "components":[
+            "about",
+            "contact",
+            "index",
+            "common"
+        ],
+        "version":"$VERSION",
+        "productName":"$PRODUCT"
+    }
+}
+
+---api---
+[GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/locales/en/components/about?pseudo=false&machineTranslation=false&checkTranslationStatus=false
+COMMENT: about & en
+---data---
+{
+    "response":{
+        "code":200,
+        "message":"OK",
+        "serverTime":""
+    },
+    "signature":"",
+    "data":{
+        "productName":"$PRODUCT",
+        "version":"$VERSION",
+        "dataOrigin":"bundle",
+        "pseudo":false,
+        "machineTranslation":false,
+        "component":"about",
+        "messages":{
+            "about.message":"Your application description page.",
+            "about.title":"About Version {1} of Product {0}",
+            "about.description":"Use this area to provide additional information"
+        },
+        "locale":"en",
+        "status":"",
+        "id":0
+    }
+}
+
+---api---
+[GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/locales/de/components/about?pseudo=false&machineTranslation=false&checkTranslationStatus=false
+COMMENT: about & de
+---data---
+{
+    "response":{
+        "code":200,
+        "message":"OK",
+        "serverTime":""
+    },
+    "signature":"",
+    "data":{
+        "productName":"$PRODUCT",
+        "version":"$VERSION",
+        "dataOrigin":"bundle",
+        "pseudo":false,
+        "machineTranslation":false,
+        "component":"about",
+        "messages":{
+            "about.message":"Ihrer Bewerbungs Beschreibung Seite.",
+            "about.title":"Über Version {1} of Product {0}",
+            "about.description":"Nutzen Sie diesen Bereich, um zusätzliche Informationen zu liefern"
+        },
+        "locale":"de",
+        "status":"",
+        "id":0
+    }
+}
+
+---api---
+[GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/locales/zh-Hans/components/about?pseudo=false&machineTranslation=false&checkTranslationStatus=false
+COMMENT: about & zh-Hans
+---data---
+{
+    "response":{
+        "code":200,
+        "message":"OK",
+        "serverTime":""
+    },
+    "signature":"",
+    "data":{
+        "productName":"$PRODUCT",
+        "version":"$VERSION",
+        "dataOrigin":"bundle",
+        "pseudo":false,
+        "machineTranslation":false,
+        "component":"about",
+        "messages":{
+            "about.message":"应用程序说明页。",
+            "about.title":"关于 Version {1} of Product {0}",
+            "about.description":"使用此区域可提供其他信息"
+        },
+        "locale":"zh-Hans",
+        "status":"",
+        "id":0
+    }
+}
+
+
+---api---
+[GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/locales/en/components/contact?pseudo=false&machineTranslation=false&checkTranslationStatus=false
+COMMENT: contact & en
+---data---
+{
+    "response":{
+        "code":200,
+        "message":"OK",
+        "serverTime":""
+    },
+    "signature":"",
+    "data":{
+        "productName":"CSHARP",
+        "version":"1.0.0",
+        "dataOrigin":"bundle",
+        "pseudo":false,
+        "machineTranslation":false,
+        "component":"contact",
+        "messages":{
+            "contact.title":"Contact",
+            "contact.message":"Your contact page.",
+            "contact.applicationname":"VIP Sample Web Application",
+            "contact.address":"One Microsoft Way<br/> Redmond, WA 98052 - 6399 <br/><abbr title = \"Phone\"> P:</abbr>425.555.0100",
+            "contact.support":"Support:",
+            "contact.marketing":"Marketing:"
+        },
+        "locale":"en",
+        "status":"",
+        "id":0
+    }
+}
+
+---api---
+[GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/locales/de/components/contact?pseudo=false&machineTranslation=false&checkTranslationStatus=false
+COMMENT: contact & de
+---data---
+{
+    "response":{
+        "code":200,
+        "message":"OK",
+        "serverTime":""
+    },
+    "signature":"",
+    "data":{
+        "productName":"CSHARP",
+        "version":"1.0.0",
+        "dataOrigin":"bundle",
+        "pseudo":false,
+        "machineTranslation":false,
+        "component":"contact",
+        "messages":{
+            "contact.marketing":"Marketing:",
+            "contact.applicationname":"VIP-Sample-Web-Anwendung",
+            "contact.address":"One Microsoft Way <br/> Redmond, WA 98052-6399 <br/> < abbr titel = \"Phone\" > P: </abbr> 425.555.0100",
+            "contact.support":"Unterstützung:",
+            "contact.message":"Ihrer Kontaktseite.",
+            "contact.title":"Kontakt"
+        },
+        "locale":"de",
+        "status":"",
+        "id":0
+    }
+}
+
+---api---
+[GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/locales/zh-Hans/components/contact?pseudo=false&machineTranslation=false&checkTranslationStatus=false
+COMMENT: contact & zh-Hans
+---data---
+{
+    "response":{
+        "code":200,
+        "message":"OK",
+        "serverTime":""
+    },
+    "signature":"",
+    "data":{
+        "productName":"CSHARP",
+        "version":"1.0.0",
+        "dataOrigin":"bundle",
+        "pseudo":false,
+        "machineTranslation":false,
+        "component":"contact",
+        "messages":{
+            "contact.marketing":"营销：",
+            "contact.applicationname":"VIP 示例 Web 应用程序",
+            "contact.address":"一个微软方式 <br/> 雷德蒙, WA 98052-6399 <br/> <abbr title = \"Phone\"> P: </abbr> 425.555.0100",
+            "contact.support":"支持：",
+            "contact.message":"您的联系人页面。",
+            "contact.title":"联系"
+        },
+        "locale":"zh-Hans",
+        "status":"",
+        "id":0
+    }
+}

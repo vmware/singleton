@@ -7,8 +7,6 @@ using MosaicoSolutions.CSharpProperties;
 
 using SingletonClient;
 using SingletonClient.Implementation;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
@@ -79,7 +77,7 @@ namespace Product1ResLib
             string content = SingletonUtil.ConvertToText(bytes);
             var properties = Properties.Load(new StringReader(content));
 
-            string[] strs = { "aa", "bb" };
+            string[] strs = { "text1", "text2" };
         }
 
     }

@@ -22,7 +22,7 @@ namespace UnitTestSingleton
         public TestSupport()
         {
             baseIo = BaseIo.obj();
-            SingletonBaseIo.set(BaseIo.obj());
+            SingletonBaseIo.SetInstance(BaseIo.obj());
         }
 
         private void CheckSetCulture(string culture, string target)

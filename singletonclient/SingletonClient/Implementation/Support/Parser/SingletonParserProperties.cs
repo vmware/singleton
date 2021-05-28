@@ -47,7 +47,7 @@ namespace SingletonClient.Implementation.Support
                 while (keyLen < limit)
                 {
                     c = lr.LineBuf[keyLen];
-                    //need check if escaped.
+                    // Need check if escaped.
                     if ((c == '=' || c == ':') && !precedingBackslash)
                     {
                         valueStart = keyLen + 1;
@@ -227,8 +227,7 @@ namespace SingletonClient.Implementation.Support
                     return len;
                 }
 
-                //The line below is equivalent to calling a
-                //ISO8859-1 decoder.
+                // The line below is equivalent to calling a ISO8859-1 decoder.
                 char c = inCharBuf[inOff++];
 
                 if (skipLF)
@@ -272,7 +271,7 @@ namespace SingletonClient.Implementation.Support
                         lineBuf.CopyTo(buf, 0);
                         lineBuf = buf;
                     }
-                    //flip the preceding backslash flag
+                    // Flip the preceding backslash flag
                     if (c == '\\')
                     {
                         precedingBackslash = !precedingBackslash;
@@ -284,7 +283,7 @@ namespace SingletonClient.Implementation.Support
                 }
                 else
                 {
-                    // reached EOL
+                    // Reached EOL
                     if (isCommentLine || len == 0)
                     {
                         isCommentLine = false;
@@ -304,7 +303,7 @@ namespace SingletonClient.Implementation.Support
                     if (precedingBackslash)
                     {
                         len -= 1;
-                        //skip the leading whitespace characters in following line
+                        // Skip the leading whitespace characters in following line
                         skipWhiteSpace = true;
                         appendedLineBegin = true;
                         precedingBackslash = false;

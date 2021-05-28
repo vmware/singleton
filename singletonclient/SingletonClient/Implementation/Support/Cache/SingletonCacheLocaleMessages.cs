@@ -21,7 +21,7 @@ namespace SingletonClient.Implementation.Support
         private readonly bool asSource;
         private readonly Hashtable components = SingletonUtil.NewHashtable(true);
 
-        private ISingletonByKeyRelease byKeyRelease;
+        private readonly ISingletonByKeyRelease byKeyRelease;
         private ISingletonByKeyLocale byKeyLocale;
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace SingletonClient.Implementation.Support
             if (cache == null)
             {
                 ISingletonClientManager singletonClientManager = SingletonClientManager.GetInstance();
-                if (singletonConfig.IsOnlyByKey())
+                if (singletonConfig.IsCacheByKey())
                 {
                     cache = new SingletonCacheByKeyComponentMessages(release, this.locale, component, this.asSource);
                 }
@@ -105,6 +105,11 @@ namespace SingletonClient.Implementation.Support
         /// <returns>return.</returns>
         public string GetString(string component, string key)
         {
+            if (string.IsNullOrEmpty(key))
+            {
+                return null;
+            }
+
             if (this.byKeyLocale != null)
             {
                 int componentIndex = this.byKeyRelease.GetComponentIndex(component);

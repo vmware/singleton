@@ -3,7 +3,6 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
-using SingletonClient.Implementation.Helpers;
 using SingletonClient.Implementation.Support;
 using System.Collections;
 using System.Reflection;
@@ -63,9 +62,6 @@ namespace SingletonClient.Implementation
             RegisterCacheManager(cacheManager, ConfigConst.DefaultType);
             RegisterCacheManager(cacheManager, ConfigConst.CacheByKey);
 
-            ICacheComponentManager cacheComponentManager = new SingletonCacheComponentManager();
-            RegisterCacheComponentManager(cacheComponentManager, ConfigConst.DefaultType);
-
             ILog logger = new SingletonLogger();
             RegisterLogger(logger, ConfigConst.DefaultType);
 
@@ -89,7 +85,7 @@ namespace SingletonClient.Implementation
             byte[] bytes = SingletonUtil.ReadResource(resName, assembly, "fallback");
             string configText = SingletonUtil.ConvertToText(bytes);
 
-            CultureHelper.SetFallbackConfig(configText);
+            SingletonLocaleUtil.SetFallbackConfig(configText);
         }
 
         private Hashtable GetProductVersions(string product, bool add)

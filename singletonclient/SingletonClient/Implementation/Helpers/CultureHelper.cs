@@ -3,12 +3,8 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
-using SingletonClient.Implementation.Support;
-using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
-using YamlDotNet.RepresentationModel;
 
 namespace SingletonClient.Implementation.Helpers
 {
@@ -16,128 +12,50 @@ namespace SingletonClient.Implementation.Helpers
     {
         private const string DefaultCulture = "en-US";
 
-        private static Hashtable _localeConvertMap = SingletonUtil.NewHashtable(true);
-        private static Hashtable _localeFallbackMap = SingletonUtil.NewHashtable(true);
-
-        public static void SetCurrentCulture(string cultureName)
-        {
-            Thread.CurrentThread.CurrentCulture = GetCulture(cultureName);
-            Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
-        }
-
-        public static CultureInfo GetCulture(string cultureName)
-        {
-            if (!string.IsNullOrEmpty(cultureName))
-            {
-                try
-                {
-                    return new System.Globalization.CultureInfo(cultureName);
-                }
-                catch (CultureNotFoundException e)
-                {
-                    SingletonUtil.HandleException(e);
-                }
-            }
-            return new System.Globalization.CultureInfo(GetDefaultCulture());
-        }
-
         public static string GetDefaultCulture()
         {
             return DefaultCulture;
         }
 
-        public static string GetCurrentCulture()
-        {
-            return Thread.CurrentThread.CurrentCulture.Name;
-        }
-
-        public static string GetCultureName(string cultureName)
+        public static CultureInfo GetCulture(string cultureName)
         {
             if (string.IsNullOrEmpty(cultureName))
             {
-                return DefaultCulture;
+                return null;
             }
 
             try
             {
-                CultureInfo cultureInfo = new System.Globalization.CultureInfo(cultureName);
-                return cultureInfo.IetfLanguageTag;
-            }
-            catch (CultureNotFoundException e)
-            {
-                SingletonUtil.HandleException(e);
-            }
-
-            return DefaultCulture;
-        }
-
-        public static void SetFallbackConfig(string configText)
-        {
-            YamlMappingNode configRoot = SingletonUtil.GetYamlRoot(configText);
-            var valuesMapping = (YamlMappingNode)configRoot.Children[new YamlScalarNode("locale")];
-            foreach (var tuple in valuesMapping.Children)
-            {
-                _localeConvertMap[tuple.Key.ToString()] = tuple.Value.ToString();
-            }
-        }
-
-        public static ISingletonLocale GetFallbackLocaleList(string locale)
-        {
-            if (string.IsNullOrEmpty(locale))
-            {
-                return GetFallbackLocaleList(DefaultCulture);
-            }
-
-            ISingletonLocale singletonLocale = (ISingletonLocale)_localeFallbackMap[locale];
-            if (singletonLocale != null)
-            {
-                return singletonLocale;
-            }
-
-            CultureInfo cultureInfo = null;
-            try
-            {
-                cultureInfo = new System.Globalization.CultureInfo(locale);
-                cultureInfo = new System.Globalization.CultureInfo(cultureInfo.LCID);
+                CultureInfo cultureInfo1 = new System.Globalization.CultureInfo(cultureName);
+                CultureInfo cultureInfo2 = new System.Globalization.CultureInfo(cultureInfo1.LCID);
+                if (cultureInfo1.LCID == cultureInfo2.LCID)
+                {
+                    return cultureInfo1;
+                }
             }
             catch (CultureNotFoundException)
             {
-                singletonLocale = GetFallbackLocaleList(DefaultCulture);
-                _localeFallbackMap[locale] = singletonLocale;
-                return singletonLocale;
+                return null;
             }
 
-            // 1. locale itself
-            singletonLocale = new SingletonLocale(locale);
-            // 2. Microsoft locale name
-            singletonLocale.AddNearLocale(cultureInfo.Name);
-            // 3. RFC 4646 locale name
-            singletonLocale.AddNearLocale(cultureInfo.IetfLanguageTag);
+            return null;
+        }
 
-            // 4. neutrual locale name
-            if (cultureInfo.IsNeutralCulture)
+        public static void SetCurrentCulture(string cultureName)
+        {
+            CultureInfo cultureInfo = GetCulture(cultureName);
+            if (cultureInfo == null)
             {
-                singletonLocale.AddNearLocale(cultureInfo.Name);
-            } else
-            {
-                CultureInfo cultureNeutral = cultureInfo.Parent;
-                singletonLocale.AddNearLocale(cultureNeutral.Name);
+                cultureInfo = GetCulture(GetDefaultCulture());
             }
 
-            // 5. locale after fallback
-            string localeRemote = null;
-            for(int i=0; i<singletonLocale.GetCount(); i++)
-            {
-                localeRemote = (string)_localeConvertMap[singletonLocale.GetNearLocale(i)];
-                if (localeRemote != null)
-                {
-                    singletonLocale.AddNearLocale(localeRemote);
-                    break;
-                }
-            }
+            Thread.CurrentThread.CurrentCulture = cultureInfo;
+            Thread.CurrentThread.CurrentUICulture = cultureInfo;
+        }
 
-            _localeFallbackMap[locale] = singletonLocale;
-            return singletonLocale;
+        public static string GetCurrentCulture()
+        {
+            return Thread.CurrentThread.CurrentCulture.Name;
         }
     }
 }

@@ -18,24 +18,21 @@ namespace SingletonClient.Implementation.Support.ByKey
 
     public class SingletonByKeyLocale : ISingletonByKeyLocale
     {
-        private readonly ISingletonRelease _release;
-        private string _locale;
-        private ISingletonLocale _singletonLocale;
-        private bool _asSource;
-        private bool _isSourceLocale;
+        private readonly ISingletonByKeyRelease _bykey;
+        private readonly bool _asSource;
+        private readonly bool _isSourceLocale;
 
         // Data table
-        private SingletonByKeyTable<ISingletonComponent> _components;
-        private SingletonByKeyTable<string> _messages;
+        private readonly SingletonByKeyTable<ISingletonComponent> _components;
+        private readonly SingletonByKeyTable<string> _messages;
 
-        public SingletonByKeyLocale(ISingletonRelease release, string locale, bool asSource)
+        public SingletonByKeyLocale(ISingletonByKeyRelease bykey, string locale, bool asSource)
         {
-            _release = release;
-            this._locale = locale;
-            _singletonLocale = SingletonUtil.GetSingletonLocale(locale);
+            this._bykey = bykey;
+            ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
             this._asSource = asSource;
-            string sourceLocale = _release.GetSingletonConfig().GetSourceLocale();
-            this._isSourceLocale = _singletonLocale.Contains(sourceLocale);
+            string sourceLocale = _bykey.GetSourceLocale();
+            this._isSourceLocale = singletonLocale.Contains(sourceLocale);
 
             _components = new SingletonByKeyTable<ISingletonComponent> (SingletonByKeyRelease.COMPONENT_PAGE_MAX_SIZE);
             _messages = new SingletonByKeyTable<string>(SingletonByKeyRelease.PAGE_MAX_SIZE);
@@ -62,8 +59,6 @@ namespace SingletonClient.Implementation.Support.ByKey
         /// </summary>
         public int GetKeyCountInComponent(int componentIndex)
         {
-            ISingletonByKeyRelease byKeyRelease = _release.GetSingletonByKeyRelease();
-
             int count = 0;
             for (int i = 0; i < SingletonByKeyRelease.PAGE_MAX_SIZE; i++)
             {
@@ -78,7 +73,7 @@ namespace SingletonClient.Implementation.Support.ByKey
                     {
                         continue;
                     }
-                    SingletonByKeyItem item = byKeyRelease.GetKeyItem(i, k);
+                    SingletonByKeyItem item = _bykey.GetKeyItem(i, k);
                     if (item != null && item.GetComponentIndex() == componentIndex)
                     {
                         count++;

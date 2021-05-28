@@ -12,6 +12,7 @@ namespace SingletonClient.Implementation.Support.ByKey
 {
     public interface ISingletonByKeyRelease
     {
+        string GetSourceLocale();
         ISingletonByKeyLocale GetLocaleItem(string locale, bool asSource);
         int GetComponentIndex(string component);
         int GetKeyCountInComponent(int componentIndex, ISingletonByKeyLocale localeItem);
@@ -28,8 +29,9 @@ namespace SingletonClient.Implementation.Support.ByKey
         protected string _message;
         protected bool _add;
 
-        protected SingletonByKeyItem _aboveItem;
-        protected SingletonByKeyItem _currentItem;
+        public SingletonByKeyItem AboveItem { get; set; }
+        public SingletonByKeyItem CurrentItem { get; set; }
+        public bool Add { get; set; }
 
         public SingletonLookup(string key, int componentIndex, string message)
         {
@@ -53,24 +55,6 @@ namespace SingletonClient.Implementation.Support.ByKey
         {
             get { return _message; }
         }
-
-        public SingletonByKeyItem AboveItem
-        {
-            get { return _aboveItem; }
-            set { _aboveItem = value; }
-        }
-
-        public SingletonByKeyItem CurrentItem
-        {
-            get { return _currentItem; }
-            set { _currentItem = value; }
-        }
-
-        public bool Add
-        {
-            get { return _add; }
-            set { _add = value; }
-        }
     }
 
     public class SingletonByKeyRelease : ISingletonByKeyRelease
@@ -78,6 +62,8 @@ namespace SingletonClient.Implementation.Support.ByKey
         public const int PAGE_MAX_SIZE = 1024;
         public const int COMPONENT_PAGE_MAX_SIZE = 128;
 
+        private readonly string _localeSource;
+        private readonly bool _onlyByKey;
         private readonly ISingletonRelease _release;
         private readonly SingletonByKeyComponents _compentTable;
 
@@ -91,11 +77,13 @@ namespace SingletonClient.Implementation.Support.ByKey
         private ISingletonByKeyLocale _sourceLocal;
         private ISingletonByKeyLocale _sourceRemote;
 
-        private object _lockObject = new object();
+        private readonly object _lockObject = new object();
 
-        public SingletonByKeyRelease(ISingletonRelease release)
+        public SingletonByKeyRelease(ISingletonRelease release, string localeSource, string cacheType)
         {
             _release = release;
+            _localeSource = localeSource;
+            _onlyByKey = string.Compare(ConfigConst.CacheByKey, cacheType, StringComparison.InvariantCultureIgnoreCase) == 0;
 
             _compentTable = new SingletonByKeyComponents();
 
@@ -128,13 +116,21 @@ namespace SingletonClient.Implementation.Support.ByKey
         /// <summary>
         /// ISingletonByKeyRelease
         /// </summary>
+        public string GetSourceLocale()
+        {
+            return _localeSource;
+        }
+
+        /// <summary>
+        /// ISingletonByKeyRelease
+        /// </summary>
         public ISingletonByKeyLocale GetLocaleItem(string locale, bool asSource)
         {
             Hashtable table = asSource ? _sources : _locales;
             ISingletonByKeyLocale item = (ISingletonByKeyLocale)table[locale];
             if (item == null)
             {
-                item = new SingletonByKeyLocale(_release, locale, asSource);
+                item = new SingletonByKeyLocale(this, locale, asSource);
                 table[locale] = item;
             }
             return item;
@@ -203,6 +199,11 @@ namespace SingletonClient.Implementation.Support.ByKey
         /// </summary>
         public string GetString(string key, int componentIndex, ISingletonByKeyLocale localeItem)
         {
+            if (componentIndex < 0 && !_onlyByKey)
+            {
+                return null;
+            }
+
             SingletonByKeyItem item;
             _keyAttrTable.TryGetValue(key, out item);
 

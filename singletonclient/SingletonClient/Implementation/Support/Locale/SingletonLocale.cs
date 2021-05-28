@@ -23,7 +23,7 @@ namespace SingletonClient.Implementation.Support
         void SetItems(Hashtable items, object item);
     }
 
-    public class SingletonLocale: ISingletonLocale
+    public class SingletonLocale : ISingletonLocale
     {
         private readonly List<string> localeList = new List<string>();
 
@@ -137,4 +137,3 @@ namespace SingletonClient.Implementation.Support
         }
     }
 }
-

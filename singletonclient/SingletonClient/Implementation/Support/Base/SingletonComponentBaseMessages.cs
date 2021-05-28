@@ -16,7 +16,7 @@ namespace SingletonClient.Implementation.Support.Base
         protected string _resourcePath;
         protected string _resourceType;
 
-        public SingletonComponentBaseMessages(
+        protected SingletonComponentBaseMessages(
             ISingletonRelease release, string locale, string component, bool asSource)
         {
             this.release = release;

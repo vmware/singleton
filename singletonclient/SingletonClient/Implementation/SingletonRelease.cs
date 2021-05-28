@@ -33,8 +33,8 @@ namespace SingletonClient.Implementation
         protected bool _isSourceLocale;
         protected ISingletonLocale _singletonLocale;
 
-        private Hashtable _components;
-        private ILocaleMessages _localeMessages;
+        private readonly Hashtable _components;
+        public ILocaleMessages LocaleMessages { get; set; }
 
         public SingletonUseLocale(ISingletonLocale singletonLocale, string sourceLocale)
         {
@@ -65,12 +65,6 @@ namespace SingletonClient.Implementation
         public Hashtable Components
         {
             get { return _components; }
-        }
-
-        public ILocaleMessages LocaleMessages
-        {
-            get { return _localeMessages; }
-            set { _localeMessages = value; }
         }
     }
 
@@ -137,11 +131,12 @@ namespace SingletonClient.Implementation
     {
         protected ISingletonClientManager _client;
         protected ISingletonRelease _self;
-        protected ISingletonConfig _config;
         protected IReleaseMessages _releaseMessages;
 
         protected ILog _logger;
         protected LogType _logLevel;
+
+        protected ISingletonConfig _config;
 
         protected ISingletonApi _api;
         protected IAccessService _accessService;
@@ -210,8 +205,6 @@ namespace SingletonClient.Implementation
         // value: (SingletonUseLocale)
         private readonly Hashtable _localesTable = SingletonUtil.NewHashtable(true);
 
-        private ICacheManager _cacheManager;
-
         protected bool InitForCache()
         {
             if (_productCache != null)
@@ -222,14 +215,14 @@ namespace SingletonClient.Implementation
             _update = new SingletonUpdate(_self);
 
             string cacheType = _config.GetCacheType();
-            _cacheManager = _client.GetCacheManager(cacheType);
+            ICacheManager cacheManager = _client.GetCacheManager(cacheType);
 
-            _productCache = _cacheManager.GetReleaseCache(
+            _productCache = cacheManager.GetReleaseCache(
                 _config.GetProduct(), _config.GetVersion());
 
-            if (_config.IsOnlyByKey())
+            if (_config.IsCacheByKey())
             {
-                _byKeyRelease = new SingletonByKeyRelease(_self);
+                _byKeyRelease = new SingletonByKeyRelease(_self, _config.GetSourceLocale(), cacheType);
             }
 
             _useSourceLocale = GetUseLocale(_config.GetSourceLocale());
