@@ -1,0 +1,13 @@
+{
+    "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+    "dest": "./dist/@singleton-i18n/angular-client",
+    "lib": {
+        "entryFile": "core/index.ts",
+        "umdModuleIds": {
+            "decimal.js-light": "decimal"
+        }
+    },
+    "whitelistedNonPeerDependencies": [
+        "decimal.js-light"
+    ]
+}
