@@ -7,7 +7,6 @@ using Product1ResLib;
 using Product2ResLib;
 using SingletonIcu;
 using System;
-using System.Globalization;
 using System.Threading;
 
 namespace ClientTestApp
@@ -16,13 +15,6 @@ namespace ClientTestApp
     {
         private static int endWait = 0;
         private static int selection = 0;
-
-        private string TestFormat(string strFormat, params object[] args)
-        {
-            int n = args.Length;
-            string text = string.Format("{0}{1}{2}{3}{4}{5}", args);
-            return text;
-        }
 
         private void Init()
         {

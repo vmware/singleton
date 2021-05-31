@@ -13,6 +13,7 @@ using System.Linq;
 using System.Reflection;
 using System.Resources;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace UnitTestSingleton
@@ -31,6 +32,7 @@ namespace UnitTestSingleton
 
         private ResourceManager resourceManager;
         private Hashtable ht;
+        private Hashtable responseData = new Hashtable();
 
         private string lastConsoleText;
 
@@ -47,6 +49,20 @@ namespace UnitTestSingleton
             ht = p.Parse(text);
 
             I18N.GetExtension().RegisterAccessService(this, "test");
+
+            text = (string)resourceManager.GetObject("http_response");
+            text = text.Replace("$PRODUCT", "CSHARP").Replace("$VERSION", "1.0.0");
+            string[] parts = Regex.Split(text, "---api---.*[\r|\n]*");
+            for (int i = 0; i < parts.Length; i++)
+            {
+                if (parts[i].Trim().Length == 0)
+                {
+                    continue;
+                }
+                string[] segs = Regex.Split(parts[i], "---data---.*[\r|\n]*");
+                string[] lines = Regex.Split(segs[0], "\n");
+                responseData.Add(lines[0].Trim(), segs[1].Trim());
+            }
         }
 
         public string GetTestResource(string name)
@@ -57,39 +73,13 @@ namespace UnitTestSingleton
             if (type.Equals("System.Byte[]"))
             {
                 str = System.Text.Encoding.UTF8.GetString((System.Byte[])obj);
-            } else
+            }
+            else
             {
                 str = (string)obj;
             }
-            
+
             return str.Trim();
-        }
-
-        private void GetTestData()
-        {
-            string text = GetTestResource("http_list");
-
-            SingletonParserProperties p = new SingletonParserProperties();
-            Hashtable ht = p.Parse(text);
-
-            string text2 = GetTestResource("get_localelist");
-            ht = p.Parse(text);
-
-            text2 = GetHttpInfo("get_url_1");
-        }
-
-        public string GetHttpInfo(string key)
-        {
-            string value = (string)ht[key];
-            if (string.IsNullOrEmpty(value))
-            {
-                return "";
-            }
-            if (value.StartsWith("(res)"))
-            {
-                value = GetTestResource(value.Substring(5));
-            }
-            return value;
         }
 
         public void ConsoleWriteLine(string text)
@@ -98,41 +88,33 @@ namespace UnitTestSingleton
             Console.WriteLine(text);
         }
 
+        /// <summary>
+        /// ISingletonBaseIo
+        /// </summary>
         public string GetLastConsoleText()
         {
-            GetTestData();
             return lastConsoleText;
         }
 
+        /// <summary>
+        /// IAccessService
+        /// </summary>
         public string HttpGet(string url, Hashtable headers)
         {
-            for (int i=1; i < 100; i++)
-            {
-                string text = GetHttpInfo("get_url_" + i);
-                if (url.Equals(text))
-                {
-                    string mockText = GetHttpInfo("get_response_" + i);
-                    Console.WriteLine(mockText);
-                    return mockText;
-                }
+            string response = (string)responseData["[GET]" + url];
+            if (response == null) {
+                response = "";
             }
-            return "";
+            return response;
         }
 
+        /// <summary>
+        /// IAccessService
+        /// </summary>
         public string HttpPost(string url, string text, Hashtable headers)
         {
-            for (int i = 1; i < 100; i++)
-            {
-                string postUrl = GetHttpInfo("post_url_" + i);
-                string postText = GetHttpInfo("post_text_" + i);
-                if (url.Equals(postUrl) && text.Equals(postText))
-                {
-                    string mockText = GetHttpInfo("post_response_" + i); 
-                    Console.WriteLine(mockText);
-                    return mockText;
-                }
-            }
-            return null;
+            string reponse = (string)responseData["[POST]" + url];
+            return reponse;
         }
     }
 }

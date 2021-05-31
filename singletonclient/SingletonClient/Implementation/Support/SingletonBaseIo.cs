@@ -23,16 +23,19 @@ namespace SingletonClient.Implementation.Support
     {
         private static ISingletonBaseIo _instance = new SingletonBaseIo();
 
-        public static ISingletonBaseIo get()
+        public static ISingletonBaseIo GetInstance()
         {
             return _instance;
         }
 
-        public static void set(ISingletonBaseIo instance)
+        public static void SetInstance(ISingletonBaseIo instance)
         {
             _instance = instance;
         }
 
+        /// <summary>
+        /// ISingletonBaseIo
+        /// </summary>
         public void ConsoleWriteLine(string text)
         {
             Console.WriteLine(text);

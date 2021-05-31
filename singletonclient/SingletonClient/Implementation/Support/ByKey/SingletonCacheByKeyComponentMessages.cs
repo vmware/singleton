@@ -10,9 +10,9 @@ namespace SingletonClient.Implementation.Support.ByKey
 {
     public class SingletonCacheByKeyComponentMessages : SingletonComponentBaseMessages
     {
-        private ISingletonByKeyRelease _byKeyRelease;
-        private ISingletonByKeyLocale _byKeyLocale;
-        private int _componentIndex;
+        private readonly ISingletonByKeyRelease _byKeyRelease;
+        private readonly ISingletonByKeyLocale _byKeyLocale;
+        private readonly int _componentIndex;
 
         public SingletonCacheByKeyComponentMessages(
             ISingletonRelease release, string locale, string component, bool asSource) :

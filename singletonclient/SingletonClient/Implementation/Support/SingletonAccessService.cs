@@ -13,6 +13,9 @@ namespace SingletonClient.Implementation.Support
 {
     public class SingletonAccessService : IAccessService
     {
+        /// <summary>
+        /// IAccessService
+        /// </summary>
         public string HttpGet(string url, Hashtable headers)
         {
             string result = "";
@@ -66,6 +69,9 @@ namespace SingletonClient.Implementation.Support
             return result;
         }
 
+        /// <summary>
+        /// IAccessService
+        /// </summary>
         public string HttpPost(string url, string text, Hashtable headers)
         {
             if (text == null)

@@ -7,8 +7,8 @@ namespace SingletonClient.Implementation.Support.ByKey
 {
     public class SingletonByKeyTable<T>
     {
-        private T[][] _table;
-        private int _max;
+        private readonly T[][] _table;
+        private readonly int _max;
 
         public SingletonByKeyTable(int max)
         {

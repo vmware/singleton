@@ -63,7 +63,7 @@ namespace SingletonClient.Implementation
 
         bool IsLoadOnStartup();
 
-        bool IsOnlyByKey();
+        bool IsCacheByKey();
 
         List<string> GetExternalComponentList();
 
@@ -383,7 +383,7 @@ namespace SingletonClient.Implementation
         private readonly bool _isOfflineSupported;
         private readonly bool _isSourceDefault;
         private readonly bool _isLoadOnStartup;
-        private readonly bool _isOnlyByKey;
+        private readonly bool _isCacheByKey;
 
         public SingletonConfigWrapper(IConfig config)
         {
@@ -441,7 +441,8 @@ namespace SingletonClient.Implementation
             _isLoadOnStartup = (configItem != null) && configItem.GetBool();
 
             // Get if key is unique whatever component is
-            _isOnlyByKey = ConfigConst.CacheByKey.Equals(this.GetCacheType(),
+            _isCacheByKey = ConfigConst.CacheByKey.Equals(this.GetCacheType(),
+                StringComparison.InvariantCultureIgnoreCase) || ConfigConst.DefaultType.Equals(this.GetCacheType(),
                 StringComparison.InvariantCultureIgnoreCase);
         }
 
@@ -626,9 +627,9 @@ namespace SingletonClient.Implementation
             return _isLoadOnStartup;
         }
 
-        public bool IsOnlyByKey()
+        public bool IsCacheByKey()
         {
-            return _isOnlyByKey;
+            return _isCacheByKey;
         }
 
         public List<string> GetExternalComponentList()

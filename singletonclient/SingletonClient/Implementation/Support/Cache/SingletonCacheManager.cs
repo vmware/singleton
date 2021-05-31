@@ -4,7 +4,6 @@
  */
 
 using System.Collections;
-using SingletonClient.Implementation.Support.ByKey;
 
 namespace SingletonClient.Implementation.Support
 {

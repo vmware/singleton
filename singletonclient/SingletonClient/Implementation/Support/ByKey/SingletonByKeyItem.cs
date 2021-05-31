@@ -7,9 +7,9 @@ namespace SingletonClient.Implementation.Support.ByKey
 {
     public class SingletonByKeyItem
     {
-        private short _componentIndex;
-        private short _pageIndex;
-        private short _indexInPage;
+        private readonly short _componentIndex;
+        private readonly short _pageIndex;
+        private readonly short _indexInPage;
         private byte _sourceStatus;
         private SingletonByKeyItem _next;
 

@@ -4,7 +4,6 @@
  */
 
 using Newtonsoft.Json.Linq;
-using SingletonClient.Implementation.Helpers;
 using SingletonClient.Implementation.Support;
 using System;
 using System.Collections;
@@ -251,7 +250,7 @@ namespace SingletonClient.Implementation
         /// <returns></returns>
         public static ISingletonLocale GetSingletonLocale(string locale)
         {
-            return CultureHelper.GetFallbackLocaleList(locale);
+            return SingletonLocaleUtil.GetSingletonLocale(locale);
         }
 
         /// <summary>
@@ -286,11 +285,11 @@ namespace SingletonClient.Implementation
         /// Set list from json.
         /// </summary>
         /// <param name="strList"></param>
-        /// <param name="ja"></param>
-        public static void SetListFromJson(List<string> strList, JArray ja)
+        /// <param name="array"></param>
+        public static void SetListFromJson(List<string> strList, JArray array)
         {
             strList.Clear();
-            foreach (var one in ja)
+            foreach (var one in array)
             {
                 strList.Add(one.ToString());
             }

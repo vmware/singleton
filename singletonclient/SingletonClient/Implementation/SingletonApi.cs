@@ -22,7 +22,6 @@ namespace SingletonClient.Implementation
         private const string VipPathHead = "/i18n/api/v2/translation/products/{0}/versions/{1}/";
         private const string VipParameter = "pseudo=false&machineTranslation=false&checkTranslationStatus=false";
         private const string VipGetComponent = "locales/{0}/components/{1}?";
-        private const string VipSendSource = "locales/en-US/components/{0}/keys/{1}?collectSource={2}&";
 
         private readonly string _product;
         private readonly string _version;

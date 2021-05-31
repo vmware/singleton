@@ -4,7 +4,6 @@
  */
 
 using SingletonClient;
-using SingletonClient.Implementation;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -68,13 +67,29 @@ namespace Product1ResLib
             DoTestExtra();
         }
 
+        private string GetTranslate(string component, string strKey, string strValue)
+        {
+            string trans = "";
+            if (string.IsNullOrEmpty(strValue))
+            {
+                trans = Util1.Translation().GetString(_localeName, Util1.Source(component, strKey));
+                Log("--- msg / " + _localeName + " / " + strKey + " --- without source & --- " + trans);
+            }
+            else
+            {
+                trans = Util1.Translation().GetString(_localeName, Util1.Source(component, strKey, strValue));
+                Log("--- msg / " + _localeName + " / " + strKey + " --- with source    & --- " + trans);
+            }
+            return trans;
+        }
+
         public void DoTest()
         {
             Thread.Sleep(1000 * _delaySeconds);
 
             ILocaleMessages data = Util1.Messages().GetLocaleMessages(ConfigConst.DefaultLocale);
 
-            IComponentMessages cache = data.GetComponentMessages("about");
+            IComponentMessages cache = data.GetComponentMessages(_component);
             List<string> sl = data.GetComponentList();
 
             if (_localeName != null)
@@ -88,15 +103,13 @@ namespace Product1ResLib
                 Log("--- use default --- " + _localeName + " --- ");
             }
 
-            ICollection keys = cache.GetKeys();
             string strKey = "second_key";
+            GetTranslate(_component, "$", null);
+            ICollection keys = cache.GetKeys();
             string strValue = cache.GetString(strKey);
 
-            string trans = Util1.Translation().GetString(_localeName, Util1.Source(_component, strKey));
-            Log("--- trans without source --- " + trans);
-
-            trans = Util1.Translation().GetString(_localeName, Util1.Source(_component, strKey, strValue));
-            Log("--- trans with source    --- " + trans);
+            GetTranslate(null, strKey, null);
+            GetTranslate(_component, strKey, strValue);
 
             ILocaleMessages data2 = Util1.Messages().GetLocaleMessages(_localeName);
             string trans2 = data2.GetComponentMessages(_component).GetString(strKey);
@@ -126,8 +139,7 @@ namespace Product1ResLib
             Log("--- Format --- " + text);
 
             string strKey = "first_key";
-            string trans = Util1.Translation().GetString(_localeName, Util1.Source(_component, strKey));
-            Log("--- trans first_key --- " + trans);
+            GetTranslate(null, strKey, null);
 
             string currentLocale = Util1.Translation().GetCurrentLocale();
             Log("--- current locale --- " + currentLocale + " --- ");
