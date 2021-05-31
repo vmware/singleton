@@ -1,6 +1,9 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
-
+/*
+ * Copyright 2019-2021 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 module.exports = function (config) {
   config.set({
     basePath: '',
