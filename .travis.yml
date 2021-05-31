@@ -34,7 +34,7 @@ script: >
     python3 ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
   fi &&
   if [ x${TEST} = xunit_test ]; then
-    sed -i "s/'Chrome'/'ChromeHeadless'/g" config/karma.conf.js && cat config/karma.conf.js
+    sed -i "s/'Chrome'/'ChromeHeadless'/g" karma.conf.js && cat karma.conf.js
     npm install --registry https://registry.npmjs.org
     npm run test
   fi &&
@@ -55,7 +55,7 @@ script: >
     cp -a devops/sonar/* .
     rm -rf devops
     cd g11n-angular-client
-    sed -i "s/'Chrome'/'ChromeHeadless'/g" config/karma.conf.js && cat config/karma.conf.js
+    sed -i "s/'Chrome'/'ChromeHeadless'/g" karma.conf.js && cat karma.conf.js
     npm install --registry https://registry.npmjs.org
     str=$(printf '=%.0s' {1..50})
     echo $str Unit Test Start $str
