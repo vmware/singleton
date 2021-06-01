@@ -16,7 +16,7 @@ class SingletonByKeyItem(object):
     def __init__(self, componentIndex, itemIndex):
         self._componentIndex = componentIndex
 
-        self._pageIndex = itemIndex / SingletonByKey.PAGE_MAX_SIZE
+        self._pageIndex = itemIndex // SingletonByKey.PAGE_MAX_SIZE
         self._indexInPage = itemIndex % SingletonByKey.PAGE_MAX_SIZE
 
         self._sourceStatus = 0x01;
