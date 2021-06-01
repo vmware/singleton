@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,18 +28,16 @@ import com.vmware.vip.core.login.VipAuthConfig;
 import com.vmware.vip.core.validation.ValidationException;
 
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiParam;
 
 
 
-@RestController  
+@RestController("Authorization-authenticationLoginAPI")  
 @Api(value = "Login Controller login operations")
 public class AuthorizationLoginController {
 	private static Logger logger = LoggerFactory.getLogger(AuthorizationLoginController.class);
 	
-	public final static String INVALID_LOGIN = "Invalid Login username, password error or Authorization is expired";
+	public final static String INVALID_LOGIN = "Invalid Login username, password error or authentication is expired";
 	
 
 	@Autowired
@@ -85,7 +84,6 @@ public class AuthorizationLoginController {
 	@PostMapping(value = "/auth/token")
 	public APIResponseDTO generateToken(@RequestHeader(required = true) String authorization,@RequestParam String appId) {
 	
-		
 		logger.debug(authorization+"-----------------"+appId);
 		String username = null;
 		APIResponseDTO d = new APIResponseDTO();
@@ -95,7 +93,7 @@ public class AuthorizationLoginController {
 			logger.warn(e.getMessage());
 			Response r = new Response();
 			r.setCode(HttpStatus.UNAUTHORIZED.value());
-			r.setMessage("The authorization fails, please validate the token!");
+			r.setMessage("The authentication fails, please validate the token!");
 			r.setServerTime(LocalDateTime.now().toString());
 			d.setResponse(r);
 		    return d;
