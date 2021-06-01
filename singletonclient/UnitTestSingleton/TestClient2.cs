@@ -8,11 +8,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace UnitTestSingleton
 {
     [TestClass]
-    public class TestClient : AbsTestClient
+    public class TestClient2 : AbsTestClient
     {
         public override string[] GetResStrings()
         {
-            string[] strings = { "res.Singleton1", "sgtn_release" };
+            string[] strings = { "res.Singleton2", "sgtn_offline_disk_resx" };
             return strings;
         }
     }

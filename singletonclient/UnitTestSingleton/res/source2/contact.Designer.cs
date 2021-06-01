@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UnitTestSingleton.res {
+namespace UnitTestSingleton.res.source2 {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace UnitTestSingleton.res {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Singleton {
+    internal class contact {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Singleton() {
+        internal contact() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace UnitTestSingleton.res {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UnitTestSingleton.res.Singleton", typeof(Singleton).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UnitTestSingleton.res.source2.contact", typeof(contact).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,42 +61,56 @@ namespace UnitTestSingleton.res {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to One Microsoft Way&lt;br/&gt; Redmond, WA 98052 - 6399 &lt;br/&gt;&lt;abbr title = \&quot;Phone\&quot;&gt; P:&lt;/abbr&gt;425.555.0100.
         /// </summary>
-        internal static byte[] common {
+        internal static string contact_address {
             get {
-                object obj = ResourceManager.GetObject("common", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("contact.address", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to VIP Sample Web Application.
         /// </summary>
-        internal static byte[] contact {
+        internal static string contact_applicationname {
             get {
-                object obj = ResourceManager.GetObject("contact", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("contact.applicationname", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to Marketing:.
         /// </summary>
-        internal static byte[] index {
+        internal static string contact_marketing {
             get {
-                object obj = ResourceManager.GetObject("index", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("contact.marketing", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to Your contact page..
         /// </summary>
-        internal static byte[] singleton_config {
+        internal static string contact_message {
             get {
-                object obj = ResourceManager.GetObject("singleton_config", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("contact.message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Support:.
+        /// </summary>
+        internal static string contact_support {
+            get {
+                return ResourceManager.GetString("contact.support", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact.
+        /// </summary>
+        internal static string contact_title {
+            get {
+                return ResourceManager.GetString("contact.title", resourceCulture);
             }
         }
     }

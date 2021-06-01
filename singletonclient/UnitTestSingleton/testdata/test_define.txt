@@ -1,0 +1,56 @@
+﻿---test---
+NAME: TestGetString1
+COMMENT: test GetString()
+
+---data---
+type: GetString
+locale: zh-Hans
+key: about.message
+expect: 应用程序说明页。
+
+---data---
+type: GetString
+locale: zh-CN
+key: about.message
+expect: 应用程序说明页。
+
+---data---
+type: GetString
+locale: de
+key: about.message
+expect: Ihrer Bewerbungs Beschreibung Seite.
+
+---data---
+type: GetString
+locale: de
+key: contact.support
+expect: Unterstützung:
+
+---data---
+type: GetString
+locale: zh-Hans
+component: about
+key: about.message
+expect: 应用程序说明页。
+
+---data---
+type: GetString
+locale: zh_Hans
+component: about
+key: about.message
+expect: 应用程序说明页。
+
+---data---
+type: GetString
+locale: zh-CN
+component: about
+key: about.message
+expect: 应用程序说明页。
+
+---data---
+type: GetString
+locale: zh-CN
+component: about
+key: about.title
+expect: 关于 Version {1} of Product {0}
+

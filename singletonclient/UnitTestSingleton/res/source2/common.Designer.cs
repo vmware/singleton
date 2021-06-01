@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UnitTestSingleton.testdata {
+namespace UnitTestSingleton.res.source2 {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace UnitTestSingleton.testdata {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class TestData {
+    internal class common {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal TestData() {
+        internal common() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace UnitTestSingleton.testdata {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UnitTestSingleton.testdata.TestData", typeof(TestData).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UnitTestSingleton.res.source2.common", typeof(common).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,43 +61,38 @@ namespace UnitTestSingleton.testdata {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ---api---
-        ///[GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/localelist
-        ///COMMENT: get locale list
-        ///---data---
-        ///{
-        ///    &quot;response&quot;:{
-        ///        &quot;code&quot;:200,
-        ///        &quot;message&quot;:&quot;OK&quot;,
-        ///        &quot;serverTime&quot;:&quot;&quot;
-        ///    },
-        ///    &quot;signature&quot;:&quot;&quot;,
-        ///    &quot;data&quot;:{
-        ///        &quot;locales&quot;:[
-        ///            &quot;zh-Hans&quot;,
-        ///            &quot;zh-Hant&quot;,
-        ///            &quot;fr&quot;,
-        ///            &quot;en&quot;,
-        ///            &quot;ja&quot;,
-        ///            &quot;ko&quot;,
-        ///            &quot;de&quot;
-        ///        ],
-        ///        &quot;version&quot;:&quot;$VERSION&quot;,
-        ///        &quot;productName&quot;:&quot; [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to About.
         /// </summary>
-        internal static string http_response {
+        internal static string common_about {
             get {
-                return ResourceManager.GetString("http_response", resourceCulture);
+                return ResourceManager.GetString("common.about", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to Sample Application.
         /// </summary>
-        internal static byte[] TestSource {
+        internal static string common_applicationname {
             get {
-                object obj = ResourceManager.GetObject("TestSource", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("common.applicationname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact.
+        /// </summary>
+        internal static string common_contact {
+            get {
+                return ResourceManager.GetString("common.contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        internal static string common_home {
+            get {
+                return ResourceManager.GetString("common.home", resourceCulture);
             }
         }
     }

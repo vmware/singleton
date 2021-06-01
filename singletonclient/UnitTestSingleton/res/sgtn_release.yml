@@ -1,11 +1,11 @@
 ﻿
-product: CSHARP
+product: CSHARP1
 l10n_version: 1.0.0
 
 online_service_url: http://127.0.0.1:8090
 
-offline_resources_base_url: res
-default_resource_format: properties, internal
+offline_resources_base_url: res.source
+default_resource_format: resx, internal
 
 prod_mode: false
 default_locale: en-US
@@ -26,25 +26,15 @@ logger_type: default
 log_level: Debug
 
 
-locales: # as default
-  - language_tag: en-US
-
-component_template_resx:
-  locales_refer: locales
-  offline_resources_path:
-    - source.$COMPONENT, resx
-
 component_template: # as default
-  locales_refer: locales
+  locales: # as default
+    - language_tag: en-US
   offline_resources_path:
-    - Singleton__ITEMNAME__$COMPONENT
+    - $COMPONENT
 
 components: 
   - name: about
-    template: component_template_resx
-
-  - name: index
     template: component_template # default
 
+  - name: index
   - name: contact
-
