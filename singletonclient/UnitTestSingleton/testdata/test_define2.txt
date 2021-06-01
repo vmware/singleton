@@ -1,0 +1,30 @@
+﻿---test---
+NAME: TestGetStringFromMessages1
+COMMENT: test getting string from messages object
+
+---data---
+type: GetStringFromLocaleMessages
+locale: de
+component: about
+key: about.message
+expect: Ihrer Bewerbungs Beschreibung Seite.
+
+---data---
+type: GetStringFromLocaleMessages
+locale: de
+component: else
+key: about.message
+
+---data---
+type: GetStringFromComponentMessages
+locale: de
+component: about
+key: about.message
+expect: Ihrer Bewerbungs Beschreibung Seite.
+
+---data---
+type: GetStringFromAllMessages
+locale: de
+component: about
+key: about.message
+expect: Ihrer Bewerbungs Beschreibung Seite.

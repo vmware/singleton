@@ -81,11 +81,6 @@ namespace SingletonClient.Implementation
             _source = source;
         }
 
-        public string Locale
-        {
-            get { return _useLocale.Locale; }
-        }
-
         public string Key
         {
             get { return _source.GetKey(); }
@@ -96,11 +91,6 @@ namespace SingletonClient.Implementation
             get { return _source.GetComponent(); }
         }
 
-        public ISingletonLocale SingletonLocale
-        {
-            get { return _useLocale.SingletonLocale; }
-        }
-
         public SingletonUseLocale UseLocale
         {
             get { return _useLocale; }
@@ -109,16 +99,6 @@ namespace SingletonClient.Implementation
         public string SourceMessage
         {
             get { return _source.GetSource(); }
-        }
-
-        public int ComponentIndex
-        {
-            get { return _componentIndex; }
-        }
-
-        public void PrepareByKey(ISingletonByKeyRelease byKeyRelease)
-        {
-            _componentIndex = (short)byKeyRelease.GetComponentIndex(_source.GetComponent());
         }
 
         public bool IsJustSource()
@@ -251,7 +231,14 @@ namespace SingletonClient.Implementation
                 {
                     useLocale = new SingletonUseLocale(singletonLocale, _config.GetSourceLocale());
                 }
-                _localesTable[locale] = useLocale;
+
+                foreach (var one in useLocale.SingletonLocale.GetNearLocaleList())
+                {
+                    if (_localesTable[one] == null)
+                    {
+                        _localesTable[one] = useLocale;
+                    }
+                }
             }
             return useLocale;
         }
@@ -329,7 +316,8 @@ namespace SingletonClient.Implementation
                     if (this._byKeyRelease == null)
                     {
                         text = accessObject.SourceMessage;
-                    } else
+                    }
+                    else
                     {
                         text = GetSourceMessage(accessObject.Component, accessObject.Key);
                     }
@@ -364,7 +352,6 @@ namespace SingletonClient.Implementation
 
             if (_byKeyRelease != null)
             {
-                accessObject.PrepareByKey(_byKeyRelease);
                 if (accessObject.UseLocale.IsSourceLocale)
                 {
                     string soureMessage = GetSourceMessage(accessObject.Component, accessObject.Key);
