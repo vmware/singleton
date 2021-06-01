@@ -2,7 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "../dist/out-tsc",
+    "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
@@ -16,9 +16,9 @@
       "dom"
     ],
     "paths": {
-      "@singleton-i18n/angular-client": [
-        "dist/@singleton-i18n/angular-client",
-        "../dist/@singleton-i18n/angular-client"
+      "angular-client": [
+        "dist/angular-client/angular-client",
+        "dist/angular-client"
       ]
     }
   }

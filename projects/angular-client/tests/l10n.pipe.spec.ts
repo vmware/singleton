@@ -44,7 +44,7 @@ describe('L10nPipe', () => {
     let injector: Injector;
     let l10nService: L10nService;
     let l10nPipe: L10nPipe;
-
+    let localeService: LocaleService;
     beforeEach(() => {
 
         TestBed.configureTestingModule({
@@ -69,7 +69,7 @@ describe('L10nPipe', () => {
         injector = getTestBed();
         l10nService = injector.get(L10nService);
         l10nPipe = new L10nPipe(l10nService);
-        const localeService = injector.get(LocaleService);
+        localeService = injector.get(LocaleService);
         localeService.setCurrentLocale(locale);
     });
 
@@ -87,6 +87,7 @@ describe('L10nPipe', () => {
     });
 
     it('should transform with string in source', () => {
+        localeService.setCurrentLocale(localeArr[1]);
         const res = l10nPipe.transform('test.string', 'test string for en');
         expect(res).toEqual('test string for en');
         locale = localeArr[2];

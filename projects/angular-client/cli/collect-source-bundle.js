@@ -3,13 +3,13 @@
  * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
-
 const { LogService, walkDirectory } = require('./utils');
 const { VIPConfig, VIPService } = require("./vip");
 const fs = require('fs');
 const path = require('path');
 const ts = require('typescript');
 const ArgumentParser = require('argparse').ArgumentParser;
+const generateToken = require('./generate-token.js');
 
 class CollectSourceBundle {
     constructor(logger, vipService, vipConfig) {
@@ -22,7 +22,7 @@ class CollectSourceBundle {
         };
     }
     isSourceBundle(file) {
-        return file.match(/l10n\.ts$/);
+        return file.match(/l10n\.(ts|js)$/);
     }
     collectSources(sourceSet) {
         this.logger.debug('CollectSourceBundle.collectSources sourceSet: ', sourceSet);
@@ -31,11 +31,20 @@ class CollectSourceBundle {
     convertDataForVIP(data) {
         var sourceSet = [];
         for (let i in data) {
-            sourceSet.push({
-                commentForSource: '',
-                key: i,
-                source: data[i]
-            });
+            if (data[i]) {
+                let sourceString = data[i], comment = '';
+                // If the corresponding value of key is an array containing source and comment.
+                if (Array.isArray(data[i])) {
+                    if (!data[i][0]) { continue; }
+                    sourceString = data[i][0];
+                    comment = data[i][1] ? data[i][1] : ''
+                }
+                sourceSet.push({
+                    commentForSource: comment,
+                    key: i,
+                    source: sourceString
+                });
+            }
         }
         return sourceSet;
     }
@@ -56,7 +65,8 @@ class CollectSourceBundle {
                             that.logger.info(`Successfully collect strings, index from ${lastIndex} to ${i - 1}`);
                         } else {
                             that.logger.info(`Failed collect strings file `, file);
-                            that.logger.error(`Failed collect strings, index from ${lastIndex} to ${i - 1} \n`, res && res.response && res.response.message);
+                            that.logger.error(`Failed collect strings, index from ${lastIndex} to ${i - 1}`);
++                           that.logger.error(body);
                         }
                     }, function (err) {
                         that.logger.info(`Failed collect strings file `, file);
@@ -87,68 +97,73 @@ class CollectSourceBundle {
         }
     }
 }
+
+const parser = new ArgumentParser({
+    addHelp: true,
+    description: 'Collect English source for source bundle'
+});
+parser.addArgument(
+    ['-s', '--source-dir'],
+    {
+        help: 'path to source directory where script will look for files ending in .l10n.ts',
+        required: true,
+    }
+);
+parser.addArgument(
+    ['-p', '--product'],
+    {
+        help: 'VIP product name',
+        required: true,
+    }
+);
+parser.addArgument(
+    ['-v', '--version'],
+    {
+        help: 'VIP product version',
+        required: true,
+    }
+);
+parser.addArgument(
+    ['-c', '--component'],
+    {
+        help: 'VIP product component, usually AngularJS2',
+        required: true,
+    }
+);
+parser.addArgument(
+    ['--host'],
+    {
+        help: 'VIP host',
+        required: true,
+    }
+);
+parser.addArgument(
+    ['--verbose'],
+    {
+        help: 'show more log info',
+        required: false,
+        action: 'storeTrue'
+    }
+);
+parser.addArgument(
+    ['-r', '--refresh-token'],
+    {
+        help: 'Refresh token for CSP',
+        required: false,
+    }
+);
+const args = parser.parseArgs();
+let vipConfig = new VIPConfig(args.host, args.product, args.version, args.component);
+const logger = LogService.getLogServiceInstance(args.verbose);
+let vipService = new VIPService(vipConfig, logger, null);
+
 function run() {
-    const parser = new ArgumentParser({
-        addHelp: true,
-        description: 'Collect English source for source bundle'
-    });
-    parser.addArgument(
-        ['-s', '--source-dir'],
-        {
-            help: 'path to source directory where script will look for files ending in .l10n.ts',
-            required: true,
-        }
-    );
-    parser.addArgument(
-        ['-p', '--product'],
-        {
-            help: 'VIP product name',
-            required: true,
-        }
-    );
-
-    parser.addArgument(
-        ['-v', '--version'],
-        {
-            help: 'VIP product version',
-            required: true,
-        }
-    );
-
-    parser.addArgument(
-        ['-c', '--component'],
-        {
-            help: 'VIP product component, usually AngularJS2',
-            required: true,
-        }
-    );
-
-    parser.addArgument(
-        ['--host'],
-        {
-            help: 'VIP host',
-            required: true,
-        }
-    );
-
-    parser.addArgument(
-        ['--verbose'],
-        {
-            help: 'show more log info',
-            required: false,
-            action: 'storeTrue'
-        }
-    )
-
-    const args = parser.parseArgs();
-    const logger = LogService.getLogServiceInstance(args.verbose);
     logger.debug('command line args', args);
     const workspace = path.resolve(process.cwd(), args.source_dir);
     logger.debug('workspace', workspace);
 
     try {
         let vipConfig = new VIPConfig(args.host, args.product, args.version, args.component);
-        let vipService = new VIPService(vipConfig, logger, null);
         let collectSourceBundle = new CollectSourceBundle(logger, vipService, vipConfig);
         walkDirectory(args.source_dir, function (files) {
             logger.debug('walkDirectory resolve files', files);
@@ -189,4 +204,19 @@ function run() {
         process.exit(1);
     }
 }
-run();
+
+let tokenPromise = Promise.resolve('');
+if (args.refresh_token) {
+    tokenPromise = generateToken(args.host, args.refresh_token);
+}
+
+tokenPromise.then((token) => {
+    vipService = new VIPService(
+        vipConfig,
+        logger,
+        token);
+    run();
+}, (error) => {
+    logger.error('Failed to get token');
+    logger.error(error);
+});

@@ -26,6 +26,9 @@ class VIPConfig {
     get I18N_API_ENDPOINT() {
         return 'i18n/api/v2/formatting/patterns/locales';
     }
+    get TRANSLATION_PATTERN() {
+        return 'i18n/api/v2/combination/translationsAndPattern';
+    }
     get DEFAULT_SCOPE() {
         return "dates,numbers,plurals,measurements,currencies";
     }
@@ -82,7 +85,7 @@ class VIPService {
             `&displayLanguage=${displayName}`;
         this.logger.debug('loadSupportedLanguages arguments %o', arguments);
         this.logger.debug('loadSupportedLanguages url is ', url);
-        return this.get(url, this.token);
+        return this.get(url);
     }
     loadSupportedRegions(displayName) {
         const url = this.vipConfig.host +
@@ -91,7 +94,7 @@ class VIPService {
             `supportedLanguageList=${displayName}`;
         this.logger.debug('loadSupportedRegions arguments %o', arguments);
         this.logger.debug('loadSupportedRegions url is ', url);
-        return this.get(url, this.token);
+        return this.get(url);
     }
     loadTranslation(locale) {
         const url = this.vipConfig.host +
@@ -103,7 +106,7 @@ class VIPService {
             `?pseudo=false`;
         this.logger.debug('loadTranslation arguments %o', arguments);
         this.logger.debug('loadTranslation url is', url);
-        return this.get(url, this.token);
+        return this.get(url);
     }
     loadPattern(locale) {
         const url = this.vipConfig.host +
@@ -112,7 +115,22 @@ class VIPService {
             `?scope=${this.vipConfig.scope}`;
         this.logger.debug('loadPattern arguments %o', arguments);
         this.logger.debug('loadPattern url is', url);
-        return this.get(url, this.token);
+        return this.get(url);
+    }
+    loadCombineData(locale) {
+        const url = `${this.vipConfig.host}/${this.vipConfig.TRANSLATION_PATTERN}`;
+        this.logger.debug(this.vipConfig.scope);
+        const config = {
+            language: locale,
+            productName: this.vipConfig.product,
+            version: this.vipConfig.version,
+            components: [this.vipConfig.component],
+            scope: this.vipConfig.scope,
+            pseudo: false,
+            combine: 2,
+            machineTranslation: false
+        }
+        return this.post(url, config, {});
     }
     collectSources(data) {
         const locale = 'en_US';

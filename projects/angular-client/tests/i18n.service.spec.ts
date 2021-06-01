@@ -32,7 +32,7 @@ describe('I18nService', () => {
     let i18nService: I18nService;
     let vipService: VIPService;
 
-    beforeAll(() => {
+    beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [
                 VIPModule.forRoot({

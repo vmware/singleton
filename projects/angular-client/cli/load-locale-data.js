@@ -1,11 +1,8 @@
 #!/usr/bin/env node
-
 /*
  * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
-
-const superagent = require('superagent');
 const ArgumentParser = require('argparse').ArgumentParser;
 const path = require('path');
 const fs = require('fs');
@@ -13,14 +10,14 @@ const { LogService } = require('./utils');
 const { VIPConfig, VIPService } = require("./vip");
 
 
-class LoadI18nPackage {
-    constructor(vipConfig, vipService, logger, languages, directory) {
+class LoadLocaleData {
+    constructor(vipConfig, vipService, logger, locales, directory) {
         this.vipConfig = vipConfig;
         this.vipService = vipService;
         this.logger = logger;
-        this.languages = this.getLanguagesList(languages);
+        this.locales = this.getLocalesList(locales);
         this.directory = directory;
-        this.logger.debug('Current languages are ', this.languages);
+        this.logger.debug('Current locales are ', this.locales);
     };
     generatePackage(packagePath, data) {
         let that = this;
@@ -58,38 +55,43 @@ class LoadI18nPackage {
 
         }, '/');
     }
-    getLanguagesList(languages) {
-        if (!languages || typeof languages !== 'string') {
-            this.logger.error('cannot get languages due to ', languages);
+    getLocalesList(locales) {
+        if (!locales || typeof locales !== 'string') {
+            this.logger.error('cannot get locales due to ', locales);
             process.exit(1);
         }
-        return languages.split(',');
+        return locales.split(',');
     }
-    generateTranslationBundles() {
+    generateLocaleDataBundles() {
         var that = this;
         var promise = new Promise(function (resolve, reject) {
             try {
-                let languages = that.languages;
-                for (let lang of languages) {
-                    // load translations
-                    let translationPromise = that.vipService.loadTranslation(lang);
+                let locales = that.locales;
+                for (let locale of locales) {
+                    // load combine data or only translation this.vipConfig.scope
+                    let translationPromise = that.vipConfig.scope
+                        ? that.vipService.loadCombineData(locale)
+                        : that.vipService.loadTranslation(locale);
                     translationPromise.then(function ({ body }) {
                         let { response } = body;
                         if (response.code === 200) {
-                            let translationPath = path.resolve(that.directory, `${that.vipConfig.TRANSLATION_PREFIX + lang}.json`);
+                            const fileName = that.vipConfig.scope
+                                ? `${locale}.json`
+                                : `${that.vipConfig.TRANSLATION_PREFIX + locale}.json`
+                            let translationPath = path.resolve(that.directory, fileName);
                             that.generatePackage(translationPath, body);
                         } else {
-                            that.logger.error('cannot got translation due to ', response.message);
+                            that.logger.error('cannot got resource due to ', response.message);
                         }
                     }).catch(function (e) {
-                        that.logger.debug('loadTranslation got an error with lang %s', lang);
-                        that.logger.error('loadTranslation got an error ', e);
+                        that.logger.debug('loadI18nResource got an error with locale %s', locale);
+                        that.logger.error('loadI18nResource got an error ', e);
                     });
-                    resolve(languages);
+                    resolve(locales);
                 }
             } catch (error) {
                 reject(error);
-                that.logger.error('generateTranslationBundles got an error ', e);
+                that.logger.error('generateLocaleDataBundles got an error ', e);
             }
         });
         return promise;
@@ -99,7 +101,7 @@ function run() {
     // get path argument
     let parser = new ArgumentParser({
         addHelp: true,
-        description: 'Download i18n files into local project'
+        description: 'Download i18n resource files into local project'
     });
 
     parser.addArgument(
@@ -143,10 +145,18 @@ function run() {
     );
 
     parser.addArgument(
-        ['--languages'],
+        ['--locales'],
         {
-            help: 'The languages you want to download from vip',
+            help: 'The locales you want to download from vip',
             required: true,
+        }
+    );
+
+    parser.addArgument(
+        ['--scope'],
+        {
+            help: 'The pattern categories',
+            required: false
         }
     );
 
@@ -157,7 +167,7 @@ function run() {
             required: false,
             action: 'storeTrue'
         }
-    )
+    );
 
     let args = parser.parseArgs();
     const logger = LogService.getLogServiceInstance(args.verbose ? true : false);
@@ -166,18 +176,18 @@ function run() {
     const workspace = path.resolve(process.cwd(), args.directory);
     logger.debug('workspace', workspace);
     try {
-        var vipConfig = new VIPConfig(args.host, args.product, args.version, args.component, args.languages);
+        var vipConfig = new VIPConfig(args.host, args.product, args.version, args.component, args.scope);
         var vipService = new VIPService(vipConfig, logger, null);
-        var loadI18nPackage = new LoadI18nPackage(vipConfig, vipService, logger, args.languages, args.directory);
-        var languages = [];
-        loadI18nPackage.generateTranslationBundles().then(function (lang) {
-            languages = lang;
+        var loadI18nData = new LoadLocaleData(vipConfig, vipService, logger, args.locales, args.directory);
+        var locales = [];
+        loadI18nData.generateLocaleDataBundles().then(function (res) {
+            locales = res;
         });
 
         process.on('exit', function (code) {
             if (code === 0) {
                 logger.info('================================================');
-                logger.info('Total Languages: ', languages.length);
+                logger.info('Total Locales: ', locales.length);
                 logger.info('================================================');
             }
         })
@@ -187,5 +197,3 @@ function run() {
     }
 }
 run();
-
-

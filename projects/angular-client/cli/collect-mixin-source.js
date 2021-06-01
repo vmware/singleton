@@ -1,8 +1,12 @@
-#!/usr/bin/env ts-node --ignore=false --compilerOptions {"module":"commonjs"}
+#!/usr/bin/env node
 /*
  * Copyright 2019-2021 VMware, Inc.
  * SPDX-License-Identifier: EPL-2.0
  */
+require('ts-node').register({
+    ignore: false,
+    compilerOptions: {'module':'commonjs'}
+});
 
 if (!process.env.DEBUG) {
     process.env.DEBUG = "app:log";
@@ -15,7 +19,7 @@ let TranslationService = require('./translation-service');
 const generateToken = require('./generate-token.js');
 
 let debug = require('debug');
-let translationService: any;
+let translationService;
 
 var log = debug('app:log');
 log.log = console.log.bind(console);
@@ -79,12 +83,12 @@ let args = parser.parseArgs();
 // some shimming available to avoid a crash and a failure to collect the
 // English source for that TS file.
 require('html-element/global-shim');
-(global as any).HTMLElement = require('html-element').Element;
-(document as any).cookie = "";
+global.HTMLElement = require('html-element').Element;
+document.cookie = "";
 
-const walk = function (dir: string, done: Function) {
-    let results: any[] = [];
-    fs.readdir(dir, function (err: any, list: any) {
+const walk = function (dir, done) {
+    let results = [];
+    fs.readdir(dir, function (err, list) {
         if (err) {
             log(err);
             return;
@@ -95,9 +99,9 @@ const walk = function (dir: string, done: Function) {
             let file = list[i++];
             if (!file) return done(results);
             file = dir + '/' + file;
-            fs.stat(file, (err: any, stat: any) => {
+            fs.stat(file, (err, stat) => {
                 if (stat && stat.isDirectory()) {
-                    walk(file, (res: any) => {
+                    walk(file, (res) => {
                         results = results.concat(res);
                         next();
                     });
@@ -112,10 +116,11 @@ const walk = function (dir: string, done: Function) {
     });
 };
 
-let OUT: any = {};
+let OUT = {};
+let KEYINFO = {};
 
 function main() {
-    walk(args.source_dir, (files: any[]) => {
+    walk(args.source_dir, (files) => {
         files.forEach(file => {
             if (file.match(/\.ts/)) {
                 let component = fs.readFileSync(file, 'utf-8');
@@ -125,7 +130,7 @@ function main() {
                     if (l10nFile) {
                         let l10nFilePathMatched = l10nFile[1];
                         let l10nFilePath = path.resolve(path.dirname(file), l10nFilePathMatched + '.ts');
-                        let ENGLISH: any = {};
+                        let ENGLISH = {};
                         try {
                             ENGLISH = require(l10nFilePath.substring(0, l10nFilePath.length - 3)).ENGLISH;
                         } catch (e) {
@@ -137,8 +142,27 @@ function main() {
                         if (componentL10nKey) {
                             let key = componentL10nKey[1];
                             Object.keys(ENGLISH).forEach(k => {
+                                if (OUT[key + '.' + k]) {
+                                    log(`-----------------------Detected Duplicate Keys-------------------------`);
+
+                                    log(`KEY        :    '${key + '.' + k}'`);
+                                    log(`PREFIX     :    '${key}'`);
+                                    log(`SUFFIX-KEY :    '${k}'`);
+                                    log(`VALUE      :    '${ENGLISH[k]}'`);
+                                    log(`PATH       :    '${l10nFilePath}'`);
+
+                                    log(`---------Below Duplicate KEY:VALUE will replace above KEY:VALUE--------`);
+                                    log(`DUP KEY    :    '${key + '.' + k}'`);
+                                    log(`PREFIX     :    '${KEYINFO[key + '.' + k][0]}'`);
+                                    log(`SUFFIX-KEY :    '${KEYINFO[key + '.' + k][1]}'`);
+                                    log(`VALUE      :    '${KEYINFO[key + '.' + k][2]}'`);
+                                    log(`PATH       :    '${KEYINFO[key + '.' + k][3]}'`);
+
+                                    log(`--------------------------------End-----------------------------------`);
+                                }
                                 let e = ENGLISH[k].trim();
                                 OUT[key + '.' + k] = e;
+                                KEYINFO[key + '.' + k] = [key, k, ENGLISH[k], l10nFilePath];
                             });
                         } else {
                             log('no key for ' + file);
@@ -153,13 +177,13 @@ function main() {
             }
         });
 
-        function timer(ms: any) {
+        function timer(ms) {
             return new Promise(res => setTimeout(res, ms));
         }
 
         let todo = Object.keys(OUT);
-        let waiting: any = [];
-        let failed: any = [];
+        let waiting = [];
+        let failed = [];
         let done = 0;
         let failedCount = 0;
         let run = true;
@@ -168,7 +192,7 @@ function main() {
             while (run) {
                 await timer(50);
 
-                let k: any;
+                let k;
 
                 if (todo.length) {
                     k = todo.pop();
@@ -213,8 +237,7 @@ if (args.refresh_token) {
     tokenPromise = generateToken(args.host, args.refresh_token);
 }
 
-tokenPromise.then((token: string) => {
-    translationService = new TranslationService(
+tokenPromise.then((token) => { translationService = new TranslationService(
         args.host,
         token,
         args.product,
@@ -222,7 +245,7 @@ tokenPromise.then((token: string) => {
         args.component);
 
     main();
-}, (error: any) => {
+}, (error) => {
     log('Failed to get token');
     log(error);
 });

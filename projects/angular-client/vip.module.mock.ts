@@ -6,18 +6,13 @@ import { ModuleWithProviders, NgModule, Pipe, PipeTransform, Injectable } from '
 import { Directive, ElementRef, Input, AfterViewInit } from '@angular/core';
 import { Observable, Subject, BehaviorSubject, of } from 'rxjs';
 
-import {
-    VIPService,
-    I18nService,
-    L10nService,
-    DateFormatter,
-    PatternCategories,
-    VIPConfig,
-    VIPServiceConstants,
-    getNameSpace,
-    isDefined
-} from './index';
-
+import { DateFormatter } from './src/formatters/date.formatter';
+import { L10nService } from './src/services/l10n.service';
+import { I18nService } from './src/services/i18n.service';
+import { VIPService } from './src/services/vip.service';
+import { PatternCategories, VIPConfig, getNameSpace } from './src/config';
+import { VIPServiceConstants } from './src/constants';
+import { isDefined } from './src/util';
 
 @Pipe({ name: 'translate' })
 export class MockL10nPipe implements PipeTransform {
