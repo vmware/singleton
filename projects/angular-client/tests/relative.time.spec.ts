@@ -120,7 +120,7 @@ describe('Relative time formatter', () => {
     describe('formatRelativeTime', () => {
         let injector: Injector;
         let i18nService: I18nService;
-        beforeAll(() => {
+        beforeEach(() => {
             TestBed.configureTestingModule({
                 imports: [
                     VIPModule.forRoot({
