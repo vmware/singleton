@@ -74,7 +74,7 @@ public class RSAUtils {
 			cipher.init(Cipher.DECRYPT_MODE, getPublicKey(publicInfoStr));
 			return new String(cipher.doFinal(encryptDataBytes), CHARSET);
 		}else {
-			throw new BadPaddingException("The token have been modified!");
+			throw new BadPaddingException("The token is modified!");
 		}
 		
 	}
