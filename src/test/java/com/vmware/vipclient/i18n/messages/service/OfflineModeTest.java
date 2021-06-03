@@ -4,8 +4,6 @@
  */
 package com.vmware.vipclient.i18n.messages.service;
 
-import java.util.*;
-
 import com.vmware.vip.i18n.BaseTestClass;
 import com.vmware.vipclient.i18n.I18nFactory;
 import com.vmware.vipclient.i18n.VIPCfg;
@@ -26,8 +24,16 @@ import org.json.simple.parser.ParseException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
 public class OfflineModeTest extends BaseTestClass {
@@ -208,6 +214,13 @@ public class OfflineModeTest extends BaseTestClass {
         String message = translation.getMessage("offlineBundles.JAVA2.messages", locale, component, "props.key.1", args);
         // Returns the source message from props file
         assertEquals("props.value.1", message);
+
+        try {
+            message = translation.getMessage("offlineBundles.JAVA2.messages", locale, component, "props.key.2", args);
+        }catch (VIPJavaClientException e){
+            // throw exception when no translation found
+            assertEquals(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, "props.key.2", component, locale), e.getMessage());
+        }
 
         message = translation.getMessage("offlineBundles.JAVA2.subdir.messages", locale, component, "props.key.3", args);
         // Returns the source message from another props file

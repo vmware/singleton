@@ -102,8 +102,6 @@ public class TranslationMessage implements Message {
         ComponentService.TranslationsDTO msgsItemDTO = getMessages(locale, component, true);
         String message = msgsItemDTO.getMessages().get(key);
         if (message == null || message.isEmpty()) {
-            if (resourceBundle != null)
-                return source;
             throw new VIPJavaClientException(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, key, component, locale));
         }
 
