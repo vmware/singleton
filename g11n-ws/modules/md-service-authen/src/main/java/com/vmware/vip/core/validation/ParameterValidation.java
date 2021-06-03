@@ -26,6 +26,7 @@ public class ParameterValidation implements IVlidation {
 		if (this.request == null) { 
 			return;
 		}
+		validateAppId(request);
 		validateProductname(request);
 		validateVersion(request);
 		validateComponent(request);
@@ -60,6 +61,19 @@ public class ParameterValidation implements IVlidation {
 			throw new ValidationException(ValidationMsg.PRODUCTNAME_NOT_VALIDE);
 		}
 		validateProductByAllowList(productName, (Map<String, Object>)request.getAttribute(ParameterValidation.TAG_ALLOW_PRODUCT_LIST_MAP));
+	}
+	
+	private void validateAppId(HttpServletRequest request) 
+	        throws ValidationException{
+	   String appId = request.getHeader(APIParamName.APP_ID) == null ? request
+               .getParameter(APIParamName.APP_ID) : request.getHeader(APIParamName.APP_ID);
+       if (StringUtils.isEmpty(appId)) {
+                   return;
+       }
+       if (!RegExpValidatorUtils.IsLetterOrNumber(appId)) {
+                   throw new ValidationException(ValidationMsg.APPID_NOT_VALIDE);
+       }         
+       
 	}
 
 	@SuppressWarnings("unchecked")
