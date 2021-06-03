@@ -69,9 +69,14 @@ public class RSAUtils {
 			throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException,
 			BadPaddingException, IllegalBlockSizeException, UnsupportedEncodingException {
 		byte[] encryptDataBytes = Base64.decodeBase64(data);
-		Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-		cipher.init(Cipher.DECRYPT_MODE, getPublicKey(publicInfoStr));
-		return new String(cipher.doFinal(encryptDataBytes), CHARSET);
+		if(data.equals(Base64.encodeBase64String(encryptDataBytes))){
+			Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+			cipher.init(Cipher.DECRYPT_MODE, getPublicKey(publicInfoStr));
+			return new String(cipher.doFinal(encryptDataBytes), CHARSET);
+		}else {
+			throw new BadPaddingException("The token have been modified!");
+		}
+		
 	}
 
 	/**
