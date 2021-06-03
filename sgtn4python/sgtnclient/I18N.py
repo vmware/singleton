@@ -5,6 +5,11 @@
 #
 
 import os
+import sys
+
+_libPath = os.path.dirname(__file__)
+if _libPath not in sys.path:
+    sys.path.append(_libPath)
 
 from sgtn_util import FileUtil
 
