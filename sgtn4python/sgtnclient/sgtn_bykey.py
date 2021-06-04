@@ -10,6 +10,8 @@ lock = threading.Lock()
 
 from sgtn_locale import SingletonLocale, SingletonLocaleUtil
 
+_indexLocaleItem = 0
+
 
 class SingletonByKeyItem(object):
 
@@ -50,7 +52,7 @@ class SingletonByKeyComponents(object):
             return -1
 
         componentIndex = self._componentIndexTable.get(component)
-        if componentIndex:
+        if componentIndex != None:
             return componentIndex
 
         self._componentTable.append(component)
@@ -68,6 +70,10 @@ class SingletonByKeyComponents(object):
 class SingletonByKeyLocale(object):
 
     def __init__(self, bykey, locale, asSource):
+        global _indexLocaleItem
+        _indexLocaleItem += 1
+        self._indexLocaleItem = _indexLocaleItem
+
         self._bykey = bykey
         self._locale = locale
         self._singletonLocale = SingletonLocaleUtil.get_singleton_locale(locale);
@@ -207,7 +213,7 @@ class SingletonByKey(object):
             return
 
         lookup._aboveItem = next
-        this._find_or_add(lookup)
+        self._find_or_add(lookup)
 
 
     def do_set_string(self, key, componentIndex, localeItem, message):

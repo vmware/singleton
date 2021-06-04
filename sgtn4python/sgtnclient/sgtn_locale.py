@@ -50,15 +50,15 @@ class SingletonLocale(object):
 
         return False
 
-    def find_item(items, start):
+    def find_item(self, items, start):
         for i in range(start, self.get_count()):
-            nearLocale = GetNearLocale(i)
+            nearLocale = self.get_near_locale(i)
             item = items.get(nearLocale)
             if item:
                 return item
         return None
 
-    def set_items(items, item):
+    def set_items(self, items, item):
         for i in range(self.get_count()):
             nearLocale = self.get_near_locale(i)
             items[nearLocale] = item
@@ -69,7 +69,9 @@ class SingletonLocaleUtil(object):
     DEFAULT_LOCALE = "en-US"
     FALLBACK = {
       'zh-CN': 'zh-Hans',
-      'zh-TW': 'zh-Hant'
+      'zh-TW': 'zh-Hant',
+      'zh-HANS': 'zh-Hans',
+      'zh-HANT': 'zh-Hant'
     }
 
     LocaleFallbackMap = {}

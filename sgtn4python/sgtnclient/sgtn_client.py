@@ -19,6 +19,7 @@ from sgtn_properties import Properties
 from sgtn_util import FileUtil, NetUtil, SysUtil
 from sgtn_util import LOG_TYPE_INFO, KEY_RESULT, KEY_HEADERS, KEY_ERROR
 from sgtn_bykey import SingletonByKey
+from sgtn_locale import SingletonLocale, SingletonLocaleUtil
 
 from I18N import Config, Release, Translation
 
@@ -62,10 +63,6 @@ LOCAL_TYPE_FILE = 'file'
 LOCAL_TYPE_HTTP = 'http'
 RES_TYPE_PROPERTIES = '.properties'
 RES_TYPE_SGTN = '.json'
-
-_mlock = threading.Lock()
-_thread_locales = OrderedDict()
-# store thread locales
 
 
 class ClientUtil:
@@ -300,10 +297,10 @@ class SingletonAccessRemoteTask:
 
 class SingletonComponent:
 
-    def __init__(self, release_obj, locale, component):
+    def __init__(self, release_obj, locale, component, isLocalSource):
         self.rel = release_obj
         self.locale = locale
-        self.localeItem = self.rel.bykey.get_locale_item(locale, True)
+        self.localeItem = self.rel.bykey.get_locale_item(locale, isLocalSource)
         self.componentIndex = self.rel.bykey.get_component_index(component)
         self.component = component
         self.countOfMessages = 0
@@ -378,7 +375,20 @@ class SingletonComponent:
         return self.countOfMessages
 
 
-class SingletonRelease(Release, Translation):
+class SingletonUseLocale:
+
+    def __init__(self, singletonLocale, sourceLocale, isLocalSource):
+        self.singletonLocale = singletonLocale
+        self.locale = self.singletonLocale.get_original_locale()
+        self.isLocalSource = isLocalSource
+
+        singletonSourceLocale = SingletonLocaleUtil.get_singleton_locale(sourceLocale)
+        self.isSourceLocale = self.locale in singletonSourceLocale.get_near_locale_list()
+
+        self.components = {}
+
+
+class SingletonReleaseBase:
 
     def __init__(self, cfg):
         self.cfg = cfg
@@ -391,9 +401,8 @@ class SingletonRelease(Release, Translation):
 
         self.locale_list = []
         self.component_list = []
-        self.data = {}
 
-        self.locales = {}
+        self.remote_pool = {}
         self.source_pool = {}
 
         if not cfg:
@@ -413,18 +422,29 @@ class SingletonRelease(Release, Translation):
         self.task = SingletonAccessRemoteTask(self, self)
         self.get_scope()
 
-        self._get_local_resource(self.source_pool, self.cfg.source_locale)
-        self.source = self.source_pool.get(self.cfg.source_locale)
-
         self.bykey = SingletonByKey(self.cfg.source_locale, self.cfg.cache_type)
 
-    def get_config(self):
-        # method of Release
-        return self.cfg
+        self.useSourceLocale = self.get_use_locale(self.cfg.source_locale, True)
+        self._get_local_resource(self.useSourceLocale, self.cfg.source_locale)
 
-    def get_translation(self):
-        # method of Release
-        return self
+        self.useDefaultLocale = None
+        if self.cfg.default_locale != self.cfg.source_locale:
+            self.useDefaultLocale = self.get_use_locale(self.cfg.default_locale, False)
+
+    def get_use_locale(self, locale, asSource):
+        pool = self.source_pool if asSource else self.remote_pool
+        useLocale = pool.get(locale)
+        if useLocale is None:
+            singletonLocale = SingletonLocaleUtil.get_singleton_locale(locale)
+            useLocale = singletonLocale.find_item(pool, 1)
+
+            if useLocale is None:
+                useLocale = SingletonUseLocale(singletonLocale, self.cfg.source_locale, asSource)
+
+            for one in useLocale.singletonLocale.get_near_locale_list():
+                if one not in pool:
+                    pool[one] = useLocale
+        return useLocale
 
     def get_scope(self):
         self.api = SingletonApi(self)
@@ -464,53 +484,12 @@ class SingletonRelease(Release, Translation):
             return 0
         return len(self.locale_list) + len(self.component_list)
 
-    def log(self, text, log_type = LOG_TYPE_INFO):
-        SysUtil.log(self.logger, text, log_type)
-
     def init_logger(self, log_file):
         self.logger = SysUtil.init_logger(log_file, 'sgtn_%s_%s' % (self.cfg.product, self.cfg.version))
         self.log('--- release --- %s --- %s --- %s ---' % (self.cfg.product, self.cfg.version, time.time()))
 
-    def get_string(self, component, key, **kwargs):
-        # method of Translation
-        text = None
-
-        source = kwargs.get(KEY_SOURCE) if kwargs else None
-        locale = kwargs.get(KEY_LOCALE) if kwargs else None
-        items = kwargs.get(KEY_ITEMS) if kwargs else None
-
-        if not locale:
-            locale = SingletonClientManager().get_current_locale()
-        if not source:
-            if component in self.source:
-                source = self.source[component].get_message(key)
-
-        text = self._get_message(component, key, source, locale)
-        if text and items:
-            if isinstance(items, list):
-                text = text.format(*items)
-            elif isinstance(items, dict):
-                text = text.format(**items)
-
-        if text is None:
-            text = key
-        return text
-
-    def get_locale_strings(self, locale):
-        # method of Translation
-        collect = {}
-        components = self.locales.get(locale)
-        if components is None:
-            near_locale = self.get_locale_supported(locale)
-            components = self.locales.get(near_locale)
-        if components:
-            for component in components:
-                collect[component] = components[component].get_messages()
-        return collect
-
-    def get_locale_supported(self, locale):
-        # method of Translation
-        return SysUtil.get_fallback_locale(locale)
+    def log(self, text, log_type = LOG_TYPE_INFO):
+        SysUtil.log(self.logger, text, log_type)
 
     def _load_one_local(self, component, locale, path_define):
         if not path_define:
@@ -548,7 +527,7 @@ class SingletonRelease(Release, Translation):
             component_path = os.path.join(self.cfg.local_url, component)
             _, file_list = FileUtil.get_dir_info(component_path)
             for res_file in file_list:
-                parts = re.split("messages(.*)\.", res_file)
+                parts = re.split(r"messages(.*)\.", res_file)
                 if (len(parts) == 3):
                     if parts[1].startswith('_'):
                         locale = parts[1][1:]
@@ -557,12 +536,10 @@ class SingletonRelease(Release, Translation):
                     locales_cfg[locale] = {KEY_LOCAL_PATH: [os.path.join(component, res_file)]}
         return components
 
-    def _get_local_resource(self, pool, locale):
-        if pool.get(locale):
+    def _get_local_resource(self, useLocale, locale):
+        if useLocale is None:
             return
-
-        pool[locale] = {}
-        locale_item = pool[locale]
+        locale_item = useLocale.components
 
         if not self.cfg.local_url:
             return
@@ -576,12 +553,13 @@ class SingletonRelease(Release, Translation):
             locales_cfg = self.cfg.components[component].get(KEY_LOCALES)
             locale_define = None
             if locales_cfg:
-                locale_define = locales_cfg.get(locale)
+                singletonLocale = SingletonLocaleUtil.get_singleton_locale(locale)
+                locale_define = singletonLocale.find_item(locales_cfg, 0)
 
             if locale_define:
                 path_define = locale_define.get(KEY_LOCAL_PATH)
                 map = self._load_one_local(component, locale, path_define)
-                component_obj = SingletonComponent(self, locale, component)
+                component_obj = SingletonComponent(self, locale, component, useLocale.isLocalSource)
                 component_obj.set_messages(map)
                 locale_item[component] = component_obj
 
@@ -589,25 +567,17 @@ class SingletonRelease(Release, Translation):
         self.task.check()
         if not self.locale_list or not self.component_list:
             return None
-        near_locale = self.get_locale_supported(locale)
-        if locale not in self.locale_list and near_locale not in self.locale_list:
+        singletonLocale = SingletonLocaleUtil.get_singleton_locale(locale)
+        if not singletonLocale.is_in_locale_list(self.locale_list):
             return None
         if component not in self.component_list:
             return None
 
-        components = self.locales.get(locale)
-        if components is None:
-            components = self.locales.get(near_locale)
-            if components is None:
-                self.log('--- locale --- %s ---' % locale)
-                self.locales[near_locale] = {}
-                components = self.locales[near_locale]
-            locale = near_locale
-
+        components = self.get_use_locale(locale, False).components
         component_obj = components.get(component)
         if component_obj is None:
             self.log('--- component --- %s ---' % component)
-            component_obj = SingletonComponent(self, locale, component)
+            component_obj = SingletonComponent(self, locale, component, False)
             components[component] = component_obj
 
         component_obj.task.check()
@@ -620,17 +590,27 @@ class SingletonRelease(Release, Translation):
 
         component_obj = None
         if self.cfg.local_url:
-            near_locale = self.get_locale_supported(locale)
-            self._get_local_resource(self.locales, near_locale)
-            locale_obj = self.locales.get(near_locale)
-            if locale_obj:
-                component_obj = locale_obj.get(component)
+            useLocale = self.get_use_locale(locale, False)
+            self._get_local_resource(useLocale, locale)
+            if useLocale:
+                component_obj = useLocale.components.get(component)
 
         return component_obj
 
     def _get_message(self, component, key, source, locale):
-        if not component or not key or not locale:
+        if not key or not locale:
             return source
+
+        if not self.bykey._onlyByKey:
+            if not component:
+                return source
+        else:
+            componentIndex = self.bykey.get_component_index(component)
+            if componentIndex < 0:
+                localeItem = self.bykey.get_locale_item(locale, False)
+                message = self.bykey.get_string(key, componentIndex, localeItem)
+                if message:
+                    return message
 
         remote_source_locale = self.get_locale_supported(self.cfg.source_locale)
         component_src = self._get_component(remote_source_locale, component)
@@ -654,6 +634,56 @@ class SingletonRelease(Release, Translation):
                 translation = found
 
         return translation
+
+
+class SingletonRelease(SingletonReleaseBase, Release, Translation):
+
+    def get_config(self):
+        # method of Release
+        return self.cfg
+
+    def get_translation(self):
+        # method of Release
+        return self
+
+    def get_locale_strings(self, locale, asSource):
+        # method of Translation
+        collect = {}
+        useLocale = self.get_use_locale(locale, asSource)
+        if useLocale and useLocale.components:
+            components = useLocale.components
+            for component in components:
+                collect[component] = components[component].get_messages()
+        return collect
+
+    def get_string(self, component, key, **kwargs):
+        # method of Translation
+        text = None
+
+        source = kwargs.get(KEY_SOURCE) if kwargs else None
+        locale = kwargs.get(KEY_LOCALE) if kwargs else None
+        items = kwargs.get(KEY_ITEMS) if kwargs else None
+
+        if not locale:
+            locale = SingletonClientManager().get_current_locale()
+        if not source:
+            if component in self.useSourceLocale.components:
+                source = self.useSourceLocale.components[component].get_message(key)
+
+        text = self._get_message(component, key, source, locale)
+        if text and items:
+            if isinstance(items, list):
+                text = text.format(*items)
+            elif isinstance(items, dict):
+                text = text.format(**items)
+
+        if text is None:
+            text = key
+        return text
+
+    def get_locale_supported(self, locale):
+        # method of Translation
+        return SysUtil.get_fallback_locale(locale)
 
 
 class SingletonClientManager(object):
@@ -701,30 +731,29 @@ class SingletonClientManager(object):
             releases[cfg.version] = release_obj
 
     def set_current_locale(self, locale):
-        global _mlock, _thread_locales
-        thid = '%s' % threading.current_thread().ident
+        current = sys._getframe().f_back.f_back
+        for i in range(10):
+            if not hasattr(current, 'f_locals'):
+                break
 
-        _mlock.acquire()
-        if len(_thread_locales) >= MAX_THREAD:
-            count = 0
-            del_ar = []
-            for key in _thread_locales:
-                del_ar.append(key)
-                count += 1
-                if count >= MAX_THREAD/5:
-                    break
+            locals = current.f_locals
+            locals['_singleton_locale_'] = locale
 
-            for i in range(len(del_ar)):
-                del _thread_locales[del_ar[i]]
-
-        _thread_locales[thid] = locale
-        _mlock.release()
+            if not hasattr(current, 'f_back'):
+                break
+            current = current.f_back
 
     def get_current_locale(self):
-        global _thread_locales
-        thid = '%s' % threading.current_thread().ident
+        current = sys._getframe().f_back.f_back
+        for i in range(10):
+            if not hasattr(current, 'f_locals'):
+                break
 
-        current = _thread_locales[thid]
-        if not current:
-            current = LOCALE_DEFAULT
-        return current
+            locals = current.f_locals
+            if '_singleton_locale_' in locals:
+                return locals['_singleton_locale_']
+
+            if not hasattr(current, 'f_back'):
+                break
+            current = current.f_back
+        return LOCALE_DEFAULT

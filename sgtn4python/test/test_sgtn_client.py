@@ -14,8 +14,9 @@ sys.path.append('../sgtnclient')
 import I18N
 from sgtn_util import FileUtil, NetUtil
 
+from util import Util, allTestData
 
-PRODUCT = 'PYTHON'
+PRODUCT = 'PYTHON1'
 VERSION = '1.0.0'
 COMPONENT = 'about'
 LOCALE = 'de'
@@ -48,19 +49,18 @@ class TestClient(unittest.TestCase):
     def test_api(self):
         print('\n--- unittest --- %s --- python %s\n' % (
             sys._getframe().f_code.co_name, sys.version_info.major))
-        
-        NetUtil.simulate_data = FileUtil.read_json_file('./simulate.json')
+
+        NetUtil.simulate_data = Util.load_response(['data/http_response.txt'])
         #NetUtil.record_data = {}
 
-        KEY = 'about.title'
-        SOURCE = 'About'
+        Util.load_test_data(['data/test_define.txt'])
 
         print('--- test start ---')
 
         self.prepare_sub_path('log')
         self.prepare_sub_path('singleton')
 
-        I18N.add_config_file('sgtn_client.yml')
+        I18N.add_config_file('config/sgtn_online_only.yml')
 
         start = time.time()
         I18N.set_current_locale(LOCALE)
@@ -79,32 +79,36 @@ class TestClient(unittest.TestCase):
         self.check_locale(trans, 'ZH_cn')
         self.check_locale(trans, 'EN_us')
 
-        found = trans.get_string(COMPONENT, KEY, source = SOURCE, locale = LOCALE)
-        print('--- found --- 4 --- %s ---' % found)
-        self.assertEqual(found, 'Über')
-        
-        found = trans.get_string(COMPONENT, KEY, source = SOURCE)
-        print('--- found --- 3 --- %s ---' % found)
-        found = trans.get_string(COMPONENT, KEY)
-        print('--- found --- 1a --- %s ---' % found)
-        found = trans.get_string('TT', KEY)
-        print('--- found --- 1b --- %s ---' % found)
+        components = ['about', 'contact']
+        locales = ['de', 'zh-Hans']
+        for comp in components:
+            for loc in locales:
+                trans.get_string(comp, '$', locale = loc)
+        Util.run_test_data(self, trans, 'TestGetString1')
+
+        found = trans.get_string('TT', 'about.title')
+        print('--- found --- wrong component --- %s ---' % found)
 
         if (self.need_wait(cfg_info)):
             time.sleep(5)
 
-        found = trans.get_string(COMPONENT, 'aa', format_items = ['11', '22'])
-        print('--- found --- 21 --- %s ---' % found)
-        found = trans.get_string(COMPONENT, 'cc', x = 'ee', y = 'ff')
-        print('--- found --- 22 --- %s ---' % found)
+        found = trans.get_string(None, 'about.title', format_items = ['11', '22'])
+        print('--- found --- format in array --- %s ---' % found)
+        self.assertEqual(found, 'Über Version 22 of Product 11')
+        found = trans.get_string(None, 'about.title2', format_items = {'x': 'ee', 'y': 'ff'})
+        print('--- found --- format in dict --- %s ---' % found)
+        self.assertEqual(found, 'Über Version ee of Product ff')
 
         spent = time.time() - start
 
-        data = trans.get_locale_strings('en-US')
-        #print('--- source --- 2 --- %s ---' % data)
+        data = trans.get_locale_strings('en-US', True)
+        print('--- source --- en-US --- %s ---' % data)
 
-        data = trans.get_locale_strings('de')
-        #print('--- source --- 0 --- %s ---' % data)
+        data = trans.get_locale_strings('en-US', False)
+        print('--- translate --- en-US --- %s ---' % data)
+
+        data = trans.get_locale_strings('de', False)
+        print('--- translate --- de --- %s ---' % data)
 
         if (self.need_wait(cfg_info)):
             found = trans.get_string(COMPONENT, KEY, source = SOURCE, locale = LOCALE)
@@ -112,7 +116,7 @@ class TestClient(unittest.TestCase):
 
         if NetUtil.record_data is not None:
             time.sleep(5)
-            FileUtil.save_json_file('./simulate.json', NetUtil.record_data)
+            FileUtil.save_json_file('data/simulate.json', NetUtil.record_data)
         print('--- test --- end --- %s ---' % spent)
 
 
