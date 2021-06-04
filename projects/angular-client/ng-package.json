@@ -1,0 +1,13 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/angular-client",
+  "lib": {
+    "entryFile": "index.ts",
+    "umdModuleIds": {
+      "decimal.js-light": "decimal"
+    }
+  },
+  "whitelistedNonPeerDependencies": [
+    "decimal.js-light"
+  ]
+}

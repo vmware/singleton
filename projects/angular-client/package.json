@@ -1,0 +1,53 @@
+{
+  "name": "@singleton-i18n/angular-client",
+  "version": "0.5.2-alpha.1",
+  "description": "Singleton client code for Angular 10.",
+  "license": "EPL-2.0",
+  "keywords": [
+    "i18n",
+    "angular",
+    "Singleton"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vmware/singleton/tree/g11n-angular-client"
+  },
+  "bin": {
+    "collect-mixin-source": "cli/collect-mixin-source.js",
+    "load-translation": "cli/load-i18n-package.js",
+    "collect-source-bundle": "cli/collect-source-bundle.js",
+    "load-locale-data": "cli/load-locale-data.js",
+    "convert-extract-translate": "cli/extract-translate.js"
+  },
+  "peerDependencies": {
+    "@angular/common": "^10.0.14",
+    "@angular/core": "^10.0.14",
+    "debug": "^4.1.0",
+    "html-element": "^2.2.0",
+    "superagent": "^5.2.2"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0",
+    "decimal.js-light": "^2.4.1"
+  },
+  "changelogHistory": [
+    {
+      "date": "06/01/21",
+      "version": "0.5.2-alpha.1",
+      "notes": [
+        {
+          "description": "Upgrade version to Angular 10."
+        }
+      ]
+    },
+    {
+      "date": "21/07/19",
+      "version": "0.1.0",
+      "notes": [
+        {
+          "description": "An implementation of Singleton Angular client for Angular 7."
+        }
+      ]
+    }
+  ]
+}

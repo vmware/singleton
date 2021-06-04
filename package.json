@@ -1,87 +1,43 @@
 {
-    "name": "@singleton-i18n/angular-client",
-    "version": "0.1.0",
-    "publishConfig": {
-        "registry": ""
-    },
-    "description": "Singleton client code for Angular7.",
-    "main": "bundles/singleton4angular.umd.js",
-    "module": "dist/index.js",
-    "typings": "dist/index.d.ts",
-    "scripts": {
-        "build": "webpack",
-        "test": "karma start && npm run clean",
-        "lint": "tslint \"src/**/*.ts\" \"tests/**/*.ts\"",
-        "clean": "rimraf bundles coverage src/**/*.d.ts src/**/*.metadata.json src/**/*.js tests/**/*.d.ts tests/**/*.metadata.json tests/**/*.js index.d.ts index.metadata.json index.js vmw-ngx-vip.module.d.ts vmw-ngx-vip.module.metadata.json vmw-ngx-vip.module.js",
-        "prepublish": "rimraf dist && ngc -p ./ --outDir dist/ && npm run build"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/vmware/singleton/tree/g11n-angular-client"
-    },
-    "keywords": [
-        "i18n",
-        "angular",
-        "Singleton"
-    ],
-    "bin": {
-        "collect-mixin-source": "cli/collect-mixin-source.ts",
-        "load-translation": "cli/load-i18n-package.js",
-        "collect-source-bundle": "cli/collect-source-bundle.js"
-    },
-    "license": "EPL-2.0",
-    "dependencies": {
-        "@angular/common": "^7.0.0",
-        "@angular/compiler": "^7.0.0",
-        "@angular/core": "^7.0.0",
-        "@angular/platform-browser": "^7.0.0",
-        "@angular/platform-browser-dynamic": "^7.0.0",
-        "@angular/router": "^7.0.0",
-        "decimal.js-light": "^2.4.1",
-        "rxjs": "^6.3.3",
-        "zone.js": "^0.8.26"
-    },
-    "devDependencies": {
-        "@angular-devkit/build-angular": "^0.10.2",
-        "@angular-devkit/build-ng-packagr": "^0.10.2",
-        "@angular/cli": "^7.0.2",
-        "@angular/compiler-cli": "^7.0.0",
-        "@types/jasmine": "^2.8.9",
-        "@types/node": "^10.12.0",
-        "awesome-typescript-loader": "3.1.3",
-        "clean-webpack-plugin": "0.1.16",
-        "codelyzer": "3.0.1",
-        "debug": "^3.1.0",
-        "html-element": "^2.2.0",
-        "istanbul-instrumenter-loader": "2.0.0",
-        "jasmine-core": "2.6.2",
-        "karma": "1.7.0",
-        "karma-chrome-launcher": "2.1.1",
-        "karma-coverage": "1.1.1",
-        "karma-jasmine": "1.1.0",
-        "karma-mocha-reporter": "2.2.3",
-        "karma-remap-coverage": "0.1.5",
-        "karma-sourcemap-loader": "0.3.7",
-        "karma-webpack": "2.0.3",
-        "source-map-loader": "0.2.1",
-        "superagent": "^3.8.3",
-        "ts-helpers": "1.1.2",
-        "tslint": "^5.11.0",
-        "tslint-loader": "3.5.3",
-        "tslint-microsoft-contrib": "5.0.0",
-        "tsutils": "1.6.0",
-        "typescript": "~3.1.3",
-        "webpack": "3.8.1"
-    },
-    "changelogHistory": [
-        {
-            "date": "21/07/19",
-            "version": "0.1.0",
-            "notes": [
-                {
-                    "description": "An implementation of Singleton Angular client for Angular 7."
-                }
-            ]
-        }
-    ]
+  "scripts": {
+    "ng": "ng",
+    "test": "ng test --code-coverage",
+    "lint": "ng lint",
+    "build": "ng build && mkdir dist/angular-client/cli && cp -a projects//angular-client/cli/. dist/angular-client/cli",
+    "publish": "npm publish dist/angular-client"
+  },
+  "license": "EPL-2.0",
+  "dependencies": {
+    "@angular/common": "~10.0.9",
+    "@angular/compiler": "~10.0.9",
+    "@angular/core": "~10.0.9",
+    "@angular/platform-browser": "~10.0.9",
+    "@angular/platform-browser-dynamic": "~10.0.9",
+    "rxjs": "~6.5.5",
+    "tslib": "^2.0.0",
+    "zone.js": "~0.10.3",
+    "decimal.js-light": "^2.4.1"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.1000.8",
+    "@angular-devkit/build-ng-packagr": "~0.1000.8",
+    "@angular/cli": "~10.0.6",
+    "@angular/compiler-cli": "~10.0.9",
+    "@types/node": "^12.11.1",
+    "@types/jasmine": "~3.5.0",
+    "@types/jasminewd2": "~2.0.3",
+    "codelyzer": "^6.0.0",
+    "jasmine-core": "~3.5.0",
+    "jasmine-spec-reporter": "~5.0.0",
+    "karma": "~5.0.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~3.0.2",
+    "karma-jasmine": "~3.3.0",
+    "karma-jasmine-html-reporter": "^1.5.0",
+    "ng-packagr": "^10.0.0",
+    "protractor": "~7.0.0",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "typescript": "~3.9.5"
+  }
 }
