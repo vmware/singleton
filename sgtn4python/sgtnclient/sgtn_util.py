@@ -148,12 +148,12 @@ class NetUtil:
 
             if cls.record_data is not None:
                 header_part = json.dumps(request_headers) if request_headers else request_headers
-                cls.record_data['%s<<headers>>%s' % (url, header_part)] = {
-                    'text': text, 'headers': headers}
+                key = '%s<<headers>>%s' % (ur, header_part) if header_part else url
+                cls.record_data[key] = {'text': text, 'headers': headers}
             return text, headers
         else:
             header_part = json.dumps(request_headers) if request_headers else request_headers
-            key = '%s<<headers>>%s' % (url, header_part)
+            key = '%s<<headers>>%s' % (url, header_part) if header_part else url
             kept = cls.simulate_data.get(key)
             if kept:
                 if 'code' in kept:

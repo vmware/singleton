@@ -9,9 +9,9 @@ import time
 import json
 import sys
 
-#sys.path.append('../sgtnclient')
-#import I18N
-from sgtnclient import I18N
+sys.path.append('../sgtnclient')
+import I18N
+#from sgtnclient import I18N
 
 PRODUCT = 'PYTHON'
 VERSION = '1.0.0'
@@ -127,15 +127,18 @@ class SampleApplication():
 
         spent = time.time() - start
 
-        data = trans.get_locale_strings('en-US')
-        #print('--- source --- 2 --- %s ---' % data)
+        data = trans.get_locale_strings('en-US', True)
+        print('--- source --- en-US --- %s ---' % data)
 
-        data = trans.get_locale_strings('de')
-        #print('--- source --- 0 --- %s ---' % data)
+        data = trans.get_locale_strings('en-US', False)
+        print('--- translate --- en-US --- %s ---' % data)
+
+        data = trans.get_locale_strings('de', False)
+        print('--- translate --- de --- %s ---' % data)
 
         if (self.need_wait(cfg_info)):
             found = trans.get_string(COMPONENT, KEY, source = SOURCE, locale = LOCALE)
-            print('--- found2 --- 4 --- %s ---' % found)
+            print('--- found --- wait --- %s ---' % found)
 
         print('--- sample --- end --- %s ---' % spent)
 

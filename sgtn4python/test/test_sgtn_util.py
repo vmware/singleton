@@ -15,6 +15,8 @@ if sys.version_info.major == 2:
 
 from sgtn_util import FileUtil, NetUtil, SysUtil
 
+from util import Util
+
 
 class TestClient(unittest.TestCase):
 
@@ -22,10 +24,10 @@ class TestClient(unittest.TestCase):
         print('\n--- unittest --- %s --- python %s\n' % (
             sys._getframe().f_code.co_name, sys.version_info.major))
 
-        text = FileUtil.read_text_file('./data.txt')
+        text = FileUtil.read_text_file('data/data.txt')
         self.assertIn('cc=AA{x}BB{y}CC', text)
         
-        dt = FileUtil.read_json_file('./data.json')
+        dt = FileUtil.read_json_file('data/data.json')
         self.assertEqual(dt['aa'], 'aaa')
         print('--- json --- %s ---' % dt)
 
@@ -34,25 +36,25 @@ class TestClient(unittest.TestCase):
         dtLoad = FileUtil.read_json_file('./log/data2.json')
         self.assertEqual(dtLoad['add'], 'über')
         
-        dt = FileUtil.read_datatree('./sgtn_client.yml')
-        self.assertEqual(dt['log_path'], './log/')
+        dt = FileUtil.read_datatree('config/sgtn_online_only.yml')
+        self.assertEqual(dt['log_path'], '../log/')
         print('--- yaml --- %s ---' % dt['log_path'])
         
-        dir_list, file_list = FileUtil.get_dir_info('.')
+        dir_list, file_list = FileUtil.get_dir_info('data')
         print('--- dir_list --- %s ---' % dir_list)
         print('--- file_list --- %s ---' % len(file_list))
-        self.assertIn('sgtn_client.yml', file_list)
+        self.assertIn('http_response.txt', file_list)
 
     def test_net_util(self):
         print('\n--- unittest --- %s --- python %s\n' % (
             sys._getframe().f_code.co_name, sys.version_info.major))
 
-        NetUtil.simulate_data = FileUtil.read_json_file('./simulate.json')
+        NetUtil.simulate_data = Util.load_response(['data/http_response.txt'])
 
-        dt = FileUtil.read_datatree('./sgtn_client.yml')
+        dt = FileUtil.read_datatree('config/sgtn_online_only.yml')
         online_url = dt['online_service_url']
         parts = online_url.split('/')[:3]
-        parts.append('i18n/api/v2/translation/products/PYTHON/versions/1.0.0/localelist')
+        parts.append('i18n/api/v2/translation/products/PYTHON1/versions/1.0.0/localelist')
         url = '/'.join(parts)
         
         text = NetUtil.http_get_text(url)
