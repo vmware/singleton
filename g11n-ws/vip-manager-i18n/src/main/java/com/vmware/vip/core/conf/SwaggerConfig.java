@@ -89,7 +89,7 @@ public class SwaggerConfig {
 	@ConditionalOnProperty(value = "vipservice.authority.enable")
 	public Docket serviceloginApi() {
 
-		return new Docket(DocumentationType.SWAGGER_2).groupName("Authorization").select()
+		return new Docket(DocumentationType.SWAGGER_2).groupName("Authentication").select()
 				.apis(RequestHandlerSelectors.basePackage("com.vmware.vip.core.login.controller"))
 				.paths(PathSelectors.any()).build().apiInfo(apiInfo("interface test doc"));
 
