@@ -9,7 +9,7 @@ package cldr
 type (
 	PatternScope struct {
 		Scope       string `form:"scope" binding:"scope"`
-		ScopeFilter string `form:"scopeFilter"`
+		ScopeFilter string `form:"scopeFilter" binding:"omitempty,scopeFilter"`
 	}
 
 	PatternByLangRegReq struct {

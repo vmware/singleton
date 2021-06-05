@@ -41,6 +41,7 @@ var validatorInfoArray = [][]interface{}{
 	{LanguageAPIKey, letterAndNumberAndValidCharRegx, fmt.Sprintf(letterAndNumberAndValidCharStringError, LanguageAPIKey)},
 	{RegionAPIKey, letterAndNumberAndValidCharRegx, fmt.Sprintf(letterAndNumberAndValidCharStringError, RegionAPIKey)},
 	{ScopeAPIKey, patternScopeRegex, "Incorrect " + ScopeAPIKey},
+	{"scopeFilter", regexp.MustCompile(`^\^?[-_a-zA-Z\d,]+$`), "Incorrect scope filter"},
 	{ComponentsAPIKey, componentsRegex, fmt.Sprintf(letterAndNumberAndValidCharStringError, ComponentsAPIKey)},
 	{LocalesAPIKey, localesRegex, fmt.Sprintf(letterAndNumberAndValidCharStringError, LocalesAPIKey)},
 	{KeyAPIKey, letterAndNumberAndValidCharRegx, fmt.Sprintf(letterAndNumberAndValidCharStringError, KeyAPIKey)},
