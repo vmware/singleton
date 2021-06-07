@@ -12,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,10 +31,10 @@ import io.swagger.annotations.ApiParam;
 
 
 
-@RestController("Authorization-authenticationLoginAPI")  
+@RestController("Authentication-authenticationLoginAPI")  
 @Api(value = "Login Controller login operations")
-public class AuthorizationLoginController {
-	private static Logger logger = LoggerFactory.getLogger(AuthorizationLoginController.class);
+public class AuthenticationLoginController {
+	private static Logger logger = LoggerFactory.getLogger(AuthenticationLoginController.class);
 	
 	public final static String INVALID_LOGIN = "Invalid Login username, password error or authentication is expired";
 	
@@ -82,13 +81,13 @@ public class AuthorizationLoginController {
 	
 	
 	@PostMapping(value = "/auth/token")
-	public APIResponseDTO generateToken(@RequestHeader(required = true) String authorization,@RequestParam String appId) {
+	public APIResponseDTO generateToken(@RequestHeader(required = true) String authentication,@RequestParam String appId) {
 	
-		logger.debug(authorization+"-----------------"+appId);
+		logger.debug(authentication+"-----------------"+appId);
 		String username = null;
 		APIResponseDTO d = new APIResponseDTO();
 		try {
-			username = tokenService.verifyToken(authorization).get("username").asString();
+			username = tokenService.verifyToken(authentication).get("username").asString();
 		} catch (Exception e) {
 			logger.warn(e.getMessage());
 			Response r = new Response();
