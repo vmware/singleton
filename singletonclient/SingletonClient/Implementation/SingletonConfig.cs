@@ -440,10 +440,12 @@ namespace SingletonClient.Implementation
             configItem = _config.GetItem(ConfigConst.KeyLoadOnStartup);
             _isLoadOnStartup = (configItem != null) && configItem.GetBool();
 
+            bool isCacheByKey = ConfigConst.CacheByKey.Equals(this.GetCacheType(), StringComparison.InvariantCultureIgnoreCase);
+            bool isCacheDefault = ConfigConst.DefaultType.Equals(this.GetCacheType(), StringComparison.InvariantCultureIgnoreCase);
+            bool isCacheComponentDefault = ConfigConst.DefaultType.Equals(this.GetCacheComponentType(), StringComparison.InvariantCultureIgnoreCase);
+
             // Get if key is unique whatever component is
-            _isCacheByKey = ConfigConst.CacheByKey.Equals(this.GetCacheType(),
-                StringComparison.InvariantCultureIgnoreCase) || ConfigConst.DefaultType.Equals(this.GetCacheType(),
-                StringComparison.InvariantCultureIgnoreCase);
+            _isCacheByKey = isCacheByKey || (isCacheDefault && isCacheComponentDefault);
         }
 
         private void BuildExternalComponentList(string external)

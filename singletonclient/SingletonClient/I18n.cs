@@ -4,6 +4,7 @@
  */
 
 using SingletonClient.Implementation;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace SingletonClient
@@ -21,10 +22,10 @@ namespace SingletonClient
         /// <param name="configResourceName">Configuration name in the assembly's resource</param>
         /// <returns></returns>
         public static IConfig LoadConfig(
-            string resourceBaseName, Assembly assembly, string configResourceName)
+            string resourceBaseName, Assembly assembly, string configResourceName, Dictionary<string, string> replaceMap = null)
         {
             ISingletonClientManager client = SingletonClientManager.GetInstance();
-            return client.LoadConfig(resourceBaseName, assembly, configResourceName);
+            return client.LoadConfig(resourceBaseName, assembly, configResourceName, replaceMap);
         }
 
         /// <summary>

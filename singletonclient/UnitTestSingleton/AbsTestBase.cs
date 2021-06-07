@@ -60,7 +60,10 @@ namespace UnitTestSingleton
             BaseIo.obj();
 
             string[] resStrings = GetResStrings();
-            IConfig cfg = I18N.LoadConfig(resStrings[0], Assembly.GetExecutingAssembly(), resStrings[1]);
+            Dictionary<string, string> configMap = new Dictionary<string, string> ();
+            configMap.Add("$PRODUCT", "CSHARP1");
+
+            IConfig cfg = I18N.LoadConfig(resStrings[0], Assembly.GetExecutingAssembly(), resStrings[1], configMap);
             product = cfg.GetItem(ConfigConst.KeyProduct).GetString();
             version = cfg.GetItem(ConfigConst.KeyVersion).GetString();
 

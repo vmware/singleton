@@ -5,13 +5,14 @@
 
 using SingletonClient.Implementation.Support;
 using System.Collections;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace SingletonClient.Implementation
 {
     public interface ISingletonClientManager
     {
-        IConfig LoadConfig(string resourceBaseName, Assembly assembly, string configResourceName);
+        IConfig LoadConfig(string resourceBaseName, Assembly assembly, string configResourceName, Dictionary<string, string> replaceMap = null);
         IConfig GetConfig(string product, string version);
         IRelease GetRelease(IConfig config);
         ICacheManager GetCacheManager(string cacheManagerName);
@@ -127,10 +128,18 @@ namespace SingletonClient.Implementation
         }
 
         public IConfig LoadConfig(
-            string resourceBaseName, Assembly assembly, string configResourceName)
+            string resourceBaseName, Assembly assembly, string configResourceName, Dictionary<string, string> replaceMap = null)
         {
             SingletonConfig config = new SingletonConfig(assembly);
             string text = config.ReadResourceText(resourceBaseName, configResourceName);
+            if (replaceMap != null)
+            {
+                foreach (var one in replaceMap)
+                {
+                    text = text.Replace(one.Key, one.Value);
+                }
+            }
+
             config.SetConfigData(text);
 
             ISingletonConfig singletonConfig = new SingletonConfigWrapper(config);
