@@ -126,7 +126,17 @@ class SingletonConfig(Config):
             self.local_type = parts[0][:-1]
 
             if self.local_type == LOCAL_TYPE_FILE:
-                self.local_url = '/'.join(parts[2:])
+                start = 2
+                needBasePath = False
+                if len(parts) > 3:
+                    if parts[3] == '..' or parts[3] == '.':
+                        start = 3
+                        needBasePath = True
+                    if parts[3].endswith(':'):
+                        start = 3
+                self.local_url = '/'.join(parts[start:])
+                if needBasePath:
+                    self.local_url = os.path.join(base_path, self.local_url)
 
         self.log_path = self.get_path(KEY_LOGPATH)          # log path
         self.cache_path = self.get_path(KEY_CACHEPATH)      # cache path

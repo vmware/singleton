@@ -25,14 +25,16 @@ CONFIG_FILES = [
     'sample_offline_remote.yml',
     'sample_offline_remote_original.yml'
     ]
-CONFIG_INDEX = 0
+CONFIG_INDEX = 2
 
 
 class SampleApplication():
 
     def prepare_sub_path(self, sub):
-        current_path = os.path.dirname(__file__)
-        sub_path = os.path.join(current_path, sub)
+        self.code_path = os.path.dirname(__file__)
+        print('--- code path --- %s' % self.code_path)
+
+        sub_path = os.path.join(self.code_path, sub)
         if not os.path.exists(sub_path):
             os.makedirs(sub_path)
 
@@ -65,7 +67,7 @@ class SampleApplication():
         # step 1
         #     Initialize configuration file
         #
-        I18N.add_config_file(CONFIG_FILES[CONFIG_INDEX])
+        I18N.add_config_file(os.path.join(self.code_path, CONFIG_FILES[CONFIG_INDEX]))
 
         start = time.time()
         I18N.set_current_locale(LOCALE)
@@ -133,8 +135,8 @@ class SampleApplication():
         data = trans.get_locale_strings('en-US', False)
         print('--- translate --- en-US --- %s ---' % data)
 
-        data = trans.get_locale_strings('de', False)
-        print('--- translate --- de --- %s ---' % data)
+        data = trans.get_locale_strings(LOCALE, False)
+        print('--- translate --- %s --- %s ---' % (LOCALE, data))
 
         if (self.need_wait(cfg_info)):
             found = trans.get_string(COMPONENT, KEY, source = SOURCE, locale = LOCALE)
