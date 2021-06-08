@@ -330,10 +330,10 @@ namespace SingletonClient.Implementation
         /// </summary>
         /// <param name="resourceName"></param>
         /// <returns></returns>
-        public string ReadResourceText(string resourceBaseName, string resourceName)
+        public string ReadResourceText(string resourceBaseName, string resourceName, string locale = null)
         {
             Byte[] bytes = SingletonUtil.ReadResource(
-                resourceBaseName, _resourceAssembly, resourceName);
+                resourceBaseName, _resourceAssembly, resourceName, locale);
             string text = SingletonUtil.ConvertToText(bytes);
             return text;
         }
@@ -344,7 +344,7 @@ namespace SingletonClient.Implementation
         /// <param name="resourceName"></param>
         /// <param name="parser"></param>
         /// <returns></returns>
-        public Hashtable ReadResourceMap(string resourceName, string format, string locale)
+        public Hashtable ReadResourceMap(string resourceName, string format, string locale = null)
         {
             if (string.IsNullOrEmpty(resourceName) || string.IsNullOrEmpty(format))
             {

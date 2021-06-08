@@ -16,7 +16,7 @@ namespace SingletonClient.Implementation.Support.ByKey
         ISingletonByKeyLocale GetLocaleItem(string locale, bool asSource);
         int GetComponentIndex(string component);
         int GetKeyCountInComponent(int componentIndex, ISingletonByKeyLocale localeItem);
-        ICollection GetKeysInComponent(int componentIndex, ISingletonByKeyLocale localeItem);
+        ICollection<string> GetKeysInComponent(int componentIndex, ISingletonByKeyLocale localeItem);
         string GetString(string key, int componentIndex, ISingletonByKeyLocale localeItem);
         bool SetString(string key, int componentIndex, ISingletonByKeyLocale localeItem, string message);
         SingletonByKeyItem GetKeyItem(int pageIndex, int indexInPage);
@@ -172,7 +172,7 @@ namespace SingletonClient.Implementation.Support.ByKey
         /// <summary>
         /// ISingletonByKeyRelease
         /// </summary>
-        public ICollection GetKeysInComponent(int componentIndex, ISingletonByKeyLocale localeItem)
+        public ICollection<string> GetKeysInComponent(int componentIndex, ISingletonByKeyLocale localeItem)
         {
             List<string> array = new List<string>();
             if (localeItem != null)
