@@ -174,13 +174,14 @@ func getCombinedDataByPost(c *gin.Context) {
 	params.Version = transApi.DoVersionFallback(c, params.ProductName, params.Version)
 
 	req := translationWithPatternReq{
-		Combine:     params.Combine,
-		ReleaseID:   params.ReleaseID,
-		Language:    params.Language,
-		Region:      params.Region,
-		Components:  strings.Join(params.Components, common.ParamSep),
-		Scope:       params.Scope,
-		ScopeFilter: params.ScopeFilter}
+		Combine:    params.Combine,
+		ReleaseID:  params.ReleaseID,
+		Language:   params.Language,
+		Region:     params.Region,
+		Components: strings.Join(params.Components, common.ParamSep),
+		PatternScope: cldrApi.PatternScope{
+			Scope:       params.Scope,
+			ScopeFilter: params.ScopeFilter}}
 	doGetCombinedData(c, &req)
 }
 

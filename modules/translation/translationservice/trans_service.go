@@ -176,7 +176,7 @@ func (ts Service) GetString(ctx context.Context, id *translation.MessageID) (*tr
 }
 
 func (ts Service) GetStringWithSource(ctx context.Context, id *translation.MessageID, source string) (result map[string]interface{}, returnErr error) {
-	var stringTrans string
+	var stringTrans, locale string
 	var status translation.TranslationStatus
 	msg, err := ts.GetString(ctx, id)
 
@@ -188,24 +188,24 @@ func (ts Service) GetStringWithSource(ctx context.Context, id *translation.Messa
 	}
 	if source != "" {
 		if errEn != nil || msgEn.Translation != source {
-			stringTrans, status = source, translation.SourceUpdated
+			stringTrans, locale, status = source, translation.EnLocale, translation.SourceUpdated
 		} else {
 			if err == nil {
-				stringTrans, status = msg.Translation, translation.TranslationValid
+				stringTrans, locale, status = msg.Translation, msg.Locale, translation.TranslationValid
 			} else {
 				if errEn == nil {
-					stringTrans, status = msgEn.Translation, translation.FallbackToEn
+					stringTrans, locale, status = msgEn.Translation, msgEn.Locale, translation.FallbackToEn
 				} else {
-					stringTrans, status = source, translation.FallbackToSource
+					stringTrans, locale, status = source, translation.EnLocale, translation.FallbackToSource
 				}
 			}
 		}
 	} else {
 		if err == nil {
-			stringTrans, status = msg.Translation, translation.TranslationValid
+			stringTrans, locale, status = msg.Translation, msg.Locale, translation.TranslationValid
 		} else {
 			if errEn == nil {
-				stringTrans, status = msgEn.Translation, translation.FallbackToEn
+				stringTrans, locale, status = msgEn.Translation, msgEn.Locale, translation.FallbackToEn
 			} else {
 				return nil, err
 			}
@@ -215,7 +215,7 @@ func (ts Service) GetStringWithSource(ctx context.Context, id *translation.Messa
 	return map[string]interface{}{
 			"productName": id.Name,
 			"version":     id.Version,
-			"locale":      id.Locale,
+			"locale":      locale,
 			"component":   id.Component,
 			"key":         id.Key,
 			"translation": stringTrans,

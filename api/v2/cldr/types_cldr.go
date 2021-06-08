@@ -8,18 +8,18 @@ package cldr
 // Request
 type (
 	PatternScope struct {
-		Scope       string `form:"scope" binding:"required,scope"`
-		ScopeFilter string `form:"scopeFilter"`
+		Scope       string `form:"scope" binding:"scope"`
+		ScopeFilter string `form:"scopeFilter" binding:"omitempty,scopeFilter"`
 	}
 
 	PatternByLangRegReq struct {
-		Language string `form:"language" binding:"required,language"`
-		Region   string `form:"region" binding:"required,region"`
+		Language string `form:"language" binding:"language"`
+		Region   string `form:"region" binding:"region"`
 		PatternScope
 	}
 
 	LocaleRegionsReq struct {
-		Locales string `form:"supportedLanguageList" binding:"required,locales"`
+		Locales string `form:"supportedLanguageList" binding:"locales"`
 	}
 )
 
