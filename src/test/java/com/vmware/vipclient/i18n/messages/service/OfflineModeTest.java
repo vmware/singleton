@@ -212,14 +212,18 @@ public class OfflineModeTest extends BaseTestClass {
 
         String component = "JAVA2";
         String message = translation.getMessage("offlineBundles.JAVA2.messages", locale, component, "props.key.1", args);
-        // Returns the source message from props file
+        // Returns the source message from props file when source not collected
         assertEquals("props.value.1", message);
 
+        message = translation.getMessage("offlineBundles.JAVA2.messages", locale, component, "props.key.2", args);
+        // Returns the source message from props file when source is collected but hasn't been translated
+        assertEquals("props.value.2", message);
+
         try {
-            message = translation.getMessage("offlineBundles.JAVA2.messages", locale, component, "props.key.2", args);
+            message = translation.getMessage("offlineBundles.JAVA2.messages", locale, component, "props.key.4", args);
         }catch (VIPJavaClientException e){
-            // throw exception when no translation found
-            assertEquals(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, "props.key.2", component, locale), e.getMessage());
+            // throw exception when no source found
+            assertEquals(FormatUtils.format(ConstantsMsg.GET_MESSAGE_FAILED, "props.key.4", component, locale), e.getMessage());
         }
 
         message = translation.getMessage("offlineBundles.JAVA2.subdir.messages", locale, component, "props.key.3", args);
