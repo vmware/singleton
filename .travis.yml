@@ -59,7 +59,8 @@ script: >
       exit 
     }
     cd $TRAVIS_BUILD_DIR/devops/sonar && sleep 5 && python3 ./check_sonar_qualitygate.py -ProjectKeyPrefixArray=$SONAR_ORG-singleton-go-service-$TRAVIS_BRANCH -HostName=https://sonarcloud.io
-  fi
+  fi &&
+
   if [ x${TEST} = xsmoke_test ]; then
     export PATH=${PATH/:\/usr\/local\/lib\/jvm\/openjdk11\/bin:/:}
     sudo apt-get update
