@@ -6,14 +6,19 @@
 
 from setuptools import setup, find_packages
 
-
 setup(
-    name = "sgtnclient",
-    version = "1.0.1",
-
-    packages = find_packages(),
-
-    include_package_data = True,
-
-    zip_safe = False
-    )
+    name="sgtnclient",
+    version="1.0.1.2",
+    author="Jasper Jin",
+    author_email="jasperj@vmware.com",
+    description="Singleton Client",
+    license="MIT",
+    url="https://github.com/vmware/singleton/tree/g11n-python-client",
+    packages=['sgtnclient'],
+    install_requires=[
+        "PyYAML"
+        ],
+    classifiers=[
+        "Operating System :: OS Independent"
+    ]
+)
