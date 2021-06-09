@@ -68,11 +68,11 @@ public class LiteServerProperties implements Serializable {
       if (this.httpsKeyStore.startsWith(ConstantsTomcat.CLASSPATH_STR)) {
          return this.httpsKeyStore.replace(ConstantsTomcat.CLASSPATH_STR, "");
       } else {
-         try {
-               return new File(this.httpsKeyStore).getCanonicalPath();
-         } catch (IOException e) {
-               return this.httpsKeyStore;
-         }
+              try {
+                   return new File(this.httpsKeyStore).getCanonicalPath();
+              } catch (IOException e) {
+                   return this.httpsKeyStore;
+              }
       }
    }
 
