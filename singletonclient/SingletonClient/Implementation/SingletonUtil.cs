@@ -59,7 +59,7 @@ namespace SingletonClient.Implementation
         /// <param name="resourceName"></param>
         /// <returns></returns>
         public static Byte[] ReadResource(
-            string resourceBaseName, Assembly assembly, string resourceName)
+            string resourceBaseName, Assembly assembly, string resourceName, string locale = null)
         {
             resourceBaseName = assembly.GetName().Name + "." + resourceBaseName;
             string[] parts = Regex.Split(resourceName, "__ITEMNAME__");
@@ -70,6 +70,11 @@ namespace SingletonClient.Implementation
             }
 
             ResourceManager resourceManager = new ResourceManager(resourceBaseName, assembly);
+            if (locale != null)
+            {
+                CultureInfo cultureInfo = new CultureInfo(locale);
+                return (Byte[])resourceManager.GetObject(resourceName, cultureInfo);
+            }
             Byte[] bytes = (Byte[])resourceManager.GetObject(resourceName);
             return bytes;
         }

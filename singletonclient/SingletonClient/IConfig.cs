@@ -104,7 +104,7 @@ namespace SingletonClient
         /// <param name="resourceBaseName"></param>
         /// <param name="resourceName"></param>
         /// <returns></returns>
-        string ReadResourceText(string resourceBaseName, string resourceName);
+        string ReadResourceText(string resourceBaseName, string resourceName, string locale = null);
 
         /// <summary>
         /// Read message map by the resource name and locale when it's an internal format.
@@ -113,7 +113,7 @@ namespace SingletonClient
         /// <param name="format"></param>
         /// <param name="locale"></param>
         /// <returns></returns>
-        Hashtable ReadResourceMap(string resourceName, string format, string locale);
+        Hashtable ReadResourceMap(string resourceName, string format, string locale = null);
     }
 
     public static class ConfigConst

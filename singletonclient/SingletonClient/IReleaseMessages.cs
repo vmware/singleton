@@ -78,7 +78,7 @@ namespace SingletonClient
         /// Get key collection.
         /// </summary>
         /// <returns></returns>
-        ICollection GetKeys();
+        ICollection<string> GetKeys();
 
         /// <summary>
         /// Get item count.

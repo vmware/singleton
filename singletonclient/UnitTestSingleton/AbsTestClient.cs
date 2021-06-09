@@ -122,7 +122,7 @@ namespace UnitTestSingleton
             Assert.AreEqual(componentMessages.GetLocale(), "de");
             Assert.AreEqual(componentMessages.GetComponent(), "about");
 
-            ICollection keys = componentMessages.GetKeys();
+            ICollection<string> keys = componentMessages.GetKeys();
 
             Dictionary<string, ILocaleMessages> allTranslations = messages.GetAllLocaleMessages();
             languageMessages = allTranslations["de"];

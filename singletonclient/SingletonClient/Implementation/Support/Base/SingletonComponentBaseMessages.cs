@@ -5,7 +5,8 @@
 
 namespace SingletonClient.Implementation.Support.Base
 {
-    using System.Collections;
+    using System.Collections.Generic;
+
 
     public abstract class SingletonComponentBaseMessages : IComponentMessages
     {
@@ -57,7 +58,7 @@ namespace SingletonClient.Implementation.Support.Base
 
         public abstract void SetString(string key, string message);
         public abstract string GetString(string key);
-        public abstract ICollection GetKeys();
+        public abstract ICollection<string> GetKeys();
         public abstract int GetCount();
     }
 }

@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
-using System.Collections;
 using SingletonClient.Implementation.Support.Base;
+using System.Collections.Generic;
 
 namespace SingletonClient.Implementation.Support.ByKey
 {
@@ -28,7 +28,7 @@ namespace SingletonClient.Implementation.Support.ByKey
             return _byKeyRelease.GetKeyCountInComponent(this._componentIndex, _byKeyLocale);
         }
 
-        public override ICollection GetKeys()
+        public override ICollection<string> GetKeys()
         {
             return _byKeyRelease.GetKeysInComponent(this._componentIndex, _byKeyLocale);
         }

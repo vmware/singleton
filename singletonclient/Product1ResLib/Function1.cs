@@ -105,7 +105,7 @@ namespace Product1ResLib
 
             string strKey = "second_key";
             GetTranslate(_component, "$", null);
-            ICollection keys = cache.GetKeys();
+            ICollection<string> keys = cache.GetKeys();
             string strValue = cache.GetString(strKey);
 
             GetTranslate(null, strKey, null);
