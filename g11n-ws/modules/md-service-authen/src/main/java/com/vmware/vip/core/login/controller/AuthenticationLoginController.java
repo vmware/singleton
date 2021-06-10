@@ -31,7 +31,7 @@ import io.swagger.annotations.ApiParam;
 
 
 
-@RestController("Authentication-authenticationLoginAPI")  
+@RestController("authentication-authenticationLoginAPI")  
 @Api(value = "Login Controller login operations")
 public class AuthenticationLoginController {
 	private static Logger logger = LoggerFactory.getLogger(AuthenticationLoginController.class);
@@ -65,7 +65,7 @@ public class AuthenticationLoginController {
 			String tokenJason = tokenService.createLoginToken(username, expireDays);
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("username", username);
-			map.put("authorization", tokenJason);
+			map.put("authentication", tokenJason);
 						
 			APIResponseDTO d = new APIResponseDTO();
 			d.setData(map);
