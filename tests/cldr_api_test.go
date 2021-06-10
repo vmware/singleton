@@ -170,7 +170,7 @@ func TestGetPatternByLangRegExcep(t *testing.T) {
 		{testName: "invalidLang", lang: "€", reg: Region, scope: "dates", scopeFilter: "", wantedCode: http.StatusBadRequest},
 		{testName: "invalidRegion", lang: Language, reg: "€", scope: "dates", scopeFilter: "", wantedCode: http.StatusBadRequest},
 		{testName: "invalidScope", lang: Language, reg: Region, scope: "€", scopeFilter: "", wantedCode: http.StatusBadRequest},
-		{testName: "invalidScopeFilter", lang: Language, reg: Region, scope: "dates", scopeFilter: "€", wantedCode: http.StatusOK},
+		{testName: "invalidScopeFilter", lang: Language, reg: Region, scope: "dates", scopeFilter: "€", wantedCode: http.StatusBadRequest},
 	}
 
 	for _, tt := range tests {
@@ -202,7 +202,7 @@ func TestGetPatternByLocaleExcep(t *testing.T) {
 		{testName: "Locale_en-AB", locale: "en-AB", scope: "dates", scopeFilter: "", wantedCode: sgtnerror.StatusNotFound.HTTPCode()},
 		{testName: "invalidLocale", locale: "€", scope: "dates", scopeFilter: "", wantedCode: http.StatusBadRequest},
 		{testName: "invalidScope", locale: Language, scope: "€", scopeFilter: "", wantedCode: http.StatusBadRequest},
-		{testName: "invalidScopeFilter", locale: Language, scope: "dates", scopeFilter: "€", wantedCode: http.StatusOK},
+		{testName: "invalidScopeFilter", locale: Language, scope: "dates", scopeFilter: "€", wantedCode: http.StatusBadRequest},
 	}
 
 	for _, tt := range tests {
