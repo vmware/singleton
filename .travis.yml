@@ -47,13 +47,12 @@ script: >
     wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/$SONARSCANNER.zip
     unzip $SONARSCANNER.zip
     rm -f $SONARSCANNER.zip
-    make test -json > report.json
     make coverage 
     git clone --branch=devops https://github.com/vmware/singleton.git devops
     str=$(printf '=%.0s' {1..50})
     echo $str Unit Test Start $str
     cd $TRAVIS_BUILD_DIR/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG-singleton-go-service-$TRAVIS_BRANCH -ProjectKey=$SONAR_ORG-singleton-go-service-$TRAVIS_BRANCH -OrgKey=$SONAR_ORG -QualityGateName=go-service-gate -QualityGateConditions="./quality_gates/go-service.json" -SonarToken=$SONAR_TOKEN
-    cd $TRAVIS_BUILD_DIR && ./$SONARSCANNERINNER/bin/sonar-scanner -Dsonar.sources=. -Dsonar.exclusions=**/testdata/**/*,**/$SONARSCANNERINNER/**/*,**/bindata/bindata.go,tests/**,api/v1/**,api/v2/swagger/**,assets/**,cmd/**,bindata/**,coverage.html -Dsonar.coverage.exclusions=**/testdata/**/*,**/$SONARSCANNERINNER/**/*,**/bindata/bindata.go,tests/**,api/v1/**,api/v2/swagger/**,assets/**,cmd/**,bindata/**,coverage.html -Dsonar.projectName=$SONAR_ORG-singleton-go-service-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.projectKey=$SONAR_ORG-singleton-go-service-$TRAVIS_BRANCH -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN -Dsonar.go.tests.reportPaths=./report.json -Dsonar.go.coverage.reportPaths=./cover.out
+    cd $TRAVIS_BUILD_DIR && ./$SONARSCANNERINNER/bin/sonar-scanner -Dsonar.sources=. -Dsonar.exclusions=**/testdata/**/*,**/$SONARSCANNERINNER/**/*,**/bindata/bindata.go,tests/**,api/v1/**,api/v2/swagger/**,assets/**,cmd/**,bindata/**,coverage.html -Dsonar.coverage.exclusions=**/testdata/**/*,**/$SONARSCANNERINNER/**/*,**/bindata/bindata.go,tests/**,api/v1/**,api/v2/swagger/**,assets/**,cmd/**,bindata/**,coverage.html -Dsonar.projectName=$SONAR_ORG-singleton-go-service-$TRAVIS_BRANCH -Dsonar.branch.name=master -Dsonar.projectKey=$SONAR_ORG-singleton-go-service-$TRAVIS_BRANCH -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN -Dsonar.go.coverage.reportPaths=./cover.out
     echo $str Unit Test End $str
     git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '\.travis\.yml$' || {
       echo "No need to check sonar quality gate for only travis configuration updates"
@@ -78,10 +77,10 @@ script: >
     docker ps
     sleep 15s
     mkdir -p $TRAVIS_BUILD_DIR/l10n/bundles
-    cp -r $TRAVIS_BUILD_DIR/devops/autotest/client/go/l10n/bundles $TRAVIS_BUILD_DIR/l10n/
+    cp -r $TRAVIS_BUILD_DIR/devops/autotest/service/go/l10n/bundles $TRAVIS_BUILD_DIR/l10n/
     docker cp $TRAVIS_BUILD_DIR/l10n singleton:/
     curl -X GET 'http://localhost:8091/i18n/api/v2/formatting/patterns?language=en&region=TW&scope=dates'        
-    cd $TRAVIS_BUILD_DIR/devops/autotest/client/go/goclienttest
+    cd $TRAVIS_BUILD_DIR/devops/autotest/service/go/goservicetest
     go get github.com/smartystreets/goconvey
     echo "" >> go.mod
     echo "replace github.com/vmware/singleton => $TRAVIS_BUILD_DIR" >> go.mod
