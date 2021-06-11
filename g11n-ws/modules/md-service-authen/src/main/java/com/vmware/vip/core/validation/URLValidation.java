@@ -27,6 +27,7 @@ public class URLValidation implements IVlidation {
 			String url = request.getRequestURL().toString();
 			if (!url.contains(API.I18N_API_ROOT)
 					&& !url.contains(API.L10N_API_ROOT)
+					&& !url.contains("/auth/token")
 					&& !validateSwaggerUIRequest(url)&& !url.contains("/error")) {
 				
 				logger.info("current invalid url : "+url);

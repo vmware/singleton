@@ -132,7 +132,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 
 		if (authConfig.getAuthSwitch().equalsIgnoreCase("true")) {
 			logger.info("add enable authentication interceptor");
-			apival.excludePathPatterns("/auth/**");
+			apival.excludePathPatterns("/auth/login");
 			registry.addInterceptor(apiAuthInter)
 					
 					.addPathPatterns(API.I18N_API_ROOT + APIV1.V + "/**")
