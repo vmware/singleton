@@ -60,37 +60,44 @@ class FileUtil:
         return None
 
     @classmethod
-    def read_json_file(cls, file_name):
-        file_data = cls.read_text_file(file_name)
-        if file_data:
+    def parse_json(cls, text):
+        if text:
             try:
-                dict_data = json.loads(file_data, object_pairs_hook = OrderedDict)
+                dict_data = json.loads(text, object_pairs_hook = OrderedDict)
                 return dict_data
             except Exception as e:
                 return None
         return None
 
     @classmethod
-    def read_datatree(cls, file_name):
-        try:
-            import yaml
-            f = open(file_name)
-            data = None
-
+    def parse_yaml(cls, text):
+        if text:
             try:
-                data = yaml.load(f, Loader = yaml.FullLoader)
-            except:
-                try:
-                    data = yaml.load(f)
-                except:
-                    pass
+                import yaml
+                dict_data = yaml.load(text, Loader = yaml.FullLoader)
+                return dict_data
+            except Exception as e:
+                return None
+        return None
 
-            f.close()
+    @classmethod
+    def parse_datatree(cls, text):
+        if text:
+            data = cls.parse_yaml(text)
+            if data is None:
+                data = cls.parse_json(text)
+            return data
+        return None
 
-            if data:
-                return data
-        except Exception as e:
-            pass
+    @classmethod
+    def read_json_file(cls, file_name):
+        file_data = cls.read_text_file(file_name)
+        return cls.parse_json(file_data)
+
+    @classmethod
+    def read_datatree(cls, file_name):
+        file_data = cls.read_text_file(file_name)
+        return cls.parse_datatree(file_data)
 
         return cls.read_json_file(file_name)
 
