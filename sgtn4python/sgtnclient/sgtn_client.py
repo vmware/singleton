@@ -116,7 +116,7 @@ class SingletonConfig(Config):
         self.config_data = config_data
 
         self.product = config_data.get(KEY_PRODUCT)
-        self.version = config_data.get(KEY_VERSION)
+        self.version = '%s' % config_data.get(KEY_VERSION)
 
         self.remote_url = config_data.get(KEY_SERVICE_URL)
         self.local_url = config_data.get(KEY_OFFLINE_URL)
@@ -708,6 +708,17 @@ class SingletonClientManager(object):
     def init(self):
         self._products = {}
 
+    def add_config_file(self, config_file, replaceMap = None):
+        config_text = FileUtil.read_text_file(config_file)
+        if replaceMap:
+            for key in replaceMap:
+                config_text = config_text.replace(key, replaceMap[key])
+        config_data = FileUtil.parse_datatree(config_text)
+
+        base_path = os.path.dirname(os.path.realpath(config_file))
+        cfg = self.add_config(base_path, config_data)
+        return cfg
+
     def add_config(self, base_path, config_data):
         if not config_data:
             return
@@ -715,6 +726,7 @@ class SingletonClientManager(object):
         release_obj = self.get_release(cfg.product, cfg.version)
         if release_obj is None:
             self.create_release(cfg)
+        return cfg
 
     def get_release(self, product, version):
         if not product or not version:

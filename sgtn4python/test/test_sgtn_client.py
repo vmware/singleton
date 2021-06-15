@@ -60,7 +60,9 @@ class TestClient(unittest.TestCase):
         self.prepare_sub_path('log')
         self.prepare_sub_path('singleton')
 
-        I18N.add_config_file('config/sgtn_online_only.yml')
+        cfg = I18N.add_config_file('config/sgtn_online_only.yml',
+                                   {'$PRODUCT': PRODUCT, '$VERSION': VERSION})
+        self.assertEqual(cfg.get_info()['version'], VERSION)
 
         start = time.time()
         I18N.set_current_locale(LOCALE)

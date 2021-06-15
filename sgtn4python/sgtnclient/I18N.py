@@ -56,13 +56,11 @@ class Release(object):
         raise Exception(NOT_IMP_EXCEPTION)
 
 
-def add_config_file(config_file):
-    config_data = FileUtil.read_datatree(config_file)
-    base_path = os.path.dirname(os.path.realpath(config_file))
-    _get_client_manager().add_config(base_path, config_data)
+def add_config_file(config_file, replaceMap = None):
+    return _get_client_manager().add_config_file(config_file, replaceMap)
 
 def add_config(base_path, config_data):
-    SingletonClientManager().add_config(base_path, config_data)
+    return _get_client_manager().add_config(base_path, config_data)
 
 def set_current_locale(locale):
     _get_client_manager().set_current_locale(locale)

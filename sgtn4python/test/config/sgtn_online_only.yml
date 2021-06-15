@@ -1,6 +1,6 @@
 
-product: PYTHON1
-l10n_version: 1.0.0
+product: $PRODUCT
+l10n_version: $VERSION
 
 online_service_url: http://127.0.0.1:8090
 
@@ -9,7 +9,7 @@ log_path: ../log/
 
 cache_type: by_key
 
-# local storage path for caching
+# local storage path for caching $PRODUCT
 #cache_path: ./singleton/
 
 # how many seconds should be waited to try again for accessing the remote service,
