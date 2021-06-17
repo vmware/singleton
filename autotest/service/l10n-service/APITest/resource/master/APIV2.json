@@ -1,0 +1,164 @@
+{
+	"groups": [{
+			"name": "translation-collect-key-api",
+			"apis": [{
+					"name": "collectV2KeyTranslationUsingPOST",
+					"path": "/i18n/l10n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys/{key}",
+					"description": "post a source",
+					"method": "post",
+					"params": [{
+							"name": "productName",
+							"required": true,
+							"desc": "",
+							"paramType": "path",
+							"dataType": "string"
+						},
+						{
+							"name": "version",
+							"required": true,
+							"desc": "",
+							"paramType": "path",
+							"dataType": "string"
+						},
+						{
+							"name": "locale",
+							"required": true,
+							"desc": "",
+							"paramType": "path",
+							"dataType": "string"
+						},
+						{
+							"name": "component",
+							"required": true,
+							"desc": "",
+							"paramType": "path",
+							"dataType": "string"
+						},
+						{
+							"name": "key",
+							"required": true,
+							"desc": "",
+							"paramType": "path",
+							"dataType": "string"
+						},
+						{
+							"name": "source",
+							"required": true,
+							"desc": "",
+							"paramType": "body",
+							"dataType": "string"
+						},
+						{
+							"name": "collectSource",
+							"required": false,
+							"desc": "",
+							"paramType": "query",
+							"dataType": "string"
+						}
+					]
+				},
+				{
+					"name": "collectV2KeysTranslationUsingPOST",
+					"path": "/i18n/l10n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}/keys",
+					"description": "post a set of source",
+					"method": "post",
+					"params": [{
+							"name": "productName",
+							"required": true,
+							"desc": "",
+							"paramType": "path",
+							"dataType": "string"
+						},
+						{
+							"name": "version",
+							"required": true,
+							"desc": "",
+							"paramType": "path",
+							"dataType": "string"
+						},
+						{
+							"name": "locale",
+							"required": true,
+							"desc": "",
+							"paramType": "path",
+							"dataType": "string"
+						},
+						{
+							"name": "component",
+							"required": true,
+							"desc": "",
+							"paramType": "path",
+							"dataType": "string"
+						},
+						{
+							"name": "source",
+							"required": true,
+							"desc": "",
+							"paramType": "body",
+							"dataType": "string"
+						},
+						{
+							"name": "collectSource",
+							"required": false,
+							"desc": "",
+							"paramType": "query",
+							"dataType": "string"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "translation-source-api",
+			"apis": [{
+				"name": "createSourceUsingPOST",
+				"path": "/i18n/l10n/api/v2/translation/products/{productName}/versions/{version}/locales/{locale}/components/{component}",
+				"description": "post the source",
+				"method": "post",
+				"params": [{
+						"name": "productName",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "version",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "component",
+						"required": true,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "locale",
+						"required": false,
+						"desc": "",
+						"paramType": "path",
+						"dataType": "string"
+					},
+					{
+						"name": "collectSource",
+						"required": false,
+						"desc": "",
+						"paramType": "query",
+						"dataType": "boolean "
+					},
+						{
+							"name": "collectSource",
+							"required": false,
+							"desc": "",
+							"paramType": "query",
+							"dataType": "string"
+						}
+				]
+			}]
+		}
+	]
+}
