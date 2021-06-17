@@ -84,10 +84,6 @@ public class SourceSendingCron {
 	@Value("${spring.profiles.active}")
 	private String activeDaoType;
 	
-	
-	
-	
-
 	@Autowired
 	private SourceDao sourceDao;
 
@@ -288,13 +284,7 @@ public class SourceSendingCron {
 		
 	}
 
-	
-	
-	
-	
-	
-	
-	/*
+	/**
 	 * flush the cache content to disk
 	 */
 	private void flushCacheToDisk(Cache<String, ComponentSourceDTO> bkSourceCache) throws VIPCacheException {
