@@ -105,8 +105,8 @@ class SingletonLookup(object):
         self._key = key
         self._componentIndex = componentIndex
         self._message = message
-        self._add = False
 
+        self._add = 0
         self._aboveItem = None
         self._currentItem = None
 
@@ -187,34 +187,21 @@ class SingletonByKey(object):
         return item
 
     def _find_or_add(self, lookup):
-        item = None
-        if lookup._aboveItem is None:
-            item = self._keyAttrTable.get(lookup._key)
-            if item is None:
-                lookup._currentItem = self.new_key_item(lookup._componentIndex)
-                lookup._add = True
-                return
+        item = self._keyAttrTable.get(lookup._key)
+        if item is None: # No first
+            lookup._currentItem = self.new_key_item(lookup._componentIndex)
+            lookup._add = 1
+            return
 
-            if item._componentIndex == lookup._componentIndex:
+        while item:
+            if item._componentIndex == lookup._componentIndex: # Found
                 lookup._currentItem = item
                 return
-
             lookup._aboveItem = item
+            item = item._next
 
-        next = lookup._aboveItem._next
-        if next is None:
-            item = self.new_key_item(lookup._componentIndex)
-            lookup._currentItem = item
-            lookup._add = True
-            return
-
-        if item._componentIndex == lookup._componentIndex:
-            lookup._currentItem = next
-            return
-
-        lookup._aboveItem = next
-        self._find_or_add(lookup)
-
+        lookup._currentItem = self.new_key_item(lookup._componentIndex)
+        lookup._add = 2
 
     def do_set_string(self, key, componentIndex, localeItem, message):
         lookup = SingletonLookup(key, componentIndex, message)
@@ -245,12 +232,11 @@ class SingletonByKey(object):
                     status &= 0x06
             item._sourceStatus = status
 
-        # Finally, it's added in the table after it has been prepared.
-        if lookup._add:
-            if lookup._aboveItem is None:
-                self._keyAttrTable[key] = lookup._currentItem
-            else:
-                lookup._aboveItem._next = lookup._currentItem
+        # Finally, it's added in the table after it has been prepared to keep reading correct.
+        if lookup._add == 1:
+            self._keyAttrTable[key] = lookup._currentItem
+        elif lookup._add == 2:
+            lookup._aboveItem._next = lookup._currentItem
         return done;
 
     def set_string(self, key, componentIndex, localeItem, message):

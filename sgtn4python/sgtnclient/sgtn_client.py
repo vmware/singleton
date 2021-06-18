@@ -414,6 +414,7 @@ class SingletonReleaseBase:
 
         self.remote_pool = {}
         self.source_pool = {}
+        self.local_handled = {}
 
         if not cfg:
             return
@@ -566,12 +567,14 @@ class SingletonReleaseBase:
                 singletonLocale = SingletonLocaleUtil.get_singleton_locale(locale)
                 locale_define = singletonLocale.find_item(locales_cfg, 0)
 
-            if locale_define:
+            combineKey = locale + '_!_' + component
+            if locale_define and combineKey not in self.local_handled:
                 path_define = locale_define.get(KEY_LOCAL_PATH)
                 map = self._load_one_local(component, locale, path_define)
                 component_obj = SingletonComponent(self, locale, component, useLocale.isLocalSource)
                 component_obj.set_messages(map)
                 locale_item[component] = component_obj
+            self.local_handled[combineKey] = True
 
     def _get_remote_resource(self, locale, component):
         self.task.check()
@@ -601,9 +604,14 @@ class SingletonReleaseBase:
         component_obj = None
         if self.cfg.local_url:
             useLocale = self.get_use_locale(locale, False)
-            self._get_local_resource(useLocale, locale)
+            combineKey = locale + '_!_' + component
+            if combineKey not in self.local_handled:
+                self._get_local_resource(useLocale, locale)
+                self.local_handled[combineKey] = True
             if useLocale:
                 component_obj = useLocale.components.get(component)
+                if component_obj is None and useLocale.isSourceLocale:
+                    component_obj = self.useSourceLocale.components.get(component)
 
         return component_obj
 
