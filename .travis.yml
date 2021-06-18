@@ -35,6 +35,7 @@ script: >
 
   if [ x${TEST} = xbuild ]; then
     make build
+    ls -ltr cmd/singleton
   fi &&
 
   if [ x${TEST} = xunit_test ]; then
