@@ -35,7 +35,6 @@ script: >
 
   if [ x${TEST} = xbuild ]; then
     make build
-    ls -ltr cmd/singleton
   fi &&
 
   if [ x${TEST} = xunit_test ]; then
@@ -71,7 +70,7 @@ script: >
     git clone --branch=master https://github.com/vmware/singleton.git server
     git clone --branch=devops https://github.com/vmware/singleton.git devops
     make build
-    ./builds/singleton-linux-amd64   
+    ./builds/singleton-linux-amd64 --config="tests/testdata/config/config.yaml"
     cd $TRAVIS_BUILD_DIR/devops/autotest/service/goservice && gradle build
     str=$(printf '=%.0s' {1..50})
     echo $str Smoke Test Start $str
