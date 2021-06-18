@@ -151,14 +151,12 @@ public class PatternServiceImpl implements IPatternService {
 		Map<String, Object> categoriesMap = new LinkedHashMap<>();
 		if (StringUtils.isEmpty(patternJson)) {
 			patternMap.put(ConstantsKeys.LOCALEID, "");
-			patternMap.put(ConstantsKeys.IS_EXIST_PATTERN, false);
 			for (String category : categoryList) {
 				categoriesMap.put(category, null);
 			}
 		} else {
 			patternMap = JSONUtils.getMapFromJson(patternJson);
 			categoriesMap = getCategories(categoryList, patternMap);
-			patternMap.put(ConstantsKeys.IS_EXIST_PATTERN, true);
 		}
 
 		if (categoryList.contains(ConstantsKeys.PLURALS)) {
@@ -167,10 +165,6 @@ public class PatternServiceImpl implements IPatternService {
 
 		if (categoryList.contains(ConstantsKeys.DATE_FIELDS)) {
 			handleSpecialCategory(ConstantsKeys.DATE_FIELDS, language, categoriesMap);
-			// As long as the value of dateFields exist, the response needs to return its value.
-			if (null != categoriesMap.get(ConstantsKeys.DATE_FIELDS)) {
-				patternMap.put(ConstantsKeys.IS_EXIST_PATTERN, true);
-			}
 		}
 
 		if (!localeDataDTO.isDisplayLocaleID()) {
@@ -258,7 +252,6 @@ public class PatternServiceImpl implements IPatternService {
 				Map<String, Object> tempPatternMap = getData(patternMap, scopeFilters, 0);
 				newPatternMap = mergePatternMap(newPatternMap, tempPatternMap, scopeFilters, 0);
 			}
-			patternMap.clear();
 			patternMap.putAll(newPatternMap);
 		}
 	}
