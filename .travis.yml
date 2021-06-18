@@ -35,6 +35,12 @@ script: >
 
   if [ x${TEST} = xbuild ]; then
     make build
+    ##########
+    pwd
+    #########
+    ls -ltr
+    ########
+    ls -ltr builds
   fi &&
 
   if [ x${TEST} = xunit_test ]; then
@@ -72,7 +78,7 @@ script: >
     ls -ltr
     ########
     ls -ltr builds
-    
+
     java -version
     git clone --branch=master https://github.com/vmware/singleton.git server
     git clone --branch=devops https://github.com/vmware/singleton.git devops
