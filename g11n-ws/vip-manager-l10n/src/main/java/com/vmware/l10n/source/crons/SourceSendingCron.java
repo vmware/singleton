@@ -72,9 +72,18 @@ public class SourceSendingCron {
 	@Value("${vip.server.url}")
 	private String remoteVIPURL;
 	
+	@Value("${vip.server.authentication.enable}")
+	private boolean remoteVIPAuthEnable;
+	
+	@Value("${vip.server.authentication.appId:#}")
+	private String remoteVIPAuthAppId;
+	
+	@Value("${vip.server.authentication.token:#}")
+	private String remoteVIPAuthAppToken;
+	
 	@Value("${spring.profiles.active}")
 	private String activeDaoType;
-
+	
 	@Autowired
 	private SourceDao sourceDao;
 
@@ -265,10 +274,17 @@ public class SourceSendingCron {
 				+ "\",\"locale\": \"" + locale + "\",\"messages\": " + cachedComDTO.getMessages().toJSONString()
 				+ "}],\"version\": \"" + cachedComDTO.getVersion() + "\"},\"requester\": \"" + ConstantsKeys.VL10N
 				+ "\"}";
-		HTTPRequester.putJSONStr(jsonStr, urlStr);
+		Map<String, String> header =null;
+		if(remoteVIPAuthEnable) {
+			header = new HashMap<String, String>();
+			header.put("appId", remoteVIPAuthAppId);
+			header.put("token", remoteVIPAuthAppToken);
+		}
+			HTTPRequester.putJSONStr(jsonStr, urlStr, header);
+		
 	}
 
-	/*
+	/**
 	 * flush the cache content to disk
 	 */
 	private void flushCacheToDisk(Cache<String, ComponentSourceDTO> bkSourceCache) throws VIPCacheException {

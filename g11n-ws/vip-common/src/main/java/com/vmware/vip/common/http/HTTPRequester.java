@@ -180,8 +180,8 @@ public class HTTPRequester {
 	/*
 	 * Put JSON data
 	 */
-	public static void putJSONStr(String jsonStr, String urlStr) throws VIPHttpException{
-		String response =  HTTPRequester.postData(jsonStr, urlStr, "application/json", "PUT", null);
+	public static void putJSONStr(String jsonStr, String urlStr, Map<String, String> headers) throws VIPHttpException{
+		String response =  HTTPRequester.postData(jsonStr, urlStr, "application/json", "PUT", headers);
 		if(response == null || response.equalsIgnoreCase("")) {
 			throw new VIPHttpException("putJSONStr error.");
 		}
