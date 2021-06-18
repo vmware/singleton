@@ -35,12 +35,6 @@ script: >
 
   if [ x${TEST} = xbuild ]; then
     make build
-    ##########
-    pwd
-    #########
-    ls -ltr
-    ########
-    ls -ltr builds
   fi &&
 
   if [ x${TEST} = xunit_test ]; then
@@ -72,17 +66,11 @@ script: >
     sudo apt-get update
     sudo apt-get install -y openjdk-8-jdk
     export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
-    ##########
-    pwd
-    #########
-    ls -ltr
-    ########
-    ls -ltr builds
-
     java -version
     git clone --branch=master https://github.com/vmware/singleton.git server
     git clone --branch=devops https://github.com/vmware/singleton.git devops
-         
+    make build
+    ./builds/singleton-linux-amd64   
     cd $TRAVIS_BUILD_DIR/devops/autotest/service/goservice && gradle build
     str=$(printf '=%.0s' {1..50})
     echo $str Smoke Test Start $str
