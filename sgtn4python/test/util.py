@@ -100,7 +100,9 @@ class Util(object):
         global allTestData
         group = allTestData.get(groupName)
         if not group:
-            return 
+            return
+
+        print('--- group --- %s ---' % groupName)
         for one in group['tests']:
             if one['type'] == 'GetString':
                 _test_one(ut, trans, one)

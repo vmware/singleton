@@ -128,6 +128,8 @@ class SingletonByKey(object):
         self._locales = {}
         self._onlyByKey = (cacheType == 'by_key')
 
+        self._sourceLocal = None
+
     def set_item(self, item, pageIndex, indexInPage):
         array = self._items.get_page(pageIndex)
         if array is None:
@@ -159,7 +161,7 @@ class SingletonByKey(object):
     def get_component_index(self, component):
         return self._componentTable.get_id(component)
 
-    def get_string(self, key, componentIndex, localeItem):
+    def get_string(self, key, componentIndex, localeItem, needFallback = False):
         if componentIndex < 0 and not self._onlyByKey:
             return None
 
@@ -176,6 +178,8 @@ class SingletonByKey(object):
 
         if item._sourceStatus & 0x01 == 0x01:
             message = localeItem.get_message(item._pageIndex, item._indexInPage)
+            if needFallback and message is None and not localeItem._asSource and self._sourceLocal:
+                message = self._sourceLocal.get_message(item._pageIndex, item._indexInPage)
         else:
             message = self._sourceLocal.get_message(item._pageIndex, item._indexInPage)
         return message

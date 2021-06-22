@@ -4,6 +4,82 @@ COMMENT: test GetString()
 
 ---data---
 type: GetString
+locale: en
+component: about
+key: about.message
+expect: Your application description page.
+
+---data---
+type: GetString
+locale: de
+component: about
+key: about.message
+expect: Ihrer Bewerbungs Beschreibung Seite.
+
+---data---
+type: GetString
+locale: zh-Hans
+component: about
+key: about.message
+expect: 应用程序说明页。
+
+---data---
+type: GetString
+locale: zh_CN
+component: about
+key: about.message
+expect: 应用程序说明页。
+
+---data---
+type: GetString
+locale: en
+component: aboutadd
+key: about.message
+expect: Your application description page. add
+
+---data---
+type: GetString
+locale: de
+component: aboutadd
+key: about.message
+expect: Ihrer Bewerbungs Beschreibung Seite. add
+
+---data---
+type: GetString
+locale: zh-Hans
+component: aboutadd
+key: about.message
+expect: 应用程序说明页。 add
+
+---data---
+type: GetString
+locale: zh-Hans
+component: aboutadd
+key: about.title
+expect: 关于 Version {1} of Product {0} add
+
+---data---
+type: GetString
+locale: de
+component: contact
+key: contact.support
+expect: Unterstützung:
+
+---data---
+type: GetString
+locale: en
+component: about
+key: about.message2
+expect: about.message2
+
+
+
+---test---
+NAME: TestGetString2
+COMMENT: test GetString()
+
+---data---
+type: GetString
 locale: zh-Hans
 key: about.message
 expect: 应用程序说明页。
@@ -13,6 +89,12 @@ type: GetString
 locale: zh-CN
 key: about.message
 expect: 应用程序说明页。
+
+---data---
+type: GetString
+locale: en
+key: about.message
+expect: Your application description page.
 
 ---data---
 type: GetString
@@ -28,29 +110,48 @@ expect: Unterstützung:
 
 ---data---
 type: GetString
-locale: zh-Hans
-component: about
-key: about.message
-expect: 应用程序说明页。
-
----data---
-type: GetString
 locale: zh_Hans
-component: about
 key: about.message
 expect: 应用程序说明页。
 
 ---data---
 type: GetString
 locale: zh-CN
-component: about
 key: about.message
 expect: 应用程序说明页。
 
 ---data---
 type: GetString
 locale: zh-CN
-component: about
 key: about.title
 expect: 关于 Version {1} of Product {0}
 
+---test---
+NAME: TestGetString3
+COMMENT: test GetString()
+
+---data---
+type: GetString
+locale: de
+component: about
+key: about.title2
+expect: Über Version {x} of Product {y}
+
+---data---
+type: GetString
+locale: de
+component: aboutadd
+key: about.title2
+expect: About Version {x} of Product {y} add local
+
+
+
+---test---
+NAME: TestGetStringTemp
+COMMENT: test GetString()
+
+---data---
+type: GetString
+locale: en
+key: about.message
+expect: Your application description page.

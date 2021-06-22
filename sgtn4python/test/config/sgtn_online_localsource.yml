@@ -3,13 +3,14 @@ product: $PRODUCT
 l10n_version: $VERSION
 
 online_service_url: http://127.0.0.1:8090
+offline_resources_base_url: file:///../data/l10n
 
 # log path for the python client
 #log_path: ../log/
 
 cache_type: by_key
 
-# local storage path for caching $PRODUCT
+# local storage path for caching
 #cache_path: ./singleton/
 
 # how many seconds should be waited to try again for accessing the remote service,
@@ -18,3 +19,16 @@ try_delay: 10
 
 # how many seconds should be waited to update cache data when there is old data existed
 cache_expired_time: 60
+  
+locales:
+  - language_tag: en-US
+    offline_resources_path:
+      - $COMPONENT/messages.properties
+
+component_template:
+  locales_refer: locales
+ 
+components:
+  - name: about
+  - name: aboutadd
+  - name: contact
