@@ -438,9 +438,14 @@ class SingletonReleaseBase:
         self.useSourceLocale = self.get_use_locale(self.cfg.source_locale, True)
         self._get_local_resource(self.useSourceLocale, self.cfg.source_locale)
 
+        self.remote_default_locale = self.get_locale_supported(self.cfg.default_locale)
+        self.remote_source_locale = self.get_locale_supported(self.cfg.source_locale)
+
         self.useDefaultLocale = None
-        if self.cfg.default_locale != self.cfg.source_locale:
+        self.isDifferent = self.remote_default_locale != self.remote_source_locale
+        if self.isDifferent:
             self.useDefaultLocale = self.get_use_locale(self.cfg.default_locale, False)
+
 
     def get_use_locale(self, locale, asSource):
         pool = self.source_pool if asSource else self.remote_pool
@@ -626,21 +631,18 @@ class SingletonReleaseBase:
             componentIndex = self.bykey.get_component_index(component)
             if componentIndex < 0:
                 localeItem = self.bykey.get_locale_item(locale, False)
-                message = self.bykey.get_string(key, componentIndex, localeItem)
-                if message:
-                    return message
+                message = self.bykey.get_string(key, componentIndex, localeItem, True)
+                return message
 
-        remote_source_locale = self.get_locale_supported(self.cfg.source_locale)
-        component_src = self._get_component(remote_source_locale, component)
+        component_src = self._get_component(self.remote_source_locale, component)
         component_obj = self._get_component(locale, component)
 
         translation = source
 
         found = component_obj.get_message(key) if component_obj else None
         if not found:
-            remote_default_locale = self.get_locale_supported(self.cfg.default_locale)
-            if remote_source_locale != remote_default_locale:
-                component_def = self._get_component(remote_default_locale, component)
+            if self.isDifferent:
+                component_def = self._get_component(self.remote_default_locale, component)
                 if component_def:
                     found = component_def.get_message(key)
             elif source == None and component_src:

@@ -60,8 +60,11 @@ class TestClient(unittest.TestCase):
         self.prepare_sub_path('log')
         self.prepare_sub_path('singleton')
 
-        cfg = I18N.add_config_file('config/sgtn_online_only.yml',
-                                   {'$PRODUCT': PRODUCT, '$VERSION': VERSION})
+        cfg = I18N.add_config_file(
+            #'config/sgtn_online_only.yml',
+            #'config/sgtn_offline_only.yml',
+            'config/sgtn_online_localsource.yml',
+            {'$PRODUCT': PRODUCT, '$VERSION': VERSION})
         self.assertEqual(cfg.get_info()['version'], VERSION)
 
         start = time.time()
@@ -87,6 +90,8 @@ class TestClient(unittest.TestCase):
             for loc in locales:
                 trans.get_string(comp, '$', locale = loc)
         Util.run_test_data(self, trans, 'TestGetString1')
+        Util.run_test_data(self, trans, 'TestGetString2')
+        Util.run_test_data(self, trans, 'TestGetStringTemp')
 
         found = trans.get_string('TT', 'about.title')
         print('--- found --- wrong component --- %s ---' % found)
@@ -113,8 +118,7 @@ class TestClient(unittest.TestCase):
         print('--- translate --- de --- %s ---' % data)
 
         if (self.need_wait(cfg_info)):
-            found = trans.get_string(COMPONENT, KEY, source = SOURCE, locale = LOCALE)
-            print('--- found2 --- 4 --- %s ---' % found)
+            Util.run_test_data(self, trans, 'TestGetString3')
 
         if NetUtil.record_data is not None:
             time.sleep(5)
