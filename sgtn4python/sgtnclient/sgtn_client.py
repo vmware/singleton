@@ -197,7 +197,8 @@ class SingletonConfig(Config):
     def get_info(self):
         # method of Config
         info = {'product': self.product, 'version': self.version,
-                'remote': self.remote_url, 'local': self.local_url}
+                'remote': self.remote_url, 'local': self.local_url,
+                'source_locale': self.source_locale, 'default_locale': self.default_locale}
         return info
 
     def extract_list(self, key, key_name, key_refer, refer):
@@ -433,16 +434,17 @@ class SingletonReleaseBase:
         self.task = SingletonAccessRemoteTask(self, self)
         self.get_scope()
 
-        self.bykey = SingletonByKey(self.cfg.source_locale, self.cfg.cache_type)
+        self.remote_default_locale = self.get_locale_supported(self.cfg.default_locale)
+        self.remote_source_locale = self.get_locale_supported(self.cfg.source_locale)
+
+        self.isDifferent = self.remote_default_locale != self.remote_source_locale
+
+        self.bykey = SingletonByKey(self.cfg.source_locale, self.cfg.default_locale, self.isDifferent, self.cfg.cache_type)
 
         self.useSourceLocale = self.get_use_locale(self.cfg.source_locale, True)
         self._get_local_resource(self.useSourceLocale, self.cfg.source_locale)
 
-        self.remote_default_locale = self.get_locale_supported(self.cfg.default_locale)
-        self.remote_source_locale = self.get_locale_supported(self.cfg.source_locale)
-
         self.useDefaultLocale = None
-        self.isDifferent = self.remote_default_locale != self.remote_source_locale
         if self.isDifferent:
             self.useDefaultLocale = self.get_use_locale(self.cfg.default_locale, False)
 

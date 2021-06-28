@@ -116,7 +116,7 @@ class SingletonByKey(object):
     PAGE_MAX_SIZE = 1024;
     COMPONENT_PAGE_MAX_SIZE = 128;
 
-    def __init__(self, localeSource, cacheType):
+    def __init__(self, localeSource, localeDefault, isDifferent, cacheType):
         self._itemCount = 0
         self._keyAttrTable = {}
         self._items = SingletonByKeyTable(SingletonByKey.PAGE_MAX_SIZE)
@@ -128,7 +128,12 @@ class SingletonByKey(object):
         self._locales = {}
         self._onlyByKey = (cacheType == 'by_key')
 
+        self._isDifferent = isDifferent
         self._sourceLocal = None
+        self._sourceRemote = None
+
+        self._defaultLocale = localeDefault
+        self._defaultRemote = None
 
     def set_item(self, item, pageIndex, indexInPage):
         array = self._items.get_page(pageIndex)
@@ -178,8 +183,16 @@ class SingletonByKey(object):
 
         if item._sourceStatus & 0x01 == 0x01:
             message = localeItem.get_message(item._pageIndex, item._indexInPage)
-            if needFallback and message is None and not localeItem._asSource and self._sourceLocal:
-                message = self._sourceLocal.get_message(item._pageIndex, item._indexInPage)
+            if needFallback and message is None:
+                if self._isDifferent:
+                    if not self._defaultRemote:
+                        self._defaultRemote = self.get_locale_item(self._defaultLocale, False)
+                    message = self._defaultRemote.get_message(item._pageIndex, item._indexInPage)
+                else:
+                    if item._sourceStatus & 0x04 == 0x04:
+                        message = self._sourceLocal.get_message(item._pageIndex, item._indexInPage)
+                    elif item._sourceStatus & 0x03 == 0x03:
+                        message = self._sourceRemote.get_message(item._pageIndex, item._indexInPage)
         else:
             message = self._sourceLocal.get_message(item._pageIndex, item._indexInPage)
         return message

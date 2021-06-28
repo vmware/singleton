@@ -1,27 +1,73 @@
 ﻿---test---
 NAME: TestGetString1
 COMMENT: test GetString()
+TIMES: 10
+
+---data---
+type: SetLocale
+locale: en
 
 ---data---
 type: GetString
-locale: en
 component: about
 key: about.message
 expect: Your application description page.
 
 ---data---
 type: GetString
+component: aboutadd
+key: about.message
+expect: Your application description page. add
+
+---data---
+type: GetString
+component: about
+key: about.message2
+expect: about.message2
+
+---data---
+type: SetLocale
 locale: de
+
+---data---
+type: GetString
 component: about
 key: about.message
 expect: Ihrer Bewerbungs Beschreibung Seite.
 
 ---data---
 type: GetString
+component: aboutadd
+key: about.message
+expect: Ihrer Bewerbungs Beschreibung Seite. add
+
+---data---
+type: GetString
+component: contact
+key: contact.support
+expect: Unterstützung:
+
+---data---
+type: SetLocale
 locale: zh-Hans
+
+---data---
+type: GetString
 component: about
 key: about.message
 expect: 应用程序说明页。
+
+---data---
+type: GetString
+component: aboutadd
+key: about.message
+expect: 应用程序说明页。 add
+
+---data---
+type: GetString
+component: aboutadd
+key: about.title
+expect: 关于 Version {1} of Product {0} add
 
 ---data---
 type: GetString
@@ -30,47 +76,25 @@ component: about
 key: about.message
 expect: 应用程序说明页。
 
----data---
-type: GetString
-locale: en
-component: aboutadd
-key: about.message
-expect: Your application description page. add
 
----data---
-type: GetString
-locale: de
-component: aboutadd
-key: about.message
-expect: Ihrer Bewerbungs Beschreibung Seite. add
 
----data---
-type: GetString
-locale: zh-Hans
-component: aboutadd
-key: about.message
-expect: 应用程序说明页。 add
+---test---
+NAME: TestGetString1T
+COMMENT: test GetString()
+TIMES: 20
+THREAD: 6
+INTERVAL: 20
+DATAFROM: TestGetString1
 
----data---
-type: GetString
-locale: zh-Hans
-component: aboutadd
-key: about.title
-expect: 关于 Version {1} of Product {0} add
 
----data---
-type: GetString
-locale: de
-component: contact
-key: contact.support
-expect: Unterstützung:
 
----data---
-type: GetString
-locale: en
-component: about
-key: about.message2
-expect: about.message2
+---test---
+NAME: TestGetString1A
+COMMENT: test GetString()
+TIMES: 20
+ASYNC: 10
+INTERVAL: 100
+DATAFROM: TestGetString1
 
 
 
@@ -143,6 +167,28 @@ locale: de
 component: aboutadd
 key: about.title2
 expect: About Version {x} of Product {y} add local
+
+
+
+---test---
+NAME: TestGetStringSameLocale
+
+---data---
+type: GetString
+locale: fr
+key: about.message
+expect: Your application description page.
+
+
+
+---test---
+NAME: TestGetStringDifferentLocale
+
+---data---
+type: GetString
+locale: fr
+key: about.message
+expect: Ihrer Bewerbungs Beschreibung Seite.
 
 
 
