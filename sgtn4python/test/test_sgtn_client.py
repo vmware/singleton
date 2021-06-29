@@ -138,8 +138,8 @@ class TestClient(unittest.TestCase):
         self.prepare_sub_path('log')
         self.prepare_sub_path('singleton')
 
-        #for one in plans:
-        self.do_test(plans[3])
+        for i in range(len(plans)):
+            self.do_test(plans[i])
 
 
 if __name__ == '__main__':

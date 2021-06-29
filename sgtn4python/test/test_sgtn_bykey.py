@@ -30,7 +30,7 @@ class TestByKey(unittest.TestCase):
 
     def test_release(self):
 
-        bykey = SingletonByKey('en', 'by_key')
+        bykey = SingletonByKey('en', 'en', False, 'by_key')
         id1 = bykey.get_component_index('first')
         id2 = bykey.get_component_index('second')
         print('--- component id --- %s' % [id1, id2])
