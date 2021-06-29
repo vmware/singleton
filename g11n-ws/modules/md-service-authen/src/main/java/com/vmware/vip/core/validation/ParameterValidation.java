@@ -6,6 +6,7 @@ package com.vmware.vip.core.validation;
 
 
 import com.vmware.vip.api.rest.APIParamName;
+import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ValidationMsg;
 import com.vmware.vip.common.utils.RegExpValidatorUtils;

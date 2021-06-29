@@ -237,7 +237,7 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 	
 	@SuppressWarnings("unchecked")
 	private void validateComponents(HttpServletRequest request)
-			throws ValidationException {
+			throws VIPAPIException {
 		Map<String, String> pathVariables = (Map<String, String>) request
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		String components = pathVariables.get(APIParamName.COMPONENTS) == null ? request
@@ -249,7 +249,7 @@ public class LiteAPIValidationInterceptor extends HandlerInterceptorAdapter {
 		String[] compArr = components.split(ConstantsChar.COMMA);
 		for(int i=0; i<compArr.length; i++) {
 			if(StringUtils.isEmpty(compArr[i]) || !RegExpValidatorUtils.IsLetterAndNumberAndValidchar(compArr[i])) {
-				throw new ValidationException(ValidationMsg.COMPONENTS_NOT_VALIDE);
+				throw new VIPAPIException(ValidationMsg.COMPONENTS_NOT_VALIDE);
 			}
 		}
 	}
