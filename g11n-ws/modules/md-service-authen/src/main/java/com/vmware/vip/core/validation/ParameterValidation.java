@@ -166,8 +166,11 @@ public class ParameterValidation implements IVlidation {
 		if (StringUtils.isEmpty(components)) {
 			return;
 		}
-		if (!RegExpValidatorUtils.isLetterNumbCommaAndValidchar(components)) {
-			throw new ValidationException(ValidationMsg.COMPONENTS_NOT_VALIDE);
+		String[] compArr = components.split(ConstantsChar.COMMA);
+		for(int i=0; i<compArr.length; i++) {
+			if(StringUtils.isEmpty(compArr[i]) || !RegExpValidatorUtils.IsLetterAndNumberAndValidchar(compArr[i])) {
+				throw new ValidationException(ValidationMsg.COMPONENTS_NOT_VALIDE);
+			}
 		}
 	}
 	
