@@ -8,46 +8,9 @@ import sys
 import threading
 import asyncio
 
-
-class I18N:
-
-    @staticmethod
-    def set_current_locale(locale):
-        SingletonClientManager().set_current_locale(locale)
-
-    @staticmethod
-    def get_current_locale():
-        return SingletonClientManager().get_current_locale()
-
-
-class SingletonClientManager:
-    def set_current_locale(self, locale):
-        current = sys._getframe().f_back.f_back
-        for i in range(10):
-            if not hasattr(current, 'f_locals'):
-                break
-
-            locals = current.f_locals
-            locals['_singleton_locale_'] = locale
-
-            if not hasattr(current, 'f_back'):
-                break
-            current = current.f_back
-
-    def get_current_locale(self):
-        current = sys._getframe().f_back.f_back
-        for i in range(10):
-            if not hasattr(current, 'f_locals'):
-                break
-
-            locals = current.f_locals
-            if '_singleton_locale_' in locals:
-                return locals['_singleton_locale_']
-
-            if not hasattr(current, 'f_back'):
-                break
-            current = current.f_back
-        return LOCALE_DEFAULT
+import sys
+sys.path.append('../sgtnclient')
+import I18N
 
 
 async def hello(head, locale, delay):
@@ -67,16 +30,39 @@ def output(head, tid, osn):
     current = I18N.get_current_locale()
     print("%s: Hello again! %s %s" % (head, tid, current))
 
+async def test_async(tt):
+    await asyncio.sleep(tt.idThread % 2 * 0.4)
+    for i in range(tt.times):
+        needPrint = (i == 0) and tt.needPrint
+        for one in tt.group['tests']:
+            delay = tt.do_one_item(one, needPrint)
+            if delay > 0:
+                await asyncio.sleep(tt.group['_interval']*0.001)
+    tt.end_tesk()
+
 
 class AsyncWork():
 
+    async def do_hello(self):
+        task1 = asyncio.create_task(hello('a', 'en', 5))
+        task2 = asyncio.create_task(hello('b', 'de', 3))
+        await task1
+        await task2
+
     def hello(self):
-        loop = asyncio.get_event_loop()
-        loop.run_until_complete(asyncio.gather(
-            hello('a', 'en', 5),
-            hello('b', 'de', 3)
-        ))
-        loop.close()
+        asyncio.run(self.do_hello())
+
+    async def do_test(self, group, batches):
+        tasks = []
+        for tt in batches:
+            task = asyncio.create_task(test_async(tt))
+            tasks.append(task)
+
+        for task in tasks:
+            await task
+
+    def test(self, group, batches):
+        asyncio.run(self.do_test(group, batches))
 
 
 if __name__ == '__main__':

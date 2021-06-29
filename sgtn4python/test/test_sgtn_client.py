@@ -16,7 +16,12 @@ from sgtn_util import FileUtil, NetUtil
 
 from util import Util, allTestData
 
-PRODUCT = 'PYTHON1'
+plans = [
+    {'product': 'PYTHON1', 'config': 'config/sgtn_online_only.yml'},
+    {'product': 'PYTHON2', 'config': 'config/sgtn_offline_only.yml'},
+    {'product': 'PYTHON3', 'config': 'config/sgtn_online_localsource.yml'},
+    {'product': 'PYTHON4', 'config': 'config/sgtn_online_default.yml'}
+    ]
 VERSION = '1.0.0'
 COMPONENT = 'about'
 LOCALE = 'de'
@@ -45,26 +50,10 @@ class TestClient(unittest.TestCase):
             return True
         return False
 
-
-    def test_api(self):
-        print('\n--- unittest --- %s --- python %s\n' % (
-            sys._getframe().f_code.co_name, sys.version_info.major))
-
-        NetUtil.simulate_data = Util.load_response(['data/http_response.txt'])
-        #NetUtil.record_data = {}
-
-        Util.load_test_data(['data/test_define.txt'])
-
-        print('--- test start ---')
-
-        self.prepare_sub_path('log')
-        self.prepare_sub_path('singleton')
-
+    def do_test(self, plan):
         cfg = I18N.add_config_file(
-            #'config/sgtn_online_only.yml',
-            #'config/sgtn_offline_only.yml',
-            'config/sgtn_online_localsource.yml',
-            {'$PRODUCT': PRODUCT, '$VERSION': VERSION})
+            plan['config'],
+            {'$PRODUCT': plan['product'], '$VERSION': VERSION})
         self.assertEqual(cfg.get_info()['version'], VERSION)
 
         start = time.time()
@@ -74,7 +63,7 @@ class TestClient(unittest.TestCase):
         print('--- current --- %s ---' % current)
         self.assertEqual(current, 'de')
 
-        rel = I18N.get_release(PRODUCT, VERSION)
+        rel = I18N.get_release(plan['product'], VERSION)
 
         cfg = rel.get_config()
         cfg_info = cfg.get_info()
@@ -90,9 +79,18 @@ class TestClient(unittest.TestCase):
             for loc in locales:
                 trans.get_string(comp, '$', locale = loc)
         Util.run_test_data(self, trans, 'TestGetString1')
+        Util.run_test_data(self, trans, 'TestGetString1T')
+        if Util.is_async_supported():
+            Util.run_test_data(self, trans, 'TestGetString1A')
         Util.run_test_data(self, trans, 'TestGetString2')
+
+        groupName = 'TestGetStringSameLocale'
+        if cfg.get_info()['default_locale'] != cfg.get_info()['source_locale']:
+            groupName = 'TestGetStringDifferentLocale'
+        Util.run_test_data(self, trans, groupName)
         Util.run_test_data(self, trans, 'TestGetStringTemp')
 
+        I18N.set_current_locale(LOCALE)
         found = trans.get_string('TT', 'about.title')
         print('--- found --- wrong component --- %s ---' % found)
 
@@ -123,7 +121,25 @@ class TestClient(unittest.TestCase):
         if NetUtil.record_data is not None:
             time.sleep(5)
             FileUtil.save_json_file('data/simulate.json', NetUtil.record_data)
+        time.sleep(1)
         print('--- test --- end --- %s ---' % spent)
+
+    def test_api(self):
+        print('\n--- unittest --- %s --- python %s\n' % (
+            sys._getframe().f_code.co_name, sys.version_info.major))
+
+        NetUtil.simulate_data = Util.load_response(['data/http_response.txt'])
+        #NetUtil.record_data = {}
+
+        Util.load_test_data(['data/test_define.txt'])
+
+        print('--- test start ---')
+
+        self.prepare_sub_path('log')
+        self.prepare_sub_path('singleton')
+
+        #for one in plans:
+        self.do_test(plans[3])
 
 
 if __name__ == '__main__':

@@ -6,7 +6,6 @@
 
 import sys
 import unittest
-import logging
 import time
 import threading
 from threading import Thread
@@ -22,15 +21,7 @@ import I18N
 count = 0
 WAIT = 6
 
-def init_logger():
-    _logger = logging.getLogger('test')
-    _logger.setLevel(logging.DEBUG)
-    handler = logging.StreamHandler()
-    _logger.addHandler(handler)
-    _logger.info('\n--- start --- python %s ---' % sys.version_info.major)
-    return _logger
-
-logger = init_logger()
+from util import logger, Util
 
 
 class WorkThread(Thread):
@@ -75,7 +66,7 @@ class TestMultiTask(unittest.TestCase):
 
     def do_test_current_locale_in_async(self):
         global logger
-        if sys.version_info.major * 1000 + sys.version_info.minor >= 3005:
+        if Util.is_async_supported():
             from async_util import AsyncWork 
             AsyncWork().hello()
 

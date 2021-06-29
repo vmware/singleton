@@ -37,8 +37,8 @@ class TestClient(unittest.TestCase):
         self.assertEqual(dtLoad['add'], 'über')
         
         dt = FileUtil.read_datatree('config/sgtn_online_only.yml')
-        self.assertEqual(dt['log_path'], '../log/')
-        print('--- yaml --- %s ---' % dt['log_path'])
+        self.assertEqual(dt['cache_type'], 'by_key')
+        print('--- yaml --- %s ---' % dt['cache_type'])
         
         dir_list, file_list = FileUtil.get_dir_info('data')
         print('--- dir_list --- %s ---' % dir_list)
