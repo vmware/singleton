@@ -37,6 +37,7 @@ def init_logger():
 logger = init_logger()
 
 allTestData = {}
+lock = threading.Lock()
 
 
 class TestThread(Thread):
@@ -66,9 +67,10 @@ class TestThread(Thread):
             logger.info('--- [%s]%s --- %s --- %s --- %s --- %s' % (
                 self.group['NAME'], self.idThread, component, key, locale, expect))
 
-    def end_tesk(self):
-        if self.group['_running'] > 0:
-            self.group['_running'] -= 1
+    def end_test(self):
+        with lock:
+            if self.group['_running'] > 0:
+                self.group['_running'] -= 1
 
     def do_one_item(self, one, needPrint):
         if one['type'] == 'GetString':
@@ -86,7 +88,7 @@ class TestThread(Thread):
                 delay = self.do_one_item(one, needPrint)
                 if delay > 0:
                     time.sleep(self.group['_interval']*0.001)
-        self.end_tesk()
+        self.end_test()
 
     def run(self):
         self.do_test()
