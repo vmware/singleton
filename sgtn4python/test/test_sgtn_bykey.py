@@ -20,7 +20,7 @@ from sgtn_bykey import SingletonByKey, SingletonByKeyLocale, SingletonByKeyCompo
 class TestByKey(unittest.TestCase):
 
     def check_one(self, bykey, key, message, idComponent, localeObj):
-        bykey.set_string(key, idComponent, localeObj, message)
+        bykey.set_string(key, None, idComponent, localeObj, message)
         msg = bykey.get_string(key, -1, localeObj)
         print('--- message --- %s --- %s' % (key, msg))
 
@@ -42,8 +42,8 @@ class TestByKey(unittest.TestCase):
 
         item = bykey.get_key_item(0, 0)
 
-        bykey.set_string("key1", id1, localeObj1, "en_message")
-        bykey.set_string("key1", id1, localeObj2, "en_message")
+        bykey.set_string("key1", None, id1, localeObj1, "en_message")
+        bykey.set_string("key1", None, id1, localeObj2, "en_message")
 
         self.check_one(bykey, "key1", "de_message", id1, localeObj3)
         self.check_one(bykey, "key2", "de_message3", id1, localeObj3)
