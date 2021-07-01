@@ -38,7 +38,7 @@ async def test_async(tt):
             delay = tt.do_one_item(one, needPrint)
             if delay > 0:
                 await asyncio.sleep(tt.group['_interval']*0.001)
-    tt.end_tesk()
+    tt.end_test()
 
 
 class AsyncWork():
