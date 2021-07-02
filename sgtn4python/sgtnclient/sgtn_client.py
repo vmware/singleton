@@ -333,7 +333,7 @@ class SingletonComponent:
         self.countOfMessages = len(messages)
         for key in messages:
             text = messages[key]
-            self.rel.bykey.set_string(key, self.componentIndex, self.localeItem, text)
+            self.rel.bykey.set_string(key, self, self.componentIndex, self.localeItem, text)
 
     def get_messages(self):
         return self.rel.bykey.get_messages(self.componentIndex, self.localeItem)
@@ -416,6 +416,7 @@ class SingletonReleaseBase:
         self.remote_pool = {}
         self.source_pool = {}
         self.local_handled = {}
+        self.component_handled = {}
 
         if not cfg:
             return
@@ -584,7 +585,6 @@ class SingletonReleaseBase:
             self.local_handled[combineKey] = True
 
     def _get_remote_resource(self, locale, component):
-        self.task.check()
         if not self.locale_list or not self.component_list:
             return None
         singletonLocale = SingletonLocaleUtil.get_singleton_locale(locale)
@@ -623,39 +623,28 @@ class SingletonReleaseBase:
         return component_obj
 
     def _get_message(self, component, key, source, locale):
+        message = source if source != None else key
         if not key or not locale:
-            return source
+            return message
 
-        if not self.bykey._onlyByKey:
-            if not component:
-                return source
-        else:
-            componentIndex = self.bykey.get_component_index(component)
-            if componentIndex < 0:
-                localeItem = self.bykey.get_locale_item(locale, False)
-                message = self.bykey.get_string(key, componentIndex, localeItem, True)
-                return message
+        if not self.bykey._onlyByKey and not component:
+            return message
 
-        component_src = self._get_component(self.remote_source_locale, component)
-        component_obj = self._get_component(locale, component)
+        self.task.check()
 
-        translation = source
+        componentIndex = self.bykey.get_component_index(component)
+        if componentIndex >= 0:
+            combineKey = locale + '_!_' + component
+            if combineKey not in self.component_handled:
+                self._get_component(locale, component)
+                self._get_component(self.remote_source_locale, component)
+                if self.isDifferent:
+                    self._get_component(self.remote_default_locale, component)
+                self.component_handled[combineKey] = True
 
-        found = component_obj.get_message(key) if component_obj else None
-        if not found:
-            if self.isDifferent:
-                component_def = self._get_component(self.remote_default_locale, component)
-                if component_def:
-                    found = component_def.get_message(key)
-            elif source == None and component_src:
-                translation = component_src.get_message(key)
-
-        if found:
-            source_remote = component_src.get_message(key) if component_src else None
-            if source is None or source_remote is None or source_remote == source:
-                translation = found
-
-        return translation
+        localeItem = self.bykey.get_locale_item(locale, False)
+        message = self.bykey.get_string(key, componentIndex, localeItem, True)
+        return message
 
 
 class SingletonRelease(SingletonReleaseBase, Release, Translation):
@@ -688,9 +677,8 @@ class SingletonRelease(SingletonReleaseBase, Release, Translation):
 
         if not locale:
             locale = SingletonClientManager().get_current_locale()
-        if not source:
-            if component in self.useSourceLocale.components:
-                source = self.useSourceLocale.components[component].get_message(key)
+        if source is None and component and component in self.useSourceLocale.components:
+            source = self.useSourceLocale.components[component].get_message(key)
 
         text = self._get_message(component, key, source, locale)
         if text and items:

@@ -1,7 +1,7 @@
 ﻿---test---
 NAME: TestGetString1
 COMMENT: test GetString()
-TIMES: 10
+TIMES: 1000
 
 ---data---
 type: SetLocale
@@ -81,7 +81,7 @@ expect: 应用程序说明页。
 ---test---
 NAME: TestGetString1T
 COMMENT: test GetString()
-TIMES: 20
+TIMES: 30
 THREAD: 6
 INTERVAL: 20
 DATAFROM: TestGetString1
