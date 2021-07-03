@@ -27,5 +27,39 @@ namespace SingletonClient.Implementation.Support.ByKey
             _table[id] = array;
             return array;
         }
+
+        public T GetItem(int pageIndex, int indexInPage)
+        {
+            T[] array = this.GetPage(pageIndex);
+            if (array == null)
+            {
+                return default(T);
+            }
+            return array[indexInPage];
+        }
+
+        public void SetItem(int pageIndex, int indexInPage, T item)
+        {
+            T[] array = this.GetPage(pageIndex);
+            if (array == null)
+            {
+                array = NewPage(pageIndex);
+            }
+            array[indexInPage] = item;
+        }
+
+        public T GetItemByOneIndex(int index)
+        {
+            int pageIndex = index / _max;
+            int indexInPage = index % _max;
+            return GetItem(pageIndex, indexInPage);
+        }
+
+        public void SetItemByOneIndex(int index, T item)
+        {
+            int pageIndex = index / _max;
+            int indexInPage = index % _max;
+            SetItem(pageIndex, indexInPage, item);
+        }
     }
 }

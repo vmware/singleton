@@ -217,7 +217,7 @@ namespace SingletonClient.Implementation
             JObject obj = new JObject();
 
             string responseData = accessService.HttpPost(url, text, headers);
-            if (responseData != null)
+            if (!string.IsNullOrEmpty(responseData))
             {
                 obj.Add(SingletonConst.KeyResult, ConvertToDict(responseData));
             }

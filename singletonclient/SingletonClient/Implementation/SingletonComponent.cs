@@ -36,7 +36,8 @@ namespace SingletonClient.Implementation
 
         private readonly ISingletonAccessTask _task;
 
-        public SingletonComponent(ISingletonRelease releaseObject, ISingletonLocale singletonLocale, string component)
+        public SingletonComponent(ISingletonRelease releaseObject, IComponentMessages componentMessages,
+            ISingletonLocale singletonLocale, string component)
         {
             _releaseObject = releaseObject;
             _singletonLocale = singletonLocale;
@@ -51,7 +52,8 @@ namespace SingletonClient.Implementation
 
             ICacheMessages productCache = releaseObject.GetReleaseMessages();
             ILocaleMessages langCache = productCache.GetLocaleMessages(_locale);
-            _componentCache = langCache.GetComponentMessages(component);
+            _componentCache = componentMessages == null ?
+                langCache.GetComponentMessages(component) : componentMessages;
         }
 
         public ISingletonConfig GetSingletonConfig()

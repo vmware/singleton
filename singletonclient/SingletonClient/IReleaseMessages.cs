@@ -3,7 +3,6 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
-using System.Collections;
 using System.Collections.Generic;
 
 namespace SingletonClient
@@ -18,7 +17,7 @@ namespace SingletonClient
         /// </summary>
         /// <param name="locale"></param>
         /// <param name="asSource">Stored as source messages.</param>
-        /// <returns></returns>
+        /// <returns>ILocaleMessages</returns>
         ILocaleMessages GetLocaleMessages(string locale, bool asSource = false);
     }
 

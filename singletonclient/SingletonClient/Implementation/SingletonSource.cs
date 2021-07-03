@@ -21,21 +21,33 @@ namespace SingletonClient.Implementation
             _comment = comment;
         }
 
+        /// <summary>
+        /// ISource
+        /// </summary>
         public string GetComponent()
         {
             return _component;
         }
 
+        /// <summary>
+        /// ISource
+        /// </summary>
         public string GetKey()
         {
             return _key;
         }
 
+        /// <summary>
+        /// ISource
+        /// </summary>
         public string GetSource()
         {
             return _source;
         }
 
+        /// <summary>
+        /// ISource
+        /// </summary>
         public string GetComment()
         {
             return _comment;

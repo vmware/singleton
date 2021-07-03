@@ -17,44 +17,10 @@ namespace SingletonClient.Implementation.Support.ByKey
         int GetComponentIndex(string component);
         int GetKeyCountInComponent(int componentIndex, ISingletonByKeyLocale localeItem);
         ICollection<string> GetKeysInComponent(int componentIndex, ISingletonByKeyLocale localeItem);
-        string GetString(string key, int componentIndex, ISingletonByKeyLocale localeItem);
-        bool SetString(string key, int componentIndex, ISingletonByKeyLocale localeItem, string message);
+        string GetString(string key, int componentIndex, ISingletonByKeyLocale localeItem, bool needFallback = false);
+        bool SetString(string key, ISingletonComponent componentObject, int componentIndex,
+            ISingletonByKeyLocale localeItem, string message);
         SingletonByKeyItem GetKeyItem(int pageIndex, int indexInPage);
-    }
-
-    public class SingletonLookup
-    {
-        protected string _key;
-        protected int _componentIndex;
-        protected string _message;
-        protected bool _add;
-
-        public SingletonByKeyItem AboveItem { get; set; }
-        public SingletonByKeyItem CurrentItem { get; set; }
-        public bool Add { get; set; }
-
-        public SingletonLookup(string key, int componentIndex, string message)
-        {
-            _key = key;
-            _componentIndex = componentIndex;
-            _message = message;
-            _add = false;
-        }
-
-        public string Key
-        {
-            get { return _key; }
-        }
-
-        public int ComponentIndex
-        {
-            get { return _componentIndex; }
-        }
-
-        public string Message
-        {
-            get { return _message; }
-        }
     }
 
     public class SingletonByKeyRelease : ISingletonByKeyRelease
@@ -63,6 +29,8 @@ namespace SingletonClient.Implementation.Support.ByKey
         public const int COMPONENT_PAGE_MAX_SIZE = 128;
 
         private readonly string _localeSource;
+        private readonly string _localeDefault;
+        private readonly bool _isDifferent;
         private readonly bool _onlyByKey;
         private readonly ISingletonRelease _release;
         private readonly SingletonByKeyComponents _compentTable;
@@ -76,10 +44,12 @@ namespace SingletonClient.Implementation.Support.ByKey
 
         private ISingletonByKeyLocale _sourceLocal;
         private ISingletonByKeyLocale _sourceRemote;
+        private ISingletonByKeyLocale _defaultRemote;
 
         private readonly object _lockObject = new object();
 
-        public SingletonByKeyRelease(ISingletonRelease release, string localeSource, string cacheType)
+        public SingletonByKeyRelease(ISingletonRelease release, string localeSource, string localeDefault,
+            bool isDifferent, string cacheType)
         {
             _release = release;
             _localeSource = localeSource;
@@ -92,6 +62,9 @@ namespace SingletonClient.Implementation.Support.ByKey
 
             _locales = SingletonUtil.NewHashtable(true);
             _sources = SingletonUtil.NewHashtable(true);
+
+            _isDifferent = isDifferent;
+            _localeDefault = localeDefault;
         }
 
         public bool SetItem(SingletonByKeyItem item, int pageIndex, int indexInPage)
@@ -130,8 +103,23 @@ namespace SingletonClient.Implementation.Support.ByKey
             ISingletonByKeyLocale item = (ISingletonByKeyLocale)table[locale];
             if (item == null)
             {
+                ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
+                for(int i=1; i<singletonLocale.GetCount(); i++)
+                {
+                    string one = singletonLocale.GetNearLocale(i);
+                    if (table[one] != null)
+                    {
+                        table[locale] = table[one];
+                        return (ISingletonByKeyLocale)table[one];
+                    }
+                }
+
                 item = new SingletonByKeyLocale(this, locale, asSource);
-                table[locale] = item;
+                for (int i = 0; i < singletonLocale.GetCount(); i++)
+                {
+                    string one = singletonLocale.GetNearLocale(i);
+                    table[one] = item;
+                }
             }
             return item;
         }
@@ -155,10 +143,10 @@ namespace SingletonClient.Implementation.Support.ByKey
                 foreach (var pair in _keyAttrTable)
                 {
                     SingletonByKeyItem item = pair.Value;
-                    if (item.GetComponentIndex() == componentIndex)
+                    if (item.ComponentIndex == componentIndex)
                     {
                         string message;
-                        localeItem.GetMessage(item.GetPageIndex(), item.GetIndexInPage(), out message);
+                        localeItem.GetMessage(componentIndex, item.PageIndex, item.IndexInPage, out message);
                         if (message != null)
                         {
                             count++;
@@ -180,10 +168,10 @@ namespace SingletonClient.Implementation.Support.ByKey
                 foreach (var pair in _keyAttrTable)
                 {
                     SingletonByKeyItem item = pair.Value;
-                    if (item.GetComponentIndex() == componentIndex)
+                    if (item.ComponentIndex == componentIndex)
                     {
                         string message;
-                        localeItem.GetMessage(item.GetPageIndex(), item.GetIndexInPage(), out message);
+                        localeItem.GetMessage(componentIndex, item.PageIndex, item.IndexInPage, out message);
                         if (message != null)
                         {
                             array.Add(pair.Key);
@@ -197,7 +185,7 @@ namespace SingletonClient.Implementation.Support.ByKey
         /// <summary>
         /// ISingletonByKeyRelease
         /// </summary>
-        public string GetString(string key, int componentIndex, ISingletonByKeyLocale localeItem)
+        public string GetString(string key, int componentIndex, ISingletonByKeyLocale localeItem, bool needFallback = false)
         {
             if (componentIndex < 0 && !_onlyByKey)
             {
@@ -211,11 +199,11 @@ namespace SingletonClient.Implementation.Support.ByKey
             {
                 while (item != null)
                 {
-                    if (item.GetComponentIndex() == componentIndex)
+                    if (item.ComponentIndex == componentIndex)
                     {
                         break;
                     }
-                    item = item.GetNext();
+                    item = item.Next;
                 }
             }
             if (item == null)
@@ -223,67 +211,99 @@ namespace SingletonClient.Implementation.Support.ByKey
                 return null;
             }
 
-            string message;
-            bool pageNotNull = localeItem.GetMessage(item.GetPageIndex(), item.GetIndexInPage(), out message);
-            if (pageNotNull)
+            string message = null;
+            if (!needFallback)
             {
-                return message;
+                if (localeItem.GetMessage(componentIndex, item.PageIndex, item.IndexInPage, out message))
+                {
+                    return message;
+                }
+                return null;
             }
-            return null;
+
+            if ((item.SourceStatus & 0x01) == 0x01)
+            {
+                bool success = localeItem.GetMessage(
+                    componentIndex, item.PageIndex, item.IndexInPage, out message);
+                if (success)
+                {
+                    return message;
+                }
+
+                if (_isDifferent)
+                {
+                    if (_defaultRemote == null)
+                    {
+                        _defaultRemote = this.GetLocaleItem(_localeDefault, false);
+                    }
+                    if (_defaultRemote.GetMessage(componentIndex, item.PageIndex, item.IndexInPage, out message))
+                    {
+                        return message;
+                    }
+                }
+            }
+
+            if (message == null)
+            {
+                if ((item.SourceStatus & 0x04) == 0x04)
+                {
+                    if (_sourceLocal.GetMessage(componentIndex, item.PageIndex, item.IndexInPage, out message))
+                    {
+                        return message;
+                    }
+                }
+                else if ((item.SourceStatus & 0x02) == 0x02)
+                {
+                    bool success = _sourceRemote.GetMessage(
+                        componentIndex, item.PageIndex, item.IndexInPage, out message);
+                    if (success)
+                    {
+                        return message;
+                    }
+                }
+            }
+
+            return message;
         }
 
         private SingletonByKeyItem NewKeyItem(int componentIndex)
         {
             int itemIndex = GetAndAddItemCount();
             SingletonByKeyItem item = new SingletonByKeyItem(componentIndex, itemIndex);
-            SetItem(item, item.GetPageIndex(), item.GetIndexInPage());
+            SetItem(item, item.PageIndex, item.IndexInPage);
             return item;
         }
 
-        private void FindOrAdd(SingletonLookup lookup)
+        private void FindOrAdd(SingletonByKeyLookup lookup)
         {
-            SingletonByKeyItem item = null;
-            if (lookup.AboveItem == null)
+            SingletonByKeyItem item;
+            bool found = _keyAttrTable.TryGetValue(lookup.Key, out item);
+            if (!found || item == null)
             {
-                bool found = _keyAttrTable.TryGetValue(lookup.Key, out item);
-                if (!found || item == null)
-                {
-                    lookup.CurrentItem = NewKeyItem(lookup.ComponentIndex);
-                    lookup.Add = true;
-                    return;
-                }
+                lookup.CurrentItem = NewKeyItem(lookup.ComponentIndex);
+                lookup.Add = 1;
+                return;
+            }
 
-                if (item.GetComponentIndex() == lookup.ComponentIndex)
+            while (item != null)
+            {
+                if (item.ComponentIndex == lookup.ComponentIndex)
                 {
                     lookup.CurrentItem = item;
                     return;
                 }
-
                 lookup.AboveItem = item;
+                item = item.Next;
             }
 
-            SingletonByKeyItem next = lookup.AboveItem.GetNext();
-            if (next == null)
-            {
-                item = NewKeyItem(lookup.ComponentIndex);
-                lookup.CurrentItem = item;
-                lookup.Add = true;
-                return;
-            } 
-                
-            if (next.GetComponentIndex() == lookup.ComponentIndex)
-            {
-                lookup.CurrentItem = next;
-                return;
-            }
-
-            lookup.AboveItem = next;
-            this.FindOrAdd(lookup);
+            lookup.CurrentItem = NewKeyItem(lookup.ComponentIndex);
+            lookup.Add = 2;
         }
 
-        private bool DoSetString(string key, int componentIndex, ISingletonByKeyLocale localeItem, string message)
+        private bool DoSetString(string key, ISingletonComponent componentObject, int componentIndex, 
+            ISingletonByKeyLocale localeItem, string message)
         {
-            SingletonLookup lookup = new SingletonLookup(key, componentIndex, message);
+            SingletonByKeyLookup lookup = new SingletonByKeyLookup(key, componentIndex, message);
             this.FindOrAdd(lookup);
 
             SingletonByKeyItem item = lookup.CurrentItem;
@@ -292,10 +312,10 @@ namespace SingletonClient.Implementation.Support.ByKey
                 return false;
             }
 
-            bool done = localeItem.SetMessage(message, item.GetPageIndex(), item.GetIndexInPage());
+            bool done = localeItem.SetMessage(message, componentObject, componentIndex, item.PageIndex, item.IndexInPage);
             if (done && localeItem.IsSourceLocale())
             {
-                byte status = item.GetSourceStatus();
+                byte status = item.SourceStatus;
                 if (localeItem.IsSource())
                 {
                     _sourceLocal = localeItem;
@@ -313,9 +333,9 @@ namespace SingletonClient.Implementation.Support.ByKey
                 else
                 {
                     string localSource;
-                    _sourceLocal.GetMessage(item.GetPageIndex(), item.GetIndexInPage(), out localSource);
+                    _sourceLocal.GetMessage(componentIndex, item.PageIndex, item.IndexInPage, out localSource);
                     string remoteSource;
-                    _sourceRemote.GetMessage(item.GetPageIndex(), item.GetIndexInPage(), out remoteSource);
+                    _sourceRemote.GetMessage(componentIndex, item.PageIndex, item.IndexInPage, out remoteSource);
                     if (String.Equals(localSource, remoteSource))
                     {
                         status |= 0x01;
@@ -325,19 +345,17 @@ namespace SingletonClient.Implementation.Support.ByKey
                         status &= 0x06;
                     }
                 }
-                item.SetSourceStatus(status);
+                item.SourceStatus = status;
             }
 
             // Finally, it's added in the table after it has been prepared.
-            if (lookup.Add)
+            if (lookup.Add == 1)
             {
-                if (lookup.AboveItem == null)
-                {
-                    _keyAttrTable[key] = lookup.CurrentItem;
-                } else
-                {
-                    lookup.AboveItem.SetNext(lookup.CurrentItem);
-                }
+                _keyAttrTable[key] = lookup.CurrentItem;
+            }
+            else if (lookup.Add == 2)
+            {
+                lookup.AboveItem.Next = lookup.CurrentItem;
             }
             return done;
         }
@@ -345,7 +363,8 @@ namespace SingletonClient.Implementation.Support.ByKey
         /// <summary>
         /// ISingletonByKeyRelease
         /// </summary>
-        public bool SetString(string key, int componentIndex, ISingletonByKeyLocale localeItem, string message)
+        public bool SetString(string key, ISingletonComponent componentObject, int componentIndex,
+            ISingletonByKeyLocale localeItem, string message)
         {
             if (message == null || key == null || localeItem == null)
             {
@@ -365,7 +384,7 @@ namespace SingletonClient.Implementation.Support.ByKey
                     return false;
                 }
 
-                return this.DoSetString(key, componentIndex, localeItem, message);
+                return this.DoSetString(key, componentObject, componentIndex, localeItem, message);
             }
         }
 

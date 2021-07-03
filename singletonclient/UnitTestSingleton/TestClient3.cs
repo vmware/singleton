@@ -12,8 +12,32 @@ namespace UnitTestSingleton
     {
         public override string[] GetResStrings()
         {
-            string[] strings = { "res.Singleton3", "sgtn_offline_disk_properties" };
+            string[] strings = { "res.Singleton3", "sgtn_offline_disk_properties", "CSHARP3" };
             return strings;
+        }
+
+        [TestMethod]
+        public void TestConfig3()
+        {
+            DoTestConfig();
+        }
+
+        [TestMethod]
+        public void TestRelease3()
+        {
+            DoTestRelease();
+        }
+
+        [TestMethod]
+        public void TestTranslation3()
+        {
+            DoTestTranslation();
+        }
+
+        [TestMethod]
+        public void TestMessages3()
+        {
+            DoTestMessages();
         }
     }
 }

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SingletonClient;
@@ -11,14 +11,12 @@ using SingletonClient.Implementation;
 
 namespace UnitTestSingleton
 {
-    [TestClass]
     public abstract class AbsTestClient : AbsTestBase
     {
-
         public AbsTestClient()
         {
             string[] locales = { "en", "de", "zh-CN" };
-            string[] components = { "about", "contact" };
+            string[] components = { "about", "aboutadd", "contact" };
 
             for(int i=0; i<locales.Length; i++)
             {
@@ -27,10 +25,11 @@ namespace UnitTestSingleton
                     access.Translation().GetString(locales[i], access.Source(components[k], "$"));
                 }
             }
+
+            Console.WriteLine("--- product --- {0} ---", this.GetResStrings()[2]);
         }
 
-        [TestMethod]
-        public void TestConfig()
+        protected void DoTestConfig()
         {
             ISingletonConfig configWrapper = new SingletonConfigWrapper(config);
             string productName = configWrapper.GetProduct();
@@ -46,8 +45,7 @@ namespace UnitTestSingleton
             Assert.AreEqual(I18N.GetConfig(PRODUCT, null), null);
         }
 
-        [TestMethod]
-        public void TestRelease()
+        protected void DoTestRelease()
         {
             config = I18N.GetConfig(PRODUCT, VERSION);
             List<string> localeList = config.GetLocaleList(null);
@@ -58,8 +56,7 @@ namespace UnitTestSingleton
             Assert.AreEqual(localeList.Count, 0);
         }
 
-        [TestMethod]
-        public void TestTranslation()
+        protected void DoTestTranslation()
         {
             ISource src = access.Source("about", null, null, null);
             Assert.AreEqual(src, null);
@@ -73,6 +70,23 @@ namespace UnitTestSingleton
             Assert.AreEqual(translation, null);
 
             DoGetStringGroup("TestGetString1");
+            DoGetStringGroup("TestGetString1T");
+            DoGetStringGroup("TestGetString1A");
+            DoGetStringGroup("TestGetString2");
+
+            string groupName = "TestGetStringSameLocale";
+            IConfigItem configItem = config.GetItem("default_locale");
+            if (configItem != null)
+            {
+                string defaultLocale = config.GetItem("default_locale").GetString();
+                configItem = config.GetItem("source_locale");
+                if (configItem != null && configItem.GetString() != defaultLocale)
+                {
+                    groupName = "TestGetStringDifferentLocale";
+                }
+            }
+            DoGetStringGroup(groupName);
+            DoGetStringGroup("TestGetStringTemp");
 
             ISource srcObj = access.Source("about", "about.message");
             translation = Translation.Format("de", srcObj, "AAA");
@@ -95,8 +109,7 @@ namespace UnitTestSingleton
             Assert.AreEqual(translation, "关于 Version {1} of Product " + PRODUCT);
         }
 
-        [TestMethod]
-        public void TestMessages()
+        protected void DoTestMessages()
         {
             IReleaseMessages messages = access.Messages();
             List<string> localeList = messages.GetLocaleList();

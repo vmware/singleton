@@ -11,6 +11,9 @@ namespace SingletonClient.Implementation.Support
     {
         private readonly Hashtable _releases = SingletonUtil.NewHashtable(true);
 
+        /// <summary>
+        /// ICacheManager
+        /// </summary>
         public ICacheMessages GetReleaseCache(string product, string version)
         {
             Hashtable versions = (Hashtable)_releases[product];

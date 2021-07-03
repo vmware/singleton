@@ -68,6 +68,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Singleton3.resx</DependentUpon>
     </Compile>
+    <Compile Include="res\source1\aboutadd.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>aboutadd.resx</DependentUpon>
+    </Compile>
+    <Compile Include="res\source2\aboutadd.zh-CN.Designer.cs">
+      <DependentUpon>aboutadd.zh-CN.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="res\source2\aboutadd.Designer.cs">
+      <DependentUpon>aboutadd.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="res\source2\aboutadd.de.Designer.cs">
+      <DependentUpon>aboutadd.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="res\source2\about.zh-CN.Designer.cs">
       <DependentUpon>about.zh-CN.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -108,27 +128,34 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="res\source\about.Designer.cs">
+    <Compile Include="res\source1\about.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>about.resx</DependentUpon>
     </Compile>
-    <Compile Include="res\source\common.Designer.cs">
+    <Compile Include="res\source1\common.Designer.cs">
       <DependentUpon>common.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="res\source\contact.Designer.cs">
+    <Compile Include="res\source1\contact.Designer.cs">
       <DependentUpon>contact.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="res\source\index.Designer.cs">
+    <Compile Include="res\source1\index.Designer.cs">
       <DependentUpon>index.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="TestClient.cs" />
+    <Compile Include="TestClient1.cs" />
+    <Compile Include="TestClient5.cs" />
+    <Compile Include="TestClient4.cs" />
+    <Compile Include="testdata\TestData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestData.resx</DependentUpon>
+    </Compile>
     <Compile Include="TestUtil.cs" />
     <Compile Include="TestClient3.cs" />
     <Compile Include="AbsTestBase.cs" />
@@ -156,6 +183,26 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Singleton1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="res\source1\aboutadd.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>aboutadd.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="res\source2\aboutadd.zh-CN.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>aboutadd.zh-CN.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="res\source2\aboutadd.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>aboutadd.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="res\source2\aboutadd.de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>aboutadd.de.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="res\source2\about.zh-CN.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -192,20 +239,20 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>index.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="res\source\about.resx">
+    <EmbeddedResource Include="res\source1\about.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>about.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="res\source\common.resx">
+    <EmbeddedResource Include="res\source1\common.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>common.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="res\source\contact.resx">
+    <EmbeddedResource Include="res\source1\contact.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>contact.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="res\source\index.resx">
+    <EmbeddedResource Include="res\source1\index.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>index.Designer.cs</LastGenOutput>
     </EmbeddedResource>
@@ -216,7 +263,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\sgtn_release.yml" />
+    <None Include="res\sgtn_online_different.yml" />
+    <None Include="res\sgtn_online_testing.yml" />
+    <None Include="res\sgtn_online_localsource.yml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SingletonClient\SingletonClient.csproj">
@@ -228,7 +277,10 @@
     <Content Include="testdata\test_define2.txt" />
     <Content Include="testdata\test_define.txt" />
     <Content Include="testdata\http_response.txt" />
+    <None Include="res\source3\aboutadd.properties" />
     <None Include="res\source3\about.properties" />
+    <None Include="res\source3\aboutadd_de.properties" />
+    <None Include="res\source3\aboutadd_zh-CN.properties" />
     <None Include="res\source3\about_zh-CN.properties" />
     <None Include="res\source3\about_de.properties" />
     <None Include="res\source3\common.properties" />

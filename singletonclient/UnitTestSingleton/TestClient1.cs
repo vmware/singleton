@@ -4,38 +4,39 @@
  */
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace UnitTestSingleton
 {
     [TestClass]
-    public class TestClient2 : AbsTestClient
+    public class TestClient1 : AbsTestClient
     {
         public override string[] GetResStrings()
         {
-            string[] strings = { "res.Singleton2", "sgtn_offline_disk_resx", "CSHARP2" };
+            string[] strings = { "res.Singleton1", "sgtn_online_localsource", "CSHARP1" };
             return strings;
         }
 
         [TestMethod]
-        public void TestConfig2()
+        public void TestConfig1()
         {
             DoTestConfig();
         }
 
         [TestMethod]
-        public void TestRelease2()
+        public void TestRelease1()
         {
             DoTestRelease();
         }
 
         [TestMethod]
-        public void TestTranslation2()
+        public void TestTranslation1()
         {
             DoTestTranslation();
         }
 
         [TestMethod]
-        public void TestMessages2()
+        public void TestMessages1()
         {
             DoTestMessages();
         }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Product2ResLib.SingletonRes.source {
+namespace UnitTestSingleton.res.source1 {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Product2ResLib.SingletonRes.source {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class common {
+    internal class aboutadd {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal common() {
+        internal aboutadd() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Product2ResLib.SingletonRes.source {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Product2ResLib.SingletonRes.source.common", typeof(common).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UnitTestSingleton.res.source1.aboutadd", typeof(aboutadd).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,38 +61,29 @@ namespace Product2ResLib.SingletonRes.source {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About.
+        ///   Looks up a localized string similar to Use this area to provide additional information. add.
         /// </summary>
-        internal static string common_about {
+        internal static string about_description {
             get {
-                return ResourceManager.GetString("common.about", resourceCulture);
+                return ResourceManager.GetString("about.description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sample Application.
+        ///   Looks up a localized string similar to Your application description page. add.
         /// </summary>
-        internal static string common_applicationname {
+        internal static string about_message {
             get {
-                return ResourceManager.GetString("common.applicationname", resourceCulture);
+                return ResourceManager.GetString("about.message", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Contact.
+        ///   Looks up a localized string similar to About Version {1} of Product {0} add.
         /// </summary>
-        internal static string common_contact {
+        internal static string about_title {
             get {
-                return ResourceManager.GetString("common.contact", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Home.
-        /// </summary>
-        internal static string common_home {
-            get {
-                return ResourceManager.GetString("common.home", resourceCulture);
+                return ResourceManager.GetString("about.title", resourceCulture);
             }
         }
     }
