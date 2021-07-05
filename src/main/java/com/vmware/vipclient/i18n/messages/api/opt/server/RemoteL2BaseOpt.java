@@ -40,7 +40,7 @@ public class RemoteL2BaseOpt extends BaseOpt{
 			return null;
 		try {
 			JSONObject respBody = (JSONObject) JSONValue.parse(responseBody);
-			if (respBody != null && getResponseCode(respBody) == 200) {
+			if (respBody != null && isSuccess(getResponseCode(respBody))) {
 				return respBody.get(ConstantsKeys.DATA);
 			}
 		} catch (Exception e) {
