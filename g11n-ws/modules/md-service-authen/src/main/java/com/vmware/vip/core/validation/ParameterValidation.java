@@ -6,6 +6,7 @@ package com.vmware.vip.core.validation;
 
 
 import com.vmware.vip.api.rest.APIParamName;
+import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ValidationMsg;
 import com.vmware.vip.common.utils.RegExpValidatorUtils;
@@ -166,8 +167,11 @@ public class ParameterValidation implements IVlidation {
 		if (StringUtils.isEmpty(components)) {
 			return;
 		}
-		if (!RegExpValidatorUtils.isLetterNumbCommaAndValidchar(components)) {
-			throw new ValidationException(ValidationMsg.COMPONENTS_NOT_VALIDE);
+		String[] compArr = components.split(ConstantsChar.COMMA);
+		for(int i=0; i<compArr.length; i++) {
+			if(StringUtils.isEmpty(compArr[i]) || !RegExpValidatorUtils.IsLetterAndNumberAndValidchar(compArr[i])) {
+				throw new ValidationException(ValidationMsg.COMPONENTS_NOT_VALIDE);
+			}
 		}
 	}
 	
