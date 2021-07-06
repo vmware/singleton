@@ -8,12 +8,18 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace UnitTestSingleton
 {
     [TestClass]
-    public class TestClient : AbsTestClient
+    public class TestClient4 : AbsTestClient
     {
         public override string[] GetResStrings()
         {
-            string[] strings = { "res.Singleton1", "sgtn_release" };
+            string[] strings = { "res.Singleton1", "sgtn_online_different", "CSHARP4" };
             return strings;
+        }
+
+        [TestMethod]
+        public void TestTranslation4()
+        {
+            DoTestTranslation();
         }
     }
 }

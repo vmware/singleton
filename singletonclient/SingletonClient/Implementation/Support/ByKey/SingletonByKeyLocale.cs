@@ -10,10 +10,9 @@ namespace SingletonClient.Implementation.Support.ByKey
         bool IsSource();
         bool IsSourceLocale();
         int GetKeyCountInComponent(int componentIndex);
-        bool GetMessage(int pageIndex, int indexInPage, out string message);
-        bool SetMessage(string message, int pageIndex, int indexInPage);
-        ISingletonComponent GetSingletonComponent(int componentIndex);
-        bool SetSingletonComponent(int componentIndex, ISingletonComponent singletonComponent);
+        bool GetMessage(int componentIndex, int pageIndex, int indexInPage, out string message);
+        bool SetMessage(string message, ISingletonComponent componentObject,
+            int componentIndex, int pageIndex, int indexInPage);
     }
 
     public class SingletonByKeyLocale : ISingletonByKeyLocale
@@ -74,7 +73,7 @@ namespace SingletonClient.Implementation.Support.ByKey
                         continue;
                     }
                     SingletonByKeyItem item = _bykey.GetKeyItem(i, k);
-                    if (item != null && item.GetComponentIndex() == componentIndex)
+                    if (item != null && item.ComponentIndex == componentIndex)
                     {
                         count++;
                     }
@@ -83,61 +82,29 @@ namespace SingletonClient.Implementation.Support.ByKey
             return count;
         }
 
-        public bool GetMessage(int pageIndex, int indexInPage, out string message)
+        public bool GetMessage(int componentIndex, int pageIndex, int indexInPage, out string message)
         {
-            string[] array = _messages.GetPage(pageIndex);
-            if (array == null)
+            if (componentIndex >= 0)
             {
-                message = null;
-                return false;
+                ISingletonComponent componentObj = _components.GetItemByOneIndex(componentIndex);
+                if (componentObj != null)
+                {
+                    componentObj.GetAccessTask().CheckTimeSpan();
+                }
             }
 
-            message = array[indexInPage];
-            return true;
+            message = _messages.GetItem(pageIndex, indexInPage);
+            return message != null;
         }
 
-        public bool SetMessage(string message, int pageIndex, int indexInPage)
+        public bool SetMessage(string message, ISingletonComponent componentObject, 
+            int componentIndex, int pageIndex, int indexInPage)
         {
-            string[] array = _messages.GetPage(pageIndex);
-            if (array == null)
+            if (componentObject != null)
             {
-                array = _messages.NewPage(pageIndex);
+                _components.SetItemByOneIndex(componentIndex, componentObject);
             }
-
-            array[indexInPage] = message;
-            return true;
-        }
-
-        /// <summary>
-        /// ISingletonByKeyLocale
-        /// </summary>
-        public ISingletonComponent GetSingletonComponent(int componentIndex)
-        {
-            int pageIndex = componentIndex / SingletonByKeyRelease.COMPONENT_PAGE_MAX_SIZE;
-            ISingletonComponent[] array = _components.GetPage(pageIndex);
-            if (array == null)
-            {
-                return null;
-            }
-
-            int indexInPage = componentIndex % SingletonByKeyRelease.COMPONENT_PAGE_MAX_SIZE;
-            return array[indexInPage];
-        }
-
-        /// <summary>
-        /// ISingletonByKeyLocale
-        /// </summary>
-        public bool SetSingletonComponent(int componentIndex, ISingletonComponent singletonComponent)
-        {
-            int pageIndex = componentIndex / SingletonByKeyRelease.COMPONENT_PAGE_MAX_SIZE;
-            ISingletonComponent[] array = _components.GetPage(pageIndex);
-            if (array == null)
-            {
-                array = _components.NewPage(pageIndex);
-            }
-
-            int indexInPage = componentIndex % SingletonByKeyRelease.COMPONENT_PAGE_MAX_SIZE;
-            array[indexInPage] = singletonComponent;
+            _messages.SetItem(pageIndex, indexInPage, message);
             return true;
         }
     }

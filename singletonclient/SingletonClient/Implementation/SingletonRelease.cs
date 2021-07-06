@@ -4,10 +4,10 @@
  */
 
 using SingletonClient.Implementation.Helpers;
+using SingletonClient.Implementation.Release;
 using SingletonClient.Implementation.Support;
 using SingletonClient.Implementation.Support.ByKey;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -24,359 +24,9 @@ namespace SingletonClient.Implementation
         ICacheMessages GetReleaseMessages();
         ISingletonByKeyRelease GetSingletonByKeyRelease();
         IAccessService GetAccessService();
+        ISingletonComponent GetComponentObject(
+            IComponentMessages componentMessages, string locale, string component, bool asSource);
         void Log(LogType logType, string text);
-    }
-
-    public class SingletonUseLocale
-    {
-        protected string _locale;
-        protected bool _isSourceLocale;
-        protected ISingletonLocale _singletonLocale;
-
-        private readonly Hashtable _components;
-        public ILocaleMessages LocaleMessages { get; set; }
-
-        public SingletonUseLocale(ISingletonLocale singletonLocale, string sourceLocale)
-        {
-            _singletonLocale = singletonLocale;
-            _locale = singletonLocale.GetOriginalLocale();
-
-            ISingletonLocale singletonSourceLocale = SingletonUtil.GetSingletonLocale(sourceLocale);
-            _isSourceLocale = singletonSourceLocale.GetNearLocaleList().Contains(_locale);
-
-            _components = SingletonUtil.NewHashtable(true);
-        }
-
-        public string Locale
-        {
-            get { return _locale; }
-        }
-
-        public bool IsSourceLocale
-        {
-            get { return _isSourceLocale; }
-        }
-
-        public ISingletonLocale SingletonLocale
-        {
-            get { return _singletonLocale; }
-        }
-
-        public Hashtable Components
-        {
-            get { return _components; }
-        }
-    }
-
-    public class SingletonAccessObject
-    {
-        protected SingletonUseLocale _useLocale;
-
-        protected ISource _source;
-        protected short _componentIndex;
-
-        public SingletonAccessObject(SingletonUseLocale useLocale, ISource source)
-        {
-            _useLocale = useLocale;
-            _source = source;
-        }
-
-        public string Key
-        {
-            get { return _source.GetKey(); }
-        }
-
-        public string Component
-        {
-            get { return _source.GetComponent(); }
-        }
-
-        public SingletonUseLocale UseLocale
-        {
-            get { return _useLocale; }
-        }
-
-        public string SourceMessage
-        {
-            get { return _source.GetSource(); }
-        }
-
-        public bool IsJustSource()
-        {
-            return (_useLocale.IsSourceLocale && _source.GetSource() != null);
-        }
-    }
-
-    public class SingletonReleaseBase
-    {
-        protected ISingletonClientManager _client;
-        protected ISingletonRelease _self;
-        protected IReleaseMessages _releaseMessages;
-
-        protected ILog _logger;
-        protected LogType _logLevel;
-
-        protected ISingletonConfig _config;
-
-        protected ISingletonApi _api;
-        protected IAccessService _accessService;
-        protected ISingletonAccessTask _task;
-
-        protected readonly List<string> _localeList = new List<string>();
-        protected readonly List<string> _componentList = new List<string>();
-
-        protected void InitForBase(ISingletonRelease singletonRelease, IConfig config, ISingletonAccessRemote accessRemote)
-        {
-            _self = singletonRelease;
-            _releaseMessages = _self.GetRelease().GetMessages();
-
-            _config = new SingletonConfigWrapper(config);
-            _client = SingletonClientManager.GetInstance();
-
-            string loggerName = _config.GetLoggerName();
-            _logger = _client.GetLogger(loggerName);
-
-            string logType = _config.GetLogLevel();
-            _logLevel = (LogType)Enum.Parse(typeof(LogType), logType);
-
-            _api = new SingletonApi(_self);
-
-            string accessServiceType = _config.GetAccessServiceType();
-            _accessService = _client.GetAccessService(accessServiceType);
-
-            int interval = _config.GetInterval();
-            int tryDelay = _config.GetTryDelay();
-            _task = new SingletonAccessRemoteTask(accessRemote, interval, tryDelay);
-        }
-
-        protected bool CheckBundleRequest(ISingletonLocale singletonLocale, string component)
-        {
-            if (string.IsNullOrEmpty(component))
-            {
-                return false;
-            }
-
-            if (_config.IsOnlineSupported() && !_config.IsOfflineSupported())
-            {
-                bool inLocaleScope = singletonLocale.IsInLocaleList(_localeList);
-                bool inComponentScope = _componentList.Contains(component);
-                if (!inLocaleScope || !inComponentScope)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-    }
-
-    public class SingletonReleaseForCache : SingletonReleaseBase
-    {
-        protected ISingletonUpdate _update;
-
-        protected ICacheMessages _productCache;
-        protected ISingletonByKeyRelease _byKeyRelease;
-
-        protected ILocaleMessages _sourceCache;
-        protected SingletonUseLocale _useSourceLocale;
-
-        protected SingletonUseLocale _useDefaultLocale;
-
-        // key: (string) locale
-        // value: (SingletonUseLocale)
-        private readonly Hashtable _localesTable = SingletonUtil.NewHashtable(true);
-
-        protected bool InitForCache()
-        {
-            if (_productCache != null)
-            {
-                return true;
-            }
-
-            _update = new SingletonUpdate(_self);
-
-            string cacheType = _config.GetCacheType();
-            ICacheManager cacheManager = _client.GetCacheManager(cacheType);
-
-            _productCache = cacheManager.GetReleaseCache(
-                _config.GetProduct(), _config.GetVersion());
-
-            if (_config.IsCacheByKey())
-            {
-                _byKeyRelease = new SingletonByKeyRelease(_self, _config.GetSourceLocale(), cacheType);
-            }
-
-            _useSourceLocale = GetUseLocale(_config.GetSourceLocale());
-            if (_config.IsOfflineSupported())
-            {
-                _sourceCache = _update.LoadOfflineBundle(_useSourceLocale.SingletonLocale, true);
-            }
-
-            if (!_config.IsSourceLocaleDefault())
-            {
-                _useDefaultLocale = GetUseLocale(_config.GetDefaultLocale());
-            }
-
-            return true;
-        }
-
-        private SingletonUseLocale GetUseLocale(string locale)
-        {
-            SingletonUseLocale useLocale = (SingletonUseLocale)_localesTable[locale];
-            if (useLocale == null)
-            {
-                ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
-                useLocale = (SingletonUseLocale)singletonLocale.FindItem(_localesTable, 1);
-
-                if (useLocale == null)
-                {
-                    useLocale = new SingletonUseLocale(singletonLocale, _config.GetSourceLocale());
-                }
-
-                foreach (var one in useLocale.SingletonLocale.GetNearLocaleList())
-                {
-                    if (_localesTable[one] == null)
-                    {
-                        _localesTable[one] = useLocale;
-                    }
-                }
-            }
-            return useLocale;
-        }
-
-        private ISingletonComponent GetOrAddComponent(
-            SingletonUseLocale useLocale, string component)
-        {
-            ISingletonComponent obj = (ISingletonComponent)useLocale.Components[component];
-            if (obj == null)
-            {
-                obj = new SingletonComponent(_self, useLocale.SingletonLocale, component);
-                useLocale.Components[component] = obj;
-
-                if (!_config.IsOnlineSupported())
-                {
-                    obj.GetDataFromLocal();
-                }
-            }
-            return obj;
-        }
-
-        private ISingletonComponent GetComponent(SingletonUseLocale useLocale, string component)
-        {
-            if (!CheckBundleRequest(useLocale.SingletonLocale, component))
-            {
-                return null;
-            }
-
-            ISingletonComponent componentObj = GetOrAddComponent(useLocale, component);
-            componentObj.GetAccessTask().CheckTimeSpan();
-            return componentObj;
-        }
-
-        protected string GetBundleMessage(SingletonUseLocale useLocale, string component, string key)
-        {
-            if (useLocale.LocaleMessages == null)
-            {
-                useLocale.LocaleMessages = _releaseMessages.GetLocaleMessages(useLocale.Locale, false);
-            }
-
-            if (!string.IsNullOrEmpty(component) && useLocale.Components[component] == null)
-            {
-                useLocale.Components[component] = GetComponent(useLocale, component);
-            }
-
-            return useLocale.LocaleMessages.GetString(component, key);
-        }
-
-        protected string GetSourceMessage(string component, string key)
-        {
-            string source = null;
-            if (_sourceCache != null)
-            {
-                source = _sourceCache.GetString(component, key);
-            }
-
-            if (source == null)
-            {
-                source = GetBundleMessage(_useSourceLocale, component, key);
-            }
-
-            return source;
-        }
-
-        protected string GetTranslationMessage(SingletonAccessObject accessObject, string textSource)
-        {
-            string text = GetBundleMessage(accessObject.UseLocale, accessObject.Component, accessObject.Key);
-            if (text == null)
-            {
-                text = (_useDefaultLocale == null) ?
-                    textSource : GetBundleMessage(_useDefaultLocale, accessObject.Component, accessObject.Key);
-
-                if (text == null)
-                {
-                    if (this._byKeyRelease == null)
-                    {
-                        text = accessObject.SourceMessage;
-                    }
-                    else
-                    {
-                        text = GetSourceMessage(accessObject.Component, accessObject.Key);
-                    }
-                }
-
-                if (text == null)
-                {
-                    text = accessObject.Key;
-                }
-
-                if (!_config.IsProductMode())
-                {
-                    text = "@" + text;
-                }
-            }
-            return text;
-        }
-
-        protected string GetStringFromCache(string locale, ISource source)
-        {
-            if (source == null)
-            {
-                return null;
-            }
-
-            SingletonUseLocale useLocale = this.GetUseLocale(locale);
-            SingletonAccessObject accessObject = new SingletonAccessObject(useLocale, source);
-            if (accessObject.IsJustSource())
-            {
-                return accessObject.SourceMessage;
-            }
-
-            if (_byKeyRelease != null)
-            {
-                if (accessObject.UseLocale.IsSourceLocale)
-                {
-                    string soureMessage = GetSourceMessage(accessObject.Component, accessObject.Key);
-                    if (soureMessage == null)
-                    {
-                        soureMessage = _config.IsProductMode() ? accessObject.Key : "@" + accessObject.Key;
-                    }
-                    return soureMessage;
-                }
-                return GetTranslationMessage(accessObject, null);
-            }
-
-            string textSource = GetBundleMessage(_useSourceLocale, accessObject.Component, accessObject.Key);
-            if (textSource == null)
-            {
-                return GetTranslationMessage(accessObject, null);
-            }
-
-            string text = source.GetSource();
-            if (textSource.Equals(text) || text == null)
-            {
-                return GetTranslationMessage(accessObject, textSource);
-            }
-            return text;
-        }
     }
 
     public class SingletonRelease : SingletonReleaseForCache, ISingletonRelease, ISingletonAccessRemote,
@@ -454,6 +104,18 @@ namespace SingletonClient.Implementation
         public IAccessService GetAccessService()
         {
             return _accessService;
+        }
+
+        /// <summary>
+        /// ISingletonRelease
+        /// </summary>
+        /// <returns></returns>
+        public ISingletonComponent GetComponentObject(
+            IComponentMessages componentMessages, string locale, string component, bool asSource)
+        {
+            SingletonUseLocale useLocale = GetUseLocale(locale, asSource);
+            ISingletonComponent componentObject = GetComponent(useLocale, component, componentMessages);
+            return componentObject;
         }
 
         /// <summary>

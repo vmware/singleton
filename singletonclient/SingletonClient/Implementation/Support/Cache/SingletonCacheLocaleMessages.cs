@@ -41,7 +41,7 @@ namespace SingletonClient.Implementation.Support
         }
 
         /// <summary>
-        /// Get locale.
+        /// ILocaleMessages
         /// </summary>
         /// <returns>return.</returns>
         public string GetLocale()
@@ -50,7 +50,22 @@ namespace SingletonClient.Implementation.Support
         }
 
         /// <summary>
-        /// Comment.
+        /// ILocaleMessages
+        /// </summary>
+        /// <returns>list of string.</returns>
+        public List<string> GetComponentList()
+        {
+            List<string> componentList = new List<string>();
+            foreach (var key in this.components.Keys)
+            {
+                componentList.Add(key.ToString());
+            }
+
+            return componentList;
+        }
+
+        /// <summary>
+        /// ILocaleMessages
         /// </summary>
         /// <param name="component">component.</param>
         /// <returns>return.</returns>
@@ -67,7 +82,7 @@ namespace SingletonClient.Implementation.Support
                 ISingletonClientManager singletonClientManager = SingletonClientManager.GetInstance();
                 if (singletonConfig.IsCacheByKey())
                 {
-                    cache = new SingletonCacheByKeyComponentMessages(release, this.locale, component, this.asSource);
+                    cache = new SingletonByKeyCacheComponentMessages(release, this.locale, component, this.asSource);
                 }
                 else
                 {
@@ -83,26 +98,11 @@ namespace SingletonClient.Implementation.Support
         }
 
         /// <summary>
-        /// Comment.
-        /// </summary>
-        /// <returns>return.</returns>
-        public List<string> GetComponentList()
-        {
-            List<string> componentList = new List<string>();
-            foreach (var key in this.components.Keys)
-            {
-                componentList.Add(key.ToString());
-            }
-
-            return componentList;
-        }
-
-        /// <summary>
-        /// Comment.
+        /// ILocaleMessages
         /// </summary>
         /// <param name="component">component.</param>
         /// <param name="key">key.</param>
-        /// <returns>return.</returns>
+        /// <returns>string.</returns>
         public string GetString(string component, string key)
         {
             if (string.IsNullOrEmpty(key))

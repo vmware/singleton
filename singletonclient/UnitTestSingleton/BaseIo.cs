@@ -3,6 +3,8 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using SingletonClient;
 using SingletonClient.Implementation.Support;
 using System;
@@ -40,25 +42,55 @@ namespace UnitTestSingleton
 
             string raw = (string)resourceManager.GetObject("http_response");
 
-            for (int k=1; k<2; k++)
+            for (int k=1; k<10; k++)
             {
                 string product = "CSHARP" + k;
                 string text = raw.Replace("$PRODUCT", product).Replace("$VERSION", "1.0.0");
                 string[] parts = Regex.Split(text, "---api---.*[\r|\n]*");
                 for (int i = 0; i < parts.Length; i++)
                 {
-                    if (parts[i].Trim().Length == 0)
+                    if (parts[i].Trim().Length > 5)
                     {
-                        continue;
+                        this.LoadResponse(parts[i]);
                     }
-                    string[] segs = Regex.Split(parts[i], "---data---.*[\r|\n]*");
-                    string[] lines = Regex.Split(segs[0], "\n");
-                    responseData.Add(lines[0].Trim(), segs[1].Trim());
                 }
             }
 
             PrepareTestData("test_define");
             PrepareTestData("test_define2");
+        }
+
+        private void LoadResponse(string apiData)
+        {
+            string[] parts = Regex.Split(apiData, "---data---.*[\r|\n]*");
+            string[] segs = Regex.Split(parts[0], "---header---.*[\r|\n]*");
+            string[] lines = Regex.Split(segs[0], "\n");
+
+            string key = lines[0].Trim();
+            if(segs.Length > 1 && segs[1].Trim().Length > 2)
+            {
+                JObject header = JObject.Parse(segs[1]);
+                if (header != null)
+                {
+                    string tail = JsonConvert.SerializeObject(header);
+                    key += "<<headers>>" + tail;
+                }
+            }
+
+            Hashtable response = new Hashtable();
+            segs = Regex.Split(parts[1], "---header---.*[\r|\n]*");
+            response["body"] = segs[0].Trim();
+            if (segs.Length > 1 && segs[1].Trim().Length > 2)
+            {
+                string[] pieces = Regex.Split(segs[1], "---code---.*[\r|\n]*");
+                JObject header = JObject.Parse(pieces[0]);
+                response["headers"] = header;
+                if (pieces.Length > 1)
+                {
+                    response["code"] = Convert.ToInt32(pieces[1]);
+                }
+            }
+            responseData.Add(key, response);
         }
 
         private void PrepareTestData(string resName)
@@ -81,6 +113,23 @@ namespace UnitTestSingleton
                 {
                     Hashtable htTest = p.Parse(segs[k]);
                     ht.Add("_test_" + k, htTest);
+                }
+                ht["_test_count"] = segs.Length - 1;
+
+                string dataFrom = (string)ht["DATAFROM"];
+                if (!string.IsNullOrEmpty(dataFrom))
+                {
+                    Hashtable htFrom = (Hashtable)testData[dataFrom];
+                    for (int k = 1; ; k++)
+                    {
+                        Hashtable oneData = (Hashtable)htFrom["_test_" + k];
+                        if (oneData == null)
+                        {
+                            ht["_test_count"] = k - 1;
+                            break;
+                        }
+                        ht["_test_" + k] = oneData;
+                    }
                 }
             }
         }
@@ -121,16 +170,23 @@ namespace UnitTestSingleton
             return lastConsoleText;
         }
 
+        private string GetResponse(string key, Hashtable headers)
+        {
+            Hashtable response = (Hashtable)responseData[key];
+            string text = "";
+            if (response != null)
+            {
+                text = (string)response["body"];
+            }
+            return text;
+        }
+
         /// <summary>
         /// IAccessService
         /// </summary>
         public string HttpGet(string url, Hashtable headers)
         {
-            string response = (string)responseData["[GET]" + url];
-            if (response == null) {
-                response = "";
-            }
-            return response;
+            return this.GetResponse("[GET]" + url, headers);
         }
 
         /// <summary>
@@ -138,8 +194,7 @@ namespace UnitTestSingleton
         /// </summary>
         public string HttpPost(string url, string text, Hashtable headers)
         {
-            string reponse = (string)responseData["[POST]" + url];
-            return reponse;
+            return this.GetResponse("[POST]" + url, headers);
         }
     }
 }

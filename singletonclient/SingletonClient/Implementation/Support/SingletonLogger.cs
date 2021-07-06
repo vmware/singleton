@@ -17,4 +17,3 @@ namespace SingletonClient.Implementation.Support
         }
     }
 }
-

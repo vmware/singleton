@@ -32,11 +32,11 @@ namespace SingletonClient.Implementation.Support
         }
 
         /// <summary>
-        /// Get locale messages object.
+        /// ICacheMessages
         /// </summary>
         /// <param name="locale">locale.</param>
         /// <param name="asSource">asSource.</param>
-        /// <returns>return.</returns>
+        /// <returns>ILocaleMessages.</returns>
         public ILocaleMessages GetLocaleMessages(string locale, bool asSource = false)
         {
             Hashtable table = asSource ? sources : locales;

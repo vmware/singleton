@@ -7,58 +7,23 @@ namespace SingletonClient.Implementation.Support.ByKey
 {
     public class SingletonByKeyItem
     {
-        private readonly short _componentIndex;
-        private readonly short _pageIndex;
-        private readonly short _indexInPage;
-        private byte _sourceStatus;
-        private SingletonByKeyItem _next;
+        public short ComponentIndex { get; }
+        public short PageIndex { get; }
+        public short IndexInPage { get; }
+        public byte SourceStatus { get; set; }
+        public SingletonByKeyItem Next { get; set; }
 
         public SingletonByKeyItem(int componentIndex, int itemIndex)
         {
-            this._componentIndex = (short)componentIndex;
+            this.ComponentIndex = (short)componentIndex;
 
             int value = itemIndex / SingletonByKeyRelease.PAGE_MAX_SIZE;
-            this._pageIndex = (short)value;
+            this.PageIndex = (short)value;
 
             value = itemIndex % SingletonByKeyRelease.PAGE_MAX_SIZE;
-            this._indexInPage = (short)value;
+            this.IndexInPage = (short)value;
 
-            _sourceStatus = 0x01;
-        }
-
-        public int GetComponentIndex()
-        {
-            return this._componentIndex;
-        }
-
-        public int GetPageIndex()
-        {
-            return this._pageIndex;
-        }
-
-        public int GetIndexInPage()
-        {
-            return this._indexInPage;
-        }
-
-        public SingletonByKeyItem GetNext()
-        {
-            return _next;
-        }
-
-        public void SetNext(SingletonByKeyItem next)
-        {
-            this._next = next;
-        }
-
-        public byte GetSourceStatus()
-        {
-            return _sourceStatus;
-        }
-
-        public void SetSourceStatus(byte status)
-        {
-            _sourceStatus = status;
+            SourceStatus = 0x01;
         }
     }
 }
