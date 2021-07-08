@@ -159,7 +159,7 @@ func TestGetSupportedLangsByDispLangExcep(t *testing.T) {
 		{testName: "invalidVersion", name: Name, version: "€", displayLanguage: Language, wantedCode: http.StatusBadRequest},
 		{testName: "notFoundVersion", name: Name, version: "0.0.1", displayLanguage: Language, wantedCode: sgtnerror.StatusNotFound.HTTPCode()},
 		{testName: "invalidLanguage-€", name: Name, version: Version, displayLanguage: "€", wantedCode: http.StatusBadRequest},
-		{testName: "notFoundLanguage-en-AB", name: Name, version: Version, displayLanguage: "en-AB", wantedCode: sgtnerror.StatusNotFound.HTTPCode()},
+		{testName: "notFoundLanguage-en-AB", name: Name, version: Version, displayLanguage: "en-AB", wantedCode: sgtnerror.StatusBadRequest.HTTPCode()},
 	} {
 		tt := tt
 

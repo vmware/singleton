@@ -65,7 +65,7 @@ func GetPatternByLangReg(ctx context.Context, language, region, catgs, filter st
 			}
 		} else {
 			if combinedLocale == "" {
-				err = sgtnerror.StatusNotFound.WithUserMessage("Can't get a locale ID with '%s' and '%s'", language, region)
+				err = sgtnerror.StatusBadRequest.WithUserMessage("Can't get a locale ID with '%s' and '%s'", language, region)
 				log.Error(err.Error())
 			} else {
 				catgData, err = localeutil.GetPatternData(ctx, combinedLocale, catg)
