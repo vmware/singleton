@@ -1,0 +1,54 @@
+/*
+ * Copyright 2021 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
+
+version: 2.1
+orbs: circleci/aws-cli@1.4.0
+slack: circleci/slack@4.3.0
+
+jobs:
+  checkheader:
+  steps:
+  -run:
+    name: check header
+    env: TEST=check_header
+    command: |
+    if [ x${TEST} = xcheck_header ]; then
+    git clone --branch=devops https://github.com/vmware/singleton.git devops
+    cp $TRAVIS_BUILD_DIR/devops/check_headers.py .
+    chmod +x check_headers.py
+    python3 ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
+    fi &&
+
+  build:
+  steps:
+  -run:
+    name: build
+    env: TEST=build
+    command: |
+    if [ x${TEST} = xbuild ]; then
+    make build
+    fi &&
+
+workflows:
+  test:
+    jobs:
+      - checkheader:
+          context:
+          #  - Testing
+          #  - slack-secrets
+          filters:
+            branches:
+              only:
+                - g11n-go-service
+
+      - build:
+          filters:
+            branches:
+              only:
+                - g11n-go-service
+
+
+
+
