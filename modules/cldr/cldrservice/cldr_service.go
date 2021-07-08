@@ -58,7 +58,7 @@ func GetPatternByLangReg(ctx context.Context, language, region, catgs, filter st
 		var err error
 		if SpecialCategories.Contains(catg) { // dateFields and Plural always follow language
 			if normalizedLanguage == "" {
-				err = sgtnerror.StatusNotFound.WithUserMessage(cldr.InvalidLocale, language)
+				err = sgtnerror.StatusBadRequest.WithUserMessage(cldr.InvalidLocale, language)
 				log.Error(err.Error())
 			} else if catgData, err = localeutil.GetPatternData(ctx, normalizedLanguage, catg); err == nil {
 				specialCatgNumber++
@@ -105,7 +105,7 @@ func GetPatternByLocale(ctx context.Context, locale, catgs, filter string) (newL
 		newLocale = coreutil.GetPathLocale(locale)
 	}
 	if newLocale == "" {
-		err := sgtnerror.StatusNotFound.WithUserMessage(cldr.InvalidLocale, locale)
+		err := sgtnerror.StatusBadRequest.WithUserMessage(cldr.InvalidLocale, locale)
 		log.Error(err.Error())
 		return "", nil, err
 	}
