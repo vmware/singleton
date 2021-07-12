@@ -62,7 +62,7 @@ func GetTerritoriesOfMultipleLocales(ctx context.Context, locales []string) ([]*
 		var territories *LocaleTerritories
 		cldrLocale := coreutil.GetCLDRLocale(locale)
 		if cldrLocale == "" {
-			err = sgtnerror.StatusBadRequest.WithUserMessage(cldr.InvalidLocale, locale)
+			err = sgtnerror.StatusNotFound.WithUserMessage(cldr.InvalidLocale, locale)
 		} else {
 			territories, err = GetLocaleTerritories(ctx, cldrLocale)
 			if err == nil {

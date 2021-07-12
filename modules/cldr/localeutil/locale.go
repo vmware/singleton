@@ -30,7 +30,7 @@ type localeDataOrigin interface {
 func GetLocaleData(ctx context.Context, locale, dataType string, data interface{}) (err error) {
 	cldrLocale, ok := coreutil.AvailableLocalesMap[strings.ToLower(locale)]
 	if !ok {
-		err := sgtnerror.StatusBadRequest.WithUserMessage(cldr.InvalidLocale, locale)
+		err := sgtnerror.StatusNotFound.WithUserMessage(cldr.InvalidLocale, locale)
 		logger.FromContext(ctx).Error(err.Error())
 		return err
 	}
