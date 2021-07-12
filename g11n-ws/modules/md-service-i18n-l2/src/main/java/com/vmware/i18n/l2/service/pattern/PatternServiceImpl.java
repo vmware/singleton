@@ -125,12 +125,12 @@ public class PatternServiceImpl implements IPatternService {
 			patternJson = patternDao.getPattern(locale, null);
 			if (StringUtils.isEmpty(patternJson)) {
 				logger.info("file data don't exist");
-				return buildPatternMap(language, region, patternJson, categoryList, resultData);
+				return buildPatternMap(language, region, patternJson, categoryList, scopeFilter, resultData);
 			}
 			TranslationCache3.addCachedObject(CacheName.PATTERN, locale, String.class, patternJson);
 		}
 		logger.info("get pattern data from cache");
-		patternMap = buildPatternMap(language, region, patternJson, categoryList, resultData);
+		patternMap = buildPatternMap(language, region, patternJson, categoryList, scopeFilter, resultData);
 		if (!CommonUtil.isEmpty(patternMap) && !CommonUtil.isEmpty(patternMap.get(ConstantsKeys.CATEGORIES))) {
 			filterScope((Map<String, Object>) patternMap.get(ConstantsKeys.CATEGORIES), scopeFilter);
 		}
@@ -146,7 +146,7 @@ public class PatternServiceImpl implements IPatternService {
 	 * @param categoryList
 	 * @return
 	 */
-	private Map<String, Object> buildPatternMap(String language, String region, String patternJson, List<String> categoryList, LocaleDataDTO localeDataDTO) throws VIPCacheException {
+	private Map<String, Object> buildPatternMap(String language, String region, String patternJson, List<String> categoryList, String scopeFilter, LocaleDataDTO localeDataDTO) throws VIPCacheException {
 		Map<String, Object> patternMap = new LinkedHashMap<>();
 		Map<String, Object> categoriesMap = new LinkedHashMap<>();
 		if (StringUtils.isEmpty(patternJson)) {
@@ -160,11 +160,11 @@ public class PatternServiceImpl implements IPatternService {
 		}
 
 		if (categoryList.contains(ConstantsKeys.PLURALS)) {
-			handleSpecialCategory(ConstantsKeys.PLURALS, language, categoriesMap);
+			handleSpecialCategory(ConstantsKeys.PLURALS, language, categoriesMap, scopeFilter);
 		}
 
 		if (categoryList.contains(ConstantsKeys.DATE_FIELDS)) {
-			handleSpecialCategory(ConstantsKeys.DATE_FIELDS, language, categoriesMap);
+			handleSpecialCategory(ConstantsKeys.DATE_FIELDS, language, categoriesMap, scopeFilter);
 		}
 
 		if (!localeDataDTO.isDisplayLocaleID()) {
@@ -186,9 +186,9 @@ public class PatternServiceImpl implements IPatternService {
 		return patternMap;
 	}
 
-	private void handleSpecialCategory(String category, String language, Map<String, Object> categoriesMap) throws VIPCacheException {
+	private void handleSpecialCategory(String category, String language, Map<String, Object> categoriesMap, String scopeFilter) throws VIPCacheException {
 		categoriesMap.put(category, null);
-		Map<String, Object> patternMap = getPattern(language, Arrays.asList(category), null);
+		Map<String, Object> patternMap = getPattern(language, Arrays.asList(category), scopeFilter);
 		if (null != patternMap.get(ConstantsKeys.CATEGORIES)) {
 			Map<String, Object> categoryMap = (Map<String, Object>) patternMap.get(ConstantsKeys.CATEGORIES);
 			if (null != categoryMap.get(category)) {
