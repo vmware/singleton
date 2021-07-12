@@ -86,5 +86,14 @@ namespace UnitTestSingleton.res.source2 {
                 return ResourceManager.GetString("about.title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About Version {x} of Product {y} add local.
+        /// </summary>
+        internal static string about_title2 {
+            get {
+                return ResourceManager.GetString("about.title2", resourceCulture);
+            }
+        }
     }
 }
