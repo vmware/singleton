@@ -110,6 +110,7 @@ class SingletonByKeyLocale(object):
         if componentIndex >= 0:
             componentObj = self._components.get_item_by_one_index(componentIndex)
             if componentObj != None:
+                componentObj.rel.task.check()
                 componentObj.task.check()
         return self._messages.get_item(pageIndex, indexInPage)
 
