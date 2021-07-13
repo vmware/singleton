@@ -50,7 +50,7 @@ type (
 	}
 	UpdateBundle struct {
 		ReleaseID
-		Translation []*BundleData `json:"translation" binding:"required"`
+		Translation []*BundleData `json:"translation" binding:"required,dive"`
 		DataOrigin  string        `json:"dataOrigin"`
 		Creation    struct {
 			OperationID string `json:"operationid"`
