@@ -4,33 +4,35 @@
  */
 package com.vmware.vip.i18n.api.v2.formatting.pattern;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.regex.Pattern;
-
-import com.vmware.i18n.utils.CommonUtil;
-import com.vmware.vip.common.constants.ConstantsKeys;
-import com.vmware.vip.common.constants.ConstantsMsg;
-import com.vmware.vip.common.exceptions.VIPCacheException;
-import com.vmware.vip.i18n.api.base.utils.CommonUtility;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-
 import com.vmware.i18n.l2.service.pattern.IPatternService;
+import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vip.api.rest.API;
 import com.vmware.vip.api.rest.APIOperation;
 import com.vmware.vip.api.rest.APIParamName;
 import com.vmware.vip.api.rest.APIParamValue;
 import com.vmware.vip.api.rest.APIV2;
+import com.vmware.vip.common.constants.ConstantsKeys;
+import com.vmware.vip.common.constants.ConstantsMsg;
+import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.common.i18n.dto.response.APIResponseDTO;
 import com.vmware.vip.common.i18n.status.APIResponseStatus;
 import com.vmware.vip.i18n.api.base.BaseAction;
-
+import com.vmware.vip.i18n.api.base.utils.CommonUtility;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Pattern;
 
 @RestController("v2-FormattingPatternAPI")
 public class FormattingPatternAPI extends BaseAction {
@@ -88,10 +90,26 @@ public class FormattingPatternAPI extends BaseAction {
         }
 
         Map<String, Object> patternMap = patternService.getPatternWithLanguageAndRegion(language, region, categories, scopeFilter);
-        if (!(boolean)patternMap.get("isExistPattern")) {
-            return super.handleResponse(APIResponseStatus.INTERNAL_NO_RESOURCE_ERROR, "'No mapping language found for region!");
+
+        int emptyCount = getEmptyCategoryCount(patternMap, categories);
+        if(emptyCount == 0) {
+            return super.handleResponse(APIResponseStatus.OK, patternMap);
+        }else if(emptyCount == categories.size()) {
+            return super.handleResponse(APIResponseStatus.INTERNAL_NO_RESOURCE_ERROR.getCode(), ConstantsMsg.NO_PATTERN_FOUND, null);
+        }else{
+            return super.handleResponse(APIResponseStatus.MULTTRANSLATION_PART_CONTENT.getCode(), ConstantsMsg.PART_PATTERN_FOUND, patternMap);
         }
-        patternMap.remove("isExistPattern");
-        return super.handleResponse(APIResponseStatus.OK, patternMap);
     }
+
+    private int getEmptyCategoryCount(Map<String, Object> patternMap, List<String> categories){
+        int count =0;
+        Map<String, Object> categoriesMap = (Map<String, Object>) patternMap.get(ConstantsKeys.CATEGORIES);
+        for(String category : categories){
+            Object cateData = categoriesMap.get(category);
+            if(cateData == null)
+                count++;
+        }
+        return count;
+    }
+
 }

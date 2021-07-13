@@ -42,7 +42,8 @@ dependencies {
     compile("org.apache.logging.log4j:log4j-api:$log4j2Version")
     compile("org.apache.logging.log4j:log4j-core:$log4j2Version")
     compile("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
-
+    compile("org.slf4j:slf4j-api:$slf4jVersion")
+    compile("org.slf4j:jul-to-slf4j:$slf4jVersion")
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
     }
