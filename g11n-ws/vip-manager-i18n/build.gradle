@@ -161,7 +161,7 @@ processResources {
         excludes=['**/application-s3.properties', '**/application-bundle.properties', '/l10n']
     }else {
         println "begin to exclude pgdb builder configuration file"
-        excludes=['**/application-pgdb.properties', '/l10n']
+        excludes=['**/application-pgdb.properties']
       
     }
 }
