@@ -106,11 +106,10 @@ class SingletonByKeyLocale(object):
         self._messages = SingletonByKeyTable(SingletonByKey.PAGE_MAX_SIZE)
         self._components = SingletonByKeyTable(SingletonByKey.COMPONENT_PAGE_MAX_SIZE)
 
-    def get_message(self, componentIndex, pageIndex, indexInPage):
+    def get_message(self, componentIndex, pageIndex, indexInPage, needCheck = True):
         if componentIndex >= 0:
             componentObj = self._components.get_item_by_one_index(componentIndex)
-            if componentObj != None:
-                componentObj.rel.task.check()
+            if componentObj != None and needCheck:
                 componentObj.task.check()
         return self._messages.get_item(pageIndex, indexInPage)
 
@@ -201,7 +200,7 @@ class SingletonByKey(object):
             return None
 
         if not needFallback:
-            message = localeItem.get_message(componentIndex, item._pageIndex, item._indexInPage)
+            message = localeItem.get_message(componentIndex, item._pageIndex, item._indexInPage, False)
             return message
 
         message = None
@@ -269,8 +268,8 @@ class SingletonByKey(object):
             if (status & 0x06) != 0x06:
                 status |= 0x01
             else:
-                localSource = self._sourceLocal.get_message(componentIndex, item._pageIndex, item._indexInPage)
-                remoteSource = self._sourceRemote.get_message(componentIndex, item._pageIndex, item._indexInPage)
+                localSource = self._sourceLocal.get_message(componentIndex, item._pageIndex, item._indexInPage, False)
+                remoteSource = self._sourceRemote.get_message(componentIndex, item._pageIndex, item._indexInPage, False)
                 if localSource == remoteSource:
                     status |= 0x01
                 else:
