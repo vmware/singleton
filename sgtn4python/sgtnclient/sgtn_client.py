@@ -671,13 +671,18 @@ class SingletonRelease(SingletonReleaseBase, Release, Translation):
         # method of Translation
         text = None
 
-        source = kwargs.get(KEY_SOURCE) if kwargs else None
+        sourceInCode = kwargs.get(KEY_SOURCE) if kwargs else None
         locale = kwargs.get(KEY_LOCALE) if kwargs else None
         items = kwargs.get(KEY_ITEMS) if kwargs else None
 
         if not locale:
             locale = SingletonClientManager().get_current_locale()
-        if source is None and component and component in self.useSourceLocale.components:
+        source = sourceInCode
+        if sourceInCode != None:
+            source = self._get_message(component, key, sourceInCode, self.cfg.source_locale)
+            if source != None and source != sourceInCode:
+                return sourceInCode
+        elif component and component in self.useSourceLocale.components:
             source = self.useSourceLocale.components[component].get_message(key)
 
         text = self._get_message(component, key, source, locale)

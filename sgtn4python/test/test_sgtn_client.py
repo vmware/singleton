@@ -73,11 +73,6 @@ class TestClient(unittest.TestCase):
         self.check_locale(trans, 'ZH_cn')
         self.check_locale(trans, 'EN_us')
 
-        components = ['about', 'contact']
-        locales = ['de', 'zh-Hans']
-        for comp in components:
-            for loc in locales:
-                trans.get_string(comp, '$', locale = loc)
         Util.run_test_data(self, trans, 'TestGetString1')
         Util.run_test_data(self, trans, 'TestGetString1T')
         if Util.is_async_supported():
