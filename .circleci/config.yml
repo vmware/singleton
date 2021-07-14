@@ -31,11 +31,12 @@ jobs:
     - checkout
     - run:
         name: build
-        env: TEST=build
+#        env: TEST=build
         command: |
-          if [ x${TEST} = xbuild ]; then
           make build
-          fi
+#          if [ x${TEST} = xbuild ]; then
+          
+#          fi
 
 
 workflows:
