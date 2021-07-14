@@ -15,12 +15,11 @@ jobs:
           name: check header
           env: TEST=check_header
           command: |
-            if [ x${TEST} == xcheck_header ]; then
             git clone --branch=devops https://github.com/vmware/singleton.git devops
             cp $TRAVIS_BUILD_DIR/devops/check_headers.py .
             chmod +x check_headers.py
             python3 ./check_headers.py -f "$(git diff --name-only --diff-filter=d $TRAVIS_COMMIT_RANGE)"
-            fi
+            
 
 
   build:
