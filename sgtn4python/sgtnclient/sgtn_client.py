@@ -323,17 +323,17 @@ class SingletonComponent:
             self.cache_path = os.path.join(self.rel.cache_path, component, 'messages_%s.json' % locale)
             self.rel.log('--- cache file --- %s ---' % self.cache_path)
 
-            if os.path.exists(self.cache_path):
+            if os.path.exists(self.cache_path) and not isLocalSource:
                 dt = FileUtil.read_json_file(self.cache_path)
                 if KEY_MESSAGES in dt:
                     self.task.last_time = os.path.getmtime(self.cache_path)
                     self.set_messages(dt[KEY_MESSAGES])
 
     def set_messages(self, messages):
-        self.countOfMessages = len(messages)
         for key in messages:
             text = messages[key]
             self.rel.bykey.set_string(key, self, self.componentIndex, self.localeItem, text)
+        self.countOfMessages = len(messages)
 
     def get_messages(self):
         return self.rel.bykey.get_messages(self.componentIndex, self.localeItem)
@@ -636,8 +636,8 @@ class SingletonReleaseBase:
         if componentIndex >= 0:
             combineKey = locale + '_!_' + component
             if combineKey not in self.component_handled:
-                self._get_component(locale, component)
                 self._get_component(self.remote_source_locale, component)
+                self._get_component(locale, component)
                 if self.isDifferent:
                     self._get_component(self.remote_default_locale, component)
                 self.component_handled[combineKey] = True
