@@ -150,6 +150,22 @@ locale: zh-CN
 key: about.title
 expect: 关于 Version {1} of Product {0}
 
+---data---
+type: GetString
+locale: zh-CN
+key: about.title
+source: About Version {1} of Product {0}
+expect: 关于 Version {1} of Product {0}
+
+---data---
+type: GetString
+locale: zh-CN
+key: about.title
+source: abc
+expect: abc
+
+
+
 ---test---
 NAME: TestGetString3
 COMMENT: test GetString()

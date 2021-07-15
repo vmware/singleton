@@ -61,7 +61,7 @@ class TestThread(Thread):
             locale = I18N.get_current_locale()
         expect = item.get('expect')
 
-        found = self.trans.get_string(component, key, locale = locale)
+        found = self.trans.get_string(component, key, locale = locale, source = source)
         self.ut.assertEqual(found, expect)
         if needPrint:
             logger.info('--- [%s]%s --- %s --- %s --- %s --- %s' % (
