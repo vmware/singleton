@@ -314,16 +314,17 @@ class SingletonComponent:
         self.localeItem = self.rel.bykey.get_locale_item(locale, isLocalSource)
         self.componentIndex = self.rel.bykey.get_component_index(component)
         self.component = component
+        self.isLocalSource = isLocalSource
         self.countOfMessages = 0
         self.etag = None
         self.cache_path = None
-        self.task = SingletonAccessRemoteTask(release_obj, self)
+        self.task = None if isLocalSource else SingletonAccessRemoteTask(release_obj, self)
 
-        if self.rel.cache_path:
+        if self.task and self.rel.cache_path:
             self.cache_path = os.path.join(self.rel.cache_path, component, 'messages_%s.json' % locale)
             self.rel.log('--- cache file --- %s ---' % self.cache_path)
 
-            if os.path.exists(self.cache_path) and not isLocalSource:
+            if os.path.exists(self.cache_path):
                 dt = FileUtil.read_json_file(self.cache_path)
                 if KEY_MESSAGES in dt:
                     self.task.last_time = os.path.getmtime(self.cache_path)

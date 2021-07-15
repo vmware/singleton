@@ -109,7 +109,7 @@ class SingletonByKeyLocale(object):
     def get_message(self, componentIndex, pageIndex, indexInPage, needCheck = True):
         if componentIndex >= 0:
             componentObj = self._components.get_item_by_one_index(componentIndex)
-            if componentObj != None and needCheck:
+            if componentObj != None and componentObj.task != None and needCheck:
                 componentObj.task.check()
         return self._messages.get_item(pageIndex, indexInPage)
 
