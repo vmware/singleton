@@ -62,6 +62,8 @@ class TestThread(Thread):
         expect = item.get('expect')
 
         found = self.trans.get_string(component, key, locale = locale, source = source)
+        if found != expect:
+            print('--- error --- %s' % self.ut.dict2string(item))
         self.ut.assertEqual(found, expect)
         if needPrint:
             logger.info('--- [%s]%s --- %s --- %s --- %s --- %s' % (

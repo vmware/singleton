@@ -20,7 +20,8 @@ plans = [
     {'product': 'PYTHON1', 'config': 'config/sgtn_online_only.yml'},
     {'product': 'PYTHON2', 'config': 'config/sgtn_offline_only.yml'},
     {'product': 'PYTHON3', 'config': 'config/sgtn_online_localsource.yml'},
-    {'product': 'PYTHON4', 'config': 'config/sgtn_online_default.yml'}
+    {'product': 'PYTHON4', 'config': 'config/sgtn_online_default.yml'},
+    {'product': 'PYTHON5', 'config': 'config/sgtn_offline_default.yml'}
     ]
 VERSION = '1.0.0'
 COMPONENT = 'about'
