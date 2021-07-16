@@ -389,13 +389,15 @@ class SingletonComponent:
 
 class SingletonUseLocale:
 
-    def __init__(self, singletonLocale, sourceLocale, isLocalSource):
+    def __init__(self, singletonLocale, sourceLocale, isLocalSource, bykey):
         self.singletonLocale = singletonLocale
         self.locale = self.singletonLocale.get_original_locale()
         self.isLocalSource = isLocalSource
 
         singletonSourceLocale = SingletonLocaleUtil.get_singleton_locale(sourceLocale)
         self.isSourceLocale = self.locale in singletonSourceLocale.get_near_locale_list()
+
+        self.localeItem = bykey.get_locale_item(self.locale, True) if isLocalSource and bykey else None
 
         self.components = {}
 
@@ -459,7 +461,7 @@ class SingletonReleaseBase:
             useLocale = singletonLocale.find_item(pool, 1)
 
             if useLocale is None:
-                useLocale = SingletonUseLocale(singletonLocale, self.cfg.source_locale, asSource)
+                useLocale = SingletonUseLocale(singletonLocale, self.cfg.source_locale, asSource, self.bykey)
 
             for one in useLocale.singletonLocale.get_near_locale_list():
                 if one not in pool:
@@ -638,10 +640,11 @@ class SingletonReleaseBase:
             combineKey = locale + '_!_' + component
             if combineKey not in self.component_handled:
                 self._get_component(self.remote_source_locale, component)
-                self._get_component(locale, component)
+                componentObj = self._get_component(locale, component)
                 if self.isDifferent:
                     self._get_component(self.remote_default_locale, component)
-                self.component_handled[combineKey] = True
+                if componentObj:
+                    self.component_handled[combineKey] = True
 
         localeItem = self.bykey.get_locale_item(locale, False)
         message = self.bykey.get_string(key, componentIndex, localeItem, True)
@@ -668,25 +671,38 @@ class SingletonRelease(SingletonReleaseBase, Release, Translation):
                 collect[component] = components[component].get_messages()
         return collect
 
+    def get_source(self, component, key, sourceInCode):
+        componentIndex = self.bykey.get_component_index(component)
+        source = self.bykey.get_string(key, componentIndex, self.useSourceLocale.localeItem, False)
+        if source != None:
+            return source
+
+        source = self._get_message(component, key, sourceInCode, self.cfg.source_locale)
+        return source
+
+    def get_raw(self, component, key, sourceInCode, locale, items):
+        useLocale = self.get_use_locale(locale, False)
+        if useLocale.isSourceLocale:
+            if sourceInCode != None:
+                return sourceInCode
+            return self.get_source(component, key, sourceInCode)
+
+        source = self.get_source(component, key, sourceInCode)
+        if sourceInCode != None and source != None and source != sourceInCode:
+            return sourceInCode
+
+        return self._get_message(component, key, source, locale)
+
     def get_string(self, component, key, **kwargs):
         # method of Translation
-        text = None
-
         sourceInCode = kwargs.get(KEY_SOURCE) if kwargs else None
         locale = kwargs.get(KEY_LOCALE) if kwargs else None
         items = kwargs.get(KEY_ITEMS) if kwargs else None
 
         if not locale:
             locale = SingletonClientManager().get_current_locale()
-        source = sourceInCode
-        if sourceInCode != None:
-            source = self._get_message(component, key, sourceInCode, self.cfg.source_locale)
-            if source != None and source != sourceInCode:
-                return sourceInCode
-        elif component and component in self.useSourceLocale.components:
-            source = self.useSourceLocale.components[component].get_message(key)
-
-        text = self._get_message(component, key, source, locale)
+            
+        text = self.get_raw(component, key, sourceInCode, locale, items)
         if text and items:
             if isinstance(items, list):
                 text = text.format(*items)
