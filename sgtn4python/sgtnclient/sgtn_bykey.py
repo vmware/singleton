@@ -106,11 +106,14 @@ class SingletonByKeyLocale(object):
         self._messages = SingletonByKeyTable(SingletonByKey.PAGE_MAX_SIZE)
         self._components = SingletonByKeyTable(SingletonByKey.COMPONENT_PAGE_MAX_SIZE)
 
-    def get_message(self, componentIndex, pageIndex, indexInPage, needCheck = True):
-        if componentIndex >= 0:
+    def check_task(self, componentIndex, needCheck):
+        if componentIndex >= 0 and needCheck:
             componentObj = self._components.get_item_by_one_index(componentIndex)
-            if componentObj != None and componentObj.task != None and needCheck:
+            if componentObj != None and componentObj.task != None:
                 componentObj.task.check()
+
+    def get_message(self, componentIndex, pageIndex, indexInPage, needCheck = True):
+        self.check_task(componentIndex, needCheck)
         return self._messages.get_item(pageIndex, indexInPage)
 
     def set_message(self, message, componentObject, componentIndex, pageIndex, indexInPage):
@@ -197,6 +200,7 @@ class SingletonByKey(object):
                 item = item._next
 
         if item is None:
+            localeItem.check_task(componentIndex, needFallback)
             return None
 
         if not needFallback:
