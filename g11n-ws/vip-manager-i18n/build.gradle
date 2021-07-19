@@ -73,17 +73,18 @@ dependencies {
     compile("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
     compile("org.slf4j:slf4j-api:$slf4jVersion")
     compile("org.slf4j:jul-to-slf4j:$slf4jVersion")
-    compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final")
     compile("org.apache.commons:commons-lang3:$commonsLangVersion")
     compile("commons-io:commons-io:$commonsIoVersion")
     compile("com.google.guava:guava:$guavaVersion")
     compile("commons-codec:commons-codec:$commonsCodecVersion")
-    compile("io.jsonwebtoken:jjwt:0.9.0")
-    compile("org.xerial:sqlite-jdbc:$sqliteVersion")
+    compile("org.yaml:snakeyaml:$snakeyam")
+    compile("io.jsonwebtoken:jjwt:$jjwt")
+    compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernate-jpa-2.1-api")
     compile("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
     compile("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
     compile("org.ehcache:ehcache:$ehCacheVersion")
     compile("javax.cache:cache-api:$cacheApiVersion")
+    compile("org.apache.httpcomponents:httpclient:$httpclient")
     // Actuator - START
     compile group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.5.5'
 	compile group: 'io.micrometer', name: 'micrometer-core', version: '1.5.5'
@@ -97,9 +98,9 @@ dependencies {
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
     compile('io.swagger:swagger-annotations:1.5.22')
     compile('io.swagger:swagger-models:1.5.22')
-    compile('org.yaml:snakeyaml:1.26')
-    compile("org.apache.httpcomponents:httpclient:$httpclient")
     //swagger UI -END
+  
+    
     //jdk 11
     runtime 'javax.xml.bind:jaxb-api:+'
     runtime 'javax.activation:activation:+'
@@ -107,8 +108,8 @@ dependencies {
     runtime 'com.sun.xml.bind:jaxb-core:+'
     //end jdk 11
     testCompile("org.springframework.boot:spring-boot-starter-test")
-    testCompile("org.asciidoctor:asciidoctorj:1.5.6")
-    testCompile("io.swagger:swagger-annotations:1.5.6")
+    //testCompile("org.asciidoctor:asciidoctorj:1.5.6")
+    //testCompile("io.swagger:swagger-annotations:1.5.6")
     testCompile("io.github.swagger2markup:swagger2markup:1.3.3")
     testCompile("org.springframework.restdocs:spring-restdocs-mockmvc")
 }
@@ -161,7 +162,7 @@ processResources {
         excludes=['**/application-s3.properties', '**/application-bundle.properties', '/l10n']
     }else {
         println "begin to exclude pgdb builder configuration file"
-        excludes=['**/application-pgdb.properties', '/l10n']
+        excludes=['**/application-pgdb.properties']
       
     }
 }
