@@ -20,8 +20,7 @@ namespace SingletonClient
         /// <param name="source"></param>
         /// <param name="comment"></param>
         /// <returns></returns>
-        ISource CreateSource(
-            string component, string key, string source = null, string comment = null);
+        ISource CreateSource(string component, string key, string source = null, string comment = null);
 
         /// <summary>
         /// Get translation of the locale for the source object.
@@ -39,8 +38,7 @@ namespace SingletonClient
         /// <param name="source"></param>
         /// <param name="comment"></param>
         /// <returns></returns>
-        string GetString(
-            string component, string key, string source = null, string comment = null);
+        string GetString(string component, string key, string source = null, string comment = null);
 
         /// <summary>
         /// Get translation after formatting.

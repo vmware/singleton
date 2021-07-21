@@ -10,14 +10,15 @@ namespace SingletonClient.Implementation.Support.ByKey
         bool IsSource();
         bool IsSourceLocale();
         int GetKeyCountInComponent(int componentIndex);
-        bool GetMessage(int componentIndex, int pageIndex, int indexInPage, out string message);
+        void CheckTask(int componentIndex, bool needCheck);
+        bool GetMessage(int componentIndex, int pageIndex, int indexInPage, out string message, bool needCheck = true);
         bool SetMessage(string message, ISingletonComponent componentObject,
             int componentIndex, int pageIndex, int indexInPage);
     }
 
     public class SingletonByKeyLocale : ISingletonByKeyLocale
     {
-        private readonly ISingletonByKeyRelease _bykey;
+        private readonly ISingletonByKey _bykey;
         private readonly bool _asSource;
         private readonly bool _isSourceLocale;
 
@@ -25,7 +26,7 @@ namespace SingletonClient.Implementation.Support.ByKey
         private readonly SingletonByKeyTable<ISingletonComponent> _components;
         private readonly SingletonByKeyTable<string> _messages;
 
-        public SingletonByKeyLocale(ISingletonByKeyRelease bykey, string locale, bool asSource)
+        public SingletonByKeyLocale(ISingletonByKey bykey, string locale, bool asSource)
         {
             this._bykey = bykey;
             ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
@@ -33,8 +34,8 @@ namespace SingletonClient.Implementation.Support.ByKey
             string sourceLocale = _bykey.GetSourceLocale();
             this._isSourceLocale = singletonLocale.Contains(sourceLocale);
 
-            _components = new SingletonByKeyTable<ISingletonComponent> (SingletonByKeyRelease.COMPONENT_PAGE_MAX_SIZE);
-            _messages = new SingletonByKeyTable<string>(SingletonByKeyRelease.PAGE_MAX_SIZE);
+            _components = new SingletonByKeyTable<ISingletonComponent> (SingletonByKey.COMPONENT_PAGE_MAX_SIZE);
+            _messages = new SingletonByKeyTable<string>(SingletonByKey.PAGE_MAX_SIZE);
         }
 
         /// <summary>
@@ -59,7 +60,7 @@ namespace SingletonClient.Implementation.Support.ByKey
         public int GetKeyCountInComponent(int componentIndex)
         {
             int count = 0;
-            for (int i = 0; i < SingletonByKeyRelease.PAGE_MAX_SIZE; i++)
+            for (int i = 0; i < SingletonByKey.PAGE_MAX_SIZE; i++)
             {
                 string[] page = _messages.GetPage(i);
                 if (page == null)
@@ -82,16 +83,26 @@ namespace SingletonClient.Implementation.Support.ByKey
             return count;
         }
 
-        public bool GetMessage(int componentIndex, int pageIndex, int indexInPage, out string message)
+
+        public void CheckTask(int componentIndex, bool needCheck)
         {
-            if (componentIndex >= 0)
+            if (componentIndex >= 0 && needCheck)
             {
                 ISingletonComponent componentObj = _components.GetItemByOneIndex(componentIndex);
                 if (componentObj != null)
                 {
-                    componentObj.GetAccessTask().CheckTimeSpan();
+                    ISingletonAccessTask task = componentObj.GetAccessTask();
+                    if (task != null)
+                    {
+                        task.Check();
+                    }
                 }
             }
+        }
+
+        public bool GetMessage(int componentIndex, int pageIndex, int indexInPage, out string message, bool needCheck = true)
+        {
+            this.CheckTask(componentIndex, needCheck);
 
             message = _messages.GetItem(pageIndex, indexInPage);
             return message != null;

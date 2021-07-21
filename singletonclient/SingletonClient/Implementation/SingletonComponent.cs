@@ -31,13 +31,13 @@ namespace SingletonClient.Implementation
         private readonly string _locale;
         private readonly string _component;
 
+        private readonly ISingletonAccessTask _task;
+
         private string _etag;
         private bool _localHandled = false;
 
-        private readonly ISingletonAccessTask _task;
-
         public SingletonComponent(ISingletonRelease releaseObject, IComponentMessages componentMessages,
-            ISingletonLocale singletonLocale, string component)
+            ISingletonLocale singletonLocale, string component, bool asSource)
         {
             _releaseObject = releaseObject;
             _singletonLocale = singletonLocale;
@@ -48,7 +48,7 @@ namespace SingletonClient.Implementation
             int interval = config.GetInterval();
             int tryDelay = config.GetTryDelay();
 
-            _task = new SingletonAccessRemoteTask(this, interval, tryDelay);
+            _task = asSource ? null : new SingletonAccessRemoteTask(this, interval, tryDelay);
 
             ICacheMessages productCache = releaseObject.GetReleaseMessages();
             ILocaleMessages langCache = productCache.GetLocaleMessages(_locale);
@@ -114,7 +114,7 @@ namespace SingletonClient.Implementation
             ISingletonConfig config = _releaseObject.GetSingletonConfig();
             if (config.IsOfflineSupported())
             {
-                _releaseObject.GetUpdate().LoadOfflineBundle(_singletonLocale);
+                _releaseObject.GetUpdate().LoadOfflineMessage(_singletonLocale);
             }
         }
 

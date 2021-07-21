@@ -21,7 +21,7 @@ namespace SingletonClient.Implementation.Support
         private readonly bool asSource;
         private readonly Hashtable components = SingletonUtil.NewHashtable(true);
 
-        private readonly ISingletonByKeyRelease byKeyRelease;
+        private readonly ISingletonByKey byKey;
         private ISingletonByKeyLocale byKeyLocale;
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace SingletonClient.Implementation.Support
             this.locale = locale;
             this.asSource = asSource;
 
-            this.byKeyRelease = this.release.GetSingletonByKeyRelease();
+            this.byKey = this.release.GetSingletonByKey();
         }
 
         /// <summary>
@@ -112,8 +112,8 @@ namespace SingletonClient.Implementation.Support
 
             if (this.byKeyLocale != null)
             {
-                int componentIndex = this.byKeyRelease.GetComponentIndex(component);
-                return this.byKeyRelease.GetString(key, componentIndex, this.byKeyLocale);
+                int componentIndex = this.byKey.GetComponentIndex(component);
+                return this.byKey.GetString(key, componentIndex, this.byKeyLocale);
             }
 
             if (string.IsNullOrEmpty(component))
@@ -122,9 +122,9 @@ namespace SingletonClient.Implementation.Support
             }
 
             IComponentMessages componentCache = this.GetComponentMessages(component);
-            if (this.byKeyRelease != null)
+            if (this.byKey != null)
             {
-                this.byKeyLocale = byKeyRelease.GetLocaleItem(this.locale, this.asSource);
+                this.byKeyLocale = byKey.GetLocaleItem(this.locale, this.asSource);
             }
             return (componentCache == null) ? null : componentCache.GetString(key);
         }
