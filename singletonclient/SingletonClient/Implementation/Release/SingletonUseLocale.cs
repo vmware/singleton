@@ -4,6 +4,7 @@
  */
 
 using SingletonClient.Implementation.Support;
+using SingletonClient.Implementation.Support.ByKey;
 using System.Collections;
 
 namespace SingletonClient.Implementation.Release
@@ -13,18 +14,26 @@ namespace SingletonClient.Implementation.Release
         public ISingletonLocale SingletonLocale { get; }
         public string Locale { get; }
         public bool IsSourceLocale { get; }
+        public bool AsSource { get; }
 
         public Hashtable Components { get; }
         public ILocaleMessages LocaleMessages { get; set; }
 
-        public SingletonUseLocale(ISingletonLocale singletonLocale, string sourceLocale)
+        public ISingletonByKeyLocale LocaleItem { get; }
+
+        public SingletonUseLocale(ISingletonLocale singletonLocale, string sourceLocale, bool asSource, ISingletonByKey byKey)
         {
             SingletonLocale = singletonLocale;
             Locale = singletonLocale.GetOriginalLocale();
+            AsSource = asSource;
 
             ISingletonLocale singletonSourceLocale = SingletonUtil.GetSingletonLocale(sourceLocale);
             IsSourceLocale = singletonSourceLocale.GetNearLocaleList().Contains(Locale);
 
+            if (byKey != null)
+            {
+                LocaleItem = byKey.GetLocaleItem(Locale, asSource);
+            }
             Components = SingletonUtil.NewHashtable(true);
         }
     }

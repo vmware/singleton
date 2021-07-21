@@ -17,10 +17,10 @@ namespace SingletonClient.Implementation.Support.ByKey
         {
             this.ComponentIndex = (short)componentIndex;
 
-            int value = itemIndex / SingletonByKeyRelease.PAGE_MAX_SIZE;
+            int value = itemIndex / SingletonByKey.PAGE_MAX_SIZE;
             this.PageIndex = (short)value;
 
-            value = itemIndex % SingletonByKeyRelease.PAGE_MAX_SIZE;
+            value = itemIndex % SingletonByKey.PAGE_MAX_SIZE;
             this.IndexInPage = (short)value;
 
             SourceStatus = 0x01;

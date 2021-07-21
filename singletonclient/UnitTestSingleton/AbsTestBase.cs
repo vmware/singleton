@@ -57,6 +57,10 @@ namespace UnitTestSingleton
                     Console.WriteLine(String.Format("--- [{0}]{1} --- {2} --- {3} --- {4} --- {5}",
                         group["NAME"], this.idThread, testComponent, testKey, testLocale, testExpected));
                 }
+                if (testTranslation != testExpected)
+                {
+                    testTranslation = this.trans.GetString(testLocale, src);
+                }
                 Assert.AreEqual(testTranslation, testExpected);
                 return (int)this.group["_interval"];
             }

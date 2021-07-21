@@ -42,7 +42,7 @@ namespace SingletonClient.Implementation
         /// <summary>
         /// Check time span for updating.
         /// </summary>
-        void CheckTimeSpan();
+        void Check();
     }
 
     /// <summary>
@@ -120,7 +120,7 @@ namespace SingletonClient.Implementation
             th.Start();
         }
 
-        public void CheckTimeSpan()
+        public void Check()
         {
             if (!_update.GetSingletonConfig().IsOnlineSupported())
             {

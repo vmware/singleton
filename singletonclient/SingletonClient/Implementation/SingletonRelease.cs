@@ -22,7 +22,7 @@ namespace SingletonClient.Implementation
         ISingletonApi GetApi();
         ISingletonUpdate GetUpdate();
         ICacheMessages GetReleaseMessages();
-        ISingletonByKeyRelease GetSingletonByKeyRelease();
+        ISingletonByKey GetSingletonByKey();
         IAccessService GetAccessService();
         ISingletonComponent GetComponentObject(
             IComponentMessages componentMessages, string locale, string component, bool asSource);
@@ -92,9 +92,9 @@ namespace SingletonClient.Implementation
         /// <summary>
         /// ISingletonRelease
         /// </summary>
-        public ISingletonByKeyRelease GetSingletonByKeyRelease()
+        public ISingletonByKey GetSingletonByKey()
         {
-            return _byKeyRelease;
+            return _byKey;
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace SingletonClient.Implementation
                     if (componentLocalList.Count == 0 || componentLocalList.Contains(component))
                     {
                         ISource sourceObject = this.CreateSource(component, "$", "$");
-                        this.GetStringFromCache(_localeList[i], sourceObject);
+                        this.GetRaw(_localeList[i], sourceObject);
                     }
                 }
             }
@@ -223,7 +223,9 @@ namespace SingletonClient.Implementation
         /// </summary>
         public ILocaleMessages GetAllSource()
         {
-            return _sourceCache;
+            ILocaleMessages languageMessages = GetReleaseMessages().GetLocaleMessages(
+                _config.GetSourceLocale(), true);
+            return languageMessages;
         }
 
         /// <summary>
@@ -231,7 +233,8 @@ namespace SingletonClient.Implementation
         /// </summary>
         public ILocaleMessages GetLocaleMessages(string locale, bool asSource = false)
         {
-            ILocaleMessages languageMessages = GetReleaseMessages().GetLocaleMessages(locale, asSource);
+            ILocaleMessages languageMessages = GetReleaseMessages().GetLocaleMessages(
+                locale, asSource);
             return languageMessages;
         }
 
@@ -261,14 +264,14 @@ namespace SingletonClient.Implementation
         public ISource CreateSource(
             string component, string key, string source = null, string comment = null)
         {
-            if ((component == null && _byKeyRelease == null) || key == null)
+            if ((component == null && _byKey == null) || key == null)
             {
                 return null;
             }
 
-            if (source == null && _byKeyRelease == null)
+            if (source == null && _byKey == null)
             {
-                source = GetSourceMessage(component, key);
+                source = GetSource(component, key);
             }
             ISource src = new SingletonSource(component, key, source, comment);
             return src;
@@ -279,9 +282,9 @@ namespace SingletonClient.Implementation
         /// </summary>
         public string GetString(string locale, ISource source)
         {
-            _task.CheckTimeSpan();
+            _task.Check();
 
-            return GetStringFromCache(locale, source);
+            return GetRaw(locale, source);
         }
 
         /// <summary>

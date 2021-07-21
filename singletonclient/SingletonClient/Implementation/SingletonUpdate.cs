@@ -30,7 +30,7 @@ namespace SingletonClient.Implementation
         /// <param name="resourcePath"></param>
         /// <param name="locale"></param>
         /// <param name="parserName"></param>
-        void UpdateBundleFromOffline(IComponentMessages componentCache,
+        void UpdateMessageFromOffline(IComponentMessages componentCache,
             string storeType, string resourcePath, string locale, string parserName);
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace SingletonClient.Implementation
         /// </summary>
         /// <param name="componentCache"></param>
         /// <param name="map"></param>
-        void UpdateBundleFromMap(IComponentMessages componentCache, Hashtable map);
+        void UpdateMessageFromMap(IComponentMessages componentCache, Hashtable map);
 
         /// <summary>
         /// Load offline bundle to its cache.
@@ -46,7 +46,7 @@ namespace SingletonClient.Implementation
         /// <param name="singletonLocale"></param>
         /// <param name="asSource"></param>
         /// <returns></returns>
-        ILocaleMessages LoadOfflineBundle(ISingletonLocale singletonLocale, bool asSource = false);
+        ILocaleMessages LoadOfflineMessage(ISingletonLocale singletonLocale, bool asSource = false);
     }
 
     public class SingletonUpdate : ISingletonUpdate
@@ -77,7 +77,7 @@ namespace SingletonClient.Implementation
             }
         }
 
-        private void UpdateBundleFromInternal(
+        private void UpdateMessageFromInternal(
             IComponentMessages componentCache, string resourceName, string locale, string parserName)
         {
             if (resourceName.Contains(SingletonConst.PlaceNoLocaleDefine))
@@ -104,10 +104,10 @@ namespace SingletonClient.Implementation
                 bundle = parser.Parse(text);
             }
 
-            UpdateBundleFromMap(componentCache, bundle);
+            UpdateMessageFromMap(componentCache, bundle);
         }
 
-        private void UpdateBundleFromExternal(
+        private void UpdateMessageFromExternal(
             IComponentMessages componentCache, string resourcePath, string locale, string parserName)
         {
             IResourceParser parser = SingletonClientManager.GetInstance().GetResourceParser(parserName);
@@ -135,7 +135,7 @@ namespace SingletonClient.Implementation
             if (text != null)
             {
                 Hashtable bundle = parser.Parse(text);
-                UpdateBundleFromMap(componentCache, bundle);
+                UpdateMessageFromMap(componentCache, bundle);
             }
 
             if (ConfigConst.FormatBundle.Equals(parserName))
@@ -145,7 +145,7 @@ namespace SingletonClient.Implementation
             }
         }
 
-        public void UpdateBundleFromOffline(IComponentMessages componentCache,
+        public void UpdateMessageFromOffline(IComponentMessages componentCache,
             string storeType, string resourcePath, string locale, string parserName)
         {
             if (resourcePath == null)
@@ -158,15 +158,15 @@ namespace SingletonClient.Implementation
 
             if (ConfigConst.StoreTypeInternal.Equals(storeType))
             {
-                UpdateBundleFromInternal(componentCache, resourcePath, locale, parserName);
+                UpdateMessageFromInternal(componentCache, resourcePath, locale, parserName);
             }
             else if (ConfigConst.StoreTypeExternal.Equals(storeType))
             {
-                UpdateBundleFromExternal(componentCache, resourcePath, locale, parserName);
+                UpdateMessageFromExternal(componentCache, resourcePath, locale, parserName);
             }
         }
 
-        public void UpdateBundleFromMap(IComponentMessages componentCache, Hashtable map)
+        public void UpdateMessageFromMap(IComponentMessages componentCache, Hashtable map)
         {
             if (map != null)
             {
@@ -177,7 +177,7 @@ namespace SingletonClient.Implementation
             }
         }
 
-        public ILocaleMessages LoadOfflineBundle(ISingletonLocale singletonLocale, bool asSource = false)
+        public ILocaleMessages LoadOfflineMessage(ISingletonLocale singletonLocale, bool asSource = false)
         {
             string locale = singletonLocale.GetOriginalLocale();
             if (_usedOfflineLocales.Contains(locale))
@@ -191,7 +191,7 @@ namespace SingletonClient.Implementation
             for (int i = 0; i < singletonLocale.GetCount(); i++)
             {
                 string nearLocale = singletonLocale.GetNearLocale(i);
-                languageMessages = LoadOfflineLocaleBundle(locale, nearLocale, asSource);
+                languageMessages = LoadOfflineLocaleMessage(locale, nearLocale, asSource);
                 if (languageMessages != null)
                 {
                     break;
@@ -228,7 +228,7 @@ namespace SingletonClient.Implementation
             return _localComponentList;
         }
 
-        private ILocaleMessages LoadOfflineLocaleBundle(string locale, string nearLocale, bool asSource)
+        private ILocaleMessages LoadOfflineLocaleMessage(string locale, string nearLocale, bool asSource)
         {
             string[] parts = new string[3];
             string[] arrayFormat = _config.GetDefaultResourceFormat().Split(',');
@@ -254,7 +254,7 @@ namespace SingletonClient.Implementation
                         parts[m] = (m < array.Length) ? array[m].Trim() : arrayFormat[m - 1].Trim();
                     }
 
-                    UpdateBundleFromOffline(componentCache,
+                    UpdateMessageFromOffline(componentCache,
                         parts[2], parts[0], nearLocale, parts[1]);
 
                     messageCount += componentCache.GetCount();
