@@ -6,7 +6,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Reflection;
+using System.Resources;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -215,7 +217,8 @@ namespace UnitTestSingleton
             Dictionary<string, string> configMap = new Dictionary<string, string>();
             configMap.Add("$PRODUCT", resStrings[2]);
 
-            IConfig cfg = I18N.LoadConfig(resStrings[0], Assembly.GetExecutingAssembly(), resStrings[1], configMap);
+            IConfig cfgOutside = I18N.LoadConfigFromText("product: " + resStrings[2]);
+            IConfig cfg = I18N.LoadConfig(resStrings[0], Assembly.GetExecutingAssembly(), resStrings[1], cfgOutside);
             product = cfg.GetItem(ConfigConst.KeyProduct).GetString();
             version = cfg.GetItem(ConfigConst.KeyVersion).GetString();
 

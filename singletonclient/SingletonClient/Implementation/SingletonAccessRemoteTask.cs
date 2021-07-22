@@ -50,14 +50,14 @@ namespace SingletonClient.Implementation
     /// </summary>
     public class SingletonAccessRemoteTask: ISingletonAccessTask
     {
-        private bool _querying = false;
-        private bool _trying = false;
-
         private readonly ISingletonAccessRemote _update;
-
-        private int _interval;
         private readonly int _tryDelay;
 
+        private bool _querying = false;
+        private bool _trying = false;
+        private bool _expireEnabled = true;
+
+        private int _interval;
         private int _ticks;
 
         public SingletonAccessRemoteTask(
@@ -68,61 +68,20 @@ namespace SingletonClient.Implementation
             _tryDelay = tryDelay * 1000;
         }
 
+        /// <summary>
+        /// ISingletonAccessTask
+        /// </summary>
         public void SetInterval(int interval)
         {
             _interval = interval;
         }
 
-        public void GetFromRemote()
-        {
-            try
-            {
-                _update.GetDataFromRemote();
-                _trying = false;
-            }
-            catch (Exception)
-            {
-                _trying = true;
-            }
-
-            _ticks = System.Environment.TickCount;
-            _querying = false;
-        }
-
-        public bool TryAccessRemote()
-        {
-            if (_querying)
-            {
-                while (_update.GetDataCount() == 0 && _querying)
-                {
-                    Thread.Sleep(100);
-                }
-            }
-            else
-            {
-                _querying = true;
-                if (_update.GetDataCount() == 0)
-                {
-                    GetFromRemote();
-                }
-                else
-                {
-                    LaunchUpdateThread();
-                }
-            }
-
-            return true;
-        }
-
-        private void LaunchUpdateThread()
-        {
-            Thread th = new Thread(this.GetFromRemote);
-            th.Start();
-        }
-
+        /// <summary>
+        /// ISingletonAccessTask
+        /// </summary>
         public void Check()
         {
-            if (!_update.GetSingletonConfig().IsOnlineSupported())
+            if (!_update.GetSingletonConfig().IsOnlineSupported() || !_expireEnabled)
             {
                 return;
             }
@@ -149,6 +108,56 @@ namespace SingletonClient.Implementation
                     }
                 }
             }
+        }
+
+        private void GetFromRemote()
+        {
+            try
+            {
+                _update.GetDataFromRemote();
+                _trying = false;
+            }
+            catch (Exception)
+            {
+                _trying = true;
+            }
+
+            if (!_update.GetSingletonConfig().IsExpireEnabled() && _update.GetDataCount() > 0)
+            {
+                _expireEnabled = false;
+            }
+
+            _ticks = System.Environment.TickCount;
+            _querying = false;
+        }
+
+        private void TryAccessRemote()
+        {
+            if (_querying)
+            {
+                while (_update.GetDataCount() == 0 && _querying)
+                {
+                    Thread.Sleep(100);
+                }
+            }
+            else
+            {
+                _querying = true;
+                if (_update.GetDataCount() == 0)
+                {
+                    GetFromRemote();
+                }
+                else
+                {
+                    LaunchUpdateThread();
+                }
+            }
+        }
+
+        private void LaunchUpdateThread()
+        {
+            Thread th = new Thread(this.GetFromRemote);
+            th.Start();
         }
     }
 }

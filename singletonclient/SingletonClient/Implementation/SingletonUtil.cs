@@ -58,9 +58,14 @@ namespace SingletonClient.Implementation
         /// <param name="assembly"></param>
         /// <param name="resourceName"></param>
         /// <returns></returns>
-        public static Byte[] ReadResource(
+        public static byte[] ReadResource(
             string resourceBaseName, Assembly assembly, string resourceName, string locale = null)
         {
+            if (assembly == null)
+            {
+                return new byte[0];
+            }
+
             resourceBaseName = assembly.GetName().Name + "." + resourceBaseName;
             string[] parts = Regex.Split(resourceName, "__ITEMNAME__");
             if (parts.Length > 1)
@@ -73,9 +78,9 @@ namespace SingletonClient.Implementation
             if (locale != null)
             {
                 CultureInfo cultureInfo = new CultureInfo(locale);
-                return (Byte[])resourceManager.GetObject(resourceName, cultureInfo);
+                return (byte[])resourceManager.GetObject(resourceName, cultureInfo);
             }
-            Byte[] bytes = (Byte[])resourceManager.GetObject(resourceName);
+            byte[] bytes = (byte[])resourceManager.GetObject(resourceName);
             return bytes;
         }
 
@@ -88,6 +93,10 @@ namespace SingletonClient.Implementation
         public static Hashtable ReadResourceMap(string resourceBaseName, string locale, Assembly assembly)
         {
             Hashtable table = new Hashtable();
+            if (assembly == null)
+            {
+                return table;
+            }
 
             resourceBaseName = assembly.GetName().Name + "." + resourceBaseName;
             ResourceManager resourceManager = new ResourceManager(resourceBaseName, assembly);
