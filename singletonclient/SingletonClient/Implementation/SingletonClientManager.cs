@@ -12,7 +12,8 @@ namespace SingletonClient.Implementation
 {
     public interface ISingletonClientManager
     {
-        IConfig LoadConfig(string resourceBaseName, Assembly assembly, string configResourceName, Dictionary<string, string> replaceMap = null);
+        IConfig LoadConfig(string text);
+        IConfig LoadConfig(string resourceBaseName, Assembly assembly, string configResourceName, IConfig outsideConfig = null);
         IConfig GetConfig(string product, string version);
         IRelease GetRelease(IConfig config);
         ICacheManager GetCacheManager(string cacheManagerName);
@@ -127,20 +128,32 @@ namespace SingletonClient.Implementation
             return rel;
         }
 
+        public IConfig LoadConfig(string text)
+        {
+            SingletonConfig config = new SingletonConfig(null);
+            config.SetConfigData(text);
+            return config;
+        }
+
         public IConfig LoadConfig(
-            string resourceBaseName, Assembly assembly, string configResourceName, Dictionary<string, string> replaceMap = null)
+            string resourceBaseName, Assembly assembly, string configResourceName, IConfig outsideConfig = null)
         {
             SingletonConfig config = new SingletonConfig(assembly);
             string text = config.ReadResourceText(resourceBaseName, configResourceName);
-            if (replaceMap != null)
+            config.SetConfigData(text);
+
+            if (config.GetRoot() != null && outsideConfig != null)
             {
-                foreach (var one in replaceMap)
+                IConfigItem outsideRoot = outsideConfig.GetRoot();
+                if (outsideRoot != null)
                 {
-                    text = text.Replace(one.Key, one.Value);
+                    List<string> keyList = outsideRoot.GetMapKeyList();
+                    foreach(string key in keyList)
+                    {
+                        config.GetRoot().SetMapItem(key, outsideRoot.GetMapItem(key).Clone());
+                    }
                 }
             }
-
-            config.SetConfigData(text);
 
             ISingletonConfig singletonConfig = new SingletonConfigWrapper(config);
             string product = singletonConfig.GetProduct();

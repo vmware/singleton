@@ -15,6 +15,17 @@ namespace SingletonClient
     public static class I18N
     {
         /// <summary>
+        /// Load the configuration from text.
+        /// </summary>
+        /// <param name="text">Configuration</param>
+        /// <returns></returns>
+        public static IConfig LoadConfigFromText(string text)
+        {
+            ISingletonClientManager client = SingletonClientManager.GetInstance();
+            return client.LoadConfig(text);
+        }
+
+        /// <summary>
         /// Load the configuration kept in the assembly's resource.
         /// </summary>
         /// <param name="resourceBaseName">Resource path</param>
@@ -22,10 +33,10 @@ namespace SingletonClient
         /// <param name="configResourceName">Configuration name in the assembly's resource</param>
         /// <returns></returns>
         public static IConfig LoadConfig(
-            string resourceBaseName, Assembly assembly, string configResourceName, Dictionary<string, string> replaceMap = null)
+            string resourceBaseName, Assembly assembly, string configResourceName, IConfig outsideConfig = null)
         {
             ISingletonClientManager client = SingletonClientManager.GetInstance();
-            return client.LoadConfig(resourceBaseName, assembly, configResourceName, replaceMap);
+            return client.LoadConfig(resourceBaseName, assembly, configResourceName, outsideConfig);
         }
 
         /// <summary>

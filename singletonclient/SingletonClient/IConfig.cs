@@ -14,6 +14,11 @@ namespace SingletonClient
     public interface IConfigItem
     {
         /// <summary>
+        /// Clone a new object.
+        /// </summary>
+        IConfigItem Clone();
+
+        /// <summary>
         /// Get string value of a config item.
         /// </summary>
         string GetString();
@@ -35,11 +40,24 @@ namespace SingletonClient
         int GetInt();
 
         /// <summary>
+        /// Get key list of the map.
+        /// </summary>
+        List<string> GetMapKeyList();
+
+        /// <summary>
         /// Get an item from the map.
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
         IConfigItem GetMapItem(string key);
+
+        /// <summary>
+        /// Set item to the map.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        void SetMapItem(string key, IConfigItem item);
 
         /// <summary>
         /// Get item list.
@@ -62,6 +80,11 @@ namespace SingletonClient
     /// </summary>
     public interface IConfig
     {
+        /// <summary>
+        /// Get root config item
+        /// </summary>
+        IConfigItem GetRoot();
+
         /// <summary>
         /// Get config item
         /// </summary>
@@ -114,6 +137,11 @@ namespace SingletonClient
         /// <param name="locale"></param>
         /// <returns></returns>
         Hashtable ReadResourceMap(string resourceName, string format, string locale = null);
+
+        /// <summary>
+        /// Get resource list.
+        /// </summary>
+        List<string> GetResourceList(string resourceBaseName);
     }
 
     public static class ConfigConst
@@ -130,6 +158,7 @@ namespace SingletonClient
         public const string KeyComponents = "components";
         public const string KeyTemplate = "template";
         public const string KeyComponentTemplate = "component_template";
+        public const string KeyComponentEnumerate = "component_enumerate";
         public const string KeyName = "name";
         public const string KeyLocales = "locales";
         public const string KeyLocalesRefer = "locales_refer";
@@ -147,6 +176,7 @@ namespace SingletonClient
         public const string KeyCacheType = "cache_type";
         public const string KeyCacheComponentType = "cache_component_type";
         public const string KeyCacheExpire = "cache_expire";
+        public const string KeyEnableExpire = "enable_expire";
         public const string KeyTryDelay = "try_delay";
         public const string KeyLoggerType = "logger_type";
         public const string KeyLogLevel = "log_level";

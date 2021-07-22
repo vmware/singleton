@@ -6,6 +6,7 @@
 using SingletonClient.Implementation.Support;
 using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -55,6 +56,8 @@ namespace SingletonClient.Implementation
 
         int GetInterval();
 
+        bool IsExpireEnabled();
+
         int GetTryDelay();
 
         bool IsOnlineSupported();
@@ -73,49 +76,76 @@ namespace SingletonClient.Implementation
     public class SingletonConfigItem : IConfigItem
     {
         private readonly YamlNode _node;
+        private readonly string _type;
 
-        public SingletonConfigItem(object node)
+        private readonly Dictionary<string, IConfigItem> _map;
+        private readonly List<IConfigItem> _list;
+        private readonly List<string> _strings = SingletonUtil.GetEmptyStringList();
+
+        private readonly string _value;
+
+        public SingletonConfigItem(YamlNode node)
         {
-            _node = (YamlNode)node;
+            _node = node;
+            _type = node.GetType().Name;
+
+            if (_type == "YamlMappingNode")
+            {
+                YamlMappingNode mappingNode = (YamlMappingNode)node;
+                _map = new Dictionary<string, IConfigItem>();
+
+                foreach (var item in mappingNode.Children)
+                {
+                    _map.Add(item.Key.ToString(), new SingletonConfigItem(item.Value));
+                }
+            }
+            else if (_type == "YamlScalarNode")
+            {
+                YamlScalarNode scalarNode = (YamlScalarNode)node;
+                _value = scalarNode.Value;
+            }
+            else if (_type == "YamlSequenceNode")
+            {
+                YamlSequenceNode sequenceNode = (YamlSequenceNode)node;
+                foreach (var item in sequenceNode.Children)
+                {
+                    string itemType = item.GetType().Name;
+                    if (itemType == "YamlMappingNode")
+                    {
+                        if (_list == null)
+                        {
+                            _list = new List<IConfigItem>();
+                        }
+                        _list.Add(new SingletonConfigItem(item));
+                    }
+                    else if (itemType == "YamlScalarNode")
+                    {
+                        YamlScalarNode scalarNode = (YamlScalarNode)item;
+                        _strings.Add(scalarNode.Value);
+                    }
+                }
+            }
         }
 
-        private string GetNodeString(YamlNode node, string key)
+        public IConfigItem Clone()
         {
-            YamlNode n = (node == null || string.IsNullOrEmpty(key)) ? node : node[key];
-            return (n == null) ? null : n.ToString();
+            return (_node == null) ? null : new SingletonConfigItem(_node);
         }
 
         public string GetString()
         {
-            return GetNodeString(_node, null);
+            return _value;
         }
 
         public List<string> GetStringList()
         {
-            if (_node == null)
-            {
-                return SingletonUtil.GetEmptyStringList();
-            }
-            List<string> itemList = new List<string>();
-
-            YamlSequenceNode v = (YamlSequenceNode)_node;
-            foreach (var entry in v.Children)
-            {
-                YamlScalarNode one = (YamlScalarNode)entry;
-                itemList.Add(one.Value);
-            }
-
-            return itemList;
+            return _strings;
         }
 
         public bool GetBool()
         {
             string text = GetString();
-            if (text == null)
-            {
-                return false;
-            }
-            return "true".Equals(text);
+            return (text != null) && "true".Equals(text);
         }
 
         public int GetInt()
@@ -124,63 +154,68 @@ namespace SingletonClient.Implementation
             return (text == null) ? 0 : Convert.ToInt32(text);
         }
 
+        public List<string> GetMapKeyList()
+        {
+            List<string> keyList = SingletonUtil.GetEmptyStringList();
+            if (_map != null)
+            {
+                foreach (var pair in _map)
+                {
+                    keyList.Add(pair.Key);
+                }
+            }
+            return keyList;
+        }
+
         public IConfigItem GetMapItem(string key)
         {
-            YamlMappingNode node = (YamlMappingNode)_node;
-            if (node != null)
+            if (_map != null && _map.ContainsKey(key))
             {
-                foreach (var item in node.Children)
-                {
-                    if (item.Key.ToString().Equals(key))
-                    {
-                        IConfigItem configItem = new SingletonConfigItem(item.Value);
-                        return configItem;
-                    }
-                }
-
+                return _map[key];
             }
             return null;
         }
 
+        public void SetMapItem(string key, IConfigItem item)
+        {
+            if (_map != null)
+            {
+                _map[key] = item;
+            }
+        }
+
         public List<string> GetArrayItemList(string key)
         {
-            List<string> itemList = new List<string>();
+            List<string> valueList = SingletonUtil.GetEmptyStringList();
 
-            if (_node != null && !string.IsNullOrEmpty(key))
+            if (_list != null)
             {
-                YamlSequenceNode v = (YamlSequenceNode)_node;
-
-                foreach (var entry in v.Children)
+                foreach (IConfigItem item in _list)
                 {
-                    string value = GetNodeString(entry, key);
-                    if (!string.IsNullOrEmpty(value) && !itemList.Contains(value))
+                    IConfigItem temp = item.GetMapItem(key);
+                    if (temp != null)
                     {
-                        itemList.Add(value);
+                        valueList.Add(temp.GetString());
                     }
                 }
             }
-            return itemList;
+
+            return valueList;
         }
 
         public IConfigItem GetArrayItem(string key, string value)
         {
-            if (string.IsNullOrEmpty(key) || string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(key) || string.IsNullOrEmpty(value) || _list == null)
             {
                 return null;
             }
-            if (_node == null)
-            {
-                return null;
-            }
-            YamlSequenceNode v = (YamlSequenceNode)_node;
 
-            foreach (var entry in v.Children)
+            foreach (IConfigItem item in _list)
             {
-                string text = GetNodeString(entry, key);
-                if (value.Equals(text))
+                IConfigItem temp = item.GetMapItem(key);
+                if (temp != null && temp.GetString().Equals(value))
                 {
-                    IConfigItem configItem = new SingletonConfigItem(entry);
-                    return configItem;
+                    return item;
                 }
             }
 
@@ -190,6 +225,8 @@ namespace SingletonClient.Implementation
 
     public class SingletonConfig : IConfig
     {
+        private const string TAIL = ".resources";
+
         private IConfigItem _root;
 
         private readonly Assembly _resourceAssembly;
@@ -209,6 +246,31 @@ namespace SingletonClient.Implementation
         private void ReadConfig(string configText)
         {
             _root = new SingletonConfigItem(SingletonUtil.GetYamlRoot(configText));
+
+            IConfigItem configItem = _root.GetMapItem(ConfigConst.KeyComponentEnumerate);
+            if (configItem != null && "auto".Equals(configItem.GetString()))
+            {
+                configItem = _root.GetMapItem(ConfigConst.KeyOfflineUrl);
+                string offline = configItem.GetString();
+                if (!string.IsNullOrEmpty(offline))
+                {
+                    List<string> componentList = this.GetResourceList(offline);
+                    if (componentList.Count > 0)
+                    {
+                        IConfigItem temp = _root.GetMapItem(ConfigConst.KeyComponents);
+                        if (temp == null)
+                        {
+                            StringBuilder sb = new StringBuilder("components:\n");
+                            for (int i = 0; i < componentList.Count; i++)
+                            {
+                                sb.Append("  - name: " + componentList[i] + "\n");
+                            }
+
+                            _root = new SingletonConfigItem(SingletonUtil.GetYamlRoot(configText + "\n" + sb.ToString()));
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -221,12 +283,17 @@ namespace SingletonClient.Implementation
             var strs = Regex.Split(text, "(#.*)");
 
             StringBuilder stringBuilder = new StringBuilder("");
-            for (int i = 0; i < strs.Length; i+=2)
+            for (int i = 0; i < strs.Length; i += 2)
             {
                 stringBuilder.Append(strs[i]);
             }
 
             ReadConfig(stringBuilder.ToString());
+        }
+
+        public IConfigItem GetRoot()
+        {
+            return _root;
         }
 
         public IConfigItem GetItem(string key)
@@ -332,7 +399,7 @@ namespace SingletonClient.Implementation
         /// <returns></returns>
         public string ReadResourceText(string resourceBaseName, string resourceName, string locale = null)
         {
-            Byte[] bytes = SingletonUtil.ReadResource(
+            byte[] bytes = SingletonUtil.ReadResource(
                 resourceBaseName, _resourceAssembly, resourceName, locale);
             string text = SingletonUtil.ConvertToText(bytes);
             return text;
@@ -362,9 +429,32 @@ namespace SingletonClient.Implementation
 
             return SingletonUtil.NewHashtable(true);
         }
+
+        public List<string> GetResourceList(string resourceBaseName)
+        {
+            List<string> nameList = new List<string>();
+            if (_resourceAssembly != null)
+            {
+                string head = _resourceAssembly.GetName().Name + ".";
+                if (!string.IsNullOrEmpty(resourceBaseName))
+                {
+                    head += resourceBaseName + ".";
+                }
+                string[] array = _resourceAssembly.GetManifestResourceNames();
+                Array.Sort(array);
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (array[i].StartsWith(head) && array[i].EndsWith(TAIL))
+                    {
+                        nameList.Add(array[i].Substring(head.Length, array[i].Length - head.Length - TAIL.Length));
+                    }
+                }
+            }
+            return nameList;
+        }
     }
 
-    public class SingletonConfigWrapper: ISingletonConfig
+    public class SingletonConfigWrapper : ISingletonConfig
     {
         private readonly IConfig _config;
 
@@ -384,6 +474,7 @@ namespace SingletonClient.Implementation
         private readonly bool _isSourceDefault;
         private readonly bool _isLoadOnStartup;
         private readonly bool _isCacheByKey;
+        private readonly bool _isExpireEnabled;
 
         public SingletonConfigWrapper(IConfig config)
         {
@@ -440,6 +531,9 @@ namespace SingletonClient.Implementation
             configItem = _config.GetItem(ConfigConst.KeyLoadOnStartup);
             _isLoadOnStartup = (configItem != null) && configItem.GetBool();
 
+            configItem = _config.GetItem(ConfigConst.KeyEnableExpire);
+            _isExpireEnabled = (configItem == null) || configItem.GetBool();
+
             bool isCacheByKey = ConfigConst.CacheByKey.Equals(this.GetCacheType(), StringComparison.InvariantCultureIgnoreCase);
             bool isCacheDefault = ConfigConst.DefaultType.Equals(this.GetCacheType(), StringComparison.InvariantCultureIgnoreCase);
             bool isCacheComponentDefault = ConfigConst.DefaultType.Equals(this.GetCacheComponentType(), StringComparison.InvariantCultureIgnoreCase);
@@ -466,7 +560,7 @@ namespace SingletonClient.Implementation
                     _externalComponentList.Add(dirinfo[i].Name);
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 SingletonUtil.HandleException(e);
             }
@@ -541,7 +635,7 @@ namespace SingletonClient.Implementation
             }
 
             ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
-            for (int i=0; i<localeNames.Count; i++)
+            for (int i = 0; i < localeNames.Count; i++)
             {
                 ISingletonLocale oneLocale = SingletonUtil.GetSingletonLocale(localeNames[i]);
                 if (oneLocale.Compare(singletonLocale))
@@ -591,6 +685,11 @@ namespace SingletonClient.Implementation
         {
             IConfigItem configItem = _config.GetItem(ConfigConst.KeyCacheExpire);
             return (configItem == null) ? ConfigConst.DefaultCacheExpire : configItem.GetInt();
+        }
+
+        public bool IsExpireEnabled()
+        {
+            return _isExpireEnabled;
         }
 
         public int GetTryDelay()
