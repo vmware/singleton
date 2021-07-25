@@ -248,26 +248,36 @@ namespace SingletonClient.Implementation
             _root = new SingletonConfigItem(SingletonUtil.GetYamlRoot(configText));
 
             IConfigItem configItem = _root.GetMapItem(ConfigConst.KeyComponentEnumerate);
-            if (configItem != null && "auto".Equals(configItem.GetString()))
+            string autoType = (configItem != null) ? configItem.GetString() : null;
+            string[] autoParts = Regex.Split(autoType + ", path", "\\,[ |\t]*");
+            if (autoParts[0] == "auto" && (autoParts[1] == "path" || autoParts[1] == "file"))
             {
                 configItem = _root.GetMapItem(ConfigConst.KeyOfflineUrl);
-                string offline = configItem.GetString();
+                string offline = (configItem != null) ? configItem.GetString() : null;
                 if (!string.IsNullOrEmpty(offline))
                 {
                     List<string> componentList = this.GetResourceList(offline);
-                    if (componentList.Count > 0)
+                    IConfigItem temp = _root.GetMapItem(ConfigConst.KeyComponents);
+                    if (componentList.Count > 0 && temp == null)
                     {
-                        IConfigItem temp = _root.GetMapItem(ConfigConst.KeyComponents);
-                        if (temp == null)
+                        StringBuilder sb = new StringBuilder("components:\n");
+                        for (int i = 0; i < componentList.Count; i++)
                         {
-                            StringBuilder sb = new StringBuilder("components:\n");
-                            for (int i = 0; i < componentList.Count; i++)
+                            string name = componentList[i];
+                            if (autoParts[1] == "path")
                             {
-                                sb.Append("  - name: " + componentList[i] + "\n");
+                                string[] parts = Regex.Split(name, "(\\.)");
+                                if (parts.Length > 2)
+                                {
+                                    parts[parts.Length - 2] = "";
+                                    parts[parts.Length - 1] = "";
+                                    name = string.Join("", parts);
+                                }
                             }
-
-                            _root = new SingletonConfigItem(SingletonUtil.GetYamlRoot(configText + "\n" + sb.ToString()));
+                            sb.Append("  - name: " + name + "\n");
                         }
+
+                        _root = new SingletonConfigItem(SingletonUtil.GetYamlRoot(configText + "\n" + sb.ToString()));
                     }
                 }
             }
