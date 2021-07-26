@@ -58,6 +58,10 @@ namespace SingletonClient.Implementation
             {
                 GetDataFromRemote();
             }
+            else
+            {
+                CheckLoadOnStartup(false);
+            }
         }
 
         public ISingletonConfig GetSingletonConfig()
@@ -129,24 +133,6 @@ namespace SingletonClient.Implementation
             }
         }
 
-        private void CheckLoadOnStartup()
-        {
-            List<string> componentLocalList = _config.GetConfig().GetComponentList();
-
-            for (int i = 0; i < _localeList.Count; i++)
-            {
-                for (int k = 0; k < _componentList.Count; k++)
-                {
-                    string component = _componentList[k];
-                    if (componentLocalList.Count == 0 || componentLocalList.Contains(component))
-                    {
-                        ISource sourceObject = this.CreateSource(component, "$", "$");
-                        this.GetRaw(_localeList[i], sourceObject);
-                    }
-                }
-            }
-        }
-
         /// <summary>
         /// ISingletonAccessRemote
         /// </summary>
@@ -161,13 +147,7 @@ namespace SingletonClient.Implementation
             Log(LogType.Info, "get locale list and component list from remote: " +
                 _config.GetProduct() + " / " + _config.GetVersion());
 
-            if (!_isLoadedOnStartup && _config.IsLoadOnStartup())
-            {
-                _isLoadedOnStartup = true;
-
-                Thread th = new Thread(this.CheckLoadOnStartup);
-                th.Start();
-            }
+            CheckLoadOnStartup(true);
         }
 
         /// <summary>
@@ -376,6 +356,42 @@ namespace SingletonClient.Implementation
                 return SingletonUtil.GetEmptyStringList();
             }
             return singletonLocale.GetNearLocaleList();
+        }
+
+        private void LoadOnStartup()
+        {
+            List<string> componentLocalList = _config.GetConfig().GetComponentList();
+
+            for (int i = 0; i < _localeList.Count; i++)
+            {
+                for (int k = 0; k < _componentList.Count; k++)
+                {
+                    string component = _componentList[k];
+                    if (componentLocalList.Count == 0 || componentLocalList.Contains(component))
+                    {
+                        ISource sourceObject = this.CreateSource(component, "$", "$");
+                        this.GetRaw(_localeList[i], sourceObject);
+                    }
+                }
+            }
+        }
+
+        private void CheckLoadOnStartup(bool byThread)
+        {
+            if (!_isLoadedOnStartup && _config.IsLoadOnStartup())
+            {
+                _isLoadedOnStartup = true;
+
+                if (byThread)
+                {
+                    Thread th = new Thread(LoadOnStartup);
+                    th.Start();
+                }
+                else
+                {
+                    LoadOnStartup();
+                }
+            }
         }
     }
 }
