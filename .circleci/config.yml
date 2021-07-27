@@ -10,17 +10,11 @@ jobs:
     - checkout
     - run:
         name: build
-#        env: TEST=build
         command: |
           ls -ltr
           make build
           ls -ltr
           ls -ltr builds
-
-#          if [ x${TEST} = xbuild ]; then
-          
-#          fi
-
 
 workflows:
   main:
