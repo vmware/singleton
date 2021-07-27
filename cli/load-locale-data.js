@@ -74,14 +74,14 @@ class LoadLocaleData {
                     let translationPromise = that.vipConfig.scope
                         ? that.vipService.loadCombineData(locale)
                         : that.vipService.loadTranslation(locale);
-                    translationPromise.then(function ({ body }) {
-                        let { response } = body;
+                    translationPromise.then(function (body) {
+                        let { response } = body.data;
                         if (response.code === 200) {
                             const fileName = that.vipConfig.scope
                                 ? `${locale}.json`
                                 : `${that.vipConfig.TRANSLATION_PREFIX + locale}.json`
                             let translationPath = path.resolve(that.directory, fileName);
-                            that.generatePackage(translationPath, body);
+                            that.generatePackage(translationPath, body.data);
                         } else {
                             that.logger.error('cannot got resource due to ', response.message);
                         }
