@@ -4,10 +4,8 @@
  */
 package com.vmware.i18n;
 
-import com.vmware.i18n.pattern.action.PatternAction;
 import com.vmware.i18n.utils.JSONUtil;
 import com.vmware.i18n.utils.timezone.TimeZoneName;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -34,8 +32,7 @@ public class PatternUtilTest {
 	public void testGetPatternAPI() {
     	String locale = "fr";
 		String cateStr= "dates,numbers,plurals";
-		PatternAction pa = PatternAction.getInstance();
-		String json = pa.getPattern(locale, cateStr);
+		String json = PatternUtil.getPatternFromLib(locale, cateStr);
 		Map<String, Object> patternMap = (Map<String, Object>) JSONUtil.getMapFromJson(json);
 		Map<String, Object> catesMap = (Map<String, Object>) patternMap.get("categories");
 		String[] catesArr = cateStr.split(",");
@@ -48,7 +45,26 @@ public class PatternUtilTest {
 	@Test
 	public void testtimezoneListAPI() {
     	String locale = "fr";
-    	PatternAction pa = PatternAction.getInstance();
-    	TimeZoneName json = pa.getTimeZoneName(locale, true);
+    	TimeZoneName json = PatternUtil.getTimeZoneName(locale, true);
+		Assert.assertEquals("fr", json.getLanguage());
+		Assert.assertNotNull(json.getTimeZoneNames());
     }
+
+	@Test
+	public void testGetLanguageFromLib() {
+		String locale = "en";
+		String json = PatternUtil.getLanguageFromLib(locale);
+		Map<String, Object> languagesMap = (Map<String, Object>) JSONUtil.getMapFromJson(json);
+		Assert.assertEquals("en", languagesMap.get("displayLanguage"));
+		Assert.assertNotNull(languagesMap.get("languages"));
+	}
+
+	@Test
+	public void testGetContextTransformFromLib() {
+		String locale = "en";
+		String json = PatternUtil.getContextTransformFromLib(locale);
+		Map<String, Object> contextTransformsMap = (Map<String, Object>) JSONUtil.getMapFromJson(json);
+		Assert.assertEquals("en", contextTransformsMap.get("languages"));
+		Assert.assertNotNull(contextTransformsMap.get("contextTransforms"));
+	}
 }
