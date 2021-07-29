@@ -4,19 +4,20 @@
  */
 package com.vmware.i18n.locale.service.impl;
 
-import java.text.MessageFormat;
-import java.util.Map;
-
 import com.vmware.i18n.common.CLDRConstants;
 import com.vmware.i18n.common.Constants;
 import com.vmware.i18n.locale.dao.impl.LocaleDaoImpl;
 import com.vmware.i18n.locale.service.ILocaleService;
 import com.vmware.i18n.utils.JSONUtil;
 import com.vmware.i18n.utils.LocalJSONReader;
+import com.vmware.i18n.utils.PathUtils;
+
+import java.text.MessageFormat;
+import java.util.Map;
 
 @SuppressWarnings("unchecked")
 public class LocaleServiceImpl implements ILocaleService {
-
+	private String resourcePath = PathUtils.getResourcePath();
 	public static Map<String, String> localePathMap = null;
 	public static Map<String, String> defaultContentMap = null;
 	static {
@@ -38,7 +39,7 @@ public class LocaleServiceImpl implements ILocaleService {
 		if (localePathMap.get(language) == null)
 			return "";
 		filePath = MessageFormat.format(filePath, localePathMap.get(language));
-		return new LocaleDaoImpl().getLocaleData(CLDRConstants.JSON_PATH, filePath);
+		return new LocaleDaoImpl().getLocaleData(resourcePath, filePath);
 	}
 
 	/**
@@ -66,7 +67,7 @@ public class LocaleServiceImpl implements ILocaleService {
 		if (localePathMap.get(displayLanguage) == null)
 			return "";
 		String filePath = MessageFormat.format(CLDRConstants.CONTEXT_TRANSFORM_PATH, localePathMap.get(displayLanguage));
-		return new LocaleDaoImpl().getLocaleData(CLDRConstants.JSON_PATH, filePath);
+		return new LocaleDaoImpl().getLocaleData(resourcePath, filePath);
 	}
 
 }
