@@ -7,7 +7,7 @@ description = 'VIP i18n pattern CLDR data extract tools'
 ext {
     javaLevel = 1.8
     cldrVersion = '32.0.0'
-    projectVersion = '0.10.37'
+    projectVersion = '0.11.0'
     deployPath="$rootDir/../publish/"
     sourceCompatibility = javaLevel
     version = '1.0'
@@ -15,13 +15,14 @@ ext {
 
 configurations {
     jar
+    zip
 }
 
 jar {
     baseName = "i18n-patterns-core"
     version = "$projectVersion"
     classifier = ''
-    exclude('**/cldr/data/*')
+    exclude('**/cldr/data','**/cldr/pattern/**','**/cldr/localedata/**','**/cldr/misc/**')
 }
 
 repositories {
@@ -49,25 +50,46 @@ tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
 
-task copyLibs(type :Copy, dependsOn: jar) {
-    from "$buildDir/libs"
+task download(type: JavaExec, dependsOn: classes){
+    main 'com.vmware.i18n.PatternParseMain'
+    classpath sourceSets.main.runtimeClasspath
+}
+
+task copyResources(type: Copy, dependsOn: download) {
+    File dir = new File("${buildDir}/resources/main");
+    dir.deleteDir();
+    from "${projectDir}/src/main/resources"
+    into "${buildDir}/resources/main"
+}
+
+task generateBundleZip(type: Zip, dependsOn: copyResources){
+    archiveBaseName='cldr'
+    archiveVersion = "$projectVersion"
+    from "${buildDir}/resources/main/cldr"
+    includes =['pattern/**','localedata/**','misc/**']
+    into "cldr"
+    //destinationDir file("$rootDir/../publish/")
+
+}
+
+task generateEnZip(type: Zip, dependsOn: copyResources){
+    archiveBaseName='cldr-en'
+    archiveVersion = "$projectVersion"
+    from "${buildDir}/resources/main/cldr"
+    includes =['pattern/**/en/**','localedata/en/**','misc/en/**']
+    into "cldr"
+    //destinationDir file("$rootDir/../publish/")
+
+}
+
+task copyLibs(type :Copy, dependsOn: [jar, generateBundleZip, generateEnZip]) {
+    from "$buildDir/libs", "$buildDir/distributions"
     into "$rootDir/../../../publish/"
     println "The build was output to -> $rootDir/../../../publish/"
-    include "**/*.jar"
+    include "**/*.jar", "**/*.zip"
 }
 
-task copyResources(type: Copy) {
-	File dir = new File("${buildDir}/classes/main");
-	dir.deleteDir();
-    from "${projectDir}/src/main/resources"
-    into "${buildDir}/classes/main"
-}
-processTestResources.dependsOn copyResources
 
-task download(type: JavaExec, dependsOn: classes){
-	main 'com.vmware.i18n.PatternParseMain'
-	classpath sourceSets.main.runtimeClasspath
-}
 
-assemble.dependsOn.add download
+
 assemble.dependsOn.add copyLibs
