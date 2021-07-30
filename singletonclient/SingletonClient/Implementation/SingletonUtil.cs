@@ -209,10 +209,11 @@ namespace SingletonClient.Implementation
             return ResponseStatus.NoMessages;
         }
 
-        public static JObject HttpGetJson(IAccessService accessService, string url, Hashtable headers)
+        public static JObject HttpGetJson(IAccessService accessService,
+            string url, Hashtable headers, int timeout, ILog logger)
         {
             JObject obj = new JObject();
-            string text = accessService.HttpGet(url, headers);
+            string text = accessService.HttpGet(url, headers, timeout, logger);
             if (text != null)
             {
                 JObject dict = ConvertToDict(text);
@@ -221,11 +222,12 @@ namespace SingletonClient.Implementation
             return obj;
         }
 
-        public static JObject HttpPost(IAccessService accessService, string url, string text, Hashtable headers)
+        public static JObject HttpPost(IAccessService accessService,
+            string url, string text, Hashtable headers, int timeout, ILog logger = null)
         {
             JObject obj = new JObject();
 
-            string responseData = accessService.HttpPost(url, text, headers);
+            string responseData = accessService.HttpPost(url, text, headers, timeout, logger);
             if (!string.IsNullOrEmpty(responseData))
             {
                 obj.Add(SingletonConst.KeyResult, ConvertToDict(responseData));
