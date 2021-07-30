@@ -40,7 +40,7 @@ namespace SingletonClient
         /// <param name="url"></param>
         /// <param name="headers"></param>
         /// <returns></returns>
-        string HttpGet(string url, Hashtable headers);
+        string HttpGet(string url, Hashtable headers, int timeout, ILog logger = null);
 
         /// <summary>
         /// Send a http post request.
@@ -49,7 +49,7 @@ namespace SingletonClient
         /// <param name="text"></param>
         /// <param name="headers"></param>
         /// <returns></returns>
-        string HttpPost(string url, string text, Hashtable headers);
+        string HttpPost(string url, string text, Hashtable headers, int timeout, ILog logger = null);
     }
 
     /// <summary>

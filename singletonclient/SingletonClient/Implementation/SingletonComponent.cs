@@ -24,7 +24,7 @@ namespace SingletonClient.Implementation
 
     public class SingletonComponent : ISingletonComponent, ISingletonAccessRemote
     {
-        private readonly ISingletonRelease _releaseObject;
+        private readonly ISingletonRelease _release;
         private readonly IComponentMessages _componentCache;
 
         private readonly ISingletonLocale _singletonLocale;
@@ -36,21 +36,21 @@ namespace SingletonClient.Implementation
         private string _etag;
         private bool _localHandled = false;
 
-        public SingletonComponent(ISingletonRelease releaseObject, IComponentMessages componentMessages,
+        public SingletonComponent(ISingletonRelease release, IComponentMessages componentMessages,
             ISingletonLocale singletonLocale, string component, bool asSource)
         {
-            _releaseObject = releaseObject;
+            _release = release;
             _singletonLocale = singletonLocale;
             _locale = _singletonLocale.GetOriginalLocale();
             _component = component;
 
-            ISingletonConfig config = releaseObject.GetSingletonConfig();
+            ISingletonConfig config = _release.GetSingletonConfig();
             int interval = config.GetInterval();
             int tryDelay = config.GetTryDelay();
 
             _task = asSource ? null : new SingletonAccessRemoteTask(this, interval, tryDelay);
 
-            ICacheMessages productCache = releaseObject.GetReleaseMessages();
+            ICacheMessages productCache = _release.GetReleaseMessages();
             ILocaleMessages langCache = productCache.GetLocaleMessages(_locale);
             _componentCache = componentMessages == null ?
                 langCache.GetComponentMessages(component) : componentMessages;
@@ -58,18 +58,19 @@ namespace SingletonClient.Implementation
 
         public ISingletonConfig GetSingletonConfig()
         {
-            return _releaseObject.GetSingletonConfig();
+            return _release.GetSingletonConfig();
         }
 
         public void GetDataFromRemote()
         {
-            string adr = _releaseObject.GetApi().GetComponentApi(_component, _locale);
+            string adr = _release.GetApi().GetComponentApi(_component, _locale);
             Hashtable headers = SingletonUtil.NewHashtable(false);
             if (_etag != null)
             {
                 headers[SingletonConst.HeaderRequestEtag] = _etag;
             }
-            JObject obj = SingletonUtil.HttpGetJson(_releaseObject.GetAccessService(), adr, headers);
+            JObject obj = SingletonUtil.HttpGetJson(_release.GetAccessService(), adr, headers,
+                _release.GetSingletonConfig().GetTryDelay(), _release.GetLogger());
             ResponseStatus status = SingletonUtil.CheckResponseValid(obj, headers);
             if (status == ResponseStatus.Messages)
             {
@@ -111,10 +112,10 @@ namespace SingletonClient.Implementation
             }
             _localHandled = true;
 
-            ISingletonConfig config = _releaseObject.GetSingletonConfig();
+            ISingletonConfig config = _release.GetSingletonConfig();
             if (config.IsOfflineSupported())
             {
-                _releaseObject.GetUpdate().LoadOfflineMessage(_singletonLocale);
+                _release.GetUpdate().LoadOfflineMessage(_singletonLocale);
             }
         }
 

@@ -26,11 +26,11 @@ namespace SingletonClient.Implementation
         IAccessService GetAccessService();
         ISingletonComponent GetComponentObject(
             IComponentMessages componentMessages, string locale, string component, bool asSource);
-        void Log(LogType logType, string text);
+        ILog GetLogger();
     }
 
     public class SingletonRelease : SingletonReleaseForCache, ISingletonRelease, ISingletonAccessRemote,
-        IRelease, IReleaseMessages, ITranslation
+        IRelease, IReleaseMessages, ITranslation, ILog
     {
         private bool _isLoadedOnStartup = false;
 
@@ -124,6 +124,15 @@ namespace SingletonClient.Implementation
 
         /// <summary>
         /// ISingletonRelease
+        /// </summary>
+        /// <returns></returns>
+        public ILog GetLogger()
+        {
+            return this;
+        }
+
+        /// <summary>
+        /// ILog
         /// </summary>
         public void Log(LogType logType, string text)
         {

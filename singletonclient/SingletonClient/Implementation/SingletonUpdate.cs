@@ -53,6 +53,7 @@ namespace SingletonClient.Implementation
     {
         protected ISingletonRelease _release;
         protected ISingletonConfig _config;
+        protected int _tryDelay;
 
         private readonly List<string> _usedOfflineLocales = new List<string>();
         private List<string> _localComponentList = null;
@@ -61,12 +62,13 @@ namespace SingletonClient.Implementation
         {
             _release = release;
             _config = release.GetSingletonConfig();
+            _tryDelay = _config.GetTryDelay();
         }
 
         public void UpdateBriefinfo(string url, string infoName, List<string> infoList)
         {
             Hashtable headers = SingletonUtil.NewHashtable(false);
-            JObject obj = SingletonUtil.HttpGetJson(_release.GetAccessService(), url, headers);
+            JObject obj = SingletonUtil.HttpGetJson(_release.GetAccessService(), url, headers, _tryDelay, _release.GetLogger());
 
             if (SingletonUtil.CheckResponseValid(obj, headers) == ResponseStatus.Messages)
             {
@@ -129,7 +131,7 @@ namespace SingletonClient.Implementation
             }
 
             string path = _config.GetExternalResourceRoot() + resourcePath;
-            string text = path.StartsWith("http") ? _release.GetAccessService().HttpGet(path, null) :
+            string text = path.StartsWith("http") ? _release.GetAccessService().HttpGet(path, null, _tryDelay, null) :
                 SingletonUtil.ReadTextFile(path);
 
             if (text != null)

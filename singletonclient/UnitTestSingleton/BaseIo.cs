@@ -184,7 +184,7 @@ namespace UnitTestSingleton
         /// <summary>
         /// IAccessService
         /// </summary>
-        public string HttpGet(string url, Hashtable headers)
+        public string HttpGet(string url, Hashtable headers, int timeout, ILog logger = null)
         {
             return this.GetResponse("[GET]" + url, headers);
         }
@@ -192,7 +192,7 @@ namespace UnitTestSingleton
         /// <summary>
         /// IAccessService
         /// </summary>
-        public string HttpPost(string url, string text, Hashtable headers)
+        public string HttpPost(string url, string text, Hashtable headers, int timeout, ILog logger = null)
         {
             return this.GetResponse("[POST]" + url, headers);
         }

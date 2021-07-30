@@ -16,13 +16,17 @@ namespace SingletonClient.Implementation.Support
         /// <summary>
         /// IAccessService
         /// </summary>
-        public string HttpGet(string url, Hashtable headers)
+        public string HttpGet(string url, Hashtable headers, int timeout, ILog logger = null)
         {
             string result = "";
 
             try
             {
                 HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+                if (timeout > 0)
+                {
+                    req.Timeout = timeout * 1000;
+                }
                 req.Method = "GET";
 
                 if (headers != null)
@@ -60,10 +64,18 @@ namespace SingletonClient.Implementation.Support
                     headers.Clear();
                     headers.Add(SingletonConst.HeaderResponseCode, resp.StatusCode.ToString());
                 }
+                if (logger != null)
+                {
+                    logger.Log(LogType.Info, e.Message);
+                }
                 return null;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                if (logger != null)
+                {
+                    logger.Log(LogType.Info, e.Message);
+                }
                 return null;
             }
             return result;
@@ -72,7 +84,7 @@ namespace SingletonClient.Implementation.Support
         /// <summary>
         /// IAccessService
         /// </summary>
-        public string HttpPost(string url, string text, Hashtable headers)
+        public string HttpPost(string url, string text, Hashtable headers, int timeout, ILog logger = null)
         {
             if (text == null)
             {
@@ -82,6 +94,10 @@ namespace SingletonClient.Implementation.Support
             HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create(url);
             byte[] bs = Encoding.UTF8.GetBytes(text);
             string responseData = null;
+            if (timeout > 0)
+            {
+                req.Timeout = timeout * 1000;
+            }
             req.Method = "POST";
             req.ContentType = "application/json";
             req.ContentLength = bs.Length;
@@ -102,8 +118,12 @@ namespace SingletonClient.Implementation.Support
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                if (logger != null)
+                {
+                    logger.Log(LogType.Info, e.Message);
+                }
                 return null;
             }
 
