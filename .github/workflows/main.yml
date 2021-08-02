@@ -83,10 +83,10 @@ jobs:
       - name: Generate coverage
         if: ${{ steps.were-only-docs-updated-action.outputs.were-only-docs-updated == 'no' }}
         run: |
-          echo ${{env.SONAR_ORG}}
+          echo ${{secrets.SONAR_ORG}}
           git clone --branch=devops https://github.com/vmware/singleton.git devops
-          cd $GITHUB_WORKSPACE/devops/sonar/ && python ./config_sonar_project.py -ProjectName=${{env.SONAR_ORG}}-singleton-service-${{ steps.get-branch-name-action.outputs.branch-name }} -ProjectKey=${{env.SONAR_ORG}}-singleton-service-${{ steps.get-branch-name-action.outputs.branch-name }} -OrgKey=${{env.SONAR_ORG}} -QualityGateName=service-gate -QualityGateConditions="./quality_gates/service_quality_gate.json" -SonarToken=${{env.SONAR_TOKEN}}
-          cd $GITHUB_WORKSPACE/g11n-ws && sed -i "s/rootProject.name = 'singleton'/rootProject.name = '${{env.SONAR_ORG}}-singleton-service-${{ steps.get-branch-name-action.outputs.branch-name }}'/" settings.gradle && cat settings.gradle
+          cd $GITHUB_WORKSPACE/devops/sonar/ && python ./config_sonar_project.py -ProjectName=${{secrets.SONAR_ORG}}-singleton-service-${{ steps.get-branch-name-action.outputs.branch-name }} -ProjectKey=${{secrets.SONAR_ORG}}-singleton-service-${{ steps.get-branch-name-action.outputs.branch-name }} -OrgKey=${{secrets.SONAR_ORG}} -QualityGateName=service-gate -QualityGateConditions="./quality_gates/service_quality_gate.json" -SonarToken=${{secrets.SONAR_TOKEN}}
+          cd $GITHUB_WORKSPACE/g11n-ws && sed -i "s/rootProject.name = 'singleton'/rootProject.name = '${{secrets.SONAR_ORG}}-singleton-service-${{ steps.get-branch-name-action.outputs.branch-name }}'/" settings.gradle && cat settings.gradle
           cd $GITHUB_WORKSPACE/g11n-ws && ./gradlew test jacocoTestReport
       - name: Analyze with SonarCloud
         if: ${{ steps.were-only-docs-updated-action.outputs.were-only-docs-updated == 'no' }}
