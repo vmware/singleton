@@ -1,0 +1,150 @@
+name: main
+on: [pull_request, push]
+jobs:
+  check-header:
+    name: Check Header
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2.  
+      - name: Get commit range
+        id: get-commit-range-action
+        uses: ./.github/actions/get-commit-range-action
+      - name: Were only docs updated
+        id: were-only-docs-updated-action
+        uses: ./.github/actions/were-only-docs-updated-action
+        with:
+          commit-range: ${{ steps.get-commit-range-action.outputs.commit-range }}
+      - name: Check header
+        if: ${{ steps.were-only-docs-updated-action.outputs.were-only-docs-updated == 'no' }}
+        run: |
+          git clone --branch=devops https://github.com/vmware/singleton.git devops
+          cp $GITHUB_WORKSPACE/devops/check_headers.py .
+          chmod +x check_headers.py
+          python ./check_headers.py -f "$(git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }})"
+  unit-test:
+    name: Unit Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2.  
+      - name: Get commit range
+        id: get-commit-range-action
+        uses: ./.github/actions/get-commit-range-action
+      - name: Were only docs updated
+        id: were-only-docs-updated-action
+        uses: ./.github/actions/were-only-docs-updated-action
+        with:
+          commit-range: ${{ steps.get-commit-range-action.outputs.commit-range }}
+      - name: Set up JDK 8
+        if: ${{ steps.were-only-docs-updated-action.outputs.were-only-docs-updated == 'no' }}
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '8'
+      - name: Unit test
+        if: ${{ steps.were-only-docs-updated-action.outputs.were-only-docs-updated == 'no' }}
+        run: |
+          cd $GITHUB_WORKSPACE/g11n-ws
+          ./gradlew test --console=plain
+  code-scan:
+    name: Code Scan
+    runs-on: ubuntu-latest
+    env: 
+      SONAR_ORG: ${{ secrets.SONAR_ORG }}
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2.  
+      - name: Get commit range
+        id: get-commit-range-action
+        uses: ./.github/actions/get-commit-range-action
+      - name: Were only docs updated
+        id: were-only-docs-updated-action
+        uses: ./.github/actions/were-only-docs-updated-action
+        with:
+          commit-range: ${{ steps.get-commit-range-action.outputs.commit-range }}
+      - name: Get branch name
+        if: ${{ steps.were-only-docs-updated-action.outputs.were-only-docs-updated == 'no' }}
+        id: get-branch-name-action
+        uses: ./.github/actions/get-branch-name-action
+      - name: Set up JDK 8
+        if: ${{ steps.were-only-docs-updated-action.outputs.were-only-docs-updated == 'no' }}
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '8'
+      - name: Generate coverage
+        if: ${{ steps.were-only-docs-updated-action.outputs.were-only-docs-updated == 'no' }}
+        run: |
+          git clone --branch=devops https://github.com/vmware/singleton.git devops && pwd && ls -la
+          cd $GITHUB_WORKSPACE/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG-singleton-service-${GITHUB_REF#refs/heads/} -ProjectKey=$SONAR_ORG-singleton-service-${GITHUB_REF#refs/heads/} -OrgKey=$SONAR_ORG -QualityGateName=service-gate -QualityGateConditions="./quality_gates/service_quality_gate.json" -SonarToken=$SONAR_TOKEN
+          cd $GITHUB_WORKSPACE/g11n-ws && sed -i "s/rootProject.name = 'singleton'/rootProject.name = '$SONAR_ORG-singleton-service-${GITHUB_REF#refs/heads/}'/" settings.gradle && cat settings.gradle
+          cd $GITHUB_WORKSPACE/g11n-ws && ./gradlew test jacocoTestReport
+      - name: Analyze with SonarCloud
+        if: ${{ steps.were-only-docs-updated-action.outputs.were-only-docs-updated == 'no' }}
+        uses: sonarsource/sonarcloud-github-action@master
+        with:
+          projectBaseDir: g11n-ws
+          args: >
+            -Dsonar.projectKey=${env.SONAR_ORG}-singleton-service-${{ steps.get-branch-name-action.outputs.branch-name }}
+            -Dsonar.projectName=${env.SONAR_ORG}-singleton-service-${{ steps.get-branch-name-action.outputs.branch-name }}
+            -Dsonar.sources=.
+            -Dsonar.language=java
+            -Dsonar.sourceEncoding=UTF-8
+            -Dsonar.organization=${env.SONAR_ORG}
+            -Dsonar.exclusions=tools/tool-cldr-extractor/**,**/*.py,**/*.xml,**/*.css,**/*.js,**/*.html
+            -Dsonar.java.binaries=vip-manager-i18n/build/classes/java,vip-manager-l10n/build/classes/java,vip-manager-lite-i18n/build/classes/java
+            -Dsonar.java.test.binaries=vip-manager-i18n/build/classes/test,vip-manager-l10n/build/classes/test,vip-manager-lite-i18n/build/classes/test
+            -Dsonar.coverage.jacoco.xmlReportPaths=vip-manager-i18n/build/reports/jacoco.xml,vip-manager-l10n/build/reports/jacoco.xml,vip-manager-lite-i18n/build/reports/jacoco.xml
+            -Dsonar.coverage.exclusions=modules/**,tools/**,vip-common/src/main/java/com/vmware/vip/common/**,vip-manager-l10n-agent/**,vip-manager-i18n/build/**,vip-manager-l10n/build/**,vip-manager-lite-i18n/build/**,vip-manager-i18n/src/test/**,vip-manager-l10n/src/test/**,vip-manager-lite-i18n/src/test/**
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}
+  smoke-test:
+    name: Smoke Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2.  
+      - name: Get commit range
+        id: get-commit-range-action
+        uses: ./.github/actions/get-commit-range-action
+      - name: Were only docs updated
+        id: were-only-docs-updated-action
+        uses: ./.github/actions/were-only-docs-updated-action
+        with:
+          commit-range: ${{ steps.get-commit-range-action.outputs.commit-range }}
+      - name: Set up JDK 8
+        if: ${{ steps.were-only-docs-updated-action.outputs.were-only-docs-updated == 'no' }}
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '8'
+      - name: Smoke Test
+        if: ${{ steps.were-only-docs-updated-action.outputs.were-only-docs-updated == 'no' }}
+        run: |
+          git clone --branch=devops https://github.com/vmware/singleton.git devops
+          cd $GITHUB_WORKSPACE/g11n-ws && ./gradlew build
+          cp $GITHUB_WORKSPACE/devops/deploy/i18n-service/Dockerfile $GITHUB_WORKSPACE/publish/
+          cd $GITHUB_WORKSPACE/publish && ls
+          mv singleton-[0~9]*.jar i18n-service.jar && ls
+          docker build -t singleton .
+          docker run -d -p 8090:8090 --name singleton singleton
+          docker ps
+          cd $GITHUB_WORKSPACE/devops/autotest/service/i18n-service/APITest && $GITHUB_WORKSPACE/g11n-ws/gradlew build
+          docker cp l10n singleton:/
+          str=$(printf '=%.0s' {1..50})
+          echo $str Smoke Test Start $str
+          date
+          locale
+          java -cp "target/*:resource/*" org.testng.TestNG testng.xml
+          echo $str Smoke Test End $str
