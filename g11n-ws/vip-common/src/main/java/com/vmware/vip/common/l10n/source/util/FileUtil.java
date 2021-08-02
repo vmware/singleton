@@ -110,5 +110,4 @@ public class FileUtil {
 	private static void printInfoLog(String infoStr) {
 		logger.info(infoStr);
 	}
-	
 }
