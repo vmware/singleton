@@ -511,8 +511,11 @@ class SingletonReleaseBase:
     def _load_one_local(self, component, locale, path_define):
         if not path_define:
             return None
+        is_source_locale = self.cfg.source_locale == locale
         for i, v in enumerate(path_define):
+            locale_underline = '' if is_source_locale else '_' + locale
             path = v.replace('$COMPONENT', component).replace('$LOCALE', locale)
+            path = path.replace('$LC', locale_underline)
             path_define[i] = os.path.join(self.cfg.local_url, path)
         return ClientUtil.read_resource_files(self.cfg.local_type, path_define)
 
