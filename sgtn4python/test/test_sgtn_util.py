@@ -8,14 +8,11 @@ import sys
 import unittest
 
 sys.path.append('../sgtnclient')
-if sys.version_info.major == 2:
-    # Support utf8 text
-    reload(sys)
-    sys.setdefaultencoding('utf-8')
-
 from sgtn_util import FileUtil, NetUtil, SysUtil
+from sgtn_debug import SgtnDebug
 
 from util import Util
+import I18N
 
 
 class TestClient(unittest.TestCase):
@@ -24,7 +21,7 @@ class TestClient(unittest.TestCase):
         print('\n--- unittest --- %s --- python %s\n' % (
             sys._getframe().f_code.co_name, sys.version_info.major))
 
-        text = FileUtil.read_text_file('data/data.txt')
+        text = FileUtil.read_text_file('data/data_utf8.txt')
         self.assertIn('cc=AA{x}BB{y}CC', text)
         
         dt = FileUtil.read_json_file('data/data.json')
@@ -44,6 +41,11 @@ class TestClient(unittest.TestCase):
         print('--- dir_list --- %s ---' % dir_list)
         print('--- file_list --- %s ---' % len(file_list))
         self.assertIn('http_response.txt', file_list)
+
+        #SgtnDebug.set_internal_log('./log/debug.txt')
+        SgtnDebug.log_text('add', 'aaa')
+        SgtnDebug.log_text('add', 'bbb')
+        SgtnDebug.log_text('add', {'aa': 'aaa'})
 
     def test_net_util(self):
         print('\n--- unittest --- %s --- python %s\n' % (

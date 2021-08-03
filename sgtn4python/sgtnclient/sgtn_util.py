@@ -1,4 +1,4 @@
-﻿# -*-coding:UTF-8 -*-
+# coding=utf-8
 #
 # Copyright 2020-2021 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
@@ -10,7 +10,9 @@ import json
 import re
 import logging
 from collections import OrderedDict
-from sgtn_properties import Properties
+
+from sgtn_py_base import pybase, SgtnException
+from sgtn_debug import SgtnDebug
 
 import ssl
 if hasattr(ssl, '_create_unverified_context'):  # for python 2.7
@@ -19,14 +21,7 @@ if hasattr(ssl, '_create_unverified_context'):  # for python 2.7
 PY_VER = sys.version_info.major
 UTF8 = 'utf-8'
 
-if PY_VER == 2:
-    import urllib2 as httplib
-
-    # Support utf8 text
-    reload(sys)
-    sys.setdefaultencoding(UTF8)
-else:
-    import urllib.request as httplib
+httplib = pybase.get_httplib()
 
 KEY_RESULT = 'result'
 KEY_HEADERS = 'headers'
@@ -43,10 +38,15 @@ LOCALE_MAP = {
     'zh-cn': 'zh-Hans'
     }
 
+
 class FileUtil:
+
+    LOG_INTERNAL = ''
 
     @classmethod
     def read_text_file(cls, file_name):
+        SgtnDebug.log_text('util', 'read file {0} / exist: {1}'.format(
+            file_name, os.path.exists(file_name)))
         if os.path.exists(file_name) and os.path.isfile(file_name):
             f = open(file_name, 'rb')
             file_data = f.read()
@@ -55,28 +55,42 @@ class FileUtil:
             try:
                 file_data = file_data.decode(UTF8)
                 return file_data
-            except Exception as e:
+            except UnicodeDecodeError as e:
                 return None
         return None
+
+    @classmethod
+    def parse_json_from_text(cls, text):
+        try:
+            dict_data = json.loads(text, object_pairs_hook=OrderedDict)
+            return dict_data
+        except json.decoder.JSONDecodeError as e:
+            raise SgtnException(str(e))
 
     @classmethod
     def parse_json(cls, text):
         if text:
             try:
-                dict_data = json.loads(text, object_pairs_hook = OrderedDict)
-                return dict_data
-            except Exception as e:
+                return cls.parse_json_from_text(text)
+            except SgtnException as e:
                 return None
         return None
+
+    @classmethod
+    def parse_yaml_from_text(cls, text):
+        try:
+            import yaml
+            dict_data = yaml.load(text, Loader=yaml.FullLoader)
+            return dict_data
+        except yaml.YAMLError as e:
+            raise SgtnException(str(e))
 
     @classmethod
     def parse_yaml(cls, text):
         if text:
             try:
-                import yaml
-                dict_data = yaml.load(text, Loader = yaml.FullLoader)
-                return dict_data
-            except Exception as e:
+                return cls.parse_yaml_from_text(text)
+            except SgtnException as e:
                 return None
         return None
 
@@ -99,18 +113,13 @@ class FileUtil:
         file_data = cls.read_text_file(file_name)
         return cls.parse_datatree(file_data)
 
-        return cls.read_json_file(file_name)
-
     @classmethod
     def save_json_file(cls, file_name, dict):
         dir = os.path.dirname(file_name)
         if not os.path.exists(dir):
             os.makedirs(dir)
-        if PY_VER == 2:
-            f = open(file_name, 'w')
-        else:
-            f = open(file_name, 'w', encoding='utf-8')
-        text = json.dumps(dict, ensure_ascii = False, indent = 2)
+        f = pybase.open_file(file_name, 'w')
+        text = json.dumps(dict, ensure_ascii=False, indent=2)
         f.write(text)
         f.close()
 
@@ -121,21 +130,22 @@ class FileUtil:
 
         try:
             ls = os.listdir(dir_name)
-        except:
+        except IOError as e:
             pass
         else:
             for fn in ls:
                 temp = os.path.join(dir_name, fn)
-                if (os.path.isdir(temp)):
+                if os.path.isdir(temp):
                     dir_list.append(fn)
                 else:
                     file_list.append(fn)
         return dir_list, file_list
 
+
 class NetUtil:
 
     simulate_data = None
-    record_data = None
+    record_data = {'enable': False, 'records': {}}
 
     @classmethod
     def _get_data(cls, url, request_headers):
@@ -144,28 +154,39 @@ class NetUtil:
             if request_headers:
                 for key in request_headers:
                     req.add_header(key, request_headers[key])
-            res_data = httplib.urlopen(req)
+
+            try:
+                res_data = httplib.urlopen(req)
+            except IOError as e:
+                raise SgtnException(str(e))
 
             headers = {}
             for h in res_data.headers:
                 headers[h.lower()] = res_data.headers[h].lower()
 
-            result = res_data.read()
-            text = result.decode(UTF8)
+            try:
+                result = res_data.read()
+            except IOError as e:
+                raise SgtnException(str(e))
 
-            if cls.record_data is not None:
+            try:
+                text = result.decode(UTF8)
+            except UnicodeDecodeError as e:
+                raise SgtnException(str(e))
+
+            if cls.record_data['enable']:
                 header_part = json.dumps(request_headers) if request_headers else request_headers
-                key = '%s<<headers>>%s' % (ur, header_part) if header_part else url
-                cls.record_data[key] = {'text': text, 'headers': headers}
+                key = '{0}<<headers>>{1}'.format(url, header_part) if header_part else url
+                cls.record_data['records'][key] = {'text': text, 'headers': headers}
             return text, headers
         else:
             header_part = json.dumps(request_headers) if request_headers else request_headers
-            key = '%s<<headers>>%s' % (url, header_part) if header_part else url
+            key = '{0}<<headers>>{1}'.format(url, header_part) if header_part else url
             kept = cls.simulate_data.get(key)
             if kept:
                 if 'code' in kept:
                     if kept['code'] == 304:
-                        raise Exception('Error 304:')
+                        raise SgtnException('Error 304:')
                 return kept['text'], kept['headers']
         return None, None
 
@@ -174,7 +195,7 @@ class NetUtil:
         text = None
         try:
             text, _ = cls._get_data(url, None)
-        except Exception as e:
+        except SgtnException as e:
             pass
         return text
 
@@ -184,17 +205,17 @@ class NetUtil:
         code = 400
         try:
             text, headers = cls._get_data(url, request_headers)
-            ret[KEY_RESULT] = json.loads(text, object_pairs_hook = OrderedDict)
+            ret[KEY_RESULT] = FileUtil.parse_json_from_text(text)
             ret[KEY_HEADERS] = headers
             code = 200
-        except Exception as e:
+        except SgtnException as e:
             err_msg = str(e)
             parts = re.split("Error ([0-9]*):", err_msg)
             if len(parts) > 1:
                 code = int(parts[1])
 
             if code != 304:
-                ret[KEY_ERROR] = 'HTTP ERROR: %s' % str(e)
+                ret[KEY_ERROR] = 'HTTP ERROR: {0}'.format(str(e))
         return code, ret
 
     @classmethod
@@ -225,11 +246,11 @@ class SysUtil:
         logger.setLevel(logging.INFO)
 
         cls.log(logger, '')
-        cls.log(logger, '--- start --- python --- %s' % (sys.version.split('\n')[0]))
+        cls.log(logger, '--- start --- python --- {0}'.format(sys.version.split('\n')[0]))
         return logger
 
     @classmethod
-    def log(cls, logger, text, log_type = LOG_TYPE_INFO):
+    def log(cls, logger, text, log_type=LOG_TYPE_INFO):
         if logger:
             if log_type == LOG_TYPE_INFO:
                 logger.info(text)
@@ -241,7 +262,7 @@ class SysUtil:
 
     @classmethod
     def get_fallback_locale(cls, locale):
-        parts = re.split("[\-_]", locale)
+        parts = re.split(r"[\-_]", locale)
         parts[0] = parts[0].lower()
         if len(parts) > 1:
             parts[1] = parts[1].upper()
@@ -252,4 +273,3 @@ class SysUtil:
             return fallback
 
         return parts[0]
-

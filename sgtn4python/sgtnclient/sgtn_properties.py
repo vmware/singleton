@@ -1,16 +1,13 @@
-﻿# -*-coding:UTF-8 -*-
+# coding=utf-8
 #
 # Copyright 2020-2021 VMware, Inc.
 # SPDX-License-Identifier: EPL-2.0
 #
 
-import sys
 from collections import OrderedDict
 
-if sys.version_info.major == 2:
-    # Support utf8 text
-    reload(sys)
-    sys.setdefaultencoding('utf-8')
+from sgtn_py_base import pybase
+
 
 MAX_LINE_BUFFER = 1024
 
@@ -25,7 +22,6 @@ class LineReader:
         self.inCharBuf = inCharBuf
         if self.inCharBuf:
             self.inLimit = len(self.inCharBuf)
-
 
     def read_line(self):
         length = 0
@@ -84,7 +80,7 @@ class LineReader:
                 else:
                     precedingBackslash = False
             else:
-                #reached EOL
+                #reached end of line
                 if isCommentLine or length == 0:
                     isCommentLine = False
                     isNewLine = True
@@ -197,22 +193,22 @@ class Properties:
                 aChar = inText[off]
                 off += 1
                 if aChar == 'u':
-                    #Read the xxxx
+                    #Read the unicode after \u
                     value = 0
                     for i in range(4):
                         aChar = inText[off]
                         off += 1
 
                         if aChar >= '0' and aChar <= '9':
-                            value = (value << 4) + int(aChar-'0')
+                            value = (value << 4) + ord(aChar) - ord('0')
                         elif aChar >= 'a' and aChar <= 'f':
-                            value = (value << 4) + 10 + int(aChar-'a')
+                            value = (value << 4) + 10 + ord(aChar) - ord('a')
                         elif aChar >= 'A' and aChar <= 'F':
-                            value = (value << 4) + 10 + int(aChar-'A')
+                            value = (value << 4) + 10 + ord(aChar) - ord('A')
                         else:
                             return None
 
-                    outText[outLen] = rune(value)
+                    outText[outLen] = pybase.int_to_unicode(value)
                     outLen += 1
                 else:
                     if aChar == 't':

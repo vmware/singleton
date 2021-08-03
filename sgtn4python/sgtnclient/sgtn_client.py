@@ -6,20 +6,18 @@
 
 import sys
 import os
-import json
 import re
 import time
 import copy
-import logging
-import threading
 from threading import Thread
 from collections import OrderedDict
 
 from sgtn_properties import Properties
 from sgtn_util import FileUtil, NetUtil, SysUtil
-from sgtn_util import LOG_TYPE_INFO, KEY_RESULT, KEY_HEADERS, KEY_ERROR
+from sgtn_util import LOG_TYPE_INFO, KEY_RESULT, KEY_HEADERS
 from sgtn_bykey import SingletonByKey
-from sgtn_locale import SingletonLocale, SingletonLocaleUtil
+from sgtn_locale import SingletonLocaleUtil
+from sgtn_py_base import SgtnException
 
 from I18N import Config, Release, Translation
 
@@ -58,7 +56,6 @@ HEADER_REQUEST_ETAG = "If-None-Match"
 
 LOCALE_DEFAULT = 'en-US'
 MAX_THREAD = 1000
-NOT_IMP_EXCEPTION = 'NotImplementedException'
 LOCAL_TYPE_FILE = 'file'
 LOCAL_TYPE_HTTP = 'http'
 RES_TYPE_PROPERTIES = '.properties'
@@ -85,7 +82,7 @@ class ClientUtil:
             for prop_file in file_list:
                 if prop_file.endswith(RES_TYPE_PROPERTIES):
                     text = None
-                    if (local_type == LOCAL_TYPE_HTTP):
+                    if local_type == LOCAL_TYPE_HTTP:
                         text = NetUtil.http_get_text(prop_file)
                     else:
                         text = FileUtil.read_text_file(prop_file)
@@ -94,9 +91,9 @@ class ClientUtil:
                         props.update(m)
                 elif prop_file.endswith(RES_TYPE_SGTN):
                     m = None
-                    if (local_type == LOCAL_TYPE_HTTP):
+                    if local_type == LOCAL_TYPE_HTTP:
                         code, dt = NetUtil.http_get(prop_file, None)
-                        if (code == 200):
+                        if code == 200:
                             m = dt.get(KEY_RESULT)
                     else:
                         m = FileUtil.read_json_file(prop_file)
@@ -116,7 +113,7 @@ class SingletonConfig(Config):
         self.config_data = config_data
 
         self.product = config_data.get(KEY_PRODUCT)
-        self.version = '%s' % config_data.get(KEY_VERSION)
+        self.version = '{0}'.format(config_data.get(KEY_VERSION))
 
         self.remote_url = config_data.get(KEY_SERVICE_URL)
         self.local_url = config_data.get(KEY_OFFLINE_URL)
@@ -138,12 +135,12 @@ class SingletonConfig(Config):
                 if needBasePath:
                     self.local_url = os.path.join(base_path, self.local_url)
 
-        self.log_path = self.get_path(KEY_LOGPATH)          # log path
-        self.cache_path = self.get_path(KEY_CACHEPATH)      # cache path
-        self.cache_type = self.get_item(KEY_CACHETYPE, 'default')   # cache type
+        self.log_path = self.get_path(KEY_LOGPATH)  		# log path
+        self.cache_path = self.get_path(KEY_CACHEPATH)  	# cache path
+        self.cache_type = self.get_item(KEY_CACHETYPE, 'default')  	# cache type
 
-        self.cache_expired_time = self.get_item(KEY_INTERVAL, 3600) # cache expired time
-        self.try_delay = self.get_item(KEY_TRYDELAY, 10)    # try delay
+        self.cache_expired_time = self.get_item(KEY_INTERVAL, 3600)  # cache expired time
+        self.try_delay = self.get_item(KEY_TRYDELAY, 10)  	# try delay
 
         self.default_locale = self.get_item(KEY_DEFAULT_LOCALE, LOCALE_DEFAULT)
         self.source_locale = self.get_item(KEY_SOURCE_LOCALE, self.default_locale)
@@ -152,8 +149,8 @@ class SingletonConfig(Config):
 
     def _expand_locales(self, locales_def_array, template):
         locales = {}
-        for k in range(len(locales_def_array)):
-            locale_def = copy.deepcopy(locales_def_array[k])
+        for one in locales_def_array:
+            locale_def = copy.deepcopy(one)
             locales[locale_def.get(KEY_LANG_TAG)] = locale_def
             if KEY_LOCAL_PATH not in locale_def and template:
                 locale_def[KEY_LOCAL_PATH] = copy.deepcopy(template.get(KEY_LOCAL_PATH))
@@ -167,8 +164,7 @@ class SingletonConfig(Config):
 
         expand = {}
         self.components = {}
-        for i in range(len(components)):
-            component = components[i]
+        for component in components:
             if KEY_LOCALES in component:
                 component[KEY_LOCALES] = self._expand_locales(component[KEY_LOCALES], None)
                 self.components[component.get(KEY_COMPONENT_TAG)] = copy.deepcopy(component)
@@ -229,9 +225,9 @@ class SingletonConfig(Config):
 
 
 class SingletonApi:
-    VIP_PATH_HEAD = '/i18n/api/v2/translation/products/%s/versions/%s/'
+    VIP_PATH_HEAD = '/i18n/api/v2/translation/products/{0}/versions/{1}/'
     VIP_PARAMETER = 'pseudo=false&machineTranslation=false&checkTranslationStatus=false'
-    VIP_GET_COMPONENT = 'locales/%s/components/%s?'
+    VIP_GET_COMPONENT = 'locales/{0}/components/{1}?'
 
     def __init__(self, release_obj):
         self.rel = release_obj
@@ -239,17 +235,17 @@ class SingletonApi:
         self.addr = self.cfg.remote_url
 
     def get_component_api(self, component, locale):
-        head = self.VIP_PATH_HEAD % (self.cfg.product, self.cfg.version)
-        path = self.VIP_GET_COMPONENT % (locale, component)
-        return '%s%s%s%s' % (self.addr, head, path, self.VIP_PARAMETER)
+        head = self.VIP_PATH_HEAD.format(self.cfg.product, self.cfg.version)
+        path = self.VIP_GET_COMPONENT.format(locale, component)
+        return '{0}{1}{2}{3}'.format(self.addr, head, path, self.VIP_PARAMETER)
 
     def get_localelist_api(self):
-        head = self.VIP_PATH_HEAD % (self.cfg.product, self.cfg.version)
-        return '%s%slocalelist' % (self.addr, head)
+        head = self.VIP_PATH_HEAD.format(self.cfg.product, self.cfg.version)
+        return '{0}{1}localelist'.format(self.addr, head)
 
     def get_componentlist_api(self):
-        head = self.VIP_PATH_HEAD % (self.cfg.product, self.cfg.version)
-        return '%s%scomponentlist' % (self.addr, head)
+        head = self.VIP_PATH_HEAD.format(self.cfg.product, self.cfg.version)
+        return '{0}{1}componentlist'.format(self.addr, head)
 
 
 class SingletonUpdateThread(Thread):
@@ -294,7 +290,7 @@ class SingletonAccessRemoteTask:
 
         if self.querying:
             if self.obj.get_data_count() == 0:
-                while(self.querying):
+                while self.querying:
                     time.sleep(0.1)
             return
 
@@ -321,8 +317,8 @@ class SingletonComponent:
         self.task = None if isLocalSource else SingletonAccessRemoteTask(release_obj, self)
 
         if self.task and self.rel.cache_path:
-            self.cache_path = os.path.join(self.rel.cache_path, component, 'messages_%s.json' % locale)
-            self.rel.log('--- cache file --- %s ---' % self.cache_path)
+            self.cache_path = os.path.join(self.rel.cache_path, component, 'messages_{0}.json'.format(locale))
+            self.rel.log('--- cache file --- {0} ---'.format(self.cache_path))
 
             if os.path.exists(self.cache_path):
                 dt = FileUtil.read_json_file(self.cache_path)
@@ -370,7 +366,7 @@ class SingletonComponent:
                     if os.path.exists(self.cache_path) and self.is_messages_same(messages):
                         os.utime(self.cache_path, (current, current))
                     else:
-                        self.rel.log('--- save --- %s ---' % self.cache_path)
+                        self.rel.log('--- save --- {0} ---'.format(self.cache_path))
                         FileUtil.save_json_file(self.cache_path, dt[KEY_RESULT][KEY_DATA])
                 self.set_messages(messages)
                 self.task.last_time = current
@@ -378,7 +374,7 @@ class SingletonComponent:
                 self.task.last_time = current
             else:
                 self.task.set_retry(current)
-        except Exception as e:
+        except SgtnException as e:
             self.task.set_retry(current)
 
         self.task.querying = False
@@ -425,12 +421,12 @@ class SingletonReleaseBase:
             return
 
         if cfg.log_path:
-            log_file = os.path.join(cfg.log_path, '%s_%s.log' % (self.cfg.product, self.cfg.version))
+            log_file = os.path.join(cfg.log_path, '{0}_{1}.log'.format(self.cfg.product, self.cfg.version))
             self.init_logger(log_file)
 
         if cfg.cache_path:
             self.cache_path = os.path.join(cfg.cache_path, self.cfg.product, self.cfg.version)
-            self.log('--- cache path --- %s ---' % self.cache_path)
+            self.log('--- cache path --- {0} ---'.format(self.cache_path))
 
         self.interval = cfg.cache_expired_time
         self.try_delay = cfg.try_delay
@@ -451,7 +447,6 @@ class SingletonReleaseBase:
         self.useDefaultLocale = None
         if self.isDifferent:
             self.useDefaultLocale = self.get_use_locale(self.cfg.default_locale, False)
-
 
     def get_use_locale(self, locale, asSource):
         pool = self.source_pool if asSource else self.remote_pool
@@ -496,7 +491,7 @@ class SingletonReleaseBase:
             scope = self._get_scope_item(self.api.get_componentlist_api(), KEY_COMPONENTS, 'component_list.json')
             if scope:
                 self.component_list = scope
-        except Exception as e:
+        except SgtnException as e:
             pass
 
         self.task.querying = False
@@ -507,17 +502,17 @@ class SingletonReleaseBase:
         return len(self.locale_list) + len(self.component_list)
 
     def init_logger(self, log_file):
-        self.logger = SysUtil.init_logger(log_file, 'sgtn_%s_%s' % (self.cfg.product, self.cfg.version))
-        self.log('--- release --- %s --- %s --- %s ---' % (self.cfg.product, self.cfg.version, time.time()))
+        self.logger = SysUtil.init_logger(log_file, 'sgtn_{0}_{1}'.format(self.cfg.product, self.cfg.version))
+        self.log('--- release --- {0} --- {1} --- {2} ---'.format(self.cfg.product, self.cfg.version, time.time()))
 
-    def log(self, text, log_type = LOG_TYPE_INFO):
+    def log(self, text, log_type=LOG_TYPE_INFO):
         SysUtil.log(self.logger, text, log_type)
 
     def _load_one_local(self, component, locale, path_define):
         if not path_define:
             return None
-        for i in range(len(path_define)):
-            path = path_define[i].replace('$COMPONENT', component).replace('$LOCALE', locale)
+        for i, v in enumerate(path_define):
+            path = v.replace('$COMPONENT', component).replace('$LOCALE', locale)
             path_define[i] = os.path.join(self.cfg.local_url, path)
         return ClientUtil.read_resource_files(self.cfg.local_type, path_define)
 
@@ -550,7 +545,7 @@ class SingletonReleaseBase:
             _, file_list = FileUtil.get_dir_info(component_path)
             for res_file in file_list:
                 parts = re.split(r"messages(.*)\.", res_file)
-                if (len(parts) == 3):
+                if len(parts) == 3:
                     if parts[1].startswith('_'):
                         locale = parts[1][1:]
                     elif parts[1] == '':
@@ -599,7 +594,7 @@ class SingletonReleaseBase:
         components = self.get_use_locale(locale, False).components
         component_obj = components.get(component)
         if component_obj is None:
-            self.log('--- component --- %s ---' % component)
+            self.log('--- component --- {0} ---'.format(component))
             component_obj = SingletonComponent(self, locale, component, False)
             components[component] = component_obj
 
@@ -626,7 +621,7 @@ class SingletonReleaseBase:
         return component_obj
 
     def _get_message(self, component, key, source, locale):
-        message = source if source != None else key
+        message = source if source is not None else key
         if not key or not locale:
             return message
 
@@ -674,7 +669,7 @@ class SingletonRelease(SingletonReleaseBase, Release, Translation):
     def get_source(self, component, key, sourceInCode):
         componentIndex = self.bykey.get_component_index(component)
         source = self.bykey.get_string(key, componentIndex, self.useSourceLocale.localeItem, False)
-        if source != None:
+        if source is not None:
             return source
 
         source = self._get_message(component, key, sourceInCode, self.cfg.source_locale)
@@ -683,12 +678,12 @@ class SingletonRelease(SingletonReleaseBase, Release, Translation):
     def get_raw(self, component, key, sourceInCode, locale, items):
         useLocale = self.get_use_locale(locale, False)
         if useLocale.isSourceLocale:
-            if sourceInCode != None:
+            if sourceInCode is not None:
                 return sourceInCode
             return self.get_source(component, key, sourceInCode)
 
         source = self.get_source(component, key, sourceInCode)
-        if sourceInCode != None and source != None and source != sourceInCode:
+        if sourceInCode is not None and source is not None and source != sourceInCode:
             return sourceInCode
 
         return self._get_message(component, key, source, locale)
@@ -701,17 +696,23 @@ class SingletonRelease(SingletonReleaseBase, Release, Translation):
 
         if not locale:
             locale = SingletonClientManager().get_current_locale()
-            
+
         text = self.get_raw(component, key, sourceInCode, locale, items)
         if text and items:
             if isinstance(items, list):
-                text = text.format(*items)
+                text = self.format_by_array(text, items)
             elif isinstance(items, dict):
-                text = text.format(**items)
+                text = self.format_by_map(text, items)
 
         if text is None:
             text = key
         return text
+
+    def format_by_array(self, text, array):
+        return text.format(*array)
+
+    def format_by_map(self, text, map):
+        return text.format(**map)
 
     def get_locale_supported(self, locale):
         # method of Translation
@@ -730,12 +731,12 @@ class SingletonClientManager(object):
     def init(self):
         self._products = {}
 
-    def add_config_file(self, config_file, replaceMap = None):
+    def add_config_file(self, config_file, outside_config=None):
         config_text = FileUtil.read_text_file(config_file)
-        if replaceMap:
-            for key in replaceMap:
-                config_text = config_text.replace(key, replaceMap[key])
         config_data = FileUtil.parse_datatree(config_text)
+        if outside_config:
+            for key in outside_config:
+                config_data[key] = copy.deepcopy(outside_config[key])
 
         base_path = os.path.dirname(os.path.realpath(config_file))
         cfg = self.add_config(base_path, config_data)

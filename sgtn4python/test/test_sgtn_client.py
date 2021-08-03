@@ -54,7 +54,7 @@ class TestClient(unittest.TestCase):
     def do_test(self, plan):
         cfg = I18N.add_config_file(
             plan['config'],
-            {'$PRODUCT': plan['product'], '$VERSION': VERSION})
+            {'product': plan['product'], 'l10n_version': VERSION})
         self.assertEqual(cfg.get_info()['version'], VERSION)
 
         start = time.time()
@@ -114,9 +114,9 @@ class TestClient(unittest.TestCase):
         if (self.need_wait(cfg_info)):
             Util.run_test_data(self, trans, 'TestGetString3')
 
-        if NetUtil.record_data is not None:
+        if NetUtil.record_data['enable']:
             time.sleep(5)
-            FileUtil.save_json_file('data/simulate.json', NetUtil.record_data)
+            FileUtil.save_json_file('data/simulate.json', NetUtil.record_data['records'])
         time.sleep(1)
         print('--- test --- end --- %s ---' % spent)
 
@@ -125,7 +125,7 @@ class TestClient(unittest.TestCase):
             sys._getframe().f_code.co_name, sys.version_info.major))
 
         NetUtil.simulate_data = Util.load_response(['data/http_response.txt'])
-        #NetUtil.record_data = {}
+        NetUtil.record_data['enable'] = False
 
         Util.load_test_data(['data/test_define.txt'])
 

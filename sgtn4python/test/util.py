@@ -15,10 +15,6 @@ from threading import Thread
 from collections import OrderedDict
 
 sys.path.append('../sgtnclient')
-if sys.version_info.major == 2:
-    # Support utf8 text
-    reload(sys)
-    sys.setdefaultencoding('utf-8')
 
 from sgtn_util import FileUtil, NetUtil, SysUtil
 from sgtn_properties import Properties

@@ -54,7 +54,7 @@ class TestMultiTask(unittest.TestCase):
         locales = ['en', 'en-US', 'de', 'zh-CN', 'fr']
 
         for k in range(3):
-            for i in range(10000):
+            for i in range(100):
                 th = WorkThread(locales[i % len(locales)])
                 th.start()
             time.sleep(1)

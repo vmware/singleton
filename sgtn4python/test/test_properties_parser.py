@@ -8,12 +8,9 @@ import sys
 import unittest
 
 sys.path.append('../sgtnclient')
-if sys.version_info.major == 2:
-    # Support utf8 text
-    reload(sys)
-    sys.setdefaultencoding('utf-8')
 
 from sgtn_properties import Properties
+from sgtn_util import FileUtil
 
 
 class TestClient(unittest.TestCase):
@@ -29,11 +26,23 @@ class TestClient(unittest.TestCase):
         m = p.parse(text)
 
         self.assertEqual(m['bb2'], 'bbb #tail')
-        print('--- map --- %s ---' % m)
+        print('--- map1 --- %s ---' % m)
 
         import json
         t = json.dumps(m, indent=2, ensure_ascii=False)
         print(t)
+
+        text = FileUtil.read_text_file('data/data_utf8.txt')
+        m = p.parse(text)
+
+        self.assertEqual(m['username'], u'Username用户名')
+        print('--- map2 --- %s ---' % m)
+
+        text = FileUtil.read_text_file('data/data_ascii.txt')
+        m = p.parse(text)
+
+        self.assertEqual(m['username'], u'Username用户名')
+        print('--- map3 --- %s ---' % m)
 
 
 if __name__ == '__main__':

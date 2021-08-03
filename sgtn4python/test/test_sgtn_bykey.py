@@ -8,11 +8,6 @@ import sys
 import unittest
 
 sys.path.append('../sgtnclient')
-if sys.version_info.major == 2:
-    # Support utf8 text
-    reload(sys)
-    sys.setdefaultencoding('utf-8')
-
 from sgtn_locale import SingletonLocale, SingletonLocaleUtil
 from sgtn_bykey import SingletonByKey, SingletonByKeyLocale, SingletonByKeyComponents
 

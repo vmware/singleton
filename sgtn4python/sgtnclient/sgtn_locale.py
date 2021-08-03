@@ -5,7 +5,6 @@
 #
 
 import re
-import locale as locale_system
 
 
 class SingletonLocale(object):
@@ -86,7 +85,7 @@ class SingletonLocaleUtil(object):
         if singletonLocale:
             return singletonLocale
 
-        parts = re.split('[\_|\-]', locale)
+        parts = re.split(r'[\_|\-]', locale)
         parts[0] = parts[0].lower()
         if len(parts) > 1:
             parts[1] = parts[1].upper()
