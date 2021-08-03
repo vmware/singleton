@@ -8,7 +8,7 @@ from collections import OrderedDict
 import threading
 lock = threading.Lock()
 
-from sgtn_locale import SingletonLocale, SingletonLocaleUtil
+from sgtn_locale import SingletonLocaleUtil
 
 _indexLocaleItem = 0
 
@@ -21,7 +21,7 @@ class SingletonByKeyItem(object):
         self._pageIndex = itemIndex // SingletonByKey.PAGE_MAX_SIZE
         self._indexInPage = itemIndex % SingletonByKey.PAGE_MAX_SIZE
 
-        self._sourceStatus = 0x01;
+        self._sourceStatus = 0x01
         self._next = None
 
 
@@ -75,7 +75,7 @@ class SingletonByKeyComponents(object):
             return -1
 
         componentIndex = self._componentIndexTable.get(component)
-        if componentIndex != None:
+        if componentIndex is not None:
             return componentIndex
 
         self._componentTable.append(component)
@@ -87,7 +87,7 @@ class SingletonByKeyComponents(object):
         if id < 0 or id >= self._count:
             return None
 
-        return _componentTable[id]
+        return self._componentTable[id]
 
 
 class SingletonByKeyLocale(object):
@@ -109,10 +109,10 @@ class SingletonByKeyLocale(object):
     def check_task(self, componentIndex, needCheck):
         if componentIndex >= 0 and needCheck:
             componentObj = self._components.get_item_by_one_index(componentIndex)
-            if componentObj != None and componentObj.task != None:
+            if componentObj is not None and componentObj.task is not None:
                 componentObj.task.check()
 
-    def get_message(self, componentIndex, pageIndex, indexInPage, needCheck = True):
+    def get_message(self, componentIndex, pageIndex, indexInPage, needCheck=True):
         self.check_task(componentIndex, needCheck)
         return self._messages.get_item(pageIndex, indexInPage)
 
@@ -121,7 +121,7 @@ class SingletonByKeyLocale(object):
             self._components.set_item_by_one_index(componentIndex, componentObject)
 
         self._messages.set_item(pageIndex, indexInPage, message)
-        return True;
+        return True
 
 
 class SingletonLookup(object):
@@ -138,8 +138,8 @@ class SingletonLookup(object):
 
 class SingletonByKey(object):
 
-    PAGE_MAX_SIZE = 1024;
-    COMPONENT_PAGE_MAX_SIZE = 128;
+    PAGE_MAX_SIZE = 1024
+    COMPONENT_PAGE_MAX_SIZE = 128
 
     def __init__(self, localeSource, localeDefault, isDifferent, cacheType):
         self._itemCount = 0
@@ -187,7 +187,7 @@ class SingletonByKey(object):
     def get_component_index(self, component):
         return self._componentTable.get_id(component)
 
-    def get_string(self, key, componentIndex, localeItem, needFallback = False):
+    def get_string(self, key, componentIndex, localeItem, needFallback=False):
         if componentIndex < 0 and not self._onlyByKey:
             return None
 
@@ -210,7 +210,7 @@ class SingletonByKey(object):
         message = None
         if item._sourceStatus & 0x01 == 0x01:
             message = localeItem.get_message(componentIndex, item._pageIndex, item._indexInPage)
-            if message != None:
+            if message is not None:
                 return message
 
         if self._isDifferent:
@@ -236,13 +236,13 @@ class SingletonByKey(object):
 
     def _find_or_add(self, lookup):
         item = self._keyAttrTable.get(lookup._key)
-        if item is None: # This is new
+        if item is None:  # This is new
             lookup._currentItem = self.new_key_item(lookup._componentIndex)
             lookup._add = 1
             return
 
         while item:
-            if item._componentIndex == lookup._componentIndex: # Found
+            if item._componentIndex == lookup._componentIndex:  # Found
                 lookup._currentItem = item
                 return
             lookup._aboveItem = item
@@ -263,7 +263,7 @@ class SingletonByKey(object):
         if done and localeItem._isSourceLocale:
             status = item._sourceStatus
             if localeItem._asSource:
-                self._sourceLocal = localeItem;
+                self._sourceLocal = localeItem
                 status |= 0x04
             elif localeItem._isSourceLocale:
                 self._sourceRemote = localeItem
@@ -285,7 +285,7 @@ class SingletonByKey(object):
             self._keyAttrTable[key] = lookup._currentItem
         elif lookup._add == 2:
             lookup._aboveItem._next = lookup._currentItem
-        return done;
+        return done
 
     def set_string(self, key, componentObject, componentIndex, localeItem, message):
         if message is None or key is None or localeItem is None:
@@ -316,7 +316,7 @@ class SingletonByKey(object):
 
                 for k in range(SingletonByKey.PAGE_MAX_SIZE):
                     text = array[k]
-                    if text != None:
+                    if text is not None:
                         item = self.get_key_item(i, k)
                         if item:
                             if i not in pages:
