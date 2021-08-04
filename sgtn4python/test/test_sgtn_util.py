@@ -9,6 +9,7 @@ import unittest
 
 sys.path.append('../sgtnclient')
 from sgtn_util import FileUtil, NetUtil, SysUtil
+from sgtn_locale import SingletonLocaleUtil
 from sgtn_debug import SgtnDebug
 
 from util import Util
@@ -82,6 +83,9 @@ class TestClient(unittest.TestCase):
         locale = SysUtil.get_fallback_locale('EN_us')
         print('--- locale --- %s ---' % locale)
         self.assertEqual(locale, 'en')
+
+        singletonLocale = SingletonLocaleUtil.get_singleton_locale('zh_Hans_CN')
+        self.assertEqual(singletonLocale.get_near_locale(1), 'zh-HANS')
 
 
 if __name__ == '__main__':

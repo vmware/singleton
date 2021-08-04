@@ -89,8 +89,11 @@ class SingletonLocaleUtil(object):
         parts[0] = parts[0].lower()
         if len(parts) > 1:
             parts[1] = parts[1].upper()
+        if len(parts) > 2:
+            parts = parts[0:2]
         original = '-'.join(parts)
-        singletonLocale = SingletonLocale(original)
+        singletonLocale = SingletonLocale(locale)
+        singletonLocale.add_near_locale(original)
         fallback = cls.FALLBACK.get(original)
         if fallback:
             singletonLocale.add_near_locale(fallback)
