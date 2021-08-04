@@ -41,8 +41,6 @@ LOCALE_MAP = {
 
 class FileUtil:
 
-    LOG_INTERNAL = ''
-
     @classmethod
     def read_text_file(cls, file_name):
         SgtnDebug.log_text('util', 'read file {0} / exist: {1}'.format(
