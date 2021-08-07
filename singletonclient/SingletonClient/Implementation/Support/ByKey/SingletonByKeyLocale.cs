@@ -24,6 +24,7 @@ namespace SingletonClient.Implementation.Support.ByKey
 
         // Data table
         private readonly SingletonByKeyTable<ISingletonComponent> _components;
+        private readonly SingletonByKeyTable<int> _componentSizes;
         private readonly SingletonByKeyTable<string> _messages;
 
         public SingletonByKeyLocale(ISingletonByKey bykey, string locale, bool asSource)
@@ -35,6 +36,7 @@ namespace SingletonClient.Implementation.Support.ByKey
             this._isSourceLocale = singletonLocale.Contains(sourceLocale);
 
             _components = new SingletonByKeyTable<ISingletonComponent> (SingletonByKey.COMPONENT_PAGE_MAX_SIZE);
+            _componentSizes = new SingletonByKeyTable<int>(SingletonByKey.COMPONENT_PAGE_MAX_SIZE);
             _messages = new SingletonByKeyTable<string>(SingletonByKey.PAGE_MAX_SIZE);
         }
 
@@ -59,30 +61,8 @@ namespace SingletonClient.Implementation.Support.ByKey
         /// </summary>
         public int GetKeyCountInComponent(int componentIndex)
         {
-            int count = 0;
-            for (int i = 0; i < SingletonByKey.PAGE_MAX_SIZE; i++)
-            {
-                string[] page = _messages.GetPage(i);
-                if (page == null)
-                {
-                    continue;
-                }
-                for (int k = 0; k < page.Length; k++)
-                {
-                    if (page[k] == null)
-                    {
-                        continue;
-                    }
-                    SingletonByKeyItem item = _bykey.GetKeyItem(i, k);
-                    if (item != null && item.ComponentIndex == componentIndex)
-                    {
-                        count++;
-                    }
-                }
-            }
-            return count;
+            return _componentSizes.GetItemByOneIndex(componentIndex);
         }
-
 
         public void CheckTask(int componentIndex, bool needCheck)
         {
@@ -115,7 +95,14 @@ namespace SingletonClient.Implementation.Support.ByKey
             {
                 _components.SetItemByOneIndex(componentIndex, componentObject);
             }
-            _messages.SetItem(pageIndex, indexInPage, message);
+
+            bool isNew = _messages.SetItem(pageIndex, indexInPage, message);
+            if (isNew)
+            {
+                int old = _componentSizes.GetItemByOneIndex(componentIndex);
+                _componentSizes.SetItemByOneIndex(componentIndex, old + 1);
+            }
+
             return true;
         }
     }

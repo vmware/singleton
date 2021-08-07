@@ -5,6 +5,7 @@
 
 namespace SingletonClient.Implementation.Support
 {
+    using SingletonClient.Implementation.Release;
     using System.Collections;
 
     /// <summary>
@@ -13,7 +14,6 @@ namespace SingletonClient.Implementation.Support
     public class SingletonCacheReleaseMessages : ICacheMessages
     {
         private readonly ISingletonRelease release;
-        private readonly string cacheComponentType;
 
         // ILocaleMessages of bundles
         private readonly Hashtable locales = SingletonUtil.NewHashtable(true);
@@ -28,7 +28,6 @@ namespace SingletonClient.Implementation.Support
         public SingletonCacheReleaseMessages(ISingletonRelease release)
         {
             this.release = release;
-            this.cacheComponentType = release.GetSingletonConfig().GetCacheComponentType();
         }
 
         /// <summary>

@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using SingletonClient.Implementation.Helpers;
 using SingletonClient.Implementation.Support;
 
 namespace SingletonClient.Implementation.Release
@@ -24,8 +25,122 @@ namespace SingletonClient.Implementation.Release
         protected IAccessService _accessService;
         protected ISingletonAccessTask _task;
 
-        protected readonly List<string> _localeList = new List<string>();
-        protected readonly List<string> _componentList = new List<string>();
+        protected readonly SingletonIncludeInfo _infoLocal = new SingletonIncludeInfo();
+        protected readonly SingletonIncludeInfo _infoRemote = new SingletonIncludeInfo();
+        protected readonly SingletonIncludeInfo _infoMix = new SingletonIncludeInfo();
+
+        /// <summary>
+        /// ISingletonRelease
+        /// </summary>
+        public ISingletonConfig GetSingletonConfig()
+        {
+            return _config;
+        }
+
+        /// <summary>
+        /// ISingletonRelease
+        /// </summary>
+        public ISingletonApi GetApi()
+        {
+            return _api;
+        }
+
+        /// <summary>
+        /// ISingletonRelease
+        /// </summary>
+        /// <returns></returns>
+        public IAccessService GetAccessService()
+        {
+            return _accessService;
+        }
+
+        /// <summary>
+        /// ISingletonRelease
+        /// </summary>
+        /// <returns></returns>
+        public bool IsInScope(ISingletonLocale singletonLocale, string component)
+        {
+            if (string.IsNullOrEmpty(component))
+            {
+                return false;
+            }
+
+            bool inLocaleScope = singletonLocale.IsInLocaleList(_infoMix.Locales);
+            bool inComponentScope = _infoMix.Components.Contains(component);
+            return (inLocaleScope && inComponentScope);
+        }
+
+        /// <summary>
+        /// ISingletonRelease
+        /// </summary>
+        /// <returns></returns>
+        public void AddLocalScope(string locale, string component)
+        {
+            if (!_infoLocal.Locales.Contains(locale))
+            {
+                _infoLocal.Locales.Add(locale);
+                UpdateLocaleInfo();
+            }
+            if (!_infoLocal.Components.Contains(component))
+            {
+                _infoLocal.Components.Add(component);
+                UpdateComponentInfo();
+            }
+        }
+
+        /// <summary>
+        /// IRelease
+        /// </summary>
+        public IConfig GetConfig()
+        {
+            return (_config == null) ? null : _config.GetConfig();
+        }
+
+        /// <summary>
+        /// IReleaseMessages
+        /// </summary>
+        public List<string> GetLocaleList()
+        {
+            return _infoMix.Locales;
+        }
+
+        /// <summary>
+        /// IReleaseMessages
+        /// </summary>
+        public List<string> GetComponentList()
+        {
+            return _infoMix.Components;
+        }
+
+        /// <summary>
+        /// ITranslation
+        /// </summary>
+        public bool SetCurrentLocale(string locale)
+        {
+            CultureHelper.SetCurrentCulture(locale);
+            return true;
+        }
+
+        /// <summary>
+        /// ITranslation
+        /// </summary>
+        public string GetCurrentLocale()
+        {
+            return CultureHelper.GetCurrentCulture();
+        }
+
+        /// <summary>
+        /// ITranslation
+        /// </summary>
+        public List<string> GetLocaleSupported(string locale)
+        {
+            ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
+            if (singletonLocale == null)
+            {
+                return SingletonUtil.GetEmptyStringList();
+            }
+            return singletonLocale.GetNearLocaleList();
+        }
 
         protected void InitForBase(ISingletonRelease singletonRelease, IConfig config, ISingletonAccessRemote accessRemote)
         {
@@ -51,23 +166,14 @@ namespace SingletonClient.Implementation.Release
             _task = new SingletonAccessRemoteTask(accessRemote, interval, tryDelay);
         }
 
-        protected bool CheckBundleRequest(ISingletonLocale singletonLocale, string component)
+        protected void UpdateLocaleInfo()
         {
-            if (string.IsNullOrEmpty(component))
-            {
-                return false;
-            }
+            _infoMix.MixLocales(_infoLocal, _infoRemote);
+        }
 
-            if (_config.IsOnlineSupported() && !_config.IsOfflineSupported())
-            {
-                bool inLocaleScope = singletonLocale.IsInLocaleList(_localeList);
-                bool inComponentScope = _componentList.Contains(component);
-                if (!inLocaleScope || !inComponentScope)
-                {
-                    return false;
-                }
-            }
-            return true;
+        protected void UpdateComponentInfo()
+        {
+            _infoMix.MixComponents(_infoLocal, _infoRemote);
         }
     }
 }

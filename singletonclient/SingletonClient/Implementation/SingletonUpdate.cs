@@ -4,6 +4,7 @@
  */
 
 using Newtonsoft.Json.Linq;
+using SingletonClient.Implementation.Release;
 using SingletonClient.Implementation.Support;
 using System;
 using System.Collections;
@@ -158,6 +159,9 @@ namespace SingletonClient.Implementation
             resourcePath = resourcePath.Replace(ConfigConst.PlaceComponent, componentCache.GetComponent());
             resourcePath = resourcePath.Replace(ConfigConst.PlaceLocale, locale);
 
+            string lc = _config.GetSourceLocale().Equals(locale) ? "" : "_" + locale;
+            resourcePath = resourcePath.Replace(ConfigConst.PlaceLocaleCommon, lc);
+
             if (ConfigConst.StoreTypeInternal.Equals(storeType))
             {
                 UpdateMessageFromInternal(componentCache, resourcePath, locale, parserName);
@@ -202,7 +206,7 @@ namespace SingletonClient.Implementation
             return languageMessages;
         }
 
-        private List<string> GetComponentList()
+        private List<string> GetLocalComponentList()
         {
             if (_localComponentList != null)
             {
@@ -235,19 +239,23 @@ namespace SingletonClient.Implementation
             string[] parts = new string[3];
             string[] arrayFormat = _config.GetDefaultResourceFormat().Split(',');
 
-            List<string> componentList = GetComponentList();
+            List<string> componentList = GetLocalComponentList();
 
-            ICacheMessages productCache = _release.GetReleaseMessages();
-            ILocaleMessages localeCache = productCache.GetLocaleMessages(locale, asSource);
             int messageCount = 0;
+
+            SingletonUseLocale useLocale = _release.GetUseLocale(locale, asSource);
 
             for (int i = 0; componentList != null && i < componentList.Count; i++)
             {
-                IConfigItem resConfigItem = _config.GetOfflinePathItem(componentList[i], locale);
+                string component = componentList[i];
+                _release.AddLocalScope(locale, component);
+
+                IConfigItem resConfigItem = _config.GetOfflinePathItem(component, locale);
                 List<string> resList = (resConfigItem == null) ?
                     new List<String>() { SingletonConst.PlaceNoLocaleDefine } : resConfigItem.GetStringList();
 
-                IComponentMessages componentCache = localeCache.GetComponentMessages(componentList[i]);
+                ISingletonComponent singletonComponent = useLocale.GetComponent(component);
+                IComponentMessages componentCache = singletonComponent.GetComponentMessages();
                 for (int k = 0; k < resList.Count; k++)
                 {
                     string[] array = resList[k].Split(',');
@@ -258,12 +266,17 @@ namespace SingletonClient.Implementation
 
                     UpdateMessageFromOffline(componentCache,
                         parts[2], parts[0], nearLocale, parts[1]);
+                }
 
-                    messageCount += componentCache.GetCount();
+                int keyCount = componentCache.GetCount();
+                if (keyCount > 0)
+                {
+                    messageCount += keyCount;
+                    _release.AddLocalScope(locale, component);
                 }
             }
 
-            return (messageCount == 0) ? null : localeCache;
+            return (messageCount == 0) ? null : useLocale.LocaleCache;
         }
     }
 }

@@ -12,7 +12,8 @@ namespace UnitTestSingleton
     {
         public override string[] GetResStrings()
         {
-            string[] strings = { "res.Singleton3", "sgtn_offline_disk_properties", "CSHARP3" };
+            string[] strings = { "res.Singleton3", "sgtn_offline_disk_properties", "CSHARP3",
+                "load_on_startup: true"};
             return strings;
         }
 

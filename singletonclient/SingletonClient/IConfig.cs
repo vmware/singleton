@@ -200,5 +200,6 @@ namespace SingletonClient
         // Placeholders
         public const string PlaceComponent = "$COMPONENT";
         public const string PlaceLocale = "$LOCALE";
+        public const string PlaceLocaleCommon = "$LC";
     }
 }

@@ -4,6 +4,7 @@
  */
 
 using Newtonsoft.Json.Linq;
+using SingletonClient.Implementation.Release;
 using SingletonClient.Implementation.Support;
 using System.Collections;
 using System.Text.RegularExpressions;
@@ -20,23 +21,25 @@ namespace SingletonClient.Implementation
         void GetDataFromLocal();
 
         int GetDataCount();
+
+        IComponentMessages GetComponentMessages();
     }
 
     public class SingletonComponent : ISingletonComponent, ISingletonAccessRemote
     {
         private readonly ISingletonRelease _release;
-        private readonly IComponentMessages _componentCache;
 
         private readonly ISingletonLocale _singletonLocale;
         private readonly string _locale;
         private readonly string _component;
+        private readonly IComponentMessages _componentCache;
 
         private readonly ISingletonAccessTask _task;
 
         private string _etag;
         private bool _localHandled = false;
 
-        public SingletonComponent(ISingletonRelease release, IComponentMessages componentMessages,
+        public SingletonComponent(ISingletonRelease release,
             ISingletonLocale singletonLocale, string component, bool asSource)
         {
             _release = release;
@@ -50,17 +53,24 @@ namespace SingletonClient.Implementation
 
             _task = asSource ? null : new SingletonAccessRemoteTask(this, interval, tryDelay);
 
-            ICacheMessages productCache = _release.GetReleaseMessages();
-            ILocaleMessages langCache = productCache.GetLocaleMessages(_locale);
-            _componentCache = componentMessages == null ?
-                langCache.GetComponentMessages(component) : componentMessages;
+            SingletonUseLocale useLocale = _release.GetUseLocale(_locale, asSource);
+            // Must be next
+            useLocale.Components[component] = this;
+
+            _componentCache = useLocale.LocaleCache.GetComponentMessages(_component);
         }
 
+        /// <summary>
+        /// ISingletonAccessRemote
+        /// </summary>
         public ISingletonConfig GetSingletonConfig()
         {
             return _release.GetSingletonConfig();
         }
 
+        /// <summary>
+        /// ISingletonAccessRemote
+        /// </summary>
         public void GetDataFromRemote()
         {
             string adr = _release.GetApi().GetComponentApi(_component, _locale);
@@ -104,6 +114,26 @@ namespace SingletonClient.Implementation
             }
         }
 
+        /// <summary>
+        /// ISingletonAccessRemote
+        /// ISingletonComponent
+        /// </summary>
+        public int GetDataCount()
+        {
+            return _componentCache.GetCount();
+        }
+
+        /// <summary>
+        /// ISingletonComponent
+        /// </summary>
+        public IComponentMessages GetComponentMessages()
+        {
+            return _componentCache;
+        }
+
+        /// <summary>
+        /// ISingletonComponent
+        /// </summary>
         public void GetDataFromLocal()
         {
             if (_localHandled)
@@ -119,16 +149,17 @@ namespace SingletonClient.Implementation
             }
         }
 
-        public int GetDataCount()
-        {
-            return _componentCache.GetCount();
-        }
-
+        /// <summary>
+        /// ISingletonComponent
+        /// </summary>
         public ISingletonAccessTask GetAccessTask()
         {
             return _task;
         }
 
+        /// <summary>
+        /// ISingletonComponent
+        /// </summary>
         public string GetString(string key)
         {
             string message = _componentCache.GetString(key);

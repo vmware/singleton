@@ -3,7 +3,6 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
-using SingletonClient.Implementation.Helpers;
 using SingletonClient.Implementation.Release;
 using SingletonClient.Implementation.Support;
 using SingletonClient.Implementation.Support.ByKey;
@@ -24,9 +23,10 @@ namespace SingletonClient.Implementation
         ICacheMessages GetReleaseMessages();
         ISingletonByKey GetSingletonByKey();
         IAccessService GetAccessService();
-        ISingletonComponent GetComponentObject(
-            IComponentMessages componentMessages, string locale, string component, bool asSource);
         ILog GetLogger();
+        void AddLocalScope(string locale, string component);
+        SingletonUseLocale GetUseLocale(string locale, bool asSource);
+        bool IsInScope(ISingletonLocale singletonLocale, string component);
     }
 
     public class SingletonRelease : SingletonReleaseForCache, ISingletonRelease, ISingletonAccessRemote,
@@ -64,19 +64,6 @@ namespace SingletonClient.Implementation
             }
         }
 
-        public ISingletonConfig GetSingletonConfig()
-        {
-            return _config;
-        }
-
-        /// <summary>
-        /// ISingletonRelease
-        /// </summary>
-        public ISingletonApi GetApi()
-        {
-            return _api;
-        }
-
         /// <summary>
         /// ISingletonRelease
         /// </summary>
@@ -105,27 +92,6 @@ namespace SingletonClient.Implementation
         /// ISingletonRelease
         /// </summary>
         /// <returns></returns>
-        public IAccessService GetAccessService()
-        {
-            return _accessService;
-        }
-
-        /// <summary>
-        /// ISingletonRelease
-        /// </summary>
-        /// <returns></returns>
-        public ISingletonComponent GetComponentObject(
-            IComponentMessages componentMessages, string locale, string component, bool asSource)
-        {
-            SingletonUseLocale useLocale = GetUseLocale(locale, asSource);
-            ISingletonComponent componentObject = GetComponent(useLocale, component, componentMessages);
-            return componentObject;
-        }
-
-        /// <summary>
-        /// ISingletonRelease
-        /// </summary>
-        /// <returns></returns>
         public ILog GetLogger()
         {
             return this;
@@ -148,10 +114,12 @@ namespace SingletonClient.Implementation
         public void GetDataFromRemote()
         {
             string url = _api.GetLocaleListApi();
-            _update.UpdateBriefinfo(url, SingletonConst.KeyLocales, _localeList);
+            _update.UpdateBriefinfo(url, SingletonConst.KeyLocales, _infoRemote.Locales);
+            UpdateLocaleInfo();
 
             url = _api.GetComponentListApi();
-            _update.UpdateBriefinfo(url, ConfigConst.KeyComponents, _componentList);
+            _update.UpdateBriefinfo(url, ConfigConst.KeyComponents, _infoRemote.Components);
+            UpdateComponentInfo();
 
             Log(LogType.Info, "get locale list and component list from remote: " +
                 _config.GetProduct() + " / " + _config.GetVersion());
@@ -164,15 +132,7 @@ namespace SingletonClient.Implementation
         /// </summary>
         public int GetDataCount()
         {
-            return _localeList.Count;
-        }
-
-        /// <summary>
-        /// IRelease
-        /// </summary>
-        public IConfig GetConfig()
-        {
-            return (_config == null) ? null : _config.GetConfig();
+            return _infoLocal.Locales.Count;
         }
 
         /// <summary>
@@ -189,22 +149,6 @@ namespace SingletonClient.Implementation
         public ITranslation GetTranslation()
         {
             return this;
-        }
-
-        /// <summary>
-        /// IReleaseMessages
-        /// </summary>
-        public List<string> GetLocaleList()
-        {
-            return _localeList;
-        }
-
-        /// <summary>
-        /// IReleaseMessages
-        /// </summary>
-        public List<string> GetComponentList()
-        {
-            return _componentList;
         }
 
         /// <summary>
@@ -337,68 +281,53 @@ namespace SingletonClient.Implementation
             return text;
         }
 
-        /// <summary>
-        /// ITranslation
-        /// </summary>
-        public bool SetCurrentLocale(string locale)
-        {
-            CultureHelper.SetCurrentCulture(locale);
-            return true;
-        }
-
-        /// <summary>
-        /// ITranslation
-        /// </summary>
-        public string GetCurrentLocale()
-        {
-            return CultureHelper.GetCurrentCulture();
-        }
-
-        /// <summary>
-        /// ITranslation
-        /// </summary>
-        public List<string> GetLocaleSupported(string locale)
-        {
-            ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
-            if (singletonLocale == null)
-            {
-                return SingletonUtil.GetEmptyStringList();
-            }
-            return singletonLocale.GetNearLocaleList();
-        }
-
-        private void LoadOnStartup()
+        private void LoadLocalOnStartup()
         {
             List<string> componentLocalList = _config.GetConfig().GetComponentList();
 
-            for (int i = 0; i < _localeList.Count; i++)
+            for (int i = 0; i < componentLocalList.Count; i++)
             {
-                for (int k = 0; k < _componentList.Count; k++)
+                List<string> localeList = _config.GetConfig().GetLocaleList(componentLocalList[i]);
+                for (int k=0; k<localeList.Count; k++)
                 {
-                    string component = _componentList[k];
+                    ISingletonLocale singletonLocale = SingletonLocaleUtil.GetSingletonLocale(localeList[k]);
+
+                    _update.LoadOfflineMessage(singletonLocale, false);
+                }
+            }
+        }
+
+        private void LoadRemoteOnStartup()
+        {
+            List<string> componentLocalList = _config.GetConfig().GetComponentList();
+
+            for (int i = 0; i < this._infoRemote.Locales.Count; i++)
+            {
+                for (int k = 0; k < _infoRemote.Components.Count; k++)
+                {
+                    string component = _infoRemote.Components[k];
                     if (componentLocalList.Count == 0 || componentLocalList.Contains(component))
                     {
                         ISource sourceObject = this.CreateSource(component, "$", "$");
-                        this.GetRaw(_localeList[i], sourceObject);
+                        this.GetRaw(_infoRemote.Locales[i], sourceObject);
                     }
                 }
             }
         }
 
-        private void CheckLoadOnStartup(bool byThread)
+        private void CheckLoadOnStartup(bool byRemote)
         {
             if (!_isLoadedOnStartup && _config.IsLoadOnStartup())
             {
                 _isLoadedOnStartup = true;
-
-                if (byThread)
+                if (byRemote)
                 {
-                    Thread th = new Thread(LoadOnStartup);
+                    Thread th = new Thread(LoadRemoteOnStartup);
                     th.Start();
                 }
                 else
                 {
-                    LoadOnStartup();
+                    LoadLocalOnStartup();
                 }
             }
         }

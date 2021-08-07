@@ -15,18 +15,21 @@ namespace UnitTestSingleton
     {
         public AbsTestClient()
         {
+            Console.WriteLine("--- product --- {0} ---", this.GetResStrings()[2]);
+        }
+
+        protected void PrepareData()
+        {
             string[] locales = { "en", "de", "zh-CN" };
             string[] components = { "about", "aboutadd", "contact" };
 
-            for(int i=0; i<locales.Length; i++)
+            for (int i = 0; i < locales.Length; i++)
             {
-                for(int k=0; k<components.Length; k++)
+                for (int k = 0; k < components.Length; k++)
                 {
                     access.Translation().GetString(locales[i], access.Source(components[k], "$"));
                 }
             }
-
-            Console.WriteLine("--- product --- {0} ---", this.GetResStrings()[2]);
         }
 
         protected void DoTestConfig()
