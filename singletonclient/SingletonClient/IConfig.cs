@@ -201,5 +201,9 @@ namespace SingletonClient
         public const string PlaceComponent = "$COMPONENT";
         public const string PlaceLocale = "$LOCALE";
         public const string PlaceLocaleCommon = "$LC";
+
+        // Net errors
+        public const string NetTimeout = "[STATUS]Timeout";
+        public const string NetFailConnect = "[STATUS]ConnectFailure";
     }
 }

@@ -40,7 +40,6 @@ namespace UnitTestSingleton
         [TestMethod]
         public void TestMessages1()
         {
-            Thread.Sleep(1000);
             DoTestMessages();
         }
     }

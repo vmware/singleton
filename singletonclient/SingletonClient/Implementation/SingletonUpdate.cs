@@ -69,7 +69,8 @@ namespace SingletonClient.Implementation
         public void UpdateBriefinfo(string url, string infoName, List<string> infoList)
         {
             Hashtable headers = SingletonUtil.NewHashtable(false);
-            JObject obj = SingletonUtil.HttpGetJson(_release.GetAccessService(), url, headers, _tryDelay, _release.GetLogger());
+            JObject obj = _release.GetApi().HttpGetJson(url, headers,
+                _tryDelay, _release.GetLogger());
 
             if (SingletonUtil.CheckResponseValid(obj, headers) == ResponseStatus.Messages)
             {
@@ -132,8 +133,9 @@ namespace SingletonClient.Implementation
             }
 
             string path = _config.GetExternalResourceRoot() + resourcePath;
-            string text = path.StartsWith("http") ? _release.GetAccessService().HttpGet(path, null, _tryDelay, null) :
-                SingletonUtil.ReadTextFile(path);
+            string statusConnection;
+            string text = path.StartsWith("http") ? _release.GetAccessService().HttpGet(path, null,
+                _tryDelay, out statusConnection, null) : SingletonUtil.ReadTextFile(path);
 
             if (text != null)
             {

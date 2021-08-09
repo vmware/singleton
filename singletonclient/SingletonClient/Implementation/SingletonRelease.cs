@@ -9,7 +9,7 @@ using SingletonClient.Implementation.Support.ByKey;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using System.Threading;
+using System.Threading.Tasks;
 
 namespace SingletonClient.Implementation
 {
@@ -54,7 +54,7 @@ namespace SingletonClient.Implementation
                 return;
             }
 
-            if (this._config.IsOnlineSupported())
+            if (_config.IsOnlineSupported())
             {
                 GetDataFromRemote();
             }
@@ -102,7 +102,7 @@ namespace SingletonClient.Implementation
         /// </summary>
         public void Log(LogType logType, string text)
         {
-            if (_logger != null && logType >= this._logLevel)
+            if (_logger != null && logType >= _logLevel)
             {
                 _logger.Log(logType, text);
             }
@@ -240,7 +240,7 @@ namespace SingletonClient.Implementation
             {
                 return null;
             }
-            string text = this.GetString(locale, source);
+            string text = GetString(locale, source);
             if (text != null && objects != null && objects.Length > 0)
             {
                 try
@@ -301,17 +301,45 @@ namespace SingletonClient.Implementation
         {
             List<string> componentLocalList = _config.GetConfig().GetComponentList();
 
-            for (int i = 0; i < this._infoRemote.Locales.Count; i++)
+            List<Task> tasks = new List<Task>();
+
+            for (int i = 0; i < _infoRemote.Locales.Count; i++)
             {
+                string locale = _infoRemote.Locales[i];
+                SingletonUseLocale useLocale = GetUseLocale(locale, false);
+
                 for (int k = 0; k < _infoRemote.Components.Count; k++)
                 {
                     string component = _infoRemote.Components[k];
                     if (componentLocalList.Count == 0 || componentLocalList.Contains(component))
                     {
-                        ISource sourceObject = this.CreateSource(component, "$", "$");
-                        this.GetRaw(_infoRemote.Locales[i], sourceObject);
+                        SingletonLoadRemoteBundle loadRemote = new SingletonLoadRemoteBundle(useLocale, component);
+                        if (i + k == 0)
+                        {
+                            loadRemote.Load();
+                        }
+                        else
+                        {
+                            tasks.Add(loadRemote.CreateAsyncTask());
+                        }
                     }
                 }
+            }
+
+            int maxCountInGroup = Environment.ProcessorCount * 4;
+            List<Task> tasksGroup = new List<Task>();
+            for (int i=0; i<tasks.Count; i++)
+            {
+                tasksGroup.Add(tasks[i]);
+                if (tasksGroup.Count == maxCountInGroup)
+                {
+                    Task.WaitAll(tasksGroup.ToArray());
+                    tasksGroup.Clear();
+                }
+            }
+            if (tasksGroup.Count > 0)
+            {
+                Task.WaitAll(tasksGroup.ToArray());
             }
         }
 
@@ -322,8 +350,7 @@ namespace SingletonClient.Implementation
                 _isLoadedOnStartup = true;
                 if (byRemote)
                 {
-                    Thread th = new Thread(LoadRemoteOnStartup);
-                    th.Start();
+                    LoadRemoteOnStartup();
                 }
                 else
                 {
@@ -333,4 +360,3 @@ namespace SingletonClient.Implementation
         }
     }
 }
-

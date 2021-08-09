@@ -210,29 +210,15 @@ namespace SingletonClient.Implementation
         }
 
         public static JObject HttpGetJson(IAccessService accessService,
-            string url, Hashtable headers, int timeout, ILog logger)
+            string url, Hashtable headers, int timeout, out string status, ILog logger)
         {
             JObject obj = new JObject();
-            string text = accessService.HttpGet(url, headers, timeout, logger);
+            string text = accessService.HttpGet(url, headers, timeout, out status, logger);
             if (text != null)
             {
                 JObject dict = ConvertToDict(text);
                 obj.Add(SingletonConst.KeyResult, dict);
             }
-            return obj;
-        }
-
-        public static JObject HttpPost(IAccessService accessService,
-            string url, string text, Hashtable headers, int timeout, ILog logger = null)
-        {
-            JObject obj = new JObject();
-
-            string responseData = accessService.HttpPost(url, text, headers, timeout, logger);
-            if (!string.IsNullOrEmpty(responseData))
-            {
-                obj.Add(SingletonConst.KeyResult, ConvertToDict(responseData));
-            }
-
             return obj;
         }
 
