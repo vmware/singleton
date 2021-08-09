@@ -5,6 +5,7 @@
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Threading;
 
 namespace UnitTestSingleton
 {
@@ -13,7 +14,8 @@ namespace UnitTestSingleton
     {
         public override string[] GetResStrings()
         {
-            string[] strings = { "res.Singleton1", "sgtn_online_localsource", "CSHARP1" };
+            string[] strings = { "res.Singleton1", "sgtn_online_localsource", "CSHARP1",
+                "load_on_startup: true"};
             return strings;
         }
 
@@ -38,6 +40,7 @@ namespace UnitTestSingleton
         [TestMethod]
         public void TestMessages1()
         {
+            Thread.Sleep(1000);
             DoTestMessages();
         }
     }

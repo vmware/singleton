@@ -7,8 +7,14 @@ namespace SingletonClient.Implementation.Support.Base
 {
     using System.Collections.Generic;
 
+    public interface ISingletonComponentMessages
+    {
+        IComponentMessages GetComponentMessages();
 
-    public abstract class SingletonCacheBaseComponentMessages : IComponentMessages
+        void SetComponent(ISingletonComponent singletonComponent);
+    }
+
+    public abstract class SingletonCacheBaseComponentMessages : ISingletonComponentMessages, IComponentMessages
     {
         protected readonly ISingletonRelease _release;
         protected readonly string _locale;
@@ -16,6 +22,7 @@ namespace SingletonClient.Implementation.Support.Base
         protected readonly bool _asSource;
         protected string _resourcePath;
         protected string _resourceType;
+        protected ISingletonComponent _singletonComponent;
 
         protected SingletonCacheBaseComponentMessages(
             ISingletonRelease release, string locale, string component, bool asSource)
@@ -24,6 +31,22 @@ namespace SingletonClient.Implementation.Support.Base
             _component = component;
             _locale = locale;
             _asSource = asSource;
+        }
+
+        /// <summary>
+        /// ISingletonComponentMessages
+        /// </summary>
+        public IComponentMessages GetComponentMessages()
+        {
+            return this;
+        }
+
+        /// <summary>
+        /// ISingletonComponentMessages
+        /// </summary>
+        public void SetComponent(ISingletonComponent singletonComponent)
+        {
+            _singletonComponent = singletonComponent;
         }
 
         /// <summary>

@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
+using SingletonClient.Implementation.Release;
 using SingletonClient.Implementation.Support.Base;
 using System.Collections.Generic;
 
@@ -10,20 +11,20 @@ namespace SingletonClient.Implementation.Support.ByKey
 {
     public class SingletonByKeyCacheComponentMessages : SingletonCacheBaseComponentMessages
     {
-        private readonly ISingletonByKey _byKeyRelease;
+        private readonly ISingletonByKey _byKey;
         private readonly ISingletonByKeyLocale _byKeyLocale;
         private readonly int _componentIndex;
 
         private readonly ISingletonComponent _componentObject;
 
-        public SingletonByKeyCacheComponentMessages(
-            ISingletonRelease release, string locale, string component, bool asSource) :
-            base(release, locale, component, asSource)
+        public SingletonByKeyCacheComponentMessages(SingletonUseLocale useLocale, string component) :
+            base(useLocale.Release, useLocale.Locale, component, useLocale.AsSource)
         {
-            _byKeyRelease = release.GetSingletonByKey();
-            _componentIndex = _byKeyRelease.GetComponentIndex(this._component);
-            _byKeyLocale = _byKeyRelease.GetLocaleItem(this._locale, this._asSource);
-            _componentObject = release.GetComponentObject(this, _locale, _component, _asSource);
+            _byKey = useLocale.Release.GetSingletonByKey();
+            _byKeyLocale = _byKey.GetLocaleItem(useLocale.Locale, useLocale.AsSource);
+            _componentIndex = _byKey.GetComponentIndex(component);
+
+            _componentObject = (ISingletonComponent)useLocale.Components[component];
         }
 
         /// <summary>
@@ -31,7 +32,7 @@ namespace SingletonClient.Implementation.Support.ByKey
         /// </summary>
         public override int GetCount()
         {
-            return _byKeyRelease.GetKeyCountInComponent(this._componentIndex, _byKeyLocale);
+            return _byKey.GetKeyCountInComponent(this._componentIndex, _byKeyLocale);
         }
 
         /// <summary>
@@ -39,7 +40,7 @@ namespace SingletonClient.Implementation.Support.ByKey
         /// </summary>
         public override ICollection<string> GetKeys()
         {
-            return _byKeyRelease.GetKeysInComponent(this._componentIndex, _byKeyLocale);
+            return _byKey.GetKeysInComponent(this._componentIndex, _byKeyLocale);
         }
 
         /// <summary>
@@ -47,7 +48,7 @@ namespace SingletonClient.Implementation.Support.ByKey
         /// </summary>
         public override string GetString(string key)
         {
-            return _byKeyRelease.GetString(key, _componentIndex, _byKeyLocale);
+            return _byKey.GetString(key, _componentIndex, _byKeyLocale);
         }
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace SingletonClient.Implementation.Support.ByKey
         /// </summary>
         public override void SetString(string key, string message)
         {
-            _byKeyRelease.SetString(key, _componentObject, _componentIndex, _byKeyLocale, message);
+            _byKey.SetString(key, _componentObject, _componentIndex, _byKeyLocale, message);
         }
     }
 }

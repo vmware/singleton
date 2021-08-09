@@ -115,24 +115,7 @@ namespace SingletonClient.Implementation.Support.ByKey
         /// </summary>
         public int GetKeyCountInComponent(int componentIndex, ISingletonByKeyLocale localeItem)
         {
-            int count = 0;
-            if (localeItem != null)
-            {
-                foreach (var pair in _keyAttrTable)
-                {
-                    SingletonByKeyItem item = pair.Value;
-                    if (item.ComponentIndex == componentIndex)
-                    {
-                        string message;
-                        localeItem.GetMessage(componentIndex, item.PageIndex, item.IndexInPage, out message);
-                        if (message != null)
-                        {
-                            count++;
-                        }
-                    }
-                }
-            }
-            return count;
+            return localeItem.GetKeyCountInComponent(componentIndex);
         }
 
         /// <summary>

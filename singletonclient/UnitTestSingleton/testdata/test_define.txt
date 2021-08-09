@@ -116,6 +116,12 @@ expect: 应用程序说明页。
 
 ---data---
 type: GetString
+locale: zh-Hans-CN
+key: about.message
+expect: 应用程序说明页。
+
+---data---
+type: GetString
 locale: en
 key: about.message
 expect: Your application description page.
@@ -195,6 +201,13 @@ locale: fr
 key: about.message
 expect: Your application description page.
 
+---data---
+type: GetString
+locale: da
+component: about
+key: about.message
+expect: Your application description page.
+
 
 
 ---test---
@@ -203,6 +216,13 @@ NAME: TestGetStringDifferentLocale
 ---data---
 type: GetString
 locale: fr
+key: about.message
+expect: Ihrer Bewerbungs Beschreibung Seite.
+
+---data---
+type: GetString
+locale: da
+component: about
 key: about.message
 expect: Ihrer Bewerbungs Beschreibung Seite.
 

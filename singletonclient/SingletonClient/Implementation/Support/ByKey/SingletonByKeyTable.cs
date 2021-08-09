@@ -38,14 +38,16 @@ namespace SingletonClient.Implementation.Support.ByKey
             return array[indexInPage];
         }
 
-        public void SetItem(int pageIndex, int indexInPage, T item)
+        public bool SetItem(int pageIndex, int indexInPage, T item)
         {
             T[] array = this.GetPage(pageIndex);
             if (array == null)
             {
                 array = NewPage(pageIndex);
             }
+            bool isNew = array[indexInPage] == null;
             array[indexInPage] = item;
+            return isNew;
         }
 
         public T GetItemByOneIndex(int index)
@@ -55,11 +57,11 @@ namespace SingletonClient.Implementation.Support.ByKey
             return GetItem(pageIndex, indexInPage);
         }
 
-        public void SetItemByOneIndex(int index, T item)
+        public bool SetItemByOneIndex(int index, T item)
         {
             int pageIndex = index / _max;
             int indexInPage = index % _max;
-            SetItem(pageIndex, indexInPage, item);
+            return SetItem(pageIndex, indexInPage, item);
         }
     }
 }

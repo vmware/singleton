@@ -20,9 +20,19 @@ namespace UnitTestSingleton
         [TestMethod]
         public void TestTranslation5()
         {
-            ISource src = access.Source("about", "about.message2", null, null);
-            string translation = Translation.GetString("zh-CN", src);
-            Assert.AreEqual(translation, "@about.message2");
+            string text = Translation.GetString("de", Translation.CreateSource("about", "about.message"));
+            IReleaseMessages releaseMessages = release.GetMessages();
+            string message = releaseMessages.GetLocaleMessages("de").GetString("about", "about.message");
+            Assert.AreEqual(text, message);
+
+            message = releaseMessages.GetLocaleMessages("zh-Hans").GetString("about", "about.message");
+            Assert.AreEqual(message, null);
+
+            this.PrepareData();
+            message = releaseMessages.GetLocaleMessages("zh-Hans").GetString("about", "about.message");
+            text = Translation.GetString("zh-Hans", Translation.CreateSource("about", "about.message"));
+            Assert.AreEqual(string.IsNullOrEmpty(text), false);
+            Assert.AreEqual(text, message);
         }
     }
 }
