@@ -13,6 +13,7 @@ using System.Globalization;
 using System.Reflection;
 using System.Resources;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace UnitTestSingleton
 {
@@ -184,16 +185,20 @@ namespace UnitTestSingleton
         /// <summary>
         /// IAccessService
         /// </summary>
-        public string HttpGet(string url, Hashtable headers, int timeout, ILog logger = null)
+        public string HttpGet(string url, Hashtable headers, int timeout, out string status, ILog logger = null)
         {
+            Thread.Sleep(100);
+
+            status = "";
             return this.GetResponse("[GET]" + url, headers);
         }
 
         /// <summary>
         /// IAccessService
         /// </summary>
-        public string HttpPost(string url, string text, Hashtable headers, int timeout, ILog logger = null)
+        public string HttpPost(string url, string text, Hashtable headers, int timeout, out string status, ILog logger = null)
         {
+            status = "";
             return this.GetResponse("[POST]" + url, headers);
         }
     }

@@ -18,6 +18,8 @@ namespace SingletonClient.Implementation
 
         ISingletonAccessTask GetAccessTask();
 
+        ISingletonAccessRemote GetAccessRemote();
+
         void GetDataFromLocal();
 
         int GetDataCount();
@@ -79,7 +81,7 @@ namespace SingletonClient.Implementation
             {
                 headers[SingletonConst.HeaderRequestEtag] = _etag;
             }
-            JObject obj = SingletonUtil.HttpGetJson(_release.GetAccessService(), adr, headers,
+            JObject obj = _release.GetApi().HttpGetJson(adr, headers,
                 _release.GetSingletonConfig().GetTryDelay(), _release.GetLogger());
             ResponseStatus status = SingletonUtil.CheckResponseValid(obj, headers);
             if (status == ResponseStatus.Messages)
@@ -155,6 +157,14 @@ namespace SingletonClient.Implementation
         public ISingletonAccessTask GetAccessTask()
         {
             return _task;
+        }
+
+        /// <summary>
+        /// ISingletonComponent
+        /// </summary>
+        public ISingletonAccessRemote GetAccessRemote()
+        {
+            return this;
         }
 
         /// <summary>

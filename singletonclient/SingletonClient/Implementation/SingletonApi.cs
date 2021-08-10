@@ -4,7 +4,9 @@
  */
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using SingletonClient.Implementation.Support;
 
 namespace SingletonClient.Implementation
@@ -15,6 +17,7 @@ namespace SingletonClient.Implementation
         string GetLocaleListApi();
         string GetComponentListApi();
         string GetComponentApi(string component, string locale);
+        JObject HttpGetJson(string url, Hashtable headers, int timeout, ILog logger);
     }
 
     public class SingletonApi : ISingletonApi
@@ -28,6 +31,9 @@ namespace SingletonClient.Implementation
         private readonly string _urlService;
 
         private readonly ISingletonRelease _releaseObject;
+
+        private string _status;
+        private int _tick;
 
         public SingletonApi(ISingletonRelease releaseObject)
         {
@@ -93,6 +99,31 @@ namespace SingletonClient.Implementation
             string api = string.Format("{0}{1}componentlist", _urlService, head);
             return api;
         }
+
+        public JObject HttpGetJson(string url, Hashtable headers, int timeout, ILog logger)
+        {
+            if (!string.IsNullOrEmpty(_status) && System.Environment.TickCount - _tick < 60 * 1000)
+            {
+                return new JObject();
+            }
+
+            string status;
+            JObject obj = SingletonUtil.HttpGetJson(_releaseObject.GetAccessService(), url, headers,
+                timeout, out status, logger);
+            if (string.IsNullOrEmpty(status))
+            {
+                _tick = 0;
+                _status = null;
+            }
+            else
+            {
+                if (status.Equals(ConfigConst.NetFailConnect) || status.Equals(ConfigConst.NetTimeout))
+                {
+                    _status = status;
+                    _tick = System.Environment.TickCount;
+                }
+            }
+            return obj;
+        }
     }
 }
-

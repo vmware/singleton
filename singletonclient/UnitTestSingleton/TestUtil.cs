@@ -17,10 +17,8 @@ namespace UnitTestSingleton
         [TestMethod]
         public void TestSingletonUtil()
         {
-            string text = BaseIo.obj().HttpGet("11.22.33", null, 0);
-            Assert.AreEqual(string.IsNullOrEmpty(text), true);
-
-            text = BaseIo.obj().HttpPost("11.22.33", "44.55", null, 0);
+            string status;
+            string text = BaseIo.obj().HttpGet("11.22.33", null, 0, out status);
             Assert.AreEqual(string.IsNullOrEmpty(text), true);
 
             Assert.AreEqual(SingletonUtil.CheckResponseValid(null, null), ResponseStatus.NetFail);
@@ -30,9 +28,6 @@ namespace UnitTestSingleton
             Assert.AreEqual(text, "1");
             byte[] bytes2 = { 0xef, 0x31 };
             text = SingletonUtil.ConvertToText(bytes2);
-
-            JObject obj = SingletonUtil.HttpPost(BaseIo.obj(), "__url", "body", null, 0);
-            Assert.AreEqual(obj.Count, 0);
 
             SingletonClientManager mgr = (SingletonClientManager)I18N.GetExtension();
             Assert.AreEqual(mgr.GetRelease(null), null);

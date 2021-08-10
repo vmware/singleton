@@ -16,9 +16,10 @@ namespace SingletonClient.Implementation.Support
         /// <summary>
         /// IAccessService
         /// </summary>
-        public string HttpGet(string url, Hashtable headers, int timeout, ILog logger = null)
+        public string HttpGet(string url, Hashtable headers, int timeout, out string status, ILog logger = null)
         {
             string result = "";
+            status = "";
 
             try
             {
@@ -64,17 +65,19 @@ namespace SingletonClient.Implementation.Support
                     headers.Clear();
                     headers.Add(SingletonConst.HeaderResponseCode, resp.StatusCode.ToString());
                 }
+                status = "[STATUS]" + e.Status.ToString();
                 if (logger != null)
                 {
-                    logger.Log(LogType.Info, e.Message);
+                    logger.Log(LogType.Info, status);
                 }
                 return null;
             }
             catch (Exception e)
             {
+                status = "[MESSAGE]" + e.Message;
                 if (logger != null)
                 {
-                    logger.Log(LogType.Info, e.Message);
+                    logger.Log(LogType.Info, status);
                 }
                 return null;
             }
@@ -84,51 +87,10 @@ namespace SingletonClient.Implementation.Support
         /// <summary>
         /// IAccessService
         /// </summary>
-        public string HttpPost(string url, string text, Hashtable headers, int timeout, ILog logger = null)
+        public string HttpPost(string url, string text, Hashtable headers, int timeout, out string status, ILog logger = null)
         {
-            if (text == null)
-            {
-                return null;
-            }
-
-            HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create(url);
-            byte[] bs = Encoding.UTF8.GetBytes(text);
-            string responseData = null;
-            if (timeout > 0)
-            {
-                req.Timeout = timeout * 1000;
-            }
-            req.Method = "POST";
-            req.ContentType = "application/json";
-            req.ContentLength = bs.Length;
-
-            try
-            {
-                using (Stream reqStream = req.GetRequestStream())
-                {
-                    reqStream.Write(bs, 0, bs.Length);
-                    reqStream.Close();
-                }
-
-                using (HttpWebResponse response = (HttpWebResponse)req.GetResponse())
-                {
-                    using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
-                    {
-                        responseData = reader.ReadToEnd().ToString();
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                if (logger != null)
-                {
-                    logger.Log(LogType.Info, e.Message);
-                }
-                return null;
-            }
-
-            return responseData;
+            status = "";
+            return "";
         }
     }
 }
-
