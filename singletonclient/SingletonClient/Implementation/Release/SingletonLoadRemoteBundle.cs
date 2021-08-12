@@ -20,7 +20,7 @@ namespace SingletonClient.Implementation.Release
 
         public void Load()
         {
-            ISingletonComponent singletonComponent = _useLocale.GetComponent(_component);
+            ISingletonComponent singletonComponent = _useLocale.GetComponent(_component, true);
             singletonComponent.GetAccessRemote().GetDataFromRemote();
         }
 

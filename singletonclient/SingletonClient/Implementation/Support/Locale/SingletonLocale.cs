@@ -16,7 +16,7 @@ namespace SingletonClient.Implementation.Support
         string GetNearLocale(int index);
         string GetOriginalLocale();
         bool Compare(ISingletonLocale singletonLocale);
-        bool IsInLocaleList(List<string> checkList);
+        ISingletonLocale GetRelateLocale(List<string> checkList);
         bool IsLocaleAtStringEnd(string text);
         bool Contains(string locale);
         object FindItem(Hashtable items, int start);
@@ -26,10 +26,12 @@ namespace SingletonClient.Implementation.Support
     public class SingletonLocale : ISingletonLocale
     {
         private readonly List<string> localeList = new List<string>();
+        private readonly Hashtable localeMap = SingletonUtil.NewHashtable(true);
 
         public SingletonLocale(string locale)
         {
             localeList.Add(locale);
+            localeMap[locale] = true;
         }
 
         public List<string> GetNearLocaleList()
@@ -39,10 +41,11 @@ namespace SingletonClient.Implementation.Support
 
         public bool AddNearLocale(string locale)
         {
-            if (localeList.Contains(locale))
+            if (localeMap.ContainsKey(locale))
             {
                 return false;
             }
+            localeMap[locale] = true;
             localeList.Add(locale);
             return true;
         }
@@ -74,25 +77,34 @@ namespace SingletonClient.Implementation.Support
                 return false;
             }
 
-            return this.IsInLocaleList(singletonLocale.GetNearLocaleList());
-        }
-
-        public bool IsInLocaleList(List<string> checkList)
-        {
-            if (checkList == null)
+            foreach (var one in localeList)
             {
-                return false;
-            }
-
-            for (int i = 0; i < GetCount(); i++)
-            {
-                if (checkList.Contains(GetNearLocale(i)))
+                if (singletonLocale.Contains(one))
                 {
                     return true;
                 }
             }
 
             return false;
+        }
+
+        public ISingletonLocale GetRelateLocale(List<string> checkList)
+        {
+            if (checkList == null)
+            {
+                return null;
+            }
+
+            foreach (var one in checkList)
+            {
+                ISingletonLocale temp = SingletonLocaleUtil.GetSingletonLocale(one);
+                if (Compare(temp))
+                {
+                    return temp;
+                }
+            }
+
+            return null;
         }
 
         public bool IsLocaleAtStringEnd(string text)
@@ -110,7 +122,7 @@ namespace SingletonClient.Implementation.Support
 
         public bool Contains(string locale)
         {
-            return localeList.Contains(locale);
+            return localeMap.ContainsKey(locale);
         }
 
         public object FindItem(Hashtable items, int start)

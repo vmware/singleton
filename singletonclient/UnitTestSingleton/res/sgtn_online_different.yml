@@ -18,8 +18,8 @@ access_service_type: test
 cache_type: by_key
 # optional, cache expire time
 cache_expire: 60
-# optional, delay of retry when connection fails
-try_delay: 10
+# optional, wait of timeout or retry when connection fails
+try_wait: 10
 
 # optional, logger type
 logger_type: default

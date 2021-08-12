@@ -14,8 +14,8 @@ namespace UnitTestSingleton
     {
         public override string[] GetResStrings()
         {
-            string[] strings = { "res.Singleton1", "sgtn_online_localsource", "CSHARP1",
-                "load_on_startup: true"};
+            string[] strings = { "res.Singleton1", "sgtn_online_localsource",
+                "product: CSHARP1" + "\n" + "load_on_startup: true"};
             return strings;
         }
 

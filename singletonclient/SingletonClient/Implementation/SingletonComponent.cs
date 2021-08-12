@@ -34,6 +34,7 @@ namespace SingletonClient.Implementation
         private readonly ISingletonLocale _singletonLocale;
         private readonly string _locale;
         private readonly string _component;
+        private readonly bool _asSource;
         private readonly IComponentMessages _componentCache;
 
         private readonly ISingletonAccessTask _task;
@@ -48,12 +49,13 @@ namespace SingletonClient.Implementation
             _singletonLocale = singletonLocale;
             _locale = _singletonLocale.GetOriginalLocale();
             _component = component;
+            _asSource = asSource;
 
             ISingletonConfig config = _release.GetSingletonConfig();
             int interval = config.GetInterval();
-            int tryDelay = config.GetTryDelay();
+            int tryWait = config.GetTryWait();
 
-            _task = asSource ? null : new SingletonAccessRemoteTask(this, interval, tryDelay);
+            _task = asSource ? null : new SingletonAccessRemoteTask(this, interval, tryWait);
 
             SingletonUseLocale useLocale = _release.GetUseLocale(_locale, asSource);
             // Must be next
@@ -82,7 +84,7 @@ namespace SingletonClient.Implementation
                 headers[SingletonConst.HeaderRequestEtag] = _etag;
             }
             JObject obj = _release.GetApi().HttpGetJson(adr, headers,
-                _release.GetSingletonConfig().GetTryDelay(), _release.GetLogger());
+                _release.GetSingletonConfig().GetTryWait(), _release.GetLogger());
             ResponseStatus status = SingletonUtil.CheckResponseValid(obj, headers);
             if (status == ResponseStatus.Messages)
             {
@@ -110,7 +112,7 @@ namespace SingletonClient.Implementation
                     _componentCache.SetString(item.Key.ToString(), item.Value.ToString());
                 }
             }
-            else if (status == ResponseStatus.NetFail || status == ResponseStatus.NoMessages)
+            else if (status == ResponseStatus.NetFail || status == ResponseStatus.NoMessages || status == ResponseStatus.WrongFormat)
             {
                 GetDataFromLocal();
             }
@@ -147,7 +149,7 @@ namespace SingletonClient.Implementation
             ISingletonConfig config = _release.GetSingletonConfig();
             if (config.IsOfflineSupported())
             {
-                _release.GetUpdate().LoadOfflineMessage(_singletonLocale);
+                _release.GetUpdate().LoadOfflineMessage(_singletonLocale, _component, _asSource);
             }
         }
 

@@ -317,6 +317,23 @@ namespace SingletonClient.Implementation
                 }
             }
         }
+
+        /// <summary>
+        /// Build combine key with locale and component.
+        /// </summary>
+        /// <param name="locale"></param>
+        /// <param name="component"></param>
+        public static string GetCombineKey(string locale, string component)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(locale);
+            sb.Append("_!_");
+            if (!string.IsNullOrEmpty(component))
+            {
+                sb.Append(component);
+            }
+            return sb.ToString();
+        }
     }
 }
 

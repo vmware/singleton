@@ -79,7 +79,7 @@ namespace SingletonClient.Implementation.Release
             _useSourceLocale = GetUseLocale(_config.GetSourceLocale(), true);
             if (_config.IsOfflineSupported())
             {
-                _update.LoadOfflineMessage(_useSourceLocale.SingletonLocale, true);
+                _update.LoadOfflineMessage(_useSourceLocale.SingletonLocale, null, true);
             }
             _useSourceRemote = GetUseLocale(_config.GetSourceLocale(), false);
 
@@ -195,18 +195,18 @@ namespace SingletonClient.Implementation.Release
                 int componentIndex = this._byKey.GetComponentIndex(accessObject.Component);
                 if (componentIndex >= 0)
                 {
-                    string combineKey = locale + "_!_" + accessObject.Component;
+                    string combineKey = SingletonUtil.GetCombineKey(locale, accessObject.Component);
                     if (_componentHandled[combineKey] == null)
                     {
-                        _useSourceLocale.GetComponent(accessObject.Component);
-                        ISingletonComponent componentObj = useLocale.GetComponent(accessObject.Component);
+                        _useSourceLocale.GetComponent(accessObject.Component, true);
+                        ISingletonComponent componentObj = useLocale.GetComponent(accessObject.Component, true);
                         if (componentObj != null)
                         {
                             _componentHandled[combineKey] = true;
                         }
                         if (_useDefaultLocale != null)
                         {
-                            _useDefaultLocale.GetComponent(accessObject.Component);
+                            _useDefaultLocale.GetComponent(accessObject.Component, true);
                         }
                     }
                 }

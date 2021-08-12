@@ -43,7 +43,7 @@ namespace UnitTestSingleton
 
             string raw = (string)resourceManager.GetObject("http_response");
 
-            for (int k=1; k<10; k++)
+            for (int k=1; k<20; k++)
             {
                 string product = "CSHARP" + k;
                 string text = raw.Replace("$PRODUCT", product).Replace("$VERSION", "1.0.0");

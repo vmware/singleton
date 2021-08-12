@@ -57,7 +57,7 @@ namespace SingletonClient.Implementation
 
         bool IsExpireEnabled();
 
-        int GetTryDelay();
+        int GetTryWait();
 
         bool IsOnlineSupported();
 
@@ -701,10 +701,10 @@ namespace SingletonClient.Implementation
             return _isExpireEnabled;
         }
 
-        public int GetTryDelay()
+        public int GetTryWait()
         {
-            IConfigItem configItem = _config.GetItem(ConfigConst.KeyTryDelay);
-            return (configItem == null) ? ConfigConst.DefaultTryDelay : configItem.GetInt();
+            IConfigItem configItem = _config.GetItem(ConfigConst.KeyTryWait);
+            return (configItem == null) ? ConfigConst.DefaultTryWait : configItem.GetInt();
         }
 
         public string GetExternalResourceRoot()

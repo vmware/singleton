@@ -177,7 +177,7 @@ namespace SingletonClient
         public const string KeyCacheComponentType = "cache_component_type";
         public const string KeyCacheExpire = "cache_expire";
         public const string KeyEnableExpire = "enable_expire";
-        public const string KeyTryDelay = "try_delay";
+        public const string KeyTryWait = "try_wait";
         public const string KeyLoggerType = "logger_type";
         public const string KeyLogLevel = "log_level";
         public const string KeyExternalResourceRoot = "external_resources_root";
@@ -195,7 +195,7 @@ namespace SingletonClient
         public const string DefaultLocale = "en-US";    // KeyDefaultLocale
         public const string DefaultDebugLevel = "Debug";// KeyLogLevel
         public const int DefaultCacheExpire = 60;       // KeyCacheExpire
-        public const int DefaultTryDelay = 10;          // KeyTryDelay
+        public const int DefaultTryWait = 10;           // KeyTryWait
 
         // Placeholders
         public const string PlaceComponent = "$COMPONENT";
