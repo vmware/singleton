@@ -51,7 +51,7 @@ namespace SingletonClient.Implementation
     public class SingletonAccessRemoteTask: ISingletonAccessTask
     {
         private readonly ISingletonAccessRemote _update;
-        private readonly int _tryDelay;
+        private readonly int _tryWaitMs;
 
         private bool _querying = false;
         private bool _trying = false;
@@ -61,11 +61,11 @@ namespace SingletonClient.Implementation
         private int _ticks;
 
         public SingletonAccessRemoteTask(
-            ISingletonAccessRemote update, int interval, int tryDelay)
+            ISingletonAccessRemote update, int interval, int tryWait)
         {
             _update = update;
             _interval = interval * 1000;
-            _tryDelay = tryDelay * 1000;
+            _tryWaitMs = tryWait * 1000;
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace SingletonClient.Implementation
                 int span = System.Environment.TickCount - _ticks;
                 if (_trying)
                 {
-                    if (span > _tryDelay)
+                    if (span > _tryWaitMs)
                     {
                         TryAccessRemote();
                     }

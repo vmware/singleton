@@ -16,9 +16,9 @@ access_service_type: default
 # optional, cache type
 cache_type: default
 # optional, cache expire time
-cache_expire: 5
-# optional, delay of retry when connection fails
-try_delay: 1
+cache_expire: 15
+# optional, wait of timeout or retry when connection fails
+try_wait: 5
 
 # optional, logger type
 logger_type: default

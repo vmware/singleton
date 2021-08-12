@@ -1,0 +1,19 @@
+﻿
+product: $PRODUCT
+l10n_version: 1.0.0
+
+offline_resources_base_url: res.source2
+default_resource_format: resx, internal
+
+cache_type: by_key
+
+
+component_template: # as default
+  offline_resources_path:
+    - $COMPONENT
+  locales:
+    - language_tag: en-US
+    - language_tag: de
+    - language_tag: zh-CN
+
+component_enumerate: auto,file

@@ -8,6 +8,7 @@ using SingletonClient.Implementation.Release;
 using SingletonClient.Implementation.Support;
 using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using static SingletonClient.Implementation.SingletonUtil;
 
@@ -45,32 +46,39 @@ namespace SingletonClient.Implementation
         /// Load offline bundle to its cache.
         /// </summary>
         /// <param name="singletonLocale"></param>
+        /// <param name="component"></param>
         /// <param name="asSource"></param>
         /// <returns></returns>
-        ILocaleMessages LoadOfflineMessage(ISingletonLocale singletonLocale, bool asSource = false);
+        ILocaleMessages LoadOfflineMessage(ISingletonLocale singletonLocale, string component, bool asSource = false);
+
+        /// <summary>
+        /// Get local component list including case of enumeration.
+        /// </summary>
+        /// <returns>List<string></returns>
+        List<string> GetLocalComponentList();
     }
 
     public class SingletonUpdate : ISingletonUpdate
     {
         protected ISingletonRelease _release;
         protected ISingletonConfig _config;
-        protected int _tryDelay;
+        protected int _tryWait;
 
-        private readonly List<string> _usedOfflineLocales = new List<string>();
+        private readonly Hashtable _usedOfflineLocales = SingletonUtil.NewHashtable(true);
         private List<string> _localComponentList = null;
 
         public SingletonUpdate(ISingletonRelease release)
         {
             _release = release;
             _config = release.GetSingletonConfig();
-            _tryDelay = _config.GetTryDelay();
+            _tryWait = _config.GetTryWait();
         }
 
         public void UpdateBriefinfo(string url, string infoName, List<string> infoList)
         {
             Hashtable headers = SingletonUtil.NewHashtable(false);
             JObject obj = _release.GetApi().HttpGetJson(url, headers,
-                _tryDelay, _release.GetLogger());
+                _tryWait, _release.GetLogger());
 
             if (SingletonUtil.CheckResponseValid(obj, headers) == ResponseStatus.Messages)
             {
@@ -135,7 +143,7 @@ namespace SingletonClient.Implementation
             string path = _config.GetExternalResourceRoot() + resourcePath;
             string statusConnection;
             string text = path.StartsWith("http") ? _release.GetAccessService().HttpGet(path, null,
-                _tryDelay, out statusConnection, null) : SingletonUtil.ReadTextFile(path);
+                _tryWait, out statusConnection, null) : SingletonUtil.ReadTextFile(path);
 
             if (text != null)
             {
@@ -185,21 +193,23 @@ namespace SingletonClient.Implementation
             }
         }
 
-        public ILocaleMessages LoadOfflineMessage(ISingletonLocale singletonLocale, bool asSource = false)
+        public ILocaleMessages LoadOfflineMessage(ISingletonLocale singletonLocale, string component, bool asSource = false)
         {
             string locale = singletonLocale.GetOriginalLocale();
-            if (_usedOfflineLocales.Contains(locale))
+            string keyLocaleScope = SingletonUtil.GetCombineKey(locale, null);
+            string key = SingletonUtil.GetCombineKey(locale, component);
+            if (_usedOfflineLocales.Contains(keyLocaleScope) || _usedOfflineLocales.Contains(key))
             {
                 return null;
             }
-            _usedOfflineLocales.Add(locale);
+            _usedOfflineLocales[key] = true;
 
             ILocaleMessages languageMessages = null;
 
             for (int i = 0; i < singletonLocale.GetCount(); i++)
             {
                 string nearLocale = singletonLocale.GetNearLocale(i);
-                languageMessages = LoadOfflineLocaleMessage(locale, nearLocale, asSource);
+                languageMessages = LoadOfflineLocaleMessage(locale, nearLocale, component, asSource);
                 if (languageMessages != null)
                 {
                     break;
@@ -208,7 +218,7 @@ namespace SingletonClient.Implementation
             return languageMessages;
         }
 
-        private List<string> GetLocalComponentList()
+        public List<string> GetLocalComponentList()
         {
             if (_localComponentList != null)
             {
@@ -233,10 +243,11 @@ namespace SingletonClient.Implementation
                 SingletonUtil.UpdateListFromAnotherList(releaseLocales, componentLocaleList);
             }
 
+            _release.AddLocalScope(releaseLocales, _localComponentList);
             return _localComponentList;
         }
 
-        private ILocaleMessages LoadOfflineLocaleMessage(string locale, string nearLocale, bool asSource)
+        private ILocaleMessages LoadOfflineLocaleMessage(string locale, string nearLocale, string component, bool asSource)
         {
             string[] parts = new string[3];
             string[] arrayFormat = _config.GetDefaultResourceFormat().Split(',');
@@ -249,14 +260,17 @@ namespace SingletonClient.Implementation
 
             for (int i = 0; componentList != null && i < componentList.Count; i++)
             {
-                string component = componentList[i];
-                _release.AddLocalScope(locale, component);
+                string one = componentList[i];
+                if (!string.IsNullOrEmpty(component) && !one.Equals(component, StringComparison.OrdinalIgnoreCase))
+                {
+                    continue;
+                }
 
-                IConfigItem resConfigItem = _config.GetOfflinePathItem(component, locale);
+                IConfigItem resConfigItem = _config.GetOfflinePathItem(one, locale);
                 List<string> resList = (resConfigItem == null) ?
                     new List<String>() { SingletonConst.PlaceNoLocaleDefine } : resConfigItem.GetStringList();
 
-                ISingletonComponent singletonComponent = useLocale.GetComponent(component);
+                ISingletonComponent singletonComponent = useLocale.GetComponent(one, false);
                 IComponentMessages componentCache = singletonComponent.GetComponentMessages();
                 for (int k = 0; k < resList.Count; k++)
                 {
@@ -274,7 +288,6 @@ namespace SingletonClient.Implementation
                 if (keyCount > 0)
                 {
                     messageCount += keyCount;
-                    _release.AddLocalScope(locale, component);
                 }
             }
 

@@ -214,12 +214,7 @@ namespace UnitTestSingleton
             BaseIo.obj();
 
             string[] resStrings = GetResStrings();
-            string outside = "product: " + resStrings[2];
-            if (resStrings.Length > 3)
-            {
-                outside += "\n" + resStrings[3];
-            }
-            IConfig cfgOutside = I18N.LoadConfigFromText(outside);
+            IConfig cfgOutside = I18N.LoadConfigFromText(resStrings[2]);
 
             IConfig cfg = I18N.LoadConfig(resStrings[0], Assembly.GetExecutingAssembly(), resStrings[1], cfgOutside);
             product = cfg.GetItem(ConfigConst.KeyProduct).GetString();

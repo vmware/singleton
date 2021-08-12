@@ -24,9 +24,9 @@ namespace SingletonClient.Implementation
         ISingletonByKey GetSingletonByKey();
         IAccessService GetAccessService();
         ILog GetLogger();
-        void AddLocalScope(string locale, string component);
+        void AddLocalScope(List<string> locales, List<string> components);
         SingletonUseLocale GetUseLocale(string locale, bool asSource);
-        bool IsInScope(ISingletonLocale singletonLocale, string component);
+        bool IsInScope(ISingletonLocale singletonLocale, string component, out ISingletonLocale relateLocale);
     }
 
     public class SingletonRelease : SingletonReleaseForCache, ISingletonRelease, ISingletonAccessRemote,
@@ -283,7 +283,7 @@ namespace SingletonClient.Implementation
 
         private void LoadLocalOnStartup()
         {
-            List<string> componentLocalList = _config.GetConfig().GetComponentList();
+            List<string> componentLocalList = _update.GetLocalComponentList();
 
             for (int i = 0; i < componentLocalList.Count; i++)
             {
@@ -291,8 +291,8 @@ namespace SingletonClient.Implementation
                 for (int k=0; k<localeList.Count; k++)
                 {
                     ISingletonLocale singletonLocale = SingletonLocaleUtil.GetSingletonLocale(localeList[k]);
-
-                    _update.LoadOfflineMessage(singletonLocale, false);
+                    bool isSource = singletonLocale.Compare(_useSourceLocale.SingletonLocale);
+                    _update.LoadOfflineMessage(singletonLocale, componentLocalList[i], isSource);
                 }
             }
         }
@@ -301,7 +301,7 @@ namespace SingletonClient.Implementation
         {
             List<string> componentLocalList = _config.GetConfig().GetComponentList();
 
-            List<Task> tasks = new List<Task>();
+            List<SingletonLoadRemoteBundle> loads = new List<SingletonLoadRemoteBundle>();
 
             for (int i = 0; i < _infoRemote.Locales.Count; i++)
             {
@@ -320,17 +320,17 @@ namespace SingletonClient.Implementation
                         }
                         else
                         {
-                            tasks.Add(loadRemote.CreateAsyncTask());
+                            loads.Add(loadRemote);
                         }
                     }
                 }
             }
 
-            int maxCountInGroup = Environment.ProcessorCount * 4;
+            int maxCountInGroup = Environment.ProcessorCount * 2;
             List<Task> tasksGroup = new List<Task>();
-            for (int i=0; i<tasks.Count; i++)
+            for (int i=0; i< loads.Count; i++)
             {
-                tasksGroup.Add(tasks[i]);
+                tasksGroup.Add(loads[i].CreateAsyncTask());
                 if (tasksGroup.Count == maxCountInGroup)
                 {
                     Task.WaitAll(tasksGroup.ToArray());

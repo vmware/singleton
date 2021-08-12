@@ -15,6 +15,7 @@ namespace SingletonClient.Implementation.Release
         public ISingletonLocale SingletonLocale { get; }
         public string Locale { get; }
         public bool IsSourceLocale { get; }
+        public bool IsOnlineSupported { get; }
         public bool AsSource { get; }
 
         public Hashtable Components { get; }
@@ -43,28 +44,30 @@ namespace SingletonClient.Implementation.Release
 
             ICacheMessages productCache = release.GetReleaseMessages();
             LocaleCache = productCache.GetLocaleMessages(Locale, asSource);
+
+            IsOnlineSupported = Release.GetSingletonConfig().IsOnlineSupported();
         }
 
-        public ISingletonComponent GetComponent(string component)
+        public ISingletonComponent GetComponent(string component, bool useRemote)
         {
-            if (!Release.IsInScope(SingletonLocale, component))
-            {
-                return null;
-            }
-
-            bool onlineSupported = Release.GetSingletonConfig().IsOnlineSupported();
             ISingletonComponent obj = (ISingletonComponent)Components[component];
             if (obj == null)
             {
-                obj = new SingletonComponent(Release, SingletonLocale, component, AsSource);
+                ISingletonLocale relateLocale;
+                if (!Release.IsInScope(SingletonLocale, component, out relateLocale))
+                {
+                    return null;
+                }
 
-                if (!onlineSupported)
+                obj = new SingletonComponent(Release, relateLocale, component, AsSource);
+
+                if (!IsOnlineSupported)
                 {
                     obj.GetDataFromLocal();
                 }
             }
 
-            if (onlineSupported)
+            if (IsOnlineSupported && useRemote)
             {
                 ISingletonAccessTask task = obj.GetAccessTask();
                 if (task != null)
@@ -79,7 +82,7 @@ namespace SingletonClient.Implementation.Release
         {
             if (!string.IsNullOrEmpty(component) && Components[component] == null)
             {
-                Components[component] = GetComponent(component);
+                Components[component] = GetComponent(component, true);
             }
 
             return LocaleCache.GetString(component, key);
