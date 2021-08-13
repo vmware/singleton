@@ -13,7 +13,7 @@ namespace UnitTestSingleton
     {
         public override string[] GetResStrings()
         {
-            string[] strings = { "res.Singleton1", "sgtn_debug", "product: CSHARP19"};
+            string[] strings = { "res.Singleton1", "sgtn_debug", "product2: CSHARP19"};
             return strings;
         }
 
@@ -32,13 +32,20 @@ namespace UnitTestSingleton
         [TestMethod]
         public void TestTranslation7()
         {
-            ISource srcObj = access.Source("about", "about.message");
-            string translation = Translation.GetString("ZH-hans", srcObj);
-            Assert.AreEqual(translation, "应用程序说明页。");
+            ISource srcObj = null;
+            string translation = null;
+
+            srcObj = access.Source("contact", "contact.support");
+            translation = Translation.GetString("en-US", srcObj);
+            Assert.AreEqual("Support:", translation);
+
+            srcObj = access.Source("about", "about.message");
+            translation = Translation.GetString("ZH-hans", srcObj);
+            Assert.AreEqual("应用程序说明页。", translation);
 
             srcObj = access.Source("contact", "contact.support");
             translation = Translation.GetString("ZH-hans", srcObj);
-            Assert.AreEqual(translation, "支持：");
+            Assert.AreEqual("支持：", translation);
         }
     }
 }

@@ -21,11 +21,11 @@ namespace UnitTestSingleton
             Hashtable headers = SingletonUtil.NewHashtable(false);
             string status;
             String text = service.HttpGet("https://github.com", headers, 0, out status);
-            Assert.AreEqual(text.Contains("GitHub"), true);
+            Assert.AreEqual(true, text.Contains("GitHub"));
 
             headers.Clear();
             text = service.HttpGet("https://github.next.com", headers, 0, out status);
-            Assert.AreEqual(text == null, true);
+            Assert.AreEqual(true, text == null);
         }
     }
 }

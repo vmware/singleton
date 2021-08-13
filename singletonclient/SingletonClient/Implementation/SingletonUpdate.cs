@@ -128,16 +128,21 @@ namespace SingletonClient.Implementation
                 return;
             }
 
-            resourcePath = resourcePath.Replace(SingletonConst.PlaceNoLocaleDefine,
-                componentCache.GetComponent());
+            if (resourcePath.Contains(SingletonConst.PlaceNoLocaleDefine))
+            {
+                resourcePath = resourcePath.Replace(SingletonConst.PlaceNoLocaleDefine,
+                    componentCache.GetComponent());
 
-            if (ConfigConst.FormatBundle.Equals(parserName))
-            {
-                resourcePath += "/messages_" + locale + ".json";
-            }
-            else if (ConfigConst.FormatProperties.Equals(parserName))
-            {
-                resourcePath += "/messages_" + locale + ".properties";
+                string lc = _config.GetSourceLocale().Equals(locale) ? "" : "_" + locale;
+
+                if (ConfigConst.FormatBundle.Equals(parserName))
+                {
+                    resourcePath += "/messages" + lc + ".json";
+                }
+                else if (ConfigConst.FormatProperties.Equals(parserName))
+                {
+                    resourcePath += "/messages" + lc + ".properties";
+                }
             }
 
             string path = _config.GetExternalResourceRoot() + resourcePath;
@@ -232,18 +237,15 @@ namespace SingletonClient.Implementation
                 _localComponentList = _config.GetExternalComponentList();
             }
 
-            List<string> releaseComponents = _release.GetRelease().GetMessages().GetComponentList();
-            SingletonUtil.UpdateListFromAnotherList(releaseComponents, _localComponentList);
-
-            List<string> releaseLocales = _release.GetRelease().GetMessages().GetLocaleList();
+            List<string> localLocales = new List<string>();
             for (int i = 0; i < _localComponentList.Count; i++)
             {
                 List<string> componentLocaleList = fromExternal ? _config.GetExternalLocaleList(_localComponentList[i]) :
                     _config.GetConfig().GetLocaleList(_localComponentList[i]);
-                SingletonUtil.UpdateListFromAnotherList(releaseLocales, componentLocaleList);
+                SingletonUtil.UpdateListFromAnotherList(localLocales, componentLocaleList);
             }
 
-            _release.AddLocalScope(releaseLocales, _localComponentList);
+            _release.AddLocalScope(localLocales, _localComponentList);
             return _localComponentList;
         }
 
@@ -271,6 +273,10 @@ namespace SingletonClient.Implementation
                     new List<String>() { SingletonConst.PlaceNoLocaleDefine } : resConfigItem.GetStringList();
 
                 ISingletonComponent singletonComponent = useLocale.GetComponent(one, false);
+                if (singletonComponent == null)
+                {
+                    continue;
+                }
                 IComponentMessages componentCache = singletonComponent.GetComponentMessages();
                 for (int k = 0; k < resList.Count; k++)
                 {

@@ -761,11 +761,14 @@ namespace SingletonClient.Implementation
             for (int i = 0; i < finfo.Length; i++)
             {
                 string name = finfo[i].Name;
-                if (name.StartsWith("messages_"))
+                string[] parts = name.Split('.');
+                if (parts[0] == "messages")
                 {
-                    name = name.Substring("messages_".Length);
-                    string[] parts = name.Split('.');
-                    localeList.Add(parts[0]);
+                    localeList.Add(this.GetSourceLocale());
+                }
+                else if (parts[0].StartsWith("messages_"))
+                {
+                    localeList.Add(parts[0].Substring("messages_".Length));
                 }
             }
 

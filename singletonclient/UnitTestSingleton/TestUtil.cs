@@ -19,21 +19,21 @@ namespace UnitTestSingleton
         {
             string status;
             string text = BaseIo.obj().HttpGet("11.22.33", null, 0, out status);
-            Assert.AreEqual(string.IsNullOrEmpty(text), true);
+            Assert.AreEqual(true, string.IsNullOrEmpty(text));
 
-            Assert.AreEqual(SingletonUtil.CheckResponseValid(null, null), ResponseStatus.NetFail);
+            Assert.AreEqual(ResponseStatus.NetFail, SingletonUtil.CheckResponseValid(null, null));
 
             byte[] bytes = { 0xef, 0xbb, 0xbf, 0x31 };
             text = SingletonUtil.ConvertToText(bytes);
-            Assert.AreEqual(text, "1");
+            Assert.AreEqual("1", text);
             byte[] bytes2 = { 0xef, 0x31 };
             text = SingletonUtil.ConvertToText(bytes2);
 
             SingletonClientManager mgr = (SingletonClientManager)I18N.GetExtension();
-            Assert.AreEqual(mgr.GetRelease(null), null);
+            Assert.AreEqual(null, mgr.GetRelease(null));
 
             ICacheManager tempCache = mgr.GetCacheManager("try");
-            Assert.AreEqual(tempCache.GetType() != null, true);
+            Assert.AreEqual(true, tempCache.GetType() != null);
         }
     }
 }

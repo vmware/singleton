@@ -20,12 +20,12 @@ namespace UnitTestSingletonIcu
             double seconds = 1579245087950;
 
             string text = dt.GetText(seconds, DateTimeStyle.UDAT_FULL, DateTimeStyle.UDAT_SHORT, "zh_CN", "GMT");
-            Assert.AreEqual(text, "2020/1/17 格林尼治标准时间 上午7:11:27");
+            Assert.AreEqual("2020/1/17 格林尼治标准时间 上午7:11:27", text);
             text = dt.GetText(seconds, DateTimeStyle.UDAT_SHORT, DateTimeStyle.UDAT_NONE, "zh_CN", "GMT+8");
-            Assert.AreEqual(text, "下午3:11");
+            Assert.AreEqual("下午3:11", text);
 
             text = dt.GetText(seconds, DateTimeStyle.UDAT_FULL, DateTimeStyle.UDAT_SHORT, "fr_FR", "GMT");
-            Assert.AreEqual(text, "17/01/2020 07:11:27 heure moyenne de Greenwich");
+            Assert.AreEqual("17/01/2020 07:11:27 heure moyenne de Greenwich", text);
         }
     }
 }

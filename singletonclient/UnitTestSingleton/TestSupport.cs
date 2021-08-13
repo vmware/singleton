@@ -25,11 +25,11 @@ namespace UnitTestSingleton
             SingletonBaseIo.SetInstance(BaseIo.obj());
         }
 
-        private void CheckSetCulture(string culture, string target)
+        private void CheckSetCulture(string target, string culture)
         {
             CultureHelper.SetCurrentCulture(culture);
             string currentCulture = CultureHelper.GetCurrentCulture();
-            Assert.AreEqual(currentCulture, target); // check
+            Assert.AreEqual(target, currentCulture); // check
         }
 
         [TestMethod]
@@ -40,26 +40,26 @@ namespace UnitTestSingleton
             Hashtable ht = p.Parse(sourceAllText);
 
             string source = (string)ht["Contact.marketing"];
-            Assert.AreEqual(source, "Marketing:");
+            Assert.AreEqual("Marketing:", source);
 
             source = (string)ht["contact.chinese"];
-            Assert.AreEqual(source, "中文");
+            Assert.AreEqual("中文", source);
 
             source = (string)ht["contact.unicode"];
-            Assert.AreEqual(source, "in unicode (中文)");
+            Assert.AreEqual("in unicode (中文)", source);
         }
 
         [TestMethod]
         public void TestCulture()
         {
             string culture = CultureHelper.GetDefaultCulture();
-            Assert.AreEqual(culture, DefaultCulture); // check
+            Assert.AreEqual(DefaultCulture, culture); // check
 
-            CheckSetCulture(null, DefaultCulture);
-            CheckSetCulture("", DefaultCulture);
+            CheckSetCulture(DefaultCulture, null);
+            CheckSetCulture(DefaultCulture, "");
             CheckSetCulture(SettingCulture, SettingCulture);
 
-            CheckSetCulture(WrongCulture, DefaultCulture);
+            CheckSetCulture(DefaultCulture, WrongCulture);
         }
 
         [TestMethod]
@@ -67,15 +67,15 @@ namespace UnitTestSingleton
         {
             SingletonLogger logger = new SingletonLogger();
             logger.Log(SingletonClient.LogType.Debug, "log as debug");
-            Assert.AreEqual(baseIo.GetLastConsoleText(), "--- Debug --- log as debug");
+            Assert.AreEqual("--- Debug --- log as debug", baseIo.GetLastConsoleText());
             logger.Log(SingletonClient.LogType.Info, "log as info");
-            Assert.AreEqual(baseIo.GetLastConsoleText(), "--- Info --- log as info");
+            Assert.AreEqual("--- Info --- log as info", baseIo.GetLastConsoleText());
             logger.Log(SingletonClient.LogType.Warning, "log as warning");
-            Assert.AreEqual(baseIo.GetLastConsoleText(), "--- Warning --- log as warning");
+            Assert.AreEqual("--- Warning --- log as warning", baseIo.GetLastConsoleText());
             logger.Log(SingletonClient.LogType.Error, "log as error");
-            Assert.AreEqual(baseIo.GetLastConsoleText(), "--- Error --- log as error");
+            Assert.AreEqual("--- Error --- log as error", baseIo.GetLastConsoleText());
             logger.Log(SingletonClient.LogType.None, "log as none");
-            Assert.AreEqual(baseIo.GetLastConsoleText(), "--- None --- log as none");
+            Assert.AreEqual("--- None --- log as none", baseIo.GetLastConsoleText());
         }
     }
 }
