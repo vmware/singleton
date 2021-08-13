@@ -10,15 +10,13 @@ log_path: ./log/
   
 locales:
   - language_tag: en-US
-    offline_resources_path:
-      - $COMPONENT/messages.properties
   - language_tag: de
   - language_tag: ja
 
 component_template:
   locales_refer: locales
   offline_resources_path:
-    - $COMPONENT/messages_$LOCALE.json
+    - $COMPONENT/messages$LC.json
  
 components:
   - name: about
