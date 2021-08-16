@@ -7,9 +7,6 @@ jobs:
     outputs:
       were-only-docs-updated: ${{ steps.were-only-docs-updated-action.outputs.were-only-docs-updated }}
     steps:
-      - name: Run API
-        run: |
-          curl -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/wisdomluo/singleton/actions/secrets/SONAR_ORG
       - name: Checkout code
         uses: actions/checkout@v2
         with:
