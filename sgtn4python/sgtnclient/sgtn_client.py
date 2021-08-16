@@ -38,7 +38,8 @@ KEY_LOCAL_PATH = 'offline_resources_path'
 
 KEY_DEFAULT_LOCALE = 'default_locale'
 KEY_SOURCE_LOCALE = 'source_locale'
-KEY_TRYDELAY = 'try_delay'
+KEY_PSEUDO = 'pseudo'
+KEY_TRYWAIT = 'try_wait'
 KEY_INTERVAL = 'cache_expired_time'
 KEY_CACHEPATH = 'cache_path'
 KEY_CACHETYPE = 'cache_type'
@@ -140,7 +141,7 @@ class SingletonConfig(Config):
         self.cache_type = self.get_item(KEY_CACHETYPE, 'default')  	# cache type
 
         self.cache_expired_time = self.get_item(KEY_INTERVAL, 3600)  # cache expired time
-        self.try_delay = self.get_item(KEY_TRYDELAY, 10)  	# try delay
+        self.try_wait = self.get_item(KEY_TRYWAIT, 10)  	# try wait
 
         self.default_locale = self.get_item(KEY_DEFAULT_LOCALE, LOCALE_DEFAULT)
         self.source_locale = self.get_item(KEY_SOURCE_LOCALE, self.default_locale)
@@ -226,18 +227,22 @@ class SingletonConfig(Config):
 
 class SingletonApi:
     VIP_PATH_HEAD = '/i18n/api/v2/translation/products/{0}/versions/{1}/'
-    VIP_PARAMETER = 'pseudo=false&machineTranslation=false&checkTranslationStatus=false'
+    VIP_PARAMETER = 'pseudo={0}&machineTranslation=false&checkTranslationStatus=false'
     VIP_GET_COMPONENT = 'locales/{0}/components/{1}?'
 
     def __init__(self, release_obj):
         self.rel = release_obj
         self.cfg = release_obj.cfg
         self.addr = self.cfg.remote_url
+        self.pseudo = 'false'
+        if KEY_PSEUDO in self.cfg.config_data and self.cfg.config_data[KEY_PSEUDO]:
+            self.pseudo = 'true'
 
     def get_component_api(self, component, locale):
         head = self.VIP_PATH_HEAD.format(self.cfg.product, self.cfg.version)
         path = self.VIP_GET_COMPONENT.format(locale, component)
-        return '{0}{1}{2}{3}'.format(self.addr, head, path, self.VIP_PARAMETER)
+        parameter = self.VIP_PARAMETER.format(self.pseudo)
+        return '{0}{1}{2}{3}'.format(self.addr, head, path, parameter)
 
     def get_localelist_api(self):
         head = self.VIP_PATH_HEAD.format(self.cfg.product, self.cfg.version)
@@ -269,8 +274,8 @@ class SingletonAccessRemoteTask:
         self.interval = self.rel.interval
 
     def set_retry(self, current):
-        # try again after try_delay seconds
-        self.last_time = current - self.interval + self.rel.try_delay
+        # try again after try_wait seconds
+        self.last_time = current - self.interval + self.rel.try_wait
 
     def check(self):
         if not self.rel.cfg.remote_url:
@@ -406,7 +411,7 @@ class SingletonReleaseBase:
         self.scope = None
         self.logger = None
         self.interval = 0
-        self.try_delay = 0
+        self.try_wait = 0
         self.detach = False
 
         self.locale_list = []
@@ -429,7 +434,7 @@ class SingletonReleaseBase:
             self.log('--- cache path --- {0} ---'.format(self.cache_path))
 
         self.interval = cfg.cache_expired_time
-        self.try_delay = cfg.try_delay
+        self.try_wait = cfg.try_wait
 
         self.task = SingletonAccessRemoteTask(self, self)
         self.get_scope()

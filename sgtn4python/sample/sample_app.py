@@ -25,7 +25,7 @@ CONFIG_FILES = [
     'sample_offline_remote.yml',
     'sample_offline_remote_original.yml'
     ]
-CONFIG_INDEX = 2
+CONFIG_INDEX = 0
 
 
 class SampleApplication():
