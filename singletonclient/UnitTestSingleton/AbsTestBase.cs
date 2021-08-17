@@ -63,7 +63,7 @@ namespace UnitTestSingleton
                 {
                     testTranslation = this.trans.GetString(testLocale, src);
                 }
-                Assert.AreEqual(testTranslation, testExpected);
+                Assert.AreEqual(testExpected, testTranslation);
                 return (int)this.group["_interval"];
             }
             else if (ty == "SetLocale")
@@ -81,7 +81,7 @@ namespace UnitTestSingleton
                 IReleaseMessages messages = access.Messages();
                 ILocaleMessages languageMessages = messages.GetLocaleMessages(testLocale);
                 string testTranslation = languageMessages.GetString(testComponent, testKey);
-                Assert.AreEqual(testTranslation, testExpected);
+                Assert.AreEqual(testExpected, testTranslation);
             }
             else if (ty == "GetStringFromComponentMessages")
             {
@@ -94,7 +94,7 @@ namespace UnitTestSingleton
                 ILocaleMessages languageMessages = messages.GetLocaleMessages(testLocale);
                 IComponentMessages componentMessages = languageMessages.GetComponentMessages(testComponent);
                 string testTranslation = componentMessages.GetString(testKey);
-                Assert.AreEqual(testTranslation, testExpected);
+                Assert.AreEqual(testExpected, testTranslation);
             }
             else if (ty == "GetStringFromAllMessages")
             {
@@ -108,7 +108,7 @@ namespace UnitTestSingleton
                 ILocaleMessages languageMessages = allTranslations["de"];
 
                 string testTranslation = languageMessages.GetString(testComponent, testKey);
-                Assert.AreEqual(testTranslation, testExpected);
+                Assert.AreEqual(testExpected, testTranslation);
             }
 
             return 0;

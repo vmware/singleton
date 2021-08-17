@@ -34,8 +34,8 @@ namespace UnitTestSingleton
         {
             ISource srcObj = access.Source("about", "about.message");
             string translation = Translation.GetString("zh-CN", srcObj);
-            Assert.AreEqual(translation, "应用程序说明页。");
-            //DoTestTranslation();
+            Assert.AreEqual("应用程序说明页。", translation);
+            DoTestTranslation();
         }
     }
 }

@@ -17,22 +17,22 @@ namespace UnitTestSingletonIcu
         {
             INumber dn = icu.GetNumber();
             string text = dn.FormatDoubleCurrency(34.5, "zh_CN", "EUR");
-            Assert.AreEqual(text, "€34.50");
+            Assert.AreEqual("€34.50", text);
 
             text = dn.FormatDoubleCurrency(34.5, "zh_CN", "CNY");
-            Assert.AreEqual(text, "￥34.50");
+            Assert.AreEqual("￥34.50", text);
 
             text = dn.FormatDouble(34.56789, "zh_CN");
-            Assert.AreEqual(text, "34.568");
+            Assert.AreEqual("34.568", text);
 
             text = dn.Format(34, "arab");
-            Assert.AreEqual(text, "34");
+            Assert.AreEqual("34", text);
 
             text = dn.FormatPercent(34.56789, "arab");
-            Assert.AreEqual(text, "3,457%");
+            Assert.AreEqual("3,457%", text);
 
             text = dn.FormatScientific(34.56789, "arab");
-            Assert.AreEqual(text, "3.456789E1");
+            Assert.AreEqual("3.456789E1", text);
         }
     }
 }

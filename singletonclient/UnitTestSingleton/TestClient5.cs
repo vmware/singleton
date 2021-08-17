@@ -26,12 +26,12 @@ namespace UnitTestSingleton
             Assert.AreEqual(text, message);
 
             message = releaseMessages.GetLocaleMessages("zh-Hans").GetString("about", "about.message");
-            Assert.AreEqual(message, null);
+            Assert.AreEqual(null, message);
 
             this.PrepareData();
             message = releaseMessages.GetLocaleMessages("zh-Hans").GetString("about", "about.message");
             text = Translation.GetString("zh-Hans", Translation.CreateSource("about", "about.message"));
-            Assert.AreEqual(string.IsNullOrEmpty(text), false);
+            Assert.AreEqual(false, string.IsNullOrEmpty(text));
             Assert.AreEqual(text, message);
         }
     }

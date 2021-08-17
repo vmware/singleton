@@ -36,41 +36,41 @@ namespace UnitTestSingleton
         {
             ISingletonConfig configWrapper = new SingletonConfigWrapper(config);
             string productName = configWrapper.GetProduct();
-            Assert.AreEqual(productName, PRODUCT);
+            Assert.AreEqual(PRODUCT, productName);
 
             SingletonConfig theConfig = (SingletonConfig)config;
             string jointKey = configWrapper.GetReleaseName();
-            Assert.AreEqual(jointKey, PRODUCT + "^" + VERSION);
+            Assert.AreEqual(PRODUCT + "^" + VERSION, jointKey);
 
             IConfigItem textItem = configWrapper.GetConfig().GetItem("_none");
-            Assert.AreEqual(textItem, null);
+            Assert.AreEqual(null, textItem);
 
-            Assert.AreEqual(I18N.GetConfig(PRODUCT, null), null);
+            Assert.AreEqual(null, I18N.GetConfig(PRODUCT, null));
         }
 
         protected void DoTestRelease()
         {
             config = I18N.GetConfig(PRODUCT, VERSION);
             List<string> localeList = config.GetLocaleList(null);
-            Assert.AreEqual(localeList.Count, 0);
+            Assert.AreEqual(0, localeList.Count);
             localeList = config.GetLocaleList("");
-            Assert.AreEqual(localeList.Count, 0);
+            Assert.AreEqual(0, localeList.Count);
             localeList = config.GetLocaleList("NONE");
-            Assert.AreEqual(localeList.Count, 0);
+            Assert.AreEqual(0, localeList.Count);
         }
 
         protected void DoTestTranslation()
         {
             ISource src = access.Source("about", null, null, null);
-            Assert.AreEqual(src, null);
+            Assert.AreEqual(null, src);
             src = access.Source(null, null, null, null);
-            Assert.AreEqual(src, null);
+            Assert.AreEqual(null, src);
 
             src = access.Source("about", "about.message", "_content", "_comment");
-            Assert.AreEqual(src.GetComment(), "_comment");
+            Assert.AreEqual("_comment", src.GetComment());
 
             string translation = Translation.GetString("de", null);
-            Assert.AreEqual(translation, null);
+            Assert.AreEqual(null, translation);
 
             DoGetStringGroup("TestGetString1");
             DoGetStringGroup("TestGetString1T");
@@ -93,57 +93,57 @@ namespace UnitTestSingleton
 
             ISource srcObj = access.Source("about", "about.message");
             translation = Translation.Format("de", srcObj, "AAA");
-            Assert.AreEqual(translation, "Ihrer Bewerbungs Beschreibung Seite.");
+            Assert.AreEqual("Ihrer Bewerbungs Beschreibung Seite.", translation);
             translation = Translation.Format("de", null, "AAA");
-            Assert.AreEqual(translation, null);
+            Assert.AreEqual(null, translation);
 
             Translation.SetCurrentLocale("zh-CN");
             string locale = Translation.GetCurrentLocale();
-            Assert.AreEqual(locale, "zh-CN");
+            Assert.AreEqual("zh-CN", locale);
 
             Translation.SetCurrentLocale("zh-Hans");
             locale = Translation.GetCurrentLocale();
-            Assert.AreEqual(locale, "zh-Hans");
+            Assert.AreEqual("zh-Hans", locale);
 
             src = access.Source("about", "about.title", null, null);
             translation = Translation.Format("zh-CN", src, PRODUCT, VERSION);
-            Assert.AreEqual(translation, "关于 Version 1.0.0 of Product " + PRODUCT);
+            Assert.AreEqual("关于 Version 1.0.0 of Product " + PRODUCT, translation);
             translation = Translation.Format("zh-CN", src, PRODUCT);
-            Assert.AreEqual(translation, "关于 Version {1} of Product " + PRODUCT);
+            Assert.AreEqual("关于 Version {1} of Product " + PRODUCT, translation);
         }
 
         protected void DoTestMessages()
         {
             IReleaseMessages messages = access.Messages();
             List<string> localeList = messages.GetLocaleList();
-            Assert.AreEqual(MatchLocale(localeList, "de"), true);
+            Assert.AreEqual(true, MatchLocale(localeList, "de"));
             List<string> componentList = messages.GetComponentList();
-            Assert.AreEqual(componentList.Contains("about"), true);
+            Assert.AreEqual(true, componentList.Contains("about"));
 
             ILocaleMessages languageMessages = messages.GetLocaleMessages(null);
-            Assert.AreEqual(languageMessages, null);
+            Assert.AreEqual(null, languageMessages);
 
             languageMessages = messages.GetLocaleMessages("de");
             componentList = languageMessages.GetComponentList();
-            Assert.AreEqual(componentList.Contains("about"), true);
+            Assert.AreEqual(true, componentList.Contains("about"));
 
             string translation = languageMessages.GetString("about", null);
-            Assert.AreEqual(translation, null);
+            Assert.AreEqual(null, translation);
             translation = languageMessages.GetString(null, "key");
-            Assert.AreEqual(translation, null);
+            Assert.AreEqual(null, translation);
 
             DoGetStringGroup("TestGetStringFromMessages1");
 
             IComponentMessages componentMessages = languageMessages.GetComponentMessages("about");
-            Assert.AreEqual(componentMessages.GetLocale(), "de");
-            Assert.AreEqual(componentMessages.GetComponent(), "about");
+            Assert.AreEqual("de", componentMessages.GetLocale());
+            Assert.AreEqual("about", componentMessages.GetComponent());
 
             ICollection<string> keys = componentMessages.GetKeys();
 
             Dictionary<string, ILocaleMessages> allTranslations = messages.GetAllLocaleMessages();
             languageMessages = allTranslations["de"];
             translation = languageMessages.GetString("about", "about.message");
-            Assert.AreEqual(translation, "Ihrer Bewerbungs Beschreibung Seite.");
+            Assert.AreEqual("Ihrer Bewerbungs Beschreibung Seite.", translation);
         }
     }
 }

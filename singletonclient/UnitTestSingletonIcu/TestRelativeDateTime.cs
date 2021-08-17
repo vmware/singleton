@@ -31,7 +31,7 @@ namespace UnitTestSingletonIcu
         public void Test1()
         {
             String text = TestOne(1, "zh-CN", DisplayContext.UDISPCTX_CAPITALIZATION_FOR_UI_LIST_OR_MENU);
-            Assert.AreEqual(text, "明天");
+            Assert.AreEqual("明天", text);
         }
     }
 }
