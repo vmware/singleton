@@ -16,6 +16,9 @@ import java.util.concurrent.LinkedBlockingQueue;
 import javax.annotation.PostConstruct;
 
 import org.ehcache.Cache;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -26,6 +29,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.vmware.l10n.record.dao.SqlLiteDao;
+import com.vmware.l10n.record.model.SyncRecordModel;
 import com.vmware.l10n.source.dao.SourceDao;
 import com.vmware.l10n.source.service.RemoteSyncService;
 import com.vmware.l10n.source.service.impl.SourceServiceImpl;
@@ -38,6 +43,7 @@ import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.common.exceptions.VIPHttpException;
 import com.vmware.vip.common.http.HTTPRequester;
+import com.vmware.vip.common.i18n.dto.SingleComponentDTO;
 import com.vmware.vip.common.l10n.exception.L10nAPIException;
 import com.vmware.vip.common.l10n.source.dto.ComponentMessagesDTO;
 import com.vmware.vip.common.l10n.source.dto.ComponentSourceDTO;
@@ -86,12 +92,20 @@ public class SourceSendingCron {
 	
 	@Autowired
 	private SourceDao sourceDao;
+	
+	
+	@Autowired
+	private SqlLiteDao sqlLite;
 
 	@Autowired
 	private RemoteSyncService remoteSyncService;
 
 	// it represents the remote service is available.
-	private static boolean connected = true;
+	//private static boolean connected = true;
+	private static boolean grmConnected = true;
+	private static boolean singletonConnected = true;
+	private static int grmFlag =1;
+	private static int singletonFlag = 2;
 
 	@PostConstruct
 	public void init() {
@@ -99,38 +113,82 @@ public class SourceSendingCron {
 		if (!syncEnabled) {
 			return;
 		}
-		try {
-
-			if (!remoteGRMURL.equalsIgnoreCase(LOCAL_STR)) {
+		if (!remoteGRMURL.equalsIgnoreCase(LOCAL_STR)) {
+			try {
 				remoteSyncService.ping(remoteGRMURL);
-			}
-			List<String> keyList = TranslationCache3.getKeys(CacheName.SOURCEBACKUP, ComponentSourceDTO.class);
-			if (connected && keyList.size() > 0) {
-				for (String key : keyList) {
-					ComponentSourceDTO comDTO =  TranslationCache3.getCachedObject(CacheName.SOURCEBACKUP, key);
-					
-					if (!remoteGRMURL.equalsIgnoreCase(LOCAL_STR)) {
+
+				List<SyncRecordModel> syncGrmList = sqlLite.getSynRecords(grmFlag);
+				if (syncGrmList != null) {
+					for (SyncRecordModel syncGrm : syncGrmList) {
+						ComponentSourceDTO comDTO = getCachedLocalBundle(syncGrm);
 						remoteSyncService.send(comDTO, remoteGRMURL);
+
 					}
+				}
 
-					if (!remoteVIPURL.equalsIgnoreCase(LOCAL_STR)) {
+			} catch (L10nAPIException e) {
+				setGrmConnected(false);
+				LOGGER.error("Remote [" + remoteGRMURL + "] is not connected.", e);
 
+			}
+		}
+
+		if (!remoteVIPURL.equalsIgnoreCase(LOCAL_STR)) {
+			try {
+				pingSingleton(remoteVIPURL);
+				List<SyncRecordModel> syncSlgList = sqlLite.getSynRecords(singletonFlag);
+				if (syncSlgList != null) {
+					for (SyncRecordModel syncSlg : syncSlgList) {
+						ComponentSourceDTO comDTO = getCachedLocalBundle(syncSlg);
 						putDataToRemoteVIP(comDTO);
 					}
-					TranslationCache3.deleteCachedObject(CacheName.SOURCEBACKUP, key, ComponentSourceDTO.class);
 				}
+
+			} catch (L10nAPIException | VIPHttpException e) {
+				setSingletonConnected(false);
+				LOGGER.error("Remote [" + remoteVIPURL + "] is not connected.", e);
+
 			}
-		} catch (VIPCacheException e) {
-			LOGGER.error("Error occur in cache when perform init method.");
-		} catch (L10nAPIException e) {
-			setConnected(false);
-			LOGGER.error("Remote [" + remoteGRMURL + "] is not connected.", e);
-
-		} catch (VIPHttpException e) {
-			LOGGER.error("Error occur in cache when perform init method to push backup data to VIP.", e);
-
 		}
 	}
+	
+	@SuppressWarnings("null")
+	private ComponentSourceDTO getCachedLocalBundle(SyncRecordModel syncModel) {
+		SingleComponentDTO scd = new SingleComponentDTO();
+		scd.setProductName(syncModel.getProduct());
+		scd.setVersion(syncModel.getVersion());
+		scd.setComponent(syncModel.getComponent());
+		scd.setLocale(syncModel.getLocale());
+		String sourceStr = sourceDao.getFromBundle(scd);
+		if (!StringUtils.isEmpty(sourceStr)) {
+			JSONObject genreJsonObject = null;
+			try {
+				genreJsonObject = (JSONObject) JSONValue.parseWithException(sourceStr);
+			} catch (ParseException e) {
+	           return null;
+			}
+			
+			if (genreJsonObject == null) {
+			ComponentSourceDTO csdto = new ComponentSourceDTO();
+			csdto.setProductName(scd.getProductName());
+			csdto.setVersion(scd.getVersion());
+			csdto.setComponent((String) genreJsonObject.get(ConstantsKeys.COMPONENT));
+			csdto.setLocale((String) genreJsonObject.get(ConstantsKeys.lOCALE));
+			@SuppressWarnings("unchecked")
+			Map<String, String> msgMap = (Map<String, String>) genreJsonObject.get(ConstantsKeys.MESSAGES);
+			for (Entry<String, String> entry : msgMap.entrySet()) {
+				csdto.setMessages(entry.getKey(), entry.getValue());
+			}
+			return csdto;
+			}
+
+		}
+
+		return null;
+
+	}
+	
+	
 
 	@Scheduled(cron = "${sync.source.schedule.cron}")
 	public void syncSourceToRemoteAndLocalInstrument() {
@@ -199,30 +257,17 @@ public class SourceSendingCron {
 							// update the source to bundle.
 							updateFlag = sourceDao.updateToBundle(sdto);
 							if (updateFlag) {
-								if (connected) {
-									// push the source to GRM.
-									if (!remoteGRMURL.equalsIgnoreCase(LOCAL_STR)) {
-										remoteSyncService.send(cachedComDTO, remoteGRMURL);
-									}
-									// push the source to VIP.
-									if (!remoteVIPURL.equalsIgnoreCase(LOCAL_STR)) {
-										putDataToRemoteVIP(cachedComDTO);
-									}
-
-								} else {
-									flushCacheToDisk(TranslationCache3.getCache(CacheName.SOURCEBACKUP, ComponentSourceDTO.class));
-								}
-
+								syncSource2remote(cachedComDTO);
 							} else {
 
 								LOGGER.warn("Failed to update source: {}", ehcachekey);
-                                if(activeDaoType.equalsIgnoreCase("s3")) {
-                                	mapObj.remove(ehcachekey);
-                                	processFailedUpdate(cachedComDTO, ehcachekey);
-                                }else {
-                                	// put the failed the source to collection queue
-    								SourceServiceImpl.setParpareMap(cachedComDTO, ehcachekey);
-                                }
+								if (activeDaoType.equalsIgnoreCase("s3")) {
+									mapObj.remove(ehcachekey);
+									processFailedUpdate(cachedComDTO, ehcachekey);
+								} else {
+									// put the failed the source to collection queue
+									SourceServiceImpl.setParpareMap(cachedComDTO, ehcachekey);
+								}
 							}
 						}
 					}
@@ -234,22 +279,48 @@ public class SourceSendingCron {
 						LOGGER.error(e.getMessage(), e);
 					}
 				}
-			} catch (VIPCacheException e) {
-				LOGGER.error(e.getMessage(), e);
-			} catch (L10nAPIException e) {
-				setConnected(false);
-				try {
-					flushCacheToDisk(TranslationCache3.getCache(CacheName.SOURCEBACKUP, ComponentSourceDTO.class));
-				} catch (VIPCacheException e1) {
-
-					LOGGER.error(e1.getMessage(), e1);
-				}
-				LOGGER.info("Fail to push source to remote.");
-			} catch (VIPHttpException e) {
-				LOGGER.error("Http request error occurs.", e);
 			} catch (Exception e) {
 				LOGGER.error(e.getMessage(), e);
 			}
+		}
+	}
+	
+	
+	private void syncSource2remote(ComponentSourceDTO cachedComDTO) {
+		// push the source to GRM.
+		if (!remoteGRMURL.equalsIgnoreCase(LOCAL_STR) && grmConnected) {
+			try {
+				remoteSyncService.send(cachedComDTO, remoteGRMURL);
+			} catch (L10nAPIException e) {
+				setGrmConnected(false);
+			}
+		}else if(!remoteGRMURL.equalsIgnoreCase(LOCAL_STR) && !grmConnected) {
+			sqlLite.createSyncRecord(cachedComDTO, grmFlag, System.currentTimeMillis());
+		}
+		// push the source to VIP.
+		if (!remoteVIPURL.equalsIgnoreCase(LOCAL_STR) && singletonConnected) {
+			try {
+				putDataToRemoteVIP(cachedComDTO);
+			} catch (VIPHttpException e) {
+				setSingletonConnected(false);
+			}
+		}else if (!remoteVIPURL.equalsIgnoreCase(LOCAL_STR) && !singletonConnected) {
+			sqlLite.createSyncRecord(cachedComDTO, singletonFlag, System.currentTimeMillis());
+		}
+
+
+	}
+	
+	public void pingSingleton(String remoteURL) throws L10nAPIException{
+		String reqUrl = remoteURL + APIV2.BROWSER_LOCALE;
+		Map<String, String> header =null;
+		if(remoteVIPAuthEnable) {
+			header = new HashMap<String, String>();
+			header.put("appId", remoteVIPAuthAppId);
+			header.put("token", remoteVIPAuthAppToken);
+		}
+		if(StringUtils.isEmpty(HTTPRequester.getData(reqUrl, "GET", header))){
+			throw new L10nAPIException("Error occur when send to remote ["+ reqUrl + "].");
 		}
 	}
 
@@ -284,39 +355,53 @@ public class SourceSendingCron {
 		
 	}
 
-	/**
-	 * flush the cache content to disk
-	 */
-	private void flushCacheToDisk(Cache<String, ComponentSourceDTO> bkSourceCache) throws VIPCacheException {
-		TranslationCache3.copy(TranslationCache3.getCache(CacheName.SOURCE, ComponentSourceDTO.class), bkSourceCache);
-	}
+	
 
+	
 	/**
 	 * Polling the service of GRM is available.
 	 */
 	@Scheduled(cron = "${polling.grm.schedule.cron}")
 	public void syncBkSourceToRemote() {
-		if (!connected) {
+		if (!syncEnabled) {
+			return;
+		}
+		
+		if (!remoteGRMURL.equalsIgnoreCase(LOCAL_STR) && !grmConnected) {
 			try {
-				if (!remoteGRMURL.equalsIgnoreCase(LOCAL_STR)) {
-					remoteSyncService.ping(remoteGRMURL);
-				}
-
-				setConnected(true);
-				List<String> keyList = TranslationCache3.getKeys(CacheName.SOURCEBACKUP, ComponentSourceDTO.class);
-				for (String key : keyList) {
-					ComponentSourceDTO cdto = (ComponentSourceDTO) TranslationCache3
-							.getCachedObject(CacheName.SOURCEBACKUP, key);
-					if (!remoteGRMURL.equalsIgnoreCase(LOCAL_STR)) {
-						remoteSyncService.send(cdto, remoteGRMURL);
+				remoteSyncService.ping(remoteGRMURL);
+				List<SyncRecordModel> syncGrmList = sqlLite.getSynRecords(grmFlag);
+				if(syncGrmList != null) {
+					for(SyncRecordModel syncGrm : syncGrmList) {
+						ComponentSourceDTO comDTO = getCachedLocalBundle(syncGrm);
+						remoteSyncService.send(comDTO, remoteGRMURL);
+						
 					}
-					TranslationCache3.deleteCachedObject(CacheName.SOURCEBACKUP, key, ComponentSourceDTO.class);
 				}
-			} catch (VIPCacheException e) {
-				LOGGER.error("Error occur in cache when perform syncBkSourceToRemote method.", e);
-
+				setGrmConnected(true);
 			} catch (L10nAPIException e) {
-				LOGGER.info("The remote server is unavailable.", e);
+				LOGGER.error("Remote [" + remoteGRMURL + "] is not connected.", e);
+
+			}
+		}
+
+		if (!remoteVIPURL.equalsIgnoreCase(LOCAL_STR) && !singletonConnected) {
+			try {
+				pingSingleton(remoteVIPURL);
+				List<SyncRecordModel> syncSlgList = sqlLite.getSynRecords(singletonFlag);
+				if(syncSlgList != null) {
+					for(SyncRecordModel syncSlg : syncSlgList) {
+						ComponentSourceDTO comDTO = getCachedLocalBundle(syncSlg);
+						 putDataToRemoteVIP(comDTO);
+					}
+				}
+				setSingletonConnected(true);
+				
+			} catch (L10nAPIException e) {
+				LOGGER.error("Remote [" + remoteVIPURL + "] is not connected.", e);
+
+			} catch (VIPHttpException e) {
+				LOGGER.error(e.getMessage(), e);
 			}
 		}
 	}
@@ -344,7 +429,11 @@ public class SourceSendingCron {
 		this.remoteVIPURL = vipurl;
 	}
 
-	private static void setConnected(boolean connected) {
-		SourceSendingCron.connected = connected;
+	public static void setSingletonConnected(boolean singletonConnected) {
+		SourceSendingCron.singletonConnected = singletonConnected;
+	}
+
+	public static void setGrmConnected(boolean grmConnected) {
+		SourceSendingCron.grmConnected = grmConnected;
 	}
 }
