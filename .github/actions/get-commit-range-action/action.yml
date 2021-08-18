@@ -14,7 +14,7 @@ runs:
         if [ x${{ github.event_name }} = xpush ]; then
           LAST_COMMIT_ID=$(git log -n 1 --pretty=format:"%H")
           SECOND_LAST_COMMIT_ID=$(git log -n 1 --skip 1 --pretty=format:"%H")
-          COMMIT_RANGE="${LAST_COMMIT_ID:0:7} ${SECOND_LAST_COMMIT_ID:0:7}"
+          COMMIT_RANGE="${SECOND_LAST_COMMIT_ID:0:7} ${LAST_COMMIT_ID:0:7}"
         fi
         if [ x${{ github.event_name }} = xpull_request ]; then
           MERGE_COMMIT_RANGE=$(git log -n 1 | sed -n 2p | sed 's/Merge: //')
