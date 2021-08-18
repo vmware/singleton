@@ -1,2 +1,0 @@
-Ruby client for Singleton
-

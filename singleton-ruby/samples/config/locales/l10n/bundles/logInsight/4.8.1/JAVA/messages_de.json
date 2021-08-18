@@ -1,0 +1,11 @@
+{
+  "component" : "JAVA",
+  "messages" : {
+    "com.vmware.loginsight.web.settings.stats.StatsTable.host" : "Host",
+    "com.vmware.loginsight.web.settings.stats.StatsTableType.eventsIngestionRatePerSecond" : "Erfassungsrate für Ereignisse (pro Sekunde)",
+    "com.vmware.loginsight.web.settings.stats.StatsTableType.eventsIngestionRatePerSecond.help" : "Die tatsächliche Erfassungsrate (Syslog + API) jedes Knotens nach der Nachrichtenneuverteilung.<br />Log Insight-Knoten verteilen Nachrichten neu, um eine gleichmäßige Erfassung pro Knoten zu erzielen und für eine ausgewogene Aufbewahrung und Leistung zu sorgen.<br /><br />Beachten Sie, dass die Erfassungsrate für jeden Knoten unter der konfigurierten maximalen Erfassungsrate eines Knotens liegen muss.<br /><br />Informationen zur tatsächlichen Rate der Ereignisse, die vor der Nachrichtenneuverteilung direkt an jeden Knoten gesandt werden, finden Sie in den Tabellen \"Eingangsrate für Syslog-Ereignisse (pro Sekunde)\" und \"Eingangsrate für API-Ereignisse (pro Sekunde)\" unten.",
+    "com.vmware.loginsight.web.settings.stats.StatsTableType.syslogEventsIncomingRatePerSecond" : "Eingangsrate für Syslog-Ereignisse (pro Sekunde)",
+    "com.vmware.loginsight.web.utilities.EmailUtil.upgrade.body48" : "Auf {0} wird nun Version {1} ausgeführt. Es folgen einige interessante neue Funktionen der Version {1}. Wir schätzen wie immer Ihre anhaltende Unterstützung und freuen uns auf Ihre Rückmeldungen unter {3} und {4} auf Twitter.<br /><br /><b>vRealize Log Insight-Serverfunktionen</b><br />• TODO weitere Serverfunktionen hinzufügen.<br /><br /><b>vRealize Log Insight-Agentenfunktionen</b><br />• TODO weitere Agentenfunktionen hinzufügen.<br /><br />Weitere Informationen zu den neuen Funktionen von {0} finden Sie unter {0} v{1} {2}.<br /><br />Viel Spaß bei der Protokollierung<br />Das {0}-Team<br /><br />"
+  },
+  "locale" : "de"
+}

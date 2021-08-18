@@ -1,0 +1,12 @@
+{
+  "component" : "JAVA",
+  "messages" : {
+    "hello": "Hello world",
+    "com.vmware.loginsight.web.settings.stats.StatsTable.host" : "Host",
+    "com.vmware.loginsight.web.settings.stats.StatsTableType.eventsIngestionRatePerSecond" : "Events Ingestion Rate (Per Second)",
+    "com.vmware.loginsight.web.settings.stats.StatsTableType.eventsIngestionRatePerSecond.help" : "The actual ingestion rate (syslog + API) of each node after message rebalancing.<br />Log Insight nodes will rebalance messages to attempt uniform ingestion per node for balanced retention and performance.<br /><br />Note that the ingestion rate of each node must be below the ingestion rate configuration maximum for a node.<br /><br />For the actual rate of events being sent directly to each node prior to message rebalancing, see the Syslog Events Incoming Rate (Per Second) and API Events Incoming Rate (Per Second) tables below.",
+    "com.vmware.loginsight.web.settings.stats.StatsTableType.syslogEventsIncomingRatePerSecond" : "Syslog Events Incoming Rate (Per Second)",
+    "com.vmware.loginsight.web.actions.settings.HealthActionBean.machineLearningAliases" : "Machine Learning Aliases"
+  },
+  "locale" : "en"
+}
