@@ -4,7 +4,7 @@ package com.vmware.l10n.source.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.io.File;
+
 import javax.annotation.PostConstruct;
 
 import org.apache.commons.lang3.StringUtils;

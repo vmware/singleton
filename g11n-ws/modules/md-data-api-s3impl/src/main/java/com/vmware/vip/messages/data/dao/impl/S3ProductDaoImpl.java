@@ -14,6 +14,7 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import com.amazonaws.services.s3.model.ListObjectsV2Result;
@@ -31,6 +32,7 @@ import com.vmware.vip.messages.data.util.S3Utils;
  * this class use to get the properties of a version bundle files
  */
 @Repository
+@Profile("s3")
 public class S3ProductDaoImpl implements IProductDao {
 
    private static Logger logger = LoggerFactory.getLogger(S3ProductDaoImpl.class);
@@ -150,11 +152,11 @@ public List<String> getVersionList(String productName) throws DataException {
 }
 
 /**
- * Get the content of the White List by s3 object
+ * Get the content of the Allow List by s3 object
  */
 @Override
 public String getAllowProductListContent() throws DataException {
-  String s3Path = S3Utils.S3_L10N_BUNDLES_PATH+ConstantsFile.WHITE_LIST_FILE;
+  String s3Path = S3Utils.S3_L10N_BUNDLES_PATH+ConstantsFile.ALLOW_LIST_FILE;
   if (s3Client.getS3Client().doesObjectExist(config.getBucketName(), s3Path)) {
       S3Object o = s3Client.getS3Client().getObject(config.getBucketName(), s3Path);
       if (o != null) {

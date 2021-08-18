@@ -5,17 +5,16 @@
 package com.vmware.vip.core.validation;
 
 
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.web.servlet.HandlerMapping;
-
 import com.vmware.vip.api.rest.APIParamName;
+import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.constants.ValidationMsg;
 import com.vmware.vip.common.utils.RegExpValidatorUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.servlet.HandlerMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 public class ParameterValidation implements IVlidation {
 	HttpServletRequest request = null;
@@ -28,6 +27,7 @@ public class ParameterValidation implements IVlidation {
 		if (this.request == null) { 
 			return;
 		}
+		validateAppId(request);
 		validateProductname(request);
 		validateVersion(request);
 		validateComponent(request);
@@ -58,12 +58,23 @@ public class ParameterValidation implements IVlidation {
 		if (StringUtils.isEmpty(productName)) {
 			return;
 		}
-		if ("get".equalsIgnoreCase(request.getMethod())) {
-			validateProductByWhiteList(productName, (Map<String, Object>)request.getAttribute(ParameterValidation.TAG_ALLOW_PRODUCT_LIST_MAP));
-		}
 		if (!RegExpValidatorUtils.IsLetterOrNumber(productName)) {
 			throw new ValidationException(ValidationMsg.PRODUCTNAME_NOT_VALIDE);
 		}
+		validateProductByAllowList(productName, (Map<String, Object>)request.getAttribute(ParameterValidation.TAG_ALLOW_PRODUCT_LIST_MAP));
+	}
+	
+	private void validateAppId(HttpServletRequest request) 
+	        throws ValidationException{
+	   String appId = request.getHeader(APIParamName.APP_ID) == null ? request
+               .getParameter(APIParamName.APP_ID) : request.getHeader(APIParamName.APP_ID);
+       if (StringUtils.isEmpty(appId)) {
+                   return;
+       }
+       if (!RegExpValidatorUtils.IsLetterOrNumber(appId)) {
+                   throw new ValidationException(ValidationMsg.APPID_NOT_VALIDE);
+       }         
+       
 	}
 
 	@SuppressWarnings("unchecked")
@@ -156,8 +167,11 @@ public class ParameterValidation implements IVlidation {
 		if (StringUtils.isEmpty(components)) {
 			return;
 		}
-		if (!RegExpValidatorUtils.isLetterNumbCommaAndValidchar(components)) {
-			throw new ValidationException(ValidationMsg.COMPONENTS_NOT_VALIDE);
+		String[] compArr = components.split(ConstantsChar.COMMA);
+		for(int i=0; i<compArr.length; i++) {
+			if(StringUtils.isEmpty(compArr[i]) || !RegExpValidatorUtils.IsLetterAndNumberAndValidchar(compArr[i])) {
+				throw new ValidationException(ValidationMsg.COMPONENTS_NOT_VALIDE);
+			}
 		}
 	}
 	
@@ -311,14 +325,14 @@ public class ParameterValidation implements IVlidation {
 	}
 
     /**
-     * validate the product name by the white list
+     * validate the product name by the allow list
      *
      * @param productName
-     * @param whiteListFilePath
+     * @param allowListMap
      * @throws ValidationException
      */
-    private void validateProductByWhiteList(String productName, Map<String, Object> whiteListMap) throws ValidationException {
-        if (whiteListMap != null && !whiteListMap.isEmpty() && !whiteListMap.containsKey(productName)) {
+    private void validateProductByAllowList(String productName, Map<String, Object> allowListMap) throws ValidationException {
+        if (allowListMap != null && !allowListMap.isEmpty() && !allowListMap.containsKey(productName)) {
         	throw new ValidationException(String.format(ValidationMsg.PRODUCTNAME_NOT_SUPPORTED, productName));
         }
     }

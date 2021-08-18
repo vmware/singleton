@@ -9,11 +9,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.Charset;
 import java.util.Enumeration;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.tools.zip.ZipEntry;
-import org.apache.tools.zip.ZipFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -66,9 +67,8 @@ public class FileUtil {
 	 */
 	public static void unzipFiles(String zipPath, String targetDir) throws IOException {
 
-		try (ZipFile zf = new ZipFile(new File(zipPath))) {
-			Enumeration<ZipEntry> en = zf.getEntries();
-
+		try (ZipFile zf = new ZipFile(new File(zipPath), Charset.forName("UTF-8"))) {
+			Enumeration<? extends ZipEntry> en = zf.entries();
 			while (en.hasMoreElements()) {
 				ZipEntry ze = en.nextElement();
 				File f = new File(targetDir + ze.getName());
@@ -108,5 +108,4 @@ public class FileUtil {
 	private static void printInfoLog(String infoStr) {
 		logger.info(infoStr);
 	}
-
 }

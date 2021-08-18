@@ -42,7 +42,8 @@ dependencies {
     compile("org.apache.logging.log4j:log4j-api:$log4j2Version")
     compile("org.apache.logging.log4j:log4j-core:$log4j2Version")
     compile("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
-
+    compile("org.slf4j:slf4j-api:$slf4jVersion")
+    compile("org.slf4j:jul-to-slf4j:$slf4jVersion")
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
     }
@@ -51,15 +52,15 @@ dependencies {
     compile("org.xerial:sqlite-jdbc:$sqliteVersion")
     compile("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
     compile("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
-    compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final")
-    compile('org.yaml:snakeyaml:1.26')
+     compile("org.yaml:snakeyaml:$snakeyam")
+    compile("io.jsonwebtoken:jjwt:$jjwt")
+    compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
     compile("io.springfox:springfox-swagger-ui:2.9.2")
     compile("io.springfox:springfox-swagger2:2.9.2")
     compile("com.google.guava:guava:$guavaVersion")
-    compile("io.jsonwebtoken:jjwt:0.9.0")
-    compile("org.apache.httpcomponents:httpclient:4.5.13")
+    compile("org.apache.httpcomponents:httpclient:$httpclient")
     
-    compile group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.11.550'
+    compile group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.12.14'
     //commonsCodecVersion
     compile("commons-codec:commons-codec:$commonsCodecVersion")
     testCompile("org.springframework.boot:spring-boot-starter-test")

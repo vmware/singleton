@@ -333,7 +333,7 @@ public class ProductService implements IProductService {
     }
 
     /**
-     * get the white list
+     * get the allow product list
      */
     @Override
     public Map<String, Object> getAllowPrductList(){

@@ -49,6 +49,13 @@ test {
 
 
 dependencies {
+   if (project.hasProperty('datatype') && project.getProperty('datatype') == 'pgdb') {
+        compile project(":md-data-api-pgimpl")
+    }else if (project.hasProperty('datatype') && project.getProperty('datatype') == 's3') {
+        compile project(":md-data-api-s3impl")
+    }else {
+        compile project(":md-data-api-bundleimpl")
+    }
     compile project(":vip-common")
     compile project(":md-restful-api-i18n")
     compile("org.apache.commons:commons-lang3:$commonsLangVersion")
@@ -58,7 +65,6 @@ dependencies {
     }
     compile("org.ehcache:ehcache:$ehCacheVersion")
     compile("javax.cache:cache-api:$cacheApiVersion")
-    compile("org.apache.ant:ant:$antVersion")
     compile("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
     compile ("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
     compile ("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
@@ -71,7 +77,6 @@ dependencies {
 	compile("commons-codec:commons-codec:$commonsCodecVersion")
     compile group: 'com.ibm.icu', name: 'icu4j', version: '57.1'
     compile group: 'org.webjars.bower', name: 'cldr-data', version: '28.0.1'
-    compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final")
     compile("org.springframework:spring-webmvc:$springWebVersion")
     compile ("org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion")
     compile ("org.apache.tomcat:tomcat-annotations-api:$tomcatVersion")
@@ -82,7 +87,18 @@ dependencies {
     compile("org.apache.logging.log4j:log4j-api:$log4j2Version")
     compile("org.apache.logging.log4j:log4j-core:$log4j2Version")
     compile("org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version")
-    compile('org.yaml:snakeyaml:1.26')  
+    compile("org.slf4j:slf4j-api:$slf4jVersion")
+    compile("org.slf4j:jul-to-slf4j:$slf4jVersion")
+    compile("org.yaml:snakeyaml:$snakeyam")
+    compile("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa21Api")
+    compile("org.apache.httpcomponents:httpclient:$httpclient")
+    compile ('org.springframework.boot:spring-boot-starter-actuator')
+     //jdk 11
+    runtime 'javax.xml.bind:jaxb-api:+'
+    runtime 'javax.activation:activation:+'
+    runtime 'com.sun.xml.bind:jaxb-impl:+'
+    runtime 'com.sun.xml.bind:jaxb-core:+'
+    //end jdk 11
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("org.asciidoctor:asciidoctorj:1.5.6")
     testCompile("org.springframework.restdocs:spring-restdocs-mockmvc")

@@ -12,6 +12,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import com.vmware.vip.common.constants.ConstantsFile;
@@ -26,6 +27,7 @@ import com.vmware.vip.messages.data.exception.BundleException;
 /**
  * This java class is used to get locale list from file in or out of jar.
  */
+@Profile("bundle")
 @Component
 public class ProductDao implements IProductDao {
 
@@ -159,11 +161,11 @@ public class ProductDao implements IProductDao {
     }
 
     /**
-     * Get the content of the White List by whiteList file name
+     * Get the content of the Allow Product List by bundle.json file name
      */
     @Override
     public String getAllowProductListContent() throws DataException {
-        String contentFilePath = bundleConfig.getBasePathWithSeparator() + ConstantsFile.L10N_BUNDLES_PATH +ConstantsFile.WHITE_LIST_FILE;
+        String contentFilePath = bundleConfig.getBasePathWithSeparator() + ConstantsFile.L10N_BUNDLES_PATH +ConstantsFile.ALLOW_LIST_FILE;
         if (new File(contentFilePath).exists()) {
          return new LocalJSONReader().readLocalJSONFile(contentFilePath);
         }else {

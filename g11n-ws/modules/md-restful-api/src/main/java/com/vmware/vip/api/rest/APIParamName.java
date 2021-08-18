@@ -37,4 +37,8 @@ public class APIParamName {
 	public final static String DEFAULT_TERRITORY = "defaultTerritory";
 	public final static String DISPLAY_CITY = "displayCity";
 	public final static String REGIONS = "regions";
+	public final static String USERNAME = "username";
+	public final static String PASSWORD = "password";
+	public final static String EXPIREDAYS = "expireDays";
+	public final static String APP_ID = "appId";
 }

@@ -4,28 +4,31 @@
  */
 package com.vmware.i18n.l2.service.pattern;
 
-import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localeAliasesMap;
-import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePathMap;
-
-import java.util.*;
-
-import javax.annotation.Resource;
-
 import com.vmware.i18n.PatternUtil;
 import com.vmware.i18n.dto.LocaleDataDTO;
-import com.vmware.vip.common.constants.ConstantsChar;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-
 import com.vmware.i18n.l2.dao.pattern.IPatternDao;
 import com.vmware.i18n.utils.CommonUtil;
 import com.vmware.vip.common.cache.CacheName;
 import com.vmware.vip.common.cache.TranslationCache3;
+import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
 import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.common.utils.JSONUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+
+import javax.annotation.Resource;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localeAliasesMap;
+import static com.vmware.i18n.pattern.service.impl.PatternServiceImpl.localePathMap;
 
 @Service
 public class PatternServiceImpl implements IPatternService {
@@ -122,12 +125,12 @@ public class PatternServiceImpl implements IPatternService {
 			patternJson = patternDao.getPattern(locale, null);
 			if (StringUtils.isEmpty(patternJson)) {
 				logger.info("file data don't exist");
-				return buildPatternMap(language, region, patternJson, categoryList, resultData);
+				return buildPatternMap(language, region, patternJson, categoryList, scopeFilter, resultData);
 			}
 			TranslationCache3.addCachedObject(CacheName.PATTERN, locale, String.class, patternJson);
 		}
 		logger.info("get pattern data from cache");
-		patternMap = buildPatternMap(language, region, patternJson, categoryList, resultData);
+		patternMap = buildPatternMap(language, region, patternJson, categoryList, scopeFilter, resultData);
 		if (!CommonUtil.isEmpty(patternMap) && !CommonUtil.isEmpty(patternMap.get(ConstantsKeys.CATEGORIES))) {
 			filterScope((Map<String, Object>) patternMap.get(ConstantsKeys.CATEGORIES), scopeFilter);
 		}
@@ -143,31 +146,25 @@ public class PatternServiceImpl implements IPatternService {
 	 * @param categoryList
 	 * @return
 	 */
-	private Map<String, Object> buildPatternMap(String language, String region, String patternJson, List<String> categoryList, LocaleDataDTO localeDataDTO) throws VIPCacheException {
+	private Map<String, Object> buildPatternMap(String language, String region, String patternJson, List<String> categoryList, String scopeFilter, LocaleDataDTO localeDataDTO) throws VIPCacheException {
 		Map<String, Object> patternMap = new LinkedHashMap<>();
 		Map<String, Object> categoriesMap = new LinkedHashMap<>();
 		if (StringUtils.isEmpty(patternJson)) {
 			patternMap.put(ConstantsKeys.LOCALEID, "");
-			patternMap.put(ConstantsKeys.IS_EXIST_PATTERN, false);
 			for (String category : categoryList) {
 				categoriesMap.put(category, null);
 			}
 		} else {
 			patternMap = JSONUtils.getMapFromJson(patternJson);
 			categoriesMap = getCategories(categoryList, patternMap);
-			patternMap.put(ConstantsKeys.IS_EXIST_PATTERN, true);
 		}
 
 		if (categoryList.contains(ConstantsKeys.PLURALS)) {
-			handleSpecialCategory(ConstantsKeys.PLURALS, language, categoriesMap);
+			handleSpecialCategory(ConstantsKeys.PLURALS, language, categoriesMap, scopeFilter);
 		}
 
 		if (categoryList.contains(ConstantsKeys.DATE_FIELDS)) {
-			handleSpecialCategory(ConstantsKeys.DATE_FIELDS, language, categoriesMap);
-			// As long as the value of dateFields exist, the response needs to return its value.
-			if (null != categoriesMap.get(ConstantsKeys.DATE_FIELDS)) {
-				patternMap.put(ConstantsKeys.IS_EXIST_PATTERN, true);
-			}
+			handleSpecialCategory(ConstantsKeys.DATE_FIELDS, language, categoriesMap, scopeFilter);
 		}
 
 		if (!localeDataDTO.isDisplayLocaleID()) {
@@ -189,9 +186,9 @@ public class PatternServiceImpl implements IPatternService {
 		return patternMap;
 	}
 
-	private void handleSpecialCategory(String category, String language, Map<String, Object> categoriesMap) throws VIPCacheException {
+	private void handleSpecialCategory(String category, String language, Map<String, Object> categoriesMap, String scopeFilter) throws VIPCacheException {
 		categoriesMap.put(category, null);
-		Map<String, Object> patternMap = getPattern(language, Arrays.asList(category), null);
+		Map<String, Object> patternMap = getPattern(language, Arrays.asList(category), scopeFilter);
 		if (null != patternMap.get(ConstantsKeys.CATEGORIES)) {
 			Map<String, Object> categoryMap = (Map<String, Object>) patternMap.get(ConstantsKeys.CATEGORIES);
 			if (null != categoryMap.get(category)) {
@@ -255,7 +252,6 @@ public class PatternServiceImpl implements IPatternService {
 				Map<String, Object> tempPatternMap = getData(patternMap, scopeFilters, 0);
 				newPatternMap = mergePatternMap(newPatternMap, tempPatternMap, scopeFilters, 0);
 			}
-			patternMap.clear();
 			patternMap.putAll(newPatternMap);
 		}
 	}
@@ -281,9 +277,10 @@ public class PatternServiceImpl implements IPatternService {
 		String scopeFilter = scopeFilters.get(index);
 		Map<String, Object> patternMap = new HashMap<>();
 
-		if (index == scopeFilters.size() - 1) {
+		//The data type of the last node may not Map, so can't put line 290 before below if statement, or bug https://github.com/vmware/singleton/issues/1037 will appear.
+		if ((index == scopeFilters.size() - 1) || (CommonUtil.isEmpty(originPatternMap.get(scopeFilter)))) {
 			patternMap.put(scopeFilter, originPatternMap.get(scopeFilter));
-		} else if (!CommonUtil.isEmpty(originPatternMap.get(scopeFilter))) {
+		} else {
 			originPatternMap = (Map<String, Object>) originPatternMap.get(scopeFilter);
 			patternMap.put(scopeFilter, getData(originPatternMap, scopeFilters, index + 1));
 		}

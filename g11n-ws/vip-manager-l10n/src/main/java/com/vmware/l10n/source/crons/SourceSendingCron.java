@@ -6,6 +6,7 @@ package com.vmware.l10n.source.crons;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -70,7 +71,19 @@ public class SourceSendingCron {
 	/** the url of GRM API,can be configed in spring config file **/
 	@Value("${vip.server.url}")
 	private String remoteVIPURL;
-
+	
+	@Value("${vip.server.authentication.enable}")
+	private boolean remoteVIPAuthEnable;
+	
+	@Value("${vip.server.authentication.appId:#}")
+	private String remoteVIPAuthAppId;
+	
+	@Value("${vip.server.authentication.token:#}")
+	private String remoteVIPAuthAppToken;
+	
+	@Value("${spring.profiles.active}")
+	private String activeDaoType;
+	
 	@Autowired
 	private SourceDao sourceDao;
 
@@ -82,6 +95,7 @@ public class SourceSendingCron {
 
 	@PostConstruct
 	public void init() {
+		LOGGER.info("The active dao type: {}", activeDaoType);
 		if (!syncEnabled) {
 			return;
 		}
@@ -202,9 +216,13 @@ public class SourceSendingCron {
 							} else {
 
 								LOGGER.warn("Failed to update source: {}", ehcachekey);
-
-								// put the failed the source to collection queue
-								SourceServiceImpl.setParpareMap(cachedComDTO, ehcachekey);
+                                if(activeDaoType.equalsIgnoreCase("s3")) {
+                                	mapObj.remove(ehcachekey);
+                                	processFailedUpdate(cachedComDTO, ehcachekey);
+                                }else {
+                                	// put the failed the source to collection queue
+    								SourceServiceImpl.setParpareMap(cachedComDTO, ehcachekey);
+                                }
 							}
 						}
 					}
@@ -235,6 +253,17 @@ public class SourceSendingCron {
 		}
 	}
 
+	private void processFailedUpdate(ComponentSourceDTO compDTO, String cachedKey) {
+	
+        Map<String, ComponentSourceDTO> map = new HashMap<String,ComponentSourceDTO>();
+        map.put(cachedKey, compDTO);
+        try {
+			DiskQueueUtils.createQueueFile(map, basePath);
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage(), e);
+		}
+	}
+	
 	private void putDataToRemoteVIP(ComponentSourceDTO cachedComDTO) throws VIPHttpException {
 		String urlStr = remoteVIPURL + APIV2.PRODUCT_TRANSLATION_PUT
 				.replace("{" + APIParamName.PRODUCT_NAME + "}", cachedComDTO.getProductName())
@@ -245,10 +274,17 @@ public class SourceSendingCron {
 				+ "\",\"locale\": \"" + locale + "\",\"messages\": " + cachedComDTO.getMessages().toJSONString()
 				+ "}],\"version\": \"" + cachedComDTO.getVersion() + "\"},\"requester\": \"" + ConstantsKeys.VL10N
 				+ "\"}";
-		HTTPRequester.putJSONStr(jsonStr, urlStr);
+		Map<String, String> header =null;
+		if(remoteVIPAuthEnable) {
+			header = new HashMap<String, String>();
+			header.put("appId", remoteVIPAuthAppId);
+			header.put("token", remoteVIPAuthAppToken);
+		}
+			HTTPRequester.putJSONStr(jsonStr, urlStr, header);
+		
 	}
 
-	/*
+	/**
 	 * flush the cache content to disk
 	 */
 	private void flushCacheToDisk(Cache<String, ComponentSourceDTO> bkSourceCache) throws VIPCacheException {

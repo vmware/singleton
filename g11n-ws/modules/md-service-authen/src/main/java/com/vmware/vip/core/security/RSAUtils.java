@@ -5,221 +5,114 @@
 package com.vmware.vip.core.security;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
 import java.security.InvalidKeyException;
 import java.security.KeyFactory;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
 import java.security.PublicKey;
-import java.security.interfaces.RSAPrivateKey;
-import java.security.interfaces.RSAPublicKey;
 import java.security.spec.InvalidKeySpecException;
+import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.codec.binary.Base64;
+
+
 
 public class RSAUtils {
 
- public static String abc = "-----BEGIN PUBLIC KEY-----\r" + 
- 		"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+6IEqLH5Np2dHnkqMfwlfrvlj\r" + 
- 		"KC7hIrxEePH8cv7EDWQ0/tEz7c9bKe9i9ryhVBsgUdomKaJyCdZgs/r+hARhpUfM\r" + 
- 		"zTjbB76ac2+HCP0NQ0ZLIcch2lcYNcE0Lftf65TRfnjo3z/u4VLJLQoQNIxACEYW\r" + 
- 		"2nPOVNB2AD5VOsd1wwIDAQAB\r" + 
- 		"-----END PUBLIC KEY-----\r";
-	private static Map<String, Object> keysMap = makeKeyfile();
-    private static Logger logger = LoggerFactory.getLogger(RSAUtils.class);
+	private static final String CHARSET = "UTF-8";
+	 /**
+     * encrypt Data by private key
+     * @param data
+     * @param privateInfoStr
+     * @return
+     * @throws IOException
+     * @throws InvalidCipherTextException
+     */
+    public static String encryptData(String data, String privateInfoStr) throws IOException, InvalidKeySpecException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException {
+ 
+        Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+        cipher.init(Cipher.ENCRYPT_MODE, getPrivateKey(privateInfoStr));
+        return Base64.encodeBase64String(cipher.doFinal(data.getBytes(CHARSET)));
+    }
     
-	private static Map<String, Object> makeKeyfile() {
+    
+    
+    private static PrivateKey getPrivateKey(String base64PrivateKey) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(Base64.decodeBase64(base64PrivateKey));
+        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+        return keyFactory.generatePrivate(keySpec);
+    }
+ 
+	
+	
+	
+	
+	
+	/**
+	 * decode Data by public key
+	 * 
+	 * @param data
+	 * @param publicInfoStr
+	 * @return
+	 */
+	public static String decryptData(String data, String publicInfoStr)
+			throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException,
+			BadPaddingException, IllegalBlockSizeException, UnsupportedEncodingException {
+		byte[] encryptDataBytes = Base64.decodeBase64(data);
+		if(data.equals(Base64.encodeBase64String(encryptDataBytes))){
+			Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+			cipher.init(Cipher.DECRYPT_MODE, getPublicKey(publicInfoStr));
+			return new String(cipher.doFinal(encryptDataBytes), CHARSET);
+		}else {
+			throw new BadPaddingException("The token is modified!");
+		}
 		
-		Map<String, Object> keyMap = new HashMap<String, Object>();
-		KeyPairGenerator keyPairGen = null;
-		try {
-			keyPairGen = KeyPairGenerator.getInstance("RSA");
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			logger.error(e.getMessage(), e);
+	}
+
+	/**
+	 * get public key from base64 code
+	 * 
+	 * @param base64PublicKey
+	 * @return
+	 * @throws NoSuchAlgorithmException
+	 * @throws InvalidKeySpecException
+	 */
+	private static PublicKey getPublicKey(String base64PublicKey)
+			throws NoSuchAlgorithmException, InvalidKeySpecException {
+		X509EncodedKeySpec keySpec = new X509EncodedKeySpec(Base64.decodeBase64(base64PublicKey));
+		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+		return keyFactory.generatePublic(keySpec);
+	}
+
+	/**
+	 * get public key string from file
+	 * 
+	 * @param file
+	 * @return
+	 */
+	public static String getKeyStrFromFile(File file) {
+		StringBuilder sb = new StringBuilder();
+		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+			String input;
+			while ((input = br.readLine()) != null) {
+				sb.append(input);
+			}
+			return sb.toString();
+		} catch (Exception e) {
 			return null;
 		}
-		
-		keyPairGen.initialize(1024);
-		
-		KeyPair keyPair = keyPairGen.generateKeyPair();
-
-		
-		RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
-
-	
-		RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
-
-		
-		keyMap.put("privateKey", privateKey);
-		keyMap.put("pubKey", publicKey);
-
-		return keyMap;
 
 	}
-
-	
-
-	
-	/**
-	 * 
-	 * 
-	 * @param publicKey
-	 * @param srcBytes
-	 * @return
-	 * @throws NoSuchAlgorithmException
-	 * @throws NoSuchPaddingException
-	 * @throws InvalidKeyException
-	 * @throws IllegalBlockSizeException
-	 * @throws BadPaddingException
-	 */
-	public static String rsaEncrypt(String encryptStr) throws NoSuchAlgorithmException, NoSuchPaddingException,
-			InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
-
-		RSAPublicKey publicKey = (RSAPublicKey) keysMap.get("pubKey");
-		if (publicKey != null) {
-			
-			Cipher cipher = Cipher.getInstance("RSA");
-			
-			cipher.init(Cipher.ENCRYPT_MODE, publicKey);
-			byte[] resultBytes = cipher.doFinal(encryptStr.getBytes(Charset.forName("UTF-8")));
-			return Base64.getEncoder().encodeToString(resultBytes);
-		}
-		return null;
-	}
-
-	/**
-	 *
-	 * 
-	 * @param publicKey
-	 * @param srcBytes
-	 * @return
-	 * @throws NoSuchAlgorithmException
-	 * @throws NoSuchPaddingException
-	 * @throws InvalidKeyException
-	 * @throws IllegalBlockSizeException
-	 * @throws BadPaddingException
-	 * @throws InvalidKeySpecException
-	 * @throws UnsupportedEncodingException 
-	 */
-	public static String rsaEncrypt(String encryptStr, String pubKeyStr)
-			throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException,
-			BadPaddingException, InvalidKeySpecException {
-
-	
-		BufferedReader br = new BufferedReader(new StringReader(pubKeyStr));
-		StringBuilder sb = new StringBuilder();
-				String line =null;
-		try {
-			while( (line= br.readLine()) != null) {
-			//	System.out.println(line);
-				if(!line.contains("PUBLIC KEY")) {
-    				
-					sb.append(line+"\r");
-    			}
-				
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			logger.error(e.getMessage(), e);
-		}			
-	
-	//	System.out.println("--------------pubkey------");
-	
-		try {
-			br.close();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			logger.error(e1.getMessage(), e1);
-		}
-		
-       byte[] pubbytes = null;
-	try {
-		pubbytes = Base64.getMimeDecoder().decode(sb.toString().getBytes("utf-8"));
-	} catch (UnsupportedEncodingException e) {
-		// TODO Auto-generated catch block
-		logger.error(e.getMessage(), e);
-	}    
-        KeyFactory keyFactory= KeyFactory.getInstance("RSA");  
-        X509EncodedKeySpec keySpec= new X509EncodedKeySpec(pubbytes);  
-        PublicKey publicKey= (RSAPublicKey) keyFactory.generatePublic(keySpec);  
-        if (publicKey != null) {
-			
-			Cipher cipher = Cipher.getInstance("RSA");
-			
-			cipher.init(Cipher.ENCRYPT_MODE, publicKey);
-			byte[] resultBytes = cipher.doFinal(encryptStr.getBytes(Charset.forName("UTF-8")));
-			return Base64.getEncoder().encodeToString(resultBytes);
-		}
-		return null;
-	}
-
-	/**
-	 * 解密
-	 * 
-	 * @param privateKey
-	 * @param srcBytes
-	 * @return
-	 * @throws NoSuchAlgorithmException
-	 * @throws NoSuchPaddingException
-	 * @throws InvalidKeyException
-	 * @throws IllegalBlockSizeException
-	 * @throws BadPaddingException
-	 */
-	public static String rsaDecrypt(String deStr, String privateKeyStr) throws NoSuchAlgorithmException, NoSuchPaddingException,
-			InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
-		RSAPrivateKey privateKey = (RSAPrivateKey) keysMap.get("privateKey");
-		if (privateKey != null) {
-			
-			Cipher cipher = Cipher.getInstance("RSA");
-		
-			cipher.init(Cipher.DECRYPT_MODE, privateKey);
-			byte[] resultBytes = cipher.doFinal(Base64.getDecoder().decode(deStr));
-			return new String(resultBytes, Charset.forName("UTF-8"));
-		}
-		return null;
-	}
-	
-	/**
-	 * 解密
-	 * 
-	 * @param privateKey
-	 * @param srcBytes
-	 * @return
-	 * @throws NoSuchAlgorithmException
-	 * @throws NoSuchPaddingException
-	 * @throws InvalidKeyException
-	 * @throws IllegalBlockSizeException
-	 * @throws BadPaddingException
-	 */
-	public static String rsaDecrypt(String deStr) throws NoSuchAlgorithmException, NoSuchPaddingException,
-			InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
-		RSAPrivateKey privateKey = (RSAPrivateKey) keysMap.get("privateKey");
-		if (privateKey != null) {
-		
-			Cipher cipher = Cipher.getInstance("RSA");
-			
-			cipher.init(Cipher.DECRYPT_MODE, privateKey);
-			byte[] resultBytes = cipher.doFinal(Base64.getDecoder().decode(deStr));
-			return new String(resultBytes, Charset.forName("UTF-8"));
-		}
-		return null;
-	}
-
 
 
 }

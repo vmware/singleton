@@ -69,7 +69,7 @@ public interface IProductService {
     public List<String> getSupportVersionList(String productName) throws L3APIException;
     
     /**
-     * get the whiteList
+     * get the allow product List
      */
     public Map<String, Object> getAllowPrductList();
 }
