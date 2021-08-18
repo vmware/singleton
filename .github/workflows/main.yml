@@ -37,6 +37,9 @@ jobs:
           git clone --branch=devops https://github.com/vmware/singleton.git devops
           cp $GITHUB_WORKSPACE/devops/check_headers.py .
           chmod +x check_headers.py
+          echo ${{ steps.get-commit-range-action.outputs.commit-range }}
+          git diff ${{ steps.get-commit-range-action.outputs.commit-range }} --stat
+          git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }}
           python ./check_headers.py -f "$(git diff --name-only --diff-filter=d ${{ steps.get-commit-range-action.outputs.commit-range }})"
   unit-test:
     name: Unit Test
