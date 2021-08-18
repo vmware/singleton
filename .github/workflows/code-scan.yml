@@ -1,0 +1,67 @@
+name: code-scan
+on: [push]
+jobs:
+  pre-process:
+    name: Pre process
+    runs-on: ubuntu-latest
+    outputs:
+      were-only-docs-updated: ${{ steps.were-only-docs-updated-action.outputs.were-only-docs-updated }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2.  
+      - name: Get commit range
+        id: get-commit-range-action
+        uses: ./.github/actions/get-commit-range-action
+      - name: Were only docs updated
+        id: were-only-docs-updated-action
+        uses: ./.github/actions/were-only-docs-updated-action
+        with:
+          commit-range: ${{ steps.get-commit-range-action.outputs.commit-range }}
+  code-scan:
+    name: Code Scan
+    runs-on: ubuntu-latest
+    needs: pre-process
+    if: needs.pre-process.outputs.were-only-docs-updated != 'yes'
+    env: 
+      SONAR_ORG: ${{secrets.SONAR_ORG}}
+      SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Get branch name
+        id: get-branch-name-action
+        uses: ./.github/actions/get-branch-name-action
+      - name: Set up JDK 8
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '8'
+      - name: Generate coverage
+        run: |
+          echo $SONAR_ORG
+          echo $SONAR_TOKEN
+          git clone --branch=devops https://github.com/vmware/singleton.git devops
+          cd $GITHUB_WORKSPACE/devops/sonar/ && python ./config_sonar_project.py -ProjectName=$SONAR_ORG-singleton-service-${{ steps.get-branch-name-action.outputs.branch-name }} -ProjectKey=$SONAR_ORG-singleton-service-${{ steps.get-branch-name-action.outputs.branch-name }} -OrgKey=$SONAR_ORG -QualityGateName=service-gate -QualityGateConditions="./quality_gates/service_quality_gate.json" -SonarToken=$SONAR_TOKEN
+          cd $GITHUB_WORKSPACE/g11n-ws && sed -i "s/rootProject.name = 'singleton'/rootProject.name = '$SONAR_ORG-singleton-service-${{ steps.get-branch-name-action.outputs.branch-name }}'/" settings.gradle && cat settings.gradle
+          cd $GITHUB_WORKSPACE/g11n-ws && ./gradlew test jacocoTestReport
+      - name: Analyze with SonarCloud
+        uses: sonarsource/sonarcloud-github-action@master
+        with:
+          projectBaseDir: g11n-ws
+          args: >
+            -Dsonar.projectKey=${env.SONAR_ORG}-singleton-service-${{ steps.get-branch-name-action.outputs.branch-name }}
+            -Dsonar.projectName=${env.SONAR_ORG}-singleton-service-${{ steps.get-branch-name-action.outputs.branch-name }}
+            -Dsonar.sources=.
+            -Dsonar.language=java
+            -Dsonar.sourceEncoding=UTF-8
+            -Dsonar.organization=${env.SONAR_ORG}
+            -Dsonar.exclusions=tools/tool-cldr-extractor/**,**/*.py,**/*.xml,**/*.css,**/*.js,**/*.html
+            -Dsonar.java.binaries=vip-manager-i18n/build/classes/java,vip-manager-l10n/build/classes/java,vip-manager-lite-i18n/build/classes/java
+            -Dsonar.java.test.binaries=vip-manager-i18n/build/classes/test,vip-manager-l10n/build/classes/test,vip-manager-lite-i18n/build/classes/test
+            -Dsonar.coverage.jacoco.xmlReportPaths=vip-manager-i18n/build/reports/jacoco.xml,vip-manager-l10n/build/reports/jacoco.xml,vip-manager-lite-i18n/build/reports/jacoco.xml
+            -Dsonar.coverage.exclusions=modules/**,tools/**,vip-common/src/main/java/com/vmware/vip/common/**,vip-manager-l10n-agent/**,vip-manager-i18n/build/**,vip-manager-l10n/build/**,vip-manager-lite-i18n/build/**,vip-manager-i18n/src/test/**,vip-manager-l10n/src/test/**,vip-manager-lite-i18n/src/test/**
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}
