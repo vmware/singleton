@@ -16,9 +16,9 @@ describe SgtnClient do
     end
 
     it "GET_EN" do
-      expect(SgtnClient::Translation.getString("JAVA", "hello", "en")).to eq 'Hello world'
+      expect(SgtnClient::Translation.getString("JAVA", "hello", "en")).to eq 'Hello'
       # get from cache in 2nd time
-      expect(SgtnClient::Translation.getString("JAVA", "hello", "en")).to eq 'Hello world'
+      expect(SgtnClient::Translation.getString("JAVA", "hello", "en")).to eq 'Hello'
     end
 
     it "GET_zh_CN" do
@@ -28,9 +28,9 @@ describe SgtnClient do
     end
 
     it "NonExistingKey" do
-      expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq 'Hello world'
+      expect(SgtnClient::Translation.getString("JAVA", "hello", "zh-Hans")).to eq 'Hello'
       # get from cache in 2nd time
-      expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq 'Hello world'
+      expect(SgtnClient::Translation.getString("JAVA", "hello", "zh-Hans")).to eq 'Hello'
     end
   end
 

@@ -65,7 +65,6 @@ module SgtnClient
     class << self
 
         @@config_cache = {}
-  =
         def load(file_name, default_env = default_environment)
           @@config_cache        = {}
           @@configurations      = read_configurations(file_name)
