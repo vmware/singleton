@@ -9,7 +9,7 @@ SgtnClient.load("./config/sgtnclient.yml", "test")
 SgtnClient::Source.loadBundles("default")
 
 # get translation
-@Result = SgtnClient::Translation.getString("JAVA", "com.vmware.loginsight.web.settings.stats.StatsTable.host", "zh-Hans")
+@Result = SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")
 
 # get non-existing translation
-#@Result = SgtnClient::Translation.getString("JAVA", "hello", "zh-Hans")
+#@Result = SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")

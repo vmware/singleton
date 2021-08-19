@@ -14,7 +14,7 @@ module SgtnClient
       def to_s
         begin
           response_body = JSON.parse(response.body)
-          debug_id = response["paypal-debug-id"]
+          debug_id = response["sgtn-debug-id"]
           debug_id = response["correlation-id"] if debug_id.to_s == ''
           debug_id = response_body["debug_id"] if debug_id.to_s == ''
         rescue

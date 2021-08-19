@@ -35,7 +35,6 @@ Gem::Specification.new do |s|
   s.add_dependency('http-cookie', '>= 1.0.2', '< 2.0')
   s.add_dependency('mime-types', '>= 1.16', '< 4.0')
   s.add_dependency('netrc', '~> 0.8')
-  s.add_dependency('rest-client', '~> 2.0')
   s.add_dependency('multi_json', '~> 1.0')
   s.add_dependency('twitter_cldr', '~> 6.6')
 

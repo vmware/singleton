@@ -14,10 +14,10 @@ describe SgtnClient do
 
       # get translation from server
       SgtnClient.logger.debug "----------Start to get translation from server---------"
-      expect(SgtnClient::Translation.getString("JAVA", "com.vmware.loginsight.web.settings.stats.StatsTable.host", "zh-Hans")).to eq '主机'
+      expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
       # get translation from cache
       SgtnClient.logger.debug "----------Start to get translation from cache---------"
-      expect(SgtnClient::Translation.getString("JAVA", "com.vmware.loginsight.web.settings.stats.StatsTable.host", "zh-Hans")).to eq '主机'
+      expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
 
       # get from server again after data is expired
       SgtnClient.logger.debug "----------Sleep 70s---------"
@@ -25,7 +25,7 @@ describe SgtnClient do
       #sleep 70
       puts Time.now
       SgtnClient.logger.debug "----------Start to get translation from expired cache---------"
-      expect(SgtnClient::Translation.getString("JAVA", "com.vmware.loginsight.web.settings.stats.StatsTable.host", "zh-Hans")).to eq '主机'
+      expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
 
       SgtnClient.logger.debug "----------End to get translation from server---------"
     end

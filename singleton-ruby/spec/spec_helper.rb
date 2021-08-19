@@ -34,7 +34,6 @@ RSpec.configure do |config|
   config.filter_run_excluding :integration => true
   config.filter_run_excluding :disabled => true
   config.include SampleData
-  # config.include PayPal::SDK::REST::DataTypes
 end
 
 WebMock.allow_net_connect!

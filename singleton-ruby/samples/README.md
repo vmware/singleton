@@ -36,13 +36,13 @@ test: &default
   mode: sandbox
 
   # # Product name
-  product_name: logInsight
+  product_name: test
 
   # # Bundle version
   version: 4.8.1
 
   # # HTTP proxy
-  vip_server: https://g11n-vip-dev-1.eng.vmware.com:8090
+  vip_server: https://server:8090
 
   # # Mode of bundle: online/offline
   bundle_mode: offline
@@ -102,7 +102,7 @@ SgtnClient.load("./config/sgtnclient.yml", "test")
 SgtnClient::Source.loadBundles("default")
 
 # Get translation
-@Result = SgtnClient::Translation.getString("JAVA", "com.vmware.loginsight.web.settings.stats.StatsTable.host", "zh-Hans")
+@Result = SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")
 
 ```
 

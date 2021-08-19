@@ -65,13 +65,7 @@ module SgtnClient
     class << self
 
         @@config_cache = {}
-  
-        # Load configurations from file
-        # === Arguments
-        # * <tt>file_name</tt>             -- Configuration file path
-        # * <tt>default_environment</tt> (Optional)    -- default environment configuration to load
-        # === Example
-        #   Config.load('config/paypal.yml', 'development')
+  =
         def load(file_name, default_env = default_environment)
           @@config_cache        = {}
           @@configurations      = read_configurations(file_name)

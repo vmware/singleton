@@ -11,21 +11,21 @@ describe SgtnClient do
     end
 
     it "GET_EN" do
-      expect(SgtnClient::Translation.getString("JAVA", "hello", "en")).to eq 'Hello world'
+      expect(SgtnClient::Translation.getString("JAVA", "helloworld", "en")).to eq 'Hello world'
       # get from cache in 2nd time
-      expect(SgtnClient::Translation.getString("JAVA", "hello", "en")).to eq 'Hello world'
+      expect(SgtnClient::Translation.getString("JAVA", "helloworld", "en")).to eq 'Hello world'
     end
 
     it "GET" do
-      expect(SgtnClient::Translation.getString("JAVA", "com.vmware.loginsight.web.settings.stats.StatsTable.host", "zh-Hans")).to eq '主机'
+      expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
       # get from cache in 2nd time
-      expect(SgtnClient::Translation.getString("JAVA", "com.vmware.loginsight.web.settings.stats.StatsTable.host", "zh-Hans")).to eq '主机'
+      expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
     end
 
     it "NonExistingKey" do
-      expect(SgtnClient::Translation.getString("JAVA", "hello", "zh-Hans")).to eq 'Hello world'
+      expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq 'Hello world'
       # get from cache in 2nd time
-      expect(SgtnClient::Translation.getString("JAVA", "hello", "zh-Hans")).to eq 'Hello world'
+      expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq 'Hello world'
     end
   end
 
