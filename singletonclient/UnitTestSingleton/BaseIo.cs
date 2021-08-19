@@ -173,6 +173,7 @@ namespace UnitTestSingleton
 
         private string GetResponse(string key, Hashtable headers)
         {
+            key = key.Replace("/locales/en-US/", "/locales/en/");
             Hashtable response = (Hashtable)responseData[key];
             string text = "";
             if (response != null)

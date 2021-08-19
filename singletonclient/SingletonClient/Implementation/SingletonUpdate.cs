@@ -8,7 +8,6 @@ using SingletonClient.Implementation.Release;
 using SingletonClient.Implementation.Support;
 using System;
 using System.Collections;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using static SingletonClient.Implementation.SingletonUtil;
 
@@ -56,6 +55,12 @@ namespace SingletonClient.Implementation
         /// </summary>
         /// <returns>List<string></returns>
         List<string> GetLocalComponentList();
+
+        /// <summary>
+        /// Get local locale list of a component.
+        /// </summary>
+        /// <returns>List<string></returns>
+        List<string> GetComponentLocaleList(string component);
     }
 
     public class SingletonUpdate : ISingletonUpdate
@@ -231,8 +236,7 @@ namespace SingletonClient.Implementation
             }
 
             _localComponentList = _config.GetConfig().GetComponentList();
-            bool fromExternal = (_localComponentList.Count == 0);
-            if (fromExternal)
+            if (_config.IsComponentListFromExternal())
             {
                 _localComponentList = _config.GetExternalComponentList();
             }
@@ -240,13 +244,20 @@ namespace SingletonClient.Implementation
             List<string> localLocales = new List<string>();
             for (int i = 0; i < _localComponentList.Count; i++)
             {
-                List<string> componentLocaleList = fromExternal ? _config.GetExternalLocaleList(_localComponentList[i]) :
-                    _config.GetConfig().GetLocaleList(_localComponentList[i]);
+                List<string> componentLocaleList = GetComponentLocaleList(_localComponentList[i]);
                 SingletonUtil.UpdateListFromAnotherList(localLocales, componentLocaleList);
             }
 
             _release.AddLocalScope(localLocales, _localComponentList);
             return _localComponentList;
+        }
+
+        public List<string> GetComponentLocaleList(string component)
+        {
+            List<string> localeList = _config.GetConfig().GetLocaleList(component);
+            List<string> componentLocaleList = (_config.IsComponentListFromExternal() || localeList.Count == 0) ?
+                _config.GetExternalLocaleList(component) : localeList;
+            return componentLocaleList;
         }
 
         private ILocaleMessages LoadOfflineLocaleMessage(string locale, string nearLocale, string component, bool asSource)

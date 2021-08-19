@@ -208,6 +208,7 @@ namespace UnitTestSingleton
 
         protected string product;
         protected string version;
+        protected bool mixed;
 
         public AbsTestBase()
         {
@@ -223,6 +224,11 @@ namespace UnitTestSingleton
             access = new AccessSingleton(cfg);
             release = access.Release();
             config = I18N.GetConfig(PRODUCT, VERSION);
+
+            IConfigItem online = cfg.GetItem(ConfigConst.KeyOnlineUrl);
+            IConfigItem offline = cfg.GetItem(ConfigConst.KeyOfflineUrl);
+
+            mixed = (online != null && offline != null);
         }
 
         public abstract string[] GetResStrings();
