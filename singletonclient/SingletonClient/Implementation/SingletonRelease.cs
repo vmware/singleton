@@ -281,18 +281,23 @@ namespace SingletonClient.Implementation
             return text;
         }
 
+        private void LoadLocalBundle(string locale, string component)
+        {
+            ISingletonLocale singletonLocale = SingletonLocaleUtil.GetSingletonLocale(locale);
+            bool isSource = singletonLocale.Compare(_useSourceLocale.SingletonLocale);
+            _update.LoadOfflineMessage(singletonLocale, component, isSource);
+        }
+
         private void LoadLocalOnStartup()
         {
             List<string> componentLocalList = _update.GetLocalComponentList();
 
-            for (int i = 0; i < componentLocalList.Count; i++)
+            foreach (string component in componentLocalList)
             {
-                List<string> localeList = _config.GetConfig().GetLocaleList(componentLocalList[i]);
-                for (int k=0; k<localeList.Count; k++)
+                List<string> localeList = _update.GetComponentLocaleList(component);
+                foreach (string locale in localeList)
                 {
-                    ISingletonLocale singletonLocale = SingletonLocaleUtil.GetSingletonLocale(localeList[k]);
-                    bool isSource = singletonLocale.Compare(_useSourceLocale.SingletonLocale);
-                    _update.LoadOfflineMessage(singletonLocale, componentLocalList[i], isSource);
+                    LoadLocalBundle(locale, component);
                 }
             }
         }
@@ -303,20 +308,20 @@ namespace SingletonClient.Implementation
 
             List<SingletonLoadRemoteBundle> loads = new List<SingletonLoadRemoteBundle>();
 
-            for (int i = 0; i < _infoRemote.Locales.Count; i++)
+            bool isFirst = true;
+            foreach (string locale in _infoRemote.Locales)
             {
-                string locale = _infoRemote.Locales[i];
                 SingletonUseLocale useLocale = GetUseLocale(locale, false);
 
-                for (int k = 0; k < _infoRemote.Components.Count; k++)
+                foreach (string component in _infoRemote.Components)
                 {
-                    string component = _infoRemote.Components[k];
                     if (componentLocalList.Count == 0 || componentLocalList.Contains(component))
                     {
                         SingletonLoadRemoteBundle loadRemote = new SingletonLoadRemoteBundle(useLocale, component);
-                        if (i + k == 0)
+                        if (isFirst)
                         {
                             loadRemote.Load();
+                            isFirst = false;
                         }
                         else
                         {
@@ -328,7 +333,7 @@ namespace SingletonClient.Implementation
 
             int maxCountInGroup = Environment.ProcessorCount * 2;
             List<Task> tasksGroup = new List<Task>();
-            for (int i=0; i< loads.Count; i++)
+            for (int i = 0; i < loads.Count; i++)
             {
                 tasksGroup.Add(loads[i].CreateAsyncTask());
                 if (tasksGroup.Count == maxCountInGroup)
@@ -340,6 +345,26 @@ namespace SingletonClient.Implementation
             if (tasksGroup.Count > 0)
             {
                 Task.WaitAll(tasksGroup.ToArray());
+            }
+
+            Dictionary<string, bool> tableNeedLocal = new Dictionary<string, bool>(StringComparer.InvariantCultureIgnoreCase);
+            foreach (string component in _infoLocal.Components)
+            {
+                tableNeedLocal[component] = true;
+            }
+            foreach (string component in _infoRemote.Components)
+            {
+                tableNeedLocal[component] = false;
+            }
+            foreach (var entry in tableNeedLocal)
+            {
+                if (entry.Value)
+                {
+                    foreach (string locale in _infoLocal.Locales)
+                    {
+                        LoadLocalBundle(locale, entry.Key);
+                    }
+                }
             }
         }
 

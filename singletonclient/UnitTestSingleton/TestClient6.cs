@@ -36,6 +36,11 @@ namespace UnitTestSingleton
             string translation = Translation.GetString("zh-CN", srcObj);
             Assert.AreEqual("应用程序说明页。", translation);
             DoTestTranslation();
+
+            if (mixed)
+            {
+                DoGetStringGroup("TestGetString3");
+            }
         }
     }
 }

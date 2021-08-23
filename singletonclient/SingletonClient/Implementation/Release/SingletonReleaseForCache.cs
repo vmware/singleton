@@ -199,6 +199,7 @@ namespace SingletonClient.Implementation.Release
                     if (_componentHandled[combineKey] == null)
                     {
                         _useSourceLocale.GetComponent(accessObject.Component, true);
+                        _useSourceRemote.GetComponent(accessObject.Component, true);
                         ISingletonComponent componentObj = useLocale.GetComponent(accessObject.Component, true);
                         if (componentObj != null)
                         {

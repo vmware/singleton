@@ -13,7 +13,7 @@ namespace UnitTestSingleton
     {
         public override string[] GetResStrings()
         {
-            string[] strings = { "res.Singleton1", "sgtn_debug", "product2: CSHARP19"};
+            string[] strings = { "res.Singleton1", "sgtn_debug", "product2: CSHARP7"};
             return strings;
         }
 

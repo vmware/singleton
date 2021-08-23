@@ -3,8 +3,6 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
-using SingletonClient.Implementation.Support;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace SingletonClient.Implementation.Release
@@ -12,7 +10,6 @@ namespace SingletonClient.Implementation.Release
     public class SingletonIncludeInfo
     {
         public List<string> Locales { get; set; }
-        public Hashtable ExtLocales { get; set; }
         public List<string> Components { get; set; }
         public int BundleCount
         {
@@ -63,18 +60,6 @@ namespace SingletonClient.Implementation.Release
             if (IsDifferent(Locales, latest))
             {
                 Locales = latest;
-                Hashtable extLocales = SingletonUtil.NewHashtable(true);
-                for (int i = 0; i < Locales.Count; i++)
-                {
-                    ISingletonLocale temp = SingletonLocaleUtil.GetSingletonLocale(Locales[i]);
-                    for(int k=0; k<temp.GetCount(); k++)
-                    {
-                        if (extLocales[temp.GetNearLocale(k)] == null)
-                        {
-                            extLocales[temp.GetNearLocale(k)] = temp;
-                        }
-                    }
-                }
             }
         }
 

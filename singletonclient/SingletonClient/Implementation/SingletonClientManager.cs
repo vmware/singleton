@@ -155,17 +155,7 @@ namespace SingletonClient.Implementation
                 }
             }
 
-            ISingletonConfig singletonConfig = new SingletonConfigWrapper(config);
-            string product = singletonConfig.GetProduct();
-            string version = singletonConfig.GetVersion();
-
-            Hashtable versions = GetProductVersions(product, true);
-            ISingletonRelease releaseObject = GetRelease(versions, version, true);
-            if (releaseObject.GetRelease().GetConfig() == null)
-            {
-                releaseObject.SetConfig(config);
-            }
-            return releaseObject.GetRelease().GetConfig();
+            return config;
         }
 
         public IConfig GetConfig(string product, string version)
@@ -181,8 +171,16 @@ namespace SingletonClient.Implementation
                 return null;
             }
 
-            ISingletonConfig wrapper = new SingletonConfigWrapper(config);
-            ISingletonRelease releaseObject = GetRelease(wrapper.GetProduct(), wrapper.GetVersion());
+            ISingletonConfig singletonConfig = new SingletonConfigWrapper(config);
+            string product = singletonConfig.GetProduct();
+            string version = singletonConfig.GetVersion();
+
+            Hashtable versions = GetProductVersions(product, true);
+            ISingletonRelease releaseObject = GetRelease(versions, version, true);
+            if (releaseObject.GetRelease().GetConfig() == null)
+            {
+                releaseObject.SetConfig(config);
+            }
             return releaseObject.GetRelease();
         }
 

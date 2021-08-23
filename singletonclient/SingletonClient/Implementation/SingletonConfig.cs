@@ -57,6 +57,8 @@ namespace SingletonClient.Implementation
 
         bool IsExpireEnabled();
 
+        bool IsComponentListFromExternal();
+
         int GetTryWait();
 
         bool IsOnlineSupported();
@@ -484,6 +486,7 @@ namespace SingletonClient.Implementation
         private readonly bool _isLoadOnStartup;
         private readonly bool _isCacheByKey;
         private readonly bool _isExpireEnabled;
+        private readonly bool _isComponentListFromExternal;
 
         public SingletonConfigWrapper(IConfig config)
         {
@@ -530,6 +533,8 @@ namespace SingletonClient.Implementation
                 }
             }
             _isOfflineSupported = !string.IsNullOrEmpty(offlineUrl);
+
+            _isComponentListFromExternal = (_config.GetComponentList().Count == 0);
 
             // Get default locale and source locale
             ISingletonLocale defaultLocale = SingletonUtil.GetSingletonLocale(GetDefaultLocale());
@@ -699,6 +704,11 @@ namespace SingletonClient.Implementation
         public bool IsExpireEnabled()
         {
             return _isExpireEnabled;
+        }
+
+        public bool IsComponentListFromExternal()
+        {
+            return _isComponentListFromExternal;
         }
 
         public int GetTryWait()
