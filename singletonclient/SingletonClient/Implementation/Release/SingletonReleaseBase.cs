@@ -12,22 +12,31 @@ namespace SingletonClient.Implementation.Release
 {
     public class SingletonReleaseBase
     {
-        protected readonly SingletonIncludeInfo _infoLocal = new SingletonIncludeInfo();
-        protected readonly SingletonIncludeInfo _infoRemote = new SingletonIncludeInfo();
-        protected readonly SingletonIncludeInfo _infoMix = new SingletonIncludeInfo();
+        protected readonly ISingletonReleaseManager _manager = SingletonReleaseManager.GetInstance();
 
-        protected ISingletonClientManager _client;
-        protected ISingletonRelease _self;
+        protected readonly ISingletonReleaseScopeInfo _infoLocal = new SingletonReleaseScopeInfo();
+        protected readonly ISingletonReleaseScopeInfo _infoRemote = new SingletonReleaseScopeInfo();
+        protected readonly ISingletonReleaseScopeInfo _infoMix = new SingletonReleaseScopeInfo();
+
+        protected ISingletonConfig _config;
+        protected ISingletonApi _api;
+        protected ISingletonAccessTask _task;
+
         protected IReleaseMessages _releaseMessages;
+        protected ISingletonRelease _self;
 
         protected ILog _logger;
         protected LogType _logLevel;
 
-        protected ISingletonConfig _config;
-
-        protected ISingletonApi _api;
         protected IAccessService _accessService;
-        protected ISingletonAccessTask _task;
+
+        /// <summary>
+        /// ISingletonRelease
+        /// </summary>
+        public IRelease GetRelease()
+        {
+            return (IRelease)this;
+        }
 
         /// <summary>
         /// ISingletonRelease
@@ -43,6 +52,15 @@ namespace SingletonClient.Implementation.Release
         public ISingletonApi GetApi()
         {
             return _api;
+        }
+
+        /// <summary>
+        /// ISingletonRelease
+        /// </summary>
+        /// <returns></returns>
+        public ILog GetLogger()
+        {
+            return (ILog)this;
         }
 
         /// <summary>
@@ -66,8 +84,8 @@ namespace SingletonClient.Implementation.Release
                 return false;
             }
 
-            relateLocale = singletonLocale.GetRelateLocale(_infoMix.Locales);
-            bool inComponentScope = _infoMix.Components.Contains(component);
+            relateLocale = singletonLocale.GetRelateLocale(_infoMix.GetLocales());
+            bool inComponentScope = _infoMix.GetComponents().Contains(component);
             return (relateLocale != null && inComponentScope);
         }
 
@@ -79,20 +97,31 @@ namespace SingletonClient.Implementation.Release
         {
             foreach(string locale in locales)
             {
-                if (!_infoLocal.Locales.Contains(locale))
+                if (!_infoLocal.GetLocales().Contains(locale))
                 {
-                    _infoLocal.Locales.Add(locale);
+                    _infoLocal.GetLocales().Add(locale);
                 }
             }
             foreach (string component in components)
             {
-                if (!_infoLocal.Components.Contains(component))
+                if (!_infoLocal.GetComponents().Contains(component))
                 {
-                    _infoLocal.Components.Add(component);
+                    _infoLocal.GetComponents().Add(component);
                 }
             }
             UpdateLocaleInfo();
             UpdateComponentInfo();
+        }
+
+        /// <summary>
+        /// ILog
+        /// </summary>
+        public void Log(LogType logType, string text)
+        {
+            if (_logger != null && logType >= _logLevel)
+            {
+                _logger.Log(logType, text);
+            }
         }
 
         /// <summary>
@@ -108,7 +137,7 @@ namespace SingletonClient.Implementation.Release
         /// </summary>
         public List<string> GetLocaleList()
         {
-            return _infoMix.Locales;
+            return _infoMix.GetLocales();
         }
 
         /// <summary>
@@ -116,7 +145,7 @@ namespace SingletonClient.Implementation.Release
         /// </summary>
         public List<string> GetComponentList()
         {
-            return _infoMix.Components;
+            return _infoMix.GetComponents();
         }
 
         /// <summary>
@@ -149,16 +178,15 @@ namespace SingletonClient.Implementation.Release
             return singletonLocale.GetNearLocaleList();
         }
 
-        protected void InitForBase(ISingletonRelease singletonRelease, IConfig config, ISingletonAccessRemote accessRemote)
+        protected void InitForBase(IConfig config, ISingletonAccessRemote accessRemote)
         {
-            _self = singletonRelease;
+            _self = (ISingletonRelease)this;
             _releaseMessages = _self.GetRelease().GetMessages();
 
-            _config = new SingletonConfigWrapper(config);
-            _client = SingletonClientManager.GetInstance();
+            _config = new SingletonConfigWrapper(_self, config);
 
             string loggerName = _config.GetLoggerName();
-            _logger = _client.GetLogger(loggerName);
+            _logger = _manager.GetLogger(loggerName);
 
             string logType = _config.GetLogLevel();
             _logLevel = (LogType)Enum.Parse(typeof(LogType), logType);
@@ -166,7 +194,7 @@ namespace SingletonClient.Implementation.Release
             _api = new SingletonApi(_self);
 
             string accessServiceType = _config.GetAccessServiceType();
-            _accessService = _client.GetAccessService(accessServiceType);
+            _accessService = _manager.GetAccessService(accessServiceType);
 
             int interval = _config.GetInterval();
             int tryWait = _config.GetTryWait();

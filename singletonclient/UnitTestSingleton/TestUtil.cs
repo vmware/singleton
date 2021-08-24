@@ -29,7 +29,7 @@ namespace UnitTestSingleton
             byte[] bytes2 = { 0xef, 0x31 };
             text = SingletonUtil.ConvertToText(bytes2);
 
-            SingletonClientManager mgr = (SingletonClientManager)I18N.GetExtension();
+            SingletonReleaseManager mgr = (SingletonReleaseManager)I18N.GetExtension();
             Assert.AreEqual(null, mgr.GetRelease(null));
 
             ICacheManager tempCache = mgr.GetCacheManager("try");

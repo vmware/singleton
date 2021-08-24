@@ -13,7 +13,7 @@ namespace SingletonClient.Implementation.Support.ByKey
 
         public SingletonByKeyItem AboveItem { get; set; }
         public SingletonByKeyItem CurrentItem { get; set; }
-        public int Add { get; set; }
+        public int AddType { get; set; }
 
         public SingletonByKeyLookup(string key, int componentIndex, string message)
         {

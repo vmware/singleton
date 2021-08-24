@@ -3,14 +3,15 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
+using SingletonClient.Implementation.Data;
+using SingletonClient.Implementation.Release;
 using SingletonClient.Implementation.Support;
-using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 
 namespace SingletonClient.Implementation
 {
-    public interface ISingletonClientManager
+    public interface ISingletonReleaseManager
     {
         IConfig LoadConfig(string text);
         IConfig LoadConfig(string resourceBaseName, Assembly assembly, string configResourceName, IConfig outsideConfig = null);
@@ -23,42 +24,48 @@ namespace SingletonClient.Implementation
         IAccessService GetAccessService(string accessServiceName);
     }
 
-    public class SingletonClientManager : ISingletonClientManager, IExtension
+    public class SingletonReleaseManager : ISingletonReleaseManager, IExtension
     {
-        private static SingletonClientManager _instance = new SingletonClientManager();
+        private static SingletonReleaseManager _instance = new SingletonReleaseManager();
 
-        public static SingletonClientManager GetInstance()
+        public static SingletonReleaseManager GetInstance()
         {
             return _instance;
         }
 
         // key: (string) product name  
-        // value: (Hashtable) versions -> 
+        // value: (ISingletonTable<ISingletonRelease>) versions -> 
         //     key: (string) version
         //     value: (ISingletonRelease) release object
-        private readonly Hashtable _products = SingletonUtil.NewHashtable(true);
+        private readonly ISingletonTable<ISingletonTable<ISingletonRelease>> _products =
+            new SingletonTable<ISingletonTable<ISingletonRelease>>();
 
         // key: (string) type name of cache manager
         // value: (ICacheManager) cache manager object
-        private readonly Hashtable _cacheManagers = SingletonUtil.NewHashtable(true);
+        private readonly ISingletonTable<ICacheManager> _cacheManagers =
+            new SingletonTable<ICacheManager>();
 
         // key: (string) type name of component cache manager
         // value: (ICacheComponentManager) component cache manager object
-        private readonly Hashtable _cacheComponentManagers = SingletonUtil.NewHashtable(true);
+        private readonly ISingletonTable<ICacheComponentManager> _cacheComponentManagers =
+            new SingletonTable<ICacheComponentManager>();
 
         // key: (string) type name of logger
         // value: (ILog) logger object
-        private readonly Hashtable _loggers = SingletonUtil.NewHashtable(true);
+        private readonly ISingletonTable<ILog> _loggers =
+            new SingletonTable<ILog>();
 
         // key: (string) type name of parser
-        // value: (ISourceParser) parser object
-        private readonly Hashtable _parsers = SingletonUtil.NewHashtable(true);
+        // value: (IResourceParser) parser object
+        private readonly ISingletonTable<IResourceParser> _parsers =
+            new SingletonTable<IResourceParser>();
 
         // key: (string) type name of accessing service
         // value: (IAccessService) accessing service object
-        private readonly Hashtable _accessServices = SingletonUtil.NewHashtable(true);
+        private readonly ISingletonTable<IAccessService> _accessServices =
+            new SingletonTable<IAccessService>();
 
-        private SingletonClientManager()
+        private SingletonReleaseManager()
         {
             ICacheManager cacheManager = new SingletonCacheManager();
             RegisterCacheManager(cacheManager, ConfigConst.DefaultType);
@@ -82,7 +89,7 @@ namespace SingletonClient.Implementation
         private void LoadFallbackDefine()
         {
             string resName = "Implementation.SingletonRes.Singleton";
-            Assembly assembly = typeof(SingletonClientManager).Assembly;
+            Assembly assembly = typeof(SingletonReleaseManager).Assembly;
 
             byte[] bytes = SingletonUtil.ReadResource(resName, assembly, "fallback");
             string configText = SingletonUtil.ConvertToText(bytes);
@@ -90,36 +97,36 @@ namespace SingletonClient.Implementation
             SingletonLocaleUtil.SetFallbackConfig(configText);
         }
 
-        private Hashtable GetProductVersions(string product, bool add)
+        private ISingletonTable<ISingletonRelease> GetProductVersions(string product, bool add)
         {
-            Hashtable versions = (Hashtable)_products[product];
+            ISingletonTable<ISingletonRelease> versions = _products.GetItem(product);
             if (versions == null && add)
             {
-                _products[product] = SingletonUtil.NewHashtable(true);
-                versions = (Hashtable)_products[product];
+                _products.SetItem(product, new SingletonTable<ISingletonRelease>());
+                versions = _products.GetItem(product);
             }
             return versions;
         }
 
         private ISingletonRelease GetRelease(
-            Hashtable versions, string version, bool add)
+            ISingletonTable<ISingletonRelease> versions, string version, bool add)
         {
             if(versions == null || version == null)
             {
                 return null;
             }
-            ISingletonRelease releaseObject = (ISingletonRelease)versions[version];
+            ISingletonRelease releaseObject = versions.GetItem(version);
             if (releaseObject == null && add)
             {
                 releaseObject = new SingletonRelease();
-                versions[version] = releaseObject;
+                versions.SetItem(version, releaseObject);
             }
             return releaseObject;
         }
 
         private ISingletonRelease GetRelease(string product, string version)
         {
-            Hashtable versions = GetProductVersions(product, false);
+            ISingletonTable<ISingletonRelease> versions = GetProductVersions(product, false);
             if (versions == null)
             {
                 return null;
@@ -171,11 +178,11 @@ namespace SingletonClient.Implementation
                 return null;
             }
 
-            ISingletonConfig singletonConfig = new SingletonConfigWrapper(config);
+            ISingletonConfig singletonConfig = new SingletonConfigWrapper(null, config);
             string product = singletonConfig.GetProduct();
             string version = singletonConfig.GetVersion();
 
-            Hashtable versions = GetProductVersions(product, true);
+            ISingletonTable<ISingletonRelease> versions = GetProductVersions(product, true);
             ISingletonRelease releaseObject = GetRelease(versions, version, true);
             if (releaseObject.GetRelease().GetConfig() == null)
             {
@@ -186,15 +193,15 @@ namespace SingletonClient.Implementation
 
         public void RegisterLogger(ILog logger, string loggerName)
         {
-            _loggers[loggerName] = logger;
+            _loggers.SetItem(loggerName, logger);
         }
 
-        private object GetItemFromTable(Hashtable table, string name)
+        private object GetItemFromTable(ISingletonTableBase table, string name)
         {
-            object found = string.IsNullOrEmpty(name) ? null : table[name];
+            object found = string.IsNullOrEmpty(name) ? null : table.GetObject(name);
             if (found == null)
             {
-                found = table[ConfigConst.DefaultType];
+                found = table.GetObject(ConfigConst.DefaultType);
             }
             return found;
         }
@@ -226,23 +233,23 @@ namespace SingletonClient.Implementation
 
         public void RegisterCacheManager(ICacheManager cacheManager, string cacheManagerName)
         {
-            _cacheManagers[cacheManagerName] = cacheManager;
+            _cacheManagers.SetItem(cacheManagerName, cacheManager);
         }
 
         public void RegisterCacheComponentManager(ICacheComponentManager cacheComponentManager,
             string cacheComponentManagerName)
         {
-            _cacheComponentManagers[cacheComponentManagerName] = cacheComponentManager;
+            _cacheComponentManagers.SetItem(cacheComponentManagerName, cacheComponentManager);
         }
 
         public void RegisterAccessService(IAccessService accessService, string accessrName)
         {
-            _accessServices[accessrName] = accessService;
+            _accessServices.SetItem(accessrName, accessService);
         }
 
         public void RegisterResourceParser(IResourceParser parser, string parserName)
         {
-            _parsers[parserName] = parser;
+            _parsers.SetItem(parserName, parser);
         }
     }
 }

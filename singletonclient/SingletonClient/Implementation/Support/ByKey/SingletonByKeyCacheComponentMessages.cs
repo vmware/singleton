@@ -17,14 +17,14 @@ namespace SingletonClient.Implementation.Support.ByKey
 
         private readonly ISingletonComponent _componentObject;
 
-        public SingletonByKeyCacheComponentMessages(SingletonUseLocale useLocale, string component) :
-            base(useLocale.Release, useLocale.Locale, component, useLocale.AsSource)
+        public SingletonByKeyCacheComponentMessages(ISingletonUseLocale useLocale, string component) :
+            base(useLocale.GetRelease(), useLocale.GetLocale(), component, useLocale.IsAsSource())
         {
-            _byKey = useLocale.Release.GetSingletonByKey();
-            _byKeyLocale = _byKey.GetLocaleItem(useLocale.Locale, useLocale.AsSource);
+            _byKey = useLocale.GetRelease().GetSingletonByKey();
+            _byKeyLocale = _byKey.GetLocaleItem(useLocale.GetLocale(), useLocale.IsAsSource());
             _componentIndex = _byKey.GetComponentIndex(component);
 
-            _componentObject = (ISingletonComponent)useLocale.Components[component];
+            _componentObject = useLocale.GetComponents().GetItem(component);
         }
 
         /// <summary>

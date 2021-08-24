@@ -21,8 +21,8 @@ namespace SingletonClient
         /// <returns></returns>
         public static IConfig LoadConfigFromText(string text)
         {
-            ISingletonClientManager client = SingletonClientManager.GetInstance();
-            return client.LoadConfig(text);
+            ISingletonReleaseManager manager = SingletonReleaseManager.GetInstance();
+            return manager.LoadConfig(text);
         }
 
         /// <summary>
@@ -35,8 +35,8 @@ namespace SingletonClient
         public static IConfig LoadConfig(
             string resourceBaseName, Assembly assembly, string configResourceName, IConfig outsideConfig = null)
         {
-            ISingletonClientManager client = SingletonClientManager.GetInstance();
-            return client.LoadConfig(resourceBaseName, assembly, configResourceName, outsideConfig);
+            ISingletonReleaseManager manager = SingletonReleaseManager.GetInstance();
+            return manager.LoadConfig(resourceBaseName, assembly, configResourceName, outsideConfig);
         }
 
         /// <summary>
@@ -47,8 +47,8 @@ namespace SingletonClient
         /// <returns></returns>
         public static IConfig GetConfig(string product, string version)
         {
-            ISingletonClientManager client = SingletonClientManager.GetInstance();
-            return client.GetConfig(product, version);
+            ISingletonReleaseManager manager = SingletonReleaseManager.GetInstance();
+            return manager.GetConfig(product, version);
         }
 
         /// <summary>
@@ -58,8 +58,8 @@ namespace SingletonClient
         /// <returns></returns>
         public static IRelease GetRelease(IConfig config)
         {
-            ISingletonClientManager client = SingletonClientManager.GetInstance();
-            return client.GetRelease(config);
+            ISingletonReleaseManager manager = SingletonReleaseManager.GetInstance();
+            return manager.GetRelease(config);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace SingletonClient
         /// <returns></returns>
         public static IExtension GetExtension()
         {
-            IExtension extension = SingletonClientManager.GetInstance();
+            IExtension extension = SingletonReleaseManager.GetInstance();
             return extension;
         }
     }

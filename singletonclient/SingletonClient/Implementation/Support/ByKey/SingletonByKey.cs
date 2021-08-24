@@ -4,9 +4,9 @@
  */
 
 using System;
-using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using SingletonClient.Implementation.Data;
 
 namespace SingletonClient.Implementation.Support.ByKey
 {
@@ -37,8 +37,8 @@ namespace SingletonClient.Implementation.Support.ByKey
         private readonly ConcurrentDictionary<string, SingletonByKeyItem> _keyAttrTable;
         private readonly SingletonByKeyTable<SingletonByKeyItem> _items;
 
-        private readonly Hashtable _locales;
-        private readonly Hashtable _sources;
+        private readonly ISingletonTable<ISingletonByKeyLocale> _locales;
+        private readonly ISingletonTable<ISingletonByKeyLocale> _sources;
         private int _itemCount = 0;
 
         private ISingletonByKeyLocale _sourceLocal;
@@ -57,8 +57,8 @@ namespace SingletonClient.Implementation.Support.ByKey
             _keyAttrTable = new ConcurrentDictionary<string, SingletonByKeyItem>(StringComparer.InvariantCultureIgnoreCase);
             _items = new SingletonByKeyTable<SingletonByKeyItem>(SingletonByKey.PAGE_MAX_SIZE);
 
-            _locales = SingletonUtil.NewHashtable(true);
-            _sources = SingletonUtil.NewHashtable(true);
+            _locales = new SingletonTable<ISingletonByKeyLocale>();
+            _sources = new SingletonTable<ISingletonByKeyLocale>();
 
             _isDifferent = isDifferent;
             _localeDefault = localeDefault;
@@ -77,18 +77,18 @@ namespace SingletonClient.Implementation.Support.ByKey
         /// </summary>
         public ISingletonByKeyLocale GetLocaleItem(string locale, bool asSource)
         {
-            Hashtable table = asSource ? _sources : _locales;
-            ISingletonByKeyLocale item = (ISingletonByKeyLocale)table[locale];
+            ISingletonTable<ISingletonByKeyLocale> table = asSource ? _sources : _locales;
+            ISingletonByKeyLocale item = table.GetItem(locale);
             if (item == null)
             {
                 ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
                 for (int i = 1; i < singletonLocale.GetCount(); i++)
                 {
                     string one = singletonLocale.GetNearLocale(i);
-                    if (table[one] != null)
+                    if (table.GetObject(one) != null)
                     {
-                        table[locale] = table[one];
-                        return (ISingletonByKeyLocale)table[one];
+                        table.SetItem(locale, table.GetItem(one));
+                        return table.GetItem(one);
                     }
                 }
 
@@ -96,7 +96,7 @@ namespace SingletonClient.Implementation.Support.ByKey
                 for (int i = 0; i < singletonLocale.GetCount(); i++)
                 {
                     string one = singletonLocale.GetNearLocale(i);
-                    table[one] = item;
+                    table.SetItem(one, item);
                 }
             }
             return item;
@@ -302,7 +302,7 @@ namespace SingletonClient.Implementation.Support.ByKey
             if (!found || item == null)
             {
                 lookup.CurrentItem = NewKeyItem(lookup.ComponentIndex);
-                lookup.Add = 1;
+                lookup.AddType = 1;
                 return;
             }
 
@@ -318,7 +318,7 @@ namespace SingletonClient.Implementation.Support.ByKey
             }
 
             lookup.CurrentItem = NewKeyItem(lookup.ComponentIndex);
-            lookup.Add = 2;
+            lookup.AddType = 2;
         }
 
         private bool DoSetString(string key, ISingletonComponent componentObject, int componentIndex,
@@ -370,11 +370,11 @@ namespace SingletonClient.Implementation.Support.ByKey
             }
 
             // Finally, it's added in the table after it has been prepared.
-            if (lookup.Add == 1)
+            if (lookup.AddType == 1)
             {
                 _keyAttrTable[key] = lookup.CurrentItem;
             }
-            else if (lookup.Add == 2)
+            else if (lookup.AddType == 2)
             {
                 lookup.AboveItem.Next = lookup.CurrentItem;
             }

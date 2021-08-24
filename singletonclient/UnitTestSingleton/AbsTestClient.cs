@@ -34,7 +34,7 @@ namespace UnitTestSingleton
 
         protected void DoTestConfig()
         {
-            ISingletonConfig configWrapper = new SingletonConfigWrapper(config);
+            ISingletonConfig configWrapper = new SingletonConfigWrapper(null, config);
             string productName = configWrapper.GetProduct();
             Assert.AreEqual(PRODUCT, productName);
 

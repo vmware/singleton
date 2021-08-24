@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
+using SingletonClient.Implementation.Release;
 using SingletonClient.Implementation.Support;
 using System;
 using System.Collections;
@@ -72,6 +73,10 @@ namespace SingletonClient.Implementation
         List<string> GetExternalComponentList();
 
         List<string> GetExternalLocaleList(string component);
+
+        List<string> GetLocalComponentList();
+
+        List<string> GetComponentLocaleList(string component);
     }
 
     public class SingletonConfigItem : IConfigItem
@@ -467,6 +472,7 @@ namespace SingletonClient.Implementation
 
     public class SingletonConfigWrapper : ISingletonConfig
     {
+        private readonly ISingletonRelease _release;
         private readonly IConfig _config;
 
         private readonly string _internalRoot;
@@ -488,8 +494,11 @@ namespace SingletonClient.Implementation
         private readonly bool _isExpireEnabled;
         private readonly bool _isComponentListFromExternal;
 
-        public SingletonConfigWrapper(IConfig config)
+        private List<string> _localComponentList;
+
+        public SingletonConfigWrapper(ISingletonRelease release, IConfig config)
         {
+            _release = release;
             _config = config;
 
             // Get product name and l10n version
@@ -783,6 +792,41 @@ namespace SingletonClient.Implementation
             }
 
             return localeList;
+        }
+
+        public List<string> GetLocalComponentList()
+        {
+            if (_localComponentList != null)
+            {
+                return _localComponentList;
+            }
+
+            _localComponentList = GetConfig().GetComponentList();
+            if (IsComponentListFromExternal())
+            {
+                _localComponentList = GetExternalComponentList();
+            }
+
+            List<string> localLocales = new List<string>();
+            for (int i = 0; i < _localComponentList.Count; i++)
+            {
+                List<string> componentLocaleList = GetComponentLocaleList(_localComponentList[i]);
+                SingletonUtil.UpdateListFromAnotherList(localLocales, componentLocaleList);
+            }
+
+            if (_release != null)
+            {
+                _release.AddLocalScope(localLocales, _localComponentList);
+            }
+            return _localComponentList;
+        }
+
+        public List<string> GetComponentLocaleList(string component)
+        {
+            List<string> localeList = GetConfig().GetLocaleList(component);
+            List<string> componentLocaleList = (IsComponentListFromExternal() || localeList.Count == 0) ?
+                GetExternalLocaleList(component) : localeList;
+            return componentLocaleList;
         }
     }
 }
