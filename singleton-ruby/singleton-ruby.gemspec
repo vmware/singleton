@@ -6,15 +6,12 @@ Gem::Specification.new do |s|
   s.name = 'singleton-ruby'
   s.version = VERSION
   s.authors = ['VMware G11n Team']
-  s.description = 'A Singleton client for Ruby'
-  s.license = 'MIT'
-  s.email = 'li@vmware.com'
-  #s.executables = ['sgtnclient']
+  s.description = 'Singleton Ruby client'
+  s.license = 'EPL'
+  s.email = 'g11n-vip-project@vmware.com'
   s.extra_rdoc_files = ['README.md']
-  #s.files = ["lib/singleton-ruby.rb"]
-  #s.test_files = `git ls-files -z spec/`.split("\0")
   s.homepage = 'https://github.com/vmware/singleton'
-  s.summary = 'Singleton client for Ruby.'
+  s.summary = 'Singleton Ruby client'
 
   s.files         = Dir["{bin,spec,lib}/**/*"] + ["Rakefile", "README.md", "Gemfile"] + Dir["data/*"]
   s.executables   = s.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

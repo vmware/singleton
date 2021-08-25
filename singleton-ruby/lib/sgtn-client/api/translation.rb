@@ -21,17 +21,45 @@ module SgtnClient
         else
           SgtnClient.logger.debug "Getting translations from cache with key: " + cache_key
         end
+
+        default = SgtnClient::Config.configurations.default
         if items.nil? || items["messages"] == nil
-          return SgtnClient::Source.getSource(component, key, "default")
+          return SgtnClient::Source.getSource(component, key, default)
         end
         str = items["messages"][key]
         if str.nil?
-          return SgtnClient::Source.getSource(component, key, "default")
+          return SgtnClient::Source.getSource(component, key, default)
         else
           return str
         end
+       end
 
+      def self.getString_f(component, key, args, locale)
+         s = getString(component, key, locale)
+         puts 1111
+         puts SgtnClient::Config.configurations.default
+         puts s
+         return s % args
       end
+
+      def self.getStrings(component, locale)
+        flocale = SgtnClient::LocaleUtil.fallback(locale)
+        cache_key = SgtnClient::CacheUtil.get_cachekey(component, flocale)
+        items = SgtnClient::CacheUtil.get_cache(cache_key)
+        if items.nil?
+          items = getTranslations(component, flocale)
+          SgtnClient::CacheUtil.write_cache(cache_key, items)
+        else
+          SgtnClient.logger.debug "Getting translations from cache with key: " + cache_key
+        end
+
+        default = SgtnClient::Config.configurations.default
+        if items.nil? || items["messages"] == nil
+          items = SgtnClient::Source.getSources(component, default)
+        end
+        return items
+       end
+
 
       private
 

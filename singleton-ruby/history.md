@@ -22,17 +22,11 @@
 # 0.0.5
 - Support disabling cache by configuration 'disable_cache'
 - Support setting expired period by configuration 'cache_expiry_period'
-- Fixed Bugs:
-    https://jira.eng.vmware.com/browse/VIP-2963
-    https://jira.eng.vmware.com/browse/VIP-2965
-    https://jira.eng.vmware.com/browse/VIP-2968
+- Fixed Bugs
     
 # 0.0.6
 - Change 'cache_expiry_period' unit from hour to minute
-- Fixed Bugs:
-    https://jira.eng.vmware.com/browse/VIP-2964
-    https://jira.eng.vmware.com/browse/VIP-2975
-    https://jira.eng.vmware.com/browse/VIP-2976
+- Fixed Bugs
 
 # 0.0.7
 - Support some types of L2:
@@ -42,7 +36,7 @@
 
 # 0.0.8
 - Fix dependency missing issue when not manually add it in project
-- Fix bug: https://jira.eng.vmware.com/browse/VIP-3015
+- Fix bug
 
 # 0.0.9
 - Remove L2 support
@@ -50,9 +44,14 @@
 # 0.1.0
 - Support L3 locale fallback
 - Improvement: customize a 'default' locale for default bundle, see sample app for usage details.
-- Fix bugs: https://jira.eng.vmware.com/browse/VIP-2967
-            https://jira.eng.vmware.com/browse/VIP-2965
-            
+- Fix bugs
 
+# 0.1.1
+- Fix bugs:
+[VIP-3120] [Ruby Client]Add feature of replacing placeholders for interface &apos;getString&apos; - VMware Core Jira
+[VIP-3126] [Ruby Client]Don’t restrict the version of rest-client gem - VMware Core Jira
+[VIP-3127] [Ruby Client]Don't hardcode source file name as 'default.yml'
 
+# 0.1.2
+- Add component-based API: getStrings(component, locale)
 

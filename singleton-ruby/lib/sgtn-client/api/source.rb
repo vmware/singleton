@@ -24,8 +24,22 @@ module SgtnClient
         return str
       end
 
+      def self.getSources(component, locale)
+        cache_key = SgtnClient::CacheUtil.get_cachekey(component, locale)
+        items = SgtnClient::CacheUtil.get_cache(cache_key)
+        if items.nil?
+          items = getBundle(component, locale)
+          SgtnClient.logger.debug "Putting sources items into cache with key: " + cache_key
+          SgtnClient::CacheUtil.write_cache(cache_key, items)
+        else
+          SgtnClient.logger.debug "Getting sources from cache with key: " + cache_key
+        end
+        return items
+      end
+
       def self.loadBundles(locale)
         env = SgtnClient::Config.default_environment
+        SgtnClient::Config.configurations.default = locale
         source_bundle = SgtnClient::Config.configurations[env]["source_bundle"]
         SgtnClient.logger.debug "Loading [" + locale + "] bundles from path: " + source_bundle
         Dir.children(source_bundle).each do |component|
