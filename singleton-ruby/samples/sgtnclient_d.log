@@ -1,0 +1,19 @@
+I, [2021-08-20T22:58:02.462988 #46798]  INFO -- : Current mode is: sandbox
+D, [2021-08-20T22:58:02.466029 #46798] DEBUG -- : Initialize cache......
+D, [2021-08-20T22:58:02.466096 #46798] DEBUG -- : Cache is enabled!
+D, [2021-08-20T22:58:02.467014 #46798] DEBUG -- : Loading [default] bundles from path: ./config/locales/default
+D, [2021-08-20T22:58:02.468574 #46798] DEBUG -- : Put cache for key 'test_4.8.1_JAVA_default' with expired time at'2021-08-21 22:58:02 +0800
+D, [2021-08-20T22:58:02.482406 #46798] DEBUG -- : Get cache for key: test_4.8.1_JAVA_zh-Hans
+D, [2021-08-20T22:58:02.482484 #46798] DEBUG -- : Invalidating expired cache......
+D, [2021-08-20T22:58:02.482529 #46798] DEBUG -- : Checking cache: key=test_4.8.1_JAVA_default, expiredtime=2021-08-21 22:58:02 +0800, now=2021-08-20 22:58:02 +0800, expired=false
+D, [2021-08-20T22:58:02.482555 #46798] DEBUG -- : Has cache for key: test_4.8.1_JAVA_zh-Hans
+D, [2021-08-20T22:58:02.482582 #46798] DEBUG -- : Getting translations from server: https://server:8090
+D, [2021-08-20T22:58:02.482606 #46798] DEBUG -- : https://server:8090/i18n/api/v2/translation/products/test/versions/4.8.1/locales/zh-Hans/components/JAVA?checkTranslationStatus=false&machineTranslation=false&pseudo=false
+E, [2021-08-20T22:58:03.812149 #46798] ERROR -- : Failed to open TCP connection to server:8090 (getaddrinfo: nodename nor servname provided, or not known)
+D, [2021-08-20T22:58:03.812278 #46798] DEBUG -- : Put cache for key 'test_4.8.1_JAVA_zh-Hans' with expired time at'2021-08-21 22:58:03 +0800
+D, [2021-08-20T22:58:03.812332 #46798] DEBUG -- : Get cache for key: test_4.8.1_JAVA_default
+D, [2021-08-20T22:58:03.812364 #46798] DEBUG -- : Invalidating expired cache......
+D, [2021-08-20T22:58:03.812407 #46798] DEBUG -- : Checking cache: key=test_4.8.1_JAVA_default, expiredtime=2021-08-21 22:58:02 +0800, now=2021-08-20 22:58:03 +0800, expired=false
+D, [2021-08-20T22:58:03.812480 #46798] DEBUG -- : Checking cache: key=test_4.8.1_JAVA_zh-Hans, expiredtime=2021-08-21 22:58:03 +0800, now=2021-08-20 22:58:03 +0800, expired=false
+D, [2021-08-20T22:58:03.812512 #46798] DEBUG -- : Has cache for key: test_4.8.1_JAVA_default
+D, [2021-08-20T22:58:03.812541 #46798] DEBUG -- : Getting sources from cache with key: test_4.8.1_JAVA_default
