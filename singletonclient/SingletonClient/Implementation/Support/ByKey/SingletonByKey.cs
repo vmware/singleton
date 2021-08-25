@@ -194,6 +194,11 @@ namespace SingletonClient.Implementation.Support.ByKey
 
             if (_isDifferent)
             {
+                if ((item.SourceStatus & 0x01) == 0 &&
+                    _sourceLocal.GetMessage(componentIndex, item.PageIndex, item.IndexInPage, out message))
+                {
+                    return message;
+                }
                 if (_defaultRemote == null)
                 {
                     _defaultRemote = this.GetLocaleItem(_localeDefault, false);

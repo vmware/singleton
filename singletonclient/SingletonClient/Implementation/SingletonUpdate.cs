@@ -31,7 +31,7 @@ namespace SingletonClient.Implementation
         /// <param name="component"></param>
         /// <param name="asSource"></param>
         /// <returns></returns>
-        ILocaleMessages LoadLocalMessage(ISingletonLocale singletonLocale, string component, bool asSource = false);
+        bool LoadLocalMessage(ISingletonLocale singletonLocale, string component, bool asSource = false);
     }
 
     public class SingletonUpdate : ISingletonUpdate
@@ -64,29 +64,26 @@ namespace SingletonClient.Implementation
             }
         }
 
-        public ILocaleMessages LoadLocalMessage(ISingletonLocale singletonLocale, string component, bool asSource = false)
+        public bool LoadLocalMessage(ISingletonLocale singletonLocale, string component, bool asSource = false)
         {
             string locale = singletonLocale.GetOriginalLocale();
             string keyLocaleScope = SingletonUtil.GetCombineKey(locale, null);
             string keyBundle = SingletonUtil.GetCombineKey(locale, component);
             if (_loadedLocalBundles.Contains(keyLocaleScope) || _loadedLocalBundles.Contains(keyBundle))
             {
-                return null;
+                return false;
             }
             _loadedLocalBundles.SetItem(keyBundle, true);
-
-            ILocaleMessages languageMessages = null;
 
             for (int i = 0; i < singletonLocale.GetCount(); i++)
             {
                 string nearLocale = singletonLocale.GetNearLocale(i);
-                languageMessages = LoadLocalLocaleMessage(locale, nearLocale, component, asSource);
-                if (languageMessages != null)
+                if (LoadLocalLocaleMessage(locale, nearLocale, component, asSource))
                 {
-                    break;
+                    return true;
                 }
             }
-            return languageMessages;
+            return false;
         }
 
         private void UpdateMessageFromInternal(
@@ -198,7 +195,7 @@ namespace SingletonClient.Implementation
             }
         }
 
-        private ILocaleMessages LoadLocalLocaleMessage(string locale, string nearLocale, string component, bool asSource)
+        private bool LoadLocalLocaleMessage(string locale, string nearLocale, string component, bool asSource)
         {
             string[] parts = new string[3];
             string[] arrayFormat = _config.GetDefaultResourceFormat().Split(',');
@@ -246,7 +243,7 @@ namespace SingletonClient.Implementation
                 }
             }
 
-            return (messageCount == 0) ? null : useLocale.GetLocaleCache();
+            return (messageCount > 0);
         }
     }
 }

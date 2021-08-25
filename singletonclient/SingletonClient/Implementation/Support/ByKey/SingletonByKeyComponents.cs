@@ -3,8 +3,6 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using SingletonClient.Implementation.Data;
 
