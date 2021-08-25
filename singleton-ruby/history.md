@@ -55,3 +55,7 @@
 # 0.1.2
 - Add component-based API: getStrings(component, locale)
 
+# 0.1.3
+- Bug fix and code clean
+
+

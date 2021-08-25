@@ -2,7 +2,7 @@ require 'erb'
 require 'yaml'
 
 module SgtnClient
-
+  
   autoload :CacheUtil,       "sgtn-client/util/cache-util"
 
   class Source
@@ -41,18 +41,16 @@ module SgtnClient
         env = SgtnClient::Config.default_environment
         SgtnClient::Config.configurations.default = locale
         source_bundle = SgtnClient::Config.configurations[env]["source_bundle"]
-        SgtnClient.logger.debug "Loading [" + locale + "] bundles from path: " + source_bundle
+        SgtnClient.logger.debug "Loading [" + locale + "] source bundles from path: " + source_bundle
         Dir.children(source_bundle).each do |component|
           yamlfile = File.join(source_bundle, component + "/" + locale + ".yml")
           bundle = read_yml(yamlfile)
           cachekey = SgtnClient::CacheUtil.get_cachekey(component, locale)
           SgtnClient::CacheUtil.write_cache(cachekey,bundle)
         end
-
       end
 
       private
-
       def self.getBundle(component, locale)
         env = SgtnClient::Config.default_environment
         source_bundle = SgtnClient::Config.configurations[env]["source_bundle"]
@@ -71,7 +69,6 @@ module SgtnClient
         erb.filename = file_name
         YAML.load(erb.result)
       end
-
   end
 
 end
