@@ -7,13 +7,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
+using SingletonClient.Implementation.Release;
 using SingletonClient.Implementation.Support;
 
 namespace SingletonClient.Implementation
 {
     public interface ISingletonApi
     {
-        IConfig GetConfig();
         string GetLocaleListApi();
         string GetComponentListApi();
         string GetComponentApi(string component, string locale);
@@ -43,11 +43,6 @@ namespace SingletonClient.Implementation
             _urlService = config.GetServiceUrl();
             _product = config.GetProduct();
             _version = config.GetVersion();
-        }
-
-        public IConfig GetConfig()
-        {
-            return _releaseObject.GetRelease().GetConfig();
         }
 
         public string GetComponentApi(string component, string locale)

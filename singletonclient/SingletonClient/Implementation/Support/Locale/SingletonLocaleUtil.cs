@@ -5,6 +5,7 @@
 
 namespace SingletonClient.Implementation.Support
 {
+    using SingletonClient.Implementation.Data;
     using SingletonClient.Implementation.Helpers;
     using System.Collections;
     using System.Globalization;
@@ -12,8 +13,8 @@ namespace SingletonClient.Implementation.Support
 
     public static class SingletonLocaleUtil
     {
-        private static Hashtable _localeConvertMap = SingletonUtil.NewHashtable(true);
-        private static Hashtable _singletonLocaleMap = SingletonUtil.NewHashtable(true);
+        private static ISingletonTable<string> _localeConvertTable = new SingletonTable<string>();
+        private static ISingletonTable<ISingletonLocale> _singletonLocaleTable = new SingletonTable<ISingletonLocale>();
 
         public static void SetFallbackConfig(string configText)
         {
@@ -21,7 +22,7 @@ namespace SingletonClient.Implementation.Support
             var valuesMapping = (YamlMappingNode)configRoot.Children[new YamlScalarNode("locale")];
             foreach (var tuple in valuesMapping.Children)
             {
-                _localeConvertMap[tuple.Key.ToString()] = tuple.Value.ToString();
+                _localeConvertTable.SetItem(tuple.Key.ToString(), tuple.Value.ToString());
             }
         }
 
@@ -32,7 +33,7 @@ namespace SingletonClient.Implementation.Support
                 return GetSingletonLocale(CultureHelper.GetDefaultCulture());
             }
 
-            ISingletonLocale singletonLocale = (ISingletonLocale)_singletonLocaleMap[locale];
+            ISingletonLocale singletonLocale = _singletonLocaleTable.GetItem(locale);
             if (singletonLocale != null)
             {
                 return singletonLocale;
@@ -42,7 +43,7 @@ namespace SingletonClient.Implementation.Support
             if (cultureInfo == null)
             {
                 singletonLocale = GetSingletonLocale(CultureHelper.GetDefaultCulture());
-                _singletonLocaleMap[locale] = singletonLocale;
+                _singletonLocaleTable.SetItem(locale, singletonLocale);
                 return singletonLocale;
             }
 
@@ -67,7 +68,7 @@ namespace SingletonClient.Implementation.Support
             // 5. locale after fallback
             for (int i = 0; i < singletonLocale.GetCount(); i++)
             {
-                string localeRemote = (string)_localeConvertMap[singletonLocale.GetNearLocale(i)];
+                string localeRemote = _localeConvertTable.GetItem(singletonLocale.GetNearLocale(i));
                 if (localeRemote != null)
                 {
                     singletonLocale.AddNearLocale(localeRemote);
@@ -75,7 +76,7 @@ namespace SingletonClient.Implementation.Support
                 }
             }
 
-            _singletonLocaleMap[locale] = singletonLocale;
+            _singletonLocaleTable.SetItem(locale, singletonLocale);
             return singletonLocale;
         }
     }

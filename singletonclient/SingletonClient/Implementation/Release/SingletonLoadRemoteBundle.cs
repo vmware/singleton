@@ -9,10 +9,10 @@ namespace SingletonClient.Implementation.Release
 {
     public class SingletonLoadRemoteBundle
     {
-        private readonly SingletonUseLocale _useLocale;
+        private readonly ISingletonUseLocale _useLocale;
         private readonly string _component;
 
-        public SingletonLoadRemoteBundle(SingletonUseLocale useLocale, string component)
+        public SingletonLoadRemoteBundle(ISingletonUseLocale useLocale, string component)
         {
             _useLocale = useLocale;
             _component = component;

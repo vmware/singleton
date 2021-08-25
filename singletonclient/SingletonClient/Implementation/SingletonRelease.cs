@@ -3,138 +3,15 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
-using SingletonClient.Implementation.Release;
-using SingletonClient.Implementation.Support;
-using SingletonClient.Implementation.Support.ByKey;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using SingletonClient.Implementation.Release;
 
 namespace SingletonClient.Implementation
 {
-    public interface ISingletonRelease
+    public class SingletonRelease : SingletonReleaseInternal, IRelease, IReleaseMessages, ITranslation, ILog
     {
-        IRelease GetRelease();
-        void SetConfig(IConfig config);
-        ISingletonConfig GetSingletonConfig();
-        ISingletonApi GetApi();
-        ISingletonUpdate GetUpdate();
-        ICacheMessages GetReleaseMessages();
-        ISingletonByKey GetSingletonByKey();
-        IAccessService GetAccessService();
-        ILog GetLogger();
-        void AddLocalScope(List<string> locales, List<string> components);
-        SingletonUseLocale GetUseLocale(string locale, bool asSource);
-        bool IsInScope(ISingletonLocale singletonLocale, string component, out ISingletonLocale relateLocale);
-    }
-
-    public class SingletonRelease : SingletonReleaseForCache, ISingletonRelease, ISingletonAccessRemote,
-        IRelease, IReleaseMessages, ITranslation, ILog
-    {
-        private bool _isLoadedOnStartup = false;
-
-        /// <summary>
-        /// ISingletonRelease
-        /// </summary>
-        public IRelease GetRelease()
-        {
-            return this;
-        }
-
-        /// <summary>
-        /// ISingletonRelease
-        /// </summary>
-        public void SetConfig(IConfig config)
-        {
-            InitForBase(this, config, this);
-
-            if (!InitForCache())
-            {
-                return;
-            }
-
-            if (_config.IsOnlineSupported())
-            {
-                GetDataFromRemote();
-            }
-            else
-            {
-                CheckLoadOnStartup(false);
-            }
-        }
-
-        /// <summary>
-        /// ISingletonRelease
-        /// </summary>
-        public ISingletonUpdate GetUpdate()
-        {
-            return _update;
-        }
-
-        /// <summary>
-        /// ISingletonRelease
-        /// </summary>
-        public ICacheMessages GetReleaseMessages()
-        {
-            return _productCache;
-        }
-
-        /// <summary>
-        /// ISingletonRelease
-        /// </summary>
-        public ISingletonByKey GetSingletonByKey()
-        {
-            return _byKey;
-        }
-
-        /// <summary>
-        /// ISingletonRelease
-        /// </summary>
-        /// <returns></returns>
-        public ILog GetLogger()
-        {
-            return this;
-        }
-
-        /// <summary>
-        /// ILog
-        /// </summary>
-        public void Log(LogType logType, string text)
-        {
-            if (_logger != null && logType >= _logLevel)
-            {
-                _logger.Log(logType, text);
-            }
-        }
-
-        /// <summary>
-        /// ISingletonAccessRemote
-        /// </summary>
-        public void GetDataFromRemote()
-        {
-            string url = _api.GetLocaleListApi();
-            _update.UpdateBriefinfo(url, SingletonConst.KeyLocales, _infoRemote.Locales);
-            UpdateLocaleInfo();
-
-            url = _api.GetComponentListApi();
-            _update.UpdateBriefinfo(url, ConfigConst.KeyComponents, _infoRemote.Components);
-            UpdateComponentInfo();
-
-            Log(LogType.Info, "get locale list and component list from remote: " +
-                _config.GetProduct() + " / " + _config.GetVersion());
-
-            CheckLoadOnStartup(true);
-        }
-
-        /// <summary>
-        /// ISingletonAccessRemote
-        /// </summary>
-        public int GetDataCount()
-        {
-            return _infoLocal.Locales.Count;
-        }
-
         /// <summary>
         /// IRelease
         /// </summary>
@@ -204,7 +81,7 @@ namespace SingletonClient.Implementation
 
             if (source == null && _byKey == null)
             {
-                source = GetSource(component, key);
+                source = GetSourceMessage(component, key);
             }
             ISource src = new SingletonSource(component, key, source, comment);
             return src;
@@ -217,7 +94,7 @@ namespace SingletonClient.Implementation
         {
             _task.Check();
 
-            return GetRaw(locale, source);
+            return GetRawMessage(locale, source);
         }
 
         /// <summary>
@@ -279,109 +156,6 @@ namespace SingletonClient.Implementation
                 }
             }
             return text;
-        }
-
-        private void LoadLocalBundle(string locale, string component)
-        {
-            ISingletonLocale singletonLocale = SingletonLocaleUtil.GetSingletonLocale(locale);
-            bool isSource = singletonLocale.Compare(_useSourceLocale.SingletonLocale);
-            _update.LoadOfflineMessage(singletonLocale, component, isSource);
-        }
-
-        private void LoadLocalOnStartup()
-        {
-            List<string> componentLocalList = _update.GetLocalComponentList();
-
-            foreach (string component in componentLocalList)
-            {
-                List<string> localeList = _update.GetComponentLocaleList(component);
-                foreach (string locale in localeList)
-                {
-                    LoadLocalBundle(locale, component);
-                }
-            }
-        }
-
-        private void LoadRemoteOnStartup()
-        {
-            List<string> componentLocalList = _config.GetConfig().GetComponentList();
-
-            List<SingletonLoadRemoteBundle> loads = new List<SingletonLoadRemoteBundle>();
-
-            bool isFirst = true;
-            foreach (string locale in _infoRemote.Locales)
-            {
-                SingletonUseLocale useLocale = GetUseLocale(locale, false);
-
-                foreach (string component in _infoRemote.Components)
-                {
-                    if (componentLocalList.Count == 0 || componentLocalList.Contains(component))
-                    {
-                        SingletonLoadRemoteBundle loadRemote = new SingletonLoadRemoteBundle(useLocale, component);
-                        if (isFirst)
-                        {
-                            loadRemote.Load();
-                            isFirst = false;
-                        }
-                        else
-                        {
-                            loads.Add(loadRemote);
-                        }
-                    }
-                }
-            }
-
-            int maxCountInGroup = Environment.ProcessorCount * 2;
-            List<Task> tasksGroup = new List<Task>();
-            for (int i = 0; i < loads.Count; i++)
-            {
-                tasksGroup.Add(loads[i].CreateAsyncTask());
-                if (tasksGroup.Count == maxCountInGroup)
-                {
-                    Task.WaitAll(tasksGroup.ToArray());
-                    tasksGroup.Clear();
-                }
-            }
-            if (tasksGroup.Count > 0)
-            {
-                Task.WaitAll(tasksGroup.ToArray());
-            }
-
-            Dictionary<string, bool> tableNeedLocal = new Dictionary<string, bool>(StringComparer.InvariantCultureIgnoreCase);
-            foreach (string component in _infoLocal.Components)
-            {
-                tableNeedLocal[component] = true;
-            }
-            foreach (string component in _infoRemote.Components)
-            {
-                tableNeedLocal[component] = false;
-            }
-            foreach (var entry in tableNeedLocal)
-            {
-                if (entry.Value)
-                {
-                    foreach (string locale in _infoLocal.Locales)
-                    {
-                        LoadLocalBundle(locale, entry.Key);
-                    }
-                }
-            }
-        }
-
-        private void CheckLoadOnStartup(bool byRemote)
-        {
-            if (!_isLoadedOnStartup && _config.IsLoadOnStartup())
-            {
-                _isLoadedOnStartup = true;
-                if (byRemote)
-                {
-                    LoadRemoteOnStartup();
-                }
-                else
-                {
-                    LoadLocalOnStartup();
-                }
-            }
         }
     }
 }

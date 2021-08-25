@@ -28,4 +28,3 @@ namespace SingletonClient.Implementation
         public const string PlaceNoLocaleDefine = "$NO_LOCALE_DEFINE";
     }
 }
-

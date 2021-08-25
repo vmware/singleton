@@ -20,13 +20,6 @@ namespace SingletonClient.Implementation.Support
             return kvTable;
         }
 
-        public string Put(string key, string message, Hashtable kvTable)
-        {
-            string oldMessage = (string)kvTable[key];
-            kvTable[key] = message;
-            return oldMessage;
-        }
-
         private void Load(LineReader lr, Hashtable kvTable)
         {
             char[] convtBuf = new char[1024];
@@ -87,7 +80,7 @@ namespace SingletonClient.Implementation.Support
                 }
                 string key = LoadConvert(lr.LineBuf, 0, keyLen, convtBuf);
                 string value = LoadConvert(lr.LineBuf, valueStart, limit - valueStart, convtBuf);
-                Put(key, value, kvTable);
+                kvTable[key] = value;
             }
         }
 

@@ -5,8 +5,8 @@
 
 namespace SingletonClient.Implementation.Support
 {
+    using SingletonClient.Implementation.Data;
     using SingletonClient.Implementation.Release;
-    using System.Collections;
 
     /// <summary>
     /// Comment.
@@ -16,9 +16,9 @@ namespace SingletonClient.Implementation.Support
         private readonly ISingletonRelease release;
 
         // ILocaleMessages of bundles
-        private readonly Hashtable locales = SingletonUtil.NewHashtable(true);
+        private readonly ISingletonTable<ILocaleMessages> locales = new SingletonTable<ILocaleMessages>();
         // ILocaleMessages of local source
-        private readonly Hashtable sources = SingletonUtil.NewHashtable(true);
+        private readonly ISingletonTable<ILocaleMessages> sources = new SingletonTable<ILocaleMessages>();
 
         /// <summary>
         /// Initializes.
@@ -38,7 +38,7 @@ namespace SingletonClient.Implementation.Support
         /// <returns>ILocaleMessages.</returns>
         public ILocaleMessages GetLocaleMessages(string locale, bool asSource = false)
         {
-            Hashtable table = asSource ? sources : locales;
+            ISingletonTable<ILocaleMessages> table = asSource ? sources : locales;
             if (locale == null)
             {
                 return null;

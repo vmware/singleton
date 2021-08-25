@@ -6,19 +6,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using SingletonClient.Implementation.Data;
 
 namespace SingletonClient.Implementation.Support.ByKey
 {
     public class SingletonByKeyComponents
     {
-        private readonly List<string> _componentTable;
-        private readonly Hashtable _componentIndexTable;
-
-        public SingletonByKeyComponents()
-        {
-            _componentTable = new List<string>();
-            _componentIndexTable = Hashtable.Synchronized(new Hashtable(StringComparer.OrdinalIgnoreCase));
-        }
+        private readonly List<string> _componentTable = new List<string>();
+        private readonly ISingletonTable<int> _componentIndexTable = new SingletonTable<int>();
 
         public int GetId(string component)
         {
@@ -27,15 +22,15 @@ namespace SingletonClient.Implementation.Support.ByKey
                 return -1;
             }
 
-            object componentIndex = _componentIndexTable[component];
+            object componentIndex = _componentIndexTable.GetObject(component);
             if (componentIndex != null)
             {
                 return (int)componentIndex;
             }
 
-            int index = _componentIndexTable.Count;
+            int index = _componentIndexTable.GetCount();
             _componentTable.Add(component);
-            _componentIndexTable[component] = index;
+            _componentIndexTable.SetItem(component, index);
             return index;
         }
 

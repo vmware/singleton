@@ -3,33 +3,35 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
-using System.Collections;
+using SingletonClient.Implementation.Data;
+using SingletonClient.Implementation.Release;
 
 namespace SingletonClient.Implementation.Support
 {
     public sealed class SingletonCacheManager : ICacheManager
     {
-        private readonly Hashtable _releases = SingletonUtil.NewHashtable(true);
+        private readonly ISingletonTable<ISingletonTable<ICacheMessages>> _releases =
+            new SingletonTable<ISingletonTable<ICacheMessages>>();
 
         /// <summary>
         /// ICacheManager
         /// </summary>
         public ICacheMessages GetReleaseCache(string product, string version)
         {
-            Hashtable versions = (Hashtable)_releases[product];
+            ISingletonTable<ICacheMessages> versions = _releases.GetItem(product);
             if (versions == null)
             {
-                versions = SingletonUtil.NewHashtable(true);
-                _releases[product] = versions;
+                versions = new SingletonTable<ICacheMessages>();
+                _releases.SetItem(product, versions);
             }
-            ICacheMessages cache = (ICacheMessages)versions[version];
+            ICacheMessages cache = versions.GetItem(version);
             if (cache == null)
             {
-                IConfig config = SingletonClientManager.GetInstance().GetConfig(product, version);
-                ISingletonRelease release = (ISingletonRelease)SingletonClientManager.GetInstance().GetRelease(config);
+                IConfig config = SingletonReleaseManager.GetInstance().GetConfig(product, version);
+                ISingletonRelease release = (ISingletonRelease)SingletonReleaseManager.GetInstance().GetRelease(config);
 
                 cache = new SingletonCacheReleaseMessages(release);
-                versions[version] = cache;
+                versions.SetItem(version, cache);
             }
             return cache;
         }

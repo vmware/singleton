@@ -5,6 +5,7 @@
 
 namespace SingletonClient.Implementation.Support
 {
+    using SingletonClient.Implementation.Data;
     using System.Collections;
     using System.Collections.Generic;
 
@@ -19,40 +20,40 @@ namespace SingletonClient.Implementation.Support
         ISingletonLocale GetRelateLocale(List<string> checkList);
         bool IsLocaleAtStringEnd(string text);
         bool Contains(string locale);
-        object FindItem(Hashtable items, int start);
-        void SetItems(Hashtable items, object item);
+        object FindItem(ISingletonTableBase table, int start);
+        void SetItems(ISingletonTable<ILocaleMessages> items, ILocaleMessages item);
     }
 
     public class SingletonLocale : ISingletonLocale
     {
-        private readonly List<string> localeList = new List<string>();
-        private readonly Hashtable localeMap = SingletonUtil.NewHashtable(true);
+        private readonly List<string> _localeList = new List<string>();
+        private readonly ISingletonTable<bool> _localeTable = new SingletonTable<bool>();
 
         public SingletonLocale(string locale)
         {
-            localeList.Add(locale);
-            localeMap[locale] = true;
+            _localeList.Add(locale);
+            _localeTable.SetItem(locale, true);
         }
 
         public List<string> GetNearLocaleList()
         {
-            return localeList;
+            return _localeList;
         }
 
         public bool AddNearLocale(string locale)
         {
-            if (localeMap.ContainsKey(locale))
+            if (_localeTable.Contains(locale))
             {
                 return false;
             }
-            localeMap[locale] = true;
-            localeList.Add(locale);
+            _localeTable.SetItem(locale, true);
+            _localeList.Add(locale);
             return true;
         }
 
         public int GetCount()
         {
-            return localeList.Count;
+            return _localeList.Count;
         }
 
         public string GetNearLocale(int index)
@@ -62,7 +63,7 @@ namespace SingletonClient.Implementation.Support
                 return null;
             }
 
-            return localeList[index];
+            return _localeList[index];
         }
 
         public string GetOriginalLocale()
@@ -77,7 +78,7 @@ namespace SingletonClient.Implementation.Support
                 return false;
             }
 
-            foreach (var one in localeList)
+            foreach (var one in _localeList)
             {
                 if (singletonLocale.Contains(one))
                 {
@@ -122,15 +123,15 @@ namespace SingletonClient.Implementation.Support
 
         public bool Contains(string locale)
         {
-            return localeMap.ContainsKey(locale);
+            return _localeTable.Contains(locale);
         }
 
-        public object FindItem(Hashtable items, int start)
+        public object FindItem(ISingletonTableBase table, int start)
         {
             for (int i = start; i < GetCount(); i++)
             {
                 string nearLocale = GetNearLocale(i);
-                object item = items[nearLocale];
+                object item = table.GetObject(nearLocale);
                 if (item != null)
                 {
                     return item;
@@ -139,12 +140,11 @@ namespace SingletonClient.Implementation.Support
             return null;
         }
 
-        public void SetItems(Hashtable items, object item)
+        public void SetItems(ISingletonTable<ILocaleMessages> items, ILocaleMessages item)
         {
-            for (int i = 0; i < GetCount(); i++)
+            foreach (string nearLocale in GetNearLocaleList())
             {
-                string nearLocale = GetNearLocale(i);
-                items[nearLocale] = item;
+                items.SetItem(nearLocale, item);
             }
         }
     }

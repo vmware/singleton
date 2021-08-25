@@ -3,71 +3,131 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
+using SingletonClient.Implementation.Data;
 using SingletonClient.Implementation.Support;
 using SingletonClient.Implementation.Support.ByKey;
-using System.Collections;
 
 namespace SingletonClient.Implementation.Release
 {
-    public class SingletonUseLocale
+    public interface ISingletonUseLocale
     {
-        public ISingletonRelease Release { get; }
-        public ISingletonLocale SingletonLocale { get; }
-        public string Locale { get; }
-        public bool IsSourceLocale { get; }
-        public bool IsOnlineSupported { get; }
-        public bool AsSource { get; }
+        ISingletonRelease GetRelease();
+        ISingletonLocale GetSingletonLocale();
+        string GetLocale();
+        bool IsSourceLocale();
+        bool IsOnlineSupported();
+        bool IsAsSource();
+        ISingletonTable<ISingletonComponent> GetComponents();
+        ISingletonByKeyLocale GetLocaleItem();
+        ILocaleMessages GetLocaleCache();
+        ISingletonComponent GetComponent(string component, bool useRemote);
+        string GetMessage(string component, string key);
+    }
 
-        public Hashtable Components { get; }
+    public class SingletonUseLocale : ISingletonUseLocale
+    {
+        private readonly ISingletonRelease _release;
+        private readonly ISingletonLocale _singletonLocale;
 
-        public ISingletonByKeyLocale LocaleItem { get; }
+        private readonly ISingletonByKeyLocale _localeItem;
+        private readonly ILocaleMessages _localeCache;
 
-        public ILocaleMessages LocaleCache { get; }
+        private readonly ISingletonTable<ISingletonComponent> _components;
+
+        private readonly string _locale;
+        private readonly bool _isSourceLocale;
+        private readonly bool _isOnlineSupported;
+        private readonly bool _asSource;
 
         public SingletonUseLocale(ISingletonRelease release, ISingletonLocale singletonLocale, string sourceLocale, bool asSource)
         {
-            Release = release;
-            SingletonLocale = singletonLocale;
-            Locale = singletonLocale.GetOriginalLocale();
-            AsSource = asSource;
+            _release = release;
+            _singletonLocale = singletonLocale;
+            _locale = singletonLocale.GetOriginalLocale();
+            _asSource = asSource;
 
             ISingletonLocale singletonSourceLocale = SingletonUtil.GetSingletonLocale(sourceLocale);
-            IsSourceLocale = singletonSourceLocale.GetNearLocaleList().Contains(Locale);
+            _isSourceLocale = singletonSourceLocale.GetNearLocaleList().Contains(_locale);
 
-            ISingletonByKey byKey = Release.GetSingletonByKey();
+            ISingletonByKey byKey = _release.GetSingletonByKey();
             if (byKey != null)
             {
-                LocaleItem = byKey.GetLocaleItem(Locale, asSource);
+                _localeItem = byKey.GetLocaleItem(_locale, asSource);
             }
 
-            Components = SingletonUtil.NewHashtable(true);
+            _components = new SingletonTable<ISingletonComponent>();
 
             ICacheMessages productCache = release.GetReleaseMessages();
-            LocaleCache = productCache.GetLocaleMessages(Locale, asSource);
+            _localeCache = productCache.GetLocaleMessages(_locale, asSource);
 
-            IsOnlineSupported = Release.GetSingletonConfig().IsOnlineSupported();
+            _isOnlineSupported = _release.GetSingletonConfig().IsOnlineSupported();
+        }
+
+        public ISingletonRelease GetRelease()
+        {
+            return _release;
+        }
+
+        public ISingletonLocale GetSingletonLocale()
+        {
+            return _singletonLocale;
+        }
+
+        public string GetLocale()
+        {
+            return _locale;
+        }
+
+        public bool IsSourceLocale()
+        {
+            return _isSourceLocale;
+        }
+
+        public bool IsOnlineSupported()
+        {
+            return _isOnlineSupported;
+        }
+
+        public bool IsAsSource()
+        {
+            return _asSource;
+        }
+
+        public ISingletonTable<ISingletonComponent> GetComponents()
+        {
+            return _components;
+        }
+
+        public ISingletonByKeyLocale GetLocaleItem()
+        {
+            return _localeItem;
+        }
+
+        public ILocaleMessages GetLocaleCache()
+        {
+            return _localeCache;
         }
 
         public ISingletonComponent GetComponent(string component, bool useRemote)
         {
-            ISingletonComponent obj = (ISingletonComponent)Components[component];
+            ISingletonComponent obj = _components.GetItem(component);
             if (obj == null)
             {
                 ISingletonLocale relateLocale;
-                if (!Release.IsInScope(SingletonLocale, component, out relateLocale))
+                if (!_release.IsInScope(_singletonLocale, component, out relateLocale))
                 {
                     return null;
                 }
 
-                obj = new SingletonComponent(Release, relateLocale, component, AsSource);
+                obj = new SingletonComponent(_release, relateLocale, component, _asSource);
 
-                if (!IsOnlineSupported)
+                if (!_isOnlineSupported)
                 {
                     obj.GetDataFromLocal();
                 }
             }
 
-            if (IsOnlineSupported && useRemote)
+            if (_isOnlineSupported && useRemote)
             {
                 ISingletonAccessTask task = obj.GetAccessTask();
                 if (task != null)
@@ -80,12 +140,12 @@ namespace SingletonClient.Implementation.Release
 
         public string GetMessage(string component, string key)
         {
-            if (!string.IsNullOrEmpty(component) && Components[component] == null)
+            if (!string.IsNullOrEmpty(component) && _components.GetObject(component) == null)
             {
-                Components[component] = GetComponent(component, true);
+                _components.SetItem(component, GetComponent(component, true));
             }
 
-            return LocaleCache.GetString(component, key);
+            return _localeCache.GetString(component, key);
         }
     }
 }

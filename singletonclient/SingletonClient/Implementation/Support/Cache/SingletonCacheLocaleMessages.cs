@@ -5,9 +5,9 @@
 
 namespace SingletonClient.Implementation.Support
 {
+    using SingletonClient.Implementation.Data;
     using SingletonClient.Implementation.Release;
     using SingletonClient.Implementation.Support.ByKey;
-    using System.Collections;
     using System.Collections.Generic;
 
     /// <summary>
@@ -20,7 +20,7 @@ namespace SingletonClient.Implementation.Support
         private readonly string _cacheComponentType;
         private readonly string _locale;
         private readonly bool _asSource;
-        private readonly Hashtable _components = SingletonUtil.NewHashtable(true);
+        private readonly ISingletonTable<IComponentMessages> _components = new SingletonTable<IComponentMessages>();
 
         private readonly ISingletonByKey _byKey;
         private ISingletonByKeyLocale _byKeyLocale;
@@ -57,7 +57,7 @@ namespace SingletonClient.Implementation.Support
         public List<string> GetComponentList()
         {
             List<string> componentList = new List<string>();
-            foreach (var key in _components.Keys)
+            foreach (var key in _components.GetKeys())
             {
                 componentList.Add(key.ToString());
             }
@@ -77,23 +77,23 @@ namespace SingletonClient.Implementation.Support
                 return null;
             }
 
-            IComponentMessages cache = (IComponentMessages)_components[component];
+            IComponentMessages cache = _components.GetItem(component);
             if (cache == null)
             {
                 if (_singletonConfig.IsCacheByKey())
                 {
-                    SingletonUseLocale useLocale = _release.GetUseLocale(_locale, _asSource);
+                    ISingletonUseLocale useLocale = _release.GetUseLocale(_locale, _asSource);
                     cache = new SingletonByKeyCacheComponentMessages(useLocale, component);
                 }
                 else
                 {
-                    ISingletonClientManager singletonClientManager = SingletonClientManager.GetInstance();
-                    ICacheComponentManager cacheComponentManager = singletonClientManager.GetCacheComponentManager(
+                    ISingletonReleaseManager singletonReleaseManager = SingletonReleaseManager.GetInstance();
+                    ICacheComponentManager cacheComponentManager = singletonReleaseManager.GetCacheComponentManager(
                         _cacheComponentType);
 
                     cache = cacheComponentManager.NewComponentCache(_locale, component, _asSource);
                 }
-                _components[component] = cache;
+                _components.SetItem(component, cache);
             }
 
             return cache;
