@@ -6,7 +6,6 @@
 namespace SingletonClient.Implementation.Support
 {
     using SingletonClient.Implementation.Data;
-    using System.Collections;
     using System.Collections.Generic;
 
     public interface ISingletonLocale

@@ -7,7 +7,6 @@ namespace SingletonClient.Implementation.Support
 {
     using SingletonClient.Implementation.Data;
     using SingletonClient.Implementation.Helpers;
-    using System.Collections;
     using System.Globalization;
     using YamlDotNet.RepresentationModel;
 

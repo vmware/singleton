@@ -18,7 +18,6 @@ namespace SingletonClient.Implementation.Support.ByKey
 
     public class SingletonByKeyLocale : ISingletonByKeyLocale
     {
-        private readonly ISingletonByKey _bykey;
         private readonly bool _asSource;
         private readonly bool _isSourceLocale;
 
@@ -29,10 +28,9 @@ namespace SingletonClient.Implementation.Support.ByKey
 
         public SingletonByKeyLocale(ISingletonByKey bykey, string locale, bool asSource)
         {
-            this._bykey = bykey;
             ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
             this._asSource = asSource;
-            string sourceLocale = _bykey.GetSourceLocale();
+            string sourceLocale = bykey.GetSourceLocale();
             this._isSourceLocale = singletonLocale.Contains(sourceLocale);
 
             _components = new SingletonByKeyTable<ISingletonComponent> (SingletonByKey.COMPONENT_PAGE_MAX_SIZE);
