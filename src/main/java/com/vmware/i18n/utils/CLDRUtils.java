@@ -43,28 +43,26 @@ public class CLDRUtils {
 
 	private static Logger logger = LoggerFactory.getLogger(CLDRUtils.class);
 
-	public static final String CONFIG_PATH = "src" + File.separator + "main" + File.separator + "resources"
-			+ File.separator + "config.properties";
-	public static final Properties PROP = PropertiesFileUtil.loadFromFile(CONFIG_PATH);
-	public static final String CLDR_VERSION = PROP.getProperty("cldr.version");
-	public static final String CLDR_URLS = PROP.getProperty("cldr.urls");
-	public static final String CLDR_ADDITIONAL_CONFIG = PROP.getProperty("cldr.additional.config");
-	public static final String FILE_NAME = CLDR_VERSION + ".zip";
-	public static final String CLDR_DOWNLOAD_DIR = "src" + File.separator + "main" + File.separator + "resources"
-			+ File.separator + "cldr" + File.separator + "data" + File.separator + CLDR_VERSION + File.separator;
-	public static final String GEN_CLDR_PATTERN_DIR = "src" + File.separator + "main" + File.separator + "resources"
-			+ File.separator + "cldr" + File.separator + "pattern" + File.separator + "common" + File.separator;
-	public static final String GEN_CLDR_LOCALEDATA_DIR = "src" + File.separator + "main" + File.separator + "resources"
-			+ File.separator + "cldr" + File.separator + "localedata" + File.separator;
-	public static final String GEN_CLDR_PATTERN_TIMEZONE_DIR = "src" + File.separator + "main" + File.separator
-			+ "resources" + File.separator + "cldr" + File.separator + "pattern" + File.separator + "timezone"
-			+ File.separator;
+    public static final String RESOURCE_PATH = "src" + File.separator + "main" + File.separator + "resources";
+    public static final String CONFIG_PATH = RESOURCE_PATH + File.separator + "config.properties";
+    public static final Properties PROP = PropertiesFileUtil.loadFromFile(CONFIG_PATH);
+    public static final String CLDR_VERSION = PROP.getProperty("cldr.version");
+    public static final String CLDR_URLS = PROP.getProperty("cldr.urls");
+    public static final String CLDR_ADDITIONAL_CONFIG = PROP.getProperty("cldr.additional.config");
+    public static final String FILE_NAME = CLDR_VERSION + ".zip";
+    public static final String CLDR_PATH = RESOURCE_PATH + File.separator + "cldr" + File.separator;
+    public static final String CLDR_DOWNLOAD_DIR = CLDR_PATH + "data" + File.separator + CLDR_VERSION + File.separator;
+    public static final String GEN_CLDR_CORE_DIR = CLDR_PATH + "core" + File.separator;
+    public static final String GEN_CLDR_PATTERN_BASE_PATH = CLDR_PATH + "pattern" + File.separator;
+    public static final String GEN_CLDR_PATTERN_DIR = GEN_CLDR_PATTERN_BASE_PATH + "common" + File.separator;
+    public static final String GEN_CLDR_LOCALEDATA_DIR = CLDR_PATH + "localedata" + File.separator;
+    public static final String GEN_CLDR_PATTERN_TIMEZONE_DIR = GEN_CLDR_PATTERN_BASE_PATH + "timezone" + File.separator;
 
-	/**
-	 * Download CLDR data
-	 *
-	 * @return a map collection, store the zip file name and save path
-	 */
+    /**
+     * Download CLDR data
+     *
+     * @return a map collection, store the zip file name and save path
+     */
 	public static void download() {
 		int byteread = 0;
 		InputStream is = null;
@@ -92,12 +90,12 @@ public class CLDRUtils {
 					}
 				}
 				try {
-				fs = new FileOutputStream(CLDR_DOWNLOAD_DIR + fileName);
-				byte[] buffer = new byte[2048];
-				while ((byteread = is.read(buffer)) != -1) {
-					fs.write(buffer, 0, byteread);
-				}
-				fs.flush();
+					fs = new FileOutputStream(CLDR_DOWNLOAD_DIR + fileName);
+					byte[] buffer = new byte[2048];
+					while ((byteread = is.read(buffer)) != -1) {
+						fs.write(buffer, 0, byteread);
+					}
+					fs.flush();
 				}finally {
 					if(fs != null) {
 						fs.close();
@@ -966,13 +964,13 @@ public class CLDRUtils {
 		}
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	private static void dataRecordForParse(Map<String, Object> likelySubtagMap, Map<String, String> recordMap) {
-		Map<String, Object> map = new TreeMap();
-		map.put("likelySubtag", new TreeMap(likelySubtagMap));
-		map.put("localePath", new TreeMap(recordMap));
-		writePatternDataIntoFile(GEN_CLDR_PATTERN_DIR + "parse.json", map);
-	}
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    private static void dataRecordForParse(Map<String, Object> likelySubtagMap, Map<String, String> recordMap) {
+        Map<String, Object> map = new TreeMap();
+        map.put("likelySubtag", new TreeMap(likelySubtagMap));
+        map.put("localePath", new TreeMap(recordMap));
+        writePatternDataIntoFile(GEN_CLDR_CORE_DIR + "parse.json", map);
+    }
 
 	public static void patternDataExtract() {
 		logger.info("Start to extract i18n pattern data ... ");

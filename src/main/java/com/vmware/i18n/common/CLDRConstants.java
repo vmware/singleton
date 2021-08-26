@@ -47,8 +47,8 @@ public class CLDRConstants {
 	// cldr
 	public static final String JSON_PATH = CLDRConstants.class.getProtectionDomain().getCodeSource().getLocation()
 			.getPath();
-	public static final String RESOURCES_PATH = CLDRConstants.class.getResource("/cldr").getPath() + "/../";
-	public static final String PARSE_DATA = "cldr/pattern/common/parse.json";
+	public static final String RESOURCES_PATH = CLDRConstants.class.getClassLoader().getResource("cldr").getPath() + "/../";
+	public static final String PARSE_DATA = "cldr/core/parse.json";
 	public static final String PATTERN_JSON_PATH = "cldr/pattern/common/{0}/pattern.json";
 	public static final String SUPPLEMENTAL_PATH = "cldr/supplement/{0}.json";
 	public static final String ALL_CATEGORIES = "dates,numbers,plurals,measurements,currencies,dateFields";
