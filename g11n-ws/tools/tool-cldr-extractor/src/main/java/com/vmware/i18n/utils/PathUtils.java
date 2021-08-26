@@ -1,12 +1,13 @@
+/*
+ * Copyright 2019-2021 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 package com.vmware.i18n.utils;
 
 import com.vmware.i18n.PatternConfig;
 import com.vmware.i18n.common.CLDRConstants;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class PathUtils {
-    private static Logger logger = LoggerFactory.getLogger(PathUtils.class);
 
     public static String getResourcePath() {
         String resourcePath = CLDRConstants.RESOURCES_PATH; //this is the resource path when debug source code in IDE
