@@ -23,13 +23,30 @@ SgtnClient::Source.loadBundles(locale)
 @Result = SgtnClient::Translation.getString(component, key, locale)
 
 ```
-## API
+## API Usage
 
 ### Get a string's translation
 SgtnClient::Translation.getString(component, key, locale)
 
 ### Get a string's translation and format it with placeholders
-SgtnClient::Translation.getString_F(component, key, args, locale)
+SgtnClient::Translation.getString_f(component, key, args, locale)
+
+### Get a component's translations
+SgtnClient::Translation.getStrings(component, locale)
+
+
+## API Usage(with request_store)
+
+Before call below APIs(without locale and component arguments), it requires to set the locale and component in the initial codes.
+
+### Get a string's translation
+SgtnClient::T.s(key)
+
+### Get a string's translation and format it with placeholders
+SgtnClient::T.s_f(key, args)
+
+### Get a component's translations
+SgtnClient::T.c()
 
 
 

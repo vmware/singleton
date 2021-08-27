@@ -4,6 +4,7 @@ module SgtnClient
       end
 
       autoload :Translation,        "sgtn-client/api/translation"
+      autoload :T,                  "sgtn-client/api/t"
       autoload :Source,             "sgtn-client/api/source"
       autoload :Config,             "sgtn-client/core/config"
       autoload :Logging,            "sgtn-client/core/logging"

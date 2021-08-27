@@ -48,8 +48,8 @@
 
 # 0.1.1
 - Fix bugs:
-[VIP-3120] [Ruby Client]Add feature of replacing placeholders for interface &apos;getString&apos; - VMware Core Jira
-[VIP-3126] [Ruby Client]Don’t restrict the version of rest-client gem - VMware Core Jira
+[VIP-3120] [Ruby Client]Add feature of replacing placeholders for interface getString
+[VIP-3126] [Ruby Client]Don’t restrict the version of rest-client gem
 [VIP-3127] [Ruby Client]Don't hardcode source file name as 'default.yml'
 
 # 0.1.2
@@ -58,4 +58,10 @@
 # 0.1.3
 - Bug fix and code clean
 
+# 0.1.4
+- Add a set of simplest translation APIs for simplying product calling codes
+- Support request_store to reduce component and locale arugments in APIs
 
+# 0.1.5
+- Support placeholders order adjustment, e.g "%2$s, welcome login %1$s!"
+- Code cleanup

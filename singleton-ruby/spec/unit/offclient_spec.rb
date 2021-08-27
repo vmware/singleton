@@ -14,9 +14,9 @@ describe SgtnClient do
       # get from cache in 2nd time
       expect(SgtnClient::Translation.getString("JAVA", "helloworld", "zh-Hans")).to eq '你好世界'
 
-      expect(SgtnClient::Translation.getString_f("JAVA", "welcome", ["机器人", "虚拟世界"], "zh-Hans")).to eq '机器人，欢迎登录虚拟世界！'
+      expect(SgtnClient::Translation.getString_f("JAVA", "welcome", ["虚拟世界", "机器人"], "zh-Hans")).to eq '机器人，欢迎登录虚拟世界！'
       # get from cache in 2nd time
-      expect(SgtnClient::Translation.getString_f("JAVA", "welcome", ["机器人", "虚拟世界"], "zh-Hans")).to eq '机器人，欢迎登录虚拟世界！'    
+      expect(SgtnClient::Translation.getString_f("JAVA", "welcome", ["虚拟世界", "机器人"], "zh-Hans")).to eq '机器人，欢迎登录虚拟世界！'    
     end
 
     it "GET_EN" do
@@ -36,9 +36,9 @@ describe SgtnClient do
       # get from cache in 2nd time
       expect(SgtnClient::Translation.getString("JAVA", "hello", "zh-Hans")).to eq 'Hello'
 
-      expect(SgtnClient::Translation.getString_f("JAVA", "login", ["Robot", "VM"], "zh-Hans")).to eq 'Robot login VM!'
+      expect(SgtnClient::Translation.getString_f("JAVA", "login", ["VM", "Robot"], "zh-Hans")).to eq 'Robot login VM!'
       # get from cache in 2nd time
-      expect(SgtnClient::Translation.getString_f("JAVA", "login", ["Robot", "VM"], "zh-Hans")).to eq 'Robot login VM!'    
+      expect(SgtnClient::Translation.getString_f("JAVA", "login", ["VM", "Robot"], "zh-Hans")).to eq 'Robot login VM!'    
     end
 
     it "Component" do

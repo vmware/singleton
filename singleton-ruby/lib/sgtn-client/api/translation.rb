@@ -1,4 +1,4 @@
-require 'json'
+require 'multi_json'
 
 module SgtnClient
 
@@ -36,10 +36,7 @@ module SgtnClient
 
       def self.getString_f(component, key, args, locale)
          s = getString(component, key, locale)
-         puts 1111
-         puts SgtnClient::Config.configurations.default
-         puts s
-         return s % args
+         return sprintf s % args
       end
 
       def self.getStrings(component, locale)
@@ -82,7 +79,7 @@ module SgtnClient
         SgtnClient.logger.debug "Getting translations from offline bundle: " + bundlepath
         begin
           file = File.read(bundlepath)
-          data_hash = JSON.parse(file)
+          data_hash = MultiJson.load(file)
         rescue => exception
           SgtnClient.logger.error exception.message
         end

@@ -1,4 +1,4 @@
-require 'json'
+require 'multi_json'
 require 'pp'
 
 module SgtnClient
@@ -13,7 +13,7 @@ module SgtnClient
 
       def to_s
         begin
-          response_body = JSON.parse(response.body)
+          response_body = MultiJson.load(response.body)
           debug_id = response["sgtn-debug-id"]
           debug_id = response["correlation-id"] if debug_id.to_s == ''
           debug_id = response_body["debug_id"] if debug_id.to_s == ''
