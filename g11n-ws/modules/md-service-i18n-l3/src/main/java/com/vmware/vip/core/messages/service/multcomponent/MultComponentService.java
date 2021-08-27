@@ -16,14 +16,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
-import com.vmware.vip.common.cache.CacheName;
-import com.vmware.vip.common.cache.CachedKeyGetter;
-import com.vmware.vip.common.cache.TranslationCache3;
 import com.vmware.vip.common.constants.ConstantsChar;
 import com.vmware.vip.common.constants.ConstantsKeys;
-import com.vmware.vip.common.exceptions.VIPCacheException;
 import com.vmware.vip.core.messages.exception.L3APIException;
 import com.vmware.vip.core.messages.service.product.IProductService;
 import com.vmware.vip.core.messages.utils.PseudoConfig;
@@ -53,27 +48,8 @@ public class MultComponentService implements IMultComponentService {
 	public TranslationDTO getMultiComponentsTranslation(
 			TranslationDTO translationDTO) throws L3APIException {
 		TranslationDTO result = null;
-		String key = CachedKeyGetter
-				.getMultiComponentsCachedKey(translationDTO);
 		try {
-		    try {
-		        result =  TranslationCache3.getCachedObject(CacheName.MULTCOMPONENT, key, TranslationDTO.class);
-		  } catch (VIPCacheException e) {
-              LOGGER.error("Add data to cache failure");
-          }
-			
-			
-			if (StringUtils.isEmpty(result)) {
-				LOGGER.info("Not found in cache, try to get data from local");
 				result = this.getTranslation(translationDTO);
-				try {
-				    TranslationCache3.addCachedObject(CacheName.MULTCOMPONENT, key,TranslationDTO.class, result);
-				} catch (VIPCacheException e) {
-				    LOGGER.error("Add data to cache failure");
-				}
-			} else {
-				LOGGER.info("Found data from cache["+ key + "]");
-			}
 		}  catch (ParseException e) {
 		    LOGGER.error(e.getMessage(), e);
 			throw new L3APIException(ConstantsKeys.FATA_ERROR + "Parse error when get translation for "
