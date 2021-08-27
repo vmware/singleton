@@ -1,3 +1,7 @@
+/*
+ * Copyright 2019-2021 VMware, Inc.
+ * SPDX-License-Identifier: EPL-2.0
+ */
 package com.vmware.l10n.record.model;
 
 import java.io.Serializable;
