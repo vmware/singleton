@@ -42,11 +42,13 @@ namespace UnitTestSingleton
             I18N.GetExtension().RegisterAccessService(this, "test");
 
             string raw = (string)resourceManager.GetObject("http_response");
+            string rawPseudo = (string)resourceManager.GetObject("http_response_pseudo");
 
             for (int k=1; k<20; k++)
             {
                 string product = "CSHARP" + k;
-                string text = raw.Replace("$PRODUCT", product).Replace("$VERSION", "1.0.0");
+                string response = k >= 18 ? rawPseudo : raw;
+                string text = response.Replace("$PRODUCT", product).Replace("$VERSION", "1.0.0");
                 string[] parts = Regex.Split(text, "---api---.*[\r|\n]*");
                 for (int i = 0; i < parts.Length; i++)
                 {
@@ -58,6 +60,7 @@ namespace UnitTestSingleton
             }
 
             PrepareTestData("test_define");
+            PrepareTestData("test_define_pseudo");
             PrepareTestData("test_define2");
         }
 

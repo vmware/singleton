@@ -111,11 +111,11 @@ namespace SingletonClient.Implementation
                 {
                     _componentCache.SetString(item.Key.ToString(), item.Value.ToString());
                 }
+
+                _localHandled = true;
             }
-            else if (status == ResponseStatus.NetFail || status == ResponseStatus.NoMessages || status == ResponseStatus.WrongFormat)
-            {
-                GetDataFromLocal();
-            }
+
+            GetDataFromLocal();
         }
 
         /// <summary>
@@ -179,5 +179,3 @@ namespace SingletonClient.Implementation
         }
     }
 }
-
-

@@ -1,0 +1,44 @@
+﻿
+product: $PRODUCT
+l10n_version: 1.0.0
+desc: $PRODUCT is a testing product.
+
+online_service_url: http://127.0.0.1:8090
+
+offline_resources_base_url: res.source2
+default_resource_format: resx, internal
+
+#prod_mode: false
+default_locale: en-US
+
+# optional, access service type
+access_service_type: test
+
+# optional, cache type
+cache_type: by_key
+# optional, cache expire time
+cache_expire: 60
+# optional, wait of timeout or retry when connection fails
+try_wait: 10
+
+# optional, logger type
+logger_type: default
+# optional, log level
+log_level: Debug
+
+pseudo: true
+
+component_template: # as default
+  locales: # as default
+    - language_tag: en-US
+    - language_tag: de
+  offline_resources_path:
+    - $COMPONENT
+
+components: 
+  - name: about
+    template: component_template # default
+
+  - name: aboutadd
+  - name: index
+  - name: contact

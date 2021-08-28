@@ -92,6 +92,37 @@ namespace UnitTestSingleton.testdata {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ---api---
+        ///[GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/localelist
+        ///COMMENT: get locale list
+        ///---data---
+        ///{
+        ///    &quot;response&quot;:{
+        ///        &quot;code&quot;:200,
+        ///        &quot;message&quot;:&quot;OK&quot;,
+        ///        &quot;serverTime&quot;:&quot;&quot;
+        ///    },
+        ///    &quot;signature&quot;:&quot;&quot;,
+        ///    &quot;data&quot;:{
+        ///        &quot;locales&quot;:[
+        ///            &quot;zh-Hans&quot;,
+        ///            &quot;zh-Hant&quot;,
+        ///            &quot;fr&quot;,
+        ///            &quot;en&quot;,
+        ///            &quot;ja&quot;,
+        ///            &quot;ko&quot;,
+        ///            &quot;de&quot;
+        ///        ],
+        ///        &quot;version&quot;:&quot;$VERSION&quot;,
+        ///        &quot;productName&quot;:&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string http_response_pseudo {
+            get {
+                return ResourceManager.GetString("http_response_pseudo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ---test---
         ///NAME: TestGetString1
         ///COMMENT: test GetString()
@@ -129,6 +160,44 @@ namespace UnitTestSingleton.testdata {
         internal static string test_define {
             get {
                 return ResourceManager.GetString("test_define", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ---test---
+        ///NAME: TestGetStringPseudo
+        ///COMMENT: test GetString()
+        ///
+        ///---data---
+        ///type: GetString
+        ///locale: en
+        ///component: about
+        ///key: about.message
+        ///source: message in code
+        ///expect: @@message in code@@
+        ///
+        ///---data---
+        ///type: GetString
+        ///locale: en
+        ///component: about
+        ///key: about.message
+        ///expect: @@Your application description page.@@
+        ///
+        ///---data---
+        ///type: GetString
+        ///locale: de
+        ///component: about
+        ///key: about.message
+        ///expect: #@Your application description page.#@
+        ///
+        ///---data---
+        ///type: GetString
+        ///locale: de
+        ///component: [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string test_define_pseudo {
+            get {
+                return ResourceManager.GetString("test_define_pseudo", resourceCulture);
             }
         }
         

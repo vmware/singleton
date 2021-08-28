@@ -87,12 +87,17 @@ namespace SingletonClient.Implementation.Release
             _update.LoadLocalMessage(singletonLocale, component, isSource);
         }
 
-        private void LoadLocalOnStartup()
+        private void LoadLocalOnStartup(Dictionary<string, bool> done)
         {
             List<string> componentLocalList = _config.GetLocalComponentList();
 
             foreach (string component in componentLocalList)
             {
+                if (done != null && done.ContainsKey(component))
+                {
+                    continue;
+                }
+
                 List<string> localeList = _config.GetComponentLocaleList(component);
                 foreach (string locale in localeList)
                 {
@@ -146,25 +151,13 @@ namespace SingletonClient.Implementation.Release
                 Task.WaitAll(tasksGroup.ToArray());
             }
 
-            Dictionary<string, bool> tableNeedLocal = new Dictionary<string, bool>(StringComparer.InvariantCultureIgnoreCase);
-            foreach (string component in _infoLocal.GetComponents())
-            {
-                tableNeedLocal[component] = true;
-            }
+            Dictionary<string, bool> done = new Dictionary<string, bool>(StringComparer.InvariantCultureIgnoreCase);
             foreach (string component in _infoRemote.GetComponents())
             {
-                tableNeedLocal[component] = false;
+                done[component] = true;
             }
-            foreach (var entry in tableNeedLocal)
-            {
-                if (entry.Value)
-                {
-                    foreach (string locale in _infoLocal.GetLocales())
-                    {
-                        LoadLocalBundle(locale, entry.Key);
-                    }
-                }
-            }
+
+            LoadLocalOnStartup(done);
         }
 
         private void CheckLoadOnStartup(bool byRemote)
@@ -178,7 +171,7 @@ namespace SingletonClient.Implementation.Release
                 }
                 else
                 {
-                    LoadLocalOnStartup();
+                    LoadLocalOnStartup(null);
                 }
             }
         }

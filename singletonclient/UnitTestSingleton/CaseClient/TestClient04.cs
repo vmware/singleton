@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace UnitTestSingleton
 {
     [TestClass]
-    public class TestClient4 : AbsTestClient
+    public class TestClient04 : AbsTestClient
     {
         public override string[] GetResStrings()
         {

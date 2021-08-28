@@ -4,34 +4,39 @@
  */
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SingletonClient;
 
 namespace UnitTestSingleton
 {
     [TestClass]
-    public class TestClient8 : AbsTestClient
+    public class TestClient02 : AbsTestClient
     {
         public override string[] GetResStrings()
         {
-            string[] strings = { "res.Singleton2", "sgtn_online_offline", 
-                "product: CSHARP8" + "\n" + "online_service_url: http://127.0.0.1:80901" + "\n" + "load_on_startup: true"};
+            string[] strings = { "res.Singleton2", "sgtn_offline_disk_resx",
+                "product: CSHARP2" + "\n" + "load_on_startup: true"};
             return strings;
         }
 
         [TestMethod]
-        public void TestConfig8()
+        public void TestConfig2()
         {
             DoTestConfig();
         }
 
         [TestMethod]
-        public void TestRelease8()
+        public void TestRelease2()
         {
             DoTestRelease();
         }
 
         [TestMethod]
-        public void TestMessages8()
+        public void TestTranslation2()
+        {
+            DoTestTranslation();
+        }
+
+        [TestMethod]
+        public void TestMessages2()
         {
             DoTestMessages();
         }

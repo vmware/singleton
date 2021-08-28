@@ -32,6 +32,7 @@ namespace SingletonClient.Implementation.Support.ByKey
         private readonly string _localeDefault;
         private readonly bool _isDifferent;
         private readonly bool _onlyByKey;
+        private readonly bool _isPseudo;
         private readonly SingletonByKeyComponents _compentTable;
 
         private readonly ConcurrentDictionary<string, SingletonByKeyItem> _keyAttrTable;
@@ -47,9 +48,9 @@ namespace SingletonClient.Implementation.Support.ByKey
 
         private readonly object _lockObject = new object();
 
-        public SingletonByKey(string localeSource, string localeDefault, bool isDifferent, string cacheType)
+        public SingletonByKey(ISingletonConfig config, string cacheType)
         {
-            _localeSource = localeSource;
+            _localeSource = config.GetSourceLocale();
             _onlyByKey = string.Compare(ConfigConst.CacheByKey, cacheType, StringComparison.InvariantCultureIgnoreCase) == 0;
 
             _compentTable = new SingletonByKeyComponents();
@@ -60,8 +61,10 @@ namespace SingletonClient.Implementation.Support.ByKey
             _locales = new SingletonTable<ISingletonByKeyLocale>();
             _sources = new SingletonTable<ISingletonByKeyLocale>();
 
-            _isDifferent = isDifferent;
-            _localeDefault = localeDefault;
+            _localeDefault = config.GetDefaultLocale();
+            _isDifferent = !config.IsSourceLocaleDefault();
+
+            _isPseudo = config.IsPseudo();
         }
 
         /// <summary>
@@ -362,7 +365,7 @@ namespace SingletonClient.Implementation.Support.ByKey
                     _sourceLocal.GetMessage(componentIndex, item.PageIndex, item.IndexInPage, out localSource, false);
                     string remoteSource;
                     _sourceRemote.GetMessage(componentIndex, item.PageIndex, item.IndexInPage, out remoteSource, false);
-                    if (String.Equals(localSource, remoteSource))
+                    if (_isPseudo || String.Equals(localSource, remoteSource))
                     {
                         status |= 0x01;
                     }

@@ -153,6 +153,7 @@ namespace SingletonClient
         public const string KeyVersion = "l10n_version";
 
         public const string KeyProductMode = "prod_mode";
+        public const string KeyPseudo = "pseudo";
         public const string KeyDefaultLocale = "default_locale";
 
         public const string KeyComponents = "components";
