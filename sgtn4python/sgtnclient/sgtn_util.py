@@ -41,6 +41,8 @@ LOCALE_MAP = {
 
 class FileUtil:
 
+    dir_map = {}
+
     @classmethod
     def read_text_file(cls, file_name):
         SgtnDebug.log_text('util', 'read file {0} / exist: {1}'.format(
@@ -59,10 +61,13 @@ class FileUtil:
 
     @classmethod
     def parse_json_from_text(cls, text):
+        if not text:
+            return None
+
         try:
             dict_data = json.loads(text, object_pairs_hook=OrderedDict)
             return dict_data
-        except json.decoder.JSONDecodeError as e:
+        except Exception as e:
             raise SgtnException(str(e))
 
     @classmethod
@@ -126,6 +131,11 @@ class FileUtil:
         dir_list = []
         file_list = []
 
+        for one in cls.dir_map:
+            if dir_name.endswith(one):
+                dir_list = cls.dir_map[one]
+                return dir_list, file_list
+
         try:
             ls = os.listdir(dir_name)
         except IOError as e:
@@ -140,21 +150,39 @@ class FileUtil:
         return dir_list, file_list
 
 
+class NetSimulate(object):
+    """Net simulate interface"""
+
+    def has_data(self):
+        return False
+
+    def get_data(self, url, request_headers):
+        return None, None
+
+    def is_record_enabled(self):
+        return False
+
+    def record_data(self, url, request_headers, text, headers):
+        pass
+
+
 class NetUtil:
 
-    simulate_data = None
-    record_data = {'enable': False, 'records': {}}
+    simulate = None
 
     @classmethod
-    def _get_data(cls, url, request_headers):
-        if not cls.simulate_data:
+    def _get_data(cls, url, request_headers, timeout=None):
+        if not cls.simulate or not cls.simulate.has_data():
             req = httplib.Request(url)
             if request_headers:
                 for key in request_headers:
                     req.add_header(key, request_headers[key])
 
             try:
-                res_data = httplib.urlopen(req)
+                if timeout is None or timeout == 0:
+                    res_data = httplib.urlopen(req)
+                else:
+                    res_data = httplib.urlopen(req, timeout=timeout)
             except IOError as e:
                 raise SgtnException(str(e))
 
@@ -172,37 +200,28 @@ class NetUtil:
             except UnicodeDecodeError as e:
                 raise SgtnException(str(e))
 
-            if cls.record_data['enable']:
-                header_part = json.dumps(request_headers) if request_headers else request_headers
-                key = '{0}<<headers>>{1}'.format(url, header_part) if header_part else url
-                cls.record_data['records'][key] = {'text': text, 'headers': headers}
+            if cls.simulate and cls.simulate.is_record_enabled():
+                cls.simulate.record_data(url, request_headers, text, headers)
             return text, headers
         else:
-            header_part = json.dumps(request_headers) if request_headers else request_headers
-            key = '{0}<<headers>>{1}'.format(url, header_part) if header_part else url
-            kept = cls.simulate_data.get(key)
-            if kept:
-                if 'code' in kept:
-                    if kept['code'] == 304:
-                        raise SgtnException('Error 304:')
-                return kept['text'], kept['headers']
+            return cls.simulate.get_data(url, request_headers)
         return None, None
 
     @classmethod
-    def http_get_text(cls, url):
+    def http_get_text(cls, url, timeout=None):
         text = None
         try:
-            text, _ = cls._get_data(url, None)
+            text, _ = cls._get_data(url, None, timeout)
         except SgtnException as e:
             pass
         return text
 
     @classmethod
-    def http_get(cls, url, request_headers):
+    def http_get(cls, url, request_headers, timeout=None):
         ret = {}
         code = 400
         try:
-            text, headers = cls._get_data(url, request_headers)
+            text, headers = cls._get_data(url, request_headers, timeout)
             ret[KEY_RESULT] = FileUtil.parse_json_from_text(text)
             ret[KEY_HEADERS] = headers
             code = 200

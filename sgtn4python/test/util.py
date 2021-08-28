@@ -18,8 +18,10 @@ sys.path.append('../sgtnclient')
 
 from sgtn_util import FileUtil, NetUtil, SysUtil
 from sgtn_properties import Properties
+from sgtn_py_base import SgtnException
 
 import I18N
+from sgtn_util import FileUtil, NetUtil, NetSimulate
 
 
 def init_logger():
@@ -59,6 +61,7 @@ class TestThread(Thread):
 
         found = self.trans.get_string(component, key, locale = locale, source = source)
         if found != expect:
+            found = self.trans.get_string(component, key, locale = locale, source = source)
             print('--- error --- %s' % self.ut.dict2string(item))
         self.ut.assertEqual(found, expect)
         if needPrint:
@@ -76,6 +79,18 @@ class TestThread(Thread):
             return self.group['_interval']
         elif one['type'] == 'SetLocale':
             I18N.set_current_locale(one['locale'])
+        elif one['type'] == 'LoadService':
+            NetUtil.simulate.simulate_data = Util.load_response(['data/' + one['name']])
+        elif one['type'] == 'Delay':
+            delay = float(one['time'])
+            time.sleep(delay)
+        elif one['type'] == 'ShowCache':
+            locale = one.get('locale')
+            asSource = one.get('as_source') == 'true'
+            data = self.trans.get_locale_strings(locale, asSource)
+            if one.get('format') == 'json':
+                data = Util.dict2string(data)
+            print('--- {0} --- {1} --- {2} ---'.format('as source' if asSource else 'revisable', locale, data))
         return 0
 
     def do_test(self):
@@ -132,10 +147,14 @@ def _load_test_data(text):
 class Util(object):
 
     @staticmethod
+    def dict2string(dict):
+        return json.dumps(dict, ensure_ascii = False, indent = 2)
+
+    @staticmethod
     def load_response(files):
         response = {}
 
-        for i in range(9):
+        for i in range(20):
             product = 'PYTHON%s' % (i+1)
             version = '1.0.0'
 
@@ -205,3 +224,38 @@ class Util(object):
         if times > 1 and group['_interval'] == 0:
             print('--- time span --- %s(s) --- %s ---' % (time.time() - start, times * len(group['tests'])))
 
+
+class TestSimulate(NetSimulate):
+
+    def __init__(self, enable):
+        self.simulate_data = None
+        self.enable = enable
+        self.record = {}
+
+    def has_data(self):
+        return self.simulate_data is not None
+
+    def get_data(self, url, request_headers):
+        if not self.has_data():
+            return None, None
+
+        header_part = json.dumps(request_headers) if request_headers else request_headers
+        key = '{0}<<headers>>{1}'.format(url, header_part) if header_part else url
+        key = key.replace("/locales/en-US/", "/locales/en/");
+        kept = self.simulate_data.get(key)
+        if kept:
+            if 'code' in kept:
+                if kept['code'] == 304:
+                    raise SgtnException('Error 304:')
+            return kept['text'], kept['headers']
+        return None, None
+
+    def is_record_enabled(self):
+        return self.enable
+
+    def record_data(self, url, request_headers, text, headers):
+        if not self.enable:
+            return
+        header_part = json.dumps(request_headers) if request_headers else request_headers
+        key = '{0}<<headers>>{1}'.format(url, header_part) if header_part else url
+        self.record[key] = {'text': text, 'headers': headers}
