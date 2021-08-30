@@ -12,7 +12,7 @@ from sgtn_util import FileUtil, NetUtil, SysUtil
 from sgtn_locale import SingletonLocaleUtil
 from sgtn_debug import SgtnDebug
 
-from util import Util
+from util import Util, TestSimulate
 import I18N
 
 
@@ -52,7 +52,8 @@ class TestClient(unittest.TestCase):
         print('\n--- unittest --- %s --- python %s\n' % (
             sys._getframe().f_code.co_name, sys.version_info.major))
 
-        NetUtil.simulate_data = Util.load_response(['data/http_response.txt'])
+        NetUtil.simulate = TestSimulate(False)
+        NetUtil.simulate.simulate_data = Util.load_response(['data/http_response.txt'])
 
         dt = FileUtil.read_datatree('config/sgtn_online_only.yml')
         online_url = dt['online_service_url']

@@ -1,0 +1,56 @@
+﻿---test---
+NAME: TestGetStringPseudo
+COMMENT: test GetString()
+
+---data---
+type: GetString
+locale: en
+component: about
+key: about.message
+source: message in code
+expect: @@message in code@@
+
+---data---
+type: GetString
+locale: en
+component: about
+key: about.message
+expect: @@Your application description page.@@
+
+---data---
+type: GetString
+locale: de
+component: about
+key: about.message
+expect: #@Your application description page.#@
+
+---data---
+type: GetString
+locale: de
+component: about
+key: about.message
+source: Your application description page.
+expect: #@Your application description page.#@
+
+---data---
+type: GetString
+locale: de
+component: aboutadd
+key: about.message
+expect: @@Ihrer Bewerbungs Beschreibung Seite. add@@
+
+---data---
+type: GetString
+locale: de
+component: aboutadd
+key: about.message
+source: message in code
+expect: @@message in code@@
+
+---data---
+type: GetString
+locale: de
+component: aboutadd
+key: about.message
+source: Your application description page. add
+expect: @@Ihrer Bewerbungs Beschreibung Seite. add@@

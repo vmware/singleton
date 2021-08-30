@@ -1,19 +1,21 @@
 
-product: PYTHON
-l10n_version: 1.0.0
+product: $PRODUCT
+l10n_version: $VERSION
 
 online_service_url: http://127.0.0.1:8090
-offline_resources_base_url: file:///data/l10n/PYTHON/1.0.0
+offline_resources_base_url: file:///../data/l10n
 
 # log path for the python client
-log_path: ./log/
+#log_path: ../log/
+
+cache_type: by_key
 
 # local storage path for caching
-cache_path: ./singleton/
+#cache_path: ./singleton/
 
 # how many seconds should be waited to try again for accessing the remote service,
 # when there is no data cached
-try_wait: 0
+try_delay: 10
 
 # how many seconds should be waited to update cache data when there is old data existed
 cache_expired_time: 60
@@ -28,4 +30,4 @@ component_template:
  
 components:
   - name: about
-  - name: common
+  - name: contact

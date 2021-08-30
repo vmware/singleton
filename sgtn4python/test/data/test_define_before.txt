@@ -17,7 +17,7 @@ expect: Your application description page.
 type: GetString
 component: aboutadd
 key: about.message
-expect: Your application description page. add
+expect: about.message
 
 ---data---
 type: GetString
@@ -39,7 +39,7 @@ expect: Ihrer Bewerbungs Beschreibung Seite.
 type: GetString
 component: aboutadd
 key: about.message
-expect: Ihrer Bewerbungs Beschreibung Seite. add
+expect: about.message
 
 ---data---
 type: GetString
@@ -61,13 +61,13 @@ expect: 应用程序说明页。
 type: GetString
 component: aboutadd
 key: about.message
-expect: 应用程序说明页。 add
+expect: about.message
 
 ---data---
 type: GetString
 component: aboutadd
 key: about.title
-expect: 关于 Version {1} of Product {0} add
+expect: about.title
 
 ---data---
 type: GetString
@@ -195,7 +195,7 @@ type: GetString
 locale: de
 component: aboutadd
 key: about.title2
-expect: About Version {x} of Product {y} add local
+expect: about.title2
 
 
 
@@ -238,20 +238,6 @@ type: GetString
 locale: en
 key: about.message
 expect: Your application description page.
-
----data---
-type: GetString
-locale: en-US
-key: about.message
-expect: Your application description page.
-
----data---
-type: GetString
-locale: zh-Hans
-component: about
-key: about.message
-source: Your application description page.
-expect: 应用程序说明页。
 
 
 

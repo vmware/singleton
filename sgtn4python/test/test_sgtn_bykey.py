@@ -12,6 +12,15 @@ from sgtn_locale import SingletonLocale, SingletonLocaleUtil
 from sgtn_bykey import SingletonByKey, SingletonByKeyLocale, SingletonByKeyComponents
 
 
+class Config:
+
+    def __init__(self):
+        self.source_locale = 'en'
+        self.default_locale = 'en'
+        self.cache_type = 'by_key'
+        self.pseudo = False
+
+
 class TestByKey(unittest.TestCase):
 
     def check_one(self, bykey, key, message, idComponent, localeObj):
@@ -24,8 +33,8 @@ class TestByKey(unittest.TestCase):
         print('--- message --- %s --- %s' % (key, msg))
 
     def test_release(self):
-
-        bykey = SingletonByKey('en', 'en', False, 'by_key')
+        cfg = Config()
+        bykey = SingletonByKey(cfg, False)
         id1 = bykey.get_component_index('first')
         id2 = bykey.get_component_index('second')
         print('--- component id --- %s' % [id1, id2])
@@ -62,4 +71,3 @@ class TestByKey(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-

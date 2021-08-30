@@ -14,14 +14,25 @@ sys.path.append('../sgtnclient')
 import I18N
 from sgtn_util import FileUtil, NetUtil
 
-from util import Util, allTestData
+from util import Util, TestSimulate
 
-plans = [
-    {'product': 'PYTHON1', 'config': 'config/sgtn_online_only.yml'},
-    {'product': 'PYTHON2', 'config': 'config/sgtn_offline_only.yml'},
-    {'product': 'PYTHON3', 'config': 'config/sgtn_online_localsource.yml'},
-    {'product': 'PYTHON4', 'config': 'config/sgtn_online_default.yml'},
-    {'product': 'PYTHON5', 'config': 'config/sgtn_offline_default.yml'}
+_plans_before = [
+    {'outside': {'product': 'PYTHON1', 'load_on_startup': True}, 'config': 'config/sgtn_online_only.yml'},
+    {'outside': {'product': 'PYTHON2'}, 'config': 'config/sgtn_offline_only.yml'},
+    {'outside': {'product': 'PYTHON3', 'load_on_startup': True}, 'config': 'config/sgtn_offline_only.yml'},
+    {'outside': {'product': 'PYTHON4'}, 'config': 'config/sgtn_online_localsource_before.yml'},
+    {'outside': {'product': 'PYTHON5'}, 'config': 'config/sgtn_online_default.yml'},
+    {'outside': {'product': 'PYTHON6'}, 'config': 'config/sgtn_offline_default.yml'}
+    ]
+_plans_pseudo = [
+    {'outside': {'product': 'PYTHON10', 'pseudo': True}, 'config': 'config/sgtn_online_localsource.yml'}
+    ]
+_plans = [
+    {'outside': {'product': 'PYTHON11'}, 'config': 'config/sgtn_online_only.yml'},
+    {'outside': {'product': 'PYTHON12'}, 'config': 'config/sgtn_offline_only.yml'},
+    {'outside': {'product': 'PYTHON13'}, 'config': 'config/sgtn_online_localsource.yml'},
+    {'outside': {'product': 'PYTHON14'}, 'config': 'config/sgtn_online_default.yml'},
+    {'outside': {'product': 'PYTHON15'}, 'config': 'config/sgtn_offline_default.yml'}
     ]
 VERSION = '1.0.0'
 COMPONENT = 'about'
@@ -43,18 +54,15 @@ class TestClient(unittest.TestCase):
         fallback_locale = trans.get_locale_supported(locale)
         self.show('locale', locale, fallback_locale)
 
-    def dict2string(self, dict):
-        return json.dumps(dict, ensure_ascii = False, indent = 2)
-
     def need_wait(self, cfg_info):
         if (cfg_info.get('local') and cfg_info.get('remote')):
             return True
         return False
 
     def do_test(self, plan):
-        cfg = I18N.add_config_file(
-            plan['config'],
-            {'product': plan['product'], 'l10n_version': VERSION})
+        outside = plan['outside']
+        outside['l10n_version'] = VERSION
+        cfg = I18N.add_config_file(plan['config'], outside)
         self.assertEqual(cfg.get_info()['version'], VERSION)
 
         start = time.time()
@@ -64,15 +72,23 @@ class TestClient(unittest.TestCase):
         print('--- current --- %s ---' % current)
         self.assertEqual(current, 'de')
 
-        rel = I18N.get_release(plan['product'], VERSION)
+        rel = I18N.get_release(plan['outside']['product'], VERSION)
 
         cfg = rel.get_config()
         cfg_info = cfg.get_info()
-        self.show('config', 'info', self.dict2string(cfg_info))
+        self.show('config', 'info', Util.dict2string(cfg_info))
 
         trans = rel.get_translation()
         self.check_locale(trans, 'ZH_cn')
         self.check_locale(trans, 'EN_us')
+
+        Util.run_test_data(self, trans, 'TestShowCache')
+
+        if cfg_info['pseudo'] and cfg_info['remote']:
+            Util.run_test_data(self, trans, 'TestGetStringPseudo')
+            Util.run_test_data(self, trans, 'TestShowCache')
+            print('--- test --- end ---')
+            return
 
         Util.run_test_data(self, trans, 'TestGetString1')
         Util.run_test_data(self, trans, 'TestGetString1T')
@@ -90,7 +106,7 @@ class TestClient(unittest.TestCase):
         found = trans.get_string('TT', 'about.title')
         print('--- found --- wrong component --- %s ---' % found)
 
-        if (self.need_wait(cfg_info)):
+        if self.need_wait(cfg_info):
             time.sleep(5)
 
         found = trans.get_string(None, 'about.title', format_items = ['11', '22'])
@@ -100,42 +116,66 @@ class TestClient(unittest.TestCase):
         print('--- found --- format in dict --- %s ---' % found)
         self.assertEqual(found, 'Über Version ee of Product ff')
 
-        spent = time.time() - start
-
-        data = trans.get_locale_strings('en-US', True)
-        print('--- source --- en-US --- %s ---' % data)
-
-        data = trans.get_locale_strings('en-US', False)
-        print('--- translate --- en-US --- %s ---' % data)
-
-        data = trans.get_locale_strings('de', False)
-        print('--- translate --- de --- %s ---' % data)
-
-        if (self.need_wait(cfg_info)):
+        if self.need_wait(cfg_info):
             Util.run_test_data(self, trans, 'TestGetString3')
 
-        if NetUtil.record_data['enable']:
-            time.sleep(5)
-            FileUtil.save_json_file('data/simulate.json', NetUtil.record_data['records'])
+        Util.run_test_data(self, trans, 'TestShowCache')
+
+        spent = time.time() - start
         time.sleep(1)
         print('--- test --- end --- %s ---' % spent)
+
+    def prepare_before(self):
+        FileUtil.dir_map['../data/l10n'] = {'about', 'contact'}
+
+        Util.load_test_data(['data/test_prepare.txt', 'data/test_define_before.txt'])
+        Util.run_test_data(self, None, 'TestLoadBeforeService')
+
+        return _plans_before
+
+    def prepare_pseudo(self):
+        FileUtil.dir_map['../data/l10n'] = {'about', 'aboutadd', 'contact'}
+
+        Util.load_test_data(['data/test_prepare.txt', 'data/test_define_pseudo.txt'])
+        Util.run_test_data(self, None, 'TestLoadPseudoService')
+
+        return _plans_pseudo
+
+    def prepare(self):
+        FileUtil.dir_map['../data/l10n'] = {'about', 'aboutadd', 'contact'}
+
+        Util.load_test_data(['data/test_prepare.txt', 'data/test_define.txt'])
+        Util.run_test_data(self, None, 'TestLoadService')
+
+        return _plans
+
+    def run_plans(self, plans, index):
+        Util.run_test_data(self, None, 'TestDelay1')
+
+        if index is not None:
+            self.do_test(plans[index])
+        else:
+            for i in range(len(plans)):
+                self.do_test(plans[i])
 
     def test_api(self):
         print('\n--- unittest --- %s --- python %s\n' % (
             sys._getframe().f_code.co_name, sys.version_info.major))
 
-        NetUtil.simulate_data = Util.load_response(['data/http_response.txt'])
-        NetUtil.record_data['enable'] = False
-
-        Util.load_test_data(['data/test_define.txt'])
+        NetUtil.simulate = TestSimulate(False)
 
         print('--- test start ---')
 
         self.prepare_sub_path('log')
         self.prepare_sub_path('singleton')
 
-        for i in range(len(plans)):
-            self.do_test(plans[i])
+        self.run_plans(self.prepare_before(), None)
+        self.run_plans(self.prepare_pseudo(), None)
+        self.run_plans(self.prepare(), None)
+
+        if NetUtil.simulate and NetUtil.simulate.is_record_enabled():
+            time.sleep(5)
+            FileUtil.save_json_file('data/simulate.json', NetUtil.simulate.record)
 
 
 if __name__ == '__main__':

@@ -33,6 +33,17 @@ class SingletonLocale(object):
     def get_original_locale(self):
         return self.get_near_locale(0)
 
+    def get_relate_locale(self, checkList):
+        if checkList is None:
+            return None
+
+        for one in checkList:
+            temp = SingletonLocaleUtil.get_singleton_locale(one)
+            if self.compare(temp):
+                return temp
+
+        return None
+
     def compare(self, singletonLocale):
         if singletonLocale is None:
             return False
@@ -73,15 +84,14 @@ class SingletonLocaleUtil(object):
       'zh-HANT': 'zh-Hant'
     }
 
-    LocaleFallbackMap = {}
-    SystemLocale = None
+    _localeFallbackMap = {}
 
     @classmethod
     def get_singleton_locale(cls, locale):
         if locale is None:
             return cls.get_singleton_locale(SingletonLocaleUtil.DEFAULT_LOCALE)
 
-        singletonLocale = cls.LocaleFallbackMap.get(locale.lower())
+        singletonLocale = cls._localeFallbackMap.get(locale.lower())
         if singletonLocale:
             return singletonLocale
 
@@ -100,5 +110,5 @@ class SingletonLocaleUtil(object):
         elif len(parts) > 1:
             singletonLocale.add_near_locale(parts[0])
 
-        cls.LocaleFallbackMap[locale.lower()] = singletonLocale
+        cls._localeFallbackMap[locale.lower()] = singletonLocale
         return singletonLocale
