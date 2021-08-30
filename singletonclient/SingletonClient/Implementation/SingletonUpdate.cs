@@ -190,7 +190,12 @@ namespace SingletonClient.Implementation
             {
                 foreach (string key in map.Keys)
                 {
-                    componentCache.SetString(key, map[key].ToString());
+                    string value = map[key].ToString();
+                    if (_config.IsPseudo())
+                    {
+                        value = string.Format("{0}{1}{0}", "@@", value);
+                    }
+                    componentCache.SetString(key, value);
                 }
             }
         }

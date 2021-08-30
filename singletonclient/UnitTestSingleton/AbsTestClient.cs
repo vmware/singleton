@@ -69,13 +69,13 @@ namespace UnitTestSingleton
             src = access.Source("about", "about.message", "_content", "_comment");
             Assert.AreEqual("_comment", src.GetComment());
 
-            string translation = Translation.GetString("de", null);
-            Assert.AreEqual(null, translation);
-
             DoGetStringGroup("TestGetString1");
             DoGetStringGroup("TestGetString1T");
             DoGetStringGroup("TestGetString1A");
             DoGetStringGroup("TestGetString2");
+
+            string translation = Translation.GetString("de", null);
+            Assert.AreEqual(null, translation);
 
             string groupName = "TestGetStringSameLocale";
             IConfigItem configItem = config.GetItem("default_locale");
@@ -110,6 +110,11 @@ namespace UnitTestSingleton
             Assert.AreEqual("关于 Version 1.0.0 of Product " + PRODUCT, translation);
             translation = Translation.Format("zh-CN", src, PRODUCT);
             Assert.AreEqual("关于 Version {1} of Product " + PRODUCT, translation);
+        }
+
+        protected void DoTestPseudoTranslation()
+        {
+            DoGetStringGroup("TestGetStringPseudo");
         }
 
         protected void DoTestMessages()

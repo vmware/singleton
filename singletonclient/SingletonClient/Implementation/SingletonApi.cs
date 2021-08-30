@@ -23,12 +23,13 @@ namespace SingletonClient.Implementation
     public class SingletonApi : ISingletonApi
     {
         private const string VipPathHead = "/i18n/api/v2/translation/products/{0}/versions/{1}/";
-        private const string VipParameter = "pseudo=false&machineTranslation=false&checkTranslationStatus=false";
         private const string VipGetComponent = "locales/{0}/components/{1}?";
+        private const string VipParameter = "pseudo={0}&machineTranslation=false&checkTranslationStatus=false";
 
         private readonly string _product;
         private readonly string _version;
         private readonly string _urlService;
+        private readonly string _pseudo;
 
         private readonly ISingletonRelease _releaseObject;
 
@@ -43,6 +44,8 @@ namespace SingletonClient.Implementation
             _urlService = config.GetServiceUrl();
             _product = config.GetProduct();
             _version = config.GetVersion();
+
+            _pseudo = config.IsPseudo() ? "true" : "false";
         }
 
         public string GetComponentApi(string component, string locale)
@@ -77,7 +80,8 @@ namespace SingletonClient.Implementation
 
             string head = string.Format(VipPathHead, _product, _version);
             string path = string.Format(VipGetComponent, localeInUse, component);
-            string api = string.Format("{0}{1}{2}{3}", _urlService, head, path, VipParameter);
+            string para = string.Format(VipParameter, _pseudo);
+            string api = string.Format("{0}{1}{2}{3}", _urlService, head, path, para);
             return api;
         }
 

@@ -9,7 +9,7 @@ using SingletonClient;
 namespace UnitTestSingleton
 {
     [TestClass]
-    public class TestClient7 : AbsTestClient
+    public class TestClient07 : AbsTestClient
     {
         public override string[] GetResStrings()
         {

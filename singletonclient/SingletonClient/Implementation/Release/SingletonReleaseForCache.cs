@@ -94,8 +94,7 @@ namespace SingletonClient.Implementation.Release
 
             if (_config.IsCacheByKey())
             {
-                _byKey = new SingletonByKey(_config.GetSourceLocale(),
-                    _config.GetDefaultLocale(), !_config.IsSourceLocaleDefault(), cacheType);
+                _byKey = new SingletonByKey(_config, cacheType);
             }
 
             _useSourceLocale = GetUseLocale(_config.GetSourceLocale(), true);
@@ -135,19 +134,23 @@ namespace SingletonClient.Implementation.Release
             {
                 int componentIndex = _byKey.GetComponentIndex(component);
                 source = _byKey.GetString(key, componentIndex, _useSourceLocale.GetLocaleItem(), false);
-                if (source != null)
+                if (source == null)
                 {
-                    return source;
+                    if (componentIndex >= 0 && _config.IsOnlineSupported())
+                    {
+                        ISingletonComponent singletonComponent = _useSourceRemote.GetComponent(component, true);
+                        singletonComponent.GetAccessTask().Check();
+                    }
+                    source = _byKey.GetString(key, componentIndex, _useSourceRemote.GetLocaleItem(), false);
                 }
             }
             else
             {
                 source = _useSourceLocale.GetMessage(component, key);
-            }
-
-            if (source == null)
-            {
-                source = _useSourceLocale.GetMessage(component, key);
+                if (source == null && _config.IsOnlineSupported())
+                {
+                    source = _useSourceRemote.GetMessage(component, key);
+                }
             }
 
             if (source == null)
@@ -219,7 +222,10 @@ namespace SingletonClient.Implementation.Release
                     string combineKey = SingletonUtil.GetCombineKey(locale, source.GetComponent());
                     if (!_bundleHandled.Contains(combineKey))
                     {
-                        _useSourceRemote.GetComponent(source.GetComponent(), true);
+                        if (_config.IsOnlineSupported())
+                        {
+                            _useSourceRemote.GetComponent(source.GetComponent(), true);
+                        }
                         ISingletonComponent componentObj = useLocale.GetComponent(source.GetComponent(), true);
                         if (componentObj != null)
                         {

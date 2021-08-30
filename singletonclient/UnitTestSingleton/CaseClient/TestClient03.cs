@@ -8,35 +8,35 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace UnitTestSingleton
 {
     [TestClass]
-    public class TestClient2 : AbsTestClient
+    public class TestClient03 : AbsTestClient
     {
         public override string[] GetResStrings()
         {
-            string[] strings = { "res.Singleton2", "sgtn_offline_disk_resx",
-                "product: CSHARP2" + "\n" + "load_on_startup: true"};
+            string[] strings = { "res.Singleton3", "sgtn_offline_disk_properties",
+                "product: CSHARP3" + "\n" + "load_on_startup: true"};
             return strings;
         }
 
         [TestMethod]
-        public void TestConfig2()
+        public void TestConfig3()
         {
             DoTestConfig();
         }
 
         [TestMethod]
-        public void TestRelease2()
+        public void TestRelease3()
         {
             DoTestRelease();
         }
 
         [TestMethod]
-        public void TestTranslation2()
+        public void TestTranslation3()
         {
             DoTestTranslation();
         }
 
         [TestMethod]
-        public void TestMessages2()
+        public void TestMessages3()
         {
             DoTestMessages();
         }

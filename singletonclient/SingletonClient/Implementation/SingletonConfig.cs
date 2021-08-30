@@ -70,6 +70,8 @@ namespace SingletonClient.Implementation
 
         bool IsCacheByKey();
 
+        bool IsPseudo();
+
         List<string> GetExternalComponentList();
 
         List<string> GetExternalLocaleList(string component);
@@ -486,6 +488,7 @@ namespace SingletonClient.Implementation
         private readonly List<string> _externalComponentList = new List<string>();
 
         private readonly bool _isProductMode;
+        private readonly bool _isPseudo;
         private readonly bool _isOnlineSupported;
         private readonly bool _isOfflineSupported;
         private readonly bool _isSourceDefault;
@@ -508,6 +511,9 @@ namespace SingletonClient.Implementation
             // Check if it is in product mode
             IConfigItem configItem = _config.GetItem(ConfigConst.KeyProductMode);
             _isProductMode = (configItem == null) || configItem.GetBool();
+
+            configItem = _config.GetItem(ConfigConst.KeyPseudo);
+            _isPseudo = (configItem != null) && configItem.GetBool();
 
             // Get online url
             _serviceUrl = GetTextWithDefault(ConfigConst.KeyOnlineUrl, null);
@@ -759,6 +765,11 @@ namespace SingletonClient.Implementation
         public bool IsCacheByKey()
         {
             return _isCacheByKey;
+        }
+
+        public bool IsPseudo()
+        {
+            return _isPseudo;
         }
 
         public List<string> GetExternalComponentList()

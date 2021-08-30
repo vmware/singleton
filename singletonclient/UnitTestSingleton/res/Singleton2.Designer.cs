@@ -79,5 +79,25 @@ namespace UnitTestSingleton.res {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_online_only {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_online_only", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sgtn_online_pseudo {
+            get {
+                object obj = ResourceManager.GetObject("sgtn_online_pseudo", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

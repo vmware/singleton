@@ -239,6 +239,20 @@ locale: en
 key: about.message
 expect: Your application description page.
 
+---data---
+type: GetString
+locale: en-US
+key: about.message
+expect: Your application description page.
+
+---data---
+type: GetString
+locale: zh-Hans
+component: about
+key: about.message
+source: Your application description page.
+expect: 应用程序说明页。
+
 
 
 ---test---

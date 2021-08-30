@@ -148,24 +148,26 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="TestClient1.cs" />
-    <Compile Include="TestClient9.cs" />
-    <Compile Include="TestClient8.cs" />
-    <Compile Include="TestClient7.cs" />
-    <Compile Include="TestClient6.cs" />
-    <Compile Include="TestClient5.cs" />
-    <Compile Include="TestClient4.cs" />
+    <Compile Include="CaseClient\TestClient01.cs" />
+    <Compile Include="CaseClient\TestClient18.cs" />
+    <Compile Include="CaseClient\TestClient10.cs" />
+    <Compile Include="CaseClient\TestClient09.cs" />
+    <Compile Include="CaseClient\TestClient08.cs" />
+    <Compile Include="CaseClient\TestClient07.cs" />
+    <Compile Include="CaseClient\TestClient06.cs" />
+    <Compile Include="CaseClient\TestClient05.cs" />
+    <Compile Include="CaseClient\TestClient04.cs" />
     <Compile Include="testdata\TestData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TestData.resx</DependentUpon>
     </Compile>
-    <Compile Include="TestUtil.cs" />
-    <Compile Include="TestClient3.cs" />
+    <Compile Include="CaseSupport\TestUtil.cs" />
+    <Compile Include="CaseClient\TestClient03.cs" />
     <Compile Include="AbsTestBase.cs" />
-    <Compile Include="TestClient2.cs" />
-    <Compile Include="TestSupport.cs" />
-    <Compile Include="TestBaseIo.cs" />
+    <Compile Include="CaseClient\TestClient02.cs" />
+    <Compile Include="CaseSupport\TestSupport.cs" />
+    <Compile Include="CaseSupport\TestBaseIo.cs" />
     <Compile Include="AbsTestClient.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -268,8 +270,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\sgtn_online_different.yml" />
+    <None Include="res\sgtn_online_pseudo.yml" />
     <None Include="res\sgtn_online_offline.yml" />
     <None Include="res\sgtn_debug.yml" />
+    <None Include="res\sgtn_online_only.yml" />
     <None Include="res\sgtn_online_testing.yml" />
     <None Include="res\sgtn_online_localsource.yml" />
   </ItemGroup>
@@ -280,9 +284,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="testdata\http_response_pseudo.txt" />
     <Content Include="testdata\test_define2.txt" />
     <Content Include="testdata\test_define.txt" />
     <Content Include="testdata\http_response.txt" />
+    <Content Include="testdata\test_define_pseudo.txt" />
     <None Include="res\source3\aboutadd.properties" />
     <None Include="res\source3\about.properties" />
     <None Include="res\source3\aboutadd_de.properties" />
