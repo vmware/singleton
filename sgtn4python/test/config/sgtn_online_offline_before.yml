@@ -22,13 +22,17 @@ cache_expired_time: 60
   
 locales:
   - language_tag: en-US
-    offline_resources_path:
+    source_resources_path:
       - $COMPONENT/messages.properties
+    offline_resources_path:
+      - $COMPONENT/messages_en.properties
+  - language_tag: de
+    offline_resources_path:
+      - $COMPONENT/messages$LC.json
 
 component_template:
   locales_refer: locales
  
 components:
   - name: about
-  - name: aboutadd
   - name: contact

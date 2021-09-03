@@ -35,6 +35,7 @@ KEY_VERSION = 'l10n_version'
 KEY_SERVICE_URL = 'online_service_url'
 KEY_OFFLINE_URL = 'offline_resources_base_url'
 KEY_LOCAL_PATH = 'offline_resources_path'
+KEY_SOURCE_PATH = 'source_resources_path'
 KEY_LOAD_ON_STARTUP = 'load_on_startup'
 
 KEY_DEFAULT_LOCALE = 'default_locale'
@@ -236,12 +237,12 @@ class SingletonApi:
         self._product = cfg.product
         self._version = cfg.version
         self._addr = cfg.remote_url
-        self._pseudo = 'true' if cfg.pseudo else 'false'
 
-    def get_component_api(self, component, locale):
+    def get_component_api(self, component, locale, pseudo = False):
         head = self.VIP_PATH_HEAD.format(self._product, self._version)
         path = self.VIP_GET_COMPONENT.format(locale, component)
-        parameter = self.VIP_PARAMETER.format(self._pseudo)
+        pseudoText = 'true' if pseudo else 'false'
+        parameter = self.VIP_PARAMETER.format(pseudoText)
         return '{0}{1}{2}{3}'.format(self._addr, head, path, parameter)
 
     def get_localelist_api(self):
@@ -313,6 +314,7 @@ class SingletonComponent:
         self._rel = release_obj
         self._singletonLocale = singletonLocale
         self._locale = singletonLocale.get_original_locale()
+        self._localeUse = self._locale
         self._localeItem = self._rel.bykey.get_locale_item(self._locale, asSource)
         self._componentIndex = self._rel.bykey.get_component_index(component)
         self._component = component
@@ -322,6 +324,9 @@ class SingletonComponent:
         self._cache_path = None
         self._localHandled = False
         self._pseudo = self._rel.cfg.pseudo
+        if self._pseudo and self._localeItem.isSourceLocale:
+            self._pseudo = False
+            self._localeUse = 'latest'
 
         self.task = None if asSource else SingletonAccessRemoteTask(release_obj, self)
         self.is_local = True
@@ -339,9 +344,10 @@ class SingletonComponent:
     def set_messages(self, messages):
         for key in messages:
             text = messages[key]
-            if self.is_local and self._pseudo:
-                text = self._rel.add_pseudo(text)
-            self._rel.bykey.set_string(key, self, self._componentIndex, self._localeItem, text)
+            if self.is_local and self._pseudo and not self._localeItem.isSourceLocale:
+                text = self._rel.bykey.add_pseudo(text)
+            if not self.is_local or not self._pseudo or self._localeItem.isSourceLocale:
+                self._rel.bykey.set_string(key, self, self._componentIndex, self._localeItem, text)
         self._countOfMessages = len(messages)
 
     def get_messages(self):
@@ -363,7 +369,7 @@ class SingletonComponent:
 
         try:
             # get messages
-            addr = self._rel.api.get_component_api(self._component, self._locale)
+            addr = self._rel.api.get_component_api(self._component, self._localeUse, self._pseudo)
             headers = {}
             if self._etag:
                 headers[HEADER_REQUEST_ETAG] = self._etag
@@ -498,11 +504,19 @@ class SingletonUpdate:
             return scope
         return None
 
+    def _load_source_locale_bundle(self, component, locale, pathDefine, asSource):
+        map = self._load_one_local(component, locale, pathDefine)
+
+        useLocale = self._rel.get_use_locale(locale, asSource)
+        component_obj = useLocale.get_component(component, False)
+        component_obj.is_local = True
+        # follow above
+        component_obj.set_messages(map)
+
     def load_local_message(self, singletonLocale, component_name, asSource):
         if singletonLocale is None:
             return
         locale = singletonLocale.get_original_locale()
-        useLocale = self._rel.get_use_locale(locale, asSource)
         cfg = self._rel.cfg
         local_scope = self._rel.local_scope
 
@@ -533,13 +547,16 @@ class SingletonUpdate:
             combineKey = ClientUtil.get_combine_key(locale, component)
             if combineKey not in self._local_handled:
                 self._local_handled[combineKey] = True
-                path_define = locale_define.get(KEY_LOCAL_PATH)
-                map = self._load_one_local(component, locale, path_define)
 
-                component_obj = useLocale.get_component(component, False)
-                component_obj.is_local = True
-                # follow above
-                component_obj.set_messages(map)
+                path_define = locale_define.get(KEY_SOURCE_PATH)
+                path_define_local = locale_define.get(KEY_LOCAL_PATH)
+                if not asSource or path_define is None:
+                    path_define = path_define_local
+                    path_define_local = None
+
+                self._load_source_locale_bundle(component, locale, path_define, asSource)
+                if path_define_local:
+                    self._load_source_locale_bundle(component, locale, path_define_local, False)
 
     def _load_one_local(self, component, locale, path_define):
         cfg = self._rel.cfg
@@ -665,11 +682,6 @@ class SingletonReleaseForCache(SingletonReleaseBase):
                     pool[one] = useLocale
         return useLocale
 
-    def add_pseudo(self, message):
-        if message is not None:
-            return '{0}{1}{0}'.format('@@', message)
-        return None
-
     def _init_forcache(self):
         if self.bykey:
             return
@@ -701,13 +713,23 @@ class SingletonReleaseForCache(SingletonReleaseBase):
         component_obj.task.check()
         return component_obj
 
-    def _get_message(self, component, key, source, locale):
-        message = source if source is not None else key
+    def _check_with_key(self, message, sourceInCode, key):
+        if message is None:
+            if sourceInCode is not None:
+                if self.cfg.pseudo:
+                    message = self.bykey.add_pseudo(sourceInCode)
+                else:
+                    message = sourceInCode
+            else:
+                message = key
+        return message
+
+    def _get_message(self, component, key, locale):
         if not key or not locale:
-            return message
+            return None
 
         if not self.bykey._onlyByKey and not component:
-            return message
+            return None
 
         componentIndex = self.bykey.get_component_index(component)
         if componentIndex >= 0:
@@ -725,34 +747,36 @@ class SingletonReleaseForCache(SingletonReleaseBase):
                     self.useDefaultLocale.get_component(component, True)
 
         localeItem = self.bykey.get_locale_item(locale, False)
-        message = self.bykey.get_string(key, componentIndex, localeItem, True)
-        return message
+        found = self.bykey.get_string(key, componentIndex, localeItem, True)
+        return found
 
-    def _get_source_msg(self, component, key, sourceInCode):
+    def _get_source_msg(self, component, key):
         componentIndex = self.bykey.get_component_index(component)
         source = self.bykey.get_string(key, componentIndex, self.useSourceLocale.localeItem, False)
         if source is not None or not self.cfg.is_online_supported:
             return source
 
-        source = self._get_message(component, key, sourceInCode, self.cfg.source_locale)
+        if self.cfg.pseudo and source is not None and not is_source_locale:
+            source = self.bykey.add_pseudo(source)
+        source = self._get_message(component, key, self.cfg.source_locale)
         return source
 
     def _get_raw_msg(self, component, key, sourceInCode, locale, items):
-        if self.cfg.pseudo:
-            sourceInCode = self.add_pseudo(sourceInCode)
-
         useLocale = self.get_use_locale(locale, False)
         if useLocale.is_source_locale:
             if sourceInCode is not None:
                 return sourceInCode
-            source = self._get_source_msg(component, key, None)
-            return source
+            source = self._get_source_msg(component, key)
+            return self._check_with_key(source, None, key)
 
-        source = self._get_source_msg(component, key, sourceInCode)
-        if sourceInCode is not None and source is not None and source != sourceInCode:
+        source = self._get_source_msg(component, key)
+        if not self.cfg.pseudo and sourceInCode is not None and source is not None and source != sourceInCode:
             return sourceInCode
 
-        return self._get_message(component, key, source, locale)
+        if self.cfg.pseudo and source is not None:
+            source = self.bykey.add_pseudo(source)
+        msg = self._get_message(component, key, locale)
+        return self._check_with_key(msg, sourceInCode, key)
 
     def _format_by_array(self, text, array):
         return text.format(*array)

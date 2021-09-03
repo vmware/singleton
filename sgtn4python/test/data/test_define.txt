@@ -256,6 +256,39 @@ expect: 应用程序说明页。
 
 
 ---test---
+NAME: TestGetStringOffline
+COMMENT: test GetString()
+
+---data---
+type: GetString
+locale: en
+key: about.message
+expect: Your application description page.
+
+---data---
+type: GetString
+locale: en
+component: aboutadd
+key: about.description
+expect: Use this area to provide additional information add
+
+---data---
+type: GetString
+locale: de
+component: aboutadd
+key: about.message
+expect: Ihrer Bewerbungs Beschreibung Seite. add
+
+---data---
+type: GetString
+locale: de
+component: aboutadd
+key: about.description
+expect: Use this area to provide additional information add
+
+
+
+---test---
 NAME: TestGetStringTemp
 COMMENT: test GetString()
 
