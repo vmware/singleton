@@ -2,7 +2,8 @@ coverage:
   status:
     project:
       default:
-        target: auto
+        target: 60%
+        if_ci_failed: error
         flags:
           - vip-manager-i18n
           - vip-manager-l10n
