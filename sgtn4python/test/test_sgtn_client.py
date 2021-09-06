@@ -21,18 +21,22 @@ _plans_before = [
     {'outside': {'product': 'PYTHON2'}, 'config': 'config/sgtn_offline_only.yml'},
     {'outside': {'product': 'PYTHON3', 'load_on_startup': True}, 'config': 'config/sgtn_offline_only.yml'},
     {'outside': {'product': 'PYTHON4'}, 'config': 'config/sgtn_online_localsource_before.yml'},
-    {'outside': {'product': 'PYTHON5'}, 'config': 'config/sgtn_online_default.yml'},
-    {'outside': {'product': 'PYTHON6'}, 'config': 'config/sgtn_offline_default.yml'}
-    ]
-_plans_pseudo = [
-    {'outside': {'product': 'PYTHON10', 'pseudo': True}, 'config': 'config/sgtn_online_localsource.yml'}
+    {'outside': {'product': 'PYTHON5'}, 'config': 'config/sgtn_online_offline_before.yml'},
+    {'outside': {'product': 'PYTHON6'}, 'config': 'config/sgtn_online_default.yml'},
+    {'outside': {'product': 'PYTHON7'}, 'config': 'config/sgtn_offline_default.yml'}
     ]
 _plans = [
     {'outside': {'product': 'PYTHON11'}, 'config': 'config/sgtn_online_only.yml'},
     {'outside': {'product': 'PYTHON12'}, 'config': 'config/sgtn_offline_only.yml'},
     {'outside': {'product': 'PYTHON13'}, 'config': 'config/sgtn_online_localsource.yml'},
     {'outside': {'product': 'PYTHON14'}, 'config': 'config/sgtn_online_default.yml'},
-    {'outside': {'product': 'PYTHON15'}, 'config': 'config/sgtn_offline_default.yml'}
+    {'outside': {'product': 'PYTHON15'}, 'config': 'config/sgtn_offline_default.yml'},
+    {'outside': {'product': 'PYTHON16'}, 'config': 'config/sgtn_offline.yml'}
+    ]
+_plans_pseudo = [
+    {'outside': {'product': 'PYTHON21', 'pseudo': True}, 'config': 'config/sgtn_offline.yml'},
+    {'outside': {'product': 'PYTHON21', 'pseudo': True}, 'config': 'config/sgtn_online_only.yml'},
+    {'outside': {'product': 'PYTHON22', 'pseudo': True}, 'config': 'config/sgtn_online_localsource.yml'}
     ]
 VERSION = '1.0.0'
 COMPONENT = 'about'
@@ -84,8 +88,15 @@ class TestClient(unittest.TestCase):
 
         Util.run_test_data(self, trans, 'TestShowCache')
 
-        if cfg_info['pseudo'] and cfg_info['remote']:
-            Util.run_test_data(self, trans, 'TestGetStringPseudo')
+        if cfg_info['pseudo']:
+            if cfg_info['remote']:
+                Util.run_test_data(self, trans, 'TestGetStringPseudoOnline')
+                if cfg_info['local']:
+                    Util.run_test_data(self, trans, 'TestGetStringPseudoOnlineWithLocal')
+                else:
+                    Util.run_test_data(self, trans, 'TestGetStringPseudoOnlineOnly')
+            else:
+                Util.run_test_data(self, trans, 'TestGetStringPseudoOffline')
             Util.run_test_data(self, trans, 'TestShowCache')
             print('--- test --- end ---')
             return
@@ -95,6 +106,9 @@ class TestClient(unittest.TestCase):
         if Util.is_async_supported():
             Util.run_test_data(self, trans, 'TestGetString1A')
         Util.run_test_data(self, trans, 'TestGetString2')
+
+        if cfg_info['remote'] is None and cfg._config_data.get('components') is not None:
+            Util.run_test_data(self, trans, 'TestGetStringOffline')
 
         groupName = 'TestGetStringSameLocale'
         if cfg.get_info()['default_locale'] != cfg.get_info()['source_locale']:

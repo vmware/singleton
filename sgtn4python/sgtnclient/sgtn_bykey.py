@@ -100,11 +100,12 @@ class SingletonByKeyLocale(object):
         self._bykey = bykey
         self._locale = locale
         self._singletonLocale = SingletonLocaleUtil.get_singleton_locale(locale)
-        self._asSource = asSource
-        self._isSourceLocale = self._singletonLocale.compare(bykey.singletonLocaleSource)
 
         self._messages = SingletonByKeyTable(SingletonByKey.PAGE_MAX_SIZE)
         self._components = SingletonByKeyTable(SingletonByKey.COMPONENT_PAGE_MAX_SIZE)
+
+        self.asSource = asSource
+        self.isSourceLocale = self._singletonLocale.compare(bykey.singletonLocaleSource)
 
     def check_task(self, componentIndex, needCheck):
         if componentIndex >= 0 and needCheck:
@@ -161,6 +162,11 @@ class SingletonByKey(object):
         self._defaultRemote = None
 
         self._pseudo = cfg.pseudo
+
+    def add_pseudo(self, message):
+        if message is not None:
+            return '{0}{1}{0}'.format('@@', message)
+        return None
 
     def set_item(self, item, pageIndex, indexInPage):
         self._items.set_item(pageIndex, indexInPage, item)
@@ -229,9 +235,9 @@ class SingletonByKey(object):
                 message = self._sourceLocal.get_message(componentIndex, item.pageIndex, item.indexInPage)
             elif item.sourceStatus & 0x03 == 0x03:
                 message = self._sourceRemote.get_message(componentIndex, item.pageIndex, item.indexInPage)
+            if self._pseudo and message is not None:
+                message = self.add_pseudo(message)
 
-        if message is None:
-            message = key
         return message
 
     def _new_key_item(self, componentIndex):
@@ -266,12 +272,12 @@ class SingletonByKey(object):
             return False
 
         done = localeItem.set_message(message, componentObject, componentIndex, item.pageIndex, item.indexInPage)
-        if done and localeItem._isSourceLocale:
+        if done and localeItem.isSourceLocale:
             status = item.sourceStatus
-            if localeItem._asSource:
+            if localeItem.asSource:
                 self._sourceLocal = localeItem
                 status |= 0x04
-            elif localeItem._isSourceLocale:
+            elif localeItem.isSourceLocale:
                 self._sourceRemote = localeItem
                 status |= 0x02
 

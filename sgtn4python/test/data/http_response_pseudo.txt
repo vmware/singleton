@@ -94,7 +94,7 @@ COMMENT: get component list
 }
 
 ---api---
-[GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/locales/en/components/about?pseudo=true&machineTranslation=false&checkTranslationStatus=false
+[GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/locales/latest/components/about?pseudo=false&machineTranslation=false&checkTranslationStatus=false
 COMMENT: about & en
 ---data---
 {
@@ -112,9 +112,9 @@ COMMENT: about & en
         "machineTranslation":false,
         "component":"about",
         "messages":{
-            "about.message":"#@Your application description page.#@",
-            "about.title":"#@About Version {1} of Product {0}#@",
-            "about.description":"#@Use this area to provide additional information#@"
+            "about.message":"Your application description page.",
+            "about.title":"About Version {1} of Product {0}",
+            "about.description":"Use this area to provide additional information"
         },
         "locale":"en",
         "status":"",
@@ -214,7 +214,7 @@ COMMENT: about & zh-Hans
 ---header---
 
 ---api---
-[GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/locales/en/components/contact?pseudo=true&machineTranslation=false&checkTranslationStatus=false
+[GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/locales/latest/components/contact?pseudo=false&machineTranslation=false&checkTranslationStatus=false
 COMMENT: contact & en
 ---data---
 {

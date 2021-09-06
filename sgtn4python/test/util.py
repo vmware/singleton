@@ -62,7 +62,7 @@ class TestThread(Thread):
         found = self.trans.get_string(component, key, locale = locale, source = source)
         if found != expect:
             found = self.trans.get_string(component, key, locale = locale, source = source)
-            print('--- error --- %s' % self.ut.dict2string(item))
+            print('--- error --- %s' % Util.dict2string(item))
         self.ut.assertEqual(found, expect)
         if needPrint:
             logger.info('--- [%s]%s --- %s --- %s --- %s --- %s' % (
@@ -154,7 +154,7 @@ class Util(object):
     def load_response(files):
         response = {}
 
-        for i in range(20):
+        for i in range(30):
             product = 'PYTHON%s' % (i+1)
             version = '1.0.0'
 
