@@ -151,6 +151,11 @@ class Util(object):
         return json.dumps(dict, ensure_ascii = False, indent = 2)
 
     @staticmethod
+    def read_text_file(file_name):
+        text = FileUtil.read_text_file(file_name)
+        return text
+
+    @staticmethod
     def load_response(files):
         response = {}
 
@@ -159,7 +164,7 @@ class Util(object):
             version = '1.0.0'
 
             for one in files:
-                text = FileUtil.read_text_file(one)
+                text = Util.read_text_file(one)
                 text = text.replace('$PRODUCT', product).replace('$VERSION', version)
                 parts = re.split('---api---.*[\r|\n]*', text)
 
@@ -171,7 +176,7 @@ class Util(object):
     @staticmethod
     def load_test_data(files):
         for one in files:
-            text = FileUtil.read_text_file(one)
+            text = Util.read_text_file(one)
             _load_test_data(text)
 
     @staticmethod

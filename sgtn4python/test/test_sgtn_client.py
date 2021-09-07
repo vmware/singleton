@@ -16,28 +16,8 @@ from sgtn_util import FileUtil, NetUtil
 
 from util import Util, TestSimulate
 
-_plans_before = [
-    {'outside': {'product': 'PYTHON1', 'load_on_startup': True}, 'config': 'config/sgtn_online_only.yml'},
-    {'outside': {'product': 'PYTHON2'}, 'config': 'config/sgtn_offline_only.yml'},
-    {'outside': {'product': 'PYTHON3', 'load_on_startup': True}, 'config': 'config/sgtn_offline_only.yml'},
-    {'outside': {'product': 'PYTHON4'}, 'config': 'config/sgtn_online_localsource_before.yml'},
-    {'outside': {'product': 'PYTHON5'}, 'config': 'config/sgtn_online_offline_before.yml'},
-    {'outside': {'product': 'PYTHON6'}, 'config': 'config/sgtn_online_default.yml'},
-    {'outside': {'product': 'PYTHON7'}, 'config': 'config/sgtn_offline_default.yml'}
-    ]
-_plans = [
-    {'outside': {'product': 'PYTHON11'}, 'config': 'config/sgtn_online_only.yml'},
-    {'outside': {'product': 'PYTHON12'}, 'config': 'config/sgtn_offline_only.yml'},
-    {'outside': {'product': 'PYTHON13'}, 'config': 'config/sgtn_online_localsource.yml'},
-    {'outside': {'product': 'PYTHON14'}, 'config': 'config/sgtn_online_default.yml'},
-    {'outside': {'product': 'PYTHON15'}, 'config': 'config/sgtn_offline_default.yml'},
-    {'outside': {'product': 'PYTHON16'}, 'config': 'config/sgtn_offline.yml'}
-    ]
-_plans_pseudo = [
-    {'outside': {'product': 'PYTHON21', 'pseudo': True}, 'config': 'config/sgtn_offline.yml'},
-    {'outside': {'product': 'PYTHON21', 'pseudo': True}, 'config': 'config/sgtn_online_only.yml'},
-    {'outside': {'product': 'PYTHON22', 'pseudo': True}, 'config': 'config/sgtn_online_localsource.yml'}
-    ]
+_plans_pool = FileUtil.parse_yaml(Util.read_text_file('data/test_plan.yml'))
+
 VERSION = '1.0.0'
 COMPONENT = 'about'
 LOCALE = 'de'
@@ -145,7 +125,7 @@ class TestClient(unittest.TestCase):
         Util.load_test_data(['data/test_prepare.txt', 'data/test_define_before.txt'])
         Util.run_test_data(self, None, 'TestLoadBeforeService')
 
-        return _plans_before
+        return _plans_pool['plans_before']
 
     def prepare_pseudo(self):
         FileUtil.dir_map['../data/l10n'] = {'about', 'aboutadd', 'contact'}
@@ -153,7 +133,7 @@ class TestClient(unittest.TestCase):
         Util.load_test_data(['data/test_prepare.txt', 'data/test_define_pseudo.txt'])
         Util.run_test_data(self, None, 'TestLoadPseudoService')
 
-        return _plans_pseudo
+        return _plans_pool['plans_pseudo']
 
     def prepare(self):
         FileUtil.dir_map['../data/l10n'] = {'about', 'aboutadd', 'contact'}
@@ -161,7 +141,7 @@ class TestClient(unittest.TestCase):
         Util.load_test_data(['data/test_prepare.txt', 'data/test_define.txt'])
         Util.run_test_data(self, None, 'TestLoadService')
 
-        return _plans
+        return _plans_pool['plans']
 
     def run_plans(self, plans, index):
         Util.run_test_data(self, None, 'TestDelay1')
