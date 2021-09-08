@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %title Singleton Client API Samples
+  %body
+    %a{:href => ".."} Back
+    - if true
+      %h3= header
+      .display-hash
+        = CodeRay.scan(MultiJson.dump(display_hash.to_hash, :pretty => true), "json").div
+    - else
+      %h3 Error while #{header}
+      .display-hash
+        = CodeRay.scan(MultiJson.dump(display_hash.error, :pretty => true), "json").div
+    %a{:href => ".."} Back    
+        
