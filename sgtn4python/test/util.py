@@ -63,6 +63,7 @@ class TestThread(Thread):
         if found != expect:
             found = self.trans.get_string(component, key, locale = locale, source = source)
             print('--- error --- %s' % Util.dict2string(item))
+            Util.run_test_data(self, self.trans, 'TestShowCache')
         self.ut.assertEqual(found, expect)
         if needPrint:
             logger.info('--- [%s]%s --- %s --- %s --- %s --- %s' % (

@@ -64,6 +64,8 @@ LOCAL_TYPE_HTTP = 'http'
 RES_TYPE_PROPERTIES = '.properties'
 RES_TYPE_SGTN = '.json'
 
+_SOURCE_ALIAS = 'latest'
+
 
 class ClientUtil:
 
@@ -113,8 +115,8 @@ class ClientUtil:
         return props
 
     @classmethod
-    def get_combine_key(cls, locale, component):
-        return '{0}_!_{1}'.format(locale, component)
+    def get_combine_key(cls, locale, component, ty, value):
+        return '{0}_!_{1}_!_{2}_!_{3}'.format(locale, component, ty, value)
 
 
 class SingletonConfig(Config):
@@ -310,7 +312,7 @@ class SingletonAccessRemoteTask:
 
 class SingletonComponent:
 
-    def __init__(self, release_obj, singletonLocale, component, asSource):
+    def __init__(self, release_obj, singletonLocale, component, asSource, fromRemote):
         self._rel = release_obj
         self._singletonLocale = singletonLocale
         self._locale = singletonLocale.get_original_locale()
@@ -319,16 +321,20 @@ class SingletonComponent:
         self._componentIndex = self._rel.bykey.get_component_index(component)
         self._component = component
         self._asSource = asSource
+        self._fromRemote = fromRemote
         self._countOfMessages = 0
         self._etag = None
         self._cache_path = None
         self._localHandled = False
         self._pseudo = self._rel.cfg.pseudo
-        if self._pseudo and self._localeItem.isSourceLocale:
-            self._pseudo = False
-            self._localeUse = 'latest'
+        if self._localeItem.isSourceLocale:
+            if self._pseudo:
+                self._pseudo = False
+                self._localeUse = _SOURCE_ALIAS
+            if asSource and fromRemote:
+                self._localeUse = _SOURCE_ALIAS
 
-        self.task = None if asSource else SingletonAccessRemoteTask(release_obj, self)
+        self.task = SingletonAccessRemoteTask(release_obj, self) if fromRemote else None
         self.is_local = True
 
         if self.task and self._rel.cache_path:
@@ -413,7 +419,7 @@ class SingletonComponent:
 
         config = self._rel.get_config()
         if config.is_offline_supported:
-            self._rel.update.load_local_message(self._singletonLocale, self._component, self._asSource)
+            self._rel.update.load_local_message(self._singletonLocale, self._component, self._asSource, self._fromRemote)
 
 
 class SingletonUseLocale:
@@ -441,10 +447,10 @@ class SingletonUseLocale:
             if not relateLocale:
                 return None
 
-            component_obj = SingletonComponent(self._rel, relateLocale, component, self._asSource)
+            component_obj = SingletonComponent(self._rel, relateLocale, component, self._asSource, use_remote)
             self._components[component] = component_obj
 
-            if not self._is_online_supported:
+            if not self._is_online_supported or not use_remote:
                 component_obj.get_from_local()
 
         if self._is_online_supported and use_remote:
@@ -504,7 +510,12 @@ class SingletonUpdate:
             return scope
         return None
 
-    def _load_source_locale_bundle(self, component, locale, pathDefine, asSource):
+    def _load_locale_bundle(self, component, locale, pathDefine, asSource):
+        combineKey = ClientUtil.get_combine_key(locale, component, 'local', asSource)
+        if combineKey in self._local_handled:
+            return
+
+        self._local_handled[combineKey] = True
         map = self._load_one_local(component, locale, pathDefine)
 
         useLocale = self._rel.get_use_locale(locale, asSource)
@@ -513,7 +524,7 @@ class SingletonUpdate:
         # follow above
         component_obj.set_messages(map)
 
-    def load_local_message(self, singletonLocale, component_name, asSource):
+    def load_local_message(self, singletonLocale, component_name, asSource, is_direct):
         if singletonLocale is None:
             return
         locale = singletonLocale.get_original_locale()
@@ -533,6 +544,9 @@ class SingletonUpdate:
         if not local_scope.locale_list:
             local_scope.update_locale_list(cfg.components)
 
+        if not cfg.is_online_supported:
+            is_direct = True
+
         for component in local_scope.component_list:
             if component_name and component != component_name:
                 continue
@@ -544,7 +558,7 @@ class SingletonUpdate:
             if not locale_define:
                 continue
 
-            combineKey = ClientUtil.get_combine_key(locale, component)
+            combineKey = ClientUtil.get_combine_key(locale, component, 'direct', is_direct)
             if combineKey not in self._local_handled:
                 self._local_handled[combineKey] = True
 
@@ -554,9 +568,13 @@ class SingletonUpdate:
                     path_define = path_define_local
                     path_define_local = None
 
-                self._load_source_locale_bundle(component, locale, path_define, asSource)
+                self._load_locale_bundle(component, locale, path_define, asSource)
+
                 if path_define_local:
-                    self._load_source_locale_bundle(component, locale, path_define_local, False)
+                    if is_direct:
+                        self._load_locale_bundle(component, locale, path_define_local, False)
+                    else:
+                        self._rel.useSourceRemote.get_component(component, True)
 
     def _load_one_local(self, component, locale, path_define):
         cfg = self._rel.cfg
@@ -638,8 +656,6 @@ class SingletonReleaseBase:
         self.log('--- release --- {0} --- {1} --- {2} ---'.format(self.cfg.product, self.cfg.version, time.time()))
 
     def _get_scope(self):
-        self.api = SingletonApi(self)
-
         if self.cache_path:
             self.remote_scope.update_locale_list_from_path(self.cache_path)
             self.remote_scope.update_component_list_from_path(self.cache_path)
@@ -689,12 +705,14 @@ class SingletonReleaseForCache(SingletonReleaseBase):
         self.bykey = SingletonByKey(self.cfg, self._is_different)
 
         self.useSourceLocale = self.get_use_locale(self.cfg.source_locale, True)
-        self.load_local_bundle(self.cfg.source_locale, None)
+        self.useSourceRemote = self.get_use_locale(self.cfg.source_locale, False)
+        # follow above
+        if self.cfg.local_url:
+            self.load_local_bundle(self.cfg.source_locale, None)
 
         self.useDefaultLocale = None
         if self._is_different:
             self.useDefaultLocale = self.get_use_locale(self.cfg.default_locale, False)
-        self._useSourceRemote = self.get_use_locale(self.cfg.source_locale, False)
 
         self._get_scope()
 
@@ -733,10 +751,10 @@ class SingletonReleaseForCache(SingletonReleaseBase):
 
         componentIndex = self.bykey.get_component_index(component)
         if componentIndex >= 0:
-            combineKey = ClientUtil.get_combine_key(locale, component)
+            combineKey = ClientUtil.get_combine_key(locale, component, 'handle', 'bundle')
             if combineKey not in self.bundle_handled:
                 if self.cfg.is_online_supported:
-                    self._useSourceRemote.get_component(component, True)
+                    self.useSourceRemote.get_component(component, True)
 
                 useLocale = self.get_use_locale(locale, False)
                 componentObj = useLocale.get_component(component, True)
@@ -797,6 +815,8 @@ class SingletonReleaseInternal(SingletonReleaseForCache):
             return
 
         self.cfg = cfg
+        # follow above
+        self.api = SingletonApi(self)
 
         if cfg.log_path:
             log_file = os.path.join(cfg.log_path, '{0}_{1}.log'.format(self.cfg.product, self.cfg.version))
@@ -841,6 +861,11 @@ class SingletonReleaseInternal(SingletonReleaseForCache):
         self._check_load_on_startup(True)
         self.task.querying = False
 
+        # follow above
+        if self.cfg.local_url is None:
+            for component in self.remote_scope.component_list:
+                component_obj = self.useSourceLocale.get_component(component, True)
+
     def get_data_count(self):
         if not self.remote_scope.locale_list or not self.remote_scope.component_list:
             return 0
@@ -849,7 +874,7 @@ class SingletonReleaseInternal(SingletonReleaseForCache):
     def load_local_bundle(self, locale, component):
         singletonLocale = SingletonLocaleUtil.get_singleton_locale(locale)
         isSource = singletonLocale.compare(self.useSourceLocale.singletonLocale)
-        self.update.load_local_message(singletonLocale, component, isSource)
+        self.update.load_local_message(singletonLocale, component, isSource, False)
 
     def _check_load_on_startup(self, by_remote):
         if not self._is_loaded_on_startup and self.cfg.is_load_on_startup:

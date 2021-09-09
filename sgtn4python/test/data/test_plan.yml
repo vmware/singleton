@@ -29,6 +29,11 @@
     outside:
       product: PYTHON7
 
+  - config: config/sgtn_online_offline_before.yml
+    outside:
+      product: PYTHON8
+      online_service_url: http://127.0.0.1:1111
+
 
 plans:
   - config: config/sgtn_online_only.yml

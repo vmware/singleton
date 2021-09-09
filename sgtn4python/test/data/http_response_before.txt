@@ -40,6 +40,7 @@ COMMENT: get locale list
     "access-control-max-age":"3600"
 }
 
+
 ---api---
 [GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/localelist
 COMMENT: get locale list
@@ -55,6 +56,7 @@ COMMENT: get locale list
 }
 ---code---
 304
+
 
 ---api---
 [GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/componentlist
@@ -94,6 +96,54 @@ COMMENT: get component list
     "etag":"\"0799836e9042c47415bd4c15682b38303\"",
     "access-control-max-age":"3600"
 }
+
+
+---api---
+[GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/locales/latest/components/about?pseudo=false&machineTranslation=false&checkTranslationStatus=false
+COMMENT: about & latest
+---data---
+{
+    "response":{
+        "code":200,
+        "message":"OK",
+        "serverTime":""
+    },
+    "signature":"",
+    "data":{
+        "productName":"$PRODUCT",
+        "version":"$VERSION",
+        "dataOrigin":"bundle",
+        "pseudo":false,
+        "machineTranslation":false,
+        "component":"about",
+        "messages":{
+            "about.message":"Your application description page.",
+            "about.title":"About Version {1} of Product {0}",
+            "about.title2":"About Version {x} of Product {y}",
+            "about.description":"Use this area to provide additional information"
+        },
+        "locale":"latest",
+        "status":"",
+        "id":0
+    }
+}
+---header---
+{
+    "cache-control":"max-age=604800, public",
+    "set-cookie":"jsessionid=b5bd6834667c5c84ce156f9660baa9a9; path=/; secure; httponly",
+    "date":"fri, 03 jul 2020 15:36:03 gmt",
+    "access-control-allow-credentials":"true",
+    "server":"nginx/1.16.1",
+    "access-control-allow-methods":"get, post, put, delete, options",
+    "content-length":"395",
+    "access-control-allow-headers":"csp-auth-token,content-type,x-xmp-ui,authorization,x-vcloud-authorization,x-requested-with,xmlhttprequest,x-vco-privileges-version",
+    "content-type":"application/json;charset=utf-8",
+    "access-control-allow-origin":"",
+    "connection":"close",
+    "etag":"\"07b19491bb395096f880c31a56f1cb727\"",
+    "access-control-max-age":"3600"
+}
+
 
 ---api---
 [GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/locales/en/components/about?pseudo=false&machineTranslation=false&checkTranslationStatus=false
@@ -141,6 +191,7 @@ COMMENT: about & en
     "access-control-max-age":"3600"
 }
 
+
 ---api---
 [GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/locales/de/components/about?pseudo=false&machineTranslation=false&checkTranslationStatus=false
 COMMENT: about & de
@@ -187,6 +238,7 @@ COMMENT: about & de
     "access-control-max-age":"3600"
 }
 
+
 ---api---
 [GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/locales/zh-Hans/components/about?pseudo=false&machineTranslation=false&checkTranslationStatus=false
 COMMENT: about & zh-Hans
@@ -217,6 +269,56 @@ COMMENT: about & zh-Hans
     }
 }
 ---header---
+
+
+---api---
+[GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/locales/latest/components/contact?pseudo=false&machineTranslation=false&checkTranslationStatus=false
+COMMENT: contact & latest
+---data---
+{
+    "response":{
+        "code":200,
+        "message":"OK",
+        "serverTime":""
+    },
+    "signature":"",
+    "data":{
+        "productName":"$PRODUCT",
+        "version":"$VERSION",
+        "dataOrigin":"bundle",
+        "pseudo":false,
+        "machineTranslation":false,
+        "component":"contact",
+        "messages":{
+            "contact.title":"Contact",
+            "contact.message":"Your contact page.",
+            "contact.applicationname":"VIP Sample Web Application",
+            "contact.address":"One Microsoft Way<br/> Redmond, WA 98052 - 6399 <br/><abbr title = \"Phone\"> P:</abbr>425.555.0100",
+            "contact.support":"Support:",
+            "contact.marketing":"Marketing:"
+        },
+        "locale":"latest",
+        "status":"",
+        "id":0
+    }
+}
+---header---
+{
+    "cache-control":"max-age=604800, public",
+    "set-cookie":"jsessionid=b5bd6834667c5c84ce156f9660baa9a9; path=/; secure; httponly",
+    "date":"fri, 03 jul 2020 15:36:03 gmt",
+    "access-control-allow-credentials":"true",
+    "server":"nginx/1.16.1",
+    "access-control-allow-methods":"get, post, put, delete, options",
+    "content-length":"395",
+    "access-control-allow-headers":"csp-auth-token,content-type,x-xmp-ui,authorization,x-vcloud-authorization,x-requested-with,xmlhttprequest,x-vco-privileges-version",
+    "content-type":"application/json;charset=utf-8",
+    "access-control-allow-origin":"",
+    "connection":"close",
+    "etag":"\"07b19491bb395096f880c31a56f1cb727\"",
+    "access-control-max-age":"3600"
+}
+
 
 ---api---
 [GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/locales/en/components/contact?pseudo=false&machineTranslation=false&checkTranslationStatus=false
@@ -266,6 +368,7 @@ COMMENT: contact & en
     "access-control-max-age":"3600"
 }
 
+
 ---api---
 [GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/locales/de/components/contact?pseudo=false&machineTranslation=false&checkTranslationStatus=false
 COMMENT: contact & de
@@ -314,6 +417,7 @@ COMMENT: contact & de
     "access-control-max-age":"3600"
 }
 
+
 ---api---
 [GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/locales/zh-Hans/components/contact?pseudo=false&machineTranslation=false&checkTranslationStatus=false
 COMMENT: contact & zh-Hans
@@ -341,6 +445,100 @@ COMMENT: contact & zh-Hans
             "contact.title":"联系"
         },
         "locale":"zh-Hans",
+        "status":"",
+        "id":0
+    }
+}
+---header---
+{
+    "cache-control":"max-age=604800, public",
+    "set-cookie":"jsessionid=b5bd6834667c5c84ce156f9660baa9a9; path=/; secure; httponly",
+    "date":"fri, 03 jul 2020 15:36:03 gmt",
+    "access-control-allow-credentials":"true",
+    "server":"nginx/1.16.1",
+    "access-control-allow-methods":"get, post, put, delete, options",
+    "content-length":"395",
+    "access-control-allow-headers":"csp-auth-token,content-type,x-xmp-ui,authorization,x-vcloud-authorization,x-requested-with,xmlhttprequest,x-vco-privileges-version",
+    "content-type":"application/json;charset=utf-8",
+    "access-control-allow-origin":"",
+    "connection":"close",
+    "etag":"\"07b19491bb395096f880c31a56f1cb727\"",
+    "access-control-max-age":"3600"
+}
+
+
+---api---
+[GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/locales/latest/components/common?pseudo=false&machineTranslation=false&checkTranslationStatus=false
+COMMENT: latest & latest
+---data---
+{
+    "response":{
+        "code":200,
+        "message":"OK",
+        "serverTime":""
+    },
+    "signature":"",
+    "data":{
+        "productName":"$PRODUCT",
+        "version":"$VERSION",
+        "dataOrigin":"bundle",
+        "pseudo":false,
+        "machineTranslation":false,
+        "component":"common",
+        "messages":{
+            "common.about":"About latest",
+            "common.applicationname":"Sample Application latest",
+            "common.contact":"Contact latest",
+            "common.home":"Home latest"
+        },
+        "locale":"latest",
+        "status":"",
+        "id":0
+    }
+}
+---header---
+{
+    "cache-control":"max-age=604800, public",
+    "set-cookie":"jsessionid=b5bd6834667c5c84ce156f9660baa9a9; path=/; secure; httponly",
+    "date":"fri, 03 jul 2020 15:36:03 gmt",
+    "access-control-allow-credentials":"true",
+    "server":"nginx/1.16.1",
+    "access-control-allow-methods":"get, post, put, delete, options",
+    "content-length":"395",
+    "access-control-allow-headers":"csp-auth-token,content-type,x-xmp-ui,authorization,x-vcloud-authorization,x-requested-with,xmlhttprequest,x-vco-privileges-version",
+    "content-type":"application/json;charset=utf-8",
+    "access-control-allow-origin":"",
+    "connection":"close",
+    "etag":"\"07b19491bb395096f880c31a56f1cb727\"",
+    "access-control-max-age":"3600"
+}
+
+
+---api---
+[GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/locales/en/components/common?pseudo=false&machineTranslation=false&checkTranslationStatus=false
+COMMENT: common & en
+---data---
+{
+    "response":{
+        "code":200,
+        "message":"OK",
+        "serverTime":""
+    },
+    "signature":"",
+    "data":{
+        "productName":"$PRODUCT",
+        "version":"$VERSION",
+        "dataOrigin":"bundle",
+        "pseudo":false,
+        "machineTranslation":false,
+        "component":"common",
+        "messages":{
+            "common.about":"About",
+            "common.applicationname":"Sample Application",
+            "common.contact":"Contact",
+            "common.home":"Home"
+        },
+        "locale":"en",
         "status":"",
         "id":0
     }

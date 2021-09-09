@@ -15,7 +15,7 @@ cache_type: by_key
 
 # how many seconds should be waited to try again for accessing the remote service,
 # when there is no data cached
-try_delay: 10
+try_wait: 10
 
 # how many seconds should be waited to update cache data when there is old data existed
 cache_expired_time: 60
@@ -27,12 +27,14 @@ locales:
     offline_resources_path:
       - $COMPONENT/messages_en.properties
   - language_tag: de
-    offline_resources_path:
-      - $COMPONENT/messages$LC.json
+  - language_tag: zh-Hans
 
 component_template:
   locales_refer: locales
+  offline_resources_path:
+    - $COMPONENT/messages$LC.json
  
 components:
   - name: about
   - name: contact
+  - name: common

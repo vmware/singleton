@@ -50,17 +50,18 @@ class TestClient(unittest.TestCase):
         self.assertEqual(cfg.get_info()['version'], VERSION)
 
         start = time.time()
-        I18N.set_current_locale(LOCALE)
-        I18N.set_current_locale(LOCALE)
-        current = I18N.get_current_locale()
-        print('--- current --- %s ---' % current)
-        self.assertEqual(current, 'de')
 
         rel = I18N.get_release(plan['outside']['product'], VERSION)
 
         cfg = rel.get_config()
         cfg_info = cfg.get_info()
         self.show('config', 'info', Util.dict2string(cfg_info))
+
+        I18N.set_current_locale(LOCALE)
+        I18N.set_current_locale(LOCALE)
+        current = I18N.get_current_locale()
+        print('--- current --- %s ---' % current)
+        self.assertEqual(current, 'de')
 
         trans = rel.get_translation()
         self.check_locale(trans, 'ZH_cn')
@@ -78,7 +79,7 @@ class TestClient(unittest.TestCase):
             else:
                 Util.run_test_data(self, trans, 'TestGetStringPseudoOffline')
             Util.run_test_data(self, trans, 'TestShowCache')
-            print('--- test --- end ---')
+            print('--- test --- end ---\n\n\n\n')
             return
 
         Util.run_test_data(self, trans, 'TestGetString1')
