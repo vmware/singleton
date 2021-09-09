@@ -785,12 +785,11 @@ class SingletonReleaseForCache(SingletonReleaseBase):
             source = self._get_source_msg(component, key)
             return self._check_with_key(source, None, key)
 
-        source = self._get_source_msg(component, key)
-        if not self.cfg.pseudo and sourceInCode is not None and source is not None and source != sourceInCode:
-            return sourceInCode
+        if not self.cfg.pseudo:
+            source = self._get_source_msg(component, key)
+            if sourceInCode is not None and source is not None and source != sourceInCode:
+                return sourceInCode
 
-        if self.cfg.pseudo and source is not None:
-            source = self.bykey.add_pseudo(source)
         msg = self._get_message(component, key, locale)
         return self._check_with_key(msg, sourceInCode, key)
 
