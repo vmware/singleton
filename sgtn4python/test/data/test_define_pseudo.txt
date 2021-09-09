@@ -61,6 +61,13 @@ key: about.message
 source: message in code
 expect: @@message in code@@
 
+---data---
+type: GetString
+locale: de
+component: common
+key: common.about
+expect: @@About latest@@
+
 
 
 ---test---
