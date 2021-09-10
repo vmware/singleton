@@ -240,7 +240,7 @@ class SingletonApi:
         self._version = cfg.version
         self._addr = cfg.remote_url
 
-    def get_component_api(self, component, locale, pseudo = False):
+    def get_component_api(self, component, locale, pseudo=False):
         head = self.VIP_PATH_HEAD.format(self._product, self._version)
         path = self.VIP_GET_COMPONENT.format(locale, component)
         pseudoText = 'true' if pseudo else 'false'
@@ -774,8 +774,6 @@ class SingletonReleaseForCache(SingletonReleaseBase):
         if source is not None or not self.cfg.is_online_supported:
             return source
 
-        if self.cfg.pseudo and source is not None and not is_source_locale:
-            source = self.bykey.add_pseudo(source)
         source = self._get_message(component, key, self.cfg.source_locale)
         return source
 
@@ -787,12 +785,11 @@ class SingletonReleaseForCache(SingletonReleaseBase):
             source = self._get_source_msg(component, key)
             return self._check_with_key(source, None, key)
 
-        source = self._get_source_msg(component, key)
-        if not self.cfg.pseudo and sourceInCode is not None and source is not None and source != sourceInCode:
-            return sourceInCode
+        if not self.cfg.pseudo:
+            source = self._get_source_msg(component, key)
+            if sourceInCode is not None and source is not None and source != sourceInCode:
+                return sourceInCode
 
-        if self.cfg.pseudo and source is not None:
-            source = self.bykey.add_pseudo(source)
         msg = self._get_message(component, key, locale)
         return self._check_with_key(msg, sourceInCode, key)
 
