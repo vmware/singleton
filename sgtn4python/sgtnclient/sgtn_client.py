@@ -581,12 +581,13 @@ class SingletonUpdate:
         if not path_define:
             return None
         is_source_locale = cfg.source_locale == locale
+        paths = []
         for i, v in enumerate(path_define):
             locale_underline = '' if is_source_locale else '_' + locale
             path = v.replace('$COMPONENT', component).replace('$LOCALE', locale)
             path = path.replace('$LC', locale_underline)
-            path_define[i] = os.path.join(cfg.local_url, path)
-        return ClientUtil.read_resource_files(cfg.local_type, path_define)
+            paths.append(os.path.join(cfg.local_url, path))
+        return ClientUtil.read_resource_files(cfg.local_type, paths)
 
 
 class SingletonReleaseScopeInfo:
