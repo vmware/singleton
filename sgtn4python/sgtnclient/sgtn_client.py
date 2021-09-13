@@ -507,6 +507,8 @@ class SingletonUpdate:
             scope = dt[KEY_RESULT][KEY_DATA][key]
             if scope and self._rel.cache_path:
                 FileUtil.save_json_file(os.path.join(self._rel.cache_path, keep_name), scope)
+            if scope:
+                scope.sort()
             return scope
         return None
 
@@ -600,10 +602,17 @@ class SingletonReleaseScopeInfo:
         self.locale_list = FileUtil.read_json_file(os.path.join(cache_path, 'locale_list.json'))
 
     def update_component_list_from_path(self, cache_path):
-        self.component_list = FileUtil.read_json_file(os.path.join(cache_path, 'component_list.json'))
+        component_list = FileUtil.read_json_file(os.path.join(cache_path, 'component_list.json'))
+        component_list.sort()
+        self.component_list = component_list
 
     def update_component_list(self, components):
+        component_list = []
         for component in components:
+            component_list.append(component)
+        component_list.sort()
+
+        for component in component_list:
             if component not in self.component_list:
                 self.component_list.append(component)
 

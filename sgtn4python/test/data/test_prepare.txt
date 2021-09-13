@@ -4,7 +4,21 @@ COMMENT: Load Before Service
 
 ---data---
 type: LoadService
-name: http_response_before.txt
+files: http_response_before.txt
+start: 1
+stop: 10
+
+
+
+---test---
+NAME: TestLoadService
+COMMENT: Load Service
+
+---data---
+type: LoadService
+files: http_response.txt
+start: 11
+stop: 20
 
 
 
@@ -14,7 +28,9 @@ COMMENT: Load Pseudo Service
 
 ---data---
 type: LoadService
-name: http_response_pseudo.txt
+files: http_response_pseudo.txt
+start: 21
+stop: 30
 
 
 
@@ -51,16 +67,6 @@ format: json
 ---data---
 type: Delay
 time: 0.05
-
-
-
----test---
-NAME: TestLoadService
-COMMENT: Load Service
-
----data---
-type: LoadService
-name: http_response.txt
 
 
 

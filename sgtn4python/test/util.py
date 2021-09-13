@@ -81,7 +81,7 @@ class TestThread(Thread):
         elif one['type'] == 'SetLocale':
             I18N.set_current_locale(one['locale'])
         elif one['type'] == 'LoadService':
-            NetUtil.simulate.simulate_data = Util.load_response(['data/' + one['name']])
+            NetUtil.simulate.simulate_data = Util.load_response(one['files'], one['start'], one['stop'])
         elif one['type'] == 'Delay':
             delay = float(one['time'])
             time.sleep(delay)
@@ -157,15 +157,17 @@ class Util(object):
         return text
 
     @staticmethod
-    def load_response(files):
+    def load_response(files_text, start, stop):
+        files = files_text.split(',')
         response = {}
 
-        for i in range(30):
-            product = 'PYTHON%s' % (i+1)
+        scope = range(int(start), int(stop) + 1)
+        for i in scope:
+            product = 'PYTHON%s' % i
             version = '1.0.0'
 
             for one in files:
-                text = Util.read_text_file(one)
+                text = Util.read_text_file('data/' + one.strip())
                 text = text.replace('$PRODUCT', product).replace('$VERSION', version)
                 parts = re.split('---api---.*[\r|\n]*', text)
 

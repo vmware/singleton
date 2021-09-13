@@ -53,7 +53,7 @@ class TestClient(unittest.TestCase):
             sys._getframe().f_code.co_name, sys.version_info.major))
 
         NetUtil.simulate = TestSimulate(False)
-        NetUtil.simulate.simulate_data = Util.load_response(['data/http_response.txt'])
+        NetUtil.simulate.simulate_data = Util.load_response('http_response.txt', 1, 10)
 
         dt = FileUtil.read_datatree('config/sgtn_online_only.yml')
         online_url = dt['online_service_url']
