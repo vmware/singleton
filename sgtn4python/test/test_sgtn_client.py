@@ -118,7 +118,7 @@ class TestClient(unittest.TestCase):
 
         spent = time.time() - start
         time.sleep(1)
-        print('--- test --- end --- %s ---' % spent)
+        print('--- test --- end --- %s ---\n\n\n\n' % spent)
 
     def prepare_before(self):
         FileUtil.dir_map['../data/l10n'] = {'about', 'contact'}
@@ -165,8 +165,8 @@ class TestClient(unittest.TestCase):
         self.prepare_sub_path('singleton')
 
         self.run_plans(self.prepare_before(), None)
-        self.run_plans(self.prepare_pseudo(), None)
         self.run_plans(self.prepare(), None)
+        self.run_plans(self.prepare_pseudo(), None)
 
         if NetUtil.simulate and NetUtil.simulate.is_record_enabled():
             time.sleep(5)

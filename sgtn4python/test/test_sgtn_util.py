@@ -22,10 +22,10 @@ class TestClient(unittest.TestCase):
         print('\n--- unittest --- %s --- python %s\n' % (
             sys._getframe().f_code.co_name, sys.version_info.major))
 
-        text = Util.read_text_file('data/data_utf8.txt')
+        text = Util.read_text_file('data/textfile/data_utf8.txt')
         self.assertIn('cc=AA{x}BB{y}CC', text)
         
-        dt = FileUtil.read_json_file('data/data.json')
+        dt = FileUtil.read_json_file('data/textfile/data.json')
         self.assertEqual(dt['aa'], 'aaa')
         print('--- json --- %s ---' % dt)
 

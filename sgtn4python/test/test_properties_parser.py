@@ -34,13 +34,13 @@ class TestClient(unittest.TestCase):
         t = json.dumps(m, indent=2, ensure_ascii=False)
         print(t)
 
-        text = Util.read_text_file('data/data_utf8.txt')
+        text = Util.read_text_file('data/textfile/data_utf8.txt')
         m = p.parse(text)
 
         self.assertEqual(m['username'], u'Username用户名')
         print('--- map2 --- %s ---' % m)
 
-        text = Util.read_text_file('data/data_ascii.txt')
+        text = Util.read_text_file('data/textfile/data_ascii.txt')
         m = p.parse(text)
 
         self.assertEqual(m['username'], u'Username用户名')
