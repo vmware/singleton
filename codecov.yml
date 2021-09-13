@@ -1,0 +1,38 @@
+coverage:
+  status:
+    project:
+      default:
+        target: 60%
+        if_ci_failed: error
+        flags:
+          - vip-manager-i18n
+          - vip-manager-l10n
+          - vip-manager-lite-i18n
+      vip-manager-i18n:
+        target: auto
+        flags: 
+          - vip-manager-i18n
+      vip-manager-l10n:
+        target: auto
+        flags: 
+          - vip-manager-l10n
+      vip-manager-lite-i18n:
+        target: auto
+        flags: 
+          - vip-manager-lite-i18n
+    patch:
+      default:
+        target: 100%
+flags:
+  vip-manager-i18n:
+    paths:
+      - g11n-ws/vip-manager-i18n/src/main/java/com/vmware/vip/
+    carryforward: true
+  vip-manager-l10n:
+    paths:
+      - g11n-ws/vip-manager-l10n/src/main/java/com/vmware/l10n/
+    carryforward: true
+  vip-manager-lite-i18n:
+    paths:
+      - g11n-ws/vip-manager-lite-i18n/src/main/java/com/vmware/vip/
+    carryforward: true
