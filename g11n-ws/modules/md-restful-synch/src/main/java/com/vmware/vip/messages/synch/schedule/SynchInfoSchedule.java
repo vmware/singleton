@@ -18,7 +18,6 @@ import com.vmware.vip.api.rest.l10n.L10NAPIV1;
 import com.vmware.vip.common.cache.CacheName;
 import com.vmware.vip.common.cache.TranslationCache3;
 import com.vmware.vip.common.exceptions.VIPCacheException;
-import com.vmware.vip.common.i18n.dto.UpdateTranslationDTO.UpdateTranslationDataDTO.TranslationDTO;
 import com.vmware.vip.core.messages.service.singlecomponent.ComponentMessagesDTO;
 import com.vmware.vip.messages.synch.model.UpdateSyncInfoResp;
 import com.vmware.vip.messages.synch.utils.HttpsUtils;
@@ -101,17 +100,6 @@ public class SynchInfoSchedule {
 				}
 			}
 			
-			
-			List<String> multList = TranslationCache3.getKeys(CacheName.MULTCOMPONENT, TranslationDTO.class);
-			for(String mulkey: multList) {
-				if(mulkey.contains(resp.getUpdateCacheProductName()) && mulkey.contains(resp.getUpdateCacheProductVersion())) {
-					TranslationCache3.deleteCachedObject(CacheName.MULTCOMPONENT, mulkey, TranslationDTO.class);
-				}
-			}
-			
-			
-			
-			
 		} catch (VIPCacheException e) {
 			// TODO Auto-generated catch block
 			logger.error(e.getMessage(), e);
@@ -122,7 +110,6 @@ public class SynchInfoSchedule {
 		try {
 			logger.info("sync All product cache key");
 			TranslationCache3.removeAll(CacheName.ONECOMPONENT, ComponentMessagesDTO.class);
-			TranslationCache3.removeAll(CacheName.MULTCOMPONENT, TranslationDTO.class);
 		} catch (VIPCacheException e) {
 			// TODO Auto-generated catch block
 			logger.error(e.getMessage(), e);
