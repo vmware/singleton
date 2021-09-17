@@ -5,40 +5,26 @@
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+
 namespace UnitTestSingleton
 {
+
     [TestClass]
-    public class TestClient03 : AbsTestClient
+    public class TestClient03: AbsPlanTest
     {
         public override string[] GetResStrings()
         {
-            string[] strings = { "res.Singleton3", "sgtn_offline_disk_properties",
-                "product: CSHARP3" + "\n" + "load_on_startup: true"};
+            string[] strings = { "res.SingletonProperties", "sgtn_offline_disk_properties", "http_response.txt", "test_define.txt",
+                "product: CSHARP3" };
             return strings;
         }
 
         [TestMethod]
-        public void TestConfig3()
+        public void Test3()
         {
-            DoTestConfig();
-        }
-
-        [TestMethod]
-        public void TestRelease3()
-        {
-            DoTestRelease();
-        }
-
-        [TestMethod]
-        public void TestTranslation3()
-        {
-            DoTestTranslation();
-        }
-
-        [TestMethod]
-        public void TestMessages3()
-        {
-            DoTestMessages();
+            DoCommonTestConfig(access);
+            DoCommonTestTranslation(access);
+            DoCommonTestMessages(access);
         }
     }
 }

@@ -4,43 +4,38 @@
  */
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Threading;
+using SingletonClient;
+
 
 namespace UnitTestSingleton
 {
+
     [TestClass]
-    public class TestClient01 : AbsTestClient
+    public class TestClient01: AbsPlanTest
     {
         public override string[] GetResStrings()
         {
-            string[] strings = { "res.Singleton1", "sgtn_online_localsource",
-                "product: CSHARP1" + "\n" + "load_on_startup: true"};
+            string[] strings = { "res.SingletonOther", "sgtn_online_testing", "http_response.txt", null,
+                "product: CSHARP1" };
             return strings;
         }
 
         [TestMethod]
-        public void TestConfig1()
+        public void Test1()
         {
-            DoTestConfig();
-        }
+            string text = Translation.GetString("de", Translation.CreateSource("about", "about.message"));
+            IReleaseMessages releaseMessages = access.Release.GetMessages();
+            string message = releaseMessages.GetLocaleMessages("de").GetString("about", "about.message");
+            Assert.AreEqual(text, message);
 
-        [TestMethod]
-        public void TestRelease1()
-        {
-            DoTestRelease();
-        }
+            message = releaseMessages.GetLocaleMessages("zh-Hans").GetString("about", "about.message");
+            Assert.AreEqual(null, message);
 
-        [TestMethod]
-        public void TestTranslation1()
-        {
-            DoTestTranslation();
-        }
-
-        [TestMethod]
-        public void TestMessages1()
-        {
-            DoTestMessages();
+            access.PrepareData();
+            message = releaseMessages.GetLocaleMessages("zh-Hans").GetString("about", "about.message");
+            text = Translation.GetString("zh-Hans", Translation.CreateSource("about", "about.message"));
+            Assert.AreEqual(false, string.IsNullOrEmpty(text));
+            Assert.AreEqual(text, message);
         }
     }
 }

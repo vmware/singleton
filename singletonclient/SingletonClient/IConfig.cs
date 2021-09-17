@@ -165,6 +165,7 @@ namespace SingletonClient
         public const string KeyLocalesRefer = "locales_refer";
         public const string KeyLanguage = "language_tag";
         public const string KeyOfflinePath = "offline_resources_path";  // path[, format, storetype]
+        public const string KeySourcePath = "source_resources_path";  // path[, format, storetype]
 
         // Resource information used in KeyDefaultResourceFormat, KeyOfflinePath
         public const string FormatProperties = "properties";

@@ -1,0 +1,129 @@
+﻿---test---
+NAME: TestLoadBeforeService
+COMMENT: Load Before Service
+
+---data---
+type: LoadService
+files: http_response_before.txt
+start: 1
+stop: 10
+
+
+
+---test---
+NAME: TestLoadService
+COMMENT: Load Service
+
+---data---
+type: LoadService
+files: http_response.txt
+start: 11
+stop: 20
+
+
+
+---test---
+NAME: TestLoadPseudoService
+COMMENT: Load Pseudo Service
+
+---data---
+type: LoadService
+files: http_response_pseudo.txt
+start: 21
+stop: 30
+
+
+
+---test---
+NAME: TestShowCache
+COMMENT: Show content of cache
+
+---data---
+type: Delay
+time: 0.05
+
+---data---
+type: ShowCache
+locale: en-US
+as_source: true
+format: json
+
+---data---
+type: ShowCache
+locale: en-US
+as_source: false
+format: json
+
+---data---
+type: ShowCache
+locale: de
+format: json
+
+---data---
+type: ShowCache
+locale: zh-Hans
+format: json
+
+---data---
+type: Delay
+time: 0.05
+
+
+
+---test---
+NAME: TestDelay1
+COMMENT: Delay
+
+---data---
+type: Delay
+time: 1
+
+
+
+---test---
+NAME: TestDelay5
+COMMENT: Delay
+
+---data---
+type: Delay
+time: 5
+
+
+
+---test---
+NAME: TestDelay10
+COMMENT: Delay
+
+---data---
+type: Delay
+time: 10
+
+
+
+---test---
+NAME: TestDelay20
+COMMENT: Delay
+
+---data---
+type: Delay
+time: 20
+
+
+
+---test---
+NAME: TestDelay40
+COMMENT: Delay
+
+---data---
+type: Delay
+time: 40
+
+
+
+---test---
+NAME: TestDelay60
+COMMENT: Delay
+
+---data---
+type: Delay
+time: 60

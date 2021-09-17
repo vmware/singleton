@@ -79,16 +79,6 @@ namespace SingletonClient.Implementation
                 return null;
             }
 
-            if (source != null && _config.IsPseudo())
-            {
-                source = string.Format("{0}{1}{0}", "@@", source);
-            }
-
-            if (source == null && _byKey == null)
-            {
-                source = GetSourceMessage(component, key);
-            }
-
             ISource src = new SingletonSource(component, key, source, comment);
             return src;
         }

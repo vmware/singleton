@@ -5,7 +5,7 @@ desc: $PRODUCT is a testing product.
 
 online_service_url: http://127.0.0.1:8090
 
-offline_resources_base_url: res.source2
+offline_resources_base_url: res.source1
 default_resource_format: resx, internal
 
 #prod_mode: false
@@ -26,12 +26,10 @@ logger_type: default
 # optional, log level
 log_level: Debug
 
-pseudo: true
 
 component_template: # as default
   locales: # as default
     - language_tag: en-US
-    - language_tag: de
   offline_resources_path:
     - $COMPONENT
 
@@ -39,6 +37,5 @@ components:
   - name: about
     template: component_template # default
 
-  - name: aboutadd
   - name: index
   - name: contact

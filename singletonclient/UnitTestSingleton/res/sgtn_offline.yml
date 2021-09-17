@@ -1,0 +1,28 @@
+﻿
+product: $PRODUCT
+l10n_version: 1.0.0
+
+offline_resources_base_url: res.source2
+default_resource_format: resx, internal
+
+cache_type: by_key
+
+
+locales:
+  - language_tag: en-US
+    source_resources_path:
+      - $COMPONENT
+    offline_resources_path:
+      - $COMPONENT__en
+  - language_tag: de
+  - language_tag: zh-CN
+
+component_template:
+  locales_refer: locales
+  offline_resources_path:
+    - $COMPONENT
+ 
+components:
+  - name: about
+  - name: aboutadd
+  - name: contact

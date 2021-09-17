@@ -119,7 +119,7 @@ namespace SingletonClient.Implementation.Release
                     return null;
                 }
 
-                obj = new SingletonComponent(_release, relateLocale, component, _asSource);
+                obj = new SingletonComponent(_release, relateLocale, component, _asSource, useRemote);
 
                 if (!_isOnlineSupported)
                 {

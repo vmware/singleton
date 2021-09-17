@@ -51,6 +51,16 @@ namespace SingletonClient.Implementation
             return new List<string>();
         }
 
+        public static bool Equals(string first, string second)
+        {
+            if (first == null)
+            {
+                return second == null;
+            }
+
+            return first.Equals(second, StringComparison.OrdinalIgnoreCase);
+        }
+
         /// <summary>
         /// Read resource bytes from assembly
         /// </summary>
@@ -323,17 +333,22 @@ namespace SingletonClient.Implementation
         /// </summary>
         /// <param name="locale"></param>
         /// <param name="component"></param>
-        public static string GetCombineKey(string locale, string component)
+        public static string GetCombineKey(string locale, string component, string type, object value)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(locale);
-            sb.Append("_!_");
-            if (!string.IsNullOrEmpty(component))
+            if (string.IsNullOrEmpty(component))
             {
-                sb.Append(component);
+                component = "";
             }
-            return sb.ToString();
+            return string.Format("{0}_!_{1}_!_{2}_!_{3}", locale, component, type, value);
+        }
+
+        public static string AddPseudo(string message)
+        {
+            if (message != null)
+            {
+                return string.Format("{0}{1}{0}", "@@", message);
+            }
+            return null;
         }
     }
 }
-

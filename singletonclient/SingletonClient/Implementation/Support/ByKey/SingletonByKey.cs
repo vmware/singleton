@@ -214,21 +214,26 @@ namespace SingletonClient.Implementation.Support.ByKey
 
             if (message == null)
             {
+                string text;
                 if ((item.SourceStatus & 0x04) == 0x04)
                 {
-                    if (_sourceLocal.GetMessage(componentIndex, item.PageIndex, item.IndexInPage, out message))
+                    if (_sourceLocal.GetMessage(componentIndex, item.PageIndex, item.IndexInPage, out text))
                     {
-                        return message;
+                        message = text;
                     }
                 }
                 else if ((item.SourceStatus & 0x02) == 0x02)
                 {
                     bool success = _sourceRemote.GetMessage(
-                        componentIndex, item.PageIndex, item.IndexInPage, out message);
+                        componentIndex, item.PageIndex, item.IndexInPage, out text);
                     if (success)
                     {
-                        return message;
+                        message = text;
                     }
+                }
+                if (_isPseudo && message != null)
+                {
+                    message = SingletonUtil.AddPseudo(message);
                 }
             }
 

@@ -51,22 +51,48 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseIo.cs" />
-    <Compile Include="res\Singleton1.Designer.cs">
+    <Compile Include="BaseCommonTest.cs" />
+    <Compile Include="CaseClient\TestClient03.cs" />
+    <Compile Include="CaseClient\TestClient02.cs" />
+    <Compile Include="CaseClient\TestClient01.cs" />
+    <Compile Include="AbsPlanTest.cs" />
+    <Compile Include="res\source2\aboutadd__en.Designer.cs">
+      <DependentUpon>aboutadd__en.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Singleton1.resx</DependentUpon>
     </Compile>
-    <Compile Include="res\Singleton2.Designer.cs">
-      <DependentUpon>Singleton2.resx</DependentUpon>
+    <Compile Include="res\source2\about__en.Designer.cs">
+      <DependentUpon>about__en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="res\source2\contact__en.Designer.cs">
+      <DependentUpon>contact__en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="TextUtil.cs" />
+    <Compile Include="BaseWork.cs" />
+    <Compile Include="WorkThread.cs" />
+    <Compile Include="AccessSingleton.cs" />
+    <Compile Include="BaseTest.cs" />
+    <Compile Include="BaseIo.cs" />
+    <Compile Include="CaseClient\TestClient.cs" />
+    <Compile Include="res\SingletonConfig.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SingletonConfig.resx</DependentUpon>
+    </Compile>
+    <Compile Include="res\SingletonOther.Designer.cs">
+      <DependentUpon>SingletonOther.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="res\Singleton3.Designer.cs">
+    <Compile Include="res\SingletonProperties.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Singleton3.resx</DependentUpon>
+      <DependentUpon>SingletonProperties.resx</DependentUpon>
     </Compile>
     <Compile Include="res\source1\aboutadd.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -148,51 +174,50 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="CaseClient\TestClient01.cs" />
-    <Compile Include="CaseClient\TestClient18.cs" />
-    <Compile Include="CaseClient\TestClient10.cs" />
-    <Compile Include="CaseClient\TestClient09.cs" />
-    <Compile Include="CaseClient\TestClient08.cs" />
-    <Compile Include="CaseClient\TestClient07.cs" />
-    <Compile Include="CaseClient\TestClient06.cs" />
-    <Compile Include="CaseClient\TestClient05.cs" />
-    <Compile Include="CaseClient\TestClient04.cs" />
-    <Compile Include="testdata\TestData.Designer.cs">
+    <Compile Include="CaseSupport\TestUtil.cs" />
+    <Compile Include="CaseSupport\TestSupport.cs" />
+    <Compile Include="CaseSupport\TestBaseIo.cs" />
+    <Compile Include="testdata\res\TestData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TestData.resx</DependentUpon>
     </Compile>
-    <Compile Include="CaseSupport\TestUtil.cs" />
-    <Compile Include="CaseClient\TestClient03.cs" />
-    <Compile Include="AbsTestBase.cs" />
-    <Compile Include="CaseClient\TestClient02.cs" />
-    <Compile Include="CaseSupport\TestSupport.cs" />
-    <Compile Include="CaseSupport\TestBaseIo.cs" />
-    <Compile Include="AbsTestClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="res\sgtn_offline_disk_resx.yml" />
+    <None Include="res\sgtn_offline_default.yml" />
+    <None Include="res\sgtn_offline.yml" />
+    <None Include="res\sgtn_offline_only.yml" />
     <None Include="res\sgtn_offline_disk_properties.yml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="res\Singleton3.resx">
+    <EmbeddedResource Include="res\SingletonProperties.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Singleton3.Designer.cs</LastGenOutput>
+      <LastGenOutput>SingletonProperties.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="res\Singleton2.resx">
+    <EmbeddedResource Include="res\SingletonOther.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Singleton2.Designer.cs</LastGenOutput>
+      <LastGenOutput>SingletonOther.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="res\Singleton1.resx">
+    <EmbeddedResource Include="res\SingletonConfig.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
-      <LastGenOutput>Singleton1.Designer.cs</LastGenOutput>
+      <LastGenOutput>SingletonConfig.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="res\source1\aboutadd.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>aboutadd.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="res\source2\aboutadd__en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>aboutadd__en.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="res\source2\about__en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>about__en.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="res\source2\aboutadd.zh-CN.resx">
@@ -229,6 +254,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>common.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="res\source2\contact__en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>contact__en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="res\source2\contact.zh-CN.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>contact.zh-CN.Designer.cs</LastGenOutput>
@@ -262,7 +291,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>index.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="testdata\TestData.resx">
+    <EmbeddedResource Include="testdata\res\TestData.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>TestData.Designer.cs</LastGenOutput>
@@ -270,9 +299,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\sgtn_online_different.yml" />
-    <None Include="res\sgtn_online_pseudo.yml" />
+    <None Include="res\sgtn_online_offline_before.yml" />
+    <None Include="res\sgtn_online_localsource_before.yml" />
+    <None Include="res\sgtn_online_default.yml" />
     <None Include="res\sgtn_online_offline.yml" />
-    <None Include="res\sgtn_debug.yml" />
     <None Include="res\sgtn_online_only.yml" />
     <None Include="res\sgtn_online_testing.yml" />
     <None Include="res\sgtn_online_localsource.yml" />
@@ -284,10 +314,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="testdata\http_response_before.txt" />
     <Content Include="testdata\http_response_pseudo.txt" />
+    <Content Include="testdata\test_prepare.txt" />
+    <None Include="testdata\test_plan.yml" />
     <Content Include="testdata\test_define2.txt" />
     <Content Include="testdata\test_define.txt" />
     <Content Include="testdata\http_response.txt" />
+    <Content Include="testdata\test_define_before.txt" />
     <Content Include="testdata\test_define_pseudo.txt" />
     <None Include="res\source3\aboutadd.properties" />
     <None Include="res\source3\about.properties" />
@@ -300,8 +334,9 @@
     <None Include="res\source3\contact_de.properties" />
     <None Include="res\source3\contact.properties" />
     <None Include="res\source3\index.properties" />
-    <None Include="testdata\TestSource.properties" />
+    <None Include="testdata\res\TestSource.properties" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

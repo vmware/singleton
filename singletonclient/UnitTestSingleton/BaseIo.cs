@@ -6,14 +6,15 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SingletonClient;
+using SingletonClient.Implementation;
 using SingletonClient.Implementation.Support;
 using System;
 using System.Collections;
-using System.Globalization;
 using System.Reflection;
 using System.Resources;
 using System.Text.RegularExpressions;
 using System.Threading;
+
 
 namespace UnitTestSingleton
 {
@@ -25,46 +26,37 @@ namespace UnitTestSingleton
             return _instance;
         }
 
-        private ResourceManager resourceManager;
-        private Hashtable responseData = new Hashtable();
-        private Hashtable testData = new Hashtable();
+        private readonly ResourceManager resourceManager;
+        private readonly Hashtable responseData = new Hashtable();
 
         private string lastConsoleText;
 
         public BaseIo()
         {
             Assembly assembly = typeof(BaseIo).Assembly;
-            resourceManager = new ResourceManager("UnitTestSingleton.testdata.TestData", assembly);
-
-            CultureInfo cultureInfo = new System.Globalization.CultureInfo("en-US");
-            ResourceSet resourceSet = resourceManager.GetResourceSet(cultureInfo, true, true);
+            resourceManager = new ResourceManager("UnitTestSingleton.testdata.res.TestData", assembly);
 
             I18N.GetExtension().RegisterAccessService(this, "test");
-
-            string raw = (string)resourceManager.GetObject("http_response");
-            string rawPseudo = (string)resourceManager.GetObject("http_response_pseudo");
-
-            for (int k=1; k<20; k++)
-            {
-                string product = "CSHARP" + k;
-                string response = k >= 18 ? rawPseudo : raw;
-                string text = response.Replace("$PRODUCT", product).Replace("$VERSION", "1.0.0");
-                string[] parts = Regex.Split(text, "---api---.*[\r|\n]*");
-                for (int i = 0; i < parts.Length; i++)
-                {
-                    if (parts[i].Trim().Length > 5)
-                    {
-                        this.LoadResponse(parts[i]);
-                    }
-                }
-            }
-
-            PrepareTestData("test_define");
-            PrepareTestData("test_define_pseudo");
-            PrepareTestData("test_define2");
         }
 
-        private void LoadResponse(string apiData)
+        public string LoadResourceText(string name)
+        {
+            string str;
+            object obj = resourceManager.GetObject(name);
+            string type = obj.GetType().ToString();
+            if (type.Equals("System.Byte[]"))
+            {
+                str = SingletonUtil.ConvertToText((System.Byte[])obj);
+            }
+            else
+            {
+                str = (string)obj;
+            }
+
+            return str.Trim();
+        }
+
+        public void LoadResponse(string apiData)
         {
             string[] parts = Regex.Split(apiData, "---data---.*[\r|\n]*");
             string[] segs = Regex.Split(parts[0], "---header---.*[\r|\n]*");
@@ -94,10 +86,25 @@ namespace UnitTestSingleton
                     response["code"] = Convert.ToInt32(pieces[1]);
                 }
             }
-            responseData.Add(key, response);
+            responseData[key] = response;
         }
 
-        private void PrepareTestData(string resName)
+        public void LoadOneResponse(string fileName, string product, string version)
+        {
+            string response = (string)LoadResourceText(fileName.Substring(0, fileName.Length - 4));
+
+            string text = response.Replace("$PRODUCT", product).Replace("$VERSION", version);
+            string[] parts = Regex.Split(text, "---api---.*[\r|\n]*");
+            for (int i = 0; i < parts.Length; i++)
+            {
+                if (parts[i].Trim().Length > 5)
+                {
+                    LoadResponse(parts[i]);
+                }
+            }
+        }
+
+        public void PrepareTestData(Hashtable testData, string resName)
         {
             string raw = (string)resourceManager.GetObject(resName);
             string[] parts = Regex.Split(raw, "---test---.*[\r|\n]*");
@@ -111,7 +118,7 @@ namespace UnitTestSingleton
                 SingletonParserProperties p = new SingletonParserProperties();
                 Hashtable ht = p.Parse(segs[0]);
                 string name = (string)ht["NAME"];
-                testData.Add(name, ht);
+                testData[name] = ht;
 
                 for(int k=1; k<segs.Length; k++)
                 {
@@ -138,28 +145,14 @@ namespace UnitTestSingleton
             }
         }
 
-        public Hashtable GetTestData(string name)
+        public string GetLastConsoleText()
         {
-            return (Hashtable)testData[name];
+            return lastConsoleText;
         }
 
-        public string GetTestResource(string name)
-        {
-            string str = null;
-            object obj = resourceManager.GetObject(name);
-            string type = obj.GetType().ToString();
-            if (type.Equals("System.Byte[]"))
-            {
-                str = System.Text.Encoding.UTF8.GetString((System.Byte[])obj);
-            }
-            else
-            {
-                str = (string)obj;
-            }
-
-            return str.Trim();
-        }
-
+        /// <summary>
+        /// ISingletonBaseIo
+        /// </summary>
         public void ConsoleWriteLine(string text)
         {
             lastConsoleText = text;
@@ -167,11 +160,24 @@ namespace UnitTestSingleton
         }
 
         /// <summary>
-        /// ISingletonBaseIo
+        /// IAccessService
         /// </summary>
-        public string GetLastConsoleText()
+        public string HttpGet(string url, Hashtable headers, int timeout, out string status, ILog logger = null)
         {
-            return lastConsoleText;
+            Thread.Sleep(100);
+
+            string text = this.GetResponse("[GET]" + url, headers);
+            status = "";
+            return text;
+        }
+
+        /// <summary>
+        /// IAccessService
+        /// </summary>
+        public string HttpPost(string url, string text, Hashtable headers, int timeout, out string status, ILog logger = null)
+        {
+            status = "";
+            return this.GetResponse("[POST]" + url, headers);
         }
 
         private string GetResponse(string key, Hashtable headers)
@@ -184,26 +190,6 @@ namespace UnitTestSingleton
                 text = (string)response["body"];
             }
             return text;
-        }
-
-        /// <summary>
-        /// IAccessService
-        /// </summary>
-        public string HttpGet(string url, Hashtable headers, int timeout, out string status, ILog logger = null)
-        {
-            Thread.Sleep(100);
-
-            status = "";
-            return this.GetResponse("[GET]" + url, headers);
-        }
-
-        /// <summary>
-        /// IAccessService
-        /// </summary>
-        public string HttpPost(string url, string text, Hashtable headers, int timeout, out string status, ILog logger = null)
-        {
-            status = "";
-            return this.GetResponse("[POST]" + url, headers);
         }
     }
 }
