@@ -6,6 +6,7 @@
 
 
 import urllib.request as httplib
+import sys
 
 
 class SgtnPyBase:
@@ -21,3 +22,33 @@ class SgtnPyBase:
     @staticmethod
     def open_file(file_name, mode):
         return open(file_name, mode, encoding='utf-8')
+
+    @staticmethod
+    def set_current_locale(locale):
+        current = sys._getframe().f_back.f_back
+        while current is not None:
+            if not hasattr(current, 'f_locals'):
+                break
+
+            locals = current.f_locals
+            locals['_singleton_locale_'] = locale
+
+            if not hasattr(current, 'f_back'):
+                break
+            current = current.f_back
+
+    @staticmethod
+    def get_current_locale():
+        current = sys._getframe().f_back.f_back
+        while current is not None:
+            if not hasattr(current, 'f_locals'):
+                break
+
+            locals = current.f_locals
+            if '_singleton_locale_' in locals:
+                return locals['_singleton_locale_']
+
+            if not hasattr(current, 'f_back'):
+                break
+            current = current.f_back
+        return None
