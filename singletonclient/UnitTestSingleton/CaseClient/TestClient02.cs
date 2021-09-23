@@ -4,41 +4,30 @@
  */
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SingletonClient;
+
 
 namespace UnitTestSingleton
 {
+
     [TestClass]
-    public class TestClient02 : AbsTestClient
+    public class TestClient02: AbsPlanTest
     {
         public override string[] GetResStrings()
         {
-            string[] strings = { "res.Singleton2", "sgtn_offline_disk_resx",
-                "product: CSHARP2" + "\n" + "load_on_startup: true"};
+            string[] strings = { "res.SingletonOther", "sgtn_online_offline", "http_response.txt", "test_define.txt",
+                "product: CSHARP2" };
             return strings;
         }
 
         [TestMethod]
-        public void TestConfig2()
+        public void Test2()
         {
-            DoTestConfig();
-        }
+            ISource srcObj = access.Source("about", "about.message");
+            string translation = Translation.GetString("zh-CN", srcObj);
+            Assert.AreEqual("应用程序说明页。", translation);
 
-        [TestMethod]
-        public void TestRelease2()
-        {
-            DoTestRelease();
-        }
-
-        [TestMethod]
-        public void TestTranslation2()
-        {
-            DoTestTranslation();
-        }
-
-        [TestMethod]
-        public void TestMessages2()
-        {
-            DoTestMessages();
+            DoCommonTestTranslation(access);
         }
     }
 }

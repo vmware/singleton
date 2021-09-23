@@ -8,6 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SingletonClient.Implementation.Helpers;
 using SingletonClient.Implementation.Support;
 
+
 namespace UnitTestSingleton
 {
     [TestClass]
@@ -35,7 +36,7 @@ namespace UnitTestSingleton
         [TestMethod]
         public void TestPropertiesParser()
         {
-            string sourceAllText = BaseIo.obj().GetTestResource("TestSource");
+            string sourceAllText = BaseIo.obj().LoadResourceText("TestSource");
             SingletonParserProperties p = new SingletonParserProperties();
             Hashtable ht = p.Parse(sourceAllText);
 

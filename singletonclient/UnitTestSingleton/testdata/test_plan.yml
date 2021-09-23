@@ -1,0 +1,78 @@
+﻿plans_before:
+  - config: config/sgtn_online_only.yml
+    outside:
+      product: PYTHON1
+      load_on_startup: true
+
+  - config: config/sgtn_offline_only.yml
+    outside:
+      product: PYTHON2
+
+  - config: config/sgtn_offline_only.yml
+    outside:
+      product: PYTHON3
+      load_on_startup: true
+
+  - config: config/sgtn_online_localsource_before.yml
+    outside:
+      product: PYTHON4
+
+  - config: config/sgtn_online_offline_before.yml
+    outside:
+      product: PYTHON5
+
+  - config: config/sgtn_online_default.yml
+    outside:
+      product: PYTHON6
+
+  - config: config/sgtn_offline_default.yml
+    outside:
+      product: PYTHON7
+
+  - config: config/sgtn_online_offline_before.yml
+    outside:
+      product: PYTHON8
+      online_service_url: http://127.0.0.1:1111
+
+
+plans:
+  - config: config/sgtn_online_only.yml
+    outside:
+      product: PYTHON11
+
+  - config: config/sgtn_offline_only.yml
+    outside:
+      product: PYTHON12
+
+  - config: config/sgtn_online_localsource.yml
+    outside:
+      product: PYTHON13
+
+  - config: config/sgtn_online_default.yml
+    outside:
+      product: PYTHON14
+
+  - config: config/sgtn_offline_default.yml
+    outside:
+      product: PYTHON15
+
+  - config: config/sgtn_offline.yml
+    outside:
+      product: PYTHON16
+
+
+plans_pseudo:
+  - config: config/sgtn_offline.yml
+    outside:
+      product: PYTHON21
+      pseudo: true
+
+  - config: config/sgtn_online_only.yml
+    outside:
+      product: PYTHON22
+      pseudo: true
+
+  - config: config/sgtn_online_localsource.yml
+    outside:
+      product: PYTHON23
+      pseudo: true

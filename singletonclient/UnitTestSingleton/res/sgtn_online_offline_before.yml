@@ -2,6 +2,9 @@
 product: $PRODUCT
 l10n_version: 1.0.0
 
+online_service_url: http://127.0.0.1:8090
+access_service_type: test
+
 offline_resources_base_url: res.source2
 default_resource_format: resx, internal
 
@@ -13,6 +16,10 @@ component_template: # as default
     - $COMPONENT
   locales:
     - language_tag: en-US
+      source_resources_path:
+        - $COMPONENT
+      offline_resources_path:
+        - $COMPONENT__en
     - language_tag: de
     - language_tag: zh-CN
 

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UnitTestSingleton.testdata {
+namespace UnitTestSingleton.testdata.res {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace UnitTestSingleton.testdata {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UnitTestSingleton.testdata.TestData", typeof(TestData).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UnitTestSingleton.testdata.res.TestData", typeof(TestData).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -88,6 +88,37 @@ namespace UnitTestSingleton.testdata {
         internal static string http_response {
             get {
                 return ResourceManager.GetString("http_response", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ---api---
+        ///[GET]http://127.0.0.1:8090/i18n/api/v2/translation/products/$PRODUCT/versions/$VERSION/localelist
+        ///COMMENT: get locale list
+        ///---data---
+        ///{
+        ///    &quot;response&quot;:{
+        ///        &quot;code&quot;:200,
+        ///        &quot;message&quot;:&quot;OK&quot;,
+        ///        &quot;serverTime&quot;:&quot;&quot;
+        ///    },
+        ///    &quot;signature&quot;:&quot;&quot;,
+        ///    &quot;data&quot;:{
+        ///        &quot;locales&quot;:[
+        ///            &quot;zh-Hans&quot;,
+        ///            &quot;zh-Hant&quot;,
+        ///            &quot;fr&quot;,
+        ///            &quot;en&quot;,
+        ///            &quot;ja&quot;,
+        ///            &quot;ko&quot;,
+        ///            &quot;de&quot;
+        ///        ],
+        ///        &quot;version&quot;:&quot;$VERSION&quot;,
+        ///        &quot;productName&quot;:&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string http_response_before {
+            get {
+                return ResourceManager.GetString("http_response_before", resourceCulture);
             }
         }
         
@@ -165,7 +196,50 @@ namespace UnitTestSingleton.testdata {
         
         /// <summary>
         ///   Looks up a localized string similar to ---test---
-        ///NAME: TestGetStringPseudo
+        ///NAME: TestGetString1
+        ///COMMENT: test GetString()
+        ///TIMES: 1000
+        ///
+        ///---data---
+        ///type: SetLocale
+        ///locale: en
+        ///
+        ///---data---
+        ///type: GetString
+        ///component: about
+        ///key: about.message
+        ///expect: Your application description page.
+        ///
+        ///---data---
+        ///type: GetString
+        ///component: aboutadd
+        ///key: about.message
+        ///expect: about.message
+        ///
+        ///---data---
+        ///type: GetString
+        ///component: about
+        ///key: about.message2
+        ///expect: about.message2
+        ///
+        ///---data---
+        ///type: SetLocale
+        ///locale: de
+        ///
+        ///---data---
+        ///type: GetString
+        ///component: about
+        ///k [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string test_define_before {
+            get {
+                return ResourceManager.GetString("test_define_before", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ---test---
+        ///NAME: TestGetStringPseudoOnline
         ///COMMENT: test GetString()
         ///
         ///---data---
@@ -174,14 +248,14 @@ namespace UnitTestSingleton.testdata {
         ///component: about
         ///key: about.message
         ///source: message in code
-        ///expect: @@message in code@@
+        ///expect: message in code
         ///
         ///---data---
         ///type: GetString
         ///locale: en
         ///component: about
         ///key: about.message
-        ///expect: @@Your application description page.@@
+        ///expect: Your application description page.
         ///
         ///---data---
         ///type: GetString
@@ -193,7 +267,7 @@ namespace UnitTestSingleton.testdata {
         ///---data---
         ///type: GetString
         ///locale: de
-        ///component: [rest of string was truncated]&quot;;.
+        ///component: a [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string test_define_pseudo {
             get {
@@ -232,6 +306,62 @@ namespace UnitTestSingleton.testdata {
         internal static string test_define2 {
             get {
                 return ResourceManager.GetString("test_define2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] test_plan {
+            get {
+                object obj = ResourceManager.GetObject("test_plan", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ---test---
+        ///NAME: TestLoadBeforeService
+        ///COMMENT: Load Before Service
+        ///
+        ///---data---
+        ///type: LoadService
+        ///name: http_response_before.txt
+        ///
+        ///
+        ///
+        ///---test---
+        ///NAME: TestLoadPseudoService
+        ///COMMENT: Load Pseudo Service
+        ///
+        ///---data---
+        ///type: LoadService
+        ///name: http_response_pseudo.txt
+        ///
+        ///
+        ///
+        ///---test---
+        ///NAME: TestShowCache
+        ///COMMENT: Show content of cache
+        ///
+        ///---data---
+        ///type: Delay
+        ///time: 0.05
+        ///
+        ///---data---
+        ///type: ShowCache
+        ///locale: en-US
+        ///as_source: true
+        ///format: json
+        ///
+        ///---data---
+        ///type: ShowCache
+        ///locale: en-US
+        ///a [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string test_prepare {
+            get {
+                return ResourceManager.GetString("test_prepare", resourceCulture);
             }
         }
         

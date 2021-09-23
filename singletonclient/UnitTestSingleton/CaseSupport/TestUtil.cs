@@ -4,10 +4,10 @@
  */
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using SingletonClient;
 using SingletonClient.Implementation;
 using static SingletonClient.Implementation.SingletonUtil;
+
 
 namespace UnitTestSingleton
 {

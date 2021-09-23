@@ -9,6 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SingletonClient.Implementation;
 using SingletonClient.Implementation.Support;
 
+
 namespace UnitTestSingleton
 {
     [TestClass]

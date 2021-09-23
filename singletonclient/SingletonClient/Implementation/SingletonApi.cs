@@ -16,7 +16,7 @@ namespace SingletonClient.Implementation
     {
         string GetLocaleListApi();
         string GetComponentListApi();
-        string GetComponentApi(string component, string locale);
+        string GetComponentApi(string component, string locale, bool pseudo);
         JObject HttpGetJson(string url, Hashtable headers, int timeout, ILog logger);
     }
 
@@ -29,7 +29,6 @@ namespace SingletonClient.Implementation
         private readonly string _product;
         private readonly string _version;
         private readonly string _urlService;
-        private readonly string _pseudo;
 
         private readonly ISingletonRelease _releaseObject;
 
@@ -44,43 +43,45 @@ namespace SingletonClient.Implementation
             _urlService = config.GetServiceUrl();
             _product = config.GetProduct();
             _version = config.GetVersion();
-
-            _pseudo = config.IsPseudo() ? "true" : "false";
         }
 
-        public string GetComponentApi(string component, string locale)
+        public string GetComponentApi(string component, string locale, bool pseudo)
         {
             List<string> localeList = _releaseObject.GetRelease().GetMessages().GetLocaleList();
             string localeInUse = null;
-            for (int i = 0; i < localeList.Count; i++)
+            if (!SingletonComponent.SourceAlias.Equals(locale))
             {
-                if (String.Equals(locale, localeList[i], StringComparison.CurrentCultureIgnoreCase))
-                {
-                    localeInUse = locale;
-                    break;
-                }
-            }
-            if (localeInUse == null)
-            {
-                ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
                 for (int i = 0; i < localeList.Count; i++)
                 {
-                    if (singletonLocale.Contains(localeList[i]))
+                    if (String.Equals(locale, localeList[i], StringComparison.CurrentCultureIgnoreCase))
                     {
-                        localeInUse = localeList[i];
+                        localeInUse = locale;
                         break;
                     }
                 }
-
                 if (localeInUse == null)
                 {
-                    localeInUse = locale;
+                    ISingletonLocale singletonLocale = SingletonUtil.GetSingletonLocale(locale);
+                    for (int i = 0; i < localeList.Count; i++)
+                    {
+                        if (singletonLocale.Contains(localeList[i]))
+                        {
+                            localeInUse = localeList[i];
+                            break;
+                        }
+                    }
                 }
+            }
+
+            if (localeInUse == null)
+            {
+                localeInUse = locale;
             }
 
             string head = string.Format(VipPathHead, _product, _version);
             string path = string.Format(VipGetComponent, localeInUse, component);
-            string para = string.Format(VipParameter, _pseudo);
+            string pseudoText = pseudo ? "true" : "false";
+            string para = string.Format(VipParameter, pseudoText);
             string api = string.Format("{0}{1}{2}{3}", _urlService, head, path, para);
             return api;
         }

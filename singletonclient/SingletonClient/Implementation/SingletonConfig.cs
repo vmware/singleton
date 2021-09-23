@@ -42,6 +42,8 @@ namespace SingletonClient.Implementation
 
         IConfigItem GetOfflinePathItem(string component, string locale);
 
+        IConfigItem GetSourcePathItem(string component, string locale);
+
         string GetCacheType();
 
         string GetCacheComponentType();
@@ -233,6 +235,20 @@ namespace SingletonClient.Implementation
 
     public class SingletonConfig : IConfig
     {
+        private static readonly Hashtable fake = new Hashtable();
+        public static void SetFake(string resourceBaseName, string[] array)
+        {
+            string key = SingletonUtil.GetCombineKey("", "", "auto", resourceBaseName);
+            List<string> components = new List<string>();
+            foreach (string one in array)
+            {
+                components.Add(one);
+            }
+            fake[key] = components;
+        }
+
+        public Hashtable Fake { get; }
+
         private const string TAIL = ".resources";
 
         private IConfigItem _root;
@@ -468,6 +484,12 @@ namespace SingletonClient.Implementation
                     }
                 }
             }
+
+            string key = SingletonUtil.GetCombineKey("", "", "auto", resourceBaseName);
+            if (fake.ContainsKey(key))
+            {
+                nameList = (List<string>)fake[key];
+            }
             return nameList;
         }
     }
@@ -681,6 +703,15 @@ namespace SingletonClient.Implementation
             string localeInUse = GetLocaleInUse(component, locale);
             IConfigItem configItem = _config.GetLocaleAttribute(
                 component, localeInUse, ConfigConst.KeyOfflinePath);
+
+            return configItem;
+        }
+
+        public IConfigItem GetSourcePathItem(string component, string locale)
+        {
+            string localeInUse = GetLocaleInUse(component, locale);
+            IConfigItem configItem = _config.GetLocaleAttribute(
+                component, localeInUse, ConfigConst.KeySourcePath);
 
             return configItem;
         }

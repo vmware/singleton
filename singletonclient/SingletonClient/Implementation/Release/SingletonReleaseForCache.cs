@@ -77,6 +77,22 @@ namespace SingletonClient.Implementation.Release
             return useLocale;
         }
 
+        /// <summary>
+        /// ISingletonRelease
+        /// </summary>
+        public ISingletonUseLocale GetSourceUseLocale()
+        {
+            return this._useSourceLocale;
+        }
+
+        /// <summary>
+        /// ISingletonRelease
+        /// </summary>
+        public ISingletonUseLocale GetRemoteSourceUseLocale()
+        {
+            return this._useSourceRemote;
+        }
+
         protected bool InitForCache()
         {
             if (_productCache != null)
@@ -97,12 +113,12 @@ namespace SingletonClient.Implementation.Release
                 _byKey = new SingletonByKey(_config, cacheType);
             }
 
+            _useSourceRemote = GetUseLocale(_config.GetSourceLocale(), false);
             _useSourceLocale = GetUseLocale(_config.GetSourceLocale(), true);
             if (_config.IsOfflineSupported())
             {
-                _update.LoadLocalMessage(_useSourceLocale.GetSingletonLocale(), null, true);
+                _update.LoadLocalMessage(_useSourceLocale.GetSingletonLocale(), null, true, false);
             }
-            _useSourceRemote = GetUseLocale(_config.GetSourceLocale(), false);
 
             if (!_config.IsSourceLocaleDefault())
             {
@@ -112,52 +128,62 @@ namespace SingletonClient.Implementation.Release
             return true;
         }
 
-        protected string AdjustMessage(string key, string message = null)
+        protected string CheckWithKey(string message, ISource source)
         {
             if (message == null)
             {
-                message = key;
-            }
+                if (source.GetSource() != null)
+                {
+                    message = source.GetSource();
+                    if (_config.IsPseudo())
+                    {
+                        message = SingletonUtil.AddPseudo(message);
+                    }
+                }
+                else
+                {
+                    message = source.GetKey();
+                }
 
-            if (!_config.IsProductMode())
-            {
-                message = "@" + message;
+                if (!_config.IsProductMode())
+                {
+                    message = "@" + message;
+                }
             }
-
             return message;
         }
 
-        protected string GetSourceMessage(string component, string key)
+        protected string GetSourceMessage(ISource source)
         {
-            string source;
+            string sourceText;
             if (_byKey != null)
             {
-                int componentIndex = _byKey.GetComponentIndex(component);
-                source = _byKey.GetString(key, componentIndex, _useSourceLocale.GetLocaleItem(), false);
-                if (source == null)
+                int componentIndex = _byKey.GetComponentIndex(source.GetComponent());
+                sourceText = _byKey.GetString(source.GetKey(), componentIndex, _useSourceLocale.GetLocaleItem(), false);
+                if (sourceText == null)
                 {
                     if (componentIndex >= 0 && _config.IsOnlineSupported())
                     {
-                        ISingletonComponent singletonComponent = _useSourceRemote.GetComponent(component, true);
-                        singletonComponent.GetAccessTask().Check();
+                        ISingletonComponent singletonComponent = _useSourceRemote.GetComponent(source.GetComponent(), true);
+                        ISingletonAccessTask accessTask = singletonComponent != null ? singletonComponent.GetAccessTask() : null;
+                        if (accessTask != null)
+                        {
+                            accessTask.Check();
+                        }
                     }
-                    source = _byKey.GetString(key, componentIndex, _useSourceRemote.GetLocaleItem(), false);
+                    sourceText = _byKey.GetString(source.GetKey(), componentIndex, _useSourceRemote.GetLocaleItem(), false);
                 }
             }
             else
             {
-                source = _useSourceLocale.GetMessage(component, key);
-                if (source == null && _config.IsOnlineSupported())
+                sourceText = _useSourceLocale.GetMessage(source.GetComponent(), source.GetKey());
+                if (sourceText == null && _config.IsOnlineSupported())
                 {
-                    source = _useSourceRemote.GetMessage(component, key);
+                    sourceText = _useSourceRemote.GetMessage(source.GetComponent(), source.GetKey());
                 }
             }
 
-            if (source == null)
-            {
-                source = AdjustMessage(key);
-            }
-            return source;
+            return CheckWithKey(sourceText, source);
         }
 
         protected string GetRemoteMessage(ISingletonUseLocale useLocale, ISource source, string sourceInCode)
@@ -176,11 +202,9 @@ namespace SingletonClient.Implementation.Release
                     }
                     else
                     {
-                        text = GetSourceMessage(source.GetComponent(), source.GetKey());
+                        text = GetSourceMessage(source);
                     }
                 }
-
-                text = AdjustMessage(source.GetKey(), text);
             }
             return text;
         }
@@ -200,18 +224,16 @@ namespace SingletonClient.Implementation.Release
                     return source.GetSource();
                 }
 
-                return this.GetSourceMessage(source.GetComponent(), source.GetKey());
+                return this.GetSourceMessage(source);
             }
 
-            string text = this.GetSourceMessage(source.GetComponent(), source.GetKey());
-            if (source.GetSource() != null && text != null && text != source.GetSource())
+            if (!_config.IsPseudo())
             {
-                return source.GetSource();
-            }
-
-            if (useLocale.IsSourceLocale() && source.GetSource() != null)
-            {
-                return source.GetSource();
+                string soureText = this.GetSourceMessage(source);
+                if (source.GetSource() != null && soureText != null && soureText != source.GetSource())
+                {
+                    return source.GetSource();
+                }
             }
 
             if (_byKey != null)
@@ -219,7 +241,7 @@ namespace SingletonClient.Implementation.Release
                 int componentIndex = this._byKey.GetComponentIndex(source.GetComponent());
                 if (componentIndex >= 0)
                 {
-                    string combineKey = SingletonUtil.GetCombineKey(locale, source.GetComponent());
+                    string combineKey = SingletonUtil.GetCombineKey(locale, source.GetComponent(), "handle", "bundle");
                     if (!_bundleHandled.Contains(combineKey))
                     {
                         if (_config.IsOnlineSupported())
@@ -240,25 +262,21 @@ namespace SingletonClient.Implementation.Release
 
                 ISingletonByKeyLocale byKeyLocale = _byKey.GetLocaleItem(locale, false);
                 string message = _byKey.GetString(source.GetKey(), componentIndex, byKeyLocale, true);
-                if (message == null)
-                {
-                    message = AdjustMessage(source.GetKey());
-                }
-                return message;
+                return CheckWithKey(message, source);
             }
 
-            string textSource = _useSourceLocale.GetMessage(source.GetComponent(), source.GetKey());
-            if (textSource == null)
+            string text = _useSourceLocale.GetMessage(source.GetComponent(), source.GetKey());
+            if (text == null)
             {
-                return GetRemoteMessage(useLocale, source, null);
+                text = GetRemoteMessage(useLocale, source, null);
             }
 
-            text = source.GetSource();
-            if (textSource.Equals(text) || text == null)
+            string sourceInCode = source.GetSource();
+            if (sourceInCode.Equals(text) || text == null)
             {
-                return GetRemoteMessage(useLocale, source, textSource);
+                text = GetRemoteMessage(useLocale, source, sourceInCode);
             }
-            return text;
+            return CheckWithKey(text, source);
         }
     }
 }

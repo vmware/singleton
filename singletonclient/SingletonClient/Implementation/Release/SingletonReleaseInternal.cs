@@ -24,6 +24,8 @@ namespace SingletonClient.Implementation.Release
         ILog GetLogger();
         void AddLocalScope(List<string> locales, List<string> components);
         ISingletonUseLocale GetUseLocale(string locale, bool asSource);
+        ISingletonUseLocale GetSourceUseLocale();
+        ISingletonUseLocale GetRemoteSourceUseLocale();
         bool IsInScope(ISingletonLocale singletonLocale, string component, out ISingletonLocale relateLocale);
     }
 
@@ -84,7 +86,7 @@ namespace SingletonClient.Implementation.Release
         {
             ISingletonLocale singletonLocale = SingletonLocaleUtil.GetSingletonLocale(locale);
             bool isSource = singletonLocale.Compare(_useSourceLocale.GetSingletonLocale());
-            _update.LoadLocalMessage(singletonLocale, component, isSource);
+            _update.LoadLocalMessage(singletonLocale, component, isSource, false);
         }
 
         private void LoadLocalOnStartup(Dictionary<string, bool> done)

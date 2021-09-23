@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UnitTestSingleton.res {
+namespace UnitTestSingleton.res.source2 {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace UnitTestSingleton.res {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Singleton2 {
+    internal class aboutadd__en {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Singleton2() {
+        internal aboutadd__en() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace UnitTestSingleton.res {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UnitTestSingleton.res.Singleton2", typeof(Singleton2).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UnitTestSingleton.res.source2.aboutadd__en", typeof(aboutadd__en).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,42 +61,38 @@ namespace UnitTestSingleton.res {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to Use this area to provide additional information add disk.
         /// </summary>
-        internal static byte[] sgtn_offline_disk_resx {
+        internal static string about_description {
             get {
-                object obj = ResourceManager.GetObject("sgtn_offline_disk_resx", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("about.description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to Your application description page. add.
         /// </summary>
-        internal static byte[] sgtn_online_offline {
+        internal static string about_message {
             get {
-                object obj = ResourceManager.GetObject("sgtn_online_offline", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("about.message", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to About Version {1} of Product {0} add.
         /// </summary>
-        internal static byte[] sgtn_online_only {
+        internal static string about_title {
             get {
-                object obj = ResourceManager.GetObject("sgtn_online_only", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("about.title", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to About Version {x} of Product {y} add local.
         /// </summary>
-        internal static byte[] sgtn_online_pseudo {
+        internal static string about_title2 {
             get {
-                object obj = ResourceManager.GetObject("sgtn_online_pseudo", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("about.title2", resourceCulture);
             }
         }
     }
