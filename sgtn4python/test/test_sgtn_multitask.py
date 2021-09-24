@@ -37,13 +37,14 @@ class WorkThread(Thread):
         global logger
 
         I18N.set_current_locale(self.locale)
+        thid = threading.current_thread().ident
+        logger.info('--- {0} --- set locale --- th{1} --- {2} ---'.format(self.count, thid, self.locale))
 
         time.sleep(WAIT)
 
         theLocale = I18N.get_current_locale()
-
         thid = threading.current_thread().ident
-        logger.info('--- %s --- th%s --- %s ---' % (self.count, thid, theLocale))
+        logger.info('--- {0} --- get locale --- th{1} --- {2} ---'.format(self.count, thid, theLocale))
 
 
 class TestMultiTask(unittest.TestCase):
@@ -67,6 +68,7 @@ class TestMultiTask(unittest.TestCase):
     def do_test_current_locale_in_async(self):
         global logger
         if Util.is_async_supported():
+            I18N.set_current_locale(None)
             from async_util import AsyncWork 
             AsyncWork().hello()
 

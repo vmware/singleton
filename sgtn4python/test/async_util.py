@@ -14,9 +14,12 @@ import I18N
 
 
 async def hello(head, locale, delay):
+    current = I18N.get_current_locale()
+    print("{0}: default: {1}".format(head, current))
+
     tid = threading.current_thread().ident
     I18N.set_current_locale(locale)
-    print("%s: Hello world! %s %s" % (head, tid, locale))
+    print("{0}: Hello world! th{1} {2}".format(head, tid, locale))
     r = await asyncio.sleep(delay)
     first_level(head, tid, 0)
 
@@ -28,7 +31,8 @@ def second_level(head, tid, ssn):
 
 def output(head, tid, osn):
     current = I18N.get_current_locale()
-    print("%s: Hello again! %s %s" % (head, tid, current))
+    thid = threading.current_thread().ident
+    print("{0}: Hello again! th{1} {2}".format(head, tid, current))
 
 async def test_async(tt):
     await asyncio.sleep(tt.idThread % 2 * 0.4)
@@ -44,8 +48,8 @@ async def test_async(tt):
 class AsyncWork():
 
     async def do_hello(self):
-        task1 = asyncio.create_task(hello('a', 'en', 5))
-        task2 = asyncio.create_task(hello('b', 'de', 3))
+        task1 = asyncio.create_task(hello('run-a', 'en', 5))
+        task2 = asyncio.create_task(hello('run-b', 'de', 3))
         await task1
         await task2
 

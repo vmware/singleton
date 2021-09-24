@@ -6,10 +6,12 @@
 
 import sys
 
-if sys.version_info.major == 2:
+if sys.version_info.major <= 2:
     from sgtn_py2_base import SgtnPyBase
-else:
+elif sys.version_info.major == 3 and sys.version_info.minor < 7:
     from sgtn_py3_base import SgtnPyBase
+else:
+    from sgtn_py37_base import SgtnPyBase
 
 pybase = SgtnPyBase()
 

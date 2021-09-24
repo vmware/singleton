@@ -4,7 +4,6 @@
 # SPDX-License-Identifier: EPL-2.0
 #
 
-import sys
 import os
 import re
 import time
@@ -17,7 +16,7 @@ from sgtn_util import FileUtil, NetUtil, SysUtil
 from sgtn_util import LOG_TYPE_INFO, KEY_RESULT, KEY_HEADERS
 from sgtn_bykey import SingletonByKey
 from sgtn_locale import SingletonLocaleUtil
-from sgtn_py_base import SgtnException
+from sgtn_py_base import pybase, SgtnException
 
 from I18N import Config, Release, Translation
 
@@ -987,33 +986,14 @@ class SingletonReleaseManager(object):
 
     def set_current_locale(self, locale):
         """for I18N"""
-        current = sys._getframe().f_back.f_back
-        while current is not None:
-            if not hasattr(current, 'f_locals'):
-                break
-
-            locals = current.f_locals
-            locals['_singleton_locale_'] = locale
-
-            if not hasattr(current, 'f_back'):
-                break
-            current = current.f_back
+        pybase.set_current_locale(locale)
 
     def get_current_locale(self):
         """for I18N"""
-        current = sys._getframe().f_back.f_back
-        while current is not None:
-            if not hasattr(current, 'f_locals'):
-                break
-
-            locals = current.f_locals
-            if '_singleton_locale_' in locals:
-                return locals['_singleton_locale_']
-
-            if not hasattr(current, 'f_back'):
-                break
-            current = current.f_back
-        return LOCALE_DEFAULT
+        locale = pybase.get_current_locale()
+        if locale is None:
+            locale = LOCALE_DEFAULT
+        return locale
 
     def get_release(self, product, version):
         """for I18N"""
