@@ -36,6 +36,7 @@ KEY_OFFLINE_URL = 'offline_resources_base_url'
 KEY_LOCAL_PATH = 'offline_resources_path'
 KEY_SOURCE_PATH = 'source_resources_path'
 KEY_LOAD_ON_STARTUP = 'load_on_startup'
+KEY_MULTITASK = 'multitask'
 
 KEY_DEFAULT_LOCALE = 'default_locale'
 KEY_SOURCE_LOCALE = 'source_locale'
@@ -57,7 +58,6 @@ KEY_TEMPLATE = "template"
 HEADER_REQUEST_ETAG = "If-None-Match"
 
 LOCALE_DEFAULT = 'en-US'
-MAX_THREAD = 1000
 LOCAL_TYPE_FILE = 'file'
 LOCAL_TYPE_HTTP = 'http'
 RES_TYPE_PROPERTIES = '.properties'
@@ -161,6 +161,7 @@ class SingletonConfig(Config):
         self.source_locale = self._get_item(KEY_SOURCE_LOCALE, self.default_locale)
 
         self.pseudo = KEY_PSEUDO in self._config_data and self._config_data[KEY_PSEUDO]
+        self.need_async = self._get_item(KEY_MULTITASK, None) == 'async'
 
         self._expand_components()
 
@@ -257,12 +258,19 @@ class SingletonApi:
 
 class SingletonUpdateThread(Thread):
 
-    def __init__(self, obj):
+    def __init__(self, remote_task, obj):
         Thread.__init__(self)
+        self._task = remote_task
         self._obj = obj
 
-    def run(self):
+        self._task.querying = True
+
+    def do_work(self):
         self._obj.get_from_remote()
+        self._task.querying = False
+
+    def run(self):
+        self.do_work()
 
 
 class SingletonAccessRemoteTask:
@@ -270,6 +278,7 @@ class SingletonAccessRemoteTask:
     def __init__(self, release_obj, obj):
         self._rel = release_obj
         self._obj = obj
+        self._need_async = self._rel.cfg.need_async
 
         self.last_time = 0
         self.querying = False
@@ -301,12 +310,11 @@ class SingletonAccessRemoteTask:
                     time.sleep(0.1)
             return
 
-        self.querying = True
+        th = SingletonUpdateThread(self, self._obj)
         if self._obj.get_data_count() == 0:
-            self._obj.get_from_remote()
+            th.do_work()
         else:
-            th = SingletonUpdateThread(self._obj)
-            th.start()
+            pybase.do_multitask(th, self._need_async)
 
 
 class SingletonComponent:
@@ -405,7 +413,6 @@ class SingletonComponent:
         except SgtnException as e:
             self.task.set_retry(current)
 
-        self.task.querying = False
         self.get_from_local()
 
     def get_data_count(self):
@@ -671,11 +678,11 @@ class SingletonReleaseBase:
         if not self.cfg.remote_url:
             return
 
-        if not self.remote_scope.locale_list:
-            self.get_from_remote()
+        th = SingletonUpdateThread(self.task, self)
+        if not self.remote_scope.locale_list or self.cfg.is_online_supported:
+            th.do_work()
         else:
-            th = SingletonUpdateThread(self)
-            th.start()
+            pybase.do_multitask(th, self.cfg.need_async)
 
 
 class SingletonReleaseForCache(SingletonReleaseBase):
@@ -724,6 +731,9 @@ class SingletonReleaseForCache(SingletonReleaseBase):
             self.useDefaultLocale = self.get_use_locale(self.cfg.default_locale, False)
 
         self._get_scope()
+
+        if not self.cfg.is_online_supported:
+            self._check_load_on_startup(False)
 
     def _get_remote_resource(self, locale, component):
         if not self.remote_scope.locale_list or not self.remote_scope.component_list:
@@ -840,13 +850,8 @@ class SingletonReleaseInternal(SingletonReleaseForCache):
         self._is_different = self.remote_default_locale != self.remote_source_locale
 
         self.task = SingletonAccessRemoteTask(self, self)
-
+        # follow above
         self._init_forcache()
-
-        if self.cfg.is_online_supported:
-            self.get_from_remote()
-        else:
-            self._check_load_on_startup(False)
 
     def get_from_remote(self):
         self.task.last_time = time.time()
@@ -865,7 +870,6 @@ class SingletonReleaseInternal(SingletonReleaseForCache):
             pass
 
         self._check_load_on_startup(True)
-        self.task.querying = False
 
         # follow above
         if self.cfg.local_url is None:
