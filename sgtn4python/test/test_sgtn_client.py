@@ -116,6 +116,13 @@ class TestClient(unittest.TestCase):
 
         Util.run_test_data(self, trans, 'TestShowCache')
 
+        if Util.get_test_group('TestGetString1B') and not cfg_info['local']:
+            time.sleep(21)
+            Util.run_test_data(self, trans, 'TestGetString1B')
+            time.sleep(21)
+            Util.run_test_data(self, trans, 'TestGetString1C')
+            time.sleep(2)
+
         spent = time.time() - start
         time.sleep(1)
         print('--- test --- end --- %s ---\n\n\n\n' % spent)

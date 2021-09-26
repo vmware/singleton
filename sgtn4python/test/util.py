@@ -29,7 +29,8 @@ def init_logger():
     _logger.setLevel(logging.DEBUG)
     handler = logging.StreamHandler()
     _logger.addHandler(handler)
-    _logger.info('\n--- start --- python %s ---' % sys.version_info.major)
+    _logger.info('\n--- start --- python {0}.{1} ---'.format(
+        sys.version_info.major, sys.version_info.minor))
     return _logger
 
 logger = init_logger()
@@ -81,9 +82,11 @@ class TestThread(Thread):
         elif one['type'] == 'SetLocale':
             I18N.set_current_locale(one['locale'])
         elif one['type'] == 'LoadService':
+            logger.info('--- [%s] load service --- %s ---' % (self.group['NAME'], one['files']))
             NetUtil.simulate.simulate_data = Util.load_response(one['files'], one['start'], one['stop'])
         elif one['type'] == 'Delay':
             delay = float(one['time'])
+            logger.info('--- [%s] delay --- %s ---' % (self.group['NAME'], delay))
             time.sleep(delay)
         elif one['type'] == 'ShowCache':
             locale = one.get('locale')
@@ -178,6 +181,9 @@ class Util(object):
 
     @staticmethod
     def load_test_data(files):
+        global allTestData
+        allTestData = {}
+
         for one in files:
             text = Util.read_text_file(one)
             _load_test_data(text)
@@ -187,14 +193,20 @@ class Util(object):
         return sys.version_info.major * 1000 + sys.version_info.minor >= 3005
 
     @staticmethod
-    def run_test_data(ut, trans, groupName):
+    def get_test_group(groupName):
         global allTestData
         group = allTestData.get(groupName)
+        if group:
+            group = copy.deepcopy(group)
+            if 'DATAFROM' in group:
+                group['tests'] = copy.deepcopy(allTestData.get(group['DATAFROM'])['tests'])
+        return group
+
+    @staticmethod
+    def run_test_data(ut, trans, groupName):
+        group = Util.get_test_group(groupName)
         if not group:
             return
-        group = copy.deepcopy(group)
-        if 'DATAFROM' in group:
-            group['tests'] = copy.deepcopy(allTestData.get(group['DATAFROM'])['tests'])
 
         start = time.time()
         times = int(group['TIMES']) if 'TIMES' in group else 1
