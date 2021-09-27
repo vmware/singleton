@@ -15,6 +15,9 @@ public class Constants {
 	public static final String LANGUAGE = "language";
 	public static final String DEFAULT_REGION_CODE = "defaultRegionCode";
 	public static final String LANGUAGES = "languages";
+	public static final String SCRIPTS = "scripts";
+	public static final String VARIANTS = "variants";
+	public static final String LOCALEDISPLAYNAMES = "localeDisplayNames";
 	public static final String DISPLAY_LANGUAGE = "displayLanguage";
 	public static final String LOCALE_ID = "localeID";
 	public static final String DATES = "dates";
@@ -37,7 +40,7 @@ public class Constants {
 	public static final String LANGUAGE_POPULATION = "languagePopulation";
 	public static final String OFFICIAL_STATUS = "_officialStatus";
 	public static final String POPULATION_PERCENT = "_populationPercent";
-	public static final String SCRIPTS = "_scripts";
+	public static final String _SCRIPTS = "_scripts";
 	public static final String REPLACEMENT = "_replacement";
 	public static final String TERRITORY_001 = "001";
 

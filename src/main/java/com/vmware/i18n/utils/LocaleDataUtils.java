@@ -212,6 +212,47 @@ public class LocaleDataUtils {
 	 * @return
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private Map<String, Object> getLanguagesData(String locale) {
+		String zipPath = CLDRConstants.LOCALE_ZIP_FILE_PATH;
+		String fileName = "cldr-localenames-full-" + CLDRConstants.CLDR_VERSION + "/main/" + locale + "/languages.json";
+		String json = CLDRUtils.readZip(fileName, zipPath);
+		JSONObject languageDataContents = JSONUtil.string2JSON(json);
+		String node = "main." + locale + ".localeDisplayNames.languages";
+		if (CommonUtil.isEmpty(JSONUtil.select(languageDataContents, node))) {
+			return null;
+		}
+		String localeDataJson = JSONUtil.select(languageDataContents, node).toString();
+		return JSONUtil.string2SortMap(localeDataJson);
+	}
+
+	/**
+	 * Get CLDR locales scripts data
+	 *
+	 * @param locale
+	 * @return
+	 */
+	public Map<String, String> getScriptsData(String locale) {
+		Map resultMap = new LinkedHashMap();
+		String zipPath = CLDRConstants.LOCALE_ZIP_FILE_PATH;
+		String fileName = "cldr-localenames-full-" + CLDRConstants.CLDR_VERSION + "/main/" + locale
+				+ "/scripts.json";
+		String json = CLDRUtils.readZip(fileName, zipPath);
+		JSONObject localeDataContents = JSONUtil.string2JSON(json);
+		String node = "main." + locale + ".localeDisplayNames.scripts";
+		if (CommonUtil.isEmpty(JSONUtil.select(localeDataContents, node))) {
+			return null;
+		}
+		String localeDataJson = JSONUtil.select(localeDataContents, node).toString();
+		resultMap.putAll(JSONUtil.string2SortMap(localeDataJson));
+		return (Map<String, String>) resultMap;
+	}
+
+	/**
+	 * Get CLDR locales region data
+	 *
+	 * @param locale
+	 * @return
+	 */
 	public Map<String, String> getRegionsData(String locale) {
 		Map resultMap = new LinkedHashMap();
 		String zipPath = CLDRConstants.LOCALE_ZIP_FILE_PATH;
@@ -229,50 +270,122 @@ public class LocaleDataUtils {
 	}
 
 	/**
-	 * Get CLDR locales region data
+	 * Get CLDR locales variants data
 	 *
 	 * @param locale
 	 * @return
 	 */
-	private Map<String, Object> getLanguagesData(String locale) {
+	public Map<String, String> getVariantsData(String locale) {
+		Map resultMap = new LinkedHashMap();
 		String zipPath = CLDRConstants.LOCALE_ZIP_FILE_PATH;
-		String fileName = "cldr-localenames-full-" + CLDRConstants.CLDR_VERSION + "/main/" + locale + "/languages.json";
+		String fileName = "cldr-localenames-full-" + CLDRConstants.CLDR_VERSION + "/main/" + locale
+				+ "/variants.json";
 		String json = CLDRUtils.readZip(fileName, zipPath);
-		JSONObject languageDataContents = JSONUtil.string2JSON(json);
-		String node = "main." + locale + ".localeDisplayNames.languages";
-		if (CommonUtil.isEmpty(JSONUtil.select(languageDataContents, node))) {
+		JSONObject localeDataContents = JSONUtil.string2JSON(json);
+		String node = "main." + locale + ".localeDisplayNames.variants";
+		if (CommonUtil.isEmpty(JSONUtil.select(localeDataContents, node))) {
 			return null;
 		}
-		String localeDataJson = JSONUtil.select(languageDataContents, node).toString();
+		String localeDataJson = JSONUtil.select(localeDataContents, node).toString();
+		resultMap.putAll(JSONUtil.string2SortMap(localeDataJson));
+		return (Map<String, String>) resultMap;
+	}
+
+	/**
+	 * Get CLDR locales localeDisplayNames data
+	 *
+	 * @param locale
+	 * @return
+	 */
+	public Map<String, Object> getLocaleDisplayNamesData(String locale) {
+		String zipPath = CLDRConstants.LOCALE_ZIP_FILE_PATH;
+		String fileName = "cldr-localenames-full-" + CLDRConstants.CLDR_VERSION + "/main/" + locale
+				+ "/localeDisplayNames.json";
+		String json = CLDRUtils.readZip(fileName, zipPath);
+		JSONObject localeDataContents = JSONUtil.string2JSON(json);
+		String node = "main." + locale + ".localeDisplayNames";
+		if (CommonUtil.isEmpty(JSONUtil.select(localeDataContents, node))) {
+			return null;
+		}
+		String localeDataJson = JSONUtil.select(localeDataContents, node).toString();
 		return JSONUtil.string2SortMap(localeDataJson);
+	}
+
+	/**
+	 * Get CLDR locales localeDisplayPattern data
+	 *
+	 * @param locale
+	 * @return
+	 */
+	public Map<String, String> getLocaleDisplayPattern(String locale) {
+		Map localeDisplayNamesMap = getLocaleDisplayNamesData(locale);
+		return (Map<String, String>)localeDisplayNamesMap.get("localeDisplayPattern");
 	}
 
 	public static void localesExtract() {
 		logger.info("Start to extract cldr locales data ... ");
 		Map<String, String> allLocales = CLDRUtils.getAllCldrLocales();
-		Map<String, String> terriContain = LocaleDataUtils.getInstance().getTerriContain();
-		Map<String, Object> territoriesMap = null;
-		Map<String, Object> languagesMap = null;
-		Map<String, String> regionMap = null;
-		Map<String, Object> langMap = null;
 		for (String locale : allLocales.values()) {
-			territoriesMap = new LinkedHashMap<String, Object>();
-			CLDR cldr = new CLDR(locale);
-			territoriesMap.put(Constants.LANGUAGE, cldr.getLanguage());
-			regionMap = LocaleDataUtils.getInstance().getRegionList(locale, terriContain);
-			String defaultRegionCode = LocaleDataUtils.getInstance().getDefaultRegionCode(locale, regionMap);
-			territoriesMap.put(Constants.DEFAULT_REGION_CODE, defaultRegionCode);
-			territoriesMap.put(Constants.TERRITORIES, regionMap);
-			CLDRUtils.writePatternDataIntoFile(
-					CLDRConstants.GEN_CLDR_LOCALEDATA_DIR + locale + File.separator + "territories.json",
-					territoriesMap);
-			languagesMap = new LinkedHashMap<String, Object>();
-			langMap = LocaleDataUtils.getInstance().getLanguagesData(locale);
-			languagesMap.put(Constants.DISPLAY_LANGUAGE, cldr.getLanguage());
-			languagesMap.put(Constants.LANGUAGES, langMap);
-			CLDRUtils.writePatternDataIntoFile(
-					CLDRConstants.GEN_CLDR_LOCALEDATA_DIR + locale + File.separator + "languages.json", languagesMap);
+			extractLanguagesData(locale);
+			extractRegionsData(locale);
+			extractScriptsData(locale);
+			extractVariantsData(locale);
+			extractLocaleDisplayNamesData(locale);
 		}
 		logger.info("Extract cldr locales data complete!");
+	}
+
+	private static void extractLanguagesData(String locale){
+		Map<String, Object> languagesMap = new LinkedHashMap<String, Object>();
+		Map<String, Object> langMap = LocaleDataUtils.getInstance().getLanguagesData(locale);
+		CLDR cldr = new CLDR(locale);
+		languagesMap.put(Constants.DISPLAY_LANGUAGE, cldr.getLanguage());
+		languagesMap.put(Constants.LANGUAGES, langMap);
+		CLDRUtils.writePatternDataIntoFile(
+				CLDRConstants.GEN_CLDR_LOCALEDATA_DIR + locale + File.separator + "languages.json", languagesMap);
+	}
+
+	private static void extractRegionsData(String locale){
+		Map<String, Object> territoriesMap = new LinkedHashMap<String, Object>();
+		Map<String, String> terriContain = LocaleDataUtils.getInstance().getTerriContain();
+		CLDR cldr = new CLDR(locale);
+		territoriesMap.put(Constants.LANGUAGE, cldr.getLanguage());
+		Map<String, String> regionMap = LocaleDataUtils.getInstance().getRegionList(locale, terriContain);
+		String defaultRegionCode = LocaleDataUtils.getInstance().getDefaultRegionCode(locale, regionMap);
+		territoriesMap.put(Constants.DEFAULT_REGION_CODE, defaultRegionCode);
+		territoriesMap.put(Constants.TERRITORIES, regionMap);
+		CLDRUtils.writePatternDataIntoFile(
+				CLDRConstants.GEN_CLDR_LOCALEDATA_DIR + locale + File.separator + "territories.json",
+				territoriesMap);
+	}
+
+	private static void extractScriptsData(String locale){
+		Map<String, Object> scriptsMap = new LinkedHashMap<String, Object>();
+		Map<String, String> scriptsData = LocaleDataUtils.getInstance().getScriptsData(locale);
+		//CLDR cldr = new CLDR(locale);
+		//scriptsMap.put(Constants.DISPLAY_LANGUAGE, cldr.getLanguage());
+		scriptsMap.put(Constants.SCRIPTS, scriptsData);
+		CLDRUtils.writePatternDataIntoFile(
+				CLDRConstants.GEN_CLDR_LOCALEDATA_DIR + locale + File.separator + "scripts.json", scriptsMap);
+	}
+
+	private static void extractVariantsData(String locale){
+		Map<String, Object> variantsMap = new LinkedHashMap<String, Object>();
+		Map<String, String> variantsData = LocaleDataUtils.getInstance().getVariantsData(locale);
+		//CLDR cldr = new CLDR(locale);
+		//variantsMap.put(Constants.DISPLAY_LANGUAGE, cldr.getLanguage());
+		variantsMap.put(Constants.VARIANTS, variantsData);
+		CLDRUtils.writePatternDataIntoFile(
+				CLDRConstants.GEN_CLDR_LOCALEDATA_DIR + locale + File.separator + "variants.json", variantsMap);
+	}
+
+	private static void extractLocaleDisplayNamesData(String locale){
+		Map<String, Object> localeDisplayNamesMap = new LinkedHashMap<String, Object>();
+		Map<String, Object> localeDisplayNamesData = LocaleDataUtils.getInstance().getLocaleDisplayNamesData(locale);
+		//CLDR cldr = new CLDR(locale);
+		//localeDisplayNamesMap.put(Constants.DISPLAY_LANGUAGE, cldr.getLanguage());
+		localeDisplayNamesMap.put(Constants.LOCALEDISPLAYNAMES, localeDisplayNamesData);
+		CLDRUtils.writePatternDataIntoFile(
+				CLDRConstants.GEN_CLDR_LOCALEDATA_DIR + locale + File.separator + "localeDisplayNames.json", localeDisplayNamesMap);
 	}
 }
