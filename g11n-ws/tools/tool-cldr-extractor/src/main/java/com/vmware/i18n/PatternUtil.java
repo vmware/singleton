@@ -55,6 +55,33 @@ public class PatternUtil {
 
 	/**
 	 * @param displayLanguage
+	 * @return scripts json string
+	 */
+	public static String getScriptsFromLib(String displayLanguage) {
+		LocaleAction la = LocaleAction.getInstance();
+		return la.getLocaleData(displayLanguage, CLDRConstants.LOCALE_SCRIPTS_PATH);
+	}
+
+	/**
+	 * @param displayLanguage
+	 * @return variants json string
+	 */
+	public static String getVariantsFromLib(String displayLanguage) {
+		LocaleAction la = LocaleAction.getInstance();
+		return la.getLocaleData(displayLanguage, CLDRConstants.LOCALE_VARIANTS_PATH);
+	}
+
+	/**
+	 * @param displayLanguage
+	 * @return localeDisplayNames json string
+	 */
+	public static String getLocaleDisplayNamesFromLib(String displayLanguage) {
+		LocaleAction la = LocaleAction.getInstance();
+		return la.getLocaleData(displayLanguage, CLDRConstants.LOCALE_LOCALEDISPLAYNAMES_PATH);
+	}
+
+	/**
+	 * @param displayLanguage
 	 * @return ContextTransform json string
 	 */
 	public static String getContextTransformFromLib(String displayLanguage) {
