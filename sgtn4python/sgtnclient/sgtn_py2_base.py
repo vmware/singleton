@@ -25,6 +25,10 @@ class SgtnPyBase:
         return open(file_name, mode)
 
     @staticmethod
+    def do_multitask(thread_obj, need_async):
+        thread_obj.start()
+
+    @staticmethod
     def set_current_locale(locale):
         current = sys._getframe().f_back.f_back
         while current is not None:

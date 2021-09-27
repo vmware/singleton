@@ -86,6 +86,62 @@ expect: 应用程序说明页。
 
 
 ---test---
+NAME: TestGetString1B
+COMMENT: test GetString()
+TIMES: 1
+
+---data---
+type: SetLocale
+locale: de
+
+---data---
+type: GetString
+component: about
+key: about.message
+expect: Ihrer Bewerbungs Beschreibung Seite.
+
+---data---
+type: GetString
+component: contact
+key: contact.support
+expect: Unterstützung:
+
+---data---
+type: GetString
+locale: de
+component: aboutadd
+key: about.message
+expect: about.message
+
+---data---
+type: LoadService
+files: http_response.txt
+start: 1
+stop: 10
+
+
+
+---test---
+NAME: TestGetString1C
+COMMENT: test GetString()
+TIMES: 1
+
+---data---
+type: GetString
+locale: de
+component: aboutadd
+key: about.message
+expect: Ihrer Bewerbungs Beschreibung Seite. add
+
+---data---
+type: LoadService
+files: http_response_before.txt
+start: 1
+stop: 10
+
+
+
+---test---
 NAME: TestGetString1T
 COMMENT: test GetString()
 TIMES: 30
